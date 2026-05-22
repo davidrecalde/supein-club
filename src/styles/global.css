@@ -1,5 +1,45 @@
 @import "tailwindcss";
 
+/* ── Reset responsive base ── */
+html {
+  word-break: normal;
+  overflow-wrap: break-word;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  overflow-x: hidden;
+  max-width: 100vw;
+}
+
+*,
+*::before,
+*::after {
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+img,
+video,
+iframe {
+  max-width: 100%;
+  height: auto;
+}
+
+/* ── Container utility ── */
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+@media (max-width: 767px) {
+  .container {
+    padding: 0 16px;
+  }
+}
+
 @theme {
   /* Brand palette */
   --color-navy: #002147;
@@ -18,6 +58,32 @@
   --font-serif: "Lora", "Noto Serif JP", Georgia, serif;
   --font-jp: "Noto Sans JP", system-ui, sans-serif;
   --font-jp-serif: "Noto Serif JP", Georgia, serif;
+}
+
+/* ── Mobile typography ── */
+@media (max-width: 767px) {
+  .prose {
+    font-size: 16px;
+    line-height: 1.8;
+    word-break: normal;
+    overflow-wrap: break-word;
+  }
+
+  .prose h2 {
+    font-size: 1.2rem;
+    word-break: normal;
+  }
+
+  .prose h3 {
+    font-size: 1.05rem;
+  }
+
+  .prose table {
+    display: block;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    font-size: 0.85rem;
+  }
 }
 
 /* Article prose */

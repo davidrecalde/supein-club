@@ -85,9 +85,9 @@ if (firstRelated) {
   />
 
   <!-- Navy article header -->
-  <div class="bg-navy text-white relative">
+  <div class="article-hero bg-navy text-white relative">
     <div class="absolute top-0 left-0 right-0 h-[3px] bg-primary"></div>
-    <div class="max-w-5xl mx-auto px-5 py-10 pt-14">
+    <div class="article-hero-inner max-w-5xl mx-auto px-5 py-10 pt-14">
       <Breadcrumb items={visualBreadcrumbs} dark />
       <div class="max-w-2xl rounded-xl overflow-hidden mt-6 mb-6">
         <ResponsiveImage
@@ -187,21 +187,44 @@ if (firstRelated) {
       display: grid;
       grid-template-columns: 1fr 300px;
       gap: 48px;
-      align-items: start; /* CRÍTICO: no stretch */
+      align-items: start;
+      max-width: 1200px;
+      margin: 0 auto;
     }
 
-    /* El sidebar es sticky — el TOC se posiciona relativo dentro de él */
     .article-sidebar {
       position: sticky;
       top: 80px;
       height: fit-content;
-      /* Sin overflow:hidden — rompería el sticky */
-      display: none; /* oculto en mobile */
+      display: none;
     }
 
-    @media (min-width: 768px) {
+    @media (min-width: 1024px) {
       .article-sidebar {
         display: block;
+      }
+    }
+
+    @media (max-width: 1023px) {
+      .article-layout {
+        grid-template-columns: 1fr;
+        padding: 24px 16px;
+      }
+      .article-sidebar {
+        display: none;
+      }
+    }
+
+    @media (max-width: 767px) {
+      .article-hero h1 {
+        font-size: 1.5rem;
+        line-height: 1.4;
+        word-break: normal;
+        overflow-wrap: break-word;
+      }
+
+      .article-hero .article-hero-inner {
+        padding: 32px 16px 24px;
       }
     }
   </style>
