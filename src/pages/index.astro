@@ -1,0 +1,174 @@
+﻿---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SEO from '../components/SEO.astro';
+import ArticleCard from '../components/ArticleCard.astro';
+import LineBanner from '../components/LineBanner.astro';
+import { Plane, UtensilsCrossed, MessageCircle, Home, Globe, Trophy } from 'lucide-astro';
+import AdSlot from '../components/AdSlot.astro';
+
+const allArticles = await getCollection('articles', ({ data }) => !data.draft);
+const recentArticles = allArticles
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+  .slice(0, 3);
+
+const pillars = [
+  { href: '/travel/', Icon: Plane, title: 'スペイン旅行', desc: 'バルセロナ・マドリードから穴場まで、旅行ガイドとモデルコース' },
+  { href: '/food/', Icon: UtensilsCrossed, title: 'スペイン料理', desc: 'パエリア、タパス、ワイン。スペインの食文化を完全解説' },
+  { href: '/language/', Icon: MessageCircle, title: 'スペイン語', desc: '国内のレッスン・学校・アプリ・独学リソースを網羅' },
+  { href: '/living/', Icon: Home, title: 'スペインに住む', desc: '留学・仕事・ビザ取得まで、移住の実情を詳しく紹介' },
+  { href: '/culture/', Icon: Globe, title: 'スペイン文化', desc: 'フラメンコ・歴史・伝統・祭りなど文化の魅力を紹介' },
+  { href: '/football/', Icon: Trophy, title: 'スペインサッカー', desc: 'ラ・リーガ、スペイン代表、バルセロナ、レアル・マドリード。スペインサッカーを日本語で深掘り。' },
+];
+
+const stats = [
+  { value: '10+', label: '記事' },
+  { value: '5', label: 'カテゴリ' },
+  { value: '2018', label: '年創設' },
+  { value: '東京', label: '拠点' },
+];
+
+const breadcrumbs = [{ name: 'ホーム', url: '/' }];
+---
+<BaseLayout title="supein.club — スペインのすべてが、ここに。">
+  <SEO
+    slot="seo"
+    title="supein.club — スペインのすべてが、ここに。"
+    description="スペインの料理・旅行・語学・文化を日本語で紹介するポータルサイト。スペイン倶楽部が運営。"
+    canonical="https://supein.club/"
+    breadcrumbs={breadcrumbs}
+  />
+
+  <!-- Hero: solid navy + subtle dot pattern -->
+  <section
+    class="bg-navy text-white relative overflow-hidden"
+    style="background-image: radial-gradient(circle, rgba(255,255,255,0.07) 1.5px, transparent 1.5px), radial-gradient(circle, rgba(200,16,46,0.12) 1.5px, transparent 1.5px); background-size: 28px 28px, 64px 64px; background-position: 0 0, 14px 14px;"
+  >
+    <div class="relative max-w-5xl mx-auto px-5 py-24 lg:py-32">
+      <p class="text-primary text-xs font-semibold uppercase tracking-widest mb-5">
+        スペインのすべてが、ここに
+      </p>
+      <h1 class="font-sans font-bold text-4xl md:text-5xl lg:text-6xl leading-tight mb-6">
+        スペイン、もっと<br class="md:hidden" />知りたくなる。
+      </h1>
+      <p class="text-white/75 text-lg md:text-xl leading-relaxed mb-10 max-w-xl">
+        料理・旅行・語学・文化・生活——スペインに関するすべてを、日本語でわかりやすくお届けします。
+      </p>
+      <div class="flex flex-col sm:flex-row gap-3">
+        <a
+          href="/travel/"
+          class="inline-flex items-center justify-center bg-primary hover:bg-[#a00d24] text-white font-bold px-7 py-3.5 rounded-lg transition-colors text-sm"
+        >
+          スペイン旅行を計画する
+        </a>
+        <a
+          href="/language/"
+          class="inline-flex items-center justify-center border border-white/30 hover:border-white/60 text-white font-semibold px-7 py-3.5 rounded-lg transition-colors text-sm"
+        >
+          スペイン語を学ぶ
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats bar -->
+  <div class="bg-[#001530] border-b border-white/10">
+    <div class="max-w-5xl mx-auto px-5 py-5 grid grid-cols-2 md:grid-cols-4 gap-4">
+      {stats.map(({ value, label }) => (
+        <div class="text-center text-white">
+          <p class="font-bold text-2xl text-primary">{value}</p>
+          <p class="text-xs text-white/50 mt-0.5">{label}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+
+  <!-- Category pillars -->
+  <section class="py-20 px-5 bg-canvas">
+    <div class="max-w-5xl mx-auto">
+      <p class="text-primary text-xs font-semibold uppercase tracking-widest mb-3">カテゴリ</p>
+      <h2 class="font-sans font-bold text-3xl text-navy mb-10">カテゴリから探す</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+        {pillars.map(({ href, Icon, title, desc }) => (
+          <a
+            href={href}
+            class="group bg-white rounded-xl p-6 shadow-[0_2px_8px_rgba(0,33,71,0.07)] border border-[#E8E8E6] hover:shadow-[0_4px_16px_rgba(0,33,71,0.12)] hover:border-primary/20 transition-all"
+          >
+            <div class="w-11 h-11 rounded-full bg-[#FCEBEE] flex items-center justify-center mb-4 text-primary group-hover:bg-primary group-hover:text-white transition-colors">
+              <Icon size={20} />
+            </div>
+            <h3 class="font-sans font-bold text-navy text-lg mb-2 group-hover:text-primary transition-colors">
+              {title}
+            </h3>
+            <p class="text-muted text-sm leading-relaxed">{desc}</p>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Latest articles -->
+  {recentArticles.length > 0 && (
+    <section class="py-20 px-5 bg-white">
+      <div class="max-w-5xl mx-auto">
+        <p class="text-primary text-xs font-semibold uppercase tracking-widest mb-3">新着</p>
+        <h2 class="font-sans font-bold text-3xl text-navy mb-10">最新記事</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {recentArticles.map((article) => {
+            const parts = article.id.replace(/\.(md|mdx)$/, '').split('/');
+            const slug = parts[2] ?? article.data.cluster;
+            return (
+              <ArticleCard
+                title={article.data.title}
+                description={article.data.description}
+                href={`/${article.data.pillar}/${article.data.cluster}/${slug}/`}
+                pillar={article.data.pillar}
+                image={article.data.image}
+                imageAlt={article.data.imageAlt}
+                pubDate={article.data.pubDate}
+              />
+            );
+          })}
+        </div>
+        <div class="mt-10 text-center">
+          <a href="/travel/" class="inline-flex items-center gap-2 text-primary font-semibold text-sm hover:underline underline-offset-4">
+            記事をすべて見る →
+          </a>
+        </div>
+      </div>
+    </section>
+  )}
+
+  <!-- AdSlot home-mid: entre últimos artículos y LINE banner -->
+  <div class="py-6 px-5 bg-canvas">
+    <div class="max-w-5xl mx-auto">
+      <AdSlot
+        position="home-mid"
+        interlinkTitle="スペイン旅行の費用を徹底解説：1週間の予算は？"
+        interlinkUrl="/travel/travel-cost/"
+        interlinkPillar="スペイン旅行"
+        interlinkReadingTime={6}
+      />
+    </div>
+  </div>
+
+  <!-- LINE Banner -->
+  <LineBanner />
+
+  <!-- About section (navy — no "Club Español en Japón") -->
+  <section class="py-20 px-5 bg-navy text-white">
+    <div class="max-w-4xl mx-auto text-center">
+      <p class="text-primary text-xs font-semibold uppercase tracking-widest mb-4">スペイン倶楽部とは</p>
+      <h2 class="font-sans font-bold text-3xl mb-5">日本とスペインをつなぐコミュニティ</h2>
+      <p class="text-white/70 text-base leading-relaxed mb-8 max-w-2xl mx-auto">
+        スペイン倶楽部は、日本在住のスペイン語話者・スペイン好きが集まるコミュニティです。語学イベント、文化交流、料理会など多彩な活動を定期開催しています。
+      </p>
+      <a
+        href="/about-us/"
+        class="inline-flex items-center justify-center border border-white/30 hover:border-white/60 text-white font-bold px-7 py-3.5 rounded-lg transition-colors text-sm"
+      >
+        クラブの詳細を見る
+      </a>
+    </div>
+  </section>
+</BaseLayout>

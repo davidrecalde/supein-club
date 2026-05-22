@@ -1,0 +1,34 @@
+# Dependencies
+node_modules/
+.pnpm-store/
+
+# Build output
+dist/
+
+# Astro generated
+.astro/
+
+# Environment
+.env
+.env.local
+.env.production
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/
+.idea/
+
+# Claude Code
+.claude/
+
+# Archivos personales del proyecto (no son código)
+SupeinClub_Arquitectura_SEO/
+SupeinClub_Arquitectura_SEO.xlsx
+SupeinClub_Arquitectura_SEO.zip
+SupeinClub_SEO_Clusters_2026.odt
+SupeinClub_SEO_Clusters_2026.png
+supein.club Design System/
+supein.club Design System.zip

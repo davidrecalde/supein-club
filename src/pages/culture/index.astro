@@ -1,0 +1,71 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SEO from '../../components/SEO.astro';
+import PillarHero from '../../components/PillarHero.astro';
+import ArticleCard from '../../components/ArticleCard.astro';
+import LineBanner from '../../components/LineBanner.astro';
+import AdSlot from '../../components/AdSlot.astro';
+
+const articles = await getCollection('articles', ({ data }) => !data.draft && data.pillar === 'culture');
+const sorted = articles.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+
+const clusters = [
+  { href: '/culture/flamenco/', label: 'フラメンコ' },
+  { href: '/culture/history/', label: 'スペインの歴史' },
+  { href: '/culture/traditions/', label: '伝統と祭り' },
+  { href: '/culture/facts/', label: '基本情報' },
+];
+
+const breadcrumbs = [
+  { name: 'ホーム', url: '/' },
+  { name: 'スペイン文化', url: '/culture/' },
+];
+---
+<BaseLayout>
+  <SEO
+    slot="seo"
+    title="スペイン文化 完全ガイド | supein.club"
+    description="フラメンコ・歴史・伝統・祭りなど、スペインの豊かな文化をわかりやすく紹介。スペインを深く知るための入門ガイド。"
+    canonical="https://supein.club/culture/"
+    breadcrumbs={breadcrumbs}
+  />
+  <PillarHero
+    title="スペイン文化"
+    description="フラメンコ、闘牛、トマト祭り——情熱的なスペインの文化・歴史・伝統をわかりやすく紹介します。"
+  />
+  <section class="max-w-5xl mx-auto px-5 py-14">
+    <h2 class="font-sans font-bold text-xl text-navy mb-5">カテゴリ</h2>
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-3 mb-12">
+      {clusters.map(({ href, label }) => (
+        <a href={href} class="bg-white rounded-lg px-3 py-3 text-center border border-[#E8E8E6] hover:border-primary/30 hover:shadow-sm transition-all">
+          <span class="font-semibold text-navy text-xs leading-snug block">{label}</span>
+        </a>
+      ))}
+    </div>
+    <div class="mb-10">
+      <AdSlot
+        position="pillar-mid"
+        interlinkTitle="フラメンコとは？歴史・特徴・見どころを解説"
+        interlinkUrl="/culture/flamenco/"
+        interlinkPillar="スペイン文化"
+        interlinkReadingTime={5}
+      />
+    </div>
+    {sorted.length > 0 && (
+      <>
+        <h2 class="font-sans font-bold text-xl text-navy mb-5">記事一覧</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {sorted.map((a) => {
+            const parts = a.id.replace(/\.(md|mdx)$/, '').split('/');
+            const slug = parts[2] ?? a.data.cluster;
+            return (
+              <ArticleCard title={a.data.title} description={a.data.description} href={`/culture/${a.data.cluster}/${slug}/`} pillar="culture" image={a.data.image} imageAlt={a.data.imageAlt} pubDate={a.data.pubDate} />
+            );
+          })}
+        </div>
+      </>
+    )}
+  </section>
+  <LineBanner />
+</BaseLayout>

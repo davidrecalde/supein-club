@@ -1,0 +1,23 @@
+---
+interface Props {
+  items: Array<{ name: string; url: string }>;
+  dark?: boolean;
+}
+
+const { items, dark = false } = Astro.props;
+const baseClass = dark ? 'text-white/70' : 'text-muted';
+const linkClass = dark ? 'hover:text-white' : 'hover:text-primary';
+const currentClass = dark ? 'text-white' : 'text-ink';
+---
+<nav aria-label="breadcrumb" class={`text-sm flex items-center gap-1 flex-wrap ${baseClass}`}>
+  {items.map((item, i) => (
+    <>
+      {i > 0 && <span aria-hidden="true">›</span>}
+      {i < items.length - 1 ? (
+        <a href={item.url} class={`hover:underline ${linkClass}`}>{item.name}</a>
+      ) : (
+        <span class={currentClass} aria-current="page">{item.name}</span>
+      )}
+    </>
+  ))}
+</nav>

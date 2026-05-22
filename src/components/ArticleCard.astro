@@ -1,0 +1,52 @@
+---
+import ResponsiveImage from './ResponsiveImage.astro';
+
+interface Props {
+  title: string;
+  description: string;
+  href: string;
+  pillar: string;
+  image?: string;
+  imageAlt?: string;
+  pubDate: Date;
+}
+
+const { title, description, href, pillar, image, imageAlt, pubDate } = Astro.props;
+
+const pillarLabels: Record<string, string> = {
+  travel: 'スペイン旅行',
+  food: 'スペイン料理',
+  language: 'スペイン語',
+  living: 'スペインに住む',
+  culture: 'スペイン文化',
+  football: 'スペインサッカー',
+};
+
+const dateJa = new Intl.DateTimeFormat('ja-JP', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+}).format(pubDate);
+---
+<a href={href} class="group block bg-white rounded-xl overflow-hidden shadow-[0_2px_8px_rgba(0,33,71,0.07)] border border-[#E8E8E6] hover:shadow-[0_4px_16px_rgba(0,33,71,0.12)] hover:border-primary/20 transition-all">
+  <div class="overflow-hidden">
+    <ResponsiveImage
+      src={image}
+      alt={imageAlt ?? title}
+      size="cardGrid"
+      pillarLabel={pillarLabels[pillar] ?? pillar}
+      loading="lazy"
+      class="group-hover:scale-[1.04] transition-transform duration-[360ms]"
+    />
+  </div>
+  <div class="p-5">
+    <span class="inline-block text-xs font-semibold px-2.5 py-0.5 rounded-full bg-[#FCEBEE] text-primary">
+      {pillarLabels[pillar] ?? pillar}
+    </span>
+    <h3 class="font-sans font-semibold text-navy text-base mt-3 mb-2 group-hover:text-primary transition-colors leading-snug">
+      {title}
+    </h3>
+    <p class="text-muted text-sm leading-relaxed line-clamp-2">{description}</p>
+    <p class="text-xs text-muted/70 mt-3">{dateJa}</p>
+  </div>
+</a>

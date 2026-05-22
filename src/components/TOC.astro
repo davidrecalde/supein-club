@@ -1,0 +1,258 @@
+---
+interface Heading {
+  depth: number;
+  slug: string;
+  text: string;
+}
+
+interface Props {
+  headings: Heading[];
+}
+
+const { headings } = Astro.props;
+const h2s = headings.filter((h) => h.depth === 2);
+---
+
+{h2s.length > 0 && (
+  <nav class="toc" aria-label="目次">
+    <p class="toc-title">目次</p>
+    <div class="toc-track">
+      <div class="toc-line-bg" id="toc-line-bg"></div>
+      <div class="toc-line-active" id="toc-line"></div>
+      <ul class="toc-list">
+        {h2s.map((h, i) => (
+          <li class="toc-item" data-index={i}>
+            <a href={`#${h.slug}`} class="toc-link" data-slug={h.slug}>
+              <span class="toc-dot"></span>
+              <span class="toc-text">{h.text}</span>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </nav>
+)}
+
+<style>
+  .toc {
+    font-size: 13px;
+  }
+
+  .toc-title {
+    font-size: 10px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: #9ca3af;
+    margin-bottom: 16px;
+  }
+
+  .toc-track {
+    position: relative;
+    padding-left: 20px;
+  }
+
+  .toc-line-bg,
+  .toc-line-active {
+    position: absolute;
+    left: 5px;
+    width: 1px;
+    border-radius: 0;
+  }
+
+  .toc-line-bg {
+    background: #e5e7eb;
+    /* top y height se calculan por JS */
+  }
+
+  .toc-line-active {
+    background: #C8102E;
+    height: 0px;
+    transition: height 400ms cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .toc-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .toc-item {
+    position: relative;
+  }
+
+  .toc-link {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 5px 0;
+    color: #9ca3af;
+    text-decoration: none;
+    transition: color 200ms ease;
+    line-height: 1.5;
+  }
+
+  .toc-link:hover {
+    color: #374151;
+  }
+
+  .toc-dot {
+    flex-shrink: 0;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    border: 1.5px solid #d1d5db;
+    background: white;
+    transition: all 200ms ease;
+    margin-top: 4px;
+    margin-left: -18px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .toc-text {
+    flex: 1;
+    font-size: 13px;
+  }
+
+  .toc-link.is-active {
+    color: #002147;
+    font-weight: 600;
+  }
+
+  .toc-link.is-active .toc-dot {
+    border-color: #C8102E;
+    background: #C8102E;
+    width: 8px;
+    height: 8px;
+    margin-top: 3px;
+    margin-left: -19px;
+  }
+
+  .toc-link.is-visited {
+    color: #6b7280;
+  }
+
+  .toc-link.is-visited .toc-dot {
+    border-color: #C8102E;
+    background: white;
+  }
+</style>
+
+<script>
+  (function () {
+    const articleContent =
+      document.querySelector('.prose') ||
+      document.querySelector('.article-content');
+    if (!articleContent) return;
+
+    const headingEls = Array.from(
+      articleContent.querySelectorAll('h2')
+    ) as HTMLElement[];
+
+    const tocLinks = document.querySelectorAll<HTMLAnchorElement>('.toc-link');
+    const tocLine = document.getElementById('toc-line') as HTMLElement | null;
+    const tocLineBg = document.getElementById('toc-line-bg') as HTMLElement | null;
+    const tocTrack = document.querySelector<HTMLElement>('.toc-track');
+
+    if (!headingEls.length || !tocLinks.length || !tocLine) return;
+
+    headingEls.forEach((el, i) => {
+      if (!el.id) el.id = 'heading-' + i;
+    });
+
+    tocLinks.forEach((link, i) => {
+      if (headingEls[i]) {
+        link.setAttribute('href', '#' + headingEls[i].id);
+      }
+    });
+
+    function getDotCenters(): number[] {
+      if (!tocTrack) return [];
+      const trackTop = tocTrack.getBoundingClientRect().top;
+      return Array.from(tocLinks).map((link) => {
+        const dot = link.querySelector<HTMLElement>('.toc-dot');
+        if (!dot) return 0;
+        const dotRect = dot.getBoundingClientRect();
+        return dotRect.top + dotRect.height / 2 - trackTop;
+      });
+    }
+
+    function updateLines(currentActiveIndex: number) {
+      const centers = getDotCenters();
+      if (centers.length < 2) return;
+
+      const first = centers[0];
+      const last = centers[centers.length - 1];
+      const totalHeight = last - first;
+
+      if (tocLineBg) {
+        tocLineBg.style.top = first + 'px';
+        tocLineBg.style.height = totalHeight + 'px';
+      }
+
+      if (currentActiveIndex >= 0 && centers[currentActiveIndex] !== undefined) {
+        tocLine!.style.top = first + 'px';
+        const activeHeight = centers[currentActiveIndex] - first;
+        tocLine!.style.height = Math.max(0, activeHeight) + 'px';
+      } else {
+        tocLine!.style.top = first + 'px';
+        tocLine!.style.height = '0px';
+      }
+    }
+
+    let activeIndex = -1;
+
+    function setActive(index: number) {
+      if (index === activeIndex) return;
+      activeIndex = index;
+
+      tocLinks.forEach((link, i) => {
+        link.classList.toggle('is-active', i === index);
+        link.classList.toggle('is-visited', i < index);
+      });
+
+      updateLines(index);
+    }
+
+    requestAnimationFrame(() => {
+      updateLines(-1);
+      setActive(0);
+    });
+
+    window.addEventListener('resize', () => updateLines(activeIndex));
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const visible = entries
+          .filter((e) => e.isIntersecting)
+          .map((e) => ({
+            index: headingEls.indexOf(e.target as HTMLElement),
+            top: e.boundingClientRect.top,
+          }))
+          .filter((e) => e.index !== -1)
+          .sort((a, b) => a.top - b.top);
+
+        if (visible.length > 0) setActive(visible[0].index);
+      },
+      { rootMargin: '-80px 0px -55% 0px', threshold: 0 }
+    );
+
+    headingEls.forEach((el) => observer.observe(el));
+
+    tocLinks.forEach((link, i) => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        const target = headingEls[i];
+        if (target) {
+          const top =
+            target.getBoundingClientRect().top + window.scrollY - 90;
+          window.scrollTo({ top, behavior: 'smooth' });
+          setActive(i);
+        }
+      });
+    });
+  })();
+</script>

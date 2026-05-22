@@ -1,0 +1,41 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import SEO from '../../../components/SEO.astro';
+import ArticleCard from '../../../components/ArticleCard.astro';
+import Breadcrumb from '../../../components/Breadcrumb.astro';
+import LineBanner from '../../../components/LineBanner.astro';
+
+const articles = await getCollection('articles', ({ data }) => !data.draft && data.pillar === 'living' && data.cluster === 'student-visa');
+const sorted = articles.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+
+const breadcrumbs = [
+  { name: 'ホーム', url: '/' },
+  { name: 'スペインに住む', url: '/living/' },
+  { name: 'スペイン学生ビザ', url: '/living/student-visa/' },
+];
+---
+<BaseLayout>
+  <SEO slot="seo" title="スペイン学生ビザ | supein.club" description="スペイン学生ビザの申請手順・必要書類・費用・審査期間を詳しく解説。語学留学・大学留学別の注意点も。" canonical="https://supein.club/living/student-visa/" breadcrumbs={breadcrumbs} />
+  <section class="bg-navy text-white py-12 px-4">
+    <div class="max-w-4xl mx-auto">
+      <Breadcrumb items={breadcrumbs} dark />
+      <h1 class="font-serif text-3xl md:text-4xl font-bold leading-tight mt-4">スペイン学生ビザ 申請完全ガイド</h1>
+      <p class="text-white/80 text-lg mt-3 max-w-2xl">スペイン留学に必要な学生ビザの申請方法と必要書類を分かりやすいステップで解説します。</p>
+    </div>
+  </section>
+  <section class="max-w-7xl mx-auto px-4 py-12">
+    {sorted.length > 0 ? (
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        {sorted.map((a) => {
+          const parts = a.id.replace(/\.(md|mdx)$/, '').split('/');
+          const slug = parts[2] ?? a.data.cluster;
+          return <ArticleCard title={a.data.title} description={a.data.description} href={`/living/student-visa/${slug}/`} pillar="living" image={a.data.image} imageAlt={a.data.imageAlt} pubDate={a.data.pubDate} />;
+        })}
+      </div>
+    ) : (
+      <p class="text-muted text-center py-12">記事を準備中です。近日公開予定。</p>
+    )}
+  </section>
+  <LineBanner />
+</BaseLayout>

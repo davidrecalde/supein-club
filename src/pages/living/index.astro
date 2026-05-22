@@ -1,0 +1,76 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SEO from '../../components/SEO.astro';
+import PillarHero from '../../components/PillarHero.astro';
+import ArticleCard from '../../components/ArticleCard.astro';
+import LineBanner from '../../components/LineBanner.astro';
+import AdSlot from '../../components/AdSlot.astro';
+
+const articles = await getCollection('articles', ({ data }) => !data.draft && data.pillar === 'living');
+const sorted = articles.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+
+const clusters = [
+  { href: '/living/study-spain/', label: 'スペイン留学' },
+  { href: '/living/language-school/', label: '語学学校' },
+  { href: '/living/university/', label: '大学' },
+  { href: '/living/study-cost/', label: '留学費用' },
+  { href: '/living/spain-visa/', label: 'ビザ' },
+  { href: '/living/student-visa/', label: '学生ビザ' },
+  { href: '/living/work-visa/', label: '就労ビザ' },
+  { href: '/living/working-holiday/', label: 'ワーホリ' },
+  { href: '/living/work-in-spain/', label: 'スペインで働く' },
+];
+
+const breadcrumbs = [
+  { name: 'ホーム', url: '/' },
+  { name: 'スペインに住む', url: '/living/' },
+];
+---
+<BaseLayout>
+  <SEO
+    slot="seo"
+    title="スペインに住む・留学・就労ビザ完全ガイド | supein.club"
+    description="スペイン留学、ビザ申請、ワーキングホリデー、仕事探しまで。スペイン移住・生活に関するすべての情報を日本語で。"
+    canonical="https://supein.club/living/"
+    breadcrumbs={breadcrumbs}
+  />
+  <PillarHero
+    title="スペインに住む"
+    description="留学、ワーキングホリデー、就労——スペインで暮らすためのビザ取得から生活準備まで、具体的な情報をまとめました。"
+  />
+  <section class="max-w-5xl mx-auto px-5 py-14">
+    <h2 class="font-sans font-bold text-xl text-navy mb-5">カテゴリ</h2>
+    <div class="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3 mb-12">
+      {clusters.map(({ href, label }) => (
+        <a href={href} class="bg-white rounded-lg px-3 py-3 text-center border border-[#E8E8E6] hover:border-primary/30 hover:shadow-sm transition-all">
+          <span class="font-semibold text-navy text-xs leading-snug block">{label}</span>
+        </a>
+      ))}
+    </div>
+    <div class="mb-10">
+      <AdSlot
+        position="pillar-mid"
+        interlinkTitle="スペインワーキングホリデー条件・費用・申請方法"
+        interlinkUrl="/living/working-holiday/"
+        interlinkPillar="スペインに住む"
+        interlinkReadingTime={5}
+      />
+    </div>
+    {sorted.length > 0 && (
+      <>
+        <h2 class="font-sans font-bold text-xl text-navy mb-5">記事一覧</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {sorted.map((a) => {
+            const parts = a.id.replace(/\.(md|mdx)$/, '').split('/');
+            const slug = parts[2] ?? a.data.cluster;
+            return (
+              <ArticleCard title={a.data.title} description={a.data.description} href={`/living/${a.data.cluster}/${slug}/`} pillar="living" image={a.data.image} imageAlt={a.data.imageAlt} pubDate={a.data.pubDate} />
+            );
+          })}
+        </div>
+      </>
+    )}
+  </section>
+  <LineBanner />
+</BaseLayout>

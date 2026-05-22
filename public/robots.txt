@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+Disallow: /services/
+Sitemap: https://supein.club/sitemap-index.xml

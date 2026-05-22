@@ -1,0 +1,102 @@
+﻿---
+const pillars = [
+  { href: '/travel/', label: 'スペイン旅行' },
+  { href: '/food/', label: 'スペイン料理' },
+  { href: '/language/', label: 'スペイン語' },
+  { href: '/living/', label: 'スペインに住む' },
+  { href: '/culture/', label: 'スペイン文化' },
+  { href: '/football/', label: 'スペインサッカー' },
+];
+
+const pathname = Astro.url.pathname;
+---
+<header class="bg-navy sticky top-0 z-50 border-b-[3px] border-primary">
+  <nav class="max-w-7xl mx-auto px-5 flex items-center justify-between h-16">
+    <!-- Logo only — no extra text -->
+    <a href="/" class="flex-shrink-0" aria-label="supein.club ホームへ">
+      <img src="/logo-header.png" alt="スペイン倶楽部" width="180" height="62" class="h-9 w-auto" />
+    </a>
+
+    <!-- Desktop nav links -->
+    <ul class="hidden lg:flex items-center gap-0.5 text-sm font-medium">
+      {pillars.map(({ href, label }) => (
+        <li>
+          <a
+            href={href}
+            class={`px-3 py-1.5 rounded text-white/80 hover:text-white hover:bg-white/10 transition-colors ${
+              (pathname === href || (pathname.startsWith(href) && href !== '/'))
+                ? 'text-white underline underline-offset-4 decoration-primary decoration-2'
+                : ''
+            }`}
+          >
+            {label}
+          </a>
+        </li>
+      ))}
+    </ul>
+
+    <!-- Desktop LINE CTA -->
+    <a
+      href="https://lin.ee/vx6jpud"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="hidden lg:flex items-center gap-1.5 bg-[#06C755] hover:bg-[#05b34d] text-white text-xs font-bold px-4 py-2 rounded-full transition-colors shrink-0"
+    >
+      <svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor" aria-hidden="true">
+        <path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.63 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63h2.386c.349 0 .63.285.63.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.105.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63.349 0 .631.285.631.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.63 0 .344-.281.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314"/>
+      </svg>
+      友だち追加
+    </a>
+
+    <!-- Hamburger (mobile) -->
+    <button
+      id="nav-toggle"
+      class="lg:hidden flex flex-col justify-center gap-[5px] p-2 text-white"
+      aria-label="メニューを開く"
+      aria-expanded="false"
+      aria-controls="nav-menu"
+    >
+      <span class="block w-5 h-0.5 bg-current"></span>
+      <span class="block w-5 h-0.5 bg-current"></span>
+      <span class="block w-5 h-0.5 bg-current"></span>
+    </button>
+  </nav>
+
+  <!-- Mobile menu -->
+  <div id="nav-menu" class="hidden lg:hidden bg-[#001530] border-t border-white/10">
+    <ul class="px-5 py-2">
+      {pillars.map(({ href, label }) => (
+        <li>
+          <a
+            href={href}
+            class="flex items-center py-3 text-white/80 hover:text-white text-sm font-medium border-b border-white/5 transition-colors"
+          >
+            {label}
+          </a>
+        </li>
+      ))}
+    </ul>
+    <div class="px-5 py-4">
+      <a
+        href="https://lin.ee/vx6jpud"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="flex items-center justify-center gap-2 bg-[#06C755] text-white font-bold text-sm px-4 py-3 rounded-full w-full"
+      >
+        LINE 友だち追加
+      </a>
+    </div>
+  </div>
+</header>
+
+<script>
+  const toggle = document.getElementById('nav-toggle');
+  const menu = document.getElementById('nav-menu');
+  if (toggle && menu) {
+    toggle.addEventListener('click', () => {
+      const isOpen = !menu.classList.contains('hidden');
+      menu.classList.toggle('hidden');
+      toggle.setAttribute('aria-expanded', String(!isOpen));
+    });
+  }
+</script>

@@ -1,0 +1,25 @@
+﻿---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import SEO from '../../../components/SEO.astro';
+import LineBanner from '../../../components/LineBanner.astro';
+---
+<BaseLayout>
+  <SEO slot="seo" title="スペイン旅行コンサルティング | スペイン倶楽部" description="スペイン旅行の計画立案から手配まで、スペイン倶楽部のコンサルタントが丁寧にサポートします。" canonical="https://supein.club/services/travel-consulting/" />
+  <section class="bg-navy text-white py-16 px-4">
+    <div class="max-w-4xl mx-auto">
+      <h1 class="font-serif text-4xl font-bold mb-4">スペイン旅行コンサルティング</h1>
+      <p class="text-white/80 text-lg">あなただけのスペイン旅行を一緒に計画しましょう</p>
+    </div>
+  </section>
+  <section class="max-w-4xl mx-auto px-4 py-12 space-y-8">
+    <div>
+      <h2 class="font-serif text-2xl font-bold text-navy mb-3">サービス内容</h2>
+      <p class="text-muted leading-relaxed">スペイン在住経験のあるメンバーが、あなたの旅行計画をサポート。ルート提案・ホテル選び・レストラン予約アドバイスまで対応します。</p>
+    </div>
+    <div>
+      <h2 class="font-serif text-2xl font-bold text-navy mb-3">お問い合わせ</h2>
+      <p class="text-muted leading-relaxed">詳細はLINEからお気軽にお問い合わせください。</p>
+    </div>
+  </section>
+  <LineBanner />
+</BaseLayout>

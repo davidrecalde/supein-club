@@ -1,0 +1,41 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import SEO from '../../../components/SEO.astro';
+import ArticleCard from '../../../components/ArticleCard.astro';
+import Breadcrumb from '../../../components/Breadcrumb.astro';
+import LineBanner from '../../../components/LineBanner.astro';
+
+const articles = await getCollection('articles', ({ data }) => !data.draft && data.pillar === 'travel' && data.cluster === 'barcelona');
+const sorted = articles.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+
+const breadcrumbs = [
+  { name: 'ホーム', url: '/' },
+  { name: 'スペイン旅行', url: '/travel/' },
+  { name: 'バルセロナ', url: '/travel/barcelona/' },
+];
+---
+<BaseLayout>
+  <SEO slot="seo" title="バルセロナ 観光ガイド | supein.club" description="バルセロナ観光の見どころ・モデルコース・アクセス方法を解説。サグラダファミリアからバルセロネータビーチまで完全ガイド。" canonical="https://supein.club/travel/barcelona/" breadcrumbs={breadcrumbs} />
+  <section class="bg-navy text-white py-12 px-4">
+    <div class="max-w-4xl mx-auto">
+      <Breadcrumb items={breadcrumbs} dark />
+      <h1 class="font-serif text-3xl md:text-4xl font-bold leading-tight mt-4">バルセロナ 観光ガイド</h1>
+      <p class="text-white/80 text-lg mt-3 max-w-2xl">サグラダファミリア、グエル公園、ランブラス通り——バルセロナの魅力を余すことなくご紹介。</p>
+    </div>
+  </section>
+  <section class="max-w-7xl mx-auto px-4 py-12">
+    {sorted.length > 0 ? (
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        {sorted.map((a) => {
+          const parts = a.id.replace(/\.(md|mdx)$/, '').split('/');
+          const slug = parts[2] ?? a.data.cluster;
+          return <ArticleCard title={a.data.title} description={a.data.description} href={`/travel/barcelona/${slug}/`} pillar="travel" image={a.data.image} imageAlt={a.data.imageAlt} pubDate={a.data.pubDate} />;
+        })}
+      </div>
+    ) : (
+      <p class="text-muted text-center py-12">記事を準備中です。近日公開予定。</p>
+    )}
+  </section>
+  <LineBanner />
+</BaseLayout>

@@ -1,0 +1,77 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SEO from '../../components/SEO.astro';
+import PillarHero from '../../components/PillarHero.astro';
+import ArticleCard from '../../components/ArticleCard.astro';
+import LineBanner from '../../components/LineBanner.astro';
+import AdSlot from '../../components/AdSlot.astro';
+
+const articles = await getCollection('articles', ({ data }) => !data.draft && data.pillar === 'language');
+const sorted = articles.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+
+const clusters = [
+  { href: '/language/learn-spanish/', label: 'スペイン語勉強' },
+  { href: '/language/spanish-grammar/', label: '文法' },
+  { href: '/language/pronunciation/', label: '発音' },
+  { href: '/language/self-study/', label: '独学' },
+  { href: '/language/lessons-tokyo/', label: '東京の教室' },
+  { href: '/language/online-lessons/', label: 'オンライン' },
+  { href: '/language/lesson-price/', label: 'レッスン料金' },
+  { href: '/language/spanish-phrases/', label: 'フレーズ' },
+  { href: '/language/spanish-apps/', label: 'アプリ' },
+  { href: '/language/spanish-books/', label: '教材本' },
+];
+
+const breadcrumbs = [
+  { name: 'ホーム', url: '/' },
+  { name: 'スペイン語', url: '/language/' },
+];
+---
+<BaseLayout>
+  <SEO
+    slot="seo"
+    title="スペイン語 勉強法・教室・アプリ完全ガイド | supein.club"
+    description="スペイン語の独学勉強法から東京の教室・オンラインレッスンまで。初心者から上級者向けの学習リソースを網羅。"
+    canonical="https://supein.club/language/"
+    breadcrumbs={breadcrumbs}
+  />
+  <PillarHero
+    title="スペイン語"
+    description="独学、教室、オンラインレッスン——あなたに合ったスペイン語学習法を見つけるためのガイドが揃っています。"
+  />
+  <section class="max-w-5xl mx-auto px-5 py-14">
+    <h2 class="font-sans font-bold text-xl text-navy mb-5">カテゴリ</h2>
+    <div class="grid grid-cols-3 md:grid-cols-5 gap-3 mb-12">
+      {clusters.map(({ href, label }) => (
+        <a href={href} class="bg-white rounded-lg px-3 py-3 text-center border border-[#E8E8E6] hover:border-primary/30 hover:shadow-sm transition-all">
+          <span class="font-semibold text-navy text-xs leading-snug block">{label}</span>
+        </a>
+      ))}
+    </div>
+    <div class="mb-10">
+      <AdSlot
+        position="pillar-mid"
+        interlinkTitle="スペイン語を独学で始める完全ガイド"
+        interlinkUrl="/language/learn-spanish/"
+        interlinkPillar="スペイン語"
+        interlinkReadingTime={5}
+      />
+    </div>
+    {sorted.length > 0 && (
+      <>
+        <h2 class="font-sans font-bold text-xl text-navy mb-5">記事一覧</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {sorted.map((a) => {
+            const parts = a.id.replace(/\.(md|mdx)$/, '').split('/');
+            const slug = parts[2] ?? a.data.cluster;
+            return (
+              <ArticleCard title={a.data.title} description={a.data.description} href={`/language/${a.data.cluster}/${slug}/`} pillar="language" image={a.data.image} imageAlt={a.data.imageAlt} pubDate={a.data.pubDate} />
+            );
+          })}
+        </div>
+      </>
+    )}
+  </section>
+  <LineBanner />
+</BaseLayout>

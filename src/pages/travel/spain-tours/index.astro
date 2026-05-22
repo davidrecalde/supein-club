@@ -1,0 +1,41 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import SEO from '../../../components/SEO.astro';
+import ArticleCard from '../../../components/ArticleCard.astro';
+import Breadcrumb from '../../../components/Breadcrumb.astro';
+import LineBanner from '../../../components/LineBanner.astro';
+
+const articles = await getCollection('articles', ({ data }) => !data.draft && data.pillar === 'travel' && data.cluster === 'spain-tours');
+const sorted = articles.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+
+const breadcrumbs = [
+  { name: 'ホーム', url: '/' },
+  { name: 'スペイン旅行', url: '/travel/' },
+  { name: 'スペインツアー', url: '/travel/spain-tours/' },
+];
+---
+<BaseLayout>
+  <SEO slot="seo" title="スペインツアー 格安・比較 2025 | supein.club" description="格安スペインツアーの料金相場・旅行会社比較・選び方を解説。HIS・JTB・阪急交通社・クラブツーリズムを徹底比較。" canonical="https://supein.club/travel/spain-tours/" breadcrumbs={breadcrumbs} />
+  <section class="bg-navy text-white py-12 px-4">
+    <div class="max-w-4xl mx-auto">
+      <Breadcrumb items={breadcrumbs} dark />
+      <h1 class="font-serif text-3xl md:text-4xl font-bold leading-tight mt-4">スペインツアー 格安・比較ガイド</h1>
+      <p class="text-white/80 text-lg mt-3 max-w-2xl">格安スペインツアーの相場・旅行会社の選び方・おすすめ時期を徹底解説。</p>
+    </div>
+  </section>
+  <section class="max-w-7xl mx-auto px-4 py-12">
+    {sorted.length > 0 ? (
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        {sorted.map((a) => {
+          const parts = a.id.replace(/\.(md|mdx)$/, '').split('/');
+          const slug = parts[2] ?? a.data.cluster;
+          return <ArticleCard title={a.data.title} description={a.data.description} href={`/travel/spain-tours/${slug}/`} pillar="travel" image={a.data.image} imageAlt={a.data.imageAlt} pubDate={a.data.pubDate} />;
+        })}
+      </div>
+    ) : (
+      <p class="text-muted text-center py-12">記事を準備中です。近日公開予定。</p>
+    )}
+  </section>
+  <LineBanner />
+</BaseLayout>

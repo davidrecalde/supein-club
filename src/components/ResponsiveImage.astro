@@ -1,0 +1,50 @@
+---
+import { IMAGE_SIZES } from '../config/images.ts';
+import type { ImageSize } from '../config/images.ts';
+
+interface Props {
+  src?: string;
+  alt: string;
+  size: ImageSize;
+  class?: string;
+  loading?: 'lazy' | 'eager';
+  pillarLabel?: string;
+}
+
+const {
+  src,
+  alt,
+  size,
+  class: className,
+  loading = 'lazy',
+  pillarLabel,
+} = Astro.props;
+
+const { width, height, ratio } = IMAGE_SIZES[size];
+---
+
+{src ? (
+  <img
+    src={src}
+    alt={alt}
+    width={width}
+    height={height}
+    loading={loading}
+    decoding="async"
+    style={`aspect-ratio: ${ratio}; object-fit: cover; width: 100%;`}
+    class={className}
+  />
+) : (
+  <div
+    role="img"
+    aria-label={alt}
+    style={`aspect-ratio: ${ratio}; background: linear-gradient(135deg, #002147 0%, #C8102E 100%); display: flex; align-items: center; justify-content: center; width: 100%;`}
+    class={className}
+  >
+    {pillarLabel && (
+      <span style="color: rgba(255,255,255,0.7); font-size: 13px; font-weight: 500;">
+        {pillarLabel}
+      </span>
+    )}
+  </div>
+)}

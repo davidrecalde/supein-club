@@ -1,0 +1,41 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import SEO from '../../../components/SEO.astro';
+import ArticleCard from '../../../components/ArticleCard.astro';
+import Breadcrumb from '../../../components/Breadcrumb.astro';
+import LineBanner from '../../../components/LineBanner.astro';
+
+const articles = await getCollection('articles', ({ data }) => !data.draft && data.pillar === 'living' && data.cluster === 'study-spain');
+const sorted = articles.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+
+const breadcrumbs = [
+  { name: 'ホーム', url: '/' },
+  { name: 'スペインに住む', url: '/living/' },
+  { name: 'スペイン留学', url: '/living/study-spain/' },
+];
+---
+<BaseLayout>
+  <SEO slot="seo" title="スペイン留学 | supein.club" description="スペイン留学の費用・手続き・語学学校の選び方を徹底解説。短期留学から長期滞在まで完全ガイド。" canonical="https://supein.club/living/study-spain/" breadcrumbs={breadcrumbs} />
+  <section class="bg-navy text-white py-12 px-4">
+    <div class="max-w-4xl mx-auto">
+      <Breadcrumb items={breadcrumbs} dark />
+      <h1 class="font-serif text-3xl md:text-4xl font-bold leading-tight mt-4">スペイン留学 完全ガイド</h1>
+      <p class="text-white/80 text-lg mt-3 max-w-2xl">スペイン留学で人生が変わる。費用・ビザ・学校選びから現地生活まで、留学に必要な情報を網羅。</p>
+    </div>
+  </section>
+  <section class="max-w-7xl mx-auto px-4 py-12">
+    {sorted.length > 0 ? (
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        {sorted.map((a) => {
+          const parts = a.id.replace(/\.(md|mdx)$/, '').split('/');
+          const slug = parts[2] ?? a.data.cluster;
+          return <ArticleCard title={a.data.title} description={a.data.description} href={`/living/study-spain/${slug}/`} pillar="living" image={a.data.image} imageAlt={a.data.imageAlt} pubDate={a.data.pubDate} />;
+        })}
+      </div>
+    ) : (
+      <p class="text-muted text-center py-12">記事を準備中です。近日公開予定。</p>
+    )}
+  </section>
+  <LineBanner />
+</BaseLayout>

@@ -1,0 +1,152 @@
+---
+import { ADS_CONFIG } from '../config/ads.ts';
+import type { AdPosition } from '../config/ads.ts';
+
+interface Props {
+  position: AdPosition;
+  interlinkTitle?: string;
+  interlinkUrl?: string;
+  interlinkPillar?: string;
+  interlinkReadingTime?: number;
+  class?: string;
+}
+
+const {
+  position,
+  interlinkTitle,
+  interlinkUrl,
+  interlinkPillar,
+  interlinkReadingTime,
+  class: className,
+} = Astro.props;
+
+const phase = ADS_CONFIG.phase;
+const hasInterlink = !!(interlinkTitle && interlinkUrl);
+---
+
+{phase === 'interlink' && hasInterlink && (
+  <aside
+    data-ad-position={position}
+    data-ad-phase="interlink"
+    class={`ad-slot ${className ?? ''}`}
+    aria-label="関連記事"
+  >
+    <a href={interlinkUrl} class="ad-interlink-link">
+      <div class="ad-interlink">
+        <span class="ad-label">関連記事</span>
+        <div class="ad-interlink-content">
+          {interlinkPillar && (
+            <span class="ad-pillar-badge">{interlinkPillar}</span>
+          )}
+          <p class="ad-interlink-title">{interlinkTitle}</p>
+          {interlinkReadingTime && (
+            <span class="ad-reading-time">読了 {interlinkReadingTime}分 →</span>
+          )}
+        </div>
+      </div>
+    </a>
+  </aside>
+)}
+
+{phase === 'adsense' && (
+  <aside
+    data-ad-position={position}
+    data-ad-phase="adsense"
+    class={`ad-slot ${className ?? ''}`}
+  >
+    <ins
+      class="adsbygoogle"
+      style="display:block"
+      data-ad-client={ADS_CONFIG.adsenseId}
+      data-ad-slot={position}
+      data-ad-format="auto"
+      data-full-width-responsive="true"
+    ></ins>
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"WPAdBlock"}</script>
+  </aside>
+)}
+
+{phase === 'direct' && (
+  <aside
+    data-ad-position={position}
+    data-ad-phase="direct"
+    class={`ad-slot ${className ?? ''}`}
+  >
+    <slot />
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"WPAdBlock"}</script>
+  </aside>
+)}
+
+<style>
+  /* Min-heights para evitar CLS */
+  .ad-slot[data-ad-position="art-mid"]    { min-height: 90px; }
+  .ad-slot[data-ad-position="art-side"]   { min-height: 250px; }
+  .ad-slot[data-ad-position="art-bottom"] { min-height: 90px; }
+  .ad-slot[data-ad-position="pillar-mid"] { min-height: 90px; }
+  .ad-slot[data-ad-position="home-mid"]   { min-height: 90px; }
+  .ad-slot[data-ad-position="footer-all"] { min-height: 90px; }
+
+  @media (max-width: 767px) {
+    .ad-slot[data-ad-position="art-side"]   { display: none; }
+    .ad-slot[data-ad-position="art-mid"]    { min-height: 250px; }
+    .ad-slot[data-ad-position="art-bottom"] { min-height: 100px; }
+    .ad-slot[data-ad-position="pillar-mid"] { min-height: 250px; }
+    .ad-slot[data-ad-position="home-mid"]   { min-height: 250px; }
+    .ad-slot[data-ad-position="footer-all"] { min-height: 100px; }
+  }
+
+  /* Interlink card */
+  .ad-interlink-link {
+    display: block;
+    text-decoration: none;
+  }
+
+  .ad-interlink {
+    border: 1px solid #e5e7eb;
+    border-left: 3px solid #C8102E;
+    border-radius: 8px;
+    overflow: hidden;
+    background: #FAFAF8;
+    padding: 16px 20px;
+    transition: background 200ms ease, border-left-color 200ms ease;
+  }
+
+  .ad-interlink-link:hover .ad-interlink {
+    background: #f3f4f6;
+    border-left-color: #002147;
+  }
+
+  .ad-label {
+    display: block;
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #6b7280;
+    margin-bottom: 8px;
+  }
+
+  .ad-pillar-badge {
+    display: inline-block;
+    background: #C8102E;
+    color: #fff;
+    font-size: 11px;
+    padding: 2px 8px;
+    border-radius: 4px;
+    margin-bottom: 6px;
+  }
+
+  .ad-interlink-title {
+    color: #002147;
+    font-weight: 600;
+    font-size: 15px;
+    line-height: 1.5;
+    margin: 0;
+  }
+
+  .ad-reading-time {
+    display: block;
+    color: #6b7280;
+    font-size: 12px;
+    margin-top: 6px;
+  }
+</style>

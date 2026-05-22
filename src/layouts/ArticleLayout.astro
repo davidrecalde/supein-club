@@ -1,0 +1,210 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import { getCollection, getEntry } from 'astro:content';
+import BaseLayout from './BaseLayout.astro';
+import SEO from '../components/SEO.astro';
+import AuthorBox from '../components/AuthorBox.astro';
+import Breadcrumb from '../components/Breadcrumb.astro';
+import FAQSection from '../components/FAQSection.astro';
+import TOC from '../components/TOC.astro';
+import ArticleCard from '../components/ArticleCard.astro';
+import AdSlot from '../components/AdSlot.astro';
+import ResponsiveImage from '../components/ResponsiveImage.astro';
+import LineBanner from '../components/LineBanner.astro';
+
+interface Props {
+  entry: CollectionEntry<'articles'>;
+}
+
+const { entry } = Astro.props;
+const { title, description, pubDate, updatedDate, pillar, cluster, image, imageAlt, lead, faq, relatedArticles, readingTime } = entry.data;
+
+const { Content, headings } = await entry.render();
+
+const author = await getEntry(entry.data.author);
+
+const pillarLabels: Record<string, string> = {
+  travel: 'スペイン旅行',
+  food: 'スペイン料理',
+  language: 'スペイン語',
+  living: 'スペインに住む',
+  culture: 'スペイン文化',
+  football: 'スペインサッカー',
+};
+
+const idParts = entry.id.replace(/\.(md|mdx)$/, '').split('/');
+const articleSlug = idParts[2] ?? cluster;
+const canonical = `https://supein.club/${pillar}/${cluster}/${articleSlug}/`;
+const pillarLabel = pillarLabels[pillar] ?? pillar;
+
+const visualBreadcrumbs = [
+  { name: 'ホーム', url: '/' },
+  { name: pillarLabel, url: `/${pillar}/` },
+  { name: cluster, url: `/${pillar}/${cluster}/` },
+  { name: title, url: canonical },
+];
+
+const seoBreadcrumbs = [
+  { name: 'ホーム', url: '/' },
+  { name: pillarLabel, url: `/${pillar}/` },
+  { name: cluster, url: `/${pillar}/${cluster}/` },
+];
+
+let related: CollectionEntry<'articles'>[] = [];
+if (relatedArticles && relatedArticles.length > 0) {
+  const all = await getCollection('articles', ({ data }) => !data.draft);
+  related = all
+    .filter((a) => relatedArticles.some((slug) => a.id.includes(slug)))
+    .slice(0, 3);
+}
+
+// Data for AdSlots from first related article
+const firstRelated = related[0];
+let relatedTitle: string | undefined;
+let relatedUrl: string | undefined;
+let relatedReadingTime: number | undefined;
+if (firstRelated) {
+  const rParts = firstRelated.id.replace(/\.(md|mdx)$/, '').split('/');
+  const rSlug = rParts[2] ?? firstRelated.data.cluster;
+  relatedTitle = firstRelated.data.title;
+  relatedUrl = `/${firstRelated.data.pillar}/${firstRelated.data.cluster}/${rSlug}/`;
+  relatedReadingTime = firstRelated.data.readingTime;
+}
+---
+<BaseLayout title={title}>
+  <SEO
+    slot="seo"
+    title={`${title} | supein.club`}
+    description={description}
+    canonical={canonical}
+    image={image}
+    type="article"
+    article={entry}
+    author={author}
+    breadcrumbs={seoBreadcrumbs}
+  />
+
+  <!-- Navy article header -->
+  <div class="bg-navy text-white relative">
+    <div class="absolute top-0 left-0 right-0 h-[3px] bg-primary"></div>
+    <div class="max-w-5xl mx-auto px-5 py-10 pt-14">
+      <Breadcrumb items={visualBreadcrumbs} dark />
+      <div class="max-w-2xl rounded-xl overflow-hidden mt-6 mb-6">
+        <ResponsiveImage
+          src={image}
+          alt={imageAlt ?? title}
+          size="heroArticle"
+          pillarLabel={pillarLabel}
+          loading="eager"
+        />
+      </div>
+      <h1 class="font-sans font-bold text-3xl md:text-4xl leading-tight mt-4 mb-4">{title}</h1>
+      <div class="text-sm text-white/50 flex gap-5 flex-wrap">
+        {author && <span>{author.data.name}</span>}
+        <time datetime={pubDate.toISOString()}>公開: {pubDate.toLocaleDateString('ja-JP')}</time>
+        {updatedDate && (
+          <time datetime={updatedDate.toISOString()}>更新: {updatedDate.toLocaleDateString('ja-JP')}</time>
+        )}
+        {readingTime && <span>約{readingTime}分で読めます</span>}
+      </div>
+    </div>
+  </div>
+
+  <!-- Article body -->
+  <div class="max-w-5xl mx-auto px-5 py-10">
+    {lead && (
+      <div class="border-l-4 border-navy bg-[#F0F4F8] px-5 py-4 mb-8 text-ink leading-relaxed font-medium rounded-r-lg max-w-3xl">
+        {lead}
+      </div>
+    )}
+
+    <div class="article-layout">
+      <!-- Main content -->
+      <div class="min-w-0">
+        <!-- AdSlot art-mid: before main content -->
+        <div class="mb-8">
+          <AdSlot
+            position="art-mid"
+            interlinkTitle={relatedTitle}
+            interlinkUrl={relatedUrl}
+            interlinkPillar={pillarLabel}
+            interlinkReadingTime={relatedReadingTime}
+          />
+        </div>
+
+        <div class="prose">
+          <Content />
+        </div>
+
+        <!-- AdSlot art-bottom: before FAQ -->
+        <div class="my-8">
+          <AdSlot
+            position="art-bottom"
+            interlinkTitle={relatedTitle}
+            interlinkUrl={relatedUrl}
+            interlinkPillar={pillarLabel}
+            interlinkReadingTime={relatedReadingTime}
+          />
+        </div>
+
+        {faq && faq.length > 0 && <FAQSection faq={faq} />}
+
+        {author && <AuthorBox author={author} />}
+
+        {related.length > 0 && (
+          <section class="mt-12 border-t border-[#E8E8E6] pt-10">
+            <h2 class="font-sans font-bold text-2xl text-navy mb-6">関連記事</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+              {related.map((a) => {
+                const parts = a.id.replace(/\.(md|mdx)$/, '').split('/');
+                const slug = parts[2] ?? a.data.cluster;
+                return (
+                  <ArticleCard
+                    title={a.data.title}
+                    description={a.data.description}
+                    href={`/${a.data.pillar}/${a.data.cluster}/${slug}/`}
+                    pillar={a.data.pillar}
+                    image={a.data.image}
+                    imageAlt={a.data.imageAlt}
+                    pubDate={a.data.pubDate}
+                  />
+                );
+              })}
+            </div>
+          </section>
+        )}
+      </div>
+
+      <!-- Sidebar: TOC only -->
+      <aside class="article-sidebar">
+        <TOC headings={headings} />
+      </aside>
+    </div>
+  </div>
+
+  <style>
+    .article-layout {
+      display: grid;
+      grid-template-columns: 1fr 300px;
+      gap: 48px;
+      align-items: start; /* CRÍTICO: no stretch */
+    }
+
+    /* El sidebar es sticky — el TOC se posiciona relativo dentro de él */
+    .article-sidebar {
+      position: sticky;
+      top: 80px;
+      height: fit-content;
+      /* Sin overflow:hidden — rompería el sticky */
+      display: none; /* oculto en mobile */
+    }
+
+    @media (min-width: 768px) {
+      .article-sidebar {
+        display: block;
+      }
+    }
+  </style>
+
+  <LineBanner />
+</BaseLayout>

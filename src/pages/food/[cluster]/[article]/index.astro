@@ -1,0 +1,19 @@
+---
+import { getCollection } from 'astro:content';
+import type { GetStaticPaths } from 'astro';
+import ArticleLayout from '../../../../layouts/ArticleLayout.astro';
+
+export const getStaticPaths: GetStaticPaths = async () => {
+  const articles = await getCollection('articles', ({ data }) => !data.draft && data.pillar === 'food');
+  return articles.map((entry) => {
+    const parts = entry.id.replace(/\.(md|mdx)$/, '').split('/');
+    return {
+      params: { cluster: parts[1], article: parts[2] },
+      props: { entry },
+    };
+  });
+};
+
+const { entry } = Astro.props;
+---
+<ArticleLayout entry={entry} />

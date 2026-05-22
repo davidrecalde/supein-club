@@ -1,0 +1,78 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SEO from '../../components/SEO.astro';
+import PillarHero from '../../components/PillarHero.astro';
+import ArticleCard from '../../components/ArticleCard.astro';
+import LineBanner from '../../components/LineBanner.astro';
+import AdSlot from '../../components/AdSlot.astro';
+
+const articles = await getCollection('articles', ({ data }) => !data.draft && data.pillar === 'travel');
+const sorted = articles.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+
+const clusters = [
+  { href: '/travel/spain-tours/', label: 'スペインツアー' },
+  { href: '/travel/barcelona/', label: 'バルセロナ' },
+  { href: '/travel/madrid/', label: 'マドリード' },
+  { href: '/travel/andalusia/', label: 'アンダルシア' },
+  { href: '/travel/ibiza/', label: 'イビサ島' },
+  { href: '/travel/canarias/', label: 'カナリア諸島' },
+  { href: '/travel/spain-flights/', label: '航空券' },
+  { href: '/travel/spain-hotels/', label: 'ホテル' },
+  { href: '/travel/travel-cost/', label: '旅行費用' },
+  { href: '/travel/itineraries/', label: 'モデルコース' },
+  { href: '/travel/best-season/', label: 'ベストシーズン' },
+];
+
+const breadcrumbs = [
+  { name: 'ホーム', url: '/' },
+  { name: 'スペイン旅行', url: '/travel/' },
+];
+---
+<BaseLayout>
+  <SEO
+    slot="seo"
+    title="スペイン旅行 完全ガイド | supein.club"
+    description="バルセロナ・マドリードから穴場スポットまで、スペイン旅行の計画に役立つ情報を網羅。ツアー・ホテル・費用・モデルコース。"
+    canonical="https://supein.club/travel/"
+    breadcrumbs={breadcrumbs}
+  />
+  <PillarHero
+    title="スペイン旅行"
+    description="バルセロナ、マドリード、アンダルシア——憧れのスペインへの旅行計画を、フライトからホテル・モデルコースまでトータルサポート。"
+  />
+  <section class="max-w-5xl mx-auto px-5 py-14">
+    <h2 class="font-sans font-bold text-xl text-navy mb-5">カテゴリ</h2>
+    <div class="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3 mb-12">
+      {clusters.map(({ href, label }) => (
+        <a href={href} class="bg-white rounded-lg px-3 py-3 text-center border border-[#E8E8E6] hover:border-primary/30 hover:shadow-sm transition-all">
+          <span class="font-semibold text-navy text-xs leading-snug block">{label}</span>
+        </a>
+      ))}
+    </div>
+    <div class="mb-10">
+      <AdSlot
+        position="pillar-mid"
+        interlinkTitle="スペイン1週間モデルコース：費用とおすすめルート"
+        interlinkUrl="/travel/spain-tours/"
+        interlinkPillar="スペイン旅行"
+        interlinkReadingTime={5}
+      />
+    </div>
+    {sorted.length > 0 && (
+      <>
+        <h2 class="font-sans font-bold text-xl text-navy mb-5">記事一覧</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {sorted.map((a) => {
+            const parts = a.id.replace(/\.(md|mdx)$/, '').split('/');
+            const slug = parts[2] ?? a.data.cluster;
+            return (
+              <ArticleCard title={a.data.title} description={a.data.description} href={`/travel/${a.data.cluster}/${slug}/`} pillar="travel" image={a.data.image} imageAlt={a.data.imageAlt} pubDate={a.data.pubDate} />
+            );
+          })}
+        </div>
+      </>
+    )}
+  </section>
+  <LineBanner />
+</BaseLayout>

@@ -1,0 +1,92 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SEO from '../../components/SEO.astro';
+import PillarHero from '../../components/PillarHero.astro';
+import ArticleCard from '../../components/ArticleCard.astro';
+import LineBanner from '../../components/LineBanner.astro';
+import AdSlot from '../../components/AdSlot.astro';
+
+const articles = await getCollection('articles', ({ data }) => !data.draft && data.pillar === 'football');
+const sorted = articles.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+
+const clusters = [
+  { href: '/football/la-liga/', label: 'ラ・リーガ' },
+  { href: '/football/spain-national-team/', label: 'スペイン代表' },
+  { href: '/football/barcelona/', label: 'FCバルセロナ' },
+  { href: '/football/real-madrid/', label: 'レアル・マドリード' },
+  { href: '/football/football-guide/', label: '観戦ガイド' },
+];
+
+const breadcrumbs = [
+  { name: 'ホーム', url: '/' },
+  { name: 'スペインサッカー', url: '/football/' },
+];
+
+const footballSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'CollectionPage',
+  name: 'スペインサッカー',
+  description: 'ラ・リーガ、スペイン代表、バルセロナ、レアル・マドリードの情報',
+  url: 'https://supein.club/football/',
+  about: {
+    '@type': 'SportsOrganization',
+    name: 'ラ・リーガ',
+    sport: 'サッカー',
+    url: 'https://www.laliga.com',
+  },
+};
+---
+<BaseLayout>
+  <SEO
+    slot="seo"
+    title="スペインサッカー完全ガイド｜ラ・リーガ・バルセロナ・レアル | supein.club"
+    description="ラ・リーガ、スペイン代表、FCバルセロナ、レアル・マドリード。スペインサッカーを日本語で深掘りするガイドメディア。"
+    canonical="https://supein.club/football/"
+    breadcrumbs={breadcrumbs}
+    pageSchema="sports"
+  />
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify(footballSchema)} />
+
+  <PillarHero
+    title="スペインサッカー"
+    description="ラ・リーガ、スペイン代表、FCバルセロナ、レアル・マドリード——世界最高峰のスペインサッカーを日本語でわかりやすく解説します。"
+  />
+  <section class="max-w-5xl mx-auto px-5 py-14">
+    <h2 class="font-sans font-bold text-xl text-navy mb-5">カテゴリ</h2>
+    <div class="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3 mb-12">
+      {clusters.map(({ href, label }) => (
+        <a href={href} class="bg-white rounded-lg px-3 py-3 text-center border border-[#E8E8E6] hover:border-primary/30 hover:shadow-sm transition-all">
+          <span class="font-semibold text-navy text-xs leading-snug block">{label}</span>
+        </a>
+      ))}
+    </div>
+    <div class="mb-10">
+      <AdSlot
+        position="pillar-mid"
+        interlinkTitle="ラ・リーガとは？リーグの仕組みと歴史を解説"
+        interlinkUrl="/football/la-liga/"
+        interlinkPillar="スペインサッカー"
+        interlinkReadingTime={5}
+      />
+    </div>
+    {sorted.length > 0 && (
+      <>
+        <h2 class="font-sans font-bold text-xl text-navy mb-5">記事一覧</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {sorted.map((a) => {
+            const parts = a.id.replace(/\.(md|mdx)$/, '').split('/');
+            const slug = parts[2] ?? a.data.cluster;
+            return (
+              <ArticleCard title={a.data.title} description={a.data.description} href={`/football/${a.data.cluster}/${slug}/`} pillar="football" image={a.data.image} imageAlt={a.data.imageAlt} pubDate={a.data.pubDate} />
+            );
+          })}
+        </div>
+      </>
+    )}
+    {sorted.length === 0 && (
+      <p class="text-muted text-center py-12">記事を準備中です。近日公開予定。</p>
+    )}
+  </section>
+  <LineBanner />
+</BaseLayout>

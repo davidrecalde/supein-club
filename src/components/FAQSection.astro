@@ -1,0 +1,23 @@
+---
+interface Props {
+  faq: Array<{ question: string; answer: string }>;
+}
+
+const { faq } = Astro.props;
+---
+<section class="mt-10 border-t border-ink/10 pt-10">
+  <h2 class="font-serif text-2xl font-bold text-navy mb-6">よくある質問</h2>
+  <div class="space-y-3">
+    {faq.map(({ question, answer }) => (
+      <details class="group border border-ink/10 rounded-xl overflow-hidden">
+        <summary class="flex items-center justify-between px-5 py-4 cursor-pointer font-semibold text-navy select-none list-none hover:bg-navy/5 transition-colors">
+          {question}
+          <span class="ml-4 shrink-0 text-muted group-open:rotate-180 transition-transform">▾</span>
+        </summary>
+        <div class="px-5 pb-4 text-muted leading-relaxed text-sm">
+          {answer}
+        </div>
+      </details>
+    ))}
+  </div>
+</section>

@@ -1,0 +1,22 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  keywordCount?: number;
+  icon?: string; // accepted but not rendered — emoji banned per design system
+}
+
+const { title, description, keywordCount } = Astro.props;
+---
+<section class="bg-navy text-white relative">
+  <div class="absolute top-0 left-0 right-0 h-[3px] bg-primary"></div>
+  <div class="max-w-5xl mx-auto px-5 py-16 pt-20">
+    <h1 class="font-sans font-bold text-4xl md:text-5xl leading-tight mb-4">{title}</h1>
+    <p class="text-white/75 text-lg max-w-2xl leading-relaxed">{description}</p>
+    {keywordCount && (
+      <p class="mt-4 text-sm text-white/40">
+        {keywordCount.toLocaleString('ja-JP')} キーワードをカバー
+      </p>
+    )}
+  </div>
+</section>

@@ -1,0 +1,271 @@
+﻿---
+import type { CollectionEntry } from 'astro:content';
+
+interface Props {
+  title: string;
+  description: string;
+  canonical: string;
+  image?: string;
+  type?: 'website' | 'article';
+  article?: CollectionEntry<'articles'>;
+  author?: CollectionEntry<'authors'>;
+  breadcrumbs?: Array<{ name: string; url: string }>;
+  pageSchema?: 'collection' | 'destination' | 'sports' | 'course' | 'restaurant' | 'profile' | 'about' | 'service';
+}
+
+const {
+  title,
+  description,
+  canonical,
+  image,
+  type = 'website',
+  article,
+  author,
+  breadcrumbs,
+  pageSchema,
+} = Astro.props;
+
+const siteUrl = 'https://supein.club';
+const resolvedImage = image ? (image.startsWith('http') ? image : `${siteUrl}${image}`) : `${siteUrl}/logo-og.png`;
+const lang = article?.data.lang ?? 'ja';
+
+const graph: object[] = [];
+
+// 1. Organization (always)
+graph.push({
+  '@type': 'Organization',
+  '@id': `${siteUrl}/#organization`,
+  name: 'スペイン倶楽部 (Club Español en Japón)',
+  url: siteUrl,
+  logo: {
+    '@type': 'ImageObject',
+    url: `${siteUrl}/logo-og.png`,
+    width: 290,
+    height: 100,
+  },
+  foundingDate: '2018',
+  description: '日本在住のスペイン語話者・スペイン好きのコミュニティ',
+  address: {
+    '@type': 'PostalAddress',
+    addressLocality: '東京',
+    addressCountry: 'JP',
+  },
+  sameAs: [
+    'https://www.instagram.com/supeinclub/',
+    'https://lin.ee/vx6jpud',
+  ],
+});
+
+// 2. WebSite (always)
+graph.push({
+  '@type': 'WebSite',
+  '@id': `${siteUrl}/#website`,
+  name: 'supein.club',
+  url: siteUrl,
+  inLanguage: 'ja',
+  publisher: { '@id': `${siteUrl}/#organization` },
+  potentialAction: {
+    '@type': 'SearchAction',
+    target: {
+      '@type': 'EntryPoint',
+      urlTemplate: `${siteUrl}/search?q={query}`,
+    },
+    'query-input': 'required name=query',
+  },
+});
+
+// 3. WebPage (always)
+const webPage: Record<string, unknown> = {
+  '@type': 'WebPage',
+  '@id': `${canonical}#webpage`,
+  url: canonical,
+  name: title,
+  description,
+  isPartOf: { '@id': `${siteUrl}/#website` },
+  publisher: { '@id': `${siteUrl}/#organization` },
+  inLanguage: lang === 'es' ? 'es' : 'ja',
+};
+if (breadcrumbs && breadcrumbs.length > 0) {
+  webPage.breadcrumb = { '@id': `${canonical}#breadcrumb` };
+}
+graph.push(webPage);
+
+// 4. BreadcrumbList (if breadcrumbs)
+if (breadcrumbs && breadcrumbs.length > 0) {
+  graph.push({
+    '@type': 'BreadcrumbList',
+    '@id': `${canonical}#breadcrumb`,
+    itemListElement: breadcrumbs.map((item, i) => ({
+      '@type': 'ListItem',
+      position: i + 1,
+      name: item.name,
+      item: item.url.startsWith('http') ? item.url : `${siteUrl}${item.url}`,
+    })),
+  });
+}
+
+// 5. Article / schema-specific (if type === 'article' && article)
+if (type === 'article' && article) {
+  const schemaType = article.data.schemaType ?? 'article';
+  const authorName = author?.data.name ?? 'スペイン倶楽部編集部';
+  const authorSlug = author ? (author.data.slug ?? author.id.replace(/\.(md|mdx)$/, '')) : 'supeinclub-henshubu';
+  const authorUrl = `${siteUrl}/authors/${authorSlug}/`;
+  const articleImage = article.data.image
+    ? { '@type': 'ImageObject', url: `${siteUrl}${article.data.image}`, width: 1200, height: 514 }
+    : { '@type': 'ImageObject', url: `${siteUrl}/logo-og.png` };
+
+  if (schemaType === 'recipe') {
+    graph.push({
+      '@type': 'Recipe',
+      name: title,
+      description,
+      image: article.data.image ?? `${siteUrl}/logo-og.png`,
+      author: { '@type': 'Person', name: authorName },
+      datePublished: article.data.pubDate.toISOString(),
+      recipeCategory: article.data.recipeData?.recipeCategory ?? 'スペイン料理',
+      cookTime: article.data.recipeData?.cookTime ?? 'PT30M',
+      prepTime: article.data.recipeData?.prepTime ?? 'PT15M',
+      recipeYield: article.data.recipeData?.recipeYield ?? '2人分',
+      recipeIngredient: [],
+      recipeInstructions: [],
+      inLanguage: 'ja',
+    });
+  } else if (schemaType === 'destination') {
+    graph.push({
+      '@type': 'TouristDestination',
+      name: article.data.destinationData?.locationName ?? title,
+      description,
+      url: canonical,
+      touristType: { '@type': 'Audience', audienceType: '日本人旅行者' },
+      geo: {
+        '@type': 'GeoCoordinates',
+        addressCountry: article.data.destinationData?.country ?? 'ES',
+      },
+    });
+  } else if (schemaType === 'course') {
+    graph.push({
+      '@type': 'Course',
+      name: title,
+      description,
+      url: canonical,
+      inLanguage: 'ja',
+      educationalLevel: article.data.courseData?.educationalLevel ?? 'Beginner',
+      provider: {
+        '@type': 'Organization',
+        name: article.data.courseData?.provider ?? 'スペイン倶楽部',
+        url: siteUrl,
+      },
+    });
+  } else if (schemaType === 'restaurant') {
+    graph.push({
+      '@type': ['Restaurant', 'LocalBusiness'],
+      name: article.data.restaurantData?.restaurantName ?? title,
+      description,
+      url: canonical,
+      servesCuisine: article.data.restaurantData?.cuisine ?? 'Spanish',
+      priceRange: article.data.restaurantData?.priceRange ?? '¥¥¥',
+      address: {
+        '@type': 'PostalAddress',
+        addressLocality: article.data.restaurantData?.addressLocality ?? '東京',
+        addressCountry: 'JP',
+      },
+    });
+  } else if (schemaType === 'sports') {
+    graph.push({
+      '@type': 'Article',
+      '@id': `${canonical}#article`,
+      headline: title,
+      description,
+      url: canonical,
+      datePublished: article.data.pubDate.toISOString(),
+      dateModified: (article.data.updatedDate ?? article.data.pubDate).toISOString(),
+      author: { '@type': 'Person', name: authorName, url: authorUrl },
+      publisher: { '@id': `${siteUrl}/#organization` },
+      image: articleImage,
+      inLanguage: lang === 'es' ? 'es' : 'ja',
+      isPartOf: { '@id': `${siteUrl}/#website` },
+      mainEntityOfPage: `${canonical}#webpage`,
+      about: {
+        '@type': 'SportsOrganization',
+        name: 'ラ・リーガ',
+        sport: 'サッカー',
+      },
+    });
+  } else {
+    // Generic article (default)
+    graph.push({
+      '@type': 'Article',
+      '@id': `${canonical}#article`,
+      headline: title,
+      description,
+      url: canonical,
+      datePublished: article.data.pubDate.toISOString(),
+      dateModified: (article.data.updatedDate ?? article.data.pubDate).toISOString(),
+      author: { '@type': 'Person', name: authorName, url: authorUrl },
+      publisher: { '@id': `${siteUrl}/#organization` },
+      image: articleImage,
+      inLanguage: lang === 'es' ? 'es' : 'ja',
+      isPartOf: { '@id': `${siteUrl}/#website` },
+      mainEntityOfPage: `${canonical}#webpage`,
+    });
+  }
+}
+
+// 6. FAQPage (if article has faq)
+const faqItems = article?.data.faq;
+if (faqItems && faqItems.length > 0) {
+  graph.push({
+    '@type': 'FAQPage',
+    mainEntity: faqItems.map((item) => ({
+      '@type': 'Question',
+      name: item.question,
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: item.answer,
+      },
+    })),
+  });
+}
+
+// 7. SiteNavigationElement (home page only)
+if (canonical === `${siteUrl}/`) {
+  graph.push({
+    '@type': 'SiteNavigationElement',
+    name: [
+      'スペイン旅行',
+      'スペイン料理',
+      'スペイン語',
+      'スペインに住む',
+      'スペイン文化',
+      'スペインサッカー',
+    ],
+    url: [
+      `${siteUrl}/travel/`,
+      `${siteUrl}/food/`,
+      `${siteUrl}/language/`,
+      `${siteUrl}/living/`,
+      `${siteUrl}/culture/`,
+      `${siteUrl}/football/`,
+    ],
+  });
+}
+
+const jsonLd = JSON.stringify({ '@context': 'https://schema.org', '@graph': graph });
+---
+<title>{title}</title>
+<meta name="description" content={description} />
+<link rel="canonical" href={canonical} />
+<meta property="og:type" content={type} />
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:image" content={resolvedImage} />
+<meta property="og:url" content={canonical} />
+<meta property="og:locale" content={lang === 'es' ? 'es_ES' : 'ja_JP'} />
+<meta property="og:site_name" content="supein.club" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content={title} />
+<meta name="twitter:description" content={description} />
+<meta name="twitter:image" content={resolvedImage} />
+<link rel="alternate" hreflang="ja" href={canonical} />
+<link rel="alternate" hreflang="es" href={canonical} />
+<script type="application/ld+json" set:html={jsonLd} />
