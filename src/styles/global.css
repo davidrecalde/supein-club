@@ -2,28 +2,24 @@
 
 /* ── Reset responsive base ── */
 html {
-  word-break: normal;
-  overflow-wrap: break-word;
   -webkit-text-size-adjust: 100%;
 }
 
 body {
   overflow-x: hidden;
-  max-width: 100vw;
 }
 
 *,
 *::before,
 *::after {
-  max-width: 100%;
   box-sizing: border-box;
 }
 
 img,
 video,
-iframe {
+iframe,
+table {
   max-width: 100%;
-  height: auto;
 }
 
 /* ── Container utility ── */

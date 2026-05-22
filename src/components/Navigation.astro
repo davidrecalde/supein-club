@@ -13,8 +13,8 @@ const pathname = Astro.url.pathname;
 <header class="bg-navy sticky top-0 z-50 border-b-[3px] border-primary">
   <nav class="max-w-7xl mx-auto px-5 flex items-center justify-between h-16">
     <!-- Logo only — no extra text -->
-    <a href="/" class="flex-shrink-0" aria-label="supein.club ホームへ">
-      <img src="/logo-header.png" alt="スペイン倶楽部" width="180" height="62" class="h-9 w-auto" />
+    <a href="/" class="nav-logo flex-shrink-0" aria-label="supein.club ホームへ">
+      <img src="/logo-header.png" alt="スペイン倶楽部" width="180" height="62" />
     </a>
 
     <!-- Desktop nav links -->
@@ -88,6 +88,22 @@ const pathname = Astro.url.pathname;
     </div>
   </div>
 </header>
+
+<style>
+  .nav-logo img {
+    height: 36px;
+    width: auto;
+    max-height: 36px;
+    display: block;
+  }
+
+  @media (max-width: 767px) {
+    .nav-logo img {
+      height: 30px;
+      max-height: 30px;
+    }
+  }
+</style>
 
 <script>
   const toggle = document.getElementById('nav-toggle');
