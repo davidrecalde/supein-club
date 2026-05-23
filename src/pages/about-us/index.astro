@@ -1,30 +1,225 @@
-﻿---
+---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import SEO from '../../components/SEO.astro';
 import LineBanner from '../../components/LineBanner.astro';
+
+const breadcrumbs = [
+  { name: 'ホーム', url: '/' },
+  { name: 'スペイン倶楽部について', url: '/about-us/' },
+];
+
+const missionValues = [
+  { icon: '🤝', title: '文化交流', text: 'お互いの文化への理解を深め、スペインと日本の絆を育てます。' },
+  { icon: '💡', title: 'アイデアで社会を動かす', text: 'コミュニティに役立つ質の高いコンテンツと体験を届けます。' },
+  { icon: '🔗', title: 'つなぐ', text: 'スペイン語話者と日本人の交流の機会を創り出します。' },
+  { icon: '🌱', title: '持続可能な取り組み', text: 'すべての活動において環境と社会への配慮を大切にします。' },
+];
+
+const coreValues = [
+  { title: 'オープン', text: '国籍・言語・バックグラウンドを問わず、誰でも歓迎します。' },
+  { title: '本物志向', text: 'スペインの文化・食・言語を、現地の視点から正確に伝えます。' },
+  { title: 'コミュニティファースト', text: 'メンバー一人ひとりの体験が、私たちの活動の中心です。' },
+];
+
+const differentiators = [
+  { title: '語学 × 文化 × 食 × スポーツ', text: '一つの切り口ではなく、スペインのあらゆる側面を体験できます。' },
+  { title: '日本語でスペインを深掘り', text: '日本語を母語とする方も、日本語が堪能なスペイン語話者も、自然に参加できる環境があります。' },
+  { title: '東京を拠点に、世界とつながる', text: '東京でのリアルなイベントを中心に、オンラインでも活動を広げています。' },
+];
+
+const timeline = [
+  { year: '2016', text: '日本で出会った仲間たち。スペイン語を話す友人たちが東京に集まり、自然とコミュニティが生まれ始めました。' },
+  { year: '2018', text: 'Club Español en Japón スペイン倶楽部を正式に創設。文化と料理への情熱から、イベントや活動を本格的にスタートしました。' },
+  { year: '2019', text: '創設1年で46のイベントを開催。年末には日本とスペインで1,400名以上のメンバーが集まるコミュニティに成長しました。' },
+  { year: '2020', text: '東京でのイベント活動を継続。クラブ2周年を仲間たちと祝いました。' },
+  { year: '2022', text: 'パエリア・タパスフェスティバルをはじめ、レアル・マドリード財団との協力など、活動の幅をさらに広げました。' },
+  { year: '2026', text: 'スペインに関する日本語ポータルサイト supein.club をリニューアル。コンテンツを通じて、より多くの日本人にスペインの魅力を届けます。' },
+];
+
+const collabCards = [
+  { title: 'イベントを企画したい', text: 'スペイン関連のイベントを日本で開催したい方、ぜひご相談ください。', cta: 'イベントを相談する', href: '/contact/' },
+  { title: 'スポンサーシップ', text: '私たちのコミュニティやメディアを通じて、日本市場でブランドを発信したい方へ。', cta: 'スポンサーになる', href: '/sponsors/' },
+  { title: 'コンテンツで発信', text: 'supein.clubでスペインに関する情報を日本語で発信したい方、ライターやパートナーを募集しています。', cta: 'お問い合わせ', href: '/contact/' },
+];
+
+const aboutPageSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'AboutPage',
+  name: 'スペイン倶楽部について | supein.club',
+  url: 'https://supein.club/about-us/',
+  description: 'Club Español en Japón スペイン倶楽部のミッション・活動・歴史について。',
+  mainEntity: {
+    '@type': 'Organization',
+    name: 'スペイン倶楽部 (Club Español en Japón)',
+    url: 'https://supein.club',
+    foundingDate: '2018',
+    description: '日本在住のスペイン語話者・スペイン好きが集まる東京発のコミュニティ。',
+    address: { '@type': 'PostalAddress', addressLocality: '東京', addressCountry: 'JP' },
+    sameAs: [
+      'https://www.instagram.com/supeinclub/',
+      'https://www.facebook.com/supeinclub/',
+      'https://twitter.com/supeinclub',
+      'https://lin.ee/vx6jpud',
+    ],
+  },
+};
 ---
+
 <BaseLayout>
-  <SEO slot="seo" title="スペイン倶楽部について | supein.club" description="Club Español en Japón（スペイン倶楽部）の紹介。日本在住のスペイン語話者・スペイン好きが集まるコミュニティです。" canonical="https://supein.club/about-us/" />
-  <section class="bg-navy text-white py-16 px-4">
+  <SEO
+    slot="seo"
+    title="スペイン倶楽部について | supein.club"
+    description="Club Español en Japón スペイン倶楽部は、日本と日本に在住するスペイン語話者をつなぐ東京発のコミュニティです。2018年創設、1,786名以上のメンバー。"
+    canonical="https://supein.club/about-us/"
+    breadcrumbs={breadcrumbs}
+  />
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(aboutPageSchema)} />
+
+  <!-- HERO -->
+  <section class="bg-navy text-white py-20 px-4">
     <div class="max-w-4xl mx-auto">
-      <h1 class="font-serif text-4xl md:text-5xl font-bold mb-4">スペイン倶楽部について</h1>
-      <p class="text-white/80 text-lg">Club Español en Japón — 日本のスペイン語コミュニティ</p>
+      <p class="text-primary text-xs font-semibold uppercase tracking-widest mb-4">スペイン倶楽部について</p>
+      <h1 class="font-serif text-3xl md:text-5xl font-bold mb-6 leading-tight">
+        日本とスペインをつなぐ、<br />東京発のコミュニティ。
+      </h1>
+      <p class="text-white/75 text-lg leading-relaxed max-w-2xl mb-12">
+        2018年の創設以来、私たちはヒスパニックと日本のコミュニティの架け橋として、語学・文化・食・スポーツを通じた交流を続けています。
+      </p>
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+        {[
+          { value: '2018年', label: '創設' },
+          { value: '1,786+', label: 'メンバー' },
+          { value: '東京', label: '拠点' },
+          { value: '46+', label: 'イベント/年' },
+        ].map(({ value, label }) => (
+          <div class="border border-white/15 rounded-xl p-4 text-center">
+            <p class="text-white font-bold text-2xl mb-1">{value}</p>
+            <p class="text-white/50 text-xs uppercase tracking-wider">{label}</p>
+          </div>
+        ))}
+      </div>
     </div>
   </section>
-  <section class="max-w-4xl mx-auto px-4 py-12 space-y-8">
-    <div>
-      <h2 class="font-serif text-2xl font-bold text-navy mb-3">私たちについて</h2>
-      <p class="text-muted leading-relaxed">Club Español en Japón（スペイン倶楽部）は、日本在住のスペイン語話者・スペイン文化に興味を持つ方が集まるコミュニティです。語学イベント、文化交流、料理会など多彩な活動を定期開催しています。</p>
-    </div>
-    <div>
-      <h2 class="font-serif text-2xl font-bold text-navy mb-3">主な活動</h2>
-      <ul class="list-disc list-inside text-muted space-y-2 leading-relaxed">
-        <li>スペイン語・日本語の言語交換イベント</li>
-        <li>スペイン料理パーティー・ワイン会</li>
-        <li>フラメンコ・映画鑑賞などの文化イベント</li>
-        <li>スペイン旅行の情報共有</li>
-      </ul>
+
+  <!-- SECCIÓN 1: ミッション -->
+  <section class="py-20 px-4 bg-canvas">
+    <div class="max-w-4xl mx-auto">
+      <p class="text-primary text-xs font-semibold uppercase tracking-widest mb-2">OUR MISSION</p>
+      <h2 class="font-serif text-3xl font-bold text-navy mb-6">私たちのミッション</h2>
+      <p class="text-muted leading-relaxed mb-12 max-w-2xl">
+        Club Español en Japón スペイン倶楽部は、日本に住むスペイン語話者と、スペインに興味を持つ日本人をつなぐコミュニティです。語学・文化交流・料理・スポーツ・アウトドアなど、多彩な活動を通じて、両コミュニティの相互理解を深めることを目指しています。
+      </p>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+        {missionValues.map(({ icon, title, text }) => (
+          <div class="bg-white rounded-2xl border border-ink/5 p-6 shadow-sm">
+            <p class="text-3xl mb-3">{icon}</p>
+            <h3 class="font-semibold text-navy mb-2">{title}</h3>
+            <p class="text-muted text-sm leading-relaxed">{text}</p>
+          </div>
+        ))}
+      </div>
     </div>
   </section>
+
+  <!-- SECCIÓN 2: 価値観 -->
+  <section class="py-20 px-4 bg-navy text-white">
+    <div class="max-w-4xl mx-auto">
+      <p class="text-primary text-xs font-semibold uppercase tracking-widest mb-2">OUR VALUES</p>
+      <h2 class="font-serif text-3xl font-bold mb-12">私たちが大切にしていること</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        {coreValues.map(({ title, text }) => (
+          <div>
+            <h3 class="font-semibold text-white text-lg mb-3 pb-3 border-b border-white/15">{title}</h3>
+            <p class="text-white/65 text-sm leading-relaxed">{text}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- SECCIÓN 3: 特徴 -->
+  <section class="py-20 px-4 bg-canvas">
+    <div class="max-w-4xl mx-auto">
+      <p class="text-primary text-xs font-semibold uppercase tracking-widest mb-2">HOW WE'RE DIFFERENT</p>
+      <h2 class="font-serif text-3xl font-bold text-navy mb-6">人を中心に考えるコミュニティ</h2>
+      <p class="text-muted leading-relaxed mb-12 max-w-2xl">
+        多くの語学教室やカルチャースクールとは異なり、私たちは「学ぶこと」だけを目的にしていません。スペイン語を学びながら友達を作り、料理を一緒に楽しみ、スポーツで汗を流す。人と人とのつながりを通じて、スペインをもっと身近に感じてほしい—それが私たちのアプローチです。
+      </p>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        {differentiators.map(({ title, text }) => (
+          <div class="bg-white rounded-2xl border border-ink/5 p-6 shadow-sm">
+            <h3 class="font-semibold text-navy mb-3 text-sm leading-snug">{title}</h3>
+            <p class="text-muted text-sm leading-relaxed">{text}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- SECCIÓN 4: はじまりの物語 -->
+  <section class="py-20 px-4" style="background-color:#f8f8f6;">
+    <div class="max-w-4xl mx-auto">
+      <p class="text-primary text-xs font-semibold uppercase tracking-widest mb-2">OUR STORY</p>
+      <h2 class="font-serif text-3xl font-bold text-navy mb-12">はじまりの物語</h2>
+      <div class="relative">
+        <div class="absolute left-6 top-0 bottom-0 w-px bg-ink/10 hidden md:block"></div>
+        <div class="space-y-10">
+          {timeline.map(({ year, text }) => (
+            <div class="flex gap-8 items-start">
+              <div class="flex-shrink-0 flex flex-col items-center gap-2 w-12">
+                <div class="w-3 h-3 rounded-full bg-primary hidden md:block mt-1"></div>
+                <span class="font-bold text-primary text-sm">{year}</span>
+              </div>
+              <p class="text-muted leading-relaxed text-sm pt-0.5">{text}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECCIÓN 5: コラボレーション -->
+  <section class="py-20 px-4 bg-navy text-white">
+    <div class="max-w-4xl mx-auto">
+      <p class="text-primary text-xs font-semibold uppercase tracking-widest mb-2">COLLABORATE WITH US</p>
+      <h2 class="font-serif text-3xl font-bold mb-6">一緒に何かを作りませんか</h2>
+      <p class="text-white/70 leading-relaxed mb-12 max-w-2xl">
+        私たちは、スペインと日本をつなぐ活動に共感してくださる個人・企業・団体と積極的にコラボレーションしています。イベント企画、ブランドプロモーション、コンテンツ制作など、さまざまな形でお手伝いできます。
+      </p>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        {collabCards.map(({ title, text, cta, href }) => (
+          <div class="border border-white/15 rounded-2xl p-6 flex flex-col">
+            <h3 class="font-semibold text-white mb-3">{title}</h3>
+            <p class="text-white/60 text-sm leading-relaxed flex-1 mb-6">{text}</p>
+            <a
+              href={href}
+              class="inline-block text-center border border-primary text-primary hover:bg-primary hover:text-white transition-colors rounded-full px-5 py-2.5 text-sm font-medium"
+            >
+              {cta}
+            </a>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA FINAL -->
+  <section class="bg-primary py-16 px-4 text-white text-center">
+    <div class="max-w-xl mx-auto">
+      <h2 class="font-serif text-2xl md:text-3xl font-bold mb-4">スペイン倶楽部のメンバーになりませんか？</h2>
+      <p class="text-white/80 leading-relaxed mb-8">
+        LINEで友だち追加するだけで、イベント情報・お役立ちコンテンツをいち早くお届けします。
+      </p>
+      <a
+        href="https://lin.ee/vx6jpud"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-block bg-white text-primary font-bold px-8 py-4 rounded-full text-lg hover:bg-white/90 transition-colors"
+      >
+        LINEで参加する
+      </a>
+    </div>
+  </section>
+
   <LineBanner />
 </BaseLayout>

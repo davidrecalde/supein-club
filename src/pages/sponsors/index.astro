@@ -1,0 +1,105 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SEO from '../../components/SEO.astro';
+import LineBanner from '../../components/LineBanner.astro';
+
+const breadcrumbs = [
+  { name: 'ホーム', url: '/' },
+  { name: 'スポンサーシップ', url: '/sponsors/' },
+];
+
+const reasons = [
+  { title: 'ターゲットに直接リーチ', text: 'スペインに興味を持つ日本人1,786名以上に、あなたのブランドを届けられます。' },
+  { title: '信頼性の高いコミュニティ', text: '2018年から活動を続ける、日本最大級のスペイン語コミュニティです。' },
+  { title: '多様な露出機会', text: 'イベント、SNS、LINE、ウェブサイトなど複数のチャネルで露出できます。' },
+];
+
+const tiers = [
+  {
+    name: 'ブロンズ',
+    color: '#cd7f32',
+    features: ['イベント協賛', 'SNSメンション'],
+  },
+  {
+    name: 'シルバー',
+    color: '#adb5bd',
+    features: ['イベント冠名', 'ウェブサイト掲載', 'LINE配信'],
+  },
+  {
+    name: 'ゴールド',
+    color: '#d4a017',
+    features: ['年間パートナーシップ', '全チャネル露出', 'コンテンツ制作'],
+  },
+];
+---
+
+<BaseLayout>
+  <SEO
+    slot="seo"
+    title="スポンサーシップ | スペイン倶楽部"
+    description="スペイン倶楽部のスポンサーシッププログラム。1,786名以上の日本人スペイン好きコミュニティにブランドを届けませんか。"
+    canonical="https://supein.club/sponsors/"
+    breadcrumbs={breadcrumbs}
+  />
+
+  <!-- HERO -->
+  <section class="bg-navy text-white py-20 px-4">
+    <div class="max-w-4xl mx-auto">
+      <p class="text-primary text-xs font-semibold uppercase tracking-widest mb-4">SPONSORSHIP</p>
+      <h1 class="font-serif text-3xl md:text-5xl font-bold mb-6 leading-tight">スポンサーシップ</h1>
+      <p class="text-white/75 text-xl leading-relaxed max-w-2xl">
+        1,786名以上のスペイン好き日本人コミュニティに、あなたのブランドを届けませんか。
+      </p>
+    </div>
+  </section>
+
+  <!-- SECCIÓN 1: なぜ私たちと組むのか -->
+  <section class="py-20 px-4 bg-canvas">
+    <div class="max-w-4xl mx-auto">
+      <h2 class="font-serif text-3xl font-bold text-navy mb-12">なぜ私たちと組むのか</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        {reasons.map(({ title, text }) => (
+          <div class="bg-white rounded-2xl border border-ink/5 p-6 shadow-sm">
+            <h3 class="font-semibold text-navy mb-3">{title}</h3>
+            <p class="text-muted text-sm leading-relaxed">{text}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- SECCIÓN 2: プラン -->
+  <section class="py-20 px-4" style="background-color:#f8f8f6;">
+    <div class="max-w-4xl mx-auto">
+      <h2 class="font-serif text-3xl font-bold text-navy mb-12">スポンサーシッププラン</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+        {tiers.map(({ name, color, features }) => (
+          <div class="bg-white rounded-2xl border border-ink/5 shadow-sm overflow-hidden">
+            <div class="h-2" style={`background-color:${color};`}></div>
+            <div class="p-6">
+              <h3 class="font-bold text-navy text-xl mb-6">{name}</h3>
+              <ul class="space-y-3">
+                {features.map((f) => (
+                  <li class="flex items-start gap-2 text-sm text-muted">
+                    <span class="text-primary font-bold mt-0.5">✓</span>
+                    <span>{f}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        ))}
+      </div>
+      <div class="text-center">
+        <a
+          href="/contact/"
+          class="inline-block bg-primary hover:bg-primary/90 text-white font-bold px-10 py-4 rounded-full text-lg transition-colors"
+        >
+          詳細はお問い合わせください
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <LineBanner />
+</BaseLayout>
