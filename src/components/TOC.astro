@@ -141,7 +141,7 @@ const h2s = headings.filter((h) => h.depth === 2);
   }
 </style>
 
-<script>
+<script type="module">
   (function () {
     const articleContent =
       document.querySelector('.prose') ||
@@ -180,27 +180,26 @@ const h2s = headings.filter((h) => h.depth === 2);
       });
     }
 
-    function updateLines(currentActiveIndex: number) {
-      const centers = getDotCenters();
-      if (centers.length < 2) return;
+    function updateLines(activeIndex: number) {
+      requestAnimationFrame(() => {
+        const centers = getDotCenters();
+        if (centers.length < 2) return;
 
-      const first = centers[0];
-      const last = centers[centers.length - 1];
-      const totalHeight = last - first;
+        const first = centers[0];
+        const last = centers[centers.length - 1];
+        const totalHeight = last - first;
 
-      if (tocLineBg) {
-        tocLineBg.style.top = first + 'px';
-        tocLineBg.style.height = totalHeight + 'px';
-      }
+        if (tocLineBg) {
+          tocLineBg.style.cssText = 'top:' + first + 'px;height:' + totalHeight + 'px';
+        }
 
-      if (currentActiveIndex >= 0 && centers[currentActiveIndex] !== undefined) {
-        tocLine!.style.top = first + 'px';
-        const activeHeight = centers[currentActiveIndex] - first;
-        tocLine!.style.height = Math.max(0, activeHeight) + 'px';
-      } else {
-        tocLine!.style.top = first + 'px';
-        tocLine!.style.height = '0px';
-      }
+        if (activeIndex >= 0 && centers[activeIndex] !== undefined) {
+          const activeHeight = centers[activeIndex] - first;
+          tocLine!.style.cssText = 'top:' + first + 'px;height:' + Math.max(0, activeHeight) + 'px';
+        } else {
+          tocLine!.style.cssText = 'top:' + first + 'px;height:0px';
+        }
+      });
     }
 
     let activeIndex = -1;
