@@ -1,0 +1,95 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SEO from '../../components/SEO.astro';
+
+const breadcrumbs = [
+  { name: 'ホーム', url: '/' },
+  { name: 'サイトマップ', url: '/sitemap/' },
+];
+
+const sections = [
+  {
+    label: 'スペイン旅行',
+    href: '/travel/',
+    links: [
+      { label: 'バルセロナ', href: '/travel/barcelona/' },
+      { label: 'マドリード', href: '/travel/madrid/' },
+      { label: 'セビリア', href: '/travel/seville/' },
+      { label: 'グラナダ', href: '/travel/granada/' },
+    ],
+  },
+  {
+    label: 'スペイン料理',
+    href: '/food/',
+    links: [
+      { label: 'パエリア', href: '/food/paella/' },
+      { label: 'タパス', href: '/food/tapas/' },
+      { label: 'ガスパチョ', href: '/food/gazpacho/' },
+      { label: 'スペインワイン', href: '/food/wine/' },
+    ],
+  },
+  {
+    label: 'スペイン語',
+    href: '/language/',
+    links: [
+      { label: '基礎文法', href: '/language/grammar/' },
+      { label: '旅行会話', href: '/language/travel-phrases/' },
+      { label: '発音ガイド', href: '/language/pronunciation/' },
+    ],
+  },
+  {
+    label: 'スペインに住む',
+    href: '/living/',
+    links: [
+      { label: 'ビザ・在留許可', href: '/living/visa/' },
+      { label: '住宅・家賃', href: '/living/housing/' },
+      { label: '医療・保険', href: '/living/healthcare/' },
+    ],
+  },
+  {
+    label: 'スペイン文化',
+    href: '/culture/',
+    links: [
+      { label: 'フラメンコ', href: '/culture/flamenco/' },
+      { label: '祭り・祝日', href: '/culture/festivals/' },
+      { label: '美術・建築', href: '/culture/art/' },
+    ],
+  },
+  {
+    label: 'スペインサッカー',
+    href: '/football/',
+    links: [
+      { label: 'ラ・リーガ', href: '/football/la-liga/' },
+      { label: 'FCバルセロナ', href: '/football/barcelona/' },
+      { label: 'レアル・マドリード', href: '/football/real-madrid/' },
+    ],
+  },
+];
+---
+<BaseLayout>
+  <SEO slot="seo" title="サイトマップ | スペイン倶楽部" description="supein.club・スペイン倶楽部のサイトマップ。全カテゴリとページ一覧。" canonical="https://supein.club/sitemap/" breadcrumbs={breadcrumbs} />
+  <section class="bg-navy text-white py-16 px-4">
+    <div class="max-w-4xl mx-auto">
+      <h1 class="font-serif text-4xl font-bold mb-4">サイトマップ</h1>
+      <p class="text-white/80 text-lg">supein.club 全コンテンツ一覧</p>
+    </div>
+  </section>
+  <section class="max-w-4xl mx-auto px-4 py-12">
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-8">
+      {sections.map(({ label, href, links }) => (
+        <div class="bg-white rounded-2xl shadow-sm border border-ink/5 p-6">
+          <h2 class="font-serif text-xl font-bold text-navy mb-4">
+            <a href={href} class="hover:text-primary transition-colors">{label}</a>
+          </h2>
+          <ul class="space-y-2">
+            {links.map(({ label: lbl, href: lhref }) => (
+              <li>
+                <a href={lhref} class="text-muted text-sm hover:text-primary transition-colors">→ {lbl}</a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))}
+    </div>
+  </section>
+</BaseLayout>
