@@ -10,10 +10,7 @@ const pillars = [
   { href: '/football/', label: 'スペインサッカー' },
 ];
 
-const abouts = [
-  { href: '/about/mission/', label: 'ミッション' },
-  { href: '/about/sponsorship/', label: 'スポンサーシップ' },
-  { href: '/contact/', label: 'お問い合わせ' },
+const legal = [
   { href: '/sitemap/', label: 'サイトマップ' },
   { href: '/privacy/', label: 'プライバシーポリシー' },
   { href: '/terms/', label: '利用規約' },
@@ -45,7 +42,8 @@ const socials = [
 
 <footer class="bg-[#001530] text-white/70 text-sm border-t-[3px] border-primary mt-auto">
   <div class="footer-grid max-w-7xl mx-auto px-5 py-14 grid grid-cols-1 gap-10">
-    <!-- Col 1: Logo + descripción + redes sociales (solo iconos) -->
+
+    <!-- Col 1: Logo + descripción + iconos sociales -->
     <div>
       <img src="/logo-footer.png" alt="スペイン倶楽部" width="145" height="50" class="h-8 w-auto mb-1" />
       <p class="text-[11px] italic mb-5" style="color: rgba(255,255,255,0.30);">Club Español en Japón</p>
@@ -68,11 +66,26 @@ const socials = [
       </div>
     </div>
 
-    <!-- Col 2: About -->
+    <!-- Col 2: スペイン倶楽部とは -->
     <div>
-      <p class="font-semibold text-white mb-4 text-xs uppercase tracking-widest">スペインクラブとは</p>
+      <p class="font-semibold text-white mb-4 text-xs uppercase tracking-widest">スペイン倶楽部とは</p>
       <ul class="space-y-2.5">
-        {abouts.map(({ href, label }) => (
+        <li>
+          <a href="/about-us/" class="hover:text-white transition-colors text-white/80 font-medium">
+            クラブの詳細を見る →
+          </a>
+        </li>
+        <li><a href="/about/mission/" class="hover:text-white transition-colors">ミッション</a></li>
+        <li><a href="/about/sponsorship/" class="hover:text-white transition-colors">スポンサーシップ</a></li>
+        <li><a href="/contact/" class="hover:text-white transition-colors">お問い合わせ</a></li>
+      </ul>
+    </div>
+
+    <!-- Col 3: サイト情報 (legal, muy discreto) -->
+    <div>
+      <p class="font-semibold mb-4 text-xs uppercase tracking-widest" style="color: rgba(255,255,255,0.30);">サイト情報</p>
+      <ul class="space-y-2.5">
+        {legal.map(({ href, label }) => (
           <li>
             <a href={href} class="hover:text-white transition-colors">{label}</a>
           </li>
@@ -80,7 +93,7 @@ const socials = [
       </ul>
     </div>
 
-    <!-- Col 3: Categorías -->
+    <!-- Col 4: カテゴリ -->
     <div>
       <p class="font-semibold text-white mb-4 text-xs uppercase tracking-widest">カテゴリ</p>
       <ul class="space-y-2.5">
@@ -120,7 +133,7 @@ const socials = [
 <style>
   @media (min-width: 768px) {
     .footer-grid {
-      grid-template-columns: 1.5fr 1fr 1fr;
+      grid-template-columns: 1.5fr 1fr 0.7fr 1fr;
     }
   }
   .social-icon:hover {
