@@ -1,0 +1,108 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SEO from '../../components/SEO.astro';
+import LineBanner from '../../components/LineBanner.astro';
+
+const breadcrumbs = [
+  { name: 'ホーム', url: '/' },
+  { name: 'コミュニティ', url: '/events/' },
+];
+
+const collabCards = [
+  { title: 'イベントを企画したい', text: 'スペイン関連のイベントを日本で開催したい方、ぜひご相談ください。', cta: 'イベントを相談する', href: '/contact/' },
+  { title: 'スポンサーシップ', text: '私たちのコミュニティやメディアを通じて、日本市場でブランドを発信したい方へ。', cta: 'スポンサーになる', href: '/sponsors/' },
+  { title: 'コンテンツで発信', text: 'supein.clubでスペインに関する情報を日本語で発信したい方、ライターやパートナーを募集しています。', cta: 'お問い合わせ', href: '/contact/' },
+];
+
+const activities = [
+  { icon: '🥘', title: '料理イベント', text: 'パエリア、タパス、スペインワインを囲んだ食の交流会。' },
+  { icon: '🗣️', title: '語学交流', text: 'スペイン語と日本語を交えた言語交換・会話練習。' },
+  { icon: '⚽', title: 'スポーツ観戦', text: 'ラ・リーガ観戦会やフットサルなど、スポーツを通じた交流。' },
+  { icon: '🎭', title: '文化体験', text: 'フラメンコ観賞、映画鑑賞、スペイン文化にまつわるイベント。' },
+];
+---
+
+<BaseLayout>
+  <SEO
+    slot="seo"
+    title="コミュニティ・イベント | スペイン倶楽部"
+    description="スペイン倶楽部のイベント・コミュニティ活動一覧。東京を拠点に、料理・語学・スポーツ・文化交流など多彩なイベントを定期開催しています。"
+    canonical="https://supein.club/events/"
+    breadcrumbs={breadcrumbs}
+  />
+
+  <!-- HERO -->
+  <section class="bg-navy text-white py-20 px-4">
+    <div class="max-w-4xl mx-auto">
+      <p class="text-primary text-xs font-semibold uppercase tracking-widest mb-4">COMMUNITY & EVENTS</p>
+      <h1 class="font-serif text-3xl md:text-5xl font-bold mb-6 leading-tight">コミュニティ</h1>
+      <p class="text-white/75 text-xl leading-relaxed max-w-2xl">
+        スペイン倶楽部は、東京を拠点に年間46以上のイベントを開催しています。料理・語学・スポーツ・文化を通じて、スペインと日本のコミュニティをつないでいます。
+      </p>
+    </div>
+  </section>
+
+  <!-- ACTIVIDADES -->
+  <section class="py-20 px-4 bg-canvas">
+    <div class="max-w-4xl mx-auto">
+      <p class="text-primary text-xs font-semibold uppercase tracking-widest mb-2">ACTIVITIES</p>
+      <h2 class="font-serif text-3xl font-bold text-navy mb-12">主な活動</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+        {activities.map(({ icon, title, text }) => (
+          <div class="bg-white rounded-2xl border border-ink/5 p-6 shadow-sm flex gap-4 items-start">
+            <span class="text-3xl flex-shrink-0">{icon}</span>
+            <div>
+              <h3 class="font-semibold text-navy mb-2">{title}</h3>
+              <p class="text-muted text-sm leading-relaxed">{text}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- JOIN CTA -->
+  <section class="py-16 px-4" style="background-color:#f8f8f6;">
+    <div class="max-w-4xl mx-auto text-center">
+      <h2 class="font-serif text-3xl font-bold text-navy mb-4">次のイベントに参加しませんか？</h2>
+      <p class="text-muted leading-relaxed mb-8 max-w-xl mx-auto">
+        LINEで友だち追加するだけで、最新のイベント情報をいち早くお届けします。
+      </p>
+      <a
+        href="https://lin.ee/vx6jpud"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-block bg-primary hover:bg-primary/90 text-white font-bold px-8 py-4 rounded-full text-lg transition-colors"
+      >
+        LINEで参加する
+      </a>
+    </div>
+  </section>
+
+  <!-- COLLABORATE WITH US -->
+  <section class="py-20 px-4 bg-navy text-white">
+    <div class="max-w-4xl mx-auto">
+      <p class="text-primary text-xs font-semibold uppercase tracking-widest mb-2">COLLABORATE WITH US</p>
+      <h2 class="font-serif text-3xl font-bold mb-6">一緒に何かを作りませんか</h2>
+      <p class="text-white/70 leading-relaxed mb-12 max-w-2xl">
+        私たちは、スペインと日本をつなぐ活動に共感してくださる個人・企業・団体と積極的にコラボレーションしています。イベント企画、ブランドプロモーション、コンテンツ制作など、さまざまな形でお手伝いできます。
+      </p>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        {collabCards.map(({ title, text, cta, href }) => (
+          <div class="border border-white/15 rounded-2xl p-6 flex flex-col">
+            <h3 class="font-semibold text-white mb-3">{title}</h3>
+            <p class="text-white/60 text-sm leading-relaxed flex-1 mb-6">{text}</p>
+            <a
+              href={href}
+              class="inline-block text-center border border-primary text-primary hover:bg-primary hover:text-white transition-colors rounded-full px-5 py-2.5 text-sm font-medium"
+            >
+              {cta}
+            </a>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <LineBanner />
+</BaseLayout>

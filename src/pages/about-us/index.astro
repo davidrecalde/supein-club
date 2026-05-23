@@ -36,12 +36,6 @@ const timeline = [
   { year: '2026', text: 'スペインに関する日本語ポータルサイト supein.club をリニューアル。コンテンツを通じて、より多くの日本人にスペインの魅力を届けます。' },
 ];
 
-const collabCards = [
-  { title: 'イベントを企画したい', text: 'スペイン関連のイベントを日本で開催したい方、ぜひご相談ください。', cta: 'イベントを相談する', href: '/contact/' },
-  { title: 'スポンサーシップ', text: '私たちのコミュニティやメディアを通じて、日本市場でブランドを発信したい方へ。', cta: 'スポンサーになる', href: '/sponsors/' },
-  { title: 'コンテンツで発信', text: 'supein.clubでスペインに関する情報を日本語で発信したい方、ライターやパートナーを募集しています。', cta: 'お問い合わせ', href: '/contact/' },
-];
-
 const aboutPageSchema = {
   '@context': 'https://schema.org',
   '@type': 'AboutPage',
@@ -174,31 +168,6 @@ const aboutPageSchema = {
             </div>
           ))}
         </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- SECCIÓN 5: コラボレーション -->
-  <section class="py-20 px-4 bg-navy text-white">
-    <div class="max-w-4xl mx-auto">
-      <p class="text-primary text-xs font-semibold uppercase tracking-widest mb-2">COLLABORATE WITH US</p>
-      <h2 class="font-serif text-3xl font-bold mb-6">一緒に何かを作りませんか</h2>
-      <p class="text-white/70 leading-relaxed mb-12 max-w-2xl">
-        私たちは、スペインと日本をつなぐ活動に共感してくださる個人・企業・団体と積極的にコラボレーションしています。イベント企画、ブランドプロモーション、コンテンツ制作など、さまざまな形でお手伝いできます。
-      </p>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-        {collabCards.map(({ title, text, cta, href }) => (
-          <div class="border border-white/15 rounded-2xl p-6 flex flex-col">
-            <h3 class="font-semibold text-white mb-3">{title}</h3>
-            <p class="text-white/60 text-sm leading-relaxed flex-1 mb-6">{text}</p>
-            <a
-              href={href}
-              class="inline-block text-center border border-primary text-primary hover:bg-primary hover:text-white transition-colors rounded-full px-5 py-2.5 text-sm font-medium"
-            >
-              {cta}
-            </a>
-          </div>
-        ))}
       </div>
     </div>
   </section>
