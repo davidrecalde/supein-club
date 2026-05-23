@@ -21,6 +21,7 @@ const {
 } = Astro.props;
 
 const { width, height, ratio } = IMAGE_SIZES[size];
+const fetchpriority = loading === 'eager' ? 'high' : 'low';
 ---
 
 {src ? (
@@ -30,6 +31,7 @@ const { width, height, ratio } = IMAGE_SIZES[size];
     width={width}
     height={height}
     loading={loading}
+    fetchpriority={fetchpriority}
     decoding="async"
     style={`aspect-ratio: ${ratio}; object-fit: cover; width: 100%;`}
     class={className}
