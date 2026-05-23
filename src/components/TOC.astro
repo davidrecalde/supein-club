@@ -141,117 +141,107 @@ const h2s = headings.filter((h) => h.depth === 2);
   }
 </style>
 
-<script type="module">
-  (function () {
-    const articleContent =
-      document.querySelector('.prose') ||
-      document.querySelector('.article-content');
+<script>
+(function() {
+  function initTOC() {
+    const articleContent = document.querySelector('.prose')
+      || document.querySelector('.article-content');
     if (!articleContent) return;
 
-    const headingEls = Array.from(
-      articleContent.querySelectorAll('h2')
-    ) as HTMLElement[];
-
-    const tocLinks = document.querySelectorAll<HTMLAnchorElement>('.toc-link');
-    const tocLine = document.getElementById('toc-line') as HTMLElement | null;
-    const tocLineBg = document.getElementById('toc-line-bg') as HTMLElement | null;
-    const tocTrack = document.querySelector<HTMLElement>('.toc-track');
+    const headingEls = Array.from(articleContent.querySelectorAll('h2'));
+    const tocLinks = document.querySelectorAll('.toc-link');
+    const tocLine = document.getElementById('toc-line');
+    const tocLineBg = document.getElementById('toc-line-bg');
+    const tocTrack = document.querySelector('.toc-track');
 
     if (!headingEls.length || !tocLinks.length || !tocLine) return;
 
     headingEls.forEach((el, i) => {
       if (!el.id) el.id = 'heading-' + i;
     });
-
     tocLinks.forEach((link, i) => {
-      if (headingEls[i]) {
-        link.setAttribute('href', '#' + headingEls[i].id);
-      }
+      if (headingEls[i]) link.setAttribute('href', '#' + headingEls[i].id);
     });
 
-    function getDotCenters(): number[] {
+    function getDotCenters() {
       if (!tocTrack) return [];
       const trackTop = tocTrack.getBoundingClientRect().top;
-      return Array.from(tocLinks).map((link) => {
-        const dot = link.querySelector<HTMLElement>('.toc-dot');
+      return Array.from(tocLinks).map(link => {
+        const dot = link.querySelector('.toc-dot');
         if (!dot) return 0;
         const dotRect = dot.getBoundingClientRect();
         return dotRect.top + dotRect.height / 2 - trackTop;
       });
     }
 
-    function updateLines(activeIndex: number) {
+    function updateLines(activeIndex) {
       requestAnimationFrame(() => {
         const centers = getDotCenters();
         if (centers.length < 2) return;
-
         const first = centers[0];
         const last = centers[centers.length - 1];
         const totalHeight = last - first;
-
         if (tocLineBg) {
-          tocLineBg.style.cssText = 'top:' + first + 'px;height:' + totalHeight + 'px';
+          tocLineBg.style.top = first + 'px';
+          tocLineBg.style.height = totalHeight + 'px';
         }
-
         if (activeIndex >= 0 && centers[activeIndex] !== undefined) {
-          const activeHeight = centers[activeIndex] - first;
-          tocLine!.style.cssText = 'top:' + first + 'px;height:' + Math.max(0, activeHeight) + 'px';
+          tocLine.style.top = first + 'px';
+          tocLine.style.height = Math.max(0, centers[activeIndex] - first) + 'px';
         } else {
-          tocLine!.style.cssText = 'top:' + first + 'px;height:0px';
+          tocLine.style.top = first + 'px';
+          tocLine.style.height = '0px';
         }
       });
     }
 
     let activeIndex = -1;
 
-    function setActive(index: number) {
+    function setActive(index) {
       if (index === activeIndex) return;
       activeIndex = index;
-
       tocLinks.forEach((link, i) => {
         link.classList.toggle('is-active', i === index);
         link.classList.toggle('is-visited', i < index);
       });
-
       updateLines(index);
     }
 
     requestAnimationFrame(() => {
       updateLines(-1);
-      setActive(0);
+      setTimeout(() => setActive(0), 100);
     });
 
     window.addEventListener('resize', () => updateLines(activeIndex));
 
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const visible = entries
-          .filter((e) => e.isIntersecting)
-          .map((e) => ({
-            index: headingEls.indexOf(e.target as HTMLElement),
-            top: e.boundingClientRect.top,
-          }))
-          .filter((e) => e.index !== -1)
-          .sort((a, b) => a.top - b.top);
+    const observer = new IntersectionObserver((entries) => {
+      const visible = entries
+        .filter(e => e.isIntersecting)
+        .map(e => ({ index: headingEls.indexOf(e.target), top: e.boundingClientRect.top }))
+        .filter(e => e.index !== -1)
+        .sort((a, b) => a.top - b.top);
+      if (visible.length > 0) setActive(visible[0].index);
+    }, { rootMargin: '-80px 0px -55% 0px', threshold: 0 });
 
-        if (visible.length > 0) setActive(visible[0].index);
-      },
-      { rootMargin: '-80px 0px -55% 0px', threshold: 0 }
-    );
-
-    headingEls.forEach((el) => observer.observe(el));
+    headingEls.forEach(el => observer.observe(el));
 
     tocLinks.forEach((link, i) => {
       link.addEventListener('click', (e) => {
         e.preventDefault();
         const target = headingEls[i];
         if (target) {
-          const top =
-            target.getBoundingClientRect().top + window.scrollY - 90;
+          const top = target.getBoundingClientRect().top + window.scrollY - 90;
           window.scrollTo({ top, behavior: 'smooth' });
           setActive(i);
         }
       });
     });
-  })();
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initTOC);
+  } else {
+    initTOC();
+  }
+})();
 </script>
