@@ -2,7 +2,7 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import SEO from '../../components/SEO.astro';
 import LineBanner from '../../components/LineBanner.astro';
-import { Users, Lightbulb, Link2, Leaf } from 'lucide-astro';
+import { Users, Lightbulb, Link2, Leaf, Type, Circle, Palette } from 'lucide-astro';
 
 const breadcrumbs = [
   { name: 'ホーム', url: '/' },
@@ -173,6 +173,58 @@ const aboutPageSchema = {
     </div>
   </section>
 
+  <!-- SECCIÓN 5: ロゴの由来 -->
+  <section class="bg-canvas" style="padding-top:80px;padding-bottom:80px;">
+    <div class="logo-section-inner">
+      <p class="text-primary font-semibold uppercase mb-4" style="font-size:11px;letter-spacing:0.12em;">OUR LOGO</p>
+      <h2 class="font-sans font-bold text-navy mb-4 logo-heading">ロゴの由来</h2>
+      <p class="text-muted mb-12 logo-subtitle">
+        私たちのロゴには、スペインと日本、ふたつの国のアイデンティティが込められています。
+      </p>
+      <div class="logo-grid">
+        <figure style="margin:0;">
+          <img
+            src="/branding-supeinclub.webp"
+            alt="スペイン倶楽部ロゴの由来 — スペイン語のスペイン（España）と日本語の日本を組み合わせたロゴデザイン"
+            width="600"
+            height="300"
+            loading="lazy"
+            style="width:100%;height:auto;border-radius:12px;box-shadow:0 4px 24px rgba(0,0,0,0.08);"
+          />
+        </figure>
+        <div>
+          <div class="logo-block">
+            <div class="logo-icon">
+              <Type size={20} />
+            </div>
+            <div>
+              <h3 class="logo-block-title">スペイン（España）</h3>
+              <p class="logo-block-text">「スペイン」は、日本語でスペインを意味する言葉です。カタカナで表記することで、日本語話者にとって親しみやすく、かつスペインらしさを表現しています。</p>
+            </div>
+          </div>
+          <div class="logo-block">
+            <div class="logo-icon logo-icon-red">
+              <Circle size={20} />
+            </div>
+            <div>
+              <h3 class="logo-block-title">日本の魂、日の丸</h3>
+              <p class="logo-block-text">ロゴの「ペ」の文字の上に置かれた赤い点は、日本の国旗「日の丸」を象徴しています。スペイン語の「España」と日本語の「日本」——ふたつの国が、ひとつの文字の中でつながっています。</p>
+            </div>
+          </div>
+          <div class="logo-block logo-block-last">
+            <div class="logo-icon">
+              <Palette size={20} />
+            </div>
+            <div>
+              <h3 class="logo-block-title">ネイビーとレッド</h3>
+              <p class="logo-block-text">ネイビーブルーはスペインの夜空と信頼を、レッドはスペインと日本、両国の国旗の色を表しています。このふたつの色が、私たちのアイデンティティの核心です。</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- CTA FINAL -->
   <section class="bg-primary py-16 px-4 text-white text-center">
     <div class="max-w-xl mx-auto">
@@ -193,3 +245,79 @@ const aboutPageSchema = {
 
   <LineBanner />
 </BaseLayout>
+
+<style>
+  .logo-section-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  .logo-heading {
+    font-size: 36px;
+    line-height: 1.2;
+  }
+
+  .logo-subtitle {
+    font-size: 18px;
+    line-height: 1.7;
+    max-width: 600px;
+  }
+
+  .logo-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    align-items: start;
+  }
+
+  .logo-block {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 32px;
+  }
+
+  .logo-block-last {
+    margin-bottom: 0;
+  }
+
+  .logo-icon {
+    flex-shrink: 0;
+    width: 40px;
+    height: 40px;
+    background: rgba(200, 16, 46, 0.08);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #C8102E;
+  }
+
+  .logo-block-title {
+    font-weight: 700;
+    color: #002147;
+    font-size: 16px;
+    margin-bottom: 8px;
+  }
+
+  .logo-block-text {
+    color: #6b7280;
+    font-size: 15px;
+    line-height: 1.8;
+  }
+
+  @media (max-width: 767px) {
+    .logo-heading {
+      font-size: 24px;
+    }
+
+    .logo-subtitle {
+      font-size: 16px;
+    }
+
+    .logo-grid {
+      grid-template-columns: 1fr;
+      gap: 40px;
+    }
+  }
+</style>
