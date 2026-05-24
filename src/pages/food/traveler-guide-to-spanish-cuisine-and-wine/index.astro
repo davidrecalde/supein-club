@@ -1,0 +1,195 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import SEO from '../../../components/SEO.astro';
+import LineBanner from '../../../components/LineBanner.astro';
+
+const canonical = 'https://supein.club/food/traveler-guide-to-spanish-cuisine-and-wine/';
+const breadcrumbs = [
+  { name: 'ホーム', url: '/' },
+  { name: 'スペイン料理', url: '/food/' },
+  { name: 'ガイドブック', url: canonical },
+];
+
+const bookSchema = JSON.stringify({
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'WebPage',
+      name: '旅行者の為のスペイン料理とワインガイドブック',
+      description: 'レストランでの注文から、ワインの選び方、地域ごとの料理文化まで。日本語で学ぶスペイン料理の総合ガイド。',
+      url: canonical,
+    },
+    {
+      '@type': 'Book',
+      name: '旅行者の為のスペイン料理とワインガイドブック',
+      inLanguage: 'ja',
+      description: 'スペイン料理とワインを日本語で深く理解するための総合ガイド。',
+      url: canonical,
+    },
+  ],
+});
+
+const contents = [
+  {
+    emoji: '🍷',
+    title: 'ワイン辞典',
+    desc: 'スペインワインのD.O.（原産地呼称）完全ガイド。リオハからリベラ・デル・ドゥエロまで。日本語で解説。',
+  },
+  {
+    emoji: '🍽️',
+    title: '料理用語辞典（西和）',
+    desc: 'メニューで見るスペイン語→日本語。バルで困らないための500語。',
+  },
+  {
+    emoji: '🗺️',
+    title: '地域別料理ガイド',
+    desc: '17の自治州別に、その土地の名物料理を紹介。',
+  },
+  {
+    emoji: '🥄',
+    title: '注文フレーズ集',
+    desc: 'バルで使える実践スペイン語フレーズ。発音付きで安心。',
+  },
+  {
+    emoji: '⏰',
+    title: '食事マナーと文化',
+    desc: 'チップ、食事時間、レストランでの作法。',
+  },
+  {
+    emoji: '🛒',
+    title: '食材・お土産ガイド',
+    desc: 'スペインから持ち帰りたい食品とその選び方。',
+  },
+];
+
+const relatedLinks = [
+  { href: '/food/spain-map/', label: '美食マップで地域を探す', desc: 'スペイン全50省のレストラン・バルマップ' },
+  { href: '/food/madrid-restaurants/', label: 'マドリードのグルメガイド', desc: 'タパスとコシード・マドリレーニョの街' },
+  { href: '/food/paella/', label: 'パエリアの基本を学ぶ', desc: 'バレンシア発祥の国民食・徹底解説' },
+];
+---
+<BaseLayout title="旅行者の為のスペイン料理とワインガイドブック | supein.club">
+  <SEO
+    slot="seo"
+    title="旅行者の為のスペイン料理とワインガイドブック | supein.club"
+    description="レストランでの注文から、ワインの選び方、地域ごとの料理文化まで。日本語で学ぶスペイン料理の総合ガイドを制作中。西和/和西辞典。"
+    canonical={canonical}
+    breadcrumbs={breadcrumbs}
+  />
+  <script type="application/ld+json" slot="head" set:html={bookSchema} />
+
+  <!-- Hero -->
+  <section class="bg-navy text-white relative" style="padding:80px 0;">
+    <div class="absolute top-0 left-0 right-0 h-[3px] bg-primary"></div>
+    <div class="container" style="max-width:800px;">
+      <p class="text-primary font-bold tracking-widest" style="font-size:11px; text-transform:uppercase; margin-bottom:12px;">COMING SOON</p>
+      <h1 class="font-serif font-bold text-white" style="font-size:clamp(26px,4vw,42px); margin-bottom:16px; line-height:1.3;">
+        旅行者の為のスペイン料理とワインガイドブック
+      </h1>
+      <p class="text-primary font-bold" style="font-size:18px; margin-bottom:24px;">西和/和西辞典</p>
+      <p class="text-white/80" style="font-size:17px; line-height:1.8; max-width:640px;">
+        レストランでの注文から、ワインの選び方、地域ごとの料理文化まで。
+        日本語で学ぶスペイン料理の総合ガイドを制作中です。
+      </p>
+    </div>
+  </section>
+
+  <!-- Sección 1: Contenido del guía -->
+  <section class="bg-white" style="padding:72px 0;">
+    <div class="container">
+      <h2 class="font-serif font-bold text-navy" style="font-size:clamp(22px,3vw,32px); margin-bottom:48px;">ガイドブックの内容</h2>
+      <div class="guide-contents-grid">
+        {contents.map(({ emoji, title, desc }) => (
+          <div class="guide-content-card">
+            <div class="guide-emoji" aria-hidden="true">{emoji}</div>
+            <h3 class="text-navy font-bold" style="font-size:16px; margin:12px 0 8px;">{title}</h3>
+            <p class="text-muted" style="font-size:14px; line-height:1.7; margin:0;">{desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Sección 2: CTA LINE -->
+  <section style="background:var(--color-canvas); padding:72px 0; text-align:center;">
+    <div class="container" style="max-width:640px;">
+      <h2 class="font-serif font-bold text-navy" style="font-size:clamp(22px,3vw,30px); margin-bottom:20px;">完成をお知らせします</h2>
+      <p class="text-muted" style="font-size:16px; line-height:1.8; margin-bottom:32px;">
+        ガイドブックが完成したら、LINEでいち早くお知らせします。<br />
+        スペイン倶楽部のLINE公式アカウントを友だち追加してお待ちください。
+      </p>
+      <a
+        href="https://lin.ee/vx6jpud"
+        target="_blank"
+        rel="noopener nofollow noreferrer"
+        class="bg-primary hover:bg-red-dark text-white font-bold rounded-lg transition-colors"
+        style="padding:16px 36px; font-size:16px; text-decoration:none; display:inline-block;"
+      >
+        LINEで通知を受け取る
+      </a>
+    </div>
+  </section>
+
+  <!-- Sección 3: Contenido útil ahora -->
+  <section class="bg-white" style="padding:72px 0;">
+    <div class="container">
+      <h2 class="font-serif font-bold text-navy" style="font-size:clamp(22px,3vw,30px); margin-bottom:12px;">今すぐ役立つスペイン料理情報</h2>
+      <p class="text-muted" style="font-size:16px; margin-bottom:40px;">ガイドブック完成を待つ間に、こちらもご活用ください。</p>
+      <div class="related-links-grid">
+        {relatedLinks.map(({ href, label, desc }) => (
+          <a href={href} class="related-link-card">
+            <h3 class="text-navy font-bold" style="font-size:16px; margin:0 0 8px;">{label} →</h3>
+            <p class="text-muted" style="font-size:14px; margin:0; line-height:1.6;">{desc}</p>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <LineBanner />
+</BaseLayout>
+
+<style>
+  .guide-contents-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+  .guide-content-card {
+    padding: 28px 24px;
+    border: 1px solid var(--color-border);
+    border-radius: 12px;
+    background: var(--color-canvas);
+    transition: border-color 0.2s;
+  }
+  .guide-content-card:hover {
+    border-color: var(--color-primary);
+  }
+  .guide-emoji {
+    font-size: 28px;
+  }
+  .related-links-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+  .related-link-card {
+    display: block;
+    padding: 24px;
+    border: 1px solid var(--color-border);
+    border-radius: 10px;
+    text-decoration: none;
+    transition: border-color 0.2s, transform 0.2s;
+  }
+  .related-link-card:hover {
+    border-color: var(--color-primary);
+    transform: translateY(-2px);
+  }
+  @media (max-width: 1023px) {
+    .guide-contents-grid { grid-template-columns: repeat(2, 1fr); }
+    .related-links-grid { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 639px) {
+    .guide-contents-grid { grid-template-columns: 1fr; }
+  }
+</style>

@@ -3,6 +3,7 @@ import { getCollection } from 'astro:content';
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import SEO from '../../../components/SEO.astro';
 import LineBanner from '../../../components/LineBanner.astro';
+import { Waves, Fish, UtensilsCrossed, Sun, Flame, Leaf, Anchor, MapPin } from 'lucide-astro';
 
 const canonical = 'https://supein.club/food/spain-map/';
 const breadcrumbs = [
@@ -14,82 +15,172 @@ const breadcrumbs = [
 const entries = await getCollection('spain-map', ({ data }) => data.draft !== true);
 const guideMap = new Map(entries.map((e) => [e.data.province.toLowerCase(), e]));
 
-const provinces = [
-  { name: "Álava", nameJa: "アラバ", url: "https://maps.app.goo.gl/hCpAjPnuvHVfQAjp6", region: "バスク" },
-  { name: "Albacete", nameJa: "アルバセテ", url: "https://maps.app.goo.gl/DFJA3pKEZJQM8ET16", region: "カスティーリャ・ラ・マンチャ" },
-  { name: "Alicante", nameJa: "アリカンテ", url: "https://maps.app.goo.gl/znVyjMsdkS1RT9oP9", region: "バレンシア" },
-  { name: "Almería", nameJa: "アルメリア", url: "https://maps.app.goo.gl/TpFXga4kpYhXWjY88", region: "アンダルシア" },
-  { name: "Asturias", nameJa: "アストゥリアス", url: "https://maps.app.goo.gl/9UTVr3ujsAQijSN97", region: "アストゥリアス" },
-  { name: "Ávila", nameJa: "アビラ", url: "https://maps.app.goo.gl/YKEc5Lqj39npyqra6", region: "カスティーリャ・イ・レオン" },
-  { name: "Badajoz", nameJa: "バダホス", url: "https://maps.app.goo.gl/V58ae4mNsR9UVmTd9", region: "エストレマドゥーラ" },
-  { name: "Barcelona", nameJa: "バルセロナ", url: "https://maps.app.goo.gl/2swYC19RMZQ3wgTr9", region: "カタルーニャ" },
-  { name: "Burgos", nameJa: "ブルゴス", url: "https://maps.app.goo.gl/cFsUPmBPgyj23csU6", region: "カスティーリャ・イ・レオン" },
-  { name: "Cáceres", nameJa: "カセレス", url: "https://maps.app.goo.gl/P8BRG33P6wKBc7hX7", region: "エストレマドゥーラ" },
-  { name: "Cádiz", nameJa: "カディス", url: "https://maps.app.goo.gl/azwQkt6b8csgRYyq6", region: "アンダルシア" },
-  { name: "Cantabria", nameJa: "カンタブリア", url: "https://maps.app.goo.gl/S1YR2NFsDRW5QUVU6", region: "カンタブリア" },
-  { name: "Castellón", nameJa: "カステジョン", url: "https://maps.app.goo.gl/ytAcosDZztNQL8x76", region: "バレンシア" },
-  { name: "Ciudad Real", nameJa: "シウダ・レアル", url: "https://maps.app.goo.gl/txM8aA5MTnY2nTJG7", region: "カスティーリャ・ラ・マンチャ" },
-  { name: "Córdoba", nameJa: "コルドバ", url: "https://maps.app.goo.gl/Ki3mFBj52nHZPhad9", region: "アンダルシア" },
-  { name: "Cuenca", nameJa: "クエンカ", url: "https://maps.app.goo.gl/H5FxjgcKJ5LHqDit6", region: "カスティーリャ・ラ・マンチャ" },
-  { name: "Gerona", nameJa: "ヘローナ", url: "https://maps.app.goo.gl/pPS3RqDJyfeh7zJE8", region: "カタルーニャ" },
-  { name: "Granada", nameJa: "グラナダ", url: "https://maps.app.goo.gl/Edtun9S1gVq9WZm48", region: "アンダルシア" },
-  { name: "Guadalajara", nameJa: "グアダラハラ", url: "https://maps.app.goo.gl/bXJCmd2We6e9868P7", region: "カスティーリャ・ラ・マンチャ" },
-  { name: "Guipúzcoa", nameJa: "ギプスコア", url: "https://maps.app.goo.gl/Z3K7tnYmN1xVYKeeA", region: "バスク" },
-  { name: "Huelva", nameJa: "ウエルバ", url: "https://maps.app.goo.gl/qAJrbKosSUnGzYQ3A", region: "アンダルシア" },
-  { name: "Huesca", nameJa: "ウエスカ", url: "https://maps.app.goo.gl/U92jdrEvGwiUXPPQ8", region: "アラゴン" },
-  { name: "Islas Baleares", nameJa: "バレアレス諸島", url: "https://maps.app.goo.gl/td77CJd3kZ4tCron7", region: "バレアレス諸島" },
-  { name: "Jaén", nameJa: "ハエン", url: "https://maps.app.goo.gl/m1f9248YgWgJfrfV8", region: "アンダルシア" },
-  { name: "La Coruña", nameJa: "ア・コルーニャ", url: "https://maps.app.goo.gl/YThZTKUx8nSHk9kP7", region: "ガリシア" },
-  { name: "La Rioja", nameJa: "ラ・リオハ", url: "https://maps.app.goo.gl/KxA3vXwxb8PGmMvf7", region: "ラ・リオハ" },
-  { name: "Las Palmas", nameJa: "ラス・パルマス", url: "https://maps.app.goo.gl/KeBk8mQZ6aF5ypep7", region: "カナリア諸島" },
-  { name: "León", nameJa: "レオン", url: "https://maps.app.goo.gl/A1FNtf96sXykmpTd7", region: "カスティーリャ・イ・レオン" },
-  { name: "Lérida", nameJa: "リェイダ", url: "https://maps.app.goo.gl/vryLF5mJBe6V4yHa6", region: "カタルーニャ" },
-  { name: "Lugo", nameJa: "ルーゴ", url: "https://maps.app.goo.gl/HNxcVcBujRPUd1gP8", region: "ガリシア" },
-  { name: "Madrid", nameJa: "マドリード", url: "https://maps.app.goo.gl/58VguHLKzarUWkNo8", region: "マドリード" },
-  { name: "Málaga", nameJa: "マラガ", url: "https://maps.app.goo.gl/otWcKe7KcGBHtD1S8", region: "アンダルシア" },
-  { name: "Murcia", nameJa: "ムルシア", url: "https://maps.app.goo.gl/uhzqtLjuozfUMcLG8", region: "ムルシア" },
-  { name: "Navarra", nameJa: "ナバラ", url: "https://maps.app.goo.gl/SedutjfVZMqC5ChT9", region: "ナバラ" },
-  { name: "Orense", nameJa: "オウレンセ", url: "https://maps.app.goo.gl/iAU4VjNfU3YCZyHU7", region: "ガリシア" },
-  { name: "Palencia", nameJa: "パレンシア", url: "https://maps.app.goo.gl/jPp5K5sBUS3M737D7", region: "カスティーリャ・イ・レオン" },
-  { name: "Pontevedra", nameJa: "ポンテベドラ", url: "https://maps.app.goo.gl/7PTxCDzqiJZqSGDx7", region: "ガリシア" },
-  { name: "Salamanca", nameJa: "サラマンカ", url: "https://maps.app.goo.gl/LptC1yvqECUUmCjo7", region: "カスティーリャ・イ・レオン" },
-  { name: "Santa Cruz de Tenerife", nameJa: "テネリフェ", url: "https://maps.app.goo.gl/QcfY6B8o2PLquiqP7", region: "カナリア諸島" },
-  { name: "Segovia", nameJa: "セゴビア", url: "https://maps.app.goo.gl/vbRX2hzgsNWZ9dwV9", region: "カスティーリャ・イ・レオン" },
-  { name: "Sevilla", nameJa: "セビリア", url: "https://maps.app.goo.gl/Cog8XmyaNggEvpMeA", region: "アンダルシア" },
-  { name: "Soria", nameJa: "ソリア", url: "https://maps.app.goo.gl/Vdz9j5PHdBpLBYGj7", region: "カスティーリャ・イ・レオン" },
-  { name: "Tarragona", nameJa: "タラゴナ", url: "https://maps.app.goo.gl/vryLF5mJBe6V4yHa6", region: "カタルーニャ" },
-  { name: "Teruel", nameJa: "テルエル", url: "https://maps.app.goo.gl/tHK8waSCpEboo6Ls9", region: "アラゴン" },
-  { name: "Toledo", nameJa: "トレド", url: "https://maps.app.goo.gl/rHxG7BW4dHLmaLtbA", region: "カスティーリャ・ラ・マンチャ" },
-  { name: "Valencia", nameJa: "バレンシア", url: "https://maps.app.goo.gl/bQoeARtzkmyChSiT6", region: "バレンシア" },
-  { name: "Valladolid", nameJa: "バリャドリード", url: "https://maps.app.goo.gl/gUazVv7T6YYeYmcz5", region: "カスティーリャ・イ・レオン" },
-  { name: "Vizcaya", nameJa: "ビスカヤ", url: "https://maps.app.goo.gl/LdGPinUAEbN7dcGh6", region: "バスク" },
-  { name: "Zamora", nameJa: "サモラ", url: "https://maps.app.goo.gl/ZLUzortYSy5YZtZx7", region: "カスティーリャ・イ・レオン" },
-  { name: "Zaragoza", nameJa: "サラゴサ", url: "https://maps.app.goo.gl/64LK8st4btwor3GT7", region: "アラゴン" },
+function hasGuide(provinceName: string) {
+  const slug = provinceName.toLowerCase().replace(/\s+/g, '-').replace(/[áàä]/g, 'a').replace(/[éèê]/g, 'e').replace(/[íìî]/g, 'i').replace(/[óòô]/g, 'o').replace(/[úùû]/g, 'u').replace(/[ñ]/g, 'n');
+  return guideMap.has(slug) ? guideMap.get(slug) : null;
+}
+
+type ZoneProvince = { nameJa: string; name: string; url: string };
+type Zone = {
+  color: string;
+  icon: any;
+  title: string;
+  provincias: string;
+  destacado: string;
+  platoIconico: string;
+  guideLink?: { href: string; label: string };
+  links: ZoneProvince[];
+};
+
+const zones: Zone[] = [
+  {
+    color: '#2D6A4F',
+    icon: Waves,
+    title: '北部：ピンチョスとシードルの道',
+    provincias: 'バスク · カンタブリア · アストゥリアス',
+    destacado: 'サン・セバスティアン（美食の首都）、イディアサバルチーズ',
+    platoIconico: 'ピンチョス',
+    guideLink: { href: '/food/pais-vasco-restaurants/', label: 'バスクガイド' },
+    links: [
+      { nameJa: 'アラバ', name: 'Álava', url: 'https://maps.app.goo.gl/hCpAjPnuvHVfQAjp6' },
+      { nameJa: 'ギプスコア', name: 'Guipúzcoa', url: 'https://maps.app.goo.gl/Z3K7tnYmN1xVYKeeA' },
+      { nameJa: 'ビスカヤ', name: 'Vizcaya', url: 'https://maps.app.goo.gl/LdGPinUAEbN7dcGh6' },
+      { nameJa: 'アストゥリアス', name: 'Asturias', url: 'https://maps.app.goo.gl/9UTVr3ujsAQijSN97' },
+      { nameJa: 'カンタブリア', name: 'Cantabria', url: 'https://maps.app.goo.gl/S1YR2NFsDRW5QUVU6' },
+    ],
+  },
+  {
+    color: '#1B4F72',
+    icon: Fish,
+    title: '北西部：マリスコとアルバリーニョ',
+    provincias: 'ガリシア · ナバラ',
+    destacado: 'タコのガリシア風、アルバリーニョワイン',
+    platoIconico: 'プルポ・ア・ラ・ガジェガ',
+    links: [
+      { nameJa: 'ア・コルーニャ', name: 'La Coruña', url: 'https://maps.app.goo.gl/YThZTKUx8nSHk9kP7' },
+      { nameJa: 'ルーゴ', name: 'Lugo', url: 'https://maps.app.goo.gl/HNxcVcBujRPUd1gP8' },
+      { nameJa: 'オウレンセ', name: 'Orense', url: 'https://maps.app.goo.gl/iAU4VjNfU3YCZyHU7' },
+      { nameJa: 'ポンテベドラ', name: 'Pontevedra', url: 'https://maps.app.goo.gl/7PTxCDzqiJZqSGDx7' },
+      { nameJa: 'ナバラ', name: 'Navarra', url: 'https://maps.app.goo.gl/SedutjfVZMqC5ChT9' },
+    ],
+  },
+  {
+    color: '#002147',
+    icon: UtensilsCrossed,
+    title: '中部：アサードと赤ワイン',
+    provincias: 'マドリード · カスティーリャ',
+    destacado: 'コシード・マドリレーニョ、コチニージョ（子豚の丸焼き）',
+    platoIconico: 'コシード・マドリレーニョ',
+    guideLink: { href: '/food/madrid-restaurants/', label: 'マドリードガイド' },
+    links: [
+      { nameJa: 'マドリード', name: 'Madrid', url: 'https://maps.app.goo.gl/58VguHLKzarUWkNo8' },
+      { nameJa: 'ブルゴス', name: 'Burgos', url: 'https://maps.app.goo.gl/cFsUPmBPgyj23csU6' },
+      { nameJa: 'サラマンカ', name: 'Salamanca', url: 'https://maps.app.goo.gl/LptC1yvqECUUmCjo7' },
+      { nameJa: 'セゴビア', name: 'Segovia', url: 'https://maps.app.goo.gl/vbRX2hzgsNWZ9dwV9' },
+      { nameJa: 'バリャドリード', name: 'Valladolid', url: 'https://maps.app.goo.gl/gUazVv7T6YYeYmcz5' },
+      { nameJa: 'アビラ', name: 'Ávila', url: 'https://maps.app.goo.gl/YKEc5Lqj39npyqra6' },
+      { nameJa: 'レオン', name: 'León', url: 'https://maps.app.goo.gl/A1FNtf96sXykmpTd7' },
+      { nameJa: 'パレンシア', name: 'Palencia', url: 'https://maps.app.goo.gl/jPp5K5sBUS3M737D7' },
+      { nameJa: 'ソリア', name: 'Soria', url: 'https://maps.app.goo.gl/Vdz9j5PHdBpLBYGj7' },
+      { nameJa: 'サモラ', name: 'Zamora', url: 'https://maps.app.goo.gl/ZLUzortYSy5YZtZx7' },
+    ],
+  },
+  {
+    color: '#E67E22',
+    icon: Sun,
+    title: '東部：パエリアとクリエイティブタパス',
+    provincias: 'バレンシア · カタルーニャ',
+    destacado: 'パエリア・バレンシアーナ（発祥地）、カバ',
+    platoIconico: 'パエリア',
+    guideLink: { href: '/food/barcelona-restaurants/', label: 'バルセロナガイド' },
+    links: [
+      { nameJa: 'バルセロナ', name: 'Barcelona', url: 'https://maps.app.goo.gl/2swYC19RMZQ3wgTr9' },
+      { nameJa: 'バレンシア', name: 'Valencia', url: 'https://maps.app.goo.gl/bQoeARtzkmyChSiT6' },
+      { nameJa: 'アリカンテ', name: 'Alicante', url: 'https://maps.app.goo.gl/znVyjMsdkS1RT9oP9' },
+      { nameJa: 'カステジョン', name: 'Castellón', url: 'https://maps.app.goo.gl/ytAcosDZztNQL8x76' },
+      { nameJa: 'ヘローナ', name: 'Gerona', url: 'https://maps.app.goo.gl/pPS3RqDJyfeh7zJE8' },
+      { nameJa: 'リェイダ', name: 'Lérida', url: 'https://maps.app.goo.gl/vryLF5mJBe6V4yHa6' },
+      { nameJa: 'タラゴナ', name: 'Tarragona', url: 'https://maps.app.goo.gl/vryLF5mJBe6V4yHa6' },
+    ],
+  },
+  {
+    color: '#C0392B',
+    icon: Flame,
+    title: '南部：揚げ物とフラメンコ',
+    provincias: 'アンダルシア',
+    destacado: 'ペスカイト・フリート（揚げ魚）、ガスパチョ、シェリー酒',
+    platoIconico: 'ガスパチョ',
+    guideLink: { href: '/food/sevilla-restaurants/', label: 'セビリアガイド' },
+    links: [
+      { nameJa: 'セビリア', name: 'Sevilla', url: 'https://maps.app.goo.gl/Cog8XmyaNggEvpMeA' },
+      { nameJa: 'グラナダ', name: 'Granada', url: 'https://maps.app.goo.gl/Edtun9S1gVq9WZm48' },
+      { nameJa: 'マラガ', name: 'Málaga', url: 'https://maps.app.goo.gl/otWcKe7KcGBHtD1S8' },
+      { nameJa: 'カディス', name: 'Cádiz', url: 'https://maps.app.goo.gl/azwQkt6b8csgRYyq6' },
+      { nameJa: 'コルドバ', name: 'Córdoba', url: 'https://maps.app.goo.gl/Ki3mFBj52nHZPhad9' },
+      { nameJa: 'ウエルバ', name: 'Huelva', url: 'https://maps.app.goo.gl/qAJrbKosSUnGzYQ3A' },
+      { nameJa: 'ハエン', name: 'Jaén', url: 'https://maps.app.goo.gl/m1f9248YgWgJfrfV8' },
+      { nameJa: 'アルメリア', name: 'Almería', url: 'https://maps.app.goo.gl/TpFXga4kpYhXWjY88' },
+    ],
+  },
+  {
+    color: '#27AE60',
+    icon: Leaf,
+    title: '西部：イベリコ生ハムの道',
+    provincias: 'エストレマドゥーラ · ラ・リオハ',
+    destacado: 'イベリコ・デ・ベジョータ、リオハワイン',
+    platoIconico: 'ハモン・イベリコ',
+    links: [
+      { nameJa: 'バダホス', name: 'Badajoz', url: 'https://maps.app.goo.gl/V58ae4mNsR9UVmTd9' },
+      { nameJa: 'カセレス', name: 'Cáceres', url: 'https://maps.app.goo.gl/P8BRG33P6wKBc7hX7' },
+      { nameJa: 'ラ・リオハ', name: 'La Rioja', url: 'https://maps.app.goo.gl/KxA3vXwxb8PGmMvf7' },
+    ],
+  },
+  {
+    color: '#2980B9',
+    icon: Anchor,
+    title: '島々：火山と地中海の味',
+    provincias: 'カナリア諸島 · バレアレス諸島',
+    destacado: 'パパス・アルガダス（カナリア風小芋）、エンサイマダ',
+    platoIconico: 'パパス・アルガダス con モホ',
+    links: [
+      { nameJa: 'ラス・パルマス', name: 'Las Palmas', url: 'https://maps.app.goo.gl/KeBk8mQZ6aF5ypep7' },
+      { nameJa: 'テネリフェ', name: 'Santa Cruz de Tenerife', url: 'https://maps.app.goo.gl/QcfY6B8o2PLquiqP7' },
+      { nameJa: 'バレアレス諸島', name: 'Islas Baleares', url: 'https://maps.app.goo.gl/td77CJd3kZ4tCron7' },
+    ],
+  },
+];
+
+const mealtimes = [
+  { time: '08:00', name: 'デサジュノ（朝食）', desc: 'コーヒーとトースト。軽め。', highlight: false },
+  { time: '11:00', name: 'アルムエルソ（間食）', desc: 'バルで二杯目のコーヒーとボカディージョ', highlight: false },
+  { time: '14:00〜16:00', name: 'コミダ（昼食）', desc: 'メインの食事。3コース。絶対に逃すな。', highlight: true },
+  { time: '18:00〜20:00', name: 'メリエンダ（おやつ）', desc: 'チュロスとチョコラテ、またはタパス', highlight: false },
+  { time: '21:00〜23:00', name: 'セナ（夕食）', desc: '日本人には遅すぎる？でもここからが本番。', highlight: true },
 ];
 
 const japanMaps = [
-  { name: "Aichi", nameJa: "愛知県", url: "https://maps.app.goo.gl/6HszfUgb6ZXLpoSMA" },
-  { name: "Ehime", nameJa: "愛媛県", url: "https://maps.app.goo.gl/ykKxA5Msexao2M989" },
-  { name: "Fukuoka", nameJa: "福岡県", url: "https://maps.app.goo.gl/kah6tRtMQTCBL4g17" },
-  { name: "Hiroshima", nameJa: "広島県", url: "https://maps.app.goo.gl/bzZmtK8PQBVduxco6" },
-  { name: "Hyogo", nameJa: "兵庫県", url: "https://maps.app.goo.gl/CmW5dfVcuWrWaNsB9" },
-  { name: "Ibaraki", nameJa: "茨城県", url: "https://maps.app.goo.gl/wrP8iSuEEABLj8qx8" },
-  { name: "Ishikawa", nameJa: "石川県", url: "https://maps.app.goo.gl/roDwe9sCQXZ87m8S9" },
-  { name: "Kanagawa", nameJa: "神奈川県", url: "https://maps.app.goo.gl/Sny24oGbPi3bLKpB9" },
-  { name: "Kyoto", nameJa: "京都府", url: "https://maps.app.goo.gl/yC69JnSdX4LGzfn89" },
-  { name: "Mie", nameJa: "三重県", url: "https://maps.app.goo.gl/MCfsvvay5kp5fNN78" },
-  { name: "Miyagi", nameJa: "宮城県", url: "https://maps.app.goo.gl/5mbswWUkG3XUHShc6" },
-  { name: "Okayama", nameJa: "岡山県", url: "https://maps.app.goo.gl/nwuUkfYRBpBRdWU99" },
-  { name: "Osaka", nameJa: "大阪府", url: "https://maps.app.goo.gl/GhGCZvzinM3spiQx7" },
-  { name: "Shizuoka", nameJa: "静岡県", url: "https://maps.app.goo.gl/ccTVow52ihcqLGrd6" },
-  { name: "Tokyo", nameJa: "東京都", url: "https://maps.app.goo.gl/mxh9aSorMoHd3DBd6" },
+  { name: 'Aichi', nameJa: '愛知県', url: 'https://maps.app.goo.gl/6HszfUgb6ZXLpoSMA' },
+  { name: 'Ehime', nameJa: '愛媛県', url: 'https://maps.app.goo.gl/ykKxA5Msexao2M989' },
+  { name: 'Fukuoka', nameJa: '福岡県', url: 'https://maps.app.goo.gl/kah6tRtMQTCBL4g17' },
+  { name: 'Hiroshima', nameJa: '広島県', url: 'https://maps.app.goo.gl/bzZmtK8PQBVduxco6' },
+  { name: 'Hyogo', nameJa: '兵庫県', url: 'https://maps.app.goo.gl/CmW5dfVcuWrWaNsB9' },
+  { name: 'Ibaraki', nameJa: '茨城県', url: 'https://maps.app.goo.gl/wrP8iSuEEABLj8qx8' },
+  { name: 'Ishikawa', nameJa: '石川県', url: 'https://maps.app.goo.gl/roDwe9sCQXZ87m8S9' },
+  { name: 'Kanagawa', nameJa: '神奈川県', url: 'https://maps.app.goo.gl/Sny24oGbPi3bLKpB9' },
+  { name: 'Kyoto', nameJa: '京都府', url: 'https://maps.app.goo.gl/yC69JnSdX4LGzfn89' },
+  { name: 'Mie', nameJa: '三重県', url: 'https://maps.app.goo.gl/MCfsvvay5kp5fNN78' },
+  { name: 'Miyagi', nameJa: '宮城県', url: 'https://maps.app.goo.gl/5mbswWUkG3XUHShc6' },
+  { name: 'Okayama', nameJa: '岡山県', url: 'https://maps.app.goo.gl/nwuUkfYRBpBRdWU99' },
+  { name: 'Osaka', nameJa: '大阪府', url: 'https://maps.app.goo.gl/GhGCZvzinM3spiQx7' },
+  { name: 'Shizuoka', nameJa: '静岡県', url: 'https://maps.app.goo.gl/ccTVow52ihcqLGrd6' },
+  { name: 'Tokyo', nameJa: '東京都', url: 'https://maps.app.goo.gl/mxh9aSorMoHd3DBd6' },
 ];
 ---
-<BaseLayout title="スペイン フードマップ | supein.club">
+<BaseLayout title="スペイン美食地図 | supein.club">
   <SEO
     slot="seo"
-    title="スペイン フードマップ — 全50省のレストラン・バルマップ | supein.club"
-    description="スペイン倶楽部が厳選した50省のレストラン・バルマップ。スペイン旅行前の下調べから、日本のスペイン料理店探しまで。マドリード・バルセロナ・セビリアなど省別グルメガイドも。"
+    title="スペイン美食地図 — 味で旅するスペイン | supein.club"
+    description="50省・7つの美食ゾーンで探す、本場スペインのグルメ体験。スペイン倶楽部が厳選したレストラン・バルマップ。バスクのピンチョスからアンダルシアのガスパチョまで。"
     canonical={canonical}
     breadcrumbs={breadcrumbs}
   />
@@ -99,10 +190,12 @@ const japanMaps = [
     <div class="absolute top-0 left-0 right-0 h-[3px] bg-primary"></div>
     <div class="container">
       <p class="text-primary font-bold tracking-widest" style="font-size:11px; text-transform:uppercase; margin-bottom:12px;">SPANISH FOOD MAP</p>
-      <h1 class="font-serif font-bold text-white" style="font-size:clamp(32px,5vw,52px); margin-bottom:20px;">スペイン フードマップ</h1>
-      <p class="text-white/80" style="font-size:18px; max-width:620px; line-height:1.7; margin-bottom:40px;">
-        スペイン倶楽部が厳選した50省のレストラン・バルマップ。
-        スペイン旅行前の下調べから、日本のスペイン料理店探しまで。
+      <h1 class="font-serif font-bold text-white" style="font-size:clamp(28px,5vw,48px); margin-bottom:16px; line-height:1.25;">
+        スペイン美食地図 — 味で旅するスペイン
+      </h1>
+      <p class="text-white/80" style="font-size:18px; max-width:640px; line-height:1.8; margin-bottom:40px;">
+        50省・7つの美食ゾーンで探す、本場スペインのグルメ体験。<br />
+        スペイン倶楽部が厳選したレストラン・バルマップ。
       </p>
       <a
         href="https://linktr.ee/supeinclub"
@@ -116,61 +209,94 @@ const japanMaps = [
     </div>
   </section>
 
-  <!-- Editorial guides -->
-  {entries.length > 0 && (
-    <section class="bg-white" style="padding:72px 0;">
-      <div class="container">
-        <p class="text-primary font-bold tracking-widest" style="font-size:11px; text-transform:uppercase; margin-bottom:8px;">EDITORIAL GUIDES</p>
-        <h2 class="font-serif font-bold text-navy" style="font-size:clamp(24px,3vw,36px); margin-bottom:12px;">省別グルメガイド</h2>
-        <p class="text-muted" style="font-size:16px; margin-bottom:48px;">スペイン倶楽部編集部が実際に訪れ、厳選したレストラン情報</p>
-        <div class="editorial-grid">
-          {entries.map((entry) => (
-            <a href={`/food/${entry.data.province}-restaurants/`} class="editorial-card">
-              <span class="region-chip">{entry.data.region}</span>
-              <h3 class="text-navy font-bold" style="font-size:20px; margin:12px 0 6px;">{entry.data.provinceJa}</h3>
-              <p class="text-muted" style="font-size:14px; margin:0 0 16px;">{entry.data.mainDish}</p>
-              <span class="text-primary font-semibold" style="font-size:14px;">ガイドを読む →</span>
-            </a>
-          ))}
-        </div>
-      </div>
-    </section>
-  )}
-
-  <!-- All 50 provinces -->
+  <!-- Sección 1: 7 Zonas Culinarias -->
   <section style="background:var(--color-canvas); padding:72px 0;">
     <div class="container">
-      <p class="text-primary font-bold tracking-widest" style="font-size:11px; text-transform:uppercase; margin-bottom:8px;">ALL MAPS</p>
-      <h2 class="font-serif font-bold text-navy" style="font-size:clamp(24px,3vw,36px); margin-bottom:12px;">スペイン全50省のマップ</h2>
-      <p class="text-muted" style="font-size:16px; margin-bottom:48px;">各省のGoogleマップで本場のレストラン・バルを探す</p>
-      <div class="provinces-grid">
-        {provinces.map((p) => {
-          const slug = p.name.toLowerCase().replace(/\s+/g, '-').replace(/[áàä]/g, 'a').replace(/[éèê]/g, 'e').replace(/[íìî]/g, 'i').replace(/[óòô]/g, 'o').replace(/[úùû]/g, 'u').replace(/[ñ]/g, 'n');
-          const guide = guideMap.get(slug);
-          if (guide) {
-            return (
-              <a href={`/food/${guide.data.province}-restaurants/`} class="province-card province-card--guide">
-                <span class="guide-badge">ガイドあり</span>
-                <p class="province-name-ja">{p.nameJa}</p>
-                <p class="province-name-es">{p.name}</p>
-                <span class="region-tag">{p.region}</span>
-              </a>
-            );
-          }
+      <p class="text-primary font-bold tracking-widest" style="font-size:11px; text-transform:uppercase; margin-bottom:8px;">RUTAS DE SABOR</p>
+      <h2 class="font-serif font-bold text-navy" style="font-size:clamp(24px,3vw,36px); margin-bottom:12px;">7つの美食ゾーンで探す</h2>
+      <p class="text-muted" style="font-size:16px; max-width:680px; line-height:1.7; margin-bottom:48px;">
+        スペインは地域によって料理文化がまったく異なります。<br />
+        まずあなたが好きな味のゾーンから探してみましょう。
+      </p>
+
+      <div class="zones-grid">
+        {zones.map((zone) => {
+          const Icon = zone.icon;
           return (
-            <a href={p.url} target="_blank" rel="noopener noreferrer" class="province-card">
-              <p class="province-name-ja">{p.nameJa}</p>
-              <p class="province-name-es">{p.name}</p>
-              <span class="region-tag">{p.region}</span>
-            </a>
+            <div class="zone-card" style={`border-left-color: ${zone.color};`}>
+              <div class="zone-header">
+                <div class="zone-icon" style={`color: ${zone.color};`}>
+                  <Icon size={22} />
+                </div>
+                <div>
+                  <h3 class="text-navy font-bold" style="font-size:17px; margin:0 0 4px;">{zone.title}</h3>
+                  <div class="province-chips">
+                    {zone.provincias.split(' · ').map((p) => (
+                      <span class="province-chip">{p}</span>
+                    ))}
+                  </div>
+                </div>
+              </div>
+
+              <p class="text-muted" style="font-size:14px; font-style:italic; margin:12px 0 10px; line-height:1.6;">{zone.destacado}</p>
+
+              <div style="margin-bottom:16px;">
+                <span class="dish-badge">{zone.platoIconico}</span>
+              </div>
+
+              {zone.guideLink && (
+                <div style="margin-bottom:12px;">
+                  <a href={zone.guideLink.href} class="guide-link-badge">
+                    ガイドあり — {zone.guideLink.label} →
+                  </a>
+                </div>
+              )}
+
+              <div class="province-links">
+                {zone.links.map((link) => (
+                  <a href={link.url} target="_blank" rel="noopener noreferrer" class="province-map-link">
+                    <MapPin size={11} />
+                    {link.nameJa}
+                  </a>
+                ))}
+              </div>
+            </div>
           );
         })}
       </div>
     </div>
   </section>
 
-  <!-- Japan maps -->
+  <!-- Sección 2: Reloj gastronómico -->
   <section class="bg-white" style="padding:72px 0;">
+    <div class="container">
+      <p class="text-primary font-bold tracking-widest" style="font-size:11px; text-transform:uppercase; margin-bottom:8px;">TIMING IS EVERYTHING</p>
+      <h2 class="font-serif font-bold text-navy" style="font-size:clamp(24px,3vw,36px); margin-bottom:12px;">スペインの食事時間を知ろう</h2>
+      <p class="text-muted" style="font-size:16px; margin-bottom:48px;">日本との時間差に注意。スペインの食生活は日本とまったく異なります。</p>
+
+      <div class="timeline-wrap">
+        {mealtimes.map((meal, i) => (
+          <div class={`timeline-item${meal.highlight ? ' timeline-item--highlight' : ''}`}>
+            <div class="timeline-dot"></div>
+            <div class="timeline-time">{meal.time}</div>
+            <div class="timeline-name font-bold">{meal.name}</div>
+            <div class="timeline-desc">{meal.desc}</div>
+          </div>
+        ))}
+      </div>
+
+      <div class="alert-card" style="margin-top:40px;">
+        <p style="margin:0; font-size:15px; line-height:1.7;">
+          <strong>注意：</strong>スペインのレストランは通常13:30〜15:30と20:30〜22:30のみ営業。
+          この時間以外は閉まっていることが多いです。
+          お腹が空いたらバルでタパスを！
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sección 3: Japan maps -->
+  <section style="background:var(--color-canvas); padding:72px 0;">
     <div class="container">
       <p class="text-primary font-bold tracking-widest" style="font-size:11px; text-transform:uppercase; margin-bottom:8px;">IN JAPAN</p>
       <h2 class="font-serif font-bold text-navy" style="font-size:clamp(24px,3vw,36px); margin-bottom:12px;">日本のスペイン料理店マップ</h2>
@@ -185,22 +311,31 @@ const japanMaps = [
         {japanMaps.map((j) => (
           <a href={j.url} target="_blank" rel="noopener noreferrer" class="japan-card">
             <p class="province-name-ja">{j.nameJa}</p>
-            <p class="province-name-es" style="font-size:11px;">{j.name}</p>
+            <p class="province-name-es">{j.name}</p>
           </a>
         ))}
       </div>
+    </div>
+  </section>
 
-      <div style="margin-top:40px; text-align:center;">
-        <a
-          href="https://linktr.ee/supeinclub"
-          target="_blank"
-          rel="noopener nofollow noreferrer"
-          class="bg-navy hover:bg-navy-deep text-white font-bold rounded-lg transition-colors"
-          style="padding:14px 28px; font-size:15px; text-decoration:none; display:inline-block;"
-        >
-          全マップをLinktreeで一覧表示
-        </a>
-      </div>
+  <!-- Sección 4: CTA -->
+  <section class="bg-navy text-white" style="padding:72px 0; text-align:center;">
+    <div class="container" style="max-width:640px;">
+      <p class="text-primary font-bold tracking-widest" style="font-size:11px; text-transform:uppercase; margin-bottom:12px;">ALL MAPS</p>
+      <h2 class="font-serif font-bold text-white" style="font-size:clamp(24px,3vw,32px); margin-bottom:16px;">全50省・日本全国のマップを見る</h2>
+      <p class="text-white/80" style="font-size:16px; line-height:1.7; margin-bottom:32px;">
+        Linktreeで全てのGoogleマップリストを一覧表示。
+        スペイン全省と日本全国のスペイン料理店マップを無料で公開中。
+      </p>
+      <a
+        href="https://linktr.ee/supeinclub"
+        target="_blank"
+        rel="noopener nofollow noreferrer"
+        class="bg-primary hover:bg-red-dark text-white font-bold rounded-lg transition-colors"
+        style="padding:16px 36px; font-size:16px; text-decoration:none; display:inline-block;"
+      >
+        全マップをLinktreeで一覧表示 →
+      </a>
     </div>
   </section>
 
@@ -208,92 +343,171 @@ const japanMaps = [
 </BaseLayout>
 
 <style>
-  .editorial-grid {
+  /* Zone cards grid */
+  .zones-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     gap: 24px;
   }
-  .editorial-card {
-    display: block;
-    padding: 24px;
-    border: 2px solid var(--color-border);
-    border-radius: 12px;
-    text-decoration: none;
-    transition: border-color 0.2s, transform 0.2s;
+  .zone-card {
+    background: white;
+    border-left: 4px solid var(--color-primary);
+    border-radius: 16px;
+    padding: 28px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.06);
   }
-  .editorial-card:hover {
-    border-color: var(--color-primary);
-    transform: translateY(-2px);
+  .zone-header {
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+    margin-bottom: 12px;
   }
-  .region-chip {
+  .zone-icon {
+    flex-shrink: 0;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0,0,0,0.05);
+    border-radius: 10px;
+    margin-top: 2px;
+  }
+  .province-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+    margin-top: 4px;
+  }
+  .province-chip {
     display: inline-block;
-    background: #C8102E1A;
-    color: var(--color-primary);
+    background: #F3F4F6;
+    color: #6B7280;
     font-size: 11px;
     font-weight: 600;
     border-radius: 4px;
-    padding: 3px 10px;
+    padding: 2px 8px;
   }
-  .provinces-grid {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    gap: 12px;
-  }
-  .province-card {
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-    padding: 16px;
-    border: 1px solid var(--color-border);
-    border-radius: 8px;
-    text-decoration: none;
-    background: white;
-    transition: border-color 0.2s;
-    position: relative;
-  }
-  .province-card:hover {
-    border-color: var(--color-muted);
-  }
-  .province-card--guide {
-    background: var(--color-navy);
-    border-color: var(--color-primary);
-  }
-  .province-card--guide .province-name-ja {
-    color: white;
-  }
-  .province-card--guide .province-name-es {
-    color: rgba(255,255,255,0.6);
-  }
-  .province-card--guide .region-tag {
-    color: rgba(255,255,255,0.5);
-  }
-  .province-name-ja {
-    font-weight: 700;
-    font-size: 14px;
-    color: var(--color-navy);
-    margin: 0;
-  }
-  .province-name-es {
-    font-size: 11px;
-    color: var(--color-muted);
-    margin: 0;
-  }
-  .region-tag {
-    font-size: 10px;
-    color: var(--color-muted);
-    margin: 0;
-  }
-  .guide-badge {
-    position: absolute;
-    top: 8px;
-    right: 8px;
+  .dish-badge {
+    display: inline-block;
     background: var(--color-primary);
     color: white;
-    font-size: 9px;
+    font-size: 11px;
     font-weight: 700;
     border-radius: 4px;
-    padding: 2px 6px;
+    padding: 3px 10px;
   }
+  .guide-link-badge {
+    display: inline-block;
+    background: var(--color-navy);
+    color: white;
+    font-size: 12px;
+    font-weight: 700;
+    border-radius: 6px;
+    padding: 5px 12px;
+    text-decoration: none;
+    transition: background 0.2s;
+  }
+  .guide-link-badge:hover {
+    background: var(--color-primary);
+  }
+  .province-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 4px;
+  }
+  .province-map-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 4px 10px;
+    border: 1px solid var(--color-border);
+    border-radius: 6px;
+    font-size: 12px;
+    color: var(--color-muted);
+    text-decoration: none;
+    transition: border-color 0.2s, color 0.2s;
+    background: white;
+  }
+  .province-map-link:hover {
+    border-color: var(--color-primary);
+    color: var(--color-primary);
+  }
+
+  /* Timeline */
+  .timeline-wrap {
+    display: flex;
+    gap: 0;
+    position: relative;
+  }
+  .timeline-wrap::before {
+    content: '';
+    position: absolute;
+    top: 22px;
+    left: 22px;
+    right: 22px;
+    height: 2px;
+    background: #E5E7EB;
+    z-index: 0;
+  }
+  .timeline-item {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    padding: 0 8px;
+  }
+  .timeline-dot {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: #D1D5DB;
+    border: 2px solid white;
+    box-shadow: 0 0 0 2px #D1D5DB;
+    margin-bottom: 16px;
+    position: relative;
+    z-index: 1;
+  }
+  .timeline-item--highlight .timeline-dot {
+    background: var(--color-primary);
+    box-shadow: 0 0 0 2px var(--color-primary);
+  }
+  .timeline-time {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--color-muted);
+    margin-bottom: 6px;
+  }
+  .timeline-item--highlight .timeline-time {
+    color: var(--color-primary);
+  }
+  .timeline-name {
+    font-size: 13px;
+    color: var(--color-navy);
+    margin-bottom: 6px;
+    line-height: 1.4;
+  }
+  .timeline-desc {
+    font-size: 12px;
+    color: var(--color-muted);
+    line-height: 1.5;
+  }
+  .timeline-item--highlight .timeline-desc {
+    color: var(--color-ink);
+    font-weight: 500;
+  }
+  .alert-card {
+    background: #FFFBEB;
+    border: 1px solid #FCD34D;
+    border-radius: 10px;
+    padding: 20px 24px;
+    color: #92400E;
+  }
+
+  /* Japan grid */
   .japan-grid {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
@@ -307,11 +521,22 @@ const japanMaps = [
     border: 1px solid var(--color-border);
     border-radius: 8px;
     text-decoration: none;
-    background: var(--color-canvas);
+    background: white;
     transition: border-color 0.2s;
   }
   .japan-card:hover {
     border-color: var(--color-primary);
+  }
+  .province-name-ja {
+    font-weight: 700;
+    font-size: 14px;
+    color: var(--color-navy);
+    margin: 0;
+  }
+  .province-name-es {
+    font-size: 11px;
+    color: var(--color-muted);
+    margin: 0;
   }
   .japan-highlight-link {
     display: inline-block;
@@ -325,21 +550,29 @@ const japanMaps = [
     transition: background 0.2s;
   }
   .japan-highlight-link:hover {
-    background: var(--color-navy-deep);
+    background: var(--color-primary);
   }
+
   @media (max-width: 1023px) {
-    .editorial-grid { grid-template-columns: repeat(2, 1fr); }
-    .provinces-grid { grid-template-columns: repeat(4, 1fr); }
+    .zones-grid { grid-template-columns: 1fr; }
+    .timeline-wrap {
+      flex-direction: column;
+      gap: 24px;
+    }
+    .timeline-wrap::before { display: none; }
+    .timeline-item {
+      flex-direction: row;
+      text-align: left;
+      align-items: flex-start;
+      gap: 16px;
+    }
+    .timeline-dot { margin-bottom: 0; flex-shrink: 0; margin-top: 3px; }
     .japan-grid { grid-template-columns: repeat(4, 1fr); }
   }
   @media (max-width: 767px) {
-    .editorial-grid { grid-template-columns: repeat(2, 1fr); }
-    .provinces-grid { grid-template-columns: repeat(3, 1fr); }
     .japan-grid { grid-template-columns: repeat(3, 1fr); }
   }
   @media (max-width: 479px) {
-    .editorial-grid { grid-template-columns: 1fr; }
-    .provinces-grid { grid-template-columns: repeat(2, 1fr); }
     .japan-grid { grid-template-columns: repeat(2, 1fr); }
   }
 </style>

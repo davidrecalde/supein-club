@@ -1,5 +1,6 @@
 ---
 import { UtensilsCrossed, Sun, Wallet, MapPin } from 'lucide-astro';
+import Breadcrumb from '../Breadcrumb.astro';
 
 interface Props {
   provinceJa: string;
@@ -9,13 +10,19 @@ interface Props {
   priceRange: string;
   mapUrl: string;
   lead: string;
+  breadcrumbs?: Array<{ name: string; url: string }>;
 }
 
-const { provinceJa, region, mainDish, bestSeason, priceRange, mapUrl, lead } = Astro.props;
+const { provinceJa, region, mainDish, bestSeason, priceRange, mapUrl, lead, breadcrumbs } = Astro.props;
 ---
 <section class="bg-navy text-white relative" style="padding: 80px 0;">
   <div class="absolute top-0 left-0 right-0 h-[3px] bg-primary"></div>
   <div class="container">
+    {breadcrumbs && breadcrumbs.length > 0 && (
+      <div style="margin-bottom:20px; opacity:0.5;">
+        <Breadcrumb items={breadcrumbs} dark />
+      </div>
+    )}
     <p class="text-primary font-sans font-bold tracking-widest" style="font-size:11px; text-transform:uppercase; margin-bottom:16px;">SPANISH FOOD MAP</p>
     <h1 class="font-serif font-bold text-white leading-tight" style="font-size:clamp(28px,5vw,44px); max-width:760px; margin-bottom:16px;">
       {provinceJa}のおすすめレストラン＆グルメガイド
