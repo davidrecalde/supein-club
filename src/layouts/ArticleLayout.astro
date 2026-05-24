@@ -111,7 +111,7 @@ if (firstRelated) {
   </div>
 
   <!-- Article body -->
-  <div class="max-w-5xl mx-auto px-5 py-10">
+  <div class="max-w-5xl mx-auto px-0 md:px-5 py-10">
     {lead && (
       <div class="border-l-4 border-navy bg-[#F0F4F8] px-5 py-4 mb-8 text-ink leading-relaxed font-medium rounded-r-lg max-w-3xl">
         {lead}
@@ -208,7 +208,7 @@ if (firstRelated) {
     @media (max-width: 1023px) {
       .article-layout {
         grid-template-columns: 1fr;
-        padding: 24px 16px;
+        padding: 24px 20px;
       }
       .article-sidebar {
         display: none;

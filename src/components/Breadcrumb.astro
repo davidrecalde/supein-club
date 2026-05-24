@@ -9,14 +9,16 @@ const baseClass = dark ? 'text-white/70' : 'text-muted';
 const linkClass = dark ? 'hover:text-white' : 'hover:text-primary';
 const currentClass = dark ? 'text-white' : 'text-ink';
 ---
-<nav aria-label="breadcrumb" class={`text-sm flex items-center gap-1 flex-wrap ${baseClass}`}>
+<nav aria-label="breadcrumb" class={`text-sm flex items-center gap-1 flex-wrap overflow-hidden max-w-full ${baseClass}`}>
   {items.map((item, i) => (
     <>
-      {i > 0 && <span aria-hidden="true">›</span>}
+      {i > 0 && (
+        <span aria-hidden="true" class={`flex-shrink-0${i === 2 ? ' hidden md:inline' : ''}`}>›</span>
+      )}
       {i < items.length - 1 ? (
-        <a href={item.url} class={`hover:underline ${linkClass}`}>{item.name}</a>
+        <a href={item.url} class={`hover:underline flex-shrink-0 ${linkClass}${i === 2 ? ' hidden md:inline' : ''}`}>{item.name}</a>
       ) : (
-        <span class={currentClass} aria-current="page">{item.name}</span>
+        <span class={`${currentClass} overflow-hidden text-ellipsis whitespace-nowrap max-w-[150px] md:max-w-none`} aria-current="page">{item.name}</span>
       )}
     </>
   ))}
