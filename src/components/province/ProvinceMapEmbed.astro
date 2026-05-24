@@ -1,0 +1,68 @@
+---
+import { MapPin, ArrowRight } from 'lucide-astro';
+
+interface Props {
+  mapUrl: string;
+  provinceJa: string;
+}
+
+const { mapUrl, provinceJa } = Astro.props;
+---
+<section style="background:var(--color-canvas); padding:72px 0;">
+  <div class="container">
+    <p class="text-primary font-bold tracking-widest" style="font-size:11px; text-transform:uppercase; margin-bottom:8px;">INTERACTIVE MAP</p>
+    <h2 class="font-serif font-bold text-navy" style="font-size:clamp(24px,3vw,32px); margin-bottom:12px;">{provinceJa}レストランマップ</h2>
+    <p class="text-muted" style="font-size:16px; margin-bottom:32px; max-width:580px;">
+      スペイン倶楽部がキュレーションした{provinceJa}のレストラン・バルを地図で確認できます。
+    </p>
+
+    <a
+      href={mapUrl}
+      target="_blank"
+      rel="noopener noreferrer"
+      class="map-card"
+    >
+      <div class="map-icon">
+        <MapPin size={32} color="#C8102E" />
+      </div>
+      <div style="flex:1;">
+        <p style="font-weight:700; font-size:18px; margin:0; color:white;">{provinceJa}のレストランマップを開く</p>
+        <p style="opacity:0.7; font-size:14px; margin:4px 0 0; color:white;">Google マップで全レストラン・バルを確認</p>
+      </div>
+      <ArrowRight size={24} color="white" />
+    </a>
+
+    <p class="text-muted" style="font-size:13px; margin-top:20px; line-height:1.6;">
+      マップはスペイン倶楽部が独自にキュレーションしています。
+      全47都道府県・スペイン全省のマップは
+      <a
+        href="https://linktr.ee/supeinclub"
+        target="_blank"
+        rel="noopener nofollow noreferrer"
+        class="text-primary hover:underline"
+      >こちら →</a>
+    </p>
+  </div>
+</section>
+
+<style>
+  .map-card {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    background: var(--color-navy);
+    color: white;
+    padding: 24px 32px;
+    border-radius: 12px;
+    text-decoration: none;
+    border: 1px solid rgba(255,255,255,0.2);
+    max-width: 640px;
+    transition: border-color 0.2s;
+  }
+  .map-card:hover {
+    border-color: var(--color-primary);
+  }
+  .map-icon {
+    flex-shrink: 0;
+  }
+</style>

@@ -1,0 +1,68 @@
+---
+interface Specialty {
+  name: string;
+  nameJa: string;
+  description: string;
+  category: '前菜' | 'メイン' | 'デザート' | 'ワイン' | 'バル';
+}
+
+interface Props {
+  specialties: Specialty[];
+}
+
+const { specialties } = Astro.props;
+---
+<section class="bg-white" style="padding:72px 0;">
+  <div class="container">
+    <p class="text-primary font-bold tracking-widest" style="font-size:11px; text-transform:uppercase; margin-bottom:8px;">LOCAL SPECIALTIES</p>
+    <h2 class="font-serif font-bold text-navy" style="font-size:clamp(24px,3vw,32px); margin-bottom:48px;">郷土料理</h2>
+    <div class="specialties-grid">
+      {specialties.map((s) => (
+        <div class="specialty-card">
+          <span class="category-chip">{s.category}</span>
+          <h3 class="text-navy font-bold" style="font-size:18px; margin:12px 0 4px;">{s.name}</h3>
+          <p class="text-muted" style="font-size:13px; margin:0 0 8px;">{s.nameJa}</p>
+          <p class="text-muted" style="font-size:14px; line-height:1.8; margin:0;">{s.description}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .specialties-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+  .specialty-card {
+    background: var(--color-canvas);
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    padding: 24px;
+    transition: border-color 0.2s, transform 0.2s;
+  }
+  .specialty-card:hover {
+    border-color: var(--color-primary);
+    transform: translateY(-2px);
+  }
+  .category-chip {
+    display: inline-block;
+    background: #C8102E1A;
+    color: var(--color-primary);
+    font-size: 11px;
+    font-weight: 600;
+    border-radius: 4px;
+    padding: 3px 10px;
+  }
+  @media (max-width: 1023px) {
+    .specialties-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  @media (max-width: 639px) {
+    .specialties-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

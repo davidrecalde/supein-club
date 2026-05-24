@@ -1,0 +1,106 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import BaseLayout from './BaseLayout.astro';
+import SEO from '../components/SEO.astro';
+import FAQSection from '../components/FAQSection.astro';
+import LineBanner from '../components/LineBanner.astro';
+import HeroProvince from '../components/province/HeroProvince.astro';
+import ProvinceQuickGuide from '../components/province/ProvinceQuickGuide.astro';
+import ProvinceMapEmbed from '../components/province/ProvinceMapEmbed.astro';
+import ProvinceSpecialties from '../components/province/ProvinceSpecialties.astro';
+import ProvinceNeighborhoods from '../components/province/ProvinceNeighborhoods.astro';
+import ProvinceRelated from '../components/province/ProvinceRelated.astro';
+import ProvinceCTA from '../components/province/ProvinceCTA.astro';
+
+interface Props {
+  entry: CollectionEntry<'spain-map'>;
+}
+
+const { entry } = Astro.props;
+const { Content } = await entry.render();
+
+const canonical = `https://supein.club/food/${entry.data.province}-restaurants/`;
+
+const breadcrumbs = [
+  { name: 'ホーム', url: '/' },
+  { name: 'スペイン料理', url: '/food/' },
+  { name: 'Spanish Food Map', url: '/food/spain-map/' },
+  { name: entry.data.provinceJa, url: canonical },
+];
+
+const localBusinessSchema = JSON.stringify({
+  '@context': 'https://schema.org',
+  '@type': ['LocalBusiness', 'Restaurant'],
+  name: `${entry.data.provinceJa}のスペイン料理レストラン`,
+  description: entry.data.description,
+  areaServed: entry.data.province,
+  servesCuisine: 'Spanish',
+  url: canonical,
+});
+---
+<BaseLayout title={entry.data.title}>
+  <SEO
+    slot="seo"
+    title={`${entry.data.title} | supein.club`}
+    description={entry.data.description}
+    canonical={canonical}
+    breadcrumbs={breadcrumbs}
+  />
+  <script type="application/ld+json" slot="head" set:html={localBusinessSchema} />
+
+  <HeroProvince
+    provinceJa={entry.data.provinceJa}
+    region={entry.data.region}
+    mainDish={entry.data.mainDish}
+    bestSeason={entry.data.bestSeason}
+    priceRange={entry.data.priceRange}
+    mapUrl={entry.data.mapUrl}
+    lead={entry.data.lead}
+  />
+
+  <ProvinceQuickGuide />
+
+  <ProvinceMapEmbed mapUrl={entry.data.mapUrl} provinceJa={entry.data.provinceJa} />
+
+  {entry.data.specialties && entry.data.specialties.length > 0 && (
+    <ProvinceSpecialties specialties={entry.data.specialties} />
+  )}
+
+  {entry.data.neighborhoods && entry.data.neighborhoods.length > 0 && (
+    <ProvinceNeighborhoods neighborhoods={entry.data.neighborhoods} />
+  )}
+
+  <div style="background:var(--color-canvas); padding:48px 0 0;">
+    <div class="container">
+      <div class="border-l-4 border-primary rounded-r-lg" style="background:white; padding:20px 24px;">
+        <p class="text-ink leading-relaxed font-medium" style="margin:0;">{entry.data.lead}</p>
+      </div>
+    </div>
+  </div>
+
+  <div style="padding:48px 0 64px;">
+    <div class="container">
+      <div class="prose">
+        <Content />
+      </div>
+    </div>
+  </div>
+
+  {entry.data.faq.length > 0 && (
+    <div style="padding:0 0 64px;">
+      <div class="container" style="max-width:860px;">
+        <FAQSection faq={entry.data.faq} />
+      </div>
+    </div>
+  )}
+
+  <ProvinceRelated
+    relatedTravel={entry.data.relatedTravel}
+    relatedFood={entry.data.relatedFood}
+    provinceJa={entry.data.provinceJa}
+  />
+
+  <ProvinceCTA provinceJa={entry.data.provinceJa} />
+
+  <LineBanner />
+</BaseLayout>

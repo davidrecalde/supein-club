@@ -1,0 +1,98 @@
+---
+import { Plane, Map, Package } from 'lucide-astro';
+
+interface Props {
+  relatedTravel?: string;
+  relatedFood?: string[];
+  provinceJa: string;
+}
+
+const { relatedTravel, provinceJa } = Astro.props;
+
+const cards = [
+  ...(relatedTravel ? [{
+    icon: Plane,
+    href: relatedTravel,
+    title: `${provinceJa}の旅行ガイド`,
+    text: `${provinceJa}の観光スポット・モデルコース`,
+    external: false,
+  }] : []),
+  {
+    icon: Map,
+    href: '/food/spain-map/',
+    title: 'スペイン全省マップ',
+    text: '50省のレストランマップ一覧',
+    external: false,
+  },
+  {
+    icon: Package,
+    href: '/travel/spain-tours/',
+    title: 'スペインツアー',
+    text: '日本からのスペイン旅行プランを比較',
+    external: false,
+  },
+];
+---
+<section class="bg-navy" style="padding:72px 0;">
+  <div class="container">
+    <p class="text-primary font-bold tracking-widest" style="font-size:11px; text-transform:uppercase; margin-bottom:8px;">EXPLORE MORE</p>
+    <h2 class="font-serif font-bold text-white" style="font-size:clamp(24px,3vw,32px); margin-bottom:40px;">合わせて読みたい</h2>
+    <div class="related-grid">
+      {cards.map(({ icon: Icon, href, title, text }) => (
+        <a
+          href={href}
+          class="related-card"
+        >
+          <div class="related-icon">
+            <Icon size={24} color="#C8102E" />
+          </div>
+          <div>
+            <h3 class="text-white font-bold" style="font-size:16px; margin:0 0 6px;">{title}</h3>
+            <p style="color:rgba(255,255,255,0.6); font-size:14px; margin:0;">{text}</p>
+          </div>
+        </a>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .related-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+  .related-card {
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 12px;
+    padding: 24px;
+    text-decoration: none;
+    transition: border-color 0.2s;
+  }
+  .related-card:hover {
+    border-color: var(--color-primary);
+  }
+  .related-icon {
+    flex-shrink: 0;
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(200,16,46,0.15);
+    border-radius: 8px;
+  }
+  @media (max-width: 1023px) {
+    .related-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  @media (max-width: 639px) {
+    .related-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

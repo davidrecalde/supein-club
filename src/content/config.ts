@@ -89,4 +89,48 @@ const events = defineCollection({
   }),
 });
 
-export const collections = { articles, authors, events };
+const spainMap = defineCollection({
+  type: 'content',
+  schema: z.object({
+    title: z.string(),
+    description: z.string().max(160),
+    lead: z.string(),
+    province: z.string(),
+    provinceJa: z.string(),
+    region: z.string(),
+    capital: z.string(),
+    mapUrl: z.string().url(),
+    linktreeUrl: z.string().url().default('https://linktr.ee/supeinclub'),
+    mainDish: z.string(),
+    mainDishJa: z.string(),
+    bestSeason: z.string(),
+    priceRange: z.string(),
+    tags: z.array(z.string()),
+    entities: z.array(z.string()),
+    relatedTravel: z.string().optional(),
+    relatedFood: z.array(z.string()).optional(),
+    pubDate: z.coerce.date(),
+    author: reference('authors'),
+    lang: z.enum(['ja', 'es']).default('ja'),
+    draft: z.boolean().default(false),
+    neighborhoods: z.array(z.object({
+      name: z.string(),
+      nameJa: z.string(),
+      vibe: z.string(),
+      specialty: z.string(),
+      bestTime: z.string(),
+    })).optional(),
+    specialties: z.array(z.object({
+      name: z.string(),
+      nameJa: z.string(),
+      description: z.string(),
+      category: z.enum(['前菜', 'メイン', 'デザート', 'ワイン', 'バル']),
+    })).optional(),
+    faq: z.array(z.object({
+      question: z.string(),
+      answer: z.string(),
+    })),
+  }),
+});
+
+export const collections = { articles, authors, events, 'spain-map': spainMap };

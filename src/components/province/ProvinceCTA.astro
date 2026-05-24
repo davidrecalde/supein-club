@@ -1,0 +1,38 @@
+---
+interface Props {
+  provinceJa: string;
+}
+
+const { provinceJa } = Astro.props;
+---
+<section class="bg-primary text-white text-center" style="padding:80px 0;">
+  <div class="container">
+    <h2 class="font-serif font-bold text-white" style="font-size:clamp(26px,4vw,36px); margin-bottom:20px;">
+      スペイン全土のグルメマップを手に入れよう
+    </h2>
+    <p class="text-white/80" style="font-size:18px; max-width:600px; margin:0 auto 40px; line-height:1.7;">
+      50省のレストラン・バルマップと、日本全国のスペイン料理店マップを
+      スペイン倶楽部がキュレーション。すべて無料でご覧いただけます。
+    </p>
+    <div style="display:flex; flex-wrap:wrap; gap:16px; justify-content:center;">
+      <a
+        href="https://linktr.ee/supeinclub"
+        target="_blank"
+        rel="noopener nofollow noreferrer"
+        class="font-bold rounded-lg transition-colors hover:bg-white/90"
+        style="padding:16px 32px; font-size:16px; text-decoration:none; display:inline-block; background:white; color:var(--color-primary);"
+      >
+        全マップを見る → linktr.ee/supeinclub
+      </a>
+      <a
+        href="https://lin.ee/vx6jpud"
+        target="_blank"
+        rel="noopener nofollow noreferrer"
+        class="font-bold rounded-lg transition-colors"
+        style="padding:16px 32px; font-size:16px; text-decoration:none; display:inline-block; border:2px solid rgba(255,255,255,0.7); color:white;"
+      >
+        LINEで最新情報を受け取る
+      </a>
+    </div>
+  </div>
+</section>

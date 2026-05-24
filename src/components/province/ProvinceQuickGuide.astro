@@ -1,0 +1,93 @@
+---
+import { Clock, Wallet, Star, Globe, Calendar, Users } from 'lucide-astro';
+
+const tips = [
+  {
+    icon: Clock,
+    title: "食事の時間帯",
+    text: "昼食は14:00〜16:00、夕食は21:00〜23:00が一般的。日本より遅い時間帯なので注意。",
+  },
+  {
+    icon: Wallet,
+    title: "予算の目安",
+    text: "タパス1品2〜4€、メニュー・デル・ディア（日替わり定食）は10〜15€が相場。",
+  },
+  {
+    icon: Star,
+    title: "注文のコツ",
+    text: "バルではカウンターで立って食べるのが地元流。メニューを指さしするだけでOK。",
+  },
+  {
+    icon: Globe,
+    title: "言語について",
+    text: "観光地では英語メニューが多い。「これをください」はEsto, por favor（エスト ポル ファボール）。",
+  },
+  {
+    icon: Calendar,
+    title: "ベストシーズン",
+    text: "春（3〜5月）と秋（9〜11月）が観光しやすい。夏は暑いが活気がある。",
+  },
+  {
+    icon: Users,
+    title: "チップの習慣",
+    text: "義務ではないが、満足した場合は端数を置くのが一般的。10%程度が目安。",
+  },
+];
+---
+<section class="bg-white" style="padding:72px 0;">
+  <div class="container">
+    <p class="text-primary font-bold tracking-widest" style="font-size:11px; text-transform:uppercase; margin-bottom:8px;">KNOW BEFORE YOU GO</p>
+    <h2 class="font-serif font-bold text-navy" style="font-size:clamp(24px,3vw,32px); margin-bottom:48px;">現地で役立つ基本情報</h2>
+    <div class="quick-guide-grid">
+      {tips.map(({ icon: Icon, title, text }) => (
+        <div class="quick-card">
+          <div class="quick-icon">
+            <Icon size={20} />
+          </div>
+          <div>
+            <h3 class="text-navy font-bold" style="font-size:15px; margin-bottom:6px;">{title}</h3>
+            <p class="text-muted" style="font-size:14px; line-height:1.7; margin:0;">{text}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .quick-guide-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+  .quick-card {
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+    padding: 24px;
+    border: 1px solid var(--color-border);
+    border-radius: 12px;
+    background: var(--color-canvas);
+  }
+  .quick-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+    background: #C8102E1A;
+    color: var(--color-primary);
+    flex-shrink: 0;
+  }
+  @media (max-width: 1023px) {
+    .quick-guide-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  @media (max-width: 639px) {
+    .quick-guide-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
