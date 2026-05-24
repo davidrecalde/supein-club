@@ -3,6 +3,7 @@ import { getCollection } from 'astro:content';
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import SEO from '../../../components/SEO.astro';
 import LineBanner from '../../../components/LineBanner.astro';
+import SpainMapSVG from '../../../components/SpainMapSVG.astro';
 import { Waves, Fish, UtensilsCrossed, Sun, Flame, Leaf, Anchor, MapPin } from 'lucide-astro';
 
 const canonical = 'https://supein.club/food/spain-map/';
@@ -206,6 +207,18 @@ const japanMaps = [
       >
         全マップをLinktreeで見る →
       </a>
+    </div>
+  </section>
+
+  <!-- Interactive SVG Map -->
+  <section style="background:white; padding:72px 0;">
+    <div class="container">
+      <p class="text-primary font-bold tracking-widest" style="font-size:11px; text-transform:uppercase; margin-bottom:8px;">INTERACTIVE MAP</p>
+      <h2 class="font-serif font-bold text-navy" style="font-size:clamp(24px,3vw,36px); margin-bottom:12px;">スペイン州別マップ</h2>
+      <p class="text-muted" style="font-size:16px; max-width:680px; line-height:1.7; margin-bottom:40px;">
+        州をクリックして、レストランマップまたは詳細ガイドへ。赤い枠は編集部ガイドがある州です。
+      </p>
+      <SpainMapSVG />
     </div>
   </section>
 

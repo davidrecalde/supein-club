@@ -69,60 +69,51 @@ const localBusinessSchema = JSON.stringify({
     breadcrumbs={breadcrumbs}
   />
 
-  <div class="province-body-layout">
-    <!-- Content column -->
-    <main class="province-content-col">
-      <div id="quick-guide">
-        <ProvinceQuickGuide />
-      </div>
+  <!-- Full-width sections with section IDs for TOC scroll-spy -->
+  <section id="quick-guide">
+    <ProvinceQuickGuide />
+  </section>
 
-      <div id="map">
-        <ProvinceMapEmbed mapUrl={entry.data.mapUrl} provinceJa={entry.data.provinceJa} />
-      </div>
+  <section id="map">
+    <ProvinceMapEmbed mapUrl={entry.data.mapUrl} provinceJa={entry.data.provinceJa} />
+  </section>
 
-      {entry.data.specialties && entry.data.specialties.length > 0 && (
-        <div id="specialties">
-          <ProvinceSpecialties specialties={entry.data.specialties} />
-        </div>
-      )}
+  {entry.data.specialties && entry.data.specialties.length > 0 && (
+    <section id="specialties">
+      <ProvinceSpecialties specialties={entry.data.specialties} />
+    </section>
+  )}
 
-      {entry.data.neighborhoods && entry.data.neighborhoods.length > 0 && (
-        <div id="neighborhoods">
-          <ProvinceNeighborhoods neighborhoods={entry.data.neighborhoods} />
-        </div>
-      )}
+  {entry.data.neighborhoods && entry.data.neighborhoods.length > 0 && (
+    <section id="neighborhoods">
+      <ProvinceNeighborhoods neighborhoods={entry.data.neighborhoods} />
+    </section>
+  )}
 
-      <div id="content" style="background:var(--color-canvas); padding:48px 0 0;">
-        <div class="container">
-          <div class="border-l-4 border-primary rounded-r-lg" style="background:white; padding:20px 24px;">
+  <!-- MDX content + TOC sidebar via unified content-grid -->
+  <div style="background:var(--color-canvas); padding:48px 0 64px;">
+    <div class="page-container">
+      <div class="content-grid" id="content">
+        <main class="content-main">
+          <div class="border-l-4 border-primary rounded-r-lg" style="background:white; padding:20px 24px; margin-bottom:32px;">
             <p class="text-ink leading-relaxed font-medium" style="margin:0;">{entry.data.lead}</p>
           </div>
-        </div>
-      </div>
-
-      <div style="padding:48px 0 64px; background:var(--color-canvas);">
-        <div class="container">
           <div class="prose">
             <Content />
           </div>
-        </div>
+        </main>
+
+        <aside class="content-sidebar">
+          <TOC headings={tocHeadings} />
+        </aside>
       </div>
 
       {entry.data.faq.length > 0 && (
-        <div id="faq" style="padding:0 0 64px; background:var(--color-canvas);">
-          <div class="container" style="max-width:860px;">
-            <FAQSection faq={entry.data.faq} />
-          </div>
+        <div id="faq" style="margin-top:48px; max-width:860px;">
+          <FAQSection faq={entry.data.faq} />
         </div>
       )}
-    </main>
-
-    <!-- TOC sidebar -->
-    <aside class="province-toc-col">
-      <div class="province-toc-sticky">
-        <TOC headings={tocHeadings} />
-      </div>
-    </aside>
+    </div>
   </div>
 
   <ProvinceRelated
@@ -135,121 +126,3 @@ const localBusinessSchema = JSON.stringify({
 
   <LineBanner />
 </BaseLayout>
-
-<style>
-  .province-body-layout {
-    display: grid;
-    grid-template-columns: 1fr;
-  }
-
-  .province-content-col {
-    min-width: 0;
-  }
-
-  .province-toc-col {
-    display: none;
-  }
-
-  .province-toc-sticky {
-    position: sticky;
-    top: 80px;
-    padding: 40px 24px;
-    background: white;
-    border-left: 1px solid var(--color-border);
-    height: fit-content;
-  }
-
-  @media (min-width: 1024px) {
-    .province-body-layout {
-      grid-template-columns: 1fr 280px;
-      align-items: start;
-    }
-
-    .province-toc-col {
-      display: block;
-    }
-  }
-</style>
-
-<script>
-(function () {
-  function initProvinceTOC() {
-    const sectionIds = ['quick-guide', 'map', 'specialties', 'neighborhoods', 'content', 'faq'];
-    const tocLinks = Array.from(document.querySelectorAll('.toc-link'));
-    if (!tocLinks.length) return;
-
-    /* Override hrefs to point at section IDs */
-    tocLinks.forEach((link, i) => {
-      const id = sectionIds[i];
-      if (id) link.setAttribute('href', '#' + id);
-    });
-
-    const tocLine = document.getElementById('toc-line');
-    const tocLineBg = document.getElementById('toc-line-bg');
-    const tocTrack = document.querySelector('.toc-track');
-
-    function getDotCenters() {
-      if (!tocTrack) return [];
-      const trackTop = tocTrack.getBoundingClientRect().top;
-      return tocLinks.map((link) => {
-        const dot = link.querySelector('.toc-dot');
-        if (!dot) return 0;
-        const r = dot.getBoundingClientRect();
-        return r.top + r.height / 2 - trackTop;
-      });
-    }
-
-    let activeIndex = -1;
-
-    function setActive(index: number) {
-      if (index === activeIndex) return;
-      activeIndex = index;
-      tocLinks.forEach((link, i) => {
-        link.classList.toggle('is-active', i === index);
-        link.classList.toggle('is-visited', i < index);
-      });
-      requestAnimationFrame(() => {
-        const centers = getDotCenters();
-        if (centers.length < 2) return;
-        const first = centers[0];
-        if (tocLineBg) { tocLineBg.style.top = first + 'px'; tocLineBg.style.height = (centers[centers.length - 1] - first) + 'px'; }
-        if (tocLine) { tocLine.style.top = first + 'px'; tocLine.style.height = index >= 0 && centers[index] !== undefined ? Math.max(0, centers[index] - first) + 'px' : '0px'; }
-      });
-    }
-
-    setTimeout(() => { setActive(0); }, 150);
-    window.addEventListener('resize', () => setActive(activeIndex));
-
-    const sectionEls = sectionIds.map((id) => document.getElementById(id)).filter(Boolean) as HTMLElement[];
-
-    const observer = new IntersectionObserver((entries) => {
-      const visible = entries
-        .filter((e) => e.isIntersecting)
-        .map((e) => ({ index: sectionEls.indexOf(e.target as HTMLElement), top: e.boundingClientRect.top }))
-        .filter((e) => e.index !== -1)
-        .sort((a, b) => a.top - b.top);
-      if (visible.length > 0) setActive(visible[0].index);
-    }, { rootMargin: '-80px 0px -55% 0px', threshold: 0 });
-
-    sectionEls.forEach((el) => observer.observe(el));
-
-    tocLinks.forEach((link, i) => {
-      link.addEventListener('click', (e) => {
-        e.preventDefault();
-        const target = sectionEls[i];
-        if (target) {
-          const top = target.getBoundingClientRect().top + window.scrollY - 90;
-          window.scrollTo({ top, behavior: 'smooth' });
-          setActive(i);
-        }
-      });
-    });
-  }
-
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initProvinceTOC);
-  } else {
-    initProvinceTOC();
-  }
-})();
-</script>

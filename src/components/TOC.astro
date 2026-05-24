@@ -144,46 +144,61 @@ const h2s = headings.filter((h) => h.depth === 2);
 <script>
 (function() {
   function initTOC() {
-    const articleContent = document.querySelector('.prose')
-      || document.querySelector('.article-content');
-    if (!articleContent) return;
-
-    const headingEls = Array.from(articleContent.querySelectorAll('h2'));
     const tocLinks = document.querySelectorAll('.toc-link');
     const tocLine = document.getElementById('toc-line');
     const tocLineBg = document.getElementById('toc-line-bg');
     const tocTrack = document.querySelector('.toc-track');
 
-    if (!headingEls.length || !tocLinks.length || !tocLine) return;
+    if (!tocLinks.length || !tocLine) return;
 
-    headingEls.forEach((el, i) => {
+    // First try: H2 headings inside .prose or .article-content
+    const articleContent = document.querySelector('.prose') || document.querySelector('.article-content');
+    let headingEls = articleContent ? Array.from(articleContent.querySelectorAll('h2')) : [];
+
+    // Fallback: use section IDs from TOC link hrefs (for province/landing pages)
+    if (headingEls.length === 0) {
+      headingEls = [];
+      tocLinks.forEach(function(link) {
+        var href = link.getAttribute('href');
+        if (href && href.startsWith('#')) {
+          var el = document.getElementById(href.slice(1));
+          if (el) headingEls.push(el);
+        }
+      });
+    }
+
+    if (!headingEls.length) return;
+
+    // Assign IDs to prose H2s if missing; section IDs already exist
+    headingEls.forEach(function(el, i) {
       if (!el.id) el.id = 'heading-' + i;
     });
-    tocLinks.forEach((link, i) => {
+
+    // Sync link hrefs with heading IDs
+    tocLinks.forEach(function(link, i) {
       if (headingEls[i]) link.setAttribute('href', '#' + headingEls[i].id);
     });
 
     function getDotCenters() {
       if (!tocTrack) return [];
-      const trackTop = tocTrack.getBoundingClientRect().top;
-      return Array.from(tocLinks).map(link => {
-        const dot = link.querySelector('.toc-dot');
+      var trackTop = tocTrack.getBoundingClientRect().top;
+      return Array.from(tocLinks).map(function(link) {
+        var dot = link.querySelector('.toc-dot');
         if (!dot) return 0;
-        const dotRect = dot.getBoundingClientRect();
-        return dotRect.top + dotRect.height / 2 - trackTop;
+        var r = dot.getBoundingClientRect();
+        return r.top + r.height / 2 - trackTop;
       });
     }
 
     function updateLines(activeIndex) {
-      requestAnimationFrame(() => {
-        const centers = getDotCenters();
+      requestAnimationFrame(function() {
+        var centers = getDotCenters();
         if (centers.length < 2) return;
-        const first = centers[0];
-        const last = centers[centers.length - 1];
-        const totalHeight = last - first;
+        var first = centers[0];
+        var last = centers[centers.length - 1];
         if (tocLineBg) {
           tocLineBg.style.top = first + 'px';
-          tocLineBg.style.height = totalHeight + 'px';
+          tocLineBg.style.height = (last - first) + 'px';
         }
         if (activeIndex >= 0 && centers[activeIndex] !== undefined) {
           tocLine.style.top = first + 'px';
@@ -195,43 +210,43 @@ const h2s = headings.filter((h) => h.depth === 2);
       });
     }
 
-    let activeIndex = -1;
+    var activeIndex = -1;
 
     function setActive(index) {
       if (index === activeIndex) return;
       activeIndex = index;
-      tocLinks.forEach((link, i) => {
+      tocLinks.forEach(function(link, i) {
         link.classList.toggle('is-active', i === index);
         link.classList.toggle('is-visited', i < index);
       });
       updateLines(index);
     }
 
-    requestAnimationFrame(() => {
+    requestAnimationFrame(function() {
       updateLines(-1);
-      setTimeout(() => setActive(0), 100);
+      setTimeout(function() { setActive(0); }, 150);
     });
 
-    window.addEventListener('resize', () => updateLines(activeIndex));
+    window.addEventListener('resize', function() { updateLines(activeIndex); });
 
-    const observer = new IntersectionObserver((entries) => {
-      const visible = entries
-        .filter(e => e.isIntersecting)
-        .map(e => ({ index: headingEls.indexOf(e.target), top: e.boundingClientRect.top }))
-        .filter(e => e.index !== -1)
-        .sort((a, b) => a.top - b.top);
+    var observer = new IntersectionObserver(function(entries) {
+      var visible = entries
+        .filter(function(e) { return e.isIntersecting; })
+        .map(function(e) { return { index: headingEls.indexOf(e.target), top: e.boundingClientRect.top }; })
+        .filter(function(e) { return e.index !== -1; })
+        .sort(function(a, b) { return a.top - b.top; });
       if (visible.length > 0) setActive(visible[0].index);
     }, { rootMargin: '-80px 0px -55% 0px', threshold: 0 });
 
-    headingEls.forEach(el => observer.observe(el));
+    headingEls.forEach(function(el) { observer.observe(el); });
 
-    tocLinks.forEach((link, i) => {
-      link.addEventListener('click', (e) => {
+    tocLinks.forEach(function(link, i) {
+      link.addEventListener('click', function(e) {
         e.preventDefault();
-        const target = headingEls[i];
+        var target = headingEls[i];
         if (target) {
-          const top = target.getBoundingClientRect().top + window.scrollY - 90;
-          window.scrollTo({ top, behavior: 'smooth' });
+          var top = target.getBoundingClientRect().top + window.scrollY - 90;
+          window.scrollTo({ top: top, behavior: 'smooth' });
           setActive(i);
         }
       });

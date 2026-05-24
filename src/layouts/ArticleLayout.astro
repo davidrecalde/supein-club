@@ -111,16 +111,16 @@ if (firstRelated) {
   </div>
 
   <!-- Article body -->
-  <div class="max-w-5xl mx-auto px-0 md:px-5 py-10">
+  <div class="page-container py-10">
     {lead && (
       <div class="border-l-4 border-navy bg-[#F0F4F8] px-5 py-4 mb-8 text-ink leading-relaxed font-medium rounded-r-lg max-w-3xl">
         {lead}
       </div>
     )}
 
-    <div class="article-layout">
+    <div class="content-grid">
       <!-- Main content -->
-      <div class="min-w-0">
+      <div class="content-main">
         <!-- AdSlot art-mid: before main content -->
         <div class="mb-8">
           <AdSlot
@@ -176,55 +176,19 @@ if (firstRelated) {
       </div>
 
       <!-- Sidebar: TOC only -->
-      <aside class="article-sidebar">
+      <aside class="content-sidebar">
         <TOC headings={headings} />
       </aside>
     </div>
   </div>
 
   <style>
-    .article-layout {
-      display: grid;
-      grid-template-columns: 1fr 300px;
-      gap: 48px;
-      align-items: start;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-
-    .article-sidebar {
-      position: sticky;
-      top: 80px;
-      height: fit-content;
-      display: none;
-    }
-
-    @media (min-width: 1024px) {
-      .article-sidebar {
-        display: block;
-      }
-    }
-
-    @media (max-width: 1023px) {
-      .article-layout {
-        grid-template-columns: 1fr;
-        padding: 24px 20px;
-      }
-      .article-sidebar {
-        display: none;
-      }
-    }
-
     @media (max-width: 767px) {
       .article-hero h1 {
         font-size: 1.5rem;
         line-height: 1.4;
         word-break: normal;
         overflow-wrap: break-word;
-      }
-
-      .article-hero .article-hero-inner {
-        padding: 32px 16px 24px;
       }
     }
   </style>
