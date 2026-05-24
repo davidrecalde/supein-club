@@ -29,13 +29,17 @@ const breadcrumbs = [
   { name: entry.data.provinceJa, url: '' },
 ];
 
+const hasSpecialties = entry.data.specialties && entry.data.specialties.length > 0;
+const hasNeighborhoods = entry.data.neighborhoods && entry.data.neighborhoods.length > 0;
+const hasFaq = entry.data.faq && entry.data.faq.length > 0;
+
 const tocHeadings = [
   { depth: 2, slug: 'quick-guide', text: '現地で役立つ基本情報' },
   { depth: 2, slug: 'map', text: 'レストランマップ' },
-  { depth: 2, slug: 'specialties', text: '郷土料理' },
-  { depth: 2, slug: 'neighborhoods', text: 'エリア別ガイド' },
+  ...(hasSpecialties ? [{ depth: 2, slug: 'specialties', text: '郷土料理' }] : []),
+  ...(hasNeighborhoods ? [{ depth: 2, slug: 'neighborhoods', text: 'エリア別ガイド' }] : []),
   { depth: 2, slug: 'content', text: '詳細情報' },
-  { depth: 2, slug: 'faq', text: 'よくある質問' },
+  ...(hasFaq ? [{ depth: 2, slug: 'faq', text: 'よくある質問' }] : []),
 ];
 
 const localBusinessSchema = JSON.stringify({
@@ -69,50 +73,53 @@ const localBusinessSchema = JSON.stringify({
     breadcrumbs={breadcrumbs}
   />
 
-  <!-- Full-width sections with section IDs for TOC scroll-spy -->
-  <section id="quick-guide">
-    <ProvinceQuickGuide />
-  </section>
+  <!-- All content inside content-grid so TOC sidebar is sticky throughout scroll -->
+  <div class="page-container" style="padding-top:48px; padding-bottom:64px;">
+    <div class="content-grid">
 
-  <section id="map">
-    <ProvinceMapEmbed mapUrl={entry.data.mapUrl} provinceJa={entry.data.provinceJa} />
-  </section>
+      <div class="content-main">
 
-  {entry.data.specialties && entry.data.specialties.length > 0 && (
-    <section id="specialties">
-      <ProvinceSpecialties specialties={entry.data.specialties} />
-    </section>
-  )}
+        <section id="quick-guide" class="psec">
+          <ProvinceQuickGuide />
+        </section>
 
-  {entry.data.neighborhoods && entry.data.neighborhoods.length > 0 && (
-    <section id="neighborhoods">
-      <ProvinceNeighborhoods neighborhoods={entry.data.neighborhoods} />
-    </section>
-  )}
+        <section id="map" class="psec">
+          <ProvinceMapEmbed mapUrl={entry.data.mapUrl} provinceJa={entry.data.provinceJa} />
+        </section>
 
-  <!-- MDX content + TOC sidebar via unified content-grid -->
-  <div style="background:var(--color-canvas); padding:48px 0 64px;">
-    <div class="page-container">
-      <div class="content-grid" id="content">
-        <main class="content-main">
+        {hasSpecialties && (
+          <section id="specialties" class="psec">
+            <ProvinceSpecialties specialties={entry.data.specialties} />
+          </section>
+        )}
+
+        {hasNeighborhoods && (
+          <section id="neighborhoods" class="psec">
+            <ProvinceNeighborhoods neighborhoods={entry.data.neighborhoods} />
+          </section>
+        )}
+
+        <section id="content" class="psec psec--content">
           <div class="border-l-4 border-primary rounded-r-lg" style="background:white; padding:20px 24px; margin-bottom:32px;">
             <p class="text-ink leading-relaxed font-medium" style="margin:0;">{entry.data.lead}</p>
           </div>
           <div class="prose">
             <Content />
           </div>
-        </main>
+        </section>
 
-        <aside class="content-sidebar">
-          <TOC headings={tocHeadings} />
-        </aside>
+        {hasFaq && (
+          <section id="faq" class="psec">
+            <FAQSection faq={entry.data.faq} />
+          </section>
+        )}
+
       </div>
 
-      {entry.data.faq.length > 0 && (
-        <div id="faq" style="margin-top:48px; max-width:860px;">
-          <FAQSection faq={entry.data.faq} />
-        </div>
-      )}
+      <aside class="content-sidebar">
+        <TOC headings={tocHeadings} />
+      </aside>
+
     </div>
   </div>
 
@@ -126,3 +133,40 @@ const localBusinessSchema = JSON.stringify({
 
   <LineBanner />
 </BaseLayout>
+
+<style>
+  /* Strip internal section/container padding from province sub-components */
+  .psec :global(section) {
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+    background: transparent !important;
+  }
+  .psec :global(.container) {
+    max-width: none !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+
+  /* Spacing between province sections */
+  .psec {
+    padding-bottom: 48px;
+    margin-bottom: 48px;
+    border-bottom: 1px solid var(--color-border);
+  }
+  .psec:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+  }
+  .psec--content {
+    padding-bottom: 0;
+  }
+
+  @media (max-width: 767px) {
+    .psec {
+      padding-bottom: 32px;
+      margin-bottom: 32px;
+    }
+  }
+</style>
