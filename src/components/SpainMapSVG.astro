@@ -9,27 +9,13 @@ const rawSvg = readFileSync(
 
 const guideIds = new Set(['ES-M', 'ES-B', 'ES-V', 'ES-SE']);
 
-const filterDefs = `<defs>
-  <filter id="guide-outline" x="-5%" y="-5%" width="110%" height="110%">
-    <feMorphology operator="dilate" radius="1.5" in="SourceAlpha" result="expanded"/>
-    <feFlood flood-color="#C8102E" result="color"/>
-    <feComposite in="color" in2="expanded" operator="in" result="outline"/>
-    <feMerge>
-      <feMergeNode in="outline"/>
-      <feMergeNode in="SourceGraphic"/>
-    </feMerge>
-  </filter>
-</defs>`;
-
 let svgContent = rawSvg
   .replace('width="418.45123"', 'class="spain-map-svg" width="100%" viewBox="0 0 418.46 468.64" preserveAspectRatio="xMidYMid meet"')
   .replace('\n   height="468.63733"', '');
 
-svgContent = svgContent.replace(/(<svg[^>]*>)/, (match) => `${match}\n${filterDefs}`);
-
 svgContent = svgContent.replace(/id="(ES-[A-Z]+)"/g, (_match, id) => {
   const hasGuide = guideIds.has(id);
-  return `id="${id}" data-province="${id}"${hasGuide ? ' data-has-guide=""' : ''}`;
+  return `id="${id}" data-province="${id}"${hasGuide ? ' data-has-guide="true"' : ''}`;
 });
 ---
 
@@ -58,8 +44,7 @@ svgContent = svgContent.replace(/id="(ES-[A-Z]+)"/g, (_match, id) => {
     <span class="legend-dot" style="background:#7A9E7E;"></span><span class="legend-label">エストレマドゥーラ</span>
   </div>
   <p style="font-size:12px; color:#6b7280; margin-top:12px;">
-    🔴 赤い輪郭 = 編集部グルメガイドあり
-    　⬜ 白い輪郭 = Googleマップへリンク
+    🔴 ホバーで赤くなる省 = 編集部グルメガイドあり
   </p>
 </div>
 
@@ -87,25 +72,19 @@ svgContent = svgContent.replace(/id="(ES-[A-Z]+)"/g, (_match, id) => {
   #ES-CE, #ES-ML { fill: #9ca3af; }
 
   path[data-province] {
-    fill-opacity: 0.85;
-    transition: opacity 180ms ease, filter 180ms ease;
+    transition: fill 200ms ease;
     cursor: pointer;
-    stroke: rgba(255, 255, 255, 0.5);
+    stroke: rgba(255, 255, 255, 0.6);
     stroke-width: 0.5;
-    paint-order: fill stroke;
   }
 
   path[data-province]:hover {
-    opacity: 0.75;
+    filter: brightness(1.15);
   }
 
-  path[data-province][data-has-guide] {
-    filter: url(#guide-outline);
-    stroke: none;
-  }
-
-  path[data-province][data-has-guide]:hover {
-    opacity: 0.8;
+  path[data-has-guide="true"]:hover {
+    fill: #C8102E !important;
+    filter: none;
   }
 
   #divider { pointer-events: none; }
@@ -139,6 +118,12 @@ svgContent = svgContent.replace(/id="(ES-[A-Z]+)"/g, (_match, id) => {
   }
   .tooltip-badge--guide { background: #C8102E; color: white; }
   .tooltip-badge--map   { background: rgba(255,255,255,0.15); color: rgba(255,255,255,0.85); }
+  .tooltip-action {
+    display: block;
+    font-size: 11px;
+    margin-top: 6px;
+    color: rgba(255,255,255,0.6);
+  }
 </style>
 
 <style>
@@ -239,8 +224,8 @@ svgContent = svgContent.replace(/id="(ES-[A-Z]+)"/g, (_match, id) => {
     tooltip.innerHTML =
       '<p class="tooltip-name">' + data.ja + '</p>' +
       (data.hasGuide
-        ? '<span class="tooltip-badge tooltip-badge--guide">ガイドあり</span>'
-        : '<span class="tooltip-badge tooltip-badge--map">マップを見る</span>');
+        ? '<span class="tooltip-badge tooltip-badge--guide">グルメガイドあり</span><span class="tooltip-action">クリックして読む →</span>'
+        : '<span class="tooltip-badge tooltip-badge--map">マップを見る →</span>');
     tooltip.classList.add('visible');
     moveTooltip(e);
   }
