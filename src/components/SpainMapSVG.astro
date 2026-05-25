@@ -9,15 +9,27 @@ const rawSvg = readFileSync(
 
 const guideIds = new Set(['ES-M', 'ES-B', 'ES-V', 'ES-SE']);
 
-// Make SVG responsive: swap width/height for viewBox + 100% width
+const filterDefs = `<defs>
+  <filter id="guide-outline" x="-5%" y="-5%" width="110%" height="110%">
+    <feMorphology operator="dilate" radius="1.5" in="SourceAlpha" result="expanded"/>
+    <feFlood flood-color="#C8102E" result="color"/>
+    <feComposite in="color" in2="expanded" operator="in" result="outline"/>
+    <feMerge>
+      <feMergeNode in="outline"/>
+      <feMergeNode in="SourceGraphic"/>
+    </feMerge>
+  </filter>
+</defs>`;
+
 let svgContent = rawSvg
   .replace('width="418.45123"', 'class="spain-map-svg" width="100%" viewBox="0 0 418.46 468.64" preserveAspectRatio="xMidYMid meet"')
   .replace('\n   height="468.63733"', '');
 
-// Add class="province-path" (and "has-guide") to every province path by ID
+svgContent = svgContent.replace(/(<svg[^>]*>)/, (match) => `${match}\n${filterDefs}`);
+
 svgContent = svgContent.replace(/id="(ES-[A-Z]+)"/g, (_match, id) => {
-  const cls = guideIds.has(id) ? 'province-path has-guide' : 'province-path';
-  return `id="${id}" class="${cls}"`;
+  const hasGuide = guideIds.has(id);
+  return `id="${id}" data-province="${id}"${hasGuide ? ' data-has-guide=""' : ''}`;
 });
 ---
 
@@ -27,45 +39,73 @@ svgContent = svgContent.replace(/id="(ES-[A-Z]+)"/g, (_match, id) => {
 
 <div class="map-legend">
   <div class="legend-grid">
-    <span class="legend-dot" style="background:#2D6A4F;"></span><span class="legend-label">北部（ピンチョス・シードル）</span>
-    <span class="legend-dot" style="background:#1B4F72;"></span><span class="legend-label">北西部（マリスコ・ワイン）</span>
-    <span class="legend-dot" style="background:#795548;"></span><span class="legend-label">中部（アサード・赤ワイン）</span>
-    <span class="legend-dot" style="background:#E67E22;"></span><span class="legend-label">東部（パエリア・タパス）</span>
-    <span class="legend-dot" style="background:#C0392B;"></span><span class="legend-label">南部（揚げ物・シェリー）</span>
-    <span class="legend-dot" style="background:#2E7D32;"></span><span class="legend-label">西部（生ハム・リオハ）</span>
-    <span class="legend-dot" style="background:#0277BD;"></span><span class="legend-label">島々（地中海・カナリア）</span>
+    <span class="legend-dot" style="background:#5B8FA8;"></span><span class="legend-label">アストゥリアス</span>
+    <span class="legend-dot" style="background:#7B9E87;"></span><span class="legend-label">アラゴン</span>
+    <span class="legend-dot" style="background:#C8956C;"></span><span class="legend-label">アンダルシア</span>
+    <span class="legend-dot" style="background:#A8956C;"></span><span class="legend-label">カスティーリャ・イ・レオン</span>
+    <span class="legend-dot" style="background:#B8A898;"></span><span class="legend-label">カスティーリャ・ラ・マンチャ</span>
+    <span class="legend-dot" style="background:#8B7355;"></span><span class="legend-label">カタルーニャ</span>
+    <span class="legend-dot" style="background:#D4A853;"></span><span class="legend-label">カナリア諸島</span>
+    <span class="legend-dot" style="background:#6B9E9E;"></span><span class="legend-label">カンタブリア</span>
+    <span class="legend-dot" style="background:#6B8FA8;"></span><span class="legend-label">ガリシア</span>
+    <span class="legend-dot" style="background:#5C7A6B;"></span><span class="legend-label">バスク地方</span>
+    <span class="legend-dot" style="background:#9B7FB6;"></span><span class="legend-label">バレアレス諸島</span>
+    <span class="legend-dot" style="background:#C49A6C;"></span><span class="legend-label">バレンシア州</span>
+    <span class="legend-dot" style="background:#7E9E8B;"></span><span class="legend-label">ナバラ</span>
+    <span class="legend-dot" style="background:#8B6B8B;"></span><span class="legend-label">マドリード州</span>
+    <span class="legend-dot" style="background:#C4A882;"></span><span class="legend-label">ムルシア</span>
+    <span class="legend-dot" style="background:#B87878;"></span><span class="legend-label">ラ・リオハ</span>
+    <span class="legend-dot" style="background:#7A9E7E;"></span><span class="legend-label">エストレマドゥーラ</span>
   </div>
-  <p class="legend-note">赤い枠の州 = 編集部グルメガイドあり</p>
+  <p style="font-size:12px; color:#6b7280; margin-top:12px;">
+    🔴 赤い輪郭 = 編集部グルメガイドあり
+    　⬜ 白い輪郭 = Googleマップへリンク
+  </p>
 </div>
 
 <div id="spain-tooltip" class="province-tooltip" aria-hidden="true"></div>
 
 <style is:global>
-  /* Province fill colors by SVG ID */
-  #ES-BI, #ES-SS, #ES-VI, #ES-O, #ES-S  { fill: #2D6A4F; }
-  #ES-C, #ES-LU, #ES-OR, #ES-PO, #ES-NA { fill: #1B4F72; }
-  #ES-M, #ES-BU, #ES-SA, #ES-SG, #ES-VA,
-  #ES-AV, #ES-LE, #ES-P, #ES-SO, #ES-ZA,
-  #ES-GU, #ES-CR, #ES-CU, #ES-TO, #ES-AB { fill: #795548; }
-  #ES-B, #ES-V, #ES-A, #ES-CS,
-  #ES-GI, #ES-L, #ES-T              { fill: #E67E22; }
-  #ES-SE, #ES-GR, #ES-MA, #ES-CA,
-  #ES-CO, #ES-H, #ES-J, #ES-AL, #ES-MU  { fill: #C0392B; }
-  #ES-BA, #ES-CC, #ES-LO, #ES-HU,
-  #ES-TE, #ES-Z                     { fill: #2E7D32; }
-  #ES-GC, #ES-TF, #ES-PM            { fill: #0277BD; }
-  #ES-CE, #ES-ML                    { fill: #9ca3af; }
+  /* Province fill colors by comunidad autónoma */
+  #ES-AL, #ES-CA, #ES-CO, #ES-GR, #ES-H, #ES-J, #ES-MA, #ES-SE { fill: #C8956C; }
+  #ES-HU, #ES-TE, #ES-Z { fill: #7B9E87; }
+  #ES-O { fill: #5B8FA8; }
+  #ES-PM { fill: #9B7FB6; }
+  #ES-GC, #ES-TF { fill: #D4A853; }
+  #ES-S { fill: #6B9E9E; }
+  #ES-AB, #ES-CR, #ES-CU, #ES-GU, #ES-TO { fill: #B8A898; }
+  #ES-AV, #ES-BU, #ES-LE, #ES-P, #ES-SA, #ES-SG, #ES-SO, #ES-VA, #ES-ZA { fill: #A8956C; }
+  #ES-B, #ES-GI, #ES-L, #ES-T { fill: #8B7355; }
+  #ES-BA, #ES-CC { fill: #7A9E7E; }
+  #ES-C, #ES-LU, #ES-OR, #ES-PO { fill: #6B8FA8; }
+  #ES-LO { fill: #B87878; }
+  #ES-M { fill: #8B6B8B; }
+  #ES-MU { fill: #C4A882; }
+  #ES-NA { fill: #7E9E8B; }
+  #ES-BI, #ES-SS, #ES-VI { fill: #5C7A6B; }
+  #ES-A, #ES-CS, #ES-V { fill: #C49A6C; }
+  #ES-CE, #ES-ML { fill: #9ca3af; }
 
-  .province-path {
-    stroke: rgba(255, 255, 255, 0.65);
-    stroke-width: 0.5;
+  path[data-province] {
+    fill-opacity: 0.85;
+    transition: opacity 180ms ease, filter 180ms ease;
     cursor: pointer;
-    transition: filter 150ms ease;
+    stroke: rgba(255, 255, 255, 0.5);
+    stroke-width: 0.5;
+    paint-order: fill stroke;
   }
-  .province-path:hover { filter: brightness(1.25); }
-  .province-path.has-guide {
-    stroke: #C8102E;
-    stroke-width: 2;
+
+  path[data-province]:hover {
+    opacity: 0.75;
+  }
+
+  path[data-province][data-has-guide] {
+    filter: url(#guide-outline);
+    stroke: none;
+  }
+
+  path[data-province][data-has-guide]:hover {
+    opacity: 0.8;
   }
 
   #divider { pointer-events: none; }
@@ -118,37 +158,20 @@ svgContent = svgContent.replace(/id="(ES-[A-Z]+)"/g, (_match, id) => {
   }
   .legend-grid {
     display: grid;
-    grid-template-columns: auto 1fr auto 1fr;
-    gap: 6px 16px;
+    grid-template-columns: auto 1fr auto 1fr auto 1fr;
+    gap: 8px 16px;
     align-items: center;
-    margin-bottom: 10px;
   }
   .legend-dot {
     width: 12px;
     height: 12px;
     border-radius: 50%;
     display: inline-block;
-  }
-  .legend-label { font-size: 12px; color: #6b7280; }
-  .legend-note {
-    font-size: 12px;
-    color: #6b7280;
-    margin: 0;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
-  .legend-note::before {
-    content: '';
-    display: inline-block;
-    width: 14px;
-    height: 14px;
-    border: 2px solid #C8102E;
-    border-radius: 3px;
     flex-shrink: 0;
   }
+  .legend-label { font-size: 13px; color: #4b5563; }
   @media (max-width: 600px) {
-    .legend-grid { grid-template-columns: auto 1fr; }
+    .legend-grid { grid-template-columns: auto 1fr auto 1fr; }
   }
 </style>
 
@@ -233,7 +256,7 @@ svgContent = svgContent.replace(/id="(ES-[A-Z]+)"/g, (_match, id) => {
 
   function hideTooltip() { tooltip.classList.remove('visible'); }
 
-  document.querySelectorAll('.province-path').forEach(function (path) {
+  document.querySelectorAll('[data-province]').forEach(function (path) {
     var id = path.id;
     var data = provinceMap[id];
     if (!data) return;
