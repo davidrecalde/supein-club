@@ -9,9 +9,95 @@ const rawSvg = readFileSync(
 
 const guideIds = new Set(['ES-M', 'ES-B', 'ES-V', 'ES-SE']);
 
+// SVG viewBox dimensions
+const vbW = 418.46;
+const vbH = 468.64;
+
+// MapSVG geoViewBox: lon_left lat_top lon_right lat_bottom
+const lonMin = -9.303180;
+const lonMax =  4.312512;
+const latMax = 43.793001;
+const latMin = 31.732576;
+
+function toSVG(lon: number, lat: number): [number, number] {
+  const x = (lon - lonMin) / (lonMax - lonMin) * vbW;
+  const y = (latMax - lat) / (latMax - latMin) * vbH;
+  return [+x.toFixed(1), +y.toFixed(1)];
+}
+
+type Anchor = 'start' | 'middle' | 'end';
+interface City {
+  name: string;
+  lat: number;
+  lon: number;
+  anchor: Anchor;
+  dy: number;
+  capital?: boolean;
+}
+
+const cities: City[] = [
+  { name: "サンティアゴ・デ・コンポステーラ", lat: 42.88, lon: -8.54, anchor: "end",    dy: -8 },
+  { name: "ビゴ",                             lat: 42.23, lon: -8.72, anchor: "end",    dy: -8 },
+  { name: "レオン",                            lat: 42.60, lon: -5.57, anchor: "end",    dy: -8 },
+  { name: "ビルバオ",                          lat: 43.26, lon: -2.92, anchor: "middle", dy: -8,  capital: true },
+  { name: "パンプローナ",                       lat: 42.82, lon: -1.64, anchor: "start",  dy: -10 },
+  { name: "ログローニョ",                       lat: 42.47, lon: -2.44, anchor: "start",  dy: 12 },
+  { name: "ブルゴス",                          lat: 42.35, lon: -3.70, anchor: "middle", dy: -8 },
+  { name: "バジャドリー",                       lat: 41.65, lon: -4.72, anchor: "middle", dy: -8 },
+  { name: "サラマンカ",                         lat: 40.97, lon: -5.66, anchor: "end",    dy: -8 },
+  { name: "セゴビア",                          lat: 40.95, lon: -4.12, anchor: "start",  dy: -8 },
+  { name: "マドリッド",                         lat: 40.42, lon: -3.70, anchor: "middle", dy: -8,  capital: true },
+  { name: "サラゴサ",                          lat: 41.65, lon: -0.89, anchor: "middle", dy: -8 },
+  { name: "バルセロナ",                         lat: 41.39, lon:  2.16, anchor: "start",  dy: -10, capital: true },
+  { name: "タラゴナ",                          lat: 41.12, lon:  1.25, anchor: "start",  dy: 12 },
+  { name: "トレド",                            lat: 39.86, lon: -4.03, anchor: "middle", dy: -8 },
+  { name: "シウダーレアル",                     lat: 38.99, lon: -3.92, anchor: "middle", dy: -8 },
+  { name: "コルドバ",                          lat: 37.89, lon: -4.78, anchor: "middle", dy: -8 },
+  { name: "グラナダ",                          lat: 37.18, lon: -3.60, anchor: "middle", dy: -10 },
+  { name: "マラガ",                            lat: 36.72, lon: -4.42, anchor: "middle", dy: 16 },
+  { name: "アリカンテ",                         lat: 38.35, lon: -0.48, anchor: "start",  dy: -8 },
+  { name: "バレンシア",                         lat: 39.47, lon: -0.38, anchor: "start",  dy: -8,  capital: true },
+  { name: "セビージャ",                         lat: 37.39, lon: -5.99, anchor: "middle", dy: -8,  capital: true },
+  { name: "カディス",                          lat: 36.53, lon: -6.30, anchor: "end",    dy: 16 },
+  { name: "ヘレス・デ・ラ・フロンテーラ",         lat: 36.69, lon: -6.14, anchor: "end",    dy: -10 },
+];
+
+function buildCityMarkers(list: City[]): string {
+  let g = '<g class="city-layer" pointer-events="none">\n';
+
+  for (const city of list) {
+    const [x, y] = toSVG(city.lon, city.lat);
+    const labelX = city.anchor === 'end' ? x - 5 : city.anchor === 'start' ? x + 5 : x;
+    const r          = city.capital ? 3.5 : 2.5;
+    const dotFill    = city.capital ? '#002147' : '#1a1a1a';
+    const dotOpacity = city.capital ? '0.9' : '0.75';
+    const fontSize   = city.capital ? 8.5 : 7.5;
+    const fontWeight = city.capital ? '700' : '500';
+    const textOpacity = city.capital ? '1' : '0.85';
+    const textFill   = city.capital ? '#002147' : '#1a1a1a';
+
+    const line = city.anchor !== 'middle'
+      ? `  <line x1="${x}" y1="${y}" x2="${labelX}" y2="${y + city.dy}" stroke="rgba(26,26,26,0.25)" stroke-width="0.5"/>\n`
+      : '';
+
+    g += `<g class="city-marker">\n`;
+    g += line;
+    g += `  <circle cx="${x}" cy="${y}" r="${r}" fill="${dotFill}" opacity="${dotOpacity}"/>\n`;
+    g += `  <circle cx="${x}" cy="${y}" r="${r}" fill="none" stroke="white" stroke-width="1.5" opacity="0.9"/>\n`;
+    g += `  <text x="${labelX}" y="${y + city.dy}" text-anchor="${city.anchor}" font-family="'Noto Sans JP','Hiragino Sans',sans-serif" font-size="${fontSize}" font-weight="${fontWeight}" fill="${textFill}" opacity="${textOpacity}" paint-order="stroke fill" stroke="rgba(255,255,255,0.95)" stroke-width="2.5" stroke-linejoin="round">${city.name}</text>\n`;
+    g += `</g>\n`;
+  }
+
+  g += '</g>';
+  return g;
+}
+
+const cityMarkersStr = buildCityMarkers(cities);
+
 let svgContent = rawSvg
   .replace('width="418.45123"', 'class="spain-map-svg" width="100%" viewBox="0 0 418.46 468.64" preserveAspectRatio="xMidYMid meet"')
-  .replace('\n   height="468.63733"', '');
+  .replace('\n   height="468.63733"', '')
+  .replace('</svg>', cityMarkersStr + '\n</svg>');
 
 svgContent = svgContent.replace(/id="(ES-[A-Z]+)"/g, (_match, id) => {
   const hasGuide = guideIds.has(id);
@@ -123,6 +209,12 @@ svgContent = svgContent.replace(/id="(ES-[A-Z]+)"/g, (_match, id) => {
     font-size: 11px;
     margin-top: 6px;
     color: rgba(255,255,255,0.6);
+  }
+
+  @media (max-width: 600px) {
+    .city-marker text {
+      font-size: 9px;
+    }
   }
 </style>
 
