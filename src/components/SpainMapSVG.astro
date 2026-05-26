@@ -36,10 +36,11 @@ interface City {
 }
 
 const cities: City[] = [
-  { name: "サンティアゴ・デ・コンポステーラ", lat: 42.88, lon: -8.54, anchor: "end",    dy: -8 },
-  { name: "ビゴ",                             lat: 42.23, lon: -8.72, anchor: "end",    dy: -8 },
+  { name: "サンティアゴ・デ・コンポステーラ", lat: 42.88, lon: -8.54, anchor: "start",  dy: -8 },
+  { name: "ビゴ",                             lat: 42.23, lon: -8.72, anchor: "start",  dy: -8 },
   { name: "レオン",                            lat: 42.60, lon: -5.57, anchor: "end",    dy: -8 },
   { name: "ビルバオ",                          lat: 43.26, lon: -2.92, anchor: "middle", dy: -8,  capital: true },
+  { name: "サン・セバスティアン",               lat: 43.32, lon: -1.98, anchor: "start",  dy: -8,  capital: true },
   { name: "パンプローナ",                       lat: 42.82, lon: -1.64, anchor: "start",  dy: -10 },
   { name: "ログローニョ",                       lat: 42.47, lon: -2.44, anchor: "start",  dy: 12 },
   { name: "ブルゴス",                          lat: 42.35, lon: -3.70, anchor: "middle", dy: -8 },
@@ -54,12 +55,12 @@ const cities: City[] = [
   { name: "シウダーレアル",                     lat: 38.99, lon: -3.92, anchor: "middle", dy: -8 },
   { name: "コルドバ",                          lat: 37.89, lon: -4.78, anchor: "middle", dy: -8 },
   { name: "グラナダ",                          lat: 37.18, lon: -3.60, anchor: "middle", dy: -10 },
-  { name: "マラガ",                            lat: 36.72, lon: -4.42, anchor: "middle", dy: 16 },
+  { name: "マラガ",                            lat: 36.72, lon: -4.42, anchor: "middle", dy: 12 },
   { name: "アリカンテ",                         lat: 38.35, lon: -0.48, anchor: "start",  dy: -8 },
   { name: "バレンシア",                         lat: 39.47, lon: -0.38, anchor: "start",  dy: -8,  capital: true },
   { name: "セビージャ",                         lat: 37.39, lon: -5.99, anchor: "middle", dy: -8,  capital: true },
-  { name: "カディス",                          lat: 36.53, lon: -6.30, anchor: "end",    dy: 16 },
-  { name: "ヘレス・デ・ラ・フロンテーラ",         lat: 36.69, lon: -6.14, anchor: "end",    dy: -10 },
+  { name: "カディス",                          lat: 36.53, lon: -6.30, anchor: "start",  dy: 12 },
+  { name: "ヘレス・デ・ラ・フロンテーラ",         lat: 36.69, lon: -6.14, anchor: "start",  dy: -10 },
 ];
 
 function buildCityMarkers(list: City[]): string {
@@ -67,7 +68,7 @@ function buildCityMarkers(list: City[]): string {
 
   for (const city of list) {
     const [x, y] = toSVG(city.lon, city.lat);
-    const labelX = city.anchor === 'end' ? x - 5 : city.anchor === 'start' ? x + 5 : x;
+    const labelX = city.anchor === 'end' ? x - 6 : city.anchor === 'start' ? x + 6 : x;
     const r          = city.capital ? 3.5 : 2.5;
     const dotFill    = city.capital ? '#002147' : '#1a1a1a';
     const dotOpacity = city.capital ? '0.9' : '0.75';
