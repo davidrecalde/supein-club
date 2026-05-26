@@ -2,6 +2,8 @@
 import { getCollection } from 'astro:content';
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import SEO from '../../../components/SEO.astro';
+import Breadcrumb from '../../../components/Breadcrumb.astro';
+import TOC from '../../../components/TOC.astro';
 import LineBanner from '../../../components/LineBanner.astro';
 import SpainMapSVG from '../../../components/SpainMapSVG.astro';
 import { Waves, Fish, UtensilsCrossed, Sun, Flame, Leaf, Anchor, MapPin } from 'lucide-astro';
@@ -10,7 +12,14 @@ const canonical = 'https://supein.club/food/spain-map/';
 const breadcrumbs = [
   { name: 'ホーム', url: '/' },
   { name: 'スペイン料理', url: '/food/' },
-  { name: 'Spanish Food Map', url: '/food/spain-map/' },
+  { name: 'スペイン美食マップ', url: '' },
+];
+
+const tocHeadings = [
+  { depth: 2, slug: 'interactive-map', text: 'インタラクティブマップ' },
+  { depth: 2, slug: 'culinary-zones',  text: '7つの美食ゾーン' },
+  { depth: 2, slug: 'timing',          text: 'スペインの食事時間' },
+  { depth: 2, slug: 'japan-map',       text: '日本のスペイン料理店' },
 ];
 
 const entries = await getCollection('spain-map', ({ data }) => data.draft !== true);
@@ -190,6 +199,9 @@ const japanMaps = [
   <section class="bg-navy text-white relative" style="padding:80px 0;">
     <div class="absolute top-0 left-0 right-0 h-[3px] bg-primary"></div>
     <div class="container">
+      <div style="margin-bottom:20px; opacity:0.5;">
+        <Breadcrumb items={breadcrumbs} dark={true} />
+      </div>
       <p class="text-primary font-bold tracking-widest" style="font-size:11px; text-transform:uppercase; margin-bottom:12px;">SPANISH FOOD MAP</p>
       <h1 class="font-serif font-bold text-white" style="font-size:clamp(28px,5vw,48px); margin-bottom:16px; line-height:1.25;">
         スペイン美食地図 — 味で旅するスペイン
@@ -210,128 +222,135 @@ const japanMaps = [
     </div>
   </section>
 
-  <!-- Interactive SVG Map -->
-  <section style="background:white; padding:72px 0;">
-    <div class="container">
-      <p class="text-primary font-bold tracking-widest" style="font-size:11px; text-transform:uppercase; margin-bottom:8px;">INTERACTIVE MAP</p>
-      <h2 class="font-serif font-bold text-navy" style="font-size:clamp(24px,3vw,36px); margin-bottom:12px;">スペイン州別マップ</h2>
-      <p class="text-muted" style="font-size:16px; max-width:680px; line-height:1.7; margin-bottom:40px;">
-        州をクリックして、レストランマップまたは詳細ガイドへ。赤い枠は編集部ガイドがある州です。
-      </p>
-      <SpainMapSVG />
-    </div>
-  </section>
+  <!-- Content with TOC sidebar -->
+  <div class="page-container" style="padding-top:48px; padding-bottom:80px;">
+    <div class="content-grid">
 
-  <!-- Sección 1: 7 Zonas Culinarias -->
-  <section style="background:var(--color-canvas); padding:72px 0;">
-    <div class="container">
-      <p class="text-primary font-bold tracking-widest" style="font-size:11px; text-transform:uppercase; margin-bottom:8px;">RUTAS DE SABOR</p>
-      <h2 class="font-serif font-bold text-navy" style="font-size:clamp(24px,3vw,36px); margin-bottom:12px;">7つの美食ゾーンで探す</h2>
-      <p class="text-muted" style="font-size:16px; max-width:680px; line-height:1.7; margin-bottom:48px;">
-        スペインは地域によって料理文化がまったく異なります。<br />
-        まずあなたが好きな味のゾーンから探してみましょう。
-      </p>
+      <div class="content-main">
 
-      <div class="zones-grid">
-        {zones.map((zone) => {
-          const Icon = zone.icon;
-          return (
-            <div class="zone-card" style={`border-left-color: ${zone.color};`}>
-              <div class="zone-header">
-                <div class="zone-icon" style={`color: ${zone.color};`}>
-                  <Icon size={22} />
-                </div>
-                <div>
-                  <h3 class="text-navy font-bold" style="font-size:17px; margin:0 0 4px;">{zone.title}</h3>
-                  <div class="province-chips">
-                    {zone.provincias.split(' · ').map((p) => (
-                      <span class="province-chip">{p}</span>
+        <!-- Interactive SVG Map -->
+        <section id="interactive-map" class="msec">
+          <p class="text-primary font-bold tracking-widest" style="font-size:11px; text-transform:uppercase; margin-bottom:8px;">INTERACTIVE MAP</p>
+          <h2 class="font-serif font-bold text-navy" style="font-size:clamp(24px,3vw,36px); margin-bottom:12px;">スペイン州別マップ</h2>
+          <p class="text-muted" style="font-size:16px; max-width:680px; line-height:1.7; margin-bottom:40px;">
+            州をクリックして、レストランマップまたは詳細ガイドへ。赤い枠は編集部ガイドがある州です。
+          </p>
+          <SpainMapSVG />
+        </section>
+
+        <!-- 7 Zonas Culinarias -->
+        <section id="culinary-zones" class="msec">
+          <p class="text-primary font-bold tracking-widest" style="font-size:11px; text-transform:uppercase; margin-bottom:8px;">RUTAS DE SABOR</p>
+          <h2 class="font-serif font-bold text-navy" style="font-size:clamp(24px,3vw,36px); margin-bottom:12px;">7つの美食ゾーンで探す</h2>
+          <p class="text-muted" style="font-size:16px; max-width:680px; line-height:1.7; margin-bottom:48px;">
+            スペインは地域によって料理文化がまったく異なります。<br />
+            まずあなたが好きな味のゾーンから探してみましょう。
+          </p>
+
+          <div class="zones-grid">
+            {zones.map((zone) => {
+              const Icon = zone.icon;
+              return (
+                <div class="zone-card" style={`border-left-color: ${zone.color};`}>
+                  <div class="zone-header">
+                    <div class="zone-icon" style={`color: ${zone.color};`}>
+                      <Icon size={22} />
+                    </div>
+                    <div>
+                      <h3 class="text-navy font-bold" style="font-size:17px; margin:0 0 4px;">{zone.title}</h3>
+                      <div class="province-chips">
+                        {zone.provincias.split(' · ').map((p) => (
+                          <span class="province-chip">{p}</span>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+
+                  <p class="text-muted" style="font-size:14px; font-style:italic; margin:12px 0 10px; line-height:1.6;">{zone.destacado}</p>
+
+                  <div style="margin-bottom:16px;">
+                    <span class="dish-badge">{zone.platoIconico}</span>
+                  </div>
+
+                  {zone.guideLink && (
+                    <div style="margin-bottom:12px;">
+                      <a href={zone.guideLink.href} class="guide-link-badge">
+                        ガイドあり — {zone.guideLink.label} →
+                      </a>
+                    </div>
+                  )}
+
+                  <div class="province-links">
+                    {zone.links.map((link) => (
+                      <a href={link.url} target="_blank" rel="noopener noreferrer" class="province-map-link">
+                        <MapPin size={11} />
+                        {link.nameJa}
+                      </a>
                     ))}
                   </div>
                 </div>
-              </div>
-
-              <p class="text-muted" style="font-size:14px; font-style:italic; margin:12px 0 10px; line-height:1.6;">{zone.destacado}</p>
-
-              <div style="margin-bottom:16px;">
-                <span class="dish-badge">{zone.platoIconico}</span>
-              </div>
-
-              {zone.guideLink && (
-                <div style="margin-bottom:12px;">
-                  <a href={zone.guideLink.href} class="guide-link-badge">
-                    ガイドあり — {zone.guideLink.label} →
-                  </a>
-                </div>
-              )}
-
-              <div class="province-links">
-                {zone.links.map((link) => (
-                  <a href={link.url} target="_blank" rel="noopener noreferrer" class="province-map-link">
-                    <MapPin size={11} />
-                    {link.nameJa}
-                  </a>
-                ))}
-              </div>
-            </div>
-          );
-        })}
-      </div>
-    </div>
-  </section>
-
-  <!-- Sección 2: Reloj gastronómico -->
-  <section class="bg-white" style="padding:72px 0;">
-    <div class="container">
-      <p class="text-primary font-bold tracking-widest" style="font-size:11px; text-transform:uppercase; margin-bottom:8px;">TIMING IS EVERYTHING</p>
-      <h2 class="font-serif font-bold text-navy" style="font-size:clamp(24px,3vw,36px); margin-bottom:12px;">スペインの食事時間を知ろう</h2>
-      <p class="text-muted" style="font-size:16px; margin-bottom:48px;">日本との時間差に注意。スペインの食生活は日本とまったく異なります。</p>
-
-      <div class="timeline-wrap">
-        {mealtimes.map((meal, i) => (
-          <div class={`timeline-item${meal.highlight ? ' timeline-item--highlight' : ''}`}>
-            <div class="timeline-dot"></div>
-            <div class="timeline-time">{meal.time}</div>
-            <div class="timeline-name font-bold">{meal.name}</div>
-            <div class="timeline-desc">{meal.desc}</div>
+              );
+            })}
           </div>
-        ))}
+        </section>
+
+        <!-- Reloj gastronómico -->
+        <section id="timing" class="msec">
+          <p class="text-primary font-bold tracking-widest" style="font-size:11px; text-transform:uppercase; margin-bottom:8px;">TIMING IS EVERYTHING</p>
+          <h2 class="font-serif font-bold text-navy" style="font-size:clamp(24px,3vw,36px); margin-bottom:12px;">スペインの食事時間を知ろう</h2>
+          <p class="text-muted" style="font-size:16px; margin-bottom:48px;">日本との時間差に注意。スペインの食生活は日本とまったく異なります。</p>
+
+          <div class="timeline-wrap">
+            {mealtimes.map((meal, i) => (
+              <div class={`timeline-item${meal.highlight ? ' timeline-item--highlight' : ''}`}>
+                <div class="timeline-dot"></div>
+                <div class="timeline-time">{meal.time}</div>
+                <div class="timeline-name font-bold">{meal.name}</div>
+                <div class="timeline-desc">{meal.desc}</div>
+              </div>
+            ))}
+          </div>
+
+          <div class="alert-card" style="margin-top:40px;">
+            <p style="margin:0; font-size:15px; line-height:1.7;">
+              <strong>注意：</strong>スペインのレストランは通常13:30〜15:30と20:30〜22:30のみ営業。
+              この時間以外は閉まっていることが多いです。
+              お腹が空いたらバルでタパスを！
+            </p>
+          </div>
+        </section>
+
+        <!-- Japan maps -->
+        <section id="japan-map" class="msec msec--last">
+          <p class="text-primary font-bold tracking-widest" style="font-size:11px; text-transform:uppercase; margin-bottom:8px;">IN JAPAN</p>
+          <h2 class="font-serif font-bold text-navy" style="font-size:clamp(24px,3vw,36px); margin-bottom:12px;">日本のスペイン料理店マップ</h2>
+          <p class="text-muted" style="font-size:16px; margin-bottom:32px;">日本全国のスペイン料理レストラン・バルをエリア別に検索</p>
+
+          <div style="display:flex; flex-wrap:wrap; gap:12px; margin-bottom:32px;">
+            <a href="/food/restaurants-tokyo/" class="japan-highlight-link">東京のスペイン料理店 →</a>
+            <a href="/food/restaurants-osaka/" class="japan-highlight-link">大阪のスペイン料理店 →</a>
+          </div>
+
+          <div class="japan-grid">
+            {japanMaps.map((j) => (
+              <a href={j.url} target="_blank" rel="noopener noreferrer" class="japan-card">
+                <p class="province-name-ja">{j.nameJa}</p>
+                <p class="province-name-es">{j.name}</p>
+              </a>
+            ))}
+          </div>
+        </section>
+
       </div>
 
-      <div class="alert-card" style="margin-top:40px;">
-        <p style="margin:0; font-size:15px; line-height:1.7;">
-          <strong>注意：</strong>スペインのレストランは通常13:30〜15:30と20:30〜22:30のみ営業。
-          この時間以外は閉まっていることが多いです。
-          お腹が空いたらバルでタパスを！
-        </p>
-      </div>
+      <aside class="content-sidebar">
+        <TOC headings={tocHeadings} />
+      </aside>
+
     </div>
-  </section>
+  </div>
 
-  <!-- Sección 3: Japan maps -->
-  <section style="background:var(--color-canvas); padding:72px 0;">
-    <div class="container">
-      <p class="text-primary font-bold tracking-widest" style="font-size:11px; text-transform:uppercase; margin-bottom:8px;">IN JAPAN</p>
-      <h2 class="font-serif font-bold text-navy" style="font-size:clamp(24px,3vw,36px); margin-bottom:12px;">日本のスペイン料理店マップ</h2>
-      <p class="text-muted" style="font-size:16px; margin-bottom:32px;">日本全国のスペイン料理レストラン・バルをエリア別に検索</p>
-
-      <div style="display:flex; flex-wrap:wrap; gap:12px; margin-bottom:32px;">
-        <a href="/food/restaurants-tokyo/" class="japan-highlight-link">東京のスペイン料理店 →</a>
-        <a href="/food/restaurants-osaka/" class="japan-highlight-link">大阪のスペイン料理店 →</a>
-      </div>
-
-      <div class="japan-grid">
-        {japanMaps.map((j) => (
-          <a href={j.url} target="_blank" rel="noopener noreferrer" class="japan-card">
-            <p class="province-name-ja">{j.nameJa}</p>
-            <p class="province-name-es">{j.name}</p>
-          </a>
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <!-- Sección 4: CTA -->
+  <!-- CTA — full-width -->
   <section class="bg-navy text-white" style="padding:72px 0; text-align:center;">
     <div class="container" style="max-width:640px;">
       <p class="text-primary font-bold tracking-widest" style="font-size:11px; text-transform:uppercase; margin-bottom:12px;">ALL MAPS</p>
@@ -356,6 +375,21 @@ const japanMaps = [
 </BaseLayout>
 
 <style>
+  /* Sections inside content-main */
+  .msec {
+    padding-top: 48px;
+    padding-bottom: 48px;
+    border-bottom: 1px solid var(--color-border);
+  }
+  .msec:first-child {
+    padding-top: 0;
+  }
+  .msec--last,
+  .msec:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+
   /* Zone cards grid */
   .zones-grid {
     display: grid;
@@ -523,7 +557,7 @@ const japanMaps = [
   /* Japan grid */
   .japan-grid {
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     gap: 12px;
   }
   .japan-card {
@@ -580,10 +614,11 @@ const japanMaps = [
       gap: 16px;
     }
     .timeline-dot { margin-bottom: 0; flex-shrink: 0; margin-top: 3px; }
-    .japan-grid { grid-template-columns: repeat(4, 1fr); }
+    .japan-grid { grid-template-columns: repeat(3, 1fr); }
   }
   @media (max-width: 767px) {
-    .japan-grid { grid-template-columns: repeat(3, 1fr); }
+    .japan-grid { grid-template-columns: repeat(2, 1fr); }
+    .msec { padding-top: 32px; padding-bottom: 32px; }
   }
   @media (max-width: 479px) {
     .japan-grid { grid-template-columns: repeat(2, 1fr); }
