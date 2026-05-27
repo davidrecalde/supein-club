@@ -11,6 +11,7 @@ import ArticleCard from '../components/ArticleCard.astro';
 import AdSlot from '../components/AdSlot.astro';
 import ResponsiveImage from '../components/ResponsiveImage.astro';
 import LineBanner from '../components/LineBanner.astro';
+import { slugToJa } from '../config/breadcrumbs';
 
 interface Props {
   entry: CollectionEntry<'articles'>;
@@ -37,17 +38,19 @@ const articleSlug = idParts[2] ?? cluster;
 const canonical = `https://supein.club/${pillar}/${cluster}/${articleSlug}/`;
 const pillarLabel = pillarLabels[pillar] ?? pillar;
 
+const clusterLabel = slugToJa(cluster);
+
 const visualBreadcrumbs = [
   { name: 'ホーム', url: '/' },
   { name: pillarLabel, url: `/${pillar}/` },
-  { name: cluster, url: `/${pillar}/${cluster}/` },
+  { name: clusterLabel, url: `/${pillar}/${cluster}/` },
   { name: title, url: canonical },
 ];
 
 const seoBreadcrumbs = [
   { name: 'ホーム', url: '/' },
   { name: pillarLabel, url: `/${pillar}/` },
-  { name: cluster, url: `/${pillar}/${cluster}/` },
+  { name: clusterLabel, url: `/${pillar}/${cluster}/` },
 ];
 
 let related: CollectionEntry<'articles'>[] = [];
@@ -100,7 +103,15 @@ if (firstRelated) {
       </div>
       <h1 class="font-sans font-bold text-3xl md:text-4xl leading-tight mt-4 mb-4">{title}</h1>
       <div class="text-sm text-white/50 flex gap-5 flex-wrap">
-        {author && <span>{author.data.name}</span>}
+        {author && (
+          <a
+            href="#author-box"
+            onclick="event.preventDefault(); document.getElementById('author-box')?.scrollIntoView({behavior:'smooth',block:'start'}); history.pushState(null,'','#author-box');"
+            style="color:inherit; text-decoration:none; cursor:pointer;"
+          >
+            {author.data.nameJa ?? author.data.name}
+          </a>
+        )}
         <time datetime={pubDate.toISOString()}>公開: {pubDate.toLocaleDateString('ja-JP')}</time>
         {updatedDate && (
           <time datetime={updatedDate.toISOString()}>更新: {updatedDate.toLocaleDateString('ja-JP')}</time>

@@ -30,7 +30,7 @@ function initials(n: string) {
 
 <script type="application/ld+json" set:html={JSON.stringify(personSchema)} />
 
-<aside class="mt-12 mb-8" style="border: 1px solid #e5e7eb; border-top: 3px solid #C8102E; border-radius: 12px; padding: 24px;">
+<aside id="author-box" class="mt-12 mb-8" style="border: 1px solid #e5e7eb; border-top: 3px solid #C8102E; border-radius: 12px; padding: 24px;">
   <p style="font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; color: #6b7280; margin-bottom: 14px; font-weight: 600;">
     この記事の著者
   </p>
@@ -74,6 +74,17 @@ function initials(n: string) {
           ))}
         </div>
       )}
+
+      <div style="margin-top: 14px;">
+        <a
+          href={`/about-us/team/${slug}/`}
+          style="font-size: 13px; color: #C8102E; font-weight: 600; text-decoration: none;"
+          onmouseover="this.style.textDecoration='underline'"
+          onmouseout="this.style.textDecoration='none'"
+        >
+          詳細プロフィールを見る →
+        </a>
+      </div>
 
       {(twitter || linkedin || instagram) && (
         <div style="display: flex; gap: 10px; margin-top: 12px; align-items: center;">

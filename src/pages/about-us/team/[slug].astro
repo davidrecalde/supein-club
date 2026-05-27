@@ -60,13 +60,20 @@ const sameAs = [linkedinUrl, websiteUrl, instagramUrl].filter(Boolean) as string
 const profileSchema = {
   '@context': 'https://schema.org',
   '@type': 'ProfilePage',
+  dateCreated: '2026-06-01T00:00:00Z',
+  dateModified: new Date().toISOString(),
   mainEntity: {
     '@type': 'Person',
     name,
     alternateName: nameJa ?? undefined,
     jobTitle: displayRole || undefined,
     description: bio,
-    image: avatar ? `https://supein.club${avatar}` : undefined,
+    image: avatar ? {
+      '@type': 'ImageObject',
+      url: `https://supein.club${avatar}`,
+      width: 400,
+      height: 400,
+    } : undefined,
     url: authorUrl,
     sameAs: sameAs.length > 0 ? sameAs : undefined,
     worksFor: {

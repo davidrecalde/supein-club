@@ -35,7 +35,8 @@ const graph: object[] = [];
 graph.push({
   '@type': 'Organization',
   '@id': `${siteUrl}/#organization`,
-  name: 'スペイン倶楽部 (Club Español en Japón)',
+  name: 'Club Español en Japón スペイン倶楽部',
+  alternateName: 'Supein Club',
   url: siteUrl,
   logo: {
     '@type': 'ImageObject',
@@ -44,6 +45,10 @@ graph.push({
     height: 100,
   },
   foundingDate: '2018',
+  founder: {
+    '@type': 'Person',
+    name: 'David Recalde',
+  },
   description: '日本在住のスペイン語話者・スペイン好きのコミュニティ',
   address: {
     '@type': 'PostalAddress',
@@ -52,6 +57,7 @@ graph.push({
   },
   sameAs: [
     'https://www.instagram.com/supeinclub/',
+    'https://www.linkedin.com/company/supeinclub/',
     'https://lin.ee/vx6jpud',
   ],
 });
@@ -114,6 +120,26 @@ if (type === 'article' && article) {
     ? { '@type': 'ImageObject', url: `${siteUrl}${article.data.image}`, width: 1200, height: 514 }
     : { '@type': 'ImageObject', url: `${siteUrl}/logo-og.png` };
 
+  const rawLinkedin = author?.data.linkedin;
+  const rawInstagram = author?.data.instagram;
+  const normalizeUrl = (raw: string | undefined, base: string) =>
+    raw ? (raw.startsWith('http') ? raw : `${base}${raw}`) : undefined;
+  const authorLinkedIn = normalizeUrl(rawLinkedin, 'https://linkedin.com/in/');
+  const authorInstagram = normalizeUrl(rawInstagram, 'https://instagram.com/');
+  const authorWebsite = author?.data.website;
+  const authorSameAs = [authorLinkedIn, authorInstagram, authorWebsite].filter(Boolean) as string[];
+  const authorAvatar = author?.data.avatar ? `${siteUrl}${author.data.avatar}` : undefined;
+  const authorJobTitle = author?.data.jobTitle ?? author?.data.role;
+
+  const articleAuthor: Record<string, unknown> = {
+    '@type': 'Person',
+    name: authorName,
+    url: authorUrl,
+  };
+  if (authorAvatar) articleAuthor.image = authorAvatar;
+  if (authorJobTitle) articleAuthor.jobTitle = authorJobTitle;
+  if (authorSameAs.length > 0) articleAuthor.sameAs = authorSameAs;
+
   if (schemaType === 'recipe') {
     graph.push({
       '@type': 'Recipe',
@@ -174,12 +200,12 @@ if (type === 'article' && article) {
     graph.push({
       '@type': 'Article',
       '@id': `${canonical}#article`,
-      headline: title,
+      headline: title.slice(0, 110),
       description,
       url: canonical,
       datePublished: article.data.pubDate.toISOString(),
       dateModified: (article.data.updatedDate ?? article.data.pubDate).toISOString(),
-      author: { '@type': 'Person', name: authorName, url: authorUrl },
+      author: articleAuthor,
       publisher: { '@id': `${siteUrl}/#organization` },
       image: articleImage,
       inLanguage: lang === 'es' ? 'es' : 'ja',
@@ -196,17 +222,21 @@ if (type === 'article' && article) {
     graph.push({
       '@type': 'Article',
       '@id': `${canonical}#article`,
-      headline: title,
+      headline: title.slice(0, 110),
       description,
       url: canonical,
       datePublished: article.data.pubDate.toISOString(),
       dateModified: (article.data.updatedDate ?? article.data.pubDate).toISOString(),
-      author: { '@type': 'Person', name: authorName, url: authorUrl },
+      author: articleAuthor,
       publisher: { '@id': `${siteUrl}/#organization` },
       image: articleImage,
       inLanguage: lang === 'es' ? 'es' : 'ja',
       isPartOf: { '@id': `${siteUrl}/#website` },
       mainEntityOfPage: `${canonical}#webpage`,
+      about: {
+        '@type': 'Thing',
+        name: 'スペイン',
+      },
     });
   }
 }
