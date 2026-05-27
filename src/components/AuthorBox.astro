@@ -9,7 +9,7 @@ const { author } = Astro.props;
 const { name, avatar, jobTitle, bio, knowsAbout, sameAs, twitter, linkedin, instagram } = author.data;
 const slug = author.data.slug ?? author.id.replace(/\.(md|mdx)$/, '');
 
-const authorUrl = `https://supein.club/authors/${slug}/`;
+const authorUrl = `https://supein.club/about-us/team/${slug}/`;
 
 const personSchema = {
   '@context': 'https://schema.org',
@@ -54,7 +54,7 @@ function initials(n: string) {
     <!-- Content -->
     <div style="flex: 1; min-width: 0;">
       <a
-        href={`/authors/${slug}/`}
+        href={`/about-us/team/${slug}/`}
         style="font-weight: 700; font-size: 16px; color: #002147; text-decoration: none; display: block; margin-bottom: 2px;"
         onmouseover="this.style.color='#C8102E'"
         onmouseout="this.style.color='#002147'"

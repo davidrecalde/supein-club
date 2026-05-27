@@ -109,7 +109,7 @@ if (type === 'article' && article) {
   const schemaType = article.data.schemaType ?? 'article';
   const authorName = author?.data.name ?? 'スペイン倶楽部編集部';
   const authorSlug = author ? (author.data.slug ?? author.id.replace(/\.(md|mdx)$/, '')) : 'supeinclub-henshubu';
-  const authorUrl = `${siteUrl}/authors/${authorSlug}/`;
+  const authorUrl = `${siteUrl}/about-us/team/${authorSlug}/`;
   const articleImage = article.data.image
     ? { '@type': 'ImageObject', url: `${siteUrl}${article.data.image}`, width: 1200, height: 514 }
     : { '@type': 'ImageObject', url: `${siteUrl}/logo-og.png` };

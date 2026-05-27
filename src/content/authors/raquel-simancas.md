@@ -7,9 +7,9 @@ avatar: "/Raquel-Simancas.webp"
 bio: "科学者、研究者、そしてスペイン倶楽部の共同創設者。東京大学助教として、サステナビリティ・グリーンケミストリー・新素材の研究に取り組みながら、スペインと日本の架け橋として活動している。"
 location: "東京"
 since: "2018"
-linkedin: ""
+linkedin: "https://www.linkedin.com/in/raquel-simancas/"
 website: ""
-instagram: ""
+instagram: "https://www.instagram.com/raquel_sim_/"
 twitter: ""
 specialties: ["サステナビリティ", "グリーンケミストリー", "スペイン科学", "日西文化交流", "学術研究"]
 featured: true

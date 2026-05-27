@@ -1,0 +1,6 @@
+/about/team/                    /about-us/team/                  301
+/about/mission/                 /about-us/                       301
+/authors/                       /about-us/team/                  301
+/authors/david-recalde/         /about-us/team/david-recalde/    301
+/authors/raquel-simancas/       /about-us/team/raquel-simancas/  301
+/authors/*                      /about-us/team/:splat            301

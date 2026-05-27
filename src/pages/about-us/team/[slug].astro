@@ -1,10 +1,10 @@
 ---
 import { getCollection, type CollectionEntry } from 'astro:content';
-import BaseLayout from '../../layouts/BaseLayout.astro';
-import SEO from '../../components/SEO.astro';
-import ArticleCard from '../../components/ArticleCard.astro';
-import Breadcrumb from '../../components/Breadcrumb.astro';
-import LineBanner from '../../components/LineBanner.astro';
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import SEO from '../../../components/SEO.astro';
+import ArticleCard from '../../../components/ArticleCard.astro';
+import Breadcrumb from '../../../components/Breadcrumb.astro';
+import LineBanner from '../../../components/LineBanner.astro';
 import { Globe } from 'lucide-astro';
 
 export async function getStaticPaths() {
@@ -46,11 +46,12 @@ const articles = allArticles
   })
   .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 
-const authorUrl = `https://supein.club/authors/${slug}/`;
+const authorUrl = `https://supein.club/about-us/team/${slug}/`;
 
 const breadcrumbs = [
   { name: 'ホーム', url: '/' },
-  { name: '著者一覧', url: '/authors/' },
+  { name: 'スペイン倶楽部とは', url: '/about-us/' },
+  { name: 'チームメンバー', url: '/about-us/team/' },
   { name: displayName, url: '' },
 ];
 

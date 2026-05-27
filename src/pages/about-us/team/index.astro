@@ -11,7 +11,7 @@ const featured = allAuthors.filter((a) => a.data.featured);
 const rest = allAuthors.filter((a) => !a.data.featured);
 const authors = [...featured, ...rest];
 
-const canonical = 'https://supein.club/about/team/';
+const canonical = 'https://supein.club/about-us/team/';
 
 const breadcrumbs = [
   { name: 'ホーム', url: '/' },
@@ -35,7 +35,7 @@ const teamSchema = JSON.stringify({
       alternateName: a.data.nameJa ?? undefined,
       jobTitle: a.data.role ?? a.data.jobTitle ?? undefined,
       image: a.data.avatar ? `https://supein.club${a.data.avatar}` : undefined,
-      url: `https://supein.club/authors/${a.data.slug ?? a.id.replace(/\.(md|mdx)$/, '')}/`,
+      url: `https://supein.club/about-us/team/${a.data.slug ?? a.id.replace(/\.(md|mdx)$/, '')}/`,
     })),
   },
 });
@@ -153,7 +153,7 @@ function socialUrl(val: string | undefined, base: string): string | undefined {
                   </div>
                 )}
 
-                <a href={`/authors/${slug}/`} class="card-cta">
+                <a href={`/about-us/team/${slug}/`} class="card-cta">
                   プロフィールを見る →
                 </a>
               </div>
