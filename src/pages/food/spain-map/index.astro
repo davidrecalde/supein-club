@@ -228,7 +228,26 @@ const japanMaps = [
 
       <div class="content-main">
 
-        <TOC headings={tocHeadings} mobileOnly />
+        <details class="toc-mobile-inline">
+          <summary>
+            <span>目次</span>
+            <span class="tmi-chevron" aria-hidden="true">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </span>
+          </summary>
+          <ol class="tmi-list">
+            {tocHeadings.map((h, i) => (
+              <li>
+                <a href={'#' + h.slug}>
+                  <span class="tmi-num">{i + 1}.</span>
+                  {h.text}
+                </a>
+              </li>
+            ))}
+          </ol>
+        </details>
 
         <!-- Interactive SVG Map -->
         <section id="interactive-map" class="msec">

@@ -1,7 +1,6 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import SEO from '../../components/SEO.astro';
-import TOC from '../../components/TOC.astro';
 import LineBanner from '../../components/LineBanner.astro';
 import { Users, Lightbulb, Link2, Leaf, Type, Circle, Palette } from 'lucide-astro';
 
@@ -105,9 +104,28 @@ const aboutPageSchema = {
     </div>
   </section>
 
-  <!-- TOC mobile (accordion) — desktop ignora esta sección por CSS -->
+  <!-- TOC mobile (accordion) — global CSS lo oculta en desktop -->
   <div class="max-w-4xl mx-auto px-4 pt-10">
-    <TOC headings={tocHeadings} mobileOnly />
+    <details class="toc-mobile-inline">
+      <summary>
+        <span>目次</span>
+        <span class="tmi-chevron" aria-hidden="true">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </span>
+      </summary>
+      <ol class="tmi-list">
+        {tocHeadings.map((h, i) => (
+          <li>
+            <a href={'#' + h.slug}>
+              <span class="tmi-num">{i + 1}.</span>
+              {h.text}
+            </a>
+          </li>
+        ))}
+      </ol>
+    </details>
   </div>
 
   <!-- SECCIÓN 1: ミッション -->
