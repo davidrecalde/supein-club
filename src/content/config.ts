@@ -22,6 +22,7 @@ const authors = defineCollection({
     since: z.string().optional(),
     featured: z.boolean().optional(),
     order: z.number().optional(),
+    websiteLabel: z.string().optional(),
     lang: z.enum(['ja', 'es']).default('ja'),
     active: z.boolean().default(true),
   }),

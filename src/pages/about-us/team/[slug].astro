@@ -25,7 +25,7 @@ const { Content } = await author.render();
 const slug = author.data.slug ?? author.id.replace(/\.(md|mdx)$/, '');
 const {
   name, nameJa, role, jobTitle, avatar, bio, bioLong,
-  location, since, linkedin, website, instagram, twitter,
+  location, since, linkedin, website, websiteLabel, instagram, twitter,
   specialties, knowsAbout,
 } = author.data;
 
@@ -183,7 +183,7 @@ const hasBio = author.body?.trim().length > 0;
               {websiteUrl && (
                 <a href={websiteUrl} target="_blank" rel="noopener noreferrer" class="social-btn">
                   <Globe size={18} />
-                  ウェブサイト
+                  {websiteLabel ?? "ウェブサイト"}
                 </a>
               )}
               {instagramUrl && (
