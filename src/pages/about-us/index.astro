@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import SEO from '../../components/SEO.astro';
+import TOC from '../../components/TOC.astro';
 import LineBanner from '../../components/LineBanner.astro';
 import { Users, Lightbulb, Link2, Leaf, Type, Circle, Palette } from 'lucide-astro';
 
@@ -35,6 +36,14 @@ const timeline = [
   { year: '2020', text: '東京でのイベント活動を継続。クラブ2周年を仲間たちと祝いました。' },
   { year: '2022', text: 'パエリア・タパスフェスティバルをはじめ、レアル・マドリード財団との協力など、活動の幅をさらに広げました。' },
   { year: '2026', text: 'スペインに関する日本語ポータルサイト supein.club をリニューアル。コンテンツを通じて、より多くの日本人にスペインの魅力を届けます。' },
+];
+
+const tocHeadings = [
+  { depth: 2, slug: 'mission', text: '私たちのミッション' },
+  { depth: 2, slug: 'values', text: '大切にしていること' },
+  { depth: 2, slug: 'features', text: '人を中心に考えるコミュニティ' },
+  { depth: 2, slug: 'story', text: 'はじまりの物語' },
+  { depth: 2, slug: 'logo', text: 'ロゴの由来' },
 ];
 
 const aboutPageSchema = {
@@ -96,8 +105,13 @@ const aboutPageSchema = {
     </div>
   </section>
 
+  <!-- TOC mobile (accordion) — desktop ignora esta sección por CSS -->
+  <div class="max-w-4xl mx-auto px-4 pt-10">
+    <TOC headings={tocHeadings} mobileOnly />
+  </div>
+
   <!-- SECCIÓN 1: ミッション -->
-  <section class="py-20 px-4 bg-canvas">
+  <section id="mission" class="py-20 px-4 bg-canvas">
     <div class="max-w-4xl mx-auto">
       <p class="text-primary text-xs font-semibold uppercase tracking-widest mb-2">OUR MISSION</p>
       <h2 class="font-serif text-3xl font-bold text-navy mb-6">私たちのミッション</h2>
@@ -117,7 +131,7 @@ const aboutPageSchema = {
   </section>
 
   <!-- SECCIÓN 2: 価値観 -->
-  <section class="py-20 px-4 bg-navy text-white">
+  <section id="values" class="py-20 px-4 bg-navy text-white">
     <div class="max-w-4xl mx-auto">
       <p class="text-primary text-xs font-semibold uppercase tracking-widest mb-2">OUR VALUES</p>
       <h2 class="font-serif text-3xl font-bold mb-12">私たちが大切にしていること</h2>
@@ -133,7 +147,7 @@ const aboutPageSchema = {
   </section>
 
   <!-- SECCIÓN 3: 特徴 -->
-  <section class="py-20 px-4 bg-canvas">
+  <section id="features" class="py-20 px-4 bg-canvas">
     <div class="max-w-4xl mx-auto">
       <p class="text-primary text-xs font-semibold uppercase tracking-widest mb-2">HOW WE'RE DIFFERENT</p>
       <h2 class="font-serif text-3xl font-bold text-navy mb-6">人を中心に考えるコミュニティ</h2>
@@ -152,7 +166,7 @@ const aboutPageSchema = {
   </section>
 
   <!-- SECCIÓN 4: はじまりの物語 -->
-  <section class="py-20 px-4" style="background-color:#f8f8f6;">
+  <section id="story" class="py-20 px-4" style="background-color:#f8f8f6;">
     <div class="max-w-4xl mx-auto">
       <p class="text-primary text-xs font-semibold uppercase tracking-widest mb-2">OUR STORY</p>
       <h2 class="font-serif text-3xl font-bold text-navy mb-12">はじまりの物語</h2>
@@ -174,7 +188,7 @@ const aboutPageSchema = {
   </section>
 
   <!-- SECCIÓN 5: ロゴの由来 -->
-  <section class="bg-canvas" style="padding-top:80px;padding-bottom:80px;">
+  <section id="logo" class="bg-canvas" style="padding-top:80px;padding-bottom:80px;">
     <div class="logo-section-inner">
       <p class="text-primary font-semibold uppercase mb-4" style="font-size:11px;letter-spacing:0.12em;">OUR LOGO</p>
       <h2 class="font-sans font-bold text-navy mb-4 logo-heading">ロゴの由来</h2>

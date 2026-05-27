@@ -7,9 +7,10 @@ interface Heading {
 
 interface Props {
   headings: Heading[];
+  mobileOnly?: boolean;
 }
 
-const { headings } = Astro.props;
+const { headings, mobileOnly = false } = Astro.props;
 const h2s = headings.filter((h) => h.depth === 2);
 ---
 
@@ -43,7 +44,7 @@ const h2s = headings.filter((h) => h.depth === 2);
   </details>
 )}
 
-{h2s.length > 0 && (
+{h2s.length > 0 && !mobileOnly && (
   <nav class="toc" aria-label="目次">
     <p class="toc-title">目次</p>
     <div class="toc-track">

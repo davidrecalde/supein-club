@@ -1,11 +1,17 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import SEO from '../../components/SEO.astro';
+import TOC from '../../components/TOC.astro';
 import LineBanner from '../../components/LineBanner.astro';
 
 const breadcrumbs = [
   { name: 'ホーム', url: '/' },
   { name: 'スポンサーシップ', url: '/sponsors/' },
+];
+
+const tocHeadings = [
+  { depth: 2, slug: 'why', text: 'なぜ私たちと組むのか' },
+  { depth: 2, slug: 'plans', text: 'スポンサーシッププラン' },
 ];
 
 const reasons = [
@@ -53,8 +59,13 @@ const tiers = [
     </div>
   </section>
 
+  <!-- TOC mobile (accordion) -->
+  <div class="max-w-4xl mx-auto px-4 pt-10">
+    <TOC headings={tocHeadings} mobileOnly />
+  </div>
+
   <!-- SECCIÓN 1: なぜ私たちと組むのか -->
-  <section class="py-20 px-4 bg-canvas">
+  <section id="why" class="py-20 px-4 bg-canvas">
     <div class="max-w-4xl mx-auto">
       <h2 class="font-serif text-3xl font-bold text-navy mb-12">なぜ私たちと組むのか</h2>
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -69,7 +80,7 @@ const tiers = [
   </section>
 
   <!-- SECCIÓN 2: プラン -->
-  <section class="py-20 px-4" style="background-color:#f8f8f6;">
+  <section id="plans" class="py-20 px-4" style="background-color:#f8f8f6;">
     <div class="max-w-4xl mx-auto">
       <h2 class="font-serif text-3xl font-bold text-navy mb-12">スポンサーシッププラン</h2>
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
