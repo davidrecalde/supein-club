@@ -6,7 +6,9 @@ import LineBanner from '../../components/LineBanner.astro';
 import { Users, Lightbulb, Link2, Leaf, Type, Circle, Palette } from 'lucide-astro';
 
 const allAuthors = await getCollection('authors', ({ data }) => data.active !== false);
-const featuredAuthors = allAuthors.filter((a) => a.data.featured);
+const featuredAuthors = allAuthors
+  .filter((a) => a.data.featured)
+  .sort((a, b) => (a.data.order ?? 999) - (b.data.order ?? 999));
 function teamSlug(a: typeof allAuthors[number]) {
   return a.data.slug ?? a.id.replace(/\.(md|mdx)$/, '');
 }

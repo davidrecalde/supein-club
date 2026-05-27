@@ -13,6 +13,7 @@ instagram: "https://www.instagram.com/davidrecalde/"
 twitter: ""
 specialties: ["スペイン料理", "スペイン旅行", "スペイン文化", "デザイン", "コミュニケーション"]
 featured: true
+order: 1
 lang: "ja"
 active: true
 ---

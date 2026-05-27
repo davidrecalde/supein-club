@@ -13,6 +13,7 @@ instagram: "https://www.instagram.com/raquel_sim_/"
 twitter: ""
 specialties: ["サステナビリティ", "グリーンケミストリー", "スペイン科学", "日西文化交流", "学術研究"]
 featured: true
+order: 2
 lang: "ja"
 active: true
 ---

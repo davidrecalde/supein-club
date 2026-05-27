@@ -7,8 +7,11 @@ import LineBanner from '../../../components/LineBanner.astro';
 import { Globe } from 'lucide-astro';
 
 const allAuthors = await getCollection('authors', ({ data }) => data.active !== false);
-const featured = allAuthors.filter((a) => a.data.featured);
-const rest = allAuthors.filter((a) => !a.data.featured);
+function byOrder(a: typeof allAuthors[number], b: typeof allAuthors[number]) {
+  return (a.data.order ?? 999) - (b.data.order ?? 999);
+}
+const featured = allAuthors.filter((a) => a.data.featured).sort(byOrder);
+const rest = allAuthors.filter((a) => !a.data.featured).sort(byOrder);
 const authors = [...featured, ...rest];
 
 const canonical = 'https://supein.club/about-us/team/';

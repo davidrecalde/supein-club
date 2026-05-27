@@ -6,7 +6,8 @@ interface Props {
 }
 
 const { author } = Astro.props;
-const { name, avatar, jobTitle, bio, knowsAbout, sameAs, twitter, linkedin, instagram } = author.data;
+const { name, avatar, jobTitle, bio, knowsAbout, specialties, sameAs, twitter, linkedin, instagram } = author.data;
+const topics = specialties ?? knowsAbout ?? [];
 const slug = author.data.slug ?? author.id.replace(/\.(md|mdx)$/, '');
 
 const authorUrl = `https://supein.club/about-us/team/${slug}/`;
@@ -18,7 +19,7 @@ const personSchema = {
   url: authorUrl,
   jobTitle,
   description: bio,
-  knowsAbout,
+  knowsAbout: topics.length > 0 ? topics : undefined,
   sameAs: sameAs ?? [],
 };
 
@@ -64,9 +65,9 @@ function initials(n: string) {
       <p style="font-size: 13px; color: #C8102E; margin: 0 0 6px;">{jobTitle}</p>
       <p style="font-size: 14px; color: #4b5563; line-height: 1.7; margin: 0;">{bio}</p>
 
-      {knowsAbout.length > 0 && (
+      {topics.length > 0 && (
         <div style="display: flex; flex-wrap: wrap; gap: 6px; margin-top: 12px;">
-          {knowsAbout.map((topic) => (
+          {topics.map((topic) => (
             <span style="background: #f3f4f6; color: #374151; font-size: 11px; padding: 2px 8px; border-radius: 4px;">
               {topic}
             </span>
