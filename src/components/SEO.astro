@@ -52,8 +52,21 @@ graph.push({
   description: '日本在住のスペイン語話者・スペイン好きのコミュニティ',
   address: {
     '@type': 'PostalAddress',
-    addressLocality: '東京',
+    streetAddress: '41-8 Yamatochō, Itabashi City',
+    addressLocality: 'Tokyo',
+    postalCode: '173-0012',
     addressCountry: 'JP',
+  },
+  location: {
+    '@type': 'Place',
+    name: 'Tokyo, Japan',
+    address: {
+      '@type': 'PostalAddress',
+      streetAddress: '41-8 Yamatochō, Itabashi City',
+      addressLocality: 'Tokyo',
+      postalCode: '173-0012',
+      addressCountry: 'JP',
+    },
   },
   sameAs: [
     'https://www.instagram.com/supeinclub/',
@@ -139,6 +152,11 @@ if (type === 'article' && article) {
   if (authorAvatar) articleAuthor.image = authorAvatar;
   if (authorJobTitle) articleAuthor.jobTitle = authorJobTitle;
   if (authorSameAs.length > 0) articleAuthor.sameAs = authorSameAs;
+  articleAuthor.worksFor = {
+    '@type': 'Organization',
+    name: 'Club Español en Japón スペイン倶楽部',
+    url: siteUrl,
+  };
 
   if (schemaType === 'recipe') {
     graph.push({

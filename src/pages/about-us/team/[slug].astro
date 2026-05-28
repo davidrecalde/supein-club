@@ -57,32 +57,111 @@ const breadcrumbs = [
 
 const sameAs = [linkedinUrl, websiteUrl, instagramUrl].filter(Boolean) as string[];
 
-const profileSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'ProfilePage',
-  dateCreated: '2026-06-01T00:00:00Z',
-  dateModified: new Date().toISOString(),
-  mainEntity: {
-    '@type': 'Person',
-    name,
-    alternateName: nameJa ?? undefined,
-    jobTitle: displayRole || undefined,
-    description: bio,
-    image: avatar ? {
-      '@type': 'ImageObject',
-      url: `https://supein.club${avatar}`,
-      width: 400,
-      height: 400,
-    } : undefined,
-    url: authorUrl,
-    sameAs: sameAs.length > 0 ? sameAs : undefined,
-    worksFor: {
-      '@type': 'Organization',
-      name: 'Club Español en Japón スペイン倶楽部',
-      url: 'https://supein.club',
-    },
-  },
-};
+const profileSchema = slug === 'david-recalde'
+  ? {
+      '@context': 'https://schema.org',
+      '@type': 'ProfilePage',
+      mainEntity: {
+        '@type': 'Person',
+        name: 'David Recalde',
+        alternateName: ['ダビッド・レカルデ', 'David García Recalde'],
+        jobTitle: 'Studio Lead, Designer & Cultural Communicator',
+        description: 'デザイナー、コミュニケーションコンサルタント。スペイン倶楽部創設者。東京スペイン文化センター（インスティトゥト・セルバンテス東京）勤務経験を持ち、在日スペイン大使館・ICEX・日本の文化機関と協働実績あり。',
+        image: {
+          '@type': 'ImageObject',
+          url: 'https://supein.club/David-Recalde.webp',
+          width: 400,
+          height: 400,
+        },
+        url: 'https://supein.club/about-us/team/david-recalde/',
+        worksFor: [
+          {
+            '@type': 'Organization',
+            name: 'NODA',
+            url: 'https://noda.tokyo/',
+            description: 'Design and communication agency based in Tokyo',
+          },
+          {
+            '@type': 'Organization',
+            name: 'Club Español en Japón スペイン倶楽部',
+            url: 'https://supein.club',
+          },
+        ],
+        alumniOf: {
+          '@type': 'Organization',
+          name: 'Instituto Cervantes de Tokio',
+          url: 'https://tokio.cervantes.es/',
+          description: 'Centro Cultural Español en Tokio — agencia pública del Gobierno de España',
+        },
+        affiliation: [
+          {
+            '@type': 'Organization',
+            name: 'Instituto Cervantes de Tokio',
+            url: 'https://tokio.cervantes.es/',
+          },
+          {
+            '@type': 'Organization',
+            name: 'Embajada de España en Japón',
+            url: 'https://www.exteriores.gob.es/Embajadas/tokio/',
+          },
+          {
+            '@type': 'Organization',
+            name: 'ICEX España Exportación e Inversiones',
+            url: 'https://www.icex.es/',
+          },
+        ],
+        knowsAbout: [
+          'スペイン料理',
+          'スペイン旅行',
+          'スペイン文化',
+          'スペイン語',
+          'デザイン',
+          '文化コミュニケーション',
+          '日西文化交流',
+        ],
+        knowsLanguage: ['ja', 'es', 'en'],
+        nationality: {
+          '@type': 'Country',
+          name: 'Spain',
+        },
+        homeLocation: {
+          '@type': 'Place',
+          name: 'Tokyo, Japan',
+        },
+        sameAs: [
+          'https://www.linkedin.com/in/davidgarciarecalde/',
+          'https://www.instagram.com/davidrecalde/',
+          'https://davidrecalde.com/',
+          'https://noda.tokyo/',
+        ],
+      },
+    }
+  : {
+      '@context': 'https://schema.org',
+      '@type': 'ProfilePage',
+      dateCreated: '2026-06-01T00:00:00Z',
+      dateModified: new Date().toISOString(),
+      mainEntity: {
+        '@type': 'Person',
+        name,
+        alternateName: nameJa ?? undefined,
+        jobTitle: displayRole || undefined,
+        description: bio,
+        image: avatar ? {
+          '@type': 'ImageObject',
+          url: `https://supein.club${avatar}`,
+          width: 400,
+          height: 400,
+        } : undefined,
+        url: authorUrl,
+        sameAs: sameAs.length > 0 ? sameAs : undefined,
+        worksFor: {
+          '@type': 'Organization',
+          name: 'Club Español en Japón スペイン倶楽部',
+          url: 'https://supein.club',
+        },
+      },
+    };
 
 const hasBio = author.body?.trim().length > 0;
 ---
