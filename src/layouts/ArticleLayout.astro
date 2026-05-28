@@ -11,6 +11,7 @@ import ArticleCard from '../components/ArticleCard.astro';
 import AdSlot from '../components/AdSlot.astro';
 import ResponsiveImage from '../components/ResponsiveImage.astro';
 import LineBanner from '../components/LineBanner.astro';
+import PreferredSourceCTA from '../components/PreferredSourceCTA.astro';
 import { slugToJa } from '../config/breadcrumbs';
 
 interface Props {
@@ -182,6 +183,8 @@ if (firstRelated) {
         </div>
 
         {faq && faq.length > 0 && <FAQSection faq={faq} />}
+
+        <PreferredSourceCTA />
 
         {author && <AuthorBox author={author} />}
 

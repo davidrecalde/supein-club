@@ -12,6 +12,7 @@ import ProvinceSpecialties from '../components/province/ProvinceSpecialties.astr
 import ProvinceNeighborhoods from '../components/province/ProvinceNeighborhoods.astro';
 import ProvinceRelated from '../components/province/ProvinceRelated.astro';
 import ProvinceCTA from '../components/province/ProvinceCTA.astro';
+import PreferredSourceCTA from '../components/PreferredSourceCTA.astro';
 
 interface Props {
   entry: CollectionEntry<'spain-map'>;
@@ -134,6 +135,8 @@ const localBusinessSchema = JSON.stringify({
             <FAQSection faq={entry.data.faq} />
           </section>
         )}
+
+        <PreferredSourceCTA />
 
       </div>
 
