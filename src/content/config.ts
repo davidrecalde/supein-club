@@ -142,4 +142,27 @@ const spainMap = defineCollection({
   }),
 });
 
-export const collections = { articles, authors, events, 'spain-map': spainMap };
+const pressReleases = defineCollection({
+  type: 'content',
+  schema: z.object({
+    title: z.string(),
+    titleEn: z.string().optional(),
+    date: z.coerce.date(),
+    category: z.enum([
+      'イベント',
+      'メディア掲載',
+      'コラボレーション',
+      '受賞・認定',
+      'プロダクト',
+      'コミュニティ',
+    ]),
+    summary: z.string(),
+    summaryEn: z.string().optional(),
+    featured: z.boolean().default(false),
+    draft: z.boolean().default(false),
+    image: z.string().optional(),
+    lang: z.enum(['ja', 'en']).default('ja'),
+  }),
+});
+
+export const collections = { articles, authors, events, 'spain-map': spainMap, 'press-releases': pressReleases };

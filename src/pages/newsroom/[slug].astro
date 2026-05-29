@@ -1,0 +1,100 @@
+---
+import { getCollection } from 'astro:content';
+import type { GetStaticPaths } from 'astro';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SEO from '../../components/SEO.astro';
+
+export const getStaticPaths: GetStaticPaths = async () => {
+  const releases = await getCollection('press-releases', e => !e.data.draft);
+  return releases.map(entry => ({
+    params: { slug: entry.id.replace(/\.(md|mdx)$/, '') },
+    props: { entry },
+  }));
+};
+
+const { entry } = Astro.props;
+const { Content } = await entry.render();
+const { title, date, category, summary } = entry.data;
+const slug = entry.id.replace(/\.(md|mdx)$/, '');
+const canonical = `https://supein.club/newsroom/${slug}/`;
+
+const breadcrumbs = [
+  { name: 'ホーム', url: '/' },
+  { name: 'プレスルーム', url: '/newsroom/' },
+  { name: title, url: `/newsroom/${slug}/` },
+];
+
+const newsArticleSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'NewsArticle',
+  headline: title,
+  datePublished: date.toISOString(),
+  description: summary,
+  author: {
+    '@type': 'Organization',
+    name: 'Club Español en Japón スペイン倶楽部',
+    url: 'https://supein.club',
+  },
+  publisher: {
+    '@type': 'Organization',
+    name: 'Club Español en Japón スペイン倶楽部',
+    logo: {
+      '@type': 'ImageObject',
+      url: 'https://supein.club/logo-og.png',
+    },
+  },
+  mainEntityOfPage: canonical,
+};
+
+const dateFormatted = date.toLocaleDateString('ja-JP', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+});
+---
+
+<BaseLayout title={`${title} | プレスルーム | スペイン倶楽部`}>
+  <SEO
+    slot="seo"
+    title={`${title} | プレスルーム | スペイン倶楽部`}
+    description={summary}
+    canonical={canonical}
+    breadcrumbs={breadcrumbs}
+  />
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(newsArticleSchema)} />
+
+  <!-- HERO -->
+  <section class="bg-navy text-white py-16 px-4">
+    <div class="max-w-3xl mx-auto">
+      <div class="flex flex-wrap items-center gap-3 mb-5">
+        <a href="/newsroom/" class="text-white/50 text-sm hover:text-white/80 transition-colors">
+          ← プレスルーム
+        </a>
+        <span style="display:inline-block; background:rgba(200,16,46,0.9); color:white; font-size:11px; font-weight:600; padding:3px 12px; border-radius:4px; letter-spacing:0.08em;">
+          {category}
+        </span>
+      </div>
+      <h1 class="font-serif text-2xl md:text-4xl font-bold mb-4 leading-tight">{title}</h1>
+      <time class="text-white/50 text-sm block mb-5">{dateFormatted}</time>
+      <p class="text-white/75 text-base leading-relaxed max-w-2xl">{summary}</p>
+    </div>
+  </section>
+
+  <!-- MDX Content -->
+  <section class="py-16 px-4 bg-white">
+    <div class="max-w-3xl mx-auto">
+      <article class="prose">
+        <Content />
+      </article>
+
+      <div class="mt-16 pt-8 border-t border-[#E8E8E6]">
+        <a
+          href="/newsroom/"
+          class="inline-flex items-center gap-2 text-primary font-semibold text-sm hover:underline underline-offset-4"
+        >
+          ← プレスルームに戻る
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

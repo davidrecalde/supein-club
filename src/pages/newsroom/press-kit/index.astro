@@ -1,0 +1,163 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import SEO from '../../../components/SEO.astro';
+
+const authors = await getCollection('authors', a => a.data.active !== false);
+const teamAuthors = authors.sort((a, b) => (a.data.order ?? 999) - (b.data.order ?? 999));
+
+function teamSlug(a: typeof authors[number]) {
+  return a.data.slug ?? a.id.replace(/\.(md|mdx)$/, '');
+}
+
+const breadcrumbs = [
+  { name: 'ホーム', url: '/' },
+  { name: 'プレスルーム', url: '/newsroom/' },
+  { name: 'プレスキット', url: '/newsroom/press-kit/' },
+];
+
+const blocks = [
+  {
+    label: 'HISTORY',
+    title: 'ヒストリー',
+    body: 'Club Español en Japón スペイン倶楽部は、2018年に東京で創設されました。日本在住のスペイン語話者と、スペインに興味を持つ日本人をつなぐコミュニティとして始まり、現在は旅行・料理・文化・語学を日本語で発信するカルチャーメディアとして活動しています。',
+  },
+  {
+    label: 'MISSION',
+    title: 'ミッション',
+    body: 'スペインの本当の姿を、日本語で届ける。料理・旅行・文化・語学を通じて、スペインと日本の架け橋となることが私たちの使命です。',
+  },
+  {
+    label: 'VALUES',
+    title: 'バリュー',
+    body: '本物志向 · オープン · コミュニティファースト · 現地目線でのコンテンツ · 日本人の視点からのスペイン',
+  },
+  {
+    label: 'WHAT WE DO',
+    title: '活動内容',
+    body: 'ウェブメディア supein.club の運営 · 東京でのイベント・文化交流活動 · LINE公式アカウントでの情報発信 · スペイン美食マップのキュレーション',
+  },
+];
+---
+
+<BaseLayout title="プレスキット | プレスルーム | スペイン倶楽部">
+  <SEO
+    slot="seo"
+    title="プレスキット | プレスルーム | スペイン倶楽部"
+    description="スペイン倶楽部のブランド資料一式。ブランドストーリー、ミッション、チームプロフィール、ロゴデータをまとめています。"
+    canonical="https://supein.club/newsroom/press-kit/"
+    breadcrumbs={breadcrumbs}
+  />
+
+  <!-- HERO -->
+  <section class="bg-navy text-white py-20 px-4">
+    <div class="max-w-4xl mx-auto">
+      <p class="text-primary text-xs font-semibold uppercase tracking-widest mb-4">PRESS KIT</p>
+      <h1 class="font-serif text-3xl md:text-5xl font-bold mb-6 leading-tight">プレスキット</h1>
+      <p class="text-white/75 text-lg leading-relaxed max-w-2xl">
+        スペイン倶楽部のブランド資料一式。<br />
+        メディア掲載・取材の際にご利用ください。
+      </p>
+    </div>
+  </section>
+
+  <!-- SECCIÓN 1: Brand blocks -->
+  <section class="py-20 px-4 bg-canvas">
+    <div class="max-w-4xl mx-auto">
+      <h2 class="font-serif text-3xl font-bold text-navy mb-10">ブランドについて</h2>
+
+      <div>
+        {blocks.map(({ label, title, body }) => (
+          <div class="brand-block">
+            <div class="brand-label-col">
+              <span class="text-primary text-xs font-semibold uppercase tracking-widest">{label}</span>
+              <p class="font-serif font-bold text-navy text-xl mt-1">{title}</p>
+            </div>
+            <p class="text-muted leading-relaxed">{body}</p>
+          </div>
+        ))}
+
+        <!-- Block 5: Team -->
+        <div class="brand-block">
+          <div class="brand-label-col">
+            <span class="text-primary text-xs font-semibold uppercase tracking-widest">TEAM</span>
+            <p class="font-serif font-bold text-navy text-xl mt-1">チーム</p>
+          </div>
+          <div class="space-y-3">
+            {teamAuthors.map(author => {
+              const slug = teamSlug(author);
+              return (
+                <div>
+                  <a
+                    href={`/about-us/team/${slug}/`}
+                    class="text-primary font-semibold text-sm hover:underline underline-offset-4"
+                  >
+                    {author.data.nameJa ?? author.data.name}
+                    {author.data.nameJa ? ` (${author.data.name})` : ''}
+                  </a>
+                  {(author.data.role ?? author.data.jobTitle) && (
+                    <span class="text-muted text-xs ml-2">— {author.data.role ?? author.data.jobTitle}</span>
+                  )}
+                </div>
+              );
+            })}
+            <a
+              href="/about-us/team/"
+              class="inline-flex items-center gap-1 text-primary text-xs font-semibold hover:underline underline-offset-4 mt-2 block"
+            >
+              チーム全員を見る →
+            </a>
+          </div>
+        </div>
+
+        <!-- Block 6: Assets -->
+        <div class="brand-block border-b-0">
+          <div class="brand-label-col">
+            <span class="text-primary text-xs font-semibold uppercase tracking-widest">ASSETS</span>
+            <p class="font-serif font-bold text-navy text-xl mt-1">ロゴ・素材</p>
+          </div>
+          <div>
+            <p class="text-muted leading-relaxed mb-6">
+              ロゴデータ・写真素材のご要望はお問い合わせフォームよりご連絡ください。
+            </p>
+            <a
+              href="/contact/"
+              class="inline-flex items-center justify-center bg-primary hover:bg-[#a00d24] text-white font-bold px-6 py-3 rounded-lg transition-colors text-sm"
+            >
+              素材をリクエスト →
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Back CTA -->
+  <section class="py-12 px-4 bg-white">
+    <div class="max-w-4xl mx-auto">
+      <a
+        href="/newsroom/"
+        class="inline-flex items-center gap-2 text-primary font-semibold text-sm hover:underline underline-offset-4"
+      >
+        ← プレスルームに戻る
+      </a>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .brand-block {
+    display: grid;
+    grid-template-columns: 180px 1fr;
+    gap: 48px;
+    align-items: start;
+    border-bottom: 1px solid #E8E8E6;
+    padding: 32px 0;
+  }
+  @media (max-width: 767px) {
+    .brand-block {
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
+  }
+</style>

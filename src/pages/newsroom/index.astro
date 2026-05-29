@@ -1,26 +1,24 @@
 ---
+import { getCollection } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import SEO from '../../components/SEO.astro';
+import { Download } from 'lucide-astro';
+
+const releases = await getCollection('press-releases', e => !e.data.draft);
+releases.sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
 
 const breadcrumbs = [
   { name: 'ホーム', url: '/' },
   { name: 'プレスルーム', url: '/newsroom/' },
 ];
 
-const channels = [
-  { label: 'ウェブサイト', handle: 'supein.club', href: 'https://supein.club/' },
-  { label: 'Instagram', handle: '@supeinclub', href: 'https://www.instagram.com/supeinclub/' },
-  { label: 'LinkedIn', handle: '@supeinclub', href: 'https://www.linkedin.com/company/supeinclub/' },
-  { label: 'LINE', handle: '@spainclub', href: 'https://lin.ee/vx6jpud' },
-  { label: 'Facebook', handle: '@supeinclub', href: 'https://www.facebook.com/supeinclub/' },
-  { label: 'X (Twitter)', handle: '@supeinclub', href: 'https://twitter.com/supeinclub' },
-];
-
-const keyData = [
-  { label: '創設', value: '2018年 東京' },
-  { label: 'メディア言語', value: '日本語' },
-  { label: 'テーマ', value: '旅行・料理・文化・語学' },
-  { label: '運営', value: 'コミュニティメディア' },
+const pressKitItems = [
+  'ブランドストーリー・ヒストリー',
+  'ミッション・バリュー・コンセプト',
+  'チームプロフィール・写真',
+  'ロゴデータ（各種フォーマット）',
+  '活動実績・メディア掲載歴',
+  'お問い合わせ先',
 ];
 ---
 
@@ -28,7 +26,7 @@ const keyData = [
   <SEO
     slot="seo"
     title="プレスルーム | スペイン倶楽部"
-    description="スペイン倶楽部のプレス情報、メディア掲載実績、プレスキット、取材依頼についてのご案内。"
+    description="スペイン倶楽部のプレス情報、ノートデプレンサ、メディア掲載情報を掲載しています。"
     canonical="https://supein.club/newsroom/"
     breadcrumbs={breadcrumbs}
   />
@@ -39,72 +37,221 @@ const keyData = [
       <p class="text-primary text-xs font-semibold uppercase tracking-widest mb-4">NEWSROOM</p>
       <h1 class="font-serif text-3xl md:text-5xl font-bold mb-6 leading-tight">プレスルーム</h1>
       <p class="text-white/75 text-lg leading-relaxed max-w-2xl">
-        メディア関係者・取材のご担当者様へ。<br />
-        スペイン倶楽部に関するプレス情報を<br />
-        こちらにまとめています。
+        スペイン倶楽部に関するプレス情報、<br />
+        ノートデプレンサ、メディア掲載情報を掲載しています。
       </p>
     </div>
   </section>
 
-  <!-- SECCIÓN 1: About -->
-  <section class="py-20 px-4 bg-canvas">
+  <!-- SECCIÓN 1: Press Kit -->
+  <section class="px-4 bg-canvas" style="padding-top:72px; padding-bottom:72px;">
     <div class="max-w-4xl mx-auto">
-      <p class="text-primary text-xs font-semibold uppercase tracking-widest mb-2">ABOUT</p>
-      <h2 class="font-serif text-3xl font-bold text-navy mb-8">スペイン倶楽部とは</h2>
-      <p class="text-muted leading-relaxed mb-4 max-w-2xl">
-        Club Español en Japón スペイン倶楽部は、2018年に東京で創設されたスペイン語・文化コミュニティであり、スペインの旅行・料理・文化・語学を日本語で発信するカルチャーメディアです。
-      </p>
-      <p class="text-muted leading-relaxed mb-12 max-w-2xl">
-        創設者のDavid Recaldeをはじめ、東京を拠点とするスペイン語話者・スペイン文化愛好家が運営しています。インスティトゥト・セルバンテス東京、在日スペイン大使館、ICEXなどの機関と連携した活動実績があります。
-      </p>
-      <div class="grid grid-cols-2 gap-6">
-        {keyData.map(({ label, value }) => (
-          <div class="bg-white rounded-xl p-6 border border-[#E8E8E6] shadow-sm">
-            <p class="text-primary text-xs font-semibold uppercase tracking-wider mb-2">{label}</p>
-            <p class="text-navy font-bold text-lg leading-snug">{value}</p>
+      <div class="presskit-grid">
+
+        <!-- Left: info -->
+        <div>
+          <p class="text-primary text-xs font-semibold uppercase tracking-widest mb-2">PRESS KIT</p>
+          <h2 class="font-serif text-3xl font-bold text-navy mb-5">プレスキット</h2>
+          <p class="text-muted leading-relaxed mb-8">
+            スペイン倶楽部のブランドガイドライン、ロゴデータ、チームプロフィール、ブランドストーリーをまとめたプレスキットです。取材・掲載の際にご活用ください。
+          </p>
+          <ul class="space-y-3 mb-8">
+            {pressKitItems.map(item => (
+              <li class="flex items-start gap-3 text-sm text-muted">
+                <span style="color:#C8102E; font-weight:700; flex-shrink:0; line-height:1.5;">✓</span>
+                {item}
+              </li>
+            ))}
+          </ul>
+          <a
+            href="/newsroom/press-kit/"
+            class="inline-flex items-center gap-2 text-primary font-semibold text-sm hover:underline underline-offset-4"
+          >
+            プレスキット詳細を見る →
+          </a>
+        </div>
+
+        <!-- Right: download cards -->
+        <div class="space-y-4">
+          <!-- Card JA -->
+          <div style="background:#002147; border-radius:12px; padding:28px;">
+            <div style="width:40px; height:40px; background:rgba(200,16,46,0.15); border-radius:8px; display:flex; align-items:center; justify-content:center; margin-bottom:16px;">
+              <Download size={20} style="color:#C8102E;" />
+            </div>
+            <p style="font-size:16px; font-weight:700; color:white; margin:0 0 4px;">プレスキット（日本語版）</p>
+            <p style="font-size:12px; color:rgba(255,255,255,0.5); margin:0 0 8px;">Brand Dossier in Japanese</p>
+            <p style="font-size:11px; color:rgba(255,255,255,0.35); margin:0 0 20px;">PDF · 準備中</p>
+            <span style="display:inline-block; background:rgba(255,255,255,0.12); color:rgba(255,255,255,0.4); font-size:13px; font-weight:600; padding:10px 20px; border-radius:8px; cursor:not-allowed;">
+              準備中
+            </span>
           </div>
-        ))}
+
+          <!-- Card EN -->
+          <div style="background:#002147; border-radius:12px; padding:28px;">
+            <div style="width:40px; height:40px; background:rgba(200,16,46,0.15); border-radius:8px; display:flex; align-items:center; justify-content:center; margin-bottom:16px;">
+              <Download size={20} style="color:#C8102E;" />
+            </div>
+            <p style="font-size:16px; font-weight:700; color:white; margin:0 0 4px;">Press Kit (English)</p>
+            <p style="font-size:12px; color:rgba(255,255,255,0.5); margin:0 0 8px;">Brand Dossier in English</p>
+            <p style="font-size:11px; color:rgba(255,255,255,0.35); margin:0 0 20px;">PDF · Coming soon</p>
+            <span style="display:inline-block; background:rgba(255,255,255,0.12); color:rgba(255,255,255,0.4); font-size:13px; font-weight:600; padding:10px 20px; border-radius:8px; cursor:not-allowed;">
+              Coming soon
+            </span>
+          </div>
+
+          <p style="font-size:13px; color:#6b7280; line-height:1.7;">
+            プレスキットのご要望は<a href="/contact/" style="color:#C8102E; font-weight:600;">お問い合わせフォーム</a>よりご連絡ください。1〜2営業日以内にお送りします。
+          </p>
+        </div>
+
       </div>
     </div>
   </section>
 
-  <!-- SECCIÓN 2: Press Contact -->
+  <!-- SECCIÓN 2: Press Releases -->
   <section class="py-20 px-4 bg-white">
     <div class="max-w-4xl mx-auto">
-      <p class="text-primary text-xs font-semibold uppercase tracking-widest mb-2">PRESS CONTACT</p>
-      <h2 class="font-serif text-3xl font-bold text-navy mb-6">取材・掲載のお問い合わせ</h2>
-      <p class="text-muted leading-relaxed mb-8 max-w-xl">
-        取材依頼、メディア掲載、コメント提供、写真素材のご要望は下記よりご連絡ください。通常1〜2営業日以内にご返信いたします。
-      </p>
-      <a
-        href="/contact/"
-        class="inline-flex items-center justify-center bg-primary hover:bg-[#a00d24] text-white font-bold px-7 py-3.5 rounded-lg transition-colors text-sm"
-      >
-        プレスお問い合わせ →
-      </a>
+      <p class="text-primary text-xs font-semibold uppercase tracking-widest mb-2">PRESS RELEASES</p>
+      <h2 class="font-serif text-3xl font-bold text-navy mb-2">ノートデプレンサ</h2>
+      <p class="text-muted text-sm mb-10">プレスリリース・活動報告</p>
+
+      {releases.length === 0 ? (
+        <p class="text-muted">準備中です。</p>
+      ) : (
+        <div>
+          {releases.map(release => {
+            const slug = release.id.replace(/\.(md|mdx)$/, '');
+            const dateStr = release.data.date.toLocaleDateString('ja-JP', {
+              year: 'numeric',
+              month: 'long',
+              day: 'numeric',
+            });
+            return (
+              <article class="release-row">
+                <div class="release-date">
+                  <time style="font-size:13px; color:#9ca3af; font-variant-numeric:tabular-nums;">{dateStr}</time>
+                </div>
+                <div class="release-body">
+                  <span style="display:inline-block; background:rgba(200,16,46,0.08); color:#C8102E; font-size:11px; font-weight:600; padding:2px 10px; border-radius:4px; margin-bottom:8px;">
+                    {release.data.category}
+                  </span>
+                  <h3 style="font-size:16px; font-weight:700; color:#002147; margin:0 0 6px; line-height:1.5;">
+                    <a href={`/newsroom/${slug}/`} style="text-decoration:none; color:inherit;">
+                      {release.data.title}
+                    </a>
+                  </h3>
+                  <p style="font-size:14px; color:#6b7280; margin:0; line-height:1.6;">{release.data.summary}</p>
+                </div>
+                <div class="release-cta">
+                  <a
+                    href={`/newsroom/${slug}/`}
+                    style="font-size:13px; color:#C8102E; font-weight:600; text-decoration:none; white-space:nowrap;"
+                  >
+                    詳細を読む →
+                  </a>
+                </div>
+              </article>
+            );
+          })}
+        </div>
+      )}
     </div>
   </section>
 
-  <!-- SECCIÓN 3: Media Presence -->
-  <section class="py-20 px-4 bg-canvas">
+  <!-- SECCIÓN 3: Press Contact -->
+  <section class="px-4 bg-canvas" style="padding-top:72px; padding-bottom:72px;">
     <div class="max-w-4xl mx-auto">
-      <p class="text-primary text-xs font-semibold uppercase tracking-widest mb-2">FIND US</p>
-      <h2 class="font-serif text-3xl font-bold text-navy mb-10">メディアプレゼンス</h2>
-      <ul class="max-w-md divide-y divide-[#E8E8E6]">
-        {channels.map(({ label, handle, href }) => (
-          <li class="flex items-center justify-between py-4">
-            <span class="text-muted text-sm font-medium">{label}</span>
+      <div class="contact-grid">
+
+        <!-- Left: info -->
+        <div>
+          <p class="text-primary text-xs font-semibold uppercase tracking-widest mb-2">PRESS CONTACT</p>
+          <h2 class="font-serif text-3xl font-bold text-navy mb-6">報道関係者のお問い合わせ</h2>
+          <p class="text-muted leading-relaxed mb-8 max-w-md">
+            取材依頼、メディア掲載、コメント提供、写真素材のご要望など、報道関係のお問い合わせはお問い合わせフォームよりご連絡ください。通常1〜2営業日以内にご返信いたします。
+          </p>
+          <dl class="space-y-3 text-sm">
+            <div class="flex gap-3">
+              <dt class="text-muted font-medium shrink-0" style="width:60px;">担当</dt>
+              <dd class="text-navy font-semibold">
+                David Recalde
+                <span class="text-muted font-normal ml-1">（Studio Lead / 創設者）</span>
+              </dd>
+            </div>
+            <div class="flex gap-3">
+              <dt class="text-muted font-medium shrink-0" style="width:60px;">LinkedIn</dt>
+              <dd>
+                <a
+                  href="https://www.linkedin.com/company/supeinclub/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="text-primary hover:underline underline-offset-4"
+                >
+                  linkedin.com/company/supeinclub/
+                </a>
+              </dd>
+            </div>
+            <div class="flex gap-3">
+              <dt class="text-muted font-medium shrink-0" style="width:60px;">メール</dt>
+              <dd class="text-muted">フォームよりご連絡ください</dd>
+            </div>
+          </dl>
+        </div>
+
+        <!-- Right: CTA card -->
+        <div>
+          <div style="background:#002147; border-radius:16px; padding:36px;">
+            <p style="font-size:18px; font-weight:700; color:white; margin:0 0 12px; font-family:'Noto Serif JP',serif;">
+              プレスのご連絡はこちら
+            </p>
+            <p style="font-size:14px; color:rgba(255,255,255,0.6); margin:0 0 28px; line-height:1.7;">
+              お問い合わせフォームよりご連絡いただければ、担当者よりご返信いたします。
+            </p>
             <a
-              href={href}
-              target="_blank"
-              rel="noopener noreferrer"
-              class="text-primary font-semibold text-sm hover:underline underline-offset-4"
+              href="/contact/"
+              class="inline-flex items-center justify-center bg-primary hover:bg-[#a00d24] text-white font-bold px-6 py-3 rounded-lg transition-colors text-sm"
             >
-              {handle}
+              お問い合わせフォーム →
             </a>
-          </li>
-        ))}
-      </ul>
+          </div>
+        </div>
+
+      </div>
     </div>
   </section>
 </BaseLayout>
+
+<style>
+  .presskit-grid,
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    align-items: start;
+  }
+  .release-row {
+    display: grid;
+    grid-template-columns: 140px 1fr auto;
+    gap: 24px;
+    align-items: start;
+    border-bottom: 1px solid #e5e7eb;
+    padding: 28px 0;
+  }
+  .release-row:first-child {
+    border-top: 1px solid #e5e7eb;
+  }
+  @media (max-width: 767px) {
+    .presskit-grid,
+    .contact-grid {
+      grid-template-columns: 1fr;
+      gap: 40px;
+    }
+    .release-row {
+      grid-template-columns: 1fr;
+      gap: 8px;
+    }
+    .release-cta {
+      padding-top: 4px;
+    }
+  }
+</style>
