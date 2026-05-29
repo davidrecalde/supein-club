@@ -1,0 +1,110 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SEO from '../../components/SEO.astro';
+
+const breadcrumbs = [
+  { name: 'ホーム', url: '/' },
+  { name: 'プレスルーム', url: '/newsroom/' },
+];
+
+const channels = [
+  { label: 'ウェブサイト', handle: 'supein.club', href: 'https://supein.club/' },
+  { label: 'Instagram', handle: '@supeinclub', href: 'https://www.instagram.com/supeinclub/' },
+  { label: 'LinkedIn', handle: '@supeinclub', href: 'https://www.linkedin.com/company/supeinclub/' },
+  { label: 'LINE', handle: '@spainclub', href: 'https://lin.ee/vx6jpud' },
+  { label: 'Facebook', handle: '@supeinclub', href: 'https://www.facebook.com/supeinclub/' },
+  { label: 'X (Twitter)', handle: '@supeinclub', href: 'https://twitter.com/supeinclub' },
+];
+
+const keyData = [
+  { label: '創設', value: '2018年 東京' },
+  { label: 'メディア言語', value: '日本語' },
+  { label: 'テーマ', value: '旅行・料理・文化・語学' },
+  { label: '運営', value: 'コミュニティメディア' },
+];
+---
+
+<BaseLayout title="プレスルーム | スペイン倶楽部">
+  <SEO
+    slot="seo"
+    title="プレスルーム | スペイン倶楽部"
+    description="スペイン倶楽部のプレス情報、メディア掲載実績、プレスキット、取材依頼についてのご案内。"
+    canonical="https://supein.club/newsroom/"
+    breadcrumbs={breadcrumbs}
+  />
+
+  <!-- HERO -->
+  <section class="bg-navy text-white py-20 px-4">
+    <div class="max-w-4xl mx-auto">
+      <p class="text-primary text-xs font-semibold uppercase tracking-widest mb-4">NEWSROOM</p>
+      <h1 class="font-serif text-3xl md:text-5xl font-bold mb-6 leading-tight">プレスルーム</h1>
+      <p class="text-white/75 text-lg leading-relaxed max-w-2xl">
+        メディア関係者・取材のご担当者様へ。<br />
+        スペイン倶楽部に関するプレス情報を<br />
+        こちらにまとめています。
+      </p>
+    </div>
+  </section>
+
+  <!-- SECCIÓN 1: About -->
+  <section class="py-20 px-4 bg-canvas">
+    <div class="max-w-4xl mx-auto">
+      <p class="text-primary text-xs font-semibold uppercase tracking-widest mb-2">ABOUT</p>
+      <h2 class="font-serif text-3xl font-bold text-navy mb-8">スペイン倶楽部とは</h2>
+      <p class="text-muted leading-relaxed mb-4 max-w-2xl">
+        Club Español en Japón スペイン倶楽部は、2018年に東京で創設されたスペイン語・文化コミュニティであり、スペインの旅行・料理・文化・語学を日本語で発信するカルチャーメディアです。
+      </p>
+      <p class="text-muted leading-relaxed mb-12 max-w-2xl">
+        創設者のDavid Recaldeをはじめ、東京を拠点とするスペイン語話者・スペイン文化愛好家が運営しています。インスティトゥト・セルバンテス東京、在日スペイン大使館、ICEXなどの機関と連携した活動実績があります。
+      </p>
+      <div class="grid grid-cols-2 gap-6">
+        {keyData.map(({ label, value }) => (
+          <div class="bg-white rounded-xl p-6 border border-[#E8E8E6] shadow-sm">
+            <p class="text-primary text-xs font-semibold uppercase tracking-wider mb-2">{label}</p>
+            <p class="text-navy font-bold text-lg leading-snug">{value}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- SECCIÓN 2: Press Contact -->
+  <section class="py-20 px-4 bg-white">
+    <div class="max-w-4xl mx-auto">
+      <p class="text-primary text-xs font-semibold uppercase tracking-widest mb-2">PRESS CONTACT</p>
+      <h2 class="font-serif text-3xl font-bold text-navy mb-6">取材・掲載のお問い合わせ</h2>
+      <p class="text-muted leading-relaxed mb-8 max-w-xl">
+        取材依頼、メディア掲載、コメント提供、写真素材のご要望は下記よりご連絡ください。通常1〜2営業日以内にご返信いたします。
+      </p>
+      <a
+        href="/contact/"
+        class="inline-flex items-center justify-center bg-primary hover:bg-[#a00d24] text-white font-bold px-7 py-3.5 rounded-lg transition-colors text-sm"
+      >
+        プレスお問い合わせ →
+      </a>
+    </div>
+  </section>
+
+  <!-- SECCIÓN 3: Media Presence -->
+  <section class="py-20 px-4 bg-canvas">
+    <div class="max-w-4xl mx-auto">
+      <p class="text-primary text-xs font-semibold uppercase tracking-widest mb-2">FIND US</p>
+      <h2 class="font-serif text-3xl font-bold text-navy mb-10">メディアプレゼンス</h2>
+      <ul class="max-w-md divide-y divide-[#E8E8E6]">
+        {channels.map(({ label, handle, href }) => (
+          <li class="flex items-center justify-between py-4">
+            <span class="text-muted text-sm font-medium">{label}</span>
+            <a
+              href={href}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="text-primary font-semibold text-sm hover:underline underline-offset-4"
+            >
+              {handle}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+</BaseLayout>

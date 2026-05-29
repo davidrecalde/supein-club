@@ -1,0 +1,105 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SEO from '../../components/SEO.astro';
+
+const breadcrumbs = [
+  { name: 'ホーム', url: '/' },
+  { name: 'コミュニティ', url: '/community/' },
+];
+
+const features = [
+  {
+    title: 'イベント',
+    text: '料理・語学・文化をテーマにしたイベントを定期開催',
+  },
+  {
+    title: '交流',
+    text: 'スペイン語話者と日本人が自然につながれる場',
+  },
+  {
+    title: '情報発信',
+    text: 'スペインに関する役立つ情報を日本語でお届け',
+  },
+];
+---
+
+<BaseLayout title="コミュニティ | スペイン倶楽部">
+  <SEO
+    slot="seo"
+    title="コミュニティ | スペイン倶楽部"
+    description="スペイン倶楽部のコミュニティに参加しませんか。東京を拠点にスペイン好きが集まるコミュニティです。"
+    canonical="https://supein.club/community/"
+    breadcrumbs={breadcrumbs}
+  />
+
+  <!-- HERO -->
+  <section class="bg-navy text-white py-20 px-4">
+    <div class="max-w-4xl mx-auto">
+      <p class="text-primary text-xs font-semibold uppercase tracking-widest mb-4">COMMUNITY</p>
+      <h1 class="font-serif text-3xl md:text-5xl font-bold mb-6 leading-tight">コミュニティ</h1>
+      <p class="text-white/75 text-lg leading-relaxed max-w-2xl">
+        スペインが好きな人、スペイン語を学んでいる人、<br />
+        スペインに住んだことがある人——<br />
+        みんなが集まる場所がここにあります。
+      </p>
+    </div>
+  </section>
+
+  <!-- SECCIÓN 1: Who we are -->
+  <section class="py-20 px-4 bg-canvas">
+    <div class="max-w-4xl mx-auto">
+      <p class="text-primary text-xs font-semibold uppercase tracking-widest mb-2">WHO WE ARE</p>
+      <h2 class="font-serif text-3xl font-bold text-navy mb-6">スペイン倶楽部コミュニティとは</h2>
+      <p class="text-muted leading-relaxed mb-12 max-w-2xl">
+        スペイン倶楽部は、日本在住のスペイン語話者とスペインに興味を持つ日本人が集まるコミュニティです。2018年の創設以来、語学交流、料理会、文化イベントなど多彩な活動を東京を中心に展開しています。
+      </p>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        {features.map(({ title, text }) => (
+          <div class="bg-white rounded-xl p-6 border border-[#E8E8E6] shadow-sm">
+            <h3 class="font-semibold text-navy mb-3">{title}</h3>
+            <p class="text-muted text-sm leading-relaxed">{text}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- SECCIÓN 2: Join -->
+  <section class="py-20 px-4 bg-white">
+    <div class="max-w-4xl mx-auto">
+      <p class="text-primary text-xs font-semibold uppercase tracking-widest mb-2">JOIN US</p>
+      <h2 class="font-serif text-3xl font-bold text-navy mb-6">参加方法</h2>
+      <p class="text-muted leading-relaxed mb-8 max-w-xl">
+        参加方法はとても簡単です。LINEで友だち追加するだけで、イベント情報や最新コンテンツをいち番早く受け取れます。
+      </p>
+      <a
+        href="https://lin.ee/vx6jpud"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-flex items-center justify-center font-bold px-8 py-4 rounded-lg text-base text-white transition-colors"
+        style="background:#06C755;"
+        onmouseover="this.style.background='#05b34c'"
+        onmouseout="this.style.background='#06C755'"
+      >
+        LINEで友だち追加 →
+      </a>
+    </div>
+  </section>
+
+  <!-- SECCIÓN 3: Events -->
+  <section class="py-20 px-4 bg-canvas">
+    <div class="max-w-4xl mx-auto">
+      <p class="text-primary text-xs font-semibold uppercase tracking-widest mb-2">EVENTS</p>
+      <h2 class="font-serif text-3xl font-bold text-navy mb-6">イベント・アジェンダ</h2>
+      <p class="text-muted leading-relaxed mb-8 max-w-xl">
+        料理・語学・文化をテーマにしたイベントを定期的に開催しています。最新のイベント情報はこちらからご確認ください。
+      </p>
+      <a
+        href="/events/"
+        class="inline-flex items-center gap-2 text-primary font-semibold text-sm hover:underline underline-offset-4"
+      >
+        イベント一覧を見る →
+      </a>
+    </div>
+  </section>
+</BaseLayout>
