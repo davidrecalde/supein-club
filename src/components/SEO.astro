@@ -33,23 +33,24 @@ const graph: object[] = [];
 
 // 1. Organization (always)
 graph.push({
-  '@type': 'Organization',
+  '@type': ['Organization', 'NewsMediaOrganization'],
   '@id': `${siteUrl}/#organization`,
   name: 'Club Español en Japón スペイン倶楽部',
-  alternateName: 'Supein Club',
+  alternateName: ['スペイン倶楽部', 'Supein Club', 'supein.club'],
   url: siteUrl,
   logo: {
     '@type': 'ImageObject',
     url: `${siteUrl}/logo-og.png`,
-    width: 290,
-    height: 100,
+    width: 600,
+    height: 60,
   },
   foundingDate: '2018',
   founder: {
     '@type': 'Person',
     name: 'David Recalde',
+    url: `${siteUrl}/about-us/team/david-recalde/`,
   },
-  description: '日本在住のスペイン語話者・スペイン好きのコミュニティ',
+  description: 'スペインの旅行・料理・文化・語学を日本語で伝えるカルチャーメディア。2018年東京創設。',
   address: {
     '@type': 'PostalAddress',
     streetAddress: '41-8 Yamatochō, Itabashi City',
@@ -60,17 +61,24 @@ graph.push({
   location: {
     '@type': 'Place',
     name: 'Tokyo, Japan',
-    address: {
-      '@type': 'PostalAddress',
-      streetAddress: '41-8 Yamatochō, Itabashi City',
-      addressLocality: 'Tokyo',
-      postalCode: '173-0012',
-      addressCountry: 'JP',
-    },
   },
+  areaServed: {
+    '@type': 'Country',
+    name: 'Japan',
+  },
+  knowsAbout: [
+    'スペイン旅行',
+    'スペイン料理',
+    'スペイン語',
+    'スペイン文化',
+    '日西文化交流',
+  ],
+  publishingPrinciples: `${siteUrl}/about-us/`,
   sameAs: [
     'https://www.instagram.com/supeinclub/',
     'https://www.linkedin.com/company/supeinclub/',
+    'https://www.facebook.com/supeinclub/',
+    'https://twitter.com/supeinclub',
     'https://lin.ee/vx6jpud',
   ],
 });
@@ -79,7 +87,8 @@ graph.push({
 graph.push({
   '@type': 'WebSite',
   '@id': `${siteUrl}/#website`,
-  name: 'supein.club',
+  name: 'スペイン倶楽部',
+  description: 'スペインの旅行・料理・文化・語学を日本語で伝えるカルチャーメディア',
   url: siteUrl,
   inLanguage: 'ja',
   publisher: { '@id': `${siteUrl}/#organization` },
@@ -87,9 +96,9 @@ graph.push({
     '@type': 'SearchAction',
     target: {
       '@type': 'EntryPoint',
-      urlTemplate: `${siteUrl}/search?q={query}`,
+      urlTemplate: `${siteUrl}/?s={search_term_string}`,
     },
-    'query-input': 'required name=query',
+    'query-input': 'required name=search_term_string',
   },
 });
 

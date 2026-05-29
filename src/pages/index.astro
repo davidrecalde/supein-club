@@ -21,13 +21,6 @@ const pillars = [
   { href: '/football/', Icon: Trophy, title: 'スペインサッカー', desc: 'ラ・リーガ、スペイン代表、バルセロナ、レアル・マドリード。スペインサッカーを日本語で深掘り。' },
 ];
 
-const stats = [
-  { value: '10+', label: '記事' },
-  { value: '5', label: 'カテゴリ' },
-  { value: '2018', label: '年創設' },
-  { value: '東京', label: '拠点' },
-];
-
 const breadcrumbs = [{ name: 'ホーム', url: '/' }];
 ---
 <BaseLayout title="スペイン倶楽部 | 日本人向けスペイン情報・旅行・文化メディア">
@@ -38,6 +31,14 @@ const breadcrumbs = [{ name: 'ホーム', url: '/' }];
     canonical="https://supein.club/"
     breadcrumbs={breadcrumbs}
   />
+  <Fragment slot="head">
+    <meta name="keywords" content="スペイン旅行,スペイン料理,スペイン語,スペイン文化,スペイン倶楽部,Club Español en Japón,スペイン情報,日本語スペイン" />
+    <meta name="author" content="David Recalde" />
+    <link rel="author" href="https://supein.club/about-us/team/david-recalde/" />
+    <link rel="publisher" href="https://supein.club/" />
+    <meta name="robots" content="noindex, nofollow" />
+    <meta http-equiv="content-language" content="ja" />
+  </Fragment>
 
   <!-- Hero: solid navy + subtle dot pattern -->
   <section
@@ -71,15 +72,60 @@ const breadcrumbs = [{ name: 'ホーム', url: '/' }];
     </div>
   </section>
 
-  <!-- Stats bar -->
-  <div class="bg-[#001530] border-b border-white/10">
-    <div class="max-w-5xl mx-auto px-5 py-5 grid grid-cols-2 md:grid-cols-4 gap-4">
-      {stats.map(({ value, label }) => (
-        <div class="text-center text-white">
-          <p class="font-bold text-2xl text-primary">{value}</p>
-          <p class="text-xs text-white/50 mt-0.5">{label}</p>
+  <!-- Editorial Identity Section -->
+  <div style="background:#002147; border-top:1px solid rgba(255,255,255,0.08); border-bottom:1px solid rgba(255,255,255,0.08); padding:48px 0 40px;">
+    <div style="max-width:1200px; margin:0 auto; padding:0 24px;">
+
+      <!-- Top layer: editorial phrase -->
+      <div style="text-align:center; margin-bottom:36px; padding:0 24px;">
+        <div style="display:flex; align-items:center; justify-content:center; gap:16px; margin-bottom:20px;">
+          <div style="height:1px; width:40px; background:rgba(255,255,255,0.2);"></div>
+          <span style="font-size:10px; font-weight:600; letter-spacing:0.2em; text-transform:uppercase; color:#C8102E;">ABOUT US</span>
+          <div style="height:1px; width:40px; background:rgba(255,255,255,0.2);"></div>
         </div>
-      ))}
+        <p style="font-family:'Noto Serif JP',serif; font-size:clamp(15px,2.5vw,18px); font-weight:400; color:rgba(255,255,255,0.85); line-height:1.9; max-width:680px; margin:0 auto; letter-spacing:0.04em;">
+          スペイン倶楽部は、旅行・料理・文化・語学を通じて、<br class="hide-mobile" />
+          スペインの本当の姿を日本語で伝えるカルチャーメディアです。
+        </p>
+      </div>
+
+      <!-- Decorative separator -->
+      <div style="display:flex; align-items:center; justify-content:center; gap:8px; margin-bottom:32px;">
+        <div style="height:1px; flex:1; max-width:120px; background:rgba(255,255,255,0.1);"></div>
+        <div style="width:4px; height:4px; border-radius:50%; background:rgba(200,16,46,0.6);"></div>
+        <div style="width:4px; height:4px; border-radius:50%; background:rgba(255,255,255,0.2);"></div>
+        <div style="width:4px; height:4px; border-radius:50%; background:rgba(255,255,255,0.2);"></div>
+        <div style="height:1px; flex:1; max-width:120px; background:rgba(255,255,255,0.1);"></div>
+      </div>
+
+      <!-- Bottom layer: four editorial data items -->
+      <div class="editorial-stats" style="display:flex; align-items:stretch; justify-content:center; flex-wrap:wrap; gap:0; max-width:720px; margin:0 auto;">
+
+        <div class="editorial-stat-item" style="flex:1; min-width:140px; text-align:center; padding:0 32px; border-right:1px solid rgba(255,255,255,0.1);">
+          <p style="font-size:11px; font-weight:600; letter-spacing:0.15em; text-transform:uppercase; color:#C8102E; margin:0 0 6px;">SINCE</p>
+          <p style="font-family:'Noto Serif JP',serif; font-size:22px; font-weight:700; color:white; margin:0 0 4px; line-height:1;">2018年</p>
+          <p style="font-size:11px; color:rgba(255,255,255,0.45); margin:0; letter-spacing:0.05em;">創設</p>
+        </div>
+
+        <div class="editorial-stat-item" style="flex:1; min-width:140px; text-align:center; padding:0 32px; border-right:1px solid rgba(255,255,255,0.1);">
+          <p style="font-size:11px; font-weight:600; letter-spacing:0.15em; text-transform:uppercase; color:#C8102E; margin:0 0 6px;">BASE</p>
+          <p style="font-family:'Noto Serif JP',serif; font-size:22px; font-weight:700; color:white; margin:0 0 4px; line-height:1;">東京</p>
+          <p style="font-size:11px; color:rgba(255,255,255,0.45); margin:0; letter-spacing:0.05em;">発信</p>
+        </div>
+
+        <div class="editorial-stat-item" style="flex:1; min-width:140px; text-align:center; padding:0 32px; border-right:1px solid rgba(255,255,255,0.1);">
+          <p style="font-size:11px; font-weight:600; letter-spacing:0.15em; text-transform:uppercase; color:#C8102E; margin:0 0 6px;">STYLE</p>
+          <p style="font-family:'Noto Serif JP',serif; font-size:22px; font-weight:700; color:white; margin:0 0 4px; line-height:1;">コミュニティ</p>
+          <p style="font-size:11px; color:rgba(255,255,255,0.45); margin:0; letter-spacing:0.05em;">運営</p>
+        </div>
+
+        <div class="editorial-stat-item" style="flex:1; min-width:140px; text-align:center; padding:0 32px;">
+          <p style="font-size:11px; font-weight:600; letter-spacing:0.15em; text-transform:uppercase; color:#C8102E; margin:0 0 6px;">LANGUAGE</p>
+          <p style="font-family:'Noto Serif JP',serif; font-size:22px; font-weight:700; color:white; margin:0 0 4px; line-height:1;">日本語</p>
+          <p style="font-size:11px; color:rgba(255,255,255,0.45); margin:0; letter-spacing:0.05em;">深掘り</p>
+        </div>
+
+      </div>
     </div>
   </div>
 
@@ -172,3 +218,31 @@ const breadcrumbs = [{ name: 'ホーム', url: '/' }];
     </div>
   </section>
 </BaseLayout>
+
+<style>
+  .hide-mobile { display: none; }
+  @media (min-width: 768px) {
+    .hide-mobile { display: inline; }
+  }
+  @media (max-width: 767px) {
+    .editorial-stats {
+      display: grid !important;
+      grid-template-columns: 1fr 1fr;
+    }
+    .editorial-stat-item {
+      padding: 16px !important;
+    }
+    .editorial-stat-item:nth-child(2) {
+      border-right: none !important;
+    }
+    .editorial-stat-item:nth-child(1),
+    .editorial-stat-item:nth-child(2) {
+      padding-bottom: 20px !important;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    .editorial-stat-item:nth-child(3),
+    .editorial-stat-item:nth-child(4) {
+      padding-top: 20px !important;
+    }
+  }
+</style>
