@@ -33,6 +33,16 @@ const { title = 'supein.club', lang = 'ja' } = Astro.props;
       />
     </noscript>
     <slot name="head" />
+    <!-- Google Analytics 4 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-9QDF9607ZV"></script>
+    <script is:inline>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-9QDF9607ZV', {
+        anonymize_ip: true
+      });
+    </script>
   </head>
   <body class="bg-canvas text-ink font-sans antialiased flex flex-col min-h-screen">
     <slot name="header">
