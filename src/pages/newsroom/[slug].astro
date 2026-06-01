@@ -113,17 +113,6 @@ const schema = {
         </p>
       )}
 
-      {image && (
-        <figure style="margin: 32px 0 0; text-align: center; line-height: 0;">
-          <img
-            src={image}
-            alt={title}
-            style="max-height: 480px; width: auto; max-width: 100%; display: inline-block; border-radius: 12px;"
-            fetchpriority="high"
-          />
-        </figure>
-      )}
-
       <time datetime={date.toISOString()} style="font-size:13px; font-weight:600; color:rgba(255,255,255,0.55); letter-spacing:0.05em;">
         {location} — {dateFormatted}
       </time>
@@ -137,6 +126,32 @@ const schema = {
 
         <!-- COLUMNA PRINCIPAL -->
         <article>
+
+          {entry.data.image && (
+            <figure style="
+              margin: 0 0 40px;
+              border-radius: 12px;
+              overflow: hidden;
+              line-height: 0;
+              box-shadow: 0 4px 24px rgba(0,33,71,0.10);
+            ">
+              <img
+                src={entry.data.image}
+                alt={entry.data.title}
+                width="1200"
+                height="630"
+                style="
+                  width: 100%;
+                  height: auto;
+                  display: block;
+                  max-height: 500px;
+                  object-fit: cover;
+                "
+                loading="eager"
+                fetchpriority="high"
+              />
+            </figure>
+          )}
 
           <div class="press-prose">
             <Content />
