@@ -1,0 +1,21 @@
+{
+  "name": "スペイン倶楽部",
+  "short_name": "スペイン倶楽部",
+  "description": "日本語でスペインを深掘りするカルチャーメディア",
+  "icons": [
+    {
+      "src": "/favicon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/favicon-180.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    }
+  ],
+  "theme_color": "#002147",
+  "background_color": "#002147",
+  "display": "standalone",
+  "start_url": "/"
+}
