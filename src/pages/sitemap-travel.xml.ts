@@ -7,6 +7,7 @@ const pages = [
   { url: '/travel/spain-tours/spain-tour-1week/', priority: '0.8', changefreq: 'monthly' },
   { url: '/travel/barcelona/', priority: '0.9', changefreq: 'weekly' },
   { url: '/travel/barcelona/sagrada-familia-guide/', priority: '0.8', changefreq: 'monthly' },
+  { url: '/travel/barcelona/sagrada-familia-jesus-tower-completed/', priority: '0.9', changefreq: 'monthly' },
   { url: '/travel/madrid/', priority: '0.9', changefreq: 'weekly' },
   { url: '/travel/andalusia/', priority: '0.8', changefreq: 'weekly' },
   { url: '/travel/ibiza/', priority: '0.7', changefreq: 'monthly' },
