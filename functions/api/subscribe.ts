@@ -1,76 +1,76 @@
-interface Env {
-  BREVO_API_KEY: string;
-  BREVO_LIST_ID: string;
-}
-
-interface EventContext {
-  request: Request;
-  env: Env;
-}
-
-const corsHeaders = {
-  'Access-Control-Allow-Origin': 'https://supein.club',
-  'Access-Control-Allow-Methods': 'POST',
-  'Access-Control-Allow-Headers': 'Content-Type',
-};
-
-export async function onRequestPost(context: EventContext) {
-  const { request, env } = context;
+export async function onRequestPost(context) {
+  const corsHeaders = {
+    'Access-Control-Allow-Origin': '*',
+    'Access-Control-Allow-Methods': 'POST, OPTIONS',
+    'Access-Control-Allow-Headers': 'Content-Type',
+    'Content-Type': 'application/json',
+  };
 
   try {
-    const body = await request.json() as { email: string; name?: string };
+    const body = await context.request.json();
     const { email, name } = body;
 
     if (!email || !email.includes('@')) {
       return new Response(
         JSON.stringify({ success: false, message: 'メールアドレスが無効です。' }),
-        { status: 400, headers: { 'Content-Type': 'application/json', ...corsHeaders } }
+        { status: 400, headers: corsHeaders }
       );
     }
 
-    const brevoResponse = await fetch('https://api.brevo.com/v3/contacts', {
+    const BREVO_API_KEY = context.env.BREVO_API_KEY;
+    const BREVO_LIST_ID = parseInt(context.env.BREVO_LIST_ID || '2');
+
+    const brevoRes = await fetch('https://api.brevo.com/v3/contacts', {
       method: 'POST',
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json',
-        'api-key': env.BREVO_API_KEY,
+        'api-key': BREVO_API_KEY,
       },
       body: JSON.stringify({
-        email,
+        email: email,
         attributes: { FIRSTNAME: name || '' },
-        listIds: [parseInt(env.BREVO_LIST_ID || '2')],
+        listIds: [BREVO_LIST_ID],
         updateEnabled: true,
       }),
     });
 
-    if ([200, 201, 204].includes(brevoResponse.status)) {
+    if (brevoRes.status === 201 || brevoRes.status === 204 || brevoRes.status === 200) {
       return new Response(
         JSON.stringify({ success: true }),
-        { status: 200, headers: { 'Content-Type': 'application/json', ...corsHeaders } }
+        { status: 200, headers: corsHeaders }
       );
     }
 
-    const errorData = await brevoResponse.json() as { message?: string };
+    const errorData = await brevoRes.json();
 
-    if (errorData.message?.includes('already')) {
+    if (errorData.message && errorData.message.includes('already')) {
       return new Response(
         JSON.stringify({ success: true, alreadySubscribed: true }),
-        { status: 200, headers: { 'Content-Type': 'application/json', ...corsHeaders } }
+        { status: 200, headers: corsHeaders }
       );
     }
 
     return new Response(
-      JSON.stringify({ success: false, message: '登録に失敗しました。再度お試しください。' }),
-      { status: 500, headers: { 'Content-Type': 'application/json', ...corsHeaders } }
+      JSON.stringify({ success: false, message: errorData.message || 'エラーが発生しました。' }),
+      { status: 500, headers: corsHeaders }
     );
-  } catch {
+
+  } catch (err) {
     return new Response(
-      JSON.stringify({ success: false, message: 'サーバーエラーが発生しました。' }),
-      { status: 500, headers: { 'Content-Type': 'application/json', ...corsHeaders } }
+      JSON.stringify({ success: false, message: 'サーバーエラー: ' + err.message }),
+      { status: 500, headers: corsHeaders }
     );
   }
 }
 
 export async function onRequestOptions() {
-  return new Response(null, { headers: corsHeaders });
+  return new Response(null, {
+    status: 204,
+    headers: {
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Methods': 'POST, OPTIONS',
+      'Access-Control-Allow-Headers': 'Content-Type',
+    },
+  });
 }
