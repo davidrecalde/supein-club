@@ -103,19 +103,6 @@ if (firstRelated) {
         />
       </div>
       <h1 class="font-sans font-bold text-3xl md:text-4xl leading-tight mt-4 mb-4">{title}</h1>
-      {heroImage && (
-        <figure style="margin: 24px 0 0; border-radius: 12px; overflow: hidden; line-height: 0;">
-          <img
-            src={heroImage}
-            alt={heroImageAlt || title}
-            width="1200"
-            height="630"
-            style="width:100%;height:auto;display:block;max-height:480px;object-fit:cover;"
-            fetchpriority="high"
-            loading="eager"
-          />
-        </figure>
-      )}
       <div class="text-sm text-white/50 flex gap-5 flex-wrap">
         {author && (
           <a
