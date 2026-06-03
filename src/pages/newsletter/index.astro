@@ -1,0 +1,162 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SEO from '../../components/SEO.astro';
+import Breadcrumb from '../../components/Breadcrumb.astro';
+import NewsletterForm from '../../components/NewsletterForm.astro';
+
+const canonical = 'https://supein.club/newsletter/';
+
+const breadcrumbs = [
+  { name: 'ホーム', url: '/' },
+  { name: 'ニュースレター', url: canonical },
+];
+
+const benefits = [
+  {
+    title: 'スペイン旅行の最新情報',
+    text: '航空券の価格動向、新しいスポット、旅行者のリアルな体験談。',
+  },
+  {
+    title: '料理とグルメ',
+    text: '季節のスペイン料理レシピ、東京のスペイン料理店情報、食文化コラム。',
+  },
+  {
+    title: '文化・アート・音楽',
+    text: 'スペインの今を伝える文化ニュース、映画、音楽、展覧会情報。',
+  },
+  {
+    title: 'スペイン語学習のヒント',
+    text: '日本人向けの実用フレーズ、文法のコツ、独学リソース紹介。',
+  },
+  {
+    title: 'イベント情報',
+    text: 'スペイン倶楽部主催・協力イベントの先行案内と申込情報。',
+  },
+  {
+    title: 'コミュニティの声',
+    text: 'メンバーの体験談、スペイン在住日本人インタビュー、Q&A。',
+  },
+];
+---
+
+<BaseLayout title="ニュースレター登録 | スペイン倶楽部">
+  <SEO
+    slot="seo"
+    title="ニュースレター登録 | スペイン倶楽部"
+    description="スペインの旅行・料理・文化・語学の最新情報を月2回、日本語でお届けします。登録無料。スペイン倶楽部のニュースレターで一歩先のスペイン情報を。"
+    canonical={canonical}
+    type="website"
+  />
+
+  <!-- HERO -->
+  <section style="background:#002147;padding:72px 0 56px;">
+    <div class="page-container">
+      <Breadcrumb items={breadcrumbs} dark />
+      <p style="font-size:11px;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:#C8102E;margin:28px 0 12px;">
+        NEWSLETTER
+      </p>
+      <h1 style="font-family:'Noto Serif JP',serif;font-size:clamp(28px,5vw,44px);font-weight:700;color:white;margin:0 0 16px;line-height:1.3;">
+        スペインの最新情報を<br>メールでお届けします
+      </h1>
+      <p style="font-size:18px;color:rgba(255,255,255,0.75);max-width:560px;line-height:1.8;margin:0;">
+        旅行・料理・文化・語学——スペイン倶楽部が厳選した情報を月2回、日本語でお届けします。登録は無料です。
+      </p>
+    </div>
+  </section>
+
+  <!-- MAIN: 2 columnas -->
+  <section style="background:#FAFAF8;padding:80px 0;">
+    <div class="page-container">
+      <div class="newsletter-grid">
+
+        <!-- Izquierda: propuesta de valor -->
+        <div>
+          <p style="font-size:11px;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:#C8102E;margin:0 0 8px;">
+            なぜ登録するの？
+          </p>
+          <h2 style="font-family:'Noto Serif JP',serif;font-size:clamp(22px,3vw,28px);font-weight:700;color:#002147;margin:0 0 32px;">
+            こんな情報をお届けします
+          </h2>
+
+          {benefits.map(item => (
+            <div style="display:flex;gap:16px;margin-bottom:24px;align-items:flex-start;">
+              <div style="width:8px;height:8px;border-radius:50%;background:#C8102E;flex-shrink:0;margin-top:7px;"></div>
+              <div>
+                <p style="font-weight:700;color:#002147;font-size:15px;margin:0 0 4px;">
+                  {item.title}
+                </p>
+                <p style="font-size:14px;color:#6b7280;margin:0;line-height:1.6;">
+                  {item.text}
+                </p>
+              </div>
+            </div>
+          ))}
+
+          <div style="background:white;border:1px solid #e5e7eb;border-radius:12px;padding:20px 24px;margin-top:16px;display:flex;gap:12px;align-items:center;">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+                 stroke="#C8102E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                 style="flex-shrink:0;">
+              <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+              <line x1="16" y1="2" x2="16" y2="6"/>
+              <line x1="8" y1="2" x2="8" y2="6"/>
+              <line x1="3" y1="10" x2="21" y2="10"/>
+            </svg>
+            <div>
+              <p style="font-weight:600;color:#002147;font-size:14px;margin:0 0 2px;">配信頻度：月2回</p>
+              <p style="font-size:13px;color:#6b7280;margin:0;">毎月第1・第3火曜日にお届けします</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Derecha: formulario -->
+        <div style="background:white;border:1px solid #e5e7eb;border-radius:16px;padding:40px 36px;box-shadow:0 4px 24px rgba(0,33,71,0.06);">
+          <p style="font-size:11px;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:#C8102E;margin:0 0 8px;">
+            無料登録
+          </p>
+          <h2 style="font-family:'Noto Serif JP',serif;font-size:24px;font-weight:700;color:#002147;margin:0 0 8px;">
+            今すぐ登録する
+          </h2>
+          <p style="font-size:14px;color:#6b7280;margin:0 0 28px;line-height:1.6;">
+            スペイン好きのコミュニティに参加しましょう。いつでも配信停止できます。
+          </p>
+          <NewsletterForm variant="page" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SOBRE LA NEWSLETTER -->
+  <section style="background:white;padding:80px 0;">
+    <div class="page-container" style="max-width:800px;">
+      <p style="font-size:11px;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:#C8102E;margin:0 0 8px;text-align:center;">
+        EDITORIAL
+      </p>
+      <h2 style="font-family:'Noto Serif JP',serif;font-size:clamp(22px,3vw,28px);font-weight:700;color:#002147;margin:0 0 32px;text-align:center;">
+        スペイン倶楽部のニュースレターとは
+      </h2>
+      <p style="font-size:17px;color:#374151;line-height:1.9;margin:0 0 20px;">
+        スペイン倶楽部のニュースレターは、スペインと日本の架け橋を目指すカルチャーメディア「supein.club」の編集チームが毎月2回お届けする日本語のメールマガジンです。
+      </p>
+      <p style="font-size:17px;color:#374151;line-height:1.9;margin:0 0 20px;">
+        単なる情報の羅列ではなく、東京在住のスペイン語話者と日本人編集者の視点から、スペインの「今」と「本物の魅力」を丁寧に伝えることを大切にしています。
+      </p>
+      <p style="font-size:17px;color:#374151;line-height:1.9;margin:0;">
+        旅行を計画している方も、スペイン語を勉強中の方も、ただスペインが好きという方も——すべてのスペイン好きに届けたいニュースレターです。
+      </p>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .newsletter-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    align-items: start;
+  }
+  @media (max-width: 1023px) {
+    .newsletter-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

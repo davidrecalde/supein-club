@@ -12,6 +12,7 @@ import AdSlot from '../components/AdSlot.astro';
 import ResponsiveImage from '../components/ResponsiveImage.astro';
 import LineBanner from '../components/LineBanner.astro';
 import PreferredSourceCTA from '../components/PreferredSourceCTA.astro';
+import NewsletterForm from '../components/NewsletterForm.astro';
 import { slugToJa } from '../config/breadcrumbs';
 
 interface Props {
@@ -170,6 +171,8 @@ if (firstRelated) {
         <div class="prose">
           <Content />
         </div>
+
+        <NewsletterForm variant="inline" />
 
         <!-- AdSlot art-bottom: before FAQ -->
         <div class="my-8">

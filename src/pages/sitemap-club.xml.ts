@@ -11,6 +11,7 @@ const pages = [
   { url: '/events/', priority: '0.9', changefreq: 'weekly' },
   { url: '/community/', priority: '0.8', changefreq: 'monthly' },
   { url: '/sponsors/', priority: '0.7', changefreq: 'monthly' },
+  { url: '/newsletter/', priority: '0.8', changefreq: 'monthly' },
   { url: '/contact/', priority: '0.8', changefreq: 'monthly' },
   { url: '/newsroom/', priority: '0.8', changefreq: 'weekly' },
   { url: '/newsroom/press-kit/', priority: '0.7', changefreq: 'monthly' },

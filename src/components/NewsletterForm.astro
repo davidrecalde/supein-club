@@ -1,0 +1,280 @@
+---
+interface Props {
+  variant?: 'page' | 'inline' | 'sidebar';
+}
+const { variant = 'inline' } = Astro.props;
+---
+
+{variant === 'page' && (
+  <div class="newsletter-form-page" id="newsletter-form-wrap">
+    <div class="form-group">
+      <label for="nl-name-page">お名前（任意）</label>
+      <input type="text" id="nl-name-page" name="name" placeholder="山田 太郎"
+             autocomplete="given-name" />
+    </div>
+    <div class="form-group">
+      <label for="nl-email-page">
+        メールアドレス <span style="color:#C8102E">*</span>
+      </label>
+      <input type="email" id="nl-email-page" name="email" placeholder="your@email.com"
+             required autocomplete="email" />
+    </div>
+    <button type="button" id="nl-submit-page" onclick="submitNewsletter('page')"
+            class="nl-btn-submit">
+      無料で登録する →
+    </button>
+    <p style="font-size:12px;color:#9ca3af;margin-top:12px;text-align:center;">
+      登録は無料です。いつでも配信停止できます。
+      <a href="/privacy/" style="color:#9ca3af;">プライバシーポリシー</a>
+    </p>
+    <div id="nl-success-page" style="display:none;" class="nl-success">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+           stroke="#166534" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="20 6 9 17 4 12"/>
+      </svg>
+      <span>登録が完了しました。スペインの最新情報をお届けします！</span>
+    </div>
+    <div id="nl-error-page" style="display:none;" class="nl-error">
+      登録に失敗しました。再度お試しください。
+    </div>
+  </div>
+)}
+
+{variant === 'inline' && (
+  <div class="newsletter-form-inline" id="newsletter-inline-wrap">
+    <p class="nl-inline-label">スペイン倶楽部のニュースレター</p>
+    <p class="nl-inline-text">旅行・料理・文化の最新情報を月2回、日本語でお届けします。</p>
+    <div class="nl-inline-row">
+      <input type="email" id="nl-email-inline" placeholder="メールアドレス"
+             required autocomplete="email" class="nl-input-inline" />
+      <button type="button" onclick="submitNewsletter('inline')"
+              id="nl-submit-inline" class="nl-btn-inline">
+        登録
+      </button>
+    </div>
+    <div id="nl-success-inline" style="display:none;" class="nl-success nl-success-inline">
+      登録完了！次回のニュースレターをお楽しみに。
+    </div>
+    <div id="nl-error-inline" style="display:none;" class="nl-error">
+      エラーが発生しました。再度お試しください。
+    </div>
+  </div>
+)}
+
+{variant === 'sidebar' && (
+  <div class="newsletter-form-sidebar">
+    <p style="font-size:11px;font-weight:600;letter-spacing:0.15em;text-transform:uppercase;color:#C8102E;margin:0 0 8px;">
+      NEWSLETTER
+    </p>
+    <p style="font-size:15px;font-weight:700;color:#002147;margin:0 0 8px;">
+      スペイン情報を定期配信
+    </p>
+    <p style="font-size:13px;color:#6b7280;margin:0 0 16px;line-height:1.6;">
+      月2回、旅行・料理・文化の最新情報。無料。
+    </p>
+    <input type="email" id="nl-email-sidebar" placeholder="メールアドレス"
+           required autocomplete="email" class="nl-input-sidebar" />
+    <button type="button" onclick="submitNewsletter('sidebar')"
+            id="nl-submit-sidebar" class="nl-btn-submit"
+            style="margin-top:10px;width:100%;font-size:14px;padding:11px 16px;">
+      無料で登録 →
+    </button>
+    <div id="nl-success-sidebar" style="display:none;" class="nl-success" style="margin-top:12px;font-size:13px;">
+      登録完了！
+    </div>
+    <div id="nl-error-sidebar" style="display:none;" class="nl-error">
+      エラーが発生しました。
+    </div>
+  </div>
+)}
+
+<style>
+.form-group { margin-bottom: 16px; }
+.form-group label {
+  display: block;
+  font-size: 14px;
+  font-weight: 600;
+  color: #002147;
+  margin-bottom: 6px;
+}
+.form-group input {
+  width: 100%;
+  padding: 12px 16px;
+  border: 1.5px solid #e5e7eb;
+  border-radius: 8px;
+  font-size: 15px;
+  font-family: inherit;
+  color: #374151;
+  box-sizing: border-box;
+  transition: border-color 200ms;
+}
+.form-group input:focus {
+  outline: none;
+  border-color: #C8102E;
+  box-shadow: 0 0 0 3px rgba(200,16,46,0.08);
+}
+.nl-btn-submit {
+  width: 100%;
+  background: #C8102E;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 14px 24px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: inherit;
+  transition: background 200ms;
+}
+.nl-btn-submit:hover { background: #a50d26; }
+.nl-btn-submit:disabled { background: #9ca3af; cursor: not-allowed; }
+
+.newsletter-form-inline {
+  background: #FAFAF8;
+  border: 1px solid #e5e7eb;
+  border-left: 4px solid #C8102E;
+  border-radius: 0 12px 12px 0;
+  padding: 24px;
+  margin: 36px 0;
+}
+.nl-inline-label {
+  font-size: 13px;
+  font-weight: 700;
+  color: #002147;
+  margin: 0 0 6px;
+}
+.nl-inline-text {
+  font-size: 14px;
+  color: #6b7280;
+  margin: 0 0 16px;
+  line-height: 1.6;
+}
+.nl-inline-row {
+  display: flex;
+  gap: 10px;
+}
+.nl-input-inline {
+  flex: 1;
+  padding: 11px 16px;
+  border: 1.5px solid #e5e7eb;
+  border-radius: 8px;
+  font-size: 14px;
+  font-family: inherit;
+  color: #374151;
+  transition: border-color 200ms;
+}
+.nl-input-inline:focus { outline: none; border-color: #C8102E; }
+.nl-btn-inline {
+  background: #002147;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 11px 20px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: inherit;
+  white-space: nowrap;
+  transition: background 200ms;
+}
+.nl-btn-inline:hover { background: #001529; }
+
+.nl-input-sidebar {
+  width: 100%;
+  padding: 11px 14px;
+  border: 1.5px solid #e5e7eb;
+  border-radius: 8px;
+  font-size: 14px;
+  font-family: inherit;
+  color: #374151;
+  box-sizing: border-box;
+  transition: border-color 200ms;
+}
+.nl-input-sidebar:focus { outline: none; border-color: #C8102E; }
+
+.nl-success {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #f0fdf4;
+  border: 1px solid #86efac;
+  border-radius: 8px;
+  padding: 14px 18px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #166534;
+  margin-top: 16px;
+}
+.nl-success-inline { margin-top: 12px; font-size: 13px; }
+.nl-error {
+  background: #fef2f2;
+  border: 1px solid #fca5a5;
+  border-radius: 8px;
+  padding: 12px 16px;
+  font-size: 13px;
+  color: #991b1b;
+  margin-top: 12px;
+}
+
+@media (max-width: 767px) {
+  .nl-inline-row { flex-direction: column; }
+}
+</style>
+
+<script>
+async function submitNewsletter(variant: string) {
+  const emailEl = document.getElementById(`nl-email-${variant}`) as HTMLInputElement;
+  const nameEl = document.getElementById(`nl-name-${variant}`) as HTMLInputElement;
+  const submitBtn = document.getElementById(`nl-submit-${variant}`) as HTMLButtonElement;
+  const successEl = document.getElementById(`nl-success-${variant}`);
+  const errorEl = document.getElementById(`nl-error-${variant}`);
+
+  if (!emailEl) return;
+
+  const email = emailEl.value.trim();
+  const name = nameEl?.value.trim() || '';
+
+  if (!email || !email.includes('@')) {
+    emailEl.style.borderColor = '#C8102E';
+    emailEl.focus();
+    return;
+  }
+
+  submitBtn.disabled = true;
+  const originalText = submitBtn.textContent || '';
+  submitBtn.textContent = '登録中...';
+  if (errorEl) errorEl.style.display = 'none';
+
+  try {
+    const res = await fetch('/api/subscribe', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email, name }),
+    });
+
+    const data = await res.json() as { success: boolean; alreadySubscribed?: boolean };
+
+    if (data.success) {
+      submitBtn.style.display = 'none';
+      emailEl.style.display = 'none';
+      if (nameEl) nameEl.parentElement!.style.display = 'none';
+      if (successEl) {
+        successEl.style.display = 'flex';
+        if (data.alreadySubscribed) {
+          successEl.textContent = 'すでに登録済みです。いつもありがとうございます！';
+        }
+      }
+    } else {
+      if (errorEl) errorEl.style.display = 'block';
+      submitBtn.disabled = false;
+      submitBtn.textContent = originalText;
+    }
+  } catch {
+    if (errorEl) errorEl.style.display = 'block';
+    submitBtn.disabled = false;
+    submitBtn.textContent = originalText;
+  }
+}
+
+(window as any).submitNewsletter = submitNewsletter;
+</script>
