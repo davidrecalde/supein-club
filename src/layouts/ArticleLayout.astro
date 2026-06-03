@@ -140,7 +140,7 @@ if (firstRelated) {
       </div>
 
       {heroImage && (
-        <div class="article-hero-image" style="padding:0;max-width:860px;">
+        <div class="article-hero-image" style="padding:0;max-width:860px;position:relative;z-index:10;margin-bottom:-120px;">
           <figure style="margin:0;border-radius:16px;overflow:hidden;border:3px solid #C8102E;box-shadow:0 0 0 1px rgba(200,16,46,0.15),0 8px 48px rgba(0,0,0,0.4);line-height:0;background:#001529;">
             <img
               src={heroImage}
@@ -159,7 +159,7 @@ if (firstRelated) {
   </header>
 
   <!-- Article body -->
-  <div class="page-container py-10" style={heroImage ? 'padding-top:2.5rem;' : ''}>
+  <div class="page-container py-10" style={heroImage ? 'padding-top:160px;background:#FAFAF8;' : ''}>
     {lead && (
       <div class="border-l-4 border-navy bg-[#F0F4F8] px-5 py-4 mb-8 text-ink leading-relaxed font-medium rounded-r-lg max-w-3xl">
         {lead}
