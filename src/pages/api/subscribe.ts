@@ -2,7 +2,7 @@ import type { APIRoute } from 'astro';
 
 export const prerender = false;
 
-export const POST: APIRoute = async ({ request }) => {
+export const POST: APIRoute = async ({ request, locals }) => {
   const corsHeaders = {
     'Access-Control-Allow-Origin': '*',
     'Access-Control-Allow-Methods': 'POST, OPTIONS',
@@ -21,8 +21,10 @@ export const POST: APIRoute = async ({ request }) => {
       );
     }
 
-    const BREVO_API_KEY = import.meta.env.BREVO_API_KEY;
-    const BREVO_LIST_ID = parseInt(import.meta.env.BREVO_LIST_ID || '2');
+    // CF runtime env (producción) con fallback a import.meta.env (desarrollo local)
+    const runtimeEnv = (locals as any).runtime?.env ?? {};
+    const BREVO_API_KEY = runtimeEnv.BREVO_API_KEY ?? import.meta.env.BREVO_API_KEY;
+    const BREVO_LIST_ID = parseInt(runtimeEnv.BREVO_LIST_ID ?? import.meta.env.BREVO_LIST_ID ?? '2');
 
     if (!BREVO_API_KEY) {
       return new Response(
