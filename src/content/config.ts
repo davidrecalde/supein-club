@@ -50,6 +50,8 @@ const articles = defineCollection({
     featured: z.boolean().default(false),
     author: reference('authors'),
     readingTime: z.number().optional(),
+    heroImage: z.string().optional(),
+    heroImageAlt: z.string().optional(),
     schemaType: z.enum([
       'article',
       'recipe',

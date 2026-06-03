@@ -138,8 +138,9 @@ if (type === 'article' && article) {
   const authorName = author?.data.name ?? 'スペイン倶楽部編集部';
   const authorSlug = author ? (author.data.slug ?? author.id.replace(/\.(md|mdx)$/, '')) : 'supeinclub-henshubu';
   const authorUrl = `${siteUrl}/about-us/team/${authorSlug}/`;
-  const articleImage = article.data.image
-    ? { '@type': 'ImageObject', url: `${siteUrl}${article.data.image}`, width: 1200, height: 514 }
+  const primaryImagePath = article.data.heroImage ?? article.data.image;
+  const articleImage = primaryImagePath
+    ? { '@type': 'ImageObject', url: `${siteUrl}${primaryImagePath}`, width: 1200, height: 630 }
     : { '@type': 'ImageObject', url: `${siteUrl}/logo-og.png` };
 
   const rawLinkedin = author?.data.linkedin;
@@ -245,8 +246,15 @@ if (type === 'article' && article) {
       },
     });
   } else {
-    // Generic article (default)
-    graph.push({
+    const pillarSectionMap: Record<string, string> = {
+      travel: 'スペイン旅行',
+      food: 'スペイン料理',
+      language: 'スペイン語',
+      living: 'スペインに住む',
+      culture: 'スペイン文化',
+      football: 'スペインサッカー',
+    };
+    const articleObj: Record<string, unknown> = {
       '@type': 'Article',
       '@id': `${canonical}#article`,
       headline: title.slice(0, 110),
@@ -260,10 +268,28 @@ if (type === 'article' && article) {
       inLanguage: lang === 'es' ? 'es' : 'ja',
       isPartOf: { '@id': `${siteUrl}/#website` },
       mainEntityOfPage: `${canonical}#webpage`,
-      about: {
-        '@type': 'Thing',
-        name: 'スペイン',
-      },
+      about: { '@type': 'Thing', name: 'スペイン' },
+      articleSection: pillarSectionMap[article.data.pillar] ?? article.data.pillar,
+    };
+    if (article.data.tags && article.data.tags.length > 0) {
+      articleObj.keywords = article.data.tags.join(',');
+    }
+    graph.push(articleObj);
+  }
+
+  // ImageObject node for heroImage
+  if (article.data.heroImage) {
+    graph.push({
+      '@type': 'ImageObject',
+      '@id': `${canonical}#heroimage`,
+      url: `${siteUrl}${article.data.heroImage}`,
+      contentUrl: `${siteUrl}${article.data.heroImage}`,
+      name: article.data.heroImageAlt ?? title,
+      description: article.data.heroImageAlt ?? title,
+      width: 1200,
+      height: 630,
+      license: siteUrl,
+      acquireLicensePage: `${siteUrl}/contact/`,
     });
   }
 }
