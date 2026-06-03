@@ -1,4 +1,8 @@
-export async function onRequestPost(context) {
+import type { APIRoute } from 'astro';
+
+export const prerender = false;
+
+export const POST: APIRoute = async ({ request }) => {
   const corsHeaders = {
     'Access-Control-Allow-Origin': '*',
     'Access-Control-Allow-Methods': 'POST, OPTIONS',
@@ -7,7 +11,7 @@ export async function onRequestPost(context) {
   };
 
   try {
-    const body = await context.request.json();
+    const body = await request.json();
     const { email, name } = body;
 
     if (!email || !email.includes('@')) {
@@ -17,8 +21,15 @@ export async function onRequestPost(context) {
       );
     }
 
-    const BREVO_API_KEY = context.env.BREVO_API_KEY;
-    const BREVO_LIST_ID = parseInt(context.env.BREVO_LIST_ID || '2');
+    const BREVO_API_KEY = import.meta.env.BREVO_API_KEY;
+    const BREVO_LIST_ID = parseInt(import.meta.env.BREVO_LIST_ID || '2');
+
+    if (!BREVO_API_KEY) {
+      return new Response(
+        JSON.stringify({ success: false, message: 'API key not configured' }),
+        { status: 500, headers: corsHeaders }
+      );
+    }
 
     const brevoRes = await fetch('https://api.brevo.com/v3/contacts', {
       method: 'POST',
@@ -42,9 +53,9 @@ export async function onRequestPost(context) {
       );
     }
 
-    const errorData = await brevoRes.json();
+    const errorData = await brevoRes.json() as { message?: string };
 
-    if (errorData.message && errorData.message.includes('already')) {
+    if (errorData.message?.includes('already')) {
       return new Response(
         JSON.stringify({ success: true, alreadySubscribed: true }),
         { status: 200, headers: corsHeaders }
@@ -58,13 +69,13 @@ export async function onRequestPost(context) {
 
   } catch (err) {
     return new Response(
-      JSON.stringify({ success: false, message: 'サーバーエラー: ' + err.message }),
+      JSON.stringify({ success: false, message: 'サーバーエラー: ' + String(err) }),
       { status: 500, headers: corsHeaders }
     );
   }
-}
+};
 
-export async function onRequestOptions() {
+export const OPTIONS: APIRoute = async () => {
   return new Response(null, {
     status: 204,
     headers: {
@@ -73,4 +84,4 @@ export async function onRequestOptions() {
       'Access-Control-Allow-Headers': 'Content-Type',
     },
   });
-}
+};
