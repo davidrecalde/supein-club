@@ -159,7 +159,8 @@ if (firstRelated) {
   </header>
 
   <!-- Article body -->
-  <div class="page-container py-10" style={heroImage ? 'padding-top:160px;background:#FAFAF8;' : ''}>
+  <div style={heroImage ? 'background:linear-gradient(to bottom, #002147 120px, #FAFAF8 120px);' : ''}>
+  <div class="page-container py-10" style={heroImage ? 'padding-top:160px;' : ''}>
     {lead && (
       <div class="border-l-4 border-navy bg-[#F0F4F8] px-5 py-4 mb-8 text-ink leading-relaxed font-medium rounded-r-lg max-w-3xl">
         {lead}
@@ -256,7 +257,7 @@ if (firstRelated) {
       </aside>
     </div>
   </div>
-
+  </div>
 
   <LineBanner />
 </BaseLayout>
