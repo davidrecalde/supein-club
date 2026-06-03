@@ -9,7 +9,6 @@ import FAQSection from '../components/FAQSection.astro';
 import TOC from '../components/TOC.astro';
 import ArticleCard from '../components/ArticleCard.astro';
 import AdSlot from '../components/AdSlot.astro';
-import ResponsiveImage from '../components/ResponsiveImage.astro';
 import LineBanner from '../components/LineBanner.astro';
 import PreferredSourceCTA from '../components/PreferredSourceCTA.astro';
 import NewsletterForm from '../components/NewsletterForm.astro';
@@ -63,6 +62,9 @@ if (relatedArticles && relatedArticles.length > 0) {
     .slice(0, 3);
 }
 
+const authorSlug = author.data.slug ?? author.id.replace(/\.(md|mdx)$/, '');
+const authorUrlForMeta = `https://supein.club/about-us/team/${authorSlug}/`;
+
 // Data for AdSlots from first related article
 const firstRelated = related[0];
 let relatedTitle: string | undefined;
@@ -87,44 +89,77 @@ if (firstRelated) {
     article={entry}
     author={author}
     breadcrumbs={seoBreadcrumbs}
+    keywords={entry.data.tags}
+    authorName={author.data.name}
+    authorUrl={authorUrlForMeta}
   />
 
   <!-- Navy article header -->
-  <div class="article-hero bg-navy text-white relative">
-    <div class="absolute top-0 left-0 right-0 h-[3px] bg-primary"></div>
-    <div class="article-hero-inner max-w-5xl mx-auto px-5 py-10 pt-14">
+  <header style={`background:#002147; padding:64px 0 ${heroImage ? '0' : '64px'};`}>
+    <div class="page-container">
+
       <Breadcrumb items={visualBreadcrumbs} dark />
-      <div class="max-w-2xl rounded-xl overflow-hidden mt-6 mb-6">
-        <ResponsiveImage
-          src={image}
-          alt={imageAlt ?? title}
-          size="heroArticle"
-          pillarLabel={pillarLabel}
-          loading="eager"
-        />
-      </div>
-      <h1 class="font-sans font-bold text-3xl md:text-4xl leading-tight mt-4 mb-4">{title}</h1>
-      <div class="text-sm text-white/50 flex gap-5 flex-wrap">
-        {author && (
-          <a
-            href="#author-box"
-            onclick="event.preventDefault(); document.getElementById('author-box')?.scrollIntoView({behavior:'smooth',block:'start'}); history.pushState(null,'','#author-box');"
-            style="color:inherit; text-decoration:none; cursor:pointer;"
-          >
+
+      <p style="font-size:11px;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:#C8102E;margin:20px 0 12px;">
+        {pillarLabel}{clusterLabel ? ` › ${clusterLabel}` : ''}
+      </p>
+
+      <h1 style="font-family:'Noto Serif JP',serif;font-size:clamp(24px,4vw,40px);font-weight:700;color:white;margin:0 0 24px;line-height:1.35;max-width:820px;">
+        {title}
+      </h1>
+
+      <div style="display:flex;align-items:center;flex-wrap:wrap;gap:16px;margin-bottom:40px;">
+        <a
+          href="#author-box"
+          onclick="event.preventDefault();document.getElementById('author-box')?.scrollIntoView({behavior:'smooth'});"
+          style="display:flex;align-items:center;gap:10px;text-decoration:none;"
+        >
+          {author.data.avatar && (
+            <img
+              src={author.data.avatar}
+              alt={author.data.name}
+              width="32"
+              height="32"
+              style="width:32px;height:32px;border-radius:50%;object-fit:cover;border:2px solid rgba(255,255,255,0.3);"
+            />
+          )}
+          <span style="font-size:14px;font-weight:600;color:rgba(255,255,255,0.85);">
             {author.data.nameJa ?? author.data.name}
-          </a>
+          </span>
+        </a>
+        <span style="color:rgba(255,255,255,0.25);">|</span>
+        <time datetime={pubDate.toISOString()} style="font-size:13px;color:rgba(255,255,255,0.6);">
+          {pubDate.toLocaleDateString('ja-JP', { year: 'numeric', month: 'long', day: 'numeric' })}
+        </time>
+        {readingTime && (
+          <>
+            <span style="color:rgba(255,255,255,0.25);">|</span>
+            <span style="font-size:13px;color:rgba(255,255,255,0.6);">約{readingTime}分</span>
+          </>
         )}
-        <time datetime={pubDate.toISOString()}>公開: {pubDate.toLocaleDateString('ja-JP')}</time>
-        {updatedDate && (
-          <time datetime={updatedDate.toISOString()}>更新: {updatedDate.toLocaleDateString('ja-JP')}</time>
-        )}
-        {readingTime && <span>約{readingTime}分で読めます</span>}
       </div>
+
+      {heroImage && (
+        <div style="max-width:860px;">
+          <figure style="margin:0;border-radius:16px 16px 0 0;overflow:hidden;border:3px solid rgba(139,0,30,0.6);border-bottom:none;box-shadow:0 0 0 1px rgba(255,255,255,0.06),0 -4px 32px rgba(0,0,0,0.3);line-height:0;background:#001529;">
+            <img
+              src={heroImage}
+              alt={heroImageAlt || title}
+              width="1200"
+              height="630"
+              style="width:100%;height:auto;max-height:500px;object-fit:cover;display:block;border-radius:13px 13px 0 0;opacity:0.95;"
+              fetchpriority="high"
+              loading="eager"
+            />
+          </figure>
+        </div>
+      )}
+
     </div>
-  </div>
+  </header>
 
   <!-- Article body -->
-  <div class="page-container py-10">
+  <div class="page-container py-10" style={heroImage ? 'padding-top:2.5rem;' : ''}>
     {lead && (
       <div class="border-l-4 border-navy bg-[#F0F4F8] px-5 py-4 mb-8 text-ink leading-relaxed font-medium rounded-r-lg max-w-3xl">
         {lead}
@@ -222,16 +257,6 @@ if (firstRelated) {
     </div>
   </div>
 
-  <style>
-    @media (max-width: 767px) {
-      .article-hero h1 {
-        font-size: 1.5rem;
-        line-height: 1.4;
-        word-break: normal;
-        overflow-wrap: break-word;
-      }
-    }
-  </style>
 
   <LineBanner />
 </BaseLayout>

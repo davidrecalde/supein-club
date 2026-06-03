@@ -11,6 +11,9 @@ interface Props {
   author?: CollectionEntry<'authors'>;
   breadcrumbs?: Array<{ name: string; url: string }>;
   pageSchema?: 'collection' | 'destination' | 'sports' | 'course' | 'restaurant' | 'profile' | 'about' | 'service';
+  keywords?: string[];
+  authorName?: string;
+  authorUrl?: string;
 }
 
 const {
@@ -23,6 +26,9 @@ const {
   author,
   breadcrumbs,
   pageSchema,
+  keywords,
+  authorName,
+  authorUrl,
 } = Astro.props;
 
 const siteUrl = 'https://supein.club';
@@ -351,4 +357,14 @@ const jsonLd = JSON.stringify({ '@context': 'https://schema.org', '@graph': grap
 <meta name="twitter:image" content={resolvedImage} />
 <link rel="alternate" hreflang="ja" href={canonical} />
 <link rel="alternate" hreflang="es" href={canonical} />
+{keywords && keywords.length > 0 && (
+  <meta name="keywords" content={keywords.join(',')} />
+)}
+{authorName && (
+  <>
+    <meta name="author" content={authorName} />
+    <link rel="author" href={authorUrl || 'https://supein.club/about-us/team/'} />
+  </>
+)}
+<link rel="publisher" href="https://supein.club/" />
 <script type="application/ld+json" set:html={jsonLd} />
