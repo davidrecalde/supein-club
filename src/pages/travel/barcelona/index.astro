@@ -30,7 +30,7 @@ const breadcrumbs = [
         {sorted.map((a) => {
           const parts = a.id.replace(/\.(md|mdx)$/, '').split('/');
           const slug = parts[2] ?? a.data.cluster;
-          return <ArticleCard title={a.data.title} description={a.data.description} href={`/travel/barcelona/${slug}/`} pillar="travel" image={a.data.image} imageAlt={a.data.imageAlt} pubDate={a.data.pubDate} />;
+          return <ArticleCard title={a.data.title} description={a.data.description} href={`/travel/barcelona/${slug}/`} pillar="travel" image={a.data.image} imageAlt={a.data.imageAlt} heroImage={a.data.heroImage} heroImageAlt={a.data.heroImageAlt} pubDate={a.data.pubDate} />;
         })}
       </div>
     ) : (
