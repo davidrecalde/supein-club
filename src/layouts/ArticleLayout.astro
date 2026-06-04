@@ -66,18 +66,6 @@ if (relatedArticles && relatedArticles.length > 0) {
 const authorSlug = author.data.slug ?? author.id.replace(/\.(md|mdx)$/, '');
 const authorUrlForMeta = `https://supein.club/about-us/team/${authorSlug}/`;
 
-// Data for AdSlots from first related article
-const firstRelated = related[0];
-let relatedTitle: string | undefined;
-let relatedUrl: string | undefined;
-let relatedReadingTime: number | undefined;
-if (firstRelated) {
-  const rParts = firstRelated.id.replace(/\.(md|mdx)$/, '').split('/');
-  const rSlug = rParts[2] ?? firstRelated.data.cluster;
-  relatedTitle = firstRelated.data.title;
-  relatedUrl = `/${firstRelated.data.pillar}/${firstRelated.data.cluster}/${rSlug}/`;
-  relatedReadingTime = firstRelated.data.readingTime;
-}
 ---
 <BaseLayout title={title}>
   <SEO
@@ -191,13 +179,7 @@ if (firstRelated) {
 
         <!-- AdSlot art-mid: before main content -->
         <div class="mb-8">
-          <AdSlot
-            position="art-mid"
-            interlinkTitle={relatedTitle}
-            interlinkUrl={relatedUrl}
-            interlinkPillar={pillarLabel}
-            interlinkReadingTime={relatedReadingTime}
-          />
+          <AdSlot position="art-mid" />
         </div>
 
         <div class="prose">
@@ -208,13 +190,7 @@ if (firstRelated) {
 
         <!-- AdSlot art-bottom: before FAQ -->
         <div class="my-8">
-          <AdSlot
-            position="art-bottom"
-            interlinkTitle={relatedTitle}
-            interlinkUrl={relatedUrl}
-            interlinkPillar={pillarLabel}
-            interlinkReadingTime={relatedReadingTime}
-          />
+          <AdSlot position="art-bottom" />
         </div>
 
         {faq && faq.length > 0 && <FAQSection faq={faq} title={faqTitle} />}
