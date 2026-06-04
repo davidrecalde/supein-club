@@ -271,3 +271,48 @@ table {
 .prose tr:nth-child(even) td {
   background: #F5F5F3;
 }
+
+/* ── Prose details/summary accordion ── */
+.prose details {
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  overflow: hidden;
+}
+.prose details summary {
+  padding: 14px 18px;
+  font-weight: 600;
+  font-size: 15px;
+  color: #002147;
+  cursor: pointer;
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #FAFAF8;
+  user-select: none;
+}
+.prose details summary::-webkit-details-marker {
+  display: none;
+}
+.prose details summary::after {
+  content: '+';
+  font-size: 20px;
+  font-weight: 300;
+  color: #C8102E;
+  line-height: 1;
+  flex-shrink: 0;
+  margin-left: 12px;
+}
+.prose details[open] summary::after {
+  content: '−';
+}
+.prose details[open] summary {
+  border-bottom: 1px solid #e5e7eb;
+}
+.prose details > *:not(summary) {
+  padding: 16px 18px;
+  font-size: 15px;
+  line-height: 1.8;
+  color: #374151;
+}
