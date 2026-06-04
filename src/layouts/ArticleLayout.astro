@@ -55,13 +55,31 @@ const seoBreadcrumbs = [
   { name: clusterLabel, url: `/${pillar}/${cluster}/` },
 ];
 
-let related: CollectionEntry<'articles'>[] = [];
-if (relatedArticles && relatedArticles.length > 0) {
-  const all = await getCollection('articles', ({ data }) => !data.draft);
-  related = all
-    .filter((a) => relatedArticles.some((slug) => a.id.includes(slug)))
-    .slice(0, 3);
+// Build related articles: manual pins first, then auto-fill from same cluster → same pillar
+const allArticles = await getCollection('articles', ({ data }) => !data.draft);
+
+const pinned: CollectionEntry<'articles'>[] = relatedArticles?.length
+  ? allArticles.filter((a) => relatedArticles.some((slug) => a.id.includes(slug)))
+  : [];
+
+const usedIds = new Set([entry.id, ...pinned.map((a) => a.id)]);
+
+const byDate = (a: CollectionEntry<'articles'>, b: CollectionEntry<'articles'>) =>
+  b.data.pubDate.getTime() - a.data.pubDate.getTime();
+
+for (const candidate of allArticles.filter((a) => a.data.cluster === cluster && !usedIds.has(a.id)).sort(byDate)) {
+  if (pinned.length >= 3) break;
+  pinned.push(candidate);
+  usedIds.add(candidate.id);
 }
+
+for (const candidate of allArticles.filter((a) => a.data.pillar === pillar && !usedIds.has(a.id)).sort(byDate)) {
+  if (pinned.length >= 3) break;
+  pinned.push(candidate);
+  usedIds.add(candidate.id);
+}
+
+const related = pinned.slice(0, 3);
 
 const authorSlug = author.data.slug ?? author.id.replace(/\.(md|mdx)$/, '');
 const authorUrlForMeta = `https://supein.club/about-us/team/${authorSlug}/`;
@@ -200,7 +218,8 @@ const authorUrlForMeta = `https://supein.club/about-us/team/${authorSlug}/`;
 
         {related.length > 0 && (
           <section class="mt-12 border-t border-[#E8E8E6] pt-10">
-            <h2 class="font-sans font-bold text-2xl text-navy mb-6">関連記事</h2>
+            <h2 class="font-sans font-bold text-2xl text-navy mb-2">こちらの記事もおすすめ</h2>
+            <p class="text-sm text-gray-500 mb-6">同じテーマのおすすめ記事です。</p>
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
               {related.map((a) => {
                 const parts = a.id.replace(/\.(md|mdx)$/, '').split('/');
