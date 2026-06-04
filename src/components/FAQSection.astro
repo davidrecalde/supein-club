@@ -1,12 +1,13 @@
 ---
 interface Props {
   faq: Array<{ question: string; answer: string }>;
+  title?: string;
 }
 
-const { faq } = Astro.props;
+const { faq, title = 'よくある質問' } = Astro.props;
 ---
 <section class="mt-10 border-t border-ink/10 pt-10">
-  <h2 class="font-serif text-2xl font-bold text-navy mb-6">よくある質問</h2>
+  <h2 class="font-serif text-2xl font-bold text-navy mb-6" set:html={title} />
   <div class="space-y-3">
     {faq.map(({ question, answer }) => (
       <details class="group border border-ink/10 rounded-xl overflow-hidden">
@@ -14,9 +15,7 @@ const { faq } = Astro.props;
           {question}
           <span class="ml-4 shrink-0 text-muted group-open:rotate-180 transition-transform">▾</span>
         </summary>
-        <div class="px-5 pb-4 text-muted leading-relaxed text-sm">
-          {answer}
-        </div>
+        <div class="px-5 pb-4 text-muted leading-relaxed text-sm" set:html={answer} />
       </details>
     ))}
   </div>

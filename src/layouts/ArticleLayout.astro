@@ -19,7 +19,7 @@ interface Props {
 }
 
 const { entry } = Astro.props;
-const { title, description, pubDate, updatedDate, pillar, cluster, image, imageAlt, lead, faq, relatedArticles, readingTime, heroImage, heroImageAlt } = entry.data;
+const { title, description, pubDate, updatedDate, pillar, cluster, image, imageAlt, lead, faq, faqTitle, relatedArticles, readingTime, heroImage, heroImageAlt } = entry.data;
 
 const { Content, headings } = await entry.render();
 
@@ -216,7 +216,7 @@ if (firstRelated) {
           />
         </div>
 
-        {faq && faq.length > 0 && <FAQSection faq={faq} />}
+        {faq && faq.length > 0 && <FAQSection faq={faq} title={faqTitle} />}
 
         {author && <AuthorBox author={author} />}
 

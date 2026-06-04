@@ -45,6 +45,7 @@ const articles = defineCollection({
     entities: z.array(z.string()),
     relatedArticles: z.array(z.string()).optional(),
     faq: z.array(z.object({ question: z.string(), answer: z.string() })).optional(),
+    faqTitle: z.string().optional(),
     draft: z.boolean().default(false),
     lang: z.enum(['ja', 'es']).default('ja'),
     featured: z.boolean().default(false),
