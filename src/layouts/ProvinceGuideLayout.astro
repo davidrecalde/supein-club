@@ -13,6 +13,7 @@ import ProvinceNeighborhoods from '../components/province/ProvinceNeighborhoods.
 import ProvinceRelated from '../components/province/ProvinceRelated.astro';
 import ProvinceCTA from '../components/province/ProvinceCTA.astro';
 import PreferredSourceCTA from '../components/PreferredSourceCTA.astro';
+import ArticleDisclaimer from '../components/ArticleDisclaimer.astro';
 
 interface Props {
   entry: CollectionEntry<'spain-map'>;
@@ -135,6 +136,8 @@ const localBusinessSchema = JSON.stringify({
             <FAQSection faq={entry.data.faq} />
           </section>
         )}
+
+        <ArticleDisclaimer />
 
         <PreferredSourceCTA />
 
