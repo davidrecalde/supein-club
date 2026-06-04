@@ -204,8 +204,6 @@ if (firstRelated) {
           <Content />
         </div>
 
-        <ArticleDisclaimer />
-
         <NewsletterForm variant="inline" />
 
         <!-- AdSlot art-bottom: before FAQ -->
@@ -221,6 +219,7 @@ if (firstRelated) {
 
         {faq && faq.length > 0 && <FAQSection faq={faq} title={faqTitle} />}
 
+        {author && <ArticleDisclaimer />}
         {author && <AuthorBox author={author} />}
 
         {related.length > 0 && (
