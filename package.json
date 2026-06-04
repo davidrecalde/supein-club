@@ -24,6 +24,7 @@
     "@tailwindcss/vite": "^4.3.0",
     "astro": "^5.18.1",
     "lucide-astro": "^0.556.0",
+    "rehype-external-links": "^3.0.0",
     "tailwindcss": "^4.3.0"
   }
 }
