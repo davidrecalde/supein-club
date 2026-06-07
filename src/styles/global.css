@@ -316,3 +316,53 @@ table {
   line-height: 1.8;
   color: #374151;
 }
+
+/* ━━━ Imágenes con caption en artículos ━━━ */
+.prose figure {
+  margin: 32px 0;
+  line-height: 0;
+}
+
+.prose figure img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 8px;
+  line-height: 0;
+}
+
+.prose figcaption {
+  font-size: 11px;
+  color: #9ca3af;
+  text-align: center;
+  line-height: 1.5;
+  margin-top: 8px;
+  padding: 0 8px;
+}
+
+/* Imágenes sin figure (sintaxis Markdown estándar)
+   Astro las convierte en <img> sueltos dentro de <p> */
+.prose p > img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 8px;
+  margin: 0 auto;
+}
+
+/* Wrapper automático para dar caption a imgs en prose */
+.prose p:has(> img) {
+  line-height: 0;
+  margin: 32px 0 0;
+}
+
+.prose p:has(> img) + p.img-caption,
+.prose img + em {
+  display: block;
+  font-size: 11px;
+  color: #9ca3af;
+  text-align: center;
+  line-height: 1.5;
+  margin: 8px 0 32px;
+  font-style: normal;
+}

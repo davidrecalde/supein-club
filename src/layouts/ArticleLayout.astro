@@ -255,6 +255,67 @@ const authorUrlForMeta = `https://supein.club/about-us/team/${authorSlug}/`;
   <LineBanner />
 </BaseLayout>
 
+<script>
+// Añadir caption automático a todas las imágenes
+// del artículo usando el texto del alt
+(function() {
+  const prose = document.querySelector('.prose');
+  if (!prose) return;
+
+  const imgs = prose.querySelectorAll('img');
+
+  imgs.forEach(img => {
+    const altText = img.getAttribute('alt');
+    if (!altText || altText.trim() === '') return;
+
+    // Si la imagen ya está en un <figure>, añadir figcaption
+    if (img.closest('figure')) {
+      const figure = img.closest('figure');
+      if (!figure.querySelector('figcaption')) {
+        const caption = document.createElement('figcaption');
+        caption.textContent = altText;
+        figure.appendChild(caption);
+      }
+      return;
+    }
+
+    // Si la imagen está suelta (en un <p>),
+    // crear wrapper figure con figcaption
+    const parent = img.parentElement;
+    if (parent && parent.tagName === 'P') {
+      const figure = document.createElement('figure');
+      figure.style.margin = '32px 0';
+      figure.style.lineHeight = '0';
+
+      // Insertar figure antes del párrafo
+      parent.parentElement.insertBefore(figure, parent);
+
+      // Mover la imagen al figure
+      figure.appendChild(img);
+
+      // Añadir figcaption
+      const caption = document.createElement('figcaption');
+      caption.textContent = altText;
+      caption.style.cssText = `
+        font-size: 11px;
+        color: #9ca3af;
+        text-align: center;
+        line-height: 1.5;
+        margin-top: 8px;
+        padding: 0 8px;
+        font-style: normal;
+      `;
+      figure.appendChild(caption);
+
+      // Eliminar el párrafo vacío si quedó vacío
+      if (parent.innerHTML.trim() === '') {
+        parent.remove();
+      }
+    }
+  });
+})();
+</script>
+
 <style>
   @media (max-width: 767px) {
     :global(.article-hero-image img) {
