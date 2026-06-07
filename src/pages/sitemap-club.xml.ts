@@ -17,6 +17,7 @@ const pages = [
   { url: '/newsroom/press-kit/', priority: '0.7', changefreq: 'monthly' },
   { url: '/newsroom/2026-05-30-8th-anniversary-el-tragon-tokyo/', priority: '0.8', changefreq: 'monthly' },
   { url: '/newsroom/2026-06-01-supein-club-nuevo-diseno-web/', priority: '0.8', changefreq: 'monthly' },
+  { url: '/newsroom/2026-06-07-paella-tapas-festival-hibiya-tokyo/', priority: '0.8', changefreq: 'monthly' },
   { url: '/sitemap/', priority: '0.5', changefreq: 'weekly' },
   { url: '/privacy/', priority: '0.4', changefreq: 'yearly' },
   { url: '/terms/', priority: '0.4', changefreq: 'yearly' },
