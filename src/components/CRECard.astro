@@ -1,0 +1,757 @@
+---
+interface CREItem {
+  position: number;
+  name: string;
+  nameJa: string;
+  url: string;
+  mapsUrl: string;
+  criScore: number;
+  criLevel: string;
+  rating: number;
+  reviewCount: number;
+  description: string;
+  dimensions: {
+    reputacion: number;
+    volumen: number;
+    sentimiento: number;
+    perfil_gmb: number;
+    visibilidad: number;
+  };
+  reviews: Array<{
+    rating: number;
+    text: string;
+    date: string;
+  }>;
+}
+
+interface Props {
+  items: CREItem[];
+  title?: string;
+  date?: string;
+  location?: string;
+}
+
+const {
+  items,
+  title = "人気観光スポット ランキング",
+  date = "",
+  location = ""
+} = Astro.props;
+
+function criColor(score: number): string {
+  if (score >= 90) return '#16a34a';
+  if (score >= 70) return '#f59e0b';
+  return '#dc2626';
+}
+
+function stars(rating: number): string {
+  const full = Math.floor(rating);
+  const half = rating % 1 >= 0.5 ? 1 : 0;
+  const empty = 5 - full - half;
+  return '★'.repeat(full) + (half ? '½' : '') + '☆'.repeat(empty);
+}
+---
+
+<div class="cre-widget">
+
+  <!-- Header del widget -->
+  <div class="cre-widget-header">
+    <div class="cre-widget-title">
+      <span class="cre-badge">CRE</span>
+      <span class="cre-widget-name">{title}</span>
+    </div>
+    <div class="cre-widget-meta">
+      {location && <span>📍 {location}</span>}
+      {date && <span>🗓 {date}</span>}
+      <span>{items.length}件分析済み</span>
+    </div>
+    <p class="cre-widget-desc">
+      Competitive Reputation Engine by supein.club —
+      Googleレビュー・評価・センチメント・オンライン可視性を
+      独自アルゴリズムで分析したランキングです。
+    </p>
+  </div>
+
+  <!-- Lista de items -->
+  <ol class="cre-widget-list" itemscope
+      itemtype="https://schema.org/ItemList">
+
+    {items.map((item) => (
+      <li
+        itemprop="itemListElement"
+        itemscope
+        itemtype="https://schema.org/ListItem"
+        class="cre-widget-item"
+        data-id={`cre-${item.position}`}
+      >
+        <meta itemprop="position" content={String(item.position)}/>
+
+        <!-- Fila principal — clickable -->
+        <button
+          class="cre-widget-row"
+          aria-expanded="false"
+          aria-controls={`cre-detail-${item.position}`}
+          onclick={`toggleCRE('cre-${item.position}')`}
+          type="button"
+        >
+          <!-- Número de posición -->
+          <span class={`cre-pos ${item.position <= 3 ? 'cre-pos-top' : ''}`}>
+            {item.position}
+          </span>
+
+          <!-- Info principal -->
+          <span class="cre-row-info">
+            <span class="cre-row-name" itemprop="name">
+              {item.nameJa}
+            </span>
+            <span class="cre-row-sub">
+              <span class="cre-stars-small">
+                {'★'.repeat(Math.floor(item.rating))}
+              </span>
+              <span class="cre-rating-val">{item.rating}</span>
+              <span class="cre-review-count">
+                ({item.reviewCount.toLocaleString('ja-JP')}件)
+              </span>
+            </span>
+          </span>
+
+          <!-- CRI Score + barra -->
+          <span class="cre-score-wrap">
+            <span
+              class="cre-score-badge"
+              style={`background:${criColor(item.criScore)}`}
+            >
+              {item.criScore}
+            </span>
+            <span class="cre-score-level">{item.criLevel}</span>
+          </span>
+
+          <!-- Chevron -->
+          <span class="cre-chevron" aria-hidden="true">›</span>
+        </button>
+
+        <!-- Panel expandible -->
+        <div
+          class="cre-detail"
+          id={`cre-detail-${item.position}`}
+          hidden
+          itemprop="item"
+          itemscope
+          itemtype="https://schema.org/TouristAttraction"
+        >
+          <meta itemprop="name" content={item.nameJa}/>
+          <meta itemprop="url" content={item.url}/>
+
+          <!-- Descripción -->
+          <p class="cre-detail-desc" itemprop="description">
+            {item.description}
+          </p>
+
+          <!-- CRI Score grande + barra -->
+          <div class="cre-cri-main">
+            <div class="cre-cri-header">
+              <span class="cre-cri-label">CRI スコア</span>
+              <span
+                class="cre-cri-value"
+                style={`color:${criColor(item.criScore)}`}
+              >
+                {item.criScore}
+              </span>
+              <span
+                class="cre-cri-chip"
+                style={`background:${criColor(item.criScore)}`}
+              >
+                {item.criLevel}
+              </span>
+            </div>
+            <div class="cre-bar-track">
+              <div
+                class="cre-bar-fill"
+                style={`width:${item.criScore}%;background:${criColor(item.criScore)}`}
+              ></div>
+            </div>
+          </div>
+
+          <!-- 5 dimensiones -->
+          <div class="cre-dimensions">
+            <h5 class="cre-dim-title">CRI 5次元スコア</h5>
+            {[
+              { label: '評判 (25%)', key: 'reputacion' },
+              { label: 'レビュー数 (20%)', key: 'volumen' },
+              { label: 'センチメント (20%)', key: 'sentimiento' },
+              { label: 'Googleプロフィール (20%)', key: 'perfil_gmb' },
+              { label: 'オンライン可視性 (15%)', key: 'visibilidad' },
+            ].map(dim => {
+              const score = item.dimensions[dim.key as keyof typeof item.dimensions];
+              return (
+                <div class="cre-dim-row">
+                  <span class="cre-dim-label">{dim.label}</span>
+                  <div class="cre-dim-bar-wrap">
+                    <div class="cre-dim-bar-track">
+                      <div
+                        class="cre-dim-bar-fill"
+                        style={`width:${score}%;background:${criColor(score)}`}
+                      ></div>
+                    </div>
+                    <span
+                      class="cre-dim-score"
+                      style={`color:${criColor(score)}`}
+                    >
+                      {score}
+                    </span>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+
+          <!-- Google Info -->
+          <div class="cre-google-info">
+            <div class="cre-google-row">
+              <span class="cre-google-label">Google評価</span>
+              <span class="cre-google-val">
+                <span style="color:#f59e0b;">
+                  {'★'.repeat(Math.floor(item.rating))}
+                </span>
+                <strong>{item.rating}</strong>
+                / 5.0
+              </span>
+            </div>
+            <div class="cre-google-row">
+              <span class="cre-google-label">レビュー総数</span>
+              <span class="cre-google-val">
+                {item.reviewCount.toLocaleString('ja-JP')}件
+              </span>
+            </div>
+          </div>
+
+          <!-- Reseñas traducidas -->
+          {item.reviews && item.reviews.length > 0 && (
+            <div class="cre-reviews-block">
+              <h5 class="cre-reviews-title">
+                訪問者のレビュー（日本語訳）
+              </h5>
+              {item.reviews.slice(0, 3).map(review => (
+                <div class="cre-review-card"
+                     itemprop="review"
+                     itemscope
+                     itemtype="https://schema.org/Review">
+                  <div class="cre-review-header">
+                    <span class="cre-review-stars"
+                          style="color:#f59e0b;">
+                      {'★'.repeat(review.rating)}
+                    </span>
+                    <span class="cre-review-date">
+                      {review.date}
+                    </span>
+                  </div>
+                  <p class="cre-review-text" itemprop="reviewBody">
+                    {review.text}
+                  </p>
+                </div>
+              ))}
+            </div>
+          )}
+
+          <!-- Links -->
+          <div class="cre-detail-links">
+            <a
+              href={item.url}
+              target="_blank"
+              rel="nofollow noopener noreferrer"
+              class="cre-link-official"
+              itemprop="url"
+            >
+              🌐 公式サイト
+            </a>
+            <a
+              href={item.mapsUrl}
+              target="_blank"
+              rel="nofollow noopener noreferrer"
+              class="cre-link-maps"
+            >
+              📍 Googleマップ
+            </a>
+          </div>
+
+        </div><!-- /.cre-detail -->
+      </li>
+    ))}
+  </ol>
+
+  <p class="cre-footer">
+    Powered by
+    <strong>CRE — Competitive Reputation Engine v8</strong>
+    · supein.club · {date}
+  </p>
+
+</div>
+
+<style>
+/* ━━━ CRE Widget ━━━ */
+.cre-widget {
+  margin: 40px 0;
+  border: 1px solid #e5e7eb;
+  border-radius: 16px;
+  overflow: hidden;
+  font-family: 'Noto Sans JP', sans-serif;
+}
+
+.cre-widget-header {
+  background: #002147;
+  padding: 20px 24px;
+  color: white;
+}
+
+.cre-widget-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+
+.cre-badge {
+  font-family: 'Work Sans', sans-serif;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  background: #C8102E;
+  color: white;
+  padding: 3px 8px;
+  border-radius: 4px;
+  flex-shrink: 0;
+}
+
+.cre-widget-name {
+  font-size: 16px;
+  font-weight: 700;
+  color: white;
+}
+
+.cre-widget-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  font-size: 12px;
+  color: rgba(255,255,255,0.6);
+  margin-bottom: 10px;
+}
+
+.cre-widget-desc {
+  font-size: 11px;
+  color: rgba(255,255,255,0.45);
+  margin: 0;
+  line-height: 1.6;
+}
+
+.cre-widget-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.cre-widget-item {
+  border-bottom: 1px solid #f3f4f6;
+}
+
+.cre-widget-item:last-child {
+  border-bottom: none;
+}
+
+/* Fila principal */
+.cre-widget-row {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 20px;
+  background: white;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  transition: background 150ms;
+}
+
+.cre-widget-row:hover {
+  background: #FAFAF8;
+}
+
+.cre-widget-row[aria-expanded="true"] {
+  background: #f8faff;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.cre-pos {
+  font-family: 'Work Sans', sans-serif;
+  font-size: 20px;
+  font-weight: 800;
+  color: #9ca3af;
+  min-width: 28px;
+  text-align: center;
+  flex-shrink: 0;
+}
+
+.cre-pos-top { color: #002147; }
+
+.cre-row-info {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.cre-row-name {
+  font-size: 15px;
+  font-weight: 700;
+  color: #002147;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.cre-row-sub {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.cre-stars-small { color: #f59e0b; font-size: 12px; }
+.cre-rating-val {
+  font-size: 13px;
+  font-weight: 700;
+  color: #374151;
+}
+.cre-review-count { font-size: 12px; color: #9ca3af; }
+
+.cre-score-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  flex-shrink: 0;
+}
+
+.cre-score-badge {
+  font-family: 'Work Sans', sans-serif;
+  font-size: 18px;
+  font-weight: 800;
+  color: white;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cre-score-level {
+  font-size: 11px;
+  color: #6b7280;
+  font-weight: 600;
+}
+
+.cre-chevron {
+  font-size: 20px;
+  color: #9ca3af;
+  transition: transform 250ms;
+  flex-shrink: 0;
+  line-height: 1;
+}
+
+.cre-widget-row[aria-expanded="true"] .cre-chevron {
+  transform: rotate(90deg);
+}
+
+/* Panel detalle */
+.cre-detail {
+  padding: 20px 24px 24px;
+  background: #FAFAF8;
+  border-top: 1px solid #e5e7eb;
+}
+
+.cre-detail[hidden] { display: none; }
+
+.cre-detail-desc {
+  font-size: 14px;
+  color: #374151;
+  line-height: 1.8;
+  margin: 0 0 20px;
+}
+
+/* CRI principal */
+.cre-cri-main { margin-bottom: 20px; }
+
+.cre-cri-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+
+.cre-cri-label {
+  font-size: 13px;
+  font-weight: 600;
+  color: #374151;
+}
+
+.cre-cri-value {
+  font-family: 'Work Sans', sans-serif;
+  font-size: 28px;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.cre-cri-chip {
+  font-size: 11px;
+  font-weight: 700;
+  color: white;
+  padding: 2px 10px;
+  border-radius: 20px;
+}
+
+.cre-bar-track {
+  height: 8px;
+  background: #e5e7eb;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.cre-bar-fill {
+  height: 100%;
+  border-radius: 4px;
+  transition: width 600ms ease;
+}
+
+/* 5 dimensiones */
+.cre-dimensions {
+  margin-bottom: 20px;
+  padding: 16px;
+  background: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+}
+
+.cre-dim-title {
+  font-size: 12px;
+  font-weight: 700;
+  color: #6b7280;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin: 0 0 14px;
+}
+
+.cre-dim-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.cre-dim-row:last-child { margin-bottom: 0; }
+
+.cre-dim-label {
+  font-size: 12px;
+  color: #6b7280;
+  min-width: 160px;
+  flex-shrink: 0;
+}
+
+.cre-dim-bar-wrap {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.cre-dim-bar-track {
+  flex: 1;
+  height: 6px;
+  background: #e5e7eb;
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.cre-dim-bar-fill {
+  height: 100%;
+  border-radius: 3px;
+}
+
+.cre-dim-score {
+  font-size: 13px;
+  font-weight: 700;
+  min-width: 28px;
+  text-align: right;
+  font-family: 'Work Sans', sans-serif;
+}
+
+/* Google info */
+.cre-google-info {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 20px;
+  padding: 14px 16px;
+  background: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+}
+
+.cre-google-row {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.cre-google-label {
+  font-size: 11px;
+  color: #9ca3af;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-weight: 600;
+}
+
+.cre-google-val {
+  font-size: 15px;
+  font-weight: 700;
+  color: #374151;
+}
+
+/* Reseñas */
+.cre-reviews-block { margin-bottom: 20px; }
+
+.cre-reviews-title {
+  font-size: 12px;
+  font-weight: 700;
+  color: #6b7280;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin: 0 0 12px;
+}
+
+.cre-review-card {
+  background: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  padding: 14px 16px;
+  margin-bottom: 8px;
+}
+
+.cre-review-card:last-child { margin-bottom: 0; }
+
+.cre-review-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.cre-review-date {
+  font-size: 11px;
+  color: #9ca3af;
+}
+
+.cre-review-text {
+  font-size: 13px;
+  color: #4b5563;
+  line-height: 1.7;
+  margin: 0;
+}
+
+/* Links */
+.cre-detail-links {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.cre-link-official,
+.cre-link-maps {
+  font-size: 13px;
+  font-weight: 600;
+  padding: 8px 16px;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: opacity 200ms;
+}
+
+.cre-link-official {
+  background: #002147;
+  color: white;
+}
+
+.cre-link-maps {
+  background: #e5e7eb;
+  color: #374151;
+}
+
+.cre-link-official:hover,
+.cre-link-maps:hover { opacity: 0.85; }
+
+/* Footer */
+.cre-footer {
+  font-size: 11px;
+  color: #9ca3af;
+  text-align: center;
+  padding: 12px;
+  background: #f9fafb;
+  border-top: 1px solid #e5e7eb;
+  margin: 0;
+}
+
+/* Mobile */
+@media (max-width: 767px) {
+  .cre-widget-row { padding: 12px 16px; gap: 10px; }
+  .cre-score-badge { width: 40px; height: 40px; font-size: 15px; }
+  .cre-pos { font-size: 16px; min-width: 22px; }
+  .cre-row-name { font-size: 14px; }
+  .cre-detail { padding: 16px; }
+  .cre-dim-label { min-width: 120px; font-size: 11px; }
+  .cre-google-info { flex-direction: column; gap: 10px; }
+  .cre-cri-value { font-size: 22px; }
+}
+</style>
+
+<script>
+function toggleCRE(id: string) {
+  const item = document.querySelector(
+    `[data-id="${id}"]`
+  );
+  if (!item) return;
+
+  const btn = item.querySelector(
+    '.cre-widget-row'
+  ) as HTMLButtonElement;
+  const detail = item.querySelector(
+    '.cre-detail'
+  ) as HTMLElement;
+
+  if (!btn || !detail) return;
+
+  const isOpen = btn.getAttribute('aria-expanded') === 'true';
+
+  // Cerrar todos los otros
+  document.querySelectorAll('.cre-widget-row').forEach(b => {
+    b.setAttribute('aria-expanded', 'false');
+  });
+  document.querySelectorAll('.cre-detail').forEach(d => {
+    (d as HTMLElement).hidden = true;
+  });
+
+  // Abrir este si estaba cerrado
+  if (!isOpen) {
+    btn.setAttribute('aria-expanded', 'true');
+    detail.hidden = false;
+
+    // Scroll suave al item
+    setTimeout(() => {
+      item.scrollIntoView({
+        behavior: 'smooth',
+        block: 'nearest'
+      });
+    }, 50);
+  }
+}
+
+// Exponer globalmente
+(window as any).toggleCRE = toggleCRE;
+</script>
