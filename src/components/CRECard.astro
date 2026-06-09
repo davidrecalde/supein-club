@@ -50,6 +50,11 @@ function stars(rating: number): string {
   const empty = 5 - full - half;
   return '★'.repeat(full) + (half ? '½' : '') + '☆'.repeat(empty);
 }
+
+const slug = `cre-${title.toLowerCase()
+  .replace(/\s+/g, '-')
+  .replace(/[^\w　-鿿゠-ヿ぀-ゟ-]/g, '')
+  .slice(0, 50)}`;
 ---
 
 <div class="cre-widget">
@@ -58,7 +63,7 @@ function stars(rating: number): string {
   <div class="cre-widget-header">
     <div class="cre-widget-title">
       <span class="cre-badge">CRE</span>
-      <span class="cre-widget-name">{title}</span>
+      <h3 class="cre-widget-name toc-heading" id={slug}>{title}</h3>
     </div>
     <div class="cre-widget-meta">
       {location && <span>📍 {location}</span>}
@@ -326,6 +331,9 @@ function stars(rating: number): string {
   font-size: 16px;
   font-weight: 700;
   color: white;
+  margin: 0;
+  font-family: 'Noto Sans JP', sans-serif;
+  line-height: 1.3;
 }
 
 .cre-widget-meta {

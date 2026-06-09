@@ -255,26 +255,73 @@ const h2s = headings.filter((h) => h.depth === 2);
     color: #C8102E;
     min-width: 16px;
   }
+
+  /* ━━━ CRE items en el TOC ━━━ */
+  .toc-cre-badge {
+    font-size: 9px;
+    font-weight: 700;
+    background: #C8102E;
+    color: white;
+    padding: 1px 5px;
+    border-radius: 3px;
+    margin-left: 6px;
+    vertical-align: middle;
+    font-family: 'Work Sans', sans-serif;
+    letter-spacing: 0.04em;
+    flex-shrink: 0;
+  }
+
+  .toc-item-cre .toc-text {
+    font-size: 12px;
+    color: #6b7280;
+  }
+
+  .toc-item-cre .toc-dot {
+    width: 4px;
+    height: 4px;
+    margin-top: 5px;
+    margin-left: -17px;
+    border-color: #C8102E;
+  }
+
+  .toc-link-cre.is-active .toc-dot {
+    width: 6px;
+    height: 6px;
+    margin-top: 4px;
+    margin-left: -18px;
+  }
+
+  .toc-mobile-link-cre {
+    padding-left: 30px;
+    font-size: 13px;
+    color: #6b7280;
+  }
+
+  .toc-mobile-link-cre .toc-mobile-num {
+    font-size: 9px;
+    min-width: 14px;
+  }
 </style>
 
 <script>
 (function() {
   function initTOC() {
-    const tocLinks = document.querySelectorAll('.toc-link');
-    const tocLine = document.getElementById('toc-line');
-    const tocLineBg = document.getElementById('toc-line-bg');
-    const tocTrack = document.querySelector('.toc-track');
+    var tocLine = document.getElementById('toc-line');
+    var tocLineBg = document.getElementById('toc-line-bg');
+    var tocTrack = document.querySelector('.toc-track');
 
-    if (!tocLinks.length || !tocLine) return;
+    // Early exit: no TOC or no line element
+    var initialTocLinks = document.querySelectorAll('.toc-link');
+    if (!initialTocLinks.length || !tocLine) return;
 
-    // First try: H2 headings inside .prose or .article-content
-    const articleContent = document.querySelector('.prose') || document.querySelector('.article-content');
-    let headingEls = articleContent ? Array.from(articleContent.querySelectorAll('h2')) : [];
+    // H2 headings inside .prose or .article-content
+    var articleContent = document.querySelector('.prose') || document.querySelector('.article-content');
+    var headingEls = articleContent ? Array.from(articleContent.querySelectorAll('h2')) : [];
 
     // Fallback: use section IDs from TOC link hrefs (for province/landing pages)
     if (headingEls.length === 0) {
       headingEls = [];
-      tocLinks.forEach(function(link) {
+      initialTocLinks.forEach(function(link) {
         var href = link.getAttribute('href');
         if (href && href.startsWith('#')) {
           var el = document.getElementById(href.slice(1));
@@ -285,10 +332,76 @@ const h2s = headings.filter((h) => h.depth === 2);
 
     if (!headingEls.length) return;
 
-    // Assign IDs to prose H2s if missing; section IDs already exist
+    // Assign IDs to prose H2s if missing
     headingEls.forEach(function(el, i) {
       if (!el.id) el.id = 'heading-' + i;
     });
+
+    // ── Inject CRE H3 headings into the TOC ──────────────────────────
+    var creH3s = articleContent
+      ? Array.from(articleContent.querySelectorAll('h3.toc-heading'))
+      : [];
+
+    if (creH3s.length > 0) {
+      var tocList = document.querySelector('.toc-list');
+      var tocMobileList = document.querySelector('.toc-mobile-list');
+
+      creH3s.forEach(function(creH3) {
+        if (!creH3.id) return;
+
+        // Find insertion index by DOM order
+        // DOCUMENT_POSITION_PRECEDING = 2: creH3 is before headingEls[j]
+        var insertIdx = headingEls.length;
+        for (var j = 0; j < headingEls.length; j++) {
+          if (headingEls[j].compareDocumentPosition(creH3) & 2) {
+            insertIdx = j;
+            break;
+          }
+        }
+
+        headingEls.splice(insertIdx, 0, creH3);
+
+        var badge = '<span class="toc-cre-badge">CRE</span>';
+        var text = (creH3.textContent || '').trim();
+
+        // Desktop TOC
+        if (tocList) {
+          var li = document.createElement('li');
+          li.className = 'toc-item toc-item-cre';
+          li.innerHTML =
+            '<a href="#' + creH3.id + '" class="toc-link toc-link-cre" data-slug="' + creH3.id + '">' +
+            '<span class="toc-dot"></span>' +
+            '<span class="toc-text">' + text + badge + '</span>' +
+            '</a>';
+          var existingItems = tocList.querySelectorAll('.toc-item');
+          if (existingItems[insertIdx]) {
+            tocList.insertBefore(li, existingItems[insertIdx]);
+          } else {
+            tocList.appendChild(li);
+          }
+        }
+
+        // Mobile TOC
+        if (tocMobileList) {
+          var mli = document.createElement('li');
+          mli.innerHTML =
+            '<a href="#' + creH3.id + '" class="toc-mobile-link toc-mobile-link-cre">' +
+            '<span class="toc-mobile-num">◆</span>' +
+            text +
+            '</a>';
+          var mobileItems = tocMobileList.querySelectorAll('li');
+          if (mobileItems[insertIdx]) {
+            tocMobileList.insertBefore(mli, mobileItems[insertIdx]);
+          } else {
+            tocMobileList.appendChild(mli);
+          }
+        }
+      });
+    }
+    // ── End CRE injection ─────────────────────────────────────────────
+
+    // Re-query tocLinks (now includes CRE items)
+    var tocLinks = document.querySelectorAll('.toc-link');
 
     // Sync link hrefs with heading IDs
     tocLinks.forEach(function(link, i) {
