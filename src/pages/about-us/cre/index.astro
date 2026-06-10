@@ -1,0 +1,535 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import SEO from '../../../components/SEO.astro';
+import Breadcrumb from '../../../components/Breadcrumb.astro';
+
+const breadcrumbs = [
+  { name: 'ホーム', url: '/' },
+  { name: 'スペイン倶楽部について', url: '/about-us/' },
+  { name: 'CRE', url: '' },
+];
+
+const seoBreadcrumbs = [
+  { name: 'ホーム', url: '/' },
+  { name: 'スペイン倶楽部について', url: '/about-us/' },
+];
+
+const canonical = 'https://supein.club/about-us/cre/';
+
+const dimensions = [
+  {
+    key: 'reputacion',
+    label: '評判スコア',
+    weight: '25%',
+    icon: '⭐',
+    desc: 'Googleユーザーの評価点（1〜5）を統計的に処理した加重スコア。単純平均ではなく、レビュー数と信頼性を考慮した独自の重み付けを適用。'
+  },
+  {
+    key: 'volumen',
+    label: 'レビュー数',
+    weight: '20%',
+    icon: '💬',
+    desc: 'Googleに蓄積された総レビュー件数。件数が多いほど統計的信頼性が高く、より安定した評価とみなす。少ない件数での高評価は割引いて評価。'
+  },
+  {
+    key: 'sentimiento',
+    label: 'センチメント',
+    weight: '20%',
+    icon: '🧠',
+    desc: 'レビューテキストの感情分析スコア。ポジティブ・ネガティブ・ニュートラルに分類し、レビューの「質」を数値化。星の数だけでは見えない体験の本質を捉える。'
+  },
+  {
+    key: 'perfil_gmb',
+    label: 'Googleプロフィール完成度',
+    weight: '20%',
+    icon: '📍',
+    desc: 'Google ビジネスプロフィールの充実度。営業時間・写真・ウェブサイト・電話番号・説明文などの情報が揃っているほど高スコア。運営者の信頼性指標でもある。'
+  },
+  {
+    key: 'visibilidad',
+    label: 'オンライン可視性',
+    weight: '15%',
+    icon: '🌐',
+    desc: 'Google検索・マップ上での露出度と被リンク状況。検索結果への表示頻度や知名度を反映。地域内での相対的な認知度を測定する。'
+  },
+];
+
+const rankings = [
+  {
+    city: 'バルセロナ',
+    cityEs: 'Barcelona',
+    title: 'バルセロナ観光スポット人気ランキング TOP10',
+    url: '/travel/spain-tours/spain-tour-1week/#cre-バルセロナ観光スポット人気ランキング-top10',
+    count: 10,
+    date: '2026-06-09',
+  },
+  {
+    city: 'マドリード',
+    cityEs: 'Madrid',
+    title: 'マドリード観光スポット人気ランキング TOP10',
+    url: '/travel/spain-tours/spain-tour-1week/#cre-マドリード観光スポット人気ランキング-top10',
+    count: 10,
+    date: '2026-06-10',
+  },
+  {
+    city: 'グラナダ',
+    cityEs: 'Granada',
+    title: 'グラナダ観光スポット人気ランキング TOP10',
+    url: '/travel/spain-tours/spain-tour-1week/#cre-グラナダ観光スポット人気ランキング-top10',
+    count: 10,
+    date: '2026-06-10',
+  },
+  {
+    city: 'セビリア',
+    cityEs: 'Sevilla',
+    title: 'セビリア観光スポット人気ランキング TOP9',
+    url: '/travel/spain-tours/spain-tour-1week/#cre-セビリア観光スポット人気ランキング-top9',
+    count: 9,
+    date: '2026-06-10',
+  },
+];
+
+const creSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'SoftwareApplication',
+  name: 'CRE — Competitive Reputation Engine',
+  alternateName: 'Competitive Reputation Engine by supein.club',
+  applicationCategory: 'BusinessApplication',
+  operatingSystem: 'Web',
+  url: canonical,
+  description: 'supein.club独自開発の評判分析エンジン。Google Places APIデータを5次元（評判・レビュー数・センチメント・Googleプロフィール・可視性）で分析し、スペインの観光スポットのCRIスコアを算出する。',
+  author: {
+    '@type': 'Organization',
+    name: 'Club Español en Japón スペイン倶楽部',
+    url: 'https://supein.club',
+    founder: {
+      '@type': 'Person',
+      name: 'David Recalde',
+      url: 'https://supein.club/about-us/team/david-recalde/',
+    },
+  },
+  creator: {
+    '@type': 'Organization',
+    name: 'Club Español en Japón スペイン倶楽部',
+    url: 'https://supein.club',
+  },
+  dateCreated: '2026-01-01',
+  dateModified: '2026-06-10',
+  inLanguage: 'ja',
+  featureList: [
+    'Google Places APIデータ取得',
+    '5次元CRIスコア算出',
+    'センチメント分析',
+    'Googleプロフィール完成度評価',
+    '観光スポットランキング生成',
+  ],
+};
+---
+
+<BaseLayout>
+  <SEO
+    slot="seo"
+    title="CRE — Competitive Reputation Engine | supein.club独自の評判分析ツール"
+    description="supein.club独自開発のCRE（Competitive Reputation Engine）は、Googleレビュー・評価・センチメント・可視性を5次元で分析しスペイン観光スポットの信頼性スコアを算出します。"
+    canonical={canonical}
+    breadcrumbs={seoBreadcrumbs}
+  />
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(creSchema)} />
+
+  <!-- HERO -->
+  <section style="background:#002147;padding:72px 0 56px;">
+    <div class="page-container">
+      <Breadcrumb items={breadcrumbs} dark />
+      <div style="display:flex;align-items:center;
+                  gap:12px;margin:28px 0 16px;">
+        <span style="
+          font-family:'Work Sans',sans-serif;
+          font-size:13px;font-weight:800;
+          letter-spacing:0.12em;
+          background:#C8102E;color:white;
+          padding:4px 12px;border-radius:4px;
+        ">CRE v8</span>
+        <span style="font-size:12px;color:rgba(255,255,255,0.4);
+                     letter-spacing:0.15em;text-transform:uppercase;">
+          by supein.club
+        </span>
+      </div>
+      <h1 style="
+        font-family:'Noto Serif JP',serif;
+        font-size:clamp(26px,4vw,42px);
+        font-weight:700;color:white;
+        margin:0 0 20px;line-height:1.3;
+        max-width:740px;
+      ">
+        Competitive Reputation Engine<br>
+        <span style="font-size:0.7em;color:rgba(255,255,255,0.7);">
+          スペイン倶楽部 独自の評判分析エンジン
+        </span>
+      </h1>
+      <p style="
+        font-size:18px;color:rgba(255,255,255,0.7);
+        max-width:620px;line-height:1.8;margin:0;
+      ">
+        Googleのデータを5つの次元で分析し、
+        スペインの観光スポット・レストラン・体験の
+        信頼性を独自スコア（CRI）で可視化するツールです。
+      </p>
+    </div>
+  </section>
+
+  <!-- QUÉ ES -->
+  <section style="background:white;padding:80px 0;">
+    <div class="page-container" style="max-width:800px;">
+      <p style="font-size:11px;font-weight:600;
+                letter-spacing:0.2em;text-transform:uppercase;
+                color:#C8102E;margin:0 0 8px;">
+        ABOUT CRE
+      </p>
+      <h2 style="font-family:'Noto Serif JP',serif;
+                 font-size:clamp(22px,3vw,30px);
+                 font-weight:700;color:#002147;
+                 margin:0 0 28px;">
+        CREとは何か
+      </h2>
+      <p style="font-size:17px;color:#374151;
+                line-height:1.9;margin:0 0 20px;">
+        <strong>CRE（Competitive Reputation Engine）</strong>は、
+        supein.clubが独自に設計・開発した評判分析エンジンです。
+        Google Places APIから取得した実データをもとに、
+        単なる「星の数」では見えない場所の信頼性を
+        多角的に評価し、数値化します。
+      </p>
+      <p style="font-size:17px;color:#374151;
+                line-height:1.9;margin:0 0 20px;">
+        スペイン旅行を計画する日本人の読者が、
+        何万件ものレビューを読まなくても
+        「この場所は本当に行く価値があるのか」を
+        一目で判断できるようにすることが、
+        このツールを作った目的です。
+      </p>
+      <p style="font-size:17px;color:#374151;
+                line-height:1.9;margin:0;">
+        分析結果として算出される
+        <strong>CRI（Competitive Reputation Index）スコア</strong>は
+        0〜100の数値で表され、スコアが高いほど
+        Googleユーザーから高く評価され、
+        信頼性と知名度が確立されていることを示します。
+      </p>
+    </div>
+  </section>
+
+  <!-- 5 DIMENSIONES -->
+  <section style="background:#FAFAF8;padding:80px 0;">
+    <div class="page-container">
+      <p style="font-size:11px;font-weight:600;
+                letter-spacing:0.2em;text-transform:uppercase;
+                color:#C8102E;margin:0 0 8px;text-align:center;">
+        METHODOLOGY
+      </p>
+      <h2 style="font-family:'Noto Serif JP',serif;
+                 font-size:clamp(22px,3vw,30px);
+                 font-weight:700;color:#002147;
+                 margin:0 0 12px;text-align:center;">
+        CRIスコアを構成する5つの次元
+      </h2>
+      <p style="font-size:16px;color:#6b7280;
+                text-align:center;max-width:560px;
+                margin:0 auto 48px;line-height:1.7;">
+        CRIスコアは以下の5つの指標を独自の重み付けで
+        合算して算出します。
+      </p>
+
+      <div style="
+        display:grid;
+        grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+        gap:20px;max-width:1000px;margin:0 auto;
+      ">
+        {dimensions.map(dim => (
+          <div style="
+            background:white;
+            border:1px solid #e5e7eb;
+            border-radius:14px;
+            padding:24px;
+          ">
+            <div style="display:flex;align-items:center;
+                        gap:12px;margin-bottom:14px;">
+              <span style="font-size:24px;">{dim.icon}</span>
+              <div>
+                <div style="font-size:15px;font-weight:700;
+                            color:#002147;">{dim.label}</div>
+                <div style="
+                  font-size:12px;font-weight:700;
+                  color:white;background:#002147;
+                  padding:1px 8px;border-radius:20px;
+                  display:inline-block;margin-top:2px;
+                  font-family:'Work Sans',sans-serif;
+                ">
+                  重み {dim.weight}
+                </div>
+              </div>
+            </div>
+            <p style="font-size:14px;color:#6b7280;
+                      line-height:1.7;margin:0;">
+              {dim.desc}
+            </p>
+          </div>
+        ))}
+      </div>
+
+      <!-- Fórmula visual -->
+      <div style="
+        max-width:700px;margin:48px auto 0;
+        background:white;border:1px solid #e5e7eb;
+        border-radius:14px;padding:28px 32px;
+        text-align:center;
+      ">
+        <p style="font-size:12px;font-weight:600;
+                  letter-spacing:0.15em;text-transform:uppercase;
+                  color:#9ca3af;margin:0 0 16px;">
+          CRI スコア算出式
+        </p>
+        <p style="
+          font-family:'Work Sans',sans-serif;
+          font-size:14px;color:#374151;
+          line-height:2;margin:0;
+        ">
+          CRI = 評判(25%) + レビュー数(20%) + センチメント(20%)<br>
+          + Googleプロフィール(20%) + 可視性(15%)
+        </p>
+        <p style="font-size:12px;color:#9ca3af;margin:16px 0 0;">
+          各次元は0〜100で正規化後、重み付け合算。
+          最終スコアは0〜100の範囲で表示。
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FUENTE DE DATOS -->
+  <section style="background:white;padding:80px 0;">
+    <div class="page-container" style="max-width:800px;">
+      <p style="font-size:11px;font-weight:600;
+                letter-spacing:0.2em;text-transform:uppercase;
+                color:#C8102E;margin:0 0 8px;">
+        DATA SOURCE
+      </p>
+      <h2 style="font-family:'Noto Serif JP',serif;
+                 font-size:clamp(22px,3vw,30px);
+                 font-weight:700;color:#002147;
+                 margin:0 0 28px;">
+        データの出所と分析方法
+      </h2>
+
+      <div style="display:flex;flex-direction:column;gap:20px;">
+        {[
+          {
+            icon: '📡',
+            title: 'データソース',
+            text: 'Google Places APIから取得したリアルタイムデータを使用しています。評価点、レビュー件数、レビューテキスト、営業情報、写真枚数などを取得し分析します。'
+          },
+          {
+            icon: '🔄',
+            title: '分析タイミング',
+            text: '各ランキングページに表示されている「分析日」時点のデータを使用しています。Googleのデータは変動するため、スコアは定期的に更新します。最新スコアと異なる場合があります。'
+          },
+          {
+            icon: '🎯',
+            title: '対象の選定基準',
+            text: '各都市・カテゴリで「OPERATIONAL（営業中）」のビジネスのうち、一定数以上のレビューを持つ施設を対象とします。新規オープンで件数が少ない施設は対象外になる場合があります。'
+          },
+          {
+            icon: '🤖',
+            title: 'センチメント分析',
+            text: 'レビューテキストに対して感情分析アルゴリズムを適用し、ポジティブ・ネガティブ・ニュートラルに分類します。テキストが少ない場合は評価点を参考値として使用します。'
+          },
+          {
+            icon: '⚖️',
+            title: '中立性について',
+            text: 'supein.clubはいかなるビジネスとも広告・スポンサー契約を結んでいません。CREランキングはデータのみに基づいており、金銭的対価による順位操作は一切行っていません。'
+          },
+        ].map(item => (
+          <div style="
+            display:flex;gap:16px;align-items:flex-start;
+            padding:20px 24px;
+            border:1px solid #e5e7eb;border-radius:12px;
+            background:#FAFAF8;
+          ">
+            <span style="font-size:22px;flex-shrink:0;
+                         margin-top:2px;">{item.icon}</span>
+            <div>
+              <p style="font-size:15px;font-weight:700;
+                         color:#002147;margin:0 0 6px;">
+                {item.title}
+              </p>
+              <p style="font-size:14px;color:#6b7280;
+                         margin:0;line-height:1.7;">
+                {item.text}
+              </p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- PARA QUÉ SIRVE -->
+  <section style="background:#002147;padding:80px 0;">
+    <div class="page-container" style="max-width:800px;">
+      <p style="font-size:11px;font-weight:600;
+                letter-spacing:0.2em;text-transform:uppercase;
+                color:#C8102E;margin:0 0 8px;text-align:center;">
+        VALUE
+      </p>
+      <h2 style="font-family:'Noto Serif JP',serif;
+                 font-size:clamp(22px,3vw,30px);
+                 font-weight:700;color:white;
+                 margin:0 0 16px;text-align:center;">
+        CREがコミュニティに提供する価値
+      </h2>
+      <p style="font-size:16px;color:rgba(255,255,255,0.65);
+                text-align:center;margin:0 auto 48px;
+                line-height:1.7;max-width:560px;">
+        スペイン旅行を計画する日本人が
+        より良い意思決定をできるように。
+      </p>
+
+      <div style="display:grid;
+                  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+                  gap:20px;">
+        {[
+          {
+            icon: '🗺️',
+            title: '旅行計画の精度を上げる',
+            text: '何万件ものレビューを読む代わりに、CRIスコアで一目で価値を判断できます。'
+          },
+          {
+            icon: '💎',
+            title: '穴場の発見',
+            text: '有名観光地だけでなく、レビュー数は少なくても評判の高い隠れた名所を発見できます。'
+          },
+          {
+            icon: '📊',
+            title: '客観的な比較',
+            text: '「どちらが良いか」という比較をデータで判断。口コミの主観に左右されません。'
+          },
+          {
+            icon: '🔍',
+            title: '体験の質を予測',
+            text: 'センチメント分析により、星の数では分からない「実際の体験の質」が分かります。'
+          },
+        ].map(item => (
+          <div style="
+            background:rgba(255,255,255,0.06);
+            border:1px solid rgba(255,255,255,0.1);
+            border-radius:14px;padding:24px;
+          ">
+            <span style="font-size:28px;
+                         display:block;margin-bottom:12px;">
+              {item.icon}
+            </span>
+            <p style="font-size:15px;font-weight:700;
+                       color:white;margin:0 0 8px;">
+              {item.title}
+            </p>
+            <p style="font-size:14px;
+                       color:rgba(255,255,255,0.6);
+                       margin:0;line-height:1.7;">
+              {item.text}
+            </p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- RANKINGS PUBLICADOS -->
+  <section style="background:#FAFAF8;padding:80px 0;">
+    <div class="page-container">
+      <p style="font-size:11px;font-weight:600;
+                letter-spacing:0.2em;text-transform:uppercase;
+                color:#C8102E;margin:0 0 8px;text-align:center;">
+        RANKINGS
+      </p>
+      <h2 style="font-family:'Noto Serif JP',serif;
+                 font-size:clamp(22px,3vw,30px);
+                 font-weight:700;color:#002147;
+                 margin:0 0 12px;text-align:center;">
+        公開済みCREランキング
+      </h2>
+      <p style="font-size:15px;color:#6b7280;
+                text-align:center;margin:0 auto 40px;
+                max-width:500px;line-height:1.7;">
+        新しいランキングが追加されるたびにこのページを更新します。
+      </p>
+
+      <div style="
+        max-width:720px;margin:0 auto;
+        display:flex;flex-direction:column;gap:12px;
+      ">
+        {rankings.map(r => (
+          <a href={r.url}
+             style="
+               display:flex;align-items:center;
+               gap:16px;
+               background:white;
+               border:1px solid #e5e7eb;
+               border-radius:12px;
+               padding:18px 22px;
+               text-decoration:none;
+               transition:box-shadow 200ms,transform 200ms;
+             "
+             onmouseover="this.style.boxShadow='0 4px 16px rgba(0,33,71,0.08)';this.style.transform='translateY(-1px)'"
+             onmouseout="this.style.boxShadow='';this.style.transform=''">
+            <span style="
+              font-family:'Work Sans',sans-serif;
+              font-size:11px;font-weight:800;
+              background:#002147;color:white;
+              padding:4px 10px;border-radius:6px;
+              flex-shrink:0;letter-spacing:0.05em;
+            ">
+              CRE
+            </span>
+            <div style="flex:1;min-width:0;">
+              <p style="font-size:15px;font-weight:700;
+                         color:#002147;margin:0 0 2px;
+                         white-space:nowrap;overflow:hidden;
+                         text-overflow:ellipsis;">
+                {r.title}
+              </p>
+              <p style="font-size:12px;color:#9ca3af;margin:0;">
+                {r.cityEs} · {r.count}件分析 · {r.date}
+              </p>
+            </div>
+            <span style="color:#C8102E;font-size:18px;
+                         flex-shrink:0;">›</span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- DISCLAIMER -->
+  <section style="background:white;padding:48px 0;">
+    <div class="page-container" style="max-width:700px;">
+      <p style="
+        font-size:12px;color:#9ca3af;
+        line-height:1.8;
+        border-top:1px solid #e5e7eb;
+        padding-top:24px;
+        text-align:center;
+      ">
+        <span style="
+          font-size:10px;font-weight:600;
+          letter-spacing:0.1em;
+          border:1px solid #e5e7eb;
+          padding:1px 6px;border-radius:3px;
+          margin-right:8px;color:#9ca3af;
+        ">免責事項</span>
+        CREスコアはGoogle Places APIのデータに基づく参考値です。
+        スコアはデータ取得時点のものであり、
+        実際のサービス品質を保証するものではありません。
+        supein.clubは掲載施設との広告契約を一切結んでいません。
+      </p>
+    </div>
+  </section>
+
+</BaseLayout>

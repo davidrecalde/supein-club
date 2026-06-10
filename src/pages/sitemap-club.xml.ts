@@ -8,6 +8,7 @@ const pages = [
   { url: '/about-us/team/yoshimi-ito/', priority: '0.7', changefreq: 'monthly' },
   { url: '/about-us/team/juan-carreras/', priority: '0.7', changefreq: 'monthly' },
   { url: '/about-us/mission/', priority: '0.7', changefreq: 'monthly' },
+  { url: '/about-us/cre/', priority: '0.7', changefreq: 'monthly' },
   { url: '/events/', priority: '0.9', changefreq: 'weekly' },
   { url: '/community/', priority: '0.8', changefreq: 'monthly' },
   { url: '/sponsors/', priority: '0.7', changefreq: 'monthly' },
