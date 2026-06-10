@@ -277,6 +277,14 @@ const slug = `cre-${title.toLowerCase()
             >
               📍 Googleマップ
             </a>
+            <a
+              href={`https://trends.google.com/trends/explore?q=${encodeURIComponent(item.name)}&geo=JP`}
+              target="_blank"
+              rel="nofollow noopener noreferrer"
+              class="cre-link-trends"
+            >
+              📈 Google Trends
+            </a>
           </div>
 
         </div><!-- /.cre-detail -->
@@ -694,6 +702,20 @@ const slug = `cre-${title.toLowerCase()
 
 .cre-link-official:hover,
 .cre-link-maps:hover { opacity: 0.85; }
+
+.cre-link-trends {
+  font-size: 13px;
+  font-weight: 600;
+  padding: 8px 16px;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: opacity 200ms;
+  background: #f0fdf4;
+  color: #166534;
+  border: 1px solid #86efac;
+}
+
+.cre-link-trends:hover { opacity: 0.85; }
 
 /* Footer */
 .cre-footer {
