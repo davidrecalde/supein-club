@@ -55,6 +55,8 @@ const slug = `cre-${title.toLowerCase()
   .replace(/\s+/g, '-')
   .replace(/[^\w　-鿿゠-ヿ぀-ゟ-]/g, '')
   .slice(0, 50)}`;
+
+const widgetId = `cre-${Math.random().toString(36).slice(2, 8)}`;
 ---
 
 <div class="cre-widget">
@@ -87,7 +89,7 @@ const slug = `cre-${title.toLowerCase()
         itemscope
         itemtype="https://schema.org/ListItem"
         class="cre-widget-item"
-        data-id={`cre-${item.position}`}
+        data-id={`${widgetId}-${item.position}`}
       >
         <meta itemprop="position" content={String(item.position)}/>
 
@@ -95,8 +97,8 @@ const slug = `cre-${title.toLowerCase()
         <button
           class="cre-widget-row"
           aria-expanded="false"
-          aria-controls={`cre-detail-${item.position}`}
-          onclick={`toggleCRE('cre-${item.position}')`}
+          aria-controls={`${widgetId}-detail-${item.position}`}
+          onclick={`toggleCRE('${widgetId}-${item.position}')`}
           type="button"
         >
           <!-- Número de posición -->
@@ -138,7 +140,7 @@ const slug = `cre-${title.toLowerCase()
         <!-- Panel expandible -->
         <div
           class="cre-detail"
-          id={`cre-detail-${item.position}`}
+          id={`${widgetId}-detail-${item.position}`}
           hidden
           itemprop="item"
           itemscope
@@ -836,13 +838,16 @@ function toggleCRE(id: string) {
 
   const isOpen = btn.getAttribute('aria-expanded') === 'true';
 
-  // Cerrar todos los otros
-  document.querySelectorAll('.cre-widget-row').forEach(b => {
-    b.setAttribute('aria-expanded', 'false');
-  });
-  document.querySelectorAll('.cre-detail').forEach(d => {
-    (d as HTMLElement).hidden = true;
-  });
+  // Cerrar solo los del mismo widget
+  const currentWidget = item.closest('.cre-widget');
+  if (currentWidget) {
+    currentWidget.querySelectorAll('.cre-widget-row').forEach(b => {
+      b.setAttribute('aria-expanded', 'false');
+    });
+    currentWidget.querySelectorAll('.cre-detail').forEach(d => {
+      (d as HTMLElement).hidden = true;
+    });
+  }
 
   // Abrir este si estaba cerrado
   if (!isOpen) {
