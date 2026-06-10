@@ -1,4 +1,5 @@
 User-agent: *
 Allow: /
 Disallow: /services/
+Disallow: /api/
 Sitemap: https://supein.club/sitemap-index.xml
