@@ -29,13 +29,15 @@ interface Props {
   title?: string;
   date?: string;
   location?: string;
+  tocHeading?: boolean;
 }
 
 const {
   items,
   title = "人気観光スポット ランキング",
   date = "",
-  location = ""
+  location = "",
+  tocHeading = true
 } = Astro.props;
 
 function criColor(score: number): string {
@@ -65,7 +67,7 @@ const widgetId = `cre-${Math.random().toString(36).slice(2, 8)}`;
   <div class="cre-widget-header">
     <div class="cre-widget-title">
       <span class="cre-badge">CRE</span>
-      <h3 class="cre-widget-name toc-heading" id={slug}>{title}</h3>
+      <h3 class:list={['cre-widget-name', { 'toc-heading': tocHeading }]} id={tocHeading ? slug : undefined}>{title}</h3>
     </div>
     <div class="cre-widget-meta">
       {location && <span>📍 {location}</span>}
