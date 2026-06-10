@@ -1,13 +1,13 @@
 import type { APIRoute } from 'astro';
 
 const pages = [
+  { url: '/', priority: '1.0', changefreq: 'daily' },
   { url: '/about-us/', priority: '0.9', changefreq: 'monthly' },
   { url: '/about-us/team/', priority: '0.8', changefreq: 'monthly' },
   { url: '/about-us/team/david-recalde/', priority: '0.8', changefreq: 'monthly' },
   { url: '/about-us/team/raquel-simancas/', priority: '0.8', changefreq: 'monthly' },
   { url: '/about-us/team/yoshimi-ito/', priority: '0.7', changefreq: 'monthly' },
   { url: '/about-us/team/juan-carreras/', priority: '0.7', changefreq: 'monthly' },
-  { url: '/about-us/mission/', priority: '0.7', changefreq: 'monthly' },
   { url: '/about-us/cre/', priority: '0.7', changefreq: 'monthly' },
   { url: '/events/', priority: '0.9', changefreq: 'weekly' },
   { url: '/community/', priority: '0.8', changefreq: 'monthly' },
@@ -18,6 +18,7 @@ const pages = [
   { url: '/newsroom/press-kit/', priority: '0.7', changefreq: 'monthly' },
   { url: '/newsroom/2026-05-30-8th-anniversary-el-tragon-tokyo/', priority: '0.8', changefreq: 'monthly' },
   { url: '/newsroom/2026-06-01-supein-club-nuevo-diseno-web/', priority: '0.8', changefreq: 'monthly' },
+  { url: '/newsroom/2026-06-05-paella-tapas-festival-hibiya/', priority: '0.8', changefreq: 'monthly' },
   { url: '/newsroom/2026-06-07-paella-tapas-festival-hibiya-tokyo/', priority: '0.8', changefreq: 'monthly' },
   { url: '/sitemap/', priority: '0.5', changefreq: 'weekly' },
   { url: '/privacy/', priority: '0.4', changefreq: 'yearly' },
