@@ -80,19 +80,13 @@ const widgetId = `cre-${Math.random().toString(36).slice(2, 8)}`;
   </div>
 
   <!-- Lista de items -->
-  <ol class="cre-widget-list" itemscope
-      itemtype="https://schema.org/ItemList">
+  <ol class="cre-widget-list">
 
     {items.map((item) => (
       <li
-        itemprop="itemListElement"
-        itemscope
-        itemtype="https://schema.org/ListItem"
         class="cre-widget-item"
         data-id={`${widgetId}-${item.position}`}
       >
-        <meta itemprop="position" content={String(item.position)}/>
-
         <!-- Fila principal — clickable -->
         <button
           class="cre-widget-row"
@@ -108,7 +102,7 @@ const widgetId = `cre-${Math.random().toString(36).slice(2, 8)}`;
 
           <!-- Info principal -->
           <span class="cre-row-info">
-            <span class="cre-row-name" itemprop="name">
+            <span class="cre-row-name">
               {item.nameJa}
             </span>
             <span class="cre-row-sub">
@@ -142,26 +136,9 @@ const widgetId = `cre-${Math.random().toString(36).slice(2, 8)}`;
           class="cre-detail"
           id={`${widgetId}-detail-${item.position}`}
           hidden
-          itemprop="item"
-          itemscope
-          itemtype="https://schema.org/TouristAttraction"
         >
-          <meta itemprop="name" content={item.nameJa}/>
-          <meta itemprop="url" content={item.url}/>
-
-          <!-- aggregateRating — obligatorio para TouristAttraction con reviews -->
-          <div itemprop="aggregateRating"
-               itemscope
-               itemtype="https://schema.org/AggregateRating"
-               style="display:none">
-            <meta itemprop="ratingValue" content={String(item.rating)}/>
-            <meta itemprop="reviewCount" content={String(item.reviewCount)}/>
-            <meta itemprop="bestRating" content="5"/>
-            <meta itemprop="worstRating" content="1"/>
-          </div>
-
           <!-- Descripción -->
-          <p class="cre-detail-desc" itemprop="description">
+          <p class="cre-detail-desc">
             {item.description}
           </p>
 
@@ -250,37 +227,7 @@ const widgetId = `cre-${Math.random().toString(36).slice(2, 8)}`;
                 訪問者のレビュー（日本語訳）
               </h5>
               {item.reviews.slice(0, 3).map(review => (
-                <div class="cre-review-card"
-                     itemprop="review"
-                     itemscope
-                     itemtype="https://schema.org/Review">
-
-                  <!-- author — obligatorio -->
-                  <div itemprop="author"
-                       itemscope
-                       itemtype="https://schema.org/Person"
-                       style="display:none">
-                    <meta itemprop="name" content="訪問者"/>
-                  </div>
-
-                  <!-- reviewRating — obligatorio -->
-                  <div itemprop="reviewRating"
-                       itemscope
-                       itemtype="https://schema.org/Rating"
-                       style="display:none">
-                    <meta itemprop="ratingValue" content={String(review.rating)}/>
-                    <meta itemprop="bestRating" content="5"/>
-                    <meta itemprop="worstRating" content="1"/>
-                  </div>
-
-                  <!-- itemReviewed — referencia al padre -->
-                  <div itemprop="itemReviewed"
-                       itemscope
-                       itemtype="https://schema.org/TouristAttraction"
-                       style="display:none">
-                    <meta itemprop="name" content={item.nameJa}/>
-                  </div>
-
+                <div class="cre-review-card">
                   <div class="cre-review-header">
                     <span class="cre-review-stars"
                           style="color:#f59e0b;">
@@ -290,7 +237,7 @@ const widgetId = `cre-${Math.random().toString(36).slice(2, 8)}`;
                       {review.date}
                     </span>
                   </div>
-                  <p class="cre-review-text" itemprop="reviewBody">
+                  <p class="cre-review-text">
                     {review.text}
                   </p>
                 </div>
@@ -305,7 +252,6 @@ const widgetId = `cre-${Math.random().toString(36).slice(2, 8)}`;
               target="_blank"
               rel="nofollow noopener noreferrer"
               class="cre-link-official"
-              itemprop="url"
             >
               🌐 公式サイト
             </a>

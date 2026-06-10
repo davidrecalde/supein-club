@@ -146,7 +146,19 @@ if (type === 'article' && article) {
   const authorUrl = `${siteUrl}/about-us/team/${authorSlug}/`;
   const primaryImagePath = article.data.heroImage ?? article.data.image;
   const articleImage = primaryImagePath
-    ? { '@type': 'ImageObject', url: `${siteUrl}${primaryImagePath}`, width: 1200, height: 630 }
+    ? {
+        '@type': 'ImageObject',
+        url: `${siteUrl}${primaryImagePath}`,
+        width: 1200,
+        height: 630,
+        creditText: 'supein.club',
+        creator: {
+          '@type': 'Organization',
+          name: 'Club Español en Japón スペイン倶楽部',
+          url: siteUrl,
+        },
+        copyrightNotice: '© Club Español en Japón スペイン倶楽部 supein.club',
+      }
     : { '@type': 'ImageObject', url: `${siteUrl}/logo-og.png` };
 
   const rawLinkedin = author?.data.linkedin;
