@@ -9,6 +9,7 @@ const pages = [
   { url: '/language/pronunciation/', priority: '0.8', changefreq: 'monthly' },
   { url: '/language/self-study/', priority: '0.8', changefreq: 'monthly' },
   { url: '/language/lessons-tokyo/', priority: '0.9', changefreq: 'monthly' },
+  { url: '/language/lessons-tokyo/tokyo-spanish-schools/', priority: '0.8', changefreq: 'monthly' },
   { url: '/language/online-lessons/', priority: '0.8', changefreq: 'monthly' },
   { url: '/language/lesson-price/', priority: '0.8', changefreq: 'monthly' },
   { url: '/language/spanish-phrases/', priority: '0.7', changefreq: 'monthly' },
