@@ -4,3 +4,5 @@
 /authors/david-recalde/         /about-us/team/david-recalde/    301
 /authors/raquel-simancas/       /about-us/team/raquel-simancas/  301
 /authors/*                      /about-us/team/:splat            301
+/contacto/                       /contact/                        301
+/que-es-club-espanol-en-japon/*  /about-us/                       301
