@@ -97,7 +97,8 @@ const creSchema = {
   applicationCategory: 'BusinessApplication',
   operatingSystem: 'Web',
   url: canonical,
-  description: 'supein.club独自開発の評判分析エンジン。Google Places APIデータを5次元（評判・レビュー数・センチメント・Googleプロフィール・可視性）で分析し、スペインの観光スポットのCRIスコアを算出する。',
+  image: 'https://supein.club/about-us/cre/',
+  description: 'supein.club独自開発の評判分析エンジン。Google Places API・Google Business Profile・可視性シグナルの3ソースからデータを収集し、6ステップのパイプラインで5次元CRIスコアを算出。パイプラインの詳細な図解を掲載。',
   author: {
     '@type': 'Organization',
     name: 'Club Español en Japón スペイン倶楽部',
@@ -179,6 +180,54 @@ const creSchema = {
     </div>
   </section>
 
+  <!-- TOC -->
+  <section style="background:white;
+                  padding:32px 0;
+                  border-bottom:1px solid #e5e7eb;">
+    <div class="page-container" style="max-width:800px;">
+      <p style="font-size:10px;font-weight:700;
+                letter-spacing:0.15em;
+                text-transform:uppercase;
+                color:#9ca3af;margin:0 0 12px;">
+        目次
+      </p>
+      <nav aria-label="目次">
+        <ol style="
+          list-style:none;padding:0;margin:0;
+          display:flex;flex-direction:column;gap:8px;
+        ">
+          {[
+            { id: 'que-es-cre',    label: 'CREとは何か' },
+            { id: 'infografia',    label: '仕組みの図解' },
+            { id: 'fuentes-datos', label: '複数のデータソース' },
+            { id: 'dimensiones',   label: '5つの次元とスコア算出' },
+            { id: 'metodologia',   label: 'データの出所と分析方法' },
+            { id: 'valor',         label: 'コミュニティへの提供価値' },
+            { id: 'rankings',      label: '公開済みCREランキング' },
+          ].map((item, i) => (
+            <li style="display:flex;align-items:center;gap:10px;">
+              <span style="
+                font-family:'Work Sans',sans-serif;
+                font-size:11px;font-weight:800;
+                color:#C8102E;min-width:20px;
+              ">{String(i + 1).padStart(2,'0')}</span>
+              <a href={`#${item.id}`} style="
+                font-size:14px;color:#002147;
+                text-decoration:none;
+                border-bottom:1px solid rgba(0,33,71,0.15);
+                transition:border-color 200ms;
+              "
+              onmouseover="this.style.borderColor='#C8102E'"
+              onmouseout="this.style.borderColor='rgba(0,33,71,0.15)'">
+                {item.label}
+              </a>
+            </li>
+          ))}
+        </ol>
+      </nav>
+    </div>
+  </section>
+
   <!-- QUÉ ES -->
   <section style="background:white;padding:80px 0;">
     <div class="page-container" style="max-width:800px;">
@@ -187,7 +236,7 @@ const creSchema = {
                 color:#C8102E;margin:0 0 8px;">
         ABOUT CRE
       </p>
-      <h2 style="font-family:'Noto Serif JP',serif;
+      <h2 id="que-es-cre" style="font-family:'Noto Serif JP',serif;
                  font-size:clamp(22px,3vw,30px);
                  font-weight:700;color:#002147;
                  margin:0 0 28px;">
@@ -224,6 +273,499 @@ const creSchema = {
     </div>
   </section>
 
+  <!-- INFOGRAFÍA -->
+  <section id="infografia"
+           style="background:#002147;padding:72px 0;">
+    <div class="page-container">
+      <p style="font-size:11px;font-weight:600;
+                letter-spacing:0.2em;text-transform:uppercase;
+                color:#C8102E;margin:0 0 8px;text-align:center;">
+        HOW IT WORKS
+      </p>
+      <h2 style="font-family:'Noto Serif JP',serif;
+                 font-size:clamp(20px,3vw,28px);
+                 font-weight:700;color:white;
+                 margin:0 0 8px;text-align:center;">
+        仕組みの図解
+      </h2>
+      <p style="font-size:14px;color:rgba(255,255,255,0.5);
+                text-align:center;margin:0 0 36px;
+                line-height:1.7;">
+        データ収集からCRIスコア出力までの
+        フルパイプライン
+      </p>
+
+      <!-- SVG inline — infografía CRE -->
+      <div style="
+        max-width:900px;margin:0 auto;
+        background:white;border-radius:16px;
+        overflow:hidden;
+      ">
+        <svg width="100%"
+             viewBox="0 0 680 720"
+             role="img"
+             xmlns="http://www.w3.org/2000/svg"
+             style="display:block;">
+          <title>CRE — Competitive Reputation Engine パイプライン図解</title>
+          <desc>
+            データソース（Google Maps、Google Business Profile、
+            可視性シグナル）からCRIスコアを算出するまでの
+            6ステップパイプラインと5次元スコアの図解。
+            supein.club独自開発ツール。
+          </desc>
+
+          <defs>
+            <marker id="cre-arrow" viewBox="0 0 10 10"
+                    refX="8" refY="5"
+                    markerWidth="6" markerHeight="6"
+                    orient="auto-start-reverse">
+              <path d="M2 1L8 5L2 9" fill="none"
+                    stroke="context-stroke" stroke-width="1.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"/>
+            </marker>
+          </defs>
+
+          <!-- ── HEADER ── -->
+          <rect x="0" y="0" width="680" height="64"
+                fill="#002147"/>
+          <rect x="0" y="58" width="680" height="4"
+                fill="#C8102E"/>
+          <text x="32" y="26"
+                font-family="'Work Sans',sans-serif"
+                font-size="11" font-weight="800"
+                letter-spacing="2" fill="#C8102E">CRE</text>
+          <rect x="56" y="14" width="1" height="20"
+                fill="rgba(255,255,255,0.2)"/>
+          <text x="66" y="27"
+                font-family="'Work Sans',sans-serif"
+                font-size="13" font-weight="700"
+                fill="white">
+            Competitive Reputation Engine
+          </text>
+          <text x="66" y="44"
+                font-family="'Noto Sans JP',sans-serif"
+                font-size="11"
+                fill="rgba(255,255,255,0.5)">
+            マルチソース評判分析エンジン · by supein.club
+          </text>
+          <rect x="586" y="16" width="62" height="22"
+                rx="4" fill="#C8102E"/>
+          <text x="617" y="31"
+                font-family="'Work Sans',sans-serif"
+                font-size="11" font-weight="800"
+                text-anchor="middle" fill="white">v8</text>
+
+          <!-- ── COLUMNA 1: FUENTES ── -->
+          <text x="40" y="98"
+                font-family="'Work Sans',sans-serif"
+                font-size="9" font-weight="800"
+                letter-spacing="2" fill="#C8102E">
+            DATA SOURCES
+          </text>
+
+          <!-- Fuente 1 — PRIMARY -->
+          <rect x="24" y="108" width="180" height="72"
+                rx="8" fill="#FAFAF8"
+                stroke="#e5e7eb" stroke-width="0.5"/>
+          <rect x="24" y="108" width="4" height="72"
+                rx="2" fill="#002147"/>
+          <text x="40" y="128"
+                font-family="'Work Sans',sans-serif"
+                font-size="9" font-weight="800"
+                letter-spacing="1" fill="#002147">PRIMARY</text>
+          <text x="40" y="146"
+                font-family="'Noto Sans JP',sans-serif"
+                font-size="12" font-weight="700"
+                fill="#002147">Google Maps</text>
+          <text x="40" y="162"
+                font-family="'Noto Sans JP',sans-serif"
+                font-size="11" fill="#6b7280">
+            Places API · レビュー
+          </text>
+
+          <!-- Fuente 2 — SECONDARY -->
+          <rect x="24" y="192" width="180" height="72"
+                rx="8" fill="#FAFAF8"
+                stroke="#e5e7eb" stroke-width="0.5"/>
+          <rect x="24" y="192" width="4" height="72"
+                rx="2" fill="#374151"/>
+          <text x="40" y="212"
+                font-family="'Work Sans',sans-serif"
+                font-size="9" font-weight="800"
+                letter-spacing="1" fill="#374151">SECONDARY</text>
+          <text x="40" y="230"
+                font-family="'Noto Sans JP',sans-serif"
+                font-size="12" font-weight="700"
+                fill="#002147">Google Business</text>
+          <text x="40" y="246"
+                font-family="'Noto Sans JP',sans-serif"
+                font-size="11" fill="#6b7280">
+            プロフィール完成度
+          </text>
+
+          <!-- Fuente 3 — TERTIARY -->
+          <rect x="24" y="276" width="180" height="72"
+                rx="8" fill="#FAFAF8"
+                stroke="#e5e7eb" stroke-width="0.5"/>
+          <rect x="24" y="276" width="4" height="72"
+                rx="2" fill="#9ca3af"/>
+          <text x="40" y="296"
+                font-family="'Work Sans',sans-serif"
+                font-size="9" font-weight="800"
+                letter-spacing="1" fill="#9ca3af">TERTIARY</text>
+          <text x="40" y="314"
+                font-family="'Noto Sans JP',sans-serif"
+                font-size="12" font-weight="700"
+                fill="#002147">可視性シグナル</text>
+          <text x="40" y="330"
+                font-family="'Noto Sans JP',sans-serif"
+                font-size="11" fill="#6b7280">
+            オンライン検索露出
+          </text>
+
+          <!-- Flechas fuentes → pipeline -->
+          <line x1="204" y1="144" x2="240" y2="200"
+                stroke="#C8102E" stroke-width="1"
+                marker-end="url(#cre-arrow)"
+                opacity="0.6"/>
+          <line x1="204" y1="228" x2="240" y2="228"
+                stroke="#C8102E" stroke-width="1"
+                marker-end="url(#cre-arrow)"
+                opacity="0.6"/>
+          <line x1="204" y1="312" x2="240" y2="258"
+                stroke="#C8102E" stroke-width="1"
+                marker-end="url(#cre-arrow)"
+                opacity="0.6"/>
+
+          <!-- ── COLUMNA 2: PIPELINE ── -->
+          <text x="252" y="98"
+                font-family="'Work Sans',sans-serif"
+                font-size="9" font-weight="800"
+                letter-spacing="2" fill="#C8102E">
+            PROCESSING PIPELINE
+          </text>
+
+          <!-- Step 1 -->
+          <rect x="244" y="108" width="172" height="38"
+                rx="6" fill="#002147"/>
+          <text x="330" y="124"
+                font-family="'Work Sans',sans-serif"
+                font-size="10" font-weight="700"
+                text-anchor="middle" fill="white">
+            ① データ収集
+          </text>
+          <text x="330" y="138"
+                font-family="'Noto Sans JP',sans-serif"
+                font-size="9" text-anchor="middle"
+                fill="rgba(255,255,255,0.55)">
+            Multi-source collection
+          </text>
+          <line x1="330" y1="146" x2="330" y2="158"
+                stroke="#C8102E" stroke-width="1.5"
+                marker-end="url(#cre-arrow)"/>
+
+          <!-- Step 2 -->
+          <rect x="244" y="160" width="172" height="38"
+                rx="6" fill="#0a2d52"
+                stroke="#1a3d6e" stroke-width="0.5"/>
+          <text x="330" y="176"
+                font-family="'Work Sans',sans-serif"
+                font-size="10" font-weight="700"
+                text-anchor="middle" fill="white">
+            ② クレンジング
+          </text>
+          <text x="330" y="190"
+                font-family="'Noto Sans JP',sans-serif"
+                font-size="9" text-anchor="middle"
+                fill="rgba(255,255,255,0.55)">
+            Data cleaning
+          </text>
+          <line x1="330" y1="198" x2="330" y2="210"
+                stroke="#C8102E" stroke-width="1.5"
+                marker-end="url(#cre-arrow)"/>
+
+          <!-- Step 3 -->
+          <rect x="244" y="212" width="172" height="38"
+                rx="6" fill="#0a2d52"
+                stroke="#1a3d6e" stroke-width="0.5"/>
+          <text x="330" y="228"
+                font-family="'Work Sans',sans-serif"
+                font-size="10" font-weight="700"
+                text-anchor="middle" fill="white">
+            ③ 正規化（0〜100）
+          </text>
+          <text x="330" y="242"
+                font-family="'Noto Sans JP',sans-serif"
+                font-size="9" text-anchor="middle"
+                fill="rgba(255,255,255,0.55)">
+            Normalization
+          </text>
+          <line x1="330" y1="250" x2="330" y2="262"
+                stroke="#C8102E" stroke-width="1.5"
+                marker-end="url(#cre-arrow)"/>
+
+          <!-- Step 4 -->
+          <rect x="244" y="264" width="172" height="38"
+                rx="6" fill="#0a2d52"
+                stroke="#1a3d6e" stroke-width="0.5"/>
+          <text x="330" y="280"
+                font-family="'Work Sans',sans-serif"
+                font-size="10" font-weight="700"
+                text-anchor="middle" fill="white">
+            ④ 次元スコア算出
+          </text>
+          <text x="330" y="294"
+                font-family="'Noto Sans JP',sans-serif"
+                font-size="9" text-anchor="middle"
+                fill="rgba(255,255,255,0.55)">
+            Dimension scoring
+          </text>
+          <line x1="330" y1="302" x2="330" y2="314"
+                stroke="#C8102E" stroke-width="1.5"
+                marker-end="url(#cre-arrow)"/>
+
+          <!-- Step 5 -->
+          <rect x="244" y="316" width="172" height="38"
+                rx="6" fill="#0a2d52"
+                stroke="#1a3d6e" stroke-width="0.5"/>
+          <text x="330" y="332"
+                font-family="'Work Sans',sans-serif"
+                font-size="10" font-weight="700"
+                text-anchor="middle" fill="white">
+            ⑤ 重み付け合算
+          </text>
+          <text x="330" y="346"
+                font-family="'Noto Sans JP',sans-serif"
+                font-size="9" text-anchor="middle"
+                fill="rgba(255,255,255,0.55)">
+            Weighted aggregation
+          </text>
+          <line x1="330" y1="354" x2="330" y2="366"
+                stroke="#C8102E" stroke-width="1.5"
+                marker-end="url(#cre-arrow)"/>
+
+          <!-- Step 6 — Output -->
+          <rect x="244" y="368" width="172" height="42"
+                rx="6" fill="#C8102E"/>
+          <text x="330" y="386"
+                font-family="'Work Sans',sans-serif"
+                font-size="10" font-weight="800"
+                text-anchor="middle" fill="white">
+            ⑥ CRI スコア出力
+          </text>
+          <text x="330" y="401"
+                font-family="'Noto Sans JP',sans-serif"
+                font-size="9" text-anchor="middle"
+                fill="rgba(255,255,255,0.7)">
+            Score output
+          </text>
+
+          <!-- Flecha pipeline → dimensiones -->
+          <line x1="416" y1="228" x2="448" y2="228"
+                stroke="#C8102E" stroke-width="1"
+                marker-end="url(#cre-arrow)"
+                opacity="0.6"/>
+
+          <!-- ── COLUMNA 3: 5 DIMENSIONES ── -->
+          <text x="460" y="98"
+                font-family="'Work Sans',sans-serif"
+                font-size="9" font-weight="800"
+                letter-spacing="2" fill="#C8102E">
+            5 DIMENSIONES CRI
+          </text>
+
+          <!-- Dim 1 -->
+          <text x="460" y="124"
+                font-family="'Noto Sans JP',sans-serif"
+                font-size="11" font-weight="700"
+                fill="#002147">評判スコア</text>
+          <text x="640" y="124"
+                font-family="'Work Sans',sans-serif"
+                font-size="10" font-weight="800"
+                text-anchor="end" fill="#002147">25%</text>
+          <rect x="460" y="130" width="178" height="6"
+                rx="3" fill="#e5e7eb"/>
+          <rect x="460" y="130" width="134" height="6"
+                rx="3" fill="#002147"/>
+
+          <!-- Dim 2 -->
+          <text x="460" y="158"
+                font-family="'Noto Sans JP',sans-serif"
+                font-size="11" font-weight="700"
+                fill="#002147">レビュー数</text>
+          <text x="640" y="158"
+                font-family="'Work Sans',sans-serif"
+                font-size="10" font-weight="800"
+                text-anchor="end" fill="#002147">20%</text>
+          <rect x="460" y="164" width="178" height="6"
+                rx="3" fill="#e5e7eb"/>
+          <rect x="460" y="164" width="107" height="6"
+                rx="3" fill="#002147"/>
+
+          <!-- Dim 3 -->
+          <text x="460" y="192"
+                font-family="'Noto Sans JP',sans-serif"
+                font-size="11" font-weight="700"
+                fill="#002147">センチメント</text>
+          <text x="640" y="192"
+                font-family="'Work Sans',sans-serif"
+                font-size="10" font-weight="800"
+                text-anchor="end" fill="#002147">20%</text>
+          <rect x="460" y="198" width="178" height="6"
+                rx="3" fill="#e5e7eb"/>
+          <rect x="460" y="198" width="107" height="6"
+                rx="3" fill="#002147"/>
+
+          <!-- Dim 4 -->
+          <text x="460" y="226"
+                font-family="'Noto Sans JP',sans-serif"
+                font-size="11" font-weight="700"
+                fill="#002147">Googleプロフィール</text>
+          <text x="640" y="226"
+                font-family="'Work Sans',sans-serif"
+                font-size="10" font-weight="800"
+                text-anchor="end" fill="#002147">20%</text>
+          <rect x="460" y="232" width="178" height="6"
+                rx="3" fill="#e5e7eb"/>
+          <rect x="460" y="232" width="107" height="6"
+                rx="3" fill="#002147"/>
+
+          <!-- Dim 5 -->
+          <text x="460" y="260"
+                font-family="'Noto Sans JP',sans-serif"
+                font-size="11" font-weight="700"
+                fill="#002147">可視性</text>
+          <text x="640" y="260"
+                font-family="'Work Sans',sans-serif"
+                font-size="10" font-weight="800"
+                text-anchor="end" fill="#002147">15%</text>
+          <rect x="460" y="266" width="178" height="6"
+                rx="3" fill="#e5e7eb"/>
+          <rect x="460" y="266" width="80" height="6"
+                rx="3" fill="#002147"/>
+
+          <!-- ── SEPARADOR ── -->
+          <rect x="24" y="430" width="632" height="1"
+                fill="#e5e7eb"/>
+
+          <!-- ── OUTPUT EJEMPLO ── -->
+          <text x="340" y="462"
+                font-family="'Work Sans',sans-serif"
+                font-size="9" font-weight="800"
+                letter-spacing="2" text-anchor="middle"
+                fill="#C8102E">
+            CRI OUTPUT — 出力例
+          </text>
+
+          <!-- Score círculo -->
+          <circle cx="160" cy="545" r="52" fill="#002147"/>
+          <text x="160" y="538"
+                font-family="'Work Sans',sans-serif"
+                font-size="30" font-weight="800"
+                text-anchor="middle" fill="white">82</text>
+          <text x="160" y="558"
+                font-family="'Noto Sans JP',sans-serif"
+                font-size="10" text-anchor="middle"
+                fill="rgba(255,255,255,0.55)">CRI スコア</text>
+
+          <!-- Badge ALTO -->
+          <rect x="220" y="520" width="52" height="22"
+                rx="11" fill="#16a34a"/>
+          <text x="246" y="535"
+                font-family="'Work Sans',sans-serif"
+                font-size="10" font-weight="800"
+                text-anchor="middle" fill="white">高</text>
+
+          <!-- Barras ejemplo -->
+          <text x="290" y="488"
+                font-family="'Noto Sans JP',sans-serif"
+                font-size="10" fill="#6b7280">評判</text>
+          <rect x="340" y="479" width="272" height="8"
+                rx="4" fill="#e5e7eb"/>
+          <rect x="340" y="479" width="230" height="8"
+                rx="4" fill="#16a34a"/>
+          <text x="618" y="488"
+                font-family="'Work Sans',sans-serif"
+                font-size="10" font-weight="800"
+                fill="#16a34a">94</text>
+
+          <text x="290" y="510"
+                font-family="'Noto Sans JP',sans-serif"
+                font-size="10" fill="#6b7280">レビュー数</text>
+          <rect x="340" y="501" width="272" height="8"
+                rx="4" fill="#e5e7eb"/>
+          <rect x="340" y="501" width="140" height="8"
+                rx="4" fill="#16a34a"/>
+          <text x="618" y="510"
+                font-family="'Work Sans',sans-serif"
+                font-size="10" font-weight="800"
+                fill="#16a34a">56</text>
+
+          <text x="290" y="532"
+                font-family="'Noto Sans JP',sans-serif"
+                font-size="10" fill="#6b7280">センチメント</text>
+          <rect x="340" y="523" width="272" height="8"
+                rx="4" fill="#e5e7eb"/>
+          <rect x="340" y="523" width="272" height="8"
+                rx="4" fill="#16a34a"/>
+          <text x="618" y="532"
+                font-family="'Work Sans',sans-serif"
+                font-size="10" font-weight="800"
+                fill="#16a34a">100</text>
+
+          <text x="290" y="554"
+                font-family="'Noto Sans JP',sans-serif"
+                font-size="10" fill="#6b7280">
+            Googleプロフィール
+          </text>
+          <rect x="340" y="545" width="272" height="8"
+                rx="4" fill="#e5e7eb"/>
+          <rect x="340" y="545" width="245" height="8"
+                rx="4" fill="#f59e0b"/>
+          <text x="618" y="554"
+                font-family="'Work Sans',sans-serif"
+                font-size="10" font-weight="800"
+                fill="#f59e0b">90</text>
+
+          <text x="290" y="576"
+                font-family="'Noto Sans JP',sans-serif"
+                font-size="10" fill="#6b7280">可視性</text>
+          <rect x="340" y="567" width="272" height="8"
+                rx="4" fill="#e5e7eb"/>
+          <rect x="340" y="567" width="272" height="8"
+                rx="4" fill="#16a34a"/>
+          <text x="618" y="576"
+                font-family="'Work Sans',sans-serif"
+                font-size="10" font-weight="800"
+                fill="#16a34a">100</text>
+
+          <!-- Footer -->
+          <rect x="0" y="600" width="680" height="40"
+                fill="#FAFAF8"/>
+          <rect x="0" y="600" width="680" height="1"
+                fill="#e5e7eb"/>
+          <text x="340" y="625"
+                font-family="'Work Sans',sans-serif"
+                font-size="10" text-anchor="middle"
+                fill="#9ca3af">
+            Powered by CRE — Competitive Reputation Engine v8
+            · supein.club · データは分析日時点のものです
+          </text>
+
+        </svg>
+      </div>
+      <!-- Leyenda debajo del SVG -->
+      <p style="font-size:12px;color:rgba(255,255,255,0.4);
+                text-align:center;margin:16px 0 0;
+                line-height:1.7;">
+        左列：データ収集ソース ／
+        中列：CRI算出パイプライン（6ステップ）／
+        右列：5次元スコアと重み付け
+      </p>
+    </div>
+  </section>
+
   <!-- FUENTES MÚLTIPLES -->
   <section style="background:white;padding:80px 0;">
     <div class="page-container" style="max-width:860px;">
@@ -233,7 +775,7 @@ const creSchema = {
                 color:#C8102E;margin:0 0 8px;">
         DATA SOURCES
       </p>
-      <h2 style="font-family:'Noto Serif JP',serif;
+      <h2 id="fuentes-datos" style="font-family:'Noto Serif JP',serif;
                  font-size:clamp(22px,3vw,30px);
                  font-weight:700;color:#002147;
                  margin:0 0 16px;">
@@ -406,7 +948,7 @@ const creSchema = {
                 color:#C8102E;margin:0 0 8px;text-align:center;">
         METHODOLOGY
       </p>
-      <h2 style="font-family:'Noto Serif JP',serif;
+      <h2 id="dimensiones" style="font-family:'Noto Serif JP',serif;
                  font-size:clamp(22px,3vw,30px);
                  font-weight:700;color:#002147;
                  margin:0 0 12px;text-align:center;">
@@ -492,7 +1034,7 @@ const creSchema = {
                 color:#C8102E;margin:0 0 8px;">
         DATA SOURCE
       </p>
-      <h2 style="font-family:'Noto Serif JP',serif;
+      <h2 id="metodologia" style="font-family:'Noto Serif JP',serif;
                  font-size:clamp(22px,3vw,30px);
                  font-weight:700;color:#002147;
                  margin:0 0 28px;">
@@ -559,7 +1101,7 @@ const creSchema = {
                 color:#C8102E;margin:0 0 8px;text-align:center;">
         VALUE
       </p>
-      <h2 style="font-family:'Noto Serif JP',serif;
+      <h2 id="valor" style="font-family:'Noto Serif JP',serif;
                  font-size:clamp(22px,3vw,30px);
                  font-weight:700;color:white;
                  margin:0 0 16px;text-align:center;">
@@ -629,7 +1171,7 @@ const creSchema = {
                 color:#C8102E;margin:0 0 8px;text-align:center;">
         RANKINGS
       </p>
-      <h2 style="font-family:'Noto Serif JP',serif;
+      <h2 id="rankings" style="font-family:'Noto Serif JP',serif;
                  font-size:clamp(22px,3vw,30px);
                  font-weight:700;color:#002147;
                  margin:0 0 12px;text-align:center;">
