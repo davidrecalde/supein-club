@@ -117,11 +117,13 @@ const creSchema = {
   dateModified: '2026-06-10',
   inLanguage: 'ja',
   featureList: [
-    'Google Places APIデータ取得',
+    'Google Places APIデータ収集',
+    'Google Maps レビューデータ分析',
+    'Googleビジネスプロフィール完成度評価',
+    'マルチソースデータ統合・正規化',
     '5次元CRIスコア算出',
-    'センチメント分析',
-    'Googleプロフィール完成度評価',
-    '観光スポットランキング生成',
+    'センチメント分析（自然言語処理）',
+    '観光スポット・語学学校・レストランランキング生成',
   ],
 };
 ---
@@ -194,27 +196,205 @@ const creSchema = {
       <p style="font-size:17px;color:#374151;
                 line-height:1.9;margin:0 0 20px;">
         <strong>CRE（Competitive Reputation Engine）</strong>は、
-        supein.clubが独自に設計・開発した評判分析エンジンです。
-        Google Places APIから取得した実データをもとに、
-        単なる「星の数」では見えない場所の信頼性を
-        多角的に評価し、数値化します。
+        スペイン倶楽部（supein.club）が独自に設計・開発した
+        マルチソース評判分析エンジンです。
+        単一の評価指標に依存するのではなく、
+        複数のデータソースから独立して収集した情報を
+        固有のアルゴリズムで統合・正規化することで、
+        場所やビジネスの「本当の評判」を
+        できる限り客観的に数値化します。
       </p>
       <p style="font-size:17px;color:#374151;
                 line-height:1.9;margin:0 0 20px;">
-        スペイン旅行を計画する日本人の読者が、
-        何万件ものレビューを読まなくても
-        「この場所は本当に行く価値があるのか」を
-        一目で判断できるようにすることが、
-        このツールを作った目的です。
+        開発の出発点は、日本語でスペインの情報を探す読者が
+        直面する課題でした——信頼できる情報源が分散しており、
+        複数のプラットフォームの評価を自分で照合しなければ
+        全体像が見えない。CREはその照合作業を自動化し、
+        「どこで読んでもブレない客観的な品質指標」を
+        提供するために作られました。
       </p>
       <p style="font-size:17px;color:#374151;
                 line-height:1.9;margin:0;">
-        分析結果として算出される
-        <strong>CRI（Competitive Reputation Index）スコア</strong>は
-        0〜100の数値で表され、スコアが高いほど
-        Googleユーザーから高く評価され、
-        信頼性と知名度が確立されていることを示します。
+        算出される<strong>CRI（Competitive Reputation Index）</strong>は
+        0〜100の正規化スコアです。スコアが高いほど、
+        複数の独立したデータソースにわたって
+        一貫して高い評価・信頼性・可視性が
+        確認されていることを示します。
       </p>
+    </div>
+  </section>
+
+  <!-- FUENTES MÚLTIPLES -->
+  <section style="background:white;padding:80px 0;">
+    <div class="page-container" style="max-width:860px;">
+
+      <p style="font-size:11px;font-weight:600;
+                letter-spacing:0.2em;text-transform:uppercase;
+                color:#C8102E;margin:0 0 8px;">
+        DATA SOURCES
+      </p>
+      <h2 style="font-family:'Noto Serif JP',serif;
+                 font-size:clamp(22px,3vw,30px);
+                 font-weight:700;color:#002147;
+                 margin:0 0 16px;">
+        複数のデータソースから収集・統合
+      </h2>
+      <p style="font-size:16px;color:#6b7280;
+                max-width:640px;line-height:1.8;
+                margin:0 0 40px;">
+        CREの強みは、単一プラットフォームへの依存を避け、
+        複数の独立したGoogleサービスから
+        データを並行収集する点にあります。
+        各ソースは異なる側面の「評判」を反映しており、
+        組み合わせることで単体では見えない
+        全体像が浮かび上がります。
+      </p>
+
+      <div style="
+        display:grid;
+        grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+        gap:16px;
+      ">
+        {[
+          {
+            source: "Google Maps / Google Places API",
+            icon: "📍",
+            badge: "PRIMARY",
+            badgeColor: "#002147",
+            data: [
+              "ユーザー評価点（1〜5星）",
+              "総レビュー件数",
+              "レビューテキスト（感情分析用）",
+              "営業状態（OPERATIONAL / CLOSED）",
+              "写真枚数・更新頻度",
+            ],
+            note: "CRIの評判・ボリューム・センチメント3次元の基盤となる最重要ソース。"
+          },
+          {
+            source: "Google Business Profile（旧 Google My Business）",
+            icon: "🏢",
+            badge: "SECONDARY",
+            badgeColor: "#374151",
+            data: [
+              "プロフィール情報の完成度",
+              "営業時間の登録有無",
+              "ウェブサイトURL登録有無",
+              "電話番号登録有無",
+              "説明文・カテゴリ設定",
+            ],
+            note: "ビジネスオーナーの情報管理への取り組みを評価。プロフィール完成度次元に反映。"
+          },
+          {
+            source: "オンライン可視性シグナル",
+            icon: "🌐",
+            badge: "TERTIARY",
+            badgeColor: "#6b7280",
+            data: [
+              "Google検索結果での表示頻度",
+              "公式ウェブサイトの有無・応答状態",
+              "地域内での相対的知名度",
+              "外部からの言及・参照状況",
+            ],
+            note: "デジタル上での存在感と信頼性を測定。可視性次元に反映。"
+          },
+        ].map(s => (
+          <div style="
+            border:1px solid #e5e7eb;
+            border-radius:14px;
+            padding:22px 24px;
+            background:#FAFAF8;
+          ">
+            <div style="display:flex;align-items:center;
+                        gap:10px;margin-bottom:14px;">
+              <span style="font-size:20px;">{s.icon}</span>
+              <span style={`
+                font-size:10px;font-weight:800;
+                letter-spacing:0.1em;
+                background:${s.badgeColor};
+                color:white;padding:2px 8px;
+                border-radius:4px;
+                font-family:'Work Sans',sans-serif;
+              `}>{s.badge}</span>
+            </div>
+            <p style="font-size:13px;font-weight:700;
+                       color:#002147;margin:0 0 12px;
+                       line-height:1.4;">
+              {s.source}
+            </p>
+            <ul style="margin:0 0 12px;padding-left:16px;">
+              {s.data.map(d => (
+                <li style="font-size:13px;color:#6b7280;
+                            line-height:1.7;margin-bottom:2px;">
+                  {d}
+                </li>
+              ))}
+            </ul>
+            <p style="font-size:12px;color:#9ca3af;
+                       margin:0;line-height:1.6;
+                       border-top:1px solid #e5e7eb;
+                       padding-top:10px;">
+              {s.note}
+            </p>
+          </div>
+        ))}
+      </div>
+
+      <!-- Diagrama de flujo del proceso -->
+      <div style="
+        margin-top:40px;
+        background:#002147;
+        border-radius:16px;
+        padding:28px 32px;
+        color:white;
+      ">
+        <p style="font-size:11px;font-weight:600;
+                  letter-spacing:0.2em;text-transform:uppercase;
+                  color:#C8102E;margin:0 0 16px;">
+          PROCESSING PIPELINE
+        </p>
+        <p style="font-size:14px;font-weight:700;
+                  color:white;margin:0 0 20px;">
+          CRIスコア算出のデータフロー
+        </p>
+        <div style="
+          display:flex;align-items:center;
+          flex-wrap:wrap;gap:8px;
+          font-size:13px;
+        ">
+          {[
+            "① マルチソース収集",
+            "② データクレンジング",
+            "③ 正規化（0〜100）",
+            "④ 次元別スコア算出",
+            "⑤ 重み付け合算",
+            "⑥ CRIスコア出力",
+          ].map((step, i) => (
+            <>
+              <span style="
+                background:rgba(255,255,255,0.1);
+                border:1px solid rgba(255,255,255,0.15);
+                padding:6px 14px;border-radius:20px;
+                color:rgba(255,255,255,0.9);
+                white-space:nowrap;
+              ">
+                {step}
+              </span>
+              {i < 5 && (
+                <span style="color:#C8102E;font-size:16px;
+                             font-weight:700;">›</span>
+              )}
+            </>
+          ))}
+        </div>
+        <p style="font-size:12px;color:rgba(255,255,255,0.4);
+                  margin:16px 0 0;line-height:1.6;">
+          各ステップは自動化されており、分析日時点の
+          最新データを反映します。
+          データ収集から出力まで人手によるスコア操作は
+          一切行っていません。
+        </p>
+      </div>
+
     </div>
   </section>
 
@@ -324,7 +504,7 @@ const creSchema = {
           {
             icon: '📡',
             title: 'データソース',
-            text: 'Google Places APIから取得したリアルタイムデータを使用しています。評価点、レビュー件数、レビューテキスト、営業情報、写真枚数などを取得し分析します。'
+            text: 'Google Places API・Google Maps・Googleビジネスプロフィール（旧Google My Business）の3つの独立したGoogleサービスからデータを並行収集します。各サービスが提供する異なる側面の情報を統合することで、単一ソースでは得られない多角的な評価が可能になります。'
           },
           {
             icon: '🔄',
