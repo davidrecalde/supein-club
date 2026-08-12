@@ -82,6 +82,11 @@ const articles = defineCollection({
       priceRange: z.string().optional(),
       cuisine: z.string().default('Spanish'),
     }).optional(),
+    contentReview: z.object({
+      needsAnnualReview: z.boolean().default(false),
+      nextReviewDate: z.coerce.date(),
+      reason: z.string(),
+    }).optional(),
   }),
 });
 
