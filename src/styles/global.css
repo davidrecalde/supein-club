@@ -320,6 +320,8 @@ table {
 /* ━━━ Imágenes con caption en artículos ━━━ */
 .prose figure {
   margin: 32px 0;
+}
+.prose figure:has(img) {
   line-height: 0;
 }
 
