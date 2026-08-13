@@ -95,3 +95,20 @@ Todo el ciclo de push → PR → preview → merge se hace desde la terminal:
 
 No es necesario abrir github.com en el navegador en ningún punto de este
 flujo — solo el preview de Cloudflare, cuando corresponda revisar contenido.
+
+## Frases de confirmación explícita
+
+Dos frases distintas para dos acciones distintas. Nunca asumir cuál
+corresponde — preguntar explícitamente a David cuál autoriza y esperar la
+frase exacta como respuesta antes de ejecutar.
+
+- **"HAZ PUSH"** → confirma `git push` (subir los commits locales a la
+  rama remota).
+- **"HAZ MERGE"** → confirma `gh pr merge` (fusionar el PR a `main`, lo
+  que publica el cambio en producción).
+
+Antes de cada una de estas dos acciones, detenerse y preguntar
+explícitamente cuál se necesita en ese momento (push o merge) y esperar la
+respuesta — no proceder por inferencia. Aprobar el contenido de un preview
+("se ve bien", "está correcto") NO es autorización de push ni de merge;
+son confirmaciones separadas, incluso si llegan en el mismo mensaje.
