@@ -79,3 +79,19 @@ al terminar una tarea en una rama de feature y pasar a un cambio no
 relacionado (como documentación o configuración). No dar por hecho que el
 working tree está en la rama correcta solo porque la tarea anterior lo
 dejó ahí.
+
+## Flujo sin navegador (GitHub)
+
+Todo el ciclo de push → PR → preview → merge se hace desde la terminal:
+- Crear rama, commit y push: `git` normal.
+- Abrir PR: `gh pr create`.
+- Obtener el link de preview de Cloudflare: `gh pr view <n> --comments`
+  (o `gh api`), nunca abriendo la página del PR en el navegador.
+- David revisa el contenido abriendo directamente el link de preview
+  (Cloudflare, no GitHub).
+- Confirmación de merge: David lo aprueba en el chat/terminal, no en un
+  botón de la web de GitHub.
+- Fusionar: `gh pr merge`.
+
+No es necesario abrir github.com en el navegador en ningún punto de este
+flujo — solo el preview de Cloudflare, cuando corresponda revisar contenido.
