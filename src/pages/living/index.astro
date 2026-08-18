@@ -65,7 +65,7 @@ const breadcrumbs = [
             const parts = a.id.replace(/\.(md|mdx)$/, '').split('/');
             const slug = parts[2] ?? a.data.cluster;
             return (
-              <ArticleCard title={a.data.title} description={a.data.description} href={`/living/${a.data.cluster}/${slug}/`} pillar="living" image={a.data.image} imageAlt={a.data.imageAlt} pubDate={a.data.pubDate} />
+              <ArticleCard title={a.data.title} description={a.data.description} href={`/living/${a.data.cluster}/${slug}/`} pillar="living" image={a.data.image} imageAlt={a.data.imageAlt} heroImage={a.data.heroImage} heroImageAlt={a.data.heroImageAlt} pubDate={a.data.pubDate} />
             );
           })}
         </div>
