@@ -76,7 +76,7 @@ const footballSchema = {
         <h2 class="font-sans font-bold text-xl text-navy mb-5">記事一覧</h2>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
           {sorted.map((a) => (
-            <ArticleCard title={a.data.title} description={a.data.description} href={getArticleUrl(a)} pillar="football" image={a.data.image} imageAlt={a.data.imageAlt} pubDate={a.data.pubDate} />
+            <ArticleCard title={a.data.title} description={a.data.description} href={getArticleUrl(a)} pillar="football" image={a.data.image} imageAlt={a.data.imageAlt} heroImage={a.data.heroImage} heroImageAlt={a.data.heroImageAlt} pubDate={a.data.pubDate} />
           ))}
         </div>
       </>
