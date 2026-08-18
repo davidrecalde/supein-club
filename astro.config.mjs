@@ -18,7 +18,6 @@ const NOINDEX_PATHS = [
   '/food/restaurants-tokyo/',
   '/food/spanish-wine/',
   '/food/tapas/',
-  '/football/barcelona/',
   '/football/football-guide/',
   '/football/la-liga/',
   '/football/real-madrid/',
