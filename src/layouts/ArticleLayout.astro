@@ -14,6 +14,7 @@ import PreferredSourceCTA from '../components/PreferredSourceCTA.astro';
 import NewsletterForm from '../components/NewsletterForm.astro';
 import ArticleDisclaimer from '../components/ArticleDisclaimer.astro';
 import { slugToJa } from '../config/breadcrumbs';
+import { getArticleUrl } from '../utils/articles';
 
 interface Props {
   entry: CollectionEntry<'articles'>;
@@ -35,29 +36,40 @@ const pillarLabels: Record<string, string> = {
   football: 'スペインサッカー',
 };
 
-const idParts = entry.id.replace(/\.(md|mdx)$/, '').split('/');
-const articleSlug = idParts[2] ?? cluster;
-// Cuando el slug del artículo coincide con el cluster, es el artículo
-// insignia del cluster y vive en /pillar/cluster/ sin segmento adicional.
-const canonical = articleSlug === cluster
-  ? `https://supein.club/${pillar}/${cluster}/`
-  : `https://supein.club/${pillar}/${cluster}/${articleSlug}/`;
+const articleUrl = getArticleUrl(entry);
+const canonical = `https://supein.club${articleUrl}`;
 const pillarLabel = pillarLabels[pillar] ?? pillar;
 
 const clusterLabel = slugToJa(cluster);
+const clusterUrl = `/${pillar}/${cluster}/`;
+// Cuando la URL del artículo coincide con la del cluster (artículo
+// insignia), el nivel de cluster es el mismo destino que el propio
+// artículo — se omite del breadcrumb para no duplicar el paso.
+const isFlagship = articleUrl === clusterUrl;
 
-const visualBreadcrumbs = [
-  { name: 'ホーム', url: '/' },
-  { name: pillarLabel, url: `/${pillar}/` },
-  { name: clusterLabel, url: `/${pillar}/${cluster}/` },
-  { name: title, url: canonical },
-];
+const visualBreadcrumbs = isFlagship
+  ? [
+      { name: 'ホーム', url: '/' },
+      { name: pillarLabel, url: `/${pillar}/` },
+      { name: title, url: canonical },
+    ]
+  : [
+      { name: 'ホーム', url: '/' },
+      { name: pillarLabel, url: `/${pillar}/` },
+      { name: clusterLabel, url: clusterUrl },
+      { name: title, url: canonical },
+    ];
 
-const seoBreadcrumbs = [
-  { name: 'ホーム', url: '/' },
-  { name: pillarLabel, url: `/${pillar}/` },
-  { name: clusterLabel, url: `/${pillar}/${cluster}/` },
-];
+const seoBreadcrumbs = isFlagship
+  ? [
+      { name: 'ホーム', url: '/' },
+      { name: pillarLabel, url: `/${pillar}/` },
+    ]
+  : [
+      { name: 'ホーム', url: '/' },
+      { name: pillarLabel, url: `/${pillar}/` },
+      { name: clusterLabel, url: clusterUrl },
+    ];
 
 // Build related articles: manual pins first, then auto-fill from same cluster → same pillar
 const allArticles = await getCollection('articles', ({ data }) => !data.draft);
@@ -226,13 +238,11 @@ const authorUrlForMeta = `https://supein.club/about-us/team/${authorSlug}/`;
             <p class="text-sm text-gray-500 mb-6">同じテーマのおすすめ記事です。</p>
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
               {related.map((a) => {
-                const parts = a.id.replace(/\.(md|mdx)$/, '').split('/');
-                const slug = parts[2] ?? a.data.cluster;
                 return (
                   <ArticleCard
                     title={a.data.title}
                     description={a.data.description}
-                    href={`/${a.data.pillar}/${a.data.cluster}/${slug}/`}
+                    href={getArticleUrl(a)}
                     pillar={a.data.pillar}
                     image={a.data.image}
                     imageAlt={a.data.imageAlt}
