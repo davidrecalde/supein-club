@@ -6,6 +6,7 @@ import PillarHero from '../../components/PillarHero.astro';
 import ArticleCard from '../../components/ArticleCard.astro';
 import LineBanner from '../../components/LineBanner.astro';
 import AdSlot from '../../components/AdSlot.astro';
+import { getArticleUrl } from '../../utils/articles';
 
 const articles = await getCollection('articles', ({ data }) => !data.draft && data.pillar === 'football');
 const sorted = articles.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
@@ -74,13 +75,9 @@ const footballSchema = {
       <>
         <h2 class="font-sans font-bold text-xl text-navy mb-5">記事一覧</h2>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {sorted.map((a) => {
-            const parts = a.id.replace(/\.(md|mdx)$/, '').split('/');
-            const slug = parts[2] ?? a.data.cluster;
-            return (
-              <ArticleCard title={a.data.title} description={a.data.description} href={`/football/${a.data.cluster}/${slug}/`} pillar="football" image={a.data.image} imageAlt={a.data.imageAlt} pubDate={a.data.pubDate} />
-            );
-          })}
+          {sorted.map((a) => (
+            <ArticleCard title={a.data.title} description={a.data.description} href={getArticleUrl(a)} pillar="football" image={a.data.image} imageAlt={a.data.imageAlt} pubDate={a.data.pubDate} />
+          ))}
         </div>
       </>
     )}

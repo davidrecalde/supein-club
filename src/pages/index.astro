@@ -6,6 +6,7 @@ import ArticleCard from '../components/ArticleCard.astro';
 import LineBanner from '../components/LineBanner.astro';
 import { Plane, UtensilsCrossed, MessageCircle, Home, Globe, Trophy } from 'lucide-astro';
 import AdSlot from '../components/AdSlot.astro';
+import { getArticleUrl } from '../utils/articles';
 
 const allArticles = await getCollection('articles', ({ data }) => !data.draft);
 const recentArticles = allArticles
@@ -160,13 +161,11 @@ const breadcrumbs = [{ name: 'ホーム', url: '/' }];
         <h2 class="font-sans font-bold text-3xl text-navy mb-10">最新記事</h2>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
           {recentArticles.map((article) => {
-            const parts = article.id.replace(/\.(md|mdx)$/, '').split('/');
-            const slug = parts[2] ?? article.data.cluster;
             return (
               <ArticleCard
                 title={article.data.title}
                 description={article.data.description}
-                href={`/${article.data.pillar}/${article.data.cluster}/${slug}/`}
+                href={getArticleUrl(article)}
                 pillar={article.data.pillar}
                 image={article.data.image}
                 imageAlt={article.data.imageAlt}

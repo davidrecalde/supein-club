@@ -6,6 +6,7 @@ import ArticleCard from '../../../components/ArticleCard.astro';
 import Breadcrumb from '../../../components/Breadcrumb.astro';
 import LineBanner from '../../../components/LineBanner.astro';
 import { Globe } from 'lucide-astro';
+import { getArticleUrl } from '../../../utils/articles';
 
 export async function getStaticPaths() {
   const authors = await getCollection('authors', ({ data }) => data.active !== false);
@@ -315,13 +316,11 @@ const hasBio = author.body?.trim().length > 0;
       {articles.length > 0 ? (
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
           {articles.map((a) => {
-            const parts = a.id.replace(/\.(md|mdx)$/, '').split('/');
-            const articleSlug = parts[2] ?? a.data.cluster;
             return (
               <ArticleCard
                 title={a.data.title}
                 description={a.data.description}
-                href={`/${a.data.pillar}/${a.data.cluster}/${articleSlug}/`}
+                href={getArticleUrl(a)}
                 pillar={a.data.pillar}
                 image={a.data.image}
                 imageAlt={a.data.imageAlt}
