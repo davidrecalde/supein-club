@@ -37,7 +37,11 @@ const pillarLabels: Record<string, string> = {
 
 const idParts = entry.id.replace(/\.(md|mdx)$/, '').split('/');
 const articleSlug = idParts[2] ?? cluster;
-const canonical = `https://supein.club/${pillar}/${cluster}/${articleSlug}/`;
+// Cuando el slug del artículo coincide con el cluster, es el artículo
+// insignia del cluster y vive en /pillar/cluster/ sin segmento adicional.
+const canonical = articleSlug === cluster
+  ? `https://supein.club/${pillar}/${cluster}/`
+  : `https://supein.club/${pillar}/${cluster}/${articleSlug}/`;
 const pillarLabel = pillarLabels[pillar] ?? pillar;
 
 const clusterLabel = slugToJa(cluster);

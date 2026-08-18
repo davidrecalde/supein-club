@@ -5,13 +5,18 @@ import ArticleLayout from '../../../../layouts/ArticleLayout.astro';
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const articles = await getCollection('articles', ({ data }) => !data.draft && data.pillar === 'football');
-  return articles.map((entry) => {
-    const parts = entry.id.replace(/\.(md|mdx)$/, '').split('/');
-    return {
-      params: { cluster: parts[1], article: parts[2] },
+  return articles
+    .map((entry) => {
+      const parts = entry.id.replace(/\.(md|mdx)$/, '').split('/');
+      return { entry, cluster: parts[1], article: parts[2] };
+    })
+    // Los artículos "insignia" (slug === cluster) tienen su propia ruta
+    // dedicada en /football/{cluster}/ y no deben duplicarse aquí.
+    .filter(({ cluster, article }) => article !== cluster)
+    .map(({ entry, cluster, article }) => ({
+      params: { cluster, article },
       props: { entry },
-    };
-  });
+    }));
 };
 
 const { entry } = Astro.props;
