@@ -1,4 +1,14 @@
 import type { CollectionEntry } from 'astro:content';
+import { slugToJa } from '../config/breadcrumbs';
+
+const pillarLabels: Record<string, string> = {
+  travel: 'スペイン旅行',
+  food: 'スペイン料理',
+  language: 'スペイン語',
+  living: 'スペインに住む',
+  culture: 'スペイン文化',
+  football: 'スペインサッカー',
+};
 
 /**
  * Única fuente de verdad para construir la URL (ruta relativa, con barra
@@ -16,4 +26,33 @@ export function getArticleUrl(entry: CollectionEntry<'articles'>): string {
   return articleSlug === cluster
     ? `/${entry.data.pillar}/${cluster}/`
     : `/${entry.data.pillar}/${cluster}/${articleSlug}/`;
+}
+
+/**
+ * Única fuente de verdad para el breadcrumb de un artículo — usado tanto
+ * para el <Breadcrumb> visual como para el BreadcrumbList JSON-LD, para
+ * que nunca se desincronicen entre sí. Siempre termina en el propio
+ * artículo (Home › Pilar [› Cluster] › Título), incluyendo el caso
+ * "artículo insignia" (ver getArticleUrl).
+ */
+export function getArticleBreadcrumbs(entry: CollectionEntry<'articles'>): Array<{ name: string; url: string }> {
+  const { pillar, cluster, title } = entry.data;
+  const articleUrl = getArticleUrl(entry);
+  const canonical = `https://supein.club${articleUrl}`;
+  const pillarLabel = pillarLabels[pillar] ?? pillar;
+  const clusterUrl = `/${pillar}/${cluster}/`;
+  const isFlagship = articleUrl === clusterUrl;
+
+  return isFlagship
+    ? [
+        { name: 'ホーム', url: '/' },
+        { name: pillarLabel, url: `/${pillar}/` },
+        { name: title, url: canonical },
+      ]
+    : [
+        { name: 'ホーム', url: '/' },
+        { name: pillarLabel, url: `/${pillar}/` },
+        { name: slugToJa(cluster), url: clusterUrl },
+        { name: title, url: canonical },
+      ];
 }
