@@ -52,7 +52,7 @@ const NOINDEX_PATHS = [
 export default defineConfig({
   site: 'https://supein.club',
   output: 'static',
-  adapter: cloudflare(),
+  adapter: cloudflare({ imageService: 'passthrough' }),
   integrations: [
     mdx(),
     sitemap({
