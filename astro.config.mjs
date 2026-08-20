@@ -20,7 +20,6 @@ const NOINDEX_PATHS = [
   '/food/tapas/',
   '/football/football-guide/',
   '/football/la-liga/',
-  '/football/real-madrid/',
   '/language/lesson-price/',
   '/language/lessons-tokyo/',
   '/language/online-lessons/',
