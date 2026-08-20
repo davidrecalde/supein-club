@@ -1,6 +1,7 @@
 ---
 import type { CollectionEntry } from 'astro:content';
 import { getCollection, getEntry } from 'astro:content';
+import { Image } from 'astro:assets';
 import BaseLayout from './BaseLayout.astro';
 import SEO from '../components/SEO.astro';
 import AuthorBox from '../components/AuthorBox.astro';
@@ -66,7 +67,7 @@ const authorUrlForMeta = `https://supein.club/about-us/team/${authorSlug}/`;
     title={`${title} | supein.club`}
     description={description}
     canonical={canonical}
-    image={heroImage ?? image}
+    image={heroImage?.src ?? image}
     type="article"
     article={entry}
     author={author}
@@ -120,11 +121,9 @@ const authorUrlForMeta = `https://supein.club/about-us/team/${authorSlug}/`;
       {heroImage && (
         <div class="article-hero-image" style="padding:0;max-width:860px;">
           <figure style="margin:0;border-radius:16px;overflow:hidden;border:3px solid #C8102E;box-shadow:0 0 0 1px rgba(200,16,46,0.15),0 8px 48px rgba(0,0,0,0.4);line-height:0;background:#001529;">
-            <img
+            <Image
               src={heroImage}
               alt={heroImageAlt || title}
-              width="1200"
-              height="630"
               style="width:100%;height:420px;object-fit:cover;object-position:center;display:block;border-radius:13px;"
               fetchpriority="high"
               loading="eager"
@@ -205,7 +204,7 @@ const authorUrlForMeta = `https://supein.club/about-us/team/${authorSlug}/`;
                     pillar={a.data.pillar}
                     image={a.data.image}
                     imageAlt={a.data.imageAlt}
-                    heroImage={a.data.heroImage}
+                    heroImage={a.data.heroImage?.src}
                     heroImageAlt={a.data.heroImageAlt}
                     pubDate={a.data.pubDate}
                   />

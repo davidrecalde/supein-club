@@ -147,7 +147,7 @@ if (type === 'article' && article) {
   const authorName = author?.data.name ?? 'スペイン倶楽部編集部';
   const authorSlug = author ? (author.data.slug ?? author.id.replace(/\.(md|mdx)$/, '')) : 'supeinclub-henshubu';
   const authorUrl = `${siteUrl}/about-us/team/${authorSlug}/`;
-  const primaryImagePath = article.data.heroImage ?? article.data.image;
+  const primaryImagePath = article.data.heroImage?.src ?? article.data.image;
   const articleImage = primaryImagePath
     ? {
         '@type': 'ImageObject',
@@ -303,8 +303,8 @@ if (type === 'article' && article) {
     graph.push({
       '@type': 'ImageObject',
       '@id': `${canonical}#heroimage`,
-      url: `${siteUrl}${article.data.heroImage}`,
-      contentUrl: `${siteUrl}${article.data.heroImage}`,
+      url: `${siteUrl}${article.data.heroImage.src}`,
+      contentUrl: `${siteUrl}${article.data.heroImage.src}`,
       name: article.data.heroImageAlt ?? title,
       description: article.data.heroImageAlt ?? title,
       width: 1200,

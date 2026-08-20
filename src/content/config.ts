@@ -30,7 +30,7 @@ const authors = defineCollection({
 
 const articles = defineCollection({
   type: 'content',
-  schema: z.object({
+  schema: ({ image }) => z.object({
     title: z.string(),
     description: z.string().max(160),
     lead: z.string().max(300),
@@ -51,7 +51,7 @@ const articles = defineCollection({
     featured: z.boolean().default(false),
     author: reference('authors'),
     readingTime: z.number().optional(),
-    heroImage: z.string().optional(),
+    heroImage: image().optional(),
     heroImageAlt: z.string().optional(),
     schemaType: z.enum([
       'article',
