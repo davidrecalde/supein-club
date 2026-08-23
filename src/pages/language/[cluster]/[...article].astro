@@ -1,14 +1,16 @@
 ---
 import { getCollection } from 'astro:content';
 import type { GetStaticPaths } from 'astro';
-import ArticleLayout from '../../../../layouts/ArticleLayout.astro';
+import ArticleLayout from '../../../layouts/ArticleLayout.astro';
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const articles = await getCollection('articles', ({ data }) => !data.draft && data.pillar === 'language');
   return articles.map((entry) => {
     const parts = entry.id.replace(/\.(md|mdx)$/, '').split('/');
+    const restSegments = parts.slice(2);
+    if (restSegments[restSegments.length - 1] === 'index') restSegments.pop();
     return {
-      params: { cluster: parts[1], article: parts[2] },
+      params: { cluster: parts[1], article: restSegments.join('/') },
       props: { entry },
     };
   });

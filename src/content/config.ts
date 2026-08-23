@@ -87,6 +87,28 @@ const articles = defineCollection({
       nextReviewDate: z.coerce.date(),
       reason: z.string(),
     }).optional(),
+    level: z.enum(['a1', 'a2', 'b1', 'b2', 'c1', 'c2']).optional(),
+    articleRole: z.enum([
+      'pilar',
+      'onboarding',
+      'diagnostico',
+      'hub-nivel',
+      'spoke-gramatica',
+      'spoke-vocabulario',
+      'spoke-pronunciacion',
+      'spoke-plan',
+      'hub-dele',
+      'prep-dele',
+      'info-dele',
+      'puente',
+      'blog',
+    ]).optional(),
+    quiz: z.array(z.object({
+      question: z.string(),
+      options: z.array(z.string()),
+      correctIndex: z.number(),
+      explanation: z.string(),
+    })).optional(),
   }),
 });
 
