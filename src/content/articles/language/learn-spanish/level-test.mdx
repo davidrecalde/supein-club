@@ -1,0 +1,359 @@
+---
+pillar: "language"
+cluster: "learn-spanish"
+articleRole: "diagnostico"
+title: "スペイン語レベルチェック5分テスト（A1–B2）"
+lead: "16問に答えるだけで、あなたのスペイン語レベル（A1〜B2+）の目安がすぐにわかります。CEFR基準に沿った簡易診断で、次に進むべき学習プランへご案内します。"
+description: "16問のスペイン語レベルチェックテストで自分のレベル（A1–B2+）がすぐわかります。即時結果と各レベルのおすすめ学習プラン付き。"
+intent: "informational"
+schemaType: "article"
+lang: "ja"
+draft: true
+pubDate: 2026-08-23
+tags: ["スペイン語", "レベルチェック", "CEFR", "診断テスト"]
+entities: ["Instituto Cervantes", "DELE", "CEFR"]
+author: "david-recalde"
+# heroImage: 未定（draft: true のためブロックしない）
+# 注記: 16問の「レベル診断テスト」本体はスペイン語の文法力そのものを測るテストのため、
+# 設問文はスペイン語のまま残しています（指示文・解説・表は日本語に localizar 済み）。
+# quiz配列に入れているのは、この記事の理解度を確認する別枠の15問（記事末尾）です。
+# この2種類を混同しないよう、CCとの実装時にも明示してください。
+quiz:
+- question: "このレベル診断テストは全部で何問ありますか？"
+  options:
+  - "10問"
+  - "12問"
+  - "16問"
+  - "20問"
+  correctIndex: 2
+  explanation: "テストは各レベル4問ずつ、合計16問で構成されています（「テストの受け方」参照）。"
+- question: "各レベル（A1・A2・B1・B2）につき何問ずつありますか？"
+  options:
+  - "2問"
+  - "4問"
+  - "5問"
+  - "8問"
+  correctIndex: 1
+  explanation: "各レベルにつき4問ずつ、ブロックに分かれて出題されます（「テストの受け方」参照）。"
+- question: "このテストが対象としているレベルはどこからどこまでですか？"
+  options:
+  - "A1からC2まで"
+  - "A1からB2まで"
+  - "A1とA2のみ"
+  - "B1とB2のみ"
+  correctIndex: 1
+  explanation: "このテストはA1からB2（B2+を上限として）までを対象としています（導入部と結果表を参照）。"
+- question: "合計7問正解した場合、結果表ではどのレベルにあたりますか？"
+  options:
+  - "A1"
+  - "A2"
+  - "B1"
+  - "B2+"
+  correctIndex: 1
+  explanation: "結果の解釈表によると、5〜8問正解はA2にあたります。"
+- question: "B1レベルにあたる正解数の範囲はどれですか？"
+  options:
+  - "0〜4問"
+  - "5〜8問"
+  - "9〜12問"
+  - "13〜16問"
+  correctIndex: 2
+  explanation: "B1レベルは9〜12問正解の範囲にあたります。"
+- question: "13問正解した場合、推定レベルはどれになりますか？"
+  options:
+  - "A2"
+  - "B1"
+  - "B2+"
+  - "C1"
+  correctIndex: 2
+  explanation: "13〜16問正解はB2+にあたり、結果表の中でもっとも高いレベル区分です。"
+- question: "テストの結果はどのように確認しますか？"
+  options:
+  - "先生にメールで送る"
+  - "正解数を数えて、解釈表と照らし合わせる"
+  - "24時間待つ"
+  - "受験料を払う"
+  correctIndex: 1
+  explanation: "正解数を数え、下の解釈表と照らし合わせることで結果を確認します。"
+- question: "以前のレベルがまったくない完全初心者の場合、何をすべきとされていますか？"
+  options:
+  - "いきなりDELEを受験する"
+  - "スペイン語ゼロから始めるガイドを始める"
+  - "いきなりB2レベルに進む"
+  - "スペイン語の勉強はまだしない"
+  correctIndex: 1
+  explanation: "初めて受ける完全初心者は、まず「スペイン語ゼロから始める」ガイドから始めることがすすめられています。"
+- question: "結果がA2だった場合、テストはどのハブへ案内していますか？"
+  options:
+  - "/language/learn-spanish/a1/"
+  - "/language/learn-spanish/a2/"
+  - "/language/learn-spanish/b1/"
+  - "/language/learn-spanish/dele/"
+  correctIndex: 1
+  explanation: "A2という結果は、A2ハブ（/language/learn-spanish/a2/）へのリンクにつながります。"
+- question: "supein.clubのこのレベルチェックテストは、どのようなものですか？"
+  options:
+  - "公式試験"
+  - "国際的に通用する資格"
+  - "目安であり、非公式のテスト"
+  - "セルバンテス学院の試験"
+  correctIndex: 2
+  explanation: "このテストはあくまで目安であり、公式な試験ではないと明記されています（「これは公式な試験ですか？」参照）。"
+- question: "スペイン語のレベルを公式に証明する試験は何ですか？"
+  options:
+  - "JLPT"
+  - "DELE"
+  - "supein.clubのレベルチェック"
+  - "EIKEN"
+  correctIndex: 1
+  explanation: "DELE（外国語としてのスペイン語検定）が、スペイン語力を証明する唯一の公式試験です。"
+- question: "このテストにかかるおおよその時間はどれくらいですか？"
+  options:
+  - "5分"
+  - "1時間"
+  - "30分"
+  - "2日"
+  correctIndex: 0
+  explanation: "タイトルにある通り、このテストは約5分で完了するように設計されています。"
+- question: "結果がB2+だった場合、どの学習プランに進むべきとされていますか？"
+  options:
+  - "A1のプラン"
+  - "A2のプラン"
+  - "B2ハブ"
+  - "ゼロから始める"
+  correctIndex: 2
+  explanation: "B2+という結果は、B2ハブへ進み、より高度な内容に取り組むことがすすめられています。"
+- question: "このテストと公式試験DELEを比較したい場合、どのページを見ればよいですか？"
+  options:
+  - "/language/learn-spanish/dele/"
+  - "/language/learn-spanish/start-here/"
+  - "/language/learn-spanish/a1/"
+  - "/language/learn-spanish/level-test/"
+  correctIndex: 0
+  explanation: "DELEとの比較については、DELEのページ（/language/learn-spanish/dele/）で解説されています。"
+- question: "このテストの主な目的は何ですか？"
+  options:
+  - "公式な資格を与えること"
+  - "学習の方向性を決めるために、レベルの目安を知ること"
+  - "学生を合格・不合格で判定すること"
+  - "スペイン語教師を評価すること"
+  correctIndex: 1
+  explanation: "このテストの目的は、学習の方向性を判断するためにおおよそのレベルを知ることです。認定を行うものではありません。"
+---
+
+# スペイン語レベルチェック5分テスト（A1–B2）
+
+しばらくスペイン語を勉強しているけれど、今どのくらいのレベルなのか分からない——そんな方のために、5分で分かる診断テストを用意しました。**A1が4問、A2が4問、B1が4問、B2が4問、合計16問**の段階式テストで、文法・語彙・実際の文の理解力をチェックします。正しい選択肢を選び、正解数を数えて、下の解釈表と照らし合わせれば、[欧州言語共通参照枠（CEFR）](https://cvc.cervantes.es/ensenanza/biblioteca_ele/marco/cap_03.htm)に沿ったレベルの目安が分かります。
+
+このテストはあくまで**目安**です。現在地を把握し、次にどこへ進むべきかを判断する助けにはなりますが、公式な試験ではありません。国際的に通用する認定資格が必要な場合は、[DELE](/language/learn-spanish/dele/)をご検討ください。
+
+---
+
+## テストの受け方
+
+やり方はとてもシンプルで、一人で完結できるように設計されています。
+
+1. **各設問を読み、選択肢を1つだけ選んでください**（A・B・C・Dのいずれか）。正解は1つだけです。
+2. **各レベル（A1・A2・B1・B2）につき4問**あり、難易度順に並んでいます。進むにつれて設問のレベルが上がっていきます。
+3. **16問中の正解数を数えてください。** どのブロックから間違いが増え始めるかにも注目しましょう。その地点が、学び直すべきポイントの目安になります。
+4. **下の解釈表を確認**し、推定レベルと、それに対応する学習プランへのリンクをチェックしてください。
+
+すべての設問に正解する必要はありません。このテストは「どこまで到達しているか」を測るものです。もし歯が立たない設問があれば、おそらくその設問のレベルより下にいるということであり、それこそがこのテストで知りたい情報です。
+
+## 各レベルで測っている内容
+
+4問ずつのブロックは、[セルバンテス学院のカリキュラム大綱（PCIC）](https://cvc.cervantes.es/ensenanza/biblioteca_ele/plan_curricular/indice.htm)に基づく、そのレベルを特徴づける構造を狙っています。網羅的なリストではありませんが、代表的なサンプルです。
+
+- **A1（設問1〜4）：** 冠詞と性、アイデンティティを表す動詞*ser*、直説法現在形、日常生活の語彙。自己紹介と具体的なニーズを伝える段階です。
+- **A2（設問5〜8）：** 過去形（点過去と線過去）、単純未来形、比較表現。自分のルーティンや身の回りを語り始める段階です。
+- **B1（設問9〜12）：** 接続法現在・接続法過去、単純可能法、過去完了形。旅行で困らず、意見を言えるようになる「壁」の段階です。
+- **B2（設問13〜16）：** 関係節の中の接続法、受動態、不定詞を使った慣用表現、複合可能法。精度とニュアンスを磨く上級段階です。
+
+この設計は意図的なものです。あるブロックで間違いが多ければ、そこがあなたにとって重点的に学ぶべき内容ということになります。各レベルの詳細（文法・語彙・発音）は、結果表からリンクしているハブページをご覧ください。
+
+---
+
+## 16問のテスト
+
+> 回答を選んでください。最後に解答を確認し、正解数を数えます。設問はスペイン語力そのものを測るため、あえてスペイン語のまま出題しています。
+
+### A1ブロック（設問1〜4）
+
+**1. Marta tiene ___ perro pequeño.**
+- A) una
+- B) un
+- C) unas
+- D) la
+
+**2. Yo ___ estudiante de español.**
+- A) soy
+- B) estoy
+- C) es
+- D) son
+
+**3. Nosotros ___ en Tokio.**
+- A) vivo
+- B) vivís
+- C) vive
+- D) vivimos
+
+**4. Tengo que comprar ___ manzanas para la tarta.**
+- A) el
+- B) la
+- C) unas
+- D) un
+
+### A2ブロック（設問5〜8）
+
+**5. Ayer ___ al cine con mis amigos.**
+- A) voy
+- B) fui
+- C) iba
+- D) iré
+
+**6. Cuando era niño, ___ en Osaka.**
+- A) vivo
+- B) viví
+- C) vivía
+- D) vivir
+
+**7. Mañana ___ a la playa con mi familia.**
+- A) voy
+- B) fui
+- C) iré
+- D) vaya
+
+**8. Mi coche es ___ que el tuyo.**
+- A) más rápidos
+- B) muy rápido
+- C) tan rápido
+- D) más rápido
+
+### B1ブロック（設問9〜12）
+
+**9. Espero que tú ___ bien.**
+- A) estás
+- B) estés
+- C) estarás
+- D) estabas
+
+**10. Me alegra que ___ venido a la fiesta.**
+- A) habéis
+- B) has
+- C) hayan
+- D) hubieras
+
+**11. Si tuviera más tiempo, ___ contigo.**
+- A) salgo
+- B) salía
+- C) saldría
+- D) salí
+
+**12. Cuando llegué a casa, ella ya ___.**
+- A) come
+- B) comía
+- C) ha comido
+- D) había comido
+
+### B2ブロック（設問13〜16）
+
+**13. Busco a alguien que ___ español con fluidez.**
+- A) habla
+- B) hable
+- C) hablará
+- D) hablaba
+
+**14. El Quijote ___ escrito por Cervantes.**
+- A) es
+- B) era
+- C) fue
+- D) sea
+
+**15. A pesar de ___ cansado, terminó el trabajo.**
+- A) está
+- B) ser
+- C) estar
+- D) es
+
+**16. Si hubiera sabido la hora, te ___.**
+- A) llamaría
+- B) llamaba
+- C) habría llamado
+- D) llamo
+
+---
+
+## レベル診断テストの解答
+
+1. **B** — *un* perro（男性単数の不定冠詞）。A1レベル。
+2. **A** — *soy* estudiante（アイデンティティ・職業を表す動詞*ser*）。A1レベル。
+3. **D** — *vivimos*（nosotros・現在形）。A1レベル。
+4. **C** — *unas* manzanas（女性複数の不定冠詞）。A1レベル。
+5. **B** — *fui*（点過去、昨日の1回限りの行為）。A2レベル。
+6. **C** — *vivía*（線過去、過去の継続的な状態）。A2レベル。
+7. **C** — *iré*（単純未来形）。A2レベル。
+8. **D** — *más rápido*（優等比較）。A2レベル。
+9. **B** — *estés*（*espero que*のあとに続く接続法現在）。B1レベル。
+10. **C** — *hayan* venido（非人称構文*Me alegra que…*に続く接続法現在完了）。B1レベル。
+11. **C** — *saldría*（タイプIIの条件文における単純可能法）。B1レベル。
+12. **D** — *había comido*（過去完了形、過去のある時点より前の行為）。B1レベル。
+13. **B** — *hable*（先行詞が不特定の関係節における接続法）。B2レベル。
+14. **C** — *fue* escrito（点過去における受動態）。B2レベル。
+15. **C** — *estar*（*a pesar de*のあとは不定詞が必要。*cansado*は状態を表すため*estar*）。B2レベル。
+16. **C** — *habría llamado*（タイプIIIの条件文*Si hubiera…*における複合可能法）。B2レベル。
+
+---
+
+## 結果の解釈表
+
+16問中の正解数を数えて、あなたの推定レベルを確認してください。
+
+| 正解数 | 推定レベル | 意味 | 次に進む先 |
+|---|---|---|---|
+| **0〜4** | **A1** | 初心者。始めたばかり、または基礎の基礎を習得している段階。 | [A1ハブ](/language/learn-spanish/a1/)・[ゼロから始める](/language/learn-spanish/start-here/) |
+| **5〜8** | **A2** | 基礎。日常のルーティンや身近な場面には対応できる段階。 | [A2ハブ](/language/learn-spanish/a2/) |
+| **9〜12** | **B1** | 中級。旅行に困らず、意見を言える段階。 | [B1ハブ](/language/learn-spanish/b1/) |
+| **13〜16** | **B2+** | 上級。流暢さがあり、自分の意見を主張できる段階。 | [B2ハブ](/language/learn-spanish/b2/) |
+
+補足のルールとして、**半分以上間違え始めた最初のブロック**に注目してください。合計点がそれより高くても、そのブロックが本当に強化すべきレベルであることが多いです。
+
+---
+
+## 結果別に次にすべきこと
+
+- **A1、または初めて受ける方：** まだテストより先に、基礎づくりが必要な段階です。[スペイン語ゼロから始める](/language/learn-spanish/start-here/)から始め、アルファベットと最初の動詞が身についたら[A1ハブ](/language/learn-spanish/a1/)に戻ってきてください。
+- **A2：** すでに基礎はあります。[A2ハブ](/language/learn-spanish/a2/)に進み、この段階でいちばん定着しにくい過去形と未来形に取り組みましょう。
+- **B1：** スペイン語学習でもっとも実用的な段階にいます。[B1ハブ](/language/learn-spanish/b1/)へ。焦点は接続法と意見表現です。
+- **B2+：** しっかりした実力があります。[B2ハブ](/language/learn-spanish/b2/)で、高度な接続法・受動態・接続表現を磨き、B2以上のDELE受験を目標にしましょう。
+
+どの結果であっても、レベル全体のロードマップを理解する出発点は、各レベルの意味・目安学習時間・進め方を解説したピラーページ「[スペイン語をA1からC2まで学ぶ完全ロードマップ](/language/learn-spanish/)」です。
+
+---
+
+## これは公式な試験ですか？
+
+いいえ。このテストは**あくまで目安**であり、あなたの現在地を把握し学習プランを選ぶためのものです。何かを認定するものではなく、公式試験の代わりにもなりません。大学・企業・公的機関に対してスペイン語力を証明する必要がある場合に必要なのは**DELE**（外国語としてのスペイン語検定）です。DELEはスペイン語の唯一の公式資格で、スペイン教育省に代わって[セルバンテス学院](https://examenes.cervantes.es/es/dele/que-es)が発行しています。
+
+DELEにはA1・A2・B1・B2・C1・C2の公式レベルがあり、専用の対策が必要で、[東京セルバンテス文化センター](https://tokio.cervantes.es/es/)のような認定会場で受験します。[DELEのページ](/language/learn-spanish/dele/)では、試験の形式、どのレベルを受けるべきか、このテストとDELEの比較を解説しています。
+
+まとめると、このテストは**現在地を知るため**に、DELEは**公式に証明するため**に使ってください。
+
+---
+
+## 関連ページ
+
+- [スペイン語学習ロードマップ（トップ）](/language/learn-spanish/)
+- [スペイン語ゼロから始める](/language/learn-spanish/start-here/)
+- [A1ハブ](/language/learn-spanish/a1/)
+- [A2ハブ](/language/learn-spanish/a2/)
+- [B1ハブ](/language/learn-spanish/b1/)
+- [B2ハブ](/language/learn-spanish/b2/)
+- [DELE：スペイン語の公式試験](/language/learn-spanish/dele/)
+
+## 出典
+
+- 欧州言語共通参照枠（CEFR）、レベルと能力記述 — https://cvc.cervantes.es/ensenanza/biblioteca_ele/marco/cap_03.htm
+- セルバンテス学院 カリキュラム大綱（PCIC、レベル別内容の参照） — https://cvc.cervantes.es/ensenanza/biblioteca_ele/plan_curricular/indice.htm
+- DELEとは（スペイン語の公式試験） — https://examenes.cervantes.es/es/dele/que-es
+- 東京セルバンテス文化センター（日本におけるDELE認定会場） — https://tokio.cervantes.es/es/
+- Guided learning hours（レベル別学習時間の参考比較）— Cambridge English: https://support.cambridgeenglish.org/hc/en-gb/articles/202838506-Guided-learning-hours
