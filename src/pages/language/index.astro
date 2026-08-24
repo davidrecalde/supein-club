@@ -1,27 +1,105 @@
 ---
-import { getCollection } from 'astro:content';
+import { getCollection, type CollectionEntry } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import SEO from '../../components/SEO.astro';
 import PillarHero from '../../components/PillarHero.astro';
 import ArticleCard from '../../components/ArticleCard.astro';
 import LineBanner from '../../components/LineBanner.astro';
 import AdSlot from '../../components/AdSlot.astro';
+import { getArticleUrl } from '../../utils/articles';
+
+type Article = CollectionEntry<'articles'>;
 
 const articles = await getCollection('articles', ({ data }) => !data.draft && data.pillar === 'language');
-const sorted = articles.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 
-const clusters = [
-  { href: '/language/learn-spanish/', label: 'スペイン語勉強' },
-  { href: '/language/spanish-grammar/', label: '文法' },
-  { href: '/language/pronunciation/', label: '発音' },
-  { href: '/language/self-study/', label: '独学' },
-  { href: '/language/lessons-tokyo/', label: '東京の教室' },
-  { href: '/language/online-lessons/', label: 'オンライン' },
-  { href: '/language/lesson-price/', label: 'レッスン料金' },
-  { href: '/language/spanish-phrases/', label: 'フレーズ' },
-  { href: '/language/spanish-apps/', label: 'アプリ' },
-  { href: '/language/spanish-books/', label: '教材本' },
-];
+// --- カテゴリ：clusterごとに件数を数え、記事があるものだけ表示 ---
+const clusterLabels: Record<string, string> = {
+  'learn-spanish': 'スペイン語勉強',
+  'spanish-grammar': '文法',
+  'pronunciation': '発音',
+  'self-study': '独学',
+  'lessons-tokyo': '東京の教室',
+  'online-lessons': 'オンライン',
+  'lesson-price': 'レッスン料金',
+  'spanish-phrases': 'フレーズ',
+  'spanish-apps': 'アプリ',
+  'spanish-books': '教材本',
+};
+
+const clusterCounts = new Map<string, number>();
+for (const a of articles) {
+  clusterCounts.set(a.data.cluster, (clusterCounts.get(a.data.cluster) ?? 0) + 1);
+}
+
+const clusters = Object.keys(clusterLabels)
+  .filter((cluster) => (clusterCounts.get(cluster) ?? 0) > 0)
+  .map((cluster) => ({
+    href: `/language/${cluster}/`,
+    label: clusterLabels[cluster],
+  }));
+
+// --- learn-spanish：はじめに / A1-C2 / DELE / その他 に分類 ---
+const learnSpanish = articles.filter((a) => a.data.cluster === 'learn-spanish');
+const otherClusters = articles
+  .filter((a) => a.data.cluster !== 'learn-spanish')
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+
+const slugOf = (a: Article) => a.id.replace(/\.(md|mdx)$/, '').split('/').pop();
+
+const isDele = (a: Article) =>
+  a.id.includes('learn-spanish/dele/') || slugOf(a) === 'dele-vs-seiken' || slugOf(a) === 'dele-b1-tips';
+
+const introRoles = ['pilar', 'onboarding', 'diagnostico'];
+const isIntro = (a: Article) => !isDele(a) && introRoles.includes(a.data.articleRole ?? '');
+
+const isLevel = (a: Article) => !isDele(a) && !isIntro(a) && !!a.data.level;
+
+const introArticles = learnSpanish.filter(isIntro);
+const levelArticles = learnSpanish.filter(isLevel);
+const deleArticles = learnSpanish.filter(isDele);
+const otherArticles = learnSpanish.filter((a) => !isDele(a) && !isIntro(a) && !isLevel(a));
+
+// はじめに: pilar → onboarding(start-here) → diagnostico(level-test)
+introArticles.sort((a, b) => introRoles.indexOf(a.data.articleRole ?? '') - introRoles.indexOf(b.data.articleRole ?? ''));
+
+// A1-C2: レベル順、レベル内は hub-nivel → 文法 → 語彙 → 発音 → 学習計画 → puente
+const levelOrder = ['a1', 'a2', 'b1', 'b2', 'c1', 'c2'];
+const levelLabels: Record<string, string> = { a1: 'A1', a2: 'A2', b1: 'B1', b2: 'B2', c1: 'C1', c2: 'C2' };
+const roleOrder = ['hub-nivel', 'spoke-gramatica', 'spoke-vocabulario', 'spoke-pronunciacion', 'spoke-plan', 'puente'];
+
+const levelGroups = levelOrder
+  .map((level) => ({
+    level,
+    label: levelLabels[level],
+    items: levelArticles
+      .filter((a) => a.data.level === level)
+      .sort((a, b) => {
+        const ai = roleOrder.indexOf(a.data.articleRole ?? '');
+        const bi = roleOrder.indexOf(b.data.articleRole ?? '');
+        return (ai === -1 ? roleOrder.length : ai) - (bi === -1 ? roleOrder.length : bi);
+      }),
+  }))
+  .filter((g) => g.items.length > 0);
+
+// DELE: hub-dele → prep-dele(a1→c2) → info-dele → dele-vs-seiken → dele-b1-tips
+const delePriority = (a: Article) => {
+  if (a.data.articleRole === 'hub-dele') return 0;
+  if (a.data.articleRole === 'prep-dele') return 1;
+  if (a.data.articleRole === 'info-dele') return 2;
+  if (slugOf(a) === 'dele-vs-seiken') return 3;
+  if (slugOf(a) === 'dele-b1-tips') return 4;
+  return 5;
+};
+deleArticles.sort((a, b) => {
+  const pa = delePriority(a);
+  const pb = delePriority(b);
+  if (pa !== pb) return pa - pb;
+  if (pa === 1) return levelOrder.indexOf(a.data.level ?? '') - levelOrder.indexOf(b.data.level ?? '');
+  return 0;
+});
+
+// その他: 公開日の新しい順
+otherArticles.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 
 const breadcrumbs = [
   { name: 'ホーム', url: '/' },
@@ -58,17 +136,58 @@ const breadcrumbs = [
         interlinkReadingTime={5}
       />
     </div>
-    {sorted.length > 0 && (
+
+    {introArticles.length > 0 && (
+      <>
+        <h2 class="font-sans font-bold text-xl text-navy mb-5">はじめに</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+          {introArticles.map((a) => (
+            <ArticleCard title={a.data.title} description={a.data.description} href={getArticleUrl(a)} pillar="language" image={a.data.image} imageAlt={a.data.imageAlt} heroImage={a.data.heroImage} heroImageAlt={a.data.heroImageAlt} pubDate={a.data.pubDate} />
+          ))}
+        </div>
+      </>
+    )}
+
+    {levelGroups.map((group) => (
+      <>
+        <h2 class="font-sans font-bold text-xl text-navy mb-5">{group.label}</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+          {group.items.map((a) => (
+            <ArticleCard title={a.data.title} description={a.data.description} href={getArticleUrl(a)} pillar="language" image={a.data.image} imageAlt={a.data.imageAlt} heroImage={a.data.heroImage} heroImageAlt={a.data.heroImageAlt} pubDate={a.data.pubDate} />
+          ))}
+        </div>
+      </>
+    ))}
+
+    {deleArticles.length > 0 && (
+      <>
+        <h2 class="font-sans font-bold text-xl text-navy mb-5">DELE</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+          {deleArticles.map((a) => (
+            <ArticleCard title={a.data.title} description={a.data.description} href={getArticleUrl(a)} pillar="language" image={a.data.image} imageAlt={a.data.imageAlt} heroImage={a.data.heroImage} heroImageAlt={a.data.heroImageAlt} pubDate={a.data.pubDate} />
+          ))}
+        </div>
+      </>
+    )}
+
+    {otherArticles.length > 0 && (
+      <>
+        <h2 class="font-sans font-bold text-xl text-navy mb-5">その他</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+          {otherArticles.map((a) => (
+            <ArticleCard title={a.data.title} description={a.data.description} href={getArticleUrl(a)} pillar="language" image={a.data.image} imageAlt={a.data.imageAlt} heroImage={a.data.heroImage} heroImageAlt={a.data.heroImageAlt} pubDate={a.data.pubDate} />
+          ))}
+        </div>
+      </>
+    )}
+
+    {otherClusters.length > 0 && (
       <>
         <h2 class="font-sans font-bold text-xl text-navy mb-5">記事一覧</h2>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {sorted.map((a) => {
-            const parts = a.id.replace(/\.(md|mdx)$/, '').split('/');
-            const slug = parts[2] ?? a.data.cluster;
-            return (
-              <ArticleCard title={a.data.title} description={a.data.description} href={`/language/${a.data.cluster}/${slug}/`} pillar="language" image={a.data.image} imageAlt={a.data.imageAlt} heroImage={a.data.heroImage} heroImageAlt={a.data.heroImageAlt} pubDate={a.data.pubDate} />
-            );
-          })}
+          {otherClusters.map((a) => (
+            <ArticleCard title={a.data.title} description={a.data.description} href={getArticleUrl(a)} pillar="language" image={a.data.image} imageAlt={a.data.imageAlt} heroImage={a.data.heroImage} heroImageAlt={a.data.heroImageAlt} pubDate={a.data.pubDate} />
+          ))}
         </div>
       </>
     )}
