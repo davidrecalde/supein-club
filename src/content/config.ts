@@ -109,6 +109,14 @@ const articles = defineCollection({
       correctIndex: z.number(),
       explanation: z.string(),
     })).optional(),
+    levelTest: z.array(z.object({
+      question: z.string(),
+      options: z.array(z.string()),
+      correctIndex: z.number(),
+      level: z.enum(['a1', 'a2', 'b1', 'b2']),
+      explanation: z.string(),
+      link: z.string(),
+    })).optional(),
   }),
 });
 

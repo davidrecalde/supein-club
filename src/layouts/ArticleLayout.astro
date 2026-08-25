@@ -8,6 +8,7 @@ import AuthorBox from '../components/AuthorBox.astro';
 import Breadcrumb from '../components/Breadcrumb.astro';
 import FAQSection from '../components/FAQSection.astro';
 import QuizCard from '../components/QuizCard.astro';
+import LevelTestCard from '../components/LevelTestCard.astro';
 import TOC from '../components/TOC.astro';
 import ArticleCard from '../components/ArticleCard.astro';
 import AdSlot from '../components/AdSlot.astro';
@@ -22,7 +23,7 @@ interface Props {
 }
 
 const { entry } = Astro.props;
-const { title, description, pubDate, updatedDate, pillar, cluster, image, imageAlt, lead, faq, faqTitle, quiz, relatedArticles, readingTime, heroImage, heroImageAlt } = entry.data;
+const { title, description, pubDate, updatedDate, pillar, cluster, image, imageAlt, lead, faq, faqTitle, quiz, levelTest, relatedArticles, readingTime, heroImage, heroImageAlt } = entry.data;
 
 const { Content, headings } = await entry.render();
 
