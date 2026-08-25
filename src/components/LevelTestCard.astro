@@ -55,7 +55,7 @@ const widgetId = `level-test-${Math.random().toString(36).slice(2, 11)}`;
           hidden
         >
           <p>{item.explanation}</p>
-          <a href={item.link} class="inline-block mt-2 font-semibold !text-navy !no-underline hover:!underline">詳しく学ぶ →</a>
+          <a href={item.link} target="_blank" rel="noopener noreferrer" class="inline-block mt-2 font-semibold !text-navy !no-underline hover:!underline">詳しく学ぶ →</a>
         </div>
       </div>
     ))}
