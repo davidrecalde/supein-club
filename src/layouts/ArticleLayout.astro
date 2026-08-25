@@ -7,6 +7,7 @@ import SEO from '../components/SEO.astro';
 import AuthorBox from '../components/AuthorBox.astro';
 import Breadcrumb from '../components/Breadcrumb.astro';
 import FAQSection from '../components/FAQSection.astro';
+import QuizCard from '../components/QuizCard.astro';
 import TOC from '../components/TOC.astro';
 import ArticleCard from '../components/ArticleCard.astro';
 import AdSlot from '../components/AdSlot.astro';
@@ -21,7 +22,7 @@ interface Props {
 }
 
 const { entry } = Astro.props;
-const { title, description, pubDate, updatedDate, pillar, cluster, image, imageAlt, lead, faq, faqTitle, relatedArticles, readingTime, heroImage, heroImageAlt } = entry.data;
+const { title, description, pubDate, updatedDate, pillar, cluster, image, imageAlt, lead, faq, faqTitle, quiz, relatedArticles, readingTime, heroImage, heroImageAlt } = entry.data;
 
 const { Content, headings } = await entry.render();
 
@@ -184,6 +185,8 @@ const authorUrlForMeta = `https://supein.club/about-us/team/${authorSlug}/`;
         <div class="my-8">
           <AdSlot position="art-bottom" />
         </div>
+
+        {quiz && quiz.length > 0 && <QuizCard quiz={quiz} />}
 
         {faq && faq.length > 0 && <FAQSection faq={faq} title={faqTitle} />}
 
