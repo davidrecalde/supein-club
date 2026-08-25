@@ -9,6 +9,7 @@ import Breadcrumb from '../components/Breadcrumb.astro';
 import FAQSection from '../components/FAQSection.astro';
 import QuizCard from '../components/QuizCard.astro';
 import LevelTestCard from '../components/LevelTestCard.astro';
+import LevelBadge from '../components/LevelBadge.astro';
 import TOC from '../components/TOC.astro';
 import ArticleCard from '../components/ArticleCard.astro';
 import AdSlot from '../components/AdSlot.astro';
@@ -23,7 +24,7 @@ interface Props {
 }
 
 const { entry } = Astro.props;
-const { title, description, pubDate, updatedDate, pillar, cluster, image, imageAlt, lead, faq, faqTitle, quiz, levelTest, relatedArticles, readingTime, heroImage, heroImageAlt } = entry.data;
+const { title, description, pubDate, updatedDate, pillar, cluster, image, imageAlt, lead, faq, faqTitle, quiz, levelTest, relatedArticles, readingTime, heroImage, heroImageAlt, level, articleRole } = entry.data;
 
 const { Content, headings } = await entry.render();
 
@@ -121,7 +122,7 @@ const authorUrlForMeta = `https://supein.club/about-us/team/${authorSlug}/`;
       </div>
 
       {heroImage && (
-        <div class="article-hero-image" style="padding:0;max-width:860px;">
+        <div class="article-hero-image" style="padding:0;max-width:860px;position:relative;">
           <figure style="margin:0;border-radius:16px;overflow:hidden;border:3px solid #C8102E;box-shadow:0 0 0 1px rgba(200,16,46,0.15),0 8px 48px rgba(0,0,0,0.4);line-height:0;background:#001529;">
             <Image
               src={heroImage}
@@ -131,6 +132,7 @@ const authorUrlForMeta = `https://supein.club/about-us/team/${authorSlug}/`;
               loading="eager"
             />
           </figure>
+          <LevelBadge level={level} articleRole={articleRole} />
         </div>
       )}
 
