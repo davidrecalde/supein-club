@@ -8,7 +8,7 @@ description: "16問のスペイン語レベルチェックテストで自分の�
 intent: "informational"
 schemaType: "article"
 lang: "ja"
-draft: false
+draft: true
 pubDate: 2026-08-23
 tags: ["スペイン語", "レベルチェック", "CEFR", "診断テスト"]
 entities: ["Instituto Cervantes", "DELE", "CEFR"]
@@ -17,129 +17,229 @@ author: "david-recalde"
 # 注記: 16問の「レベル診断テスト」本体はスペイン語の文法力そのものを測るテストのため、
 # 設問文はスペイン語のまま残しています（指示文・解説・表は日本語に localizar 済み）。
 # quiz配列に入れているのは、この記事の理解度を確認する別枠の15問（記事末尾）です。
-# この2種類を混同しないよう、CCとの実装時にも明示してください。
+# levelTest配列が新設のメインテスト本体（16問、インタラクティブ化対象）。
+# この3種類を混同しないよう、CCとの実装時にも明示してください。
+levelTest:
+- question: "Marta tiene ___ perro pequeño."
+  options: ["una", "un", "unas", "la"]
+  correctIndex: 1
+  level: "a1"
+  explanation: "「un perro」（男性単数の不定冠詞）が正解です。"
+  link: "/language/learn-spanish/a1/grammar/"
+- question: "Yo ___ estudiante de español."
+  options: ["soy", "estoy", "es", "son"]
+  correctIndex: 0
+  level: "a1"
+  explanation: "アイデンティティ・職業を表すには動詞serを使うため、「soy estudiante」が正解です。"
+  link: "/language/learn-spanish/a1/grammar/"
+- question: "Nosotros ___ en Tokio."
+  options: ["vivo", "vivís", "vive", "vivimos"]
+  correctIndex: 3
+  level: "a1"
+  explanation: "nosotrosの現在形は「vivimos」です。"
+  link: "/language/learn-spanish/a1/grammar/"
+- question: "Tengo que comprar ___ manzanas para la tarta."
+  options: ["el", "la", "unas", "un"]
+  correctIndex: 2
+  level: "a1"
+  explanation: "女性複数の不定冠詞「unas manzanas」が正解です。"
+  link: "/language/learn-spanish/a1/grammar/"
+- question: "Ayer ___ al cine con mis amigos."
+  options: ["voy", "fui", "iba", "iré"]
+  correctIndex: 1
+  level: "a2"
+  explanation: "昨日の1回限りの行為を表す点過去「fui」が正解です。"
+  link: "/language/learn-spanish/a2/grammar/"
+- question: "Cuando era niño, ___ en Osaka."
+  options: ["vivo", "viví", "vivía", "vivir"]
+  correctIndex: 2
+  level: "a2"
+  explanation: "過去の継続的な状態を表す線過去「vivía」が正解です。"
+  link: "/language/learn-spanish/a2/grammar/"
+- question: "Mañana ___ a la playa con mi familia."
+  options: ["voy", "fui", "iré", "vaya"]
+  correctIndex: 2
+  level: "a2"
+  explanation: "単純未来形「iré」が正解です。"
+  link: "/language/learn-spanish/a2/grammar/"
+- question: "Mi coche es ___ que el tuyo."
+  options: ["más rápidos", "muy rápido", "tan rápido", "más rápido"]
+  correctIndex: 3
+  level: "a2"
+  explanation: "優等比較「más rápido que」が正解です。"
+  link: "/language/learn-spanish/a2/grammar/"
+- question: "Espero que tú ___ bien."
+  options: ["estás", "estés", "estarás", "estabas"]
+  correctIndex: 1
+  level: "b1"
+  explanation: "「espero que」のあとに続く接続法現在「estés」が正解です。"
+  link: "/language/learn-spanish/b1/subjunctive/"
+- question: "Me alegra que ___ venido a la fiesta."
+  options: ["habéis", "has", "hayan", "hubieras"]
+  correctIndex: 2
+  level: "b1"
+  explanation: "非人称構文「Me alegra que…」に続く接続法現在完了「hayan venido」が正解です。"
+  link: "/language/learn-spanish/b1/subjunctive/"
+- question: "Si tuviera más tiempo, ___ contigo."
+  options: ["salgo", "salía", "saldría", "salí"]
+  correctIndex: 2
+  level: "b1"
+  explanation: "タイプIIの条件文における単純可能法「saldría」が正解です。"
+  link: "/language/learn-spanish/b1/grammar/"
+- question: "Cuando llegué a casa, ella ya ___."
+  options: ["come", "comía", "ha comido", "había comido"]
+  correctIndex: 3
+  level: "b1"
+  explanation: "過去のある時点より前の行為を表す過去完了形「había comido」が正解です。"
+  link: "/language/learn-spanish/b1/grammar/"
+- question: "Busco a alguien que ___ español con fluidez."
+  options: ["habla", "hable", "hablará", "hablaba"]
+  correctIndex: 1
+  level: "b2"
+  explanation: "先行詞が不特定の関係節における接続法「hable」が正解です。"
+  link: "/language/learn-spanish/b2/grammar/"
+- question: "El Quijote ___ escrito por Cervantes."
+  options: ["es", "era", "fue", "sea"]
+  correctIndex: 2
+  level: "b2"
+  explanation: "点過去における受動態「fue escrito」が正解です。"
+  link: "/language/learn-spanish/b2/grammar/"
+- question: "A pesar de ___ cansado, terminó el trabajo."
+  options: ["está", "ser", "estar", "es"]
+  correctIndex: 2
+  level: "b2"
+  explanation: "「a pesar de」のあとは不定詞が必要で、cansadoは状態を表すためestarが正解です。"
+  link: "/language/learn-spanish/b2/grammar/"
+- question: "Si hubiera sabido la hora, te ___."
+  options: ["llamaría", "llamaba", "habría llamado", "llamo"]
+  correctIndex: 2
+  level: "b2"
+  explanation: "タイプIIIの条件文「Si hubiera…」における複合可能法「habría llamado」が正解です。"
+  link: "/language/learn-spanish/b2/grammar/"
 quiz:
-- question: "このレベル診断テストは全部で何問ありますか？"
+- question: このレベル診断テストは全部で何問ありますか？
   options:
-  - "10問"
-  - "12問"
-  - "16問"
-  - "20問"
+  - 10問
+  - 12問
+  - 16問
+  - 20問
   correctIndex: 2
-  explanation: "テストは各レベル4問ずつ、合計16問で構成されています（「テストの受け方」参照）。"
-- question: "各レベル（A1・A2・B1・B2）につき何問ずつありますか？"
+  explanation: テストは各レベル4問ずつ、合計16問で構成されています（「テストの受け方」参照）。
+- question: 各レベル（A1・A2・B1・B2）につき何問ずつありますか？
   options:
-  - "2問"
-  - "4問"
-  - "5問"
-  - "8問"
+  - 2問
+  - 4問
+  - 5問
+  - 8問
   correctIndex: 1
-  explanation: "各レベルにつき4問ずつ、ブロックに分かれて出題されます（「テストの受け方」参照）。"
-- question: "このテストが対象としているレベルはどこからどこまでですか？"
+  explanation: 各レベルにつき4問ずつ、ブロックに分かれて出題されます（「テストの受け方」参照）。
+- question: このテストが対象としているレベルはどこからどこまでですか？
   options:
-  - "A1からC2まで"
-  - "A1からB2まで"
-  - "A1とA2のみ"
-  - "B1とB2のみ"
+  - A1からC2まで
+  - A1からB2まで
+  - A1とA2のみ
+  - B1とB2のみ
   correctIndex: 1
-  explanation: "このテストはA1からB2（B2+を上限として）までを対象としています（導入部と結果表を参照）。"
-- question: "合計7問正解した場合、結果表ではどのレベルにあたりますか？"
+  explanation: このテストはA1からB2（B2+を上限として）までを対象としています（導入部と結果表を参照）。
+- question: 合計7問正解した場合、結果表ではどのレベルにあたりますか？
   options:
-  - "A1"
-  - "A2"
-  - "B1"
-  - "B2+"
+  - A1
+  - A2
+  - B1
+  - B2+
   correctIndex: 1
-  explanation: "結果の解釈表によると、5〜8問正解はA2にあたります。"
-- question: "B1レベルにあたる正解数の範囲はどれですか？"
+  explanation: 結果の解釈表によると、5〜8問正解はA2にあたります。
+- question: B1レベルにあたる正解数の範囲はどれですか？
   options:
-  - "0〜4問"
-  - "5〜8問"
-  - "9〜12問"
-  - "13〜16問"
+  - 0〜4問
+  - 5〜8問
+  - 9〜12問
+  - 13〜16問
   correctIndex: 2
-  explanation: "B1レベルは9〜12問正解の範囲にあたります。"
-- question: "13問正解した場合、推定レベルはどれになりますか？"
+  explanation: B1レベルは9〜12問正解の範囲にあたります。
+- question: 13問正解した場合、推定レベルはどれになりますか？
   options:
-  - "A2"
-  - "B1"
-  - "B2+"
-  - "C1"
+  - A2
+  - B1
+  - B2+
+  - C1
   correctIndex: 2
-  explanation: "13〜16問正解はB2+にあたり、結果表の中でもっとも高いレベル区分です。"
-- question: "テストの結果はどのように確認しますか？"
+  explanation: 13〜16問正解はB2+にあたり、結果表の中でもっとも高いレベル区分です。
+- question: テストの結果はどのように確認しますか？
   options:
-  - "先生にメールで送る"
-  - "正解数を数えて、解釈表と照らし合わせる"
-  - "24時間待つ"
-  - "受験料を払う"
+  - 先生にメールで送る
+  - 正解数を数えて、解釈表と照らし合わせる
+  - 24時間待つ
+  - 受験料を払う
   correctIndex: 1
-  explanation: "正解数を数え、下の解釈表と照らし合わせることで結果を確認します。"
-- question: "以前のレベルがまったくない完全初心者の場合、何をすべきとされていますか？"
+  explanation: 正解数を数え、下の解釈表と照らし合わせることで結果を確認します。
+- question: 以前のレベルがまったくない完全初心者の場合、何をすべきとされていますか？
   options:
-  - "いきなりDELEを受験する"
-  - "スペイン語ゼロから始めるガイドを始める"
-  - "いきなりB2レベルに進む"
-  - "スペイン語の勉強はまだしない"
+  - いきなりDELEを受験する
+  - スペイン語ゼロから始めるガイドを始める
+  - いきなりB2レベルに進む
+  - スペイン語の勉強はまだしない
   correctIndex: 1
-  explanation: "初めて受ける完全初心者は、まず「スペイン語ゼロから始める」ガイドから始めることがすすめられています。"
-- question: "結果がA2だった場合、テストはどのハブへ案内していますか？"
+  explanation: 初めて受ける完全初心者は、まず「スペイン語ゼロから始める」ガイドから始めることがすすめられています。
+- question: 結果がA2だった場合、テストはどのハブへ案内していますか？
   options:
-  - "/language/learn-spanish/a1/"
-  - "/language/learn-spanish/a2/"
-  - "/language/learn-spanish/b1/"
-  - "/language/learn-spanish/dele/"
+  - /language/learn-spanish/a1/
+  - /language/learn-spanish/a2/
+  - /language/learn-spanish/b1/
+  - /language/learn-spanish/dele/
   correctIndex: 1
-  explanation: "A2という結果は、A2ハブ（/language/learn-spanish/a2/）へのリンクにつながります。"
-- question: "supein.clubのこのレベルチェックテストは、どのようなものですか？"
+  explanation: A2という結果は、A2ハブ（/language/learn-spanish/a2/）へのリンクにつながります。
+- question: supein.clubのこのレベルチェックテストは、どのようなものですか？
   options:
-  - "公式試験"
-  - "国際的に通用する資格"
-  - "目安であり、非公式のテスト"
-  - "セルバンテス学院の試験"
+  - 公式試験
+  - 国際的に通用する資格
+  - 目安であり、非公式のテスト
+  - セルバンテス学院の試験
   correctIndex: 2
-  explanation: "このテストはあくまで目安であり、公式な試験ではないと明記されています（「これは公式な試験ですか？」参照）。"
-- question: "スペイン語のレベルを公式に証明する試験は何ですか？"
+  explanation: このテストはあくまで目安であり、公式な試験ではないと明記されています（「これは公式な試験ですか？」参照）。
+- question: スペイン語のレベルを公式に証明する試験は何ですか？
   options:
-  - "JLPT"
-  - "DELE"
-  - "supein.clubのレベルチェック"
-  - "EIKEN"
+  - JLPT
+  - DELE
+  - supein.clubのレベルチェック
+  - EIKEN
   correctIndex: 1
-  explanation: "DELE（外国語としてのスペイン語検定）が、スペイン語力を証明する唯一の公式試験です。"
-- question: "このテストにかかるおおよその時間はどれくらいですか？"
+  explanation: DELE（外国語としてのスペイン語検定）が、スペイン語力を証明する唯一の公式試験です。
+- question: このテストにかかるおおよその時間はどれくらいですか？
   options:
-  - "5分"
-  - "1時間"
-  - "30分"
-  - "2日"
+  - 5分
+  - 1時間
+  - 30分
+  - 2日
   correctIndex: 0
-  explanation: "タイトルにある通り、このテストは約5分で完了するように設計されています。"
-- question: "結果がB2+だった場合、どの学習プランに進むべきとされていますか？"
+  explanation: タイトルにある通り、このテストは約5分で完了するように設計されています。
+- question: 結果がB2+だった場合、どの学習プランに進むべきとされていますか？
   options:
-  - "A1のプラン"
-  - "A2のプラン"
-  - "B2ハブ"
-  - "ゼロから始める"
+  - A1のプラン
+  - A2のプラン
+  - B2ハブ
+  - ゼロから始める
   correctIndex: 2
-  explanation: "B2+という結果は、B2ハブへ進み、より高度な内容に取り組むことがすすめられています。"
-- question: "このテストと公式試験DELEを比較したい場合、どのページを見ればよいですか？"
+  explanation: B2+という結果は、B2ハブへ進み、より高度な内容に取り組むことがすすめられています。
+- question: このテストと公式試験DELEを比較したい場合、どのページを見ればよいですか？
   options:
-  - "/language/learn-spanish/dele/"
-  - "/language/learn-spanish/start-here/"
-  - "/language/learn-spanish/a1/"
-  - "/language/learn-spanish/level-test/"
+  - /language/learn-spanish/dele/
+  - /language/learn-spanish/start-here/
+  - /language/learn-spanish/a1/
+  - /language/learn-spanish/level-test/
   correctIndex: 0
-  explanation: "DELEとの比較については、DELEのページ（/language/learn-spanish/dele/）で解説されています。"
-- question: "このテストの主な目的は何ですか？"
+  explanation: DELEとの比較については、DELEのページ（/language/learn-spanish/dele/）で解説されています。
+- question: このテストの主な目的は何ですか？
   options:
-  - "公式な資格を与えること"
-  - "学習の方向性を決めるために、レベルの目安を知ること"
-  - "学生を合格・不合格で判定すること"
-  - "スペイン語教師を評価すること"
+  - 公式な資格を与えること
+  - 学習の方向性を決めるために、レベルの目安を知ること
+  - 学生を合格・不合格で判定すること
+  - スペイン語教師を評価すること
   correctIndex: 1
-  explanation: "このテストの目的は、学習の方向性を判断するためにおおよそのレベルを知ることです。認定を行うものではありません。"
+  explanation: このテストの目的は、学習の方向性を判断するためにおおよそのレベルを知ることです。認定を行うものではありません。
 ---
+
+import LevelTestCard from '../../../../components/LevelTestCard.astro';
 
 # スペイン語レベルチェック5分テスト（A1–B2）
 
@@ -173,136 +273,9 @@ quiz:
 
 ---
 
-## 16問のテスト
+## 16問のレベル診断テスト
 
-> 回答を選んでください。最後に解答を確認し、正解数を数えます。設問はスペイン語力そのものを測るため、あえてスペイン語のまま出題しています。
-
-### A1ブロック（設問1〜4）
-
-**1. Marta tiene ___ perro pequeño.**
-- A) una
-- B) un
-- C) unas
-- D) la
-
-**2. Yo ___ estudiante de español.**
-- A) soy
-- B) estoy
-- C) es
-- D) son
-
-**3. Nosotros ___ en Tokio.**
-- A) vivo
-- B) vivís
-- C) vive
-- D) vivimos
-
-**4. Tengo que comprar ___ manzanas para la tarta.**
-- A) el
-- B) la
-- C) unas
-- D) un
-
-### A2ブロック（設問5〜8）
-
-**5. Ayer ___ al cine con mis amigos.**
-- A) voy
-- B) fui
-- C) iba
-- D) iré
-
-**6. Cuando era niño, ___ en Osaka.**
-- A) vivo
-- B) viví
-- C) vivía
-- D) vivir
-
-**7. Mañana ___ a la playa con mi familia.**
-- A) voy
-- B) fui
-- C) iré
-- D) vaya
-
-**8. Mi coche es ___ que el tuyo.**
-- A) más rápidos
-- B) muy rápido
-- C) tan rápido
-- D) más rápido
-
-### B1ブロック（設問9〜12）
-
-**9. Espero que tú ___ bien.**
-- A) estás
-- B) estés
-- C) estarás
-- D) estabas
-
-**10. Me alegra que ___ venido a la fiesta.**
-- A) habéis
-- B) has
-- C) hayan
-- D) hubieras
-
-**11. Si tuviera más tiempo, ___ contigo.**
-- A) salgo
-- B) salía
-- C) saldría
-- D) salí
-
-**12. Cuando llegué a casa, ella ya ___.**
-- A) come
-- B) comía
-- C) ha comido
-- D) había comido
-
-### B2ブロック（設問13〜16）
-
-**13. Busco a alguien que ___ español con fluidez.**
-- A) habla
-- B) hable
-- C) hablará
-- D) hablaba
-
-**14. El Quijote ___ escrito por Cervantes.**
-- A) es
-- B) era
-- C) fue
-- D) sea
-
-**15. A pesar de ___ cansado, terminó el trabajo.**
-- A) está
-- B) ser
-- C) estar
-- D) es
-
-**16. Si hubiera sabido la hora, te ___.**
-- A) llamaría
-- B) llamaba
-- C) habría llamado
-- D) llamo
-
----
-
-## レベル診断テストの解答
-
-1. **B** — *un* perro（男性単数の不定冠詞）。A1レベル。
-2. **A** — *soy* estudiante（アイデンティティ・職業を表す動詞*ser*）。A1レベル。
-3. **D** — *vivimos*（nosotros・現在形）。A1レベル。
-4. **C** — *unas* manzanas（女性複数の不定冠詞）。A1レベル。
-5. **B** — *fui*（点過去、昨日の1回限りの行為）。A2レベル。
-6. **C** — *vivía*（線過去、過去の継続的な状態）。A2レベル。
-7. **C** — *iré*（単純未来形）。A2レベル。
-8. **D** — *más rápido*（優等比較）。A2レベル。
-9. **B** — *estés*（*espero que*のあとに続く接続法現在）。B1レベル。
-10. **C** — *hayan* venido（非人称構文*Me alegra que…*に続く接続法現在完了）。B1レベル。
-11. **C** — *saldría*（タイプIIの条件文における単純可能法）。B1レベル。
-12. **D** — *había comido*（過去完了形、過去のある時点より前の行為）。B1レベル。
-13. **B** — *hable*（先行詞が不特定の関係節における接続法）。B2レベル。
-14. **C** — *fue* escrito（点過去における受動態）。B2レベル。
-15. **C** — *estar*（*a pesar de*のあとは不定詞が必要。*cansado*は状態を表すため*estar*）。B2レベル。
-16. **C** — *habría llamado*（タイプIIIの条件文*Si hubiera…*における複合可能法）。B2レベル。
-
----
+<LevelTestCard levelTest={frontmatter.levelTest} />
 
 ## 結果の解釈表
 

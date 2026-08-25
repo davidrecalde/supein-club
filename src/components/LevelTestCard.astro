@@ -1,0 +1,183 @@
+---
+interface LevelTestItem {
+  question: string;
+  options: string[];
+  correctIndex: number;
+  level: 'a1' | 'a2' | 'b1' | 'b2';
+  explanation: string;
+  link: string;
+}
+
+interface Props {
+  levelTest: LevelTestItem[];
+  title?: string;
+}
+
+const { levelTest, title = "レベル診断テスト" } = Astro.props;
+
+const widgetId = `level-test-${Math.random().toString(36).slice(2, 11)}`;
+---
+
+<div class="level-test-widget my-10 border border-ink/10 rounded-xl overflow-hidden" data-widget-id={widgetId}>
+  <div class="bg-navy px-6 py-4">
+    <h3 class="font-serif text-lg font-bold !text-white">{title}</h3>
+  </div>
+
+  <div class="divide-y divide-ink/10">
+    {levelTest.map((item, qIndex) => (
+      <div
+        class="lt-question p-6"
+        data-question-index={qIndex}
+        data-correct-index={item.correctIndex}
+        data-answered="false"
+        data-correct="false"
+      >
+        <p class="font-semibold text-navy mb-4">
+          <span class="text-muted mr-2">{qIndex + 1}.</span>{item.question}
+        </p>
+        <div class="grid gap-2">
+          {item.options.map((option, oIndex) => (
+            <button
+              type="button"
+              class="lt-option text-left px-4 py-3 rounded-lg border border-ink/10 text-sm text-navy hover:bg-navy/5 transition-colors disabled:cursor-not-allowed disabled:hover:bg-transparent"
+              data-question-index={qIndex}
+              data-option-index={oIndex}
+              onclick={`checkLevelTestAnswer('${widgetId}', ${qIndex}, ${oIndex})`}
+            >
+              {option}
+            </button>
+          ))}
+        </div>
+        <div
+          class="lt-explanation mt-4 px-4 py-3 rounded-lg bg-navy/5 text-sm text-muted leading-relaxed"
+          data-question-index={qIndex}
+          aria-expanded="false"
+          hidden
+        >
+          <p>{item.explanation}</p>
+          <a href={item.link} class="inline-block mt-2 font-semibold !text-navy !no-underline hover:!underline">詳しく学ぶ →</a>
+        </div>
+      </div>
+    ))}
+  </div>
+
+  <div class="lt-summary px-6 py-8 border-t border-ink/10 text-center bg-canvas">
+    <p class="font-serif text-navy leading-none text-6xl md:text-7xl font-bold">
+      <span class="lt-summary-score">0</span> / {levelTest.length}
+    </p>
+    <p class="text-sm text-muted mt-3">正解数</p>
+    <p class="font-serif text-navy text-2xl font-bold mt-4">
+      推定レベル：<span class="lt-summary-level">A1</span>
+    </p>
+    <button
+      type="button"
+      class="lt-reset-btn inline-flex items-center justify-center px-6 py-3 rounded-lg bg-navy text-white text-sm font-semibold hover:bg-navy-deep transition-colors mt-6"
+      onclick={`resetLevelTest('${widgetId}')`}
+    >
+      もう一度挑戦する
+    </button>
+  </div>
+</div>
+
+<script>
+function levelForScore(score: number): string {
+  if (score <= 4) return 'A1';
+  if (score <= 8) return 'A2';
+  if (score <= 12) return 'B1';
+  return 'B2+';
+}
+
+function checkLevelTestAnswer(widgetId: string, questionIndex: number, selectedIndex: number) {
+  const widget = document.querySelector(`[data-widget-id="${widgetId}"]`);
+  if (!widget) return;
+
+  const question = widget.querySelector(
+    `.lt-question[data-question-index="${questionIndex}"]`
+  ) as HTMLElement;
+  if (!question) return;
+
+  // Pregunta ya respondida: no permitir cambios
+  if (question.dataset.answered === 'true') return;
+
+  const selectedBtn = question.querySelector(
+    `.lt-option[data-option-index="${selectedIndex}"]`
+  ) as HTMLButtonElement;
+  if (!selectedBtn) return;
+
+  const correctIndex = Number(question.dataset.correctIndex);
+  const isCorrect = selectedIndex === correctIndex;
+
+  if (isCorrect) {
+    selectedBtn.classList.add('bg-green-50', 'border-green-600', 'text-green-800');
+  } else {
+    selectedBtn.classList.add('bg-red-50', 'border-red-600', 'text-red-800');
+  }
+
+  question.querySelectorAll('.lt-option').forEach((btn) => {
+    (btn as HTMLButtonElement).disabled = true;
+  });
+
+  question.dataset.answered = 'true';
+  question.dataset.correct = String(isCorrect);
+
+  const explanation = question.querySelector(
+    `.lt-explanation[data-question-index="${questionIndex}"]`
+  ) as HTMLElement;
+  if (explanation) {
+    explanation.hidden = false;
+    explanation.setAttribute('aria-expanded', 'true');
+  }
+
+  // Resumen final escopado a este widget únicamente
+  updateLevelTestSummary(widget);
+}
+
+function updateLevelTestSummary(widget: Element) {
+  const scoreEl = widget.querySelector('.lt-summary-score');
+  const levelEl = widget.querySelector('.lt-summary-level');
+  if (!scoreEl || !levelEl) return;
+
+  const correctCount = widget.querySelectorAll(
+    '.lt-question[data-correct="true"]'
+  ).length;
+  scoreEl.textContent = String(correctCount);
+  levelEl.textContent = levelForScore(correctCount);
+}
+
+function resetLevelTest(widgetId: string) {
+  const widget = document.querySelector(`[data-widget-id="${widgetId}"]`);
+  if (!widget) return;
+
+  widget.querySelectorAll('.lt-question').forEach((question) => {
+    const q = question as HTMLElement;
+    q.dataset.answered = 'false';
+    q.dataset.correct = 'false';
+
+    q.querySelectorAll('.lt-option').forEach((btn) => {
+      const b = btn as HTMLButtonElement;
+      b.disabled = false;
+      b.classList.remove(
+        'bg-green-50', 'border-green-600', 'text-green-800',
+        'bg-red-50', 'border-red-600', 'text-red-800'
+      );
+    });
+
+    const explanation = q.querySelector('.lt-explanation') as HTMLElement;
+    if (explanation) {
+      explanation.hidden = true;
+      explanation.setAttribute('aria-expanded', 'false');
+    }
+  });
+
+  updateLevelTestSummary(widget);
+
+  const firstQuestion = widget.querySelector('.lt-question');
+  if (firstQuestion) {
+    firstQuestion.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+}
+
+// Exponer globalmente
+(window as any).checkLevelTestAnswer = checkLevelTestAnswer;
+(window as any).resetLevelTest = resetLevelTest;
+</script>
