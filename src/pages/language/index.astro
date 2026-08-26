@@ -51,7 +51,10 @@ const isDele = (a: Article) =>
   a.id.includes('learn-spanish/dele/') || slugOf(a) === 'dele-vs-seiken' || slugOf(a) === 'dele-b1-tips';
 
 const introRoles = ['pilar', 'onboarding', 'diagnostico'];
-const isIntro = (a: Article) => !isDele(a) && introRoles.includes(a.data.articleRole ?? '');
+// 例外：zipf-law-methodology.mdx は articleRole "puente" のままだが、
+// はじめにグループに分類する（その他には出さない）。
+const isIntro = (a: Article) =>
+  !isDele(a) && (introRoles.includes(a.data.articleRole ?? '') || slugOf(a) === 'zipf-law-methodology');
 
 const isLevel = (a: Article) => !isDele(a) && !isIntro(a) && !!a.data.level;
 
@@ -83,8 +86,10 @@ const stepBadge = (a: Article): string | undefined => {
   return undefined;
 };
 
-// はじめに: pilar → onboarding(start-here) → diagnostico(level-test)
-introArticles.sort((a, b) => introRoles.indexOf(a.data.articleRole ?? '') - introRoles.indexOf(b.data.articleRole ?? ''));
+// はじめに: zipf-law-methodology → pilar(index) → diagnostico(level-test)
+const introPriority = (a: Article) =>
+  slugOf(a) === 'zipf-law-methodology' ? -1 : introRoles.indexOf(a.data.articleRole ?? '');
+introArticles.sort((a, b) => introPriority(a) - introPriority(b));
 
 // A1-C2: レベル順、レベル内は hub-nivel → 文法 → 語彙 → 発音 → 学習計画 → puente
 const levelOrder = ['a1', 'a2', 'b1', 'b2', 'c1', 'c2'];
