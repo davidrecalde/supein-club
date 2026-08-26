@@ -7,6 +7,7 @@ import ArticleCard from '../../components/ArticleCard.astro';
 import LineBanner from '../../components/LineBanner.astro';
 import AdSlot from '../../components/AdSlot.astro';
 import { getArticleUrl } from '../../utils/articles';
+import { courseSequence } from '../../data/course-sequence';
 
 type Article = CollectionEntry<'articles'>;
 
@@ -69,6 +70,17 @@ const roleBadgeLabels: Record<string, string> = {
 const roleBadge = (a: Article): string | undefined => {
   if (slugOf(a) === 'subjunctive') return '文法'; // 例外：b1/subjunctive.mdx は articleRole "puente"
   return roleBadgeLabels[a.data.articleRole ?? ''];
+};
+
+// STEP/DELE バッジ：course-sequence.ts の位置から算出（はじめに・A1-C2・DELEのみ）
+const idNoExt = (a: Article) => a.id.replace(/\.(md|mdx)$/, '');
+const stepBadge = (a: Article): string | undefined => {
+  const id = idNoExt(a);
+  const stepIndex = courseSequence.step.indexOf(id);
+  if (stepIndex !== -1) return `STEP ${stepIndex + 1} / ${courseSequence.step.length}`;
+  const deleIndex = courseSequence.dele.indexOf(id);
+  if (deleIndex !== -1) return `DELE ${deleIndex + 1} / ${courseSequence.dele.length}`;
+  return undefined;
 };
 
 // はじめに: pilar → onboarding(start-here) → diagnostico(level-test)
@@ -154,7 +166,7 @@ const breadcrumbs = [
         <h2 class="font-sans font-bold text-xl text-navy mb-5">はじめに</h2>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
           {introArticles.map((a) => (
-            <ArticleCard title={a.data.title} description={a.data.description} href={getArticleUrl(a)} pillar="language" image={a.data.image} imageAlt={a.data.imageAlt} heroImage={a.data.heroImage} heroImageAlt={a.data.heroImageAlt} pubDate={a.data.pubDate} />
+            <ArticleCard title={a.data.title} description={a.data.description} href={getArticleUrl(a)} pillar="language" image={a.data.image} imageAlt={a.data.imageAlt} heroImage={a.data.heroImage} heroImageAlt={a.data.heroImageAlt} pubDate={a.data.pubDate} stepBadge={stepBadge(a)} />
           ))}
         </div>
       </>
@@ -165,7 +177,7 @@ const breadcrumbs = [
         <h2 class="font-sans font-bold text-xl text-navy mb-5">{group.label}</h2>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
           {group.items.map((a) => (
-            <ArticleCard title={a.data.title} description={a.data.description} href={getArticleUrl(a)} pillar="language" image={a.data.image} imageAlt={a.data.imageAlt} heroImage={a.data.heroImage} heroImageAlt={a.data.heroImageAlt} pubDate={a.data.pubDate} topicBadge={roleBadge(a)} />
+            <ArticleCard title={a.data.title} description={a.data.description} href={getArticleUrl(a)} pillar="language" image={a.data.image} imageAlt={a.data.imageAlt} heroImage={a.data.heroImage} heroImageAlt={a.data.heroImageAlt} pubDate={a.data.pubDate} topicBadge={roleBadge(a)} stepBadge={stepBadge(a)} />
           ))}
         </div>
       </>
@@ -176,7 +188,7 @@ const breadcrumbs = [
         <h2 class="font-sans font-bold text-xl text-navy mb-5">DELE</h2>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
           {deleArticles.map((a) => (
-            <ArticleCard title={a.data.title} description={a.data.description} href={getArticleUrl(a)} pillar="language" image={a.data.image} imageAlt={a.data.imageAlt} heroImage={a.data.heroImage} heroImageAlt={a.data.heroImageAlt} pubDate={a.data.pubDate} />
+            <ArticleCard title={a.data.title} description={a.data.description} href={getArticleUrl(a)} pillar="language" image={a.data.image} imageAlt={a.data.imageAlt} heroImage={a.data.heroImage} heroImageAlt={a.data.heroImageAlt} pubDate={a.data.pubDate} stepBadge={stepBadge(a)} />
           ))}
         </div>
       </>
