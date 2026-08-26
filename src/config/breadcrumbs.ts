@@ -42,7 +42,6 @@ export const slugToJapanese: Record<string, string> = {
 
   // Language clusters
   'learn-spanish': 'スペイン語を学ぶ',
-  'spanish-grammar': 'スペイン語文法',
   'pronunciation': '発音',
   'self-study': '独学',
   'lessons-tokyo': '東京スペイン語レッスン',

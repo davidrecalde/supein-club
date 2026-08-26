@@ -59,6 +59,18 @@ const levelArticles = learnSpanish.filter(isLevel);
 const deleArticles = learnSpanish.filter(isDele);
 const otherArticles = learnSpanish.filter((a) => !isDele(a) && !isIntro(a) && !isLevel(a));
 
+// A1-C2バッジ：記事の役割から軽量なテーマラベルを導出（スキーマに新規フィールドは追加しない）
+const roleBadgeLabels: Record<string, string> = {
+  'spoke-gramatica': '文法',
+  'spoke-vocabulario': '語彙',
+  'spoke-pronunciacion': '発音',
+  'spoke-plan': '学習計画',
+};
+const roleBadge = (a: Article): string | undefined => {
+  if (slugOf(a) === 'subjunctive') return '文法'; // 例外：b1/subjunctive.mdx は articleRole "puente"
+  return roleBadgeLabels[a.data.articleRole ?? ''];
+};
+
 // はじめに: pilar → onboarding(start-here) → diagnostico(level-test)
 introArticles.sort((a, b) => introRoles.indexOf(a.data.articleRole ?? '') - introRoles.indexOf(b.data.articleRole ?? ''));
 
@@ -153,7 +165,7 @@ const breadcrumbs = [
         <h2 class="font-sans font-bold text-xl text-navy mb-5">{group.label}</h2>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
           {group.items.map((a) => (
-            <ArticleCard title={a.data.title} description={a.data.description} href={getArticleUrl(a)} pillar="language" image={a.data.image} imageAlt={a.data.imageAlt} heroImage={a.data.heroImage} heroImageAlt={a.data.heroImageAlt} pubDate={a.data.pubDate} />
+            <ArticleCard title={a.data.title} description={a.data.description} href={getArticleUrl(a)} pillar="language" image={a.data.image} imageAlt={a.data.imageAlt} heroImage={a.data.heroImage} heroImageAlt={a.data.heroImageAlt} pubDate={a.data.pubDate} topicBadge={roleBadge(a)} />
           ))}
         </div>
       </>
@@ -183,7 +195,7 @@ const breadcrumbs = [
 
     {otherClusters.length > 0 && (
       <>
-        <h2 class="font-sans font-bold text-xl text-navy mb-5">記事一覧</h2>
+        <h2 class="font-sans font-bold text-xl text-navy mb-5">スペイン語学校</h2>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
           {otherClusters.map((a) => (
             <ArticleCard title={a.data.title} description={a.data.description} href={getArticleUrl(a)} pillar="language" image={a.data.image} imageAlt={a.data.imageAlt} heroImage={a.data.heroImage} heroImageAlt={a.data.heroImageAlt} pubDate={a.data.pubDate} />
