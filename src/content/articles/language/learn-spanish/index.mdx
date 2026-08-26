@@ -1,17 +1,4 @@
 ---
-# ⚠️ Aún NO listo para build. Bloqueantes reales pendientes:
-# 1. author: "david-recalde" — es mi mejor suposición de slug (kebab-case,
-#    igual que el resto del repo). CC tiene la instrucción de que todos los
-#    artículos de idioma van a nombre de David Recalde — que confirme/corrija
-#    el ID exacto de src/content/authors/ si difiere de este valor.
-# 2. heroImage — sigue pendiente, sin urgencia mientras draft: true. Pide a
-#    CC que confirme si el campo es .optional() en el schema real.
-# 3. pubDate — placeholder de hoy, sin efecto real mientras draft: true.
-#    Fijar la fecha real el día que se decida publicar.
-# 4. Colisión de ruta con src/pages/language/learn-spanish/index.astro —
-#    resuelta en el plan (Fase 2 tras merge de PR #46): el index.astro
-#    estático se retira y este index.mdx pasa a servir esa URL. No tocar
-#    el .astro hasta que PR #46 esté mergeado.
 pillar: "language"
 cluster: "learn-spanish"
 articleRole: "pilar"
@@ -21,12 +8,12 @@ description: "スペイン語をA1からC2まで学ぶ完全ロードマップ�
 intent: "informational"
 schemaType: "article"
 lang: "ja"
-draft: true # recomendación de Claude Code por prudencia con datos orientativos (horas de estudio, DELE/西検) — cambiar a false cuando confirmes el contenido
-pubDate: 2026-08-23 # TODO: confirmar si es la fecha real de publicación
+draft: false
+pubDate: 2026-08-23
 tags: ["スペイン語", "学習ロードマップ", "CEFR", "DELE", "独学"]
 entities: ["Instituto Cervantes", "DELE", "CEFR", "西検", "東京セルバンテス文化センター"]
-author: "david-recalde" # ver nota arriba — confirmar ID exacto con CC
-# heroImage: "../../../../assets/hero/hero-TODO.webp" — pendiente de imagen real
+author: "david-recalde"
+# heroImage: 未定（draft: true のためブロックしない）
 ---
 
 # スペイン語をA1からC2まで学ぶ完全ロードマップ
