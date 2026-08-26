@@ -8,8 +8,8 @@
 export const courseSequence = {
   step: [
     // はじめに (3)
+    "language/learn-spanish/zipf-law-methodology",
     "language/learn-spanish/index",
-    "language/learn-spanish/start-here",
     "language/learn-spanish/level-test",
     // A1 (5)
     "language/learn-spanish/a1/index",

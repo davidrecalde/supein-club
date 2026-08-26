@@ -1,4 +1,17 @@
 ---
+# ⚠️ Aún NO listo para build. Bloqueantes reales pendientes:
+# 1. author: "david-recalde" — es mi mejor suposición de slug (kebab-case,
+#    igual que el resto del repo). CC tiene la instrucción de que todos los
+#    artículos de idioma van a nombre de David Recalde — que confirme/corrija
+#    el ID exacto de src/content/authors/ si difiere de este valor.
+# 2. heroImage — sigue pendiente, sin urgencia mientras draft: true. Pide a
+#    CC que confirme si el campo es .optional() en el schema real.
+# 3. pubDate — placeholder de hoy, sin efecto real mientras draft: true.
+#    Fijar la fecha real el día que se decida publicar.
+# 4. Colisión de ruta con src/pages/language/learn-spanish/index.astro —
+#    resuelta en el plan (Fase 2 tras merge de PR #46): el index.astro
+#    estático se retira y este index.mdx pasa a servir esa URL. No tocar
+#    el .astro hasta que PR #46 esté mergeado.
 pillar: "language"
 cluster: "learn-spanish"
 articleRole: "pilar"
@@ -8,12 +21,12 @@ description: "スペイン語をA1からC2まで学ぶ完全ロードマップ�
 intent: "informational"
 schemaType: "article"
 lang: "ja"
-draft: false
-pubDate: 2026-08-23
+draft: true # recomendación de Claude Code por prudencia con datos orientativos (horas de estudio, DELE/西検) — cambiar a false cuando confirmes el contenido
+pubDate: 2026-08-23 # TODO: confirmar si es la fecha real de publicación
 tags: ["スペイン語", "学習ロードマップ", "CEFR", "DELE", "独学"]
 entities: ["Instituto Cervantes", "DELE", "CEFR", "西検", "東京セルバンテス文化センター"]
-author: "david-recalde"
-# heroImage: 未定（draft: true のためブロックしない）
+author: "david-recalde" # ver nota arriba — confirmar ID exacto con CC
+# heroImage: "../../../../assets/hero/hero-TODO.webp" — pendiente de imagen real
 ---
 
 # スペイン語をA1からC2まで学ぶ完全ロードマップ
@@ -21,16 +34,6 @@ author: "david-recalde"
 日本語を話す方がスペイン語を学ぼうとするとき、最初に必要なのは単語リストではなく、**明確なロードマップ**です。スペイン語はA1からC2まで6つの公式レベルに分かれており、自分が今どこにいて、どこを目指すのかを知ることで、無駄な遠回りを大きく減らせます。このページはあなたの地図です。各レベルが何を意味するのか、どのくらいの時間がかかるのか、どんな順番で学ぶべきか、どんな公式試験があるのかをまとめました。地図であって授業ではありません——文法・単語・発音を深掘りしたくなったら、レベルごとの各ページへリンクしています。
 
 このロードマップは、**欧州言語共通参照枠（CEFR）**と、世界中のスペイン語教室——[東京セルバンテス文化センター](https://tokio.cervantes.es/es/)を含む——が採用しているセルバンテス学院の**カリキュラム大綱（PCIC）**に基づいています。
-
----
-
-## このロードマップがこの順番で設計されている理由
-
-単語の使用頻度には、言語学者ジップが発見した数学的な形があります。もっとも頻繁に使われる単語から順に、出現頻度が急激に下がっていく——この曲線が、A1からC2までのロードマップ全体の設計思想です。
-
-だからこそ、A1・A2では覚えた単語1つあたりの効果が非常に大きく感じられ、B1以降は新しい単語の量よりも、すでに知っている単語をどう組み合わせ、どんな文脈で使うかが問われるようになります。この感覚の変化はあなたの努力不足ではなく、言語そのものの形がそうなっているからです。
-
-このサイトが「○○語を覚えれば完璧」という具体的な単語数を約束しない理由も含めて、この設計思想の全体像は[ジップの法則で読み解く学習ロードマップ](/language/learn-spanish/zipf-law-methodology/)で詳しく解説しています。
 
 ---
 
@@ -44,7 +47,7 @@ author: "david-recalde"
 2. **次に何をすべきか分かる。** CEFRの各レベルは「その言語で何ができるか」を定義しているので、常に次のステップが明確です。
 3. **進歩を測れる。** A1〜C2は世界共通の基準です。「私はB1です」と言えば、スペイン語圏のどの学校・試験・企業でも、それが何を意味するか正確に伝わります。
 
-まだ自分のレベルが分からない方は、まず[5分でできるレベルチェック](/language/learn-spanish/level-test/)を試してください。スペイン語を一度も勉強したことがない完全な初心者なら、[スペイン語ゼロから始める：最初の一歩](/language/learn-spanish/start-here/)から始めましょう。
+まだ自分のレベルが分からない方は、まず[5分でできるレベルチェック](/language/learn-spanish/level-test/)を試してください。スペイン語を一度も勉強したことがない完全な初心者なら、このページの「今日から始めるには」にある最初の5ステップから始めましょう。
 
 ---
 
@@ -180,12 +183,27 @@ C2はCEFR最高レベルです。「ネイティブのように話す」こと�
 最初の一歩は、あなたの今の状態によって変わります。
 
 1. **自分のレベルが分からない方は**、[5分でできるレベルチェック](/language/learn-spanish/level-test/)を受けてみてください。16問に答えるだけで、A1・A2・B1・B2以上のどこにいるかが分かり、あなたのレベルに合った学習計画をご提案します。
-2. **完全にゼロから始める方は**、[スペイン語ゼロから始める：最初の一歩](/language/learn-spanish/start-here/)へ。音、最初の単語、キーとなる動詞、1日20分のルーティンという、最初の5ステップを紹介しています。
-3. **すでにある程度スペイン語ができる方は**、自分のレベルのハブページへ直接どうぞ：[A1](/language/learn-spanish/a1/)・[A2](/language/learn-spanish/a2/)・[B1](/language/learn-spanish/b1/)・[B2](/language/learn-spanish/b2/)・[C1](/language/learn-spanish/c1/)・[C2](/language/learn-spanish/c2/)。
+2. **すでにある程度スペイン語ができる方は**、自分のレベルのハブページへ直接どうぞ：[A1](/language/learn-spanish/a1/)・[A2](/language/learn-spanish/a2/)・[B1](/language/learn-spanish/b1/)・[B2](/language/learn-spanish/b2/)・[C1](/language/learn-spanish/c1/)・[C2](/language/learn-spanish/c2/)。
 
-スペイン語と日本語が構造的にどう違うか（語順・性・活用・文字体系など）を理解したい方は、[スペイン語 vs 日本語：主な違い](/language/learn-spanish/spanish-vs-japanese/)もぜひご覧ください。
+### 完全にゼロから始める方へ：最初の5ステップ
 
-> **今すぐできる次の一歩：** [レベルチェック](/language/learn-spanish/level-test/)を受けるか、[スペイン語ゼロから始める](/language/learn-spanish/start-here/)から始めましょう。どちらも、理論ではなく具体的な学習計画にたどり着きます。
+スペイン語に触れたことが一度もない方は、まずこの順番で取り組んでみてください。
+
+1. **音とアルファベットから。** 単語を覚える前に、5つの母音（常に同じ音）とアルファベットに慣れましょう。巻き舌のrとl（[発音ガイド](/language/learn-spanish/pronunciation-for-japanese/)参照）は最初から意識するほど後が楽になります。
+2. **日常でよく使う最初の100語。** あいさつ、0〜20の数字、曜日——スペイン語の文章の約半分は、この頻出語でカバーされています（[A1語彙](/language/learn-spanish/a1/vocabulary/)）。
+3. **キーとなる動詞（ser・tener・ir・hacer）。** この4つがあれば、自己紹介・年齢・予定・1日の出来事を話せます。出身地には*ser*を使う（*Soy de Japón*）ことを最初に覚えておきましょう（[A1文法](/language/learn-spanish/a1/grammar/)）。
+4. **1日20分の現実的なルーティン。** 日曜日にまとめて3時間やるより、毎日20分続けるほうが定着します（復習5分＋新しい内容10分＋アウトプット5分）。
+5. **レベルチェックを受ける。** 音・最初の100語・動詞*ser*が身についたら、[レベルチェック](/language/learn-spanish/level-test/)へ。
+
+### 日本人が最初につまずきやすいポイント
+
+発音以外にも、始めたばかりの日本人学習者が共通してつまずくポイントがあります。
+
+- **ラテンアルファベットに慣れていない。** 27文字をスラスラ読み書きできることが、その後すべての土台になります。
+- **単語ごとに直訳してしまう。** スペイン語と日本語は語順・助詞・性に直接の対応関係がありません。完成された例文をそのまま覚えて使い回すほうが効果的です（詳しくは[スペイン語 vs 日本語](/language/learn-spanish/spanish-vs-japanese/)）。
+- **文法上の性を忘れる。** 日本語には存在しない概念です。最初のうちは間違えても構いません。徐々に、新しい単語は冠詞とセットで覚えていきましょう。
+
+> **今すぐできる次の一歩：** [レベルチェック](/language/learn-spanish/level-test/)を受けるか、上の5ステップの1番目から始めてみましょう。
 
 ---
 
@@ -204,7 +222,7 @@ C2はCEFR最高レベルです。「ネイティブのように話す」こと�
 多くの日本語話者にとって、スペイン語の基礎文法自体は取り組みやすいものですが、日本語に存在しない音（巻き舌のrなど）、文法上の性、接続法といった特有の課題があります。明確なロードマップに沿い、最初から発音に取り組めば、着実に上達できます。[日本人のための発音ガイド](/language/learn-spanish/pronunciation-for-japanese/)もあわせてご覧ください。
 
 **文法・単語・発音、どれから始めるべきですか？**
-まずは**発音**と基本的な音から始めてください。発音が崩れたまま単語を覚えてしまうと、あとで直すのに大きな労力がかかります。そのあとは単語と基礎文法（*ser*、現在形など）を並行して進めましょう。完全な初心者向けのおすすめの学習順序は、[スペイン語ゼロから始める](/language/learn-spanish/start-here/)にまとめています。
+まずは**発音**と基本的な音から始めてください。発音が崩れたまま単語を覚えてしまうと、あとで直すのに大きな労力がかかります。そのあとは単語と基礎文法（*ser*、現在形など）を並行して進めましょう。完全な初心者向けのおすすめの学習順序は、このページの「今日から始めるには」にまとめています。
 
 **DELEと西検の違いは何ですか？**
 DELEはセルバンテス学院が実施する国際的な公式試験（A1〜C2の6レベル、スペイン語圏全体で通用）で、西検は日本国内の履歴書・大学認定などで広く使われる、日本独自の試験です。両者に公式な対応関係はありません。詳しい比較は[DELE vs 西検](/language/learn-spanish/dele-vs-seiken/)をご覧ください。
@@ -216,7 +234,7 @@ DELEはセルバンテス学院が実施する国際的な公式試験（A1〜C2
 
 ## 関連ページ
 
-- はじめに：[スペイン語ゼロから始める](/language/learn-spanish/start-here/)・[レベルチェック](/language/learn-spanish/level-test/)
+- はじめに：[私たちのメソッド：ジップの法則](/language/learn-spanish/zipf-law-methodology/)・[レベルチェック](/language/learn-spanish/level-test/)
 - レベル別：[A1](/language/learn-spanish/a1/)・[A2](/language/learn-spanish/a2/)・[B1](/language/learn-spanish/b1/)・[B2](/language/learn-spanish/b2/)・[C1](/language/learn-spanish/c1/)・[C2](/language/learn-spanish/c2/)
 - 学習計画：[A1](/language/learn-spanish/a1/study-plan/)・[A2](/language/learn-spanish/a2/study-plan/)・[B1](/language/learn-spanish/b1/study-plan/)・[B2](/language/learn-spanish/b2/study-plan/)・[C1](/language/learn-spanish/c1/study-plan/)・[C2](/language/learn-spanish/c2/study-plan/)
 - 注目トピック：[B1の接続法](/language/learn-spanish/b1/subjunctive/)・[日本人のための発音ガイド](/language/learn-spanish/pronunciation-for-japanese/)・[スペイン語 vs 日本語](/language/learn-spanish/spanish-vs-japanese/)
