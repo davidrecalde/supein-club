@@ -1,0 +1,14 @@
+---
+import { resolveCourseSequencePosition } from '../utils/courseSequence';
+
+const position = await resolveCourseSequencePosition(Astro.url.pathname);
+---
+
+{position && (
+  <span
+    class="mt-4 inline-flex items-center gap-1.5 rounded px-2.5 py-1 text-xs font-bold tracking-wide"
+    style="background:rgba(255,255,255,0.08);color:#F5A623;border:1px solid rgba(245,166,35,0.35);"
+  >
+    {position.kind === 'step' ? `STEP ${position.index + 1} / ${position.total}` : `DELE ${position.index + 1} / ${position.total}`}
+  </span>
+)}

@@ -337,9 +337,12 @@ const h2s = headings.filter((h) => h.depth === 2);
       if (!el.id) el.id = 'heading-' + i;
     });
 
-    // ── Inject CRE H3 headings into the TOC ──────────────────────────
-    var creH3s = articleContent
-      ? Array.from(articleContent.querySelectorAll('h3.toc-heading'))
+    // ── Inject special H3 headings into the TOC (CRECard, PrevNextNav) ──
+    // Buscamos en .content-main (no solo en articleContent/.prose) porque
+    // PrevNextNav vive fuera de .prose pero dentro de .content-main.
+    var tocHeadingScope = document.querySelector('.content-main') || articleContent;
+    var creH3s = tocHeadingScope
+      ? Array.from(tocHeadingScope.querySelectorAll('h3.toc-heading'))
       : [];
 
     if (creH3s.length > 0) {
@@ -361,13 +364,17 @@ const h2s = headings.filter((h) => h.depth === 2);
 
         headingEls.splice(insertIdx, 0, creH3);
 
-        var badge = '<span class="toc-cre-badge">CRE</span>';
+        // El badge ("CRE", etc.) es opcional: solo se muestra si el propio
+        // heading declara data-toc-badge (ej. CRECard). Sin ese atributo
+        // (ej. PrevNextNav) no se añade ninguna etiqueta.
+        var badgeText = creH3.getAttribute('data-toc-badge');
+        var badge = badgeText ? '<span class="toc-cre-badge">' + badgeText + '</span>' : '';
         var text = (creH3.textContent || '').trim();
 
         // Desktop TOC
         if (tocList) {
           var li = document.createElement('li');
-          li.className = 'toc-item toc-item-cre';
+          li.className = badgeText ? 'toc-item toc-item-cre' : 'toc-item';
           li.innerHTML =
             '<a href="#' + creH3.id + '" class="toc-link toc-link-cre" data-slug="' + creH3.id + '">' +
             '<span class="toc-dot"></span>' +
@@ -384,8 +391,9 @@ const h2s = headings.filter((h) => h.depth === 2);
         // Mobile TOC
         if (tocMobileList) {
           var mli = document.createElement('li');
+          var mobileLinkClass = badgeText ? 'toc-mobile-link toc-mobile-link-cre' : 'toc-mobile-link';
           mli.innerHTML =
-            '<a href="#' + creH3.id + '" class="toc-mobile-link toc-mobile-link-cre">' +
+            '<a href="#' + creH3.id + '" class="' + mobileLinkClass + '">' +
             '<span class="toc-mobile-num">◆</span>' +
             text +
             '</a>';

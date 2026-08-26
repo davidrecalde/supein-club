@@ -13,9 +13,10 @@ interface Props {
   heroImageAlt?: string;
   pubDate: Date;
   topicBadge?: string;
+  stepBadge?: string;
 }
 
-const { title, description, href, pillar, image, imageAlt, heroImage, heroImageAlt, pubDate, topicBadge } = Astro.props;
+const { title, description, href, pillar, image, imageAlt, heroImage, heroImageAlt, pubDate, topicBadge, stepBadge } = Astro.props;
 
 const heroImageSrc = typeof heroImage === 'string' ? heroImage : heroImage?.src;
 
@@ -70,6 +71,11 @@ const dateJa = new Intl.DateTimeFormat('ja-JP', {
     {topicBadge && (
       <span class="inline-block text-xs font-semibold px-2.5 py-0.5 rounded-full bg-[#F0F2F5] text-navy ml-2">
         {topicBadge}
+      </span>
+    )}
+    {stepBadge && (
+      <span class="inline-block text-xs font-semibold px-2.5 py-0.5 rounded-full border border-[#002147]/25 text-navy ml-2">
+        {stepBadge}
       </span>
     )}
     <h3 class="font-sans font-semibold text-navy text-base mt-3 mb-2 group-hover:text-primary transition-colors leading-snug">
