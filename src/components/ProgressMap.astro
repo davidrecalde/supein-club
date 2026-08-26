@@ -1,0 +1,45 @@
+---
+interface Props {
+  currentLevel: 'a1' | 'a2' | 'b1' | 'b2' | 'c1' | 'c2';
+}
+
+const { currentLevel } = Astro.props;
+
+// Mismos colores que LevelBadge.astro (LEVEL_STYLES) — no duplicar la fuente de verdad del color.
+const LEVELS: Array<{ level: 'a1' | 'a2' | 'b1' | 'b2' | 'c1' | 'c2'; bg: string; text: string }> = [
+  { level: 'a1', bg: '#C8203D', text: '#FFFFFF' },
+  { level: 'a2', bg: '#F2867E', text: '#002147' },
+  { level: 'b1', bg: '#D97B3F', text: '#FFFFFF' },
+  { level: 'b2', bg: '#E8BB5C', text: '#002147' },
+  { level: 'c1', bg: '#5C7A29', text: '#FFFFFF' },
+  { level: 'c2', bg: '#A4C177', text: '#002147' },
+];
+
+const TEXTS: Record<string, string> = {
+  a1: 'A1ゾーンにいます。ここでは曲線がもっとも急に下降する部分——1つの単語を覚えるごとの効果が一番大きい段階です。ここで身につけた単語は、この先ずっと使い続けることになります。',
+  a2: 'A2ゾーンにいます。日常のルーティンや身の回りを語れるようになる段階。曲線はまだ急な部分にありますが、単語だけでなく、時制を使い分ける力が加わります。',
+  b1: 'B1ゾーンにいます。曲線がなだらかになり始める境界線です。新しい基本単語の数はもう増えません——ここからは、知っている単語をどう組み合わせ、どんな文脈で使うかが問われます。',
+  b2: 'B2ゾーンにいます。曲線はさらに平らに近づいています。単語の「量」より、議論し、意見を主張するための「精度」が学習の中心になる段階です。',
+  c1: 'C1ゾーンにいます。曲線はほぼ平らです。ここで出会う単語は頻度こそ低いものの、皮肉やニュアンス、話体の使い分けなど、教養ある表現に欠かせない語です。',
+  c2: 'C2ゾーンにいます。曲線のもっとも平らな部分——ここでの1語は希少ですが、それこそが「話せる」と「教養ある大人として話せる」を分ける語です。',
+};
+---
+
+<div class="my-8">
+  <div class="flex h-10 overflow-hidden rounded-full">
+    {LEVELS.map(({ level, bg, text }) => {
+      const isCurrent = level === currentLevel;
+      return (
+        <div
+          class={`flex items-center justify-center text-xs font-bold transition-all ${isCurrent ? 'flex-[2.5]' : 'flex-1 opacity-50'}`}
+          style={`background:${bg};color:${text};`}
+        >
+          {level.toUpperCase()}
+        </div>
+      );
+    })}
+  </div>
+  <p class="mt-3 text-sm leading-relaxed text-[#002147]">
+    {TEXTS[currentLevel]}
+  </p>
+</div>
