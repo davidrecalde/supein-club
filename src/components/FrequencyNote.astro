@@ -1,0 +1,30 @@
+---
+interface Props {
+  level: 'a1' | 'a2' | 'b1' | 'b2' | 'c1' | 'c2';
+}
+
+const { level } = Astro.props;
+
+// Mismos colores que LevelBadge.astro (LEVEL_STYLES) — no duplicar la fuente de verdad del color.
+const LEVEL_STYLES: Record<string, { bg: string; text: string }> = {
+  a1: { bg: '#C8203D', text: '#FFFFFF' },
+  a2: { bg: '#F2867E', text: '#002147' },
+  b1: { bg: '#D97B3F', text: '#FFFFFF' },
+  b2: { bg: '#E8BB5C', text: '#002147' },
+  c1: { bg: '#5C7A29', text: '#FFFFFF' },
+  c2: { bg: '#A4C177', text: '#002147' },
+};
+
+const style = LEVEL_STYLES[level];
+---
+
+<div
+  class="my-6 rounded-lg border-l-4 px-4 py-3 text-sm leading-relaxed"
+  style={`border-color:${style.bg};background:${style.bg}14;color:#002147;`}
+>
+  <p>
+    Las palabras de esta página no están elegidas al azar: siguen la frecuencia
+    real con la que se usan en español, según el Corpus del Español. Cuanto más
+    frecuente es una palabra, antes la vas a necesitar.
+  </p>
+</div>

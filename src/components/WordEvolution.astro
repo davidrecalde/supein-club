@@ -1,0 +1,43 @@
+---
+import { lexicalThreads } from '../data/lexical-threads';
+
+interface Props {
+  word: keyof typeof lexicalThreads;
+  currentLevel: 'a1' | 'a2' | 'b1' | 'b2' | 'c1' | 'c2';
+}
+
+const { word, currentLevel } = Astro.props;
+
+const thread = lexicalThreads[word];
+const stops = Object.entries(thread) as Array<[string, { use: string; example: string; link: string }]>;
+
+const LEVEL_LABELS: Record<string, string> = {
+  a1: 'A1', a2: 'A2', b1: 'B1', b2: 'B2', c1: 'C1', c2: 'C2',
+};
+---
+
+<div class="my-8 overflow-hidden rounded-lg border border-[#002147]/15">
+  <div class="bg-[#002147] px-4 py-2 text-sm font-semibold text-white">
+    「{word}」の使い方の変化
+  </div>
+  <div class="divide-y divide-[#002147]/10">
+    {stops.map(([level, data]) => {
+      const isCurrent = level === currentLevel;
+      return (
+        <div class={`flex flex-col gap-1 px-4 py-3 sm:flex-row sm:items-start sm:gap-4 ${isCurrent ? 'bg-[#A4C177]/15' : ''}`}>
+          <div class="flex shrink-0 items-center gap-2 sm:w-24">
+            <span class="text-sm font-bold text-[#002147]">{LEVEL_LABELS[level]}</span>
+            {isCurrent && <span class="text-xs font-semibold text-[#5C7A29]">← ここです</span>}
+          </div>
+          <div class="flex-1 text-sm">
+            <p class="text-[#002147]/70">{data.use}</p>
+            <p class="italic text-[#002147]">{data.example}</p>
+            <a href={data.link} class="text-xs font-medium text-[#D97B3F] hover:underline">
+              {LEVEL_LABELS[level]}での使用例を見る →
+            </a>
+          </div>
+        </div>
+      );
+    })}
+  </div>
+</div>
