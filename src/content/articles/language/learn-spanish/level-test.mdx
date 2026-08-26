@@ -1,121 +1,186 @@
 ---
-pillar: "language"
-cluster: "learn-spanish"
-articleRole: "diagnostico"
-title: "スペイン語レベルチェック5分テスト（A1–B2）"
-lead: "16問に答えるだけで、あなたのスペイン語レベル（A1〜B2+）の目安がすぐにわかります。CEFR基準に沿った簡易診断で、次に進むべき学習プランへご案内します。"
-description: "16問のスペイン語レベルチェックテストで自分のレベル（A1–B2+）がすぐわかります。即時結果と各レベルのおすすめ学習プラン付き。"
-intent: "informational"
-schemaType: "article"
-lang: "ja"
+pillar: language
+cluster: learn-spanish
+articleRole: diagnostico
+title: スペイン語レベルチェック5分テスト（A1–B2）
+lead: 16問に答えるだけで、あなたのスペイン語レベル（A1〜B2+）の目安がすぐにわかります。CEFR基準に沿った簡易診断で、次に進むべき学習プランへご案内します。
+description: 16問のスペイン語レベルチェックテストで自分のレベル（A1–B2+）がすぐわかります。即時結果と各レベルのおすすめ学習プラン付き。
+intent: informational
+schemaType: article
+lang: ja
 draft: false
 pubDate: 2026-08-23
-tags: ["スペイン語", "レベルチェック", "CEFR", "診断テスト"]
-entities: ["Instituto Cervantes", "DELE", "CEFR"]
-author: "david-recalde"
-# heroImage: 未定（draft: true のためブロックしない）
-# 注記: 16問の「レベル診断テスト」本体はスペイン語の文法力そのものを測るテストのため、
-# 設問文はスペイン語のまま残しています（指示文・解説・表は日本語に localizar 済み）。
-# quiz配列に入れているのは、この記事の理解度を確認する別枠の15問（記事末尾）です。
-# levelTest配列が新設のメインテスト本体（16問、インタラクティブ化対象）。
-# この3種類を混同しないよう、CCとの実装時にも明示してください。
+tags:
+- スペイン語
+- レベルチェック
+- CEFR
+- 診断テスト
+entities:
+- Instituto Cervantes
+- DELE
+- CEFR
+author: david-recalde
 levelTest:
-- question: "Marta tiene ___ perro pequeño."
-  options: ["una", "un", "unas", "la"]
+- question: Marta tiene ___ perro pequeño.
+  options:
+  - una
+  - un
+  - unas
+  - la
   correctIndex: 1
-  level: "a1"
-  explanation: "「un perro」（男性単数の不定冠詞）が正解です。"
-  link: "/language/learn-spanish/a1/grammar/"
-- question: "Yo ___ estudiante de español."
-  options: ["soy", "estoy", "es", "son"]
+  level: a1
+  explanation: 「un perro」（男性単数の不定冠詞）が正解です。
+  link: /language/learn-spanish/a1/grammar/
+- question: Yo ___ estudiante de español.
+  options:
+  - soy
+  - estoy
+  - es
+  - son
   correctIndex: 0
-  level: "a1"
-  explanation: "アイデンティティ・職業を表すには動詞serを使うため、「soy estudiante」が正解です。"
-  link: "/language/learn-spanish/a1/grammar/"
-- question: "Nosotros ___ en Tokio."
-  options: ["vivo", "vivís", "vive", "vivimos"]
+  level: a1
+  explanation: アイデンティティ・職業を表すには動詞serを使うため、「soy estudiante」が正解です。
+  link: /language/learn-spanish/a1/grammar/
+- question: Nosotros ___ en Tokio.
+  options:
+  - vivo
+  - vivís
+  - vive
+  - vivimos
   correctIndex: 3
-  level: "a1"
-  explanation: "nosotrosの現在形は「vivimos」です。"
-  link: "/language/learn-spanish/a1/grammar/"
-- question: "Tengo que comprar ___ manzanas para la tarta."
-  options: ["el", "la", "unas", "un"]
+  level: a1
+  explanation: nosotrosの現在形は「vivimos」です。
+  link: /language/learn-spanish/a1/grammar/
+- question: Tengo que comprar ___ manzanas para la tarta.
+  options:
+  - el
+  - la
+  - unas
+  - un
   correctIndex: 2
-  level: "a1"
-  explanation: "女性複数の不定冠詞「unas manzanas」が正解です。"
-  link: "/language/learn-spanish/a1/grammar/"
-- question: "Ayer ___ al cine con mis amigos."
-  options: ["voy", "fui", "iba", "iré"]
+  level: a1
+  explanation: 女性複数の不定冠詞「unas manzanas」が正解です。
+  link: /language/learn-spanish/a1/grammar/
+- question: Ayer ___ al cine con mis amigos.
+  options:
+  - voy
+  - fui
+  - iba
+  - iré
   correctIndex: 1
-  level: "a2"
-  explanation: "昨日の1回限りの行為を表す点過去「fui」が正解です。"
-  link: "/language/learn-spanish/a2/grammar/"
-- question: "Cuando era niño, ___ en Osaka."
-  options: ["vivo", "viví", "vivía", "vivir"]
+  level: a2
+  explanation: 昨日の1回限りの行為を表す点過去「fui」が正解です。
+  link: /language/learn-spanish/a2/grammar/
+- question: Cuando era niño, ___ en Osaka.
+  options:
+  - vivo
+  - viví
+  - vivía
+  - vivir
   correctIndex: 2
-  level: "a2"
-  explanation: "過去の継続的な状態を表す線過去「vivía」が正解です。"
-  link: "/language/learn-spanish/a2/grammar/"
-- question: "Mañana ___ a la playa con mi familia."
-  options: ["voy", "fui", "iré", "vaya"]
+  level: a2
+  explanation: 過去の継続的な状態を表す線過去「vivía」が正解です。
+  link: /language/learn-spanish/a2/grammar/
+- question: Mañana ___ a la playa con mi familia.
+  options:
+  - voy
+  - fui
+  - iré
+  - vaya
   correctIndex: 2
-  level: "a2"
-  explanation: "単純未来形「iré」が正解です。"
-  link: "/language/learn-spanish/a2/grammar/"
-- question: "Mi coche es ___ que el tuyo."
-  options: ["más rápidos", "muy rápido", "tan rápido", "más rápido"]
+  level: a2
+  explanation: 単純未来形「iré」が正解です。
+  link: /language/learn-spanish/a2/grammar/
+- question: Mi coche es ___ que el tuyo.
+  options:
+  - más rápidos
+  - muy rápido
+  - tan rápido
+  - más rápido
   correctIndex: 3
-  level: "a2"
-  explanation: "優等比較「más rápido que」が正解です。"
-  link: "/language/learn-spanish/a2/grammar/"
-- question: "Espero que tú ___ bien."
-  options: ["estás", "estés", "estarás", "estabas"]
+  level: a2
+  explanation: 優等比較「más rápido que」が正解です。
+  link: /language/learn-spanish/a2/grammar/
+- question: Espero que tú ___ bien.
+  options:
+  - estás
+  - estés
+  - estarás
+  - estabas
   correctIndex: 1
-  level: "b1"
-  explanation: "「espero que」のあとに続く接続法現在「estés」が正解です。"
-  link: "/language/learn-spanish/b1/subjunctive/"
-- question: "Me alegra que ___ venido a la fiesta."
-  options: ["habéis", "has", "hayan", "hubieras"]
+  level: b1
+  explanation: 「espero que」のあとに続く接続法現在「estés」が正解です。
+  link: /language/learn-spanish/b1/subjunctive/
+- question: Me alegra que ___ venido a la fiesta.
+  options:
+  - habéis
+  - has
+  - hayan
+  - hubieras
   correctIndex: 2
-  level: "b1"
-  explanation: "非人称構文「Me alegra que…」に続く接続法現在完了「hayan venido」が正解です。"
-  link: "/language/learn-spanish/b1/subjunctive/"
-- question: "Si tuviera más tiempo, ___ contigo."
-  options: ["salgo", "salía", "saldría", "salí"]
+  level: b1
+  explanation: 非人称構文「Me alegra que…」に続く接続法現在完了「hayan venido」が正解です。
+  link: /language/learn-spanish/b1/subjunctive/
+- question: Si tuviera más tiempo, ___ contigo.
+  options:
+  - salgo
+  - salía
+  - saldría
+  - salí
   correctIndex: 2
-  level: "b1"
-  explanation: "タイプIIの条件文における単純可能法「saldría」が正解です。"
-  link: "/language/learn-spanish/b1/grammar/"
-- question: "Cuando llegué a casa, ella ya ___."
-  options: ["come", "comía", "ha comido", "había comido"]
+  level: b1
+  explanation: タイプIIの条件文における単純可能法「saldría」が正解です。
+  link: /language/learn-spanish/b1/grammar/
+- question: Cuando llegué a casa, ella ya ___.
+  options:
+  - come
+  - comía
+  - ha comido
+  - había comido
   correctIndex: 3
-  level: "b1"
-  explanation: "過去のある時点より前の行為を表す過去完了形「había comido」が正解です。"
-  link: "/language/learn-spanish/b1/grammar/"
-- question: "Busco a alguien que ___ español con fluidez."
-  options: ["habla", "hable", "hablará", "hablaba"]
+  level: b1
+  explanation: 過去のある時点より前の行為を表す過去完了形「había comido」が正解です。
+  link: /language/learn-spanish/b1/grammar/
+- question: Busco a alguien que ___ español con fluidez.
+  options:
+  - habla
+  - hable
+  - hablará
+  - hablaba
   correctIndex: 1
-  level: "b2"
-  explanation: "先行詞が不特定の関係節における接続法「hable」が正解です。"
-  link: "/language/learn-spanish/b2/grammar/"
-- question: "El Quijote ___ escrito por Cervantes."
-  options: ["es", "era", "fue", "sea"]
+  level: b2
+  explanation: 先行詞が不特定の関係節における接続法「hable」が正解です。
+  link: /language/learn-spanish/b2/grammar/
+- question: El Quijote ___ escrito por Cervantes.
+  options:
+  - es
+  - era
+  - fue
+  - sea
   correctIndex: 2
-  level: "b2"
-  explanation: "点過去における受動態「fue escrito」が正解です。"
-  link: "/language/learn-spanish/b2/grammar/"
-- question: "A pesar de ___ cansado, terminó el trabajo."
-  options: ["está", "ser", "estar", "es"]
+  level: b2
+  explanation: 点過去における受動態「fue escrito」が正解です。
+  link: /language/learn-spanish/b2/grammar/
+- question: A pesar de ___ cansado, terminó el trabajo.
+  options:
+  - está
+  - ser
+  - estar
+  - es
   correctIndex: 2
-  level: "b2"
-  explanation: "「a pesar de」のあとは不定詞が必要で、cansadoは状態を表すためestarが正解です。"
-  link: "/language/learn-spanish/b2/grammar/"
-- question: "Si hubiera sabido la hora, te ___."
-  options: ["llamaría", "llamaba", "habría llamado", "llamo"]
+  level: b2
+  explanation: 「a pesar de」のあとは不定詞が必要で、cansadoは状態を表すためestarが正解です。
+  link: /language/learn-spanish/b2/grammar/
+- question: Si hubiera sabido la hora, te ___.
+  options:
+  - llamaría
+  - llamaba
+  - habría llamado
+  - llamo
   correctIndex: 2
-  level: "b2"
-  explanation: "タイプIIIの条件文「Si hubiera…」における複合可能法「habría llamado」が正解です。"
-  link: "/language/learn-spanish/b2/grammar/"
+  level: b2
+  explanation: タイプIIIの条件文「Si hubiera…」における複合可能法「habría llamado」が正解です。
+  link: /language/learn-spanish/b2/grammar/
 quiz:
 - question: このレベル診断テストは全部で何問ありますか？
   options:
@@ -237,6 +302,30 @@ quiz:
   - スペイン語教師を評価すること
   correctIndex: 1
   explanation: このテストの目的は、学習の方向性を判断するためにおおよそのレベルを知ることです。認定を行うものではありません。
+relatedPages:
+- title: スペイン語学習ロードマップ（トップ）
+  href: /language/learn-spanish/
+- title: A1ハブ
+  href: /language/learn-spanish/a1/
+- title: A2ハブ
+  href: /language/learn-spanish/a2/
+- title: B1ハブ
+  href: /language/learn-spanish/b1/
+- title: B2ハブ
+  href: /language/learn-spanish/b2/
+- title: DELE：スペイン語の公式試験
+  href: /language/learn-spanish/dele/
+sources:
+- label: 欧州言語共通参照枠（CEFR）、レベルと能力記述
+  url: https://cvc.cervantes.es/ensenanza/biblioteca_ele/marco/cap_03.htm
+- label: セルバンテス学院 カリキュラム大綱（PCIC、レベル別内容の参照）
+  url: https://cvc.cervantes.es/ensenanza/biblioteca_ele/plan_curricular/indice.htm
+- label: DELEとは（スペイン語の公式試験）
+  url: https://examenes.cervantes.es/es/dele/que-es
+- label: 東京セルバンテス文化センター（日本におけるDELE認定会場）
+  url: https://tokio.cervantes.es/es/
+- label: Guided learning hours（レベル別学習時間の参考比較）— Cambridge English
+  url: https://support.cambridgeenglish.org/hc/en-gb/articles/202838506-Guided-learning-hours
 ---
 
 import LevelTestCard from '../../../../components/LevelTestCard.astro';
@@ -311,21 +400,3 @@ DELEにはA1・A2・B1・B2・C1・C2の公式レベルがあり、専用の対�
 
 まとめると、このテストは**現在地を知るため**に、DELEは**公式に証明するため**に使ってください。
 
----
-
-## 関連ページ
-
-- [スペイン語学習ロードマップ（トップ）](/language/learn-spanish/)
-- [A1ハブ](/language/learn-spanish/a1/)
-- [A2ハブ](/language/learn-spanish/a2/)
-- [B1ハブ](/language/learn-spanish/b1/)
-- [B2ハブ](/language/learn-spanish/b2/)
-- [DELE：スペイン語の公式試験](/language/learn-spanish/dele/)
-
-## 出典
-
-- 欧州言語共通参照枠（CEFR）、レベルと能力記述 — https://cvc.cervantes.es/ensenanza/biblioteca_ele/marco/cap_03.htm
-- セルバンテス学院 カリキュラム大綱（PCIC、レベル別内容の参照） — https://cvc.cervantes.es/ensenanza/biblioteca_ele/plan_curricular/indice.htm
-- DELEとは（スペイン語の公式試験） — https://examenes.cervantes.es/es/dele/que-es
-- 東京セルバンテス文化センター（日本におけるDELE認定会場） — https://tokio.cervantes.es/es/
-- Guided learning hours（レベル別学習時間の参考比較）— Cambridge English: https://support.cambridgeenglish.org/hc/en-gb/articles/202838506-Guided-learning-hours

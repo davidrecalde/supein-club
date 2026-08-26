@@ -1,0 +1,46 @@
+---
+interface RelatedPage {
+  category?: string;
+  title: string;
+  href: string;
+}
+
+interface Props {
+  relatedPages: RelatedPage[];
+}
+
+const { relatedPages } = Astro.props;
+
+const hasCategories = relatedPages.some((p) => p.category);
+
+const groups = hasCategories
+  ? Array.from(new Set(relatedPages.map((p) => p.category ?? '')))
+      .map((category) => ({
+        category,
+        items: relatedPages.filter((p) => (p.category ?? '') === category),
+      }))
+  : [{ category: '', items: relatedPages }];
+---
+
+{relatedPages.length > 0 && (
+  <section class="my-10 border-t border-[#E8E8E6] pt-8">
+    <h2 class="toc-heading font-sans font-bold text-xl text-navy mb-4" id="related-pages">関連ページ</h2>
+    <div class="space-y-4">
+      {groups.map((group) => (
+        <div>
+          {group.category && (
+            <p class="text-xs font-semibold uppercase tracking-wide text-muted mb-1.5">{group.category}</p>
+          )}
+          <ul class="flex flex-wrap gap-x-2 gap-y-1.5 text-sm">
+            {group.items.map((item, i) => (
+              <li class="flex items-center gap-2">
+                <a href={item.href} class="text-primary hover:underline font-medium">{item.title}</a>
+                {i < group.items.length - 1 && <span class="text-muted/50" aria-hidden="true">・</span>}
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))}
+    </div>
+  </section>
+)}

@@ -337,12 +337,14 @@ const h2s = headings.filter((h) => h.depth === 2);
       if (!el.id) el.id = 'heading-' + i;
     });
 
-    // ── Inject special H3 headings into the TOC (CRECard, PrevNextNav) ──
+    // ── Inject special headings into the TOC (CRECard h3, PrevNextNav h3,
+    // RelatedPages/Sources h2) ──────────────────────────────────────────
     // Buscamos en .content-main (no solo en articleContent/.prose) porque
-    // PrevNextNav vive fuera de .prose pero dentro de .content-main.
+    // estos componentes viven fuera de .prose pero dentro de .content-main.
+    // Sin distinción de tag (h2/h3): basta con la clase .toc-heading.
     var tocHeadingScope = document.querySelector('.content-main') || articleContent;
     var creH3s = tocHeadingScope
-      ? Array.from(tocHeadingScope.querySelectorAll('h3.toc-heading'))
+      ? Array.from(tocHeadingScope.querySelectorAll('.toc-heading'))
       : [];
 
     if (creH3s.length > 0) {

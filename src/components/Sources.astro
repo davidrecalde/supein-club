@@ -1,0 +1,31 @@
+---
+interface Source {
+  label: string;
+  url?: string;
+}
+
+interface Props {
+  sources: Source[];
+}
+
+const { sources } = Astro.props;
+---
+
+{sources.length > 0 && (
+  <section class="my-10 border-t border-[#E8E8E6] pt-8">
+    <h2 class="toc-heading font-sans font-bold text-xl text-navy mb-4" id="sources">出典</h2>
+    <ul class="space-y-1.5 text-sm text-muted">
+      {sources.map((source) => (
+        <li>
+          {source.url ? (
+            <a href={source.url} class="text-primary hover:underline" target="_blank" rel="nofollow noopener noreferrer">
+              {source.label}
+            </a>
+          ) : (
+            source.label
+          )}
+        </li>
+      ))}
+    </ul>
+  </section>
+)}

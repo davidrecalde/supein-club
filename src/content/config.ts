@@ -44,6 +44,15 @@ const articles = defineCollection({
     tags: z.array(z.string()),
     entities: z.array(z.string()),
     relatedArticles: z.array(z.string()).optional(),
+    relatedPages: z.array(z.object({
+      category: z.string().optional(),
+      title: z.string(),
+      href: z.string(),
+    })).optional(),
+    sources: z.array(z.object({
+      label: z.string(),
+      url: z.string().optional(),
+    })).optional(),
     faq: z.array(z.object({ question: z.string(), answer: z.string() })).optional(),
     faqTitle: z.string().optional(),
     draft: z.boolean().default(false),

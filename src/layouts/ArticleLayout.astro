@@ -13,6 +13,8 @@ import LevelBadge from '../components/LevelBadge.astro';
 import TOC from '../components/TOC.astro';
 import StepIndicator from '../components/StepIndicator.astro';
 import PrevNextNav from '../components/PrevNextNav.astro';
+import RelatedPages from '../components/RelatedPages.astro';
+import Sources from '../components/Sources.astro';
 import ArticleCard from '../components/ArticleCard.astro';
 import AdSlot from '../components/AdSlot.astro';
 import LineBanner from '../components/LineBanner.astro';
@@ -26,7 +28,7 @@ interface Props {
 }
 
 const { entry } = Astro.props;
-const { title, description, pubDate, updatedDate, pillar, cluster, image, imageAlt, lead, faq, faqTitle, quiz, levelTest, relatedArticles, readingTime, heroImage, heroImageAlt, level, articleRole } = entry.data;
+const { title, description, pubDate, updatedDate, pillar, cluster, image, imageAlt, lead, faq, faqTitle, quiz, levelTest, relatedArticles, relatedPages, sources, readingTime, heroImage, heroImageAlt, level, articleRole } = entry.data;
 
 const { Content, headings } = await entry.render();
 
@@ -191,6 +193,10 @@ const authorUrlForMeta = `https://supein.club/about-us/team/${authorSlug}/`;
         {quiz && quiz.length > 0 && <QuizCard quiz={quiz} />}
 
         <PrevNextNav />
+
+        {relatedPages && relatedPages.length > 0 && <RelatedPages relatedPages={relatedPages} />}
+
+        {sources && sources.length > 0 && <Sources sources={sources} />}
 
         <!-- AdSlot art-bottom: before FAQ -->
         <div class="my-8">
