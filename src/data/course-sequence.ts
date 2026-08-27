@@ -3,7 +3,7 @@
 // utils/courseSequence.ts) para numerar y enlazar Anterior/Siguiente.
 // Cada string es el id real de la colección `articles` (ruta del archivo
 // relativa a src/content/articles/, sin extensión) — verificado contra
-// el contenido real (43 archivos: 33 del camino principal + 10 de DELE)
+// el contenido real (46 archivos: 36 del camino principal + 10 de DELE)
 // antes de confirmarse.
 export const courseSequence = {
   step: [
@@ -30,21 +30,24 @@ export const courseSequence = {
     "language/learn-spanish/b1/pronunciation",
     "language/learn-spanish/b1/study-plan",
     "language/learn-spanish/b1/subjunctive",
-    // B2 (5)
+    // B2 (6, subjunctive tras grammar)
     "language/learn-spanish/b2/index",
     "language/learn-spanish/b2/grammar",
+    "language/learn-spanish/b2/subjunctive",
     "language/learn-spanish/b2/vocabulary",
     "language/learn-spanish/b2/pronunciation",
     "language/learn-spanish/b2/study-plan",
-    // C1 (5)
+    // C1 (6, subjunctive tras grammar)
     "language/learn-spanish/c1/index",
     "language/learn-spanish/c1/grammar",
+    "language/learn-spanish/c1/subjunctive",
     "language/learn-spanish/c1/vocabulary",
     "language/learn-spanish/c1/pronunciation",
     "language/learn-spanish/c1/study-plan",
-    // C2 (4, sin pronunciation)
+    // C2 (5, sin pronunciation, subjunctive tras grammar)
     "language/learn-spanish/c2/index",
     "language/learn-spanish/c2/grammar",
+    "language/learn-spanish/c2/subjunctive",
     "language/learn-spanish/c2/vocabulary",
     "language/learn-spanish/c2/study-plan",
   ],
