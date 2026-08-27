@@ -5,6 +5,7 @@ export type AdPosition =
   | 'art-side'
   | 'art-bottom'
   | 'pillar-mid'
+  | 'pillar-bottom'
   | 'home-mid'
   | 'footer-all';
 
@@ -16,6 +17,7 @@ export const ADS_CONFIG = {
     'art-side':   { desktop: '300x250', mobile: 'hidden'  },
     'art-bottom': { desktop: '728x90',  mobile: '300x100' },
     'pillar-mid': { desktop: '728x90',  mobile: '300x250' },
+    'pillar-bottom': { desktop: '728x90',  mobile: '300x250' },
     'home-mid':   { desktop: '970x90',  mobile: '300x250' },
     'footer-all': { desktop: '728x90',  mobile: '300x100' },
   }
