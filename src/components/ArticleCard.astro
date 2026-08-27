@@ -7,6 +7,7 @@ interface Props {
   description: string;
   href: string;
   pillar: string;
+  cluster?: string;
   image?: string;
   imageAlt?: string;
   heroImage?: string | ImageMetadata;
@@ -16,9 +17,10 @@ interface Props {
   stepBadge?: string;
 }
 
-const { title, description, href, pillar, image, imageAlt, heroImage, heroImageAlt, pubDate, topicBadge, stepBadge } = Astro.props;
+const { title, description, href, pillar, cluster, image, imageAlt, heroImage, heroImageAlt, pubDate, topicBadge, stepBadge } = Astro.props;
 
 const heroImageSrc = typeof heroImage === 'string' ? heroImage : heroImage?.src;
+const isLearnSpanish = pillar === 'language' && cluster === 'learn-spanish';
 
 const pillarLabels: Record<string, string> = {
   travel: 'スペイン旅行',
@@ -43,7 +45,7 @@ const dateJa = new Intl.DateTimeFormat('ja-JP', {
         alt={heroImageAlt || title}
         width="400"
         height="225"
-        style="width:100%;height:100%;object-fit:cover;display:block;border-radius:8px;"
+        style={`width:100%;height:100%;object-fit:cover;${isLearnSpanish ? 'object-position:left center;' : ''}display:block;border-radius:8px;`}
         loading="lazy"
         class="group-hover:scale-[1.04] transition-transform duration-[400ms]"
       />
