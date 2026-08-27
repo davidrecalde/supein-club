@@ -13,32 +13,6 @@ type Article = CollectionEntry<'articles'>;
 
 const articles = await getCollection('articles', ({ data }) => !data.draft && data.pillar === 'language');
 
-// --- カテゴリ：clusterごとに件数を数え、記事があるものだけ表示 ---
-const clusterLabels: Record<string, string> = {
-  'learn-spanish': 'スペイン語勉強',
-  'spanish-grammar': '文法',
-  'pronunciation': '発音',
-  'self-study': '独学',
-  'lessons-tokyo': '東京の教室',
-  'online-lessons': 'オンライン',
-  'lesson-price': 'レッスン料金',
-  'spanish-phrases': 'フレーズ',
-  'spanish-apps': 'アプリ',
-  'spanish-books': '教材本',
-};
-
-const clusterCounts = new Map<string, number>();
-for (const a of articles) {
-  clusterCounts.set(a.data.cluster, (clusterCounts.get(a.data.cluster) ?? 0) + 1);
-}
-
-const clusters = Object.keys(clusterLabels)
-  .filter((cluster) => (clusterCounts.get(cluster) ?? 0) > 0)
-  .map((cluster) => ({
-    href: `/language/${cluster}/`,
-    label: clusterLabels[cluster],
-  }));
-
 // --- learn-spanish：はじめに / A1-C2 / DELE / その他 に分類 ---
 const learnSpanish = articles.filter((a) => a.data.cluster === 'learn-spanish');
 const otherClusters = articles
@@ -155,13 +129,6 @@ const breadcrumbs = [
   />
   <section class="max-w-5xl mx-auto px-5 py-14">
     <h2 class="font-sans font-bold text-xl text-navy mb-5">カテゴリ</h2>
-    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3 mb-12">
-      {clusters.map(({ href, label }) => (
-        <a href={href} class="bg-white rounded-lg px-3 py-3 min-h-[44px] flex items-center justify-center text-center border border-[#E8E8E6] hover:border-primary/30 hover:shadow-sm transition-all">
-          <span class="font-semibold text-navy text-xs leading-snug block">{label}</span>
-        </a>
-      ))}
-    </div>
     <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3 mb-12">
       {levelAnchors.map(({ href, label }) => (
         <a href={href} class="bg-white rounded-lg px-3 py-3 min-h-[44px] flex items-center justify-center text-center border border-[#E8E8E6] hover:border-primary/30 hover:shadow-sm transition-all">
