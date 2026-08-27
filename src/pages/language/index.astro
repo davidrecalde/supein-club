@@ -84,10 +84,12 @@ const levelGroups = levelOrder
   }))
   .filter((g) => g.items.length > 0);
 
-// カテゴリ内のレベル/DELEアンカーピル（新規ページなし、既存の見出しidへジャンプ）
+// カテゴリ内のレベル/DELE/その他/学校アンカーピル（新規ページなし、既存の見出しidへジャンプ）
 const levelAnchors = [
   ...levelGroups.map((g) => ({ href: `#${g.level}`, label: g.label })),
   ...(deleArticles.length > 0 ? [{ href: '#dele', label: 'DELE' }] : []),
+  ...(otherArticles.length > 0 ? [{ href: '#other', label: 'その他' }] : []),
+  ...(otherClusters.length > 0 ? [{ href: '#schools', label: 'スペイン語学校' }] : []),
 ];
 
 // DELE: hub-dele → prep-dele(a1→c2) → info-dele → dele-vs-seiken → dele-b1-tips
@@ -172,7 +174,7 @@ const breadcrumbs = [
 
     {otherArticles.length > 0 && (
       <>
-        <h2 class="font-sans font-bold text-xl text-navy mb-5">その他</h2>
+        <h2 id="other" class="font-sans font-bold text-xl text-navy mb-5">その他</h2>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
           {otherArticles.map((a) => (
             <ArticleCard title={a.data.title} description={a.data.description} href={getArticleUrl(a)} pillar="language" image={a.data.image} imageAlt={a.data.imageAlt} heroImage={a.data.heroImage} heroImageAlt={a.data.heroImageAlt} pubDate={a.data.pubDate} />
@@ -183,7 +185,7 @@ const breadcrumbs = [
 
     {otherClusters.length > 0 && (
       <>
-        <h2 class="font-sans font-bold text-xl text-navy mb-5">スペイン語学校</h2>
+        <h2 id="schools" class="font-sans font-bold text-xl text-navy mb-5">スペイン語学校</h2>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
           {otherClusters.map((a) => (
             <ArticleCard title={a.data.title} description={a.data.description} href={getArticleUrl(a)} pillar="language" image={a.data.image} imageAlt={a.data.imageAlt} heroImage={a.data.heroImage} heroImageAlt={a.data.heroImageAlt} pubDate={a.data.pubDate} />
