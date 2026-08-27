@@ -144,7 +144,7 @@ const breadcrumbs = [
         <h2 class="font-sans font-bold text-xl text-navy mb-5">はじめに</h2>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
           {introArticles.map((a) => (
-            <ArticleCard title={a.data.title} description={a.data.description} href={getArticleUrl(a)} pillar="language" image={a.data.image} imageAlt={a.data.imageAlt} heroImage={a.data.heroImage} heroImageAlt={a.data.heroImageAlt} pubDate={a.data.pubDate} stepBadge={stepBadge(a)} />
+            <ArticleCard title={a.data.title} description={a.data.description} href={getArticleUrl(a)} pillar="language" cluster={a.data.cluster} image={a.data.image} imageAlt={a.data.imageAlt} heroImage={a.data.heroImage} heroImageAlt={a.data.heroImageAlt} pubDate={a.data.pubDate} stepBadge={stepBadge(a)} />
           ))}
         </div>
       </>
@@ -155,7 +155,7 @@ const breadcrumbs = [
         <h2 id={group.level} class="font-sans font-bold text-xl text-navy mb-5">{group.label}</h2>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
           {group.items.map((a) => (
-            <ArticleCard title={a.data.title} description={a.data.description} href={getArticleUrl(a)} pillar="language" image={a.data.image} imageAlt={a.data.imageAlt} heroImage={a.data.heroImage} heroImageAlt={a.data.heroImageAlt} pubDate={a.data.pubDate} topicBadge={roleBadge(a)} stepBadge={stepBadge(a)} />
+            <ArticleCard title={a.data.title} description={a.data.description} href={getArticleUrl(a)} pillar="language" cluster={a.data.cluster} image={a.data.image} imageAlt={a.data.imageAlt} heroImage={a.data.heroImage} heroImageAlt={a.data.heroImageAlt} pubDate={a.data.pubDate} topicBadge={roleBadge(a)} stepBadge={stepBadge(a)} />
           ))}
         </div>
       </>
@@ -166,7 +166,7 @@ const breadcrumbs = [
         <h2 id="dele" class="font-sans font-bold text-xl text-navy mb-5">DELE</h2>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
           {deleArticles.map((a) => (
-            <ArticleCard title={a.data.title} description={a.data.description} href={getArticleUrl(a)} pillar="language" image={a.data.image} imageAlt={a.data.imageAlt} heroImage={a.data.heroImage} heroImageAlt={a.data.heroImageAlt} pubDate={a.data.pubDate} stepBadge={stepBadge(a)} />
+            <ArticleCard title={a.data.title} description={a.data.description} href={getArticleUrl(a)} pillar="language" cluster={a.data.cluster} image={a.data.image} imageAlt={a.data.imageAlt} heroImage={a.data.heroImage} heroImageAlt={a.data.heroImageAlt} pubDate={a.data.pubDate} stepBadge={stepBadge(a)} />
           ))}
         </div>
       </>
@@ -177,7 +177,7 @@ const breadcrumbs = [
         <h2 id="other" class="font-sans font-bold text-xl text-navy mb-5">その他</h2>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
           {otherArticles.map((a) => (
-            <ArticleCard title={a.data.title} description={a.data.description} href={getArticleUrl(a)} pillar="language" image={a.data.image} imageAlt={a.data.imageAlt} heroImage={a.data.heroImage} heroImageAlt={a.data.heroImageAlt} pubDate={a.data.pubDate} />
+            <ArticleCard title={a.data.title} description={a.data.description} href={getArticleUrl(a)} pillar="language" cluster={a.data.cluster} image={a.data.image} imageAlt={a.data.imageAlt} heroImage={a.data.heroImage} heroImageAlt={a.data.heroImageAlt} pubDate={a.data.pubDate} />
           ))}
         </div>
       </>
@@ -188,7 +188,7 @@ const breadcrumbs = [
         <h2 id="schools" class="font-sans font-bold text-xl text-navy mb-5">スペイン語学校</h2>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
           {otherClusters.map((a) => (
-            <ArticleCard title={a.data.title} description={a.data.description} href={getArticleUrl(a)} pillar="language" image={a.data.image} imageAlt={a.data.imageAlt} heroImage={a.data.heroImage} heroImageAlt={a.data.heroImageAlt} pubDate={a.data.pubDate} />
+            <ArticleCard title={a.data.title} description={a.data.description} href={getArticleUrl(a)} pillar="language" cluster={a.data.cluster} image={a.data.image} imageAlt={a.data.imageAlt} heroImage={a.data.heroImage} heroImageAlt={a.data.heroImageAlt} pubDate={a.data.pubDate} />
           ))}
         </div>
       </>
