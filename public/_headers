@@ -1,3 +1,6 @@
+/*
+  Link: <https://supein.club/sitemap-index.xml>; rel="sitemap"
+
 /_astro/*
   Cache-Control: public, max-age=31536000, immutable
 
