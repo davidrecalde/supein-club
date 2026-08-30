@@ -1,5 +1,5 @@
 ---
-import { getCollection } from 'astro:content';
+import { getCollection, type CollectionEntry } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import SEO from '../../components/SEO.astro';
 import PillarHero from '../../components/PillarHero.astro';
@@ -8,20 +8,32 @@ import LineBanner from '../../components/LineBanner.astro';
 import AdSlot from '../../components/AdSlot.astro';
 import { getArticleUrl } from '../../utils/articles';
 
+type Article = CollectionEntry<'articles'>;
+
 const articles = await getCollection('articles', ({ data }) => !data.draft && data.pillar === 'football');
 const sorted = articles.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 
-const clusters = [
-  { href: '/football/la-liga/', label: 'ラ・リーガ' },
-  { href: '/football/spain-national-team/', label: 'スペイン代表' },
-  { href: '/football/fcbarcelona/', label: 'FCバルセロナ' },
-  { href: '/football/real-madrid/', label: 'レアル・マドリード' },
-  { href: '/football/football-guide/', label: '観戦ガイド' },
-  { href: '/football/spanish-vocabulary/', label: 'サッカー用語' },
-  { href: '/football/laliga-master/', label: 'ラ・リーガ・マスター' },
-  { href: '/football/liga-f-women/', label: 'リーガF' },
-  { href: '/football/football-coach-license/', label: '指導者ライセンス' },
+// カテゴリ分類：各記事の tags 配列に含まれる分類タグで判定
+// （新しい記事を追加する際は、該当するタグを tags に含めれば自動的にここに反映される）
+const categories = [
+  { id: 'team', tag: 'チーム', label: 'チーム' },
+  { id: 'history', tag: '歴史', label: '歴史' },
+  { id: 'league', tag: 'リーグ', label: 'リーグ' },
+  { id: 'terminology', tag: '用語', label: '用語' },
+  { id: 'education', tag: '教育', label: '教育' },
 ];
+
+const categoryGroups = categories
+  .map((c) => ({
+    ...c,
+    items: sorted.filter((a) => a.data.tags.includes(c.tag)),
+  }))
+  .filter((g) => g.items.length > 0);
+
+const categorizedIds = new Set(categoryGroups.flatMap((g) => g.items.map((a) => a.id)));
+const uncategorized = sorted.filter((a) => !categorizedIds.has(a.id));
+
+const categoryAnchors = categoryGroups.map((g) => ({ href: `#${g.id}`, label: g.label }));
 
 const breadcrumbs = [
   { name: 'ホーム', url: '/' },
@@ -41,6 +53,19 @@ const footballSchema = {
     url: 'https://www.laliga.com',
   },
 };
+
+function renderCard(a: Article) {
+  return {
+    title: a.data.title,
+    description: a.data.description,
+    href: getArticleUrl(a),
+    image: a.data.image,
+    imageAlt: a.data.imageAlt,
+    heroImage: a.data.heroImage,
+    heroImageAlt: a.data.heroImageAlt,
+    pubDate: a.data.pubDate,
+  };
+}
 ---
 <BaseLayout>
   <SEO
@@ -58,24 +83,41 @@ const footballSchema = {
     description="ラ・リーガ、スペイン代表、FCバルセロナ、レアル・マドリード——世界最高峰のスペインサッカーを日本語でわかりやすく解説します。"
   />
   <section class="max-w-5xl mx-auto px-5 py-14">
-    <h2 class="font-sans font-bold text-xl text-navy mb-5">カテゴリ</h2>
-    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3 mb-12">
-      {clusters.map(({ href, label }) => (
-        <a href={href} class="bg-white rounded-lg px-3 py-3 min-h-[44px] flex items-center justify-center text-center border border-[#E8E8E6] hover:border-primary/30 hover:shadow-sm transition-all">
-          <span class="font-semibold text-navy text-xs leading-snug block">{label}</span>
-        </a>
-      ))}
-    </div>
-    {sorted.length > 0 && (
+    {categoryAnchors.length > 0 && (
       <>
-        <h2 class="font-sans font-bold text-xl text-navy mb-5">記事一覧</h2>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {sorted.map((a) => (
-            <ArticleCard title={a.data.title} description={a.data.description} href={getArticleUrl(a)} pillar="football" image={a.data.image} imageAlt={a.data.imageAlt} heroImage={a.data.heroImage} heroImageAlt={a.data.heroImageAlt} pubDate={a.data.pubDate} />
+        <h2 class="font-sans font-bold text-xl text-navy mb-5">カテゴリ</h2>
+        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3 mb-12">
+          {categoryAnchors.map(({ href, label }) => (
+            <a href={href} class="bg-white rounded-lg px-3 py-3 min-h-[44px] flex items-center justify-center text-center border border-[#E8E8E6] hover:border-primary/30 hover:shadow-sm transition-all">
+              <span class="font-semibold text-navy text-xs leading-snug block">{label}</span>
+            </a>
           ))}
         </div>
       </>
     )}
+
+    {categoryGroups.map((group) => (
+      <>
+        <h2 id={group.id} class="font-sans font-bold text-xl text-navy mb-5">{group.label}</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+          {group.items.map((a) => (
+            <ArticleCard pillar="football" cluster={a.data.cluster} {...renderCard(a)} />
+          ))}
+        </div>
+      </>
+    ))}
+
+    {uncategorized.length > 0 && (
+      <>
+        <h2 id="other" class="font-sans font-bold text-xl text-navy mb-5">その他</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+          {uncategorized.map((a) => (
+            <ArticleCard pillar="football" cluster={a.data.cluster} {...renderCard(a)} />
+          ))}
+        </div>
+      </>
+    )}
+
     {sorted.length === 0 && (
       <p class="text-muted text-center py-12">記事を準備中です。近日公開予定。</p>
     )}
