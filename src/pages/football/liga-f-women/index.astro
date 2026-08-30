@@ -1,41 +1,12 @@
 ---
 import { getCollection } from 'astro:content';
-import BaseLayout from '../../../layouts/BaseLayout.astro';
-import SEO from '../../../components/SEO.astro';
-import ArticleCard from '../../../components/ArticleCard.astro';
-import Breadcrumb from '../../../components/Breadcrumb.astro';
-import LineBanner from '../../../components/LineBanner.astro';
+import ArticleLayout from '../../../layouts/ArticleLayout.astro';
 
 const articles = await getCollection('articles', ({ data }) => !data.draft && data.pillar === 'football' && data.cluster === 'liga-f-women');
-const sorted = articles.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+const entry = articles[0];
 
-const breadcrumbs = [
-  { name: 'ホーム', url: '/' },
-  { name: 'スペインサッカー', url: '/football/' },
-  { name: 'リーガF', url: '/football/liga-f-women/' },
-];
+if (!entry) {
+  throw new Error('No se encontró el artículo del cluster "liga-f-women"');
+}
 ---
-<BaseLayout>
-  <SEO slot="seo" title="リーガF（Liga F Moeve）完全ガイド | supein.club" description="スペイン女子プロサッカーリーグ「リーガF（Liga F Moeve）」を日本語で解説。" canonical="https://supein.club/football/liga-f-women/" breadcrumbs={breadcrumbs} robots="noindex, follow" />
-  <section class="bg-navy text-white py-12 px-4">
-    <div class="max-w-4xl mx-auto">
-      <Breadcrumb items={breadcrumbs} dark />
-      <h1 class="font-serif text-3xl md:text-4xl font-bold leading-tight mt-4">リーガF（Liga F Moeve）</h1>
-      <p class="text-white/80 text-lg mt-3 max-w-2xl">スペイン女子プロサッカーリーグ「リーガF」のすべてを日本語で解説。</p>
-    </div>
-  </section>
-  <section class="max-w-5xl mx-auto px-4 py-12">
-    {sorted.length > 0 ? (
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-        {sorted.map((a) => {
-          const parts = a.id.replace(/\.(md|mdx)$/, '').split('/');
-          const slug = parts[2] ?? a.data.cluster;
-          return <ArticleCard title={a.data.title} description={a.data.description} href={`/football/liga-f-women/${slug}/`} pillar="football" image={a.data.image} imageAlt={a.data.imageAlt} pubDate={a.data.pubDate} />;
-        })}
-      </div>
-    ) : (
-      <p class="text-muted text-center py-12">記事を準備中です。近日公開予定。</p>
-    )}
-  </section>
-  <LineBanner />
-</BaseLayout>
+<ArticleLayout entry={entry} />
