@@ -78,6 +78,7 @@ export const slugToJapanese: Record<string, string> = {
   'laliga-master': 'ラ・リーガ・マスター',
   'liga-f-women': 'リーガF',
   'football-coach-license': '指導者ライセンス',
+  'japanese-players-laliga': '日本人選手の歴史',
 
   // About/Team
   'team': 'チームメンバー',
