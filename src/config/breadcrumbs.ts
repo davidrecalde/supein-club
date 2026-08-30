@@ -44,7 +44,7 @@ export const slugToJapanese: Record<string, string> = {
   'learn-spanish': 'スペイン語を学ぶ',
   'pronunciation': '発音',
   'self-study': '独学',
-  'lessons-tokyo': '東京スペイン語レッスン',
+  'tokyo-spanish-schools': '東京スペイン語レッスン',
   'online-lessons': 'オンラインレッスン',
   'lesson-price': 'レッスン料金',
   'spanish-phrases': 'スペイン語フレーズ',
