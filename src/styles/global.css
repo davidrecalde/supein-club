@@ -343,6 +343,22 @@ table {
   padding: 0 8px;
 }
 
+/* Imágenes verticales/retrato: ancho reducido en desktop, evita que
+   ocupen todo el ancho del párrafo como las horizontales.
+   Uso: <img src="..." alt="..." class="img-vertical" /> en el .mdx
+   (sintaxis HTML, no Markdown, para poder pasar la clase). */
+.prose img.img-vertical {
+  width: auto;
+  max-width: 45%;
+  margin: 0 auto;
+}
+
+@media (max-width: 767px) {
+  .prose img.img-vertical {
+    max-width: 100%;
+  }
+}
+
 /* Imágenes sin figure (sintaxis Markdown estándar)
    Astro las convierte en <img> sueltos dentro de <p> */
 .prose p > img {
