@@ -77,6 +77,7 @@ export const slugToJapanese: Record<string, string> = {
   'spanish-vocabulary': 'サッカー用語',
   'laliga-master': 'ラ・リーガ・マスター',
   'liga-f-women': 'リーガF',
+  'football-coach-license': '指導者ライセンス',
 
   // About/Team
   'team': 'チームメンバー',

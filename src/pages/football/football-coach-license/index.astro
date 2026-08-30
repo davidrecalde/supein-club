@@ -1,0 +1,12 @@
+---
+import { getCollection } from 'astro:content';
+import ArticleLayout from '../../../layouts/ArticleLayout.astro';
+
+const articles = await getCollection('articles', ({ data }) => !data.draft && data.pillar === 'football' && data.cluster === 'football-coach-license');
+const entry = articles[0];
+
+if (!entry) {
+  throw new Error('No se encontró el artículo del cluster "football-coach-license"');
+}
+---
+<ArticleLayout entry={entry} />
