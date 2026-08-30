@@ -1,33 +1,56 @@
 ---
-import { getCollection } from 'astro:content';
+import { getCollection, type CollectionEntry } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import SEO from '../../components/SEO.astro';
 import PillarHero from '../../components/PillarHero.astro';
 import ArticleCard from '../../components/ArticleCard.astro';
 import LineBanner from '../../components/LineBanner.astro';
 import AdSlot from '../../components/AdSlot.astro';
+import { getArticleUrl } from '../../utils/articles';
+
+type Article = CollectionEntry<'articles'>;
 
 const articles = await getCollection('articles', ({ data }) => !data.draft && data.pillar === 'travel');
 const sorted = articles.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 
-const clusters = [
-  { href: '/travel/spain-tours/', label: 'スペインツアー' },
-  { href: '/travel/barcelona/', label: 'バルセロナ' },
-  { href: '/travel/madrid/', label: 'マドリード' },
-  { href: '/travel/andalusia/', label: 'アンダルシア' },
-  { href: '/travel/ibiza/', label: 'イビサ島' },
-  { href: '/travel/canarias/', label: 'カナリア諸島' },
-  { href: '/travel/spain-flights/', label: '航空券' },
-  { href: '/travel/spain-hotels/', label: 'ホテル' },
-  { href: '/travel/travel-cost/', label: '旅行費用' },
-  { href: '/travel/itineraries/', label: 'モデルコース' },
-  { href: '/travel/best-season/', label: 'ベストシーズン' },
+// カテゴリ分類：各記事の tags 配列に含まれる分類タグで判定
+// （新しい記事を追加する際は、該当するタグを tags に含めれば自動的にここに反映される）
+const categories = [
+  { id: 'destinations', tag: '目的地', label: '目的地' },
+  { id: 'tours', tag: 'モデルコース・ツアー', label: 'モデルコース・ツアー' },
+  { id: 'cost', tag: '旅行費用', label: '旅行費用' },
+  { id: 'prep', tag: '旅行準備', label: '旅行準備' },
 ];
+
+const categoryGroups = categories
+  .map((c) => ({
+    ...c,
+    items: sorted.filter((a) => a.data.tags.includes(c.tag)),
+  }))
+  .filter((g) => g.items.length > 0);
+
+const categorizedIds = new Set(categoryGroups.flatMap((g) => g.items.map((a) => a.id)));
+const uncategorized = sorted.filter((a) => !categorizedIds.has(a.id));
+
+const categoryAnchors = categoryGroups.map((g) => ({ href: `#${g.id}`, label: g.label }));
 
 const breadcrumbs = [
   { name: 'ホーム', url: '/' },
   { name: 'スペイン旅行', url: '/travel/' },
 ];
+
+function renderCard(a: Article) {
+  return {
+    title: a.data.title,
+    description: a.data.description,
+    href: getArticleUrl(a),
+    image: a.data.image,
+    imageAlt: a.data.imageAlt,
+    heroImage: a.data.heroImage,
+    heroImageAlt: a.data.heroImageAlt,
+    pubDate: a.data.pubDate,
+  };
+}
 ---
 <BaseLayout>
   <SEO
@@ -42,27 +65,43 @@ const breadcrumbs = [
     description="バルセロナ、マドリード、アンダルシア——憧れのスペインへの旅行計画を、フライトからホテル・モデルコースまでトータルサポート。"
   />
   <section class="max-w-5xl mx-auto px-5 py-14">
-    <h2 class="font-sans font-bold text-xl text-navy mb-5">カテゴリ</h2>
-    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3 mb-12">
-      {clusters.map(({ href, label }) => (
-        <a href={href} class="bg-white rounded-lg px-3 py-3 min-h-[44px] flex items-center justify-center text-center border border-[#E8E8E6] hover:border-primary/30 hover:shadow-sm transition-all">
-          <span class="font-semibold text-navy text-xs leading-snug block">{label}</span>
-        </a>
-      ))}
-    </div>
-    {sorted.length > 0 && (
+    {categoryAnchors.length > 0 && (
       <>
-        <h2 class="font-sans font-bold text-xl text-navy mb-5">記事一覧</h2>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {sorted.map((a) => {
-            const parts = a.id.replace(/\.(md|mdx)$/, '').split('/');
-            const slug = parts[2] ?? a.data.cluster;
-            return (
-              <ArticleCard title={a.data.title} description={a.data.description} href={`/travel/${a.data.cluster}/${slug}/`} pillar="travel" image={a.data.image} imageAlt={a.data.imageAlt} heroImage={a.data.heroImage} heroImageAlt={a.data.heroImageAlt} pubDate={a.data.pubDate} />
-            );
-          })}
+        <h2 class="font-sans font-bold text-xl text-navy mb-5">カテゴリ</h2>
+        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3 mb-12">
+          {categoryAnchors.map(({ href, label }) => (
+            <a href={href} class="bg-white rounded-lg px-3 py-3 min-h-[44px] flex items-center justify-center text-center border border-[#E8E8E6] hover:border-primary/30 hover:shadow-sm transition-all">
+              <span class="font-semibold text-navy text-xs leading-snug block">{label}</span>
+            </a>
+          ))}
         </div>
       </>
+    )}
+
+    {categoryGroups.map((group) => (
+      <>
+        <h2 id={group.id} class="font-sans font-bold text-xl text-navy mb-5">{group.label}</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+          {group.items.map((a) => (
+            <ArticleCard pillar="travel" cluster={a.data.cluster} topicBadge={group.label} {...renderCard(a)} />
+          ))}
+        </div>
+      </>
+    ))}
+
+    {uncategorized.length > 0 && (
+      <>
+        <h2 id="other" class="font-sans font-bold text-xl text-navy mb-5">その他</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+          {uncategorized.map((a) => (
+            <ArticleCard pillar="travel" cluster={a.data.cluster} {...renderCard(a)} />
+          ))}
+        </div>
+      </>
+    )}
+
+    {sorted.length === 0 && (
+      <p class="text-muted text-center py-12">記事を準備中です。近日公開予定。</p>
     )}
   </section>
   <section class="max-w-5xl mx-auto px-5 pb-14">
