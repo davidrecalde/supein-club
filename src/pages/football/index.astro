@@ -101,7 +101,7 @@ function renderCard(a: Article) {
         <h2 id={group.id} class="font-sans font-bold text-xl text-navy mb-5">{group.label}</h2>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
           {group.items.map((a) => (
-            <ArticleCard pillar="football" cluster={a.data.cluster} {...renderCard(a)} />
+            <ArticleCard pillar="football" cluster={a.data.cluster} topicBadge={group.label} {...renderCard(a)} />
           ))}
         </div>
       </>
