@@ -102,7 +102,11 @@ const breadcrumbs = [{ name: 'ホーム', url: '/' }];
   <!-- Category pillars -->
   <section class="py-20 px-5 bg-canvas">
     <div class="max-w-6xl mx-auto">
-      <p class="text-primary text-xs font-semibold uppercase tracking-widest mb-3">カテゴリ</p>
+      <div class="flex items-center gap-3 mb-4">
+        <span class="font-serif text-lg text-primary/40">01</span>
+        <span class="h-px w-8 bg-navy/15"></span>
+        <span class="text-primary text-xs font-semibold uppercase tracking-widest">カテゴリ</span>
+      </div>
       <h2 class="font-sans font-bold text-3xl text-navy mb-10">気になるテーマから</h2>
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
         {pillars.map(({ href, Icon, title, desc }) => (
@@ -127,7 +131,11 @@ const breadcrumbs = [{ name: 'ホーム', url: '/' }];
   {recentArticles.length > 0 && (
     <section class="py-20 px-5 bg-white">
       <div class="max-w-6xl mx-auto">
-        <p class="text-primary text-xs font-semibold uppercase tracking-widest mb-3">新着</p>
+        <div class="flex items-center gap-3 mb-4">
+          <span class="font-serif text-lg text-primary/40">02</span>
+          <span class="h-px w-8 bg-navy/15"></span>
+          <span class="text-primary text-xs font-semibold uppercase tracking-widest">新着</span>
+        </div>
         <h2 class="font-sans font-bold text-3xl text-navy mb-10">最新記事</h2>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
           {recentArticles.map((article) => (
@@ -155,13 +163,21 @@ const breadcrumbs = [{ name: 'ホーム', url: '/' }];
 
   <!-- Featured article -->
   {featuredArticle && (
-    <section class="py-20 px-5 bg-canvas">
-      <div class="max-w-6xl mx-auto">
-        <p class="text-primary text-xs font-semibold uppercase tracking-widest mb-3">特集</p>
-        <h2 class="font-sans font-bold text-3xl text-navy mb-10">編集部のおすすめ</h2>
+    <section class="py-20 px-5 bg-navy relative overflow-hidden">
+      <div
+        class="absolute inset-0 pointer-events-none"
+        style="background-image: radial-gradient(circle, rgba(255,255,255,0.06) 1.5px, transparent 1.5px); background-size: 28px 28px;"
+      ></div>
+      <div class="relative max-w-6xl mx-auto">
+        <div class="flex items-center gap-3 mb-4">
+          <span class="font-serif text-lg text-primary/60">03</span>
+          <span class="h-px w-8 bg-white/20"></span>
+          <span class="text-primary text-xs font-semibold uppercase tracking-widest">特集</span>
+        </div>
+        <h2 class="font-sans font-bold text-3xl text-white mb-10">編集部のおすすめ</h2>
         <a
           href={getArticleUrl(featuredArticle)}
-          class="group grid grid-cols-1 md:grid-cols-2 gap-0 bg-white rounded-xl overflow-hidden shadow-[0_2px_8px_rgba(0,33,71,0.07)] border border-[#E8E8E6] hover:shadow-[0_6px_20px_rgba(0,33,71,0.14)] hover:border-primary/20 transition-all"
+          class="group grid grid-cols-1 md:grid-cols-2 gap-0 bg-white rounded-xl overflow-hidden shadow-[0_12px_32px_rgba(0,0,0,0.35)] border border-white/10 hover:shadow-[0_16px_40px_rgba(0,0,0,0.45)] hover:border-primary/40 transition-all"
         >
           {featuredHeroSrc && (
             <div class="overflow-hidden aspect-[16/9] md:aspect-auto md:h-full">
