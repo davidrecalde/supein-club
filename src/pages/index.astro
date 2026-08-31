@@ -4,6 +4,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import SEO from '../components/SEO.astro';
 import ArticleCard from '../components/ArticleCard.astro';
 import LineBanner from '../components/LineBanner.astro';
+import NewsletterForm from '../components/NewsletterForm.astro';
 import { Plane, UtensilsCrossed, MessageCircle, Home, Book } from 'lucide-astro';
 import SoccerBall from '../components/icons/SoccerBall.astro';
 import { getArticleUrl } from '../utils/articles';
@@ -129,7 +130,7 @@ const breadcrumbs = [{ name: 'ホーム', url: '/' }];
 
   <!-- Latest articles -->
   {recentArticles.length > 0 && (
-    <section class="py-20 px-5 bg-white">
+    <section class="py-20 px-5 bg-white border-t border-[#E8E8E6]">
       <div class="max-w-6xl mx-auto">
         <div class="flex items-center gap-3 mb-4">
           <span class="font-serif text-lg text-primary/40">02</span>
@@ -163,21 +164,17 @@ const breadcrumbs = [{ name: 'ホーム', url: '/' }];
 
   <!-- Featured article -->
   {featuredArticle && (
-    <section class="py-20 px-5 bg-navy relative overflow-hidden">
-      <div
-        class="absolute inset-0 pointer-events-none"
-        style="background-image: radial-gradient(circle, rgba(255,255,255,0.06) 1.5px, transparent 1.5px); background-size: 28px 28px;"
-      ></div>
-      <div class="relative max-w-6xl mx-auto">
+    <section class="py-20 px-5 bg-canvas border-t border-[#E8E8E6]">
+      <div class="max-w-6xl mx-auto">
         <div class="flex items-center gap-3 mb-4">
-          <span class="font-serif text-lg text-primary/60">03</span>
-          <span class="h-px w-8 bg-white/20"></span>
+          <span class="font-serif text-lg text-primary/40">03</span>
+          <span class="h-px w-8 bg-navy/15"></span>
           <span class="text-primary text-xs font-semibold uppercase tracking-widest">特集</span>
         </div>
-        <h2 class="font-sans font-bold text-3xl text-white mb-10">編集部のおすすめ</h2>
+        <h2 class="font-sans font-bold text-3xl text-navy mb-10">編集部のおすすめ</h2>
         <a
           href={getArticleUrl(featuredArticle)}
-          class="group grid grid-cols-1 md:grid-cols-2 gap-0 bg-white rounded-xl overflow-hidden shadow-[0_12px_32px_rgba(0,0,0,0.35)] border border-white/10 hover:shadow-[0_16px_40px_rgba(0,0,0,0.45)] hover:border-primary/40 transition-all"
+          class="group grid grid-cols-1 md:grid-cols-2 gap-0 bg-white rounded-xl overflow-hidden shadow-[0_2px_8px_rgba(0,33,71,0.07)] border border-[#E8E8E6] hover:shadow-[0_4px_16px_rgba(0,33,71,0.12)] hover:border-primary/20 transition-all"
         >
           {featuredHeroSrc && (
             <div class="overflow-hidden aspect-[16/9] md:aspect-auto md:h-full">
@@ -205,9 +202,6 @@ const breadcrumbs = [{ name: 'ホーム', url: '/' }];
       </div>
     </section>
   )}
-
-  <!-- LINE Banner -->
-  <LineBanner />
 
   <!-- About section (medio de comunicación cultural — origen de comunidad se cuenta en /about-us/) -->
   <section class="py-20 px-5 bg-navy text-white">
@@ -244,19 +238,24 @@ const breadcrumbs = [{ name: 'ホーム', url: '/' }];
     </div>
   </section>
 
-  <!-- Newsletter CTA -->
-  <section class="bg-primary py-16 px-4 text-white text-center">
-    <div class="max-w-xl mx-auto">
-      <h2 class="font-serif text-2xl md:text-3xl font-bold mb-4">スペインの最新情報をメールで受け取りませんか？</h2>
-      <p class="text-white/80 leading-relaxed mb-8">
-        旅行・料理・文化・語学の情報を月2回、日本語でお届けします。登録は無料です。
-      </p>
-      <a
-        href="/newsletter/"
-        class="inline-block bg-white text-primary font-bold px-8 py-4 rounded-full text-lg hover:bg-white/90 transition-colors"
-      >
-        ニュースレターに登録する →
-      </a>
+  <!-- Newsletter (slim, two-column) -->
+  <section class="py-14 px-5 bg-canvas">
+    <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
+      <div>
+        <p class="text-primary text-xs font-semibold uppercase tracking-widest mb-3">ニュースレター</p>
+        <h2 class="font-sans font-bold text-2xl text-navy mb-3">スペインの最新情報をメールで</h2>
+        <ul class="space-y-1.5 text-muted text-sm">
+          <li>旅行・料理・文化・語学の情報を月2回お届け</li>
+          <li>編集部が厳選した記事をいち早くチェック</li>
+          <li>登録・配信停止はいつでも無料</li>
+        </ul>
+      </div>
+      <div>
+        <NewsletterForm variant="inline" />
+      </div>
     </div>
   </section>
+
+  <!-- LINE Banner -->
+  <LineBanner />
 </BaseLayout>
