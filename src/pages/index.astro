@@ -8,6 +8,12 @@ import NewsletterForm from '../components/NewsletterForm.astro';
 import { Plane, UtensilsCrossed, MessageCircle, Home, Book } from 'lucide-astro';
 import SoccerBall from '../components/icons/SoccerBall.astro';
 import { getArticleUrl } from '../utils/articles';
+import travelCardImg from '../assets/cards/travel.webp';
+import foodCardImg from '../assets/cards/food.webp';
+import languageCardImg from '../assets/cards/language.webp';
+import livingCardImg from '../assets/cards/living.webp';
+import cultureCardImg from '../assets/cards/culture.webp';
+import footballCardImg from '../assets/cards/football.webp';
 
 const allArticles = await getCollection('articles', ({ data }) => !data.draft);
 
@@ -43,12 +49,12 @@ const featuredHeroSrc =
     : featuredArticle?.data.heroImage?.src;
 
 const pillars = [
-  { href: '/travel/', Icon: Plane, title: 'スペイン旅行', desc: 'バルセロナ・マドリードなど旅行ガイドを完全網羅' },
-  { href: '/food/', Icon: UtensilsCrossed, title: 'スペイン料理', desc: 'パエリア・タパス・ワインなど食文化を完全解説' },
-  { href: '/language/', Icon: MessageCircle, title: 'スペイン語', desc: 'レッスン・学校・アプリなど学習法を完全網羅' },
-  { href: '/living/', Icon: Home, title: 'スペインに住む', desc: '留学・仕事・ビザなど移住の実情を詳しく紹介' },
-  { href: '/culture/', Icon: Book, title: 'スペイン文化', desc: 'フラメンコ・歴史・伝統など文化の魅力を紹介' },
-  { href: '/football/', Icon: SoccerBall, title: 'スペインサッカー', desc: 'ラ・リーガ、代表、バルセロナなど日本語で深掘り' },
+  { href: '/travel/', Icon: Plane, title: 'スペイン旅行', desc: 'バルセロナ・マドリードなど旅行ガイドを完全網羅', image: travelCardImg },
+  { href: '/food/', Icon: UtensilsCrossed, title: 'スペイン料理', desc: 'パエリア・タパス・ワインなど食文化を完全解説', image: foodCardImg },
+  { href: '/language/', Icon: MessageCircle, title: 'スペイン語', desc: 'レッスン・学校・アプリなど学習法を完全網羅', image: languageCardImg },
+  { href: '/living/', Icon: Home, title: 'スペインに住む', desc: '留学・仕事・ビザなど移住の実情を詳しく紹介', image: livingCardImg },
+  { href: '/culture/', Icon: Book, title: 'スペイン文化', desc: 'フラメンコ・歴史・伝統など文化の魅力を紹介', image: cultureCardImg },
+  { href: '/football/', Icon: SoccerBall, title: 'スペインサッカー', desc: 'ラ・リーガ、代表、バルセロナなど日本語で深掘り', image: footballCardImg },
 ];
 
 const breadcrumbs = [{ name: 'ホーム', url: '/' }];
@@ -110,18 +116,30 @@ const breadcrumbs = [{ name: 'ホーム', url: '/' }];
       </div>
       <h2 class="font-sans font-bold text-3xl text-navy mb-10">気になるテーマから</h2>
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-        {pillars.map(({ href, Icon, title, desc }) => (
+        {pillars.map(({ href, Icon, title, desc, image }) => (
           <a
             href={href}
-            class="group bg-white rounded-xl p-6 shadow-[0_2px_8px_rgba(0,33,71,0.07)] border border-[#E8E8E6] hover:shadow-[0_4px_16px_rgba(0,33,71,0.12)] hover:border-primary/20 transition-all"
+            class="group relative block aspect-square rounded-xl overflow-hidden shadow-[0_2px_8px_rgba(0,33,71,0.07)] border border-[#E8E8E6] hover:shadow-[0_4px_16px_rgba(0,33,71,0.12)] hover:border-primary/20 transition-all"
           >
-            <div class="w-11 h-11 rounded-full bg-[#FCEBEE] flex items-center justify-center mb-4 text-primary group-hover:bg-primary group-hover:text-white transition-colors">
-              <Icon size={20} />
+            <img
+              src={image.src}
+              alt=""
+              loading="lazy"
+              class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+            />
+            <div
+              class="absolute inset-0"
+              style="background: linear-gradient(to bottom, rgba(255,255,255,0) 0%, rgba(255,255,255,0) 58%, rgba(255,255,255,0.9) 80%, #ffffff 93%);"
+            ></div>
+            <div class="relative h-full flex flex-col justify-end p-6">
+              <div class="w-14 h-14 rounded-full bg-white flex items-center justify-center mb-3 text-primary shadow-md group-hover:bg-primary group-hover:text-white transition-colors">
+                <Icon size={26} />
+              </div>
+              <h3 class="font-sans font-bold text-navy text-lg mb-1 group-hover:text-primary transition-colors">
+                {title}
+              </h3>
+              <p class="text-muted text-sm leading-relaxed">{desc}</p>
             </div>
-            <h3 class="font-sans font-bold text-navy text-lg mb-2 group-hover:text-primary transition-colors">
-              {title}
-            </h3>
-            <p class="text-muted text-sm leading-relaxed">{desc}</p>
           </a>
         ))}
       </div>
