@@ -28,6 +28,24 @@ const title = page.currentPage === 1
 const canonical = page.currentPage === 1
   ? 'https://supein.club/articles/'
   : `https://supein.club/articles/${page.currentPage}/`;
+
+const collectionSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'CollectionPage',
+  name: title,
+  description: 'スペイン倶楽部が公開したすべての記事を新着順に掲載。旅行・料理・語学・文化・生活・サッカーまで、スペインに関する情報を網羅しています。',
+  url: canonical,
+  mainEntity: {
+    '@type': 'ItemList',
+    numberOfItems: page.total,
+    itemListElement: page.data.map((article, i) => ({
+      '@type': 'ListItem',
+      position: page.start + i + 1,
+      url: `https://supein.club${getArticleUrl(article)}`,
+      name: article.data.title,
+    })),
+  },
+};
 ---
 <BaseLayout>
   <SEO
@@ -37,6 +55,7 @@ const canonical = page.currentPage === 1
     canonical={canonical}
     breadcrumbs={breadcrumbs}
   />
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify(collectionSchema)} />
   <PillarHero
     title="すべての記事"
     description="旅行・料理・語学・文化・生活・サッカー——スペイン倶楽部が公開した記事を新着順にすべて掲載しています。"
