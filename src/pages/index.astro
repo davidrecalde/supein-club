@@ -1,25 +1,52 @@
-﻿---
+---
 import { getCollection } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import SEO from '../components/SEO.astro';
 import ArticleCard from '../components/ArticleCard.astro';
 import LineBanner from '../components/LineBanner.astro';
-import { Plane, UtensilsCrossed, MessageCircle, Home, Globe, Trophy } from 'lucide-astro';
-import AdSlot from '../components/AdSlot.astro';
+import { Plane, UtensilsCrossed, MessageCircle, Home, Globe, Goal } from 'lucide-astro';
 import { getArticleUrl } from '../utils/articles';
 
 const allArticles = await getCollection('articles', ({ data }) => !data.draft);
-const recentArticles = allArticles
-  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
-  .slice(0, 3);
+
+// 最新記事：全6カテゴリの多様性を保つため、各パイラーの最新記事を1本ずつ選ぶ
+// （単純な日付順だと特定のパイラーの記事が続けて並んでしまうため）
+const pillarOrder = ['travel', 'food', 'language', 'living', 'culture', 'football'] as const;
+const recentArticles = pillarOrder
+  .map((p) =>
+    allArticles
+      .filter((a) => a.data.pillar === p)
+      .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())[0]
+  )
+  .filter((a) => a !== undefined)
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+
+// 特集記事：articles コレクションの featured: true から選出（編集部のおすすめ）
+const featuredArticle = allArticles
+  .filter((a) => a.data.featured)
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())[0];
+
+const pillarLabels: Record<string, string> = {
+  travel: 'スペイン旅行',
+  food: 'スペイン料理',
+  language: 'スペイン語',
+  living: 'スペインに住む',
+  culture: 'スペイン文化',
+  football: 'スペインサッカー',
+};
+
+const featuredHeroSrc =
+  typeof featuredArticle?.data.heroImage === 'string'
+    ? featuredArticle.data.heroImage
+    : featuredArticle?.data.heroImage?.src;
 
 const pillars = [
-  { href: '/travel/', Icon: Plane, title: 'スペイン旅行', desc: 'バルセロナ・マドリードから穴場まで、旅行ガイドとモデルコース' },
-  { href: '/food/', Icon: UtensilsCrossed, title: 'スペイン料理', desc: 'パエリア、タパス、ワイン。スペインの食文化を完全解説' },
-  { href: '/language/', Icon: MessageCircle, title: 'スペイン語', desc: '国内のレッスン・学校・アプリ・独学リソースを網羅' },
-  { href: '/living/', Icon: Home, title: 'スペインに住む', desc: '留学・仕事・ビザ取得まで、移住の実情を詳しく紹介' },
-  { href: '/culture/', Icon: Globe, title: 'スペイン文化', desc: 'フラメンコ・歴史・伝統・祭りなど文化の魅力を紹介' },
-  { href: '/football/', Icon: Trophy, title: 'スペインサッカー', desc: 'ラ・リーガ、スペイン代表、バルセロナ、レアル・マドリード。スペインサッカーを日本語で深掘り。' },
+  { href: '/travel/', Icon: Plane, title: 'スペイン旅行', desc: 'バルセロナ・マドリードなど旅行ガイドを完全網羅' },
+  { href: '/food/', Icon: UtensilsCrossed, title: 'スペイン料理', desc: 'パエリア・タパス・ワインなど食文化を完全解説' },
+  { href: '/language/', Icon: MessageCircle, title: 'スペイン語', desc: 'レッスン・学校・アプリなど学習法を完全網羅' },
+  { href: '/living/', Icon: Home, title: 'スペインに住む', desc: '留学・仕事・ビザなど移住の実情を詳しく紹介' },
+  { href: '/culture/', Icon: Globe, title: 'スペイン文化', desc: 'フラメンコ・歴史・伝統など文化の魅力を紹介' },
+  { href: '/football/', Icon: Goal, title: 'スペインサッカー', desc: 'ラ・リーガ、代表、バルセロナなど日本語で深掘り' },
 ];
 
 const breadcrumbs = [{ name: 'ホーム', url: '/' }];
@@ -71,69 +98,11 @@ const breadcrumbs = [{ name: 'ホーム', url: '/' }];
     </div>
   </section>
 
-  <!-- Editorial Identity Section -->
-  <div style="height:3px; background:linear-gradient(90deg, transparent 0%, rgba(200,16,46,0.4) 50%, transparent 100%);"></div>
-  <div style="background:#0a1628; border-bottom:1px solid rgba(255,255,255,0.08); padding:48px 0 40px;">
-    <div style="max-width:1200px; margin:0 auto; padding:0 24px;">
-
-      <!-- Top layer: editorial phrase -->
-      <div style="text-align:center; margin-bottom:36px; padding:0 24px;">
-        <div style="display:flex; align-items:center; justify-content:center; gap:16px; margin-bottom:20px;">
-          <div style="height:1px; width:40px; background:rgba(255,255,255,0.2);"></div>
-          <span style="font-size:10px; font-weight:600; letter-spacing:0.2em; text-transform:uppercase; color:#C8102E;">私たちについて</span>
-          <div style="height:1px; width:40px; background:rgba(255,255,255,0.2);"></div>
-        </div>
-        <p style="font-family:'Noto Serif JP',serif; font-size:clamp(15px,2.5vw,18px); font-weight:400; color:rgba(255,255,255,0.85); line-height:1.9; max-width:680px; margin:0 auto; letter-spacing:0.04em;">
-          スペイン倶楽部は、旅行・料理・文化・語学を通じて、<br class="hide-mobile" />
-          スペインの本当の姿を日本語で伝えるカルチャーメディアです。
-        </p>
-      </div>
-
-      <!-- Decorative separator -->
-      <div style="display:flex; align-items:center; justify-content:center; gap:8px; margin-bottom:32px;">
-        <div style="height:1px; flex:1; max-width:120px; background:rgba(255,255,255,0.1);"></div>
-        <div style="width:4px; height:4px; border-radius:50%; background:rgba(200,16,46,0.6);"></div>
-        <div style="width:4px; height:4px; border-radius:50%; background:rgba(255,255,255,0.2);"></div>
-        <div style="width:4px; height:4px; border-radius:50%; background:rgba(255,255,255,0.2);"></div>
-        <div style="height:1px; flex:1; max-width:120px; background:rgba(255,255,255,0.1);"></div>
-      </div>
-
-      <!-- Bottom layer: four editorial data items -->
-      <div class="editorial-stats" style="display:flex; align-items:stretch; justify-content:center; flex-wrap:wrap; gap:0; max-width:720px; margin:0 auto;">
-
-        <div class="editorial-stat-item" style="flex:1; min-width:140px; text-align:center; padding:0 32px; border-right:1px solid rgba(255,255,255,0.1);">
-          <p style="font-size:11px; font-weight:600; letter-spacing:0.15em; text-transform:uppercase; color:#C8102E; margin:0 0 6px;">創設</p>
-          <p style="font-family:'Noto Serif JP',serif; font-size:22px; font-weight:700; color:white; margin:0 0 4px; line-height:1;">2018年</p>
-          <p style="font-size:11px; color:rgba(255,255,255,0.45); margin:0; letter-spacing:0.05em;">創設</p>
-        </div>
-
-        <div class="editorial-stat-item" style="flex:1; min-width:140px; text-align:center; padding:0 32px; border-right:1px solid rgba(255,255,255,0.1);">
-          <p style="font-size:11px; font-weight:600; letter-spacing:0.15em; text-transform:uppercase; color:#C8102E; margin:0 0 6px;">拠点</p>
-          <p style="font-family:'Noto Serif JP',serif; font-size:22px; font-weight:700; color:white; margin:0 0 4px; line-height:1;">東京</p>
-          <p style="font-size:11px; color:rgba(255,255,255,0.45); margin:0; letter-spacing:0.05em;">発信</p>
-        </div>
-
-        <div class="editorial-stat-item" style="flex:1; min-width:140px; text-align:center; padding:0 32px; border-right:1px solid rgba(255,255,255,0.1);">
-          <p style="font-size:11px; font-weight:600; letter-spacing:0.15em; text-transform:uppercase; color:#C8102E; margin:0 0 6px;">スタイル</p>
-          <p style="font-family:'Noto Serif JP',serif; font-size:18px; font-weight:700; color:white; margin:0 0 4px; line-height:1; white-space:nowrap;">コミュニティ</p>
-          <p style="font-size:11px; color:rgba(255,255,255,0.45); margin:0; letter-spacing:0.05em;">運営</p>
-        </div>
-
-        <div class="editorial-stat-item" style="flex:1; min-width:140px; text-align:center; padding:0 32px;">
-          <p style="font-size:11px; font-weight:600; letter-spacing:0.15em; text-transform:uppercase; color:#C8102E; margin:0 0 6px;">言語</p>
-          <p style="font-family:'Noto Serif JP',serif; font-size:22px; font-weight:700; color:white; margin:0 0 4px; line-height:1;">日本語</p>
-          <p style="font-size:11px; color:rgba(255,255,255,0.45); margin:0; letter-spacing:0.05em;">深掘り</p>
-        </div>
-
-      </div>
-    </div>
-  </div>
-
   <!-- Category pillars -->
   <section class="py-20 px-5 bg-canvas">
     <div class="max-w-5xl mx-auto">
       <p class="text-primary text-xs font-semibold uppercase tracking-widest mb-3">カテゴリ</p>
-      <h2 class="font-sans font-bold text-3xl text-navy mb-10">カテゴリから探す</h2>
+      <h2 class="font-sans font-bold text-3xl text-navy mb-10">気になるテーマから</h2>
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
         {pillars.map(({ href, Icon, title, desc }) => (
           <a
@@ -160,55 +129,95 @@ const breadcrumbs = [{ name: 'ホーム', url: '/' }];
         <p class="text-primary text-xs font-semibold uppercase tracking-widest mb-3">新着</p>
         <h2 class="font-sans font-bold text-3xl text-navy mb-10">最新記事</h2>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {recentArticles.map((article) => {
-            return (
-              <ArticleCard
-                title={article.data.title}
-                description={article.data.description}
-                href={getArticleUrl(article)}
-                pillar={article.data.pillar}
-                image={article.data.image}
-                imageAlt={article.data.imageAlt}
-                heroImage={article.data.heroImage}
-                heroImageAlt={article.data.heroImageAlt}
-                pubDate={article.data.pubDate}
-              />
-            );
-          })}
+          {recentArticles.map((article) => (
+            <ArticleCard
+              title={article.data.title}
+              description={article.data.description}
+              href={getArticleUrl(article)}
+              pillar={article.data.pillar}
+              image={article.data.image}
+              imageAlt={article.data.imageAlt}
+              heroImage={article.data.heroImage}
+              heroImageAlt={article.data.heroImageAlt}
+              pubDate={article.data.pubDate}
+            />
+          ))}
         </div>
         <div class="mt-10 text-center">
-          <a href="/travel/" class="inline-flex items-center gap-2 text-primary font-semibold text-sm hover:underline underline-offset-4">
-            記事をすべて見る →
+          <a href="/articles/" class="inline-flex items-center gap-2 text-primary font-semibold text-sm hover:underline underline-offset-4">
+            すべての記事を見る →
           </a>
         </div>
       </div>
     </section>
   )}
 
-  <!-- AdSlot home-mid: entre últimos artículos y LINE banner -->
-  <div class="py-6 px-5 bg-canvas">
-    <div class="max-w-5xl mx-auto">
-      <AdSlot
-        position="home-mid"
-        interlinkTitle="スペイン旅行の費用を徹底解説：1週間の予算は？"
-        interlinkUrl="/travel/travel-cost/"
-        interlinkPillar="スペイン旅行"
-        interlinkReadingTime={6}
-      />
-    </div>
-  </div>
+  <!-- Featured article -->
+  {featuredArticle && (
+    <section class="py-20 px-5 bg-canvas">
+      <div class="max-w-5xl mx-auto">
+        <p class="text-primary text-xs font-semibold uppercase tracking-widest mb-3">特集</p>
+        <h2 class="font-sans font-bold text-3xl text-navy mb-10">編集部のおすすめ</h2>
+        <a
+          href={getArticleUrl(featuredArticle)}
+          class="group grid grid-cols-1 md:grid-cols-2 gap-0 bg-white rounded-xl overflow-hidden shadow-[0_2px_8px_rgba(0,33,71,0.07)] border border-[#E8E8E6] hover:shadow-[0_6px_20px_rgba(0,33,71,0.14)] hover:border-primary/20 transition-all"
+        >
+          {featuredHeroSrc && (
+            <div class="overflow-hidden aspect-[16/9] md:aspect-auto md:h-full">
+              <img
+                src={featuredHeroSrc}
+                alt={featuredArticle.data.heroImageAlt || featuredArticle.data.title}
+                loading="lazy"
+                class="w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-[400ms]"
+              />
+            </div>
+          )}
+          <div class="p-8 md:p-10 flex flex-col justify-center">
+            <span class="inline-block text-xs font-semibold px-2.5 py-0.5 rounded-full bg-[#FCEBEE] text-primary mb-4 self-start">
+              {pillarLabels[featuredArticle.data.pillar] ?? featuredArticle.data.pillar}
+            </span>
+            <h3 class="font-sans font-bold text-navy text-2xl leading-snug mb-4 group-hover:text-primary transition-colors">
+              {featuredArticle.data.title}
+            </h3>
+            <p class="text-muted text-base leading-relaxed mb-6">{featuredArticle.data.description}</p>
+            <span class="inline-flex items-center gap-2 text-primary font-semibold text-sm">
+              記事を読む →
+            </span>
+          </div>
+        </a>
+      </div>
+    </section>
+  )}
 
   <!-- LINE Banner -->
   <LineBanner />
 
-  <!-- About section (navy — no "Club Español en Japón") -->
+  <!-- About section (medio de comunicación cultural — origen de comunidad se cuenta en /about-us/) -->
   <section class="py-20 px-5 bg-navy text-white">
     <div class="max-w-4xl mx-auto text-center">
       <p class="text-primary text-xs font-semibold uppercase tracking-widest mb-4">スペイン倶楽部とは</p>
-      <h2 class="font-sans font-bold text-3xl mb-5">日本とスペインをつなぐコミュニティ</h2>
-      <p class="text-white/70 text-base leading-relaxed mb-8 max-w-2xl mx-auto">
-        スペイン倶楽部は、日本在住のスペイン語話者・スペイン好きが集まるコミュニティです。語学イベント、文化交流、料理会など多彩な活動を定期開催しています。
+      <h2 class="font-sans font-bold text-3xl mb-5">日本語で伝える、スペインのカルチャーメディア</h2>
+      <p class="text-white/70 text-base leading-relaxed mb-10 max-w-2xl mx-auto">
+        スペイン倶楽部は、旅行・グルメ・文化・語学を通じて、日本語でスペインの本当の姿を伝えるカルチャーメディアです。
       </p>
+      <div class="flex items-stretch justify-center flex-wrap gap-0 max-w-2xl mx-auto mb-10">
+        <div class="flex-1 min-w-[110px] text-center px-6 border-r border-white/10">
+          <p class="text-[11px] font-semibold tracking-widest uppercase text-primary mb-1.5">創設</p>
+          <p class="font-serif text-xl font-bold text-white">2018年</p>
+        </div>
+        <div class="flex-1 min-w-[110px] text-center px-6 border-r border-white/10">
+          <p class="text-[11px] font-semibold tracking-widest uppercase text-primary mb-1.5">拠点</p>
+          <p class="font-serif text-xl font-bold text-white">東京</p>
+        </div>
+        <div class="flex-1 min-w-[110px] text-center px-6 border-r border-white/10">
+          <p class="text-[11px] font-semibold tracking-widest uppercase text-primary mb-1.5">言語</p>
+          <p class="font-serif text-xl font-bold text-white">日本語</p>
+        </div>
+        <div class="flex-1 min-w-[110px] text-center px-6">
+          <p class="text-[11px] font-semibold tracking-widest uppercase text-primary mb-1.5">掲載記事数</p>
+          <p class="font-serif text-xl font-bold text-white">{allArticles.length}本</p>
+        </div>
+      </div>
       <a
         href="/about-us/"
         class="inline-flex items-center justify-center border border-white/30 hover:border-white/60 text-white font-bold px-7 py-3.5 rounded-lg transition-colors text-sm"
@@ -218,31 +227,3 @@ const breadcrumbs = [{ name: 'ホーム', url: '/' }];
     </div>
   </section>
 </BaseLayout>
-
-<style>
-  .hide-mobile { display: none; }
-  @media (min-width: 768px) {
-    .hide-mobile { display: inline; }
-  }
-  @media (max-width: 767px) {
-    .editorial-stats {
-      display: grid !important;
-      grid-template-columns: 1fr 1fr;
-    }
-    .editorial-stat-item {
-      padding: 16px !important;
-    }
-    .editorial-stat-item:nth-child(2) {
-      border-right: none !important;
-    }
-    .editorial-stat-item:nth-child(1),
-    .editorial-stat-item:nth-child(2) {
-      padding-bottom: 20px !important;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    }
-    .editorial-stat-item:nth-child(3),
-    .editorial-stat-item:nth-child(4) {
-      padding-top: 20px !important;
-    }
-  }
-</style>

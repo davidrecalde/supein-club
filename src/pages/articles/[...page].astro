@@ -1,0 +1,82 @@
+---
+import type { GetStaticPaths } from 'astro';
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SEO from '../../components/SEO.astro';
+import PillarHero from '../../components/PillarHero.astro';
+import ArticleCard from '../../components/ArticleCard.astro';
+import LineBanner from '../../components/LineBanner.astro';
+import { getArticleUrl } from '../../utils/articles';
+
+export const getStaticPaths = (async ({ paginate }) => {
+  const articles = await getCollection('articles', ({ data }) => !data.draft);
+  const sorted = articles.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+  return paginate(sorted, { pageSize: 24 });
+}) satisfies GetStaticPaths;
+
+const { page } = Astro.props;
+
+const breadcrumbs = [
+  { name: 'ホーム', url: '/' },
+  { name: 'すべての記事', url: '/articles/' },
+];
+
+const title = page.currentPage === 1
+  ? 'すべての記事 | supein.club'
+  : `すべての記事（${page.currentPage}ページ目）| supein.club`;
+
+const canonical = page.currentPage === 1
+  ? 'https://supein.club/articles/'
+  : `https://supein.club/articles/${page.currentPage}/`;
+---
+<BaseLayout>
+  <SEO
+    slot="seo"
+    title={title}
+    description="スペイン倶楽部が公開したすべての記事を新着順に掲載。旅行・料理・語学・文化・生活・サッカーまで、スペインに関する情報を網羅しています。"
+    canonical={canonical}
+    breadcrumbs={breadcrumbs}
+  />
+  <PillarHero
+    title="すべての記事"
+    description="旅行・料理・語学・文化・生活・サッカー——スペイン倶楽部が公開した記事を新着順にすべて掲載しています。"
+  />
+  <section class="max-w-5xl mx-auto px-5 py-14">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      {page.data.map((article) => (
+        <ArticleCard
+          title={article.data.title}
+          description={article.data.description}
+          href={getArticleUrl(article)}
+          pillar={article.data.pillar}
+          image={article.data.image}
+          imageAlt={article.data.imageAlt}
+          heroImage={article.data.heroImage}
+          heroImageAlt={article.data.heroImageAlt}
+          pubDate={article.data.pubDate}
+        />
+      ))}
+    </div>
+
+    {page.lastPage > 1 && (
+      <nav class="flex items-center justify-center gap-4 mt-14" aria-label="ページ送り">
+        {page.url.prev ? (
+          <a href={page.url.prev} class="inline-flex items-center gap-1 text-primary font-semibold text-sm hover:underline underline-offset-4">
+            ← 前へ
+          </a>
+        ) : (
+          <span class="text-muted/40 text-sm">← 前へ</span>
+        )}
+        <span class="text-muted text-sm">{page.currentPage} / {page.lastPage}</span>
+        {page.url.next ? (
+          <a href={page.url.next} class="inline-flex items-center gap-1 text-primary font-semibold text-sm hover:underline underline-offset-4">
+            次へ →
+          </a>
+        ) : (
+          <span class="text-muted/40 text-sm">次へ →</span>
+        )}
+      </nav>
+    )}
+  </section>
+  <LineBanner />
+</BaseLayout>
