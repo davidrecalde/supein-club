@@ -49,10 +49,10 @@ const featuredHeroSrc =
     : featuredArticle?.data.heroImage?.src;
 
 const pillars = [
-  { href: '/travel/', Icon: Plane, title: 'スペイン旅行', desc: 'バルセロナ・マドリードから離島まで、旅行ガイドを完全網羅', image: travelCardImg },
-  { href: '/food/', Icon: UtensilsCrossed, title: 'スペイン料理', desc: 'パエリア・タパス・ワインなど、スペインの食文化を完全解説', image: foodCardImg },
+  { href: '/travel/', Icon: Plane, title: 'スペイン旅行', desc: 'バルセロナ・マドリードから離島まで、観光・ツアー情報を完全網羅', image: travelCardImg },
+  { href: '/food/', Icon: UtensilsCrossed, title: 'スペイン料理', desc: 'パエリア・タパス・ワイン・お土産まで、スペインの食文化を完全解説', image: foodCardImg },
   { href: '/language/', Icon: MessageCircle, title: 'スペイン語', desc: 'レッスン・学校・アプリなど、学習法を完全網羅で紹介します', image: languageCardImg },
-  { href: '/living/', Icon: Home, title: 'スペインに住む', desc: '留学・仕事・ビザなど、移住のリアルな実情を詳しく紹介', image: livingCardImg },
+  { href: '/living/', Icon: Home, title: 'スペインに住む', desc: '留学・仕事・ビザなど、スペイン生活のリアルな実情を紹介', image: livingCardImg },
   { href: '/culture/', Icon: Book, title: 'スペイン文化', desc: 'フラメンコ・歴史・伝統など、文化の魅力を詳しく紹介します', image: cultureCardImg },
   { href: '/football/', Icon: SoccerBall, title: 'スペインサッカー', desc: 'ラ・リーガ、代表、バルセロナなど日本語で深掘り解説します', image: footballCardImg },
 ];
@@ -63,7 +63,7 @@ const breadcrumbs = [{ name: 'ホーム', url: '/' }];
   <SEO
     slot="seo"
     title="スペイン倶楽部 | 日本人向けスペイン情報・旅行・文化メディア"
-    description="スペインの料理・旅行・語学・文化を日本語で紹介するポータルサイト。スペイン倶楽部が運営。"
+    description="スペインの旅行・観光・ツアー、料理・ワイン・お土産、スペイン語学習、留学・ビザ・生活、文化・歴史まで日本語で紹介するスペイン倶楽部の公式サイト。"
     canonical="https://supein.club/"
     breadcrumbs={breadcrumbs}
   />
@@ -80,14 +80,14 @@ const breadcrumbs = [{ name: 'ホーム', url: '/' }];
     style="background-image: radial-gradient(circle, rgba(255,255,255,0.07) 1.5px, transparent 1.5px), radial-gradient(circle, rgba(200,16,46,0.12) 1.5px, transparent 1.5px); background-size: 28px 28px, 64px 64px; background-position: 0 0, 14px 14px;"
   >
     <div class="relative max-w-6xl mx-auto px-5 py-24 lg:py-32">
-      <p class="text-primary text-xs font-semibold uppercase tracking-widest mb-5">
+      <p class="text-primary text-sm font-semibold uppercase tracking-widest mb-5">
         スペインのすべてが、ここに
       </p>
       <h1 class="font-sans font-bold text-3xl md:text-4xl lg:text-5xl xl:text-6xl leading-tight mb-6">
-        スペイン、もっと知りたくなる。
+        スペインの旅行・料理・文化、もっと知りたくなる。
       </h1>
       <p class="text-white/75 text-lg md:text-xl leading-relaxed mb-10 max-w-xl">
-        料理・旅行・語学・文化・生活——スペインに関するすべてを、日本語でわかりやすくお届けします。
+        旅行・観光・料理・スペイン語・文化・生活——スペインに関するすべてを、日本語でわかりやすくお届けします。
       </p>
       <div class="flex flex-col sm:flex-row gap-3">
         <a
@@ -112,9 +112,9 @@ const breadcrumbs = [{ name: 'ホーム', url: '/' }];
       <div class="flex items-center gap-3 mb-4">
         <span class="font-serif text-lg text-primary/40">01</span>
         <span class="h-px w-8 bg-navy/15"></span>
-        <span class="text-primary text-xs font-semibold uppercase tracking-widest">カテゴリ</span>
+        <span class="text-primary text-sm font-semibold uppercase tracking-widest">カテゴリ</span>
       </div>
-      <h2 class="font-sans font-bold text-3xl text-navy mb-10">気になるテーマから</h2>
+      <h2 class="font-sans font-bold text-3xl text-navy mb-10">スペインの気になるテーマから</h2>
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
         {pillars.map(({ href, Icon, title, desc, image }) => (
           <a
@@ -138,7 +138,7 @@ const breadcrumbs = [{ name: 'ホーム', url: '/' }];
               <h3 class="font-sans font-bold text-navy text-lg mb-1 group-hover:text-primary transition-colors">
                 {title}
               </h3>
-              <p class="text-muted text-sm leading-relaxed">{desc}</p>
+              <p class="text-muted text-base leading-relaxed">{desc}</p>
             </div>
           </a>
         ))}
@@ -153,9 +153,9 @@ const breadcrumbs = [{ name: 'ホーム', url: '/' }];
         <div class="flex items-center gap-3 mb-4">
           <span class="font-serif text-lg text-primary/40">02</span>
           <span class="h-px w-8 bg-navy/15"></span>
-          <span class="text-primary text-xs font-semibold uppercase tracking-widest">新着</span>
+          <span class="text-primary text-sm font-semibold uppercase tracking-widest">新着</span>
         </div>
-        <h2 class="font-sans font-bold text-3xl text-navy mb-10">最新記事</h2>
+        <h2 class="font-sans font-bold text-3xl text-navy mb-10">スペインの最新記事</h2>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
           {recentArticles.map((article) => (
             <ArticleCard
@@ -187,9 +187,9 @@ const breadcrumbs = [{ name: 'ホーム', url: '/' }];
         <div class="flex items-center gap-3 mb-4">
           <span class="font-serif text-lg text-primary/40">03</span>
           <span class="h-px w-8 bg-navy/15"></span>
-          <span class="text-primary text-xs font-semibold uppercase tracking-widest">特集</span>
+          <span class="text-primary text-sm font-semibold uppercase tracking-widest">特集</span>
         </div>
-        <h2 class="font-sans font-bold text-3xl text-navy mb-10">編集部のおすすめ</h2>
+        <h2 class="font-sans font-bold text-3xl text-navy mb-10">編集部が選ぶ、スペインの注目記事</h2>
         <a
           href={getArticleUrl(featuredArticle)}
           class="group grid grid-cols-1 md:grid-cols-2 gap-0 bg-white rounded-xl overflow-hidden shadow-[0_2px_8px_rgba(0,33,71,0.07)] border border-[#E8E8E6] hover:shadow-[0_4px_16px_rgba(0,33,71,0.12)] hover:border-primary/20 transition-all"
@@ -224,26 +224,26 @@ const breadcrumbs = [{ name: 'ホーム', url: '/' }];
   <!-- About section (medio de comunicación cultural — origen de comunidad se cuenta en /about-us/) -->
   <section class="py-20 px-5 bg-navy text-white">
     <div class="max-w-4xl mx-auto text-center">
-      <p class="text-primary text-xs font-semibold uppercase tracking-widest mb-4">スペイン倶楽部とは</p>
+      <p class="text-primary text-sm font-semibold uppercase tracking-widest mb-4">スペイン倶楽部とは</p>
       <h2 class="font-sans font-bold text-3xl mb-5">日本語で伝える、スペインのカルチャーメディア</h2>
       <p class="text-white/70 text-base leading-relaxed mb-10 max-w-2xl mx-auto">
-        スペイン倶楽部は、旅行・グルメ・文化・語学を通じて、日本語でスペインの本当の姿を伝えるカルチャーメディアです。
+        スペイン倶楽部は、旅行・観光・グルメ・スペイン語・文化・生活を通じて、日本語でスペインの本当の姿を伝えるカルチャーメディアです。
       </p>
       <div class="flex items-stretch justify-center flex-wrap gap-0 max-w-2xl mx-auto mb-10">
         <div class="flex-1 min-w-[110px] text-center px-6 border-r border-white/10">
-          <p class="text-[11px] font-semibold tracking-widest uppercase text-primary mb-1.5">創設</p>
+          <p class="text-xs font-semibold tracking-widest uppercase text-primary mb-1.5">創設</p>
           <p class="font-serif text-xl font-bold text-white">2018年</p>
         </div>
         <div class="flex-1 min-w-[110px] text-center px-6 border-r border-white/10">
-          <p class="text-[11px] font-semibold tracking-widest uppercase text-primary mb-1.5">拠点</p>
+          <p class="text-xs font-semibold tracking-widest uppercase text-primary mb-1.5">拠点</p>
           <p class="font-serif text-xl font-bold text-white">東京</p>
         </div>
         <div class="flex-1 min-w-[110px] text-center px-6 border-r border-white/10">
-          <p class="text-[11px] font-semibold tracking-widest uppercase text-primary mb-1.5">言語</p>
+          <p class="text-xs font-semibold tracking-widest uppercase text-primary mb-1.5">言語</p>
           <p class="font-serif text-xl font-bold text-white">日本語</p>
         </div>
         <div class="flex-1 min-w-[110px] text-center px-6">
-          <p class="text-[11px] font-semibold tracking-widest uppercase text-primary mb-1.5">掲載記事数</p>
+          <p class="text-xs font-semibold tracking-widest uppercase text-primary mb-1.5">掲載記事数</p>
           <p class="font-serif text-xl font-bold text-white">{allArticles.length}本</p>
         </div>
       </div>
@@ -260,9 +260,9 @@ const breadcrumbs = [{ name: 'ホーム', url: '/' }];
   <section class="py-14 px-5 bg-canvas">
     <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
       <div>
-        <p class="text-primary text-xs font-semibold uppercase tracking-widest mb-3">ニュースレター</p>
+        <p class="text-primary text-sm font-semibold uppercase tracking-widest mb-3">ニュースレター</p>
         <h2 class="font-sans font-bold text-2xl text-navy mb-3">スペインの最新情報をメールで</h2>
-        <ul class="space-y-1.5 text-muted text-sm">
+        <ul class="space-y-1.5 text-muted text-base">
           <li>旅行・料理・文化・語学の情報を月2回お届け</li>
           <li>編集部が厳選した記事をいち早くチェック</li>
           <li>登録・配信停止はいつでも無料</li>
