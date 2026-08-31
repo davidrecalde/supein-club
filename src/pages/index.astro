@@ -4,7 +4,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import SEO from '../components/SEO.astro';
 import ArticleCard from '../components/ArticleCard.astro';
 import LineBanner from '../components/LineBanner.astro';
-import { Plane, UtensilsCrossed, MessageCircle, Home, Globe, Goal } from 'lucide-astro';
+import { Plane, UtensilsCrossed, MessageCircle, Home, Globe } from 'lucide-astro';
+import SoccerBall from '../components/icons/SoccerBall.astro';
 import { getArticleUrl } from '../utils/articles';
 
 const allArticles = await getCollection('articles', ({ data }) => !data.draft);
@@ -46,7 +47,7 @@ const pillars = [
   { href: '/language/', Icon: MessageCircle, title: 'スペイン語', desc: 'レッスン・学校・アプリなど学習法を完全網羅' },
   { href: '/living/', Icon: Home, title: 'スペインに住む', desc: '留学・仕事・ビザなど移住の実情を詳しく紹介' },
   { href: '/culture/', Icon: Globe, title: 'スペイン文化', desc: 'フラメンコ・歴史・伝統など文化の魅力を紹介' },
-  { href: '/football/', Icon: Goal, title: 'スペインサッカー', desc: 'ラ・リーガ、代表、バルセロナなど日本語で深掘り' },
+  { href: '/football/', Icon: SoccerBall, title: 'スペインサッカー', desc: 'ラ・リーガ、代表、バルセロナなど日本語で深掘り' },
 ];
 
 const breadcrumbs = [{ name: 'ホーム', url: '/' }];
