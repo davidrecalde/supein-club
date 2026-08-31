@@ -31,7 +31,7 @@ const TEXTS: Record<string, string> = {
       const isCurrent = level === currentLevel;
       return (
         <div
-          class={`flex items-center justify-center text-xs font-bold transition-all ${isCurrent ? 'flex-[2.5]' : 'flex-1 opacity-50'}`}
+          class={`flex items-center justify-center text-sm font-bold transition-all ${isCurrent ? 'flex-[2.5]' : 'flex-1 opacity-50'}`}
           style={`background:${bg};color:${text};`}
         >
           {level.toUpperCase()}
