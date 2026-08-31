@@ -14,7 +14,7 @@ const { title, description, keywordCount } = Astro.props;
     <h1 class="font-sans font-bold text-4xl md:text-5xl leading-tight mb-4">{title}</h1>
     <p class="text-white/75 text-lg max-w-2xl leading-relaxed">{description}</p>
     {keywordCount && (
-      <p class="mt-4 text-sm text-white/40">
+      <p class="mt-4 text-base text-white/60">
         {keywordCount.toLocaleString('ja-JP')} キーワードをカバー
       </p>
     )}
