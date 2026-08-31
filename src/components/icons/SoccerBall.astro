@@ -1,0 +1,26 @@
+---
+interface Props {
+  size?: number;
+}
+const { size = 24 } = Astro.props;
+---
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  width={size}
+  height={size}
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  class="lucide lucide-soccer-ball"
+>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M12 8 15.8 10.76 14.35 15.24 9.65 15.24 8.2 10.76Z" />
+  <path d="M12 8 12 3" />
+  <path d="M15.8 10.76 20.56 9.22" />
+  <path d="M14.35 15.24 17.29 19.28" />
+  <path d="M9.65 15.24 6.71 19.28" />
+  <path d="M8.2 10.76 3.44 9.22" />
+</svg>
