@@ -75,6 +75,8 @@ const articles = defineCollection({
       prepTime: z.string().optional(),
       recipeYield: z.string().optional(),
       recipeCategory: z.string().optional(),
+      recipeIngredient: z.array(z.string()).optional(),
+      recipeInstructions: z.array(z.string()).optional(),
     }).optional(),
     destinationData: z.object({
       locationName: z.string().optional(),

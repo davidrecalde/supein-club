@@ -60,20 +60,7 @@ const aboutPageSchema = {
   name: 'スペイン倶楽部について | supein.club',
   url: 'https://supein.club/about-us/',
   description: 'Club Español en Japón スペイン倶楽部のミッション・活動・歴史について。',
-  mainEntity: {
-    '@type': 'Organization',
-    name: 'スペイン倶楽部 (Club Español en Japón)',
-    url: 'https://supein.club',
-    foundingDate: '2018',
-    description: '日本在住のスペイン語話者・スペイン好きが集まる東京発のコミュニティ。',
-    address: { '@type': 'PostalAddress', addressLocality: '東京', addressCountry: 'JP' },
-    sameAs: [
-      'https://www.instagram.com/supeinclub/',
-      'https://www.facebook.com/supeinclub/',
-      'https://twitter.com/supeinclub',
-      'https://lin.ee/vx6jpud',
-    ],
-  },
+  mainEntity: { '@id': 'https://supein.club/#organization' },
 };
 ---
 
