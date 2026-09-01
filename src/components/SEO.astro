@@ -206,14 +206,36 @@ if (type === 'article' && article) {
       inLanguage: 'ja',
     });
   } else if (schemaType === 'destination') {
+    const destinationId = `${canonical}#destination`;
+    const articleObj: Record<string, unknown> = {
+      '@type': 'Article',
+      '@id': `${canonical}#article`,
+      headline: title.slice(0, 110),
+      description,
+      url: canonical,
+      datePublished: article.data.pubDate.toISOString(),
+      dateModified: (article.data.updatedDate ?? article.data.pubDate).toISOString(),
+      author: articleAuthor,
+      publisher: { '@id': `${siteUrl}/#organization` },
+      image: articleImage,
+      inLanguage: lang === 'es' ? 'es' : 'ja',
+      isPartOf: { '@id': `${siteUrl}/#website` },
+      mainEntityOfPage: `${canonical}#webpage`,
+      about: { '@id': destinationId },
+    };
+    if (article.data.tags && article.data.tags.length > 0) {
+      articleObj.keywords = article.data.tags.join(',');
+    }
+    graph.push(articleObj);
     graph.push({
       '@type': 'TouristDestination',
+      '@id': destinationId,
       name: article.data.destinationData?.locationName ?? title,
       description,
       url: canonical,
       touristType: { '@type': 'Audience', audienceType: '日本人旅行者' },
-      geo: {
-        '@type': 'GeoCoordinates',
+      address: {
+        '@type': 'PostalAddress',
         addressCountry: article.data.destinationData?.country ?? 'ES',
       },
     });
