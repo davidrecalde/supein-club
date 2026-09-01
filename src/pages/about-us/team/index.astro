@@ -29,9 +29,7 @@ const teamSchema = JSON.stringify({
   url: canonical,
   description: 'スペイン倶楽部の編集チームをご紹介します。スペインと日本の架け橋として活動するメンバーが、ガストロノミー・旅行・文化を日本語で発信しています。',
   mainEntity: {
-    '@type': 'Organization',
-    name: 'Club Español en Japón スペイン倶楽部',
-    url: 'https://supein.club',
+    '@id': 'https://supein.club/#organization',
     member: authors.map((a) => ({
       '@type': 'Person',
       name: a.data.name,

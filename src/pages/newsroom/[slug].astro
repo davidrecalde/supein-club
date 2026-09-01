@@ -39,21 +39,8 @@ const schema = {
   dateModified: date.toISOString(),
   url: canonical,
   inLanguage: 'ja',
-  author: {
-    '@type': 'Organization',
-    name: 'Club Español en Japón スペイン倶楽部',
-    url: 'https://supein.club',
-  },
-  publisher: {
-    '@type': 'Organization',
-    name: 'Club Español en Japón スペイン倶楽部',
-    logo: {
-      '@type': 'ImageObject',
-      url: 'https://supein.club/logo-og.png',
-      width: 600,
-      height: 60,
-    },
-  },
+  author: { '@id': 'https://supein.club/#organization' },
+  publisher: { '@id': 'https://supein.club/#organization' },
   mainEntityOfPage: {
     '@type': 'WebPage',
     '@id': canonical,
@@ -67,11 +54,7 @@ const schema = {
       height: 630,
     },
   }),
-  about: {
-    '@type': 'Organization',
-    name: 'Club Español en Japón スペイン倶楽部',
-    url: 'https://supein.club',
-  },
+  about: { '@id': 'https://supein.club/#organization' },
 };
 ---
 

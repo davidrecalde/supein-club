@@ -10,7 +10,6 @@ interface Props {
   article?: CollectionEntry<'articles'>;
   author?: CollectionEntry<'authors'>;
   breadcrumbs?: Array<{ name: string; url: string }>;
-  pageSchema?: 'collection' | 'destination' | 'sports' | 'course' | 'restaurant' | 'profile' | 'about' | 'service';
   keywords?: string[];
   authorName?: string;
   authorUrl?: string;
@@ -26,7 +25,6 @@ const {
   article,
   author,
   breadcrumbs,
-  pageSchema,
   keywords,
   authorName,
   authorUrl,
@@ -192,17 +190,20 @@ if (type === 'article' && article) {
   if (schemaType === 'recipe') {
     graph.push({
       '@type': 'Recipe',
+      '@id': `${canonical}#recipe`,
       name: title,
       description,
-      image: article.data.image ?? `${siteUrl}/logo-og.png`,
-      author: { '@type': 'Person', name: authorName },
+      image: articleImage,
+      author: articleAuthor,
+      publisher: { '@id': `${siteUrl}/#organization` },
       datePublished: article.data.pubDate.toISOString(),
+      dateModified: (article.data.updatedDate ?? article.data.pubDate).toISOString(),
       recipeCategory: article.data.recipeData?.recipeCategory ?? 'スペイン料理',
       cookTime: article.data.recipeData?.cookTime ?? 'PT30M',
       prepTime: article.data.recipeData?.prepTime ?? 'PT15M',
       recipeYield: article.data.recipeData?.recipeYield ?? '2人分',
-      recipeIngredient: [],
-      recipeInstructions: [],
+      recipeIngredient: article.data.recipeData?.recipeIngredient ?? [],
+      recipeInstructions: article.data.recipeData?.recipeInstructions ?? [],
       inLanguage: 'ja',
     });
   } else if (schemaType === 'destination') {
