@@ -49,12 +49,12 @@ const featuredHeroSrc =
     : featuredArticle?.data.heroImage?.src;
 
 const pillars = [
-  { href: '/travel/', Icon: Plane, title: 'スペイン旅行', desc: 'バルセロナ・マドリードから離島まで、観光・ツアー情報を完全網羅', image: travelCardImg },
-  { href: '/food/', Icon: UtensilsCrossed, title: 'スペイン料理', desc: 'パエリア・タパス・ワイン・お土産まで、スペインの食文化を完全解説', image: foodCardImg },
-  { href: '/language/', Icon: MessageCircle, title: 'スペイン語', desc: 'レッスン・学校・アプリなど、学習法を完全網羅で紹介します', image: languageCardImg },
-  { href: '/living/', Icon: Home, title: 'スペインに住む', desc: '留学・仕事・ビザなど、スペイン生活のリアルな実情を紹介', image: livingCardImg },
-  { href: '/culture/', Icon: Book, title: 'スペイン文化', desc: 'フラメンコ・歴史・伝統など、文化の魅力を詳しく紹介します', image: cultureCardImg },
-  { href: '/football/', Icon: SoccerBall, title: 'スペインサッカー', desc: 'ラ・リーガ、代表、バルセロナなど日本語で深掘り解説します', image: footballCardImg },
+  { href: '/travel/', Icon: Plane, title: 'スペイン旅行', desc: 'バルセロナ・マドリードから南部アンダルシア、離島まで、観光スポットとツアー情報を完全網羅', image: travelCardImg },
+  { href: '/food/', Icon: UtensilsCrossed, title: 'スペイン料理', desc: 'パエリア・タパス・ワインからおすすめのお土産まで、スペインの食文化を写真つきで詳しく解説', image: foodCardImg },
+  { href: '/language/', Icon: MessageCircle, title: 'スペイン語', desc: 'レッスン・語学学校・学習アプリの選び方まで、スペイン語習得に役立つ情報を体系的に紹介', image: languageCardImg },
+  { href: '/living/', Icon: Home, title: 'スペインに住む', desc: '留学・現地での仕事探し・ビザ取得の手続きまで、スペイン生活のリアルな実情を詳しく紹介', image: livingCardImg },
+  { href: '/culture/', Icon: Book, title: 'スペイン文化', desc: 'フラメンコ・歴史的建造物・伝統の祭りなど、スペイン文化の奥深い魅力を詳しく紹介します', image: cultureCardImg },
+  { href: '/football/', Icon: SoccerBall, title: 'スペインサッカー', desc: 'ラ・リーガの試合結果や移籍情報、代表チーム、バルセロナやレアルの歴史まで深掘り解説します', image: footballCardImg },
 ];
 
 const breadcrumbs = [{ name: 'ホーム', url: '/' }];
@@ -115,11 +115,11 @@ const breadcrumbs = [{ name: 'ホーム', url: '/' }];
         <span class="text-primary text-lg font-semibold uppercase tracking-widest">カテゴリ</span>
       </div>
       <h2 class="font-sans font-bold text-3xl text-navy mb-10">スペインの気になるテーマから</h2>
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
         {pillars.map(({ href, Icon, title, desc, image }) => (
           <a
             href={href}
-            class="group relative block aspect-square rounded-xl overflow-hidden shadow-[0_2px_8px_rgba(0,33,71,0.07)] border border-[#E8E8E6] hover:shadow-[0_4px_16px_rgba(0,33,71,0.12)] hover:border-primary/20 transition-all"
+            class="group relative block aspect-[4/3] rounded-xl overflow-hidden shadow-[0_2px_8px_rgba(0,33,71,0.07)] border border-[#E8E8E6] hover:shadow-[0_4px_16px_rgba(0,33,71,0.12)] hover:border-primary/20 transition-all"
           >
             <img
               src={image.src}
@@ -129,13 +129,13 @@ const breadcrumbs = [{ name: 'ホーム', url: '/' }];
             />
             <div
               class="absolute inset-0"
-              style="background: linear-gradient(to bottom, rgba(255,255,255,0) 0%, rgba(255,255,255,0) 58%, rgba(255,255,255,0.9) 80%, #ffffff 93%);"
+              style="background: linear-gradient(to bottom, rgba(255,255,255,0) 0%, rgba(255,255,255,0) 55%, rgba(255,255,255,0.9) 78%, #ffffff 93%);"
             ></div>
-            <div class="relative h-full flex flex-col justify-end p-6">
-              <div class="w-14 h-14 rounded-full bg-white flex items-center justify-center mb-3 text-primary shadow-md group-hover:bg-primary group-hover:text-white transition-colors">
-                <Icon size={26} />
+            <div class="relative h-full flex flex-col justify-end p-8">
+              <div class="w-16 h-16 rounded-full bg-white flex items-center justify-center mb-4 text-primary shadow-md group-hover:bg-primary group-hover:text-white transition-colors">
+                <Icon size={30} />
               </div>
-              <h3 class="font-sans font-bold text-navy text-lg mb-1 group-hover:text-primary transition-colors">
+              <h3 class="font-sans font-bold text-navy text-2xl mb-2 group-hover:text-primary transition-colors">
                 {title}
               </h3>
               <p class="text-muted text-base leading-relaxed">{desc}</p>
