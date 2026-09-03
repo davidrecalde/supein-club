@@ -82,6 +82,7 @@ export const slugToJapanese: Record<string, string> = {
   'japan-vs-spain': '日本代表 vs スペイン代表',
   'world-cup-2026': '2026年ワールドカップ',
   'lamine-yamal': 'ラミン・ヤマル',
+  'ferran-torres': 'フェラン・トーレス',
 
   // About/Team
   'team': 'チームメンバー',
