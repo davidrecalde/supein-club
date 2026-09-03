@@ -74,6 +74,7 @@ export const slugToJapanese: Record<string, string> = {
   'football-guide': 'サッカーガイド',
   'real-madrid': 'レアル・マドリード',
   'fcbarcelona': 'FCバルセロナ',
+  'valencia-cf': 'バレンシアCF',
   'spanish-vocabulary': 'サッカー用語',
   'laliga-master': 'ラ・リーガ・マスター',
   'liga-f-women': 'リーガF',
