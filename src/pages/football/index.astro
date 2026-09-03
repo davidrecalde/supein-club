@@ -44,13 +44,11 @@ const footballSchema = {
   '@context': 'https://schema.org',
   '@type': 'CollectionPage',
   name: 'スペインサッカー',
-  description: 'ラ・リーガ、スペイン代表、バルセロナ、レアル・マドリードの情報',
+  description: 'スペインサッカーに関するクラブの歴史、名選手、代表チームの情報',
   url: 'https://supein.club/football/',
   about: {
-    '@type': 'SportsOrganization',
-    name: 'ラ・リーガ',
-    sport: 'サッカー',
-    url: 'https://www.laliga.com',
+    '@type': 'Thing',
+    name: 'スペインサッカー',
   },
 };
 
@@ -70,8 +68,8 @@ function renderCard(a: Article) {
 <BaseLayout>
   <SEO
     slot="seo"
-    title="スペインサッカー完全ガイド｜ラ・リーガ・バルセロナ・レアル | supein.club"
-    description="ラ・リーガ、スペイン代表、FCバルセロナ、レアル・マドリード。スペインサッカーを日本語で深掘りするガイドメディア。"
+    title="スペインサッカー完全ガイド | supein.club"
+    description="スペインサッカーの魅力を日本語で徹底解説。クラブの歴史や名選手のストーリー、代表チームの歩みまで幅広く紹介するガイドメディアです。"
     canonical="https://supein.club/football/"
     breadcrumbs={breadcrumbs}
   />
@@ -79,9 +77,12 @@ function renderCard(a: Article) {
 
   <PillarHero
     title="スペインサッカー"
-    description="ラ・リーガ、スペイン代表、FCバルセロナ、レアル・マドリード——世界最高峰のスペインサッカーを日本語でわかりやすく解説します。"
+    description="クラブの伝統、選手たちの物語、代表チームの躍動——スペインサッカーの魅力を日本語で余すことなくお届けします。"
   />
   <section class="max-w-6xl mx-auto px-5 py-14">
+    <p class="text-muted text-base leading-relaxed mb-12">
+      スペインサッカーは、情熱的なファン文化と長い歴史を持つ、世界有数のフットボール大国です。スペインのサッカーには数々の名門クラブと伝説的な選手たちが存在し、その一つひとつに深いストーリーがあります。本カテゴリでは、サッカーとスペインにまつわるクラブの歴史から最新の話題まで、日本語で幅広く紹介しています。
+    </p>
     {categoryAnchors.length > 0 && (
       <>
         <h2 class="font-sans font-bold text-xl text-navy mb-5">カテゴリ</h2>
