@@ -53,6 +53,7 @@ export const slugToJapanese: Record<string, string> = {
 
   // Living clusters
   'study-spain': 'スペイン留学',
+  'study': 'スペイン留学',
   'language-school': '語学学校',
   'university': '大学留学',
   'study-cost': '留学費用',
