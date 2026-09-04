@@ -10,6 +10,12 @@ import AdSlot from '../../components/AdSlot.astro';
 const articles = await getCollection('articles', ({ data }) => !data.draft && data.pillar === 'living');
 const sorted = articles.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 
+// クラスター名とスラッグが同一の記事は /living/{cluster}/ の単独ページとして配信される
+const flatClusterPages = new Set(['cervantes-webinar-experiencias-espana']);
+const topicBadges: Record<string, string> = {
+  'cervantes-webinar-experiencias-espana': 'Webinar',
+};
+
 const clusters = [
   { href: '/living/study-spain/', label: 'スペイン留学' },
   { href: '/living/language-school/', label: '語学学校' },
@@ -58,8 +64,11 @@ const breadcrumbs = [
           {sorted.map((a) => {
             const parts = a.id.replace(/\.(md|mdx)$/, '').split('/');
             const slug = parts[2] ?? a.data.cluster;
+            const href = flatClusterPages.has(a.data.cluster)
+              ? `/living/${a.data.cluster}/`
+              : `/living/${a.data.cluster}/${slug}/`;
             return (
-              <ArticleCard title={a.data.title} description={a.data.description} href={`/living/${a.data.cluster}/${slug}/`} pillar="living" image={a.data.image} imageAlt={a.data.imageAlt} heroImage={a.data.heroImage} heroImageAlt={a.data.heroImageAlt} pubDate={a.data.pubDate} />
+              <ArticleCard title={a.data.title} description={a.data.description} href={href} pillar="living" image={a.data.image} imageAlt={a.data.imageAlt} heroImage={a.data.heroImage} heroImageAlt={a.data.heroImageAlt} pubDate={a.data.pubDate} topicBadge={topicBadges[a.data.cluster]} />
             );
           })}
         </div>

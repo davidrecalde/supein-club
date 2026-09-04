@@ -4,7 +4,10 @@ import type { GetStaticPaths } from 'astro';
 import ArticleLayout from '../../../../layouts/ArticleLayout.astro';
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const articles = await getCollection('articles', ({ data }) => !data.draft && data.pillar === 'living');
+  // クラスター名とスラッグが同一の記事（例: cervantes-webinar-experiencias-espana）は
+  // /living/{cluster}/ の単独静的ページで配信するため、ここでは除外する
+  const flatClusterPages = new Set(['cervantes-webinar-experiencias-espana']);
+  const articles = await getCollection('articles', ({ data }) => !data.draft && data.pillar === 'living' && !flatClusterPages.has(data.cluster));
   return articles.map((entry) => {
     const parts = entry.id.replace(/\.(md|mdx)$/, '').split('/');
     return {
