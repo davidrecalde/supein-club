@@ -73,7 +73,6 @@ export const slugToJapanese: Record<string, string> = {
   // Football clusters
   'la-liga': 'ラ・リーガ',
   'spain-national-team': 'スペイン代表',
-  'football-guide': 'サッカーガイド',
   'real-madrid': 'レアル・マドリード',
   'fcbarcelona': 'FCバルセロナ',
   'valencia-cf': 'バレンシアCF',
