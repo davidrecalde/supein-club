@@ -59,6 +59,7 @@ export const slugToJapanese: Record<string, string> = {
   'study-cost': '留学費用',
   'spain-visa': 'スペインビザ',
   'student-visa': '学生ビザ',
+  'i-need-spain': 'I need Spain 在スペイン日本人',
   'work-visa': '就労ビザ',
   'working-holiday': 'ワーキングホリデー',
   'work-in-spain': 'スペインで働く',
