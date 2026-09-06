@@ -12,14 +12,30 @@ const sorted = articles.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate
 
 // クラスター名とスラッグが同一の記事は /living/{cluster}/ の単独ページとして配信される
 const flatClusterPages = new Set(['cervantes-webinar-experiencias-espana']);
-const topicBadges: Record<string, string> = {
-  'cervantes-webinar-experiencias-espana': 'ウェビナー',
-  'i-need-spain': 'インタビュー',
-};
 
-const clusters = [
-  { href: '/living/cervantes-webinar-experiencias-espana/', label: 'ウェビナー' },
+// カテゴリ分類：クラスターごとにグループ化（新しいクラスターを追加する際は、下記に1行追加すれば自動的に反映される）
+const categories = [
+  { id: 'cervantes-webinar-experiencias-espana', label: 'ウェビナー' },
+  { id: 'i-need-spain', label: 'インタビュー' },
 ];
+
+const categoryGroups = categories
+  .map((c) => ({
+    ...c,
+    items: sorted.filter((a) => a.data.cluster === c.id),
+  }))
+  .filter((g) => g.items.length > 0);
+
+const categorizedIds = new Set(categoryGroups.flatMap((g) => g.items.map((a) => a.id)));
+const uncategorized = sorted.filter((a) => !categorizedIds.has(a.id));
+
+const categoryAnchors = categoryGroups.map((g) => ({ href: `#${g.id}`, label: g.label }));
+
+function cardHref(a: (typeof sorted)[number]) {
+  const parts = a.id.replace(/\.(md|mdx)$/, '').split('/');
+  const slug = parts[2] ?? a.data.cluster;
+  return flatClusterPages.has(a.data.cluster) ? `/living/${a.data.cluster}/` : `/living/${a.data.cluster}/${slug}/`;
+}
 
 const breadcrumbs = [
   { name: 'ホーム', url: '/' },
@@ -42,30 +58,44 @@ const breadcrumbs = [
     <p class="text-muted text-base leading-relaxed mb-12 border-l-2 border-primary pl-5">
       スペインでの生活は、目的や滞在スタイルによって必要な準備が大きく異なる、奥深いテーマです。本カテゴリでは、実際にスペインで暮らすために役立つ情報を日本語で幅広くご紹介しています。
     </p>
-    <h2 class="font-sans font-bold text-xl text-navy mb-5">カテゴリ</h2>
-    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3 mb-12">
-      {clusters.map(({ href, label }) => (
-        <a href={href} class="bg-white rounded-lg px-3 py-3 min-h-[44px] flex items-center justify-center text-center border border-[#E8E8E6] hover:border-primary/30 hover:shadow-sm transition-all">
-          <span class="font-semibold text-navy text-sm leading-snug block">{label}</span>
-        </a>
-      ))}
-    </div>
-    {sorted.length > 0 && (
+
+    {categoryAnchors.length > 0 && (
       <>
-        <h2 class="font-sans font-bold text-xl text-navy mb-5">記事一覧</h2>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {sorted.map((a) => {
-            const parts = a.id.replace(/\.(md|mdx)$/, '').split('/');
-            const slug = parts[2] ?? a.data.cluster;
-            const href = flatClusterPages.has(a.data.cluster)
-              ? `/living/${a.data.cluster}/`
-              : `/living/${a.data.cluster}/${slug}/`;
-            return (
-              <ArticleCard title={a.data.title} description={a.data.description} href={href} pillar="living" image={a.data.image} imageAlt={a.data.imageAlt} heroImage={a.data.heroImage} heroImageAlt={a.data.heroImageAlt} pubDate={a.data.pubDate} topicBadge={topicBadges[a.data.cluster]} />
-            );
-          })}
+        <h2 class="font-sans font-bold text-xl text-navy mb-5">カテゴリ</h2>
+        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3 mb-12">
+          {categoryAnchors.map(({ href, label }) => (
+            <a href={href} class="bg-white rounded-lg px-3 py-3 min-h-[44px] flex items-center justify-center text-center border border-[#E8E8E6] hover:border-primary/30 hover:shadow-sm transition-all">
+              <span class="font-semibold text-navy text-sm leading-snug block">{label}</span>
+            </a>
+          ))}
         </div>
       </>
+    )}
+
+    {categoryGroups.map((group) => (
+      <>
+        <h2 id={group.id} class="font-sans font-bold text-xl text-navy mb-5">{group.label}</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+          {group.items.map((a) => (
+            <ArticleCard title={a.data.title} description={a.data.description} href={cardHref(a)} pillar="living" image={a.data.image} imageAlt={a.data.imageAlt} heroImage={a.data.heroImage} heroImageAlt={a.data.heroImageAlt} pubDate={a.data.pubDate} topicBadge={group.label} />
+          ))}
+        </div>
+      </>
+    ))}
+
+    {uncategorized.length > 0 && (
+      <>
+        <h2 id="other" class="font-sans font-bold text-xl text-navy mb-5">その他</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {uncategorized.map((a) => (
+            <ArticleCard title={a.data.title} description={a.data.description} href={cardHref(a)} pillar="living" image={a.data.image} imageAlt={a.data.imageAlt} heroImage={a.data.heroImage} heroImageAlt={a.data.heroImageAlt} pubDate={a.data.pubDate} />
+          ))}
+        </div>
+      </>
+    )}
+
+    {sorted.length === 0 && (
+      <p class="text-muted text-center py-12">記事を準備中です。近日公開予定。</p>
     )}
   </section>
   <section class="max-w-6xl mx-auto px-5 pb-14">
