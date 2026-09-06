@@ -51,7 +51,7 @@ const usedIds = new Set([entry.id, ...pinned.map((a) => a.id)]);
 const byDate = (a: CollectionEntry<'articles'>, b: CollectionEntry<'articles'>) =>
   b.data.pubDate.getTime() - a.data.pubDate.getTime();
 
-for (const candidate of allArticles.filter((a) => a.data.cluster === cluster && !usedIds.has(a.id)).sort(byDate)) {
+for (const candidate of allArticles.filter((a) => a.data.pillar === pillar && a.data.cluster === cluster && !usedIds.has(a.id)).sort(byDate)) {
   if (pinned.length >= 3) break;
   pinned.push(candidate);
   usedIds.add(candidate.id);
