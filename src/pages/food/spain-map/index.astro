@@ -369,6 +369,10 @@ const zones: Zone[] = [
   }
   .community-block {
     margin-bottom: 0;
+    /* La cabecera del sitio es sticky (h-16 + borde de 3px ≈ 67px);
+       sin este margen, saltar aquí desde la leyenda del mapa esconde
+       la bandera y el nombre de la comunidad detrás de la cabecera. */
+    scroll-margin-top: 88px;
   }
   .community-heading {
     display: flex;
