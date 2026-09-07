@@ -11,15 +11,56 @@ import { getArticleUrl } from '../../utils/articles';
 const articles = await getCollection('articles', ({ data }) => !data.draft && data.pillar === 'food');
 const sorted = articles.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 
-const clusters = [
-  { href: '/food/paella/', label: 'パエリア' },
-  { href: '/food/tapas/', label: 'タパス' },
-  { href: '/food/spanish-wine/', label: 'スペインワイン' },
-  { href: '/food/olive-oil/', label: 'オリーブオイル' },
-  { href: '/food/souvenirs/', label: 'お土産' },
-  { href: '/food/restaurants-tokyo/', label: '東京のお店' },
-  { href: '/food/restaurants-osaka/', label: '大阪のお店' },
+const provinceEntries = await getCollection('spain-map', ({ data }) => data.draft !== true);
+const sortedProvinces = [...provinceEntries].sort((a, b) => a.data.provinceJa.localeCompare(b.data.provinceJa, 'ja'));
+
+// カテゴリ分類：クラスターごとにグループ化（新しいクラスターを追加する際は、下記に1行追加すれば自動的に反映される）
+const categories = [
+  { id: 'spanish-vocabulary', label: 'グルメ語彙' },
 ];
+
+function toCardItem(a: (typeof sorted)[number]) {
+  return {
+    title: a.data.title,
+    description: a.data.description,
+    href: getArticleUrl(a),
+    pubDate: a.data.pubDate,
+    image: a.data.image,
+    imageAlt: a.data.imageAlt,
+    heroImage: a.data.heroImage,
+    heroImageAlt: a.data.heroImageAlt,
+  };
+}
+
+const categoryGroups = categories
+  .map((c) => ({ ...c, items: sorted.filter((a) => a.data.cluster === c.id).map(toCardItem) }))
+  .filter((g) => g.items.length > 0);
+
+const categorizedIds = new Set(categories.flatMap((c) => sorted.filter((a) => a.data.cluster === c.id).map((a) => a.id)));
+const uncategorized = sorted.filter((a) => !categorizedIds.has(a.id)).map(toCardItem);
+
+// スペイン美食マップ：ハブページ＋全都道府県のページを1つの長いカテゴリとして表示
+const spainMapGroup = {
+  id: 'spain-map',
+  label: 'スペイン美食マップ',
+  items: [
+    {
+      title: 'スペイン美食マップ｜州別レストラン・バルガイド',
+      description: '7つの美食ゾーンで探せるインタラクティブマップ。全都道府県、地方ごとのレストラン・バル情報をまとめています。',
+      href: '/food/spain-map/',
+      pubDate: new Date('2026-09-07'),
+    },
+    ...sortedProvinces.map((p) => ({
+      title: p.data.title,
+      description: p.data.description,
+      href: `/food/spain-map/${p.data.province}/`,
+      pubDate: p.data.pubDate,
+    })),
+  ],
+};
+
+const allGroups = [...categoryGroups, spainMapGroup];
+const categoryAnchors = allGroups.map((g) => ({ href: `#${g.id}`, label: g.label }));
 
 const breadcrumbs = [
   { name: 'ホーム', url: '/' },
@@ -42,24 +83,47 @@ const breadcrumbs = [
     <p class="text-muted text-base leading-relaxed mb-12 border-l-2 border-primary pl-5">
       スペイン料理・グルメは、地方ごとに驚くほど個性豊かな顔を持つ、奥深いテーマです。本カテゴリでは、そんなスペイン料理の世界を日本語でわかりやすくご紹介しています。
     </p>
-    <h2 class="font-sans font-bold text-xl text-navy mb-5">カテゴリ</h2>
-    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3 mb-12">
-      {clusters.map(({ href, label }) => (
-        <a href={href} class="bg-white rounded-lg px-3 py-3 min-h-[44px] flex items-center justify-center text-center border border-[#E8E8E6] hover:border-primary/30 hover:shadow-sm transition-all">
-          <span class="font-semibold text-navy text-sm leading-snug block">{label}</span>
-        </a>
-      ))}
-    </div>
-    {sorted.length > 0 && (
+    {categoryAnchors.length > 0 && (
       <>
-        <h2 class="font-sans font-bold text-xl text-navy mb-5">記事一覧</h2>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {sorted.map((a) => (
-            <ArticleCard title={a.data.title} description={a.data.description} href={getArticleUrl(a)} pillar="food" image={a.data.image} imageAlt={a.data.imageAlt} heroImage={a.data.heroImage} heroImageAlt={a.data.heroImageAlt} pubDate={a.data.pubDate} />
+        <h2 class="font-sans font-bold text-xl text-navy mb-5">カテゴリ</h2>
+        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3 mb-12">
+          {categoryAnchors.map(({ href, label }) => (
+            <a href={href} class="bg-white rounded-lg px-3 py-3 min-h-[44px] flex items-center justify-center text-center border border-[#E8E8E6] hover:border-primary/30 hover:shadow-sm transition-all">
+              <span class="font-semibold text-navy text-sm leading-snug block">{label}</span>
+            </a>
           ))}
         </div>
       </>
     )}
+
+    {categoryGroups.map((group) => (
+      <>
+        <h2 id={group.id} class="font-sans font-bold text-xl text-navy mb-5">{group.label}</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+          {group.items.map((item) => (
+            <ArticleCard title={item.title} description={item.description} href={item.href} pillar="food" image={item.image} imageAlt={item.imageAlt} heroImage={item.heroImage} heroImageAlt={item.heroImageAlt} pubDate={item.pubDate} topicBadge={group.label} />
+          ))}
+        </div>
+      </>
+    ))}
+
+    {uncategorized.length > 0 && (
+      <>
+        <h2 id="other" class="font-sans font-bold text-xl text-navy mb-5">その他</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+          {uncategorized.map((item) => (
+            <ArticleCard title={item.title} description={item.description} href={item.href} pillar="food" image={item.image} imageAlt={item.imageAlt} heroImage={item.heroImage} heroImageAlt={item.heroImageAlt} pubDate={item.pubDate} />
+          ))}
+        </div>
+      </>
+    )}
+
+    <h2 id={spainMapGroup.id} class="font-sans font-bold text-xl text-navy mb-5">{spainMapGroup.label}</h2>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      {spainMapGroup.items.map((item) => (
+        <ArticleCard title={item.title} description={item.description} href={item.href} pillar="food" pubDate={item.pubDate} topicBadge={spainMapGroup.label} />
+      ))}
+    </div>
   </section>
   <!-- SECCIÓN A — Spanish Food Map -->
   <section style="background:#002147; padding:72px 0;">
