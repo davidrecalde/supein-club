@@ -16,7 +16,7 @@ const breadcrumbs = [
 ];
 ---
 <BaseLayout>
-  <SEO slot="seo" title="スペイン お土産 おすすめ人気ランキング | supein.club" description="スペイン旅行で絶対買いたいおすすめお土産。チョコレート・ワイン・オリーブオイル・食器など喜ばれるギフト完全ガイド。" canonical="https://supein.club/food/souvenirs/" breadcrumbs={breadcrumbs} />
+  <SEO slot="seo" title="スペイン お土産 おすすめ人気ランキング | supein.club" description="スペイン旅行で絶対買いたいおすすめお土産。チョコレート・ワイン・オリーブオイル・食器など喜ばれるギフト完全ガイド。" canonical="https://supein.club/food/souvenirs/" breadcrumbs={breadcrumbs} robots={sorted.length > 0 ? 'index, follow' : 'noindex, follow'} />
   <section class="bg-navy text-white py-12 px-4">
     <div class="max-w-4xl mx-auto">
       <Breadcrumb items={breadcrumbs} dark />
