@@ -6,6 +6,7 @@ import Breadcrumb from '../../../components/Breadcrumb.astro';
 import TOC from '../../../components/TOC.astro';
 import LineBanner from '../../../components/LineBanner.astro';
 import SpainMapSVG from '../../../components/SpainMapSVG.astro';
+import { communityColorMap } from '../../../data/spainCommunities';
 import { Waves, Fish, UtensilsCrossed, Sun, Flame, Leaf, Anchor } from 'lucide-astro';
 
 const canonical = 'https://supein.club/food/spain-map/';
@@ -46,31 +47,30 @@ const provinceBySlug: Record<string, string> = {
   valladolid: 'バリャドリード', alava: 'アラバ', zaragoza: 'サラゴサ', zamora: 'サモラ',
 };
 
-// flagColor: color principal real de cada bandera (extraído de los archivos con
-// sharp .stats().dominant y verificado visualmente; sustituido manualmente por
-// el color secundario cuando el dominante era blanco y por tanto invisible como
-// acento sobre un botón blanco). Ordenadas de más a menos provincias para que,
-// al emparejarse de 2 en 2 en la retícula, los bloques de tamaño similar queden
-// uno junto al otro.
+// flagColor se obtiene de src/data/spainCommunities.ts (misma paleta que la
+// leyenda y el relleno del mapa SVG) — single source of truth para que los
+// tres puntos (botón, leyenda, mapa) queden vinculados visualmente.
+// Ordenadas de más a menos provincias para que, al emparejarse de 2 en 2 en
+// la retícula, los bloques de tamaño similar queden uno junto al otro.
 const communities = [
-  { color: '#A8956C', flagColor: '#6B2C5F', name: 'カスティーリャ・イ・レオン', flags: ['/images/flags/castilla-y-leon.webp'], provinces: ['avila', 'burgos', 'leon', 'palencia', 'salamanca', 'segovia', 'soria', 'valladolid', 'zamora'] },
-  { color: '#C8956C', flagColor: '#0F7A3D', name: 'アンダルシア', flags: ['/images/flags/andalucia.webp'], provinces: ['almeria', 'cadiz', 'cordoba', 'granada', 'huelva', 'jaen', 'malaga', 'sevilla'] },
-  { color: '#B8A898', flagColor: '#B91C2C', name: 'カスティーリャ・ラ・マンチャ', flags: ['/images/flags/castilla-la-mancha.webp'], provinces: ['albacete', 'ciudad-real', 'cuenca', 'guadalajara', 'toledo'] },
-  { color: '#8B7355', flagColor: '#E8C200', name: 'カタルーニャ', flags: ['/images/flags/catalunya.webp'], provinces: ['barcelona', 'gerona', 'lerida', 'tarragona'] },
-  { color: '#6B8FA8', flagColor: '#0090C8', name: 'ガリシア', flags: ['/images/flags/galicia.webp'], provinces: ['la-coruna', 'lugo', 'orense', 'pontevedra'] },
-  { color: '#C49A6C', flagColor: '#0055A4', name: 'バレンシア州', flags: ['/images/flags/valencia.webp'], provinces: ['alicante', 'castellon', 'valencia'] },
-  { color: '#5C7A6B', flagColor: '#C41E3A', name: 'バスク地方', flags: ['/images/flags/pais-vasco.webp'], provinces: ['vizcaya', 'guipuzcoa', 'alava'] },
-  { color: '#7B9E87', flagColor: '#E8C200', name: 'アラゴン', flags: ['/images/flags/aragon.webp'], provinces: ['huesca', 'teruel', 'zaragoza'] },
-  { color: '#7A9E7E', flagColor: '#1A1A1A', name: 'エストレマドゥーラ', flags: ['/images/flags/extremadura.webp'], provinces: ['badajoz', 'caceres'] },
-  { color: '#D4A853', flagColor: '#E0B400', name: 'カナリア諸島', flags: ['/images/flags/canarias.webp'], provinces: ['las-palmas', 'santa-cruz-de-tenerife'] },
-  { color: '#9ca3af', flagColor: '#0878B8', name: 'セウタ・メリリャ（自治都市）', flags: ['/images/flags/ceuta.webp', '/images/flags/melilla.webp'], provinces: ['ceuta', 'melilla'] },
-  { color: '#5B8FA8', flagColor: '#0868D8', name: 'アストゥリアス', flags: ['/images/flags/asturias.webp'], provinces: ['asturias'] },
-  { color: '#9B7FB6', flagColor: '#E8C200', name: 'バレアレス諸島', flags: ['/images/flags/baleares.webp'], provinces: ['islas-baleares'] },
-  { color: '#6B9E9E', flagColor: '#D6241D', name: 'カンタブリア', flags: ['/images/flags/cantabria.webp'], provinces: ['cantabria'] },
-  { color: '#B87878', flagColor: '#E0B400', name: 'ラ・リオハ', flags: ['/images/flags/la-rioja.webp'], provinces: ['la-rioja'] },
-  { color: '#8B6B8B', flagColor: '#C8102E', name: 'マドリード州', flags: ['/images/flags/madrid.webp'], provinces: ['madrid'] },
-  { color: '#C4A882', flagColor: '#7A1220', name: 'ムルシア', flags: ['/images/flags/murcia.webp'], provinces: ['murcia'] },
-  { color: '#7E9E8B', flagColor: '#C81818', name: 'ナバラ', flags: ['/images/flags/navarra.webp'], provinces: ['navarra'] },
+  { slug: 'castilla-y-leon', name: 'カスティーリャ・イ・レオン', flags: ['/images/flags/castilla-y-leon.webp'], provinces: ['avila', 'burgos', 'leon', 'palencia', 'salamanca', 'segovia', 'soria', 'valladolid', 'zamora'] },
+  { slug: 'andalucia', name: 'アンダルシア', flags: ['/images/flags/andalucia.webp'], provinces: ['almeria', 'cadiz', 'cordoba', 'granada', 'huelva', 'jaen', 'malaga', 'sevilla'] },
+  { slug: 'castilla-la-mancha', name: 'カスティーリャ・ラ・マンチャ', flags: ['/images/flags/castilla-la-mancha.webp'], provinces: ['albacete', 'ciudad-real', 'cuenca', 'guadalajara', 'toledo'] },
+  { slug: 'catalunya', name: 'カタルーニャ', flags: ['/images/flags/catalunya.webp'], provinces: ['barcelona', 'gerona', 'lerida', 'tarragona'] },
+  { slug: 'galicia', name: 'ガリシア', flags: ['/images/flags/galicia.webp'], provinces: ['la-coruna', 'lugo', 'orense', 'pontevedra'] },
+  { slug: 'valencia', name: 'バレンシア州', flags: ['/images/flags/valencia.webp'], provinces: ['alicante', 'castellon', 'valencia'] },
+  { slug: 'pais-vasco', name: 'バスク地方', flags: ['/images/flags/pais-vasco.webp'], provinces: ['vizcaya', 'guipuzcoa', 'alava'] },
+  { slug: 'aragon', name: 'アラゴン', flags: ['/images/flags/aragon.webp'], provinces: ['huesca', 'teruel', 'zaragoza'] },
+  { slug: 'extremadura', name: 'エストレマドゥーラ', flags: ['/images/flags/extremadura.webp'], provinces: ['badajoz', 'caceres'] },
+  { slug: 'canarias', name: 'カナリア諸島', flags: ['/images/flags/canarias.webp'], provinces: ['las-palmas', 'santa-cruz-de-tenerife'] },
+  { slug: 'ceuta-melilla', name: 'セウタ・メリリャ（自治都市）', flags: ['/images/flags/ceuta.webp', '/images/flags/melilla.webp'], provinces: ['ceuta', 'melilla'] },
+  { slug: 'asturias', name: 'アストゥリアス', flags: ['/images/flags/asturias.webp'], provinces: ['asturias'] },
+  { slug: 'baleares', name: 'バレアレス諸島', flags: ['/images/flags/baleares.webp'], provinces: ['islas-baleares'] },
+  { slug: 'cantabria', name: 'カンタブリア', flags: ['/images/flags/cantabria.webp'], provinces: ['cantabria'] },
+  { slug: 'la-rioja', name: 'ラ・リオハ', flags: ['/images/flags/la-rioja.webp'], provinces: ['la-rioja'] },
+  { slug: 'madrid', name: 'マドリード州', flags: ['/images/flags/madrid.webp'], provinces: ['madrid'] },
+  { slug: 'murcia', name: 'ムルシア', flags: ['/images/flags/murcia.webp'], provinces: ['murcia'] },
+  { slug: 'navarra', name: 'ナバラ', flags: ['/images/flags/navarra.webp'], provinces: ['navarra'] },
 ];
 
 type Zone = {
@@ -226,7 +226,7 @@ const zones: Zone[] = [
                 </div>
                 <div class="community-buttons">
                   {c.provinces.map((slug) => (
-                    <a href={`/food/spain-map/${slug}/`} class="province-button" style={`border-left-color: ${c.flagColor};`}>
+                    <a href={`/food/spain-map/${slug}/`} class="province-button" style={`border-left-color: ${communityColorMap[c.slug].flagColor};`}>
                       {provinceBySlug[slug]}
                     </a>
                   ))}
