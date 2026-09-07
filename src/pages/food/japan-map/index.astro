@@ -1,0 +1,135 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import SEO from '../../../components/SEO.astro';
+import Breadcrumb from '../../../components/Breadcrumb.astro';
+import LineBanner from '../../../components/LineBanner.astro';
+
+const canonical = 'https://supein.club/food/japan-map/';
+const breadcrumbs = [
+  { name: 'ホーム', url: '/' },
+  { name: 'スペイン料理', url: '/food/' },
+  { name: '日本のスペイン料理店マップ', url: '' },
+];
+
+const japanMaps = [
+  { name: 'Aichi', nameJa: '愛知県', url: 'https://maps.app.goo.gl/6HszfUgb6ZXLpoSMA' },
+  { name: 'Ehime', nameJa: '愛媛県', url: 'https://maps.app.goo.gl/ykKxA5Msexao2M989' },
+  { name: 'Fukuoka', nameJa: '福岡県', url: 'https://maps.app.goo.gl/kah6tRtMQTCBL4g17' },
+  { name: 'Hiroshima', nameJa: '広島県', url: 'https://maps.app.goo.gl/bzZmtK8PQBVduxco6' },
+  { name: 'Hyogo', nameJa: '兵庫県', url: 'https://maps.app.goo.gl/CmW5dfVcuWrWaNsB9' },
+  { name: 'Ibaraki', nameJa: '茨城県', url: 'https://maps.app.goo.gl/wrP8iSuEEABLj8qx8' },
+  { name: 'Ishikawa', nameJa: '石川県', url: 'https://maps.app.goo.gl/roDwe9sCQXZ87m8S9' },
+  { name: 'Kanagawa', nameJa: '神奈川県', url: 'https://maps.app.goo.gl/Sny24oGbPi3bLKpB9' },
+  { name: 'Kyoto', nameJa: '京都府', url: 'https://maps.app.goo.gl/yC69JnSdX4LGzfn89' },
+  { name: 'Mie', nameJa: '三重県', url: 'https://maps.app.goo.gl/MCfsvvay5kp5fNN78' },
+  { name: 'Miyagi', nameJa: '宮城県', url: 'https://maps.app.goo.gl/5mbswWUkG3XUHShc6' },
+  { name: 'Okayama', nameJa: '岡山県', url: 'https://maps.app.goo.gl/nwuUkfYRBpBRdWU99' },
+  { name: 'Osaka', nameJa: '大阪府', url: 'https://maps.app.goo.gl/GhGCZvzinM3spiQx7' },
+  { name: 'Shizuoka', nameJa: '静岡県', url: 'https://maps.app.goo.gl/ccTVow52ihcqLGrd6' },
+  { name: 'Tokyo', nameJa: '東京都', url: 'https://maps.app.goo.gl/mxh9aSorMoHd3DBd6' },
+];
+---
+<BaseLayout title="日本のスペイン料理店マップ | supein.club">
+  <SEO
+    slot="seo"
+    title="日本のスペイン料理店マップ｜全国のスペインバル・レストラン検索 | supein.club"
+    description="日本全国のスペイン料理店・バルをエリア別に検索できるマップ集。東京・大阪の詳細ガイドに加え、15都道府県のGoogleマップリストを無料で公開しています。"
+    canonical={canonical}
+    breadcrumbs={breadcrumbs}
+  />
+
+  <!-- Hero -->
+  <section class="bg-navy text-white relative" style="padding:80px 0;">
+    <div class="absolute top-0 left-0 right-0 h-[3px] bg-primary"></div>
+    <div class="container">
+      <div style="margin-bottom:20px; opacity:0.5;">
+        <Breadcrumb items={breadcrumbs} dark={true} />
+      </div>
+      <p class="text-primary font-bold tracking-widest" style="font-size:11px; text-transform:uppercase; margin-bottom:12px;">IN JAPAN</p>
+      <h1 class="font-serif font-bold text-white" style="font-size:clamp(28px,5vw,48px); margin-bottom:16px; line-height:1.25;">
+        日本のスペイン料理店マップ
+      </h1>
+      <p class="text-white/80" style="font-size:18px; max-width:640px; line-height:1.8;">
+        日本全国のスペイン料理レストラン・バルをエリア別に検索。東京・大阪は個別の詳細ガイドもあわせてご覧ください。
+      </p>
+    </div>
+  </section>
+
+  <section class="max-w-6xl mx-auto px-5 py-14">
+    <div style="display:flex; flex-wrap:wrap; gap:12px; margin-bottom:32px;">
+      <a href="/food/restaurants-tokyo/" class="japan-highlight-link">東京のスペイン料理店 →</a>
+      <a href="/food/restaurants-osaka/" class="japan-highlight-link">大阪のスペイン料理店 →</a>
+    </div>
+
+    <div class="japan-grid">
+      {japanMaps.map((j) => (
+        <a href={j.url} target="_blank" rel="noopener noreferrer" class="japan-card">
+          <p class="province-name-ja">{j.nameJa}</p>
+          <p class="province-name-es">{j.name}</p>
+        </a>
+      ))}
+    </div>
+
+    <p class="text-muted" style="font-size:13px; margin-top:24px; line-height:1.6;">
+      マップはスペイン倶楽部が独自にキュレーションしています。
+      日本全国・スペイン全省のマップ一覧は
+      <a href="https://linktr.ee/supeinclub" target="_blank" rel="noopener nofollow noreferrer" class="text-primary hover:underline">こちら →</a>
+    </p>
+  </section>
+
+  <LineBanner slim />
+</BaseLayout>
+
+<style>
+  .japan-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+  }
+  .japan-card {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding: 16px;
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    text-decoration: none;
+    background: white;
+    transition: border-color 0.2s;
+  }
+  .japan-card:hover {
+    border-color: var(--color-primary);
+  }
+  .province-name-ja {
+    font-weight: 700;
+    font-size: 14px;
+    color: var(--color-navy);
+    margin: 0;
+  }
+  .province-name-es {
+    font-size: 11px;
+    color: var(--color-muted);
+    margin: 0;
+  }
+  .japan-highlight-link {
+    display: inline-block;
+    padding: 10px 20px;
+    background: var(--color-navy);
+    color: white;
+    font-weight: 700;
+    font-size: 14px;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: background 0.2s;
+  }
+  .japan-highlight-link:hover {
+    background: var(--color-primary);
+  }
+
+  @media (max-width: 1023px) {
+    .japan-grid { grid-template-columns: repeat(3, 1fr); }
+  }
+  @media (max-width: 767px) {
+    .japan-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+</style>
