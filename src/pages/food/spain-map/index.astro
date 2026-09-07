@@ -335,17 +335,25 @@ const zones: Zone[] = [
     padding-bottom: 0;
   }
 
-  /* Community button grid (colors match SpainMapSVG legend) */
+  /* Community button grid (colors match SpainMapSVG legend).
+     column-count deja que los bloques cortos (comunidades de 1-2
+     provincias) se compacten junto a otros en la misma fila visual,
+     en vez de que cada uno ocupe una fila entera casi vacía. */
   .community-list {
     margin-top: 40px;
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 32px;
+    column-count: 2;
+    column-gap: 32px;
+  }
+  .community-block {
+    display: inline-block;
+    width: 100%;
+    break-inside: avoid;
+    margin-bottom: 32px;
   }
   .community-heading {
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 10px;
     margin-bottom: 10px;
   }
   .community-flags {
@@ -354,10 +362,10 @@ const zones: Zone[] = [
     flex-shrink: 0;
   }
   .community-flag {
-    width: 20px;
-    height: 20px;
+    width: 32px;
+    height: 32px;
     object-fit: cover;
-    border-radius: 3px;
+    border-radius: 4px;
     border: 1px solid var(--color-border);
     display: block;
   }
@@ -368,7 +376,7 @@ const zones: Zone[] = [
   }
   .community-buttons {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     gap: 12px;
   }
   .province-button {
@@ -475,6 +483,6 @@ const zones: Zone[] = [
   @media (max-width: 767px) {
     .msec { padding-top: 32px; padding-bottom: 32px; }
     .dining-times-teaser { flex-direction: column; align-items: flex-start; }
-    .community-buttons { grid-template-columns: repeat(2, 1fr); }
+    .community-list { column-count: 1; }
   }
 </style>
