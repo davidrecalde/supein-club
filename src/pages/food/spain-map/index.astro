@@ -6,7 +6,7 @@ import Breadcrumb from '../../../components/Breadcrumb.astro';
 import TOC from '../../../components/TOC.astro';
 import LineBanner from '../../../components/LineBanner.astro';
 import SpainMapSVG from '../../../components/SpainMapSVG.astro';
-import { Waves, Fish, UtensilsCrossed, Sun, Flame, Leaf, Anchor, MapPin } from 'lucide-astro';
+import { Waves, Fish, UtensilsCrossed, Sun, Flame, Leaf, Anchor } from 'lucide-astro';
 
 const canonical = 'https://supein.club/food/spain-map/';
 const breadcrumbs = [
@@ -18,7 +18,6 @@ const breadcrumbs = [
 const tocHeadings = [
   { depth: 2, slug: 'interactive-map', text: 'インタラクティブマップ' },
   { depth: 2, slug: 'culinary-zones',  text: '7つの美食ゾーン' },
-  { depth: 2, slug: 'timing',          text: 'スペインの食事時間' },
 ];
 
 const entries = await getCollection('spain-map', ({ data }) => data.draft !== true);
@@ -68,15 +67,13 @@ const communities = [
   { color: '#9ca3af', name: 'セウタ・メリリャ（自治都市）', provinces: ['ceuta', 'melilla'] },
 ];
 
-type ZoneProvince = { nameJa: string; name: string; url: string };
 type Zone = {
   color: string;
   icon: any;
   title: string;
   provincias: string;
-  destacado: string;
-  platoIconico: string;
-  links: ZoneProvince[];
+  summary: string;
+  href: string;
 };
 
 const zones: Zone[] = [
@@ -85,122 +82,58 @@ const zones: Zone[] = [
     icon: Waves,
     title: '北部：ピンチョスとシードルの道',
     provincias: 'バスク · カンタブリア · アストゥリアス',
-    destacado: 'サン・セバスティアン（美食の首都）、イディアサバルチーズ',
-    platoIconico: 'ピンチョス',
-    links: [
-      { nameJa: 'アラバ', name: 'Álava', url: '/food/spain-map/alava/' },
-      { nameJa: 'ギプスコア', name: 'Guipúzcoa', url: '/food/spain-map/guipuzcoa/' },
-      { nameJa: 'ビスカヤ', name: 'Vizcaya', url: '/food/spain-map/vizcaya/' },
-      { nameJa: 'アストゥリアス', name: 'Asturias', url: '/food/spain-map/asturias/' },
-      { nameJa: 'カンタブリア', name: 'Cantabria', url: '/food/spain-map/cantabria/' },
-    ],
+    summary: '美食の街サン・セバスティアンのピンチョス文化から、アストゥリアスのシードルまで。',
+    href: '/food/food-routes/norte-pinchos-sidra/',
   },
   {
     color: '#1B4F72',
     icon: Fish,
     title: '北西部：マリスコとアルバリーニョ',
     provincias: 'ガリシア · ナバラ',
-    destacado: 'タコのガリシア風、アルバリーニョワイン',
-    platoIconico: 'プルポ・ア・ラ・ガジェガ',
-    links: [
-      { nameJa: 'ア・コルーニャ', name: 'La Coruña', url: '/food/spain-map/la-coruna/' },
-      { nameJa: 'ルーゴ', name: 'Lugo', url: '/food/spain-map/lugo/' },
-      { nameJa: 'オウレンセ', name: 'Orense', url: '/food/spain-map/orense/' },
-      { nameJa: 'ポンテベドラ', name: 'Pontevedra', url: '/food/spain-map/pontevedra/' },
-      { nameJa: 'ナバラ', name: 'Navarra', url: '/food/spain-map/navarra/' },
-    ],
+    summary: 'タコ料理をはじめとする新鮮な魚介と、アルバリーニョワインの産地。',
+    href: '/food/food-routes/noroeste-marisco-albarino/',
   },
   {
     color: '#002147',
     icon: UtensilsCrossed,
     title: '中部：アサードと赤ワイン',
-    provincias: 'マドリード · カスティーリャ',
-    destacado: 'コシード・マドリレーニョ、コチニージョ（子豚の丸焼き）',
-    platoIconico: 'コシード・マドリレーニョ',
-    links: [
-      { nameJa: 'マドリード', name: 'Madrid', url: '/food/spain-map/madrid/' },
-      { nameJa: 'ブルゴス', name: 'Burgos', url: '/food/spain-map/burgos/' },
-      { nameJa: 'サラマンカ', name: 'Salamanca', url: '/food/spain-map/salamanca/' },
-      { nameJa: 'セゴビア', name: 'Segovia', url: '/food/spain-map/segovia/' },
-      { nameJa: 'バリャドリード', name: 'Valladolid', url: '/food/spain-map/valladolid/' },
-      { nameJa: 'アビラ', name: 'Ávila', url: '/food/spain-map/avila/' },
-      { nameJa: 'レオン', name: 'León', url: '/food/spain-map/leon/' },
-      { nameJa: 'パレンシア', name: 'Palencia', url: '/food/spain-map/palencia/' },
-      { nameJa: 'ソリア', name: 'Soria', url: '/food/spain-map/soria/' },
-      { nameJa: 'サモラ', name: 'Zamora', url: '/food/spain-map/zamora/' },
-    ],
+    provincias: 'マドリード · カスティーリャ・イ・レオン',
+    summary: 'じっくり焼き上げるアサードと、力強い赤ワインの産地リベラ・デル・ドゥエロ。',
+    href: '/food/food-routes/centro-asado-vino-tinto/',
   },
   {
     color: '#E67E22',
     icon: Sun,
-    title: '東部：パエリアとクリエイティブタパス',
+    title: '東部：地中海の食文化',
     provincias: 'バレンシア · カタルーニャ',
-    destacado: 'パエリア・バレンシアーナ（発祥地）、カバ',
-    platoIconico: 'パエリア',
-    links: [
-      { nameJa: 'バルセロナ', name: 'Barcelona', url: '/food/spain-map/barcelona/' },
-      { nameJa: 'バレンシア', name: 'Valencia', url: '/food/spain-map/valencia/' },
-      { nameJa: 'アリカンテ', name: 'Alicante', url: '/food/spain-map/alicante/' },
-      { nameJa: 'カステジョン', name: 'Castellón', url: '/food/spain-map/castellon/' },
-      { nameJa: 'ヘローナ', name: 'Gerona', url: '/food/spain-map/gerona/' },
-      { nameJa: 'リェイダ', name: 'Lérida', url: '/food/spain-map/lerida/' },
-      { nameJa: 'タラゴナ', name: 'Tarragona', url: '/food/spain-map/tarragona/' },
-    ],
+    summary: '稲作文化が育んだ米料理の発祥地から、市場文化が根付くバルセロナまで。',
+    href: '/food/food-routes/este-paella-tapas/',
   },
   {
     color: '#C0392B',
     icon: Flame,
-    title: '南部：揚げ物とフラメンコ',
+    title: '南部：揚げ物とシェリー酒',
     provincias: 'アンダルシア',
-    destacado: 'ペスカイト・フリート（揚げ魚）、ガスパチョ、シェリー酒',
-    platoIconico: 'ガスパチョ',
-    links: [
-      { nameJa: 'セビリア', name: 'Sevilla', url: '/food/spain-map/sevilla/' },
-      { nameJa: 'グラナダ', name: 'Granada', url: '/food/spain-map/granada/' },
-      { nameJa: 'マラガ', name: 'Málaga', url: '/food/spain-map/malaga/' },
-      { nameJa: 'カディス', name: 'Cádiz', url: '/food/spain-map/cadiz/' },
-      { nameJa: 'コルドバ', name: 'Córdoba', url: '/food/spain-map/cordoba/' },
-      { nameJa: 'ウエルバ', name: 'Huelva', url: '/food/spain-map/huelva/' },
-      { nameJa: 'ハエン', name: 'Jaén', url: '/food/spain-map/jaen/' },
-      { nameJa: 'アルメリア', name: 'Almería', url: '/food/spain-map/almeria/' },
-    ],
+    summary: '冷製スープ・ガスパチョの発祥地から、シェリー酒の産地ヘレスまで。',
+    href: '/food/food-routes/sur-fritos-flamenco/',
   },
   {
     color: '#27AE60',
     icon: Leaf,
     title: '西部：イベリコ生ハムの道',
     provincias: 'エストレマドゥーラ · ラ・リオハ',
-    destacado: 'イベリコ・デ・ベジョータ、リオハワイン',
-    platoIconico: 'ハモン・イベリコ',
-    links: [
-      { nameJa: 'バダホス', name: 'Badajoz', url: '/food/spain-map/badajoz/' },
-      { nameJa: 'カセレス', name: 'Cáceres', url: '/food/spain-map/caceres/' },
-      { nameJa: 'ラ・リオハ', name: 'La Rioja', url: '/food/spain-map/la-rioja/' },
-    ],
+    summary: 'イベリコ豚の放牧地デエサから、名門ワイン産地ラ・リオハまで。',
+    href: '/food/food-routes/oeste-jamon-iberico/',
   },
   {
     color: '#2980B9',
     icon: Anchor,
     title: '島々：火山と地中海の味',
     provincias: 'カナリア諸島 · バレアレス諸島',
-    destacado: 'パパス・アルガダス（カナリア風小芋）、エンサイマダ',
-    platoIconico: 'パパス・アルガダス con モホ',
-    links: [
-      { nameJa: 'ラス・パルマス', name: 'Las Palmas', url: '/food/spain-map/las-palmas/' },
-      { nameJa: 'テネリフェ', name: 'Santa Cruz de Tenerife', url: '/food/spain-map/santa-cruz-de-tenerife/' },
-      { nameJa: 'バレアレス諸島', name: 'Islas Baleares', url: '/food/spain-map/islas-baleares/' },
-    ],
+    summary: '火山の大地が育んだカナリア諸島と、地中海に浮かぶバレアレス諸島の食文化。',
+    href: '/food/food-routes/islas-volcan-mediterraneo/',
   },
 ];
-
-const mealtimes = [
-  { time: '08:00', name: 'デサジュノ（朝食）', desc: 'コーヒーとトースト。軽め。', highlight: false },
-  { time: '11:00', name: 'アルムエルソ（間食）', desc: 'バルで二杯目のコーヒーとボカディージョ', highlight: false },
-  { time: '14:00〜16:00', name: 'コミダ（昼食）', desc: 'メインの食事。3コース。絶対に逃すな。', highlight: true },
-  { time: '18:00〜20:00', name: 'メリエンダ（おやつ）', desc: 'チュロスとチョコラテ、またはタパス', highlight: false },
-  { time: '21:00〜23:00', name: 'セナ（夕食）', desc: '日本人には遅すぎる？でもここからが本番。', highlight: true },
-];
-
 ---
 <BaseLayout title="スペイン美食マップ | supein.club">
   <SEO
@@ -299,14 +232,14 @@ const mealtimes = [
           <h2 class="font-serif font-bold text-navy" style="font-size:clamp(24px,3vw,36px); margin-bottom:12px;">7つの美食ゾーンで探す</h2>
           <p class="text-muted" style="font-size:16px; max-width:680px; line-height:1.7; margin-bottom:48px;">
             スペインは地域によって料理文化がまったく異なります。<br />
-            まずあなたが好きな味のゾーンから探してみましょう。
+            まずあなたが好きな味のゾーンから、詳しい記事で読んでみましょう。
           </p>
 
           <div class="zones-grid">
             {zones.map((zone) => {
               const Icon = zone.icon;
               return (
-                <div class="zone-card" style={`border-left-color: ${zone.color};`}>
+                <a href={zone.href} class="zone-card" style={`border-left-color: ${zone.color};`}>
                   <div class="zone-header">
                     <div class="zone-icon" style={`color: ${zone.color};`}>
                       <Icon size={22} />
@@ -321,50 +254,24 @@ const mealtimes = [
                     </div>
                   </div>
 
-                  <p class="text-muted" style="font-size:14px; font-style:italic; margin:12px 0 10px; line-height:1.6;">{zone.destacado}</p>
+                  <p class="text-muted" style="font-size:14px; margin:12px 0 0; line-height:1.6;">{zone.summary}</p>
 
-                  <div style="margin-bottom:16px;">
-                    <span class="dish-badge">{zone.platoIconico}</span>
-                  </div>
-
-                  <div class="province-links">
-                    {zone.links.map((link) => (
-                      <a href={link.url} target="_blank" rel="noopener noreferrer" class="province-map-link">
-                        <MapPin size={11} />
-                        {link.nameJa}
-                      </a>
-                    ))}
-                  </div>
-                </div>
+                  <span class="zone-read-more">記事を読む →</span>
+                </a>
               );
             })}
           </div>
         </section>
 
-        <!-- Reloj gastronómico -->
-        <section id="timing" class="msec msec--last">
-          <p class="text-primary font-bold tracking-widest" style="font-size:11px; text-transform:uppercase; margin-bottom:8px;">TIMING IS EVERYTHING</p>
-          <h2 class="font-serif font-bold text-navy" style="font-size:clamp(24px,3vw,36px); margin-bottom:12px;">スペインの食事時間を知ろう</h2>
-          <p class="text-muted" style="font-size:16px; margin-bottom:48px;">日本との時間差に注意。スペインの食生活は日本とまったく異なります。</p>
-
-          <div class="timeline-wrap">
-            {mealtimes.map((meal, i) => (
-              <div class={`timeline-item${meal.highlight ? ' timeline-item--highlight' : ''}`}>
-                <div class="timeline-dot"></div>
-                <div class="timeline-time">{meal.time}</div>
-                <div class="timeline-name font-bold">{meal.name}</div>
-                <div class="timeline-desc">{meal.desc}</div>
-              </div>
-            ))}
-          </div>
-
-          <div class="alert-card" style="margin-top:40px;">
-            <p style="margin:0; font-size:15px; line-height:1.7;">
-              <strong>注意：</strong>スペインのレストランは通常13:30〜15:30と20:30〜22:30のみ営業。
-              この時間以外は閉まっていることが多いです。
-              お腹が空いたらバルでタパスを！
-            </p>
-          </div>
+        <!-- Teaser: horarios de comida -->
+        <section class="msec msec--last">
+          <a href="/food/spain-dining-times/" class="dining-times-teaser">
+            <div>
+              <p class="text-navy font-bold" style="font-size:16px; margin:0 0 4px;">スペインの食事時間ガイド</p>
+              <p class="text-muted" style="font-size:14px; margin:0;">昼食は14時、夕食は21時から。日本と違うスペインの食事時間帯を詳しく解説しています。</p>
+            </div>
+            <span class="zone-read-more">記事を読む →</span>
+          </a>
         </section>
 
       </div>
@@ -477,11 +384,17 @@ const mealtimes = [
     gap: 24px;
   }
   .zone-card {
+    display: block;
     background: white;
     border-left: 4px solid var(--color-primary);
     border-radius: 16px;
     padding: 28px;
     box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+    text-decoration: none;
+    transition: box-shadow 0.2s;
+  }
+  .zone-card:hover {
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
   }
   .zone-header {
     display: flex;
@@ -515,142 +428,40 @@ const mealtimes = [
     border-radius: 4px;
     padding: 2px 8px;
   }
-  .dish-badge {
+  .zone-read-more {
     display: inline-block;
-    background: var(--color-primary);
-    color: white;
-    font-size: 11px;
+    margin-top: 14px;
+    font-size: 13px;
     font-weight: 700;
-    border-radius: 4px;
-    padding: 3px 10px;
-  }
-  .guide-link-badge {
-    display: inline-block;
-    background: var(--color-navy);
-    color: white;
-    font-size: 12px;
-    font-weight: 700;
-    border-radius: 6px;
-    padding: 5px 12px;
-    text-decoration: none;
-    transition: background 0.2s;
-  }
-  .guide-link-badge:hover {
-    background: var(--color-primary);
-  }
-  .province-links {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 6px;
-    margin-top: 4px;
-  }
-  .province-map-link {
-    display: inline-flex;
-    align-items: center;
-    gap: 4px;
-    padding: 4px 10px;
-    border: 1px solid var(--color-border);
-    border-radius: 6px;
-    font-size: 12px;
-    color: var(--color-muted);
-    text-decoration: none;
-    transition: border-color 0.2s, color 0.2s;
-    background: white;
-  }
-  .province-map-link:hover {
-    border-color: var(--color-primary);
     color: var(--color-primary);
   }
 
-  /* Timeline */
-  .timeline-wrap {
+  .dining-times-teaser {
     display: flex;
-    gap: 0;
-    position: relative;
-  }
-  .timeline-wrap::before {
-    content: '';
-    position: absolute;
-    top: 22px;
-    left: 22px;
-    right: 22px;
-    height: 2px;
-    background: #E5E7EB;
-    z-index: 0;
-  }
-  .timeline-item {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
     align-items: center;
-    text-align: center;
-    position: relative;
-    padding: 0 8px;
-  }
-  .timeline-dot {
-    width: 16px;
-    height: 16px;
-    border-radius: 50%;
-    background: #D1D5DB;
-    border: 2px solid white;
-    box-shadow: 0 0 0 2px #D1D5DB;
-    margin-bottom: 16px;
-    position: relative;
-    z-index: 1;
-  }
-  .timeline-item--highlight .timeline-dot {
-    background: var(--color-primary);
-    box-shadow: 0 0 0 2px var(--color-primary);
-  }
-  .timeline-time {
-    font-size: 12px;
-    font-weight: 700;
-    color: var(--color-muted);
-    margin-bottom: 6px;
-  }
-  .timeline-item--highlight .timeline-time {
-    color: var(--color-primary);
-  }
-  .timeline-name {
-    font-size: 13px;
-    color: var(--color-navy);
-    margin-bottom: 6px;
-    line-height: 1.4;
-  }
-  .timeline-desc {
-    font-size: 12px;
-    color: var(--color-muted);
-    line-height: 1.5;
-  }
-  .timeline-item--highlight .timeline-desc {
-    color: var(--color-ink);
-    font-weight: 500;
-  }
-  .alert-card {
-    background: #FFFBEB;
-    border: 1px solid #FCD34D;
-    border-radius: 10px;
+    justify-content: space-between;
+    gap: 16px;
+    background: white;
+    border: 1px solid var(--color-border);
+    border-radius: 12px;
     padding: 20px 24px;
-    color: #92400E;
+    text-decoration: none;
+    transition: border-color 0.2s;
+  }
+  .dining-times-teaser:hover {
+    border-color: var(--color-primary);
+  }
+  .dining-times-teaser .zone-read-more {
+    margin-top: 0;
+    flex-shrink: 0;
   }
 
   @media (max-width: 1023px) {
     .zones-grid { grid-template-columns: 1fr; }
     .community-list { grid-template-columns: 1fr; }
-    .timeline-wrap {
-      flex-direction: column;
-      gap: 24px;
-    }
-    .timeline-wrap::before { display: none; }
-    .timeline-item {
-      flex-direction: row;
-      text-align: left;
-      align-items: flex-start;
-      gap: 16px;
-    }
-    .timeline-dot { margin-bottom: 0; flex-shrink: 0; margin-top: 3px; }
   }
   @media (max-width: 767px) {
     .msec { padding-top: 32px; padding-bottom: 32px; }
+    .dining-times-teaser { flex-direction: column; align-items: flex-start; }
   }
 </style>
