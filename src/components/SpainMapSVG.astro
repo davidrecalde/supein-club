@@ -174,13 +174,14 @@ svgContent = svgContent.replace(/id="(ES-[A-Z]+)"/g, (_match, id) => {
 <div class="map-legend">
   <div class="legend-grid">
     {communityColors.map((c) => (
-      <>
-        <span class="legend-dot" style={`background:${c.legendColor};`}></span><span class="legend-label">{c.name}</span>
-      </>
+      <a href={`#community-${c.slug}`} class="legend-item">
+        <span class="legend-dot" style={`background:${c.legendColor};`}></span>
+        <span class="legend-label">{c.name}</span>
+      </a>
     ))}
   </div>
   <p style="font-size:12px; color:#6b7280; margin-top:12px;">
-    クリックすると、各県のレストラン・バルマップと詳細ガイドが開きます。プロヴィンスボタンの左枠の色とリンクしています。
+    地図をクリックすると各県のレストランマップへ、凡例をクリックするとその州の県一覧へ移動します。
   </p>
 </div>
 
@@ -263,9 +264,23 @@ svgContent = svgContent.replace(/id="(ES-[A-Z]+)"/g, (_match, id) => {
   }
   .legend-grid {
     display: grid;
-    grid-template-columns: auto 1fr auto 1fr auto 1fr;
-    gap: 8px 16px;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px 8px;
+  }
+  .legend-item {
+    display: flex;
     align-items: center;
+    gap: 8px;
+    padding: 5px 6px;
+    border-radius: 6px;
+    text-decoration: none;
+    transition: background-color 0.15s;
+  }
+  .legend-item:hover {
+    background-color: rgba(0, 0, 0, 0.045);
+  }
+  .legend-item:hover .legend-label {
+    color: var(--color-primary);
   }
   .legend-dot {
     width: 12px;
@@ -274,9 +289,13 @@ svgContent = svgContent.replace(/id="(ES-[A-Z]+)"/g, (_match, id) => {
     display: inline-block;
     flex-shrink: 0;
   }
-  .legend-label { font-size: 13px; color: #4b5563; }
+  .legend-label {
+    font-size: 13px;
+    color: #4b5563;
+    transition: color 0.15s;
+  }
   @media (max-width: 600px) {
-    .legend-grid { grid-template-columns: auto 1fr auto 1fr; }
+    .legend-grid { grid-template-columns: repeat(2, 1fr); }
   }
 </style>
 

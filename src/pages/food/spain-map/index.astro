@@ -238,7 +238,7 @@ const zones: Zone[] = [
 
           <div class="community-list">
             {communities.map((c) => (
-              <div class="community-block">
+              <div class="community-block" id={`community-${c.slug}`}>
                 <div class="community-heading">
                   <span class="community-flags">
                     {c.flags.map((flag) => (
