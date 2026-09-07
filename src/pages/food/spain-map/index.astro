@@ -5,6 +5,7 @@ import SEO from '../../../components/SEO.astro';
 import Breadcrumb from '../../../components/Breadcrumb.astro';
 import TOC from '../../../components/TOC.astro';
 import LineBanner from '../../../components/LineBanner.astro';
+import NewsletterForm from '../../../components/NewsletterForm.astro';
 import SpainMapSVG from '../../../components/SpainMapSVG.astro';
 import { communityColorMap } from '../../../data/spainCommunities';
 import { Waves, Fish, UtensilsCrossed, Sun, Flame, Leaf, Anchor } from 'lucide-astro';
@@ -265,8 +266,8 @@ const zones: Zone[] = [
             class="linktree-banner"
           >
             <div>
-              <p class="linktree-banner-title">全50県のマップをまとめて見る</p>
-              <p class="linktree-banner-text">すべてのレストラン・バルマップを1つのリンクにまとめました。Linktreeから県ごとのマップに直接アクセスできます。</p>
+              <p class="linktree-banner-title">全50県のマップをスマホに保存</p>
+              <p class="linktree-banner-text">すべてのレストラン・バルマップを1つのリンクにまとめました。スマートフォンのホーム画面やブックマークに保存しておけば、スペイン旅行中や外出先でもすぐにアクセスできます。</p>
             </div>
             <span class="linktree-banner-cta">Linktreeで見る →</span>
           </a>
@@ -307,6 +308,10 @@ const zones: Zone[] = [
               );
             })}
           </div>
+        </section>
+
+        <section class="msec">
+          <NewsletterForm variant="inline" />
         </section>
 
         <!-- Teasers: horarios de comida / mapa de Japón -->
