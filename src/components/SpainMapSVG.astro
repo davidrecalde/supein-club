@@ -1,6 +1,7 @@
 ---
 import { readFileSync } from 'node:fs';
 import path from 'node:path';
+import { communityColors, communityProvinceCodes } from '../data/spainCommunities';
 
 const rawSvg = readFileSync(
   path.resolve(process.cwd(), 'public/spain-provinces.svg'),
@@ -102,10 +103,54 @@ function buildCityMarkers(list: City[]): string {
 
 const cityMarkersStr = buildCityMarkers(cities);
 
+// Patrones geométricos para las comunidades cuyo color de bandera es casi
+// idéntico al de otra (los 5 dorados, los 6 rojos): un relleno base pastel
+// (mapColor) más una trama sutil en un tono más oscuro de la misma familia.
+function buildPatternDefs(): string {
+  let defs = '<defs>\n';
+  for (const c of communityColors) {
+    if (!c.pattern) continue;
+    const id = `pat-${c.slug}`;
+    if (c.pattern === 'dots') {
+      defs += `<pattern id="${id}" patternUnits="userSpaceOnUse" width="4.5" height="4.5">
+  <rect width="4.5" height="4.5" fill="${c.mapColor}"/>
+  <circle cx="1.2" cy="1.2" r="0.7" fill="${c.lineColor}" opacity="0.55"/>
+</pattern>\n`;
+    } else {
+      const angle = c.pattern === 'hatch1' ? 45 : 135;
+      defs += `<pattern id="${id}" patternUnits="userSpaceOnUse" width="4" height="4" patternTransform="rotate(${angle})">
+  <rect width="4" height="4" fill="${c.mapColor}"/>
+  <line x1="0" y1="0" x2="0" y2="4" stroke="${c.lineColor}" stroke-width="1.3" opacity="0.55"/>
+</pattern>\n`;
+    }
+  }
+  defs += '</defs>';
+  return defs;
+}
+const patternDefsStr = buildPatternDefs();
+
+// CSS de relleno por provincia, generado desde la paleta compartida
+// (src/data/spainCommunities.ts) — misma fuente que los botones de
+// provincia y la leyenda de /food/spain-map/. Se inyecta como <style>
+// nativo dentro del propio SVG (en vez de un <style> de Astro) para poder
+// interpolar valores dinámicos sin pelear con la extracción estática de
+// CSS de Astro.
+const fillRulesStr = communityColors
+  .map((c) => {
+    const codes = communityProvinceCodes[c.slug] ?? [];
+    if (codes.length === 0) return '';
+    const selector = codes.map((code) => `#${code}`).join(', ');
+    const fill = c.pattern ? `url(#pat-${c.slug})` : c.mapColor;
+    return `${selector} { fill: ${fill}; }`;
+  })
+  .filter(Boolean)
+  .join('\n');
+const fillStyleStr = `<style>${fillRulesStr}</style>`;
+
 let svgContent = rawSvg
   .replace('width="418.45123"', 'class="spain-map-svg" width="100%" viewBox="0 0 418.46 468.64" preserveAspectRatio="xMidYMid meet"')
   .replace('\n   height="468.63733"', '')
-  .replace('</svg>', cityMarkersStr + '\n</svg>');
+  .replace('</svg>', patternDefsStr + '\n' + fillStyleStr + '\n' + cityMarkersStr + '\n</svg>');
 
 svgContent = svgContent.replace(/id="(ES-[A-Z]+)"/g, (_match, id) => {
   const hasGuide = guideIds.has(id);
@@ -119,52 +164,20 @@ svgContent = svgContent.replace(/id="(ES-[A-Z]+)"/g, (_match, id) => {
 
 <div class="map-legend">
   <div class="legend-grid">
-    <span class="legend-dot" style="background:#5B8FA8;"></span><span class="legend-label">アストゥリアス</span>
-    <span class="legend-dot" style="background:#7B9E87;"></span><span class="legend-label">アラゴン</span>
-    <span class="legend-dot" style="background:#C8956C;"></span><span class="legend-label">アンダルシア</span>
-    <span class="legend-dot" style="background:#A8956C;"></span><span class="legend-label">カスティーリャ・イ・レオン</span>
-    <span class="legend-dot" style="background:#B8A898;"></span><span class="legend-label">カスティーリャ・ラ・マンチャ</span>
-    <span class="legend-dot" style="background:#8B7355;"></span><span class="legend-label">カタルーニャ</span>
-    <span class="legend-dot" style="background:#D4A853;"></span><span class="legend-label">カナリア諸島</span>
-    <span class="legend-dot" style="background:#6B9E9E;"></span><span class="legend-label">カンタブリア</span>
-    <span class="legend-dot" style="background:#6B8FA8;"></span><span class="legend-label">ガリシア</span>
-    <span class="legend-dot" style="background:#5C7A6B;"></span><span class="legend-label">バスク地方</span>
-    <span class="legend-dot" style="background:#9B7FB6;"></span><span class="legend-label">バレアレス諸島</span>
-    <span class="legend-dot" style="background:#C49A6C;"></span><span class="legend-label">バレンシア州</span>
-    <span class="legend-dot" style="background:#7E9E8B;"></span><span class="legend-label">ナバラ</span>
-    <span class="legend-dot" style="background:#8B6B8B;"></span><span class="legend-label">マドリード州</span>
-    <span class="legend-dot" style="background:#C4A882;"></span><span class="legend-label">ムルシア</span>
-    <span class="legend-dot" style="background:#B87878;"></span><span class="legend-label">ラ・リオハ</span>
-    <span class="legend-dot" style="background:#7A9E7E;"></span><span class="legend-label">エストレマドゥーラ</span>
+    {communityColors.map((c) => (
+      <>
+        <span class="legend-dot" style={`background:${c.legendColor};`}></span><span class="legend-label">{c.name}</span>
+      </>
+    ))}
   </div>
   <p style="font-size:12px; color:#6b7280; margin-top:12px;">
-    クリックすると、各県のレストラン・バルマップと詳細ガイドが開きます。
+    クリックすると、各県のレストラン・バルマップと詳細ガイドが開きます。プロヴィンスボタンの左枠の色とリンクしています。
   </p>
 </div>
 
 <div id="spain-tooltip" class="province-tooltip" aria-hidden="true"></div>
 
 <style is:global>
-  /* Province fill colors by comunidad autónoma */
-  #ES-AL, #ES-CA, #ES-CO, #ES-GR, #ES-H, #ES-J, #ES-MA, #ES-SE { fill: #C8956C; }
-  #ES-HU, #ES-TE, #ES-Z { fill: #7B9E87; }
-  #ES-O { fill: #5B8FA8; }
-  #ES-PM { fill: #9B7FB6; }
-  #ES-GC, #ES-TF { fill: #D4A853; }
-  #ES-S { fill: #6B9E9E; }
-  #ES-AB, #ES-CR, #ES-CU, #ES-GU, #ES-TO { fill: #B8A898; }
-  #ES-AV, #ES-BU, #ES-LE, #ES-P, #ES-SA, #ES-SG, #ES-SO, #ES-VA, #ES-ZA { fill: #A8956C; }
-  #ES-B, #ES-GI, #ES-L, #ES-T { fill: #8B7355; }
-  #ES-BA, #ES-CC { fill: #7A9E7E; }
-  #ES-C, #ES-LU, #ES-OR, #ES-PO { fill: #6B8FA8; }
-  #ES-LO { fill: #B87878; }
-  #ES-M { fill: #8B6B8B; }
-  #ES-MU { fill: #C4A882; }
-  #ES-NA { fill: #7E9E8B; }
-  #ES-BI, #ES-SS, #ES-VI { fill: #5C7A6B; }
-  #ES-A, #ES-CS, #ES-V { fill: #C49A6C; }
-  #ES-CE, #ES-ML { fill: #9ca3af; }
-
   path[data-province] {
     transition: fill 200ms ease;
     cursor: pointer;
