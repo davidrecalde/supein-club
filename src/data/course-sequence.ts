@@ -1,10 +1,10 @@
-// Orden secuencial del "camino principal" (はじめに + A1-C2) y del bloque
-// DELE, usado por StepIndicator.astro y PrevNextNav.astro (vía
-// utils/courseSequence.ts) para numerar y enlazar Anterior/Siguiente.
-// Cada string es el id real de la colección `articles` (ruta del archivo
-// relativa a src/content/articles/, sin extensión) — verificado contra
-// el contenido real (46 archivos: 36 del camino principal + 10 de DELE)
-// antes de confirmarse.
+// Orden secuencial del "camino principal" (はじめに + A1-C2), del bloque
+// DELE, y de otras series con orden fijo (p. ej. i-need-spain), usado por
+// StepIndicator.astro y PrevNextNav.astro (vía utils/courseSequence.ts)
+// para numerar y enlazar Anterior/Siguiente. Cada string es el id real de
+// la colección `articles` (ruta del archivo relativa a
+// src/content/articles/, sin extensión) — verificado contra el contenido
+// real antes de confirmarse.
 export const courseSequence = {
   step: [
     // はじめに (3)
@@ -62,5 +62,15 @@ export const courseSequence = {
     "language/learn-spanish/dele/c1",
     "language/learn-spanish/dele/c2",
     "language/learn-spanish/dele/dates-and-fees",
+  ],
+  iNeedSpain: [
+    "living/i-need-spain/michiko-chiba-in-barcelona",
+    "living/i-need-spain/chizuyo-in-sevilla",
+    "living/i-need-spain/yuina-in-granada",
+    "living/i-need-spain/tae-ishida-in-leon",
+    "living/i-need-spain/takashi-matsuo-in-valencia",
+    "living/i-need-spain/saori-la-esponesa",
+    "living/i-need-spain/mayuko-sasayama-sake",
+    "living/i-need-spain/yu-kaneko-in-cadiz",
   ],
 };

@@ -72,16 +72,22 @@ const breadcrumbs = [
       </>
     )}
 
-    {categoryGroups.map((group) => (
-      <>
-        <h2 id={group.id} class="font-sans font-bold text-xl text-navy mb-5">{group.label}</h2>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
-          {group.items.map((a) => (
-            <ArticleCard title={a.data.title} description={a.data.description} href={cardHref(a)} pillar="living" image={a.data.image} imageAlt={a.data.imageAlt} heroImage={a.data.heroImage} heroImageAlt={a.data.heroImageAlt} pubDate={a.data.pubDate} topicBadge={group.label} />
-          ))}
-        </div>
-      </>
-    ))}
+    {categoryGroups.map((group) => {
+      const isNumberedSeries = group.id === 'i-need-spain';
+      const displayItems = isNumberedSeries
+        ? [...group.items].sort((a, b) => a.data.pubDate.valueOf() - b.data.pubDate.valueOf())
+        : group.items;
+      return (
+        <>
+          <h2 id={group.id} class="font-sans font-bold text-xl text-navy mb-5">{group.label}</h2>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+            {displayItems.map((a, i) => (
+              <ArticleCard title={a.data.title} description={a.data.description} href={cardHref(a)} pillar="living" image={a.data.image} imageAlt={a.data.imageAlt} heroImage={a.data.heroImage} heroImageAlt={a.data.heroImageAlt} pubDate={a.data.pubDate} topicBadge={group.label} stepBadge={isNumberedSeries ? `第${i + 1}弾` : undefined} />
+            ))}
+          </div>
+        </>
+      );
+    })}
 
     {uncategorized.length > 0 && (
       <>
