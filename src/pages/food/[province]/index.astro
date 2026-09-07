@@ -1,7 +1,7 @@
 ---
 import { getCollection } from 'astro:content';
 import type { CollectionEntry } from 'astro:content';
-import ProvinceGuideLayout from '../../layouts/ProvinceGuideLayout.astro';
+import ProvinceGuideLayout from '../../../layouts/ProvinceGuideLayout.astro';
 
 export async function getStaticPaths() {
   const entries = await getCollection('spain-map', ({ data }) => data.draft !== true);

@@ -10,6 +10,11 @@ import AdSlot from '../../components/AdSlot.astro';
 const articles = await getCollection('articles', ({ data }) => !data.draft && data.pillar === 'food');
 const sorted = articles.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 
+const provinceEntries = await getCollection('spain-map', ({ data }) => data.draft !== true);
+const provinces = provinceEntries
+  .map((p) => ({ href: `/food/${p.data.province}/`, label: p.data.provinceJa }))
+  .sort((a, b) => a.label.localeCompare(b.label, 'ja'));
+
 const clusters = [
   { href: '/food/paella/', label: 'パエリア' },
   { href: '/food/tapas/', label: 'タパス' },
@@ -60,6 +65,22 @@ const breadcrumbs = [
               <ArticleCard title={a.data.title} description={a.data.description} href={`/food/${a.data.cluster}/${slug}/`} pillar="food" image={a.data.image} imageAlt={a.data.imageAlt} heroImage={a.data.heroImage} heroImageAlt={a.data.heroImageAlt} pubDate={a.data.pubDate} />
             );
           })}
+        </div>
+      </>
+    )}
+    {provinces.length > 0 && (
+      <>
+        <div class="flex items-center gap-2 mb-5 mt-14">
+          <h2 class="font-sans font-bold text-xl text-navy">スペイン地図</h2>
+          <span class="inline-block text-xs font-semibold px-2.5 py-0.5 rounded-full bg-[#FCEBEE] text-primary">スペイン地図</span>
+        </div>
+        <p class="text-muted text-sm leading-relaxed mb-5">
+          スペイン全{provinces.length}県、それぞれのレストラン・バルマップと基本情報のページです。
+        </p>
+        <div class="province-chip-grid">
+          {provinces.map(({ href, label }) => (
+            <a href={href} class="province-chip-link">{label}</a>
+          ))}
         </div>
       </>
     )}
@@ -145,6 +166,27 @@ const breadcrumbs = [
 </BaseLayout>
 
 <style>
+  .province-chip-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .province-chip-link {
+    display: inline-block;
+    padding: 8px 14px;
+    background: white;
+    border: 1px solid var(--color-border);
+    border-radius: 999px;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--color-navy);
+    text-decoration: none;
+    transition: border-color 0.2s, color 0.2s;
+  }
+  .province-chip-link:hover {
+    border-color: var(--color-primary);
+    color: var(--color-primary);
+  }
   .food-map-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
