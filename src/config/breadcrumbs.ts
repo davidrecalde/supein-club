@@ -33,7 +33,6 @@ export const slugToJapanese: Record<string, string> = {
   'restaurants-tokyo': '東京スペイン料理',
   'restaurants-osaka': '大阪スペイン料理',
   'spain-map': 'スペイン美食マップ',
-  'traveler-guide-to-spanish-cuisine-and-wine': 'スペイン料理とワインガイド',
   'madrid-restaurants': 'マドリードグルメガイド',
   'barcelona-restaurants': 'バルセロナグルメガイド',
   'sevilla-restaurants': 'セビリアグルメガイド',
