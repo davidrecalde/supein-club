@@ -7,9 +7,35 @@ import TOC from '../../../components/TOC.astro';
 import LineBanner from '../../../components/LineBanner.astro';
 import NewsletterForm from '../../../components/NewsletterForm.astro';
 import RelatedPages from '../../../components/RelatedPages.astro';
+import FAQSection from '../../../components/FAQSection.astro';
 import SpainMapSVG from '../../../components/SpainMapSVG.astro';
 import { communityColorMap } from '../../../data/spainCommunities';
 import { Waves, Fish, UtensilsCrossed, Sun, Flame, Leaf, Anchor } from 'lucide-astro';
+
+const faq = [
+  {
+    question: '「スペイン美食マップ」の使い方は？',
+    answer: '地図上の各県をクリックすると、その県のレストラン・バルガイドのページに移動します。地図下の凡例から自治州名をクリックすると、その州に属する県のボタン一覧までジャンプできます。気になる街が決まっていない場合は、「7つの美食ゾーン」から地域ごとの特色を先に読んでみるのもおすすめです。',
+  },
+  {
+    question: '7つの美食ゾーンとは何ですか？',
+    answer: 'スペインを食文化の似た7つのエリア（北部・北西部・中部・東部・南部・西部・島々）に分け、それぞれの郷土料理やワイン・お酒の文化を紹介する特集記事です。県ごとの詳細なレストラン情報だけでなく、地域全体の食文化の背景を知りたい方におすすめです。',
+  },
+];
+
+const faqJsonLd = JSON.stringify({
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'FAQPage',
+      mainEntity: faq.map((item) => ({
+        '@type': 'Question',
+        name: item.question,
+        acceptedAnswer: { '@type': 'Answer', text: item.answer },
+      })),
+    },
+  ],
+});
 
 const canonical = 'https://supein.club/food/spain-map/';
 const breadcrumbs = [
@@ -158,6 +184,7 @@ const zones: Zone[] = [
     authorName={author.data.name}
     authorUrl={`https://supein.club/about-us/team/${author.data.slug ?? 'david-recalde'}/`}
   />
+  <script type="application/ld+json" slot="head" set:html={faqJsonLd} />
 
   <!-- Hero -->
   <section class="bg-navy text-white relative" style="padding:64px 0;">
@@ -204,6 +231,9 @@ const zones: Zone[] = [
 
   <!-- Content with TOC sidebar -->
   <div class="page-container" style="padding-top:48px; padding-bottom:80px;">
+    <div class="border-l-4 border-navy bg-[#F0F4F8] px-5 py-4 mb-8 text-ink leading-relaxed font-medium rounded-r-lg max-w-3xl">
+      スペインは17の自治州によって、驚くほど異なる食文化を育んできました。北部のピンチョス文化から南部のガスパチョまで——この美食マップでは、県ごとのレストラン・バルガイドと地域別のグルメルートを1つにまとめてご紹介します。
+    </div>
     <div class="content-grid">
 
       <div class="content-main">
@@ -311,7 +341,7 @@ const zones: Zone[] = [
           </div>
         </section>
 
-        <section class="msec">
+        <section class="msec msec--last">
           <NewsletterForm variant="inline" />
         </section>
 
@@ -321,6 +351,8 @@ const zones: Zone[] = [
             { title: '日本のスペイン料理店マップ', href: '/food/japan-map/' },
           ]}
         />
+
+        <FAQSection faq={faq} />
 
       </div>
 
