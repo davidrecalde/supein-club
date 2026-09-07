@@ -6,6 +6,7 @@ import Breadcrumb from '../../../components/Breadcrumb.astro';
 import TOC from '../../../components/TOC.astro';
 import LineBanner from '../../../components/LineBanner.astro';
 import NewsletterForm from '../../../components/NewsletterForm.astro';
+import RelatedPages from '../../../components/RelatedPages.astro';
 import SpainMapSVG from '../../../components/SpainMapSVG.astro';
 import { communityColorMap } from '../../../data/spainCommunities';
 import { Waves, Fish, UtensilsCrossed, Sun, Flame, Leaf, Anchor } from 'lucide-astro';
@@ -314,23 +315,12 @@ const zones: Zone[] = [
           <NewsletterForm variant="inline" />
         </section>
 
-        <!-- Teasers: horarios de comida / mapa de Japón -->
-        <section class="msec msec--last">
-          <a href="/food/spain-dining-times/" class="dining-times-teaser">
-            <div>
-              <p class="text-navy font-bold" style="font-size:16px; margin:0 0 4px;">スペインの食事時間ガイド</p>
-              <p class="text-muted" style="font-size:14px; margin:0;">昼食は14時、夕食は21時から。日本と違うスペインの食事時間帯を詳しく解説しています。</p>
-            </div>
-            <span class="zone-read-more">記事を読む →</span>
-          </a>
-          <a href="/food/japan-map/" class="dining-times-teaser" style="margin-top:16px;">
-            <div>
-              <p class="text-navy font-bold" style="font-size:16px; margin:0 0 4px;">日本のスペイン料理店マップ</p>
-              <p class="text-muted" style="font-size:14px; margin:0;">日本国内でスペイン料理店を探している方は、都道府県別のマップ集もご覧ください。</p>
-            </div>
-            <span class="zone-read-more">記事を読む →</span>
-          </a>
-        </section>
+        <RelatedPages
+          relatedPages={[
+            { title: 'スペインの食事時間ガイド', href: '/food/spain-dining-times/' },
+            { title: '日本のスペイン料理店マップ', href: '/food/japan-map/' },
+          ]}
+        />
 
       </div>
 
@@ -487,26 +477,6 @@ const zones: Zone[] = [
     color: var(--color-primary);
   }
 
-  .dining-times-teaser {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 16px;
-    background: white;
-    border: 1px solid var(--color-border);
-    border-radius: 12px;
-    padding: 20px 24px;
-    text-decoration: none;
-    transition: border-color 0.2s;
-  }
-  .dining-times-teaser:hover {
-    border-color: var(--color-primary);
-  }
-  .dining-times-teaser .zone-read-more {
-    margin-top: 0;
-    flex-shrink: 0;
-  }
-
   .linktree-banner {
     display: flex;
     align-items: center;
@@ -552,7 +522,6 @@ const zones: Zone[] = [
   }
   @media (max-width: 767px) {
     .msec { padding-top: 32px; padding-bottom: 32px; }
-    .dining-times-teaser { flex-direction: column; align-items: flex-start; }
     .linktree-banner { flex-direction: column; align-items: flex-start; }
     .community-list { grid-template-columns: 1fr; }
   }
