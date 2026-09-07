@@ -8,8 +8,12 @@ import LineBanner from '../../../components/LineBanner.astro';
 import NewsletterForm from '../../../components/NewsletterForm.astro';
 import RelatedPages from '../../../components/RelatedPages.astro';
 import FAQSection from '../../../components/FAQSection.astro';
+import ArticleDisclaimer from '../../../components/ArticleDisclaimer.astro';
+import AuthorBox from '../../../components/AuthorBox.astro';
+import ArticleCard from '../../../components/ArticleCard.astro';
 import SpainMapSVG from '../../../components/SpainMapSVG.astro';
 import { communityColorMap } from '../../../data/spainCommunities';
+import { getArticleUrl } from '../../../utils/articles';
 import { Waves, Fish, UtensilsCrossed, Sun, Flame, Leaf, Anchor } from 'lucide-astro';
 
 const faq = [
@@ -48,6 +52,15 @@ const authors = await getCollection('authors');
 const author = authors.find((a) => (a.data.slug ?? a.id.replace(/\.(md|mdx)$/, '')) === 'david-recalde')!;
 const pubDate = new Date('2026-09-08');
 const readingTime = 6;
+
+// こちらの記事もおすすめ: 同じ food pillar の最新記事。spain-dining-times と
+// japan-map は上の RelatedPages で既に案内しているので、ここでは重複を避ける。
+const foodArticles = await getCollection('articles', ({ data }) =>
+  !data.draft && data.pillar === 'food' && !['spain-dining-times', 'japan-map'].includes(data.cluster)
+);
+const relatedFoodArticles = foodArticles
+  .sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime())
+  .slice(0, 3);
 
 const tocHeadings = [
   { depth: 2, slug: 'interactive-map', text: 'インタラクティブマップ' },
@@ -353,6 +366,32 @@ const zones: Zone[] = [
         />
 
         <FAQSection faq={faq} />
+
+        <ArticleDisclaimer />
+        <AuthorBox author={author} />
+
+        {relatedFoodArticles.length > 0 && (
+          <section class="mt-12 border-t border-[#E8E8E6] pt-10">
+            <h2 class="font-sans font-bold text-2xl text-navy mb-2">こちらの記事もおすすめ</h2>
+            <p class="text-sm text-gray-500 mb-6">同じテーマのおすすめ記事です。</p>
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+              {relatedFoodArticles.map((a) => (
+                <ArticleCard
+                  title={a.data.title}
+                  description={a.data.description}
+                  href={getArticleUrl(a)}
+                  pillar={a.data.pillar}
+                  cluster={a.data.cluster}
+                  image={a.data.image}
+                  imageAlt={a.data.imageAlt}
+                  heroImage={a.data.heroImage?.src}
+                  heroImageAlt={a.data.heroImageAlt}
+                  pubDate={a.data.pubDate}
+                />
+              ))}
+            </div>
+          </section>
+        )}
 
       </div>
 
