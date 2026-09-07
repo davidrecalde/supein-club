@@ -147,8 +147,17 @@ const fillRulesStr = communityColors
   .join('\n');
 const fillStyleStr = `<style>${fillRulesStr}</style>`;
 
+// El viewBox visible se recorta a 328 unidades de alto (frente a las 468.64
+// originales): Canarias, Ceuta y Melilla se reposicionaron (ver
+// public/spain-provinces.svg) en el mar al SE de Baleares, dentro del área
+// que ya ocupa la España peninsular (que llega hasta y≈311), así que la
+// franja inferior vacía que antes las alojaba en una fila aparte ya no hace
+// falta. vbW/vbH (usados por toSVG() para las ciudades) NO cambian: siguen
+// siendo el lienzo completo original, ya que ese es el sistema de
+// coordenadas en el que están dibujadas las provincias — el viewBox solo
+// decide qué porción de ese lienzo se muestra, sin reescalar nada.
 let svgContent = rawSvg
-  .replace('width="418.45123"', 'class="spain-map-svg" width="100%" viewBox="0 0 418.46 468.64" preserveAspectRatio="xMidYMid meet"')
+  .replace('width="418.45123"', 'class="spain-map-svg" width="100%" viewBox="0 0 418.46 328" preserveAspectRatio="xMidYMid meet"')
   .replace('\n   height="468.63733"', '')
   .replace('</svg>', patternDefsStr + '\n' + fillStyleStr + '\n' + cityMarkersStr + '\n</svg>');
 
@@ -193,8 +202,6 @@ svgContent = svgContent.replace(/id="(ES-[A-Z]+)"/g, (_match, id) => {
     fill: #C8102E !important;
     filter: none;
   }
-
-  #divider { pointer-events: none; }
 
   .province-tooltip {
     position: fixed;
