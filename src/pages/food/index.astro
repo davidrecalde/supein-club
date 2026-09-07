@@ -10,11 +10,6 @@ import AdSlot from '../../components/AdSlot.astro';
 const articles = await getCollection('articles', ({ data }) => !data.draft && data.pillar === 'food');
 const sorted = articles.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 
-const provinceEntries = await getCollection('spain-map', ({ data }) => data.draft !== true);
-const provinces = provinceEntries
-  .map((p) => ({ href: `/food/${p.data.province}/`, label: p.data.provinceJa }))
-  .sort((a, b) => a.label.localeCompare(b.label, 'ja'));
-
 const clusters = [
   { href: '/food/paella/', label: 'パエリア' },
   { href: '/food/tapas/', label: 'タパス' },
@@ -68,22 +63,6 @@ const breadcrumbs = [
         </div>
       </>
     )}
-    {provinces.length > 0 && (
-      <>
-        <div class="flex items-center gap-2 mb-5 mt-14">
-          <h2 class="font-sans font-bold text-xl text-navy">スペイン地図</h2>
-          <span class="inline-block text-xs font-semibold px-2.5 py-0.5 rounded-full bg-[#FCEBEE] text-primary">スペイン地図</span>
-        </div>
-        <p class="text-muted text-sm leading-relaxed mb-5">
-          スペイン全{provinces.length}県、それぞれのレストラン・バルマップと基本情報のページです。
-        </p>
-        <div class="province-chip-grid">
-          {provinces.map(({ href, label }) => (
-            <a href={href} class="province-chip-link">{label}</a>
-          ))}
-        </div>
-      </>
-    )}
   </section>
   <!-- SECCIÓN A — Spanish Food Map -->
   <section style="background:#002147; padding:72px 0;">
@@ -118,10 +97,10 @@ const breadcrumbs = [
         </div>
         <div class="food-map-cards">
           {[
-            { nameJa: 'バスク地方', desc: 'ピンチョス・ミシュラン', href: '/food/pais-vasco-restaurants/' },
-            { nameJa: 'マドリード', desc: 'タパス・コシード', href: '/food/madrid-restaurants/' },
-            { nameJa: 'バルセロナ', desc: 'パエリア・カタルーニャ', href: '/food/barcelona-restaurants/' },
-            { nameJa: 'セビリア', desc: 'ガスパチョ・シェリー', href: '/food/sevilla-restaurants/' },
+            { nameJa: 'バスク地方', desc: 'ピンチョス・ミシュラン', href: '/food/spain-map/pais-vasco/' },
+            { nameJa: 'マドリード', desc: 'タパス・コシード', href: '/food/spain-map/madrid/' },
+            { nameJa: 'バルセロナ', desc: 'パエリア・カタルーニャ', href: '/food/spain-map/barcelona/' },
+            { nameJa: 'セビリア', desc: 'ガスパチョ・シェリー', href: '/food/spain-map/sevilla/' },
           ].map(({ nameJa, desc, href }) => (
             <a href={href} class="food-mini-card">
               <p class="text-white font-bold" style="font-size:15px; margin:0 0 6px;">{nameJa}</p>
@@ -166,27 +145,6 @@ const breadcrumbs = [
 </BaseLayout>
 
 <style>
-  .province-chip-grid {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-  }
-  .province-chip-link {
-    display: inline-block;
-    padding: 8px 14px;
-    background: white;
-    border: 1px solid var(--color-border);
-    border-radius: 999px;
-    font-size: 13px;
-    font-weight: 600;
-    color: var(--color-navy);
-    text-decoration: none;
-    transition: border-color 0.2s, color 0.2s;
-  }
-  .province-chip-link:hover {
-    border-color: var(--color-primary);
-    color: var(--color-primary);
-  }
   .food-map-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
