@@ -46,25 +46,31 @@ const provinceBySlug: Record<string, string> = {
   valladolid: 'バリャドリード', alava: 'アラバ', zaragoza: 'サラゴサ', zamora: 'サモラ',
 };
 
+// flagColor: color principal real de cada bandera (extraído de los archivos con
+// sharp .stats().dominant y verificado visualmente; sustituido manualmente por
+// el color secundario cuando el dominante era blanco y por tanto invisible como
+// acento sobre un botón blanco). Ordenadas de más a menos provincias para que,
+// al emparejarse de 2 en 2 en la retícula, los bloques de tamaño similar queden
+// uno junto al otro.
 const communities = [
-  { color: '#C8956C', name: 'アンダルシア', flags: ['/images/flags/andalucia.webp'], provinces: ['almeria', 'cadiz', 'cordoba', 'granada', 'huelva', 'jaen', 'malaga', 'sevilla'] },
-  { color: '#8B7355', name: 'カタルーニャ', flags: ['/images/flags/catalunya.webp'], provinces: ['barcelona', 'gerona', 'lerida', 'tarragona'] },
-  { color: '#A8956C', name: 'カスティーリャ・イ・レオン', flags: ['/images/flags/castilla-y-leon.webp'], provinces: ['avila', 'burgos', 'leon', 'palencia', 'salamanca', 'segovia', 'soria', 'valladolid', 'zamora'] },
-  { color: '#B8A898', name: 'カスティーリャ・ラ・マンチャ', flags: ['/images/flags/castilla-la-mancha.webp'], provinces: ['albacete', 'ciudad-real', 'cuenca', 'guadalajara', 'toledo'] },
-  { color: '#C49A6C', name: 'バレンシア州', flags: ['/images/flags/valencia.webp'], provinces: ['alicante', 'castellon', 'valencia'] },
-  { color: '#6B8FA8', name: 'ガリシア', flags: ['/images/flags/galicia.webp'], provinces: ['la-coruna', 'lugo', 'orense', 'pontevedra'] },
-  { color: '#5C7A6B', name: 'バスク地方', flags: ['/images/flags/pais-vasco.webp'], provinces: ['vizcaya', 'guipuzcoa', 'alava'] },
-  { color: '#7B9E87', name: 'アラゴン', flags: ['/images/flags/aragon.webp'], provinces: ['huesca', 'teruel', 'zaragoza'] },
-  { color: '#7A9E7E', name: 'エストレマドゥーラ', flags: ['/images/flags/extremadura.webp'], provinces: ['badajoz', 'caceres'] },
-  { color: '#D4A853', name: 'カナリア諸島', flags: ['/images/flags/canarias.webp'], provinces: ['las-palmas', 'santa-cruz-de-tenerife'] },
-  { color: '#5B8FA8', name: 'アストゥリアス', flags: ['/images/flags/asturias.webp'], provinces: ['asturias'] },
-  { color: '#9B7FB6', name: 'バレアレス諸島', flags: ['/images/flags/baleares.webp'], provinces: ['islas-baleares'] },
-  { color: '#6B9E9E', name: 'カンタブリア', flags: ['/images/flags/cantabria.webp'], provinces: ['cantabria'] },
-  { color: '#B87878', name: 'ラ・リオハ', flags: ['/images/flags/la-rioja.webp'], provinces: ['la-rioja'] },
-  { color: '#8B6B8B', name: 'マドリード州', flags: ['/images/flags/madrid.webp'], provinces: ['madrid'] },
-  { color: '#C4A882', name: 'ムルシア', flags: ['/images/flags/murcia.webp'], provinces: ['murcia'] },
-  { color: '#7E9E8B', name: 'ナバラ', flags: ['/images/flags/navarra.webp'], provinces: ['navarra'] },
-  { color: '#9ca3af', name: 'セウタ・メリリャ（自治都市）', flags: ['/images/flags/ceuta.webp', '/images/flags/melilla.webp'], provinces: ['ceuta', 'melilla'] },
+  { color: '#A8956C', flagColor: '#6B2C5F', name: 'カスティーリャ・イ・レオン', flags: ['/images/flags/castilla-y-leon.webp'], provinces: ['avila', 'burgos', 'leon', 'palencia', 'salamanca', 'segovia', 'soria', 'valladolid', 'zamora'] },
+  { color: '#C8956C', flagColor: '#0F7A3D', name: 'アンダルシア', flags: ['/images/flags/andalucia.webp'], provinces: ['almeria', 'cadiz', 'cordoba', 'granada', 'huelva', 'jaen', 'malaga', 'sevilla'] },
+  { color: '#B8A898', flagColor: '#B91C2C', name: 'カスティーリャ・ラ・マンチャ', flags: ['/images/flags/castilla-la-mancha.webp'], provinces: ['albacete', 'ciudad-real', 'cuenca', 'guadalajara', 'toledo'] },
+  { color: '#8B7355', flagColor: '#E8C200', name: 'カタルーニャ', flags: ['/images/flags/catalunya.webp'], provinces: ['barcelona', 'gerona', 'lerida', 'tarragona'] },
+  { color: '#6B8FA8', flagColor: '#0090C8', name: 'ガリシア', flags: ['/images/flags/galicia.webp'], provinces: ['la-coruna', 'lugo', 'orense', 'pontevedra'] },
+  { color: '#C49A6C', flagColor: '#0055A4', name: 'バレンシア州', flags: ['/images/flags/valencia.webp'], provinces: ['alicante', 'castellon', 'valencia'] },
+  { color: '#5C7A6B', flagColor: '#C41E3A', name: 'バスク地方', flags: ['/images/flags/pais-vasco.webp'], provinces: ['vizcaya', 'guipuzcoa', 'alava'] },
+  { color: '#7B9E87', flagColor: '#E8C200', name: 'アラゴン', flags: ['/images/flags/aragon.webp'], provinces: ['huesca', 'teruel', 'zaragoza'] },
+  { color: '#7A9E7E', flagColor: '#1A1A1A', name: 'エストレマドゥーラ', flags: ['/images/flags/extremadura.webp'], provinces: ['badajoz', 'caceres'] },
+  { color: '#D4A853', flagColor: '#E0B400', name: 'カナリア諸島', flags: ['/images/flags/canarias.webp'], provinces: ['las-palmas', 'santa-cruz-de-tenerife'] },
+  { color: '#9ca3af', flagColor: '#0878B8', name: 'セウタ・メリリャ（自治都市）', flags: ['/images/flags/ceuta.webp', '/images/flags/melilla.webp'], provinces: ['ceuta', 'melilla'] },
+  { color: '#5B8FA8', flagColor: '#0868D8', name: 'アストゥリアス', flags: ['/images/flags/asturias.webp'], provinces: ['asturias'] },
+  { color: '#9B7FB6', flagColor: '#E8C200', name: 'バレアレス諸島', flags: ['/images/flags/baleares.webp'], provinces: ['islas-baleares'] },
+  { color: '#6B9E9E', flagColor: '#D6241D', name: 'カンタブリア', flags: ['/images/flags/cantabria.webp'], provinces: ['cantabria'] },
+  { color: '#B87878', flagColor: '#E0B400', name: 'ラ・リオハ', flags: ['/images/flags/la-rioja.webp'], provinces: ['la-rioja'] },
+  { color: '#8B6B8B', flagColor: '#C8102E', name: 'マドリード州', flags: ['/images/flags/madrid.webp'], provinces: ['madrid'] },
+  { color: '#C4A882', flagColor: '#7A1220', name: 'ムルシア', flags: ['/images/flags/murcia.webp'], provinces: ['murcia'] },
+  { color: '#7E9E8B', flagColor: '#C81818', name: 'ナバラ', flags: ['/images/flags/navarra.webp'], provinces: ['navarra'] },
 ];
 
 type Zone = {
@@ -213,14 +219,14 @@ const zones: Zone[] = [
                 <div class="community-heading">
                   <span class="community-flags">
                     {c.flags.map((flag) => (
-                      <img src={flag} alt={`${c.name}の旗`} class="community-flag" width="20" height="20" loading="lazy" />
+                      <img src={flag} alt={`${c.name}の旗`} class="community-flag" width="48" height="48" loading="lazy" />
                     ))}
                   </span>
                   <span class="community-name">{c.name}</span>
                 </div>
                 <div class="community-buttons">
                   {c.provinces.map((slug) => (
-                    <a href={`/food/spain-map/${slug}/`} class="province-button">
+                    <a href={`/food/spain-map/${slug}/`} class="province-button" style={`border-left-color: ${c.flagColor};`}>
                       {provinceBySlug[slug]}
                     </a>
                   ))}
@@ -336,19 +342,19 @@ const zones: Zone[] = [
   }
 
   /* Community button grid (colors match SpainMapSVG legend).
-     column-count deja que los bloques cortos (comunidades de 1-2
-     provincias) se compacten junto a otros en la misma fila visual,
-     en vez de que cada uno ocupe una fila entera casi vacía. */
+     Grid real (no column-count) para que los bloques queden alineados
+     por fila; el array communities ya viene ordenado de mayor a menor
+     nº de provincias para que bloques de tamaño similar caigan en la
+     misma fila visual. */
   .community-list {
     margin-top: 40px;
-    column-count: 2;
-    column-gap: 32px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 32px;
+    align-items: start;
   }
   .community-block {
-    display: inline-block;
-    width: 100%;
-    break-inside: avoid;
-    margin-bottom: 32px;
+    margin-bottom: 0;
   }
   .community-heading {
     display: flex;
@@ -362,8 +368,8 @@ const zones: Zone[] = [
     flex-shrink: 0;
   }
   .community-flag {
-    width: 32px;
-    height: 32px;
+    width: 48px;
+    height: 48px;
     object-fit: cover;
     border-radius: 4px;
     border: 1px solid var(--color-border);
@@ -387,6 +393,7 @@ const zones: Zone[] = [
     padding: 16px;
     background: white;
     border: 1px solid var(--color-border);
+    border-left-width: 3px;
     border-radius: 8px;
     font-size: 14px;
     font-weight: 700;
@@ -483,6 +490,6 @@ const zones: Zone[] = [
   @media (max-width: 767px) {
     .msec { padding-top: 32px; padding-bottom: 32px; }
     .dining-times-teaser { flex-direction: column; align-items: flex-start; }
-    .community-list { column-count: 1; }
+    .community-list { grid-template-columns: 1fr; }
   }
 </style>
