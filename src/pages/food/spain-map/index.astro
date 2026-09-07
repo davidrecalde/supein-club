@@ -356,25 +356,27 @@ const zones: Zone[] = [
     color: var(--color-navy);
   }
   .community-buttons {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
   }
   .province-button {
-    display: inline-block;
-    padding: 8px 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 16px;
     background: white;
     border: 1px solid var(--color-border);
     border-radius: 8px;
-    font-size: 13px;
-    font-weight: 600;
+    font-size: 14px;
+    font-weight: 700;
     color: var(--color-navy);
     text-decoration: none;
-    transition: border-color 0.2s, color 0.2s;
+    transition: border-color 0.2s;
   }
   .province-button:hover {
     border-color: var(--color-primary);
-    color: var(--color-primary);
   }
 
   /* Zone cards grid */
@@ -459,9 +461,11 @@ const zones: Zone[] = [
   @media (max-width: 1023px) {
     .zones-grid { grid-template-columns: 1fr; }
     .community-list { grid-template-columns: 1fr; }
+    .community-buttons { grid-template-columns: repeat(4, 1fr); }
   }
   @media (max-width: 767px) {
     .msec { padding-top: 32px; padding-bottom: 32px; }
     .dining-times-teaser { flex-direction: column; align-items: flex-start; }
+    .community-buttons { grid-template-columns: repeat(2, 1fr); }
   }
 </style>
