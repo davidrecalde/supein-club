@@ -38,7 +38,6 @@ type Zone = {
   provincias: string;
   destacado: string;
   platoIconico: string;
-  guideLink?: { href: string; label: string };
   links: ZoneProvince[];
 };
 
@@ -50,13 +49,12 @@ const zones: Zone[] = [
     provincias: 'バスク · カンタブリア · アストゥリアス',
     destacado: 'サン・セバスティアン（美食の首都）、イディアサバルチーズ',
     platoIconico: 'ピンチョス',
-    guideLink: { href: '/food/pais-vasco/', label: 'バスクガイド' },
     links: [
-      { nameJa: 'アラバ', name: 'Álava', url: 'https://maps.app.goo.gl/hCpAjPnuvHVfQAjp6' },
-      { nameJa: 'ギプスコア', name: 'Guipúzcoa', url: 'https://maps.app.goo.gl/Z3K7tnYmN1xVYKeeA' },
-      { nameJa: 'ビスカヤ', name: 'Vizcaya', url: 'https://maps.app.goo.gl/LdGPinUAEbN7dcGh6' },
-      { nameJa: 'アストゥリアス', name: 'Asturias', url: 'https://maps.app.goo.gl/9UTVr3ujsAQijSN97' },
-      { nameJa: 'カンタブリア', name: 'Cantabria', url: 'https://maps.app.goo.gl/S1YR2NFsDRW5QUVU6' },
+      { nameJa: 'アラバ', name: 'Álava', url: '/food/spain-map/alava/' },
+      { nameJa: 'ギプスコア', name: 'Guipúzcoa', url: '/food/spain-map/guipuzcoa/' },
+      { nameJa: 'ビスカヤ', name: 'Vizcaya', url: '/food/spain-map/vizcaya/' },
+      { nameJa: 'アストゥリアス', name: 'Asturias', url: '/food/spain-map/asturias/' },
+      { nameJa: 'カンタブリア', name: 'Cantabria', url: '/food/spain-map/cantabria/' },
     ],
   },
   {
@@ -67,11 +65,11 @@ const zones: Zone[] = [
     destacado: 'タコのガリシア風、アルバリーニョワイン',
     platoIconico: 'プルポ・ア・ラ・ガジェガ',
     links: [
-      { nameJa: 'ア・コルーニャ', name: 'La Coruña', url: 'https://maps.app.goo.gl/YThZTKUx8nSHk9kP7' },
-      { nameJa: 'ルーゴ', name: 'Lugo', url: 'https://maps.app.goo.gl/HNxcVcBujRPUd1gP8' },
-      { nameJa: 'オウレンセ', name: 'Orense', url: 'https://maps.app.goo.gl/iAU4VjNfU3YCZyHU7' },
-      { nameJa: 'ポンテベドラ', name: 'Pontevedra', url: 'https://maps.app.goo.gl/7PTxCDzqiJZqSGDx7' },
-      { nameJa: 'ナバラ', name: 'Navarra', url: 'https://maps.app.goo.gl/SedutjfVZMqC5ChT9' },
+      { nameJa: 'ア・コルーニャ', name: 'La Coruña', url: '/food/spain-map/la-coruna/' },
+      { nameJa: 'ルーゴ', name: 'Lugo', url: '/food/spain-map/lugo/' },
+      { nameJa: 'オウレンセ', name: 'Orense', url: '/food/spain-map/orense/' },
+      { nameJa: 'ポンテベドラ', name: 'Pontevedra', url: '/food/spain-map/pontevedra/' },
+      { nameJa: 'ナバラ', name: 'Navarra', url: '/food/spain-map/navarra/' },
     ],
   },
   {
@@ -81,18 +79,17 @@ const zones: Zone[] = [
     provincias: 'マドリード · カスティーリャ',
     destacado: 'コシード・マドリレーニョ、コチニージョ（子豚の丸焼き）',
     platoIconico: 'コシード・マドリレーニョ',
-    guideLink: { href: '/food/madrid/', label: 'マドリードガイド' },
     links: [
-      { nameJa: 'マドリード', name: 'Madrid', url: 'https://maps.app.goo.gl/58VguHLKzarUWkNo8' },
-      { nameJa: 'ブルゴス', name: 'Burgos', url: 'https://maps.app.goo.gl/cFsUPmBPgyj23csU6' },
-      { nameJa: 'サラマンカ', name: 'Salamanca', url: 'https://maps.app.goo.gl/LptC1yvqECUUmCjo7' },
-      { nameJa: 'セゴビア', name: 'Segovia', url: 'https://maps.app.goo.gl/vbRX2hzgsNWZ9dwV9' },
-      { nameJa: 'バリャドリード', name: 'Valladolid', url: 'https://maps.app.goo.gl/gUazVv7T6YYeYmcz5' },
-      { nameJa: 'アビラ', name: 'Ávila', url: 'https://maps.app.goo.gl/YKEc5Lqj39npyqra6' },
-      { nameJa: 'レオン', name: 'León', url: 'https://maps.app.goo.gl/A1FNtf96sXykmpTd7' },
-      { nameJa: 'パレンシア', name: 'Palencia', url: 'https://maps.app.goo.gl/jPp5K5sBUS3M737D7' },
-      { nameJa: 'ソリア', name: 'Soria', url: 'https://maps.app.goo.gl/Vdz9j5PHdBpLBYGj7' },
-      { nameJa: 'サモラ', name: 'Zamora', url: 'https://maps.app.goo.gl/ZLUzortYSy5YZtZx7' },
+      { nameJa: 'マドリード', name: 'Madrid', url: '/food/spain-map/madrid/' },
+      { nameJa: 'ブルゴス', name: 'Burgos', url: '/food/spain-map/burgos/' },
+      { nameJa: 'サラマンカ', name: 'Salamanca', url: '/food/spain-map/salamanca/' },
+      { nameJa: 'セゴビア', name: 'Segovia', url: '/food/spain-map/segovia/' },
+      { nameJa: 'バリャドリード', name: 'Valladolid', url: '/food/spain-map/valladolid/' },
+      { nameJa: 'アビラ', name: 'Ávila', url: '/food/spain-map/avila/' },
+      { nameJa: 'レオン', name: 'León', url: '/food/spain-map/leon/' },
+      { nameJa: 'パレンシア', name: 'Palencia', url: '/food/spain-map/palencia/' },
+      { nameJa: 'ソリア', name: 'Soria', url: '/food/spain-map/soria/' },
+      { nameJa: 'サモラ', name: 'Zamora', url: '/food/spain-map/zamora/' },
     ],
   },
   {
@@ -102,15 +99,14 @@ const zones: Zone[] = [
     provincias: 'バレンシア · カタルーニャ',
     destacado: 'パエリア・バレンシアーナ（発祥地）、カバ',
     platoIconico: 'パエリア',
-    guideLink: { href: '/food/barcelona/', label: 'バルセロナガイド' },
     links: [
-      { nameJa: 'バルセロナ', name: 'Barcelona', url: 'https://maps.app.goo.gl/2swYC19RMZQ3wgTr9' },
-      { nameJa: 'バレンシア', name: 'Valencia', url: 'https://maps.app.goo.gl/bQoeARtzkmyChSiT6' },
-      { nameJa: 'アリカンテ', name: 'Alicante', url: 'https://maps.app.goo.gl/znVyjMsdkS1RT9oP9' },
-      { nameJa: 'カステジョン', name: 'Castellón', url: 'https://maps.app.goo.gl/ytAcosDZztNQL8x76' },
-      { nameJa: 'ヘローナ', name: 'Gerona', url: 'https://maps.app.goo.gl/pPS3RqDJyfeh7zJE8' },
-      { nameJa: 'リェイダ', name: 'Lérida', url: 'https://maps.app.goo.gl/vryLF5mJBe6V4yHa6' },
-      { nameJa: 'タラゴナ', name: 'Tarragona', url: 'https://maps.app.goo.gl/vryLF5mJBe6V4yHa6' },
+      { nameJa: 'バルセロナ', name: 'Barcelona', url: '/food/spain-map/barcelona/' },
+      { nameJa: 'バレンシア', name: 'Valencia', url: '/food/spain-map/valencia/' },
+      { nameJa: 'アリカンテ', name: 'Alicante', url: '/food/spain-map/alicante/' },
+      { nameJa: 'カステジョン', name: 'Castellón', url: '/food/spain-map/castellon/' },
+      { nameJa: 'ヘローナ', name: 'Gerona', url: '/food/spain-map/gerona/' },
+      { nameJa: 'リェイダ', name: 'Lérida', url: '/food/spain-map/lerida/' },
+      { nameJa: 'タラゴナ', name: 'Tarragona', url: '/food/spain-map/tarragona/' },
     ],
   },
   {
@@ -120,16 +116,15 @@ const zones: Zone[] = [
     provincias: 'アンダルシア',
     destacado: 'ペスカイト・フリート（揚げ魚）、ガスパチョ、シェリー酒',
     platoIconico: 'ガスパチョ',
-    guideLink: { href: '/food/sevilla/', label: 'セビリアガイド' },
     links: [
-      { nameJa: 'セビリア', name: 'Sevilla', url: 'https://maps.app.goo.gl/Cog8XmyaNggEvpMeA' },
-      { nameJa: 'グラナダ', name: 'Granada', url: 'https://maps.app.goo.gl/Edtun9S1gVq9WZm48' },
-      { nameJa: 'マラガ', name: 'Málaga', url: 'https://maps.app.goo.gl/otWcKe7KcGBHtD1S8' },
-      { nameJa: 'カディス', name: 'Cádiz', url: 'https://maps.app.goo.gl/azwQkt6b8csgRYyq6' },
-      { nameJa: 'コルドバ', name: 'Córdoba', url: 'https://maps.app.goo.gl/Ki3mFBj52nHZPhad9' },
-      { nameJa: 'ウエルバ', name: 'Huelva', url: 'https://maps.app.goo.gl/qAJrbKosSUnGzYQ3A' },
-      { nameJa: 'ハエン', name: 'Jaén', url: 'https://maps.app.goo.gl/m1f9248YgWgJfrfV8' },
-      { nameJa: 'アルメリア', name: 'Almería', url: 'https://maps.app.goo.gl/TpFXga4kpYhXWjY88' },
+      { nameJa: 'セビリア', name: 'Sevilla', url: '/food/spain-map/sevilla/' },
+      { nameJa: 'グラナダ', name: 'Granada', url: '/food/spain-map/granada/' },
+      { nameJa: 'マラガ', name: 'Málaga', url: '/food/spain-map/malaga/' },
+      { nameJa: 'カディス', name: 'Cádiz', url: '/food/spain-map/cadiz/' },
+      { nameJa: 'コルドバ', name: 'Córdoba', url: '/food/spain-map/cordoba/' },
+      { nameJa: 'ウエルバ', name: 'Huelva', url: '/food/spain-map/huelva/' },
+      { nameJa: 'ハエン', name: 'Jaén', url: '/food/spain-map/jaen/' },
+      { nameJa: 'アルメリア', name: 'Almería', url: '/food/spain-map/almeria/' },
     ],
   },
   {
@@ -140,9 +135,9 @@ const zones: Zone[] = [
     destacado: 'イベリコ・デ・ベジョータ、リオハワイン',
     platoIconico: 'ハモン・イベリコ',
     links: [
-      { nameJa: 'バダホス', name: 'Badajoz', url: 'https://maps.app.goo.gl/V58ae4mNsR9UVmTd9' },
-      { nameJa: 'カセレス', name: 'Cáceres', url: 'https://maps.app.goo.gl/P8BRG33P6wKBc7hX7' },
-      { nameJa: 'ラ・リオハ', name: 'La Rioja', url: 'https://maps.app.goo.gl/KxA3vXwxb8PGmMvf7' },
+      { nameJa: 'バダホス', name: 'Badajoz', url: '/food/spain-map/badajoz/' },
+      { nameJa: 'カセレス', name: 'Cáceres', url: '/food/spain-map/caceres/' },
+      { nameJa: 'ラ・リオハ', name: 'La Rioja', url: '/food/spain-map/la-rioja/' },
     ],
   },
   {
@@ -153,9 +148,9 @@ const zones: Zone[] = [
     destacado: 'パパス・アルガダス（カナリア風小芋）、エンサイマダ',
     platoIconico: 'パパス・アルガダス con モホ',
     links: [
-      { nameJa: 'ラス・パルマス', name: 'Las Palmas', url: 'https://maps.app.goo.gl/KeBk8mQZ6aF5ypep7' },
-      { nameJa: 'テネリフェ', name: 'Santa Cruz de Tenerife', url: 'https://maps.app.goo.gl/QcfY6B8o2PLquiqP7' },
-      { nameJa: 'バレアレス諸島', name: 'Islas Baleares', url: 'https://maps.app.goo.gl/td77CJd3kZ4tCron7' },
+      { nameJa: 'ラス・パルマス', name: 'Las Palmas', url: '/food/spain-map/las-palmas/' },
+      { nameJa: 'テネリフェ', name: 'Santa Cruz de Tenerife', url: '/food/spain-map/santa-cruz-de-tenerife/' },
+      { nameJa: 'バレアレス諸島', name: 'Islas Baleares', url: '/food/spain-map/islas-baleares/' },
     ],
   },
 ];
@@ -254,7 +249,7 @@ const japanMaps = [
           <p class="text-primary font-bold tracking-widest" style="font-size:11px; text-transform:uppercase; margin-bottom:8px;">INTERACTIVE MAP</p>
           <h2 class="font-serif font-bold text-navy" style="font-size:clamp(24px,3vw,36px); margin-bottom:12px;">スペイン州別マップ</h2>
           <p class="text-muted" style="font-size:16px; max-width:680px; line-height:1.7; margin-bottom:40px;">
-            州をクリックして、レストランマップまたは詳細ガイドへ。赤い枠は編集部ガイドがある州です。
+            州をクリックして、それぞれのレストランマップと詳細ガイドへ。
           </p>
           <SpainMapSVG />
         </section>
@@ -292,14 +287,6 @@ const japanMaps = [
                   <div style="margin-bottom:16px;">
                     <span class="dish-badge">{zone.platoIconico}</span>
                   </div>
-
-                  {zone.guideLink && (
-                    <div style="margin-bottom:12px;">
-                      <a href={zone.guideLink.href} class="guide-link-badge">
-                        ガイドあり — {zone.guideLink.label} →
-                      </a>
-                    </div>
-                  )}
 
                   <div class="province-links">
                     {zone.links.map((link) => (

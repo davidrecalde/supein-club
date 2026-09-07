@@ -22,7 +22,7 @@ interface Props {
 const { entry } = Astro.props;
 const { Content } = await entry.render();
 
-const canonical = `https://supein.club/food/${entry.data.province}/`;
+const canonical = `https://supein.club/food/spain-map/${entry.data.province}/`;
 
 const breadcrumbs = [
   { name: 'ホーム', url: '/' },

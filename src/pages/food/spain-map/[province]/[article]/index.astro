@@ -1,0 +1,23 @@
+---
+import { getCollection } from 'astro:content';
+import type { GetStaticPaths } from 'astro';
+import ArticleLayout from '../../../../../layouts/ArticleLayout.astro';
+
+// Subpáginas de especialidad por provincia (p.ej. /food/spain-map/barcelona/the-best-restaurants/).
+// Cada artículo vive en src/content/articles/food/spain-map-{province}/{slug}.mdx con
+// cluster: "spain-map-{province}" — este catch-all las resuelve dinámicamente cuando se publiquen.
+export const getStaticPaths: GetStaticPaths = async () => {
+  const articles = await getCollection('articles', ({ data }) => !data.draft && data.pillar === 'food' && data.cluster.startsWith('spain-map-'));
+  return articles.map((entry) => {
+    const parts = entry.id.replace(/\.(md|mdx)$/, '').split('/');
+    const province = entry.data.cluster.replace('spain-map-', '');
+    return {
+      params: { province, article: parts[parts.length - 1] },
+      props: { entry },
+    };
+  });
+};
+
+const { entry } = Astro.props;
+---
+<ArticleLayout entry={entry} />
