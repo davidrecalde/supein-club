@@ -335,8 +335,8 @@ const zones: Zone[] = [
   .community-list {
     margin-top: 40px;
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 24px 32px;
+    grid-template-columns: 1fr;
+    gap: 32px;
   }
   .community-heading {
     display: flex;
@@ -357,7 +357,7 @@ const zones: Zone[] = [
   }
   .community-buttons {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     gap: 12px;
   }
   .province-button {
@@ -460,8 +460,6 @@ const zones: Zone[] = [
 
   @media (max-width: 1023px) {
     .zones-grid { grid-template-columns: 1fr; }
-    .community-list { grid-template-columns: 1fr; }
-    .community-buttons { grid-template-columns: repeat(4, 1fr); }
   }
   @media (max-width: 767px) {
     .msec { padding-top: 32px; padding-bottom: 32px; }
