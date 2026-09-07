@@ -47,24 +47,24 @@ const provinceBySlug: Record<string, string> = {
 };
 
 const communities = [
-  { color: '#C8956C', name: 'アンダルシア', provinces: ['almeria', 'cadiz', 'cordoba', 'granada', 'huelva', 'jaen', 'malaga', 'sevilla'] },
-  { color: '#8B7355', name: 'カタルーニャ', provinces: ['barcelona', 'gerona', 'lerida', 'tarragona'] },
-  { color: '#A8956C', name: 'カスティーリャ・イ・レオン', provinces: ['avila', 'burgos', 'leon', 'palencia', 'salamanca', 'segovia', 'soria', 'valladolid', 'zamora'] },
-  { color: '#B8A898', name: 'カスティーリャ・ラ・マンチャ', provinces: ['albacete', 'ciudad-real', 'cuenca', 'guadalajara', 'toledo'] },
-  { color: '#C49A6C', name: 'バレンシア州', provinces: ['alicante', 'castellon', 'valencia'] },
-  { color: '#6B8FA8', name: 'ガリシア', provinces: ['la-coruna', 'lugo', 'orense', 'pontevedra'] },
-  { color: '#5C7A6B', name: 'バスク地方', provinces: ['vizcaya', 'guipuzcoa', 'alava'] },
-  { color: '#7B9E87', name: 'アラゴン', provinces: ['huesca', 'teruel', 'zaragoza'] },
-  { color: '#7A9E7E', name: 'エストレマドゥーラ', provinces: ['badajoz', 'caceres'] },
-  { color: '#D4A853', name: 'カナリア諸島', provinces: ['las-palmas', 'santa-cruz-de-tenerife'] },
-  { color: '#5B8FA8', name: 'アストゥリアス', provinces: ['asturias'] },
-  { color: '#9B7FB6', name: 'バレアレス諸島', provinces: ['islas-baleares'] },
-  { color: '#6B9E9E', name: 'カンタブリア', provinces: ['cantabria'] },
-  { color: '#B87878', name: 'ラ・リオハ', provinces: ['la-rioja'] },
-  { color: '#8B6B8B', name: 'マドリード州', provinces: ['madrid'] },
-  { color: '#C4A882', name: 'ムルシア', provinces: ['murcia'] },
-  { color: '#7E9E8B', name: 'ナバラ', provinces: ['navarra'] },
-  { color: '#9ca3af', name: 'セウタ・メリリャ（自治都市）', provinces: ['ceuta', 'melilla'] },
+  { color: '#C8956C', name: 'アンダルシア', flags: ['/images/flags/andalucia.webp'], provinces: ['almeria', 'cadiz', 'cordoba', 'granada', 'huelva', 'jaen', 'malaga', 'sevilla'] },
+  { color: '#8B7355', name: 'カタルーニャ', flags: ['/images/flags/catalunya.webp'], provinces: ['barcelona', 'gerona', 'lerida', 'tarragona'] },
+  { color: '#A8956C', name: 'カスティーリャ・イ・レオン', flags: ['/images/flags/castilla-y-leon.webp'], provinces: ['avila', 'burgos', 'leon', 'palencia', 'salamanca', 'segovia', 'soria', 'valladolid', 'zamora'] },
+  { color: '#B8A898', name: 'カスティーリャ・ラ・マンチャ', flags: ['/images/flags/castilla-la-mancha.webp'], provinces: ['albacete', 'ciudad-real', 'cuenca', 'guadalajara', 'toledo'] },
+  { color: '#C49A6C', name: 'バレンシア州', flags: ['/images/flags/valencia.webp'], provinces: ['alicante', 'castellon', 'valencia'] },
+  { color: '#6B8FA8', name: 'ガリシア', flags: ['/images/flags/galicia.webp'], provinces: ['la-coruna', 'lugo', 'orense', 'pontevedra'] },
+  { color: '#5C7A6B', name: 'バスク地方', flags: ['/images/flags/pais-vasco.webp'], provinces: ['vizcaya', 'guipuzcoa', 'alava'] },
+  { color: '#7B9E87', name: 'アラゴン', flags: ['/images/flags/aragon.webp'], provinces: ['huesca', 'teruel', 'zaragoza'] },
+  { color: '#7A9E7E', name: 'エストレマドゥーラ', flags: ['/images/flags/extremadura.webp'], provinces: ['badajoz', 'caceres'] },
+  { color: '#D4A853', name: 'カナリア諸島', flags: ['/images/flags/canarias.webp'], provinces: ['las-palmas', 'santa-cruz-de-tenerife'] },
+  { color: '#5B8FA8', name: 'アストゥリアス', flags: ['/images/flags/asturias.webp'], provinces: ['asturias'] },
+  { color: '#9B7FB6', name: 'バレアレス諸島', flags: ['/images/flags/baleares.webp'], provinces: ['islas-baleares'] },
+  { color: '#6B9E9E', name: 'カンタブリア', flags: ['/images/flags/cantabria.webp'], provinces: ['cantabria'] },
+  { color: '#B87878', name: 'ラ・リオハ', flags: ['/images/flags/la-rioja.webp'], provinces: ['la-rioja'] },
+  { color: '#8B6B8B', name: 'マドリード州', flags: ['/images/flags/madrid.webp'], provinces: ['madrid'] },
+  { color: '#C4A882', name: 'ムルシア', flags: ['/images/flags/murcia.webp'], provinces: ['murcia'] },
+  { color: '#7E9E8B', name: 'ナバラ', flags: ['/images/flags/navarra.webp'], provinces: ['navarra'] },
+  { color: '#9ca3af', name: 'セウタ・メリリャ（自治都市）', flags: ['/images/flags/ceuta.webp', '/images/flags/melilla.webp'], provinces: ['ceuta', 'melilla'] },
 ];
 
 type Zone = {
@@ -211,7 +211,11 @@ const zones: Zone[] = [
             {communities.map((c) => (
               <div class="community-block">
                 <div class="community-heading">
-                  <span class="community-dot" style={`background:${c.color};`}></span>
+                  <span class="community-flags">
+                    {c.flags.map((flag) => (
+                      <img src={flag} alt={`${c.name}の旗`} class="community-flag" width="20" height="20" loading="lazy" />
+                    ))}
+                  </span>
                   <span class="community-name">{c.name}</span>
                 </div>
                 <div class="community-buttons">
@@ -344,11 +348,18 @@ const zones: Zone[] = [
     gap: 8px;
     margin-bottom: 10px;
   }
-  .community-dot {
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
+  .community-flags {
+    display: flex;
+    gap: 4px;
     flex-shrink: 0;
+  }
+  .community-flag {
+    width: 20px;
+    height: 20px;
+    object-fit: cover;
+    border-radius: 3px;
+    border: 1px solid var(--color-border);
+    display: block;
   }
   .community-name {
     font-weight: 700;
