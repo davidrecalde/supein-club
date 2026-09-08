@@ -4,7 +4,7 @@ import type { GetStaticPaths } from 'astro';
 import ArticleLayout from '../../../layouts/ArticleLayout.astro';
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const flatClusterPages = new Set(['tokyo-spanish-schools']);
+  const flatClusterPages = new Set(['tokyo-spanish-schools', 'osaka-spanish-schools']);
   const articles = await getCollection('articles', ({ data }) => !data.draft && data.pillar === 'language' && !flatClusterPages.has(data.cluster));
   return articles.map((entry) => {
     const parts = entry.id.replace(/\.(md|mdx)$/, '').split('/');
