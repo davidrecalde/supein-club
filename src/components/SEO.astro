@@ -249,7 +249,8 @@ if (type === 'article' && article) {
       inLanguage: 'ja',
       educationalLevel: article.data.courseData?.educationalLevel ?? 'Beginner',
       provider: {
-        '@type': 'Organization',
+        '@type': 'EducationalOrganization',
+        '@id': `${siteUrl}/#educational-organization`,
         name: article.data.courseData?.provider ?? 'スペイン倶楽部',
         url: siteUrl,
       },
