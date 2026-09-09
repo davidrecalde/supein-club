@@ -81,7 +81,7 @@ const footballFaq = [
   },
   {
     question: '久保建英選手は現在どのクラブでプレーしていますか？',
-    answer: '2022年からレアル・ソシエダに所属しています（2029年6月まで契約）。歴代の日本人選手の挑戦の歴史は<a href="/football/japanese-players-laliga/">「スペインでプロサッカーに挑んだ日本人選手たち」</a>にまとめています。',
+    answer: '2022年からレアル・ソシエダに所属しています（2029年6月まで契約）。経歴の詳細は<a href="/football/kubo-takefusa/">「久保建英完全ガイド」</a>、歴代の日本人選手の挑戦の歴史は<a href="/football/japanese-players-laliga/">「スペインでプロサッカーに挑んだ日本人選手たち」</a>にまとめています。',
   },
   {
     question: '日本でスペインサッカーを見るにはどうすればいいですか？',
@@ -199,15 +199,15 @@ function renderCard(a: Article) {
           {[
             { name: 'FCバルセロナ', href: '/football/fcbarcelona/' },
             { name: 'レアル・マドリード', href: '/football/real-madrid/' },
-            { name: 'アトレティコ・マドリード', href: null },
-            { name: 'ビジャレアル', href: null },
+            { name: 'アトレティコ・マドリード', href: '/football/atletico-madrid/' },
+            { name: 'ビジャレアル', href: '/football/villarreal-cf/' },
             { name: 'レアル・ベティス', href: null },
             { name: 'セルタ・デ・ビーゴ', href: null },
-            { name: 'レアル・ソシエダ', href: null },
+            { name: 'レアル・ソシエダ', href: '/football/real-sociedad/' },
             { name: 'ヘタフェ', href: null },
-            { name: 'アスレティック・ビルバオ', href: null },
+            { name: 'アスレティック・ビルバオ', href: '/football/athletic-club/' },
             { name: 'バレンシアCF', href: '/football/valencia-cf/' },
-            { name: 'セビージャ', href: null },
+            { name: 'セビージャ', href: '/football/sevilla-fc/' },
             { name: 'ラーヨ・バジェカーノ', href: null },
             { name: 'オサスナ', href: null },
             { name: 'エスパニョール', href: null },
@@ -236,8 +236,23 @@ function renderCard(a: Article) {
     <p class="text-muted leading-relaxed mb-3">
       <a href="/football/real-madrid/" class="text-primary underline font-semibold">レアル・マドリード</a>は1902年創設、UEFAチャンピオンズリーグ最多15回優勝を誇る世界屈指の名門クラブです。国内外の主要タイトルを合算すると、2026年時点で通算105タイトルに達しています。
     </p>
-    <p class="text-muted leading-relaxed mb-6">
+    <p class="text-muted leading-relaxed mb-3">
       <a href="/football/valencia-cf/" class="text-primary underline font-semibold">バレンシアCF</a>は1919年創設、黄金の40年代からクーペル＆ベニテス体制での欧州制覇を経験した歴史あるクラブで、2026年には日本人選手・佐藤龍之介が加入しました。
+    </p>
+    <p class="text-muted leading-relaxed mb-3">
+      <a href="/football/real-sociedad/" class="text-primary underline font-semibold">レアル・ソシエダ</a>は1980-81・1981-82シーズンにリーグ連覇を果たしたバスクの名門で、久保建英が所属するクラブとしても知られています。
+    </p>
+    <p class="text-muted leading-relaxed mb-3">
+      <a href="/football/atletico-madrid/" class="text-primary underline font-semibold">アトレティコ・マドリード</a>は通算11回のリーグ優勝を誇る「もう一つのマドリード」。ディエゴ・シメオネ監督が15年にわたり指揮を執っています。
+    </p>
+    <p class="text-muted leading-relaxed mb-3">
+      <a href="/football/sevilla-fc/" class="text-primary underline font-semibold">セビージャFC</a>はUEFAヨーロッパリーグ史上最多となる7回優勝（決勝無敗）を誇る、欧州カップ戦屈指の強豪です。
+    </p>
+    <p class="text-muted leading-relaxed mb-3">
+      <a href="/football/athletic-club/" class="text-primary underline font-semibold">アスレティック・ビルバオ</a>はバスク出身選手限定という独自の方針を貫きながら、1部リーグから一度も降格したことがない名門クラブです。
+    </p>
+    <p class="text-muted leading-relaxed mb-6">
+      <a href="/football/villarreal-cf/" class="text-primary underline font-semibold">ビジャレアルCF</a>は人口5万人あまりの街から躍進した「黄色い潜水艦」。2020-21シーズンにUEFAヨーロッパリーグを制し、久保建英が在籍した経験を持つクラブでもあります。
     </p>
 
     <h2 class="font-sans font-bold text-xl text-navy mb-4">エル・クラシコ｜世界最大のダービー</h2>
@@ -252,7 +267,7 @@ function renderCard(a: Article) {
 
     <h2 class="font-sans font-bold text-xl text-navy mb-4">日本人選手とスペインサッカー</h2>
     <p class="text-muted leading-relaxed mb-6">
-      現在、日本代表MFの久保建英選手がレアル・ソシエダに所属しています（2022年加入、2029年6月まで契約）。1996年の初挑戦から続く歴代の日本人選手たちの記録は<a href="/football/japanese-players-laliga/" class="text-primary underline">「スペインでプロサッカーに挑んだ日本人選手たち」</a>にまとめています。2022年カタールW杯で日本代表がスペインを破った歴史的な一戦は<a href="/football/japan-vs-spain/" class="text-primary underline">「日本代表対スペイン代表」</a>で振り返っています。
+      現在、日本代表MFの<a href="/football/kubo-takefusa/" class="text-primary underline">久保建英</a>選手がレアル・ソシエダに所属しています（2022年加入、2029年6月まで契約）。1996年の初挑戦から続く歴代の日本人選手たちの記録は<a href="/football/japanese-players-laliga/" class="text-primary underline">「スペインでプロサッカーに挑んだ日本人選手たち」</a>にまとめています。2022年カタールW杯で日本代表がスペインを破った歴史的な一戦は<a href="/football/japan-vs-spain/" class="text-primary underline">「日本代表対スペイン代表」</a>で振り返っています。
     </p>
 
     <h2 class="font-sans font-bold text-xl text-navy mb-4">日本でスペインサッカーを見る方法</h2>
