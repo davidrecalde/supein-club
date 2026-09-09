@@ -1,15 +1,28 @@
 ---
-import { getCollection, type CollectionEntry } from 'astro:content';
+import { getCollection, getEntry, type CollectionEntry } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import SEO from '../../components/SEO.astro';
 import PillarHero from '../../components/PillarHero.astro';
 import ArticleCard from '../../components/ArticleCard.astro';
 import LineBanner from '../../components/LineBanner.astro';
 import FAQSection from '../../components/FAQSection.astro';
+import NewsletterForm from '../../components/NewsletterForm.astro';
+import ArticleDisclaimer from '../../components/ArticleDisclaimer.astro';
+import AuthorBox from '../../components/AuthorBox.astro';
 import { getArticleUrl } from '../../utils/articles';
 import { courseSequence } from '../../data/course-sequence';
 
 type Article = CollectionEntry<'articles'>;
+
+const author = await getEntry('authors', 'david-recalde');
+
+const otherPillars = [
+  { href: '/travel/', title: 'スペイン旅行', description: 'バルセロナ・マドリードから南部アンダルシア、離島まで、観光スポットとツアー情報を完全網羅' },
+  { href: '/food/', title: 'スペイン料理', description: 'パエリア・タパス・ワインからおすすめのお土産まで、スペインの食文化を写真つきで詳しく解説' },
+  { href: '/living/', title: 'スペインに住む', description: '留学・現地での仕事探し・ビザ取得の手続きまで、スペイン生活のリアルな実情を詳しく紹介' },
+  { href: '/culture/', title: 'スペイン文化', description: 'フラメンコ・歴史的建造物・伝統の祭りなど、スペイン文化の奥深い魅力を詳しく紹介します' },
+  { href: '/football/', title: 'スペインサッカー', description: 'ラ・リーガの試合結果や移籍情報、代表チーム、バルセロナやレアルの歴史まで深掘り解説します' },
+];
 
 const articles = await getCollection('articles', ({ data }) => !data.draft && data.pillar === 'language');
 
@@ -175,7 +188,7 @@ const languageFaq = [
   <SEO
     slot="seo"
     title="スペイン語 勉強法・教室・アプリ完全ガイド | supein.club"
-    description="スペイン語の独学勉強法から東京の教室・オンラインレッスンまで、幅広い学習方法を紹介します。初心者から上級者向けの学習リソース、CEFRレベル別の学習ロードマップ、DELE試験対策、発音のコツ、おすすめの参考書まで日本語話者向けに詳しく網羅しています。"
+    description="スペイン語の独学勉強法からDELE試験対策、東京のスペイン語教室比較、学習アプリの選び方まで。CEFRレベル別（A1〜C2）の学習ロードマップと動詞活用表など、日本語話者向けに実用的な情報を網羅しています。"
     canonical="https://supein.club/language/"
     breadcrumbs={breadcrumbs}
   />
@@ -293,7 +306,25 @@ const languageFaq = [
       スキマ時間の学習には、目的別（総合・会話・語彙）にまとめた<a href="/language/spanish-apps/" class="text-primary underline">「スペイン語アプリ おすすめ比較」</a>をご覧ください。
     </p>
 
+    <NewsletterForm variant="inline" />
+
     <FAQSection faq={languageFaq} />
+
+    {author && <ArticleDisclaimer />}
+    {author && <AuthorBox author={author} />}
+
+    <section class="mt-12 border-t border-[#E8E8E6] pt-10">
+      <h2 class="font-sans font-bold text-2xl text-navy mb-2">こちらの記事もおすすめ</h2>
+      <p class="text-sm text-gray-500 mb-6">スペインの他のテーマも見てみませんか。</p>
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+        {otherPillars.map((p) => (
+          <a href={p.href} class="block bg-white rounded-xl overflow-hidden shadow-[0_2px_8px_rgba(0,33,71,0.07)] border border-[#E8E8E6] hover:shadow-[0_4px_16px_rgba(0,33,71,0.12)] hover:border-primary/20 transition-all p-6">
+            <h3 class="font-sans font-bold text-navy text-lg mb-2">{p.title}</h3>
+            <p class="text-muted text-sm leading-relaxed">{p.description}</p>
+          </a>
+        ))}
+      </div>
+    </section>
   </div>
   </section>
 
