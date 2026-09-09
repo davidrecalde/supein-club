@@ -1,6 +1,6 @@
 # Arquitectura SEO — supein.club
 
-> Snapshot: 2026-09-08. Los volúmenes de búsqueda son rangos redondeados
+> Snapshot: 2026-09-09. Los volúmenes de búsqueda son rangos redondeados
 > del Keyword Planner de Google Ads. Tres fuentes, ninguna trackeada en
 > git (viven sueltas en la raíz del repo):
 > - `SupeinClub_Arquitectura_SEO.xlsx` — árbol maestro Nivel 1/2/3 por
@@ -79,8 +79,16 @@
 |---|---|---|---|---|
 | `/language/` | publicado (hub) | スペイン語 | 5k | xlsx (HOME) |
 | `/language/learn-spanish/` | publicado (artículo, insignia) | スペイン語 勉強 | 5k (nodo Nivel2 `/learn-spanish/`: 25k) | xlsx + docx (única coincidencia exacta de ruta plan↔real entre las 3 fuentes) |
-| `/language/learn-spanish/{A1–C2, DELE, guías}/` (52 páginas restantes) | publicado (artículos) | — | **N/D — construido desde PCIC, no desde keyword research** | — |
+| `/language/learn-spanish/{A1–C2, DELE, guías}/` (52 páginas) | publicado (artículos) | — | **N/D — construido desde PCIC, no desde keyword research** | — |
+| `/language/learn-spanish/dele-vs-seiken/` | publicado (artículo) | DELE 西検 違い / どちら | N/D | N/D — ver nota DELE abajo |
+| `/language/learn-spanish/dele-oral-interview-guide/` | publicado (artículo) | DELE面接 / 口頭試験対策 | N/D | N/D — ver nota DELE abajo |
+| `/language/learn-spanish/spanish-interview-questions-self-pr/` | publicado (artículo) | スペイン語面接 質問 / 自己PR | N/D | N/D — ver nota DELE abajo |
+| `/language/learn-spanish/spanish-interview-practice/` | publicado (artículo) | スペイン語 模擬面接 | N/D | N/D — ver nota DELE abajo |
+| `/language/learn-spanish/dele-difficulty-guide/` | publicado (artículo) | DELE 難易度 | N/D | N/D — ver nota DELE abajo |
 | `/language/tokyo-spanish-schools/` | publicado (artículo, insignia) | スペイン語 教室 東京 | 5k (nodo Nivel3 `/schools-in-japan/`: 15k) | xlsx |
+| `/language/osaka-spanish-schools/` | publicado (artículo) | 大阪 スペイン語 教室 | N/D | N/D — ranking CRE, no keyword research |
+| `/language/yokohama-spanish-schools/` | publicado (artículo) | 横浜 スペイン語 教室 | N/D | N/D — ranking CRE, no keyword research |
+| `/language/kyoto-spanish-schools/` | publicado (artículo) | 京都 スペイン語 教室 | N/D | N/D — ranking CRE, no keyword research |
 | `/language/lesson-price/` | stub, sin contenido | スペイン語 レッスン 料金 | 5k (nodo Nivel3 `/pricing/`: 15k) | xlsx |
 | `/language/online-lessons/` | stub, sin contenido | スペイン語 オンライン レッスン | 5k (nodo Nivel3 `/online-lessons/`: 15k) | xlsx |
 | `/language/pronunciation/` | stub, sin contenido | スペイン語 発音 | 5k (nodo Nivel3 `/pronunciation/`: 15k) | xlsx (ruta exacta) |
@@ -88,6 +96,8 @@
 | `/language/spanish-apps/` | stub, sin contenido | スペイン語 アプリ | 5k (nodo Nivel3 `/apps/`: 15k) | xlsx |
 | `/language/spanish-books/` | stub, sin contenido | スペイン語 本 | 5k (nodo Nivel3 `/books/`: 15k) | xlsx |
 | `/language/spanish-phrases/` | stub, sin contenido | スペイン語 フレーズ | 5k (nodo Nivel3 `/phrases/`: 15k, incluye 挨拶+旅行フレーズ) | xlsx |
+
+**Nota DELE (silo面接/難易度, 2026-09-09):** `dele-vs-seiken`, `dele-oral-interview-guide`, `spanish-interview-questions-self-pr`, `spanish-interview-practice` y `dele-difficulty-guide` no vienen de ninguna de las 3 fuentes de este documento (xlsx/docx/csv) ni de PCIC — nacen de un análisis competitivo ad-hoc sobre Instituto Cervantes Tokio y de un listado de preguntas japonesas frecuentes en buscadores, ambos aportados fuera del flujo de Keyword Planner. Se enlazan entre sí y con `dele/index` para formar un silo interno sin solapar intención (examen DELE vs. entrevista de trabajo general vs. dónde practicar vs. dificultad por nivel). **`dele-difficulty-guide` reemplaza la idea original de un "hub de tasas de aprobación"**: se descartó tras verificar que ni el Instituto Cervantes ni el organismo del 西検 (公益財団法人日本スペイン協会) publican 合格率 oficiales por nivel — el artículo lo declara explícitamente en vez de estimar cifras. Por el mismo motivo, `dele-vs-seiken` tuvo sus cifras de precio (ya publicadas, no verificables) retiradas y sustituidas por enlaces a las webs oficiales.
 
 ### living
 
