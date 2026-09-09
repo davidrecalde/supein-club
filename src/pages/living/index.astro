@@ -1,10 +1,23 @@
 ---
-import { getCollection } from 'astro:content';
+import { getCollection, getEntry } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import SEO from '../../components/SEO.astro';
 import PillarHero from '../../components/PillarHero.astro';
 import ArticleCard from '../../components/ArticleCard.astro';
 import LineBanner from '../../components/LineBanner.astro';
+import NewsletterForm from '../../components/NewsletterForm.astro';
+import ArticleDisclaimer from '../../components/ArticleDisclaimer.astro';
+import AuthorBox from '../../components/AuthorBox.astro';
+
+const author = await getEntry('authors', 'david-recalde');
+
+const otherPillars = [
+  { href: '/travel/', title: 'スペイン旅行', description: 'バルセロナ・マドリードから南部アンダルシア、離島まで、観光スポットとツアー情報を完全網羅' },
+  { href: '/food/', title: 'スペイン料理', description: 'パエリア・タパス・ワインからおすすめのお土産まで、スペインの食文化を写真つきで詳しく解説' },
+  { href: '/language/', title: 'スペイン語', description: 'レッスン・語学学校・学習アプリの選び方まで、スペイン語習得に役立つ情報を体系的に紹介' },
+  { href: '/culture/', title: 'スペイン文化', description: 'フラメンコ・歴史的建造物・伝統の祭りなど、スペイン文化の奥深い魅力を詳しく紹介します' },
+  { href: '/football/', title: 'スペインサッカー', description: 'ラ・リーガの試合結果や移籍情報、代表チーム、バルセロナやレアルの歴史まで深掘り解説します' },
+];
 
 const articles = await getCollection('articles', ({ data }) => !data.draft && data.pillar === 'living');
 const sorted = articles.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
@@ -103,5 +116,28 @@ const breadcrumbs = [
       <p class="text-muted text-center py-12">記事を準備中です。近日公開予定。</p>
     )}
   </section>
+
+  <section class="max-w-6xl mx-auto px-5 pb-14 prose-content">
+  <div class="max-w-[780px]">
+    <NewsletterForm variant="inline" />
+
+    {author && <ArticleDisclaimer />}
+    {author && <AuthorBox author={author} />}
+
+    <section class="mt-12 border-t border-[#E8E8E6] pt-10">
+      <h2 class="font-sans font-bold text-2xl text-navy mb-2">こちらの記事もおすすめ</h2>
+      <p class="text-sm text-gray-500 mb-6">スペインの他のテーマも見てみませんか。</p>
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+        {otherPillars.map((p) => (
+          <a href={p.href} class="block bg-white rounded-xl overflow-hidden shadow-[0_2px_8px_rgba(0,33,71,0.07)] border border-[#E8E8E6] hover:shadow-[0_4px_16px_rgba(0,33,71,0.12)] hover:border-primary/20 transition-all p-6">
+            <h3 class="font-sans font-bold text-navy text-lg mb-2">{p.title}</h3>
+            <p class="text-muted text-sm leading-relaxed">{p.description}</p>
+          </a>
+        ))}
+      </div>
+    </section>
+  </div>
+  </section>
+
   <LineBanner slim />
 </BaseLayout>
