@@ -1,0 +1,35 @@
+---
+interface Props {
+  name: string;
+  alternateName?: string[];
+  foundingDate: string;
+  city?: string;
+  url: string;
+  memberOf?: string;
+}
+
+const { name, alternateName, foundingDate, city, url, memberOf } = Astro.props;
+
+const schema: Record<string, unknown> = {
+  '@context': 'https://schema.org',
+  '@type': 'SportsTeam',
+  name,
+  sport: 'Football',
+  foundingDate,
+  url,
+};
+if (city) {
+  schema.location = {
+    '@type': 'Place',
+    name: city,
+    address: {
+      '@type': 'PostalAddress',
+      addressLocality: city,
+      addressCountry: 'ES',
+    },
+  };
+}
+if (alternateName && alternateName.length > 0) schema.alternateName = alternateName;
+if (memberOf) schema.memberOf = { '@type': 'SportsOrganization', name: memberOf };
+---
+<script type="application/ld+json" set:html={JSON.stringify(schema)} />
