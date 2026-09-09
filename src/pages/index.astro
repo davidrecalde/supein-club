@@ -123,7 +123,7 @@ const breadcrumbs = [{ name: 'ホーム', url: '/' }];
         <span class="h-px w-8 bg-navy/15"></span>
         <span class="text-primary text-lg font-semibold uppercase tracking-widest">カテゴリ</span>
       </div>
-      <h2 class="font-sans font-bold text-3xl text-navy mb-10">スペインの気になるテーマから</h2>
+      <h2 class="font-sans font-bold text-3xl text-navy mb-10">スペイン旅行・料理・語学など6つのテーマ</h2>
       <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
         {pillars.map(({ href, Icon, title, desc, image }) => (
           <a
@@ -132,6 +132,8 @@ const breadcrumbs = [{ name: 'ホーム', url: '/' }];
           >
             <img
               src={image.src}
+              width={image.width}
+              height={image.height}
               alt=""
               loading="lazy"
               class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
@@ -164,7 +166,7 @@ const breadcrumbs = [{ name: 'ホーム', url: '/' }];
           <span class="h-px w-8 bg-navy/15"></span>
           <span class="text-primary text-lg font-semibold uppercase tracking-widest">新着</span>
         </div>
-        <h2 class="font-sans font-bold text-3xl text-navy mb-10">スペインの最新記事</h2>
+        <h2 class="font-sans font-bold text-3xl text-navy mb-10">スペイン倶楽部の最新記事（カテゴリ別）</h2>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
           {recentArticles.map((article) => (
             <ArticleCard
