@@ -1,0 +1,45 @@
+---
+interface Props {
+  name: string;
+  birthDate: string;
+  birthPlace: string;
+  nationality?: string;
+  jobTitle?: string;
+  affiliation?: string;
+  url: string;
+}
+
+const {
+  name,
+  birthDate,
+  birthPlace,
+  nationality = 'スペイン',
+  jobTitle = 'プロサッカー選手',
+  affiliation,
+  url,
+} = Astro.props;
+
+const schema: Record<string, unknown> = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name,
+  birthDate,
+  birthPlace: {
+    '@type': 'Place',
+    name: birthPlace,
+  },
+  nationality: {
+    '@type': 'Country',
+    name: nationality,
+  },
+  jobTitle,
+  url,
+};
+if (affiliation) {
+  schema.affiliation = {
+    '@type': 'SportsTeam',
+    name: affiliation,
+  };
+}
+---
+<script type="application/ld+json" set:html={JSON.stringify(schema)} />
