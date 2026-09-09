@@ -6,6 +6,7 @@ import PillarHero from '../../components/PillarHero.astro';
 import ArticleCard from '../../components/ArticleCard.astro';
 import LineBanner from '../../components/LineBanner.astro';
 import AdSlot from '../../components/AdSlot.astro';
+import FAQSection from '../../components/FAQSection.astro';
 import { getArticleUrl } from '../../utils/articles';
 
 type Article = CollectionEntry<'articles'>;
@@ -50,7 +51,47 @@ const footballSchema = {
     '@type': 'Thing',
     name: 'スペインサッカー',
   },
+  mainEntity: {
+    '@type': 'ItemList',
+    itemListElement: sorted.map((a, i) => ({
+      '@type': 'ListItem',
+      position: i + 1,
+      url: `https://supein.club${getArticleUrl(a)}`,
+      name: a.data.title,
+    })),
+  },
 };
+
+const footballFaq = [
+  {
+    question: 'ラ・リーガは何クラブで構成されていますか？',
+    answer: '男子1部リーグ「LaLiga EA Sports」は20クラブで構成され、総当たりのホーム&アウェイ方式で年間38節・380試合が行われます。2部は「LaLiga Hypermotion」と呼ばれ、女子1部リーグは「<a href="/football/liga-f-women/">リーガF（Liga F Moeve）</a>」です。',
+  },
+  {
+    question: '2026-27シーズンのラ・リーガに所属するクラブは？',
+    answer: 'FCバルセロナ、レアル・マドリード、アトレティコ・マドリード、ビジャレアル、レアル・ベティス、セルタ・デ・ビーゴ、レアル・ソシエダ、ヘタフェ、アスレティック・ビルバオ、バレンシアCF、セビージャ、ラーヨ・バジェカーノ、オサスナ、エスパニョール、アラベス、レバンテ、エルチェ、ラシン・サンタンデール、デポルティボ・ラ・コルーニャ、マラガCFの20クラブです。',
+  },
+  {
+    question: 'エル・クラシコとは何ですか？',
+    answer: 'FCバルセロナとレアル・マドリードの対戦を指す、世界で最も有名なサッカーの一戦です。詳しくは<a href="/football/el-clasico/">「エル・クラシコ完全ガイド」</a>で解説しています。',
+  },
+  {
+    question: 'スペイン代表は現在どのくらいのタイトルを持っていますか？',
+    answer: 'FIFAワールドカップ2回（2010年・2026年）、UEFA欧州選手権4回（1964・2008・2012・2024年）の通算6冠を誇り、2026年時点でFIFAランキング1位です。詳しくは<a href="/football/spain-national-team/">「スペイン代表完全ガイド」</a>で解説しています。',
+  },
+  {
+    question: '久保建英選手は現在どのクラブでプレーしていますか？',
+    answer: '2022年からレアル・ソシエダに所属しています（2029年6月まで契約）。歴代の日本人選手の挑戦の歴史は<a href="/football/japanese-players-laliga/">「スペインでプロサッカーに挑んだ日本人選手たち」</a>にまとめています。',
+  },
+  {
+    question: '日本でスペインサッカーを見るにはどうすればいいですか？',
+    answer: '2026-27シーズンのラ・リーガは日本国内での地上波・衛星放送がなく、DAZNまたはU-NEXT（サッカーパック）のいずれかの配信サービスへの加入が必要です。どちらも独占契約ではないため、加入しているサービスで視聴できます。',
+  },
+  {
+    question: 'スペインサッカーの基本用語を知りたい場合はどこを見ればいいですか？',
+    answer: '<a href="/football/spanish-vocabulary/">「スペインサッカー用語集」</a>で、ポジション名や試合でよく使われる表現を日本語でまとめています。',
+  },
+];
 
 function renderCard(a: Article) {
   return {
@@ -74,6 +115,19 @@ function renderCard(a: Article) {
     breadcrumbs={breadcrumbs}
   />
   <script type="application/ld+json" slot="head" set:html={JSON.stringify(footballSchema)} />
+  <script
+    type="application/ld+json"
+    slot="head"
+    set:html={JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'FAQPage',
+      mainEntity: footballFaq.map((item) => ({
+        '@type': 'Question',
+        name: item.question,
+        acceptedAnswer: { '@type': 'Answer', text: item.answer.replace(/<[^>]+>/g, '') },
+      })),
+    })}
+  />
 
   <PillarHero
     title="スペインサッカー"
@@ -122,6 +176,108 @@ function renderCard(a: Article) {
       <p class="text-muted text-center py-12">記事を準備中です。近日公開予定。</p>
     )}
   </section>
+
+  <section class="max-w-4xl mx-auto px-5 pb-14 prose-content">
+    <h2 class="font-sans font-bold text-xl text-navy mb-4">スペインサッカーの構造｜リーグの仕組み</h2>
+    <p class="text-muted leading-relaxed mb-6">
+      スペインサッカーの頂点に立つのは、男子1部リーグ「LaLiga EA Sports」です。20クラブが総当たりのホーム&アウェイ方式で対戦し、年間38節・380試合が行われます。その下に2部リーグ「LaLiga Hypermotion」があり、毎シーズン入れ替えが行われます。女子には独立した1部リーグ「<a href="/football/liga-f-women/" class="text-primary underline">リーガF（Liga F Moeve）</a>」があります。リーグ戦と並行して、全ディビジョンのクラブが参加できる国内カップ戦「コパ・デル・レイ（国王杯）」も行われます。
+    </p>
+
+    <h2 class="font-sans font-bold text-xl text-navy mb-4">ラ・リーガ20クラブ一覧【2026-27シーズン】</h2>
+    <p class="text-muted leading-relaxed mb-4">
+      2025-26シーズンはレアル・オビエド、マジョルカ、ジローナが降格し、デポルティボ・ラ・コルーニャ、ラシン・サンタンデール、マラガCFが昇格しました。現在のフルメンバーは以下の20クラブです。
+    </p>
+    <div class="overflow-x-auto mb-8">
+      <table class="w-full text-sm border-collapse">
+        <thead>
+          <tr class="border-b border-ink/10 text-left">
+            <th class="py-2 pr-4 font-semibold text-navy">クラブ</th>
+            <th class="py-2 font-semibold text-navy">詳しく見る</th>
+          </tr>
+        </thead>
+        <tbody>
+          {[
+            { name: 'FCバルセロナ', href: '/football/fcbarcelona/' },
+            { name: 'レアル・マドリード', href: '/football/real-madrid/' },
+            { name: 'アトレティコ・マドリード', href: null },
+            { name: 'ビジャレアル', href: null },
+            { name: 'レアル・ベティス', href: null },
+            { name: 'セルタ・デ・ビーゴ', href: null },
+            { name: 'レアル・ソシエダ', href: null },
+            { name: 'ヘタフェ', href: null },
+            { name: 'アスレティック・ビルバオ', href: null },
+            { name: 'バレンシアCF', href: '/football/valencia-cf/' },
+            { name: 'セビージャ', href: null },
+            { name: 'ラーヨ・バジェカーノ', href: null },
+            { name: 'オサスナ', href: null },
+            { name: 'エスパニョール', href: null },
+            { name: 'アラベス', href: null },
+            { name: 'レバンテ', href: null },
+            { name: 'エルチェ', href: null },
+            { name: 'ラシン・サンタンデール', href: null },
+            { name: 'デポルティボ・ラ・コルーニャ', href: null },
+            { name: 'マラガCF', href: null },
+          ].map((club) => (
+            <tr class="border-b border-ink/5">
+              <td class="py-2 pr-4">{club.name}</td>
+              <td class="py-2">
+                {club.href ? <a href={club.href} class="text-primary underline">完全ガイドを見る</a> : <span class="text-muted">近日公開予定</span>}
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+
+    <h2 class="font-sans font-bold text-xl text-navy mb-4">知っておきたいクラブ</h2>
+    <p class="text-muted leading-relaxed mb-3">
+      <a href="/football/fcbarcelona/" class="text-primary underline font-semibold">FCバルセロナ</a>は1899年創設、ラ・リーガ通算29回優勝を誇る名門クラブです。クライフのドリームチーム、グアルディオラ＆メッシ黄金期を経て、2025-26シーズンはハンジ・フリック監督のもとリーグ連覇を達成しました。
+    </p>
+    <p class="text-muted leading-relaxed mb-3">
+      <a href="/football/real-madrid/" class="text-primary underline font-semibold">レアル・マドリード</a>は1902年創設、UEFAチャンピオンズリーグ最多15回優勝を誇る世界屈指の名門クラブです。国内外の主要タイトルを合算すると、2026年時点で通算105タイトルに達しています。
+    </p>
+    <p class="text-muted leading-relaxed mb-6">
+      <a href="/football/valencia-cf/" class="text-primary underline font-semibold">バレンシアCF</a>は1919年創設、黄金の40年代からクーペル＆ベニテス体制での欧州制覇を経験した歴史あるクラブで、2026年には日本人選手・佐藤龍之介が加入しました。
+    </p>
+
+    <h2 class="font-sans font-bold text-xl text-navy mb-4">エル・クラシコ｜世界最大のダービー</h2>
+    <p class="text-muted leading-relaxed mb-6">
+      FCバルセロナとレアル・マドリードの対戦「エル・クラシコ」は、世界で最も有名なサッカーの一戦です。全公式戦通算264試合、106勝106敗52分という完全な互角の対戦成績を誇ります。歴史や名勝負は<a href="/football/el-clasico/" class="text-primary underline">「エル・クラシコ完全ガイド」</a>、次戦の日程は<a href="/football/el-clasico/schedule/" class="text-primary underline">「次のエルクラシコはいつ？」</a>で解説しています。
+    </p>
+
+    <h2 class="font-sans font-bold text-xl text-navy mb-4">スペイン代表｜2026年ワールドカップ王者</h2>
+    <p class="text-muted leading-relaxed mb-6">
+      スペイン代表は、FIFAワールドカップ2回（2010年・2026年）、UEFA欧州選手権4回（1964・2008・2012・2024年）の通算6冠を誇る世界屈指の強豪国で、2026年時点でFIFAランキング1位です。歴史や現在の戦術は<a href="/football/spain-national-team/" class="text-primary underline">「スペイン代表完全ガイド」</a>、2026年ワールドカップ優勝の全試合レビューは<a href="/football/world-cup-2026/" class="text-primary underline">「スペイン代表、2026年ワールドカップ優勝」</a>で解説しています。
+    </p>
+
+    <h2 class="font-sans font-bold text-xl text-navy mb-4">日本人選手とスペインサッカー</h2>
+    <p class="text-muted leading-relaxed mb-6">
+      現在、日本代表MFの久保建英選手がレアル・ソシエダに所属しています（2022年加入、2029年6月まで契約）。1996年の初挑戦から続く歴代の日本人選手たちの記録は<a href="/football/japanese-players-laliga/" class="text-primary underline">「スペインでプロサッカーに挑んだ日本人選手たち」</a>にまとめています。2022年カタールW杯で日本代表がスペインを破った歴史的な一戦は<a href="/football/japan-vs-spain/" class="text-primary underline">「日本代表対スペイン代表」</a>で振り返っています。
+    </p>
+
+    <h2 class="font-sans font-bold text-xl text-navy mb-4">日本でスペインサッカーを見る方法</h2>
+    <p class="text-muted leading-relaxed mb-6">
+      2026-27シーズンのラ・リーガは日本国内での地上波・衛星放送がなく、<strong>DAZN</strong>または<strong>U-NEXT（サッカーパック）</strong>のいずれかの配信サービスへの加入が視聴の前提となります。どちらも独占契約ではなく、全380試合を配信しています。詳しい料金・視聴方法は<a href="/football/la-liga/#日本からの視聴方法" class="text-primary underline">「ラ・リーガ完全ガイド」の視聴方法セクション</a>で解説しています。
+    </p>
+
+    <h2 class="font-sans font-bold text-xl text-navy mb-4">スペイン語を学びながらもっと深く楽しむ</h2>
+    <p class="text-muted leading-relaxed mb-6">
+      現地実況やインタビューをそのまま理解できると、スペインサッカー観戦はさらに楽しくなります。スペイン語学習の始め方は<a href="/language/" class="text-primary underline">「スペイン語学習ロードマップ」</a>で紹介しています。
+    </p>
+
+    <h2 class="font-sans font-bold text-xl text-navy mb-4">現地観戦を計画するなら</h2>
+    <p class="text-muted leading-relaxed mb-6">
+      カンプ・ノウやサンティアゴ・ベルナベウでの試合観戦は、スペイン旅行の醍醐味のひとつです。<a href="/travel/barcelona/barcelona-travel-guide/" class="text-primary underline">「バルセロナ旅行ガイド」</a>と<a href="/travel/madrid/madrid-travel-guide/" class="text-primary underline">「マドリード旅行ガイド」</a>で、観光と組み合わせたモデルコースを紹介しています。
+    </p>
+
+    <h2 class="font-sans font-bold text-xl text-navy mb-4">スペインサッカー用語集</h2>
+    <p class="text-muted leading-relaxed">
+      ポジション名や実況でよく使われる表現を知りたい方は<a href="/football/spanish-vocabulary/" class="text-primary underline">「スペインサッカー用語集」</a>をご覧ください。
+    </p>
+
+    <FAQSection faq={footballFaq} />
+  </section>
+
   <section class="max-w-6xl mx-auto px-5 pb-14">
     <AdSlot
       position="pillar-bottom"
