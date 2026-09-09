@@ -1,0 +1,52 @@
+---
+interface SportsEventItem {
+  name: string;
+  startDate: string;
+  venueName: string;
+  city: string;
+  homeTeam: string;
+  awayTeam: string;
+  url: string;
+}
+
+interface Props {
+  events: SportsEventItem[];
+}
+
+const { events } = Astro.props;
+---
+{events.map((event) => (
+  <script
+    type="application/ld+json"
+    set:html={JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'SportsEvent',
+      name: event.name,
+      startDate: event.startDate,
+      eventStatus: 'https://schema.org/EventScheduled',
+      eventAttendanceMode: 'https://schema.org/OfflineEventAttendanceMode',
+      location: {
+        '@type': 'Place',
+        name: event.venueName,
+        address: {
+          '@type': 'PostalAddress',
+          addressLocality: event.city,
+          addressCountry: 'ES',
+        },
+      },
+      homeTeam: {
+        '@type': 'SportsTeam',
+        name: event.homeTeam,
+      },
+      awayTeam: {
+        '@type': 'SportsTeam',
+        name: event.awayTeam,
+      },
+      organizer: {
+        '@type': 'Organization',
+        name: 'LaLiga',
+      },
+      url: event.url,
+    })}
+  />
+))}
