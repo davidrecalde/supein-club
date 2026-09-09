@@ -92,7 +92,7 @@ const levelGroups = levelOrder
 const levelAnchors = [
   ...levelGroups.map((g) => ({ href: `#${g.level}`, label: g.label })),
   ...(deleArticles.length > 0 ? [{ href: '#dele', label: 'DELE' }] : []),
-  ...(otherArticles.length > 0 ? [{ href: '#other', label: 'その他' }] : []),
+  ...(otherArticles.length > 0 ? [{ href: '#other', label: '学習リソース' }] : []),
   ...(otherClusters.length > 0 ? [{ href: '#schools', label: 'スペイン語学校' }] : []),
 ];
 
@@ -245,10 +245,10 @@ const languageFaq = [
 
     {otherArticles.length > 0 && (
       <>
-        <h2 id="other" class="font-sans font-bold text-xl text-navy mb-5">その他</h2>
+        <h2 id="other" class="font-sans font-bold text-xl text-navy mb-5">学習リソース</h2>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
           {otherArticles.map((a) => (
-            <ArticleCard title={a.data.title} description={a.data.description} href={getArticleUrl(a)} pillar="language" cluster={a.data.cluster} image={a.data.image} imageAlt={a.data.imageAlt} heroImage={a.data.heroImage} heroImageAlt={a.data.heroImageAlt} pubDate={a.data.pubDate} topicBadge="その他" />
+            <ArticleCard title={a.data.title} description={a.data.description} href={getArticleUrl(a)} pillar="language" cluster={a.data.cluster} image={a.data.image} imageAlt={a.data.imageAlt} heroImage={a.data.heroImage} heroImageAlt={a.data.heroImageAlt} pubDate={a.data.pubDate} topicBadge="学習リソース" />
           ))}
         </div>
       </>
