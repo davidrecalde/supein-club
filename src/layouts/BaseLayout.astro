@@ -24,6 +24,8 @@ const { title = 'supein.club', lang = 'ja' } = Astro.props;
     <slot name="seo" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://www.googletagmanager.com" />
+    <link rel="dns-prefetch" href="https://tracker.metricool.com" />
     <link
       rel="preload"
       as="style"
@@ -38,7 +40,7 @@ const { title = 'supein.club', lang = 'ja' } = Astro.props;
     </noscript>
     <slot name="head" />
     <!-- Google Analytics 4 -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-9QDF9607ZV"></script>
+    <script async fetchpriority="low" src="https://www.googletagmanager.com/gtag/js?id=G-9QDF9607ZV"></script>
     <script is:inline>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
@@ -49,16 +51,22 @@ const { title = 'supein.club', lang = 'ja' } = Astro.props;
     </script>
   </head>
   <body class="bg-canvas text-ink font-sans antialiased flex flex-col min-h-screen">
+    <a
+      href="#main-content"
+      class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-50 focus:bg-white focus:text-navy focus:px-4 focus:py-2 focus:rounded-lg focus:shadow-lg"
+    >
+      本文へスキップ
+    </a>
     <slot name="header">
       <Navigation />
     </slot>
-    <main class="flex-1">
+    <main id="main-content" class="flex-1">
       <slot />
     </main>
     <slot name="footer">
       <Footer />
     </slot>
     <!-- Metricool tracking pixel -->
-    <img src="https://tracker.metricool.com/c3po.jpg?hash=54cb2e4d5c9582e41c3c6a91ba20a2d6" alt="" width="1" height="1" style="display:none" aria-hidden="true" />
+    <img src="https://tracker.metricool.com/c3po.jpg?hash=54cb2e4d5c9582e41c3c6a91ba20a2d6" alt="" width="1" height="1" style="display:none" aria-hidden="true" loading="lazy" />
   </body>
 </html>

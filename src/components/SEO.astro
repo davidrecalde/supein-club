@@ -98,6 +98,7 @@ graph.push({
   description: 'スペインの旅行・料理・文化・語学を日本語で伝えるカルチャーメディア',
   url: siteUrl,
   inLanguage: 'ja',
+  about: { '@type': 'Country', name: 'スペイン', sameAs: 'https://www.wikidata.org/wiki/Q29' },
   publisher: { '@id': `${siteUrl}/#organization` },
   potentialAction: {
     '@type': 'SearchAction',
@@ -397,6 +398,7 @@ const jsonLd = JSON.stringify({ '@context': 'https://schema.org', '@graph': grap
 <meta name="twitter:image" content={resolvedImage} />
 <link rel="alternate" hreflang="ja" href={canonical} />
 <link rel="alternate" hreflang="es" href={canonical} />
+<link rel="alternate" hreflang="x-default" href={canonical} />
 {keywords && keywords.length > 0 && (
   <meta name="keywords" content={keywords.join(',')} />
 )}

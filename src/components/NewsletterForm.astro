@@ -45,6 +45,7 @@ const { variant = 'inline' } = Astro.props;
     <p class="nl-inline-label">スペイン倶楽部のニュースレター</p>
     <p class="nl-inline-text">旅行・料理・文化の最新情報を月2回、日本語でお届けします。</p>
     <div class="nl-inline-row">
+      <label for="nl-email-inline" class="sr-only">メールアドレス</label>
       <input type="email" id="nl-email-inline" placeholder="メールアドレス"
              required autocomplete="email" class="nl-input-inline" />
       <button type="button" onclick="submitNewsletter('inline')"
@@ -72,6 +73,7 @@ const { variant = 'inline' } = Astro.props;
     <p style="font-size:14px;color:#6b7280;margin:0 0 16px;line-height:1.6;">
       月2回、旅行・料理・文化の最新情報。無料。
     </p>
+    <label for="nl-email-sidebar" class="sr-only">メールアドレス</label>
     <input type="email" id="nl-email-sidebar" placeholder="メールアドレス"
            required autocomplete="email" class="nl-input-sidebar" />
     <button type="button" onclick="submitNewsletter('sidebar')"
