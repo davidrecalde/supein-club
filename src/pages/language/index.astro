@@ -13,13 +13,15 @@ type Article = CollectionEntry<'articles'>;
 
 const articles = await getCollection('articles', ({ data }) => !data.draft && data.pillar === 'language');
 
+const slugOf = (a: Article) => a.id.replace(/\.(md|mdx)$/, '').split('/').pop();
+
 // --- learn-spanish：はじめに / A1-C2 / DELE / その他 に分類 ---
 const learnSpanish = articles.filter((a) => a.data.cluster === 'learn-spanish');
+// 「スペイン語学校」セクション（otherClusters）は学校ランキング専用。
+// spanish-apps はクラスターが分かれているだけで学校ではないため、その他に分類する。
 const otherClusters = articles
-  .filter((a) => a.data.cluster !== 'learn-spanish')
+  .filter((a) => a.data.cluster !== 'learn-spanish' && slugOf(a) !== 'spanish-apps')
   .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
-
-const slugOf = (a: Article) => a.id.replace(/\.(md|mdx)$/, '').split('/').pop();
 
 const isDele = (a: Article) =>
   a.id.includes('learn-spanish/dele/') || slugOf(a) === 'dele-vs-seiken' || slugOf(a) === 'dele-b1-tips';
@@ -35,7 +37,9 @@ const isLevel = (a: Article) => !isDele(a) && !isIntro(a) && !!a.data.level;
 const introArticles = learnSpanish.filter(isIntro);
 const levelArticles = learnSpanish.filter(isLevel);
 const deleArticles = learnSpanish.filter(isDele);
-const otherArticles = learnSpanish.filter((a) => !isDele(a) && !isIntro(a) && !isLevel(a));
+const otherArticles = learnSpanish
+  .filter((a) => !isDele(a) && !isIntro(a) && !isLevel(a))
+  .concat(articles.filter((a) => slugOf(a) === 'spanish-apps'));
 
 // A1-C2バッジ：記事の役割から軽量なテーマラベルを導出（スキーマに新規フィールドは追加しない）
 const roleBadgeLabels: Record<string, string> = {
