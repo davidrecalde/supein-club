@@ -192,36 +192,40 @@ function renderCard(a: Article) {
         <thead>
           <tr class="border-b border-ink/10 text-left">
             <th class="py-2 pr-4 font-semibold text-navy">クラブ</th>
-            <th class="py-2 font-semibold text-navy">詳しく見る</th>
+            <th class="py-2 pr-4 font-semibold text-navy">詳しく見る</th>
+            <th class="py-2 font-semibold text-navy">エリア</th>
           </tr>
         </thead>
         <tbody>
           {[
-            { name: 'FCバルセロナ', href: '/football/fcbarcelona/' },
-            { name: 'レアル・マドリード', href: '/football/real-madrid/' },
-            { name: 'アトレティコ・マドリード', href: '/football/atletico-madrid/' },
-            { name: 'ビジャレアル', href: '/football/villarreal-cf/' },
-            { name: 'レアル・ベティス', href: null },
-            { name: 'セルタ・デ・ビーゴ', href: null },
-            { name: 'レアル・ソシエダ', href: '/football/real-sociedad/' },
-            { name: 'ヘタフェ', href: null },
-            { name: 'アスレティック・ビルバオ', href: '/football/athletic-club/' },
-            { name: 'バレンシアCF', href: '/football/valencia-cf/' },
-            { name: 'セビージャ', href: '/football/sevilla-fc/' },
-            { name: 'ラーヨ・バジェカーノ', href: null },
-            { name: 'オサスナ', href: null },
-            { name: 'エスパニョール', href: null },
-            { name: 'アラベス', href: null },
-            { name: 'レバンテ', href: null },
-            { name: 'エルチェ', href: null },
-            { name: 'ラシン・サンタンデール', href: null },
-            { name: 'デポルティボ・ラ・コルーニャ', href: null },
-            { name: 'マラガCF', href: null },
+            { name: 'FCバルセロナ', href: '/football/fcbarcelona/', province: 'バルセロナ', provinceSlug: 'barcelona' },
+            { name: 'レアル・マドリード', href: '/football/real-madrid/', province: 'マドリード', provinceSlug: 'madrid' },
+            { name: 'アトレティコ・マドリード', href: '/football/atletico-madrid/', province: 'マドリード', provinceSlug: 'madrid' },
+            { name: 'ビジャレアル', href: '/football/villarreal-cf/', province: 'カステジョン', provinceSlug: 'castellon' },
+            { name: 'レアル・ベティス', href: null, province: 'セビリア', provinceSlug: 'sevilla' },
+            { name: 'セルタ・デ・ビーゴ', href: null, province: 'ポンテベドラ', provinceSlug: 'pontevedra' },
+            { name: 'レアル・ソシエダ', href: '/football/real-sociedad/', province: 'ギプスコア', provinceSlug: 'guipuzcoa' },
+            { name: 'ヘタフェ', href: null, province: 'マドリード', provinceSlug: 'madrid' },
+            { name: 'アスレティック・ビルバオ', href: '/football/athletic-club/', province: 'ビスカヤ', provinceSlug: 'vizcaya' },
+            { name: 'バレンシアCF', href: '/football/valencia-cf/', province: 'バレンシア', provinceSlug: 'valencia' },
+            { name: 'セビージャ', href: '/football/sevilla-fc/', province: 'セビリア', provinceSlug: 'sevilla' },
+            { name: 'ラーヨ・バジェカーノ', href: null, province: 'マドリード', provinceSlug: 'madrid' },
+            { name: 'オサスナ', href: null, province: 'ナバラ', provinceSlug: 'navarra' },
+            { name: 'エスパニョール', href: null, province: 'バルセロナ', provinceSlug: 'barcelona' },
+            { name: 'アラベス', href: null, province: 'アラバ', provinceSlug: 'alava' },
+            { name: 'レバンテ', href: null, province: 'バレンシア', provinceSlug: 'valencia' },
+            { name: 'エルチェ', href: null, province: 'アリカンテ', provinceSlug: 'alicante' },
+            { name: 'ラシン・サンタンデール', href: null, province: 'カンタブリア', provinceSlug: 'cantabria' },
+            { name: 'デポルティボ・ラ・コルーニャ', href: null, province: 'ア・コルーニャ', provinceSlug: 'la-coruna' },
+            { name: 'マラガCF', href: null, province: 'マラガ', provinceSlug: 'malaga' },
           ].map((club) => (
             <tr class="border-b border-ink/5">
               <td class="py-2 pr-4">{club.name}</td>
-              <td class="py-2">
+              <td class="py-2 pr-4">
                 {club.href ? <a href={club.href} class="text-primary underline">完全ガイドを見る</a> : <span class="text-muted">近日公開予定</span>}
+              </td>
+              <td class="py-2">
+                <a href={`/food/spain-map/${club.provinceSlug}/`} class="text-primary underline">{club.province}</a>
               </td>
             </tr>
           ))}
