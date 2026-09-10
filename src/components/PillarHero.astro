@@ -1,22 +1,39 @@
 ---
+import { Image } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+
 interface Props {
   title: string;
   description: string;
   keywordCount?: number;
   icon?: string; // accepted but not rendered — emoji banned per design system
+  illustration?: ImageMetadata;
+  illustrationAlt?: string;
 }
 
-const { title, description, keywordCount } = Astro.props;
+const { title, description, keywordCount, illustration, illustrationAlt } = Astro.props;
 ---
-<section class="bg-navy text-white relative">
+<section class="bg-navy text-white relative overflow-hidden">
   <div class="absolute top-0 left-0 right-0 h-[3px] bg-primary"></div>
   <div class="max-w-6xl mx-auto px-5 py-16 pt-20">
-    <h1 class="font-sans font-bold text-4xl md:text-5xl leading-tight mb-4">{title}</h1>
-    <p class="text-white/75 text-lg max-w-2xl leading-relaxed">{description}</p>
-    {keywordCount && (
-      <p class="mt-4 text-base text-white/60">
-        {keywordCount.toLocaleString('ja-JP')} キーワードをカバー
-      </p>
-    )}
+    <div class:list={[illustration && 'flex items-center justify-between gap-8']}>
+      <div class:list={[illustration && 'flex-1 min-w-0']}>
+        <h1 class="font-sans font-bold text-4xl md:text-5xl leading-tight mb-4">{title}</h1>
+        <p class="text-white/75 text-lg max-w-2xl leading-relaxed">{description}</p>
+        {keywordCount && (
+          <p class="mt-4 text-base text-white/60">
+            {keywordCount.toLocaleString('ja-JP')} キーワードをカバー
+          </p>
+        )}
+      </div>
+      {illustration && (
+        <Image
+          src={illustration}
+          alt={illustrationAlt ?? ''}
+          width={260}
+          class="hidden sm:block flex-shrink-0 w-[170px] md:w-[240px] h-auto"
+        />
+      )}
+    </div>
   </div>
 </section>
