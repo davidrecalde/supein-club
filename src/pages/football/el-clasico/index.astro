@@ -3,10 +3,13 @@ import { getCollection } from 'astro:content';
 import ArticleLayout from '../../../layouts/ArticleLayout.astro';
 
 const articles = await getCollection('articles', ({ data }) => !data.draft && data.pillar === 'football' && data.cluster === 'el-clasico');
-const entry = articles[0];
+// El cluster tiene 2 artículos (el-clasico.mdx y schedule.mdx): hay que
+// seleccionar explícitamente el insignia (slug === cluster), no el primero
+// que devuelva getCollection (orden no garantizado).
+const entry = articles.find((a) => a.id.replace(/\.(md|mdx)$/, '').split('/').pop() === 'el-clasico');
 
 if (!entry) {
-  throw new Error('No se encontró el artículo del cluster "el-clasico"');
+  throw new Error('No se encontró el artículo insignia del cluster "el-clasico"');
 }
 ---
 <ArticleLayout entry={entry} />
