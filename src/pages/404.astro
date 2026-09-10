@@ -1,27 +1,30 @@
 ---
+import { Image } from 'astro:assets';
+import { getCollection } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import SEO from '../components/SEO.astro';
 import ArticleCard from '../components/ArticleCard.astro';
-import { Home, Plane, UtensilsCrossed, MessageCircle, Newspaper, Mail, Send, Users } from 'lucide-astro';
-import { getCollection } from 'astro:content';
+import SoccerBall from '../components/icons/SoccerBall.astro';
+import { Plane, UtensilsCrossed, MessageCircle, Home, Book, Send, Mail } from 'lucide-astro';
 import { getArticleUrl } from '../utils/articles';
+import illustration404 from '../assets/illustrations/404.webp';
 
 const allArticles = await getCollection('articles', ({ data }) => !data.draft);
 const recentArticles = allArticles
   .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
   .slice(0, 3);
 
-const suggestions = [
-  { Icon: Plane, label: 'スペイン旅行', desc: 'バルセロナ、マドリード、アンダルシア', url: '/travel/' },
-  { Icon: UtensilsCrossed, label: 'スペイン料理', desc: 'パエリア、タパス、スペインワイン', url: '/food/' },
-  { Icon: MessageCircle, label: 'スペイン語', desc: '学習リソース・レッスン情報', url: '/language/' },
-  { Icon: Newspaper, label: 'ニュースルーム', desc: 'スペイン倶楽部の最新ニュース', url: '/newsroom/' },
-  { Icon: Mail, label: 'ニュースレター', desc: 'スペインの最新情報を無料配信', url: '/newsletter/' },
-  { Icon: Users, label: 'チームについて', desc: 'スペイン倶楽部の創設者たち', url: '/about-us/' },
+const pillars = [
+  { href: '/travel/', Icon: Plane, title: 'スペイン旅行', desc: 'バルセロナ・マドリードから南部アンダルシア、離島まで' },
+  { href: '/food/', Icon: UtensilsCrossed, title: 'スペイン料理', desc: 'パエリア・タパス・ワインからおすすめのお土産まで' },
+  { href: '/language/', Icon: MessageCircle, title: 'スペイン語', desc: '独学・教室・学習アプリまで、体系的に学べる情報を紹介' },
+  { href: '/living/', Icon: Home, title: 'スペインに住む', desc: '留学・現地での仕事探し・ビザ取得の手続きまで' },
+  { href: '/culture/', Icon: Book, title: 'スペイン文化', desc: 'フラメンコ・歴史的建造物・伝統の祭りなど' },
+  { href: '/football/', Icon: SoccerBall, title: 'スペインサッカー', desc: 'ラ・リーガの試合結果や移籍情報、クラブの歴史まで' },
 ];
 ---
 
-<BaseLayout title="ページが見つかりません | supein.club">
+<BaseLayout>
   <SEO
     slot="seo"
     title="ページが見つかりません | supein.club"
@@ -30,200 +33,122 @@ const suggestions = [
     robots="noindex, follow"
   />
 
-  <!-- HERO navy con disculpa -->
-  <section style="background:#002147;padding:80px 0 64px;text-align:center;">
-    <div class="page-container" style="max-width:640px;">
+  <!-- ═══════ HERO：イラスト中心、フラットな明るい背景 ═══════ -->
+  <section class="bg-canvas pt-14 pb-12 px-5">
+    <div class="max-w-2xl mx-auto flex flex-col items-center text-center">
+      <Image
+        src={illustration404}
+        alt="地図を見て迷っている二人のイラスト"
+        width={500}
+        class="w-full max-w-[500px] h-auto drop-shadow-[0_16px_26px_rgba(0,33,71,0.15)]"
+      />
 
-      <p style="
-        font-family:'Work Sans',sans-serif;
-        font-size:clamp(80px,15vw,140px);
-        font-weight:800;
-        color:rgba(200,16,46,0.25);
-        line-height:1;
-        margin:0 0 8px;
-        letter-spacing:-4px;
-      ">404</p>
+      <p class="font-sans font-extrabold text-navy leading-none mt-8" style="font-size:clamp(60px,10vw,92px); letter-spacing:-1.5px;">404</p>
+      <h1 class="font-sans font-semibold text-ink mt-3" style="font-size:clamp(26px,3.6vw,34px);">Parece que nos hemos perdido.</h1>
+      <p class="text-muted mt-2.5" style="font-size:19px;">ページが見つかりません。</p>
 
-      <h1 style="
-        font-family:'Noto Serif JP',serif;
-        font-size:clamp(22px,4vw,32px);
-        font-weight:700;
-        color:white;
-        margin:0 0 16px;
-        line-height:1.4;
-      ">
-        ページが見つかりませんでした
-      </h1>
+      <div class="flex items-center gap-2.5 mt-6" aria-hidden="true">
+        <span class="w-7 h-px bg-[#E8E8E6]"></span>
+        <span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+        <span class="w-7 h-px bg-[#E8E8E6]"></span>
+      </div>
 
-      <p style="
-        font-size:17px;
-        color:rgba(255,255,255,0.65);
-        line-height:1.8;
-        margin:0 0 32px;
-      ">
-        申し訳ありません。お探しのページは移動または
-        削除された可能性があります。<br>
-        下記のコンテンツからお探しの情報が見つかるかもしれません。
-      </p>
-
-      <a href="/"
-         style="
-           display:inline-flex;
-           align-items:center;
-           gap:10px;
-           background:#C8102E;
-           color:white;
-           text-decoration:none;
-           padding:14px 28px;
-           border-radius:10px;
-           font-size:16px;
-           font-weight:600;
-           transition:opacity 200ms;
-         "
-         onmouseover="this.style.opacity='0.85'"
-         onmouseout="this.style.opacity='1'">
-        <Home size={18} />
-        ホームへ戻る
-      </a>
-
+      <div class="flex flex-wrap items-center justify-center gap-3 mt-8">
+        <a
+          href="/"
+          class="inline-flex items-center gap-2 justify-center bg-primary hover:bg-[#a00d24] text-white font-bold px-7 py-3.5 rounded-lg transition-colors text-sm"
+        >
+          <Home size={18} />
+          ホームへ戻る
+        </a>
+        <a
+          href="/contact/"
+          class="inline-flex items-center gap-2 justify-center bg-white border border-[#E8E8E6] hover:border-primary hover:text-primary text-navy font-semibold px-7 py-3.5 rounded-lg transition-colors text-sm"
+        >
+          <Send size={16} />
+          お問い合わせ
+        </a>
+      </div>
     </div>
   </section>
 
-  <!-- SECCIÓN: Últimos artículos -->
-  {recentArticles.length > 0 && (
-    <section style="background:#FAFAF8;padding:72px 0;">
-      <div class="page-container">
-        <p style="
-          font-size:11px;font-weight:600;
-          letter-spacing:0.2em;text-transform:uppercase;
-          color:#C8102E;margin:0 0 8px;text-align:center;
-        ">LATEST ARTICLES</p>
-        <h2 style="
-          font-family:'Noto Serif JP',serif;
-          font-size:clamp(20px,3vw,26px);
-          font-weight:700;color:#002147;
-          margin:0 0 36px;text-align:center;
-        ">
-          最新の記事をご覧ください
-        </h2>
-
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
-          {recentArticles.map((article) => {
-            return (
-              <ArticleCard
-                title={article.data.title}
-                description={article.data.description}
-                href={getArticleUrl(article)}
-                pillar={article.data.pillar}
-                image={article.data.image}
-                imageAlt={article.data.imageAlt}
-                heroImage={article.data.heroImage}
-                heroImageAlt={article.data.heroImageAlt}
-                pubDate={article.data.pubDate}
-              />
-            );
-          })}
-        </div>
+  <!-- ═══════ 6つのテーマから探し直す ═══════ -->
+  <section class="bg-white py-16 px-5">
+    <div class="max-w-4xl mx-auto">
+      <div class="text-center mb-10">
+        <p class="text-primary text-xs font-semibold uppercase tracking-[0.2em] mb-2">Explore</p>
+        <h2 class="font-serif font-bold text-navy" style="font-size:clamp(21px,2.6vw,27px);">行き先を選び直す</h2>
+        <p class="text-muted text-sm leading-relaxed mt-2.5">スペインにまつわる6つのテーマから、興味のあるカテゴリへどうぞ。</p>
       </div>
-    </section>
-  )}
 
-  <!-- SECCIÓN: Navegación sugerida -->
-  <section style="background:white;padding:72px 0;">
-    <div class="page-container">
-      <p style="
-        font-size:11px;font-weight:600;
-        letter-spacing:0.2em;text-transform:uppercase;
-        color:#C8102E;margin:0 0 8px;text-align:center;
-      ">EXPLORE</p>
-      <h2 style="
-        font-family:'Noto Serif JP',serif;
-        font-size:clamp(20px,3vw,26px);
-        font-weight:700;color:#002147;
-        margin:0 0 36px;text-align:center;
-      ">
-        他のコンテンツを探す
-      </h2>
-
-      <div style="
-        display:grid;
-        grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
-        gap:14px;max-width:860px;margin:0 auto;
-      ">
-        {suggestions.map(({ Icon, label, desc, url }) => (
-          <a href={url}
-             style="
-               display:flex;align-items:center;gap:14px;
-               padding:16px 20px;
-               border:1px solid #e5e7eb;border-radius:12px;
-               text-decoration:none;background:#FAFAF8;
-               transition:border-color 200ms,background 200ms;
-             "
-             onmouseover="this.style.borderColor='#C8102E';this.style.background='white'"
-             onmouseout="this.style.borderColor='#e5e7eb';this.style.background='#FAFAF8'">
-            <div style="
-              width:44px;height:44px;border-radius:9999px;
-              background:#FCEBEE;color:#C8102E;
-              display:flex;align-items:center;justify-content:center;
-              flex-shrink:0;
-            ">
-              <Icon size={20} />
-            </div>
-            <div>
-              <p style="font-size:14px;font-weight:700;
-                         color:#002147;margin:0 0 2px;">
-                {label}
-              </p>
-              <p style="font-size:12px;color:#9ca3af;margin:0;">
-                {desc}
-              </p>
-            </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5">
+        {pillars.map(({ href, Icon, title, desc }) => (
+          <a
+            href={href}
+            class="group flex items-start gap-3.5 p-5 bg-white border border-[#E8E8E6] rounded-xl shadow-[0_2px_10px_rgba(0,33,71,0.05)] hover:shadow-[0_8px_22px_rgba(0,33,71,0.11)] hover:border-primary/35 transition-all"
+          >
+            <span class="flex-shrink-0 w-11 h-11 rounded-full bg-[#FCEBEE] text-primary flex items-center justify-center group-hover:bg-primary group-hover:text-white transition-colors">
+              <Icon size={21} />
+            </span>
+            <span>
+              <span class="block font-sans font-bold text-navy text-sm mb-1">{title}</span>
+              <span class="block text-muted text-xs leading-relaxed">{desc}</span>
+            </span>
           </a>
         ))}
       </div>
     </div>
   </section>
 
-  <!-- SECCIÓN: Contacto -->
-  <section style="background:#002147;padding:56px 0;text-align:center;">
-    <div class="page-container" style="max-width:560px;">
-      <p style="font-size:16px;color:rgba(255,255,255,0.7);
-                margin:0 0 20px;line-height:1.7;">
-        お探しのコンテンツが見つからない場合は、
-        お気軽にお問い合わせください。
+  <!-- ═══════ 最新の記事 ═══════ -->
+  {recentArticles.length > 0 && (
+    <section class="bg-canvas py-16 px-5">
+      <div class="max-w-5xl mx-auto">
+        <div class="text-center mb-9">
+          <p class="text-primary text-xs font-semibold uppercase tracking-[0.2em] mb-2">Latest Articles</p>
+          <h2 class="font-serif font-bold text-navy" style="font-size:clamp(21px,2.6vw,27px);">最新の記事をご覧ください</h2>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {recentArticles.map((article) => (
+            <ArticleCard
+              title={article.data.title}
+              description={article.data.description}
+              href={getArticleUrl(article)}
+              pillar={article.data.pillar}
+              image={article.data.image}
+              imageAlt={article.data.imageAlt}
+              heroImage={article.data.heroImage}
+              heroImageAlt={article.data.heroImageAlt}
+              pubDate={article.data.pubDate}
+            />
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
+
+  <!-- ═══════ お問い合わせ ═══════ -->
+  <section class="bg-navy-deep py-14 px-5 text-center">
+    <div class="max-w-lg mx-auto">
+      <p class="text-white/70 text-base leading-relaxed mb-5">
+        お探しのコンテンツが見つからない場合は、お気軽にお問い合わせください。
       </p>
-      <div style="display:flex;gap:12px;
-                  justify-content:center;flex-wrap:wrap;">
-        <a href="/contact/"
-           style="
-             display:inline-flex;align-items:center;gap:8px;
-             background:#C8102E;color:white;
-             text-decoration:none;padding:12px 24px;
-             border-radius:8px;font-size:14px;
-             font-weight:600;transition:opacity 200ms;
-           "
-           onmouseover="this.style.opacity='0.85'"
-           onmouseout="this.style.opacity='1'">
+      <div class="flex flex-wrap items-center justify-center gap-3">
+        <a
+          href="/contact/"
+          class="inline-flex items-center gap-2 justify-center bg-primary hover:bg-[#a00d24] text-white font-bold px-6 py-3 rounded-lg transition-colors text-sm"
+        >
           <Send size={16} />
           お問い合わせ
         </a>
-        <a href="/newsletter/"
-           style="
-             display:inline-flex;align-items:center;gap:8px;
-             background:rgba(255,255,255,0.1);
-             color:white;text-decoration:none;
-             padding:12px 24px;border-radius:8px;
-             font-size:14px;font-weight:600;
-             border:1px solid rgba(255,255,255,0.2);
-             transition:opacity 200ms;
-           "
-           onmouseover="this.style.opacity='0.85'"
-           onmouseout="this.style.opacity='1'">
+        <a
+          href="/newsletter/"
+          class="inline-flex items-center gap-2 justify-center bg-white/[0.06] hover:bg-white/[0.12] border border-white/20 text-white font-semibold px-6 py-3 rounded-lg transition-colors text-sm"
+        >
           <Mail size={16} />
           ニュースレター登録
         </a>
       </div>
     </div>
   </section>
-
 </BaseLayout>
