@@ -1,11 +1,13 @@
 ---
 interface SportsEventItem {
   name: string;
+  description: string;
   startDate: string;
   venueName: string;
   city: string;
   homeTeam: string;
   awayTeam: string;
+  organizerUrl?: string;
   url: string;
 }
 
@@ -22,6 +24,7 @@ const { events } = Astro.props;
       '@context': 'https://schema.org',
       '@type': 'SportsEvent',
       name: event.name,
+      description: event.description,
       startDate: event.startDate,
       eventStatus: 'https://schema.org/EventScheduled',
       eventAttendanceMode: 'https://schema.org/OfflineEventAttendanceMode',
@@ -42,9 +45,14 @@ const { events } = Astro.props;
         '@type': 'SportsTeam',
         name: event.awayTeam,
       },
+      performer: [
+        { '@type': 'SportsTeam', name: event.homeTeam },
+        { '@type': 'SportsTeam', name: event.awayTeam },
+      ],
       organizer: {
         '@type': 'Organization',
         name: 'LaLiga',
+        url: event.organizerUrl ?? 'https://www.laliga.com',
       },
       url: event.url,
     })}
