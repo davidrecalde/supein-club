@@ -29,9 +29,10 @@ const sorted = articles.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate
 // カテゴリ分類：各記事の tags 配列に含まれる分類タグで判定
 // （新しい記事を追加する際は、該当するタグを tags に含めれば自動的にここに反映される）
 const categories = [
-  { id: 'team', tag: 'チーム', label: 'チーム' },
   { id: 'players', tag: '選手', label: '選手' },
+  { id: 'el-clasico', tag: 'エル・クラシコ', label: 'エル・クラシコ' },
   { id: 'history', tag: '歴史', label: '歴史' },
+  { id: 'team', tag: 'チーム', label: 'チーム' },
   { id: 'league', tag: 'リーグ', label: 'リーグ' },
   { id: 'terminology', tag: '用語', label: '用語' },
   { id: 'education', tag: '教育', label: '教育' },
