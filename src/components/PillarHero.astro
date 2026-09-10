@@ -16,8 +16,8 @@ const { title, description, keywordCount, illustration, illustrationAlt } = Astr
 <section class="bg-navy text-white relative overflow-hidden">
   <div class="absolute top-0 left-0 right-0 h-[3px] bg-primary"></div>
   <div class="max-w-6xl mx-auto px-5 py-16 pt-20">
-    <div class:list={[illustration && 'flex items-center justify-between gap-8']}>
-      <div class:list={[illustration && 'flex-1 min-w-0']}>
+    <div class:list={[illustration && 'flex items-center gap-6 md:gap-10']}>
+      <div class:list={[illustration && 'shrink-0']}>
         <h1 class="font-sans font-bold text-4xl md:text-5xl leading-tight mb-4">{title}</h1>
         <p class="text-white/75 text-lg max-w-2xl leading-relaxed">{description}</p>
         {keywordCount && (
@@ -30,8 +30,8 @@ const { title, description, keywordCount, illustration, illustrationAlt } = Astr
         <Image
           src={illustration}
           alt={illustrationAlt ?? ''}
-          width={260}
-          class="hidden sm:block flex-shrink-0 w-[170px] md:w-[240px] h-auto"
+          width={340}
+          class="hidden sm:block flex-shrink-0 w-[220px] md:w-[320px] h-auto"
         />
       )}
     </div>
