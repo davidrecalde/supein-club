@@ -30,6 +30,7 @@ const sorted = articles.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate
 // （新しい記事を追加する際は、該当するタグを tags に含めれば自動的にここに反映される）
 const categories = [
   { id: 'team', tag: 'チーム', label: 'チーム' },
+  { id: 'players', tag: '選手', label: '選手' },
   { id: 'history', tag: '歴史', label: '歴史' },
   { id: 'league', tag: 'リーグ', label: 'リーグ' },
   { id: 'terminology', tag: '用語', label: '用語' },
