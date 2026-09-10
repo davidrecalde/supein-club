@@ -3,6 +3,9 @@
 /* ── Reset responsive base ── */
 html {
   -webkit-text-size-adjust: 100%;
+  /* Compensa el header sticky (64px + borde 3px) para que los enlaces
+     con ancla (#id) no dejen el título tapado debajo del nav. */
+  scroll-padding-top: 80px;
 }
 
 body {
