@@ -135,7 +135,7 @@ const authorUrlForMeta = `https://supein.club/about-us/team/${authorSlug}/`;
             <Image
               src={heroImage}
               alt={heroImageAlt || title}
-              style={`width:100%;aspect-ratio:2/1;object-fit:contain;object-position:${isLearnSpanishHero ? 'left center' : 'center'};display:block;border-radius:13px;`}
+              style={`width:100%;aspect-ratio:2/1;object-position:${isLearnSpanishHero ? 'left center' : 'center'};display:block;border-radius:13px;`}
               fetchpriority="high"
               loading="eager"
             />
@@ -310,12 +310,12 @@ const authorUrlForMeta = `https://supein.club/about-us/team/${authorSlug}/`;
 </script>
 
 <style>
+  :global(.article-hero-image img) {
+    object-fit: cover;
+  }
   @media (max-width: 767px) {
     :global(.article-hero-image img) {
-      height: 220px !important;
-    }
-    :global(.article-hero-image.hero-left img) {
-      object-position: left center !important;
+      object-fit: contain;
     }
   }
 </style>
