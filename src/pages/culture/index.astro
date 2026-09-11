@@ -5,6 +5,7 @@ import SEO from '../../components/SEO.astro';
 import PillarHero from '../../components/PillarHero.astro';
 import ArticleCard from '../../components/ArticleCard.astro';
 import LineBanner from '../../components/LineBanner.astro';
+import BackToCategoriesButton from '../../components/BackToCategoriesButton.astro';
 import NewsletterForm from '../../components/NewsletterForm.astro';
 import ArticleDisclaimer from '../../components/ArticleDisclaimer.astro';
 import AuthorBox from '../../components/AuthorBox.astro';
@@ -51,7 +52,7 @@ const breadcrumbs = [
     <p class="text-muted text-base leading-relaxed mb-12 border-l-2 border-primary pl-5">
       スペイン文化は、地域ごとに驚くほど多彩な顔を持つ、奥深いテーマです。本カテゴリでは、そんなスペイン文化の世界を日本語でわかりやすくご紹介しています。
     </p>
-    <h2 class="font-sans font-bold text-xl text-navy mb-5">カテゴリ</h2>
+    <h2 id="categories" class="font-sans font-bold text-xl text-navy mb-5">カテゴリ</h2>
     <div class="grid grid-cols-2 md:grid-cols-4 gap-3 mb-12">
       {clusters.map(({ href, label }) => (
         <a href={href} class="bg-white rounded-lg px-3 py-3 min-h-[44px] flex items-center justify-center text-center border border-[#E8E8E6] hover:border-primary/30 hover:shadow-sm transition-all">
@@ -94,4 +95,5 @@ const breadcrumbs = [
   </section>
 
   <LineBanner slim />
+  <BackToCategoriesButton />
 </BaseLayout>
