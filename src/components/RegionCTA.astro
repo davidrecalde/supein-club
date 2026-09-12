@@ -1,0 +1,105 @@
+<a class="region-cta" href="/regions/">
+  <span class="icon-wrap">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 20l-5.447-2.724A1 1 0 0 1 3 16.382V5.618a1 1 0 0 1 1.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0 0 21 18.382V7.618a1 1 0 0 0-.553-.894L15 4m0 13V4m0 0L9 7"/></svg>
+  </span>
+  <span class="text">
+    <span class="kicker">地方から探す</span>
+    <span class="title">アンダルシア、カタルーニャ...地方ごとにテーマを読む</span>
+    <span class="desc">郷土料理からサッカー、現地の暮らしまで。地方から気になるテーマを探せます。</span>
+  </span>
+  <svg class="arrow" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+</a>
+
+<style>
+  .region-cta {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    background: linear-gradient(115deg, #00284f 0%, #002147 60%);
+    border-radius: 14px;
+    padding: 26px 28px;
+    margin-bottom: 48px;
+    overflow: hidden;
+    text-decoration: none;
+    transition: transform 180ms ease, box-shadow 180ms ease;
+  }
+  .region-cta:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 28px rgba(0, 33, 71, 0.28);
+  }
+  .region-cta::after {
+    content: '';
+    position: absolute;
+    right: -40px;
+    top: -40px;
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(200, 16, 46, 0.22), transparent 70%);
+  }
+  .region-cta .icon-wrap {
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    color: #fff;
+    z-index: 1;
+  }
+  .region-cta .icon-wrap svg {
+    width: 24px;
+    height: 24px;
+  }
+  .region-cta .text {
+    z-index: 1;
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+  }
+  .region-cta .kicker {
+    font-family: "Poppins", "Noto Sans JP", system-ui, sans-serif;
+    font-size: 10.5px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    color: #ff8fa1;
+    text-transform: uppercase;
+    margin: 0 0 4px;
+  }
+  .region-cta .title {
+    font-family: "Lora", "Noto Serif JP", serif;
+    font-weight: 700;
+    font-size: 17px;
+    color: #fff;
+    margin: 0 0 5px;
+  }
+  .region-cta .desc {
+    font-family: "Poppins", "Noto Sans JP", system-ui, sans-serif;
+    font-size: 12.5px;
+    color: rgba(255, 255, 255, 0.65);
+    line-height: 1.6;
+    margin: 0;
+  }
+  .region-cta .arrow {
+    z-index: 1;
+    color: #fff;
+    flex-shrink: 0;
+    transition: transform 180ms ease;
+  }
+  .region-cta:hover .arrow {
+    transform: translateX(4px);
+  }
+  @media (max-width: 560px) {
+    .region-cta {
+      flex-wrap: wrap;
+    }
+    .region-cta .arrow {
+      display: none;
+    }
+  }
+</style>

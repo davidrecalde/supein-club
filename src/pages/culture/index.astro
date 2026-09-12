@@ -6,6 +6,7 @@ import PillarHero from '../../components/PillarHero.astro';
 import ArticleCard from '../../components/ArticleCard.astro';
 import LineBanner from '../../components/LineBanner.astro';
 import FloatingActions from '../../components/FloatingActions.astro';
+import RegionCTA from '../../components/RegionCTA.astro';
 import NewsletterForm from '../../components/NewsletterForm.astro';
 import ArticleDisclaimer from '../../components/ArticleDisclaimer.astro';
 import AuthorBox from '../../components/AuthorBox.astro';
@@ -61,6 +62,8 @@ const breadcrumbs = [
         </a>
       ))}
     </div>
+    <RegionCTA />
+
     {sorted.length > 0 && (
       <>
         <h2 class="font-sans font-bold text-xl text-navy mb-5">記事一覧</h2>

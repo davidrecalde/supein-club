@@ -1,5 +1,6 @@
 ﻿---
 import type { CollectionEntry } from 'astro:content';
+import { getRegion } from '../config/regions';
 
 interface Props {
   title: string;
@@ -163,6 +164,11 @@ if (type === 'article' && article) {
       }
     : { '@type': 'ImageObject', url: `${siteUrl}/logo-og.png` };
 
+  const regionConfig = article.data.region ? getRegion(article.data.region) : undefined;
+  const contentLocation = regionConfig
+    ? { '@type': 'AdministrativeArea', name: regionConfig.label }
+    : undefined;
+
   const rawLinkedin = author?.data.linkedin;
   const rawInstagram = author?.data.instagram;
   const normalizeUrl = (raw: string | undefined, base: string) =>
@@ -228,6 +234,9 @@ if (type === 'article' && article) {
     if (article.data.tags && article.data.tags.length > 0) {
       articleObj.keywords = article.data.tags.join(',');
     }
+    if (contentLocation) {
+      articleObj.contentLocation = contentLocation;
+    }
     graph.push(articleObj);
     graph.push({
       '@type': 'TouristDestination',
@@ -290,6 +299,7 @@ if (type === 'article' && article) {
         name: 'ラ・リーガ',
         sport: 'サッカー',
       },
+      ...(contentLocation && { contentLocation }),
     });
   } else {
     const pillarSectionMap: Record<string, string> = {
@@ -319,6 +329,9 @@ if (type === 'article' && article) {
     };
     if (article.data.tags && article.data.tags.length > 0) {
       articleObj.keywords = article.data.tags.join(',');
+    }
+    if (contentLocation) {
+      articleObj.contentLocation = contentLocation;
     }
     graph.push(articleObj);
   }
