@@ -5,7 +5,7 @@ import SEO from '../../components/SEO.astro';
 import PillarHero from '../../components/PillarHero.astro';
 import ArticleCard from '../../components/ArticleCard.astro';
 import LineBanner from '../../components/LineBanner.astro';
-import BackToCategoriesButton from '../../components/BackToCategoriesButton.astro';
+import FloatingActions from '../../components/FloatingActions.astro';
 import NewsletterForm from '../../components/NewsletterForm.astro';
 import ArticleDisclaimer from '../../components/ArticleDisclaimer.astro';
 import AuthorBox from '../../components/AuthorBox.astro';
@@ -95,5 +95,5 @@ const breadcrumbs = [
   </section>
 
   <LineBanner slim />
-  <BackToCategoriesButton />
+  <FloatingActions target="categories" shareUrl="https://supein.club/culture/" shareTitle="スペイン文化" />
 </BaseLayout>
