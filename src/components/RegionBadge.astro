@@ -1,5 +1,6 @@
 ---
 import { getRegion } from '../config/regions';
+import { communityColorMap } from '../data/spainCommunities';
 
 interface Props {
   region: string;
@@ -7,10 +8,17 @@ interface Props {
 
 const { region } = Astro.props;
 const config = getRegion(region);
+const color = config ? communityColorMap[config.communitySlug]?.flagColor ?? '#C8102E' : '#C8102E';
 ---
 {config && (
-  <a class="region-badge" href={`/regions/${config.slug}/`}>
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.1-7-11.5A7 7 0 0 1 19 9.5C19 14.9 12 21 12 21Z"/><circle cx="12" cy="9.5" r="2.2"/></svg>
+  <a class="region-badge" href={`/regions/${config.slug}/`} style={`--region-color: ${color};`}>
+    <img
+      src={`/images/flags/${config.communitySlug}.webp`}
+      alt=""
+      width="14"
+      height="14"
+      loading="lazy"
+    />
     {config.label}地方
   </a>
 )}
@@ -19,25 +27,26 @@ const config = getRegion(region);
   .region-badge {
     display: inline-flex;
     align-items: center;
-    gap: 5px;
-    background: rgba(200, 16, 46, 0.16);
-    border: 1px solid rgba(200, 16, 46, 0.4);
-    color: #ffd9de;
+    gap: 6px;
+    background: color-mix(in srgb, var(--region-color) 18%, transparent);
+    border: 1px solid color-mix(in srgb, var(--region-color) 45%, transparent);
+    color: #fff;
     font-family: "Poppins", "Noto Sans JP", system-ui, sans-serif;
     font-size: 12px;
     font-weight: 600;
-    padding: 4px 11px 4px 9px;
+    padding: 4px 11px 4px 7px;
     border-radius: 999px;
     text-decoration: none;
-    transition: background 160ms ease, color 160ms ease;
+    transition: background 160ms ease;
   }
   .region-badge:hover {
-    background: #c8102e;
-    color: #fff;
+    background: var(--region-color);
   }
-  .region-badge svg {
-    width: 12px;
-    height: 12px;
+  .region-badge img {
+    width: 14px;
+    height: 14px;
+    border-radius: 3px;
+    object-fit: cover;
     flex-shrink: 0;
   }
   @media (max-width: 480px) {

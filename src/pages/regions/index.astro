@@ -5,7 +5,9 @@ import PillarHero from '../../components/PillarHero.astro';
 import Breadcrumb from '../../components/Breadcrumb.astro';
 import NewsletterForm from '../../components/NewsletterForm.astro';
 import FloatingActions from '../../components/FloatingActions.astro';
+import LineBanner from '../../components/LineBanner.astro';
 import { regions } from '../../config/regions';
+import { communityColorMap } from '../../data/spainCommunities';
 
 const breadcrumbs = [
   { name: 'ホーム', url: '/' },
@@ -51,18 +53,32 @@ const regionsSchema = {
     </p>
 
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-      {regions.map((r) => (
-        <a
-          href={`/regions/${r.slug}/`}
-          class="block bg-white rounded-xl overflow-hidden shadow-[0_2px_8px_rgba(0,33,71,0.07)] border border-[#E8E8E6] hover:shadow-[0_4px_16px_rgba(0,33,71,0.12)] hover:border-primary/20 transition-all p-6"
-        >
-          <span class="inline-block text-xs font-semibold px-2.5 py-0.5 rounded-full bg-[#FCEBEE] text-primary mb-3">
-            {r.provinceCount}県
-          </span>
-          <h2 class="font-sans font-bold text-navy text-lg mb-2">{r.label}</h2>
-          <p class="text-muted text-sm leading-relaxed">{r.culturalHighlight} — 州都: {r.capital}</p>
-        </a>
-      ))}
+      {regions.map((r) => {
+        const color = communityColorMap[r.communitySlug]?.flagColor ?? '#002147';
+        return (
+          <a
+            href={`/regions/${r.slug}/`}
+            class="block bg-white rounded-xl overflow-hidden shadow-[0_2px_8px_rgba(0,33,71,0.07)] border border-[#E8E8E6] hover:shadow-[0_4px_16px_rgba(0,33,71,0.12)] transition-all p-6"
+            style={`border-left: 4px solid ${color};`}
+          >
+            <div class="flex items-center gap-3 mb-3">
+              <img
+                src={`/images/flags/${r.communitySlug}.webp`}
+                alt={`${r.label}の旗`}
+                width="36"
+                height="36"
+                loading="lazy"
+                style="width:36px;height:36px;object-fit:cover;border-radius:4px;border:1px solid #E8E8E6;flex-shrink:0;"
+              />
+              <h2 class="font-sans font-bold text-navy text-lg">{r.label}</h2>
+            </div>
+            <span class="inline-block text-xs font-semibold px-2.5 py-0.5 rounded-full mb-3" style={`background:${color}1A;color:${color};`}>
+              {r.provinceCount}県
+            </span>
+            <p class="text-muted text-sm leading-relaxed">{r.culturalHighlight} — 州都: {r.capital}</p>
+          </a>
+        );
+      })}
     </div>
   </section>
 
@@ -72,5 +88,6 @@ const regionsSchema = {
     </div>
   </section>
 
+  <LineBanner slim />
   <FloatingActions shareUrl="https://supein.club/regions/" shareTitle="スペインの地方" />
 </BaseLayout>

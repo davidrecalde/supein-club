@@ -14,6 +14,7 @@ import ProvinceRelated from '../components/province/ProvinceRelated.astro';
 import ProvinceCTA from '../components/province/ProvinceCTA.astro';
 import PreferredSourceCTA from '../components/PreferredSourceCTA.astro';
 import ArticleDisclaimer from '../components/ArticleDisclaimer.astro';
+import FloatingActions from '../components/FloatingActions.astro';
 
 interface Props {
   entry: CollectionEntry<'spain-map'>;
@@ -159,6 +160,8 @@ const localBusinessSchema = JSON.stringify({
   <ProvinceCTA provinceJa={entry.data.provinceJa} />
 
   <LineBanner slim />
+
+  <FloatingActions shareUrl={canonical} shareTitle={entry.data.title} />
 </BaseLayout>
 
 <script>

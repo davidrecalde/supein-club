@@ -4,6 +4,8 @@ export interface RegionConfig {
   h1: string;
   /** Valor exacto usado en el campo `region` de la colección spain-map (japonés) — para hacer el cruce por nombre. */
   spainMapLabel: string;
+  /** slug usado en src/data/spainCommunities.ts (bandera + color de marca) — no siempre coincide con `slug` (ej. "cataluna" aquí vs. "catalunya" allí). */
+  communitySlug: string;
   capital: string;
   provinceCount: number;
   population: string;
@@ -24,6 +26,7 @@ export const regions: RegionConfig[] = [
     label: 'アンダルシア',
     h1: 'アンダルシア地方完全ガイド｜料理・サッカー・暮らしから知る南スペイン',
     spainMapLabel: 'アンダルシア州',
+    communitySlug: 'andalucia',
     capital: 'セビリア',
     provinceCount: 8,
     population: '約840万人',
@@ -35,6 +38,7 @@ export const regions: RegionConfig[] = [
     label: 'カタルーニャ',
     h1: 'カタルーニャ地方完全ガイド｜バルセロナと地中海文化を知る',
     spainMapLabel: 'カタルーニャ州',
+    communitySlug: 'catalunya',
     capital: 'バルセロナ',
     provinceCount: 4,
     population: '約780万人',
@@ -46,6 +50,7 @@ export const regions: RegionConfig[] = [
     label: 'バスク',
     h1: 'バスク地方完全ガイド｜美食とサッカー文化を知る北スペイン',
     spainMapLabel: 'バスク州',
+    communitySlug: 'pais-vasco',
     capital: 'ビトリア＝ガステイス',
     provinceCount: 3,
     population: '約220万人',
@@ -57,6 +62,7 @@ export const regions: RegionConfig[] = [
     label: 'バレンシア',
     h1: 'バレンシア地方完全ガイド｜パエリア発祥の地中海文化を知る',
     spainMapLabel: 'バレンシア州',
+    communitySlug: 'valencia',
     capital: 'バレンシア',
     provinceCount: 3,
     population: '約520万人',
@@ -68,6 +74,7 @@ export const regions: RegionConfig[] = [
     label: 'マドリード',
     h1: 'マドリード州完全ガイド｜スペインの首都と中央部を知る',
     spainMapLabel: 'マドリード州',
+    communitySlug: 'madrid',
     capital: 'マドリード',
     provinceCount: 1,
     population: '約690万人',
@@ -79,6 +86,7 @@ export const regions: RegionConfig[] = [
     label: 'カスティーリャ・イ・レオン',
     h1: 'カスティーリャ・イ・レオン地方完全ガイド｜中世スペインの面影を知る',
     spainMapLabel: 'カスティーリャ・イ・レオン州',
+    communitySlug: 'castilla-y-leon',
     capital: 'バリャドリード',
     provinceCount: 9,
     population: '約230万人',
@@ -90,6 +98,7 @@ export const regions: RegionConfig[] = [
     label: 'エストレマドゥーラ',
     h1: 'エストレマドゥーラ地方完全ガイド｜生ハムと歴史遺産を知る',
     spainMapLabel: 'エストレマドゥーラ州',
+    communitySlug: 'extremadura',
     capital: 'メリダ',
     provinceCount: 2,
     population: '約106万人',
@@ -101,6 +110,7 @@ export const regions: RegionConfig[] = [
     label: 'ガリシア',
     h1: 'ガリシア地方完全ガイド｜巡礼の地と海の幸を知る北西スペイン',
     spainMapLabel: 'ガリシア州',
+    communitySlug: 'galicia',
     capital: 'サンティアゴ・デ・コンポステーラ',
     provinceCount: 4,
     population: '約270万人',
