@@ -39,6 +39,7 @@ const articles = defineCollection({
     updatedDate: z.coerce.date().optional(),
     pillar: z.enum(['travel', 'food', 'language', 'living', 'culture', 'football']),
     cluster: z.string(),
+    region: z.string().optional(),
     intent: z.enum(['informational', 'commercial', 'transactional', 'navigational']),
     image: z.string().optional(),
     imageAlt: z.string().optional(),

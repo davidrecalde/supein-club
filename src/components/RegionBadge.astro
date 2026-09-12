@@ -1,0 +1,51 @@
+---
+import { getRegion } from '../config/regions';
+
+interface Props {
+  region: string;
+}
+
+const { region } = Astro.props;
+const config = getRegion(region);
+---
+{config && (
+  <a class="region-badge" href={`/regions/${config.slug}/`}>
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.1-7-11.5A7 7 0 0 1 19 9.5C19 14.9 12 21 12 21Z"/><circle cx="12" cy="9.5" r="2.2"/></svg>
+    {config.label}地方
+  </a>
+)}
+
+<style>
+  .region-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    background: rgba(200, 16, 46, 0.16);
+    border: 1px solid rgba(200, 16, 46, 0.4);
+    color: #ffd9de;
+    font-family: "Poppins", "Noto Sans JP", system-ui, sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    padding: 4px 11px 4px 9px;
+    border-radius: 999px;
+    text-decoration: none;
+    transition: background 160ms ease, color 160ms ease;
+  }
+  .region-badge:hover {
+    background: #c8102e;
+    color: #fff;
+  }
+  .region-badge svg {
+    width: 12px;
+    height: 12px;
+    flex-shrink: 0;
+  }
+  @media (max-width: 480px) {
+    .region-badge {
+      order: 99;
+      width: 100%;
+      justify-content: center;
+      margin-top: 4px;
+    }
+  }
+</style>
