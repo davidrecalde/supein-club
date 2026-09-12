@@ -21,6 +21,7 @@ import LineBanner from '../components/LineBanner.astro';
 import PreferredSourceCTA from '../components/PreferredSourceCTA.astro';
 import NewsletterForm from '../components/NewsletterForm.astro';
 import ArticleDisclaimer from '../components/ArticleDisclaimer.astro';
+import FloatingActions from '../components/FloatingActions.astro';
 import { getArticleUrl, getArticleBreadcrumbs } from '../utils/articles';
 
 interface Props {
@@ -246,6 +247,8 @@ const authorUrlForMeta = `https://supein.club/about-us/team/${authorSlug}/`;
   </div>
 
   <LineBanner slim />
+
+  <FloatingActions shareUrl={canonical} shareTitle={title} />
 </BaseLayout>
 
 <script>

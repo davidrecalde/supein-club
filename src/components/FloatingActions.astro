@@ -1,0 +1,192 @@
+---
+interface Props {
+  /** id del elemento al que hace scroll el botón principal. Si se omite, sube al inicio de la página (uso en artículos). */
+  target?: string;
+  shareUrl: string;
+  shareTitle: string;
+}
+const { target, shareUrl, shareTitle } = Astro.props;
+const topLabel = target ? 'カテゴリへ' : 'トップへ';
+---
+<div class="floating-actions" id="floatingActions" data-target={target ?? ''}>
+  <button type="button" class="fa-btn" id="faShareX" data-label="Xでポスト" aria-label="Xでシェア">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.9 2H22l-7.6 8.7L23.3 22h-7l-5.5-7.2L4.5 22H1.4l8.2-9.3L1 2h7.2l5 6.6L18.9 2Zm-1.2 18h1.7L7.4 3.9H5.6L17.7 20Z"/></svg>
+  </button>
+  <button type="button" class="fa-btn" id="faShareLinkedIn" data-label="LinkedInでシェア" aria-label="LinkedInでシェア">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M6.94 5a2 2 0 1 1-4-.002 2 2 0 0 1 4 .002ZM7 8.48H3V21h4V8.48Zm6.32 0H9.34V21h3.94v-6.57c0-3.66 4.77-3.96 4.77 0V21H22v-7.93c0-6.17-7.06-5.94-8.68-2.91V8.48Z"/></svg>
+  </button>
+  <button type="button" class="fa-btn" id="faShareCopy" data-label="リンクをコピー" data-label-default="リンクをコピー" data-label-done="コピーしました！" aria-label="リンクをコピー">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 17H7a5 5 0 0 1 0-10h2"/><path d="M15 7h2a5 5 0 0 1 0 10h-2"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
+  </button>
+  <div class="fa-divider"></div>
+  <button type="button" class="fa-btn fa-top" id="faTop" data-label={topLabel} aria-label={topLabel}>
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5"/><path d="m6 11 6-6 6 6"/></svg>
+  </button>
+</div>
+
+<script define:vars={{ shareUrl, shareTitle }}>
+  var cluster = document.getElementById('floatingActions');
+  if (cluster) {
+    var threshold = function () { return window.innerHeight * 0.9; };
+
+    function onScroll() {
+      if (window.scrollY > threshold()) {
+        cluster.classList.add('is-visible');
+      } else {
+        cluster.classList.remove('is-visible');
+      }
+    }
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+
+    document.getElementById('faShareX').addEventListener('click', function () {
+      window.open(
+        'https://twitter.com/intent/tweet?url=' + encodeURIComponent(shareUrl) + '&text=' + encodeURIComponent(shareTitle),
+        '_blank',
+        'noopener'
+      );
+    });
+
+    document.getElementById('faShareLinkedIn').addEventListener('click', function () {
+      window.open(
+        'https://www.linkedin.com/sharing/share-offsite/?url=' + encodeURIComponent(shareUrl),
+        '_blank',
+        'noopener'
+      );
+    });
+
+    var copyBtn = document.getElementById('faShareCopy');
+    copyBtn.addEventListener('click', function () {
+      if (navigator.clipboard) {
+        navigator.clipboard.writeText(shareUrl).catch(function () {});
+      }
+      copyBtn.classList.add('is-copied');
+      copyBtn.setAttribute('data-label', copyBtn.getAttribute('data-label-done'));
+      setTimeout(function () {
+        copyBtn.classList.remove('is-copied');
+        copyBtn.setAttribute('data-label', copyBtn.getAttribute('data-label-default'));
+      }, 1800);
+    });
+
+    var topBtn = document.getElementById('faTop');
+    var targetId = cluster.dataset.target;
+    var targetEl = targetId ? document.getElementById(targetId) : null;
+    topBtn.addEventListener('click', function () {
+      var prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (targetEl) {
+        targetEl.scrollIntoView({ behavior: prefersReduced ? 'auto' : 'smooth', block: 'start' });
+      } else {
+        window.scrollTo({ top: 0, behavior: prefersReduced ? 'auto' : 'smooth' });
+      }
+    });
+  }
+</script>
+
+<style>
+  .floating-actions {
+    position: fixed;
+    right: 22px;
+    bottom: 22px;
+    z-index: 40;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 9px;
+    opacity: 0;
+    transform: translateY(10px) scale(0.96);
+    pointer-events: none;
+    transition: opacity 220ms ease, transform 220ms ease;
+  }
+  .floating-actions.is-visible {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    pointer-events: auto;
+  }
+
+  .fa-btn {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background: #002147;
+    color: #fff;
+    border: none;
+    box-shadow: 0 6px 16px rgba(0, 33, 71, 0.24);
+    cursor: pointer;
+    transition: background 160ms ease, transform 160ms ease;
+    flex-shrink: 0;
+  }
+  .fa-btn:hover {
+    background: #c8102e;
+    transform: scale(1.06);
+  }
+  .fa-btn svg {
+    width: 17px;
+    height: 17px;
+  }
+  .fa-btn.is-copied {
+    background: #1f8a57;
+  }
+
+  .fa-top {
+    width: 46px;
+    height: 46px;
+  }
+
+  .fa-divider {
+    width: 26px;
+    height: 1px;
+    background: rgba(0, 33, 71, 0.15);
+    margin: 1px 8px 1px 0;
+  }
+
+  .fa-btn::after {
+    content: attr(data-label);
+    position: absolute;
+    right: 52px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: #1a1a1a;
+    color: #fff;
+    font-family: "Poppins", "Noto Sans JP", system-ui, sans-serif;
+    font-size: 11.5px;
+    font-weight: 500;
+    padding: 5px 10px;
+    border-radius: 6px;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 140ms ease;
+  }
+  @media (hover: hover) {
+    .fa-btn:hover::after {
+      opacity: 1;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .floating-actions {
+      transition: opacity 160ms ease;
+    }
+  }
+
+  @media (max-width: 1023px) {
+    .fa-btn::after {
+      display: none;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .fa-btn {
+      width: 40px;
+      height: 40px;
+    }
+    .fa-top {
+      width: 44px;
+      height: 44px;
+    }
+  }
+</style>
