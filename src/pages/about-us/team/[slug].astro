@@ -167,10 +167,10 @@ const profileSchema = slug === 'david-recalde'
 const hasBio = author.body?.trim().length > 0;
 ---
 
-<BaseLayout title={`${displayName} | supein.club`}>
+<BaseLayout title={displayName}>
   <SEO
     slot="seo"
-    title={`${displayName}${displayRole ? ' — ' + displayRole : ''} | supein.club`}
+    title={`${displayName}${displayRole ? ' — ' + displayRole : ''}`}
     description={bio}
     canonical={authorUrl}
     breadcrumbs={breadcrumbs}
