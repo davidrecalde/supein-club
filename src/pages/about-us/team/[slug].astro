@@ -170,7 +170,7 @@ const hasBio = author.body?.trim().length > 0;
 <BaseLayout title={displayName}>
   <SEO
     slot="seo"
-    title={`${displayName}${displayRole ? ' — ' + displayRole : ''}`}
+    title={displayName}
     description={bio}
     canonical={authorUrl}
     breadcrumbs={breadcrumbs}

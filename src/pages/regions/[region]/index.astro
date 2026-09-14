@@ -137,7 +137,7 @@ const sections = [
 <BaseLayout>
   <SEO
     slot="seo"
-    title={region.h1}
+    title={region.metaTitle ?? region.h1}
     description={region.intro.slice(0, 150)}
     canonical={canonical}
     breadcrumbs={breadcrumbs}

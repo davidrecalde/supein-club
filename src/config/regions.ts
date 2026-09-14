@@ -2,6 +2,8 @@ export interface RegionConfig {
   slug: string;
   label: string;
   h1: string;
+  /** Título corto (≤32 caracteres) para <title>/SERP cuando h1 es más largo. Si se omite, se usa h1. */
+  metaTitle?: string;
   /** Valor exacto usado en el campo `region` de la colección spain-map (japonés) — para hacer el cruce por nombre. */
   spainMapLabel: string;
   /** slug usado en src/data/spainCommunities.ts (bandera + color de marca) — no siempre coincide con `slug` (ej. "cataluna" aquí vs. "catalunya" allí). */
@@ -25,6 +27,7 @@ export const regions: RegionConfig[] = [
     slug: 'andalucia',
     label: 'アンダルシア',
     h1: 'アンダルシア地方完全ガイド｜料理・サッカー・暮らしから知る南スペイン',
+    metaTitle: 'アンダルシア地方完全ガイド｜南スペインを知る',
     spainMapLabel: 'アンダルシア州',
     communitySlug: 'andalucia',
     capital: 'セビリア',
@@ -85,6 +88,7 @@ export const regions: RegionConfig[] = [
     slug: 'castilla-y-leon',
     label: 'カスティーリャ・イ・レオン',
     h1: 'カスティーリャ・イ・レオン地方完全ガイド｜中世スペインの面影を知る',
+    metaTitle: 'カスティーリャ・イ・レオン地方ガイド',
     spainMapLabel: 'カスティーリャ・イ・レオン州',
     communitySlug: 'castilla-y-leon',
     capital: 'バリャドリード',
