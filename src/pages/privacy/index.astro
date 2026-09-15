@@ -8,7 +8,7 @@ const breadcrumbs = [
 ];
 ---
 <BaseLayout>
-  <SEO slot="seo" title="プライバシーポリシー | スペイン倶楽部" description="supein.club・スペイン倶楽部のプライバシーポリシーのページです。個人情報の収集・利用目的、Cookieの取り扱い、第三者提供の方針、お問い合わせ窓口について定めています。ページ内容は現在準備中のため、今後内容を随時更新していく予定です。" canonical="https://supein.club/privacy/" breadcrumbs={breadcrumbs} />
+  <SEO slot="seo" title="プライバシーポリシー | スペイン倶楽部" description="supein.club・スペイン倶楽部のプライバシーポリシーです。個人情報の取得項目、利用目的、第三者提供、Cookie・アクセス解析の取り扱い、開示等の請求方法についてまとめています。" canonical="https://supein.club/privacy/" breadcrumbs={breadcrumbs} />
   <section class="bg-navy text-white py-16 px-4">
     <div class="max-w-4xl mx-auto">
       <h1 class="font-serif text-4xl font-bold mb-4">プライバシーポリシー</h1>
@@ -16,8 +16,79 @@ const breadcrumbs = [
     </div>
   </section>
   <section class="max-w-4xl mx-auto px-4 py-12">
-    <div class="bg-white rounded-2xl shadow-sm border border-ink/5 p-8">
-      <p class="text-muted leading-relaxed">このページは現在準備中です。</p>
+    <div class="bg-white rounded-2xl shadow-sm border border-ink/5 p-8 prose-content">
+      <p class="text-muted leading-relaxed">
+        Club Español en Japón スペイン倶楽部（以下「当運営者」）は、ウェブサイト「supein.club」（以下「本サイト」）における個人情報の取り扱いについて、以下のとおりプライバシーポリシー（以下「本ポリシー」）を定めます。
+      </p>
+
+      <h2 class="font-serif font-bold text-navy text-xl mt-10 mb-4">1. 事業者情報</h2>
+      <ul class="text-muted leading-relaxed list-none space-y-1">
+        <li>名称：Club Español en Japón スペイン倶楽部</li>
+        <li>所在地：〒173-0012 東京都板橋区大和町41-8</li>
+        <li>代表：David Recalde</li>
+      </ul>
+
+      <h2 class="font-serif font-bold text-navy text-xl mt-10 mb-4">2. 取得する個人情報と取得方法</h2>
+      <p class="text-muted leading-relaxed mb-3">本サイトでは、以下の場面で個人情報を取得します。</p>
+      <ul class="text-muted leading-relaxed list-disc pl-6 space-y-2">
+        <li><strong class="text-navy">ニュースレター登録フォーム</strong>：メールアドレス（必須）、お名前（任意）</li>
+        <li><strong class="text-navy">お問い合わせフォーム</strong>：お名前、メールアドレス、お問い合わせ内容</li>
+        <li><strong class="text-navy">アクセス情報</strong>：Cookie、IPアドレス、閲覧履歴等（後述のアクセス解析ツールを通じて自動的に取得）</li>
+      </ul>
+
+      <h2 class="font-serif font-bold text-navy text-xl mt-10 mb-4">3. 利用目的</h2>
+      <p class="text-muted leading-relaxed mb-3">取得した個人情報は、以下の目的で利用します。</p>
+      <ul class="text-muted leading-relaxed list-disc pl-6 space-y-1">
+        <li>ニュースレターによるスペイン関連情報の配信</li>
+        <li>お問い合わせへの回答、コラボレーション・取材等のご相談への対応</li>
+        <li>本サイトのアクセス状況の分析、コンテンツ改善のための統計データの作成</li>
+        <li>利用規約に違反する行為への対応</li>
+      </ul>
+
+      <h2 class="font-serif font-bold text-navy text-xl mt-10 mb-4">4. 第三者提供・業務委託について</h2>
+      <p class="text-muted leading-relaxed mb-3">
+        当運営者は、法令に基づく場合を除き、ご本人の同意なく個人情報を第三者に提供することはありません。ただし、以下のサービスに業務を委託しており、その範囲内で個人情報を取り扱っています。委託先は、各社のプライバシーポリシーに基づき適切に情報を管理しています。
+      </p>
+      <ul class="text-muted leading-relaxed list-disc pl-6 space-y-1">
+        <li><strong class="text-navy">Brevo</strong>（ニュースレターの配信・購読者管理）</li>
+        <li><strong class="text-navy">Web3Forms</strong>（お問い合わせフォームの送信処理）</li>
+      </ul>
+
+      <h2 class="font-serif font-bold text-navy text-xl mt-10 mb-4">5. Cookie・アクセス解析ツールについて</h2>
+      <p class="text-muted leading-relaxed mb-3">
+        本サイトでは、サービス向上のため、以下のアクセス解析ツールを利用しています。これらのツールはCookieを使用して、個人を特定しない形でアクセス状況を収集します。
+      </p>
+      <ul class="text-muted leading-relaxed list-disc pl-6 space-y-1">
+        <li><strong class="text-navy">Google Analytics</strong>（Google社が提供するアクセス解析サービス）</li>
+        <li><strong class="text-navy">Metricool</strong>（SNS・アクセス分析ツール）</li>
+      </ul>
+      <p class="text-muted leading-relaxed mt-3">
+        Cookieの取得を望まない場合は、ブラウザの設定によりCookieを無効化することができます。ただし、その場合、本サイトの一部機能がご利用いただけなくなることがあります。Google Analyticsのデータ利用については、<a href="https://policies.google.com/technologies/partner-sites?hl=ja" target="_blank" rel="nofollow noopener noreferrer" class="text-primary underline">Googleのポリシーと規約のページ</a>もあわせてご確認ください。
+      </p>
+
+      <h2 class="font-serif font-bold text-navy text-xl mt-10 mb-4">6. 個人情報の安全管理</h2>
+      <p class="text-muted leading-relaxed">
+        当運営者は、取得した個人情報への不正アクセス、紛失、破壊、改ざん、漏えい等を防止するため、合理的な安全管理措置を講じます。
+      </p>
+
+      <h2 class="font-serif font-bold text-navy text-xl mt-10 mb-4">7. 開示・訂正・削除等のご請求について</h2>
+      <p class="text-muted leading-relaxed">
+        ご自身の個人情報の開示・訂正・利用停止・削除をご希望の場合は、<a href="/contact/" class="text-primary underline">お問い合わせフォーム</a>よりご連絡ください。ご本人確認のうえ、法令に従い合理的な範囲で対応いたします。なお、ニュースレターの配信停止は、配信メール内の配信停止リンクからいつでも行えます。
+      </p>
+
+      <h2 class="font-serif font-bold text-navy text-xl mt-10 mb-4">8. 本ポリシーの変更</h2>
+      <p class="text-muted leading-relaxed">
+        当運営者は、法令の改正やサービス内容の変更等に応じて、本ポリシーの内容を予告なく変更することがあります。変更後のポリシーは、本ページに掲載した時点から効力を生じるものとします。
+      </p>
+
+      <h2 class="font-serif font-bold text-navy text-xl mt-10 mb-4">9. お問い合わせ窓口</h2>
+      <p class="text-muted leading-relaxed">
+        個人情報の取り扱いに関するお問い合わせは、<a href="/contact/" class="text-primary underline">お問い合わせフォーム</a>よりご連絡ください。
+      </p>
+
+      <p class="text-muted text-sm mt-10 pt-6 border-t border-ink/10">
+        制定日：2026年9月15日
+      </p>
     </div>
   </section>
 </BaseLayout>
