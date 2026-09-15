@@ -362,7 +362,7 @@ if (type === 'article' && article) {
       name: title,
       description,
       thumbnailUrl: [`https://i.ytimg.com/vi/${youtubeId}/maxresdefault.jpg`],
-      uploadDate: article.data.pubDate.toISOString(),
+      uploadDate: (article.data.video.uploadDate ?? article.data.pubDate).toISOString(),
       embedUrl: `https://www.youtube.com/embed/${youtubeId}`,
       contentUrl: `https://www.youtube.com/watch?v=${youtubeId}`,
       isFamilyFriendly: true,

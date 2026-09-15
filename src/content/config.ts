@@ -66,6 +66,8 @@ const articles = defineCollection({
     heroImageAlt: z.string().optional(),
     video: z.object({
       youtubeId: z.string(),
+      /** YouTubeへの実際のアップロード日。省略時はpubDateを代用（SEO.astro参照）。 */
+      uploadDate: z.coerce.date().optional(),
     }).optional(),
     schemaType: z.enum([
       'article',
