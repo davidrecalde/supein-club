@@ -64,6 +64,9 @@ const articles = defineCollection({
     readingTime: z.number().optional(),
     heroImage: image().optional(),
     heroImageAlt: z.string().optional(),
+    video: z.object({
+      youtubeId: z.string(),
+    }).optional(),
     schemaType: z.enum([
       'article',
       'recipe',
