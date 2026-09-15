@@ -351,6 +351,25 @@ if (type === 'article' && article) {
       acquireLicensePage: `${siteUrl}/contact/`,
     });
   }
+
+  // VideoObject（記事に埋め込まれたYouTube動画がある場合）— このページが
+  // 動画の「視聴ページ」であることをGoogleに明示するための構造化データ。
+  if (article.data.video) {
+    const { youtubeId } = article.data.video;
+    graph.push({
+      '@type': 'VideoObject',
+      '@id': `${canonical}#video`,
+      name: title,
+      description,
+      thumbnailUrl: [`https://i.ytimg.com/vi/${youtubeId}/maxresdefault.jpg`],
+      uploadDate: (article.data.video.uploadDate ?? article.data.pubDate).toISOString(),
+      embedUrl: `https://www.youtube.com/embed/${youtubeId}`,
+      contentUrl: `https://www.youtube.com/watch?v=${youtubeId}`,
+      isFamilyFriendly: true,
+      publisher: { '@id': `${siteUrl}/#organization` },
+      mainEntityOfPage: `${canonical}#webpage`,
+    });
+  }
 }
 
 // 6. FAQPage (if article has faq)
