@@ -1,5 +1,7 @@
 ---
-import { Plane, Map, Package } from 'lucide-astro';
+import { Plane, Map as MapIcon, Package, UtensilsCrossed } from 'lucide-astro';
+import { getCollection } from 'astro:content';
+import { getArticleUrl } from '../../utils/articles';
 
 interface Props {
   relatedTravel?: string;
@@ -7,7 +9,24 @@ interface Props {
   provinceJa: string;
 }
 
-const { relatedTravel, provinceJa } = Astro.props;
+const { relatedTravel, relatedFood, provinceJa } = Astro.props;
+
+// relatedFood es una lista de URLs (p.ej. "/food/paella/"). Se resuelve
+// contra la colección de artículos para obtener título/descripción reales
+// — evita mantener esos textos duplicados a mano en cada archivo de provincia.
+// "/food/spain-map/" se excluye porque ya aparece como tarjeta fija más abajo.
+const foodArticleCards: { href: string; title: string; text: string }[] = [];
+if (relatedFood?.length) {
+  const foodArticles = await getCollection('articles', ({ data }) => !data.draft && data.pillar === 'food');
+  const hrefMap = new Map(foodArticles.map((a) => [getArticleUrl(a), a]));
+  for (const href of relatedFood) {
+    if (href === '/food/spain-map/') continue;
+    const article = hrefMap.get(href);
+    if (article) {
+      foodArticleCards.push({ href, title: article.data.title, text: article.data.description });
+    }
+  }
+}
 
 const cards = [
   ...(relatedTravel ? [{
@@ -17,8 +36,15 @@ const cards = [
     text: `${provinceJa}の観光スポット・モデルコース`,
     external: false,
   }] : []),
+  ...foodArticleCards.map((c) => ({
+    icon: UtensilsCrossed,
+    href: c.href,
+    title: c.title,
+    text: c.text,
+    external: false,
+  })),
   {
-    icon: Map,
+    icon: MapIcon,
     href: '/food/spain-map/',
     title: 'スペイン全省マップ',
     text: '50省のレストランマップ一覧',
