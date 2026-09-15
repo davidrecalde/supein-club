@@ -4,15 +4,22 @@ import type { GetStaticPaths } from 'astro';
 import ArticleLayout from '../../../../layouts/ArticleLayout.astro';
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const flatClusterPages = new Set(['spanish-vocabulary', 'spain-dining-times']);
-  const articles = await getCollection('articles', ({ data }) => !data.draft && data.pillar === 'food' && !flatClusterPages.has(data.cluster));
-  return articles.map((entry) => {
-    const parts = entry.id.replace(/\.(md|mdx)$/, '').split('/');
-    return {
-      params: { cluster: parts[1], article: parts[2] },
+  const articles = await getCollection('articles', ({ data }) => !data.draft && data.pillar === 'food');
+  return articles
+    .map((entry) => {
+      const parts = entry.id.replace(/\.(md|mdx)$/, '').split('/');
+      return { entry, cluster: parts[1], article: parts[2] };
+    })
+    // Los artículos "insignia" (slug === cluster) tienen su propia ruta
+    // dedicada en /food/{cluster}/ y no deben duplicarse aquí — antes se
+    // mantenía una lista de nombres a mano que se quedaba desactualizada
+    // cada vez que se creaba un nuevo cluster insignia (ver PR de
+    // duplicidad de /food/jamon-iberico/jamon-iberico/).
+    .filter(({ cluster, article }) => article !== cluster)
+    .map(({ entry, cluster, article }) => ({
+      params: { cluster, article },
       props: { entry },
-    };
-  });
+    }));
 };
 
 const { entry } = Astro.props;

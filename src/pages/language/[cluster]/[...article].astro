@@ -4,17 +4,24 @@ import type { GetStaticPaths } from 'astro';
 import ArticleLayout from '../../../layouts/ArticleLayout.astro';
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const flatClusterPages = new Set(['tokyo-spanish-schools', 'osaka-spanish-schools', 'yokohama-spanish-schools', 'kyoto-spanish-schools', 'spanish-schools-in-japan', 'spanish-apps']);
-  const articles = await getCollection('articles', ({ data }) => !data.draft && data.pillar === 'language' && !flatClusterPages.has(data.cluster));
-  return articles.map((entry) => {
-    const parts = entry.id.replace(/\.(md|mdx)$/, '').split('/');
-    const restSegments = parts.slice(2);
-    if (restSegments[restSegments.length - 1] === 'index') restSegments.pop();
-    return {
-      params: { cluster: parts[1], article: restSegments.join('/') },
+  const articles = await getCollection('articles', ({ data }) => !data.draft && data.pillar === 'language');
+  return articles
+    .map((entry) => {
+      const parts = entry.id.replace(/\.(md|mdx)$/, '').split('/');
+      const cluster = parts[1];
+      const restSegments = parts.slice(2);
+      if (restSegments[restSegments.length - 1] === 'index') restSegments.pop();
+      return { entry, cluster, article: restSegments.join('/') };
+    })
+    // Los artículos "insignia" (slug === cluster) tienen su propia ruta
+    // dedicada en /language/{cluster}/ y no deben duplicarse aquí — antes
+    // se mantenía una lista de nombres a mano que se quedaba desactualizada
+    // cada vez que se creaba un nuevo cluster insignia.
+    .filter(({ cluster, article }) => article !== cluster)
+    .map(({ entry, cluster, article }) => ({
+      params: { cluster, article },
       props: { entry },
-    };
-  });
+    }));
 };
 
 const { entry } = Astro.props;
