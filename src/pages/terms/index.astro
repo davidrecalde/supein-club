@@ -8,7 +8,7 @@ const breadcrumbs = [
 ];
 ---
 <BaseLayout>
-  <SEO slot="seo" title="利用規約 | スペイン倶楽部" description="supein.club・スペイン倶楽部の利用規約のページです。当サイトのコンテンツ利用条件、免責事項、著作権の取り扱い、禁止事項、規約変更時の対応について定めています。ページ内容は現在準備中のため、今後内容を随時見直しながら更新していく予定です。" canonical="https://supein.club/terms/" breadcrumbs={breadcrumbs} />
+  <SEO slot="seo" title="利用規約 | スペイン倶楽部" description="supein.club・スペイン倶楽部の利用規約です。コンテンツの著作権、禁止事項、免責事項、準拠法など、当サイトのご利用にあたって定める条件をまとめています。" canonical="https://supein.club/terms/" breadcrumbs={breadcrumbs} />
   <section class="bg-navy text-white py-16 px-4">
     <div class="max-w-4xl mx-auto">
       <h1 class="font-serif text-4xl font-bold mb-4">利用規約</h1>
@@ -16,8 +16,66 @@ const breadcrumbs = [
     </div>
   </section>
   <section class="max-w-4xl mx-auto px-4 py-12">
-    <div class="bg-white rounded-2xl shadow-sm border border-ink/5 p-8">
-      <p class="text-muted leading-relaxed">このページは現在準備中です。</p>
+    <div class="bg-white rounded-2xl shadow-sm border border-ink/5 p-8 prose-content">
+      <p class="text-muted leading-relaxed">
+        この利用規約（以下「本規約」）は、Club Español en Japón スペイン倶楽部（以下「当運営者」）が運営するウェブサイト「supein.club」（以下「本サイト」）のご利用条件を定めるものです。本サイトをご利用いただく際は、本規約に同意いただいたものとみなします。
+      </p>
+
+      <h2 class="font-serif font-bold text-navy text-xl mt-10 mb-4">第1条（本サイトの内容）</h2>
+      <p class="text-muted leading-relaxed">
+        本サイトは、スペインの旅行・料理・文化・語学学習・現地生活・サッカーに関する情報を、日本語で紹介するメディアです。掲載する情報は、当運営者が独自に調査・編集したものであり、公的機関やスペイン政府観光局等が発行する情報を代替するものではありません。
+      </p>
+
+      <h2 class="font-serif font-bold text-navy text-xl mt-10 mb-4">第2条（禁止事項）</h2>
+      <p class="text-muted leading-relaxed mb-3">
+        本サイトのご利用にあたり、以下の行為を禁止します。
+      </p>
+      <ul class="text-muted leading-relaxed list-disc pl-6 space-y-1">
+        <li>法令または公序良俗に違反する行為</li>
+        <li>当運営者または第三者の著作権・商標権その他の知的財産権、肖像権、プライバシー等の権利を侵害する行為</li>
+        <li>当運営者の許諾なく、本サイトのコンテンツ（文章・画像・データ等）の全部または一部を複製、転載、改変、二次利用する行為</li>
+        <li>本サイトの運営を妨害し、またはそのおそれのある行為（スクレイピング、過度なアクセス、不正アクセス等を含む）</li>
+        <li>虚偽の情報を登録・送信する行為、または他者になりすます行為</li>
+        <li>本サイトを商業目的で無断利用する行為</li>
+        <li>その他、当運営者が不適切と判断する行為</li>
+      </ul>
+
+      <h2 class="font-serif font-bold text-navy text-xl mt-10 mb-4">第3条（知的財産権）</h2>
+      <p class="text-muted leading-relaxed">
+        本サイトに掲載する文章・写真・イラスト・ロゴ等の著作権その他の知的財産権は、当運営者または正当な権利を有する第三者に帰属します。引用にあたっては、著作権法の定めに従い、出典（記事タイトルおよびURL）を明記してください。
+      </p>
+
+      <h2 class="font-serif font-bold text-navy text-xl mt-10 mb-4">第4条（免責事項）</h2>
+      <ul class="text-muted leading-relaxed list-disc pl-6 space-y-1">
+        <li>当運営者は、本サイトに掲載する情報の正確性・最新性・完全性について、細心の注意を払っていますが、これを保証するものではありません。特に、ビザ・渡航手続き・料金・営業時間等、変更されうる情報については、必ず公的機関や現地の公式情報でご確認ください。</li>
+        <li>本サイトの情報を利用したことにより生じたいかなる損害についても、当運営者は責任を負いかねます。</li>
+        <li>本サイトからリンクする外部サイトの内容について、当運営者は一切の責任を負いません。リンク先サイトのご利用は、各サイトが定める利用条件に従ってください。</li>
+        <li>本サイトは、予告なく内容の変更、提供の中断・停止・終了を行うことがあります。これによって生じた損害について、当運営者は責任を負いません。</li>
+      </ul>
+
+      <h2 class="font-serif font-bold text-navy text-xl mt-10 mb-4">第5条（広告・アフィリエイトについて）</h2>
+      <p class="text-muted leading-relaxed">
+        本サイトは、広告配信サービスおよびアフィリエイトプログラムを利用する場合があります。これらのサービスを通じて第三者の商品・サービスを紹介する記事が含まれることがありますが、記事の編集方針・内容は当運営者の独自の判断によるものです。
+      </p>
+
+      <h2 class="font-serif font-bold text-navy text-xl mt-10 mb-4">第6条（本規約の変更）</h2>
+      <p class="text-muted leading-relaxed">
+        当運営者は、必要と判断した場合、本規約の内容を予告なく変更することがあります。変更後の規約は、本ページに掲載した時点から効力を生じるものとします。
+      </p>
+
+      <h2 class="font-serif font-bold text-navy text-xl mt-10 mb-4">第7条（準拠法・管轄裁判所）</h2>
+      <p class="text-muted leading-relaxed">
+        本規約の解釈にあたっては、日本法を準拠法とします。本サイトに関連して当運営者と利用者との間に紛争が生じた場合には、東京地方裁判所を第一審の専属的合意管轄裁判所とします。
+      </p>
+
+      <h2 class="font-serif font-bold text-navy text-xl mt-10 mb-4">第8条（お問い合わせ）</h2>
+      <p class="text-muted leading-relaxed">
+        本規約に関するお問い合わせは、<a href="/contact/" class="text-primary underline">お問い合わせフォーム</a>よりご連絡ください。
+      </p>
+
+      <p class="text-muted text-sm mt-10 pt-6 border-t border-ink/10">
+        制定日：2026年9月15日
+      </p>
     </div>
   </section>
 </BaseLayout>
