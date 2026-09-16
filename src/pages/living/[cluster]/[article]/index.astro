@@ -4,17 +4,23 @@ import type { GetStaticPaths } from 'astro';
 import ArticleLayout from '../../../../layouts/ArticleLayout.astro';
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  // クラスター名とスラッグが同一の記事（例: cervantes-webinar-experiencias-espana）は
-  // /living/{cluster}/ の単独静的ページで配信するため、ここでは除外する
-  const flatClusterPages = new Set(['cervantes-webinar-experiencias-espana']);
-  const articles = await getCollection('articles', ({ data }) => !data.draft && data.pillar === 'living' && !flatClusterPages.has(data.cluster));
-  return articles.map((entry) => {
-    const parts = entry.id.replace(/\.(md|mdx)$/, '').split('/');
-    return {
-      params: { cluster: parts[1], article: parts[2] },
+  const articles = await getCollection('articles', ({ data }) => !data.draft && data.pillar === 'living');
+  return articles
+    .map((entry) => {
+      const parts = entry.id.replace(/\.(md|mdx)$/, '').split('/');
+      return { entry, cluster: parts[1], article: parts[2] };
+    })
+    // Los artículos "insignia" (slug === cluster, p. ej.
+    // cervantes-webinar-experiencias-espana) tienen su propia ruta
+    // dedicada en /living/{cluster}/ y no deben duplicarse aquí — antes
+    // se mantenía una lista de nombres a mano que se quedaba
+    // desactualizada cada vez que se creaba un nuevo cluster insignia
+    // (mismo fix aplicado a food, language y culture).
+    .filter(({ cluster, article }) => article !== cluster)
+    .map(({ entry, cluster, article }) => ({
+      params: { cluster, article },
       props: { entry },
-    };
-  });
+    }));
 };
 
 const { entry } = Astro.props;

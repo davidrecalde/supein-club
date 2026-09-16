@@ -5,13 +5,22 @@ import ArticleLayout from '../../../../layouts/ArticleLayout.astro';
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const articles = await getCollection('articles', ({ data }) => !data.draft && data.pillar === 'travel');
-  return articles.map((entry) => {
-    const parts = entry.id.replace(/\.(md|mdx)$/, '').split('/');
-    return {
-      params: { cluster: parts[1], article: parts[2] },
+  return articles
+    .map((entry) => {
+      const parts = entry.id.replace(/\.(md|mdx)$/, '').split('/');
+      return { entry, cluster: parts[1], article: parts[2] };
+    })
+    // Los artículos "insignia" (slug === cluster) tienen su propia ruta
+    // dedicada en /travel/{cluster}/ y no deben duplicarse aquí (mismo
+    // fix aplicado a food, language, culture y living — ver PR de
+    // duplicidad de /food/jamon-iberico/jamon-iberico/). Hoy no hay
+    // ningún insignia activo en travel, pero deja la ruta a salvo si se
+    // crea uno en el futuro.
+    .filter(({ cluster, article }) => article !== cluster)
+    .map(({ entry, cluster, article }) => ({
+      params: { cluster, article },
       props: { entry },
-    };
-  });
+    }));
 };
 
 const { entry } = Astro.props;
