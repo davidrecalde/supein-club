@@ -51,6 +51,7 @@
 | `/travel/itineraries/` | stub, sin contenido | スペイン 旅行 日程 | 5k (nodo Nivel3 `/itineraries/`: 15k) | xlsx |
 | `/travel/spain-flights/` | stub, sin contenido | スペイン 航空券 | 5k (nodo Nivel3 `/flights/`: 15k) | xlsx |
 | `/travel/spain-hotels/` | stub, sin contenido | スペイン ホテル | 5k (nodo Nivel3 `/hotels/`: 15k) | xlsx |
+| `/travel/souvenirs/` | publicado (artículo, insignia) — 2026-09-16 | スペイン お土産 | 5k (nodo Nivel2 `/spanish-food/souvenirs/` ★NUEVA: 20k, originalmente planificado bajo food) | xlsx (reubicado) — artesanía y marcas por región (Lladró/Valencia, damasquinado/Toledo, abanicos/Sevilla, Loewe, Camper y Carmina/Mallorca, El Caganer/Cataluña) a partir del análisis de una revista escaneada. Sin `region` (multi-regional); `relatedFood` en Toledo, Sevilla, Valencia, Islas Baleares, Barcelona y Guipúzcoa. Sustituye y elimina el antiguo stub `/food/souvenirs/` — ver nota en la tabla food |
 
 **Nota travel:** el nodo `/travel-spain/booking/` (★PRIORITARIA en el xlsx, 515k agregado) agrupa tours+vuelos+hoteles como intención transaccional — hoy repartido en 3 stubs vacíos (`spain-flights`, `spain-hotels`) más el clúster `spain-tours` con 2 artículos reales. Los 4 "pilares obligatorios" que el plan quería como artículos dedicados en `/travel/barcelona/`, `/travel/madrid/`, `/travel/spain-tours/`, `/travel/andalusia/` nunca se escribieron así — 3 de esas URLs sirven listados automáticos de clúster, y `andalusia` sigue vacío.
 
@@ -74,7 +75,7 @@
 | `/food/olive-oil/` | stub, sin contenido | スペイン オリーブオイル | 5k (nodo Nivel3 `/olive-oil/`: 10k) | xlsx |
 | `/food/restaurants-osaka/` | stub, sin contenido | スペイン レストラン 大阪 | 5k (nodo Nivel3 `/osaka/`: 10k) | xlsx |
 | `/food/restaurants-tokyo/` | stub, sin contenido | スペイン レストラン 東京 | 5k (nodo Nivel3 `/tokyo/`: 15k, incluye バル東京) | xlsx |
-| `/food/souvenirs/` | stub, sin contenido | スペイン お土産 | 5k (nodo Nivel2 `/spanish-food/souvenirs/` ★NUEVA: 20k) | xlsx |
+| `/food/souvenirs/` | **eliminado 2026-09-16** — ver `/travel/souvenirs/` | — | — | El xlsx lo situaba bajo food, pero David decidió que el contenido de souvenirs encaja mejor en travel (intención de compra/viaje, no gastronómica). El stub (sin contenido, noindex) se borró en vez de dejarlo huérfano; no había nada indexado que redirigir |
 
 **Nota food:** el nodo `/restaurants-in-japan/` del xlsx incluye スペイン バル 東京 (5k) dentro del mismo total que レストラン東京 — el plan docx lo separaba en un satélite propio (`spanish-bars`) que nunca se construyó como stub independiente.
 
