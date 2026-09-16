@@ -192,6 +192,8 @@ El xlsx maestro define un nodo `/services/` explícitamente marcado "SEO対象�
 
 **Deuda técnica conocida:** `author: supeinclub-henshubu` en las 53 entradas de `spain-map` referencia un autor que **no existe** en `src/content/authors/` (verificado: no hay ningún archivo con ese slug). Inofensivo hoy porque `ProvinceGuideLayout.astro` nunca llama a `entry.data.author` para renderizarlo — pero pendiente de limpiar (apuntar a `david-recalde`, el autor real usado en el resto del pillar food) la próxima vez que se toque `spain-map`.
 
+**`/articles/[...page]` reposicionada como hub de "novedades" (2026-09-16):** antes era un volcado cronológico genérico ("すべての記事") con las 6 páginas indexadas y la misma meta description duplicada en todas — sin enlace desde ningún nav/footer, solo descubierta vía sitemap XML, aunque sí enlazada desde la sección "新着" del home. Se realinea con esa etiqueta del home: título "新着記事一覧｜スペイン倶楽部", H1 y descripción propios, `dateModified` en el schema `CollectionPage` (fecha del artículo más reciente de todo el sitio, no solo de la página actual). Solo la **página 1 queda `index, follow`** — es la única con valor real de freshness; páginas 2+ pasan a `noindex, follow` (siguen paginando/enlazando, pero no compiten en el índice con contenido ya viejo). No se solapa con `/sitemap/` (esa es navegación curada por categoría; `/articles/` es el feed cronológico de novedades) ni con los hubs de pillar (esos targetean su propia keyword de categoría). Pendiente si se retoma: añadir un feed RSS (`/rss.xml`) como mecanismo complementario de freshness — no se implementó en este cambio.
+
 ## Mantenimiento
 
 Este archivo se actualiza en el mismo commit que crea o mueve contenido

@@ -16,25 +16,46 @@ export const getStaticPaths = (async ({ paginate }) => {
 
 const { page } = Astro.props;
 
+// 全ページ共通で「最新記事の公開日」をfreshnessシグナルとしてスキーマに載せるため、
+// ページ分割後のpage.dataではなく全記事から改めて最新日を取得する
+// （2ページ目以降はpage.data[0]が最新記事と一致しないため）
+const allArticles = await getCollection('articles', ({ data }) => !data.draft);
+const latestPubDate = allArticles.reduce(
+  (latest, a) => (a.data.pubDate.valueOf() > latest.valueOf() ? a.data.pubDate : latest),
+  allArticles[0].data.pubDate
+);
+
 const breadcrumbs = [
   { name: 'ホーム', url: '/' },
-  { name: 'すべての記事', url: '/articles/' },
+  { name: '新着記事一覧', url: '/articles/' },
 ];
 
-const title = page.currentPage === 1
-  ? 'すべての記事'
-  : `すべての記事（${page.currentPage}ページ目）`;
+const isFirstPage = page.currentPage === 1;
 
-const canonical = page.currentPage === 1
+const title = isFirstPage
+  ? '新着記事一覧｜スペイン倶楽部'
+  : `新着記事一覧｜スペイン倶楽部（${page.currentPage}ページ目）`;
+
+const description = isFirstPage
+  ? 'スペイン倶楽部が公開した最新記事を新着順に掲載。旅行・料理・語学・文化・生活・サッカーなど、スペインに関する新着情報をいち早くチェックできます。'
+  : `スペイン倶楽部が公開した記事のアーカイブ（${page.currentPage}ページ目）。最新の新着記事は「新着記事一覧」のトップページでご確認いただけます。`;
+
+const canonical = isFirstPage
   ? 'https://supein.club/articles/'
   : `https://supein.club/articles/${page.currentPage}/`;
+
+// freshness推しのハブページという役割上、価値があるのは最新記事が並ぶ1ページ目のみ。
+// 2ページ目以降は既出の古い記事の掃きだめになり、1ページ目と内容が近い状態で
+// インデックスされると評価が薄まるため、クロールはできるがインデックスはしない。
+const robots = isFirstPage ? 'index, follow' : 'noindex, follow';
 
 const collectionSchema = {
   '@context': 'https://schema.org',
   '@type': 'CollectionPage',
   name: title,
-  description: 'スペイン倶楽部が公開したすべての記事を新着順に掲載。旅行・料理・語学・文化・生活・サッカーまで、スペインに関する情報を網羅しています。',
+  description,
   url: canonical,
+  dateModified: latestPubDate.toISOString(),
   mainEntity: {
     '@type': 'ItemList',
     numberOfItems: page.total,
@@ -51,16 +72,20 @@ const collectionSchema = {
   <SEO
     slot="seo"
     title={title}
-    description="スペイン倶楽部が公開したすべての記事を新着順に掲載。旅行・料理・語学・文化・生活・サッカーまで、スペインに関する情報を網羅しています。"
+    description={description}
     canonical={canonical}
     breadcrumbs={breadcrumbs}
+    robots={robots}
   />
   <script type="application/ld+json" slot="head" set:html={JSON.stringify(collectionSchema)} />
   <PillarHero
-    title="すべての記事"
+    title="新着記事一覧"
     description="旅行・料理・語学・文化・生活・サッカー——スペイン倶楽部が公開した記事を新着順にすべて掲載しています。"
   />
   <section class="max-w-5xl mx-auto px-5 py-14">
+    <p class="text-muted text-base leading-relaxed mb-12 border-l-2 border-primary pl-5">
+      このページでは、スペイン倶楽部が公開したすべての記事を公開日の新しい順に並べています。各カテゴリの詳しいガイドは<a href="/food/" class="text-primary underline">スペイン料理</a>・<a href="/travel/" class="text-primary underline">スペイン旅行</a>など各カテゴリのトップページでまとめて確認できますが、サイト全体の更新を新着順にまとめて追いたい方はこちらをご覧ください。
+    </p>
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
       {page.data.map((article) => (
         <ArticleCard
