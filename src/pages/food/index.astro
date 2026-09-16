@@ -28,9 +28,16 @@ const sorted = articles.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate
 const provinceEntries = await getCollection('spain-map', ({ data }) => data.draft !== true);
 const sortedProvinces = [...provinceEntries].sort((a, b) => a.data.provinceJa.localeCompare(b.data.provinceJa, 'ja'));
 
-// カテゴリ分類：クラスターごとにグループ化（新しいクラスターを追加する際は、下記に1行追加すれば自動的に反映される）
+// カテゴリ分類：クラスターをテーマごとにグループ化。新しいクラスターを
+// 追加する際は、既存カテゴリに合うものがあれば clusters に追記し、なければ
+// 新しいカテゴリを1行追加する（該当カテゴリがないクラスターは自動的に
+// 「その他」に入る）。
 const categories = [
-  { id: 'spanish-vocabulary', label: 'グルメ語彙' },
+  { id: 'food-routes', label: '地方グルメルート', clusters: ['food-routes'] },
+  { id: 'iconic-dishes', label: '名物料理・食材ガイド', clusters: ['paella', 'jamon-iberico'] },
+  { id: 'spanish-wine', label: 'スペインワイン', clusters: ['spanish-wine'] },
+  { id: 'dining-culture', label: 'バル・レストラン文化', clusters: ['tapas', 'spain-bar-restaurant', 'spain-dining-times'] },
+  { id: 'spanish-vocabulary', label: 'グルメ語彙', clusters: ['spanish-vocabulary'] },
 ];
 
 function toCardItem(a: (typeof sorted)[number]) {
@@ -47,10 +54,10 @@ function toCardItem(a: (typeof sorted)[number]) {
 }
 
 const categoryGroups = categories
-  .map((c) => ({ ...c, items: sorted.filter((a) => a.data.cluster === c.id).map(toCardItem) }))
+  .map((c) => ({ ...c, items: sorted.filter((a) => c.clusters.includes(a.data.cluster)).map(toCardItem) }))
   .filter((g) => g.items.length > 0);
 
-const categorizedIds = new Set(categories.flatMap((c) => sorted.filter((a) => a.data.cluster === c.id).map((a) => a.id)));
+const categorizedIds = new Set(categories.flatMap((c) => sorted.filter((a) => c.clusters.includes(a.data.cluster)).map((a) => a.id)));
 const uncategorized = sorted.filter((a) => !categorizedIds.has(a.id)).map(toCardItem);
 
 // スペイン美食マップ：ハブページ＋全都道府県のページを1つの長いカテゴリとして表示
