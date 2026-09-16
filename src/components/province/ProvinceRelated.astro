@@ -1,5 +1,5 @@
 ---
-import { Plane, Map as MapIcon, Package, UtensilsCrossed } from 'lucide-astro';
+import { Plane, Map as MapIcon, Package, UtensilsCrossed, PartyPopper, BookOpen } from 'lucide-astro';
 import { getCollection } from 'astro:content';
 import { getArticleUrl } from '../../utils/articles';
 
@@ -11,19 +11,25 @@ interface Props {
 
 const { relatedTravel, relatedFood, provinceJa } = Astro.props;
 
-// relatedFood es una lista de URLs (p.ej. "/food/paella/"). Se resuelve
-// contra la colección de artículos para obtener título/descripción reales
-// — evita mantener esos textos duplicados a mano en cada archivo de provincia.
+// relatedFood es una lista de URLs de artículos (p.ej. "/food/paella/",
+// "/culture/traditions/"), no limitada al pillar food pese al nombre del
+// campo. Se resuelve contra TODA la colección de artículos para obtener
+// título/descripción reales — evita mantener esos textos duplicados a
+// mano en cada archivo de provincia.
 // "/food/spain-map/" se excluye porque ya aparece como tarjeta fija más abajo.
-const foodArticleCards: { href: string; title: string; text: string }[] = [];
+const iconByPillar: Record<string, typeof UtensilsCrossed> = {
+  food: UtensilsCrossed,
+  culture: PartyPopper,
+};
+const relatedArticleCards: { href: string; title: string; text: string; icon: typeof UtensilsCrossed }[] = [];
 if (relatedFood?.length) {
-  const foodArticles = await getCollection('articles', ({ data }) => !data.draft && data.pillar === 'food');
-  const hrefMap = new Map(foodArticles.map((a) => [getArticleUrl(a), a]));
+  const allArticles = await getCollection('articles', ({ data }) => !data.draft);
+  const hrefMap = new Map(allArticles.map((a) => [getArticleUrl(a), a]));
   for (const href of relatedFood) {
     if (href === '/food/spain-map/') continue;
     const article = hrefMap.get(href);
     if (article) {
-      foodArticleCards.push({ href, title: article.data.title, text: article.data.description });
+      relatedArticleCards.push({ href, title: article.data.title, text: article.data.description, icon: iconByPillar[article.data.pillar] ?? BookOpen });
     }
   }
 }
@@ -36,8 +42,8 @@ const cards = [
     text: `${provinceJa}の観光スポット・モデルコース`,
     external: false,
   }] : []),
-  ...foodArticleCards.map((c) => ({
-    icon: UtensilsCrossed,
+  ...relatedArticleCards.map((c) => ({
+    icon: c.icon,
     href: c.href,
     title: c.title,
     text: c.text,

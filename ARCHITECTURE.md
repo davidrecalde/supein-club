@@ -1,8 +1,9 @@
 # Arquitectura SEO — supein.club
 
-> Snapshot: 2026-09-16 (pillars food y football actualizados; el resto
-> conserva el snapshot 2026-09-09 original — ver notas de cada sección).
-> Los volúmenes de búsqueda son rangos redondeados
+> Snapshot: 2026-09-16 (pillars food, football y culture actualizados;
+> travel/living recibieron solo un fix de rutas compartido, sin cambio
+> de contenido; language conserva el snapshot 2026-09-09 original — ver
+> notas de cada sección). Los volúmenes de búsqueda son rangos redondeados
 > del Keyword Planner de Google Ads. Tres fuentes, ninguna trackeada en
 > git (viven sueltas en la raíz del repo):
 > - `SupeinClub_Arquitectura_SEO.xlsx` — árbol maestro Nivel 1/2/3 por
@@ -135,9 +136,17 @@ Desde el 2026-09-15, toda creación de artículo de food pregunta explícitament
 | `/culture/facts/` | stub, sin contenido | スペイン 基本情報 | 500 (nodo Nivel2 `/about-spain/facts/`: 1.5k) | xlsx |
 | `/culture/flamenco/` | stub, sin contenido | スペイン フラメンコ | 500 (dentro del nodo `/about-spain/culture/`: 1.5k) | xlsx — el keyword específico es "フラメンコ" genérico, no "フラメンコ 東京" (ese es un ángulo distinto, ver football/docx) |
 | `/culture/history/` | stub, sin contenido | スペイン 歴史 | 500 (nodo Nivel2 `/about-spain/history/`: 1k) | xlsx + docx |
-| `/culture/traditions/` | stub, sin contenido | スペイン 伝統 | 500 (nodo Nivel2 `/about-spain/traditions/`: 1.5k, incluye お祭り+トマティーナ) | xlsx |
+| `/culture/traditions/` | publicado (artículo, insignia) — 2026-09-16 | スペインの祭り | 500 (nodo Nivel2 `/about-spain/traditions/`: 1.5k, incluye お祭り+トマティーナ) | xlsx — coincide con el nodo planificado. Calendario de 18 fiestas (Fallas, San Fermín, La Tomatina, etc.) a partir del análisis de una revista escaneada. Sin `region` (multi-regional); `relatedFood` en las 17 provincias directamente implicadas (guipuzcoa, cadiz, santa-cruz-de-tenerife, valencia, alicante, cordoba, madrid, toledo, granada, navarra, la-coruna, malaga, la-rioja, barcelona, zaragoza, sevilla, cuenca) |
 
-**Culture es el único pillar con 0 páginas publicadas hoy** — los 4 stubs son toda su presencia actual. Es también el pillar de menor volumen agregado de las 3 fuentes (~3k total vs. 500k+ de travel/football) — coherente con ser contenido de refuerzo de marca, no de captación.
+**Culture pasa de 0 a 1 página publicada (2026-09-16)** — `/culture/traditions/` es el primer artículo real del pillar; `facts`, `flamenco` e `history` siguen siendo stubs. Es también el pillar de menor volumen agregado de las 3 fuentes (~3k total vs. 500k+ de travel/football) — coherente con ser contenido de refuerzo de marca, no de captación.
+
+**Guardrail a futuro (`/culture/flamenco/` y `/culture/history/`):** `traditions.mdx` menciona flamenco de pasada (Feria de Abril, Patios, Feria de Málaga) y una recreación histórica (Moros y Cristianos). Cuando esos dos stubs se desarrollen, `traditions.mdx` debe mantener esas menciones breves y enlazar hacia ellos en vez de profundizar — para no canibalizar el ángulo que le corresponda a cada uno.
+
+**Estudio de canibalización previo a `traditions.mdx` (2026-09-16):** de las 18 fiestas, 6 ya tenían alguna mención en el sitio (Fallas en `spain-map/valencia` FAQ + `budget-spain-tours` + una entrevista de `living`; Feria de Abril en `spain-map/sevilla` FAQ + `spain-tour-1week`; San Fermín y Semana Santa en `budget-spain-tours`/`spain-tour-1week`/`spanish-vocabulary`). Ninguna era un desarrollo real — todas eran factor de precio, aviso logístico, anécdota personal o contexto de vocabulario. Se añadieron enlaces recíprocos hacia `traditions.mdx` en esos puntos en vez de expandirlos ahí, dejando a `traditions.mdx` como único dueño de la intención informativa "qué es / cuándo es / qué pasa" para cada fiesta.
+
+**Bug de rutas corregido en el mismo cambio:** los catch-all `[cluster]/[article]` de `culture`, `living` y `travel` no excluían los artículos insignia (slug === cluster) — el mismo bug ya corregido antes en `food` y `language`. En `culture` y `travel` era latente (sin insignia activo aún); en `living` **era un duplicado real en producción** (`/living/cervantes-webinar-experiencias-espana/cervantes-webinar-experiencias-espana/`), aunque ya mitigado con una lista hardcodeada — se generalizó al mismo patrón genérico `article !== cluster` que usan food/language.
+
+**`ProvinceRelated.astro` generalizado:** el campo `relatedFood` resolvía solo contra artículos del pillar `food`; ahora resuelve contra toda la colección `articles` (cualquier pillar), con icono por pillar (`food`→UtensilsCrossed, `culture`→PartyPopper, resto→BookOpen) — necesario para que las tarjetas de provincia puedan enlazar a `/culture/traditions/`.
 
 ### football
 
