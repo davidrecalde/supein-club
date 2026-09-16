@@ -1,6 +1,6 @@
 # Arquitectura SEO — supein.club
 
-> Snapshot: 2026-09-16 (pillar food actualizado; el resto de pillars
+> Snapshot: 2026-09-16 (pillars food y football actualizados; el resto
 > conserva el snapshot 2026-09-09 original — ver notas de cada sección).
 > Los volúmenes de búsqueda son rangos redondeados
 > del Keyword Planner de Google Ads. Tres fuentes, ninguna trackeada en
@@ -161,6 +161,8 @@ Desde el 2026-09-15, toda creación de artículo de food pregunta explícitament
 | `/football/lamine-yamal/` | publicado (artículo, insignia) | — | N/D | N/D |
 
 **Football es el único pillar sin stubs** — los 15 clústeres tienen artículo publicado. También es el único pillar **ausente por completo del xlsx maestro** (que solo cubre language/travel/living/food/culture) — su research vive aparte en `Keywords_Fútbol.csv`, y solo cubre 9 de los 15 artículos reales; el resto se creó sin research documentado.
+
+**Ampliación 2026-09-16 — sección "現地観戦ガイド" de `/football/la-liga/`:** a partir del análisis de una guía turística escaneada (`Escaneo/informe_completo_LaLiga.md`), se amplió esta sección (antes 3 párrafos breves) con: cómo comprar entrada (web oficial/taquilla/agencia-hotel), compra de merchandising antes del día del partido, logística del día (llegar con tiempo, comida limitada dentro del estadio, equipaje mínimo, ropa según clima) y etiqueta/seguridad (evitar colores del rival, respetar a la afición local). **Datos del informe descartados por obsoletos y NO usados**: lista de 20 clubes de temporada 2023-24 (el artículo ya tenía la lista real 2026-27), aforos de Bernabéu/Camp Nou (~75k/~98k en el informe vs. ~83.186 actual y ~62.600→105.000 en obras, ya documentados correctamente en `real-madrid.mdx` y `fcbarcelona.mdx`), y el rango de precios €20-170. Ningún artículo nuevo — el hueco era de profundidad dentro de una sección ya existente con la misma intención de búsqueda, no de cobertura ausente.
 
 ### Páginas de conversión planificadas — nunca construidas
 
