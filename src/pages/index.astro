@@ -34,6 +34,12 @@ const featuredArticle = allArticles
   .filter((a) => a.data.featured)
   .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())[0];
 
+// SNS紹介記事：articles コレクションの socialFeatured: true から選出
+// （直近のSNS投稿で取り上げた記事。投稿のたびに対象記事側のフロントマターを手動で切り替える運用）
+const socialFeaturedArticle = allArticles
+  .filter((a) => a.data.socialFeatured)
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())[0];
+
 const pillarLabels: Record<string, string> = {
   travel: 'スペイン旅行',
   food: 'スペイン料理',
@@ -47,6 +53,11 @@ const featuredHeroSrc =
   typeof featuredArticle?.data.heroImage === 'string'
     ? featuredArticle.data.heroImage
     : featuredArticle?.data.heroImage?.src;
+
+const socialFeaturedHeroSrc =
+  typeof socialFeaturedArticle?.data.heroImage === 'string'
+    ? socialFeaturedArticle.data.heroImage
+    : socialFeaturedArticle?.data.heroImage?.src;
 
 const pillars = [
   { href: '/travel/', Icon: Plane, title: 'スペイン旅行', desc: 'バルセロナ・マドリードから南部アンダルシア、離島まで、観光スポットとツアー情報を完全網羅', image: travelCardImg },
@@ -191,12 +202,59 @@ const breadcrumbs = [{ name: 'ホーム', url: '/' }];
     </section>
   )}
 
+  <!-- SNS featured article (直近のInstagram/X/Facebook投稿で紹介した記事) -->
+  {socialFeaturedArticle && (
+    <section class="py-20 px-5 bg-canvas border-t border-[#E8E8E6]">
+      <div class="max-w-6xl mx-auto">
+        <div class="flex items-center gap-3 mb-4">
+          <span class="font-serif text-xl text-primary/40">03</span>
+          <span class="h-px w-8 bg-navy/15"></span>
+          <span class="text-[#C13584] text-sm font-bold tracking-wide">@supeinclub</span>
+          <span class="inline-flex items-center gap-2 text-[#C13584]">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.746l7.73-8.835L1.254 2.25H8.08l4.259 5.622 5.905-5.622zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+          </span>
+        </div>
+        <p class="text-muted text-sm mb-2">SNSの投稿で紹介した記事</p>
+        <h2 class="font-sans font-bold text-3xl text-navy mb-10">最新のSNS投稿で取り上げた記事はこちら</h2>
+        <a
+          href={getArticleUrl(socialFeaturedArticle)}
+          class="group grid grid-cols-1 md:grid-cols-2 gap-0 bg-white rounded-xl overflow-hidden shadow-[0_2px_8px_rgba(0,33,71,0.07)] border border-[#F0D5E5] hover:shadow-[0_4px_16px_rgba(0,33,71,0.12)] hover:border-[#C13584]/30 transition-all"
+        >
+          {socialFeaturedHeroSrc && (
+            <div class="overflow-hidden aspect-[16/9] md:aspect-auto md:h-full">
+              <img
+                src={socialFeaturedHeroSrc}
+                alt={socialFeaturedArticle.data.heroImageAlt || socialFeaturedArticle.data.title}
+                loading="lazy"
+                class="w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-[400ms]"
+              />
+            </div>
+          )}
+          <div class="p-8 md:p-10 flex flex-col justify-center">
+            <span class="inline-block text-xs font-semibold px-2.5 py-0.5 rounded-full bg-[#FCEBEE] text-primary mb-4 self-start">
+              {pillarLabels[socialFeaturedArticle.data.pillar] ?? socialFeaturedArticle.data.pillar}
+            </span>
+            <h3 class="font-sans font-bold text-navy text-2xl leading-snug mb-4 group-hover:text-primary transition-colors">
+              {socialFeaturedArticle.data.title}
+            </h3>
+            <p class="text-muted text-base leading-relaxed mb-6">{socialFeaturedArticle.data.description}</p>
+            <span class="inline-flex items-center gap-2 text-primary font-semibold text-sm">
+              記事を読む →
+            </span>
+          </div>
+        </a>
+      </div>
+    </section>
+  )}
+
   <!-- Featured article -->
   {featuredArticle && (
     <section class="py-20 px-5 bg-canvas border-t border-[#E8E8E6]">
       <div class="max-w-6xl mx-auto">
         <div class="flex items-center gap-3 mb-4">
-          <span class="font-serif text-xl text-primary/40">03</span>
+          <span class="font-serif text-xl text-primary/40">04</span>
           <span class="h-px w-8 bg-navy/15"></span>
           <span class="text-primary text-lg font-semibold uppercase tracking-widest">特集</span>
         </div>
