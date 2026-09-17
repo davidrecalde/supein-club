@@ -60,6 +60,7 @@ const articles = defineCollection({
     draft: z.boolean().default(false),
     lang: z.enum(['ja', 'es']).default('ja'),
     featured: z.boolean().default(false),
+    socialFeatured: z.boolean().default(false),
     author: reference('authors'),
     readingTime: z.number().optional(),
     heroImage: image().optional(),
