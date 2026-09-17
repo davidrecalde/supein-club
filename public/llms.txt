@@ -18,3 +18,4 @@
 - [運営会社について](https://supein.club/about-us/)
 - [お問い合わせ](https://supein.club/contact/)
 - [サイトマップ](https://supein.club/sitemap-index.xml)
+- [新着記事フィード（RSS）](https://supein.club/rss.xml)
