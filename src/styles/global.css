@@ -362,6 +362,22 @@ table {
   }
 }
 
+/* Imágenes de tamaño medio: menos contraste que img-vertical (45%)
+   frente a una imagen a ancho completo, para artículos con muchas
+   imágenes pequeñas donde el 45% resulta demasiado reducido.
+   Uso: <img src="..." alt="..." class="img-medium" /> */
+.prose img.img-medium {
+  width: auto;
+  max-width: 65%;
+  margin: 0 auto;
+}
+
+@media (max-width: 767px) {
+  .prose img.img-medium {
+    max-width: 100%;
+  }
+}
+
 /* Imágenes sin figure (sintaxis Markdown estándar)
    Astro las convierte en <img> sueltos dentro de <p> */
 .prose p > img {
