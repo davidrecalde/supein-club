@@ -228,6 +228,8 @@ El xlsx maestro define un nodo `/services/` explícitamente marcado "SEO対象�
 
 **`messi-vs-ronaldo.mdx` — corrección de dato y datos nuevos (2026-09-20):** a petición de David, contrastado contra michelacosta.com/messi-vs-cristiano/el-clasico/ (sitio especializado en estadísticas comparativas). Corregido: la asistencia de Ronaldo en el Clásico eran 3 según la fuente inicial, pero michelacosta.com y una segunda búsqueda de verificación coinciden en **1 asistencia** — corregido antes de publicar (el dato de 3 no llegó a estar en producción). Añadido dato nuevo verificado: récord en finales (Messi 5 finales/3 victorias/6 goles/2 asistencias; Ronaldo 4 finales/1 victoria/5 goles/0 asistencias).
 
+**Segunda revisión de canibalización el-clasico/head-to-head (2026-09-20):** David pidió una revisión más exhaustiva (no solo title/description) tras la corrección anterior. Encontrado un duplicado exacto de pregunta+respuesta en el `faq` frontmatter de ambos artículos ("エル・クラシコの対戦成績はどちらが上ですか？" con la misma respuesta palabra por palabra) — eliminada esa entrada de `el-clasico.mdx` (el teaser del cuerpo ya cubre el dato y enlaza a `head-to-head.mdx`, así que era redundante incluso dentro de la propia página). Revisadas también las FAQ de `messi-vs-ronaldo.mdx` y `schedule.mdx` contra las otras dos: las cifras que se repiten (Messi 26/Ronaldo 18 goles) son una restatement natural en preguntas distintas con redacción distinta, no copia literal — no requieren cambio.
+
 ## Mantenimiento
 
 Este archivo se actualiza en el mismo commit que crea o mueve contenido
