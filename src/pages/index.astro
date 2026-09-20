@@ -69,6 +69,27 @@ const pillars = [
 ];
 
 const breadcrumbs = [{ name: 'ホーム', url: '/' }];
+
+// Organization schema：スペイン倶楽部とスペインクラブ（同音の飲食チェーン）を
+// Googleが別エンティティとして認識できるよう、alternateNameとsameAsで明示する
+const organizationSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  '@id': 'https://supein.club/#organization',
+  name: 'スペイン倶楽部',
+  alternateName: ['Club Español en Japón', 'supein.club'],
+  url: 'https://supein.club/',
+  logo: 'https://supein.club/logo-header.png',
+  description: '日本人向けにスペインの旅行・料理・語学・生活・文化・サッカー情報を発信する、東京発のカルチャーメディア。',
+  foundingDate: '2018',
+  sameAs: [
+    'https://www.instagram.com/supeinclub/',
+    'https://www.facebook.com/supeinclub/',
+    'https://twitter.com/supeinclub',
+    'https://www.linkedin.com/company/supeinclub/',
+    'https://lin.ee/vx6jpud',
+  ],
+};
 ---
 <BaseLayout title="スペイン倶楽部 | 日本人向けスペイン情報・旅行・文化メディア">
   <SEO
@@ -83,6 +104,7 @@ const breadcrumbs = [{ name: 'ホーム', url: '/' }];
     <meta name="author" content="David Recalde" />
     <link rel="author" href="https://supein.club/about-us/team/david-recalde/" />
     <meta http-equiv="content-language" content="ja" />
+    <script type="application/ld+json" set:html={JSON.stringify(organizationSchema)} />
   </Fragment>
 
   <!-- Hero: solid navy + subtle dot pattern -->
