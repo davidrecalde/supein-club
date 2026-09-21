@@ -216,26 +216,26 @@ function renderCard(a: Article) {
         </thead>
         <tbody>
           {[
-            { name: 'FCバルセロナ', href: '/football/fcbarcelona/', province: 'バルセロナ', provinceSlug: 'barcelona', stadium: 'スポティファイ・カンプ・ノウ' },
-            { name: 'レアル・マドリード', href: '/football/real-madrid/', province: 'マドリード', provinceSlug: 'madrid', stadium: 'サンティアゴ・ベルナベウ' },
-            { name: 'アトレティコ・マドリード', href: '/football/atletico-madrid/', province: 'マドリード', provinceSlug: 'madrid', stadium: 'シビタス・メトロポリターノ' },
-            { name: 'ビジャレアル', href: '/football/villarreal-cf/', province: 'カステジョン', provinceSlug: 'castellon', stadium: 'エスタディオ・デ・ラ・セラミカ' },
-            { name: 'レアル・ベティス', href: null, province: 'セビリア', provinceSlug: 'sevilla', stadium: 'ベニート・ビジャマリン' },
-            { name: 'セルタ・デ・ビーゴ', href: null, province: 'ポンテベドラ', provinceSlug: 'pontevedra', stadium: 'アバンカ・バライドス' },
-            { name: 'レアル・ソシエダ', href: '/football/real-sociedad/', province: 'ギプスコア', provinceSlug: 'guipuzcoa', stadium: 'レアレ・アレナ' },
-            { name: 'ヘタフェ', href: null, province: 'マドリード', provinceSlug: 'madrid', stadium: 'コリセウム' },
-            { name: 'アスレティック・ビルバオ', href: '/football/athletic-club/', province: 'ビスカヤ', provinceSlug: 'vizcaya', stadium: 'サン・マメス' },
-            { name: 'バレンシアCF', href: '/football/valencia-cf/', province: 'バレンシア', provinceSlug: 'valencia', stadium: 'メスタージャ' },
-            { name: 'セビージャ', href: '/football/sevilla-fc/', province: 'セビリア', provinceSlug: 'sevilla', stadium: 'ラモン・サンチェス・ピスファン' },
-            { name: 'ラーヨ・バジェカーノ', href: null, province: 'マドリード', provinceSlug: 'madrid', stadium: 'エスタディオ・デ・バジェカス' },
-            { name: 'オサスナ', href: null, province: 'ナバラ', provinceSlug: 'navarra', stadium: 'エル・サダール' },
-            { name: 'エスパニョール', href: null, province: 'バルセロナ', provinceSlug: 'barcelona', stadium: 'RCDEスタジアム' },
-            { name: 'アラベス', href: null, province: 'アラバ', provinceSlug: 'alava', stadium: 'メンディソロッツァ' },
-            { name: 'レバンテ', href: null, province: 'バレンシア', provinceSlug: 'valencia', stadium: 'エスタディ・シウタット・デ・バレンシア' },
-            { name: 'エルチェ', href: null, province: 'アリカンテ', provinceSlug: 'alicante', stadium: 'マヌエル・マルティネス・バジェロ' },
-            { name: 'ラシン・サンタンデール', href: null, province: 'カンタブリア', provinceSlug: 'cantabria', stadium: 'エル・サルディネロ' },
-            { name: 'デポルティボ・ラ・コルーニャ', href: null, province: 'ア・コルーニャ', provinceSlug: 'la-coruna', stadium: 'アバンカ・リアソール' },
-            { name: 'マラガCF', href: null, province: 'マラガ', provinceSlug: 'malaga', stadium: 'ラ・ロサレダ' },
+            { name: 'FCバルセロナ', href: '/football/fcbarcelona/', province: 'バルセロナ', provinceSlug: 'barcelona', regionSlug: 'cataluna', stadium: 'スポティファイ・カンプ・ノウ' },
+            { name: 'レアル・マドリード', href: '/football/real-madrid/', province: 'マドリード', provinceSlug: 'madrid', regionSlug: 'madrid', stadium: 'サンティアゴ・ベルナベウ' },
+            { name: 'アトレティコ・マドリード', href: '/football/atletico-madrid/', province: 'マドリード', provinceSlug: 'madrid', regionSlug: 'madrid', stadium: 'シビタス・メトロポリターノ' },
+            { name: 'ビジャレアル', href: '/football/villarreal-cf/', province: 'カステジョン', provinceSlug: 'castellon', regionSlug: 'comunidad-valenciana', stadium: 'エスタディオ・デ・ラ・セラミカ' },
+            { name: 'レアル・ベティス', href: null, province: 'セビリア', provinceSlug: 'sevilla', regionSlug: 'andalucia', stadium: 'ベニート・ビジャマリン' },
+            { name: 'セルタ・デ・ビーゴ', href: null, province: 'ポンテベドラ', provinceSlug: 'pontevedra', regionSlug: 'galicia', stadium: 'アバンカ・バライドス' },
+            { name: 'レアル・ソシエダ', href: '/football/real-sociedad/', province: 'ギプスコア', provinceSlug: 'guipuzcoa', regionSlug: 'pais-vasco', stadium: 'レアレ・アレナ' },
+            { name: 'ヘタフェ', href: null, province: 'マドリード', provinceSlug: 'madrid', regionSlug: 'madrid', stadium: 'コリセウム' },
+            { name: 'アスレティック・ビルバオ', href: '/football/athletic-club/', province: 'ビスカヤ', provinceSlug: 'vizcaya', regionSlug: 'pais-vasco', stadium: 'サン・マメス' },
+            { name: 'バレンシアCF', href: '/football/valencia-cf/', province: 'バレンシア', provinceSlug: 'valencia', regionSlug: 'comunidad-valenciana', stadium: 'メスタージャ' },
+            { name: 'セビージャ', href: '/football/sevilla-fc/', province: 'セビリア', provinceSlug: 'sevilla', regionSlug: 'andalucia', stadium: 'ラモン・サンチェス・ピスファン' },
+            { name: 'ラーヨ・バジェカーノ', href: null, province: 'マドリード', provinceSlug: 'madrid', regionSlug: 'madrid', stadium: 'エスタディオ・デ・バジェカス' },
+            { name: 'オサスナ', href: null, province: 'ナバラ', provinceSlug: 'navarra', regionSlug: null, stadium: 'エル・サダール' },
+            { name: 'エスパニョール', href: null, province: 'バルセロナ', provinceSlug: 'barcelona', regionSlug: 'cataluna', stadium: 'RCDEスタジアム' },
+            { name: 'アラベス', href: null, province: 'アラバ', provinceSlug: 'alava', regionSlug: 'pais-vasco', stadium: 'メンディソロッツァ' },
+            { name: 'レバンテ', href: null, province: 'バレンシア', provinceSlug: 'valencia', regionSlug: 'comunidad-valenciana', stadium: 'エスタディ・シウタット・デ・バレンシア' },
+            { name: 'エルチェ', href: null, province: 'アリカンテ', provinceSlug: 'alicante', regionSlug: 'comunidad-valenciana', stadium: 'マヌエル・マルティネス・バジェロ' },
+            { name: 'ラシン・サンタンデール', href: null, province: 'カンタブリア', provinceSlug: 'cantabria', regionSlug: null, stadium: 'エル・サルディネロ' },
+            { name: 'デポルティボ・ラ・コルーニャ', href: null, province: 'ア・コルーニャ', provinceSlug: 'la-coruna', regionSlug: 'galicia', stadium: 'アバンカ・リアソール' },
+            { name: 'マラガCF', href: null, province: 'マラガ', provinceSlug: 'malaga', regionSlug: 'andalucia', stadium: 'ラ・ロサレダ' },
           ].map((club) => (
             <tr class="border-b border-ink/5">
               <td class="py-2 pr-4">{club.name}</td>
@@ -243,7 +243,9 @@ function renderCard(a: Article) {
                 {club.href ? <a href={club.href} class="text-primary underline">完全ガイドを見る</a> : <span class="text-muted">近日公開予定</span>}
               </td>
               <td class="py-2 pr-4">
-                <a href={`/food/spain-map/${club.provinceSlug}/`} class="text-primary underline">{club.province}</a>
+                {club.regionSlug
+                  ? <a href={`/regions/${club.regionSlug}/`} class="text-primary underline">{club.province}</a>
+                  : <a href={`/food/spain-map/${club.provinceSlug}/`} class="text-primary underline">{club.province}</a>}
               </td>
               <td class="py-2">{club.stadium}</td>
             </tr>
