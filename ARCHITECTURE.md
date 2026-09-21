@@ -273,6 +273,8 @@ El xlsx maestro define un nodo `/services/` explícitamente marcado "SEO対象�
 - Todas las imágenes que estaban sueltas (sin `<figure>`, incluyendo las que aún usaban sintaxis Markdown) se envolvieron explícitamente, aplicando el mismo criterio de la entrada anterior sobre el bug del auto-wrap.
 - Afecta a 9 artículos: `athletic-club.mdx`, `atletico-madrid.mdx`, `el-clasico.mdx`, `fcbarcelona.mdx`, `ferran-torres.mdx`, `japanese-players-laliga.mdx`, `kubo-takefusa.mdx`, `lamine-yamal.mdx`, `real-madrid.mdx`, `real-sociedad.mdx`, `valencia-cf.mdx`.
 
+**`/football/` — columna "エリア" de la tabla de 20 clubes ahora enlaza a `/regions/` (2026-09-21):** antes enlazaba a `/food/spain-map/{provincia}/` (guía gastronómica de la provincia). David pidió que enlazara a la página general de la región (`/regions/{slug}/`, con contenido de varios pilares) para que el lector vea información completa de la comunidad autónoma, no solo restaurantes. Solo existen 8 páginas de región (`src/config/regions.ts`): andalucia, cataluna, pais-vasco, comunidad-valenciana, madrid, castilla-y-leon, extremadura, galicia. De los 20 clubes, 18 mapean a una de esas 8 regiones (añadido campo `regionSlug` por club); **Osasuna (Navarra) y Racing Santander (Cantabria) no tienen región propia aún** — confirmado con David mantener para esos 2 el enlace anterior a `food/spain-map/` en vez de dejarlo sin enlazar o enlazar a un `/regions/` inexistente. Si se añade región para Navarra o Cantabria en el futuro, actualizar `regionSlug: null` → el slug correspondiente en `src/pages/football/index.astro`.
+
 ## Mantenimiento
 
 Este archivo se actualiza en el mismo commit que crea o mueve contenido
