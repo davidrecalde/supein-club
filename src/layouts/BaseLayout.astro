@@ -67,7 +67,10 @@ const { title = 'supein.club', lang = 'ja' } = Astro.props;
     <slot name="footer">
       <Footer />
     </slot>
-    <!-- Metricool tracking pixel -->
-    <img src="https://tracker.metricool.com/c3po.jpg?hash=54cb2e4d5c9582e41c3c6a91ba20a2d6" alt="" width="1" height="1" style="display:none" aria-hidden="true" loading="lazy" />
+    <!-- Metricool tracking pixel: nunca loading="lazy" aquí — al ser
+         display:none no tiene caja en el layout, así que el navegador
+         nunca la considera "cerca del viewport" y la petición no llega
+         a dispararse nunca. -->
+    <img src="https://tracker.metricool.com/c3po.jpg?hash=54cb2e4d5c9582e41c3c6a91ba20a2d6" alt="" width="1" height="1" style="display:none" aria-hidden="true" />
   </body>
 </html>

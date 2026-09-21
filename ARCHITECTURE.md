@@ -246,6 +246,8 @@ El xlsx maestro define un nodo `/services/` explícitamente marcado "SEO対象�
 
 **Nueva clase `.img-rounded-80` — solo para las 14 imágenes de `traditions.mdx` (2026-09-21):** David pidió poner "todas las imágenes" al 80% de ancho con esquinas redondeadas; confirmado con él que se refería únicamente a las 14 imágenes recién añadidas en `culture/traditions.mdx`, no un cambio global. En vez de modificar `.img-medium` (usada en muchos otros artículos ya revisados), se creó una clase hermana `.img-rounded-80` (`max-width: 80%`, `border-radius: 12px`, mismo comportamiento responsive) en `global.css`, y se migraron las 14 imágenes de `traditions.mdx` a esa clase.
 
+**Píxel de Metricool sin trackear el sitio desde hacía días — causa: `loading="lazy"` (2026-09-21):** David recibió un aviso de Metricool de que no detectaban la web desde hacía días. El píxel (`<img>` de 1×1, `display:none`, en `BaseLayout.astro` justo antes de `</body>`) ya estaba instalado con el hash correcto — el problema era que el commit `161a875` (2026-09-09, auditoría de rendimiento) le había añadido `loading="lazy"`. Al no tener caja en el layout (`display:none`), el navegador nunca lo considera "cerca del viewport", así que con lazy loading la petición de red nunca llega a dispararse — coincide con los ~12 días transcurridos desde ese commit. **Fix**: quitado `loading="lazy"` solo de este `<img>` (el del logo del footer, que sí es visible, se queda igual). **Lección**: nunca aplicar `loading="lazy"` a una imagen de 1×1/`display:none` (píxeles de tracking) — solo tiene sentido en imágenes con caja real en el layout.
+
 ## Mantenimiento
 
 Este archivo se actualiza en el mismo commit que crea o mueve contenido
