@@ -378,6 +378,21 @@ table {
   }
 }
 
+/* Imágenes al 80% del ancho con esquinas redondeadas.
+   Uso: <img src="..." alt="..." class="img-rounded-80" /> */
+.prose img.img-rounded-80 {
+  width: auto;
+  max-width: 80%;
+  margin: 0 auto;
+  border-radius: 12px;
+}
+
+@media (max-width: 767px) {
+  .prose img.img-rounded-80 {
+    max-width: 100%;
+  }
+}
+
 /* Imágenes sin figure (sintaxis Markdown estándar)
    Astro las convierte en <img> sueltos dentro de <p> */
 .prose p > img {
