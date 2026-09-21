@@ -254,6 +254,8 @@ El xlsx maestro define un nodo `/services/` explícitamente marcado "SEO対象�
 
 **Nueva clase `.img-80` — imágenes horizontales de `athletic-club.mdx` (2026-09-21):** David pidió poner "todas las imágenes horizontales" de este artículo al 80% para lograr coherencia de tamaños. A diferencia de `.img-rounded-80` (usada solo en `traditions.mdx`, con `border-radius: 12px` propio), aquí se creó `.img-80` (mismo `max-width: 80%`, sin forzar radio de esquina) para no desentonar con el radio por defecto de 8px que ya aplica `.prose figure img` a las imágenes `.img-vertical` que conviven en el mismo artículo. Aplicada a las 11 imágenes horizontales que no tenían clase (ancho completo antes) y a la de Murakami (`tokiotarrak-masami-murakami.webp`), que pasó de `.img-medium` (65%) a `.img-80` para no ser la única discordante. Las 5 imágenes verticales/logo (`img-vertical`) no se tocaron.
 
+**`football/valencia-cf.mdx` — 2 fotos + enlace X en la sección de Peña VCF Nippon (2026-09-21):** a petición de David, añadidas fotos del fundador (Takatoshi/Taka Okuyama) y de una reunión de miembros, más el enlace a la cuenta oficial de X (@PenyaVCFNippon) junto al ya existente vcfjapan.org. También se pidió explícitamente acortar el texto — la sección pasó de 5 párrafos a 4 más cortos, eliminando detalles secundarios (anécdota personal de cómo Okuyama se hizo aficionado, cifra exacta de nacionalidades de los miembros) que no aportaban al propósito de la sección, manteniendo los datos verificados esenciales (fecha de fundación, cifra de miembros fundadores, crecimiento hasta ser de los mayores clubs de fans oficiales de fútbol español en Japón).
+
 ## Mantenimiento
 
 Este archivo se actualiza en el mismo commit que crea o mueve contenido
