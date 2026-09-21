@@ -393,6 +393,23 @@ table {
   }
 }
 
+/* Imágenes horizontales al 80% del ancho, sin forzar un radio de
+   esquina distinto al valor por defecto de .prose figure img (8px) —
+   para artículos donde las imágenes horizontales conviven con
+   img-vertical/img-medium y deben mantener el mismo estilo de esquina.
+   Uso: <img src="..." alt="..." class="img-80" /> */
+.prose img.img-80 {
+  width: auto;
+  max-width: 80%;
+  margin: 0 auto;
+}
+
+@media (max-width: 767px) {
+  .prose img.img-80 {
+    max-width: 100%;
+  }
+}
+
 /* Imágenes sin figure (sintaxis Markdown estándar)
    Astro las convierte en <img> sueltos dentro de <p> */
 .prose p > img {
