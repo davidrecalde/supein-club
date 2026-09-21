@@ -410,6 +410,23 @@ table {
   }
 }
 
+/* Imágenes verticales (retrato) destacadas: más anchas que
+   .img-vertical (45%, reservada para logos/escudos/retratos que se
+   quieren mantener discretos) pero sin llegar al 80% de las
+   horizontales, para que una imagen alta no domine visualmente el
+   artículo. Uso: <img src="..." alt="..." class="img-70" /> */
+.prose img.img-70 {
+  width: auto;
+  max-width: 70%;
+  margin: 0 auto;
+}
+
+@media (max-width: 767px) {
+  .prose img.img-70 {
+    max-width: 100%;
+  }
+}
+
 /* Imágenes sin figure (sintaxis Markdown estándar)
    Astro las convierte en <img> sueltos dentro de <p> */
 .prose p > img {
