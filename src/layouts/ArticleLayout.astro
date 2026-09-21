@@ -33,6 +33,7 @@ const { entry } = Astro.props;
 const { title, h1, description, pubDate, updatedDate, pillar, cluster, image, imageAlt, lead, faq, faqTitle, quiz, levelTest, relatedArticles, relatedPages, sources, readingTime, heroImage, heroImageAlt, level, articleRole } = entry.data;
 const displayH1 = h1 ?? title;
 const isLearnSpanishHero = pillar === 'language' && cluster === 'learn-spanish';
+const isRealSociedadHero = pillar === 'football' && cluster === 'real-sociedad';
 
 const { Content, headings } = await entry.render();
 
@@ -143,7 +144,7 @@ const authorUrlForMeta = `https://supein.club/about-us/team/${authorSlug}/`;
             <Image
               src={heroImage}
               alt={heroImageAlt || title}
-              style={`width:100%;aspect-ratio:2/1;object-position:${isLearnSpanishHero ? 'left center' : 'center'};display:block;border-radius:13px;`}
+              style={`width:100%;aspect-ratio:2/1;object-position:${isLearnSpanishHero ? 'left center' : isRealSociedadHero ? 'center top' : 'center'};display:block;border-radius:13px;`}
               fetchpriority="high"
               loading="eager"
             />
