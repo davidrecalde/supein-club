@@ -296,6 +296,29 @@ real — no es un plan aparte que se pueda desincronizar. Antes de crear
 cualquier URL nueva, consúltalo primero para evitar duplicar intención de
 búsqueda con algo que ya existe.
 
+### 13 imágenes añadidas a villarreal-cf.mdx (fotos reales confirmadas)
+
+El artículo no tenía ninguna imagen en el cuerpo (solo el `heroImage` del
+frontmatter). Añadidas 13 fotos reales de archivo/prensa (confirmado con
+David, no son IA), en `public/*.webp`, con `class="img-80"` (horizontales
+y la cuadrada `submarino-amarillo.webp`), `class="img-70"` (Forlán, foto
+de cuerpo entero) o `class="img-vertical"` (retrato pequeño del fundador
+José Calduch, mismo criterio que las fotos de presidente/peña en otros
+artículos del clúster). Repartidas por sección: fundación (Calduch, foto
+de equipo de 1947 como CA Foghetecaz), ciudad/apodo (2 vistas aéreas del
+estadio), era Roig (compra de acciones 1997), era Pellegrini (Riquelme
+2006, subcampeonato 2008, Forlán), título de 2021 (celebración UEFA
+Europa League), etapa de Kubo, Gerard Moreno como máximo goleador, y
+actualidad (Roig hoy, estadio con grada llena).
+
+**No usada**: `villarreal-hero.webp`, entregada en el mismo lote, llevaba
+el texto de campaña "#UnitsMésQueMai" incrustado en la propia imagen —
+no encaja como imagen de cuerpo de artículo (ningún otro artículo del
+sitio lleva texto de marca incrustado) ni se sustituyó el `heroImage`
+actual del frontmatter sin que David lo pida explícitamente. Queda sin
+usar en `Artículos/football_villarreal/webp/` por si se quiere para otro
+uso (redes sociales, etc.).
+
 ### Limpieza del grafo JSON-LD (`SEO.astro` / `SportsTeamSchema.astro`)
 
 Auditoría de schema.org con una herramienta externa de visualización de
