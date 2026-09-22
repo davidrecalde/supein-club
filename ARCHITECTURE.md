@@ -296,6 +296,33 @@ real — no es un plan aparte que se pueda desincronizar. Antes de crear
 cualquier URL nueva, consúltalo primero para evitar duplicar intención de
 búsqueda con algo que ya existe.
 
+### Recorte del escudo en las tarjetas (`ArticleCard.astro`) + corrección de real-sociedad
+
+David detectó que en las tarjetas de vista previa (hub de fútbol,
+artículos relacionados, etc.) el escudo de Real Sociedad y de Espanyol
+también quedaba cortado, aunque el header del propio artículo ya se
+había corregido. Causa: el fix anterior (`isEspanyolHero`/
+`isRealSociedadHero`) solo tocaba `ArticleLayout.astro` (la cabecera
+grande del artículo) — `ArticleCard.astro`, usado en 46 archivos del
+sitio para las miniaturas, no tenía ningún `object-position`
+condicional salvo para `learn-spanish`, así que siempre recortaba con
+`center` por defecto.
+
+De paso, al recomprobar con recortes simulados en Python (`PIL`), se
+descubrió que el valor `'center top'` que llevaba real-sociedad desde
+el PR #345 era **incorrecto para la foto actualmente guardada**
+(`hero-real-sociedad.webp`, 800×600): con `aspect-ratio: 2/1` en la
+cabecera, `'top'` recorta exactamente la franja inferior donde está el
+escudo, ocultándolo por completo — verificado generando ambos recortes
+y comparándolos visualmente antes de tocar el código.
+
+Solución: array compartido `bottomCrestClusters = ['real-sociedad',
+'espanyol']` (mismo criterio, mismo nombre en ambos componentes) →
+`object-position: center bottom` tanto en `ArticleLayout.astro` (ya
+existía, ahora corregido y también cubre real-sociedad) como en
+`ArticleCard.astro` (nuevo). Al añadir un futuro club cuyo escudo esté
+sobre el césped, basta con añadirlo a ese array en los dos archivos.
+
 ### Recorte de la imagen hero de espanyol.mdx
 
 La imagen hero (`hero-espanyol.webp`) es una foto cuadrada con el escudo

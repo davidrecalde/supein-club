@@ -33,8 +33,10 @@ const { entry } = Astro.props;
 const { title, h1, description, pubDate, updatedDate, pillar, cluster, image, imageAlt, lead, faq, faqTitle, quiz, levelTest, relatedArticles, relatedPages, sources, readingTime, heroImage, heroImageAlt, level, articleRole } = entry.data;
 const displayH1 = h1 ?? title;
 const isLearnSpanishHero = pillar === 'language' && cluster === 'learn-spanish';
-const isRealSociedadHero = pillar === 'football' && cluster === 'real-sociedad';
-const isEspanyolHero = pillar === 'football' && cluster === 'espanyol';
+// Clubes cuyo heroImage tiene el escudo en la parte baja de la foto
+// (sobre el césped) — mismo criterio que ArticleCard.astro.
+const bottomCrestClusters = ['real-sociedad', 'espanyol'];
+const isBottomCrestHero = pillar === 'football' && bottomCrestClusters.includes(cluster ?? '');
 
 const { Content, headings } = await entry.render();
 
@@ -153,7 +155,7 @@ const authorUrlForMeta = `https://supein.club/about-us/team/${authorSlug}/`;
             <Image
               src={heroImage}
               alt={heroImageAlt || title}
-              style={`width:100%;aspect-ratio:2/1;object-position:${isLearnSpanishHero ? 'left center' : isRealSociedadHero ? 'center top' : isEspanyolHero ? 'center bottom' : 'center'};display:block;border-radius:13px;`}
+              style={`width:100%;aspect-ratio:2/1;object-position:${isLearnSpanishHero ? 'left center' : isBottomCrestHero ? 'center bottom' : 'center'};display:block;border-radius:13px;`}
               fetchpriority="high"
               loading="eager"
             />
