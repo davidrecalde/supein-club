@@ -30,6 +30,17 @@ if (city) {
   };
 }
 if (alternateName && alternateName.length > 0) schema.alternateName = alternateName;
-if (memberOf) schema.memberOf = { '@type': 'SportsOrganization', name: memberOf };
+if (memberOf === 'LaLiga') {
+  schema.memberOf = {
+    '@type': 'SportsOrganization',
+    name: 'ラ・リーガ',
+    alternateName: ['LaLiga', 'La Liga'],
+    sport: 'Football',
+    url: 'https://www.laliga.com/',
+    sameAs: 'https://www.wikidata.org/wiki/Q324867',
+  };
+} else if (memberOf) {
+  schema.memberOf = { '@type': 'SportsOrganization', name: memberOf };
+}
 ---
 <script type="application/ld+json" set:html={JSON.stringify(schema)} />
