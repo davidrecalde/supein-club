@@ -296,6 +296,22 @@ real — no es un plan aparte que se pueda desincronizar. Antes de crear
 cualquier URL nueva, consúltalo primero para evitar duplicar intención de
 búsqueda con algo que ya existe.
 
+### Santi Cazorla como jugador más importante de villarreal-cf.mdx
+
+A petición de David, la sección "歴代の名選手" ahora presenta a **Santi
+Cazorla** como el jugador más importante de la historia del club (antes
+solo aparecía de pasada, y con un dato erróneo: el texto decía "récord
+de asistencias 57" cuando en realidad son sus 57 goles — corregido).
+Datos verificados por búsqueda (web oficial del Villarreal + Wikipedia,
+ya que una primera búsqueda daba fechas contradictorias sobre si jugó la
+final de la Europa League 2021 — descartado tras contrastar: salió del
+club en julio de 2020, antes del título): 3 etapas (2003-06, 2007-11,
+2018-20), 334 partidos y 57 goles (5º de la historia del club en ambas
+categorías), subcampeonato de Liga 2007-08 y final de Europa League
+2010-11 como titular, ingreso en el salón de la fama "Passeig Groc" en
+2020, retirado en julio de 2026 tras su etapa en el Real Oviedo. Foto
+real (confirmada) añadida con `class="img-80"`.
+
 ### 13 imágenes añadidas a villarreal-cf.mdx (fotos reales confirmadas)
 
 El artículo no tenía ninguna imagen en el cuerpo (solo el `heroImage` del
