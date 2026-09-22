@@ -136,6 +136,13 @@ const articles = defineCollection({
       explanation: z.string(),
       link: z.string(),
     })).optional(),
+    sportsTeam: z.object({
+      name: z.string(),
+      alternateName: z.array(z.string()).optional(),
+      foundingDate: z.string(),
+      city: z.string().optional(),
+      memberOf: z.enum(['LaLiga', 'RFEF']).optional(),
+    }).optional(),
   }),
 });
 

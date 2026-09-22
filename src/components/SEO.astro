@@ -158,17 +158,27 @@ if (type === 'article' && article) {
   const authorSlug = author ? (author.data.slug ?? author.id.replace(/\.(md|mdx)$/, '')) : 'supeinclub-henshubu';
   const authorUrl = `${siteUrl}/about-us/team/${authorSlug}/`;
   const primaryImagePath = article.data.heroImage?.src ?? article.data.image;
+  const imageId = `${canonical}#primaryimage`;
   const articleImage = primaryImagePath
-    ? {
-        '@type': 'ImageObject',
-        url: `${siteUrl}${primaryImagePath}`,
-        width: 1200,
-        height: 630,
-        creditText: 'supein.club',
-        creator: { '@id': `${siteUrl}/#organization` },
-        copyrightNotice: '© Club Español en Japón スペイン倶楽部 supein.club',
-      }
+    ? { '@id': imageId }
     : { '@type': 'ImageObject', url: `${siteUrl}/logo-og.png` };
+  if (primaryImagePath) {
+    graph.push({
+      '@type': 'ImageObject',
+      '@id': imageId,
+      url: `${siteUrl}${primaryImagePath}`,
+      contentUrl: `${siteUrl}${primaryImagePath}`,
+      name: article.data.heroImageAlt ?? title,
+      description: article.data.heroImageAlt ?? title,
+      width: 1200,
+      height: 630,
+      creditText: 'supein.club',
+      creator: { '@id': `${siteUrl}/#organization` },
+      copyrightNotice: '© Club Español en Japón スペイン倶楽部 supein.club',
+      license: siteUrl,
+      acquireLicensePage: `${siteUrl}/contact/`,
+    });
+  }
 
   const regionConfig = article.data.region ? getRegion(article.data.region) : undefined;
   const contentLocation = regionConfig
@@ -185,16 +195,64 @@ if (type === 'article' && article) {
   const authorSameAs = [authorLinkedIn, authorInstagram, authorWebsite].filter(Boolean) as string[];
   const authorAvatar = author?.data.avatar ? `${siteUrl}${author.data.avatar}` : undefined;
   const authorJobTitle = author?.data.jobTitle ?? author?.data.role;
+  const authorTopics = author?.data.specialties ?? author?.data.knowsAbout;
 
   const articleAuthor: Record<string, unknown> = {
     '@type': 'Person',
+    '@id': `${authorUrl}#person`,
     name: authorName,
     url: authorUrl,
   };
   if (authorAvatar) articleAuthor.image = authorAvatar;
   if (authorJobTitle) articleAuthor.jobTitle = authorJobTitle;
+  if (author?.data.bio) articleAuthor.description = author.data.bio;
+  if (authorTopics && authorTopics.length > 0) articleAuthor.knowsAbout = authorTopics;
   if (authorSameAs.length > 0) articleAuthor.sameAs = authorSameAs;
   articleAuthor.worksFor = { '@id': `${siteUrl}/#organization` };
+
+  // SportsTeam (si el artículo es de un club/selección de fútbol)
+  const teamData = article.data.sportsTeam;
+  const teamId = `${canonical}#team`;
+  const memberOfOrgs: Record<string, Record<string, unknown>> = {
+    LaLiga: {
+      '@type': 'SportsOrganization',
+      '@id': `${siteUrl}/#laliga`,
+      name: 'ラ・リーガ',
+      alternateName: ['LaLiga', 'La Liga'],
+      sport: 'サッカー',
+      url: 'https://www.laliga.com/',
+      sameAs: 'https://www.wikidata.org/wiki/Q324867',
+    },
+    RFEF: {
+      '@type': 'SportsOrganization',
+      '@id': `${siteUrl}/#rfef`,
+      name: 'スペインサッカー連盟',
+      alternateName: ['RFEF', 'Real Federación Española de Fútbol'],
+      sport: 'サッカー',
+      url: 'https://rfef.es/es',
+      sameAs: 'https://www.wikidata.org/wiki/Q207615',
+    },
+  };
+  if (teamData) {
+    graph.push({
+      '@type': 'SportsTeam',
+      '@id': teamId,
+      name: teamData.name,
+      sport: 'Football',
+      foundingDate: teamData.foundingDate,
+      url: canonical,
+      ...(teamData.alternateName && teamData.alternateName.length > 0 && { alternateName: teamData.alternateName }),
+      ...(teamData.city && {
+        location: {
+          '@type': 'Place',
+          name: teamData.city,
+          address: { '@type': 'PostalAddress', addressLocality: teamData.city, addressCountry: 'ES' },
+        },
+      }),
+      ...(teamData.memberOf && { memberOf: { '@id': memberOfOrgs[teamData.memberOf]['@id'] } }),
+    });
+    if (teamData.memberOf) graph.push(memberOfOrgs[teamData.memberOf]);
+  }
 
   if (schemaType === 'recipe') {
     graph.push({
@@ -296,21 +354,10 @@ if (type === 'article' && article) {
       inLanguage: lang === 'es' ? 'es' : 'ja',
       isPartOf: { '@id': `${siteUrl}/#website` },
       mainEntityOfPage: `${canonical}#webpage`,
-      about: { '@id': `${siteUrl}/#laliga` },
+      about: { '@id': memberOfOrgs.LaLiga['@id'] },
       ...(contentLocation && { contentLocation }),
     });
-    graph.push({
-      '@type': 'SportsOrganization',
-      '@id': `${siteUrl}/#laliga`,
-      name: 'ラ・リーガ',
-      alternateName: ['LaLiga', 'La Liga'],
-      sport: 'サッカー',
-      url: 'https://www.laliga.com/',
-      sameAs: [
-        'https://www.wikidata.org/wiki/Q324867',
-        'https://en.wikipedia.org/wiki/La_Liga',
-      ],
-    });
+    graph.push(memberOfOrgs.LaLiga);
   } else {
     const pillarSectionMap: Record<string, string> = {
       travel: 'スペイン旅行',
@@ -334,7 +381,7 @@ if (type === 'article' && article) {
       inLanguage: lang === 'es' ? 'es' : 'ja',
       isPartOf: { '@id': `${siteUrl}/#website` },
       mainEntityOfPage: `${canonical}#webpage`,
-      about: { '@type': 'Thing', name: 'スペイン' },
+      about: teamData ? { '@id': teamId } : { '@type': 'Thing', name: 'スペイン' },
       articleSection: pillarSectionMap[article.data.pillar] ?? article.data.pillar,
     };
     if (article.data.tags && article.data.tags.length > 0) {
@@ -344,22 +391,6 @@ if (type === 'article' && article) {
       articleObj.contentLocation = contentLocation;
     }
     graph.push(articleObj);
-  }
-
-  // ImageObject node for heroImage
-  if (article.data.heroImage) {
-    graph.push({
-      '@type': 'ImageObject',
-      '@id': `${canonical}#heroimage`,
-      url: `${siteUrl}${article.data.heroImage.src}`,
-      contentUrl: `${siteUrl}${article.data.heroImage.src}`,
-      name: article.data.heroImageAlt ?? title,
-      description: article.data.heroImageAlt ?? title,
-      width: 1200,
-      height: 630,
-      license: siteUrl,
-      acquireLicensePage: `${siteUrl}/contact/`,
-    });
   }
 
   // VideoObject（記事に埋め込まれたYouTube動画がある場合）— このページが
@@ -387,6 +418,7 @@ const faqItems = article?.data.faq;
 if (faqItems && faqItems.length > 0) {
   graph.push({
     '@type': 'FAQPage',
+    '@id': `${canonical}#faq`,
     mainEntity: faqItems.map((item) => ({
       '@type': 'Question',
       name: item.question,

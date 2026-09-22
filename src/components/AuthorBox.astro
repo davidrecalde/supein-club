@@ -6,30 +6,17 @@ interface Props {
 }
 
 const { author } = Astro.props;
-const { name, avatar, jobTitle, role, bio, knowsAbout, specialties, sameAs, twitter, linkedin, instagram } = author.data;
+const { name, avatar, jobTitle, role, bio, knowsAbout, specialties, twitter, linkedin, instagram } = author.data;
 const displayTitle = jobTitle ?? role;
 const topics = specialties ?? knowsAbout ?? [];
 const slug = author.data.slug ?? author.id.replace(/\.(md|mdx)$/, '');
 
 const authorUrl = `https://supein.club/about-us/team/${slug}/`;
 
-const personSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'Person',
-  name,
-  url: authorUrl,
-  jobTitle: displayTitle,
-  description: bio,
-  knowsAbout: topics.length > 0 ? topics : undefined,
-  sameAs: sameAs ?? [],
-};
-
 function initials(n: string) {
   return n.replace(/[ぁ-んァ-ン一-龯]/g, '').slice(0, 2).toUpperCase() || n.slice(0, 1);
 }
 ---
-
-<script type="application/ld+json" set:html={JSON.stringify(personSchema)} />
 
 <aside id="author-box" class="mt-12 mb-8" style="border: 1px solid #e5e7eb; border-top: 3px solid #C8102E; border-radius: 12px; padding: 24px;">
   <p style="font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; color: #6b7280; margin-bottom: 14px; font-weight: 600;">
