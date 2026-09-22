@@ -309,6 +309,21 @@ Cup 2007 vs. Sevilla en penales, la "Tragedia de Sarrià" Mundial 1982,
 muerte de Dani Jarque 2009-08-08, compra de Alan Pace/Velocity Sports
 Limited el 2025-10-09, entrenador Manolo González).
 
+**Nueva sección "歴代の名選手"** (pedida por David tras el primer
+borrador, junto con la petición explícita de vigilar canibalizaciones):
+Javier Clemente (entrenador 1986-89, integrado en el párrafo de la final
+de la UEFA Cup 1988 — comprobado que sus otras dos menciones en el sitio,
+en `athletic-club.mdx` y `spain-national-team.mdx`, cubren su etapa en
+el Athletic y la selección, no su paso por el Espanyol, así que no hay
+solapamiento), Thomas N'Kono (portero, 1982-91), Raúl Tamudo (máximo
+goleador histórico, 140 goles en 389 partidos, 1997-2010), Iván de la
+Peña (centrocampista, 2002-11) y Mauricio Pochettino — como jugador
+(1994-2001, capitán, título de Copa del Rey 2000) y luego como
+entrenador (2009-12), lo que permitió enlazar directamente con la
+mención de 中村俊輔 (fue precisamente Pochettino quien lo dirigió en
+2009-10). Ninguno de estos 5 nombres tenía ya un tratamiento propio en
+el sitio — verificado por grep antes de escribir.
+
 **Reutilización de contenido existente, sin duplicar**: el artículo
 `japanese-players-laliga.mdx` ya cubre en detalle a los 2 jugadores
 japoneses que han vestido de blanquiazul (西澤明訓 2000-01, 中村俊輔
