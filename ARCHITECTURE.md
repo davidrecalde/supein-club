@@ -296,6 +296,40 @@ real — no es un plan aparte que se pueda desincronizar. Antes de crear
 cualquier URL nueva, consúltalo primero para evitar duplicar intención de
 búsqueda con algo que ya existe.
 
+### Nuevo artículo insignia: RCD Espanyol (`espanyol.mdx`)
+
+Nuevo clúster de fútbol `espanyol` (`src/content/articles/football/espanyol/espanyol.mdx`
++ `src/pages/football/espanyol/index.astro`, mismo patrón que
+villarreal-cf/fcbarcelona/etc.). Actualizado el `href: null` → `href:
+'/football/espanyol/'` de la fila "エスパニョール" en la tabla de 20
+clubes de `/football/`. Fuentes: web oficial del RCD Espanyol +
+Wikipedia (fundación, época de Sarrià), y varias búsquedas cruzadas para
+hechos puntuales (final Copa del Rey 2006 vs. Zaragoza 4-1, final UEFA
+Cup 2007 vs. Sevilla en penales, la "Tragedia de Sarrià" Mundial 1982,
+muerte de Dani Jarque 2009-08-08, compra de Alan Pace/Velocity Sports
+Limited el 2025-10-09, entrenador Manolo González).
+
+**Reutilización de contenido existente, sin duplicar**: el artículo
+`japanese-players-laliga.mdx` ya cubre en detalle a los 2 jugadores
+japoneses que han vestido de blanquiazul (西澤明訓 2000-01, 中村俊輔
+2009) — la sección de este artículo nuevo usa las MISMAS cifras ya
+publicadas (evita introducir una contradicción entre dos artículos del
+sitio) y reutiliza las imágenes ya existentes en `public/` (
+`akinori-nishizawa.webp`, `shunsuke-nakamura.webp`) en vez de pedir
+fotos nuevas, enlazando al artículo largo para el detalle completo — el
+mismo patrón "resumen + enlace" ya usado en otros artículos de club para
+evitar canibalización de intención de búsqueda.
+
+**Peña oficial "Perico Nippon"**: sección dedicada con enlaces a su X y
+Facebook oficiales (aportados por David), siguiendo el mismo patrón que
+Peña VCF Nippon, Reala Nippon, PENYA F.C.BARCELONA JAPAN, etc.
+
+**Sin imágenes propias del club todavía**: a diferencia de Villarreal,
+Sevilla o Betis, este artículo se publica sin `heroImage` ni fotos
+propias del Espanyol (solo las 2 reutilizadas de jugadores japoneses) —
+David no aportó fotos en esta tarea; mismo patrón que villarreal-cf al
+crearse (texto primero, imágenes en un PR posterior).
+
 ### Santi Cazorla como jugador más importante de villarreal-cf.mdx
 
 A petición de David, la sección "歴代の名選手" ahora presenta a **Santi
