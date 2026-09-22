@@ -329,11 +329,56 @@ de los `ImageObject` como "debería ser numérico" — se comprobó contra el
 HTML compilado real (`dist/football/villarreal-cf/index.html`) y ya se
 sirven como números JSON sin comillas. No se tocó nada por este punto.
 
-**Pendiente, fuera de alcance de este PR** (mayor superficie de cambio,
-requiere decisión aparte): `SportsTeamSchema.astro` y `AuthorBox.astro`
-emiten cada uno su propio `<script type="application/ld+json">` con su
-propio `@context`, desconectado del `@graph` principal de `SEO.astro` —
-por eso el grafo visual muestra un nodo "SportsTeam" y un "Person David
-Recalde" duplicado/aislado. El arreglo correcto es fusionarlos dentro
-del array `graph` de `SEO.astro`, pero toca cómo se invocan ambos
-componentes en todo el clúster de fútbol y en cada artículo con autor.
+### Fusión del grafo JSON-LD: fin de los `<script>` sueltos (2ª fase)
+
+Seguimiento de la auditoría anterior. `SportsTeamSchema.astro` y
+`AuthorBox.astro` emitían cada uno su propio `<script
+type="application/ld+json">` con su propio `@context`, desconectado del
+`@graph` principal de `SEO.astro` — por eso el grafo visual mostraba un
+nodo "SportsTeam" y un "Person David Recalde" duplicado/aislado.
+Verificado tras el cambio: cada página del sitio ahora emite un único
+`<script type="application/ld+json">` (antes 2-3 sueltos).
+
+- **`SportsTeamSchema.astro` eliminado.** Sus datos (`name`,
+  `alternateName`, `foundingDate`, `city`, `memberOf`) pasan a un nuevo
+  campo `sportsTeam` en el frontmatter de `articles` (`src/content/config.ts`),
+  con `url` derivada automáticamente del `canonical` de la página (ya no
+  hace falta repetirla). Migrados los 10 artículos que lo usaban:
+  villarreal-cf, sevilla-fc, real-betis, valencia-cf, real-sociedad,
+  real-madrid, fcbarcelona, atletico-madrid, athletic-club,
+  spain-national-team. `SEO.astro` construye el nodo `SportsTeam` (con
+  `@id: {canonical}#team`) directamente dentro de su `@graph`, y lo
+  referencia desde `Article.about` — antes apuntaba genéricamente a
+  `{'@type':'Thing', name:'スペイン'}`.
+  De paso, `foundingDate: "1920"` de la selección española (dato ya
+  existente, no ISO 8601) se corrigió a `"1920-01-01"` por consistencia
+  con el mismo criterio aplicado a la Organization.
+- **`AuthorBox.astro`**: se quitó su `<script>`/`personSchema` propio.
+  `SEO.astro` ya recibe el mismo `CollectionEntry<'authors'>` completo,
+  así que su `articleAuthor` (Person) ahora incluye también
+  `description` (bio) y `knowsAbout` (specialties/knowsAbout) —
+  igualando los datos que antes solo tenía la versión duplicada de
+  AuthorBox — y un `@id` estable (`{authorUrl}#person`), referenciado
+  desde `Article.author` en vez de duplicar el objeto completo cada vez.
+- **Entidad "LaLiga" unificada**: antes se definía por separado en
+  `SEO.astro` (rama `schemaType: 'sports'`, solo para `la-liga.mdx`) y en
+  `SportsTeamSchema.astro` (`memberOf`, en cada club). Ahora un único
+  mapa `memberOfOrgs` en `SEO.astro` la define una vez por página donde
+  se referencia (`@id: {siteUrl}/#laliga`), reutilizado tanto por
+  `Article.about` (la-liga.mdx) como por `SportsTeam.memberOf` (clubes).
+  Se añadió la misma entidad para "RFEF" (selección española), con `url`
+  (rfef.es) y `sameAs` (Wikidata Q207615), verificados por búsqueda.
+- **ImageObject de la imagen hero unificado**: antes existían dos
+  representaciones distintas de la misma imagen — `articleImage` (usada
+  en `Article.image`, sin `@id`) y un nodo `#heroimage` separado (con
+  `@id` pero sin ninguna referencia entrante, por eso aparecía
+  "desconectado" en el grafo). Ahora es un único nodo con
+  `@id: {canonical}#primaryimage`, definido una vez y referenciado por
+  `@id` desde `Article.image`.
+- `FAQPage` ahora también tiene `@id` (`{canonical}#faq`).
+
+No se tocó (deliberadamente fuera de alcance, requiere datos reales por
+club que no se pueden derivar del código): `logo`/`sameAs`/`address`
+propios de cada `SportsTeam` (ej. escudo oficial y redes sociales del
+Villarreal, del Sevilla, etc.) — el nodo `SportsTeam` de cada club solo
+lleva los datos que ya existían en el frontmatter.
