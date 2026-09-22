@@ -94,6 +94,7 @@ const sections = [
       pubDate: a.data.pubDate,
       heroImage: a.data.heroImage,
       heroImageAlt: a.data.heroImageAlt,
+      cluster: a.data.cluster,
     })),
   },
   {
@@ -197,6 +198,7 @@ const sections = [
                 description={item.description}
                 href={item.href}
                 pillar={section.id}
+                cluster={'cluster' in item ? item.cluster : undefined}
                 heroImage={item.heroImage}
                 heroImageAlt={item.heroImageAlt}
                 pubDate={item.pubDate}

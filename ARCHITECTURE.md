@@ -296,6 +296,24 @@ real — no es un plan aparte que se pueda desincronizar. Antes de crear
 cualquier URL nueva, consúltalo primero para evitar duplicar intención de
 búsqueda con algo que ya existe.
 
+### `cluster` faltante en más llamadas a `ArticleCard` (mismo bug, otras páginas)
+
+El fix anterior de `ArticleCard.astro` (recorte del escudo) solo
+funciona si la página que lo invoca pasa el prop `cluster` — David
+detectó que en `/articles/` (listado "新着記事一覧") el escudo de
+Espanyol seguía cortado a pesar del PR anterior. Revisadas las ~46
+páginas que usan `ArticleCard`; de las que pueden mostrar tarjetas de
+fútbol mezcladas con otros pilares (las que hard-codean su propio
+`pillar` nunca lo necesitan), faltaba `cluster` en 4: `src/pages/articles/[...page].astro`,
+`src/pages/index.astro`, `src/pages/404.astro`,
+`src/pages/about-us/team/[slug].astro`. También en
+`src/pages/regions/[region]/index.astro` — aquí el problema era más
+profundo: el `items.map()` de la sección de fútbol ni siquiera incluía
+`cluster` al construir los objetos, así que hubo que añadirlo ahí
+primero y luego pasarlo a `ArticleCard` (con guard `'cluster' in item`
+porque las demás secciones de esa misma página, food/travel/etc., no
+tienen esa propiedad en su tipo).
+
 ### Nuevo artículo insignia: Celta de Vigo (`celta-de-vigo.mdx`)
 
 Nuevo clúster de fútbol `celta-de-vigo` (mismo patrón de archivos que
