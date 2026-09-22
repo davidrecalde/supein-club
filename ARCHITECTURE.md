@@ -302,13 +302,20 @@ A petición de David, la sección "歴代の名選手" ahora presenta a **Santi
 Cazorla** como el jugador más importante de la historia del club (antes
 solo aparecía de pasada, y con un dato erróneo: el texto decía "récord
 de asistencias 57" cuando en realidad son sus 57 goles — corregido).
-Datos verificados por búsqueda (web oficial del Villarreal + Wikipedia,
-ya que una primera búsqueda daba fechas contradictorias sobre si jugó la
-final de la Europa League 2021 — descartado tras contrastar: salió del
-club en julio de 2020, antes del título): 3 etapas (2003-06, 2007-11,
-2018-20), 334 partidos y 57 goles (5º de la historia del club en ambas
-categorías), subcampeonato de Liga 2007-08 y final de Europa League
-2010-11 como titular, ingreso en el salón de la fama "Passeig Groc" en
+Datos verificados por búsqueda cruzando varias fuentes (web oficial del
+Villarreal, Wikipedia ES/EN, UEFA.com), con dos correcciones detectadas
+en una segunda pasada de verificación pedida explícitamente por David:
+(1) una primera búsqueda sugería que jugó la final de la Europa League
+2021 — descartado tras contrastar: salió del club en julio de 2020,
+antes del título; (2) el borrador inicial decía que el Villarreal llegó
+a la "final" de la Europa League 2010-11 y perdió ajustadamente ante el
+Porto — en realidad fue una **semifinal** (5-1 y 3-2, 6-4 global),
+corregido en el texto publicado. Datos finales: 3 etapas y 9 temporadas
+totales (2003-06, 2007-11, 2018-20 — cifra de temporadas confirmada de
+forma cruzada con el propio club), 334 partidos y 57 goles (5º de la
+historia del club en ambas categorías), subcampeonato de Liga 2007-08 y
+semifinal de Europa League 2010-11 (eliminado por el Porto) en su etapa
+como jugador clave, ingreso en el salón de la fama "Passeig Groc" en
 2020, retirado en julio de 2026 tras su etapa en el Real Oviedo. Foto
 real (confirmada) añadida con `class="img-80"`.
 
