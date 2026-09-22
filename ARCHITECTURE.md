@@ -296,6 +296,38 @@ real — no es un plan aparte que se pueda desincronizar. Antes de crear
 cualquier URL nueva, consúltalo primero para evitar duplicar intención de
 búsqueda con algo que ya existe.
 
+### Nuevo artículo insignia: Celta de Vigo (`celta-de-vigo.mdx`)
+
+Nuevo clúster de fútbol `celta-de-vigo` (mismo patrón de archivos que
+espanyol/villarreal-cf: `src/content/articles/football/celta-de-vigo/celta-de-vigo.mdx`
++ `src/pages/football/celta-de-vigo/index.astro`). Actualizado el `href:
+null` → `href: '/football/celta-de-vigo/'` de la fila "セルタ・デ・ビーゴ"
+en la tabla de 20 clubes de `/football/`. Con `heroImage` desde el primer
+PR (4 fotos reales confirmadas, incluida la bandera del club como hero).
+
+Fuentes: web oficial del RC Celta + Wikipedia (fundación, fusión
+Vigo Sporting/Fortuna de Vigo), y varias búsquedas cruzadas para hechos
+puntuales (etapa de Ricardo Zamora como entrenador 1946-48 y la única
+final de Copa del Rey de la historia del club en 1948, el peor/mejor
+resultado europeo con Mostovoi, el registro exacto de Iago Aspas como
+máximo goleador y más partidos, la sucesión de Marián Mouriño como
+primera presidenta en 2023, y el resultado real de cuartos de Europa
+League 2025-26 vs. Friburgo).
+
+**Peña oficial "Afouteza Nipón"**: fecha de fundación exacta
+(2022-07-14) verificada directamente en el propio logo de la peña
+aportado por David — más fiable que la búsqueda web, que no daba una
+fecha concreta. Presidente Shimpei Shimada, con su historia verificada
+(afición nacida con el anime *Campeones*/Capitán Tsubasa y el gol de
+Mostovoi al Real Madrid en 1998) por un artículo de Atlántico.
+
+**Colaboración con Japón, distinta de la peña**: la Fundación Celta
+colabora desde 2017 con la empresa japonesa Wakatake Group en programas
+de fútbol base (más de 500 jóvenes japoneses beneficiados) — mencionada
+como dato aparte de la peña de aficionados, dejando explícito que
+ningún jugador japonés ha vestido la camiseta del primer equipo (a
+diferencia de otros clubes del sitio como el Espanyol).
+
 ### Recorte del escudo en las tarjetas (`ArticleCard.astro`) + corrección de real-sociedad
 
 David detectó que en las tarjetas de vista previa (hub de fútbol,
