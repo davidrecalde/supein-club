@@ -296,6 +296,17 @@ real — no es un plan aparte que se pueda desincronizar. Antes de crear
 cualquier URL nueva, consúltalo primero para evitar duplicar intención de
 búsqueda con algo que ya existe.
 
+### Recorte de la imagen hero de espanyol.mdx
+
+La imagen hero (`hero-espanyol.webp`) es una foto cuadrada con el escudo
+del club apoyado en el suelo, en la parte inferior del encuadre. Como el
+contenedor de la cabecera fuerza `aspect-ratio: 2/1`, el recorte por
+defecto (`object-position: center`) cortaba buena parte de esa zona
+inferior. Añadido `isEspanyolHero` en `ArticleLayout.astro` (mismo
+patrón que `isRealSociedadHero`/`isLearnSpanishHero`) → `object-position:
+center bottom`, para priorizar la parte baja de la imagen donde está el
+escudo.
+
 ### 22 imágenes añadidas a espanyol.mdx (fotos reales confirmadas)
 
 David aportó 22 fotos reales (confirmado, no IA), incluida `espanyol-hero.webp`
