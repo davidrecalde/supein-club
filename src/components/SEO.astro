@@ -51,13 +51,20 @@ graph.push({
     width: 600,
     height: 60,
   },
-  foundingDate: '2018',
+  foundingDate: '2018-01-01',
   founder: {
     '@type': 'Person',
     name: 'David Recalde',
     url: `${siteUrl}/about-us/team/david-recalde/`,
   },
   description: 'スペインの旅行・料理・文化・語学を日本語で伝えるカルチャーメディア。2018年東京創設。',
+  contactPoint: {
+    '@type': 'ContactPoint',
+    contactType: 'customer support',
+    email: 'info@supein.club',
+    areaServed: 'JP',
+    availableLanguage: ['ja', 'es'],
+  },
   address: {
     '@type': 'PostalAddress',
     streetAddress: '41-8 Yamatochō, Itabashi City',
@@ -132,12 +139,15 @@ if (breadcrumbs && breadcrumbs.length > 0) {
   graph.push({
     '@type': 'BreadcrumbList',
     '@id': `${canonical}#breadcrumb`,
-    itemListElement: breadcrumbs.map((item, i) => ({
-      '@type': 'ListItem',
-      position: i + 1,
-      name: item.name,
-      item: item.url.startsWith('http') ? item.url : `${siteUrl}${item.url}`,
-    })),
+    itemListElement: breadcrumbs.map((item, i) => {
+      const itemUrl = item.url.startsWith('http') ? item.url : `${siteUrl}${item.url}`;
+      return {
+        '@type': 'ListItem',
+        position: i + 1,
+        name: item.name,
+        item: { '@id': itemUrl, name: item.name },
+      };
+    }),
   });
 }
 
@@ -155,11 +165,7 @@ if (type === 'article' && article) {
         width: 1200,
         height: 630,
         creditText: 'supein.club',
-        creator: {
-          '@type': 'Organization',
-          name: 'Club Español en Japón スペイン倶楽部',
-          url: siteUrl,
-        },
+        creator: { '@id': `${siteUrl}/#organization` },
         copyrightNotice: '© Club Español en Japón スペイン倶楽部 supein.club',
       }
     : { '@type': 'ImageObject', url: `${siteUrl}/logo-og.png` };
@@ -188,11 +194,7 @@ if (type === 'article' && article) {
   if (authorAvatar) articleAuthor.image = authorAvatar;
   if (authorJobTitle) articleAuthor.jobTitle = authorJobTitle;
   if (authorSameAs.length > 0) articleAuthor.sameAs = authorSameAs;
-  articleAuthor.worksFor = {
-    '@type': 'Organization',
-    name: 'Club Español en Japón スペイン倶楽部',
-    url: siteUrl,
-  };
+  articleAuthor.worksFor = { '@id': `${siteUrl}/#organization` };
 
   if (schemaType === 'recipe') {
     graph.push({
@@ -294,12 +296,20 @@ if (type === 'article' && article) {
       inLanguage: lang === 'es' ? 'es' : 'ja',
       isPartOf: { '@id': `${siteUrl}/#website` },
       mainEntityOfPage: `${canonical}#webpage`,
-      about: {
-        '@type': 'SportsOrganization',
-        name: 'ラ・リーガ',
-        sport: 'サッカー',
-      },
+      about: { '@id': `${siteUrl}/#laliga` },
       ...(contentLocation && { contentLocation }),
+    });
+    graph.push({
+      '@type': 'SportsOrganization',
+      '@id': `${siteUrl}/#laliga`,
+      name: 'ラ・リーガ',
+      alternateName: ['LaLiga', 'La Liga'],
+      sport: 'サッカー',
+      url: 'https://www.laliga.com/',
+      sameAs: [
+        'https://www.wikidata.org/wiki/Q324867',
+        'https://en.wikipedia.org/wiki/La_Liga',
+      ],
     });
   } else {
     const pillarSectionMap: Record<string, string> = {

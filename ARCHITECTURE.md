@@ -295,3 +295,45 @@ Este archivo se actualiza en el mismo commit que crea o mueve contenido
 real — no es un plan aparte que se pueda desincronizar. Antes de crear
 cualquier URL nueva, consúltalo primero para evitar duplicar intención de
 búsqueda con algo que ya existe.
+
+### Limpieza del grafo JSON-LD (`SEO.astro` / `SportsTeamSchema.astro`)
+
+Auditoría de schema.org con una herramienta externa de visualización de
+grafo sobre `villarreal-cf.mdx` detectó varios problemas reales en el
+`@graph` central (`src/components/SEO.astro`), corregidos en este PR:
+
+- `foundingDate` de la Organization no era ISO 8601 (`'2018'`) → ahora
+  `'2018-01-01'` (solo se conoce el año exacto; día/mes puestos a 1 de
+  enero por convención).
+- Faltaba `contactPoint` en la Organization → añadido con
+  `info@supein.club` (cuenta corporativa nueva, creada en Cloudflare
+  Email Routing → reenvía a `clubsupein@gmail.com`).
+- `articleImage.creator` y `articleAuthor.worksFor` duplicaban un stub
+  suelto de Organization (`name`+`url`) en vez de referenciar el `@id`
+  de la Organization principal — causaba nodos "Organization" casi
+  duplicados en el grafo. Ahora ambos usan `{'@id': siteUrl + '/#organization'}`.
+- `BreadcrumbList.itemListElement[].item` era un string de URL plano →
+  ahora es un objeto `{'@id', 'name'}`, mejora la conectividad del grafo
+  sin afectar la validez para Google Rich Results (que ya aceptaba el
+  string).
+- La entidad "LaLiga" (`SportsOrganization`) solo tenía `name` en dos
+  sitios distintos: el `about` de `schemaType: 'sports'` en `SEO.astro`
+  (solo usado por `la-liga.mdx`) y el `memberOf` de
+  `SportsTeamSchema.astro` (usado por cada artículo de club, ej.
+  Villarreal). Ambos ahora incluyen `url` (laliga.com) y `sameAs`
+  (Wikidata Q324867), verificados por búsqueda — no se añadió `logo`
+  por no poder verificar una URL de asset real.
+
+**Descartado como falso positivo**: la herramienta marcó `width`/`height`
+de los `ImageObject` como "debería ser numérico" — se comprobó contra el
+HTML compilado real (`dist/football/villarreal-cf/index.html`) y ya se
+sirven como números JSON sin comillas. No se tocó nada por este punto.
+
+**Pendiente, fuera de alcance de este PR** (mayor superficie de cambio,
+requiere decisión aparte): `SportsTeamSchema.astro` y `AuthorBox.astro`
+emiten cada uno su propio `<script type="application/ld+json">` con su
+propio `@context`, desconectado del `@graph` principal de `SEO.astro` —
+por eso el grafo visual muestra un nodo "SportsTeam" y un "Person David
+Recalde" duplicado/aislado. El arreglo correcto es fusionarlos dentro
+del array `graph` de `SEO.astro`, pero toca cómo se invocan ambos
+componentes en todo el clúster de fútbol y en cada artículo con autor.
