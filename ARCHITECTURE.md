@@ -296,6 +296,36 @@ real — no es un plan aparte que se pueda desincronizar. Antes de crear
 cualquier URL nueva, consúltalo primero para evitar duplicar intención de
 búsqueda con algo que ya existe.
 
+### 22 imágenes añadidas a espanyol.mdx (fotos reales confirmadas)
+
+David aportó 22 fotos reales (confirmado, no IA), incluida `espanyol-hero.webp`
+como nueva `heroImage` del frontmatter (`src/assets/hero/hero-espanyol.webp`,
+antes el artículo no tenía imagen hero). Las 21 restantes en `public/*.webp`,
+repartidas por sección con el mismo criterio de tamaño ya establecido
+(`img-80` horizontales/cuadradas de buena resolución, `img-70` verticales
+destacadas, `img-vertical` el retrato pequeño del presidente de la peña).
+
+De paso, las fotos motivaron 2 añadidos de contenido nuevo (verificados
+antes de escribir, no solo ilustrados):
+- **Trofeo Zamora**: se amplió la mención de Ricardo Zamora con el dato
+  de que el trofeo al portero menos goleado de LaLiga (desde 1958-59)
+  lleva su nombre — verificado en Wikipedia.
+- **Iniesta y Dani Jarque**: se añadió que Andrés Iniesta, al marcar el
+  gol de la final del Mundial 2010 (11 de julio, no en octubre como
+  redacté en un primer borrador — corregido tras detectar el error yo
+  mismo antes de publicar), mostró una camiseta interior con el mensaje
+  "Dani Jarque siempre con nosotros", y que después donó esa camiseta al
+  club — ambos hechos confirmados por la propia foto aportada y
+  verificados por búsqueda.
+
+Corregido también el nombre del presidente de "Perico Nippon": el primer
+borrador usaba 中林信孝 (una transliteración aproximada desde el romaji
+"Nobutaka Nakabayashi"); una fuente japonesa directa (entrevista de
+Number/Bunshun) da el kanji real, 中林伸高, y precisa que la peña fue
+reconocida oficialmente por el club en **2006** (no 2005, como sugería
+una búsqueda anterior menos fiable) — coincide con el "2006" del
+identificador de su Facebook, corroborando la cifra correcta.
+
 ### Nuevo artículo insignia: RCD Espanyol (`espanyol.mdx`)
 
 Nuevo clúster de fútbol `espanyol` (`src/content/articles/football/espanyol/espanyol.mdx`
