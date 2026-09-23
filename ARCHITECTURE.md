@@ -296,6 +296,36 @@ real — no es un plan aparte que se pueda desincronizar. Antes de crear
 cualquier URL nueva, consúltalo primero para evitar duplicar intención de
 búsqueda con algo que ya existe.
 
+### Segunda verificación de los datos de Iago Aspas (celta-de-vigo.mdx)
+
+David pidió comprobar mejor la sección de Aspas y aclarar si "得点王"
+se refería al Pichichi general o al goleador español. Al cruzar varias
+fuentes para el total de partidos/goles, aparecieron cifras claramente
+contradictorias entre sí (425, 545, 571, 578, 610 partidos según la
+fuente) — síntoma de que los resúmenes automáticos de Wikipedia/fichas
+mezclan a veces solo la segunda etapa del jugador, o su carrera
+completa incluyendo Liverpool/Sevilla, con la carrera solo-Celta.
+Resuelto así:
+
+- **Aclarado explícitamente**: el trofeo que gana Aspas 4 veces
+  (2016-17, 2017-18, 2018-19, 2021-22) es el **Trofeo Zarra**
+  (máximo goleador **español**), no el Pichichi (máximo goleador de la
+  liga sin distinción de nacionalidad, que Aspas nunca ha ganado) —
+  ahora el texto lo dice de forma explícita, con las cifras exactas de
+  gol por temporada y la mención de que empata con David Villa en
+  total de Zarras.
+- **Cifra de partidos**: en vez de un número exacto que discrepaba
+  entre fuentes, se ancla en el hecho mejor verificado y con fecha
+  exacta (23 de octubre de 2025, vs. Niza en la Europa League, superó
+  el récord de Manolo de 533 partidos) y se deja claro que sigue
+  activo y el número sigue subiendo.
+- **Cifra de goles**: se suaviza a "más de 220 goles" en vez de un
+  222/223 exacto que tampoco coincidía entre fuentes.
+- **Asistencias**: eliminada la cifra de "90 asistencias" — la fuente
+  más fiable (Wikipedia ES) daba 86, otra fuente 69; ante un desacuerdo
+  de casi 20 unidades entre fuentes, mejor no afirmar un número
+  concreto que quitarlo.
+
 ### 12 imágenes y 3 nuevos jugadores históricos en celta-de-vigo.mdx
 
 A petición de David: **Vlado Gudelj** (delantero 1991-99, 113 goles
