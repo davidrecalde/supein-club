@@ -304,8 +304,9 @@ adaptador Cloudflare), sin backend — Pagefind genera su índice de
 búsqueda en el propio build y corre entero en el navegador (WASM +
 fetch de fragmentos estáticos), sin servicio ni coste externo.
 
-- **`package.json`**: `"build": "astro build && pagefind --site dist
-  --output-subdir pagefind"` — la CLI de Pagefind indexa `dist/`
+- **`astro.config.mjs`**: integración local `pagefindIntegration()` que
+  ejecuta la CLI de Pagefind en el hook `astro:build:done` (no en
+  `package.json`, ver más abajo por qué). Indexa `dist/`
   **después** de que Astro lo genere, y escribe el índice en
   `dist/pagefind/`.
 - **`src/layouts/BaseLayout.astro`**: `<main>` marcado con
@@ -330,14 +331,29 @@ fetch de fragmentos estáticos), sin servicio ni coste externo.
   poder diseñar las tarjetas a medida.
 - **`src/components/Navigation.astro`**: botón de lupa (`data-search-trigger`)
   en el header, versión escritorio y móvil.
-- **Bug de compatibilidad real, encontrado probando bajo la CSP de
-  producción (no solo con un servidor estático simple, que no aplica
-  `_headers`)**: el WASM de Pagefind fallaba con
+- **Bug de compatibilidad real (nº1), encontrado probando bajo la CSP
+  de producción (no solo con un servidor estático simple, que no
+  aplica `_headers`)**: el WASM de Pagefind fallaba con
   `WebAssembly.instantiate(): ... violates ... script-src`, porque
   `public/_headers` no incluía `'wasm-unsafe-eval'` en `script-src`.
   Añadido ese único token (no `'unsafe-eval'`, mucho más permisivo) —
   verificado con Playwright que la búsqueda funciona correctamente bajo
   la CSP real tras el cambio.
+- **Bug real (nº2), encontrado ya con el PR abierto y el check de
+  Cloudflare en verde**: pasar el check de Cloudflare Pages NO
+  garantiza que el paso de Pagefind se haya ejecutado — comprobado
+  con `curl` contra el propio preview del PR que `/pagefind/pagefind.js`
+  daba 404 pese al check en verde. Causa: el comando de build
+  configurado en el panel de Cloudflare Pages no es necesariamente
+  `npm run build` (no está versionado en el repo, así que no hay forma
+  de saberlo desde el código) — pudo ignorar por completo el paso
+  `&& pagefind ...` encadenado en `package.json`. Solución más robusta:
+  mover la indexación al hook `astro:build:done` vía una integración
+  local en `astro.config.mjs`, que se ejecuta siempre que corra
+  `astro build`, sea cual sea el comando externo que lo invoque —
+  verificado ejecutando `npx astro build` directamente (sin pasar por
+  `npm run build`) y confirmando que el índice se genera igual.
+  `package.json` simplificado de vuelta a `"build": "astro build"`.
 - **Cierra un hueco preexistente**: el `SearchAction` del JSON-LD en
   `SEO.astro` (`urlTemplate: {siteUrl}/?s={search_term_string}`) le
   prometía a Google una caja de búsqueda desde hace tiempo sin que
