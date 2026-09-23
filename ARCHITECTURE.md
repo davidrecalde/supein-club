@@ -296,6 +296,38 @@ real — no es un plan aparte que se pueda desincronizar. Antes de crear
 cualquier URL nueva, consúltalo primero para evitar duplicar intención de
 búsqueda con algo que ya existe.
 
+### Auditoría de 404 de Search Console: 4 arreglos reales de 17 URLs reportadas
+
+David compartió el informe de indexación de GSC (148 indexadas / 152 sin
+indexar) y la lista de 17 URLs marcadas "No se ha encontrado (404)".
+Verificado con `curl -I` contra producción, no solo confiando en el
+informe (que tiene retraso de rastreo): 9 de las 17 ya redirigen
+correctamente en vivo (el informe estaba desactualizado, se limpiará
+solo), 1 es `/cdn-cgi/l/email-protection` (endpoint interno de
+Cloudflare, no una página real, ignorar siempre). De las 6 restantes,
+solo 4 eran arreglables:
+
+- `/food/jamon-iberico/jamon-iberico/` y
+  `/language/tokyo-spanish-schools/tokyo-spanish-schools/` — URLs
+  heredadas de antes de que `getArticleUrl()` colapsara a `/pillar/cluster/`
+  cuando el slug coincide con el cluster (mismo patrón que las entradas
+  ya existentes para `la-liga`/`spain-national-team`). Añadidas a
+  `public/_redirects`.
+- `src/content/articles/language/learn-spanish/how-to-make-study-plan.mdx`
+  tenía `draft: true` pese a que `dele-self-study.mdx` ya lo enlazaba
+  dos veces en producción (enlace interno roto real). Contenido
+  completo (76 líneas, 5 pasos), publicado (`draft: false`) en vez de
+  quitar los enlaces — no se tocó `pubDate` (regla HAZ FRESHNESS: solo
+  se cambian fechas si David lo pide explícitamente con esa frase).
+- `verb-conjugation.mdx` enlazaba en `relatedPages` a
+  `/language/learn-spanish/spanish-for-beginners/`, que no existe ni
+  como borrador — enlace eliminado en vez de inventar un destino.
+
+**No tocado, sin impacto verificado**: `/language/learn-spanish/start-here/`
+y `/living/working-holiday/working-holiday-conditions/` no tienen
+ningún enlace interno apuntándolos — residuos de rastreo antiguo que se
+autolimpiarán en GSC.
+
 ### `cluster` faltante en más llamadas a `ArticleCard` (mismo bug, otras páginas)
 
 El fix anterior de `ArticleCard.astro` (recorte del escudo) solo
