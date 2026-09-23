@@ -296,6 +296,30 @@ real — no es un plan aparte que se pueda desincronizar. Antes de crear
 cualquier URL nueva, consúltalo primero para evitar duplicar intención de
 búsqueda con algo que ya existe.
 
+### Buscador: foto de autor en fichas de equipo + recorte correcto de miniaturas
+
+David detectó que en `/about-us/team/[slug]/` (ej. Raquel Simancas) la
+miniatura de búsqueda no mostraba la foto de la autora, sino el logo
+genérico de la primera `ArticleCard` sin imagen propia de la página —
+esa página usa `BaseLayout` directamente (nunca pasa por
+`ArticleLayout.astro`), así que nunca tuvo el `data-pagefind-meta` que
+sí tienen los artículos. Añadido a la foto de perfil en
+`src/pages/about-us/team/[slug].astro`.
+
+De paso, pedido explícito de mostrar "la parte más descriptiva y útil"
+de las imágenes hero en las miniaturas: añadido un
+`data-pagefind-meta="image_position:..."` en `ArticleLayout.astro`
+(mismo valor que ya calcula `isBottomCrestHero`/`isLearnSpanishHero`
+para la cabecera del propio artículo — ninguna lógica nueva, solo
+reutilizada) y aplicado en `SearchOverlay.astro` vía
+`img.style.objectPosition`. Antes del cambio, el recorte de la
+miniatura (cuadrada, 84×84) siempre usaba `center`, así que en clubes
+como Espanyol o Real Sociedad —con el escudo pegado abajo de la foto—
+la miniatura de búsqueda lo cortaba, aunque la cabecera del artículo ya
+lo mostrara bien. Verificado con Playwright: `getComputedStyle` de la
+miniatura de un resultado de Espanyol da `object-position: 50% 100%`
+(equivalente a `center bottom`).
+
 ### Buscador del sitio (Pagefind)
 
 A petición de David. Elegido **Pagefind** (`pagefind`, devDependency) por

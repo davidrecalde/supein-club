@@ -105,6 +105,7 @@ const authorUrlForMeta = `https://supein.club/about-us/team/${authorSlug}/`;
       </h1>
 
       <span data-pagefind-meta="pillar" hidden>{pillarLabels[pillar] ?? pillar}</span>
+      <span data-pagefind-meta={`image_position:${isLearnSpanishHero ? 'left center' : isBottomCrestHero ? 'center bottom' : 'center'}`} hidden></span>
 
       <div style="display:flex;align-items:center;flex-wrap:wrap;gap:16px;margin-bottom:40px;">
         <a
