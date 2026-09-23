@@ -391,6 +391,7 @@ import { Search, X, Loader2 } from 'lucide-astro';
         if (r.meta && r.meta.image) {
           img.src = r.meta.image;
           img.alt = r.meta.image_alt || '';
+          img.style.objectPosition = r.meta.image_position || 'center';
         } else {
           img.remove();
         }
