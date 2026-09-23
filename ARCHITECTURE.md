@@ -296,6 +296,59 @@ real — no es un plan aparte que se pueda desincronizar. Antes de crear
 cualquier URL nueva, consúltalo primero para evitar duplicar intención de
 búsqueda con algo que ya existe.
 
+### Buscador del sitio (Pagefind)
+
+A petición de David. Elegido **Pagefind** (`pagefind`, devDependency) por
+encajar con el stack: sitio 100% estático (`output: 'static'` +
+adaptador Cloudflare), sin backend — Pagefind genera su índice de
+búsqueda en el propio build y corre entero en el navegador (WASM +
+fetch de fragmentos estáticos), sin servicio ni coste externo.
+
+- **`package.json`**: `"build": "astro build && pagefind --site dist
+  --output-subdir pagefind"` — la CLI de Pagefind indexa `dist/`
+  **después** de que Astro lo genere, y escribe el índice en
+  `dist/pagefind/`.
+- **`src/layouts/BaseLayout.astro`**: `<main>` marcado con
+  `data-pagefind-body` — Pagefind solo indexa el contenido dentro de
+  ese atributo (excluye header/nav/footer, que se repiten en cada
+  página).
+- **`src/layouts/ArticleLayout.astro`**: añadidos metadatos Pagefind
+  a la imagen hero (`data-pagefind-meta="image[src], image_alt[alt]"`)
+  y un `<span data-pagefind-meta="pillar" hidden>` con la etiqueta del
+  pilar en japonés (reutilizando `pillarLabels`, exportado desde
+  `src/utils/articles.ts` para no duplicarlo una 4ª vez) — así cada
+  resultado de búsqueda puede mostrar miniatura + badge de categoría.
+  También marcados con `data-pagefind-ignore` los bloques de
+  AdSlot/NewsletterForm/"こちらの記事もおすすめ", idénticos o
+  semi-idénticos en cada artículo, para no ensuciar los resultados.
+- **`src/components/SearchOverlay.astro`** (nuevo, montado una vez en
+  `BaseLayout`): overlay a pantalla completa con input y resultados en
+  tarjetas (imagen, badge de pilar, título, extracto con el término
+  resaltado en `<mark>`), animaciones de entrada, atajo de teclado
+  (`/`, `Cmd/Ctrl+K`, `Escape`). Usa la API JS "cruda" de Pagefind
+  (`pagefind.search()`), no el widget `PagefindUI` prefabricado, para
+  poder diseñar las tarjetas a medida.
+- **`src/components/Navigation.astro`**: botón de lupa (`data-search-trigger`)
+  en el header, versión escritorio y móvil.
+- **Bug de compatibilidad real, encontrado probando bajo la CSP de
+  producción (no solo con un servidor estático simple, que no aplica
+  `_headers`)**: el WASM de Pagefind fallaba con
+  `WebAssembly.instantiate(): ... violates ... script-src`, porque
+  `public/_headers` no incluía `'wasm-unsafe-eval'` en `script-src`.
+  Añadido ese único token (no `'unsafe-eval'`, mucho más permisivo) —
+  verificado con Playwright que la búsqueda funciona correctamente bajo
+  la CSP real tras el cambio.
+- **Cierra un hueco preexistente**: el `SearchAction` del JSON-LD en
+  `SEO.astro` (`urlTemplate: {siteUrl}/?s={search_term_string}`) le
+  prometía a Google una caja de búsqueda desde hace tiempo sin que
+  existiera ninguna implementación real. El script de `SearchOverlay`
+  ahora lee `?s=` de la URL en cualquier página al cargar y abre el
+  overlay con esa búsqueda ya ejecutada, dejando esa promesa cumplida.
+- El script en sí usa `is:inline` a propósito (JS plano, sin TypeScript):
+  contiene `import('/pagefind/pagefind.js')`, una ruta que solo existe
+  tras el build — si Astro/Vite lo procesara intentaría resolverla en
+  tiempo de build y el build fallaría.
+
 ### Ampliación de `/about-us/` (EEAT/AI-crawlability) — sin canibalizar la home
 
 A petición de David, siguiendo el framework de un hilo sobre páginas

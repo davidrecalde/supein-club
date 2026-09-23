@@ -23,7 +23,7 @@ import NewsletterForm from '../components/NewsletterForm.astro';
 import ArticleDisclaimer from '../components/ArticleDisclaimer.astro';
 import FloatingActions from '../components/FloatingActions.astro';
 import RegionBadge from '../components/RegionBadge.astro';
-import { getArticleUrl, getArticleBreadcrumbs } from '../utils/articles';
+import { getArticleUrl, getArticleBreadcrumbs, pillarLabels } from '../utils/articles';
 
 interface Props {
   entry: CollectionEntry<'articles'>;
@@ -104,6 +104,8 @@ const authorUrlForMeta = `https://supein.club/about-us/team/${authorSlug}/`;
         {displayH1}
       </h1>
 
+      <span data-pagefind-meta="pillar" hidden>{pillarLabels[pillar] ?? pillar}</span>
+
       <div style="display:flex;align-items:center;flex-wrap:wrap;gap:16px;margin-bottom:40px;">
         <a
           href="#author-box"
@@ -158,6 +160,7 @@ const authorUrlForMeta = `https://supein.club/about-us/team/${authorSlug}/`;
               style={`width:100%;aspect-ratio:2/1;object-position:${isLearnSpanishHero ? 'left center' : isBottomCrestHero ? 'center bottom' : 'center'};display:block;border-radius:13px;`}
               fetchpriority="high"
               loading="eager"
+              data-pagefind-meta="image[src], image_alt[alt]"
             />
           </figure>
           <LevelBadge level={level} articleRole={articleRole} />
@@ -202,7 +205,7 @@ const authorUrlForMeta = `https://supein.club/about-us/team/${authorSlug}/`;
         )}
 
         <!-- AdSlot art-mid: before main content -->
-        <div class="mb-8">
+        <div class="mb-8" data-pagefind-ignore>
           <AdSlot position="art-mid" />
         </div>
 
@@ -210,7 +213,9 @@ const authorUrlForMeta = `https://supein.club/about-us/team/${authorSlug}/`;
           <Content />
         </div>
 
-        <NewsletterForm variant="inline" />
+        <div data-pagefind-ignore>
+          <NewsletterForm variant="inline" />
+        </div>
 
         {quiz && quiz.length > 0 && <QuizCard quiz={quiz} />}
 
@@ -221,7 +226,7 @@ const authorUrlForMeta = `https://supein.club/about-us/team/${authorSlug}/`;
         {sources && sources.length > 0 && <Sources sources={sources} />}
 
         <!-- AdSlot art-bottom: before FAQ -->
-        <div class="my-8">
+        <div class="my-8" data-pagefind-ignore>
           <AdSlot position="art-bottom" />
         </div>
 
@@ -231,7 +236,7 @@ const authorUrlForMeta = `https://supein.club/about-us/team/${authorSlug}/`;
         {author && <AuthorBox author={author} />}
 
         {related.length > 0 && (
-          <section class="mt-12 border-t border-[#E8E8E6] pt-10">
+          <section class="mt-12 border-t border-[#E8E8E6] pt-10" data-pagefind-ignore>
             <h2 class="font-sans font-bold text-2xl text-navy mb-2">こちらの記事もおすすめ</h2>
             <p class="text-sm text-gray-500 mb-6">同じテーマのおすすめ記事です。</p>
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
