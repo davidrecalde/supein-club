@@ -296,6 +296,43 @@ real — no es un plan aparte que se pueda desincronizar. Antes de crear
 cualquier URL nueva, consúltalo primero para evitar duplicar intención de
 búsqueda con algo que ya existe.
 
+### Ampliación de `/about-us/` (EEAT/AI-crawlability) — sin canibalizar la home
+
+A petición de David, siguiendo el framework de un hilo sobre páginas
+"About Us" optimizadas para IA (datos clave en `<dl>` rastreable,
+FAQ, secciones de "qué hacemos"/"qué nos diferencia"/"a quién nos
+dirigimos"), con tono institucional y mención explícita de que
+supein.club es un medio de comunicación.
+
+**Riesgo de canibalización identificado y evitado**: la home
+(`src/pages/index.astro`) ya posee la keyword de "medio de información"
+(`title`/`description` dicen explícitamente "日本人向けスペイン情報・
+旅行・文化メディア"). Si `/about-us/` copiaba ese mismo ángulo en su
+`title`/`description`/H1, competiría con la home por la misma consulta.
+Decisión: `/about-us/` mantiene su intención de búsqueda de **entidad/
+marca** ("スペイン倶楽部とは", "quién está detrás de la marca"); dentro
+del cuerpo sí se menciona que opera supein.club como medio (relevante
+para EEAT), pero como un hecho más sobre la organización, no como el
+ángulo SEO principal de la página. El `description` nuevo evita repetir
+literalmente la lista "旅行・料理・語学・生活・文化・サッカー" que ya es
+la meta de la home.
+
+**Nuevas secciones** (`src/pages/about-us/index.astro`): "私たちについて"
+(qué hacemos: actividad comunitaria, alianzas con Instituto Cervantes de
+Tokio/Embajada de España/ICEX/Jリーグ/LaLiga/NHK, operación del medio),
+"スペイン倶楽部の特徴" (reescrita, énfasis en la red institucional en vez
+de diferenciadores genéricos), "対象読者・参加者" (perfiles de
+lector/participante), "団体概要" (tabla `<dl>` de datos clave —
+nombre, medio, fundación, fundador, sede, actividad, alianzas, web,
+redes — reutilizando datos ya existentes en el `Organization` de
+`SEO.astro`, sin inventar nada nuevo), "よくある質問" (6 preguntas, con
+su propio `FAQPage` JSON-LD independiente del `AboutPage` existente), y
+un párrafo de invitación a unirse a la comunidad justo antes del
+`LineBanner`. A petición explícita de David, ninguna de estas secciones
+menciona el número exacto de eventos realizados (el dato "46+ イベント/年"
+del hero y el timeline existente no se tocaron, por no formar parte de
+lo pedido).
+
 ### Aclaración Trofeo Zarra vs. Trofeo Zamora, y contradicción encontrada en la relectura
 
 David confundió el Trofeo Zarra (goleador español, el que gana Aspas)
