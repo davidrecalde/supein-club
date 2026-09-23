@@ -31,10 +31,51 @@ const coreValues = [
   { title: 'コミュニティファースト', text: 'メンバー一人ひとりの体験が、私たちの活動の中心です。' },
 ];
 
+const whatWeDo = [
+  { title: 'コミュニティ活動', text: '創設以来、文化交流イベント、スペイン料理を通じたガストロノミー企画、商業連携など、多岐にわたる活動を東京を拠点に展開してきました。' },
+  { title: '公的機関・企業との連携', text: 'セルバンテス文化センター東京（Instituto Cervantes de Tokio）、在日スペイン大使館、ICEX（スペイン貿易投資庁）、Jリーグ、ラ・リーガ、NHKをはじめとする公的機関・企業と連携し、日本とスペインの文化交流を推進してきました。' },
+  { title: 'メディア運営（supein.club）', text: 'これらの活動を基盤に、日本語メディア「supein.club」を運営し、スペインの旅行・料理・語学・生活・文化・サッカーに関する情報を、現地の視点と実体験に基づいて発信しています。' },
+];
+
 const differentiators = [
-  { title: '語学 × 文化 × 食 × スポーツ', text: '一つの切り口ではなく、スペインのあらゆる側面を体験できます。' },
-  { title: '日本語でスペインを深掘り', text: '日本語を母語とする方も、日本語が堪能なスペイン語話者も、自然に参加できる環境があります。' },
-  { title: '東京を拠点に、世界とつながる', text: '東京でのリアルなイベントを中心に、オンラインでも活動を広げています。' },
+  { title: '公的機関からも信頼されるネットワーク', text: 'セルバンテス文化センター東京、在日スペイン大使館、ICEXなど、日本とスペインを結ぶ公的機関との連携実績を有しています。' },
+  { title: 'コミュニティを基盤としたメディア運営', text: '一般的な旅行・カルチャーメディアとは異なり、発信する情報は実際のコミュニティ活動および公的機関・企業との連携を通じて得た知見に基づいています。' },
+  { title: '語学・文化・食・スポーツを横断する活動領域', text: '特定の分野に限定せず、スペインの多面的な魅力をコミュニティとメディアの両輪で伝えています。' },
+  { title: '東京を拠点とした全国的な情報発信', text: '東京での活動を起点としながら、オンラインメディアを通じて日本全国、および海外の読者にも情報を届けています。' },
+];
+
+const audience = [
+  'スペイン語を学んでいる、または学習を検討している日本人',
+  '日本に在住する、または訪れるスペイン語話者',
+  'スペイン旅行を計画している方',
+  'スペインへの留学・移住を検討している方',
+  'スペインの料理・文化・サッカーに関心を持つ方',
+];
+
+const keyFacts = [
+  { label: '団体名', value: 'Club Español en Japón スペイン倶楽部' },
+  { label: '運営メディア', value: 'supein.club' },
+  { label: '設立', value: '2018年（東京）' },
+  { label: '創設者', value: 'David Recalde' },
+  { label: '拠点', value: '東京都' },
+  { label: '活動内容', value: '文化交流イベントの企画・運営、日本語メディア「supein.club」の運営' },
+  { label: '主な連携先', value: 'セルバンテス文化センター東京、在日スペイン大使館、ICEX、Jリーグ、ラ・リーガ、NHK 等' },
+  { label: '公式サイト', value: 'https://supein.club', isLink: true },
+  { label: '公式SNS', value: 'Instagram / Facebook / X（旧Twitter） / LINE', links: [
+    { label: 'Instagram', url: 'https://www.instagram.com/supeinclub/' },
+    { label: 'Facebook', url: 'https://www.facebook.com/supeinclub/' },
+    { label: 'X', url: 'https://twitter.com/supeinclub' },
+    { label: 'LINE', url: 'https://lin.ee/vx6jpud' },
+  ] },
+];
+
+const faqItems = [
+  { q: 'Club Español en Japón スペイン倶楽部とは何ですか？', a: '2018年に東京で創設された、日本とスペインの文化交流団体です。文化交流イベントの企画・運営と、日本語メディア「supein.club」の運営を行っています。' },
+  { q: 'supein.clubは誰が運営していますか？', a: 'Club Español en Japón スペイン倶楽部が運営する日本語メディアです。コミュニティでの活動や公的機関・企業との連携を通じて得た知見をもとに、記事を制作しています。' },
+  { q: 'スペイン倶楽部のコミュニティに参加するにはどうすればよいですか？', a: '公式LINEにご登録いただくことで、東京での活動やコミュニティに関する最新情報を受け取ることができます。' },
+  { q: 'supein.clubの記事はどのような体制で制作されていますか？', a: '編集チームが、現地取材・実体験・公的機関との連携を通じて得た知見に基づいて記事を制作しています。詳しくは「チームメンバー」ページをご覧ください。' },
+  { q: 'スペイン倶楽部はいつ、どのような経緯で設立されましたか？', a: '2018年、東京に集まったスペイン語話者の交流から生まれました。詳しい経緯は本ページの「はじまりの物語」をご覧ください。' },
+  { q: '活動拠点は東京のみですか？', a: 'リアルなイベントは東京を拠点に開催していますが、supein.clubを通じて日本全国、および海外の読者にも情報を届けています。' },
 ];
 
 const timeline = [
@@ -48,11 +89,15 @@ const timeline = [
 
 const tocHeadings = [
   { depth: 2, slug: 'what-is', text: 'スペイン倶楽部とは？' },
+  { depth: 2, slug: 'what-we-do', text: '私たちについて' },
   { depth: 2, slug: 'mission', text: '私たちのミッション' },
   { depth: 2, slug: 'values', text: '大切にしていること' },
-  { depth: 2, slug: 'features', text: '人を中心に考えるコミュニティ' },
+  { depth: 2, slug: 'features', text: 'スペイン倶楽部の特徴' },
+  { depth: 2, slug: 'audience', text: '対象読者・参加者' },
   { depth: 2, slug: 'story', text: 'はじまりの物語' },
   { depth: 2, slug: 'logo', text: 'ロゴの由来' },
+  { depth: 2, slug: 'key-facts', text: '団体概要' },
+  { depth: 2, slug: 'faq', text: 'よくある質問' },
 ];
 
 const aboutPageSchema = {
@@ -63,24 +108,35 @@ const aboutPageSchema = {
   description: 'Club Español en Japón スペイン倶楽部のミッション・活動・歴史について。',
   mainEntity: { '@id': 'https://supein.club/#organization' },
 };
+
+const faqPageSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqItems.map((item) => ({
+    '@type': 'Question',
+    name: item.q,
+    acceptedAnswer: { '@type': 'Answer', text: item.a },
+  })),
+};
 ---
 
 <BaseLayout>
   <SEO
     slot="seo"
-    title="スペイン倶楽部について"
-    description="Club Español en Japón スペイン倶楽部は、日本と日本に在住するスペイン語話者をつなぐ東京発のコミュニティです。2018年創設、1,786名以上のメンバーが参加する日本最大級のスペインコミュニティとして、幅広く活動しています。"
+    title="スペイン倶楽部について｜Club Español en Japón"
+    description="Club Español en Japón スペイン倶楽部は、2018年に東京で創設された日本とスペインの文化交流団体です。セルバンテス文化センター東京、在日スペイン大使館、ICEXなど公的機関・企業と連携しながら、文化交流イベントの開催と日本語メディアsupein.clubの運営を行っています。"
     canonical="https://supein.club/about-us/"
     breadcrumbs={breadcrumbs}
   />
   <script slot="head" type="application/ld+json" set:html={JSON.stringify(aboutPageSchema)} />
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(faqPageSchema)} />
 
   <!-- HERO -->
   <section class="bg-navy text-white py-20 px-4">
     <div class="max-w-4xl mx-auto">
       <p class="text-primary text-base font-semibold uppercase tracking-widest mb-4">スペイン倶楽部について</p>
       <h1 class="font-serif text-3xl md:text-5xl font-bold mb-6 leading-tight">
-        日本とスペインをつなぐ、<br />東京発のコミュニティ。
+        日本とスペインをつなぐ、<br />東京発の文化交流団体。
       </h1>
       <p class="text-white/75 text-lg leading-relaxed max-w-2xl mb-12">
         2018年の創設以来、私たちはヒスパニックと日本のコミュニティの架け橋として、語学・文化・食・スポーツを通じた交流を続けています。
@@ -136,6 +192,25 @@ const aboutPageSchema = {
     </div>
   </section>
 
+  <!-- SECCIÓN 0.5: 私たちについて（活動内容・連携実績・メディア運営） -->
+  <section id="what-we-do" class="py-20 px-4" style="background-color:#f8f8f6;">
+    <div class="max-w-4xl mx-auto">
+      <p class="text-primary text-base font-semibold uppercase tracking-widest mb-2">ABOUT US</p>
+      <h2 class="font-serif text-3xl font-bold text-navy mb-6">私たちについて</h2>
+      <p class="text-muted leading-relaxed mb-12 max-w-2xl">
+        Club Español en Japón スペイン倶楽部は、2018年の創設以来、日本におけるスペイン文化普及の主要な担い手として活動を続けています。
+      </p>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        {whatWeDo.map(({ title, text }) => (
+          <div class="bg-white rounded-2xl border border-ink/5 p-6 shadow-sm">
+            <h3 class="font-semibold text-navy mb-3 text-sm leading-snug">{title}</h3>
+            <p class="text-muted text-sm leading-relaxed">{text}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
   <!-- SECCIÓN 1: ミッション -->
   <section id="mission" class="py-20 px-4 bg-canvas">
     <div class="max-w-4xl mx-auto">
@@ -176,11 +251,8 @@ const aboutPageSchema = {
   <section id="features" class="py-20 px-4 bg-canvas">
     <div class="max-w-4xl mx-auto">
       <p class="text-primary text-base font-semibold uppercase tracking-widest mb-2">HOW WE'RE DIFFERENT</p>
-      <h2 class="font-serif text-3xl font-bold text-navy mb-6">人を中心に考えるコミュニティ</h2>
-      <p class="text-muted leading-relaxed mb-12 max-w-2xl">
-        多くの語学教室やカルチャースクールとは異なり、私たちは「学ぶこと」だけを目的にしていません。スペイン語を学びながら友達を作り、料理を一緒に楽しみ、スポーツで汗を流す。人と人とのつながりを通じて、スペインをもっと身近に感じてほしい—それが私たちのアプローチです。
-      </p>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <h2 class="font-serif text-3xl font-bold text-navy mb-6">スペイン倶楽部の特徴</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
         {differentiators.map(({ title, text }) => (
           <div class="bg-white rounded-2xl border border-ink/5 p-6 shadow-sm">
             <h3 class="font-semibold text-navy mb-3 text-sm leading-snug">{title}</h3>
@@ -188,6 +260,22 @@ const aboutPageSchema = {
           </div>
         ))}
       </div>
+    </div>
+  </section>
+
+  <!-- SECCIÓN 3.5: 対象読者・参加者 -->
+  <section id="audience" class="py-20 px-4 bg-navy text-white">
+    <div class="max-w-4xl mx-auto">
+      <p class="text-primary text-base font-semibold uppercase tracking-widest mb-2">WHO WE SERVE</p>
+      <h2 class="font-serif text-3xl font-bold mb-12">対象読者・参加者</h2>
+      <ul class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        {audience.map((item) => (
+          <li class="flex items-start gap-3 text-white/80 text-sm leading-relaxed">
+            <span class="text-primary mt-1">●</span>
+            <span>{item}</span>
+          </li>
+        ))}
+      </ul>
     </div>
   </section>
 
@@ -265,6 +353,37 @@ const aboutPageSchema = {
     </div>
   </section>
 
+  <!-- SECCIÓN 6: 団体概要（key facts — legible y rastreable por IA) -->
+  <section id="key-facts" class="py-20 px-4 bg-canvas">
+    <div class="max-w-4xl mx-auto">
+      <p class="text-primary text-base font-semibold uppercase tracking-widest mb-2">KEY FACTS</p>
+      <h2 class="font-serif text-3xl font-bold text-navy mb-12">団体概要</h2>
+      <dl class="key-facts-list">
+        {keyFacts.map(({ label, value, isLink, links }) => (
+          <div class="key-facts-row">
+            <dt>{label}</dt>
+            <dd>
+              {links ? (
+                <span>
+                  {links.map((l, i) => (
+                    <>
+                      <a href={l.url} target="_blank" rel="noopener noreferrer nofollow">{l.label}</a>
+                      {i < links.length - 1 && ' / '}
+                    </>
+                  ))}
+                </span>
+              ) : isLink ? (
+                <a href={value} target="_blank" rel="noopener noreferrer">{value}</a>
+              ) : (
+                value
+              )}
+            </dd>
+          </div>
+        ))}
+      </dl>
+    </div>
+  </section>
+
   <!-- SECCIÓN: チームを知る -->
   <section style="background:#FAFAF8; padding:80px 0;">
     <div class="max-w-4xl mx-auto px-4">
@@ -319,6 +438,31 @@ const aboutPageSchema = {
           チーム全員を見る →
         </a>
       </div>
+    </div>
+  </section>
+
+  <!-- SECCIÓN: よくある質問 -->
+  <section id="faq" class="py-20 px-4" style="background-color:#f8f8f6;">
+    <div class="max-w-4xl mx-auto">
+      <p class="text-primary text-base font-semibold uppercase tracking-widest mb-2">FAQ</p>
+      <h2 class="font-serif text-3xl font-bold text-navy mb-12">よくある質問</h2>
+      <div class="faq-list">
+        {faqItems.map(({ q, a }) => (
+          <div class="faq-item">
+            <h3 class="faq-question">{q}</h3>
+            <p class="faq-answer">{a}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- SECCIÓN: コミュニティへの参加 -->
+  <section class="py-16 px-4 bg-canvas">
+    <div class="max-w-4xl mx-auto text-center">
+      <p class="text-muted leading-relaxed max-w-2xl mx-auto">
+        スペイン倶楽部は、日本とスペインの文化交流に関心を持つすべての方に開かれたコミュニティです。公式LINEにご登録いただくことで、東京での活動やコミュニティに関する最新情報を受け取ることができます。
+      </p>
     </div>
   </section>
 
@@ -495,5 +639,71 @@ const aboutPageSchema = {
     .team-mini-grid {
       grid-template-columns: 1fr;
     }
+  }
+
+  .key-facts-list {
+    display: grid;
+    gap: 0;
+    border-top: 1px solid rgba(0, 33, 71, 0.1);
+  }
+
+  .key-facts-row {
+    display: grid;
+    grid-template-columns: 180px 1fr;
+    gap: 24px;
+    padding: 16px 0;
+    border-bottom: 1px solid rgba(0, 33, 71, 0.1);
+  }
+
+  .key-facts-row dt {
+    font-weight: 700;
+    color: #002147;
+    font-size: 14px;
+  }
+
+  .key-facts-row dd {
+    margin: 0;
+    color: #6b7280;
+    font-size: 14px;
+    line-height: 1.7;
+  }
+
+  .key-facts-row dd a {
+    color: #C8102E;
+    text-decoration: underline;
+  }
+
+  @media (max-width: 640px) {
+    .key-facts-row {
+      grid-template-columns: 1fr;
+      gap: 4px;
+    }
+  }
+
+  .faq-list {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .faq-item {
+    background: white;
+    border: 1px solid rgba(0, 33, 71, 0.08);
+    border-radius: 12px;
+    padding: 20px 24px;
+  }
+
+  .faq-question {
+    font-weight: 700;
+    color: #002147;
+    font-size: 15px;
+    margin: 0 0 8px;
+  }
+
+  .faq-answer {
+    color: #6b7280;
+    font-size: 14px;
+    line-height: 1.8;
+    margin: 0;
   }
 </style>
