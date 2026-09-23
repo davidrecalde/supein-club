@@ -81,7 +81,10 @@ import { Search, X, Loader2 } from 'lucide-astro';
     height: 100%;
     display: flex;
     flex-direction: column;
-    padding: 5vh 20px 20px;
+    /* max() con env(safe-area-inset-*) evita que el panel (y el botón
+       de cerrar, en su esquina) quede pegado al notch/Dynamic Island o
+       al borde curvo de la pantalla en iOS. */
+    padding: max(5vh, env(safe-area-inset-top) + 12px) max(20px, env(safe-area-inset-right) + 8px) 20px max(20px, env(safe-area-inset-left) + 8px);
   }
 
   .search-panel-inner {
@@ -121,6 +124,9 @@ import { Search, X, Loader2 } from 'lucide-astro';
 
   .search-input {
     flex: 1;
+    min-width: 0; /* sin esto, algunos navegadores no reducen el input
+                     por debajo de su ancho intrínseco y el botón de
+                     cerrar queda empujado fuera del área visible */
     border: none;
     outline: none;
     font-size: 18px;
@@ -135,11 +141,14 @@ import { Search, X, Loader2 } from 'lucide-astro';
 
   .search-close {
     flex-shrink: 0;
+    position: relative;
+    z-index: 1;
     border: none;
     background: #f3f4f6;
     color: #6b7280;
     width: 36px;
     height: 36px;
+    min-width: 36px;
     border-radius: 50%;
     display: flex;
     align-items: center;
