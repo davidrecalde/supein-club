@@ -296,6 +296,58 @@ real — no es un plan aparte que se pueda desincronizar. Antes de crear
 cualquier URL nueva, consúltalo primero para evitar duplicar intención de
 búsqueda con algo que ya existe.
 
+### Aclaración Trofeo Zarra vs. Trofeo Zamora, y contradicción encontrada en la relectura
+
+David confundió el Trofeo Zarra (goleador español, el que gana Aspas)
+con el Trofeo Zamora (portero menos goleado) — comprensible por el
+parecido de nombres. Verificado con una tercera fuente (Wikipedia
+Trofeo Zarra + biografía de Telmo Zarra, delantero histórico del
+Athletic y la selección, nunca portero) y añadida al propio artículo
+una aclaración explícita de la diferencia entre ambos trofeos, con
+enlace cruzado al artículo del Espanyol donde se explica el Trofeo
+Zamora — para que el lector no cometa el mismo error.
+
+Al releer el artículo completo para confirmar que no había más errores
+(pedido explícito de David antes de fusionar), apareció una
+contradicción real introducida en el PR anterior: la sección de
+Zamora/Pahiño decía que la final de 1948 fue "la única final de Copa
+del Rey de la historia del club", pero la sección de Gudelj ya mencionaba
+una final de 1994, y la nueva sección de Karpin añadía una de 2001
+etiquetada "2ª vez" — en realidad son 3 finales (1948, 1994, 2001),
+todas perdidas, y el club ostenta el récord de más finales de Copa del
+Rey perdidas sin ganar ninguna. Corregido en los 3 sitios (incluida la
+FAQ, que repetía el mismo error de "única final").
+
+### Segunda verificación de los datos de Iago Aspas (celta-de-vigo.mdx)
+
+David pidió comprobar mejor la sección de Aspas y aclarar si "得点王"
+se refería al Pichichi general o al goleador español. Al cruzar varias
+fuentes para el total de partidos/goles, aparecieron cifras claramente
+contradictorias entre sí (425, 545, 571, 578, 610 partidos según la
+fuente) — síntoma de que los resúmenes automáticos de Wikipedia/fichas
+mezclan a veces solo la segunda etapa del jugador, o su carrera
+completa incluyendo Liverpool/Sevilla, con la carrera solo-Celta.
+Resuelto así:
+
+- **Aclarado explícitamente**: el trofeo que gana Aspas 4 veces
+  (2016-17, 2017-18, 2018-19, 2021-22) es el **Trofeo Zarra**
+  (máximo goleador **español**), no el Pichichi (máximo goleador de la
+  liga sin distinción de nacionalidad, que Aspas nunca ha ganado) —
+  ahora el texto lo dice de forma explícita, con las cifras exactas de
+  gol por temporada y la mención de que empata con David Villa en
+  total de Zarras.
+- **Cifra de partidos**: en vez de un número exacto que discrepaba
+  entre fuentes, se ancla en el hecho mejor verificado y con fecha
+  exacta (23 de octubre de 2025, vs. Niza en la Europa League, superó
+  el récord de Manolo de 533 partidos) y se deja claro que sigue
+  activo y el número sigue subiendo.
+- **Cifra de goles**: se suaviza a "más de 220 goles" en vez de un
+  222/223 exacto que tampoco coincidía entre fuentes.
+- **Asistencias**: eliminada la cifra de "90 asistencias" — la fuente
+  más fiable (Wikipedia ES) daba 86, otra fuente 69; ante un desacuerdo
+  de casi 20 unidades entre fuentes, mejor no afirmar un número
+  concreto que quitarlo.
+
 ### 12 imágenes y 3 nuevos jugadores históricos en celta-de-vigo.mdx
 
 A petición de David: **Vlado Gudelj** (delantero 1991-99, 113 goles
