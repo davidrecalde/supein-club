@@ -296,6 +296,30 @@ real — no es un plan aparte que se pueda desincronizar. Antes de crear
 cualquier URL nueva, consúltalo primero para evitar duplicar intención de
 búsqueda con algo que ya existe.
 
+### 12 imágenes y 3 nuevos jugadores históricos en celta-de-vigo.mdx
+
+A petición de David: **Vlado Gudelj** (delantero 1991-99, 113 goles
+totales/68 en Liga, clave en el ascenso 1991-92) como nueva sección
+propia antes de la época dorada; **Valeri Karpin** añadido junto a
+Mostovoi en la sección que antes solo hablaba de este último (ahora
+"モストボイとカルピン", con el dato verificado de que Karpin marcó los 2
+goles de la final de la Intertoto 2000 y hoy es seleccionador de
+Rusia — buen dato de cierre); **Gustavo López** (extremo argentino
+1999-2007, Mundial 2002) como sección nueva tras la de Mostovoi/Karpin.
+Datos cruzados con Wikipedia y fuentes especializadas.
+
+De paso, la foto de Balaídos aportada por David resultó ser un render
+de un proyecto de reforma real y verificable (ampliación a ~43.000
+asientos, cubierta retráctil, obra en marcha desde 2015 con fin previsto
+en 2027, ligada a una candidatura fallida de Vigo para el Mundial 2030)
+— añadido como párrafo nuevo con fuente, dejando claro en el pie de
+foto que es una imagen del proyecto, no del estadio actual.
+
+Resto de fotos (fundación 1923, evolución del escudo, inauguración de
+Balaídos 1928, Pahiño, Manolo, Iago Aspas, derbi gallego
+Mostovoi/Mauro Silva, Marián Mouriño) repartidas por las secciones ya
+existentes que hasta ahora no tenían imagen propia.
+
 ### Auditoría de 404 de Search Console: 4 arreglos reales de 17 URLs reportadas
 
 David compartió el informe de indexación de GSC (148 indexadas / 152 sin
