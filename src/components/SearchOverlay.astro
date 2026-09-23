@@ -1,0 +1,483 @@
+---
+import { Search, X, Loader2 } from 'lucide-astro';
+---
+<div id="search-overlay" class="search-overlay" hidden>
+  <div class="search-backdrop" id="search-backdrop"></div>
+  <div class="search-panel" role="dialog" aria-modal="true" aria-label="サイト内検索">
+    <div class="search-panel-inner">
+      <div class="search-input-row">
+        <Search size={22} class="search-input-icon" aria-hidden="true" />
+        <input
+          id="search-input"
+          type="text"
+          class="search-input"
+          placeholder="記事を検索（例：パエリア、DELE、久保建英）"
+          autocomplete="off"
+          spellcheck="false"
+          aria-label="検索キーワード"
+        />
+        <button id="search-close" class="search-close" aria-label="検索を閉じる" type="button">
+          <X size={22} aria-hidden="true" />
+        </button>
+      </div>
+
+      <div id="search-status" class="search-status" aria-live="polite"></div>
+
+      <div id="search-results" class="search-results"></div>
+
+      <div id="search-empty" class="search-empty">
+        <Search size={40} class="search-empty-icon" aria-hidden="true" />
+        <p>旅行・料理・語学・生活・文化・サッカーの記事をキーワードで検索できます。</p>
+      </div>
+
+      <div id="search-loading" class="search-loading" hidden>
+        <Loader2 size={28} class="search-spin" aria-hidden="true" />
+      </div>
+
+      <div id="search-noresults" class="search-noresults" hidden>
+        <p>該当する記事が見つかりませんでした。別のキーワードでお試しください。</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<template id="search-result-template">
+  <a class="search-result-card">
+    <div class="search-result-thumb">
+      <img loading="lazy" />
+    </div>
+    <div class="search-result-body">
+      <span class="search-result-pillar"></span>
+      <h3 class="search-result-title"></h3>
+      <p class="search-result-excerpt"></p>
+    </div>
+  </a>
+</template>
+
+<style>
+  .search-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 100;
+  }
+
+  .search-overlay[hidden] {
+    display: none;
+  }
+
+  .search-backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 21, 48, 0.72);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    animation: search-fade-in 200ms ease both;
+  }
+
+  .search-panel {
+    position: relative;
+    max-width: 780px;
+    margin: 0 auto;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 5vh 20px 20px;
+  }
+
+  .search-panel-inner {
+    background: #ffffff;
+    border-radius: 20px;
+    box-shadow: 0 24px 80px rgba(0, 0, 0, 0.45);
+    display: flex;
+    flex-direction: column;
+    max-height: 88vh;
+    overflow: hidden;
+    animation: search-panel-in 260ms cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+
+  @keyframes search-fade-in {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  @keyframes search-panel-in {
+    from { opacity: 0; transform: translateY(-16px) scale(0.98); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
+  }
+
+  .search-input-row {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 20px 24px;
+    border-bottom: 1px solid #eee;
+    flex-shrink: 0;
+  }
+
+  .search-input-icon {
+    color: #C8102E;
+    flex-shrink: 0;
+  }
+
+  .search-input {
+    flex: 1;
+    border: none;
+    outline: none;
+    font-size: 18px;
+    color: #002147;
+    background: transparent;
+    font-family: inherit;
+  }
+
+  .search-input::placeholder {
+    color: #9ca3af;
+  }
+
+  .search-close {
+    flex-shrink: 0;
+    border: none;
+    background: #f3f4f6;
+    color: #6b7280;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background 150ms, color 150ms;
+  }
+
+  .search-close:hover {
+    background: #002147;
+    color: white;
+  }
+
+  .search-status {
+    padding: 0 24px;
+    font-size: 12px;
+    color: #9ca3af;
+  }
+
+  .search-status:not(:empty) {
+    padding-top: 12px;
+  }
+
+  .search-results {
+    overflow-y: auto;
+    padding: 12px 24px 24px;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  @media (min-width: 560px) {
+    .search-results {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  .search-result-card {
+    display: flex;
+    gap: 14px;
+    text-decoration: none;
+    padding: 10px;
+    border-radius: 14px;
+    border: 1px solid transparent;
+    transition: background 150ms, border-color 150ms, transform 150ms;
+    animation: search-card-in 320ms cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+
+  .search-result-card:hover {
+    background: #FAFAF8;
+    border-color: rgba(200, 16, 46, 0.15);
+    transform: translateY(-2px);
+  }
+
+  @keyframes search-card-in {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .search-result-thumb {
+    flex-shrink: 0;
+    width: 84px;
+    height: 84px;
+    border-radius: 10px;
+    overflow: hidden;
+    background: #002147;
+  }
+
+  .search-result-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 300ms ease;
+  }
+
+  .search-result-card:hover .search-result-thumb img {
+    transform: scale(1.08);
+  }
+
+  .search-result-body {
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .search-result-pillar {
+    display: inline-block;
+    width: fit-content;
+    font-size: 10px;
+    font-weight: 700;
+    color: #C8102E;
+    background: #FCEBEE;
+    padding: 2px 8px;
+    border-radius: 999px;
+  }
+
+  .search-result-title {
+    font-size: 14px;
+    font-weight: 700;
+    color: #002147;
+    margin: 0;
+    line-height: 1.4;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .search-result-excerpt {
+    font-size: 12px;
+    color: #6b7280;
+    line-height: 1.6;
+    margin: 0;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .search-result-excerpt :global(mark) {
+    background: rgba(200, 16, 46, 0.15);
+    color: #C8102E;
+    font-weight: 700;
+    border-radius: 2px;
+  }
+
+  .search-empty,
+  .search-loading,
+  .search-noresults {
+    padding: 48px 24px 56px;
+    text-align: center;
+    color: #9ca3af;
+  }
+
+  .search-empty {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .search-empty-icon {
+    color: #e5e7eb;
+  }
+
+  .search-empty p,
+  .search-noresults p {
+    font-size: 13px;
+    max-width: 320px;
+    margin: 0 auto;
+    line-height: 1.7;
+  }
+
+  .search-loading {
+    display: flex;
+    justify-content: center;
+  }
+
+  .search-spin {
+    color: #C8102E;
+    animation: search-spin 800ms linear infinite;
+  }
+
+  @keyframes search-spin {
+    to { transform: rotate(360deg); }
+  }
+
+  body.search-open {
+    overflow: hidden;
+  }
+</style>
+
+<script is:inline>
+  // is:inline a propósito: contiene un import() dinámico a /pagefind/pagefind.js,
+  // un archivo que solo existe tras el build (lo genera la CLI de `pagefind`
+  // después de `astro build`). Si Astro/Vite procesara este script intentaría
+  // resolver esa ruta en tiempo de build y fallaría — is:inline lo deja intacto.
+  (function () {
+    var pagefind = null;
+    var searchSeq = 0;
+    var debounceTimer;
+
+    function ensurePagefind() {
+      if (pagefind) return Promise.resolve(pagefind);
+      return import('/pagefind/pagefind.js').then(function (mod) {
+        pagefind = mod;
+        return pagefind.init().then(function () { return pagefind; });
+      });
+    }
+
+    function openOverlay() {
+      var overlay = document.getElementById('search-overlay');
+      var input = document.getElementById('search-input');
+      if (!overlay) return;
+      overlay.hidden = false;
+      document.body.classList.add('search-open');
+      if (input) input.focus();
+    }
+
+    function closeOverlay() {
+      var overlay = document.getElementById('search-overlay');
+      if (!overlay) return;
+      overlay.hidden = true;
+      document.body.classList.remove('search-open');
+    }
+
+    function setState(state) {
+      var map = {
+        empty: 'search-empty',
+        loading: 'search-loading',
+        results: 'search-results',
+        noresults: 'search-noresults',
+      };
+      Object.keys(map).forEach(function (key) {
+        var el = document.getElementById(map[key]);
+        if (el) el.hidden = key !== state;
+      });
+    }
+
+    function renderResults(results) {
+      var container = document.getElementById('search-results');
+      var template = document.getElementById('search-result-template');
+      var status = document.getElementById('search-status');
+      if (!container || !template) return;
+      container.innerHTML = '';
+
+      if (results.length === 0) {
+        setState('noresults');
+        if (status) status.textContent = '';
+        return;
+      }
+
+      setState('results');
+      if (status) status.textContent = results.length + '件の記事が見つかりました';
+
+      results.forEach(function (r, i) {
+        var node = template.content.cloneNode(true);
+        var card = node.querySelector('.search-result-card');
+        var img = node.querySelector('img');
+        var pillar = node.querySelector('.search-result-pillar');
+        var title = node.querySelector('.search-result-title');
+        var excerpt = node.querySelector('.search-result-excerpt');
+
+        card.href = r.url;
+        card.style.animationDelay = (Math.min(i, 10) * 35) + 'ms';
+
+        if (r.meta && r.meta.image) {
+          img.src = r.meta.image;
+          img.alt = r.meta.image_alt || '';
+        } else {
+          img.remove();
+        }
+
+        if (r.meta && r.meta.pillar) {
+          pillar.textContent = r.meta.pillar;
+        } else {
+          pillar.remove();
+        }
+
+        title.textContent = (r.meta && r.meta.title) || '';
+        excerpt.innerHTML = r.excerpt;
+
+        container.appendChild(node);
+      });
+    }
+
+    function runSearch(query) {
+      var trimmed = query.trim();
+      if (!trimmed) {
+        setState('empty');
+        var status = document.getElementById('search-status');
+        if (status) status.textContent = '';
+        return;
+      }
+
+      setState('loading');
+      var seq = ++searchSeq;
+
+      ensurePagefind().then(function (pf) {
+        return pf.search(trimmed);
+      }).then(function (search) {
+        if (seq !== searchSeq) return null;
+        return Promise.all(search.results.slice(0, 20).map(function (r) { return r.data(); }));
+      }).then(function (results) {
+        if (seq !== searchSeq || results === null) return;
+        renderResults(results);
+      }).catch(function (err) {
+        if (seq !== searchSeq) return;
+        console.error('[search] pagefind error', err);
+        setState('noresults');
+      });
+    }
+
+    function initSearch() {
+      var triggers = document.querySelectorAll('[data-search-trigger]');
+      var overlay = document.getElementById('search-overlay');
+      var backdrop = document.getElementById('search-backdrop');
+      var closeBtn = document.getElementById('search-close');
+      var input = document.getElementById('search-input');
+
+      triggers.forEach(function (btn) { btn.addEventListener('click', openOverlay); });
+      if (backdrop) backdrop.addEventListener('click', closeOverlay);
+      if (closeBtn) closeBtn.addEventListener('click', closeOverlay);
+
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && overlay && !overlay.hidden) closeOverlay();
+        var tag = document.activeElement && document.activeElement.tagName;
+        if ((e.key === '/' || (e.metaKey && e.key === 'k') || (e.ctrlKey && e.key === 'k')) &&
+            tag !== 'INPUT' && tag !== 'TEXTAREA') {
+          e.preventDefault();
+          openOverlay();
+        }
+      });
+
+      if (input) {
+        input.addEventListener('input', function () {
+          clearTimeout(debounceTimer);
+          var value = input.value;
+          debounceTimer = setTimeout(function () { runSearch(value); }, 180);
+        });
+      }
+
+      // Deep-link: soporta el SearchAction del JSON-LD (?s=término) en cualquier página.
+      var params = new URLSearchParams(location.search);
+      var initialQuery = params.get('s');
+      if (initialQuery && input) {
+        input.value = initialQuery;
+        openOverlay();
+        runSearch(initialQuery);
+      }
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initSearch);
+    } else {
+      initSearch();
+    }
+  })();
+</script>

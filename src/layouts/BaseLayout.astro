@@ -2,6 +2,7 @@
 import '../styles/global.css';
 import Navigation from '../components/Navigation.astro';
 import Footer from '../components/Footer.astro';
+import SearchOverlay from '../components/SearchOverlay.astro';
 
 interface Props {
   title?: string;
@@ -61,12 +62,13 @@ const { title = 'supein.club', lang = 'ja' } = Astro.props;
     <slot name="header">
       <Navigation />
     </slot>
-    <main id="main-content" class="flex-1">
+    <main id="main-content" class="flex-1" data-pagefind-body>
       <slot />
     </main>
     <slot name="footer">
       <Footer />
     </slot>
+    <SearchOverlay />
     <!-- Metricool tracking pixel: nunca loading="lazy" aquí — al ser
          display:none no tiene caja en el layout, así que el navegador
          nunca la considera "cerca del viewport" y la petición no llega

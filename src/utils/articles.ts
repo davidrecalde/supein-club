@@ -1,7 +1,7 @@
 import type { CollectionEntry } from 'astro:content';
 import { slugToJa } from '../config/breadcrumbs';
 
-const pillarLabels: Record<string, string> = {
+export const pillarLabels: Record<string, string> = {
   travel: 'スペイン旅行',
   food: 'スペイン料理',
   language: 'スペイン語',
