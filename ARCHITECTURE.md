@@ -296,6 +296,43 @@ real — no es un plan aparte que se pueda desincronizar. Antes de crear
 cualquier URL nueva, consúltalo primero para evitar duplicar intención de
 búsqueda con algo que ya existe.
 
+### Buscador en móvil: icono agrupado con el menú + refuerzo del botón de cerrar
+
+David reportó dos problemas en móvil: (1) el icono de búsqueda quedaba
+lejos del hamburger, casi centrado en el header; (2) al abrir el
+buscador, no aparecía el botón de cerrar (X) arriba a la derecha como
+en escritorio.
+
+- **(1) Confirmado y corregido**: `<nav>` es un flex container con
+  `justify-between`; el trigger de búsqueda (móvil) y el hamburger eran
+  dos hijos directos SEPARADOS, así que `justify-between` repartía el
+  espacio sobrante entre los 3 elementos visibles (logo, lupa,
+  hamburger) en vez de agrupar lupa+hamburger a la derecha. Solución:
+  envolver ambos en un único `<div class="lg:hidden flex items-center">`
+  para que `justify-between` los trate como un solo bloque. Verificado
+  con Playwright: antes x=211 (lupa) vs. x=334 (hamburger, hueco de
+  ~90px); después x=298 vs. x=334 (contiguos).
+- **(2) No reproducido pese a probarlo en Chromium y en el motor WebKit
+  de Playwright (más cercano a Safari real) a 390px de ancho — en
+  ambos el botón de cerrar aparecía visible y en su sitio**. Es posible
+  que sea un problema específico de Safari en un iPhone real (barra de
+  URL dinámica, notch/Dynamic Island) que estas herramientas no
+  replican exactamente, o un caché de despliegue anterior. Aplicado de
+  todos modos un refuerzo defensivo en `SearchOverlay.astro` sin
+  esperar a confirmarlo: `min-width: 0` en `.search-input` (bug de
+  flexbox real y conocido — sin esto, algunos navegadores no encogen
+  un `<input>` por debajo de su ancho intrínseco, lo que podría empujar
+  el botón de cerrar fuera del área visible en pantallas estrechas),
+  `z-index`/`min-width` explícitos en `.search-close`, y `padding` del
+  panel con `max(..., env(safe-area-inset-*) + ...)` para evitar
+  colisión con el notch (sin efecto real todavía: el `<meta
+  name="viewport">` de `BaseLayout.astro` no incluye
+  `viewport-fit=cover`, así que `env()` resuelve a 0px hoy — añadirlo
+  es un cambio de mayor alcance, afecta a todo el sitio, no solo al
+  buscador, así que se deja fuera de este fix a la espera de que David
+  lo pida explícitamente si el problema persiste). Pendiente de que
+  David confirme en su dispositivo real tras el despliegue.
+
 ### Buscador: foto de autor en fichas de equipo + recorte correcto de miniaturas
 
 David detectó que en `/about-us/team/[slug]/` (ej. Raquel Simancas) la

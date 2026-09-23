@@ -70,28 +70,31 @@ const pathname = Astro.url.pathname;
       友だち追加
     </a>
 
-    <!-- Search trigger (mobile) -->
-    <button
-      type="button"
-      data-search-trigger
-      class="lg:hidden flex items-center justify-center w-9 h-9 text-white"
-      aria-label="サイト内検索を開く"
-    >
-      <Search size={20} aria-hidden="true" />
-    </button>
+    <!-- Search trigger + hamburger (mobile) — agrupados para que
+         justify-between del <nav> no los separe (antes quedaban con un
+         hueco grande entre ellos, con la lupa casi centrada). -->
+    <div class="lg:hidden flex items-center">
+      <button
+        type="button"
+        data-search-trigger
+        class="flex items-center justify-center w-9 h-9 text-white"
+        aria-label="サイト内検索を開く"
+      >
+        <Search size={20} aria-hidden="true" />
+      </button>
 
-    <!-- Hamburger (mobile) -->
-    <button
-      id="nav-toggle"
-      class="lg:hidden flex flex-col justify-center gap-[5px] p-2 text-white"
-      aria-label="メニューを開く"
-      aria-expanded="false"
-      aria-controls="nav-menu"
-    >
-      <span class="block w-5 h-0.5 bg-current"></span>
-      <span class="block w-5 h-0.5 bg-current"></span>
-      <span class="block w-5 h-0.5 bg-current"></span>
-    </button>
+      <button
+        id="nav-toggle"
+        class="flex flex-col justify-center gap-[5px] p-2 text-white"
+        aria-label="メニューを開く"
+        aria-expanded="false"
+        aria-controls="nav-menu"
+      >
+        <span class="block w-5 h-0.5 bg-current"></span>
+        <span class="block w-5 h-0.5 bg-current"></span>
+        <span class="block w-5 h-0.5 bg-current"></span>
+      </button>
+    </div>
   </nav>
 
   <!-- Mobile menu -->
