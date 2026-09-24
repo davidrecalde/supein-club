@@ -343,6 +343,32 @@ esa página usa `BaseLayout` directamente (nunca pasa por
 sí tienen los artículos. Añadido a la foto de perfil en
 `src/pages/about-us/team/[slug].astro`.
 
+### Buscador: peso extra para el artículo pilar de cada cluster/subtema
+
+David preguntó por qué, al buscar "Dele", el orden de resultados no
+priorizaba el artículo principal (`.../learn-spanish/dele/`) sobre los
+sub-artículos long-tail (`dele-b1-tips`, `dele-difficulty-guide`, etc.) —
+Pagefind rankea solo por relevancia textual (frecuencia/densidad del
+término, con más peso por defecto en encabezados que en párrafos), sin
+noción de "qué página es más importante para el tema".
+
+Solución: atributo `data-pagefind-weight="2"` en el `<h1>` de
+`ArticleLayout.astro` cuando el artículo es el "pilar" de su propia
+carpeta — detectado con el nuevo helper `isPillarArticle()` en
+`src/utils/articles.ts` (archivo `index.mdx`, o archivo cuyo nombre
+coincide con el de su carpeta contenedora, ej.
+`fcbarcelona/fcbarcelona.mdx`). Este helper es deliberadamente distinto
+de `isFlagshipArticle()` (que ya existía, ahora extraído de
+`getArticleBreadcrumbs` sin cambiar su comportamiento): `isFlagshipArticle`
+solo detecta el pilar de un cluster completo (URL colapsa a
+`/pillar/cluster/`), mientras que `isPillarArticle` también cubre
+pilares de subtemas dentro de un cluster (ej. `learn-spanish/dele/index.mdx`,
+que NO colapsa a `/language/learn-spanish/` porque el cluster es
+`learn-spanish`, no `dele` — su URL real es
+`/language/learn-spanish/dele/`). Verificado tras build que el atributo
+aparece solo en los `index.mdx`/artículos-carpeta y no en sus
+sub-artículos (`dele/a1`, `dele-b1-tips`, etc.).
+
 De paso, pedido explícito de mostrar "la parte más descriptiva y útil"
 de las imágenes hero en las miniaturas: añadido un
 `data-pagefind-meta="image_position:..."` en `ArticleLayout.astro`

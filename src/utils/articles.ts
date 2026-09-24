@@ -35,6 +35,34 @@ export function getArticleUrl(entry: CollectionEntry<'articles'>): string {
 }
 
 /**
+ * Un artículo es "insignia" (flagship) cuando su URL colapsa a /pillar/cluster/
+ * — ver getArticleUrl. Se usa tanto para el breadcrumb como para dar más
+ * peso en Pagefind al artículo principal de cada cluster frente a sus
+ * sub-artículos long-tail.
+ */
+export function isFlagshipArticle(entry: CollectionEntry<'articles'>): boolean {
+  const { pillar, cluster } = entry.data;
+  return getArticleUrl(entry) === `/${pillar}/${cluster}/`;
+}
+
+/**
+ * Un artículo es "pilar" de su propia carpeta cuando es el índice de ese
+ * nivel — bien porque su archivo se llama index.mdx/md, bien porque su
+ * nombre coincide con el de la carpeta que lo contiene (ej.
+ * football/fcbarcelona/fcbarcelona.mdx). Cubre tanto el pilar de un
+ * cluster completo (learn-spanish/index.mdx) como el pilar de un subtema
+ * dentro de un cluster (learn-spanish/dele/index.mdx) — a diferencia de
+ * isFlagshipArticle, que solo detecta el primer caso. Se usa para dar más
+ * peso en Pagefind a estas páginas frente a sus sub-artículos long-tail.
+ */
+export function isPillarArticle(entry: CollectionEntry<'articles'>): boolean {
+  const parts = entry.id.replace(/\.(md|mdx)$/, '').split('/');
+  const basename = parts[parts.length - 1];
+  const parentDir = parts.length >= 2 ? parts[parts.length - 2] : undefined;
+  return basename === 'index' || basename === parentDir;
+}
+
+/**
  * Única fuente de verdad para el breadcrumb de un artículo — usado tanto
  * para el <Breadcrumb> visual como para el BreadcrumbList JSON-LD, para
  * que nunca se desincronicen entre sí. Siempre termina en el propio
@@ -47,7 +75,7 @@ export function getArticleBreadcrumbs(entry: CollectionEntry<'articles'>): Array
   const canonical = `https://supein.club${articleUrl}`;
   const pillarLabel = pillarLabels[pillar] ?? pillar;
   const clusterUrl = `/${pillar}/${cluster}/`;
-  const isFlagship = articleUrl === clusterUrl;
+  const isFlagship = isFlagshipArticle(entry);
 
   return isFlagship
     ? [
