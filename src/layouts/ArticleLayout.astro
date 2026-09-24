@@ -23,7 +23,7 @@ import NewsletterForm from '../components/NewsletterForm.astro';
 import ArticleDisclaimer from '../components/ArticleDisclaimer.astro';
 import FloatingActions from '../components/FloatingActions.astro';
 import RegionBadge from '../components/RegionBadge.astro';
-import { getArticleUrl, getArticleBreadcrumbs, pillarLabels } from '../utils/articles';
+import { getArticleUrl, getArticleBreadcrumbs, isPillarArticle, pillarLabels } from '../utils/articles';
 
 interface Props {
   entry: CollectionEntry<'articles'>;
@@ -37,6 +37,10 @@ const isLearnSpanishHero = pillar === 'language' && cluster === 'learn-spanish';
 // (sobre el césped) — mismo criterio que ArticleCard.astro.
 const bottomCrestClusters = ['real-sociedad', 'espanyol'];
 const isBottomCrestHero = pillar === 'football' && bottomCrestClusters.includes(cluster ?? '');
+// El artículo insignia de cada cluster gana peso en Pagefind frente a sus
+// sub-artículos long-tail, para que búsquedas genéricas ("Dele") prioricen
+// la página principal del tema en lugar de un sub-artículo específico.
+const pagefindTitleWeight = isPillarArticle(entry) ? 2 : null;
 
 const { Content, headings } = await entry.render();
 
@@ -100,7 +104,7 @@ const authorUrlForMeta = `https://supein.club/about-us/team/${authorSlug}/`;
 
       <StepIndicator />
 
-      <h1 style="font-family:'Noto Serif JP',serif;font-size:clamp(24px,4vw,40px);font-weight:700;color:white;margin:20px 0 24px;line-height:1.35;max-width:820px;">
+      <h1 style="font-family:'Noto Serif JP',serif;font-size:clamp(24px,4vw,40px);font-weight:700;color:white;margin:20px 0 24px;line-height:1.35;max-width:820px;" data-pagefind-weight={pagefindTitleWeight}>
         {displayH1}
       </h1>
 
