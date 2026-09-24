@@ -65,6 +65,12 @@ const localBusinessSchema = JSON.stringify({
   />
   <script type="application/ld+json" slot="head" set:html={localBusinessSchema} />
 
+  <!-- Sin imagen hero propia: evita que Pagefind auto-detecte una imagen
+       ajena a la página (ej. el logo del footer) y use siempre el icono
+       del favicon como miniatura en el buscador. -->
+  <span data-pagefind-meta="image:/favicon-192.png" hidden></span>
+  <span data-pagefind-meta="image_alt:スペイン倶楽部" hidden></span>
+
   <HeroProvince
     provinceJa={entry.data.provinceJa}
     region={entry.data.region}
