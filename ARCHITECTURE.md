@@ -369,6 +369,44 @@ que NO colapsa a `/language/learn-spanish/` porque el cluster es
 aparece solo en los `index.mdx`/artículos-carpeta y no en sus
 sub-artículos (`dele/a1`, `dele-b1-tips`, etc.).
 
+### Buscador: miniaturas cuadradas — favicon en vez de logo cortado o foto de autor
+
+David reportó dos problemas de thumbnail en el buscador: (1) algunas
+tarjetas mostraban el logo del sitio recortado de forma incompleta
+(solo el círculo rojo, sin el resto del isotipo); (2) varios artículos
+mostraban su propia cara (foto de autor) en la miniatura, algo que no
+quería repetir en tantos resultados.
+
+Causa raíz (misma para ambos síntomas): cuando una página no declara su
+propio `data-pagefind-meta="image..."` (artículos sin `heroImage`, y
+todas las páginas de `/food/spain-map/{provincia}/`, que nunca tuvieron
+esta metadata), Pagefind auto-detecta la primera imagen "razonable" de
+**toda la página**, no solo del contenido indexado — en la práctica
+elegía el logo de `Footer.astro` (`/logo-footer.png`, fuera de
+`data-pagefind-body`) o el avatar de `AuthorBox.astro`, según cuál
+apareciera primero en el DOM de cada página. El logo del footer, al no
+ser cuadrado, se recortaba mal (`object-fit: cover` en la miniatura de
+84×84 solo dejaba ver el círculo rojo central).
+
+Solución: declarar explícitamente `data-pagefind-meta="image:/favicon-192.png"`
++ `image_alt:スペイン倶楽部` (ya cuadrado, encaja perfecto en 84×84) como
+fallback:
+- En `ArticleLayout.astro`, solo cuando `!heroImage` (los artículos con
+  imagen propia no se tocan — probado que su `image[src]` real sigue
+  ganando).
+- En `ProvinceGuideLayout.astro`, siempre (esta colección nunca tuvo
+  concepto de hero image).
+
+Nota técnica descartada: se probó primero un fallback único a nivel de
+`BaseLayout.astro` (`<main data-pagefind-body data-pagefind-meta="image:...">`),
+pero Pagefind usa la PRIMERA declaración de una misma clave de meta que
+encuentra en el DOM — al estar `<main>` antes que el `<Image>` real del
+artículo en el árbol, el fallback global se comía también las imágenes
+hero reales. Por eso el fallback va condicionado por layout, nunca a
+nivel global. Verificado con Playwright contra un servidor local con la
+CSP real (`csp_server.py`) que las miniaturas se ven correctamente en
+ambos casos.
+
 De paso, pedido explícito de mostrar "la parte más descriptiva y útil"
 de las imágenes hero en las miniaturas: añadido un
 `data-pagefind-meta="image_position:..."` en `ArticleLayout.astro`
