@@ -30,6 +30,7 @@ interface Props {
   date?: string;
   location?: string;
   tocHeading?: boolean;
+  itemType?: string | string[];
 }
 
 const {
@@ -37,7 +38,11 @@ const {
   title = "人気観光スポット ランキング",
   date = "",
   location = "",
-  tocHeading = true
+  tocHeading = true,
+  // 観光スポット向けのデフォルト。学校・教室など、Googleが
+  // レビューリッチリザルトの対象と認めないタイプ（例: TouristAttraction）
+  // をランキング対象にする場合は、LocalBusiness系のitemTypeを渡すこと。
+  itemType = "TouristAttraction"
 } = Astro.props;
 
 function criColor(score: number): string {
@@ -303,7 +308,7 @@ const widgetId = `cre-${Math.random().toString(36).slice(2, 8)}`;
     "@type": "ListItem",
     "position": item.position,
     "item": {
-      "@type": "TouristAttraction",
+      "@type": itemType,
       "name": item.nameJa,
       "url": item.url,
       "description": item.description,

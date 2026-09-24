@@ -46,6 +46,7 @@ interface CREItem {
 }
 interface Props {
   items: CREItem[]; title?: string; date?: string; location?: string; tocHeading?: boolean;
+  itemType?: string | string[];  // default: "TouristAttraction"
 }
 ```
 
@@ -55,11 +56,22 @@ Mapeo desde un export CRE crudo: `dimensions.perfilGMB`/GMB → `perfil_gmb`
 `nameJa` se redacta (no viene en el export); `criLevel` se deriva de
 `criScore` — verificar umbrales reales antes de asumir "高"/"中"/"低".
 
+`itemType`: define el `@type` del JSON-LD de cada item en el ranking.
+Por defecto `"TouristAttraction"` (rankings de turismo: spots, tours). Para
+rankings de negocios/centros (ej. academias de idiomas) usar
+`itemType={["LocalBusiness", "EducationalOrganization"]}` — Google no
+valida Review/AggregateRating sobre `TouristAttraction` (error "Invalid
+object type for field parent_node" en Rich Results), así que cualquier
+ranking que no sean spots turísticos debe pasar un `itemType` de tipo
+LocalBusiness o no tendrá opción a rich results de reseñas.
+
 Datos siempre inline en `items` (sin archivo externo). Cada `<CRECard>`
 inyecta su propio JSON-LD, fuera del `@graph` central del artículo. Un
 artículo puede tener varias invocaciones (una por ciudad/sección). Ya en uso
-en `spain-tour-1week.mdx` y `tokyo-spanish-schools.mdx` — consultarlos como
-ejemplo real de invocación si hace falta.
+en `spain-tour-1week.mdx` (turismo, itemType por defecto) y en las 5 páginas
+de academias de español — tokyo/yokohama/osaka/kyoto-spanish-schools.mdx y
+spanish-schools-in-japan.mdx (negocios, itemType LocalBusiness) —
+consultarlos como ejemplo real de invocación si hace falta.
 
 ## Verificar un despliegue después de fusionar
 
