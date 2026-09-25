@@ -1,0 +1,51 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import SEO from '../../../components/SEO.astro';
+import ArticleCard from '../../../components/ArticleCard.astro';
+import Breadcrumb from '../../../components/Breadcrumb.astro';
+import LineBanner from '../../../components/LineBanner.astro';
+import { getArticleUrl } from '../../../utils/articles';
+
+const articles = await getCollection('articles', ({ data }) => !data.draft && data.pillar === 'food' && data.cluster === 'food-routes');
+const sorted = articles.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+
+const breadcrumbs = [
+  { name: 'ホーム', url: '/' },
+  { name: 'スペイン料理', url: '/food/' },
+  { name: 'グルメルート', url: '/food/food-routes/' },
+];
+---
+<BaseLayout>
+  <SEO slot="seo" title="地方グルメルート｜スペイン7エリアの郷土料理を巡る" description="スペインを7つのエリアに分け、それぞれの郷土料理とワイン産地を紹介する地方グルメルート。マドリード・カスティーリャ、地中海、北部バスク、ガリシア、アンダルシアなど、地域ごとの食文化を日本語で解説します。" canonical="https://supein.club/food/food-routes/" breadcrumbs={breadcrumbs} />
+  <section class="bg-navy text-white py-12 px-4">
+    <div class="max-w-4xl mx-auto">
+      <Breadcrumb items={breadcrumbs} dark />
+      <h1 class="font-serif text-3xl md:text-4xl font-bold leading-tight mt-4">地方グルメルート</h1>
+      <p class="text-white/80 text-lg mt-3 max-w-2xl">スペインを7つのエリアに分け、それぞれの郷土料理とワイン産地を紹介します。</p>
+    </div>
+  </section>
+  <section class="max-w-7xl mx-auto px-4 py-12">
+    {sorted.length > 0 ? (
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        {sorted.map((a) => (
+          <ArticleCard
+            title={a.data.title}
+            description={a.data.description}
+            href={getArticleUrl(a)}
+            pillar="food"
+            cluster={a.data.cluster}
+            image={a.data.image}
+            imageAlt={a.data.imageAlt}
+            heroImage={a.data.heroImage?.src}
+            heroImageAlt={a.data.heroImageAlt}
+            pubDate={a.data.pubDate}
+          />
+        ))}
+      </div>
+    ) : (
+      <p class="text-muted text-center py-12">記事を準備中です。近日公開予定。</p>
+    )}
+  </section>
+  <LineBanner slim />
+</BaseLayout>
