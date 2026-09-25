@@ -4,6 +4,8 @@ description: "タコ料理で知られるガリシア地方から、白アスパ
 lead: "大西洋に面したガリシア地方は、スペイン屈指の魚介の宝庫。タコ料理からアルバリーニョワインまで、豊かな海の幸を楽しむ食文化と、隣接するナバラ地方の郷土料理を紹介します。"
 pubDate: 2026-09-08
 author: david-recalde
+heroImage: "../../../../assets/hero/hero-noroeste-marisco-albarino.webp"
+heroImageAlt: "ガリシアのリアに面した店で提供されるタコやカニなどの魚介盛り合わせとアルバリーニョワイン"
 pillar: "food"
 cluster: "food-routes"
 region: "galicia"
@@ -29,6 +31,8 @@ faq:
     answer: "ガリシア地方のリアス・バイシャスを中心に栽培される白ぶどう品種、またはそのワインです。酸味があり、魚介料理との相性のよさから、ガリシア料理には欠かせない一杯として親しまれています。"
 ---
 
+import RegionHighlightMap from '../../../../components/RegionHighlightMap.astro';
+
 ## 大西洋の恵みを味わうガリシア料理
 
 ガリシア地方は、大西洋に面した長い海岸線とリアス式海岸の入り江に恵まれ、スペイン屈指の魚介の産地として知られています。タコ、ムール貝、カメノテ（亀の手）など、多様な魚介がシンプルな調理法で提供されるのが特徴です。
@@ -48,6 +52,19 @@ faq:
 ---
 
 ## エリア別レストランマップ
+
+このグルメルートが扱うのは、地図で赤く示した5県（ガリシア州4県＋ナバラ）です。クリックすると各県のレストラン・バルマップへ移動します。
+
+<RegionHighlightMap
+  provinces={[
+    { code: "ES-C", slug: "la-coruna", label: "ア・コルーニャ" },
+    { code: "ES-LU", slug: "lugo", label: "ルーゴ" },
+    { code: "ES-OR", slug: "orense", label: "オウレンセ" },
+    { code: "ES-PO", slug: "pontevedra", label: "ポンテベドラ" },
+    { code: "ES-NA", slug: "navarra", label: "ナバラ" },
+  ]}
+  caption="赤く示した5県がこのグルメルートの対象エリア（ガリシア州＋ナバラ）"
+/>
 
 各県のレストラン・バルマップと基本情報は、それぞれの詳細ページからご覧いただけます。
 
