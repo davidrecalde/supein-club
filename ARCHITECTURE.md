@@ -934,3 +934,26 @@ club que no se pueden derivar del código): `logo`/`sameAs`/`address`
 propios de cada `SportsTeam` (ej. escudo oficial y redes sociales del
 Villarreal, del Sevilla, etc.) — el nodo `SportsTeam` de cada club solo
 lleva los datos que ya existían en el frontmatter.
+
+### Breadcrumb en inglés + nuevo componente `<RegionHighlightMap>`
+
+David detectó que el breadcrumb de `centro-asado-vino-tinto.mdx` (cluster
+`food-routes`) mostraba "Food Routes" en inglés en vez de japonés —
+causa: `food-routes` no estaba en el mapa `slugToJapanese` de
+`src/config/breadcrumbs.ts`, así que `slugToJa()` caía al fallback que
+capitaliza el slug tal cual. Afecta a los 7 artículos del cluster, no
+solo a este. Añadida la entrada `'food-routes': 'グルメルート'`.
+
+También pidió un mapa de España que resaltara solo las provincias que
+trata el artículo (Madrid + las 9 de Castilla y León), sin el color por
+comunidad autónoma de `/food/spain-map/`. Nuevo componente
+`src/components/RegionHighlightMap.astro`: reutiliza el mismo
+`public/spain-provinces.svg` y el mismo recorte de viewBox que
+`SpainMapSVG.astro`, pero en vez de colorear por comunidad (paleta de
+`spainCommunities.ts` + leyenda), recibe una prop `provinces` (lista de
+`{code, slug, label}`) y solo pinta esas provincias en rojo corporativo
+(`#C8102E`) sobre gris — sin leyenda, con tooltip simple y clic para ir
+a la guía de esa provincia en `/food/spain-map/{slug}/`. Pensado para
+reutilizarse en el resto de artículos de `food-routes` (cada uno cubre
+un grupo de provincias distinto) sin duplicar la lógica de recorte del
+SVG.

@@ -25,6 +25,7 @@ export const slugToJapanese: Record<string, string> = {
   'best-season': '旅行シーズン',
 
   // Food clusters
+  'food-routes': 'グルメルート',
   'paella': 'パエリア',
   'tapas': 'タパス',
   'spanish-wine': 'スペインワイン',
