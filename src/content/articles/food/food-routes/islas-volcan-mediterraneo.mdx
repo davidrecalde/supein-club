@@ -4,6 +4,8 @@ description: "火山の大地が育んだカナリア諸島のしわしわポテ
 lead: "大西洋のカナリア諸島と地中海のバレアレス諸島。本土から離れた2つの島嶼地域は、それぞれ独自の食文化を育んできました。火山の恵みと地中海の恵み、対照的な島々の味覚を紹介します。"
 pubDate: 2026-09-08
 author: david-recalde
+heroImage: "../../../../assets/hero/hero-islas-volcan-mediterraneo.webp"
+heroImageAlt: "テネリフェ島の断崖を望むテラスに並ぶパパス・アルガダスとチーズ、赤ワイン"
 pillar: "food"
 cluster: "food-routes"
 intent: "informational"
@@ -28,6 +30,8 @@ faq:
     answer: "パプリカで赤く色づけした、なめらかな食感が特徴のバレアレス諸島（主にマヨルカ島）特産の生ソーセージです。パンに塗って食べるのが一般的な楽しみ方です。"
 ---
 
+import RegionHighlightMap from '../../../../components/RegionHighlightMap.astro';
+
 ## 火山の大地が育んだカナリア諸島の食文化
 
 大西洋に浮かぶカナリア諸島は、火山活動によって形成された土壌と、年間を通じて温暖な気候に恵まれています。代表的な郷土料理が「パパス・アルガダス」。皮つきの小さなじゃがいもを塩水でゆで、表面が白く「しわしわ」になるまで水分を飛ばしたシンプルな一皿で、唐辛子ベースの辛いソース「モホ・ピコン」をつけて食べるのが定番です。
@@ -47,6 +51,17 @@ faq:
 ---
 
 ## エリア別レストランマップ
+
+このグルメルートが扱うのは、地図で赤く示した3県（カナリア諸島2県＋バレアレス諸島1県）です。クリックすると各県のレストラン・バルマップへ移動します。
+
+<RegionHighlightMap
+  provinces={[
+    { code: "ES-GC", slug: "las-palmas", label: "ラス・パルマス" },
+    { code: "ES-TF", slug: "santa-cruz-de-tenerife", label: "テネリフェ" },
+    { code: "ES-PM", slug: "islas-baleares", label: "バレアレス諸島" },
+  ]}
+  caption="赤く示した3県がこのグルメルートの対象エリア（カナリア諸島＋バレアレス諸島）"
+/>
 
 各県のレストラン・バルマップと基本情報は、それぞれの詳細ページからご覧いただけます。
 
