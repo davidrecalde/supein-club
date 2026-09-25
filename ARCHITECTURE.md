@@ -973,3 +973,27 @@ otros clusters multi-artículo sin insignia (ej.
 por cluster. Añadida `src/pages/food/food-routes/index.astro` siguiendo
 ese mismo patrón: lista los 7 artículos vía `getCollection` +
 `ArticleCard`, con su propio SEO/breadcrumb.
+
+### Identidad visual de las 7 zonas de food-routes en cada artículo
+
+David pidió reutilizar en los propios artículos de `food-routes` el
+color+icono que ya identifica a cada una de las "7 zonas" en
+`/food/spain-map/index.astro` (array `zones`, ej. 北部 `#2D6A4F` +
+`Waves`), para que el lector reconozca la misma zona al pasar de la
+vista general al artículo.
+
+- `RegionHighlightMap.astro`: nuevo prop opcional `color` (por defecto
+  `#C8102E`, sin cambio de comportamiento en artículos que no lo pasan).
+  Se propaga como variable CSS `--zone-color` en el `<div>` contenedor
+  (no se puede interpolar directamente dentro de un `<style is:global>`
+  de Astro) y el CSS global de relleno de provincias resaltadas usa
+  `var(--zone-color, #C8102E)`.
+- Nuevo componente `FoodRouteZoneBadge.astro`: insignia con icono lucide
+  + color + texto, mismo patrón visual que las tarjetas de zona de
+  `/food/spain-map/`. Colocado justo después del import, antes del
+  primer `##`, en los 7 artículos de `food-routes`.
+- Los 7 `<RegionHighlightMap>` ahora reciben el `color` de su zona
+  correspondiente (mismo valor hexadecimal que en `spain-map`).
+- El texto "地図で赤く示した..." / caption "赤く示した...県が..." se
+  cambió a "色付けした" en los 7 artículos, ya que tras este cambio el
+  color del mapa ya no es siempre rojo.

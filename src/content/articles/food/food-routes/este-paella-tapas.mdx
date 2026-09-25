@@ -32,6 +32,10 @@ faq:
 ---
 
 import RegionHighlightMap from '../../../../components/RegionHighlightMap.astro';
+import FoodRouteZoneBadge from '../../../../components/FoodRouteZoneBadge.astro';
+import { Sun } from 'lucide-astro';
+
+<FoodRouteZoneBadge icon={Sun} color="#E67E22" label="東部：地中海の食文化" />
 
 ## 稲作文化が育んだバレンシアの米料理
 
@@ -53,7 +57,7 @@ import RegionHighlightMap from '../../../../components/RegionHighlightMap.astro'
 
 ## エリア別レストランマップ
 
-このグルメルートが扱うのは、地図で赤く示した7県（バレンシア州3県＋カタルーニャ州4県）です。クリックすると各県のレストラン・バルマップへ移動します。
+このグルメルートが扱うのは、地図で色付けした7県（バレンシア州3県＋カタルーニャ州4県）です。クリックすると各県のレストラン・バルマップへ移動します。
 
 <RegionHighlightMap
   provinces={[
@@ -65,7 +69,8 @@ import RegionHighlightMap from '../../../../components/RegionHighlightMap.astro'
     { code: "ES-L", slug: "lerida", label: "リェイダ" },
     { code: "ES-T", slug: "tarragona", label: "タラゴナ" },
   ]}
-  caption="赤く示した7県がこのグルメルートの対象エリア（バレンシア州＋カタルーニャ州）"
+  caption="色付けした7県がこのグルメルートの対象エリア（バレンシア州＋カタルーニャ州）"
+  color="#E67E22"
 />
 
 各県のレストラン・バルマップと基本情報は、それぞれの詳細ページからご覧いただけます。

@@ -33,6 +33,10 @@ faq:
 ---
 
 import RegionHighlightMap from '../../../../components/RegionHighlightMap.astro';
+import FoodRouteZoneBadge from '../../../../components/FoodRouteZoneBadge.astro';
+import { Leaf } from 'lucide-astro';
+
+<FoodRouteZoneBadge icon={Leaf} color="#27AE60" label="西部：イベリコ生ハムの道" />
 
 ## デエサが育むイベリコ豚
 
@@ -50,7 +54,7 @@ import RegionHighlightMap from '../../../../components/RegionHighlightMap.astro'
 
 ## エリア別レストランマップ
 
-このグルメルートが扱うのは、地図で赤く示した3県（エストレマドゥーラ州2県＋ラ・リオハ）です。クリックすると各県のレストラン・バルマップへ移動します。
+このグルメルートが扱うのは、地図で色付けした3県（エストレマドゥーラ州2県＋ラ・リオハ）です。クリックすると各県のレストラン・バルマップへ移動します。
 
 <RegionHighlightMap
   provinces={[
@@ -58,7 +62,8 @@ import RegionHighlightMap from '../../../../components/RegionHighlightMap.astro'
     { code: "ES-CC", slug: "caceres", label: "カセレス" },
     { code: "ES-LO", slug: "la-rioja", label: "ラ・リオハ" },
   ]}
-  caption="赤く示した3県がこのグルメルートの対象エリア（エストレマドゥーラ州＋ラ・リオハ）"
+  caption="色付けした3県がこのグルメルートの対象エリア（エストレマドゥーラ州＋ラ・リオハ）"
+  color="#27AE60"
 />
 
 各県のレストラン・バルマップと基本情報は、それぞれの詳細ページからご覧いただけます。

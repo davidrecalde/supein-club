@@ -31,6 +31,10 @@ faq:
 ---
 
 import RegionHighlightMap from '../../../../components/RegionHighlightMap.astro';
+import FoodRouteZoneBadge from '../../../../components/FoodRouteZoneBadge.astro';
+import { UtensilsCrossed } from 'lucide-astro';
+
+<FoodRouteZoneBadge icon={UtensilsCrossed} color="#002147" label="中部：アサードと赤ワイン" />
 
 ## 内陸の乾燥した気候が育んだ肉料理文化
 
@@ -52,7 +56,7 @@ import RegionHighlightMap from '../../../../components/RegionHighlightMap.astro'
 
 ## エリア別レストランマップ
 
-このグルメルートが扱うのは、地図で赤く示した10県（マドリード州1県＋カスティーリャ・イ・レオン州9県）です。クリックすると各県のレストラン・バルマップへ移動します。
+このグルメルートが扱うのは、地図で色付けした10県（マドリード州1県＋カスティーリャ・イ・レオン州9県）です。クリックすると各県のレストラン・バルマップへ移動します。
 
 <RegionHighlightMap
   provinces={[
@@ -67,7 +71,8 @@ import RegionHighlightMap from '../../../../components/RegionHighlightMap.astro'
     { code: "ES-VA", slug: "valladolid", label: "バリャドリード" },
     { code: "ES-ZA", slug: "zamora", label: "サモラ" },
   ]}
-  caption="赤く示した10県がこのグルメルートの対象エリア（マドリード州＋カスティーリャ・イ・レオン州）"
+  caption="色付けした10県がこのグルメルートの対象エリア（マドリード州＋カスティーリャ・イ・レオン州）"
+  color="#002147"
 />
 
 各県のレストラン・バルマップと基本情報は、それぞれの詳細ページからご覧いただけます。

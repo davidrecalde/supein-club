@@ -1,7 +1,7 @@
 ---
-title: "ガリシア・ナバラのグルメルート｜魚介とアルバリーニョワインを巡る"
-description: "タコ料理で知られるガリシア地方から、白アスパラガスの産地ナバラまで。スペイン北西部の魚介料理とアルバリーニョワインを日本語で紹介します。"
-lead: "大西洋に面したガリシア地方は、スペイン屈指の魚介の宝庫。タコ料理からアルバリーニョワインまで、豊かな海の幸を楽しむ食文化と、隣接するナバラ地方の郷土料理を紹介します。"
+title: "ガリシアのグルメルート｜魚介とアルバリーニョワインを巡る"
+description: "タコ料理からアルバリーニョワインまで。スペイン北西部ガリシア地方の魚介料理と郷土料理を日本語で紹介します。"
+lead: "大西洋に面したガリシア地方は、スペイン屈指の魚介の宝庫。タコ料理からアルバリーニョワインまで、豊かな海の幸を楽しむ食文化を紹介します。"
 pubDate: 2026-09-08
 author: david-recalde
 heroImage: "../../../../assets/hero/hero-noroeste-marisco-albarino.webp"
@@ -17,7 +17,6 @@ lang: "ja"
 entities:
   - "ガリシア"
   - "アルバリーニョ"
-  - "ナバラ"
   - "プルポ・ア・ラ・ガジェガ"
 relatedArticles:
   - "spain-dining-times"
@@ -32,6 +31,10 @@ faq:
 ---
 
 import RegionHighlightMap from '../../../../components/RegionHighlightMap.astro';
+import FoodRouteZoneBadge from '../../../../components/FoodRouteZoneBadge.astro';
+import { Fish } from 'lucide-astro';
+
+<FoodRouteZoneBadge icon={Fish} color="#1B4F72" label="北西部：マリスコとアルバリーニョ" />
 
 ## 大西洋の恵みを味わうガリシア料理
 
@@ -45,15 +48,11 @@ import RegionHighlightMap from '../../../../components/RegionHighlightMap.astro'
 
 ガリシア地方のリアス・バイシャスを中心に栽培される白ぶどう品種「アルバリーニョ」は、程よい酸味が魚介料理と好相性です。地元では、新鮮な魚介とともにこのワインを楽しむのが定番のスタイルとなっています。他の産地との違いや格付けについては[「スペインワイン完全ガイド」](/food/spanish-wine/)で紹介しています。
 
-## ナバラの白アスパラガスと豆料理
-
-隣接するナバラ地方では、良質な水と気候を活かした「ナバラ産ホワイトアスパラガス」が特産品として知られています。また、いんげん豆と生ハムを煮込む「ポチャス」も、この地方ならではの郷土料理です。
-
 ---
 
 ## エリア別レストランマップ
 
-このグルメルートが扱うのは、地図で赤く示した5県（ガリシア州4県＋ナバラ）です。クリックすると各県のレストラン・バルマップへ移動します。
+このグルメルートが扱うのは、地図で色付けしたガリシア州全4県です。クリックすると各県のレストラン・バルマップへ移動します。
 
 <RegionHighlightMap
   provinces={[
@@ -61,9 +60,9 @@ import RegionHighlightMap from '../../../../components/RegionHighlightMap.astro'
     { code: "ES-LU", slug: "lugo", label: "ルーゴ" },
     { code: "ES-OR", slug: "orense", label: "オウレンセ" },
     { code: "ES-PO", slug: "pontevedra", label: "ポンテベドラ" },
-    { code: "ES-NA", slug: "navarra", label: "ナバラ" },
   ]}
-  caption="赤く示した5県がこのグルメルートの対象エリア（ガリシア州＋ナバラ）"
+  caption="色付けしたガリシア州全4県がこのグルメルートの対象エリア"
+  color="#1B4F72"
 />
 
 各県のレストラン・バルマップと基本情報は、それぞれの詳細ページからご覧いただけます。
@@ -72,7 +71,6 @@ import RegionHighlightMap from '../../../../components/RegionHighlightMap.astro'
 - [ルーゴ](/food/spain-map/lugo/)
 - [オウレンセ](/food/spain-map/orense/)
 - [ポンテベドラ](/food/spain-map/pontevedra/)
-- [ナバラ](/food/spain-map/navarra/)
 
 ---
 

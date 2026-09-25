@@ -1,0 +1,39 @@
+---
+// Insignia de identidad visual para los artículos de food-routes —
+// reutiliza el mismo color+icono lucide asignado a cada zona en
+// /food/spain-map/ (sección "7つの美食ゾーン"), para que el lector
+// reconozca la misma zona al pasar de la vista general al artículo.
+interface Props {
+  icon: any;
+  color: string;
+  label: string;
+}
+
+const { icon: Icon, color, label } = Astro.props;
+---
+
+<div class="food-route-zone-badge" style={`--zone-color:${color}`}>
+  <span class="food-route-zone-icon"><Icon size={18} /></span>
+  <span>{label}</span>
+</div>
+
+<style>
+  .food-route-zone-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: #FAFAF8;
+    border: 1.5px solid var(--zone-color);
+    color: var(--zone-color);
+    font-weight: 700;
+    font-size: 13px;
+    padding: 6px 16px;
+    border-radius: 999px;
+    margin: 4px 0 28px;
+  }
+
+  .food-route-zone-icon {
+    display: flex;
+    flex-shrink: 0;
+  }
+</style>

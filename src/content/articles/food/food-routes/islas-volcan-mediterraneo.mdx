@@ -31,6 +31,10 @@ faq:
 ---
 
 import RegionHighlightMap from '../../../../components/RegionHighlightMap.astro';
+import FoodRouteZoneBadge from '../../../../components/FoodRouteZoneBadge.astro';
+import { Anchor } from 'lucide-astro';
+
+<FoodRouteZoneBadge icon={Anchor} color="#2980B9" label="島々：火山と地中海の味" />
 
 ## 火山の大地が育んだカナリア諸島の食文化
 
@@ -52,7 +56,7 @@ import RegionHighlightMap from '../../../../components/RegionHighlightMap.astro'
 
 ## エリア別レストランマップ
 
-このグルメルートが扱うのは、地図で赤く示した3県（カナリア諸島2県＋バレアレス諸島1県）です。クリックすると各県のレストラン・バルマップへ移動します。
+このグルメルートが扱うのは、地図で色付けした3県（カナリア諸島2県＋バレアレス諸島1県）です。クリックすると各県のレストラン・バルマップへ移動します。
 
 <RegionHighlightMap
   provinces={[
@@ -60,7 +64,8 @@ import RegionHighlightMap from '../../../../components/RegionHighlightMap.astro'
     { code: "ES-TF", slug: "santa-cruz-de-tenerife", label: "テネリフェ" },
     { code: "ES-PM", slug: "islas-baleares", label: "バレアレス諸島" },
   ]}
-  caption="赤く示した3県がこのグルメルートの対象エリア（カナリア諸島＋バレアレス諸島）"
+  caption="色付けした3県がこのグルメルートの対象エリア（カナリア諸島＋バレアレス諸島）"
+  color="#2980B9"
 />
 
 各県のレストラン・バルマップと基本情報は、それぞれの詳細ページからご覧いただけます。
