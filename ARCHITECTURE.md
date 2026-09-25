@@ -957,3 +957,19 @@ a la guía de esa provincia en `/food/spain-map/{slug}/`. Pensado para
 reutilizarse en el resto de artículos de `food-routes` (cada uno cubre
 un grupo de provincias distinto) sin duplicar la lógica de recorte del
 SVG.
+
+### 404 en /food/food-routes/: faltaba la página hub del cluster
+
+David reportó 404 en `/food/food-routes/` — probablemente al hacer clic
+en el breadcrumb "グルメルート" recién corregido (ver entrada anterior).
+Causa: a diferencia de clusters con artículo insignia (ej. `paella`,
+donde `paella.mdx` colapsa su URL a `/food/paella/`), `food-routes`
+tiene 7 artículos sin ningún `food-routes.mdx` insignia, así que nunca
+existió una página para la URL "pelada" del cluster — solo
+`src/pages/food/[cluster]/[article]/index.astro` (catch-all por
+artículo), sin `[cluster]/index.astro`. El patrón correcto, ya usado en
+otros clusters multi-artículo sin insignia (ej.
+`src/pages/travel/spain-tours/index.astro`), es una página hub dedicada
+por cluster. Añadida `src/pages/food/food-routes/index.astro` siguiendo
+ese mismo patrón: lista los 7 artículos vía `getCollection` +
+`ArticleCard`, con su propio SEO/breadcrumb.
