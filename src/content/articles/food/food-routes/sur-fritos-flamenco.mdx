@@ -4,6 +4,8 @@ description: "冷製スープ・ガスパチョの発祥地から、シェリー
 lead: "太陽の恵みを受けたアンダルシア地方は、夏の暑さをしのぐ冷製スープや、カリッと揚げた新鮮な魚介料理で知られる地域です。シェリー酒とともに楽しむバル文化と、8つの県それぞれの郷土料理を紹介します。"
 pubDate: 2026-09-08
 author: david-recalde
+heroImage: "../../../../assets/hero/hero-sur-fritos-flamenco.webp"
+heroImageAlt: "アンダルシアのバルで提供されるペスカイート・フリートとビール"
 pillar: "food"
 cluster: "food-routes"
 region: "andalucia"
@@ -32,6 +34,8 @@ faq:
     answer: "カディス県ヘレス周辺で造られる酒精強化ワインです。辛口のフィノから甘口のものまで幅広いタイプがあり、地元ではアペリティフ（食前酒）として親しまれています。"
 ---
 
+import RegionHighlightMap from '../../../../components/RegionHighlightMap.astro';
+
 ## 太陽の恵みが生んだ冷製スープ文化
 
 夏に高温となるアンダルシア地方では、体を冷やす冷製スープの文化が発展しました。代表的なのが、トマトをベースにした「ガスパチョ」です。きゅうりやピーマンなど複数の野菜を使い、さらっとした口当たりが特徴で、暑い時期の定番料理として親しまれています。コルドバ発祥の「サルモレホ」は、パンを多く使うことでより濃厚な質感に仕上がるのが特徴です。同じコルドバの郷土料理としては、牛テールをじっくり煮込んだ「ラボ・デ・トロ（Rabo de Toro）」もよく知られています。
@@ -51,6 +55,22 @@ faq:
 ---
 
 ## エリア別レストランマップ
+
+このグルメルートが扱うのは、地図で赤く示したアンダルシア州全8県です。クリックすると各県のレストラン・バルマップへ移動します。
+
+<RegionHighlightMap
+  provinces={[
+    { code: "ES-SE", slug: "sevilla", label: "セビリア" },
+    { code: "ES-GR", slug: "granada", label: "グラナダ" },
+    { code: "ES-MA", slug: "malaga", label: "マラガ" },
+    { code: "ES-CA", slug: "cadiz", label: "カディス" },
+    { code: "ES-CO", slug: "cordoba", label: "コルドバ" },
+    { code: "ES-H", slug: "huelva", label: "ウエルバ" },
+    { code: "ES-J", slug: "jaen", label: "ハエン" },
+    { code: "ES-AL", slug: "almeria", label: "アルメリア" },
+  ]}
+  caption="赤く示したアンダルシア州全8県がこのグルメルートの対象エリア"
+/>
 
 各県のレストラン・バルマップと基本情報は、それぞれの詳細ページからご覧いただけます。
 
