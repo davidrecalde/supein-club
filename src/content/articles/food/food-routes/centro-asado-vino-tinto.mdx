@@ -4,6 +4,8 @@ description: "コシード・マドリレーニョから仔豚の丸焼きまで
 lead: "スペイン中央部、マドリードとカスティーリャ・イ・レオン地方は、じっくり焼き上げるアサード（ロースト料理）と、力強い赤ワインの産地として知られています。乾燥した気候が育んだ肉料理文化を紹介します。"
 pubDate: 2026-09-08
 author: david-recalde
+heroImage: "../../../../assets/hero/hero-centro-asado-vino-tinto.webp"
+heroImageAlt: "皿に盛られたコチニージョ・アサード（仔豚の丸焼き）とリベラ・デル・ドゥエロの赤ワイン"
 pillar: "food"
 cluster: "food-routes"
 intent: "informational"
@@ -28,6 +30,8 @@ faq:
     answer: "カスティーリャ・イ・レオン地方を流れるドゥエロ川流域に広がるワイン産地で、テンプラニーリョ種を中心とした力強い赤ワインで知られています。アサード料理との相性のよさから、地元でも定番の組み合わせとされています。"
 ---
 
+import RegionHighlightMap from '../../../../components/RegionHighlightMap.astro';
+
 ## 内陸の乾燥した気候が育んだ肉料理文化
 
 スペイン中央部に位置するマドリードとカスティーリャ・イ・レオン地方は、内陸の乾燥した気候と広大な牧草地に恵まれ、良質な肉を使った料理文化が発展してきました。じっくりと焼き上げる「アサード」は、この地方を象徴する調理法です。
@@ -47,6 +51,24 @@ faq:
 ---
 
 ## エリア別レストランマップ
+
+このグルメルートが扱うのは、地図で赤く示した10県（マドリード州1県＋カスティーリャ・イ・レオン州9県）です。クリックすると各県のレストラン・バルマップへ移動します。
+
+<RegionHighlightMap
+  provinces={[
+    { code: "ES-M", slug: "madrid", label: "マドリード" },
+    { code: "ES-AV", slug: "avila", label: "アビラ" },
+    { code: "ES-BU", slug: "burgos", label: "ブルゴス" },
+    { code: "ES-LE", slug: "leon", label: "レオン" },
+    { code: "ES-P", slug: "palencia", label: "パレンシア" },
+    { code: "ES-SA", slug: "salamanca", label: "サラマンカ" },
+    { code: "ES-SG", slug: "segovia", label: "セゴビア" },
+    { code: "ES-SO", slug: "soria", label: "ソリア" },
+    { code: "ES-VA", slug: "valladolid", label: "バリャドリード" },
+    { code: "ES-ZA", slug: "zamora", label: "サモラ" },
+  ]}
+  caption="赤く示した10県がこのグルメルートの対象エリア（マドリード州＋カスティーリャ・イ・レオン州）"
+/>
 
 各県のレストラン・バルマップと基本情報は、それぞれの詳細ページからご覧いただけます。
 

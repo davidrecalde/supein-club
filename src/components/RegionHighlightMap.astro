@@ -1,0 +1,151 @@
+---
+// Mapa de España simplificado (sin colores por comunidad) que resalta
+// únicamente las provincias relevantes para el artículo en curso, con
+// enlace a su guía de /food/spain-map/{provincia}/. Reutiliza el mismo
+// SVG base y recorte de viewBox que SpainMapSVG.astro (ver ese componente
+// para el mapa completo con leyenda por comunidad).
+import { readFileSync } from 'node:fs';
+import path from 'node:path';
+
+interface HighlightProvince {
+  code: string;   // Código ISO usado en el SVG, ej. "ES-M"
+  slug: string;   // Slug de /food/spain-map/{slug}/
+  label: string;  // Nombre en japonés para el tooltip
+}
+
+interface Props {
+  provinces: HighlightProvince[];
+  caption?: string;
+}
+
+const { provinces, caption } = Astro.props;
+
+const rawSvg = readFileSync(
+  path.resolve(process.cwd(), 'public/spain-provinces.svg'),
+  'utf-8'
+);
+
+const highlightCodes = new Set(provinces.map((p) => p.code));
+
+// Mismo recorte que SpainMapSVG.astro: 328 de las 468.64 unidades de alto
+// originales (la franja inferior vacía que alojaba Canarias/Ceuta/Melilla
+// en fila aparte ya no hace falta, ver public/spain-provinces.svg).
+let svgContent = rawSvg
+  .replace('width="418.45123"', 'class="region-highlight-map-svg" width="100%" viewBox="0 0 418.46 328" preserveAspectRatio="xMidYMid meet"')
+  .replace('\n   height="468.63733"', '');
+
+svgContent = svgContent.replace(/id="(ES-[A-Z]+)"/g, (_match, id) => {
+  return highlightCodes.has(id)
+    ? `id="${id}" data-province="${id}" data-highlighted="true"`
+    : `id="${id}"`;
+});
+
+const provinceMapJson = JSON.stringify(
+  Object.fromEntries(provinces.map((p) => [p.code, { label: p.label, url: `/food/spain-map/${p.slug}/` }]))
+);
+---
+
+<div class="region-highlight-map">
+  <Fragment set:html={svgContent} />
+  {caption && <p class="region-highlight-map-caption">{caption}</p>}
+</div>
+
+<div id="region-highlight-tooltip" class="region-highlight-tooltip" aria-hidden="true"></div>
+
+<script define:vars={{ provinceMapJson }}>
+(function () {
+  var provinceMap = JSON.parse(provinceMapJson);
+  var tooltip = document.getElementById('region-highlight-tooltip');
+  if (!tooltip) return;
+
+  function moveTooltip(e) {
+    var x = e.clientX + 14;
+    var y = e.clientY - 36;
+    var tw = tooltip.offsetWidth || 140;
+    if (x + tw > window.innerWidth - 8) { x = e.clientX - tw - 8; }
+    tooltip.style.left = x + 'px';
+    tooltip.style.top = y + 'px';
+  }
+
+  document.querySelectorAll('[data-highlighted="true"]').forEach(function (el) {
+    var data = provinceMap[el.id];
+    if (!data) return;
+    el.addEventListener('mouseenter', function (e) {
+      tooltip.innerHTML = '<p class="rh-tooltip-name">' + data.label + '</p><span class="rh-tooltip-action">クリックして読む →</span>';
+      tooltip.classList.add('visible');
+      moveTooltip(e);
+    });
+    el.addEventListener('mousemove', moveTooltip);
+    el.addEventListener('mouseleave', function () { tooltip.classList.remove('visible'); });
+    el.addEventListener('click', function () {
+      window.location.href = data.url;
+    });
+  });
+})();
+</script>
+
+<style is:global>
+  .region-highlight-map-svg path {
+    fill: #E5E7EB;
+    stroke: #ffffff;
+    stroke-width: 0.5;
+    transition: fill 200ms ease;
+  }
+
+  .region-highlight-map-svg path[data-highlighted="true"] {
+    fill: #C8102E;
+    cursor: pointer;
+  }
+
+  .region-highlight-map-svg path[data-highlighted="true"]:hover {
+    fill: #002147;
+  }
+</style>
+
+<style>
+  .region-highlight-map {
+    margin: 32px 0;
+    padding: 20px;
+    background: #FAFAF8;
+    border: 1px solid #E8E8E6;
+    border-radius: 12px;
+  }
+
+  .region-highlight-map-caption {
+    margin: 12px 0 0;
+    font-size: 12px;
+    color: #6b7280;
+    text-align: center;
+  }
+
+  .region-highlight-tooltip {
+    position: fixed;
+    z-index: 9999;
+    background: #002147;
+    border: 1.5px solid #C8102E;
+    border-radius: 8px;
+    padding: 8px 12px;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 150ms ease;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
+  }
+
+  .region-highlight-tooltip.visible {
+    opacity: 1;
+  }
+
+  :global(.rh-tooltip-name) {
+    margin: 0;
+    font-size: 12px;
+    font-weight: 700;
+    color: white;
+  }
+
+  :global(.rh-tooltip-action) {
+    display: block;
+    font-size: 10px;
+    color: rgba(255, 255, 255, 0.7);
+    margin-top: 2px;
+  }
+</style>
