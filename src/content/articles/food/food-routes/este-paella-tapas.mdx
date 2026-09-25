@@ -4,6 +4,8 @@ description: "米料理発祥の地バレンシアから、創作料理の街バ
 lead: "地中海に面したバレンシアとカタルーニャ地方は、稲作文化と創作料理の両方が息づくエリアです。米料理の発祥地としての歴史から、市場文化、カバの産地まで、この地方ならではの食の魅力を紹介します。"
 pubDate: 2026-09-08
 author: david-recalde
+heroImage: "../../../../assets/hero/hero-este-paella-tapas.webp"
+heroImageAlt: "地中海を望むテラスに並ぶパエリア、タパス、生ハム、カバ"
 pillar: "food"
 cluster: "food-routes"
 intent: "informational"
@@ -29,6 +31,8 @@ faq:
     answer: "カタルーニャ地方を中心に造られるスパークリングワインで、シャンパンと同じ伝統的な瓶内二次発酵の製法で造られています。手頃な価格帯のものも多く、日常的に楽しまれています。"
 ---
 
+import RegionHighlightMap from '../../../../components/RegionHighlightMap.astro';
+
 ## 稲作文化が育んだバレンシアの米料理
 
 バレンシア地方には、ヨーロッパでは珍しい水田が広がっています。この地の利を活かし、米を使った料理文化が古くから発展してきました。地中海からの新鮮な魚介と組み合わせた米料理は、この地方を象徴する食文化のひとつです。
@@ -48,6 +52,21 @@ faq:
 ---
 
 ## エリア別レストランマップ
+
+このグルメルートが扱うのは、地図で赤く示した7県（バレンシア州3県＋カタルーニャ州4県）です。クリックすると各県のレストラン・バルマップへ移動します。
+
+<RegionHighlightMap
+  provinces={[
+    { code: "ES-V", slug: "valencia", label: "バレンシア" },
+    { code: "ES-A", slug: "alicante", label: "アリカンテ" },
+    { code: "ES-CS", slug: "castellon", label: "カステジョン" },
+    { code: "ES-B", slug: "barcelona", label: "バルセロナ" },
+    { code: "ES-GI", slug: "gerona", label: "ヘローナ" },
+    { code: "ES-L", slug: "lerida", label: "リェイダ" },
+    { code: "ES-T", slug: "tarragona", label: "タラゴナ" },
+  ]}
+  caption="赤く示した7県がこのグルメルートの対象エリア（バレンシア州＋カタルーニャ州）"
+/>
 
 各県のレストラン・バルマップと基本情報は、それぞれの詳細ページからご覧いただけます。
 
