@@ -32,6 +32,10 @@ faq:
 ---
 
 import RegionHighlightMap from '../../../../components/RegionHighlightMap.astro';
+import FoodRouteZoneBadge from '../../../../components/FoodRouteZoneBadge.astro';
+import { Fish } from 'lucide-astro';
+
+<FoodRouteZoneBadge icon={Fish} color="#1B4F72" label="北西部：マリスコとアルバリーニョ" />
 
 ## 大西洋の恵みを味わうガリシア料理
 
@@ -53,7 +57,7 @@ import RegionHighlightMap from '../../../../components/RegionHighlightMap.astro'
 
 ## エリア別レストランマップ
 
-このグルメルートが扱うのは、地図で赤く示した5県（ガリシア州4県＋ナバラ）です。クリックすると各県のレストラン・バルマップへ移動します。
+このグルメルートが扱うのは、地図で色付けした5県（ガリシア州4県＋ナバラ）です。クリックすると各県のレストラン・バルマップへ移動します。
 
 <RegionHighlightMap
   provinces={[
@@ -63,7 +67,8 @@ import RegionHighlightMap from '../../../../components/RegionHighlightMap.astro'
     { code: "ES-PO", slug: "pontevedra", label: "ポンテベドラ" },
     { code: "ES-NA", slug: "navarra", label: "ナバラ" },
   ]}
-  caption="赤く示した5県がこのグルメルートの対象エリア（ガリシア州＋ナバラ）"
+  caption="色付けした5県がこのグルメルートの対象エリア（ガリシア州＋ナバラ）"
+  color="#1B4F72"
 />
 
 各県のレストラン・バルマップと基本情報は、それぞれの詳細ページからご覧いただけます。

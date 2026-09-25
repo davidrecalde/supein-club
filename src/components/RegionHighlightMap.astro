@@ -16,9 +16,10 @@ interface HighlightProvince {
 interface Props {
   provinces: HighlightProvince[];
   caption?: string;
+  color?: string;
 }
 
-const { provinces, caption } = Astro.props;
+const { provinces, caption, color = '#C8102E' } = Astro.props;
 
 const rawSvg = readFileSync(
   path.resolve(process.cwd(), 'public/spain-provinces.svg'),
@@ -45,7 +46,7 @@ const provinceMapJson = JSON.stringify(
 );
 ---
 
-<div class="region-highlight-map">
+<div class="region-highlight-map" style={`--zone-color:${color}`}>
   <Fragment set:html={svgContent} />
   {caption && <p class="region-highlight-map-caption">{caption}</p>}
 </div>
@@ -93,7 +94,7 @@ const provinceMapJson = JSON.stringify(
   }
 
   .region-highlight-map-svg path[data-highlighted="true"] {
-    fill: #C8102E;
+    fill: var(--zone-color, #C8102E);
     cursor: pointer;
   }
 

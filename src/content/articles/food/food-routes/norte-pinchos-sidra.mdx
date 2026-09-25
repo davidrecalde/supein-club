@@ -32,6 +32,10 @@ faq:
 ---
 
 import RegionHighlightMap from '../../../../components/RegionHighlightMap.astro';
+import FoodRouteZoneBadge from '../../../../components/FoodRouteZoneBadge.astro';
+import { Waves } from 'lucide-astro';
+
+<FoodRouteZoneBadge icon={Waves} color="#2D6A4F" label="北部：ピンチョスとシードルの道" />
 
 ## 美食の首都サン・セバスティアンとピンチョス文化
 
@@ -53,7 +57,7 @@ import RegionHighlightMap from '../../../../components/RegionHighlightMap.astro'
 
 ## エリア別レストランマップ
 
-このグルメルートが扱うのは、地図で赤く示した5県（バスク州3県＋カンタブリア＋アストゥリアス）です。クリックすると各県のレストラン・バルマップへ移動します。
+このグルメルートが扱うのは、地図で色付けした5県（バスク州3県＋カンタブリア＋アストゥリアス）です。クリックすると各県のレストラン・バルマップへ移動します。
 
 <RegionHighlightMap
   provinces={[
@@ -63,7 +67,8 @@ import RegionHighlightMap from '../../../../components/RegionHighlightMap.astro'
     { code: "ES-S", slug: "cantabria", label: "カンタブリア" },
     { code: "ES-O", slug: "asturias", label: "アストゥリアス" },
   ]}
-  caption="赤く示した5県がこのグルメルートの対象エリア（バスク州＋カンタブリア＋アストゥリアス）"
+  caption="色付けした5県がこのグルメルートの対象エリア（バスク州＋カンタブリア＋アストゥリアス）"
+  color="#2D6A4F"
 />
 
 各県のレストラン・バルマップと基本情報は、それぞれの詳細ページからご覧いただけます。
