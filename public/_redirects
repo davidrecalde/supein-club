@@ -87,4 +87,8 @@
 /food/paella/seafood-paella-recipe/    /food/    301
 /food/traveler-guide-to-spanish-cuisine-and-wine/    /food/    301
 /football/el-clasico/head-to-head/    /football/el-clasico/    301
-/food/food-routes/islas-volcan-mediterraneo/    /food/food-routes/canarias-volcan/    301
+/food/food-routes/islas-volcan-mediterraneo/    /food/food-routes/islas-canarias-atlantico/    301
+/food/food-routes/canarias-volcan/    /food/food-routes/islas-canarias-atlantico/    301
+/food/food-routes/baleares-mediterraneo/    /food/food-routes/islas-baleares-mediterraneo/    301
+/food/food-routes/norte-pinchos-sidra/    /food/food-routes/asturias-cantabria-mar-cantabrico/    301
+/food/food-routes/aragon-navarra-cordero-esparragos/    /food/food-routes/aragon-navarra-jamon-esparragos/    301

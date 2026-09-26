@@ -1089,3 +1089,30 @@ David decidió repensar el agrupamiento de varias zonas del cluster
   — David no proporcionó imágenes para estos en este cambio; añadir
   cuando las facilite, siguiendo el mismo patrón que el resto del
   cluster.
+
+### Renombrado de 4 URLs de food-routes por SEO
+
+David pidió mejorar 4 slugs recién creados en el cambio anterior,
+señalando que no atacaban bien las keywords reales del contenido:
+
+- `canarias-volcan` → **`islas-canarias-atlantico`**
+- `baleares-mediterraneo` → **`islas-baleares-mediterraneo`**
+- `norte-pinchos-sidra` → **`asturias-cantabria-mar-cantabrico`** (ya
+  no menciona "pinchos" — ese contenido se movió a
+  `rioja-pais-vasco-vino-pintxos.mdx` en el cambio anterior; David pidió
+  explícitamente que el slug reflejara Asturias/Cantabria/Mar Cantábrico)
+- `aragon-navarra-cordero-esparragos` → **`aragon-navarra-jamon-esparragos`**
+  (propuesto por Claude: "jamón" reemplaza a "cordero" porque el
+  contenido real destaca más el Jamón de Teruel DOP —dato distintivo,
+  primera DO de jamón de España— que el cordero, y es una keyword con
+  más volumen de búsqueda en este contexto)
+
+Cambios: archivos renombrados (`git mv`, preserva historial), `href` de
+sus 4 tarjetas en `spain-map/index.astro` actualizados, y 4 nuevas
+reglas 301 en `public/_redirects` apuntando directo al destino final
+(incluida una actualización del redirect ya existente de
+`islas-volcan-mediterraneo` → ahora apunta a `islas-canarias-atlantico`
+en vez de al slug intermedio `canarias-volcan`, para evitar encadenar
+redirects). Verificado que no había más enlaces cruzados a estas 4 URLs
+en el resto del sitio (solo se referenciaban a sí mismas vía el nombre
+del archivo de imagen hero, sin relación con la URL).
