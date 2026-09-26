@@ -1102,10 +1102,17 @@ señalando que no atacaban bien las keywords reales del contenido:
   `rioja-pais-vasco-vino-pintxos.mdx` en el cambio anterior; David pidió
   explícitamente que el slug reflejara Asturias/Cantabria/Mar Cantábrico)
 - `aragon-navarra-cordero-esparragos` → **`aragon-navarra-jamon-esparragos`**
-  (propuesto por Claude: "jamón" reemplaza a "cordero" porque el
-  contenido real destaca más el Jamón de Teruel DOP —dato distintivo,
-  primera DO de jamón de España— que el cordero, y es una keyword con
-  más volumen de búsqueda en este contexto)
+  → **`aragon-navarra-ternasco-esparragos`** (versión final). Primer
+  intento propuesto por Claude ("jamón") fue un error de canibalización
+  señalado por David: "jamón"/生ハム ya es la keyword central de
+  `jamon-iberico.mdx` (guía completa) y de `oeste-jamon-iberico.mdx`
+  (Extremadura+Castilla-La Mancha) — meter la misma keyword aquí
+  competiría con ambas. Las keywords realmente distintivas de este
+  artículo, sin solapar con ninguna otra página, son el Ternasco de
+  Aragón (cordero IGP) y los espárragos de Navarra; "ternasco" además es
+  el nombre real del producto, más específico que el genérico "cordero".
+  El Jamón de Teruel se sigue mencionando en el contenido (es real y
+  relevante) pero no protagoniza la URL.
 
 Cambios: archivos renombrados (`git mv`, preserva historial), `href` de
 sus 4 tarjetas en `spain-map/index.astro` actualizados, y 4 nuevas
