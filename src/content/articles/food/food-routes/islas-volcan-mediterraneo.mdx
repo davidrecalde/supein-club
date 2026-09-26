@@ -32,9 +32,44 @@ faq:
 
 import RegionHighlightMap from '../../../../components/RegionHighlightMap.astro';
 import FoodRouteZoneBadge from '../../../../components/FoodRouteZoneBadge.astro';
+import FoodRouteProvinceButtons from '../../../../components/FoodRouteProvinceButtons.astro';
 import { Anchor } from 'lucide-astro';
 
+## エリア別レストランマップ
+
+このグルメルートが扱うのは、地図で色付けした3県（カナリア諸島2県＋バレアレス諸島1県）です。クリックすると各県のレストラン・バルマップへ移動します。
+
 <FoodRouteZoneBadge icon={Anchor} color="#2980B9" label="島々：火山と地中海の味" />
+
+<RegionHighlightMap
+  provinces={[
+    { code: "ES-GC", slug: "las-palmas", label: "ラス・パルマス" },
+    { code: "ES-TF", slug: "santa-cruz-de-tenerife", label: "テネリフェ" },
+    { code: "ES-PM", slug: "islas-baleares", label: "バレアレス諸島" },
+  ]}
+  caption="色付けした3県がこのグルメルートの対象エリア（カナリア諸島＋バレアレス諸島）"
+  color="#2980B9"
+/>
+
+<FoodRouteProvinceButtons
+  communities={[
+    {
+      slug: "canarias",
+      name: "カナリア諸島",
+      provinces: [
+        { slug: "las-palmas", label: "ラス・パルマス" },
+        { slug: "santa-cruz-de-tenerife", label: "テネリフェ" },
+      ],
+    },
+    {
+      slug: "baleares",
+      name: "バレアレス諸島",
+      provinces: [{ slug: "islas-baleares", label: "バレアレス諸島" }],
+    },
+  ]}
+/>
+
+---
 
 ## 火山の大地が育んだカナリア諸島の食文化
 
@@ -51,28 +86,6 @@ import { Anchor } from 'lucide-astro';
 ## 観光地としての側面と地元グルメ
 
 両諸島とも国内外から多くの観光客が訪れるリゾート地としての側面を持ちますが、少し中心部から離れれば、地元の人々に愛される素朴なバルやレストランに出会うことができます。
-
----
-
-## エリア別レストランマップ
-
-このグルメルートが扱うのは、地図で色付けした3県（カナリア諸島2県＋バレアレス諸島1県）です。クリックすると各県のレストラン・バルマップへ移動します。
-
-<RegionHighlightMap
-  provinces={[
-    { code: "ES-GC", slug: "las-palmas", label: "ラス・パルマス" },
-    { code: "ES-TF", slug: "santa-cruz-de-tenerife", label: "テネリフェ" },
-    { code: "ES-PM", slug: "islas-baleares", label: "バレアレス諸島" },
-  ]}
-  caption="色付けした3県がこのグルメルートの対象エリア（カナリア諸島＋バレアレス諸島）"
-  color="#2980B9"
-/>
-
-各県のレストラン・バルマップと基本情報は、それぞれの詳細ページからご覧いただけます。
-
-- [ラス・パルマス](/food/spain-map/las-palmas/)
-- [テネリフェ](/food/spain-map/santa-cruz-de-tenerife/)
-- [バレアレス諸島](/food/spain-map/islas-baleares/)
 
 ---
 

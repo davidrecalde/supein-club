@@ -33,9 +33,54 @@ faq:
 
 import RegionHighlightMap from '../../../../components/RegionHighlightMap.astro';
 import FoodRouteZoneBadge from '../../../../components/FoodRouteZoneBadge.astro';
+import FoodRouteProvinceButtons from '../../../../components/FoodRouteProvinceButtons.astro';
 import { Sun } from 'lucide-astro';
 
+## エリア別レストランマップ
+
+このグルメルートが扱うのは、地図で色付けした7県（バレンシア州3県＋カタルーニャ州4県）です。クリックすると各県のレストラン・バルマップへ移動します。
+
 <FoodRouteZoneBadge icon={Sun} color="#E67E22" label="東部：地中海の食文化" />
+
+<RegionHighlightMap
+  provinces={[
+    { code: "ES-V", slug: "valencia", label: "バレンシア" },
+    { code: "ES-A", slug: "alicante", label: "アリカンテ" },
+    { code: "ES-CS", slug: "castellon", label: "カステジョン" },
+    { code: "ES-B", slug: "barcelona", label: "バルセロナ" },
+    { code: "ES-GI", slug: "gerona", label: "ヘローナ" },
+    { code: "ES-L", slug: "lerida", label: "リェイダ" },
+    { code: "ES-T", slug: "tarragona", label: "タラゴナ" },
+  ]}
+  caption="色付けした7県がこのグルメルートの対象エリア（バレンシア州＋カタルーニャ州）"
+  color="#E67E22"
+/>
+
+<FoodRouteProvinceButtons
+  communities={[
+    {
+      slug: "valencia",
+      name: "バレンシア州",
+      provinces: [
+        { slug: "valencia", label: "バレンシア" },
+        { slug: "alicante", label: "アリカンテ" },
+        { slug: "castellon", label: "カステジョン" },
+      ],
+    },
+    {
+      slug: "catalunya",
+      name: "カタルーニャ",
+      provinces: [
+        { slug: "barcelona", label: "バルセロナ" },
+        { slug: "gerona", label: "ヘローナ" },
+        { slug: "lerida", label: "リェイダ" },
+        { slug: "tarragona", label: "タラゴナ" },
+      ],
+    },
+  ]}
+/>
+
+---
 
 ## 稲作文化が育んだバレンシアの米料理
 
@@ -52,36 +97,6 @@ import { Sun } from 'lucide-astro';
 ## アリカンテ・カステジョンの沿岸グルメ
 
 バレンシア州に属するアリカンテとカステジョンも、地中海沿岸ならではの新鮮な魚介料理で知られています。米にパスタを使った「フィデウア」など、バレンシアの米料理文化から派生した料理も各地で楽しめます。
-
----
-
-## エリア別レストランマップ
-
-このグルメルートが扱うのは、地図で色付けした7県（バレンシア州3県＋カタルーニャ州4県）です。クリックすると各県のレストラン・バルマップへ移動します。
-
-<RegionHighlightMap
-  provinces={[
-    { code: "ES-V", slug: "valencia", label: "バレンシア" },
-    { code: "ES-A", slug: "alicante", label: "アリカンテ" },
-    { code: "ES-CS", slug: "castellon", label: "カステジョン" },
-    { code: "ES-B", slug: "barcelona", label: "バルセロナ" },
-    { code: "ES-GI", slug: "gerona", label: "ヘローナ" },
-    { code: "ES-L", slug: "lerida", label: "リェイダ" },
-    { code: "ES-T", slug: "tarragona", label: "タラゴナ" },
-  ]}
-  caption="色付けした7県がこのグルメルートの対象エリア（バレンシア州＋カタルーニャ州）"
-  color="#E67E22"
-/>
-
-各県のレストラン・バルマップと基本情報は、それぞれの詳細ページからご覧いただけます。
-
-- [バルセロナ](/food/spain-map/barcelona/)
-- [バレンシア](/food/spain-map/valencia/)
-- [アリカンテ](/food/spain-map/alicante/)
-- [カステジョン](/food/spain-map/castellon/)
-- [ヘローナ](/food/spain-map/gerona/)
-- [リェイダ](/food/spain-map/lerida/)
-- [タラゴナ](/food/spain-map/tarragona/)
 
 ---
 
