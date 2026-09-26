@@ -1024,3 +1024,24 @@ commit anterior, no rojo fijo).
   platos típicos) sin cambios, solo desplazado después del bloque de
   mapa. Pendiente: David planea ampliar este contenido "poco a poco" en
   próximas iteraciones — no se ha tocado en este cambio.
+
+### oeste-jamon-iberico.mdx: La Rioja → Castilla-La Mancha
+
+David señaló que no tenía sentido juntar La Rioja con Extremadura en
+esta ruta (no son contiguas ni comparten identidad gastronómica clara)
+y propuso Castilla-La Mancha en su lugar — geográficamente contigua a
+Extremadura y con fuerte identidad propia (queso manchego, azafrán, DO
+La Mancha). Reescrito el artículo: se quita la sección de La Rioja y se
+añaden dos secciones nuevas sobre Castilla-La Mancha (queso
+manchego DOP + azafrán DOP; DO La Mancha + Valdepeñas), verificadas por
+búsqueda — dato clave: La Mancha concentra ~90% de la producción
+mundial de azafrán y tiene la mayor superficie de viñedo por DO de
+España. Mapa/botones actualizados a las 7 provincias reales (Badajoz,
+Cáceres + Albacete, Ciudad Real, Cuenca, Guadalajara, Toledo). Se quita
+también `region: "extremadura"` del frontmatter (ya no es de una sola
+comunidad, igual que el resto de artículos multi-comunidad del cluster).
+
+Efecto colateral corregido: `spanish-wine.mdx` tenía un enlace cruzado
+a este artículo desde el párrafo de Rioja ("生ハムとあわせて楽しむ地元の
+文化については..."), que quedó obsoleto al quitar esa sección — se
+elimina la frase del enlace, dejando la descripción de Rioja intacta.
