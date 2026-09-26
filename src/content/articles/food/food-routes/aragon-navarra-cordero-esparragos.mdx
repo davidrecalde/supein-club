@@ -1,0 +1,88 @@
+---
+title: "アラゴン・ナバラのグルメルート｜仔羊とホワイトアスパラガスの道"
+description: "アラゴンの仔羊肉テルナスコと生ハムの産地テルエルから、ナバラのホワイトアスパラガスまで。スペイン北東部の郷土料理を日本語で紹介します。"
+lead: "スペイン北東部、内陸の乾燥した気候に恵まれたアラゴンとナバラ地方は、良質な仔羊肉と野菜の産地として知られています。テルナスコからホワイトアスパラガスまで、大地の恵みを活かした食文化を紹介します。"
+pubDate: 2026-09-27
+author: david-recalde
+pillar: "food"
+cluster: "food-routes"
+intent: "informational"
+tags: ["アラゴン グルメ", "ナバラ グルメ", "テルナスコ"]
+schemaType: "article"
+draft: false
+lang: "ja"
+entities:
+  - "アラゴン"
+  - "ナバラ"
+  - "テルナスコ"
+  - "テルエル生ハム"
+  - "ホワイトアスパラガス"
+relatedArticles:
+  - "spain-dining-times"
+  - "jamon-iberico"
+readingTime: 8
+faq:
+  - question: "テルナスコ・デ・アラゴンとはどんな料理ですか？"
+    answer: "生後100日未満の仔羊肉を使ったアラゴンの郷土料理で、IGP（地理的表示保護）に認定されています。シンプルにオーブンでじっくり焼き上げるローストが定番のスタイルです。"
+  - question: "テルエル生ハムとイベリコ生ハムの違いは何ですか？"
+    answer: "テルエル生ハム（DOP）は白豚（主にドゥロック種など）から作られる生ハムで、1984年にスペインで最初に生ハムのDOに認定された産地です。どんぐりを食べて育つイベリコ黒豚の生ハムとは原料の豚が異なります。"
+  - question: "ナバラのホワイトアスパラガスの特徴は何ですか？"
+    answer: "良質な水と気候を活かして育てられる、日光に当てずに白く育てたアスパラガスです。ナバラ産は特に評価が高く、瓶詰めなどで加工されて日本を含む海外にも輸出されています。"
+---
+
+import RegionHighlightMap from '../../../../components/RegionHighlightMap.astro';
+import FoodRouteZoneBadge from '../../../../components/FoodRouteZoneBadge.astro';
+import FoodRouteProvinceButtons from '../../../../components/FoodRouteProvinceButtons.astro';
+import { Mountain } from 'lucide-astro';
+
+## エリア別レストランマップ
+
+このグルメルートが扱うのは、地図で色付けした4県（アラゴン州3県＋ナバラ）です。クリックすると各県のレストラン・バルマップへ移動します。
+
+<FoodRouteZoneBadge icon={Mountain} color="#B7950B" label="アラゴン・ナバラ：仔羊と野菜の道" />
+
+<RegionHighlightMap
+  provinces={[
+    { code: "ES-HU", slug: "huesca", label: "ウエスカ" },
+    { code: "ES-TE", slug: "teruel", label: "テルエル" },
+    { code: "ES-Z", slug: "zaragoza", label: "サラゴサ" },
+    { code: "ES-NA", slug: "navarra", label: "ナバラ" },
+  ]}
+  caption="色付けした4県がこのグルメルートの対象エリア（アラゴン州＋ナバラ）"
+  color="#B7950B"
+/>
+
+<FoodRouteProvinceButtons
+  communities={[
+    {
+      slug: "aragon",
+      name: "アラゴン",
+      provinces: [
+        { slug: "huesca", label: "ウエスカ" },
+        { slug: "teruel", label: "テルエル" },
+        { slug: "zaragoza", label: "サラゴサ" },
+      ],
+    },
+    {
+      slug: "navarra",
+      name: "ナバラ",
+      provinces: [{ slug: "navarra", label: "ナバラ" }],
+    },
+  ]}
+/>
+
+---
+
+## テルナスコ・デ・アラゴンとテルエル生ハム
+
+アラゴン地方を代表する郷土料理が「テルナスコ・デ・アラゴン」です。生後100日未満の仔羊肉を使い、シンプルにオーブンでじっくり焼き上げるローストで、IGP（地理的表示保護）にも認定されています。また、テルエル県は「テルエル生ハム（DOP）」の産地としても知られ、1984年にスペインで最初に生ハムのDOに認定された歴史ある産地です。イベリコ生ハムとの違いや格付けについては[「ハモン・イベリコ完全ガイド」](/food/jamon-iberico/)であわせて解説しています。
+
+## ナバラのホワイトアスパラガスとピキージョピーマン
+
+ナバラ地方は、良質な水と気候を活かして育てられる「ホワイトアスパラガス」の産地として知られています。日光に当てずに白く育てたアスパラガスは、瓶詰めなどで加工されて国内外に流通しています。また、ロドサ産の「ピキージョピーマン（DOP）」も特産品として知られ、焼いて皮をむいた後、詰め物にして食べるスタイルが定番です。生の白いんげん豆を煮込む「ポチャス」も、この地方ならではの郷土料理です。
+
+---
+
+## まとめ
+
+アラゴンのテルナスコとテルエル生ハム、ナバラのホワイトアスパラガス——内陸の乾燥した気候が育んだ大地の恵みを味わえるのが、このグルメルートの魅力です。[スペイン美食マップ](/food/spain-map/)から、気になる街のレストラン情報もあわせてチェックしてみてください。

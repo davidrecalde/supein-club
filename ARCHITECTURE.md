@@ -1045,3 +1045,47 @@ Efecto colateral corregido: `spanish-wine.mdx` tenía un enlace cruzado
 a este artículo desde el párrafo de Rioja ("生ハムとあわせて楽しむ地元の
 文化については..."), que quedó obsoleto al quitar esa sección — se
 elimina la frase del enlace, dejando la descripción de Rioja intacta.
+
+### food-routes: de 7 a 10 zonas — reagrupación norte + islas separadas
+
+David decidió repensar el agrupamiento de varias zonas del cluster
+`food-routes`:
+
+- **`norte-pinchos-sidra.mdx`**: pasa de 5 provincias (País Vasco 3 +
+  Cantabria + Asturias) a solo 2 (Asturias + Cantabria). Se quita todo
+  el contenido vasco (pintxos de San Sebastián, chacolí, idiazábal) y
+  se amplía el contenido de Cantabria (anchoas de Santoña, rabas,
+  sobaos/quesada pasiega) para compensar. Título/FAQ/entities
+  actualizados en consecuencia.
+- **Nuevo `rioja-pais-vasco-vino-pintxos.mdx`**: recibe el contenido
+  vasco quitado de `norte-pinchos-sidra.mdx` (pintxos, chacolí,
+  idiazábal, bacalao al pil-pil) + Rioja (DOCa, Calle Laurel de
+  Logroño, patatas a la riojana). 4 provincias (País Vasco 3 + Rioja).
+- **Nuevo `aragon-navarra-cordero-esparragos.mdx`**: contenido nuevo
+  verificado — Ternasco de Aragón (IGP), Jamón de Teruel (DOP, primera
+  DO de jamón de España, 1984), espárrago blanco y pimiento del
+  piquillo de Navarra (DOP, Lodosa), pochas. 4 provincias (Aragón 3 +
+  Navarra).
+- **`islas-volcan-mediterraneo.mdx` dividido en dos artículos
+  independientes**: `canarias-volcan.mdx` (hereda el contenido y la
+  imagen hero existente, que ya era específicamente de Tenerife — solo
+  se renombra el asset a `hero-canarias-volcan.webp`) y
+  `baleares-mediterraneo.mdx` (hereda su contenido, sin imagen hero
+  todavía — pendiente de que David la proporcione). El archivo
+  combinado original se elimina; añadido un 301 en `public/_redirects`
+  de la URL vieja hacia `canarias-volcan/`.
+- **`src/pages/food/spain-map/index.astro`**: el array `zones` pasa de
+  7 a 10 entradas (nuevos iconos `Wine`, `Mountain`, `Sailboat` de
+  lucide-astro; colores nuevos sin colisión con los 7 ya usados).
+  Actualizadas todas las menciones de "7つの美食ゾーン" → "10の美食
+  ゾーン" en el H1, meta description, TOC, FAQ y hero de esa página.
+- Enlaces cruzados corregidos: `tapas.mdx` apuntaba a
+  `norte-pinchos-sidra` para el contenido de pintxos de San Sebastián
+  (ahora movido) — actualizado a `rioja-pais-vasco-vino-pintxos`.
+  `spanish-wine.mdx` (párrafo de Rioja) recupera un enlace cruzado,
+  ahora hacia el nuevo artículo.
+- Sin imagen hero todavía: `rioja-pais-vasco-vino-pintxos.mdx`,
+  `aragon-navarra-cordero-esparragos.mdx` y `baleares-mediterraneo.mdx`
+  — David no proporcionó imágenes para estos en este cambio; añadir
+  cuando las facilite, siguiendo el mismo patrón que el resto del
+  cluster.
