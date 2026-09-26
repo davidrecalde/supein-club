@@ -15,16 +15,16 @@ import SpainMapSVG from '../../../components/SpainMapSVG.astro';
 import { communityColorMap } from '../../../data/spainCommunities';
 import { getArticleUrl } from '../../../utils/articles';
 import FloatingActions from '../../../components/FloatingActions.astro';
-import { Waves, Fish, UtensilsCrossed, Sun, Flame, Leaf, Anchor } from 'lucide-astro';
+import { Waves, Fish, UtensilsCrossed, Sun, Flame, Leaf, Wine, Mountain, Sailboat } from 'lucide-astro';
 
 const faq = [
   {
     question: '「スペイン美食マップ」の使い方は？',
-    answer: '地図上の各県をクリックすると、その県のレストラン・バルガイドのページに移動します。地図下の凡例から自治州名をクリックすると、その州に属する県のボタン一覧までジャンプできます。気になる街が決まっていない場合は、「7つの美食ゾーン」から地域ごとの特色を先に読んでみるのもおすすめです。',
+    answer: '地図上の各県をクリックすると、その県のレストラン・バルガイドのページに移動します。地図下の凡例から自治州名をクリックすると、その州に属する県のボタン一覧までジャンプできます。気になる街が決まっていない場合は、「10の美食ゾーン」から地域ごとの特色を先に読んでみるのもおすすめです。',
   },
   {
-    question: '7つの美食ゾーンとは何ですか？',
-    answer: 'スペインを食文化の似た7つのエリア（北部・北西部・中部・東部・南部・西部・島々）に分け、それぞれの郷土料理やワイン・お酒の文化を紹介する特集記事です。県ごとの詳細なレストラン情報だけでなく、地域全体の食文化の背景を知りたい方におすすめです。',
+    question: '10の美食ゾーンとは何ですか？',
+    answer: 'スペインを食文化の似た10のエリア（北部・バスク＆リオハ・北西部・アラゴン＆ナバラ・中部・東部・南部・西部・カナリア諸島・バレアレス諸島）に分け、それぞれの郷土料理やワイン・お酒の文化を紹介する特集記事です。県ごとの詳細なレストラン情報だけでなく、地域全体の食文化の背景を知りたい方におすすめです。',
   },
 ];
 
@@ -65,7 +65,7 @@ const relatedFoodArticles = foodArticles
 
 const tocHeadings = [
   { depth: 2, slug: 'interactive-map', text: 'インタラクティブマップ' },
-  { depth: 2, slug: 'culinary-zones',  text: '7つの美食ゾーン' },
+  { depth: 2, slug: 'culinary-zones',  text: '10の美食ゾーン' },
 ];
 
 const entries = await getCollection('spain-map', ({ data }) => data.draft !== true);
@@ -133,10 +133,18 @@ const zones: Zone[] = [
   {
     color: '#2D6A4F',
     icon: Waves,
-    title: '北部：ピンチョスとシードルの道',
-    provincias: 'バスク · カンタブリア · アストゥリアス',
-    summary: '美食の街サン・セバスティアンのピンチョス文化から、アストゥリアスのシードルまで。',
+    title: '北部：シードルと魚介の道',
+    provincias: 'アストゥリアス · カンタブリア',
+    summary: 'シードル文化のアストゥリアスから、アンチョビの産地カンタブリアまで。',
     href: '/food/food-routes/norte-pinchos-sidra/',
+  },
+  {
+    color: '#8E44AD',
+    icon: Wine,
+    title: 'バスク・リオハ：ピンチョスとワインの道',
+    provincias: 'バスク · リオハ',
+    summary: '美食の街サン・セバスティアンのピンチョス文化から、名門ワイン産地リオハまで。',
+    href: '/food/food-routes/rioja-pais-vasco-vino-pintxos/',
   },
   {
     color: '#1B4F72',
@@ -145,6 +153,14 @@ const zones: Zone[] = [
     provincias: 'ガリシア',
     summary: 'タコ料理をはじめとする新鮮な魚介と、アルバリーニョワインの産地。',
     href: '/food/food-routes/noroeste-marisco-albarino/',
+  },
+  {
+    color: '#B7950B',
+    icon: Mountain,
+    title: 'アラゴン・ナバラ：仔羊と野菜の道',
+    provincias: 'アラゴン · ナバラ',
+    summary: 'テルナスコとテルエル生ハムから、ナバラのホワイトアスパラガスまで。',
+    href: '/food/food-routes/aragon-navarra-cordero-esparragos/',
   },
   {
     color: '#002147',
@@ -180,11 +196,19 @@ const zones: Zone[] = [
   },
   {
     color: '#2980B9',
-    icon: Anchor,
-    title: '島々：火山と地中海の味',
-    provincias: 'カナリア諸島 · バレアレス諸島',
-    summary: '火山の大地が育んだカナリア諸島と、地中海に浮かぶバレアレス諸島の食文化。',
-    href: '/food/food-routes/islas-volcan-mediterraneo/',
+    icon: Flame,
+    title: 'カナリア諸島：火山の恵み',
+    provincias: 'カナリア諸島',
+    summary: '火山の大地が育んだしわしわポテトから、島の伝統食ゴフィオまで。',
+    href: '/food/food-routes/canarias-volcan/',
+  },
+  {
+    color: '#16A085',
+    icon: Sailboat,
+    title: 'バレアレス諸島：地中海の恵み',
+    provincias: 'バレアレス諸島',
+    summary: '生ソーセージのソブラサーダから、渦巻き状のパン菓子エンサイマダまで。',
+    href: '/food/food-routes/baleares-mediterraneo/',
   },
 ];
 ---
@@ -192,7 +216,7 @@ const zones: Zone[] = [
   <SEO
     slot="seo"
     title="スペイン美食マップ — 味で旅するスペイン"
-    description="50県・7つの美食ゾーンに分けて探す、本場スペインのグルメ体験マップです。スペイン倶楽部が現地情報をもとに厳選したレストラン・バルを、バスクのピンチョスからアンダルシアのガスパチョまで、地方色豊かな食文化や歴史的な背景とあわせて詳しく紹介します。"
+    description="50県・10の美食ゾーンに分けて探す、本場スペインのグルメ体験マップです。スペイン倶楽部が現地情報をもとに厳選したレストラン・バルを、バスクのピンチョスからアンダルシアのガスパチョまで、地方色豊かな食文化や歴史的な背景とあわせて詳しく紹介します。"
     canonical={canonical}
     breadcrumbs={breadcrumbs}
     authorName={author.data.name}
@@ -237,7 +261,7 @@ const zones: Zone[] = [
         <span style="font-size:13px; color:rgba(255,255,255,0.6);">約{readingTime}分</span>
       </div>
       <p class="text-white/80" style="font-size:18px; max-width:640px; line-height:1.8;">
-        50省・7つの美食ゾーンで探す、本場スペインのグルメ体験。<br />
+        50省・10の美食ゾーンで探す、本場スペインのグルメ体験。<br />
         スペイン倶楽部が厳選したレストラン・バルマップ。
       </p>
     </div>
@@ -321,7 +345,7 @@ const zones: Zone[] = [
         <!-- 7 Zonas Culinarias -->
         <section id="culinary-zones" class="msec">
           <p class="text-primary font-bold tracking-widest" style="font-size:11px; text-transform:uppercase; margin-bottom:8px;">RUTAS DE SABOR</p>
-          <h2 class="font-serif font-bold text-navy" style="font-size:clamp(24px,3vw,36px); margin-bottom:12px;">7つの美食ゾーンで探す</h2>
+          <h2 class="font-serif font-bold text-navy" style="font-size:clamp(24px,3vw,36px); margin-bottom:12px;">10の美食ゾーンで探す</h2>
           <p class="text-muted" style="font-size:16px; max-width:680px; line-height:1.7; margin-bottom:48px;">
             スペインは地域によって料理文化がまったく異なります。<br />
             まずあなたが好きな味のゾーンから、詳しい記事で読んでみましょう。
