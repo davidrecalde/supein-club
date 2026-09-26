@@ -1123,3 +1123,49 @@ en vez de al slug intermedio `canarias-volcan`, para evitar encadenar
 redirects). Verificado que no había más enlaces cruzados a estas 4 URLs
 en el resto del sitio (solo se referenciaban a sí mismas vía el nombre
 del archivo de imagen hero, sin relación con la URL).
+
+### Nueva plantilla de contenido para food-routes: itinerario por días
+
+David pidió repensar el contenido (no solo la estructura visual) de los
+10 artículos de `food-routes`, inspirándose en el formato de rutas
+temáticas de spain.info (ej. Ruta de Don Quijote): narrativa por etapa +
+lógica de desplazamiento, en vez de secciones temáticas sueltas.
+Iteración del formato en 3 pasos con David antes de fijar la plantilla:
+1º) "paradas" temáticas sin días; 2º) "días" pero solo con las 4
+provincias ya cubiertas (3 días); 3º) versión final con **7 días**,
+añadiendo paradas intermedias reales dentro de esas mismas 4 provincias
+para que el recorrido tenga lógica geográfica de avance continuo (como
+el Camino de Santiago: sin retrocesos), en vez de saltar directamente
+entre las 4 capitales.
+
+**Plantilla fijada** (piloto implementado en
+`rioja-pais-vasco-vino-pintxos.mdx`, pendiente de replicar en los otros
+9 tras validación de David):
+1. Bloque de mapa (igual que antes: insignia de zona + `RegionHighlightMap`
+   + `FoodRouteProvinceButtons`) — sin cambios.
+2. `## {Por qué esta ruta une X e Y}` — párrafo narrativo de apertura
+   con el hilo geográfico/histórico que justifica el recorrido.
+3. Un `## {N}日目：{lugar}——{gancho}` por cada parada, en orden de
+   avance geográfico real, con negrita `**移動時間：**` indicando tiempo
+   aproximado desde la parada anterior (excepto el día 1, sin traslado
+   previo) — párrafo con historia/producto distintivo, dato verificable
+   (DOP/IGP, festividad, hito histórico).
+4. `## このルートに出かけるベストシーズン` — sección nueva: mejor época,
+   festividades relevantes, y remite a `/food/spain-map/` para
+   restaurantes concretos por provincia.
+5. `## まとめ` — cierre, sin cambios de formato respecto a antes.
+6. FAQ ampliado con 1-2 preguntas nuevas sobre la duración del
+   itinerario y algún dato curioso mencionado en el recorrido.
+
+Caso piloto (`rioja-pais-vasco-vino-pintxos.mdx`): las 4 provincias ya
+cubiertas (Álava, Guipúzcoa, Vizcaya, La Rioja) se expandieron a 9
+paradas reales para llenar 7 días con lógica de avance —de este a
+oeste por la costa vasca, luego sur hacia Álava, luego La Rioja—: San
+Sebastián → Getaria/Zarautz → Mundaka/Gernika → Bilbao →
+Vitoria-Gasteiz → Haro → Logroño. Datos nuevos verificados por
+conocimiento general contrastable: Getariako Txakolina DO (Getaria +
+Zarautz), Pimiento de Gernika (IGP), Mercado de la Ribera de Bilbao
+(mayor mercado cubierto de Europa), Barrio de la Estación de Haro
+(bodegas históricas junto a la vía del tren), Batalla del Vino de Haro
+(29 de junio). El mapa/botones de provincia no cambiaron: todas las
+paradas nuevas caen dentro de las 4 provincias ya resaltadas.
