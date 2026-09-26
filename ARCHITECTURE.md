@@ -1169,3 +1169,57 @@ Zarautz), Pimiento de Gernika (IGP), Mercado de la Ribera de Bilbao
 (bodegas históricas junto a la vía del tren), Batalla del Vino de Haro
 (29 de junio). El mapa/botones de provincia no cambiaron: todas las
 paradas nuevas caen dentro de las 4 provincias ya resaltadas.
+
+### Plantilla de 7 días aplicada a los 9 artículos food-routes restantes
+
+Tras validar el piloto, David pidió aplicar la misma plantilla al resto
+del cluster. Reescritos los 9 artículos con la misma estructura
+(narrativa de apertura + N días con `**移動時間：**` + sección de
+temporada + FAQ ampliado), añadiendo paradas reales dentro de las
+provincias ya cubiertas por cada uno para llegar a 7 días con lógica
+geográfica de avance (sin retrocesos, salvo el cierre natural de un
+bucle cuando el número de provincias lo exige). Mapa/botones sin
+cambios en ningún caso — todas las paradas nuevas caen dentro de las
+provincias ya resaltadas.
+
+- **`asturias-cantabria-mar-cantabrico`**: Cudillero → Villaviciosa →
+  Oviedo → Ribadesella/Cabrales → Santillana del Mar → Santander →
+  Santoña. Dato nuevo: Queso Cabrales (DOP).
+- **`noroeste-marisco-albarino`**: Vigo → Cambados → O Grove → Santiago
+  de Compostela → A Coruña → Lugo → Ourense (bucle por las 4 provincias
+  gallegas). Datos nuevos: Festa do Marisco (O Grove), Tarta de
+  Santiago, Estrella Galicia (A Coruña, 1906), murallas romanas y
+  tapeo gratis de Lugo (Patrimonio de la Humanidad), termas de As
+  Burgas y DO Ribeiro (Ourense).
+- **`aragon-navarra-ternasco-esparragos`**: Pamplona → Tudela → Huesca
+  → Barbastro → Zaragoza → Sarrión → Teruel. Datos nuevos: Tudela como
+  huerta de Navarra, DO Somontano (Barbastro), El Tubo de Zaragoza,
+  Trufa Negra de Teruel y feria FiTruf (Sarrión).
+- **`sur-fritos-flamenco`**: Huelva (Jabugo) → Sevilla → Jerez →
+  Málaga → Granada → Almería → Jaén+Córdoba (último día combina 2
+  provincias para cerrar las 8 en 7 días). Dato nuevo: Espeto de
+  sardinas (Málaga).
+- **`centro-asado-vino-tinto`** (el más grande, 10 provincias): Madrid
+  → Segovia → Ávila → Valladolid (+ mención Palencia) → Burgos (+
+  mención Soria) → León → Salamanca+Zamora (último día combina 2 para
+  cerrar 10 provincias en 7 días). Datos nuevos: Ternera de Ávila
+  (IGP), Morcilla de Burgos, Torrezno de Soria (IGP), Cecina de León
+  (DOP), Botillo del Bierzo.
+- **`este-paella-tapas`**: Alicante → Valencia → Castellón → Tarragona
+  (Valls) → Barcelona → Girona → Lleida. Datos nuevos: Turrón de
+  Jijona/Alicante (DOP), calçotada de Valls, alta cocina de Girona +
+  anchoa de l'Escala, Aplec del Caragol y Pera de Lleida (DOP).
+- **`oeste-jamon-iberico`**: Badajoz → Cáceres → Toledo → Ciudad Real
+  → Albacete → Cuenca → Guadalajara. Datos nuevos: Queso de la Serena
+  (DOP, Badajoz), Torta del Casar (DOP, Cáceres), berenjena de Almagro,
+  atascaburras (Albacete), morteruelo (Cuenca).
+- **`islas-canarias-atlantico`**: reformulado como 1 isla por día — La
+  Palma → El Hierro → La Gomera → Tenerife → Gran Canaria →
+  Fuerteventura → Lanzarote (barrido oeste→este de las 7 islas dentro
+  de las 2 provincias ya cubiertas). Datos nuevos: Queso Palmero (DOP),
+  Miel de Palma de La Gomera (DOP), Queso de Flor de Guía (DOP), Queso
+  Majorero (DOP), viticultura volcánica de La Geria (Lanzarote).
+- **`islas-baleares-mediterraneo`**: 4 días en Mallorca (Palma, Sóller,
+  Sa Pobla, Binissalem) + Menorca + Ibiza + Formentera. Datos nuevos:
+  Queso Mahón-Menorca (DOP), ginebra de Menorca, salinas de Ibiza
+  (Patrimonio de la Humanidad).
