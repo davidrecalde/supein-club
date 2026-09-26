@@ -33,9 +33,52 @@ faq:
 
 import RegionHighlightMap from '../../../../components/RegionHighlightMap.astro';
 import FoodRouteZoneBadge from '../../../../components/FoodRouteZoneBadge.astro';
+import FoodRouteProvinceButtons from '../../../../components/FoodRouteProvinceButtons.astro';
 import { Waves } from 'lucide-astro';
 
+## エリア別レストランマップ
+
+このグルメルートが扱うのは、地図で色付けした5県（バスク州3県＋カンタブリア＋アストゥリアス）です。クリックすると各県のレストラン・バルマップへ移動します。
+
 <FoodRouteZoneBadge icon={Waves} color="#2D6A4F" label="北部：ピンチョスとシードルの道" />
+
+<RegionHighlightMap
+  provinces={[
+    { code: "ES-VI", slug: "alava", label: "アラバ" },
+    { code: "ES-SS", slug: "guipuzcoa", label: "ギプスコア" },
+    { code: "ES-BI", slug: "vizcaya", label: "ビスカヤ" },
+    { code: "ES-S", slug: "cantabria", label: "カンタブリア" },
+    { code: "ES-O", slug: "asturias", label: "アストゥリアス" },
+  ]}
+  caption="色付けした5県がこのグルメルートの対象エリア（バスク州＋カンタブリア＋アストゥリアス）"
+  color="#2D6A4F"
+/>
+
+<FoodRouteProvinceButtons
+  communities={[
+    {
+      slug: "pais-vasco",
+      name: "バスク地方",
+      provinces: [
+        { slug: "alava", label: "アラバ" },
+        { slug: "guipuzcoa", label: "ギプスコア" },
+        { slug: "vizcaya", label: "ビスカヤ" },
+      ],
+    },
+    {
+      slug: "cantabria",
+      name: "カンタブリア",
+      provinces: [{ slug: "cantabria", label: "カンタブリア" }],
+    },
+    {
+      slug: "asturias",
+      name: "アストゥリアス",
+      provinces: [{ slug: "asturias", label: "アストゥリアス" }],
+    },
+  ]}
+/>
+
+---
 
 ## 美食の首都サン・セバスティアンとピンチョス文化
 
@@ -52,32 +95,6 @@ import { Waves } from 'lucide-astro';
 ## カンタブリアの魚介料理
 
 北の海に面したカンタブリア地方では、新鮮な魚介を使った料理が中心です。アンチョビの産地としても知られ、地元で水揚げされた魚介をシンプルに調理するスタイルが好まれています。
-
----
-
-## エリア別レストランマップ
-
-このグルメルートが扱うのは、地図で色付けした5県（バスク州3県＋カンタブリア＋アストゥリアス）です。クリックすると各県のレストラン・バルマップへ移動します。
-
-<RegionHighlightMap
-  provinces={[
-    { code: "ES-VI", slug: "alava", label: "アラバ" },
-    { code: "ES-SS", slug: "guipuzcoa", label: "ギプスコア" },
-    { code: "ES-BI", slug: "vizcaya", label: "ビスカヤ" },
-    { code: "ES-S", slug: "cantabria", label: "カンタブリア" },
-    { code: "ES-O", slug: "asturias", label: "アストゥリアス" },
-  ]}
-  caption="色付けした5県がこのグルメルートの対象エリア（バスク州＋カンタブリア＋アストゥリアス）"
-  color="#2D6A4F"
-/>
-
-各県のレストラン・バルマップと基本情報は、それぞれの詳細ページからご覧いただけます。
-
-- [アラバ](/food/spain-map/alava/)
-- [ギプスコア](/food/spain-map/guipuzcoa/)
-- [ビスカヤ](/food/spain-map/vizcaya/)
-- [カンタブリア](/food/spain-map/cantabria/)
-- [アストゥリアス](/food/spain-map/asturias/)
 
 ---
 

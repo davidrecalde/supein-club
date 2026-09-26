@@ -997,3 +997,30 @@ vista general al artículo.
 - El texto "地図で赤く示した..." / caption "赤く示した...県が..." se
   cambió a "色付けした" en los 7 artículos, ya que tras este cambio el
   color del mapa ya no es siempre rojo.
+
+### Reestructuración de los 7 artículos food-routes: mapa arriba + botones de provincia
+
+David pidió repensar el orden de secciones de los artículos de
+`food-routes`, tomando `/food/spain-map/` como referencia: el mapa debe
+ir arriba del todo (no al final), la insignia de zona justo encima del
+mapa, y las provincias también en formato botón (bandera + color de la
+comunidad) en vez de solo una lista markdown de enlaces. El color del
+propio mapa SVG se mantiene igual (color de zona introducido en el
+commit anterior, no rojo fijo).
+
+- Nuevo componente `FoodRouteProvinceButtons.astro`: agrupa las
+  provincias por comunidad autónoma, mostrando la bandera
+  (`/images/flags/{slug}.webp`) y usando `communityColorMap[slug].flagColor`
+  para el borde izquierdo de cada botón — mismo patrón visual y misma
+  fuente de datos que `.community-block`/`.province-button` en
+  `spain-map/index.astro` (por eso Andalucía sale en verde: es el color
+  real de su bandera en `spainCommunities.ts`, no un verde hardcodeado).
+- En los 7 artículos: el bloque "## エリア別レストランマップ" (intro +
+  `<FoodRouteZoneBadge>` + `<RegionHighlightMap>` + `<FoodRouteProvinceButtons>`)
+  se movió al principio del cuerpo, justo tras los imports, en vez de
+  quedar al final antes de "## まとめ". Se eliminó la lista markdown
+  plana de enlaces por provincia (sustituida por los botones).
+- Contenido descriptivo de cada artículo (los `##` con la historia/
+  platos típicos) sin cambios, solo desplazado después del bloque de
+  mapa. Pendiente: David planea ampliar este contenido "poco a poco" en
+  próximas iteraciones — no se ha tocado en este cambio.

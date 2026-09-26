@@ -32,31 +32,14 @@ faq:
 
 import RegionHighlightMap from '../../../../components/RegionHighlightMap.astro';
 import FoodRouteZoneBadge from '../../../../components/FoodRouteZoneBadge.astro';
+import FoodRouteProvinceButtons from '../../../../components/FoodRouteProvinceButtons.astro';
 import { UtensilsCrossed } from 'lucide-astro';
-
-<FoodRouteZoneBadge icon={UtensilsCrossed} color="#002147" label="中部：アサードと赤ワイン" />
-
-## 内陸の乾燥した気候が育んだ肉料理文化
-
-スペイン中央部に位置するマドリードとカスティーリャ・イ・レオン地方は、内陸の乾燥した気候と広大な牧草地に恵まれ、良質な肉を使った料理文化が発展してきました。じっくりと焼き上げる「アサード」は、この地方を象徴する調理法です。
-
-## コチニージョとレチャソ、2つの名物アサード
-
-カスティーリャ・イ・レオン地方を代表するのが、仔豚の丸焼き「コチニージョ・アサード」と、仔羊のロースト「レチャソ・アサード」です。特にセゴビアのコチニージョは、皿の縁で切り分けられるほど柔らかく焼き上げられることで知られています。
-
-## コシード・マドリレーニョ：マドリードの魂の料理
-
-マドリードを代表する郷土料理が「コシード・マドリレーニョ」です。ひよこ豆、豚肉、野菜を数時間煮込んだこの料理は、伝統的にスープ、豆、肉の順に3皿に分けて提供されます。冬の寒い時期に特に親しまれる、体の芯から温まる一皿です。
-
-## 生ハムとリベラ・デル・ドゥエロワイン
-
-サラマンカ近郊のギフエロは、良質なイベリコ生ハムの産地として知られています。また、ドゥエロ川流域に広がる「リベラ・デル・ドゥエロ」は、テンプラニーリョ種を中心とした力強い赤ワインの産地で、この地方のアサード料理との組み合わせが定番となっています。スペインワインの格付けや産地について詳しくは[「スペインワイン完全ガイド」](/food/spanish-wine/)で紹介しています。
-
----
 
 ## エリア別レストランマップ
 
 このグルメルートが扱うのは、地図で色付けした10県（マドリード州1県＋カスティーリャ・イ・レオン州9県）です。クリックすると各県のレストラン・バルマップへ移動します。
+
+<FoodRouteZoneBadge icon={UtensilsCrossed} color="#002147" label="中部：アサードと赤ワイン" />
 
 <RegionHighlightMap
   provinces={[
@@ -75,18 +58,48 @@ import { UtensilsCrossed } from 'lucide-astro';
   color="#002147"
 />
 
-各県のレストラン・バルマップと基本情報は、それぞれの詳細ページからご覧いただけます。
+<FoodRouteProvinceButtons
+  communities={[
+    {
+      slug: "madrid",
+      name: "マドリード州",
+      provinces: [{ slug: "madrid", label: "マドリード" }],
+    },
+    {
+      slug: "castilla-y-leon",
+      name: "カスティーリャ・イ・レオン",
+      provinces: [
+        { slug: "avila", label: "アビラ" },
+        { slug: "burgos", label: "ブルゴス" },
+        { slug: "leon", label: "レオン" },
+        { slug: "palencia", label: "パレンシア" },
+        { slug: "salamanca", label: "サラマンカ" },
+        { slug: "segovia", label: "セゴビア" },
+        { slug: "soria", label: "ソリア" },
+        { slug: "valladolid", label: "バリャドリード" },
+        { slug: "zamora", label: "サモラ" },
+      ],
+    },
+  ]}
+/>
 
-- [マドリード](/food/spain-map/madrid/)
-- [ブルゴス](/food/spain-map/burgos/)
-- [サラマンカ](/food/spain-map/salamanca/)
-- [セゴビア](/food/spain-map/segovia/)
-- [バリャドリード](/food/spain-map/valladolid/)
-- [アビラ](/food/spain-map/avila/)
-- [レオン](/food/spain-map/leon/)
-- [パレンシア](/food/spain-map/palencia/)
-- [ソリア](/food/spain-map/soria/)
-- [サモラ](/food/spain-map/zamora/)
+---
+
+## 内陸の乾燥した気候が育んだ肉料理文化
+
+スペイン中央部に位置するマドリードとカスティーリャ・イ・レオン地方は、内陸の乾燥した気候と広大な牧草地に恵まれ、良質な肉を使った料理文化が発展してきました。じっくりと焼き上げる「アサード」は、この地方を象徴する調理法です。
+
+## コチニージョとレチャソ、2つの名物アサード
+
+カスティーリャ・イ・レオン地方を代表するのが、仔豚の丸焼き「コチニージョ・アサード」と、仔羊のロースト「レチャソ・アサード」です。特にセゴビアのコチニージョは、皿の縁で切り分けられるほど柔らかく焼き上げられることで知られています。
+
+## コシード・マドリレーニョ：マドリードの魂の料理
+
+マドリードを代表する郷土料理が「コシード・マドリレーニョ」です。ひよこ豆、豚肉、野菜を数時間煮込んだこの料理は、伝統的にスープ、豆、肉の順に3皿に分けて提供されます。冬の寒い時期に特に親しまれる、体の芯から温まる一皿です。
+
+## 生ハムとリベラ・デル・ドゥエロワイン
+
+サラマンカ近郊のギフエロは、良質なイベリコ生ハムの産地として知られています。また、ドゥエロ川流域に広がる「リベラ・デル・ドゥエロ」は、テンプラニーリョ種を中心とした力強い赤ワインの産地で、この地方のアサード料理との組み合わせが定番となっています。スペインワインの格付けや産地について詳しくは[「スペインワイン完全ガイド」](/food/spanish-wine/)で紹介しています。
 
 ---
 

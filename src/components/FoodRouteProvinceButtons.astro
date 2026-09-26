@@ -1,0 +1,111 @@
+---
+// Botones de provincia agrupados por comunidad autónoma, mismo patrón
+// visual que .community-block/.province-button en
+// src/pages/food/spain-map/index.astro — reutiliza la misma bandera y
+// el mismo color (communityColorMap) para que el usuario reconozca el
+// mismo lenguaje visual al pasar de la vista general al artículo de ruta.
+import { communityColorMap } from '../data/spainCommunities';
+
+interface CommunityGroup {
+  slug: string;
+  name: string;
+  provinces: Array<{ slug: string; label: string }>;
+}
+
+interface Props {
+  communities: CommunityGroup[];
+}
+
+const { communities } = Astro.props;
+---
+
+<div class="frpb-list">
+  {communities.map((c) => (
+    <div class="frpb-block">
+      <div class="frpb-heading">
+        <img src={`/images/flags/${c.slug}.webp`} alt={`${c.name}の旗`} class="frpb-flag" width="40" height="40" loading="lazy" />
+        <span class="frpb-name">{c.name}</span>
+      </div>
+      <div class="frpb-buttons">
+        {c.provinces.map((p) => (
+          <a
+            href={`/food/spain-map/${p.slug}/`}
+            class="frpb-button"
+            style={`border-left-color: ${communityColorMap[c.slug]?.flagColor ?? '#C8102E'};`}
+          >
+            {p.label}
+          </a>
+        ))}
+      </div>
+    </div>
+  ))}
+</div>
+
+<style>
+  .frpb-list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+    margin: 24px 0 0;
+  }
+
+  .frpb-block {
+    grid-column: span 1;
+  }
+
+  .frpb-heading {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+  }
+
+  .frpb-flag {
+    width: 40px;
+    height: 40px;
+    object-fit: cover;
+    border-radius: 4px;
+    border: 1px solid #E8E8E6;
+    display: block;
+    flex-shrink: 0;
+  }
+
+  .frpb-name {
+    font-weight: 700;
+    font-size: 14px;
+    color: #002147;
+  }
+
+  .frpb-buttons {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+
+  .frpb-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 14px;
+    background: white;
+    border: 1px solid #E8E8E6;
+    border-left-width: 3px;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 700;
+    color: #002147;
+    text-decoration: none;
+    transition: border-color 0.2s;
+  }
+
+  .frpb-button:hover {
+    border-color: #C8102E;
+  }
+
+  @media (max-width: 640px) {
+    .frpb-list {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
