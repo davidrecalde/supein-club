@@ -35,33 +35,32 @@ faq:
     answer: "メノルカ島特産のDOP認定チーズです。牛乳から作られ、正方形に近い独特の形が特徴で、熟成期間によって風味が大きく変化します。"
 ---
 
-import RegionHighlightMap from '../../../../components/RegionHighlightMap.astro';
+import RouteMap from '../../../../components/RouteMap.astro';
 import FoodRouteZoneBadge from '../../../../components/FoodRouteZoneBadge.astro';
-import FoodRouteProvinceButtons from '../../../../components/FoodRouteProvinceButtons.astro';
 import { Sailboat } from 'lucide-astro';
 
 ## エリア別レストランマップ
 
-このグルメルートが扱うのは、地図で色付けしたバレアレス諸島です。クリックするとレストラン・バルマップへ移動します。
+このグルメルートが扱うのは、地図で色付けしたバレアレス諸島です。番号をクリックすると、該当する日の解説へ移動します。
 
 <FoodRouteZoneBadge icon={Sailboat} color="#16A085" label="バレアレス諸島：地中海の恵み" />
 
-<RegionHighlightMap
+<RouteMap
   provinces={[
-    { code: "ES-PM", slug: "islas-baleares", label: "バレアレス諸島" },
+    { code: "ES-PM", label: "バレアレス諸島" },
   ]}
-  caption="色付けしたバレアレス諸島がこのグルメルートの対象エリア"
+  stops={[
+    { day: 1, nameJa: "パルマ・デ・マヨルカ", nameRoman: "Palma de Mallorca", x: 367.4, y: 164.1, labelX: 360, labelY: 230, labelAnchor: "middle", leadX: 363, leadY: 200 },
+    { day: 2, nameJa: "ソジェール", nameRoman: "Sóller", x: 369.3, y: 156.5, labelX: 365, labelY: 70, labelAnchor: "middle", leadX: 367, leadY: 105 },
+    { day: 3, nameJa: "サ・ポブラ", nameRoman: "Sa Pobla", x: 378.7, y: 156.4, labelX: 400, labelY: 110, labelAnchor: "middle", leadX: 390, leadY: 125 },
+    { day: 4, nameJa: "ビニサレム", nameRoman: "Binissalem", x: 372.9, y: 159.5, labelX: 300, labelY: 160, labelAnchor: "end", leadX: 340, leadY: 160 },
+    { day: 5, nameJa: "メノルカ島", nameRoman: "Menorca", x: 416.9, y: 151.7, labelX: 400, labelY: 270, labelAnchor: "middle", leadX: 408, leadY: 220 },
+    { day: 6, nameJa: "イビサ島", nameRoman: "Ibiza", x: 329.6, y: 189.9, labelX: 280, labelY: 230, labelAnchor: "middle", leadX: 300, leadY: 205 },
+    { day: 7, nameJa: "フォルメンテラ島", nameRoman: "Formentera", x: 330.0, y: 197.9, labelX: 280, labelY: 270, labelAnchor: "middle", leadX: 300, leadY: 230 },
+  ]}
+  caption="色付けしたバレアレス諸島と、ルート上の7つの町"
   color="#16A085"
-/>
-
-<FoodRouteProvinceButtons
-  communities={[
-    {
-      slug: "baleares",
-      name: "バレアレス諸島",
-      provinces: [{ slug: "islas-baleares", label: "バレアレス諸島" }],
-    },
-  ]}
+  zoomOnly
 />
 
 ---
@@ -70,40 +69,47 @@ import { Sailboat } from 'lucide-astro';
 
 地中海に浮かぶバレアレス諸島は、マヨルカ島を中心に、メノルカ島、イビサ島、フォルメンテラ島という4つの個性的な島からなります。この7日間のルートは、最も大きなマヨルカ島をじっくり巡ったのち、東へ島から島へと渡っていきます。
 
+<span id="day-1" />
 ## 1日目：パルマ・デ・マヨルカ（Palma de Mallorca）——ソブラサーダとエンサイマダ
 
 ルートの出発点は、マヨルカ島の中心都市パルマ。パプリカで赤く色づけしたなめらかな生ソーセージ「ソブラサーダ」と、渦巻き状の甘いパン菓子「エンサイマダ」は、この島を代表する2大名物です。
 
+<span id="day-2" />
 ## 2日目：ソジェール（Sóller）——オレンジ畑と歴史ある路面電車
 
 **移動時間：** ソジェールまで約45分。
 
 山あいの盆地に位置するソジェールは、オレンジ畑が広がるエリアとして知られています。100年以上の歴史を持つ路面電車に揺られながら、島の農村風景を楽しめます。
 
+<span id="day-3" />
 ## 3日目：サ・ポブラ（Sa Pobla）——じゃがいもの産地
 
 **移動時間：** サ・ポブラまで約1時間。
 
 サ・ポブラは、良質なじゃがいもの産地として知られる町です。この地で栽培されるじゃがいもは加工品としても流通し、島の食卓を支えています。
 
+<span id="day-4" />
 ## 4日目：ビニサレム（Binissalem）——マヨルカワインの産地
 
 **移動時間：** ビニサレムまで約30分。
 
 マヨルカ島を代表するワイン産地「DOビニサレム」の中心地です。地元品種のブドウから造られる赤ワインは、島の郷土料理との相性を考えて造られてきました。
 
+<span id="day-5" />
 ## 5日目：メノルカ島（Menorca）——マオンチーズとジン
 
 **移動時間：** フェリーまたはフライトでメノルカ島まで。
 
 メノルカ島特産の「ケソ・マオン＝メノルカ（DOP）」は、牛乳から作られる正方形に近い独特の形のチーズです。18世紀の英国統治の名残から、この島には独自のジン蒸留の伝統も根付いています。
 
+<span id="day-6" />
 ## 6日目：イビサ島（Ibiza）——塩田とフラオ
 
 **移動時間：** フェリーでイビサ島まで。
 
 ユネスコ世界遺産にも登録されているイビサ島南部の塩田「サリーナス」は、古くからこの島の経済を支えてきました。羊乳チーズとミントを使った伝統菓子「フラオ」も、この島ならではの味わいです。
 
+<span id="day-7" />
 ## 7日目：フォルメンテラ島（Formentera）——干物と塩
 
 **移動時間：** フェリーでフォルメンテラ島まで。

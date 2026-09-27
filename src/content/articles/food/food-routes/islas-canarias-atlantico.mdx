@@ -35,37 +35,33 @@ faq:
     answer: "ランサローテの「ラ・ヘリア」地区では、火山灰でできたすり鉢状の穴にブドウの木を1本ずつ植え、石垣で風を防ぐという独特の栽培方法が採られています。世界的にも珍しい火山性のブドウ栽培として知られています。"
 ---
 
-import RegionHighlightMap from '../../../../components/RegionHighlightMap.astro';
+import RouteMap from '../../../../components/RouteMap.astro';
 import FoodRouteZoneBadge from '../../../../components/FoodRouteZoneBadge.astro';
-import FoodRouteProvinceButtons from '../../../../components/FoodRouteProvinceButtons.astro';
 import { Flame } from 'lucide-astro';
 
 ## エリア別レストランマップ
 
-このグルメルートが扱うのは、地図で色付けしたカナリア諸島2県です。クリックすると各県のレストラン・バルマップへ移動します。
+このグルメルートが扱うのは、地図で色付けしたカナリア諸島2県です。番号をクリックすると、該当する日の解説へ移動します。
 
 <FoodRouteZoneBadge icon={Flame} color="#2980B9" label="カナリア諸島：火山の恵み" />
 
-<RegionHighlightMap
+<RouteMap
   provinces={[
-    { code: "ES-GC", slug: "las-palmas", label: "ラス・パルマス" },
-    { code: "ES-TF", slug: "santa-cruz-de-tenerife", label: "テネリフェ" },
+    { code: "ES-GC", label: "ラス・パルマス" },
+    { code: "ES-TF", label: "テネリフェ" },
   ]}
-  caption="色付けしたカナリア諸島2県がこのグルメルートの対象エリア"
+  stops={[
+    { day: 1, nameJa: "ラ・パルマ島", nameRoman: "La Palma", x: 330, y: 234, labelX: 310, labelY: 120, labelAnchor: "middle", leadX: 318, leadY: 140 },
+    { day: 2, nameJa: "エル・イエロ島", nameRoman: "El Hierro", x: 327, y: 257, labelX: 310, labelY: 200, labelAnchor: "middle", leadX: 316, leadY: 213 },
+    { day: 3, nameJa: "ラ・ゴメラ島", nameRoman: "La Gomera", x: 341, y: 250, labelX: 310, labelY: 160, labelAnchor: "middle", leadX: 320, leadY: 178 },
+    { day: 4, nameJa: "テネリフェ島", nameRoman: "Tenerife", x: 358, y: 246, labelX: 390, labelY: 205, labelAnchor: "middle", leadX: 378, leadY: 216 },
+    { day: 5, nameJa: "グラン・カナリア島", nameRoman: "Gran Canaria", x: 374, y: 257, labelX: 390, labelY: 135, labelAnchor: "middle", leadX: 384, leadY: 152 },
+    { day: 6, nameJa: "フエルテベントゥーラ島", nameRoman: "Fuerteventura", x: 396, y: 250, labelX: 390, labelY: 170, labelAnchor: "middle", leadX: 392, leadY: 186 },
+    { day: 7, nameJa: "ランサローテ島", nameRoman: "Lanzarote", x: 403, y: 230, labelX: 390, labelY: 100, labelAnchor: "middle", leadX: 396, leadY: 118 },
+  ]}
+  caption="色付けしたカナリア諸島2県と、ルート上の7つの島"
   color="#2980B9"
-/>
-
-<FoodRouteProvinceButtons
-  communities={[
-    {
-      slug: "canarias",
-      name: "カナリア諸島",
-      provinces: [
-        { slug: "las-palmas", label: "ラス・パルマス" },
-        { slug: "santa-cruz-de-tenerife", label: "テネリフェ" },
-      ],
-    },
-  ]}
+  zoomOnly
 />
 
 ---
@@ -74,40 +70,47 @@ import { Flame } from 'lucide-astro';
 
 大西洋に浮かぶカナリア諸島は、7つの主要な島からなり、それぞれが独自の火山性の土壌と食文化を育んできました。この7日間のルートは、西のラ・パルマ島から東のランサローテ島へ、1日1島のペースで渡っていきます。島間の移動はフェリーまたは短距離便のフライトが基本です。
 
+<span id="day-1" />
 ## 1日目：ラ・パルマ島（La Palma）——チーズと松の樽ワイン
 
 ルートの出発点はラ・パルマ島。「ケソ・パルメロ（DOP）」は、この島特産の燻製山羊乳チーズです。松の樽で熟成させる独特のワイン「ビノ・デ・テア」も、この島ならではの味わいです。
 
+<span id="day-2" />
 ## 2日目：エル・イエロ島（El Hierro）——最も小さな島のチーズ文化
 
 **移動時間：** フェリーでエル・イエロ島まで。
 
 カナリア諸島最小の島、エル・イエロ島は、独自のチーズ「ケソ・エレーニョ」の産地です。火山活動によって形成された黒い土壌が、この島の農業と牧畜を支えています。
 
+<span id="day-3" />
 ## 3日目：ラ・ゴメラ島（La Gomera）——パームハニーとアルモグロテ
 
 **移動時間：** フェリーでラ・ゴメラ島まで。
 
 ラ・ゴメラ島特産の「ミエル・デ・パルマ（DOP）」は、ヤシの木の樹液を煮詰めて作る濃厚な蜜です。チーズとトマト、にんにくをすり潰したペースト「アルモグロテ」も、この島の郷土料理として親しまれています。
 
+<span id="day-4" />
 ## 4日目：テネリフェ島（Tenerife）——しわしわポテトとモホ・ピコン
 
 **移動時間：** フェリーでテネリフェ島まで。
 
 カナリア諸島最大の島、テネリフェ島では、皮つきの小さなじゃがいもを塩水でゆでる「パパス・アルガダス」が定番料理です。唐辛子ベースの辛いソース「モホ・ピコン」をつけて食べるのが伝統的なスタイルです。テイデ山の火山性土壌で育つブドウから造られるワインも、この島の特産品です。
 
+<span id="day-5" />
 ## 5日目：グラン・カナリア島（Gran Canaria）——ゴフィオと花のチーズ
 
 **移動時間：** フェリーでグラン・カナリア島まで。
 
 炒った穀物を挽いた粉「ゴフィオ」は、カナリア諸島全体で親しまれる伝統食材ですが、グラン・カナリア島は特に消費が盛んな島とされています。ギア地区特産の「ケソ・デ・フロール（DOP）」は、アザミの花の凝乳酵素を使った珍しいチーズです。
 
+<span id="day-6" />
 ## 6日目：フエルテベントゥーラ島（Fuerteventura）——マホレロ山羊のチーズ
 
 **移動時間：** フェリーでフエルテベントゥーラ島まで。
 
 フエルテベントゥーラ島特産の「ケソ・マホレロ（DOP）」は、この島固有の山羊「マホレラ種」の乳から作られるチーズです。乾燥した気候と広大な牧草地が、この島ならではの牧畜文化を育んできました。
 
+<span id="day-7" />
 ## 7日目：ランサローテ島（Lanzarote）——火山灰が育てたワイン
 
 **移動時間：** フェリーでランサローテ島まで。

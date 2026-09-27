@@ -40,53 +40,37 @@ faq:
     answer: "カセレス県カサル・デ・カセレスが原産のDOP認定チーズです。羊乳とアザミの花から採れる植物性凝乳酵素で作られ、熟成が進むと表面を切り開いてスプーンですくって食べる、とろりとした食感が特徴です。"
 ---
 
-import RegionHighlightMap from '../../../../components/RegionHighlightMap.astro';
+import RouteMap from '../../../../components/RouteMap.astro';
 import FoodRouteZoneBadge from '../../../../components/FoodRouteZoneBadge.astro';
-import FoodRouteProvinceButtons from '../../../../components/FoodRouteProvinceButtons.astro';
 import { Leaf } from 'lucide-astro';
 
 ## エリア別レストランマップ
 
-このグルメルートが扱うのは、地図で色付けした7県（エストレマドゥーラ州2県＋カスティーリャ・ラ・マンチャ州5県）です。クリックすると各県のレストラン・バルマップへ移動します。
+このグルメルートが扱うのは、地図で色付けした7県（エストレマドゥーラ州2県＋カスティーリャ・ラ・マンチャ州5県）です。番号をクリックすると、該当する日の解説へ移動します。
 
 <FoodRouteZoneBadge icon={Leaf} color="#27AE60" label="西部：イベリコ生ハムとチーズの道" />
 
-<RegionHighlightMap
+<RouteMap
   provinces={[
-    { code: "ES-BA", slug: "badajoz", label: "バダホス" },
-    { code: "ES-CC", slug: "caceres", label: "カセレス" },
-    { code: "ES-AB", slug: "albacete", label: "アルバセテ" },
-    { code: "ES-CR", slug: "ciudad-real", label: "シウダ・レアル" },
-    { code: "ES-CU", slug: "cuenca", label: "クエンカ" },
-    { code: "ES-GU", slug: "guadalajara", label: "グアダラハラ" },
-    { code: "ES-TO", slug: "toledo", label: "トレド" },
+    { code: "ES-BA", label: "バダホス" },
+    { code: "ES-CC", label: "カセレス" },
+    { code: "ES-AB", label: "アルバセテ" },
+    { code: "ES-CR", label: "シウダ・レアル" },
+    { code: "ES-CU", label: "クエンカ" },
+    { code: "ES-GU", label: "グアダラハラ" },
+    { code: "ES-TO", label: "トレド" },
   ]}
-  caption="色付けした7県がこのグルメルートの対象エリア（エストレマドゥーラ州＋カスティーリャ・ラ・マンチャ州）"
+  stops={[
+    { day: 1, nameJa: "バダホス", nameRoman: "Badajoz", x: 71.7, y: 190.9, labelX: 71.7, labelY: 80, labelAnchor: "end", leadX: 68, leadY: 105 },
+    { day: 2, nameJa: "カセレス", nameRoman: "Cáceres", x: 90.1, y: 167.8, labelX: 90.1, labelY: 250, labelAnchor: "middle", leadX: 90, leadY: 225 },
+    { day: 3, nameJa: "トレド", nameRoman: "Toledo", x: 162.1, y: 152.7, labelX: 162.1, labelY: 80, labelAnchor: "end", leadX: 157, leadY: 95 },
+    { day: 4, nameJa: "シウダ・レアル", nameRoman: "Ciudad Real", x: 165.2, y: 186.8, labelX: 165.2, labelY: 250, labelAnchor: "middle", leadX: 165, leadY: 232 },
+    { day: 5, nameJa: "アルバセテ", nameRoman: "Albacete", x: 228.8, y: 186.5, labelX: 228.8, labelY: 80, labelAnchor: "start", leadX: 226, leadY: 115 },
+    { day: 6, nameJa: "クエンカ", nameRoman: "Cuenca", x: 220.2, y: 144.7, labelX: 220.2, labelY: 250, labelAnchor: "middle", leadX: 220, leadY: 222 },
+    { day: 7, nameJa: "グアダラハラ", nameRoman: "Guadalajara", x: 188.6, y: 122.8, labelX: 188.6, labelY: 80, labelAnchor: "middle", leadX: 188, leadY: 95 },
+  ]}
+  caption="色付けした7県（エストレマドゥーラ州＋カスティーリャ・ラ・マンチャ州）と、ルート上の7つの町"
   color="#27AE60"
-/>
-
-<FoodRouteProvinceButtons
-  communities={[
-    {
-      slug: "extremadura",
-      name: "エストレマドゥーラ",
-      provinces: [
-        { slug: "badajoz", label: "バダホス" },
-        { slug: "caceres", label: "カセレス" },
-      ],
-    },
-    {
-      slug: "castilla-la-mancha",
-      name: "カスティーリャ・ラ・マンチャ",
-      provinces: [
-        { slug: "albacete", label: "アルバセテ" },
-        { slug: "ciudad-real", label: "シウダ・レアル" },
-        { slug: "cuenca", label: "クエンカ" },
-        { slug: "guadalajara", label: "グアダラハラ" },
-        { slug: "toledo", label: "トレド" },
-      ],
-    },
-  ]}
 />
 
 ---
@@ -95,40 +79,47 @@ import { Leaf } from 'lucide-astro';
 
 エストレマドゥーラとカスティーリャ・ラ・マンチャは、内陸の乾燥した気候に恵まれたスペイン中西部の2つの地方です。この7日間のルートは、西のバダホスから東のグアダラハラへ、後戻りすることなく7県を巡ります。
 
+<span id="day-1" />
 ## 1日目：バダホス（Badajoz）——デエサとケソ・デ・ラ・セレナ
 
 ルートの出発点はバダホス県。オークの木が点在する広大な放牧地「デエサ」では、イベリコ豚がどんぐりを食べながら自由に歩き回り、上質な生ハムの味わいを生み出しています。ラ・セレナ地方特産の「ケソ・デ・ラ・セレナ（DOP）」は、アザミの花で凝固させた羊乳チーズで、とろりとした食感が特徴です。
 
+<span id="day-2" />
 ## 2日目：カセレス（Cáceres）——トルタ・デル・カサルと旧市街
 
 **移動時間：** カセレスまで約1時間30分。
 
 ユネスコ世界遺産に登録されている旧市街で知られるカセレス県では、「トルタ・デル・カサル（DOP）」というチーズが名物です。ケソ・デ・ラ・セレナと同じくアザミの花で作られますが、熟成の進み方によって異なる個性を持ちます。格付けの詳細については[「ハモン・イベリコ完全ガイド」](/food/jamon-iberico/)であわせて解説しています。
 
+<span id="day-3" />
 ## 3日目：トレド（Toledo）——マサパンと山鳥料理
 
 **移動時間：** トレドまで約2時間。
 
 カスティーリャ・ラ・マンチャに入り、最初に訪れるのはトレド。アーモンドと砂糖で作る伝統菓子「マサパン」は、この街を代表する土産物です。山鳥を煮込む「ペルディス・ア・ラ・トレダーナ」も、古くから伝わる郷土料理として知られています。
 
+<span id="day-4" />
 ## 4日目：シウダ・レアル（Ciudad Real）——バルデペーニャスワインとアルマグロの茄子
 
 **移動時間：** シウダ・レアルまで約1時間。
 
 シウダ・レアル県のバルデペーニャスは、独自のDOを持つワインの町として知られ、ワイン博物館を訪れることもできます。近郊のアルマグロは、酢漬けにした小さな茄子「ベレンヘナ・デ・アルマグロ」の産地として知られています。
 
+<span id="day-5" />
 ## 5日目：アルバセテ（Albacete）——アタスカブーラス
 
 **移動時間：** アルバセテまで約1時間30分。
 
 アルバセテ県の郷土料理「アタスカブーラス」は、じゃがいも、干し鱈、にんにく、オリーブオイルをすり潰して作る、素朴で滋味深い一皿です。冬の寒い時期に特に親しまれています。
 
+<span id="day-6" />
 ## 6日目：クエンカ（Cuenca）——モルテルエロと紫にんにく
 
 **移動時間：** クエンカまで約1時間。
 
 クエンカの郷土料理「モルテルエロ」は、複数のジビエ肉とレバーをすり潰して作るペースト状の温かい料理です。近郊のラス・ペドロニェラスは、香り高い「紫にんにく」の産地として知られています。
 
+<span id="day-7" />
 ## 7日目：グアダラハラ（Guadalajara）——アルカリアの蜂蜜
 
 **移動時間：** グアダラハラまで約2時間。

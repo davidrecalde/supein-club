@@ -4,9 +4,25 @@
 // geográficos reales de cada parada del itinerario, conectados por una
 // línea guía fina hacia el nombre. Cada punto enlaza con el ancla
 // `#day-{n}` de la sección de ese día en el propio artículo.
+//
+// Los números y nombres se renderizan como HTML superpuesto (no como
+// texto SVG): el mapa base se escala con el viewBox, y si el texto
+// también fuera SVG se encogería en la misma proporción, quedando
+// ilegible en pantallas estrechas. El HTML posicionado por porcentaje
+// mantiene un tamaño de fuente fijo en cualquier ancho de pantalla.
+//
+// En móvil (<=640px) se muestra una segunda copia del mapa recortada
+// (zoom) a la zona de la ruta en vez de España entera, calculada
+// automáticamente a partir de las coordenadas de los stops (sin
+// necesidad de coordenadas manuales por breakpoint). El recorte y el
+// mapa completo se alternan por CSS (@media), sin JS.
+//
 // Reutiliza el mismo SVG base y recorte de viewBox que RegionHighlightMap.astro.
 import { readFileSync } from 'node:fs';
 import path from 'node:path';
+
+const VIEW_W = 418.46;
+const VIEW_H = 328;
 
 interface HighlightProvince {
   code: string;  // Código ISO usado en el SVG, ej. "ES-HU"
@@ -31,9 +47,13 @@ interface Props {
   stops: RouteStop[];
   caption?: string;
   color?: string;
+  // Para rutas insulares (Baleares, Canarias): omite el mapa de España
+  // completo incluso en escritorio y muestra directamente el recorte
+  // de zoom a las islas, a mayor tamaño, en cualquier ancho de pantalla.
+  zoomOnly?: boolean;
 }
 
-const { provinces, stops, caption, color = '#C8102E' } = Astro.props;
+const { provinces, stops, caption, color = '#C8102E', zoomOnly = false } = Astro.props;
 
 const rawSvg = readFileSync(
   path.resolve(process.cwd(), 'public/spain-provinces.svg'),
@@ -42,30 +62,111 @@ const rawSvg = readFileSync(
 
 const highlightCodes = new Set(provinces.map((p) => p.code));
 
-let svgContent = rawSvg
-  .replace('width="418.45123"', 'class="route-map-svg" width="100%" viewBox="0 0 418.46 328" preserveAspectRatio="xMidYMid meet"')
-  .replace('\n   height="468.63733"', '');
+function renderMap(viewBox: string, extraClass: string) {
+  let svg = rawSvg
+    .replace('width="418.45123"', `class="route-map-svg ${extraClass}" width="100%" viewBox="${viewBox}" preserveAspectRatio="xMidYMid meet"`)
+    .replace('\n   height="468.63733"', '');
+  svg = svg.replace(/id="(ES-[A-Z]+)"/g, (_match, id) => {
+    return highlightCodes.has(id) ? `id="${id}" data-highlighted="true"` : `id="${id}"`;
+  });
+  return svg;
+}
 
-svgContent = svgContent.replace(/id="(ES-[A-Z]+)"/g, (_match, id) => {
-  return highlightCodes.has(id) ? `id="${id}" data-highlighted="true"` : `id="${id}"`;
-});
+const desktopSvg = zoomOnly ? '' : renderMap(`0 0 ${VIEW_W} ${VIEW_H}`, 'is-desktop');
+
+// Recorte automático para móvil: caja que envuelve todos los puntos,
+// etiquetas y extremos de línea guía de los stops, con margen para que
+// ningún nombre quede cortado al hacer zoom.
+const PAD_X = 40;
+const PAD_Y = 22;
+const allXs = stops.flatMap((s) => [s.x, s.labelX, s.leadX]);
+const allYs = stops.flatMap((s) => [s.y, s.labelY, s.leadY]);
+const cropMinX = Math.max(0, Math.min(...allXs) - PAD_X);
+const cropMaxX = Math.min(VIEW_W, Math.max(...allXs) + PAD_X);
+const cropMinY = Math.max(0, Math.min(...allYs) - PAD_Y);
+const cropMaxY = Math.min(VIEW_H, Math.max(...allYs) + PAD_Y);
+const cropW = cropMaxX - cropMinX;
+const cropH = cropMaxY - cropMinY;
+
+const mobileSvg = renderMap(`${cropMinX} ${cropMinY} ${cropW} ${cropH}`, 'is-mobile');
+
+const pctFull = (v: number, total: number) => `${((v / total) * 100).toFixed(2)}%`;
+const pctCrop = (v: number, min: number, size: number) => `${(((v - min) / size) * 100).toFixed(2)}%`;
+
+const anchorTransform = {
+  start: 'translate(0, -50%)',
+  middle: 'translate(-50%, -50%)',
+  end: 'translate(-100%, -50%)',
+} as const;
+
+const textAlignFor = {
+  start: 'left',
+  middle: 'center',
+  end: 'right',
+} as const;
 ---
 
 <div class="route-map" style={`--zone-color:${color}`}>
-  <div class="route-map-inner">
-    <Fragment set:html={svgContent} />
-    <svg class="route-overlay-svg" viewBox="0 0 418.46 328" preserveAspectRatio="xMidYMid meet">
+  {/* Versión de escritorio: España completa (omitida si zoomOnly) */}
+  {!zoomOnly && (
+  <div class="route-map-inner route-map-desktop">
+    <Fragment set:html={desktopSvg} />
+
+    <svg class="route-lines-svg" viewBox={`0 0 ${VIEW_W} ${VIEW_H}`} preserveAspectRatio="xMidYMid meet" aria-hidden="true">
       {stops.map((s) => (
-        <a href={`#day-${s.day}`} class="route-stop" aria-label={`${s.day}日目 ${s.nameJa}`}>
-          <line x1={s.x} y1={s.y} x2={s.leadX} y2={s.leadY} class="leader-line" />
-          <circle cx={s.x} cy={s.y} r="4.2" class="route-dot-circle" />
-          <text x={s.x} y={s.y} class="route-dot-num" text-anchor="middle" dominant-baseline="central">{s.day}</text>
-          <text x={s.labelX} y={s.labelY} text-anchor={s.labelAnchor} class="label-name">{s.nameJa}</text>
-          <text x={s.labelX} y={s.labelY + 9} text-anchor={s.labelAnchor} class="label-roman">{s.nameRoman}</text>
-        </a>
+        <line x1={s.x} y1={s.y} x2={s.leadX} y2={s.leadY} class="leader-line" vector-effect="non-scaling-stroke" />
       ))}
     </svg>
+
+    {stops.map((s) => (
+      <a href={`#day-${s.day}`} class="route-dot" style={`left:${pctFull(s.x, VIEW_W)}; top:${pctFull(s.y, VIEW_H)};`} aria-label={`${s.day}日目 ${s.nameJa}`}>
+        <span class="route-dot-circle">{s.day}</span>
+      </a>
+    ))}
+
+    {stops.map((s) => (
+      <a
+        href={`#day-${s.day}`}
+        class="route-label"
+        style={`left:${pctFull(s.labelX, VIEW_W)}; top:${pctFull(s.labelY, VIEW_H)}; transform:${anchorTransform[s.labelAnchor]}; text-align:${textAlignFor[s.labelAnchor]};`}
+        aria-label={`${s.day}日目 ${s.nameJa}へ移動`}
+      >
+        <span class="route-label-name">{s.nameJa}</span>
+        <span class="route-label-roman">{s.nameRoman}</span>
+      </a>
+    ))}
   </div>
+  )}
+
+  {/* Versión móvil, o única versión si zoomOnly: zoom automático a la zona de la ruta */}
+  <div class={`route-map-inner route-map-mobile ${zoomOnly ? 'route-map-zoom-only' : ''}`}>
+    <Fragment set:html={mobileSvg} />
+
+    <svg class="route-lines-svg" viewBox={`${cropMinX} ${cropMinY} ${cropW} ${cropH}`} preserveAspectRatio="xMidYMid meet" aria-hidden="true">
+      {stops.map((s) => (
+        <line x1={s.x} y1={s.y} x2={s.leadX} y2={s.leadY} class="leader-line" vector-effect="non-scaling-stroke" />
+      ))}
+    </svg>
+
+    {stops.map((s) => (
+      <a href={`#day-${s.day}`} class="route-dot" style={`left:${pctCrop(s.x, cropMinX, cropW)}; top:${pctCrop(s.y, cropMinY, cropH)};`} aria-label={`${s.day}日目 ${s.nameJa}`}>
+        <span class="route-dot-circle">{s.day}</span>
+      </a>
+    ))}
+
+    {stops.map((s) => (
+      <a
+        href={`#day-${s.day}`}
+        class="route-label"
+        style={`left:${pctCrop(s.labelX, cropMinX, cropW)}; top:${pctCrop(s.labelY, cropMinY, cropH)}; transform:${anchorTransform[s.labelAnchor]}; text-align:${textAlignFor[s.labelAnchor]};`}
+        aria-label={`${s.day}日目 ${s.nameJa}へ移動`}
+      >
+        <span class="route-label-name">{s.nameJa}</span>
+        <span class="route-label-roman">{s.nameRoman}</span>
+      </a>
+    ))}
+  </div>
+
   {caption && <p class="route-map-caption">{caption}</p>}
 </div>
 
@@ -84,75 +185,113 @@ svgContent = svgContent.replace(/id="(ES-[A-Z]+)"/g, (_match, id) => {
 <style>
   .route-map {
     margin: 32px 0;
-    padding: 20px;
+    padding: 20px 28px;
     background: #FAFAF8;
     border: 1px solid #E8E8E6;
     border-radius: 12px;
+    overflow: visible;
   }
 
   .route-map-inner {
     position: relative;
   }
 
-  .route-overlay-svg {
+  .route-map-mobile {
+    display: none;
+  }
+
+  .route-map-zoom-only {
+    display: block;
+  }
+
+  @media (max-width: 640px) {
+    .route-map {
+      padding: 16px 12px;
+    }
+
+    .route-map-desktop {
+      display: none;
+    }
+
+    .route-map-mobile {
+      display: block;
+    }
+  }
+
+  .route-lines-svg {
     position: absolute;
     inset: 0;
     width: 100%;
     height: 100%;
-  }
-
-  .route-stop {
-    cursor: pointer;
+    pointer-events: none;
   }
 
   .leader-line {
     stroke: #9ca3af;
-    stroke-width: 0.6;
-    stroke-dasharray: 1.5, 1.2;
+    stroke-width: 1;
+    stroke-dasharray: 3, 2.5;
+  }
+
+  .route-dot {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    text-decoration: none;
+    z-index: 2;
   }
 
   .route-dot-circle {
-    fill: #002147;
-    stroke: #FAFAF8;
-    stroke-width: 1;
-    transition: fill 150ms ease;
-  }
-
-  .route-stop:hover .route-dot-circle,
-  .route-stop:focus-visible .route-dot-circle {
-    fill: #C8102E;
-  }
-
-  .route-dot-num {
-    fill: white;
-    font-size: 5.4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #002147;
+    border: 2px solid #FAFAF8;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.35);
+    color: white;
+    font-size: 11px;
     font-weight: 700;
-    pointer-events: none;
+    line-height: 1;
+    transition: background 150ms ease, transform 150ms ease;
   }
 
-  .label-name {
-    font-size: 8.5px;
+  .route-dot:hover .route-dot-circle,
+  .route-dot:focus-visible .route-dot-circle {
+    background: #C8102E;
+    transform: scale(1.15);
+  }
+
+  .route-label {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    white-space: normal;
+    overflow-wrap: break-word;
+    max-width: 92px;
+    z-index: 2;
+    padding: 1px 4px;
+    border-radius: 4px;
+  }
+
+  .route-label-name {
+    font-size: 13px;
     font-weight: 700;
-    fill: #002147;
-    paint-order: stroke;
-    stroke: #FAFAF8;
-    stroke-width: 3px;
-    stroke-linejoin: round;
+    color: #002147;
+    background: rgba(250, 250, 248, 0.92);
   }
 
-  .label-roman {
-    font-size: 6px;
+  .route-label-roman {
+    font-size: 10px;
     font-weight: 500;
-    fill: #6b7280;
-    paint-order: stroke;
-    stroke: #FAFAF8;
-    stroke-width: 3px;
-    stroke-linejoin: round;
+    color: #6b7280;
+    background: rgba(250, 250, 248, 0.92);
   }
 
-  .route-stop:hover .label-name,
-  .route-stop:focus-visible .label-name {
-    fill: #C8102E;
+  .route-label:hover .route-label-name,
+  .route-label:focus-visible .route-label-name {
+    color: #C8102E;
   }
 
   .route-map-caption {
@@ -160,5 +299,50 @@ svgContent = svgContent.replace(/id="(ES-[A-Z]+)"/g, (_match, id) => {
     font-size: 12px;
     color: #6b7280;
     text-align: center;
+  }
+
+  @media (max-width: 480px) {
+    .route-map-mobile .route-dot-circle,
+    .route-map-zoom-only .route-dot-circle {
+      width: 13px;
+      height: 13px;
+      font-size: 8px;
+      border-width: 1.5px;
+    }
+
+    .route-map-mobile .route-label-name,
+    .route-map-zoom-only .route-label-name {
+      font-size: 15px;
+    }
+
+    .route-map-mobile .route-label-roman,
+    .route-map-zoom-only .route-label-roman {
+      font-size: 12px;
+    }
+
+    .route-map-mobile .route-label,
+    .route-map-zoom-only .route-label {
+      max-width: 120px;
+    }
+  }
+
+  @media (min-width: 641px) {
+    .route-map-zoom-only .route-dot-circle {
+      width: 26px;
+      height: 26px;
+      font-size: 13px;
+    }
+
+    .route-map-zoom-only .route-label-name {
+      font-size: 16px;
+    }
+
+    .route-map-zoom-only .route-label-roman {
+      font-size: 12px;
+    }
+
+    .route-map-zoom-only .route-label {
+      max-width: 130px;
+    }
   }
 </style>

@@ -43,45 +43,35 @@ faq:
     answer: "毎年6月29日に開催されるラ・リオハ、アロの祭りで、近郊の丘の斜面で参加者同士が赤ワインを掛け合います。数千人が参加する、地域を代表する夏祭りのひとつです。"
 ---
 
-import RegionHighlightMap from '../../../../components/RegionHighlightMap.astro';
+import RouteMap from '../../../../components/RouteMap.astro';
 import FoodRouteZoneBadge from '../../../../components/FoodRouteZoneBadge.astro';
-import FoodRouteProvinceButtons from '../../../../components/FoodRouteProvinceButtons.astro';
 import { Wine } from 'lucide-astro';
 
 ## エリア別レストランマップ
 
-このグルメルートが扱うのは、地図で色付けした4県（バスク州3県＋リオハ）です。クリックすると各県のレストラン・バルマップへ移動します。
+このグルメルートが扱うのは、地図で色付けした4県（バスク州3県＋リオハ）です。番号をクリックすると、該当する日の解説へ移動します。
 
 <FoodRouteZoneBadge icon={Wine} color="#8E44AD" label="バスク・リオハ：ピンチョスとワインの道" />
 
-<RegionHighlightMap
+<RouteMap
   provinces={[
-    { code: "ES-VI", slug: "alava", label: "アラバ" },
-    { code: "ES-SS", slug: "guipuzcoa", label: "ギプスコア" },
-    { code: "ES-BI", slug: "vizcaya", label: "ビスカヤ" },
-    { code: "ES-LO", slug: "la-rioja", label: "ラ・リオハ" },
+    { code: "ES-VI", label: "アラバ" },
+    { code: "ES-SS", label: "ギプスコア" },
+    { code: "ES-BI", label: "ビスカヤ" },
+    { code: "ES-LO", label: "ラ・リオハ" },
   ]}
-  caption="色付けした4県がこのグルメルートの対象エリア（バスク州＋リオハ）"
+  stops={[
+    { day: 1, nameJa: "サン・セバスティアン", nameRoman: "San Sebastián", x: 225.1, y: 18.5, labelX: 260, labelY: 5, labelAnchor: "start", leadX: 240, leadY: 10 },
+    { day: 2, nameJa: "ゲタリア・サラウツ", nameRoman: "Getaria / Zarautz", x: 218.7, y: 19.3, labelX: 260, labelY: 35, labelAnchor: "start", leadX: 238, leadY: 28 },
+    { day: 3, nameJa: "ムンダカ・ゲルニカ", nameRoman: "Mundaka / Gernika", x: 203.3, y: 16.8, labelX: 200, labelY: 2, labelAnchor: "middle", leadX: 201, leadY: 10 },
+    { day: 4, nameJa: "ビルバオ", nameRoman: "Bilbao", x: 195.7, y: 20.6, labelX: 150, labelY: 10, labelAnchor: "end", leadX: 175, leadY: 16 },
+    { day: 5, nameJa: "ビトリア＝ガステイス", nameRoman: "Vitoria-Gasteiz", x: 203.8, y: 36.8, labelX: 150, labelY: 45, labelAnchor: "end", leadX: 178, leadY: 40 },
+    { day: 6, nameJa: "アロ", nameRoman: "Haro", x: 198.0, y: 47.3, labelX: 180, labelY: 70, labelAnchor: "end", leadX: 188, leadY: 58 },
+    { day: 7, nameJa: "ログローニョ", nameRoman: "Logroño", x: 210.8, y: 51.6, labelX: 245, labelY: 65, labelAnchor: "start", leadX: 222, leadY: 58 },
+  ]}
+  caption="色付けした4県（バスク州＋リオハ）と、ルート上の7つの町"
   color="#8E44AD"
-/>
-
-<FoodRouteProvinceButtons
-  communities={[
-    {
-      slug: "pais-vasco",
-      name: "バスク地方",
-      provinces: [
-        { slug: "alava", label: "アラバ" },
-        { slug: "guipuzcoa", label: "ギプスコア" },
-        { slug: "vizcaya", label: "ビスカヤ" },
-      ],
-    },
-    {
-      slug: "la-rioja",
-      name: "ラ・リオハ",
-      provinces: [{ slug: "la-rioja", label: "ラ・リオハ" }],
-    },
-  ]}
+  zoomOnly
 />
 
 ---
@@ -90,40 +80,47 @@ import { Wine } from 'lucide-astro';
 
 バスク地方とラ・リオハ地方は、エブロ川沿いに国境を接していますが、その結びつきは地理だけにとどまりません。両地方は合わせて、スペインでも屈指の美食の舞台を作り上げてきました。バスクの海岸沿いでは「ピンチョス巡り」が生活の一部となった一方、内陸のラ・リオハは何世紀もかけて、そのバルのカウンターを飾るワインを磨き上げてきました。この7日間のルートは、ゲタリアの漁港からログローニョのワイナリーまで、後戻りすることなく一方向に進みながら、バスクの3県とラ・リオハを巡ります。
 
+<span id="day-1" />
 ## 1日目：サン・セバスティアン（San Sebastián）——世界的なピンチョスの都
 
 ルートの出発点はサン・セバスティアン。人口あたりのミシュラン星付きレストラン数で世界でも屈指とされる街です。しかし、この街の真の魅力は旧市街（パルテ・ビエハ）のバルのカウンターにあります。毎晩、数十軒のバルがより独創的なピンチョスを競い合っています。初日の夜は、バルからバルへとハシゴする「ティキテオ」に費やすのが、このルート全体への最良の入り口となります。
 
+<span id="day-2" />
 ## 2日目：ゲタリアとサラウツ（Getaria y Zarautz）——チャコリと炭火焼き魚
 
 **移動時間：** サン・セバスティアンからゲタリアまで約25分。
 
 ギプスコア県のこの小さな漁港で、今日知られる形のチャコリが生まれました。酸味のはっきりした白ワインで、専門のバル「チャコリ屋」がアストゥリアスのシードルと同じように高い位置から注いで提供します。ゲタリアはまた、丸ごとの舌平目や鯛を炭火の網で焼き上げる炙り焼き魚の店でも知られ、これが村を象徴する一皿です。わずか10分の距離にあるサラウツも、チャコリの原産地呼称「ゲタリアコ・チャコリナ」を共有し、ビーチ沿いに独自のバル文化を育んでいます。
 
+<span id="day-3" />
 ## 3日目：ムンダカとゲルニカ（Mundaka y Gernika）——アンチョビと市場、歴史の記憶
 
 **移動時間：** ビスカヤ県のムンダカまで約1時間。
 
 ムンダカは、ウルダイバイ生物圏保護区内にある小さな漁村で、アンチョビ漁の伝統が根強く残っています。10分ほど離れたゲルニカは、その歴史で世界的に知られていますが、美食の面では「ゲルニカ・ピーマン（IGP認定）」で知られています。細長い青唐辛子を丸ごと素揚げにして粗塩をふる料理で、バスクのバルに欠かせない一皿です。毎週月曜日に開かれるゲルニカの市場は、バスク地方でも特に伝統的な市のひとつです。
 
+<span id="day-4" />
 ## 4日目：ビルバオ（Bilbao）——市場と魚介文化、バカラオ・アル・ピルピル
 
 **移動時間：** ビルバオまで約30分。
 
 「メルカド・デ・ラ・リベラ」は、ヨーロッパ最大級の屋根付き食品市場とされ、バルに並ぶ食材がどこから来るのかを知る最良の場所です。夜の主役はバカラオ・アル・ピルピルで、オリーブオイルと魚自身のゼラチンを乳化させたソースは、伝統的にビルバオ発祥とされています。
 
+<span id="day-5" />
 ## 5日目：ビトリア＝ガステイス（Vitoria-Gasteiz）——バスク第3の県都
 
 **移動時間：** アラバ県の県都ビトリア＝ガステイスまで約45分。
 
 サン・セバスティアンやビルバオの陰に隠れがちですが、ビトリア＝ガステイスには独自の確立されたピンチョス文化があります。中世の旧市街に集まるバルは、2つの沿岸都市に比べて落ち着いた、より地元的な雰囲気が漂います。
 
+<span id="day-6" />
 ## 6日目：アロ（Haro）——リオハワインの首都
 
 **移動時間：** ラ・リオハ県のアロまで約40分。
 
 アロは、リオハワインの歴史的な中心地です。19世紀末に鉄道の駅のそばに築かれた「エスタシオン地区」には、ロペス・デ・エレディアやムガ、CVNEといった老舗ワイナリーが軒を連ねています。当時、鉄道を使ってワインを輸出するためにこの地に拠点を構えたのが始まりとされています。毎年6月29日には「ワイン合戦（バタージャ・デル・ビノ）」が開かれ、近郊の丘の斜面で数千人が赤ワインを掛け合う祭りとして知られています。
 
+<span id="day-7" />
 ## 7日目：ログローニョ（Logroño）——ぶどう畑に囲まれたラウレル通り
 
 **移動時間：** ラ・リオハの県都ログローニョまで約40分。

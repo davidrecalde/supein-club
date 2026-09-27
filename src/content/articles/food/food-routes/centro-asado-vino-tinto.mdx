@@ -37,57 +37,41 @@ faq:
     answer: "牛肉を塩漬け・燻製・乾燥させて作る、レオン県特産の生ハム状の加工肉（DOP認定）です。豚の生ハムに似た製法ですが、原料が牛肉である点が特徴です。"
 ---
 
-import RegionHighlightMap from '../../../../components/RegionHighlightMap.astro';
+import RouteMap from '../../../../components/RouteMap.astro';
 import FoodRouteZoneBadge from '../../../../components/FoodRouteZoneBadge.astro';
-import FoodRouteProvinceButtons from '../../../../components/FoodRouteProvinceButtons.astro';
 import { UtensilsCrossed } from 'lucide-astro';
 
 ## エリア別レストランマップ
 
-このグルメルートが扱うのは、地図で色付けした10県（マドリード州1県＋カスティーリャ・イ・レオン州9県）です。クリックすると各県のレストラン・バルマップへ移動します。
+このグルメルートが扱うのは、地図で色付けした10県（マドリード州1県＋カスティーリャ・イ・レオン州9県）です。番号をクリックすると、該当する日の解説へ移動します。
 
 <FoodRouteZoneBadge icon={UtensilsCrossed} color="#002147" label="中部：アサードと赤ワイン" />
 
-<RegionHighlightMap
+<RouteMap
   provinces={[
-    { code: "ES-M", slug: "madrid", label: "マドリード" },
-    { code: "ES-AV", slug: "avila", label: "アビラ" },
-    { code: "ES-BU", slug: "burgos", label: "ブルゴス" },
-    { code: "ES-LE", slug: "leon", label: "レオン" },
-    { code: "ES-P", slug: "palencia", label: "パレンシア" },
-    { code: "ES-SA", slug: "salamanca", label: "サラマンカ" },
-    { code: "ES-SG", slug: "segovia", label: "セゴビア" },
-    { code: "ES-SO", slug: "soria", label: "ソリア" },
-    { code: "ES-VA", slug: "valladolid", label: "バリャドリード" },
-    { code: "ES-ZA", slug: "zamora", label: "サモラ" },
+    { code: "ES-M", label: "マドリード" },
+    { code: "ES-AV", label: "アビラ" },
+    { code: "ES-BU", label: "ブルゴス" },
+    { code: "ES-LE", label: "レオン" },
+    { code: "ES-P", label: "パレンシア" },
+    { code: "ES-SA", label: "サラマンカ" },
+    { code: "ES-SG", label: "セゴビア" },
+    { code: "ES-SO", label: "ソリア" },
+    { code: "ES-VA", label: "バリャドリード" },
+    { code: "ES-ZA", label: "サモラ" },
   ]}
-  caption="色付けした10県がこのグルメルートの対象エリア（マドリード州＋カスティーリャ・イ・レオン州）"
+  stops={[
+    { day: 1, nameJa: "マドリード", nameRoman: "Madrid", x: 172.1, y: 131.2, labelX: 172.1, labelY: 255, labelAnchor: "start", leadX: 178, leadY: 220 },
+    { day: 2, nameJa: "セゴビア", nameRoman: "Segovia", x: 159.0, y: 110.7, labelX: 159, labelY: 215, labelAnchor: "start", leadX: 163, leadY: 195 },
+    { day: 3, nameJa: "アビラ", nameRoman: "Ávila", x: 142.0, y: 121.9, labelX: 142, labelY: 175, labelAnchor: "start", leadX: 148, leadY: 160 },
+    { day: 4, nameJa: "バリャドリード", nameRoman: "Valladolid", x: 140.7, y: 83.2, labelX: 140.7, labelY: 255, labelAnchor: "end", leadX: 132, leadY: 220 },
+    { day: 5, nameJa: "ブルゴス", nameRoman: "Burgos", x: 172.3, y: 56.3, labelX: 172.3, labelY: 10, labelAnchor: "middle", leadX: 172.3, leadY: 28 },
+    { day: 6, nameJa: "レオン", nameRoman: "León", x: 114.7, y: 46.4, labelX: 114.7, labelY: 10, labelAnchor: "middle", leadX: 114.7, leadY: 25 },
+    { day: 7, nameJa: "サラマンカ", nameRoman: "Salamanca", x: 111.9, y: 109.7, labelX: 111.9, labelY: 215, labelAnchor: "end", leadX: 106, leadY: 195 },
+    { day: 7, nameJa: "サモラ", nameRoman: "Zamora", x: 109.4, y: 89.0, labelX: 109.4, labelY: 175, labelAnchor: "end", leadX: 100, leadY: 160 },
+  ]}
+  caption="色付けした10県（マドリード州＋カスティーリャ・イ・レオン州）と、ルート上の8つの町"
   color="#002147"
-/>
-
-<FoodRouteProvinceButtons
-  communities={[
-    {
-      slug: "madrid",
-      name: "マドリード州",
-      provinces: [{ slug: "madrid", label: "マドリード" }],
-    },
-    {
-      slug: "castilla-y-leon",
-      name: "カスティーリャ・イ・レオン",
-      provinces: [
-        { slug: "avila", label: "アビラ" },
-        { slug: "burgos", label: "ブルゴス" },
-        { slug: "leon", label: "レオン" },
-        { slug: "palencia", label: "パレンシア" },
-        { slug: "salamanca", label: "サラマンカ" },
-        { slug: "segovia", label: "セゴビア" },
-        { slug: "soria", label: "ソリア" },
-        { slug: "valladolid", label: "バリャドリード" },
-        { slug: "zamora", label: "サモラ" },
-      ],
-    },
-  ]}
 />
 
 ---
@@ -96,40 +80,47 @@ import { UtensilsCrossed } from 'lucide-astro';
 
 スペイン中央部に位置するマドリードとカスティーリャ・イ・レオン地方は、内陸の乾燥した気候と広大な牧草地に恵まれ、良質な肉を使った料理文化が発展してきました。この7日間のルートは、首都マドリードから北西へ、後戻りすることなく10県を巡ります。
 
+<span id="day-1" />
 ## 1日目：マドリード（Madrid）——コシード・マドリレーニョ
 
 ルートの出発点はマドリード。ひよこ豆、豚肉、野菜を数時間煮込んだ郷土料理「コシード・マドリレーニョ」は、伝統的にスープ、豆、肉の順に3皿に分けて提供される、この街の魂の料理です。
 
+<span id="day-2" />
 ## 2日目：セゴビア（Segovia）——仔豚の丸焼きの聖地
 
 **移動時間：** セゴビアまで約1時間。
 
 カスティーリャ・イ・レオン地方を代表するのが、仔豚の丸焼き「コチニージョ・アサード」です。特にセゴビアのコチニージョは、皿の縁で切り分けられるほど柔らかく焼き上げられることで知られています。
 
+<span id="day-3" />
 ## 3日目：アビラ（Ávila）——牛肉と白いんげん豆
 
 **移動時間：** アビラまで約1時間。
 
 アビラ県は、良質な牛肉「テルネラ・デ・アビラ（IGP）」の産地として知られ、分厚いTボーンステーキが名物です。エル・バルコ・デ・アビラ産の白いんげん豆も、この地方の郷土料理に欠かせない食材です。
 
+<span id="day-4" />
 ## 4日目：バリャドリード（Valladolid）——リベラ・デル・ドゥエロワインの中心地
 
 **移動時間：** バリャドリードまで約1時間30分。
 
 ドゥエロ川流域に広がる「リベラ・デル・ドゥエロ」は、テンプラニーリョ種を中心とした力強い赤ワインの産地で、バリャドリードはその中心都市のひとつです。仔羊のロースト「レチャソ・アサード」との組み合わせが定番です。隣接するパレンシア県も、同じ川沿いの豊かな農地を共有しています。スペインワインの格付けや産地について詳しくは[「スペインワイン完全ガイド」](/food/spanish-wine/)で紹介しています。
 
+<span id="day-5" />
 ## 5日目：ブルゴス（Burgos）——モルシージャとカミーノ・デ・サンティアゴ
 
 **移動時間：** ブルゴスまで約1時間30分。
 
 米を練り込んだ血のソーセージ「モルシージャ・デ・ブルゴス」は、この街を象徴する郷土料理です。ブルゴスはまた、巡礼路「カミーノ・デ・サンティアゴ」が通過する街としても知られています。隣接するソリア県では、カリカリに揚げた豚バラ肉「トレスノ・デ・ソリア（IGP）」が名物です。
 
+<span id="day-6" />
 ## 6日目：レオン（León）——牛肉の生ハム、セシーナ
 
 **移動時間：** レオンまで約2時間。
 
 レオン県特産の「セシーナ・デ・レオン（DOP）」は、牛肉を塩漬け・燻製・乾燥させて作る生ハム状の加工肉です。豚の生ハムとは違う、赤身の濃厚な風味が楽しめます。エル・ビエルソ地方の腸詰め「ボティージョ」も、この県ならではの郷土料理です。
 
+<span id="day-7" />
 ## 7日目：サラマンカとサモラ（Salamanca y Zamora）——生ハムの村ギフエロ
 
 **移動時間：** サラマンカまで約2時間、そこからサモラまでさらに約1時間。
