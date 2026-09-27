@@ -36,6 +36,7 @@ faq:
 ---
 
 import RouteMap from '../../../../components/RouteMap.astro';
+import FoodRouteProvinceButtons from '../../../../components/FoodRouteProvinceButtons.astro';
 import FoodRouteZoneBadge from '../../../../components/FoodRouteZoneBadge.astro';
 import { Sailboat } from 'lucide-astro';
 
@@ -128,3 +129,17 @@ import { Sailboat } from 'lucide-astro';
 ## まとめ
 
 マヨルカ島のソブラサーダからフォルメンテラ島の干物まで——7日間かけてバレアレス諸島4島を巡るこのルートは、地中海の恵みを存分に味わえる旅程です。[スペイン美食マップ](/food/spain-map/)から、気になる街のレストラン情報もあわせてチェックしてみてください。
+
+各県の具体的なレストラン・バル情報は、下のボタンから県別ページでご覧いただけます。
+
+<FoodRouteProvinceButtons
+  communities={[
+    {
+      slug: "baleares",
+      name: "バレアレス諸島",
+      provinces: [
+        { slug: "islas-baleares", label: "バレアレス諸島" },
+      ],
+    },
+  ]}
+/>

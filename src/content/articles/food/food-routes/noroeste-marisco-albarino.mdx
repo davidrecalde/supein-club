@@ -36,6 +36,7 @@ faq:
 ---
 
 import RouteMap from '../../../../components/RouteMap.astro';
+import FoodRouteProvinceButtons from '../../../../components/FoodRouteProvinceButtons.astro';
 import FoodRouteZoneBadge from '../../../../components/FoodRouteZoneBadge.astro';
 import { Fish } from 'lucide-astro';
 
@@ -130,3 +131,20 @@ import { Fish } from 'lucide-astro';
 ## まとめ
 
 ビーゴのムール貝からオウレンセの天然温泉まで——7日間かけてガリシア4県を一周するこのルートは、海と大地の恵みを存分に味わえる旅程です。[スペイン美食マップ](/food/spain-map/)から、気になる街のレストラン情報もあわせてチェックしてみてください。
+
+各県の具体的なレストラン・バル情報は、下のボタンから県別ページでご覧いただけます。
+
+<FoodRouteProvinceButtons
+  communities={[
+    {
+      slug: "galicia",
+      name: "ガリシア",
+      provinces: [
+        { slug: "la-coruna", label: "ア・コルーニャ" },
+        { slug: "lugo", label: "ルーゴ" },
+        { slug: "orense", label: "オウレンセ" },
+        { slug: "pontevedra", label: "ポンテベドラ" },
+      ],
+    },
+  ]}
+/>

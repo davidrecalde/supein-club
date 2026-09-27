@@ -41,6 +41,7 @@ faq:
 ---
 
 import RouteMap from '../../../../components/RouteMap.astro';
+import FoodRouteProvinceButtons from '../../../../components/FoodRouteProvinceButtons.astro';
 import FoodRouteZoneBadge from '../../../../components/FoodRouteZoneBadge.astro';
 import { Leaf } from 'lucide-astro';
 
@@ -138,3 +139,29 @@ import { Leaf } from 'lucide-astro';
 ## まとめ
 
 バダホスのデエサからグアダラハラの蜂蜜まで——7日間かけてエストレマドゥーラとカスティーリャ・ラ・マンチャ7県を巡るこのルートは、大地の恵みをじっくりと味わえる旅程です。[スペイン美食マップ](/food/spain-map/)から、気になる街のレストラン情報もあわせてチェックしてみてください。
+
+各県の具体的なレストラン・バル情報は、下のボタンから県別ページでご覧いただけます。
+
+<FoodRouteProvinceButtons
+  communities={[
+    {
+      slug: "extremadura",
+      name: "エストレマドゥーラ",
+      provinces: [
+        { slug: "badajoz", label: "バダホス" },
+        { slug: "caceres", label: "カセレス" },
+      ],
+    },
+    {
+      slug: "castilla-la-mancha",
+      name: "カスティーリャ・ラ・マンチャ",
+      provinces: [
+        { slug: "albacete", label: "アルバセテ" },
+        { slug: "ciudad-real", label: "シウダ・レアル" },
+        { slug: "cuenca", label: "クエンカ" },
+        { slug: "guadalajara", label: "グアダラハラ" },
+        { slug: "toledo", label: "トレド" },
+      ],
+    },
+  ]}
+/>

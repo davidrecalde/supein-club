@@ -37,6 +37,7 @@ faq:
 ---
 
 import RouteMap from '../../../../components/RouteMap.astro';
+import FoodRouteProvinceButtons from '../../../../components/FoodRouteProvinceButtons.astro';
 import FoodRouteZoneBadge from '../../../../components/FoodRouteZoneBadge.astro';
 import { Sun } from 'lucide-astro';
 
@@ -134,3 +135,29 @@ import { Sun } from 'lucide-astro';
 ## まとめ
 
 アリカンテのトゥロンからリェイダのカタツムリまで——7日間かけて地中海沿岸7県を巡るこのルートは、稲作文化と創作料理が息づく地方の魅力を存分に味わえる旅程です。[スペイン美食マップ](/food/spain-map/)から、気になる街のレストラン情報もあわせてチェックしてみてください。
+
+各県の具体的なレストラン・バル情報は、下のボタンから県別ページでご覧いただけます。
+
+<FoodRouteProvinceButtons
+  communities={[
+    {
+      slug: "valencia",
+      name: "バレンシア州",
+      provinces: [
+        { slug: "valencia", label: "バレンシア" },
+        { slug: "alicante", label: "アリカンテ" },
+        { slug: "castellon", label: "カステジョン" },
+      ],
+    },
+    {
+      slug: "catalunya",
+      name: "カタルーニャ",
+      provinces: [
+        { slug: "barcelona", label: "バルセロナ" },
+        { slug: "gerona", label: "ヘローナ" },
+        { slug: "lerida", label: "リェイダ" },
+        { slug: "tarragona", label: "タラゴナ" },
+      ],
+    },
+  ]}
+/>

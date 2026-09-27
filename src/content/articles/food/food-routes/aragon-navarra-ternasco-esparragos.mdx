@@ -39,6 +39,7 @@ faq:
 ---
 
 import RouteMap from '../../../../components/RouteMap.astro';
+import FoodRouteProvinceButtons from '../../../../components/FoodRouteProvinceButtons.astro';
 import FoodRouteZoneBadge from '../../../../components/FoodRouteZoneBadge.astro';
 import { Mountain } from 'lucide-astro';
 
@@ -133,3 +134,26 @@ import { Mountain } from 'lucide-astro';
 ## まとめ
 
 パンプローナの野菜料理からテルエルの生ハムまで——7日間かけてナバラとアラゴン3県を南下するこのルートは、内陸の大地が育んだ豊かな食文化を味わえる旅程です。[スペイン美食マップ](/food/spain-map/)から、気になる街のレストラン情報もあわせてチェックしてみてください。
+
+各県の具体的なレストラン・バル情報は、下のボタンから県別ページでご覧いただけます。
+
+<FoodRouteProvinceButtons
+  communities={[
+    {
+      slug: "aragon",
+      name: "アラゴン",
+      provinces: [
+        { slug: "huesca", label: "ウエスカ" },
+        { slug: "teruel", label: "テルエル" },
+        { slug: "zaragoza", label: "サラゴサ" },
+      ],
+    },
+    {
+      slug: "navarra",
+      name: "ナバラ",
+      provinces: [
+        { slug: "navarra", label: "ナバラ" },
+      ],
+    },
+  ]}
+/>

@@ -44,6 +44,7 @@ faq:
 ---
 
 import RouteMap from '../../../../components/RouteMap.astro';
+import FoodRouteProvinceButtons from '../../../../components/FoodRouteProvinceButtons.astro';
 import FoodRouteZoneBadge from '../../../../components/FoodRouteZoneBadge.astro';
 import { Wine } from 'lucide-astro';
 
@@ -138,3 +139,26 @@ import { Wine } from 'lucide-astro';
 ## まとめ
 
 サン・セバスティアンのピンチョス文化から、リオハの名門ワインまで——7日間かけてバスクの3県とラ・リオハを巡るこのルートは、スペインでも屈指の美食体験ができる旅程です。[スペイン美食マップ](/food/spain-map/)から、気になる街のレストラン情報もあわせてチェックしてみてください。
+
+各県の具体的なレストラン・バル情報は、下のボタンから県別ページでご覧いただけます。
+
+<FoodRouteProvinceButtons
+  communities={[
+    {
+      slug: "pais-vasco",
+      name: "バスク地方",
+      provinces: [
+        { slug: "alava", label: "アラバ" },
+        { slug: "guipuzcoa", label: "ギプスコア" },
+        { slug: "vizcaya", label: "ビスカヤ" },
+      ],
+    },
+    {
+      slug: "la-rioja",
+      name: "ラ・リオハ",
+      provinces: [
+        { slug: "la-rioja", label: "ラ・リオハ" },
+      ],
+    },
+  ]}
+/>
