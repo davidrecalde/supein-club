@@ -1223,3 +1223,18 @@ provincias ya resaltadas.
   Sa Pobla, Binissalem) + Menorca + Ibiza + Formentera. Datos nuevos:
   Queso Mahón-Menorca (DOP), ginebra de Menorca, salinas de Ibiza
   (Patrimonio de la Humanidad).
+
+### RouteMap: mapa de ruta de los artículos food-routes
+
+`src/components/RouteMap.astro` dibuja el mapa de cada artículo de `food-routes`: colorea las provincias de la ruta y superpone solo los números de cada parada (clicables a `#day-N`). Los nombres van en una leyenda clicable bajo el mapa. Props: `provinces`, `stops` (`{ day, nameJa, nameRoman, x, y }`), `caption`, `color`, `zoomOnly` (sin mapa de España completo en escritorio), `stripToRegion` (elimina provincias no resaltadas; necesario en Baleares y Canarias) y `mobilePad` (margen del recorte móvil, por defecto 0.2).
+
+**Coordenadas de las paradas** (sistema del SVG `public/spain-provinces.svg`). La fórmula lineal basada en `geoViewBox` desplaza el norte ~8 unidades hacia arriba; hay que aplicar la corrección calibrada con las 47 capitales peninsulares (todas quedan dentro de su provincia):
+
+```
+x0 = (lon + 9.30318) / 13.615692 * 418.45123
+y0 = (43.793001 - lat) / 12.060425 * 468.63733
+x  = 0.97  * x0 + 6.25
+y  = 0.966 * y0 + 9.5
+```
+
+Excepciones: las islas Canarias están dibujadas en un recuadro aparte (con `transform`), así que sus puntos se colocan en el centroide de cada isla dentro del SVG; en Baleares se usa también la forma real de cada isla. Los pueblos costeros pueden caer en el mar por la simplificación de la costa: hay que desplazarlos al punto de tierra más cercano. Antes de publicar, verificar con un test punto-en-polígono que cada parada cae dentro de **su** provincia o isla, no solo dentro de alguna provincia resaltada.
