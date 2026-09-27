@@ -1,0 +1,164 @@
+---
+// Mapa de ruta interactivo para los artículos de food-routes: colorea las
+// provincias de la zona (sin que sean clicables) y superpone los puntos
+// geográficos reales de cada parada del itinerario, conectados por una
+// línea guía fina hacia el nombre. Cada punto enlaza con el ancla
+// `#day-{n}` de la sección de ese día en el propio artículo.
+// Reutiliza el mismo SVG base y recorte de viewBox que RegionHighlightMap.astro.
+import { readFileSync } from 'node:fs';
+import path from 'node:path';
+
+interface HighlightProvince {
+  code: string;  // Código ISO usado en el SVG, ej. "ES-HU"
+  label: string; // Nombre en japonés (solo informativo, no hay tooltip de provincia)
+}
+
+interface RouteStop {
+  day: number;
+  nameJa: string;
+  nameRoman: string;
+  x: number;       // Coordenada del punto en el sistema del SVG (viewBox 0 0 418.46 328)
+  y: number;
+  labelX: number;  // Ancla de la etiqueta, desplazada a un hueco libre del mapa
+  labelY: number;
+  labelAnchor: 'start' | 'middle' | 'end';
+  leadX: number;   // Punto donde termina la línea guía, cerca de la etiqueta
+  leadY: number;
+}
+
+interface Props {
+  provinces: HighlightProvince[];
+  stops: RouteStop[];
+  caption?: string;
+  color?: string;
+}
+
+const { provinces, stops, caption, color = '#C8102E' } = Astro.props;
+
+const rawSvg = readFileSync(
+  path.resolve(process.cwd(), 'public/spain-provinces.svg'),
+  'utf-8'
+);
+
+const highlightCodes = new Set(provinces.map((p) => p.code));
+
+let svgContent = rawSvg
+  .replace('width="418.45123"', 'class="route-map-svg" width="100%" viewBox="0 0 418.46 328" preserveAspectRatio="xMidYMid meet"')
+  .replace('\n   height="468.63733"', '');
+
+svgContent = svgContent.replace(/id="(ES-[A-Z]+)"/g, (_match, id) => {
+  return highlightCodes.has(id) ? `id="${id}" data-highlighted="true"` : `id="${id}"`;
+});
+---
+
+<div class="route-map" style={`--zone-color:${color}`}>
+  <div class="route-map-inner">
+    <Fragment set:html={svgContent} />
+    <svg class="route-overlay-svg" viewBox="0 0 418.46 328" preserveAspectRatio="xMidYMid meet">
+      {stops.map((s) => (
+        <a href={`#day-${s.day}`} class="route-stop" aria-label={`${s.day}日目 ${s.nameJa}`}>
+          <line x1={s.x} y1={s.y} x2={s.leadX} y2={s.leadY} class="leader-line" />
+          <circle cx={s.x} cy={s.y} r="4.2" class="route-dot-circle" />
+          <text x={s.x} y={s.y} class="route-dot-num" text-anchor="middle" dominant-baseline="central">{s.day}</text>
+          <text x={s.labelX} y={s.labelY} text-anchor={s.labelAnchor} class="label-name">{s.nameJa}</text>
+          <text x={s.labelX} y={s.labelY + 9} text-anchor={s.labelAnchor} class="label-roman">{s.nameRoman}</text>
+        </a>
+      ))}
+    </svg>
+  </div>
+  {caption && <p class="route-map-caption">{caption}</p>}
+</div>
+
+<style is:global>
+  .route-map-svg path {
+    fill: #E5E7EB;
+    stroke: #FAFAF8;
+    stroke-width: 0.5;
+  }
+
+  .route-map-svg path[data-highlighted="true"] {
+    fill: var(--zone-color, #C8102E);
+  }
+</style>
+
+<style>
+  .route-map {
+    margin: 32px 0;
+    padding: 20px;
+    background: #FAFAF8;
+    border: 1px solid #E8E8E6;
+    border-radius: 12px;
+  }
+
+  .route-map-inner {
+    position: relative;
+  }
+
+  .route-overlay-svg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  .route-stop {
+    cursor: pointer;
+  }
+
+  .leader-line {
+    stroke: #9ca3af;
+    stroke-width: 0.6;
+    stroke-dasharray: 1.5, 1.2;
+  }
+
+  .route-dot-circle {
+    fill: #002147;
+    stroke: #FAFAF8;
+    stroke-width: 1;
+    transition: fill 150ms ease;
+  }
+
+  .route-stop:hover .route-dot-circle,
+  .route-stop:focus-visible .route-dot-circle {
+    fill: #C8102E;
+  }
+
+  .route-dot-num {
+    fill: white;
+    font-size: 5.4px;
+    font-weight: 700;
+    pointer-events: none;
+  }
+
+  .label-name {
+    font-size: 8.5px;
+    font-weight: 700;
+    fill: #002147;
+    paint-order: stroke;
+    stroke: #FAFAF8;
+    stroke-width: 3px;
+    stroke-linejoin: round;
+  }
+
+  .label-roman {
+    font-size: 6px;
+    font-weight: 500;
+    fill: #6b7280;
+    paint-order: stroke;
+    stroke: #FAFAF8;
+    stroke-width: 3px;
+    stroke-linejoin: round;
+  }
+
+  .route-stop:hover .label-name,
+  .route-stop:focus-visible .label-name {
+    fill: #C8102E;
+  }
+
+  .route-map-caption {
+    margin: 12px 0 0;
+    font-size: 12px;
+    color: #6b7280;
+    text-align: center;
+  }
+</style>
