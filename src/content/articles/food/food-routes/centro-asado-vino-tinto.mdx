@@ -38,6 +38,7 @@ faq:
 ---
 
 import RouteMap from '../../../../components/RouteMap.astro';
+import FoodRouteProvinceButtons from '../../../../components/FoodRouteProvinceButtons.astro';
 import FoodRouteZoneBadge from '../../../../components/FoodRouteZoneBadge.astro';
 import { UtensilsCrossed } from 'lucide-astro';
 
@@ -139,3 +140,32 @@ import { UtensilsCrossed } from 'lucide-astro';
 ## まとめ
 
 マドリードのコシードからサモラの川魚料理まで——7日間かけてマドリードとカスティーリャ・イ・レオン10県を巡るこのルートは、スペインの大地の恵みを実感できる旅程です。[スペイン美食マップ](/food/spain-map/)から、気になる街のレストラン情報もあわせてチェックしてみてください。
+
+各県の具体的なレストラン・バル情報は、下のボタンから県別ページでご覧いただけます。
+
+<FoodRouteProvinceButtons
+  communities={[
+    {
+      slug: "madrid",
+      name: "マドリード州",
+      provinces: [
+        { slug: "madrid", label: "マドリード" },
+      ],
+    },
+    {
+      slug: "castilla-y-leon",
+      name: "カスティーリャ・イ・レオン",
+      provinces: [
+        { slug: "avila", label: "アビラ" },
+        { slug: "burgos", label: "ブルゴス" },
+        { slug: "leon", label: "レオン" },
+        { slug: "palencia", label: "パレンシア" },
+        { slug: "salamanca", label: "サラマンカ" },
+        { slug: "segovia", label: "セゴビア" },
+        { slug: "soria", label: "ソリア" },
+        { slug: "valladolid", label: "バリャドリード" },
+        { slug: "zamora", label: "サモラ" },
+      ],
+    },
+  ]}
+/>

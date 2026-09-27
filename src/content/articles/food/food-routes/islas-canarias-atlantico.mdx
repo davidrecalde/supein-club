@@ -36,6 +36,7 @@ faq:
 ---
 
 import RouteMap from '../../../../components/RouteMap.astro';
+import FoodRouteProvinceButtons from '../../../../components/FoodRouteProvinceButtons.astro';
 import FoodRouteZoneBadge from '../../../../components/FoodRouteZoneBadge.astro';
 import { Flame } from 'lucide-astro';
 
@@ -129,3 +130,18 @@ import { Flame } from 'lucide-astro';
 ## まとめ
 
 ラ・パルマのチーズからランサローテの火山性ワインまで——7日間かけてカナリア諸島7島を渡るこのルートは、火山の大地が育んだ独自の食文化を存分に味わえる旅程です。[スペイン美食マップ](/food/spain-map/)から、気になる街のレストラン情報もあわせてチェックしてみてください。
+
+各県の具体的なレストラン・バル情報は、下のボタンから県別ページでご覧いただけます。
+
+<FoodRouteProvinceButtons
+  communities={[
+    {
+      slug: "canarias",
+      name: "カナリア諸島",
+      provinces: [
+        { slug: "las-palmas", label: "ラス・パルマス" },
+        { slug: "santa-cruz-de-tenerife", label: "テネリフェ" },
+      ],
+    },
+  ]}
+/>

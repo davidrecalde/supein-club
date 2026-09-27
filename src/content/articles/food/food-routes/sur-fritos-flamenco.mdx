@@ -40,6 +40,7 @@ faq:
 ---
 
 import RouteMap from '../../../../components/RouteMap.astro';
+import FoodRouteProvinceButtons from '../../../../components/FoodRouteProvinceButtons.astro';
 import FoodRouteZoneBadge from '../../../../components/FoodRouteZoneBadge.astro';
 import { Flame } from 'lucide-astro';
 
@@ -139,3 +140,24 @@ import { Flame } from 'lucide-astro';
 ## まとめ
 
 ハブーゴの生ハムからコルドバのサルモレホまで——7日間かけてアンダルシア8県を一周するこのルートは、太陽の恵みを存分に味わえる旅程です。[スペイン美食マップ](/food/spain-map/)から、気になる街のレストラン情報もあわせてチェックしてみてください。
+
+各県の具体的なレストラン・バル情報は、下のボタンから県別ページでご覧いただけます。
+
+<FoodRouteProvinceButtons
+  communities={[
+    {
+      slug: "andalucia",
+      name: "アンダルシア",
+      provinces: [
+        { slug: "sevilla", label: "セビリア" },
+        { slug: "granada", label: "グラナダ" },
+        { slug: "malaga", label: "マラガ" },
+        { slug: "cadiz", label: "カディス" },
+        { slug: "cordoba", label: "コルドバ" },
+        { slug: "huelva", label: "ウエルバ" },
+        { slug: "jaen", label: "ハエン" },
+        { slug: "almeria", label: "アルメリア" },
+      ],
+    },
+  ]}
+/>
