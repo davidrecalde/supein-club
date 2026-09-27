@@ -1,9 +1,21 @@
 ---
 // Mapa de ruta interactivo para los artículos de food-routes: colorea las
 // provincias de la zona (sin que sean clicables) y superpone los puntos
-// geográficos reales de cada parada del itinerario, conectados por una
-// línea guía fina hacia el nombre. Cada punto enlaza con el ancla
+// numerados de cada parada del itinerario. Cada punto enlaza con el ancla
 // `#day-{n}` de la sección de ese día en el propio artículo.
+//
+// Diseño deliberadamente simple tras varias rondas de ajuste: en vez de
+// etiquetas lanzadas a huecos lejanos del mapa (con líneas guía que
+// acababan cruzándose entre sí y nombres que a veces caían fuera del
+// recuadro al cambiar el recorte), cada nombre se coloca pegado a su
+// propio punto, desplazado solo un poco en una dirección de la brújula
+// (`labelDir`, por defecto "e"). Sin línea guía: la cercanía al punto
+// ya deja clara la asociación.
+//
+// En pantallas de móvil (<=640px) no se muestran los nombres en
+// absoluto, solo los números — tocar un número navega igualmente a la
+// sección del día. Esto evita por completo el problema de solapes de
+// texto en pantallas estrechas.
 //
 // Los números y nombres se renderizan como HTML superpuesto (no como
 // texto SVG): el mapa base se escala con el viewBox, y si el texto
@@ -11,18 +23,25 @@
 // ilegible en pantallas estrechas. El HTML posicionado por porcentaje
 // mantiene un tamaño de fuente fijo en cualquier ancho de pantalla.
 //
-// En móvil (<=640px) se muestra una segunda copia del mapa recortada
-// (zoom) a la zona de la ruta en vez de España entera, calculada
-// automáticamente a partir de las coordenadas de los stops (sin
-// necesidad de coordenadas manuales por breakpoint). El recorte y el
-// mapa completo se alternan por CSS (@media), sin JS.
-//
 // Reutiliza el mismo SVG base y recorte de viewBox que RegionHighlightMap.astro.
 import { readFileSync } from 'node:fs';
 import path from 'node:path';
 
 const VIEW_W = 418.46;
 const VIEW_H = 328;
+
+type Dir = 'n' | 's' | 'e' | 'w' | 'ne' | 'nw' | 'se' | 'sw';
+
+const DIR_INFO: Record<Dir, { dx: number; dy: number; tx: string; ty: string; align: string }> = {
+  n: { dx: 0, dy: -1, tx: '-50%', ty: '-100%', align: 'center' },
+  s: { dx: 0, dy: 1, tx: '-50%', ty: '0%', align: 'center' },
+  e: { dx: 1, dy: 0, tx: '0%', ty: '-50%', align: 'left' },
+  w: { dx: -1, dy: 0, tx: '-100%', ty: '-50%', align: 'right' },
+  ne: { dx: 1, dy: -1, tx: '0%', ty: '-100%', align: 'left' },
+  nw: { dx: -1, dy: -1, tx: '-100%', ty: '-100%', align: 'right' },
+  se: { dx: 1, dy: 1, tx: '0%', ty: '0%', align: 'left' },
+  sw: { dx: -1, dy: 1, tx: '-100%', ty: '0%', align: 'right' },
+};
 
 interface HighlightProvince {
   code: string;  // Código ISO usado en el SVG, ej. "ES-HU"
@@ -33,13 +52,9 @@ interface RouteStop {
   day: number;
   nameJa: string;
   nameRoman: string;
-  x: number;       // Coordenada del punto en el sistema del SVG (viewBox 0 0 418.46 328)
+  x: number;        // Coordenada del punto en el sistema del SVG (viewBox 0 0 418.46 328)
   y: number;
-  labelX: number;  // Ancla de la etiqueta, desplazada a un hueco libre del mapa
-  labelY: number;
-  labelAnchor: 'start' | 'middle' | 'end';
-  leadX: number;   // Punto donde termina la línea guía, cerca de la etiqueta
-  leadY: number;
+  labelDir?: Dir;    // Dirección del nombre respecto al punto (por defecto "e")
 }
 
 interface Props {
@@ -133,15 +148,15 @@ const desktopSvg = zoomOnly ? '' : renderMap(`0 0 ${VIEW_W} ${VIEW_H}`, 'is-desk
 // puntos), no en las etiquetas — así el recuadro queda centrado sobre
 // la región en sí en vez de descentrarse hacia donde quedó colocado
 // algún nombre. El margen alrededor es proporcional al tamaño de la
-// región, para dejar sitio a las etiquetas "alrededor" sea cual sea
-// la escala de cada ruta.
+// región, para dejar sitio a los nombres pegados a cada punto sea cual
+// sea la escala de cada ruta.
 const regionBBox = provinces.reduce((acc, p) => unionBBox(acc, getProvinceBBox(p.code)), null as ReturnType<typeof getProvinceBBox>);
 const baseBBox = stops.reduce(
   (acc, s) => unionBBox(acc, { minX: s.x, maxX: s.x, minY: s.y, maxY: s.y }),
   regionBBox
 )!;
-const PAD_FRAC = 0.45;
-const MIN_PAD = 35;
+const PAD_FRAC = 0.3;
+const MIN_PAD = 25;
 const padX = Math.max(MIN_PAD, (baseBBox.maxX - baseBBox.minX) * PAD_FRAC);
 const padY = Math.max(MIN_PAD, (baseBBox.maxY - baseBBox.minY) * PAD_FRAC);
 
@@ -176,17 +191,24 @@ const mobileSvg = renderMap(`${cropMinX} ${cropMinY} ${cropW} ${cropH}`, 'is-mob
 const pctFull = (v: number, total: number) => `${((v / total) * 100).toFixed(2)}%`;
 const pctCrop = (v: number, min: number, size: number) => `${(((v - min) / size) * 100).toFixed(2)}%`;
 
-const anchorTransform = {
-  start: 'translate(0, -50%)',
-  middle: 'translate(-50%, -50%)',
-  end: 'translate(-100%, -50%)',
-} as const;
+// Desplazamiento del nombre respecto al punto: una fracción pequeña y
+// constante del ancho visible, para que quede "pegado" al punto tanto
+// en el mapa completo como en cualquier recorte de zoom.
+const OFFSET_FRAC = 0.03;
+const offsetFull = VIEW_W * OFFSET_FRAC;
+const offsetCrop = cropW * OFFSET_FRAC * 1.8;
 
-const textAlignFor = {
-  start: 'left',
-  middle: 'center',
-  end: 'right',
-} as const;
+function labelStyle(x: number, y: number, dir: Dir | undefined, offset: number, pct: (v: number, ...a: number[]) => string, pctArgsX: number[], pctArgsY: number[]) {
+  const d = DIR_INFO[dir ?? 'e'];
+  const lx = x + d.dx * offset;
+  const ly = y + d.dy * offset;
+  return {
+    left: pct(lx, ...pctArgsX),
+    top: pct(ly, ...pctArgsY),
+    transform: `translate(${d.tx}, ${d.ty})`,
+    align: d.align,
+  };
+}
 ---
 
 <div class="route-map" style={`--zone-color:${color}`}>
@@ -195,41 +217,32 @@ const textAlignFor = {
   <div class="route-map-inner route-map-desktop">
     <Fragment set:html={desktopSvg} />
 
-    <svg class="route-lines-svg" viewBox={`0 0 ${VIEW_W} ${VIEW_H}`} preserveAspectRatio="xMidYMid meet" aria-hidden="true">
-      {stops.map((s) => (
-        <line x1={s.x} y1={s.y} x2={s.leadX} y2={s.leadY} class="leader-line" vector-effect="non-scaling-stroke" />
-      ))}
-    </svg>
-
     {stops.map((s) => (
       <a href={`#day-${s.day}`} class="route-dot" style={`left:${pctFull(s.x, VIEW_W)}; top:${pctFull(s.y, VIEW_H)};`} aria-label={`${s.day}日目 ${s.nameJa}`}>
         <span class="route-dot-circle">{s.day}</span>
       </a>
     ))}
 
-    {stops.map((s) => (
-      <a
-        href={`#day-${s.day}`}
-        class="route-label"
-        style={`left:${pctFull(s.labelX, VIEW_W)}; top:${pctFull(s.labelY, VIEW_H)}; transform:${anchorTransform[s.labelAnchor]}; text-align:${textAlignFor[s.labelAnchor]};`}
-        aria-label={`${s.day}日目 ${s.nameJa}へ移動`}
-      >
-        <span class="route-label-name">{s.nameJa}</span>
-        <span class="route-label-roman">{s.nameRoman}</span>
-      </a>
-    ))}
+    {stops.map((s) => {
+      const l = labelStyle(s.x, s.y, s.labelDir, offsetFull, pctFull, [VIEW_W], [VIEW_H]);
+      return (
+        <a
+          href={`#day-${s.day}`}
+          class="route-label"
+          style={`left:${l.left}; top:${l.top}; transform:${l.transform}; text-align:${l.align};`}
+          aria-label={`${s.day}日目 ${s.nameJa}へ移動`}
+        >
+          <span class="route-label-name">{s.nameJa}</span>
+          <span class="route-label-roman">{s.nameRoman}</span>
+        </a>
+      );
+    })}
   </div>
   )}
 
-  {/* Versión móvil, o única versión si zoomOnly: zoom automático a la zona de la ruta */}
+  {/* Versión móvil, o única versión si zoomOnly: zoom automático a la zona de la ruta. En móvil no se muestran nombres, solo números (ver CSS). */}
   <div class={`route-map-inner route-map-mobile ${zoomOnly ? 'route-map-zoom-only' : ''}`}>
     <Fragment set:html={mobileSvg} />
-
-    <svg class="route-lines-svg" viewBox={`${cropMinX} ${cropMinY} ${cropW} ${cropH}`} preserveAspectRatio="xMidYMid meet" aria-hidden="true">
-      {stops.map((s) => (
-        <line x1={s.x} y1={s.y} x2={s.leadX} y2={s.leadY} class="leader-line" vector-effect="non-scaling-stroke" />
-      ))}
-    </svg>
 
     {stops.map((s) => (
       <a href={`#day-${s.day}`} class="route-dot" style={`left:${pctCrop(s.x, cropMinX, cropW)}; top:${pctCrop(s.y, cropMinY, cropH)};`} aria-label={`${s.day}日目 ${s.nameJa}`}>
@@ -237,17 +250,20 @@ const textAlignFor = {
       </a>
     ))}
 
-    {stops.map((s) => (
-      <a
-        href={`#day-${s.day}`}
-        class="route-label"
-        style={`left:${pctCrop(s.labelX, cropMinX, cropW)}; top:${pctCrop(s.labelY, cropMinY, cropH)}; transform:${anchorTransform[s.labelAnchor]}; text-align:${textAlignFor[s.labelAnchor]};`}
-        aria-label={`${s.day}日目 ${s.nameJa}へ移動`}
-      >
-        <span class="route-label-name">{s.nameJa}</span>
-        <span class="route-label-roman">{s.nameRoman}</span>
-      </a>
-    ))}
+    {stops.map((s) => {
+      const l = labelStyle(s.x, s.y, s.labelDir, offsetCrop, pctCrop, [cropMinX, cropW], [cropMinY, cropH]);
+      return (
+        <a
+          href={`#day-${s.day}`}
+          class="route-label route-label-desktop-only"
+          style={`left:${l.left}; top:${l.top}; transform:${l.transform}; text-align:${l.align};`}
+          aria-label={`${s.day}日目 ${s.nameJa}へ移動`}
+        >
+          <span class="route-label-name">{s.nameJa}</span>
+          <span class="route-label-roman">{s.nameRoman}</span>
+        </a>
+      );
+    })}
   </div>
 
   {caption && <p class="route-map-caption">{caption}</p>}
@@ -301,20 +317,6 @@ const textAlignFor = {
     }
   }
 
-  .route-lines-svg {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-  }
-
-  .leader-line {
-    stroke: #9ca3af;
-    stroke-width: 1;
-    stroke-dasharray: 3, 2.5;
-  }
-
   .route-dot {
     position: absolute;
     transform: translate(-50%, -50%);
@@ -326,14 +328,14 @@ const textAlignFor = {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 20px;
-    height: 20px;
+    width: 22px;
+    height: 22px;
     border-radius: 50%;
     background: #002147;
     border: 2px solid #FAFAF8;
     box-shadow: 0 1px 4px rgba(0, 0, 0, 0.35);
     color: white;
-    font-size: 11px;
+    font-size: 12px;
     font-weight: 700;
     line-height: 1;
     transition: background 150ms ease, transform 150ms ease;
@@ -350,23 +352,21 @@ const textAlignFor = {
     display: flex;
     flex-direction: column;
     text-decoration: none;
-    white-space: normal;
-    overflow-wrap: break-word;
-    max-width: 92px;
-    z-index: 2;
+    white-space: nowrap;
+    z-index: 1;
     padding: 1px 4px;
     border-radius: 4px;
   }
 
   .route-label-name {
-    font-size: 13px;
+    font-size: 12px;
     font-weight: 700;
     color: #002147;
     background: rgba(250, 250, 248, 0.92);
   }
 
   .route-label-roman {
-    font-size: 10px;
+    font-size: 9px;
     font-weight: 500;
     color: #6b7280;
     background: rgba(250, 250, 248, 0.92);
@@ -384,48 +384,34 @@ const textAlignFor = {
     text-align: center;
   }
 
-  @media (max-width: 480px) {
-    .route-map-mobile .route-dot-circle,
-    .route-map-zoom-only .route-dot-circle {
-      width: 13px;
-      height: 13px;
-      font-size: 8px;
-      border-width: 1.5px;
+  /* En pantallas de móvil, solo números: tocar un punto sigue llevando
+     a la sección del día, sin necesidad de mostrar el nombre encima
+     del mapa (evita cualquier solape de texto en espacios reducidos). */
+  @media (max-width: 640px) {
+    .route-map-mobile .route-label-desktop-only {
+      display: none;
     }
 
-    .route-map-mobile .route-label-name,
-    .route-map-zoom-only .route-label-name {
-      font-size: 15px;
-    }
-
-    .route-map-mobile .route-label-roman,
-    .route-map-zoom-only .route-label-roman {
+    .route-map-mobile .route-dot-circle {
+      width: 24px;
+      height: 24px;
       font-size: 12px;
-    }
-
-    .route-map-mobile .route-label,
-    .route-map-zoom-only .route-label {
-      max-width: 120px;
     }
   }
 
   @media (min-width: 641px) {
     .route-map-zoom-only .route-dot-circle {
-      width: 26px;
-      height: 26px;
-      font-size: 13px;
+      width: 28px;
+      height: 28px;
+      font-size: 14px;
     }
 
     .route-map-zoom-only .route-label-name {
-      font-size: 16px;
+      font-size: 15px;
     }
 
     .route-map-zoom-only .route-label-roman {
-      font-size: 12px;
-    }
-
-    .route-map-zoom-only .route-label {
-      max-width: 130px;
+      font-size: 11px;
     }
   }
 </style>
