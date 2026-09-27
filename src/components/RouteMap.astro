@@ -51,9 +51,18 @@ interface Props {
   // completo incluso en escritorio y muestra directamente el recorte
   // de zoom a las islas, a mayor tamaño, en cualquier ancho de pantalla.
   zoomOnly?: boolean;
+  // Elimina del SVG las provincias no resaltadas (en vez de solo
+  // dejarlas en gris). Necesario para Baleares y Canarias: como esas
+  // islas comparten un rincón del lienzo con el recuadro insular del
+  // mapa base (las Canarias están reposicionadas ahí, no en su lugar
+  // geográfico real), el recorte automático de zoom puede alcanzar por
+  // coincidencia esa zona del lienzo y mostrar la otra región insular
+  // o un trozo de la península de fondo. Al quitar del todo esas
+  // formas, el recorte solo puede mostrar la propia región resaltada.
+  stripToRegion?: boolean;
 }
 
-const { provinces, stops, caption, color = '#C8102E', zoomOnly = false } = Astro.props;
+const { provinces, stops, caption, color = '#C8102E', zoomOnly = false, stripToRegion = false } = Astro.props;
 
 const rawSvg = readFileSync(
   path.resolve(process.cwd(), 'public/spain-provinces.svg'),
@@ -62,6 +71,47 @@ const rawSvg = readFileSync(
 
 const highlightCodes = new Set(provinces.map((p) => p.code));
 
+// Calcula el bounding box real de una provincia (en coordenadas del
+// lienzo) parseando su atributo `d` (comandos de trazado relativos
+// m/l) y aplicando su `transform` si lo tiene (caso de Canarias/Ceuta,
+// reposicionadas en un recuadro aparte del mapa base).
+function getProvinceBBox(code: string) {
+  const re = new RegExp(`<path[^>]*?d="([^"]+)"[^>]*?id="${code}"[^>]*/>`);
+  const withTransform = new RegExp(`<path[^>]*?d="([^"]+)"[^>]*?transform="translate\\(([-\\d.]+),([-\\d.]+)\\) scale\\(([-\\d.]+)\\)"[^>]*?id="${code}"[^>]*/>`);
+  let tMatch = rawSvg.match(withTransform);
+  let m = tMatch ?? rawSvg.match(re);
+  if (!m) return null;
+  const d = m[1];
+  const tx = tMatch ? parseFloat(tMatch[2]) : 0;
+  const ty = tMatch ? parseFloat(tMatch[3]) : 0;
+  const scale = tMatch ? parseFloat(tMatch[4]) : 1;
+  const tokens = d.match(/[a-zA-Z]|-?\d*\.?\d+/g) ?? [];
+  let x = 0, y = 0, cmd = '';
+  let minX = Infinity, maxX = -Infinity, minY = Infinity, maxY = -Infinity;
+  const upd = () => {
+    const px = tx + x * scale;
+    const py = ty + y * scale;
+    minX = Math.min(minX, px); maxX = Math.max(maxX, px);
+    minY = Math.min(minY, py); maxY = Math.max(maxY, py);
+  };
+  let i = 0;
+  while (i < tokens.length) {
+    const t = tokens[i];
+    if (/^[a-zA-Z]$/.test(t)) { cmd = t; i++; continue; }
+    if (cmd === 'm' || cmd === 'l') {
+      x += parseFloat(tokens[i]); y += parseFloat(tokens[i + 1]); i += 2; upd();
+      if (cmd === 'm') cmd = 'l';
+    } else { i++; }
+  }
+  return { minX, maxX, minY, maxY };
+}
+
+function unionBBox(a: { minX: number; maxX: number; minY: number; maxY: number } | null, b: { minX: number; maxX: number; minY: number; maxY: number } | null) {
+  if (!a) return b;
+  if (!b) return a;
+  return { minX: Math.min(a.minX, b.minX), maxX: Math.max(a.maxX, b.maxX), minY: Math.min(a.minY, b.minY), maxY: Math.max(a.maxY, b.maxY) };
+}
+
 function renderMap(viewBox: string, extraClass: string) {
   let svg = rawSvg
     .replace('width="418.45123"', `class="route-map-svg ${extraClass}" width="100%" viewBox="${viewBox}" preserveAspectRatio="xMidYMid meet"`)
@@ -69,22 +119,55 @@ function renderMap(viewBox: string, extraClass: string) {
   svg = svg.replace(/id="(ES-[A-Z]+)"/g, (_match, id) => {
     return highlightCodes.has(id) ? `id="${id}" data-highlighted="true"` : `id="${id}"`;
   });
+  if (stripToRegion) {
+    svg = svg.replace(/<rect\b[^>]*id="offshore-frame"[^>]*\/>\s*/, '');
+    svg = svg.replace(/<path\b[\s\S]*?\/>/g, (match) => (match.includes('data-highlighted="true"') ? match : ''));
+  }
   return svg;
 }
 
 const desktopSvg = zoomOnly ? '' : renderMap(`0 0 ${VIEW_W} ${VIEW_H}`, 'is-desktop');
 
-// Recorte automático para móvil: caja que envuelve todos los puntos,
-// etiquetas y extremos de línea guía de los stops, con margen para que
-// ningún nombre quede cortado al hacer zoom.
-const PAD_X = 40;
-const PAD_Y = 22;
-const allXs = stops.flatMap((s) => [s.x, s.labelX, s.leadX]);
-const allYs = stops.flatMap((s) => [s.y, s.labelY, s.leadY]);
-const cropMinX = Math.max(0, Math.min(...allXs) - PAD_X);
-const cropMaxX = Math.min(VIEW_W, Math.max(...allXs) + PAD_X);
-const cropMinY = Math.max(0, Math.min(...allYs) - PAD_Y);
-const cropMaxY = Math.min(VIEW_H, Math.max(...allYs) + PAD_Y);
+// Recorte automático (móvil, o única vista si zoomOnly): se centra en
+// la geometría real de las provincias resaltadas (unida a la de los
+// puntos), no en las etiquetas — así el recuadro queda centrado sobre
+// la región en sí en vez de descentrarse hacia donde quedó colocado
+// algún nombre. El margen alrededor es proporcional al tamaño de la
+// región, para dejar sitio a las etiquetas "alrededor" sea cual sea
+// la escala de cada ruta.
+const regionBBox = provinces.reduce((acc, p) => unionBBox(acc, getProvinceBBox(p.code)), null as ReturnType<typeof getProvinceBBox>);
+const baseBBox = stops.reduce(
+  (acc, s) => unionBBox(acc, { minX: s.x, maxX: s.x, minY: s.y, maxY: s.y }),
+  regionBBox
+)!;
+const PAD_FRAC = 0.45;
+const MIN_PAD = 35;
+const padX = Math.max(MIN_PAD, (baseBBox.maxX - baseBBox.minX) * PAD_FRAC);
+const padY = Math.max(MIN_PAD, (baseBBox.maxY - baseBBox.minY) * PAD_FRAC);
+
+// Recorte centrado con compensación: si un lado topa con el borde del
+// lienzo (regiones costeras como Galicia o Asturias, pegadas al borde
+// real del mapa), se recorta el lado opuesto en la misma medida en vez
+// de dejarlo con todo su margen, para que la región resaltada quede
+// centrada dentro del recuadro en vez de desplazada hacia un lado.
+function centeredClamp(idealMin: number, idealMax: number, hardMin: number, hardMax: number, contentMin: number, contentMax: number): [number, number] {
+  let min = idealMin;
+  let max = idealMax;
+  if (min < hardMin) {
+    const deficit = hardMin - min;
+    min = hardMin;
+    max = Math.max(contentMax, max - deficit);
+  }
+  if (max > hardMax) {
+    const deficit = max - hardMax;
+    max = hardMax;
+    min = Math.min(contentMin, min + deficit);
+  }
+  return [min, max];
+}
+
+const [cropMinX, cropMaxX] = centeredClamp(baseBBox.minX - padX, baseBBox.maxX + padX, 0, VIEW_W, baseBBox.minX, baseBBox.maxX);
+const [cropMinY, cropMaxY] = centeredClamp(baseBBox.minY - padY, baseBBox.maxY + padY, 0, VIEW_H, baseBBox.minY, baseBBox.maxY);
 const cropW = cropMaxX - cropMinX;
 const cropH = cropMaxY - cropMinY;
 
