@@ -4,24 +4,19 @@
 // numerados de cada parada del itinerario. Cada punto enlaza con el ancla
 // `#day-{n}` de la sección de ese día en el propio artículo.
 //
-// Diseño deliberadamente simple tras varias rondas de ajuste: en vez de
-// etiquetas lanzadas a huecos lejanos del mapa (con líneas guía que
-// acababan cruzándose entre sí y nombres que a veces caían fuera del
-// recuadro al cambiar el recorte), cada nombre se coloca pegado a su
-// propio punto, desplazado solo un poco en una dirección de la brújula
-// (`labelDir`, por defecto "e"). Sin línea guía: la cercanía al punto
-// ya deja clara la asociación.
+// Diseño deliberadamente simple tras varias rondas de ajuste: el mapa en
+// sí solo lleva los números (sin nombres ni líneas guía que puedan
+// solaparse o cruzarse), y los nombres viven en una leyenda debajo del
+// mapa, en el mismo orden que los días. Tanto los números del mapa como
+// las entradas de la leyenda son clicables y llevan al mismo sitio.
+// Igual en escritorio y en móvil — no hace falta ningún tratamiento
+// distinto por tamaño de pantalla para los nombres.
 //
-// En pantallas de móvil (<=640px) no se muestran los nombres en
-// absoluto, solo los números — tocar un número navega igualmente a la
-// sección del día. Esto evita por completo el problema de solapes de
-// texto en pantallas estrechas.
-//
-// Los números y nombres se renderizan como HTML superpuesto (no como
-// texto SVG): el mapa base se escala con el viewBox, y si el texto
-// también fuera SVG se encogería en la misma proporción, quedando
-// ilegible en pantallas estrechas. El HTML posicionado por porcentaje
-// mantiene un tamaño de fuente fijo en cualquier ancho de pantalla.
+// Los números se renderizan como HTML superpuesto (no como texto SVG):
+// el mapa base se escala con el viewBox, y si el texto también fuera
+// SVG se encogería en la misma proporción, quedando ilegible en
+// pantallas estrechas. El HTML posicionado por porcentaje mantiene un
+// tamaño de fuente fijo en cualquier ancho de pantalla.
 //
 // Reutiliza el mismo SVG base y recorte de viewBox que RegionHighlightMap.astro.
 import { readFileSync } from 'node:fs';
@@ -29,19 +24,6 @@ import path from 'node:path';
 
 const VIEW_W = 418.46;
 const VIEW_H = 328;
-
-type Dir = 'n' | 's' | 'e' | 'w' | 'ne' | 'nw' | 'se' | 'sw';
-
-const DIR_INFO: Record<Dir, { dx: number; dy: number; tx: string; ty: string; align: string }> = {
-  n: { dx: 0, dy: -1, tx: '-50%', ty: '-100%', align: 'center' },
-  s: { dx: 0, dy: 1, tx: '-50%', ty: '0%', align: 'center' },
-  e: { dx: 1, dy: 0, tx: '0%', ty: '-50%', align: 'left' },
-  w: { dx: -1, dy: 0, tx: '-100%', ty: '-50%', align: 'right' },
-  ne: { dx: 1, dy: -1, tx: '0%', ty: '-100%', align: 'left' },
-  nw: { dx: -1, dy: -1, tx: '-100%', ty: '-100%', align: 'right' },
-  se: { dx: 1, dy: 1, tx: '0%', ty: '0%', align: 'left' },
-  sw: { dx: -1, dy: 1, tx: '-100%', ty: '0%', align: 'right' },
-};
 
 interface HighlightProvince {
   code: string;  // Código ISO usado en el SVG, ej. "ES-HU"
@@ -54,7 +36,6 @@ interface RouteStop {
   nameRoman: string;
   x: number;        // Coordenada del punto en el sistema del SVG (viewBox 0 0 418.46 328)
   y: number;
-  labelDir?: Dir;    // Dirección del nombre respecto al punto (por defecto "e")
 }
 
 interface Props {
@@ -75,9 +56,14 @@ interface Props {
   // o un trozo de la península de fondo. Al quitar del todo esas
   // formas, el recorte solo puede mostrar la propia región resaltada.
   stripToRegion?: boolean;
+  // Margen alrededor de la región en el recorte de zoom, como fracción
+  // de su tamaño (por defecto 0.2). Las regiones grandes (Castilla y
+  // León, Aragón, Castilla-La Mancha) necesitan menos para quedar bien
+  // encuadradas en móvil.
+  mobilePad?: number;
 }
 
-const { provinces, stops, caption, color = '#C8102E', zoomOnly = false, stripToRegion = false } = Astro.props;
+const { provinces, stops, caption, color = '#C8102E', zoomOnly = false, stripToRegion = false, mobilePad = 0.2 } = Astro.props;
 
 const rawSvg = readFileSync(
   path.resolve(process.cwd(), 'public/spain-provinces.svg'),
@@ -145,18 +131,14 @@ const desktopSvg = zoomOnly ? '' : renderMap(`0 0 ${VIEW_W} ${VIEW_H}`, 'is-desk
 
 // Recorte automático (móvil, o única vista si zoomOnly): se centra en
 // la geometría real de las provincias resaltadas (unida a la de los
-// puntos), no en las etiquetas — así el recuadro queda centrado sobre
-// la región en sí en vez de descentrarse hacia donde quedó colocado
-// algún nombre. El margen alrededor es proporcional al tamaño de la
-// región, para dejar sitio a los nombres pegados a cada punto sea cual
-// sea la escala de cada ruta.
+// puntos), con un margen proporcional al tamaño de la región.
 const regionBBox = provinces.reduce((acc, p) => unionBBox(acc, getProvinceBBox(p.code)), null as ReturnType<typeof getProvinceBBox>);
 const baseBBox = stops.reduce(
   (acc, s) => unionBBox(acc, { minX: s.x, maxX: s.x, minY: s.y, maxY: s.y }),
   regionBBox
 )!;
-const PAD_FRAC = 0.3;
-const MIN_PAD = 25;
+const PAD_FRAC = mobilePad;
+const MIN_PAD = Math.min(15, 75 * mobilePad);
 const padX = Math.max(MIN_PAD, (baseBBox.maxX - baseBBox.minX) * PAD_FRAC);
 const padY = Math.max(MIN_PAD, (baseBBox.maxY - baseBBox.minY) * PAD_FRAC);
 
@@ -191,24 +173,7 @@ const mobileSvg = renderMap(`${cropMinX} ${cropMinY} ${cropW} ${cropH}`, 'is-mob
 const pctFull = (v: number, total: number) => `${((v / total) * 100).toFixed(2)}%`;
 const pctCrop = (v: number, min: number, size: number) => `${(((v - min) / size) * 100).toFixed(2)}%`;
 
-// Desplazamiento del nombre respecto al punto: una fracción pequeña y
-// constante del ancho visible, para que quede "pegado" al punto tanto
-// en el mapa completo como en cualquier recorte de zoom.
-const OFFSET_FRAC = 0.03;
-const offsetFull = VIEW_W * OFFSET_FRAC;
-const offsetCrop = cropW * OFFSET_FRAC * 1.8;
-
-function labelStyle(x: number, y: number, dir: Dir | undefined, offset: number, pct: (v: number, ...a: number[]) => string, pctArgsX: number[], pctArgsY: number[]) {
-  const d = DIR_INFO[dir ?? 'e'];
-  const lx = x + d.dx * offset;
-  const ly = y + d.dy * offset;
-  return {
-    left: pct(lx, ...pctArgsX),
-    top: pct(ly, ...pctArgsY),
-    transform: `translate(${d.tx}, ${d.ty})`,
-    align: d.align,
-  };
-}
+const sortedStops = [...stops].sort((a, b) => a.day - b.day);
 ---
 
 <div class="route-map" style={`--zone-color:${color}`}>
@@ -218,55 +183,39 @@ function labelStyle(x: number, y: number, dir: Dir | undefined, offset: number, 
     <Fragment set:html={desktopSvg} />
 
     {stops.map((s) => (
-      <a href={`#day-${s.day}`} class="route-dot" style={`left:${pctFull(s.x, VIEW_W)}; top:${pctFull(s.y, VIEW_H)};`} aria-label={`${s.day}日目 ${s.nameJa}`}>
+      <a href={`#day-${s.day}`} class="route-dot" style={`left:${pctFull(s.x, VIEW_W)}; top:${pctFull(s.y, VIEW_H)};`} aria-label={`${s.day}日目 ${s.nameJa}へ移動`}>
         <span class="route-dot-circle">{s.day}</span>
       </a>
     ))}
-
-    {stops.map((s) => {
-      const l = labelStyle(s.x, s.y, s.labelDir, offsetFull, pctFull, [VIEW_W], [VIEW_H]);
-      return (
-        <a
-          href={`#day-${s.day}`}
-          class="route-label"
-          style={`left:${l.left}; top:${l.top}; transform:${l.transform}; text-align:${l.align};`}
-          aria-label={`${s.day}日目 ${s.nameJa}へ移動`}
-        >
-          <span class="route-label-name">{s.nameJa}</span>
-          <span class="route-label-roman">{s.nameRoman}</span>
-        </a>
-      );
-    })}
   </div>
   )}
 
-  {/* Versión móvil, o única versión si zoomOnly: zoom automático a la zona de la ruta. En móvil no se muestran nombres, solo números (ver CSS). */}
+  {/* Versión móvil, o única versión si zoomOnly: zoom automático a la zona de la ruta */}
   <div class={`route-map-inner route-map-mobile ${zoomOnly ? 'route-map-zoom-only' : ''}`}>
     <Fragment set:html={mobileSvg} />
 
     {stops.map((s) => (
-      <a href={`#day-${s.day}`} class="route-dot" style={`left:${pctCrop(s.x, cropMinX, cropW)}; top:${pctCrop(s.y, cropMinY, cropH)};`} aria-label={`${s.day}日目 ${s.nameJa}`}>
+      <a href={`#day-${s.day}`} class="route-dot" style={`left:${pctCrop(s.x, cropMinX, cropW)}; top:${pctCrop(s.y, cropMinY, cropH)};`} aria-label={`${s.day}日目 ${s.nameJa}へ移動`}>
         <span class="route-dot-circle">{s.day}</span>
       </a>
     ))}
-
-    {stops.map((s) => {
-      const l = labelStyle(s.x, s.y, s.labelDir, offsetCrop, pctCrop, [cropMinX, cropW], [cropMinY, cropH]);
-      return (
-        <a
-          href={`#day-${s.day}`}
-          class="route-label route-label-desktop-only"
-          style={`left:${l.left}; top:${l.top}; transform:${l.transform}; text-align:${l.align};`}
-          aria-label={`${s.day}日目 ${s.nameJa}へ移動`}
-        >
-          <span class="route-label-name">{s.nameJa}</span>
-          <span class="route-label-roman">{s.nameRoman}</span>
-        </a>
-      );
-    })}
   </div>
 
   {caption && <p class="route-map-caption">{caption}</p>}
+
+  <ul class="route-legend">
+    {sortedStops.map((s) => (
+      <li>
+        <a href={`#day-${s.day}`} class="route-legend-item">
+          <span class="route-legend-num">{s.day}</span>
+          <span class="route-legend-text">
+            <span class="route-legend-name">{s.nameJa}</span>
+            <span class="route-legend-roman">{s.nameRoman}</span>
+          </span>
+        </a>
+      </li>
+    ))}
+  </ul>
 </div>
 
 <style is:global>
@@ -288,7 +237,6 @@ function labelStyle(x: number, y: number, dir: Dir | undefined, offset: number, 
     background: #FAFAF8;
     border: 1px solid #E8E8E6;
     border-radius: 12px;
-    overflow: visible;
   }
 
   .route-map-inner {
@@ -328,14 +276,14 @@ function labelStyle(x: number, y: number, dir: Dir | undefined, offset: number, 
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 22px;
-    height: 22px;
+    width: 24px;
+    height: 24px;
     border-radius: 50%;
     background: #002147;
     border: 2px solid #FAFAF8;
     box-shadow: 0 1px 4px rgba(0, 0, 0, 0.35);
     color: white;
-    font-size: 12px;
+    font-size: 13px;
     font-weight: 700;
     line-height: 1;
     transition: background 150ms ease, transform 150ms ease;
@@ -347,36 +295,6 @@ function labelStyle(x: number, y: number, dir: Dir | undefined, offset: number, 
     transform: scale(1.15);
   }
 
-  .route-label {
-    position: absolute;
-    display: flex;
-    flex-direction: column;
-    text-decoration: none;
-    white-space: nowrap;
-    z-index: 1;
-    padding: 1px 4px;
-    border-radius: 4px;
-  }
-
-  .route-label-name {
-    font-size: 12px;
-    font-weight: 700;
-    color: #002147;
-    background: rgba(250, 250, 248, 0.92);
-  }
-
-  .route-label-roman {
-    font-size: 9px;
-    font-weight: 500;
-    color: #6b7280;
-    background: rgba(250, 250, 248, 0.92);
-  }
-
-  .route-label:hover .route-label-name,
-  .route-label:focus-visible .route-label-name {
-    color: #C8102E;
-  }
-
   .route-map-caption {
     margin: 12px 0 0;
     font-size: 12px;
@@ -384,34 +302,78 @@ function labelStyle(x: number, y: number, dir: Dir | undefined, offset: number, 
     text-align: center;
   }
 
-  /* En pantallas de móvil, solo números: tocar un punto sigue llevando
-     a la sección del día, sin necesidad de mostrar el nombre encima
-     del mapa (evita cualquier solape de texto en espacios reducidos). */
-  @media (max-width: 640px) {
-    .route-map-mobile .route-label-desktop-only {
-      display: none;
-    }
+  .route-legend {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+    margin: 20px 0 0;
+    padding: 16px 0 0;
+    border-top: 1px solid #E8E8E6;
+  }
 
-    .route-map-mobile .route-dot-circle {
-      width: 24px;
-      height: 24px;
-      font-size: 12px;
+  .route-legend-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 10px;
+    text-decoration: none;
+    border-radius: 8px;
+    transition: background 150ms ease;
+  }
+
+  .route-legend-item:hover,
+  .route-legend-item:focus-visible {
+    background: #F0EFEA;
+  }
+
+  .route-legend-num {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: #002147;
+    color: white;
+    font-size: 12px;
+    font-weight: 700;
+  }
+
+  .route-legend-item:hover .route-legend-num,
+  .route-legend-item:focus-visible .route-legend-num {
+    background: #C8102E;
+  }
+
+  .route-legend-text {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+  }
+
+  .route-legend-name {
+    font-size: 13px;
+    font-weight: 700;
+    color: #002147;
+  }
+
+  .route-legend-roman {
+    font-size: 11px;
+    color: #6b7280;
+  }
+
+  @media (max-width: 480px) {
+    .route-legend {
+      grid-template-columns: 1fr;
     }
   }
 
   @media (min-width: 641px) {
     .route-map-zoom-only .route-dot-circle {
-      width: 28px;
-      height: 28px;
-      font-size: 14px;
-    }
-
-    .route-map-zoom-only .route-label-name {
+      width: 30px;
+      height: 30px;
       font-size: 15px;
-    }
-
-    .route-map-zoom-only .route-label-roman {
-      font-size: 11px;
     }
   }
 </style>
