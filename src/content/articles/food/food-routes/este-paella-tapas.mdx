@@ -36,53 +36,37 @@ faq:
     answer: "毎年5月にリェイダで開催される「アプレック・デル・カラゴル」は、数十万人が集まる欧州最大級のカタツムリ料理の祭りです。さまざまな調理法のカタツムリを味わえます。"
 ---
 
-import RegionHighlightMap from '../../../../components/RegionHighlightMap.astro';
+import RouteMap from '../../../../components/RouteMap.astro';
 import FoodRouteZoneBadge from '../../../../components/FoodRouteZoneBadge.astro';
-import FoodRouteProvinceButtons from '../../../../components/FoodRouteProvinceButtons.astro';
 import { Sun } from 'lucide-astro';
 
 ## エリア別レストランマップ
 
-このグルメルートが扱うのは、地図で色付けした7県（バレンシア州3県＋カタルーニャ州4県）です。クリックすると各県のレストラン・バルマップへ移動します。
+このグルメルートが扱うのは、地図で色付けした7県（バレンシア州3県＋カタルーニャ州4県）です。番号をクリックすると、該当する日の解説へ移動します。
 
 <FoodRouteZoneBadge icon={Sun} color="#E67E22" label="東部：地中海の食文化" />
 
-<RegionHighlightMap
+<RouteMap
   provinces={[
-    { code: "ES-V", slug: "valencia", label: "バレンシア" },
-    { code: "ES-A", slug: "alicante", label: "アリカンテ" },
-    { code: "ES-CS", slug: "castellon", label: "カステジョン" },
-    { code: "ES-B", slug: "barcelona", label: "バルセロナ" },
-    { code: "ES-GI", slug: "gerona", label: "ヘローナ" },
-    { code: "ES-L", slug: "lerida", label: "リェイダ" },
-    { code: "ES-T", slug: "tarragona", label: "タラゴナ" },
+    { code: "ES-V", label: "バレンシア" },
+    { code: "ES-A", label: "アリカンテ" },
+    { code: "ES-CS", label: "カステジョン" },
+    { code: "ES-B", label: "バルセロナ" },
+    { code: "ES-GI", label: "ヘローナ" },
+    { code: "ES-L", label: "リェイダ" },
+    { code: "ES-T", label: "タラゴナ" },
   ]}
-  caption="色付けした7県がこのグルメルートの対象エリア（バレンシア州＋カタルーニャ州）"
+  stops={[
+    { day: 1, nameJa: "アリカンテ", nameRoman: "Alicante", x: 271.1, y: 211.7, labelX: 320, labelY: 225, labelAnchor: "start", leadX: 295, leadY: 218 },
+    { day: 2, nameJa: "バレンシア", nameRoman: "Valencia", x: 274.3, y: 168.0, labelX: 330, labelY: 168, labelAnchor: "start", leadX: 300, leadY: 168 },
+    { day: 3, nameJa: "カステジョン", nameRoman: "Castellón", x: 284.8, y: 147.9, labelX: 340, labelY: 120, labelAnchor: "start", leadX: 310, leadY: 132 },
+    { day: 4, nameJa: "バルス（タラゴナ）", nameRoman: "Valls", x: 324.3, y: 97.4, labelX: 370, labelY: 155, labelAnchor: "start", leadX: 345, leadY: 120 },
+    { day: 5, nameJa: "バルセロナ", nameRoman: "Barcelona", x: 352.7, y: 93.6, labelX: 400, labelY: 75, labelAnchor: "end", leadX: 375, leadY: 85 },
+    { day: 6, nameJa: "ヘローナ", nameRoman: "Girona", x: 372.6, y: 70.5, labelX: 400, labelY: 40, labelAnchor: "end", leadX: 385, leadY: 55 },
+    { day: 7, nameJa: "リェイダ", nameRoman: "Lleida", x: 305.0, y: 84.5, labelX: 255, labelY: 40, labelAnchor: "end", leadX: 280, leadY: 60 },
+  ]}
+  caption="色付けした7県（バレンシア州＋カタルーニャ州）と、ルート上の7つの町"
   color="#E67E22"
-/>
-
-<FoodRouteProvinceButtons
-  communities={[
-    {
-      slug: "valencia",
-      name: "バレンシア州",
-      provinces: [
-        { slug: "valencia", label: "バレンシア" },
-        { slug: "alicante", label: "アリカンテ" },
-        { slug: "castellon", label: "カステジョン" },
-      ],
-    },
-    {
-      slug: "catalunya",
-      name: "カタルーニャ",
-      provinces: [
-        { slug: "barcelona", label: "バルセロナ" },
-        { slug: "gerona", label: "ヘローナ" },
-        { slug: "lerida", label: "リェイダ" },
-        { slug: "tarragona", label: "タラゴナ" },
-      ],
-    },
-  ]}
 />
 
 ---
@@ -91,40 +75,47 @@ import { Sun } from 'lucide-astro';
 
 地中海に面したバレンシアとカタルーニャ地方は、稲作文化と創作料理の両方が息づくエリアです。この7日間のルートは、南のアリカンテから北のリェイダへ、後戻りすることなく海岸線を進みながら7県を巡ります。
 
+<span id="day-1" />
 ## 1日目：アリカンテ（Alicante）——ヌガーの街
 
 ルートの出発点はアリカンテ。近郊のヒホナは、アーモンドと蜂蜜で作るスペインの伝統菓子「トゥロン（ヌガー）」の産地として知られ、「トゥロン・デ・ヒホナ」「トゥロン・デ・アリカンテ」の2種が原産地呼称に認定されています。
 
+<span id="day-2" />
 ## 2日目：バレンシア（Valencia）——パエリア発祥の地
 
 **移動時間：** バレンシアまで約1時間30分。
 
 バレンシア地方にはヨーロッパでは珍しい水田が広がり、稲作に適した土地柄を活かして米料理文化が古くから発展してきました。パエリアの発祥地とされ、市内の中央市場では新鮮な食材が集まります。米にパスタを使った「フィデウア」も、この地方から生まれた料理として知られています。
 
+<span id="day-3" />
 ## 3日目：カステジョン（Castellón）——オレンジ畑と沿岸の魚介
 
 **移動時間：** カステジョンまで約1時間。
 
 カステジョン県は、バレンシア州を代表するオレンジ畑が広がるエリアです。沿岸のペニスコラなどの町では、新鮮な魚介料理も楽しめます。
 
+<span id="day-4" />
 ## 4日目：タラゴナ（Tarragona）——カルソッツの村バルス
 
 **移動時間：** タラゴナまで約1時間30分。
 
 タラゴナ県バルスは、「カルソッツ」（春ねぎの炭火焼き）発祥の地とされています。冬から春にかけては、皮を剥きながらアーモンドベースのソースをつけて手で食べるこの郷土料理が地域の風物詩となります。
 
+<span id="day-5" />
 ## 5日目：バルセロナ（Barcelona）——市場文化とカバ
 
 **移動時間：** バルセロナまで約1時間。
 
 バルセロナのサン・ジュゼップ市場（ラ・ボケリア）に代表されるように、カタルーニャ地方では新鮮な食材を扱う市場文化が根強く残っています。近郊のペネデス地方は、シャンパンと同じ製法で造られるスパークリングワイン「カバ」の主産地です。カバやスペインワイン全般の格付けについては[「スペインワイン完全ガイド」](/food/spanish-wine/)で詳しく解説しています。
 
+<span id="day-6" />
 ## 6日目：ヘローナ（Girona）——コスタ・ブラバとアンチョビ
 
 **移動時間：** ヘローナまで約1時間30分。
 
 ヘローナは世界的に評価の高いレストランを擁する美食の街として知られています。コスタ・ブラバ沿岸のリェスカラは、良質なアンチョビの産地として名高く、塩漬けにされたアンチョビはカタルーニャ料理に欠かせない食材です。
 
+<span id="day-7" />
 ## 7日目：リェイダ（Lleida）——カタツムリと梨
 
 **移動時間：** リェイダまで約2時間。
