@@ -31,7 +31,7 @@ faq:
   - question: "カンタブリアはなぜアンチョビの産地として有名なのですか？"
     answer: "カンタブリア海に面したサントーニャは、良質なアンチョビの水揚げ・加工地として知られています。塩漬け・オイル漬けにされたサントーニャ産アンチョビは、スペイン国内でも高級品として扱われています。"
   - question: "このルートは何日で回れますか？"
-    answer: "7日間あれば、クディジェロ、ビジャビシオサ、オビエド、リバデセージャ、サンティジャーナ・デル・マル、サンタンデール、サントーニャを無理なく巡ることができます。"
+    answer: "7日間あれば、クディジェロ、オビエド、ビジャビシオサ、リバデセージャ、サンティジャーナ・デル・マル、サンタンデール、サントーニャを無理なく巡ることができます。"
   - question: "ケソ・カブラレスとはどんなチーズですか？"
     answer: "ピコス・デ・エウロパ山脈の洞窟で熟成させる、アストゥリアス東部特産の青カビチーズ（DOP認定）です。牛乳・羊乳・山羊乳を混ぜて作られることもあり、強い風味が特徴です。"
 ---
@@ -52,13 +52,13 @@ import { Waves } from 'lucide-astro';
     { code: "ES-S", label: "カンタブリア" },
   ]}
   stops={[
-    { day: 1, nameJa: "クディジェロ", nameRoman: "Cudillero", x: 97.1, y: 8.9, labelX: 70, labelY: 35, labelAnchor: "end", leadX: 78, leadY: 26 },
-    { day: 2, nameJa: "ビジャビシオサ", nameRoman: "Villaviciosa", x: 119.0, y: 12.1, labelX: 105, labelY: 115, labelAnchor: "end", leadX: 112, leadY: 85 },
-    { day: 3, nameJa: "オビエド", nameRoman: "Oviedo", x: 106.3, y: 16.8, labelX: 85, labelY: 75, labelAnchor: "end", leadX: 90, leadY: 55 },
-    { day: 4, nameJa: "リバデセージャ", nameRoman: "Ribadesella", x: 130.4, y: 12.8, labelX: 150, labelY: 155, labelAnchor: "start", leadX: 140, leadY: 110 },
-    { day: 5, nameJa: "サンティジャーナ・デル・マル", nameRoman: "Santillana del Mar", x: 159.7, y: 15.7, labelX: 185, labelY: 35, labelAnchor: "start", leadX: 175, leadY: 25 },
-    { day: 6, nameJa: "サンタンデール", nameRoman: "Santander", x: 169.0, y: 12.9, labelX: 200, labelY: 75, labelAnchor: "start", leadX: 185, leadY: 50 },
-    { day: 7, nameJa: "サントーニャ", nameRoman: "Santoña", x: 180.2, y: 13.5, labelX: 195, labelY: 115, labelAnchor: "start", leadX: 188, leadY: 80 },
+    { day: 1, nameJa: "クディジェロ", nameRoman: "Cudillero", x: 97.1, y: 8.9, labelX: 55, labelY: 8.9, labelAnchor: "end", leadX: 78, leadY: 8.9 },
+    { day: 2, nameJa: "オビエド", nameRoman: "Oviedo", x: 106.3, y: 16.8, labelX: 65, labelY: 38, labelAnchor: "end", leadX: 88, leadY: 28 },
+    { day: 3, nameJa: "ビジャビシオサ", nameRoman: "Villaviciosa", x: 119.0, y: 12.1, labelX: 155, labelY: 30, labelAnchor: "start", leadX: 132, leadY: 22 },
+    { day: 4, nameJa: "リバデセージャ", nameRoman: "Ribadesella", x: 130.4, y: 12.8, labelX: 130.4, labelY: 48, labelAnchor: "middle", leadX: 130.4, leadY: 32 },
+    { day: 5, nameJa: "サンティジャーナ・デル・マル", nameRoman: "Santillana del Mar", x: 159.7, y: 15.7, labelX: 215, labelY: 15.7, labelAnchor: "start", leadX: 180, leadY: 15.7 },
+    { day: 6, nameJa: "サンタンデール", nameRoman: "Santander", x: 169.0, y: 12.9, labelX: 215, labelY: 42, labelAnchor: "start", leadX: 190, leadY: 26 },
+    { day: 7, nameJa: "サントーニャ", nameRoman: "Santoña", x: 180.2, y: 13.5, labelX: 230, labelY: 58, labelAnchor: "start", leadX: 200, leadY: 32 },
   ]}
   caption="色付けした2県（アストゥリアス＋カンタブリア）と、ルート上の7つの町"
   color="#2D6A4F"
@@ -77,18 +77,18 @@ import { Waves } from 'lucide-astro';
 ルートの出発点は、アストゥリアス西部の入り江に建つ漁村クディジェロ。断崖に張りつくように並ぶカラフルな家々と、そこで水揚げされる新鮮な魚介が名物です。小さな港町ながら、地元で獲れた魚をシンプルに焼いたりフライにしたりする素朴な食堂が軒を連ねています。
 
 <span id="day-2" />
-## 2日目：ビジャビシオサ（Villaviciosa）——りんご畑とシードルの里
+## 2日目：オビエド（Oviedo）——ガスコーナ通りとファバーダ
 
-**移動時間：** ビジャビシオサまで約1時間。
-
-「シードルの郡」とも呼ばれるビジャビシオサ周辺は、アストゥリアスでも特にりんご畑が広がるエリアです。搾りたてのりんご果汁を発酵させたシードルは、この地方の食卓に欠かせない存在で、街中には自家製造のシードルを飲ませる醸造所兼バルが点在しています。
-
-<span id="day-3" />
-## 3日目：オビエド（Oviedo）——ガスコーナ通りとファバーダ
-
-**移動時間：** アストゥリアス州都オビエドまで約30分。
+**移動時間：** アストゥリアス州都オビエドまで約1時間。
 
 オビエドの「ガスコーナ通り」は、通称「シードルの大通り」と呼ばれ、両側にシドレリア（シードル専門店）が軒を連ねています。グラスの高い位置から少量ずつ注ぐ「エスカンシアール」という独特の作法を、目の前で見ながら味わえるのが醍醐味です。郷土料理としては、白いんげん豆と豚肉の加工品を煮込む「ファバーダ・アストゥリアーナ」が代表的で、シードルとともに味わうのが定番のスタイルです。
+
+<span id="day-3" />
+## 3日目：ビジャビシオサ（Villaviciosa）——りんご畑とシードルの里
+
+**移動時間：** ビジャビシオサまで約30分。
+
+「シードルの郡」とも呼ばれるビジャビシオサ周辺は、アストゥリアスでも特にりんご畑が広がるエリアです。搾りたてのりんご果汁を発酵させたシードルは、この地方の食卓に欠かせない存在で、街中には自家製造のシードルを飲ませる醸造所兼バルが点在しています。
 
 <span id="day-4" />
 ## 4日目：リバデセージャとカブラレス（Ribadesella y Cabrales）——海と山、対照的な恵み
