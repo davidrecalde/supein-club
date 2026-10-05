@@ -62,14 +62,20 @@ const localBusinessSchema = JSON.stringify({
     description={entry.data.description}
     canonical={canonical}
     breadcrumbs={breadcrumbs}
+    image={entry.data.heroImage?.src}
   />
   <script type="application/ld+json" slot="head" set:html={localBusinessSchema} />
 
-  <!-- Sin imagen hero propia: evita que Pagefind auto-detecte una imagen
-       ajena a la página (ej. el logo del footer) y use siempre el icono
-       del favicon como miniatura en el buscador. -->
-  <span data-pagefind-meta="image:/favicon-192.png" hidden></span>
-  <span data-pagefind-meta="image_alt:スペイン倶楽部" hidden></span>
+  <!-- Páginas sin heroImage propia: evita que Pagefind auto-detecte una
+       imagen ajena a la página (ej. el logo del footer) y use siempre el
+       icono del favicon como miniatura en el buscador. Cuando sí hay
+       heroImage, se usa esa en su lugar (ver más abajo). -->
+  {!entry.data.heroImage && (
+    <>
+      <span data-pagefind-meta="image:/favicon-192.png" hidden></span>
+      <span data-pagefind-meta="image_alt:スペイン倶楽部" hidden></span>
+    </>
+  )}
 
   <HeroProvince
     provinceJa={entry.data.provinceJa}
@@ -80,6 +86,8 @@ const localBusinessSchema = JSON.stringify({
     mapUrl={entry.data.mapUrl}
     lead={entry.data.lead}
     breadcrumbs={breadcrumbs}
+    heroImage={entry.data.heroImage}
+    heroImageAlt={entry.data.heroImageAlt}
   />
 
   <!-- All content inside content-grid so TOC sidebar is sticky throughout scroll -->

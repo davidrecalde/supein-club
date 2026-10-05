@@ -164,7 +164,7 @@ const events = defineCollection({
 
 const spainMap = defineCollection({
   type: 'content',
-  schema: z.object({
+  schema: ({ image }) => z.object({
     title: z.string(),
     description: z.string().max(160),
     lead: z.string(),
@@ -173,6 +173,8 @@ const spainMap = defineCollection({
     region: z.string(),
     capital: z.string(),
     mapUrl: z.string().url(),
+    heroImage: image().optional(),
+    heroImageAlt: z.string().optional(),
     linktreeUrl: z.string().url().default('https://linktr.ee/supeinclub'),
     mainDish: z.string(),
     mainDishJa: z.string(),
