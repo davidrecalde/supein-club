@@ -1,5 +1,6 @@
 ---
 import { getCollection, getEntry } from 'astro:content';
+import heroSpainMap from '../../assets/hero/hero-spain-map.webp';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import SEO from '../../components/SEO.astro';
 import PillarHero from '../../components/PillarHero.astro';
@@ -71,12 +72,16 @@ const spainMapGroup = {
       description: '7つの美食ゾーンで探せるインタラクティブマップ。全都道府県、地方ごとのレストラン・バル情報をまとめています。',
       href: '/food/spain-map/',
       pubDate: new Date('2026-09-07'),
+      heroImage: heroSpainMap,
+      heroImageAlt: 'スペインの自治州別マップ',
     },
     ...sortedProvinces.map((p) => ({
       title: p.data.title,
       description: p.data.description,
       href: `/food/spain-map/${p.data.province}/`,
       pubDate: p.data.pubDate,
+      heroImage: p.data.heroImage,
+      heroImageAlt: p.data.heroImageAlt,
     })),
   ],
 };
@@ -149,7 +154,7 @@ const breadcrumbs = [
     </p>
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
       {spainMapGroup.items.map((item) => (
-        <ArticleCard title={item.title} description={item.description} href={item.href} pillar="food" pubDate={item.pubDate} topicBadge={spainMapGroup.label} />
+        <ArticleCard title={item.title} description={item.description} href={item.href} pillar="food" heroImage={item.heroImage} heroImageAlt={item.heroImageAlt} pubDate={item.pubDate} topicBadge={spainMapGroup.label} />
       ))}
     </div>
   </section>
