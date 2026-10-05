@@ -1,4 +1,6 @@
 ---
+import { Image } from 'astro:assets';
+import type { ImageMetadata } from 'astro:assets';
 import { UtensilsCrossed, Sun, Wallet, MapPin } from 'lucide-astro';
 import Breadcrumb from '../Breadcrumb.astro';
 
@@ -11,13 +13,30 @@ interface Props {
   mapUrl: string;
   lead: string;
   breadcrumbs?: Array<{ name: string; url: string }>;
+  heroImage?: ImageMetadata;
+  heroImageAlt?: string;
 }
 
-const { provinceJa, region, mainDish, bestSeason, priceRange, mapUrl, lead, breadcrumbs } = Astro.props;
+const { provinceJa, region, mainDish, bestSeason, priceRange, mapUrl, lead, breadcrumbs, heroImage, heroImageAlt } = Astro.props;
 ---
-<section class="bg-navy text-white relative" style="padding: 80px 0;">
-  <div class="absolute top-0 left-0 right-0 h-[3px] bg-primary"></div>
-  <div class="container">
+<section class="bg-navy text-white relative" style="padding: 80px 0; overflow:hidden;">
+  {heroImage && (
+    <>
+      <Image
+        src={heroImage}
+        alt={heroImageAlt || ''}
+        width={1600}
+        class="absolute inset-0 w-full h-full object-cover"
+        style="z-index:0;"
+        loading="eager"
+        fetchpriority="high"
+        data-pagefind-meta="image[src], image_alt[alt]"
+      />
+      <div class="absolute inset-0" style="z-index:1; background:linear-gradient(90deg, rgba(0,20,40,0.92) 0%, rgba(0,20,40,0.75) 45%, rgba(0,20,40,0.45) 100%);"></div>
+    </>
+  )}
+  <div class="absolute top-0 left-0 right-0 h-[3px] bg-primary" style="z-index:2;"></div>
+  <div class="container" style="position:relative; z-index:2;">
     {breadcrumbs && breadcrumbs.length > 0 && (
       <div style="margin-bottom:20px; opacity:0.5;">
         <Breadcrumb items={breadcrumbs} dark />
