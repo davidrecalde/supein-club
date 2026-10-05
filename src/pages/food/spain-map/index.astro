@@ -1,5 +1,7 @@
 ---
 import { getCollection } from 'astro:content';
+import { Image } from 'astro:assets';
+import heroSpainMap from '../../../assets/hero/hero-spain-map.webp';
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import SEO from '../../../components/SEO.astro';
 import Breadcrumb from '../../../components/Breadcrumb.astro';
@@ -221,13 +223,25 @@ const zones: Zone[] = [
     breadcrumbs={breadcrumbs}
     authorName={author.data.name}
     authorUrl={`https://supein.club/about-us/team/${author.data.slug ?? 'david-recalde'}/`}
+    image={heroSpainMap.src}
   />
   <script type="application/ld+json" slot="head" set:html={faqJsonLd} />
 
   <!-- Hero -->
-  <section class="bg-navy text-white relative" style="padding:64px 0;">
-    <div class="absolute top-0 left-0 right-0 h-[3px] bg-primary"></div>
-    <div class="container">
+  <section class="bg-navy text-white relative" style="padding:64px 0; overflow:hidden;">
+    <Image
+      src={heroSpainMap}
+      alt="スペインの自治州別マップ"
+      width={1600}
+      class="absolute inset-0 w-full h-full object-cover"
+      style="z-index:0;"
+      loading="eager"
+      fetchpriority="high"
+      data-pagefind-meta="image[src], image_alt[alt]"
+    />
+    <div class="absolute inset-0" style="z-index:1; background:linear-gradient(90deg, rgba(0,20,40,0.92) 0%, rgba(0,20,40,0.78) 45%, rgba(0,20,40,0.5) 100%);"></div>
+    <div class="absolute top-0 left-0 right-0 h-[3px] bg-primary" style="z-index:2;"></div>
+    <div class="container" style="position:relative; z-index:2;">
       <div style="margin-bottom:20px;">
         <Breadcrumb items={breadcrumbs} dark={true} />
       </div>
