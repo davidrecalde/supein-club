@@ -25,7 +25,7 @@
 /promociones/    /community/    301
 /dialogos/    /living/    301
 /travel/destinations/    /travel/    301
-/food/pais-vasco-restaurants/    /food/spain-map/pais-vasco/    301
+/food/pais-vasco-restaurants/    /food/spain-map/    301
 /food/madrid-restaurants/    /food/spain-map/madrid/    301
 /food/barcelona-restaurants/    /food/spain-map/barcelona/    301
 /food/sevilla-restaurants/    /food/spain-map/sevilla/    301
@@ -67,7 +67,8 @@
 /food/murcia/    /food/spain-map/murcia/    301
 /food/navarra/    /food/spain-map/navarra/    301
 /food/orense/    /food/spain-map/orense/    301
-/food/pais-vasco/    /food/spain-map/pais-vasco/    301
+/food/pais-vasco/    /food/spain-map/    301
+/food/spain-map/pais-vasco/    /food/spain-map/    301
 /food/palencia/    /food/spain-map/palencia/    301
 /food/pontevedra/    /food/spain-map/pontevedra/    301
 /food/salamanca/    /food/spain-map/salamanca/    301
