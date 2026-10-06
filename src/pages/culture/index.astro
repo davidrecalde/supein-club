@@ -25,42 +25,61 @@ const otherPillars = [
 const articles = await getCollection('articles', ({ data }) => !data.draft && data.pillar === 'culture');
 const sorted = articles.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 
-const clusters = [
-  { href: '/culture/flamenco/', label: 'フラメンコ' },
-  { href: '/culture/history/', label: 'スペインの歴史' },
-  { href: '/culture/traditions/', label: '伝統と祭り' },
-  { href: '/culture/facts/', label: '基本情報' },
-  { href: '#monthly-festivals', label: '季節のフェスティバル' },
+// 月別フィエスタガイド内の各記事につける月ラベル（pubDateがほぼ同日の
+// ため公開日順ではなく、cluster名から1月→12月の固定順を導く）。
+const monthLabels: Record<string, string> = {
+  'january-festivals': '1月',
+  'february-festivals': '2月',
+  'march-festivals': '3月',
+  'april-festivals': '4月',
+  'may-festivals': '5月',
+  'june-festivals': '6月',
+  'july-festivals': '7月',
+  'august-festivals': '8月',
+  'september-festivals': '9月',
+  'october-festivals': '10月',
+  'november-festivals': '11月',
+  'december-festivals': '12月',
+};
+const monthOrder = Object.keys(monthLabels);
+
+// カテゴリ分類：各記事の tags 配列に含まれる分類タグで判定（football/
+// food と同じ方式）。新しい記事を追加する際は、該当するタグを tags に
+// 含めれば自動的にここに反映される。中身が0件のカテゴリはチップごと
+// 表示されない。
+const categories = [
+  { id: 'flamenco', tag: 'フラメンコ', label: 'フラメンコ' },
+  { id: 'history', tag: '歴史', label: 'スペインの歴史' },
+  { id: 'traditions', tag: '伝統と祭り', label: '伝統と祭り' },
+  { id: 'facts', tag: '基本情報', label: '基本情報' },
+  { id: 'seasonal-festivals', tag: '季節のフェスティバル', label: '季節のフェスティバル' },
 ];
 
-// 月別フィエスタガイド：pubDateが全記事ほぼ同日のため、公開日順ではなく
-// 1月→12月の固定順で並べる。各クラスターの insignia（flagship）記事に
-// 加えて、同クラスター内のサブ記事（例：october-festivalsの
-// dia-comunitat-valenciana）があれば insignia の直後に続ける。
-const monthClusters = [
-  { cluster: 'january-festivals', label: '1月' },
-  { cluster: 'february-festivals', label: '2月' },
-  { cluster: 'march-festivals', label: '3月' },
-  { cluster: 'april-festivals', label: '4月' },
-  { cluster: 'may-festivals', label: '5月' },
-  { cluster: 'june-festivals', label: '6月' },
-  { cluster: 'july-festivals', label: '7月' },
-  { cluster: 'august-festivals', label: '8月' },
-  { cluster: 'september-festivals', label: '9月' },
-  { cluster: 'october-festivals', label: '10月' },
-  { cluster: 'november-festivals', label: '11月' },
-  { cluster: 'december-festivals', label: '12月' },
-];
+const categoryGroups = categories
+  .map((c) => {
+    let items = sorted.filter((a) => a.data.tags.includes(c.tag));
+    // 季節のフェスティバルだけは1月→12月の固定順（+ 同クラスターのサブ
+    // 記事はinsigniaの直後）に並べ替える。
+    if (c.id === 'seasonal-festivals') {
+      items = monthOrder.flatMap((cluster) => {
+        const clusterArticles = items.filter((a) => a.data.cluster === cluster);
+        const flagship = clusterArticles.find((a) => isFlagshipArticle(a));
+        const others = clusterArticles.filter((a) => a !== flagship);
+        return [...(flagship ? [flagship] : []), ...others];
+      });
+    }
+    return { ...c, items };
+  })
+  .filter((g) => g.items.length > 0);
 
-const monthGroupItems = monthClusters.flatMap(({ cluster, label }) => {
-  const clusterArticles = sorted.filter((a) => a.data.cluster === cluster);
-  const flagship = clusterArticles.find((a) => isFlagshipArticle(a));
-  const others = clusterArticles.filter((a) => a !== flagship);
-  return [...(flagship ? [flagship] : []), ...others].map((a) => ({ article: a, label }));
-});
+const categoryAnchors = categoryGroups.map((g) => ({ href: `#${g.id}`, label: g.label }));
 
-const monthGroupIds = new Set(monthGroupItems.map((m) => m.article.id));
-const remaining = sorted.filter((a) => !monthGroupIds.has(a.id));
+const categorizedIds = new Set(categoryGroups.flatMap((g) => g.items.map((a) => a.id)));
+const remaining = sorted.filter((a) => !categorizedIds.has(a.id));
+
+function badgeFor(groupId: string, a: (typeof sorted)[number]) {
+  return groupId === 'seasonal-festivals' ? monthLabels[a.data.cluster] : undefined;
+}
 
 const breadcrumbs = [
   { name: 'ホーム', url: '/' },
@@ -84,26 +103,30 @@ const breadcrumbs = [
     <p class="text-muted text-base leading-relaxed mb-12 border-l-2 border-primary pl-5">
       スペイン文化は、地域ごとに驚くほど多彩な顔を持つ、奥深いテーマです。本カテゴリでは、そんなスペイン文化の世界を日本語でわかりやすくご紹介しています。
     </p>
-    <h2 id="categories" class="font-sans font-bold text-xl text-navy mb-5">カテゴリ</h2>
-    <div class="grid grid-cols-2 md:grid-cols-4 gap-3 mb-12">
-      {clusters.map(({ href, label }) => (
-        <a href={href} class="bg-white rounded-lg px-3 py-3 min-h-[44px] flex items-center justify-center text-center border border-[#E8E8E6] hover:border-primary/30 hover:shadow-sm transition-all">
-          <span class="font-semibold text-navy text-sm leading-snug block">{label}</span>
-        </a>
-      ))}
-    </div>
-    <RegionCTA />
-
-    {monthGroupItems.length > 0 && (
+    {categoryAnchors.length > 0 && (
       <>
-        <h2 id="monthly-festivals" class="font-sans font-bold text-xl text-navy mb-5">月別フィエスタガイド</h2>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
-          {monthGroupItems.map(({ article: a, label }) => (
-            <ArticleCard title={a.data.title} description={a.data.description} href={getArticleUrl(a)} pillar="culture" image={a.data.image} imageAlt={a.data.imageAlt} heroImage={a.data.heroImage} heroImageAlt={a.data.heroImageAlt} pubDate={a.data.pubDate} topicBadge={label} />
+        <h2 id="categories" class="font-sans font-bold text-xl text-navy mb-5">カテゴリ</h2>
+        <div class="grid grid-cols-2 md:grid-cols-5 gap-3 mb-12">
+          {categoryAnchors.map(({ href, label }) => (
+            <a href={href} class="bg-white rounded-lg px-3 py-3 min-h-[44px] flex items-center justify-center text-center border border-[#E8E8E6] hover:border-primary/30 hover:shadow-sm transition-all">
+              <span class="font-semibold text-navy text-sm leading-snug block">{label}</span>
+            </a>
           ))}
         </div>
       </>
     )}
+    <RegionCTA />
+
+    {categoryGroups.map((group) => (
+      <>
+        <h2 id={group.id} class="font-sans font-bold text-xl text-navy mb-5">{group.label}</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+          {group.items.map((a) => (
+            <ArticleCard title={a.data.title} description={a.data.description} href={getArticleUrl(a)} pillar="culture" image={a.data.image} imageAlt={a.data.imageAlt} heroImage={a.data.heroImage} heroImageAlt={a.data.heroImageAlt} pubDate={a.data.pubDate} topicBadge={badgeFor(group.id, a)} />
+          ))}
+        </div>
+      </>
+    ))}
 
     {remaining.length > 0 && (
       <>
