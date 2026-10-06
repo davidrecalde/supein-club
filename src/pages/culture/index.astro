@@ -10,7 +10,7 @@ import RegionCTA from '../../components/RegionCTA.astro';
 import NewsletterForm from '../../components/NewsletterForm.astro';
 import ArticleDisclaimer from '../../components/ArticleDisclaimer.astro';
 import AuthorBox from '../../components/AuthorBox.astro';
-import { getArticleUrl } from '../../utils/articles';
+import { getArticleUrl, isFlagshipArticle } from '../../utils/articles';
 
 const author = await getEntry('authors', 'david-recalde');
 
@@ -30,8 +30,37 @@ const clusters = [
   { href: '/culture/history/', label: 'スペインの歴史' },
   { href: '/culture/traditions/', label: '伝統と祭り' },
   { href: '/culture/facts/', label: '基本情報' },
-  { href: '/culture/traditions/', label: '季節のフェスティバル' },
+  { href: '#monthly-festivals', label: '季節のフェスティバル' },
 ];
+
+// 月別フィエスタガイド：pubDateが全記事ほぼ同日のため、公開日順ではなく
+// 1月→12月の固定順で並べる。各クラスターの insignia（flagship）記事に
+// 加えて、同クラスター内のサブ記事（例：october-festivalsの
+// dia-comunitat-valenciana）があれば insignia の直後に続ける。
+const monthClusters = [
+  { cluster: 'january-festivals', label: '1月' },
+  { cluster: 'february-festivals', label: '2月' },
+  { cluster: 'march-festivals', label: '3月' },
+  { cluster: 'april-festivals', label: '4月' },
+  { cluster: 'may-festivals', label: '5月' },
+  { cluster: 'june-festivals', label: '6月' },
+  { cluster: 'july-festivals', label: '7月' },
+  { cluster: 'august-festivals', label: '8月' },
+  { cluster: 'september-festivals', label: '9月' },
+  { cluster: 'october-festivals', label: '10月' },
+  { cluster: 'november-festivals', label: '11月' },
+  { cluster: 'december-festivals', label: '12月' },
+];
+
+const monthGroupItems = monthClusters.flatMap(({ cluster, label }) => {
+  const clusterArticles = sorted.filter((a) => a.data.cluster === cluster);
+  const flagship = clusterArticles.find((a) => isFlagshipArticle(a));
+  const others = clusterArticles.filter((a) => a !== flagship);
+  return [...(flagship ? [flagship] : []), ...others].map((a) => ({ article: a, label }));
+});
+
+const monthGroupIds = new Set(monthGroupItems.map((m) => m.article.id));
+const remaining = sorted.filter((a) => !monthGroupIds.has(a.id));
 
 const breadcrumbs = [
   { name: 'ホーム', url: '/' },
@@ -65,11 +94,22 @@ const breadcrumbs = [
     </div>
     <RegionCTA />
 
-    {sorted.length > 0 && (
+    {monthGroupItems.length > 0 && (
       <>
-        <h2 class="font-sans font-bold text-xl text-navy mb-5">記事一覧</h2>
+        <h2 id="monthly-festivals" class="font-sans font-bold text-xl text-navy mb-5">月別フィエスタガイド</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+          {monthGroupItems.map(({ article: a, label }) => (
+            <ArticleCard title={a.data.title} description={a.data.description} href={getArticleUrl(a)} pillar="culture" image={a.data.image} imageAlt={a.data.imageAlt} heroImage={a.data.heroImage} heroImageAlt={a.data.heroImageAlt} pubDate={a.data.pubDate} topicBadge={label} />
+          ))}
+        </div>
+      </>
+    )}
+
+    {remaining.length > 0 && (
+      <>
+        <h2 class="font-sans font-bold text-xl text-navy mb-5">その他の記事</h2>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {sorted.map((a) => (
+          {remaining.map((a) => (
             <ArticleCard title={a.data.title} description={a.data.description} href={getArticleUrl(a)} pillar="culture" image={a.data.image} imageAlt={a.data.imageAlt} heroImage={a.data.heroImage} heroImageAlt={a.data.heroImageAlt} pubDate={a.data.pubDate} />
           ))}
         </div>
