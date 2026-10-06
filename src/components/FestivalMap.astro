@@ -13,8 +13,6 @@ interface Point {
   lat: number;
   lon: number;
   href: string;
-  anchor?: 'start' | 'middle' | 'end';
-  dy?: number;
 }
 
 interface Props {
@@ -47,15 +45,11 @@ function buildMarkers(list: Point[]): string {
   let g = '<g class="festival-marker-layer">\n';
   for (const p of list) {
     const [x, y] = toSVG(p.lon, p.lat);
-    const anchor = p.anchor ?? 'middle';
-    const dy = p.dy ?? -11;
-    const labelX = anchor === 'end' ? x - 7 : anchor === 'start' ? x + 7 : x;
 
     g += `<a href="${p.href}" class="festival-marker" aria-label="${p.name}">\n`;
-    g += `  <circle cx="${x}" cy="${y}" r="7" fill="#C8102E" opacity="0.95"/>\n`;
-    g += `  <circle cx="${x}" cy="${y}" r="7" fill="none" stroke="white" stroke-width="1.5"/>\n`;
-    g += `  <text x="${x}" y="${y}" text-anchor="middle" dominant-baseline="central" font-family="'Noto Sans JP','Hiragino Sans',sans-serif" font-size="8" font-weight="700" fill="white">${p.number}</text>\n`;
-    g += `  <text x="${labelX}" y="${y + dy}" text-anchor="${anchor}" font-family="'Noto Sans JP','Hiragino Sans',sans-serif" font-size="8" font-weight="600" fill="#002147" paint-order="stroke fill" stroke="rgba(255,255,255,0.9)" stroke-width="2.5" stroke-linejoin="round">${p.name}</text>\n`;
+    g += `  <circle cx="${x}" cy="${y}" r="10" fill="#C8102E" opacity="0.95"/>\n`;
+    g += `  <circle cx="${x}" cy="${y}" r="10" fill="none" stroke="white" stroke-width="2"/>\n`;
+    g += `  <text x="${x}" y="${y}" text-anchor="middle" dominant-baseline="central" font-family="'Noto Sans JP','Hiragino Sans',sans-serif" font-size="11" font-weight="700" fill="white">${p.number}</text>\n`;
     g += `</a>\n`;
   }
   g += '</g>';
@@ -95,7 +89,7 @@ let svgContent = rawSvg
     transition: r 150ms ease;
   }
   .festival-marker:hover circle:first-child {
-    r: 8.5;
+    r: 12;
   }
 </style>
 
