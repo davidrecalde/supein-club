@@ -10,9 +10,16 @@ import path from 'node:path';
 interface Point {
   number: number;
   name: string;
-  lat: number;
-  lon: number;
   href: string;
+  // lat/lon se traducen a coordenadas SVG vía toSVG(). Para Canarias,
+  // Ceuta y Melilla eso no sirve: public/spain-provinces.svg las reubica
+  // artificialmente (translate+scale) dentro del recuadro "offshore-frame"
+  // en vez de dejarlas en su posición geográfica real — en esos casos se
+  // pasan svgX/svgY ya calculados directamente, que tienen prioridad.
+  lat?: number;
+  lon?: number;
+  svgX?: number;
+  svgY?: number;
 }
 
 interface Props {
@@ -44,7 +51,9 @@ function toSVG(lon: number, lat: number): [number, number] {
 function buildMarkers(list: Point[]): string {
   let g = '<g class="festival-marker-layer">\n';
   for (const p of list) {
-    const [x, y] = toSVG(p.lon, p.lat);
+    const [x, y] = p.svgX !== undefined && p.svgY !== undefined
+      ? [p.svgX, p.svgY]
+      : toSVG(p.lon!, p.lat!);
 
     g += `<a href="${p.href}" class="festival-marker" aria-label="${p.name}">\n`;
     g += `  <circle cx="${x}" cy="${y}" r="10" fill="#C8102E" opacity="0.95"/>\n`;
