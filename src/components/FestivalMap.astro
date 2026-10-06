@@ -1,0 +1,153 @@
+---
+// Mapa en blanco de las provincias de España con marcadores numerados
+// para artículos de fiestas por mes. Reutiliza public/spain-provinces.svg
+// y el mismo sistema de coordenadas lon/lat → SVG que SpainMapSVG.astro,
+// pero sin colorear por comunidad (fondo blanco) y con marcadores propios
+// que enlazan a anclas dentro del propio artículo en vez de a /food/.
+import { readFileSync } from 'node:fs';
+import path from 'node:path';
+
+interface Point {
+  number: number;
+  name: string;
+  lat: number;
+  lon: number;
+  href: string;
+  anchor?: 'start' | 'middle' | 'end';
+  dy?: number;
+}
+
+interface Props {
+  points: Point[];
+}
+
+const { points } = Astro.props;
+
+const rawSvg = readFileSync(
+  path.resolve(process.cwd(), 'public/spain-provinces.svg'),
+  'utf-8'
+);
+
+// Mismo viewBox y rango geográfico que SpainMapSVG.astro — necesario para
+// que las coordenadas lon/lat se traduzcan a los mismos píxeles del SVG.
+const vbW = 418.46;
+const vbH = 468.64;
+const lonMin = -9.303180;
+const lonMax = 4.312512;
+const latMax = 43.793001;
+const latMin = 31.732576;
+
+function toSVG(lon: number, lat: number): [number, number] {
+  const x = (lon - lonMin) / (lonMax - lonMin) * vbW;
+  const y = (latMax - lat) / (latMax - latMin) * vbH;
+  return [+x.toFixed(1), +y.toFixed(1)];
+}
+
+function buildMarkers(list: Point[]): string {
+  let g = '<g class="festival-marker-layer">\n';
+  for (const p of list) {
+    const [x, y] = toSVG(p.lon, p.lat);
+    const anchor = p.anchor ?? 'middle';
+    const dy = p.dy ?? -11;
+    const labelX = anchor === 'end' ? x - 7 : anchor === 'start' ? x + 7 : x;
+
+    g += `<a href="${p.href}" class="festival-marker" aria-label="${p.name}">\n`;
+    g += `  <circle cx="${x}" cy="${y}" r="7" fill="#C8102E" opacity="0.95"/>\n`;
+    g += `  <circle cx="${x}" cy="${y}" r="7" fill="none" stroke="white" stroke-width="1.5"/>\n`;
+    g += `  <text x="${x}" y="${y}" text-anchor="middle" dominant-baseline="central" font-family="'Noto Sans JP','Hiragino Sans',sans-serif" font-size="8" font-weight="700" fill="white">${p.number}</text>\n`;
+    g += `  <text x="${labelX}" y="${y + dy}" text-anchor="${anchor}" font-family="'Noto Sans JP','Hiragino Sans',sans-serif" font-size="8" font-weight="600" fill="#002147" paint-order="stroke fill" stroke="rgba(255,255,255,0.9)" stroke-width="2.5" stroke-linejoin="round">${p.name}</text>\n`;
+    g += `</a>\n`;
+  }
+  g += '</g>';
+  return g;
+}
+
+const markersStr = buildMarkers(points);
+
+const whiteStyleStr = `<style>path[id^="ES-"] { fill: #F7F7F4; stroke: #D1D5DB; stroke-width: 0.5; }</style>`;
+
+let svgContent = rawSvg
+  .replace('width="418.45123"', 'class="festival-map-svg" width="100%" viewBox="0 0 418.46 328" preserveAspectRatio="xMidYMid meet"')
+  .replace('\n   height="468.63733"', '')
+  .replace('</svg>', whiteStyleStr + '\n' + markersStr + '\n</svg>');
+---
+
+<div class="festival-map-container">
+  <Fragment set:html={svgContent} />
+</div>
+
+<ol class="festival-map-legend">
+  {points.map((p) => (
+    <li>
+      <a href={p.href}>
+        <span class="legend-number">{p.number}</span>
+        <span class="legend-name">{p.name}</span>
+      </a>
+    </li>
+  ))}
+</ol>
+
+<style is:global>
+  .festival-marker {
+    cursor: pointer;
+  }
+  .festival-marker circle:first-child {
+    transition: r 150ms ease;
+  }
+  .festival-marker:hover circle:first-child {
+    r: 8.5;
+  }
+</style>
+
+<style>
+  .festival-map-container {
+    background: #FAFAF8;
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    padding: 16px;
+    max-width: 640px;
+    margin: 0 auto;
+  }
+  .festival-map-legend {
+    list-style: none;
+    margin: 16px auto 0;
+    padding: 0;
+    max-width: 640px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 4px 8px;
+  }
+  .festival-map-legend a {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px;
+    border-radius: 6px;
+    text-decoration: none;
+    transition: background-color 0.15s;
+  }
+  .festival-map-legend a:hover {
+    background-color: rgba(0, 0, 0, 0.045);
+  }
+  .legend-number {
+    flex-shrink: 0;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: #C8102E;
+    color: white;
+    font-size: 11px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .legend-name {
+    font-size: 13px;
+    color: #002147;
+    font-weight: 600;
+  }
+  @media (max-width: 500px) {
+    .festival-map-legend { grid-template-columns: 1fr; }
+  }
+</style>
