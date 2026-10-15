@@ -49,11 +49,11 @@ const hasCreRankings = creRankingArticles.length > 0;
 
 const tocHeadings = [
   { depth: 2, slug: 'quick-guide', text: '現地で役立つ基本情報' },
+  { depth: 2, slug: 'content', text: '詳細情報' },
   { depth: 2, slug: 'map', text: 'レストランマップ' },
-  ...(hasCreRankings ? [{ depth: 2, slug: 'cre-rankings', text: 'グルメランキング' }] : []),
   ...(hasSpecialties ? [{ depth: 2, slug: 'specialties', text: '郷土料理' }] : []),
   ...(hasNeighborhoods ? [{ depth: 2, slug: 'neighborhoods', text: 'エリア別ガイド' }] : []),
-  { depth: 2, slug: 'content', text: '詳細情報' },
+  ...(hasCreRankings ? [{ depth: 2, slug: 'cre-rankings', text: 'グルメランキング' }] : []),
   ...(hasFaq ? [{ depth: 2, slug: 'faq', text: 'よくある質問' }] : []),
 ];
 
@@ -133,15 +133,18 @@ const localBusinessSchema = JSON.stringify({
           <ProvinceQuickGuide />
         </section>
 
+        <section id="content" class="psec psec--content">
+          <div class="border-l-4 border-primary rounded-r-lg" style="background:white; padding:20px 24px; margin-bottom:32px;">
+            <p class="text-ink leading-relaxed font-medium" style="margin:0;">{entry.data.lead}</p>
+          </div>
+          <div class="prose">
+            <Content />
+          </div>
+        </section>
+
         <section id="map" class="psec">
           <ProvinceMapEmbed mapUrl={entry.data.mapUrl} provinceJa={entry.data.provinceJa} />
         </section>
-
-        {hasCreRankings && (
-          <section id="cre-rankings" class="psec">
-            <ProvinceCREButtons province={entry.data.province} provinceJa={entry.data.provinceJa} region={entry.data.region} />
-          </section>
-        )}
 
         {hasSpecialties && (
           <section id="specialties" class="psec">
@@ -155,14 +158,11 @@ const localBusinessSchema = JSON.stringify({
           </section>
         )}
 
-        <section id="content" class="psec psec--content">
-          <div class="border-l-4 border-primary rounded-r-lg" style="background:white; padding:20px 24px; margin-bottom:32px;">
-            <p class="text-ink leading-relaxed font-medium" style="margin:0;">{entry.data.lead}</p>
-          </div>
-          <div class="prose">
-            <Content />
-          </div>
-        </section>
+        {hasCreRankings && (
+          <section id="cre-rankings" class="psec">
+            <ProvinceCREButtons province={entry.data.province} provinceJa={entry.data.provinceJa} region={entry.data.region} />
+          </section>
+        )}
 
         {hasFaq && (
           <section id="faq" class="psec">
