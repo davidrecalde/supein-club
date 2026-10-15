@@ -62,7 +62,7 @@ const title = currentSlug
 {buttons.length > 0 && (
   <div class="cre-buttons-wrap" style={color ? `--region-color:${color};` : undefined}>
     <p class="cre-buttons-title">
-      {flagSrc && <img src={flagSrc} alt="" width="20" height="20" loading="lazy" />}
+      {flagSrc && <img src={flagSrc} alt="" width="28" height="21" loading="lazy" />}
       {title}
     </p>
     <div class="cre-buttons">
@@ -95,8 +95,8 @@ const title = currentSlug
     margin: 0 0 16px;
   }
   .cre-buttons-title img {
-    border-radius: 3px;
-    object-fit: cover;
+    border-radius: 2px;
+    object-fit: contain;
     flex-shrink: 0;
   }
   .cre-buttons {
