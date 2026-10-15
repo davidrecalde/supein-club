@@ -189,6 +189,30 @@ El xlsx maestro define un nodo `/services/` explícitamente marcado "SEO対象�
 
 **`/travel/barcelona/` vs `/food/spain-map/barcelona/`** (y el mismo patrón para cualquier otra ciudad): mismo nombre de ciudad, dos pillars distintos con intención distinta — `travel` = turismo/qué visitar/sitios; `food` = dónde comer. **Nunca fusionar ni compartir keyword principal entre ambos.**
 
+**Estrategia SEO para los rankings CRE de restaurantes por provincia (`/food/spain-map/{provincia}/{especialidad}/`) — definida 2026-10-15, piloto Ávila:**
+
+Arquitectura de 2 niveles ya prevista en el schema (`cluster: "spain-map-{provincia}"`, ruta `src/pages/food/spain-map/[province]/[article]/index.astro`, ver más arriba): la página madre de la colección `spain-map` se mantiene como overview genérico (nunca lista rankings de restaurantes con nombre propio salvo la excepción documentada arriba de Madrid), y cada "especialidad" vive en su propia página dentro de la colección `articles` (`src/content/articles/food/spain-map-{provincia}/{slug}.mdx`), con `<CRECard>`.
+
+*Matriz de keywords (evita canibalización entre madre e hijas, y entre hijas entre sí):*
+
+| Página | Keyword objetivo | Intención |
+|---|---|---|
+| madre `/food/spain-map/{provincia}/` | `{provincia} グルメ` | informativa general, sin rankings |
+| `the-best-restaurants` | `{provincia} レストラン` / `高級` | comercial, ocasión especial |
+| `cheap-restaurants` | `{provincia} 安い レストラン` | comercial, presupuesto |
+| `tapas-bars` | `{provincia} タパス` / `バル` | comercial, cultura de bar |
+| `places-to-discover-outside-the-city` (solo provincias grandes, si hay volumen) | `{provincia} 郊外 穴場` | long-tail, descubrimiento |
+
+*Regla de decisión:* antes de crear sub-páginas en una provincia nueva, comprobar volumen de búsqueda real. Sin señal de búsqueda específica por categoría, un único ranking general en la página madre es preferible a desdoblar sin motivo.
+
+*Plantilla de contenido por sub-página (evita thin content — no publicar nunca solo el `<CRECard>` pelado):* intro de 150-250 caracteres específico de esa categoría y provincia (no genérico) → `<CRECard>` → sección de 3-4 criterios/consejos en H3 propios de la categoría (ej. `the-best-restaurants`: cuándo reservar, rango de precio, ocasión; `cheap-restaurants`: rango de precio real, menú del día vs. carta; `tapas-bars`: diferencia tapa/pincho/ración, mejores horas, zona de bares) → FAQ de 3-4 preguntas únicas de esa categoría (nunca repetidas entre hijas ni con la madre) → bloque de provincias cercanas → enlace a `/food/spain-map/`.
+
+*Interlinking (4 capas fijas):* (1) madre → cada hija existente, 1 enlace desde la sección `content` de `{provincia}.mdx`; (2) cada hija → madre, vía breadcrumb automático + 1 mención en el lead; (3) cada hija → `/food/spain-map/` (hub general); (4) cada hija → 3-4 "provincias cercanas" al cierre. **Nunca** enlazar las hijas de una misma provincia entre sí (evita inflar relevancia cruzada artificialmente).
+
+*"Provincias cercanas" — curado manual, no el campo `region`:* se evaluó usar el campo `region` (agrupa por comunidad autónoma) como proxy de cercanía geográfica, pero se descartó por impreciso — Castilla y León agrupa 9 provincias que no son todas vecinas reales entre sí (ej. Burgos/León/Zamora/Soria no son vecinas de Ávila aunque compartan `region`). En su lugar, cada sub-página cita a mano sus 3-4 provincias **geográficamente colindantes reales** enlazando a `/food/spain-map/{provincia-vecina}/` (la página madre de esa provincia, nunca sus sub-páginas, para no sobrecargar). No existe campo de adyacencia geográfica en el schema — si se repite esto en muchas provincias, considerar añadir un campo `neighboringProvinces: string[]` a la colección `spain-map` en vez de hardcodearlo en cada artículo de `articles`.
+
+*`itemType` del `<CRECard>`:* `["LocalBusiness", "Restaurant"]` para las 3 categorías (restaurantes y bares de tapas) — nunca el default `TouristAttraction` (Google no valida Review/AggregateRating sobre ese tipo, ver regla ya documentada en `CLAUDE.md`).
+
 **Deuda técnica conocida:** `author: supeinclub-henshubu` en las 53 entradas de `spain-map` referencia un autor que **no existe** en `src/content/authors/` (verificado: no hay ningún archivo con ese slug). Inofensivo hoy porque `ProvinceGuideLayout.astro` nunca llama a `entry.data.author` para renderizarlo — pero pendiente de limpiar (apuntar a `david-recalde`, el autor real usado en el resto del pillar food) la próxima vez que se toque `spain-map`.
 
 **`/articles/[...page]` reposicionada como hub de "novedades" (2026-09-16):** antes era un volcado cronológico genérico ("すべての記事") con las 6 páginas indexadas y la misma meta description duplicada en todas — sin enlace desde ningún nav/footer, solo descubierta vía sitemap XML, aunque sí enlazada desde la sección "新着" del home. Se realinea con esa etiqueta del home: título "新着記事一覧｜スペイン倶楽部", H1 y descripción propios, `dateModified` en el schema `CollectionPage` (fecha del artículo más reciente de todo el sitio, no solo de la página actual). Solo la **página 1 queda `index, follow`** — es la única con valor real de freshness; páginas 2+ pasan a `noindex, follow` (siguen paginando/enlazando, pero no compiten en el índice con contenido ya viejo). No se solapa con `/sitemap/` (esa es navegación curada por categoría; `/articles/` es el feed cronológico de novedades) ni con los hubs de pillar (esos targetean su propia keyword de categoría). Pendiente si se retoma: añadir un feed RSS (`/rss.xml`) como mecanismo complementario de freshness — no se implementó en este cambio.
