@@ -1,6 +1,6 @@
 ---
 import { getCollection } from 'astro:content';
-import { ArrowRight, Utensils } from 'lucide-astro';
+import { ArrowRight, Utensils, MapPin } from 'lucide-astro';
 import { regions } from '../../config/regions';
 import { communityColorMap } from '../../data/spainCommunities';
 
@@ -9,9 +9,17 @@ interface Props {
   provinceJa: string;
   /** entry.data.region de la colección spain-map — ej. "カスティーリャ・イ・レオン州" (spainMapLabel) */
   region: string;
+  /**
+   * Slug del ranking actual (ej. "the-best-restaurants") cuando el
+   * componente se usa DENTRO de uno de los 3 artículos de ranking, para
+   * excluirlo de sus propios botones y añadir un botón de vuelta a la
+   * página madre de la provincia. Si se omite (uso en la página madre),
+   * se muestran los 3 rankings sin botón de "volver".
+   */
+  currentSlug?: string;
 }
 
-const { province, provinceJa, region } = Astro.props;
+const { province, provinceJa, region, currentSlug } = Astro.props;
 
 const regionConfig = regions.find((r) => r.spainMapLabel === region);
 const color = regionConfig ? communityColorMap[regionConfig.communitySlug]?.flagColor : undefined;
@@ -33,23 +41,34 @@ const articles = await getCollection(
   (e) => !e.data.draft && e.data.pillar === 'food' && e.data.cluster === `spain-map-${province}`
 );
 
-const buttons = order
+const rankingButtons = order
+  .filter((slug) => slug !== currentSlug)
   .map((slug) => {
     const exists = articles.some((a) => a.id.replace(/\.(md|mdx)$/, '').split('/').pop() === slug);
-    return exists ? { slug, label: labelMap[slug], href: `/food/spain-map/${province}/${slug}/` } : null;
+    return exists ? { slug, label: labelMap[slug], href: `/food/spain-map/${province}/${slug}/`, icon: 'utensils' as const } : null;
   })
-  .filter((b): b is { slug: string; label: string; href: string } => b !== null);
+  .filter((b): b is { slug: string; label: string; href: string; icon: 'utensils' }  => b !== null);
+
+const parentButton = currentSlug
+  ? [{ slug: 'overview', label: `${provinceJa}の基本情報・レストランマップ`, href: `/food/spain-map/${province}/`, icon: 'map' as const }]
+  : [];
+
+const buttons = [...parentButton, ...rankingButtons];
+
+const title = currentSlug
+  ? `${regionLabel ? `${regionLabel}地方` : ''}「${provinceJa}」の他のグルメガイド`
+  : `${regionLabel ? `${regionLabel}地方` : ''}「${provinceJa}」のグルメランキング`;
 ---
 {buttons.length > 0 && (
   <div class="cre-buttons-wrap" style={color ? `--region-color:${color};` : undefined}>
     <p class="cre-buttons-title">
       {flagSrc && <img src={flagSrc} alt="" width="20" height="20" loading="lazy" />}
-      {regionLabel ? `${regionLabel}地方` : ''}「{provinceJa}」のグルメランキング
+      {title}
     </p>
     <div class="cre-buttons">
       {buttons.map((b) => (
         <a href={b.href} class="cre-button">
-          <Utensils size={16} />
+          {b.icon === 'map' ? <MapPin size={16} /> : <Utensils size={16} />}
           <span>{b.label}</span>
           <ArrowRight size={16} class="cre-button-arrow" />
         </a>
