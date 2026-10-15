@@ -103,19 +103,20 @@ const title = currentSlug
   }
   .cre-buttons {
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: column;
     gap: 12px;
   }
   .cre-button {
-    display: inline-flex;
+    display: flex;
     align-items: center;
     gap: 8px;
+    width: 100%;
     background: var(--region-color, #C8102E);
     color: white;
     font-weight: 700;
     font-size: 14px;
     padding: 12px 18px;
-    border-radius: 999px;
+    border-radius: 12px;
     text-decoration: none;
     transition: filter 160ms ease, transform 160ms ease;
   }
@@ -124,19 +125,10 @@ const title = currentSlug
     transform: translateY(-1px);
   }
   .cre-button-arrow {
+    margin-left: auto;
     transition: transform 160ms ease;
   }
   .cre-button:hover .cre-button-arrow {
     transform: translateX(3px);
-  }
-  @media (max-width: 480px) {
-    .cre-buttons {
-      flex-direction: column;
-    }
-    .cre-button {
-      width: 100%;
-      justify-content: center;
-      border-radius: 12px;
-    }
   }
 </style>
