@@ -23,7 +23,6 @@ import NewsletterForm from '../components/NewsletterForm.astro';
 import ArticleDisclaimer from '../components/ArticleDisclaimer.astro';
 import FloatingActions from '../components/FloatingActions.astro';
 import RegionBadge from '../components/RegionBadge.astro';
-import ProvinceCREButtons from '../components/province/ProvinceCREButtons.astro';
 import { getArticleUrl, getArticleBreadcrumbs, isPillarArticle, pillarLabels } from '../utils/articles';
 
 interface Props {
@@ -51,12 +50,12 @@ const articleUrl = getArticleUrl(entry);
 const canonical = `https://supein.club${articleUrl}`;
 const breadcrumbs = await getArticleBreadcrumbs(entry);
 
-// Rankings CRE por provincia (cluster "spain-map-{provincia}") — navegación
-// cruzada hacia la página madre y los otros 2 rankings del mismo clúster.
-// Ver ProvinceCREButtons.astro (mismo componente que usa la página madre).
+// Rankings CRE por provincia (cluster "spain-map-{provincia}") — se usa solo
+// para suprimir el bloque genérico "こちらの記事もおすすめ" (redundante con
+// los botones <ProvinceCREButtons> que cada artículo inserta directamente en
+// su cuerpo MDX, en el punto exacto donde deben aparecer).
 const spainMapProvince = cluster.startsWith('spain-map-') ? cluster.slice('spain-map-'.length) : null;
 const spainMapProvinceEntry = spainMapProvince ? await getEntry('spain-map', spainMapProvince) : null;
-const spainMapArticleSlug = entry.id.replace(/\.(md|mdx)$/, '').split('/').pop();
 
 // Build related articles: manual pins first, then auto-fill from same cluster → same pillar
 const allArticles = await getCollection('articles', ({ data }) => !data.draft);
@@ -256,17 +255,6 @@ const authorUrlForMeta = `https://supein.club/about-us/team/${authorSlug}/`;
 
         {author && <ArticleDisclaimer />}
         {author && <AuthorBox author={author} />}
-
-        {spainMapProvinceEntry && (
-          <section class="mt-12 border-t border-[#E8E8E6] pt-10" data-pagefind-ignore>
-            <ProvinceCREButtons
-              province={spainMapProvinceEntry.data.province}
-              provinceJa={spainMapProvinceEntry.data.provinceJa}
-              region={spainMapProvinceEntry.data.region}
-              currentSlug={spainMapArticleSlug}
-            />
-          </section>
-        )}
 
         {related.length > 0 && !spainMapProvinceEntry && (
           <section class="mt-12 border-t border-[#E8E8E6] pt-10" data-pagefind-ignore>
