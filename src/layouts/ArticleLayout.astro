@@ -23,6 +23,7 @@ import NewsletterForm from '../components/NewsletterForm.astro';
 import ArticleDisclaimer from '../components/ArticleDisclaimer.astro';
 import FloatingActions from '../components/FloatingActions.astro';
 import RegionBadge from '../components/RegionBadge.astro';
+import ProvinceCREButtons from '../components/province/ProvinceCREButtons.astro';
 import { getArticleUrl, getArticleBreadcrumbs, isPillarArticle, pillarLabels } from '../utils/articles';
 
 interface Props {
@@ -49,6 +50,13 @@ const author = await getEntry(entry.data.author);
 const articleUrl = getArticleUrl(entry);
 const canonical = `https://supein.club${articleUrl}`;
 const breadcrumbs = await getArticleBreadcrumbs(entry);
+
+// Rankings CRE por provincia (cluster "spain-map-{provincia}") — navegación
+// cruzada hacia la página madre y los otros 2 rankings del mismo clúster.
+// Ver ProvinceCREButtons.astro (mismo componente que usa la página madre).
+const spainMapProvince = cluster.startsWith('spain-map-') ? cluster.slice('spain-map-'.length) : null;
+const spainMapProvinceEntry = spainMapProvince ? await getEntry('spain-map', spainMapProvince) : null;
+const spainMapArticleSlug = entry.id.replace(/\.(md|mdx)$/, '').split('/').pop();
 
 // Build related articles: manual pins first, then auto-fill from same cluster → same pillar
 const allArticles = await getCollection('articles', ({ data }) => !data.draft);
@@ -189,6 +197,17 @@ const authorUrlForMeta = `https://supein.club/about-us/team/${authorSlug}/`;
     {lead && (
       <div class="border-l-4 border-navy bg-[#F0F4F8] px-5 py-4 mb-8 text-ink leading-relaxed font-medium rounded-r-lg max-w-3xl">
         {lead}
+      </div>
+    )}
+
+    {spainMapProvinceEntry && (
+      <div class="max-w-3xl">
+        <ProvinceCREButtons
+          province={spainMapProvinceEntry.data.province}
+          provinceJa={spainMapProvinceEntry.data.provinceJa}
+          region={spainMapProvinceEntry.data.region}
+          currentSlug={spainMapArticleSlug}
+        />
       </div>
     )}
 
