@@ -1,0 +1,120 @@
+---
+import { getCollection } from 'astro:content';
+import { ArrowRight, Utensils } from 'lucide-astro';
+import { regions } from '../../config/regions';
+import { communityColorMap } from '../../data/spainCommunities';
+
+interface Props {
+  province: string;
+  provinceJa: string;
+  /** entry.data.region de la colección spain-map — ej. "カスティーリャ・イ・レオン州" (spainMapLabel) */
+  region: string;
+}
+
+const { province, provinceJa, region } = Astro.props;
+
+const regionConfig = regions.find((r) => r.spainMapLabel === region);
+const color = regionConfig ? communityColorMap[regionConfig.communitySlug]?.flagColor : undefined;
+const flagSrc = regionConfig ? `/images/flags/${regionConfig.communitySlug}.webp` : null;
+const regionLabel = regionConfig?.label;
+
+// Las 3 sub-páginas de especialidad viven en la colección `articles`,
+// cluster "spain-map-{provincia}" — ver estrategia documentada en
+// ARCHITECTURE.md. No todas las provincias tienen las 3 todavía.
+const labelMap: Record<string, string> = {
+  'the-best-restaurants': 'おすすめレストラン',
+  'cheap-restaurants': '安くて美味しいレストラン',
+  'tapas-bars': 'おすすめタパスバル',
+};
+const order = ['the-best-restaurants', 'cheap-restaurants', 'tapas-bars'];
+
+const articles = await getCollection(
+  'articles',
+  (e) => !e.data.draft && e.data.pillar === 'food' && e.data.cluster === `spain-map-${province}`
+);
+
+const buttons = order
+  .map((slug) => {
+    const exists = articles.some((a) => a.id.replace(/\.(md|mdx)$/, '').split('/').pop() === slug);
+    return exists ? { slug, label: labelMap[slug], href: `/food/spain-map/${province}/${slug}/` } : null;
+  })
+  .filter((b): b is { slug: string; label: string; href: string } => b !== null);
+---
+{buttons.length > 0 && (
+  <div class="cre-buttons-wrap" style={color ? `--region-color:${color};` : undefined}>
+    <p class="cre-buttons-title">
+      {flagSrc && <img src={flagSrc} alt="" width="20" height="20" loading="lazy" />}
+      {regionLabel ? `${regionLabel}地方` : ''}「{provinceJa}」のグルメランキング
+    </p>
+    <div class="cre-buttons">
+      {buttons.map((b) => (
+        <a href={b.href} class="cre-button">
+          <Utensils size={16} />
+          <span>{b.label}</span>
+          <ArrowRight size={16} class="cre-button-arrow" />
+        </a>
+      ))}
+    </div>
+  </div>
+)}
+
+<style>
+  .cre-buttons-wrap {
+    margin: 32px 0;
+    padding: 24px;
+    border-radius: 16px;
+    background: color-mix(in srgb, var(--region-color, #C8102E) 6%, white);
+    border: 1px solid color-mix(in srgb, var(--region-color, #C8102E) 25%, transparent);
+  }
+  .cre-buttons-title {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 700;
+    font-size: 15px;
+    color: var(--color-navy, #002147);
+    margin: 0 0 16px;
+  }
+  .cre-buttons-title img {
+    border-radius: 3px;
+    object-fit: cover;
+    flex-shrink: 0;
+  }
+  .cre-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .cre-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--region-color, #C8102E);
+    color: white;
+    font-weight: 700;
+    font-size: 14px;
+    padding: 12px 18px;
+    border-radius: 999px;
+    text-decoration: none;
+    transition: filter 160ms ease, transform 160ms ease;
+  }
+  .cre-button:hover {
+    filter: brightness(1.1);
+    transform: translateY(-1px);
+  }
+  .cre-button-arrow {
+    transition: transform 160ms ease;
+  }
+  .cre-button:hover .cre-button-arrow {
+    transform: translateX(3px);
+  }
+  @media (max-width: 480px) {
+    .cre-buttons {
+      flex-direction: column;
+    }
+    .cre-button {
+      width: 100%;
+      justify-content: center;
+    }
+  }
+</style>

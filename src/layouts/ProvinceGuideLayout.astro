@@ -1,5 +1,6 @@
 ---
 import type { CollectionEntry } from 'astro:content';
+import { getCollection } from 'astro:content';
 import BaseLayout from './BaseLayout.astro';
 import SEO from '../components/SEO.astro';
 import FAQSection from '../components/FAQSection.astro';
@@ -8,6 +9,7 @@ import LineBanner from '../components/LineBanner.astro';
 import HeroProvince from '../components/province/HeroProvince.astro';
 import ProvinceQuickGuide from '../components/province/ProvinceQuickGuide.astro';
 import ProvinceMapEmbed from '../components/province/ProvinceMapEmbed.astro';
+import ProvinceCREButtons from '../components/province/ProvinceCREButtons.astro';
 import ProvinceSpecialties from '../components/province/ProvinceSpecialties.astro';
 import ProvinceNeighborhoods from '../components/province/ProvinceNeighborhoods.astro';
 import ProvinceRelated from '../components/province/ProvinceRelated.astro';
@@ -36,9 +38,19 @@ const hasSpecialties = entry.data.specialties && entry.data.specialties.length >
 const hasNeighborhoods = entry.data.neighborhoods && entry.data.neighborhoods.length > 0;
 const hasFaq = entry.data.faq && entry.data.faq.length > 0;
 
+// Rankings CRE de especialidad (the-best-restaurants / cheap-restaurants /
+// tapas-bars) — viven en la colección articles, cluster "spain-map-{provincia}".
+// No todas las provincias los tienen todavía (ver ARCHITECTURE.md).
+const creRankingArticles = await getCollection(
+  'articles',
+  (a) => !a.data.draft && a.data.pillar === 'food' && a.data.cluster === `spain-map-${entry.data.province}`
+);
+const hasCreRankings = creRankingArticles.length > 0;
+
 const tocHeadings = [
   { depth: 2, slug: 'quick-guide', text: '現地で役立つ基本情報' },
   { depth: 2, slug: 'map', text: 'レストランマップ' },
+  ...(hasCreRankings ? [{ depth: 2, slug: 'cre-rankings', text: 'グルメランキング' }] : []),
   ...(hasSpecialties ? [{ depth: 2, slug: 'specialties', text: '郷土料理' }] : []),
   ...(hasNeighborhoods ? [{ depth: 2, slug: 'neighborhoods', text: 'エリア別ガイド' }] : []),
   { depth: 2, slug: 'content', text: '詳細情報' },
@@ -124,6 +136,12 @@ const localBusinessSchema = JSON.stringify({
         <section id="map" class="psec">
           <ProvinceMapEmbed mapUrl={entry.data.mapUrl} provinceJa={entry.data.provinceJa} />
         </section>
+
+        {hasCreRankings && (
+          <section id="cre-rankings" class="psec">
+            <ProvinceCREButtons province={entry.data.province} provinceJa={entry.data.provinceJa} region={entry.data.region} />
+          </section>
+        )}
 
         {hasSpecialties && (
           <section id="specialties" class="psec">

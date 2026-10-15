@@ -1,4 +1,5 @@
 import type { CollectionEntry } from 'astro:content';
+import { getEntry } from 'astro:content';
 import { slugToJa } from '../config/breadcrumbs';
 
 export const pillarLabels: Record<string, string> = {
@@ -29,6 +30,16 @@ export function getArticleUrl(entry: CollectionEntry<'articles'>): string {
   const restSegments = parts.slice(2);
   if (restSegments[restSegments.length - 1] === 'index') restSegments.pop();
   const articleSlug = restSegments.length > 0 ? restSegments.join('/') : cluster;
+
+  // Caso especial: los clusters "spain-map-{provincia}" (rankings CRE de
+  // restaurantes por provincia) no viven en /pillar/cluster/ como el resto
+  // — viven anidados en /food/spain-map/{provincia}/, servidos por el
+  // catch-all src/pages/food/spain-map/[province]/[article]/index.astro.
+  if (cluster.startsWith('spain-map-')) {
+    const province = cluster.slice('spain-map-'.length);
+    return `/${entry.data.pillar}/spain-map/${province}/${articleSlug}/`;
+  }
+
   return articleSlug === cluster
     ? `/${entry.data.pillar}/${cluster}/`
     : `/${entry.data.pillar}/${cluster}/${articleSlug}/`;
@@ -69,11 +80,28 @@ export function isPillarArticle(entry: CollectionEntry<'articles'>): boolean {
  * artículo (Home › Pilar [› Cluster] › Título), incluyendo el caso
  * "artículo insignia" (ver getArticleUrl).
  */
-export function getArticleBreadcrumbs(entry: CollectionEntry<'articles'>): Array<{ name: string; url: string }> {
+export async function getArticleBreadcrumbs(entry: CollectionEntry<'articles'>): Promise<Array<{ name: string; url: string }>> {
   const { pillar, cluster, title } = entry.data;
   const articleUrl = getArticleUrl(entry);
   const canonical = `https://supein.club${articleUrl}`;
   const pillarLabel = pillarLabels[pillar] ?? pillar;
+
+  // Caso especial: rankings CRE por provincia (ver getArticleUrl) — el
+  // breadcrumb sigue la jerarquía real de la URL en vez de Home > Pilar >
+  // Cluster > Título.
+  if (cluster.startsWith('spain-map-')) {
+    const province = cluster.slice('spain-map-'.length);
+    const provinceEntry = await getEntry('spain-map', province);
+    const provinceJa = provinceEntry?.data.provinceJa ?? province;
+    return [
+      { name: 'ホーム', url: '/' },
+      { name: pillarLabel, url: `/${pillar}/` },
+      { name: 'スペイン美食マップ', url: `/${pillar}/spain-map/` },
+      { name: provinceJa, url: `/${pillar}/spain-map/${province}/` },
+      { name: title, url: canonical },
+    ];
+  }
+
   const clusterUrl = `/${pillar}/${cluster}/`;
   const isFlagship = isFlagshipArticle(entry);
 
