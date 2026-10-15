@@ -200,17 +200,6 @@ const authorUrlForMeta = `https://supein.club/about-us/team/${authorSlug}/`;
       </div>
     )}
 
-    {spainMapProvinceEntry && (
-      <div class="max-w-3xl">
-        <ProvinceCREButtons
-          province={spainMapProvinceEntry.data.province}
-          provinceJa={spainMapProvinceEntry.data.provinceJa}
-          region={spainMapProvinceEntry.data.region}
-          currentSlug={spainMapArticleSlug}
-        />
-      </div>
-    )}
-
     <div class="content-grid">
       <!-- Main content -->
       <div class="content-main">
@@ -268,7 +257,18 @@ const authorUrlForMeta = `https://supein.club/about-us/team/${authorSlug}/`;
         {author && <ArticleDisclaimer />}
         {author && <AuthorBox author={author} />}
 
-        {related.length > 0 && (
+        {spainMapProvinceEntry && (
+          <section class="mt-12 border-t border-[#E8E8E6] pt-10" data-pagefind-ignore>
+            <ProvinceCREButtons
+              province={spainMapProvinceEntry.data.province}
+              provinceJa={spainMapProvinceEntry.data.provinceJa}
+              region={spainMapProvinceEntry.data.region}
+              currentSlug={spainMapArticleSlug}
+            />
+          </section>
+        )}
+
+        {related.length > 0 && !spainMapProvinceEntry && (
           <section class="mt-12 border-t border-[#E8E8E6] pt-10" data-pagefind-ignore>
             <h2 class="font-sans font-bold text-2xl text-navy mb-2">こちらの記事もおすすめ</h2>
             <p class="text-sm text-gray-500 mb-6">同じテーマのおすすめ記事です。</p>
