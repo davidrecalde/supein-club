@@ -50,9 +50,9 @@ const hasCreRankings = creRankingArticles.length > 0;
 const tocHeadings = [
   { depth: 2, slug: 'quick-guide', text: '現地で役立つ基本情報' },
   { depth: 2, slug: 'content', text: '詳細情報' },
-  { depth: 2, slug: 'map', text: 'レストランマップ' },
   ...(hasSpecialties ? [{ depth: 2, slug: 'specialties', text: '郷土料理' }] : []),
   ...(hasNeighborhoods ? [{ depth: 2, slug: 'neighborhoods', text: 'エリア別ガイド' }] : []),
+  { depth: 2, slug: 'map', text: 'レストランマップ' },
   ...(hasCreRankings ? [{ depth: 2, slug: 'cre-rankings', text: 'グルメランキング' }] : []),
   ...(hasFaq ? [{ depth: 2, slug: 'faq', text: 'よくある質問' }] : []),
 ];
@@ -143,10 +143,6 @@ const localBusinessSchema = JSON.stringify({
           </div>
         </section>
 
-        <section id="map" class="psec">
-          <ProvinceMapEmbed mapUrl={entry.data.mapUrl} provinceJa={entry.data.provinceJa} />
-        </section>
-
         {hasSpecialties && (
           <section id="specialties" class="psec">
             <ProvinceSpecialties specialties={entry.data.specialties} />
@@ -158,6 +154,10 @@ const localBusinessSchema = JSON.stringify({
             <ProvinceNeighborhoods neighborhoods={entry.data.neighborhoods} />
           </section>
         )}
+
+        <section id="map" class="psec">
+          <ProvinceMapEmbed mapUrl={entry.data.mapUrl} provinceJa={entry.data.provinceJa} />
+        </section>
 
         {hasCreRankings && (
           <section id="cre-rankings" class="psec">
