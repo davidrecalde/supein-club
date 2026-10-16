@@ -1,6 +1,6 @@
 ---
 import type { CollectionEntry } from 'astro:content';
-import { getCollection } from 'astro:content';
+import { getCollection, getEntry } from 'astro:content';
 import BaseLayout from './BaseLayout.astro';
 import SEO from '../components/SEO.astro';
 import FAQSection from '../components/FAQSection.astro';
@@ -13,6 +13,8 @@ import ProvinceCREButtons from '../components/province/ProvinceCREButtons.astro'
 import ProvinceSpecialties from '../components/province/ProvinceSpecialties.astro';
 import ProvinceNeighborhoods from '../components/province/ProvinceNeighborhoods.astro';
 import ArticleCard from '../components/ArticleCard.astro';
+import NewsletterForm from '../components/NewsletterForm.astro';
+import AuthorBox from '../components/AuthorBox.astro';
 import PreferredSourceCTA from '../components/PreferredSourceCTA.astro';
 import ArticleDisclaimer from '../components/ArticleDisclaimer.astro';
 import FloatingActions from '../components/FloatingActions.astro';
@@ -24,6 +26,7 @@ interface Props {
 
 const { entry } = Astro.props;
 const { Content } = await entry.render();
+const author = await getEntry(entry.data.author);
 
 const canonical = `https://supein.club/food/spain-map/${entry.data.province}/`;
 
@@ -194,6 +197,10 @@ const localBusinessSchema = JSON.stringify({
           </section>
         )}
 
+        <div data-pagefind-ignore>
+          <NewsletterForm variant="inline" />
+        </div>
+
         {hasFaq && (
           <section id="faq" class="psec">
             <FAQSection faq={entry.data.faq} />
@@ -201,6 +208,8 @@ const localBusinessSchema = JSON.stringify({
         )}
 
         <ArticleDisclaimer />
+
+        <AuthorBox author={author} />
 
         {related.length > 0 && (
           <section class="mt-12 border-t border-[#E8E8E6] pt-10" data-pagefind-ignore>
@@ -303,10 +312,15 @@ const localBusinessSchema = JSON.stringify({
 </script>
 
 <style>
-  /* Strip internal section/container padding from province sub-components */
+  /* Strip internal section/container padding from province sub-components.
+     .psec already draws its own separator (border-bottom) between
+     sections, so any border/margin-top a nested component adds on its
+     own (e.g. FAQSection) would create a redundant double line. */
   .psec :global(section) {
     padding-top: 0 !important;
     padding-bottom: 0 !important;
+    margin-top: 0 !important;
+    border-top: none !important;
     background: transparent !important;
   }
   .psec :global(.container) {
@@ -329,6 +343,15 @@ const localBusinessSchema = JSON.stringify({
   }
   .psec--content {
     padding-bottom: 0;
+  }
+
+  /* ArticleDisclaimer ya tiene su propio border-top; aquí la separación
+     visual ya la da el border-bottom del .psec anterior (FAQ), así que
+     evitamos la línea doble. */
+  :global(.article-disclaimer) {
+    border-top: none !important;
+    margin-top: 0 !important;
+    padding-top: 0 !important;
   }
 
   @media (max-width: 767px) {
