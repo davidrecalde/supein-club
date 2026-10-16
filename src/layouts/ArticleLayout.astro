@@ -24,6 +24,7 @@ import ArticleDisclaimer from '../components/ArticleDisclaimer.astro';
 import FloatingActions from '../components/FloatingActions.astro';
 import RegionBadge from '../components/RegionBadge.astro';
 import { getArticleUrl, getArticleBreadcrumbs, isPillarArticle, pillarLabels } from '../utils/articles';
+import { getCategoryBadgeLabel } from '../utils/articleCategory';
 
 interface Props {
   entry: CollectionEntry<'articles'>;
@@ -32,6 +33,7 @@ interface Props {
 const { entry } = Astro.props;
 const { title, h1, description, pubDate, updatedDate, pillar, cluster, image, imageAlt, lead, faq, faqTitle, quiz, levelTest, relatedArticles, relatedPages, sources, readingTime, heroImage, heroImageAlt, level, articleRole } = entry.data;
 const displayH1 = h1 ?? title;
+const categoryLabel = getCategoryBadgeLabel(entry);
 const isLearnSpanishHero = pillar === 'language' && cluster === 'learn-spanish';
 // Clubes cuyo heroImage tiene el escudo en la parte baja de la foto
 // (sobre el césped) — mismo criterio que ArticleCard.astro.
@@ -184,7 +186,7 @@ const authorUrlForMeta = `https://supein.club/about-us/team/${authorSlug}/`;
               data-pagefind-meta="image[src], image_alt[alt]"
             />
           </figure>
-          <LevelBadge level={level} articleRole={articleRole} />
+          <LevelBadge level={level} categoryLabel={categoryLabel} />
         </div>
       )}
 
