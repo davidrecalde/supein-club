@@ -59,10 +59,61 @@ const categoryGroups = categories
   .map((c) => ({ ...c, items: sorted.filter((a) => c.clusters.includes(a.data.cluster)).map(toCardItem) }))
   .filter((g) => g.items.length > 0);
 
-const categorizedIds = new Set(categories.flatMap((c) => sorted.filter((a) => c.clusters.includes(a.data.cluster)).map((a) => a.id)));
-const uncategorized = sorted.filter((a) => !categorizedIds.has(a.id)).map(toCardItem);
+const isSpainMapRanking = (cluster: string) => cluster.startsWith('spain-map-');
 
-// スペイン美食マップ：ハブページ＋全都道府県のページを1つの長いカテゴリとして表示
+const categorizedIds = new Set(categories.flatMap((c) => sorted.filter((a) => c.clusters.includes(a.data.cluster)).map((a) => a.id)));
+const uncategorized = sorted.filter((a) => !categorizedIds.has(a.id) && !isSpainMapRanking(a.data.cluster)).map(toCardItem);
+
+// スペイン美食マップ：ハブページ＋都道府県ページを表示。CRE ランキング記事
+// （the-best-restaurants / cheap-restaurants / tapas-bars）があるクエリ
+// 県は、同じ province タグでまとめて1グループとして表示する（記事一覧に
+// 埋もれないようにするため）。まだランキングがない県は従来通りフラットな
+// 一覧に残る。
+const rankingArticlesByProvince = new Map<string, typeof sorted>();
+for (const a of sorted) {
+  if (!isSpainMapRanking(a.data.cluster)) continue;
+  const province = a.data.cluster.slice('spain-map-'.length);
+  const list = rankingArticlesByProvince.get(province) ?? [];
+  list.push(a);
+  rankingArticlesByProvince.set(province, list);
+}
+
+const orderedRankingSlugs = ['the-best-restaurants', 'cheap-restaurants', 'tapas-bars'];
+const rankingLabels: Record<string, string> = {
+  'the-best-restaurants': 'おすすめレストラン',
+  'cheap-restaurants': '安くて美味しいレストラン',
+  'tapas-bars': 'おすすめタパスバル',
+};
+
+const provinceGroups = sortedProvinces
+  .filter((p) => rankingArticlesByProvince.has(p.data.province))
+  .map((p) => {
+    const rankings = rankingArticlesByProvince.get(p.data.province) ?? [];
+    const rankingItems = orderedRankingSlugs
+      .map((slug) => rankings.find((a) => getArticleUrl(a).endsWith(`/${slug}/`)))
+      .filter((a): a is NonNullable<typeof a> => !!a)
+      .map((a) => ({ ...toCardItem(a), topicBadge: p.data.provinceJa }));
+    return {
+      provinceJa: p.data.provinceJa,
+      items: [
+        {
+          title: p.data.title,
+          description: p.data.description,
+          href: `/food/spain-map/${p.data.province}/`,
+          pubDate: p.data.pubDate,
+          heroImage: p.data.heroImage,
+          heroImageAlt: p.data.heroImageAlt,
+          topicBadge: p.data.provinceJa,
+        },
+        ...rankingItems,
+      ],
+    };
+  });
+
+const flatProvinces = sortedProvinces.filter((p) => !rankingArticlesByProvince.has(p.data.province));
+
+// スペイン美食マップ：ハブページを紹介するグループ（都道府県カードは
+// provinceGroups / flatProvinces で別途表示する）
 const spainMapGroup = {
   id: 'spain-map',
   label: 'スペイン美食マップ',
@@ -75,19 +126,13 @@ const spainMapGroup = {
       heroImage: heroSpainMap,
       heroImageAlt: 'スペインの自治州別マップ',
     },
-    ...sortedProvinces.map((p) => ({
-      title: p.data.title,
-      description: p.data.description,
-      href: `/food/spain-map/${p.data.province}/`,
-      pubDate: p.data.pubDate,
-      heroImage: p.data.heroImage,
-      heroImageAlt: p.data.heroImageAlt,
-    })),
   ],
 };
 
-const allGroups = [...categoryGroups, spainMapGroup];
-const categoryAnchors = allGroups.map((g) => ({ href: `#${g.id}`, label: g.label }));
+const categoryAnchors = [
+  ...categoryGroups.map((g) => ({ href: `#${g.id}`, label: g.label })),
+  { href: '/food/spain-map/', label: spainMapGroup.label },
+];
 
 const breadcrumbs = [
   { name: 'ホーム', url: '/' },
@@ -148,15 +193,41 @@ const breadcrumbs = [
       </>
     )}
 
-    <h2 id={spainMapGroup.id} class="font-sans font-bold text-xl text-navy mb-5">{spainMapGroup.label}</h2>
+    <h2 id={spainMapGroup.id} class="font-sans font-bold text-xl text-navy mb-5">
+      <a href="/food/spain-map/" class="hover:text-primary transition-colors">{spainMapGroup.label}</a>
+    </h2>
     <p class="text-muted text-base leading-relaxed mb-8">
       州ごとのグルメガイドと、7つの美食ゾーンで探せるインタラクティブマップへの入り口です。気になる街を選んで、現地のリアルな食文化をのぞいてみてください。
     </p>
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
       {spainMapGroup.items.map((item) => (
         <ArticleCard title={item.title} description={item.description} href={item.href} pillar="food" heroImage={item.heroImage} heroImageAlt={item.heroImageAlt} pubDate={item.pubDate} topicBadge={spainMapGroup.label} />
       ))}
     </div>
+
+    {provinceGroups.map((pg) => (
+      <>
+        <h3 class="font-sans font-bold text-lg text-navy mb-4 flex items-center gap-2">
+          <span class="inline-block text-xs font-semibold px-2.5 py-0.5 rounded-full bg-[#FCEBEE] text-primary">{pg.provinceJa}</span>
+        </h3>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+          {pg.items.map((item) => (
+            <ArticleCard title={item.title} description={item.description} href={item.href} pillar="food" heroImage={item.heroImage} heroImageAlt={item.heroImageAlt} pubDate={item.pubDate} topicBadge={item.topicBadge} />
+          ))}
+        </div>
+      </>
+    ))}
+
+    {flatProvinces.length > 0 && (
+      <>
+        <h3 class="font-sans font-bold text-lg text-navy mb-4">その他の都道府県</h3>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {flatProvinces.map((p) => (
+            <ArticleCard title={p.data.title} description={p.data.description} href={`/food/spain-map/${p.data.province}/`} pillar="food" heroImage={p.data.heroImage} heroImageAlt={p.data.heroImageAlt} pubDate={p.data.pubDate} topicBadge={p.data.provinceJa} />
+          ))}
+        </div>
+      </>
+    )}
   </section>
 
   <section class="max-w-6xl mx-auto px-5 pb-14 prose-content">
