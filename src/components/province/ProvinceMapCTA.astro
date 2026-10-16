@@ -1,0 +1,47 @@
+---
+import { MapPin, ArrowRight } from 'lucide-astro';
+
+interface Props {
+  mapUrl: string;
+  provinceJa: string;
+}
+
+const { mapUrl, provinceJa } = Astro.props;
+---
+<a
+  href={mapUrl}
+  target="_blank"
+  rel="noopener noreferrer"
+  class="map-cta-card"
+>
+  <div class="map-cta-icon">
+    <MapPin size={28} color="#C8102E" />
+  </div>
+  <div style="flex:1;">
+    <p style="font-weight:700; font-size:16px; margin:0; color:white;">{provinceJa}のレストランマップを開く</p>
+    <p style="opacity:0.7; font-size:13px; margin:4px 0 0; color:white;">Google マップで全レストラン・バルを確認</p>
+  </div>
+  <ArrowRight size={20} color="white" />
+</a>
+
+<style>
+  .map-cta-card {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    background: var(--color-navy, #002147);
+    color: white;
+    padding: 20px 24px;
+    border-radius: 12px;
+    text-decoration: none;
+    border: 1px solid rgba(255,255,255,0.2);
+    margin: 32px 0;
+    transition: border-color 0.2s;
+  }
+  .map-cta-card:hover {
+    border-color: var(--color-primary, #C8102E);
+  }
+  .map-cta-icon {
+    flex-shrink: 0;
+  }
+</style>

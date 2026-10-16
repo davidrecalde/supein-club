@@ -166,6 +166,7 @@ const spainMap = defineCollection({
   type: 'content',
   schema: ({ image }) => z.object({
     title: z.string(),
+    h1: z.string().optional(),
     description: z.string().max(160),
     lead: z.string(),
     province: z.string(),
