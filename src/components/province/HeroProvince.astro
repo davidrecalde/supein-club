@@ -6,6 +6,7 @@ import Breadcrumb from '../Breadcrumb.astro';
 
 interface Props {
   provinceJa: string;
+  h1?: string;
   region: string;
   mainDish: string;
   bestSeason: string;
@@ -17,7 +18,7 @@ interface Props {
   heroImageAlt?: string;
 }
 
-const { provinceJa, region, mainDish, bestSeason, priceRange, mapUrl, lead, breadcrumbs, heroImage, heroImageAlt } = Astro.props;
+const { provinceJa, h1, region, mainDish, bestSeason, priceRange, mapUrl, lead, breadcrumbs, heroImage, heroImageAlt } = Astro.props;
 ---
 <section class="bg-navy text-white relative" style="padding: 80px 0; overflow:hidden;">
   {heroImage && (
@@ -44,7 +45,7 @@ const { provinceJa, region, mainDish, bestSeason, priceRange, mapUrl, lead, brea
     )}
     <p class="text-primary font-sans font-bold tracking-widest" style="font-size:11px; text-transform:uppercase; margin-bottom:16px;">SPANISH FOOD MAP</p>
     <h1 class="font-serif font-bold text-white leading-tight" style="font-size:clamp(28px,5vw,44px); max-width:760px; margin-bottom:16px;">
-      {provinceJa}のおすすめレストラン＆グルメガイド
+      {h1 ?? `${provinceJa}のおすすめレストラン＆グルメガイド`}
     </h1>
     <p class="text-white/80" style="font-size:18px; max-width:620px; line-height:1.7; margin-bottom:32px;">{lead}</p>
 

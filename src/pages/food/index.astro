@@ -94,6 +94,7 @@ const provinceGroups = sortedProvinces
       .filter((a): a is NonNullable<typeof a> => !!a)
       .map((a) => ({ ...toCardItem(a), topicBadge: p.data.provinceJa }));
     return {
+      province: p.data.province,
       provinceJa: p.data.provinceJa,
       items: [
         {
@@ -132,6 +133,7 @@ const spainMapGroup = {
 const categoryAnchors = [
   ...categoryGroups.map((g) => ({ href: `#${g.id}`, label: g.label })),
   { href: '/food/spain-map/', label: spainMapGroup.label },
+  ...provinceGroups.map((pg) => ({ href: `#province-${pg.province}`, label: pg.provinceJa })),
 ];
 
 const breadcrumbs = [
@@ -207,7 +209,7 @@ const breadcrumbs = [
 
     {provinceGroups.map((pg) => (
       <>
-        <h3 class="font-sans font-bold text-lg text-navy mb-4 flex items-center gap-2">
+        <h3 id={`province-${pg.province}`} class="font-sans font-bold text-lg text-navy mb-4 flex items-center gap-2" style="scroll-margin-top:80px;">
           <span class="inline-block text-xs font-semibold px-2.5 py-0.5 rounded-full bg-[#FCEBEE] text-primary">{pg.provinceJa}</span>
         </h3>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
