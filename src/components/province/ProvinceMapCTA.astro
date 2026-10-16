@@ -11,6 +11,7 @@ interface Props {
 
 const { mapUrl, provinceJa, withHeading } = Astro.props;
 ---
+{withHeading && <hr style="border:none; border-top:1px solid #E8E8E6; margin:40px 0;" />}
 {withHeading && (
   <>
     <p class="text-primary font-bold tracking-widest" style="font-size:11px; text-transform:uppercase; margin-bottom:8px;">INTERACTIVE MAP</p>
@@ -35,6 +36,16 @@ const { mapUrl, provinceJa, withHeading } = Astro.props;
   </div>
   <ArrowRight size={20} color="white" />
 </a>
+{withHeading && (
+  <>
+    <p style="font-size:13px; margin-top:20px; line-height:1.6; color:#6b7280;">
+      マップはスペイン倶楽部が独自にキュレーションしています。
+      全47都道府県・スペイン全省のマップは
+      <a href="https://linktr.ee/supeinclub" target="_blank" rel="noopener nofollow noreferrer" class="text-primary hover:underline">こちら →</a>
+    </p>
+    <hr style="border:none; border-top:1px solid #E8E8E6; margin:40px 0;" />
+  </>
+)}
 
 <style>
   .map-cta-card {
