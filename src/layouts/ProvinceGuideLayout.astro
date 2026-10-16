@@ -12,11 +12,11 @@ import ProvinceMapEmbed from '../components/province/ProvinceMapEmbed.astro';
 import ProvinceCREButtons from '../components/province/ProvinceCREButtons.astro';
 import ProvinceSpecialties from '../components/province/ProvinceSpecialties.astro';
 import ProvinceNeighborhoods from '../components/province/ProvinceNeighborhoods.astro';
-import ProvinceRelated from '../components/province/ProvinceRelated.astro';
-import ProvinceCTA from '../components/province/ProvinceCTA.astro';
+import ArticleCard from '../components/ArticleCard.astro';
 import PreferredSourceCTA from '../components/PreferredSourceCTA.astro';
 import ArticleDisclaimer from '../components/ArticleDisclaimer.astro';
 import FloatingActions from '../components/FloatingActions.astro';
+import { getArticleUrl } from '../utils/articles';
 
 interface Props {
   entry: CollectionEntry<'spain-map'>;
@@ -46,6 +46,35 @@ const creRankingArticles = await getCollection(
   (a) => !a.data.draft && a.data.pillar === 'food' && a.data.cluster === `spain-map-${entry.data.province}`
 );
 const hasCreRankings = creRankingArticles.length > 0;
+
+// こちらの記事もおすすめ：relatedFood/relatedTravel を手動ピンとして使い、
+// 足りない分は同じ food ピラーの記事（spain-map-* のランキング記事は
+// ProvinceCREButtons で別途表示しているため除外）で埋める。
+const allArticles = await getCollection('articles', ({ data }) => !data.draft);
+const hrefMap = new Map(allArticles.map((a) => [getArticleUrl(a), a]));
+
+const pinnedHrefs = [
+  ...(entry.data.relatedTravel ? [entry.data.relatedTravel] : []),
+  ...(entry.data.relatedFood ?? []),
+].filter((href) => href !== '/food/spain-map/');
+
+const pinned: CollectionEntry<'articles'>[] = pinnedHrefs
+  .map((href) => hrefMap.get(href))
+  .filter((a): a is CollectionEntry<'articles'> => !!a);
+
+const usedIds = new Set(pinned.map((a) => a.id));
+const byDate = (a: CollectionEntry<'articles'>, b: CollectionEntry<'articles'>) =>
+  b.data.pubDate.getTime() - a.data.pubDate.getTime();
+
+for (const candidate of allArticles
+  .filter((a) => a.data.pillar === 'food' && !a.data.cluster.startsWith('spain-map-') && !usedIds.has(a.id))
+  .sort(byDate)) {
+  if (pinned.length >= 3) break;
+  pinned.push(candidate);
+  usedIds.add(candidate.id);
+}
+
+const related = pinned.slice(0, 3);
 
 const tocHeadings = [
   { depth: 2, slug: 'quick-guide', text: '現地で役立つ基本情報' },
@@ -173,6 +202,29 @@ const localBusinessSchema = JSON.stringify({
 
         <ArticleDisclaimer />
 
+        {related.length > 0 && (
+          <section class="mt-12 border-t border-[#E8E8E6] pt-10" data-pagefind-ignore>
+            <h2 class="font-sans font-bold text-2xl text-navy mb-2">こちらの記事もおすすめ</h2>
+            <p class="text-sm text-gray-500 mb-6">同じテーマのおすすめ記事です。</p>
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+              {related.map((a) => (
+                <ArticleCard
+                  title={a.data.title}
+                  description={a.data.description}
+                  href={getArticleUrl(a)}
+                  pillar={a.data.pillar}
+                  cluster={a.data.cluster}
+                  image={a.data.image}
+                  imageAlt={a.data.imageAlt}
+                  heroImage={a.data.heroImage?.src}
+                  heroImageAlt={a.data.heroImageAlt}
+                  pubDate={a.data.pubDate}
+                />
+              ))}
+            </div>
+          </section>
+        )}
+
         <PreferredSourceCTA />
 
       </div>
@@ -183,14 +235,6 @@ const localBusinessSchema = JSON.stringify({
 
     </div>
   </div>
-
-  <ProvinceRelated
-    relatedTravel={entry.data.relatedTravel}
-    relatedFood={entry.data.relatedFood}
-    provinceJa={entry.data.provinceJa}
-  />
-
-  <ProvinceCTA provinceJa={entry.data.provinceJa} />
 
   <LineBanner slim />
 
