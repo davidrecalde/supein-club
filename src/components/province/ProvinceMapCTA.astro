@@ -4,10 +4,22 @@ import { MapPin, ArrowRight } from 'lucide-astro';
 interface Props {
   mapUrl: string;
   provinceJa: string;
+  /** true: ProvinceMapEmbed（州の madre ページ）と同じ見出し付きで表示する。
+   * 記事本文の .prose 幅に収まる、フルブリード無しのバージョン。 */
+  withHeading?: boolean;
 }
 
-const { mapUrl, provinceJa } = Astro.props;
+const { mapUrl, provinceJa, withHeading } = Astro.props;
 ---
+{withHeading && (
+  <>
+    <p class="text-primary font-bold tracking-widest" style="font-size:11px; text-transform:uppercase; margin-bottom:8px;">INTERACTIVE MAP</p>
+    <h2 style="font-size:clamp(22px,3vw,28px); font-weight:700; margin-bottom:12px; color:var(--color-navy, #002147);">{provinceJa}レストランマップ</h2>
+    <p style="font-size:15px; margin-bottom:20px; color:#6b7280;">
+      スペイン倶楽部がキュレーションした{provinceJa}のレストラン・バルを地図で確認できます。
+    </p>
+  </>
+)}
 <a
   href={mapUrl}
   target="_blank"
