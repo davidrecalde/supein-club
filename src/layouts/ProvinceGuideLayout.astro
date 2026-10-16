@@ -136,7 +136,7 @@ const localBusinessSchema = JSON.stringify({
   />
 
   <!-- All content inside content-grid so TOC sidebar is sticky throughout scroll -->
-  <div class="page-container" style="padding-top:48px; padding-bottom:64px;">
+  <div class="page-container" style="padding-top:48px; padding-bottom:40px;">
     <div class="content-grid">
 
       <div class="content-main">
@@ -197,7 +197,7 @@ const localBusinessSchema = JSON.stringify({
           </section>
         )}
 
-        <div data-pagefind-ignore>
+        <div class="newsletter-wrap" data-pagefind-ignore>
           <NewsletterForm variant="inline" />
         </div>
 
@@ -343,6 +343,13 @@ const localBusinessSchema = JSON.stringify({
   }
   .psec--content {
     padding-bottom: 0;
+  }
+
+  /* La sección justo antes de la newsletter no debe dibujar su propio
+     separador — la newsletter ya aporta suficiente aire visual. */
+  .psec:has(+ .newsletter-wrap) {
+    border-bottom: none;
+    margin-bottom: 32px;
   }
 
   /* ArticleDisclaimer ya tiene su propio border-top; aquí la separación
