@@ -201,6 +201,8 @@ const spainMap = defineCollection({
       nameJa: z.string(),
       description: z.string(),
       category: z.enum(['前菜', 'メイン', 'デザート', 'ワイン', 'バル']),
+      image: image().optional(),
+      imageAlt: z.string().optional(),
     })).optional(),
     faq: z.array(z.object({
       question: z.string(),
