@@ -17,6 +17,8 @@ const authors = defineCollection({
     twitter: z.string().optional(),
     linkedin: z.string().optional(),
     website: z.string().optional(),
+    website2: z.string().optional(),
+    website2Label: z.string().optional(),
     instagram: z.string().optional(),
     location: z.string().optional(),
     since: z.string().optional(),
