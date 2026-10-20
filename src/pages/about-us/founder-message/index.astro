@@ -1,0 +1,139 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import SEO from '../../../components/SEO.astro';
+import Breadcrumb from '../../../components/Breadcrumb.astro';
+import LineBanner from '../../../components/LineBanner.astro';
+
+const breadcrumbs = [
+  { name: 'ホーム', url: '/' },
+  { name: 'スペイン倶楽部とは', url: '/about-us/' },
+  { name: '創設者からのご挨拶', url: '/about-us/founder-message/' },
+];
+
+const paragraphs = [
+  '私たちがはじめて日本の地を踏んだのは2016年のことでした。きっかけは、正直に申し上げると、私自身が思い描いていた道ではなく、妻の仕事に同行するためでした。スペインと日本——あまりにも異なるこの二つの国の暮らしを比べることは、決して簡単なことではありませんでした。',
+  'まずは専門的な領域で日本に適応しようと試み、多くの方々がそうであるように、スペイン語を教えることから始めました。この経験が、JICA（国際協力機構）で働く機会へとつながり、日本文化や、この偉大な組織が持つ考え方・精神について、多くを学ぶことができました。',
+  'その過程で、数多くのスペイン人、そしてスペイン語圏出身のスペイン語教師たちと出会いました。彼らとの交流の中で、私たちは一つの答えにたどり着きます。それは、「集まり、つながるべきだ」ということでした。日本語を学ぶ学生たちから、私たちはいつも同じ質問を受けていました。「どこでスペイン語を練習できますか？」——来日してまだ日が浅い教師という立場では、簡単には答えられない問いでした。',
+  '2018年、横浜を拠点に、毎週金曜日、場所を変えながらスペイン語と日本語の交流会を開き始めました。それが私たちの原点です。回を重ねるごとに参加者は増え続け、やがて遠方からも足を運んでくださる方が現れるようになりました。',
+  'その手応えを受け、私たちは活動の幅を広げる決断をします。神奈川県内のいくつかの文化センターで、文化イベントを企画するようになったのです。開催するたびに評判は高まり、次第に規模の大きなイベントへと育っていきました。そして、小さなガストロノミーイベントの開催にも踏み出しました。この挑戦を通じて、スペイン製品の輸入に携わる、とても温かい方々との出会いにも恵まれました。',
+  '2019年、セルバンテス文化センター東京より、広報・プレス担当アドバイザーとしてのお誘いをいただきました。公的機関のために働くことは、学びの連続でした。特に、外交の世界、大使館という存在の役割について深く理解する貴重な機会となりました。この活動と並行して、私たちは「Club Español en Japón（スペイン倶楽部）」の取り組みも続けていました。スペイン語という言語そのもの、グルメ、そして余暇や娯楽にも、大きな重きを置きながら。',
+];
+
+const pullQuote = 'フラメンコ、グルメ、サッカー、そして旅。この4つのテーマこそが、私たちの活動の土台であり、supein.clubを構成する柱でもあります。';
+
+const paragraphsAfter = [
+  'これまでの歳月の中で、数多くのブランドや機関と協働する機会に恵まれてきました。しかし、その中でも私たちが決して忘れなかったのは、横浜でたった数人の友人たちが毎週金曜日に開いていた、あの小さな交流会です。スペインに、そしてスペイン語に、少しでも関心を持つ日本の皆さまのお役に立ちたい——その思いは、今も変わりません。',
+  '多くの日本の方々にとって、スペイン語は単なる外国語ではなく、世界への視野を広げる「窓」なのだと、私たちは感じています。スペイン語が持つ歴史的・芸術的な豊かさと美しさを少しでもお伝えできるよう、私たちはこれからも、ほんの小さな一粒の砂として、スペイン、そしてスペイン語圏の文化の世界に貢献してまいります。',
+  '日本の皆さまがスペイン文化への第一歩を踏み出す、あるいはその理解をさらに深める——そのお手伝いをすることは、私たちにとっての「生きがい」です。そして、日本における「スペインというブランド」の魅力を広め、いつかそれを他の国々にも届けていくこと。それが、私たちの変わらぬ使命です。',
+];
+---
+
+<BaseLayout>
+  <SEO
+    slot="seo"
+    title="創設者からのご挨拶｜David Recalde | スペイン倶楽部"
+    description="Club Español en Japón スペイン倶楽部の創設者David Recaldeより、2016年の来日から横浜での小さな交流会、セルバンテス文化センター東京での経験を経て、スペイン文化を日本に伝える活動に至るまでの歩みを綴った、ご挨拶文です。"
+    canonical="https://supein.club/about-us/founder-message/"
+    breadcrumbs={breadcrumbs}
+  />
+
+  <!-- HERO -->
+  <section class="bg-navy text-white py-20 px-4">
+    <div class="max-w-4xl mx-auto">
+      <Breadcrumb items={breadcrumbs} dark />
+      <p class="text-primary text-base font-semibold uppercase tracking-widest mt-6 mb-4">FOUNDER'S MESSAGE</p>
+      <h1 class="font-serif text-3xl md:text-5xl font-bold mb-6 leading-tight">
+        創設者からのご挨拶
+      </h1>
+      <p class="text-white/70 text-base leading-relaxed max-w-xl">
+        Club Español en Japón（スペイン倶楽部）創設者<br class="hidden md:block" />
+        David Recalde より
+      </p>
+    </div>
+  </section>
+
+  <!-- LETTER -->
+  <section class="bg-canvas py-20 px-4">
+    <div class="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-[240px_1fr] gap-12 md:gap-16">
+
+      <!-- Portrait column -->
+      <div class="md:sticky md:top-24 self-start">
+        <figure class="m-0">
+          <img
+            src="/david-recalde-founder.webp"
+            alt="David Recalde — Club Español en Japón（スペイン倶楽部）創設者"
+            width="900"
+            height="900"
+            loading="lazy"
+            class="w-full aspect-square object-cover rounded-2xl shadow-[0_8px_28px_rgba(0,33,71,0.14)]"
+          />
+        </figure>
+        <div class="mt-5 pt-5 border-t border-navy/10">
+          <p class="font-serif text-xl font-bold text-navy">David Recalde</p>
+          <p class="text-muted text-sm leading-relaxed mt-1">
+            Club Español en Japón<br />（スペイン倶楽部）創設者
+          </p>
+          <a
+            href="/about-us/team/david-recalde/"
+            class="inline-block mt-4 text-primary text-sm font-semibold hover:underline"
+          >
+            プロフィールを見る →
+          </a>
+        </div>
+      </div>
+
+      <!-- Letter column -->
+      <div class="max-w-2xl">
+        <div class="font-serif text-ink text-lg leading-[2] space-y-7">
+          {paragraphs.map((p, i) => (
+            i === 0 ? (
+              <p class="first-paragraph">{p}</p>
+            ) : (
+              <p>{p}</p>
+            )
+          ))}
+        </div>
+
+        <blockquote class="my-12 pl-6 border-l-2 border-primary">
+          <p class="font-serif italic text-navy text-xl md:text-2xl leading-relaxed">
+            {pullQuote}
+          </p>
+        </blockquote>
+
+        <div class="font-serif text-ink text-lg leading-[2] space-y-7">
+          {paragraphsAfter.map((p) => (
+            <p>{p}</p>
+          ))}
+        </div>
+
+        <div class="mt-16 pt-8 border-t border-navy/10">
+          <p class="font-serif italic text-2xl text-navy mb-1">David Recalde</p>
+          <p class="text-muted text-sm">Club Español en Japón（スペイン倶楽部）創設者</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Back links -->
+  <section class="bg-white border-t border-[#E8E8E6] py-12 px-4">
+    <div class="max-w-4xl mx-auto flex flex-wrap gap-6 text-sm">
+      <a href="/about-us/" class="text-navy font-semibold hover:text-primary transition-colors">← スペイン倶楽部について</a>
+      <a href="/about-us/team/" class="text-navy font-semibold hover:text-primary transition-colors">チームメンバーを見る →</a>
+    </div>
+  </section>
+
+  <LineBanner slim />
+</BaseLayout>
+
+<style>
+  .first-paragraph::first-letter {
+    font-size: 3.4em;
+    font-weight: 700;
+    color: #C8102E;
+    float: left;
+    line-height: 0.85;
+    padding-right: 0.08em;
+    padding-top: 0.04em;
+  }
+</style>

@@ -10,6 +10,8 @@ since: "2018"
 linkedin: "https://www.linkedin.com/in/davidgarciarecalde/"
 website: "https://noda.tokyo/"
 websiteLabel: "NODA — Studio Lead"
+website2: "https://davidrecalde.com/"
+website2Label: "個人サイト"
 instagram: "https://www.instagram.com/davidrecalde/"
 twitter: ""
 specialties: ["スペイン料理", "スペイン旅行", "スペイン文化", "デザイン", "コミュニケーション"]
