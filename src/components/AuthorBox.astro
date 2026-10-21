@@ -12,6 +12,8 @@ const topics = specialties ?? knowsAbout ?? [];
 const slug = author.data.slug ?? author.id.replace(/\.(md|mdx)$/, '');
 
 const authorUrl = `https://supein.club/about-us/team/${slug}/`;
+const linkedinUrl = linkedin?.startsWith('http') ? linkedin : (linkedin ? `https://linkedin.com/in/${linkedin}` : undefined);
+const instagramUrl = instagram?.startsWith('http') ? instagram : (instagram ? `https://instagram.com/${instagram}` : undefined);
 
 function initials(n: string) {
   return n.replace(/[ぁ-んァ-ン一-龯]/g, '').slice(0, 2).toUpperCase() || n.slice(0, 1);
@@ -74,7 +76,7 @@ function initials(n: string) {
         </a>
       </div>
 
-      {(twitter || linkedin || instagram) && (
+      {(twitter || linkedinUrl || instagramUrl) && (
         <div style="display: flex; gap: 10px; margin-top: 12px; align-items: center;">
           {twitter && (
             <a
@@ -91,9 +93,9 @@ function initials(n: string) {
               </svg>
             </a>
           )}
-          {linkedin && (
+          {linkedinUrl && (
             <a
-              href={`https://linkedin.com/in/${linkedin}`}
+              href={linkedinUrl}
               target="_blank"
               rel="noopener noreferrer"
               aria-label="LinkedIn"
@@ -106,9 +108,9 @@ function initials(n: string) {
               </svg>
             </a>
           )}
-          {instagram && (
+          {instagramUrl && (
             <a
-              href={`https://instagram.com/${instagram}`}
+              href={instagramUrl}
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Instagram"

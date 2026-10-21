@@ -318,21 +318,7 @@ const widgetId = `cre-${Math.random().toString(36).slice(2, 8)}`;
         "reviewCount": item.reviewCount,
         "bestRating": 5,
         "worstRating": 1
-      },
-      "review": item.reviews.slice(0, 3).map(r => ({
-        "@type": "Review",
-        "reviewRating": {
-          "@type": "Rating",
-          "ratingValue": r.rating,
-          "bestRating": 5,
-          "worstRating": 1
-        },
-        "author": {
-          "@type": "Person",
-          "name": "訪問者"
-        },
-        "reviewBody": r.text
-      }))
+      }
     }
   }))
 }).replace(/</g, '\\u003c')} />
