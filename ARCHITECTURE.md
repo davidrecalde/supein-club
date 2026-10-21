@@ -26,6 +26,39 @@
 > reales se hizo por **coincidencia de keyword/intención**, no de ruta.
 > Donde hay divergencia relevante, se anota bajo la tabla del pillar.
 
+## Auditoría SEO y correcciones técnicas (2026-10-21/22)
+
+Dos auditorías SEO externas (datos de GSC + inspección de URLs) detectaron varios problemas; se verificó cada hallazgo contra el código antes de tocar nada, y varios resultaron ya resueltos o estar basados en rastreos antiguos de Google (no eran bugs reales). Lo que sí era real y se corrigió:
+
+- **156 URLs duplicadas `/food/spain-map-{provincia}/{article}/`** (con guion): la ruta genérica `src/pages/food/[cluster]/[article]/index.astro` generaba por accidente una segunda URL para los 52 provincias × 3 rankings CRE, duplicando `/food/spain-map/{provincia}/{article}/` (con barra, la indexada). Causa raíz: el `cluster` de esos artículos es literalmente `"spain-map-{provincia}"`, y la ruta genérica solo excluía los insignia (`article === cluster`), no este patrón. Fix: se excluyen los clusters `spain-map-*` de esa ruta + 52 redirecciones 301 en `public/_redirects`. Verificado con diff del sitemap: 389→233 URLs en `/food/`, exactamente las 156 duplicadas, 0 URLs nuevas o afectadas.
+- **Enlaces LinkedIn/Instagram duplicados** en `AuthorBox.astro` (la caja de autor dentro de cada artículo): construía la URL como `https://linkedin.com/in/${linkedin}` cuando el campo `linkedin` ya era la URL completa. Mismo fix que ya tenía `team/[slug].astro`.
+- **8 rutas con contenido real excluidas del sitemap** por una `NOINDEX_PATHS` desactualizada (`/culture/flamenco/`, `/culture/history/`, `/culture/traditions/`, `/food/olive-oil/`, `/food/paella/`, `/food/souvenirs/`, `/food/spanish-wine/`, `/food/tapas/`).
+- **Schema `Review` de terceros en `CRECard.astro`**: marcaba hasta 3 reseñas por restaurante en JSON-LD con texto de Google Maps (confirmado con David), lo que viola las políticas de Google y conlleva riesgo de acción manual. Se quita el bloque `review`, se mantiene `aggregateRating`.
+- **`max-image-preview:large` ausente** en el meta `robots` de todo el sitio — limita el tamaño de miniatura en resultados y excluye al sitio de Google Discover (imagen grande es casi un requisito ahí). Añadido en `SEO.astro` a cualquier valor de `robots` recibido.
+- **`/food/index.astro` duplicaba las 52 provincias** (tarjeta de provincia + sus 3 rankings) directamente en el hub principal, además de la tarjeta que ya enlaza a `/food/spain-map/`. `/food/index.html`: 486 KB → 103 KB (-79%).
+- **CTR bajo con buenas posiciones**: títulos/descripciones reescritos en `/football/`, `el-clasico`, `valencia-cf` y `real-betis`, con nombres propios reconocibles (久保建英, 佐藤龍之介, レアル・マドリード) en vez de ganchos genéricos u opacos (ej. 「マンケ・ピエルダ」).
+- **`NOINDEX_PATHS` duplicada en dos sitios**: existía a mano tanto en `astro.config.mjs` (para el sitemap XML) como enlazada manualmente en `src/pages/sitemap/index.astro` (página HTML de usuario) — esta última llevaba 13 enlaces a páginas vacías en noindex, desincronizada. Extraída a `src/config/noindexPaths.ts`, fuente única que importan ambos.
+
+**Verificado y descartado (hallazgos ya resueltos o basados en rastreos antiguos, no se tocó nada)**: slug duplicado `/food/jamon-iberico/jamon-iberico/` (ya no existe, redirect ya en `_redirects`), `/terms/` y `/privacy/` "soft 404" (ambas tienen contenido real completo, el rastreo citado era de junio), `sitemap-club.xml`/`sitemap-food.xml`/`sitemap-football.xml` "huérfanos" (GSC solo tiene `sitemap-index.xml` registrado, confirmado en captura de pantalla), 3 enlaces internos rotos del Grupo D del informe (ya no existen en el código actual), `/travel/souvenirs/` vs `/food/souvenirs/` "duplicados" (son dos guías distintas con canonical propio, no se solapan).
+
+## Próximos contenidos prioritarios (desde 2026-10-22)
+
+David empieza a escribir contenido nuevo centrado en rellenar los stubs vacíos existentes (ver tablas de pillar abajo para el detalle de keyword/volumen de cada uno) — no crear nuevos clusters. Prioridad por valor SEO + encaje editorial, según el análisis del informe "Páginas no indexadas" (Grupo C, páginas en `noindex` con impresiones reales en GSC):
+
+**Alta prioridad** (tema de alto volumen y/o encaja directamente con la misión del club):
+- `/travel/andalusia/` — Sevilla/Granada/Córdoba/Alhambra, de los temas de turismo español más buscados.
+- `/travel/best-season/` y `/travel/itineraries/` — intención informacional evergreen clásica de viaje.
+- `/living/work-in-spain/`, `/living/work-visa/`, `/living/student-visa/`, `/living/study-cost/`, `/living/language-school/` — visados/trabajo/estudios, encaja directo con la misión del club (ayudar a japoneses a venir a España) y el pilar スペインに住む.
+- `/language/lesson-price/` — coherente con el pilar de idioma.
+
+**Baja prioridad / evaluar antes de escribir** (más débil o ya cubierto desde otro ángulo):
+- `/travel/spain-flights/` — muy competido contra agregadores de vuelos, difícil de rankear, bajo encaje editorial.
+- `/travel/canarias/`, `/travel/ibiza/` — ya hay cobertura gastronómica de esas islas (`/food/spain-map/las-palmas/`, etc.); un ángulo "viaje" aparte solo vale la pena con capacidad real de escribirlo pronto.
+
+El resto de stubs (`/culture/facts/`, `/culture/history/`, `/food/restaurants-osaka/`, `/food/restaurants-tokyo/`, `/language/online-lessons/`, `/language/pronunciation/`, `/language/self-study/`, `/language/spanish-books/`, `/language/spanish-phrases/`, `/living/spain-visa/`, `/living/study-spain/`, `/living/university/`, `/living/working-holiday/`, `/travel/spain-hotels/`) siguen documentados en las tablas de pillar de abajo con su keyword/volumen, sin priorización explícita todavía.
+
+**Página `/sitemap/` (HTML, para usuarios)**: desde el 2026-10-22 filtra automáticamente cualquier enlace a una ruta en `NOINDEX_PATHS` — al publicar contenido real en cualquiera de los stubs de arriba y quitarla de esa lista, su enlace reaparece solo en `/sitemap/` sin tocar ese archivo. La sección "スペインに住む" del sitemap desapareció por completo (los 9 enlaces que tenía eran todos stubs) hasta que se publique el primero de esos artículos.
+
 ## Por pillar: URLs reales vs. planificadas
 
 ### travel
@@ -177,9 +210,9 @@ Desde el 2026-09-15, toda creación de artículo de food pregunta explícitament
 
 **Ampliación 2026-09-16 — sección "現地観戦ガイド" de `/football/la-liga/`:** a partir del análisis de una guía turística escaneada (`Escaneo/informe_completo_LaLiga.md`), se amplió esta sección (antes 3 párrafos breves) con: cómo comprar entrada (web oficial/taquilla/agencia-hotel), compra de merchandising antes del día del partido, logística del día (llegar con tiempo, comida limitada dentro del estadio, equipaje mínimo, ropa según clima) y etiqueta/seguridad (evitar colores del rival, respetar a la afición local). **Datos del informe descartados por obsoletos y NO usados**: lista de 20 clubes de temporada 2023-24 (el artículo ya tenía la lista real 2026-27), aforos de Bernabéu/Camp Nou (~75k/~98k en el informe vs. ~83.186 actual y ~62.600→105.000 en obras, ya documentados correctamente en `real-madrid.mdx` y `fcbarcelona.mdx`), y el rango de precios €20-170. Ningún artículo nuevo — el hueco era de profundidad dentro de una sección ya existente con la misma intención de búsqueda, no de cobertura ausente.
 
-### Páginas de conversión planificadas — nunca construidas
+### Páginas de conversión — `/services/`
 
-El xlsx maestro define un nodo `/services/` explícitamente marcado "SEO対象外" (no compite por keywords propias, recibe tráfico desde los clusters informativos): `/services/spanish-lessons/`, `/services/travel-consulting/`, `/services/study-abroad-support/`. **Ninguna de las tres existe en el sitio real** — no hay ningún `src/pages/services/` hoy. Anotado aquí para que no se pierda de vista si se retoma esa capa de conversión.
+El xlsx maestro define un nodo `/services/` explícitamente marcado "SEO対象外" (no compite por keywords propias, recibe tráfico desde los clusters informativos): `/services/spanish-lessons/`, `/services/travel-consulting/`, `/services/study-abroad-support/`. **Actualización 2026-10-22: las tres SÍ existen hoy** (`src/pages/services/{spanish-lessons,travel-consulting,study-abroad-support}/index.astro`) — esta nota decía lo contrario y estaba desactualizada; se construyeron en algún momento entre el snapshot original y ahora sin registrarlo aquí. `robots.txt` bloquea `/services/` a propósito (coherente con "SEO対象外"), así que no indexan pese a existir.
 
 ## Casos especiales a documentar explícitamente
 

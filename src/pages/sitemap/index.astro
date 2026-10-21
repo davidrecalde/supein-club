@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import SEO from '../../components/SEO.astro';
+import { NOINDEX_PATHS } from '../../config/noindexPaths';
 
 const breadcrumbs = [
   { name: 'ホーム', url: '/' },
@@ -129,6 +130,15 @@ const sections = [
     ],
   },
 ];
+
+// No enlazar desde el sitemap de usuario a páginas "記事を準備中です"
+// (categorías vacías en noindex) — confunde al visitante y envía una
+// señal de rastreo contradictoria con su propio robots. Se filtra contra
+// la misma lista que usa astro.config.mjs para el sitemap XML, en vez de
+// mantener una copia a mano que se desincroniza (ver src/config/noindexPaths.ts).
+const sectionsFiltered = sections
+  .map((s) => ({ ...s, links: s.links.filter((l) => !NOINDEX_PATHS.includes(l.href)) }))
+  .filter((s) => s.links.length > 0);
 ---
 <BaseLayout>
   <SEO slot="seo" title="サイトマップ | スペイン倶楽部" description="supein.club・スペイン倶楽部のサイトマップです。旅行・料理・語学・生活・文化・サッカーなど、サイト内の全カテゴリとページの一覧をまとめて一目で確認できるよう、カテゴリごとに見やすくシンプルに整理して分かりやすい形で一覧掲載しています。" canonical="https://supein.club/sitemap/" breadcrumbs={breadcrumbs} />
@@ -140,7 +150,7 @@ const sections = [
   </section>
   <section class="max-w-4xl mx-auto px-4 py-12">
     <div class="grid grid-cols-1 sm:grid-cols-2 gap-8">
-      {sections.map(({ label, href, links }) => (
+      {sectionsFiltered.map(({ label, href, links }) => (
         <div class="bg-white rounded-2xl shadow-sm border border-ink/5 p-6">
           <h2 class="font-serif text-xl font-bold text-navy mb-4">
             <a href={href} class="hover:text-primary transition-colors">{label}</a>
