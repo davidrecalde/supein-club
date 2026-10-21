@@ -38,18 +38,14 @@ function pagefindIntegration() {
 // /language/spanish-apps/ ya tenían contenido y se retiraron de la lista;
 // /food/paella/ y /food/souvenirs/ estaban vacías pero no incluidas, se
 // añadieron; /football/football-guide/ se eliminó, entrada obsoleta).
+// Auditoría 2026-10-21: /culture/flamenco/, /culture/history/,
+// /culture/traditions/, /food/olive-oil/, /food/paella/, /food/souvenirs/,
+// /food/spanish-wine/ y /food/tapas/ ya tenían contenido (robots index,follow
+// real) pero seguían excluidas del sitemap — retiradas de la lista.
 const NOINDEX_PATHS = [
   '/culture/facts/',
-  '/culture/flamenco/',
-  '/culture/history/',
-  '/culture/traditions/',
-  '/food/olive-oil/',
-  '/food/paella/',
   '/food/restaurants-osaka/',
   '/food/restaurants-tokyo/',
-  '/food/souvenirs/',
-  '/food/spanish-wine/',
-  '/food/tapas/',
   '/language/lesson-price/',
   '/language/online-lessons/',
   '/language/pronunciation/',
