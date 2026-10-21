@@ -15,7 +15,15 @@ export const getStaticPaths: GetStaticPaths = async () => {
     // mantenía una lista de nombres a mano que se quedaba desactualizada
     // cada vez que se creaba un nuevo cluster insignia (ver PR de
     // duplicidad de /food/jamon-iberico/jamon-iberico/).
-    .filter(({ cluster, article }) => article !== cluster)
+    //
+    // Los artículos de ranking por provincia (cluster "spain-map-{provincia}",
+    // ej. "spain-map-madrid") ya tienen su propia ruta dedicada en
+    // /food/spain-map/{provincia}/{article}/ (ver
+    // src/pages/food/spain-map/[province]/[article]/index.astro). Sin este
+    // filtro, esta ruta genérica también los recogía y generaba un
+    // duplicado con guion (/food/spain-map-madrid/{article}/) que Google
+    // detectó como contenido duplicado (ver auditoría SEO 2026-10-21).
+    .filter(({ cluster, article }) => article !== cluster && !cluster.startsWith('spain-map-'))
     .map(({ entry, cluster, article }) => ({
       params: { cluster, article },
       props: { entry },
