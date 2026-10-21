@@ -29,8 +29,16 @@ const {
   keywords,
   authorName,
   authorUrl,
-  robots = 'index, follow',
+  robots: robotsProp = 'index, follow',
 } = Astro.props;
+
+// Sin max-image-preview:large, Google limita el tamaño de miniatura que
+// puede mostrar en los resultados y en Google Discover (que depende casi
+// por completo de imágenes grandes) — se añade a cualquier valor de
+// robots recibido, salvo que ya lo incluya.
+const robots = robotsProp.includes('max-image-preview')
+  ? robotsProp
+  : `${robotsProp}, max-image-preview:large`;
 
 const siteUrl = 'https://supein.club';
 const resolvedImage = image ? (image.startsWith('http') ? image : `${siteUrl}${image}`) : `${siteUrl}/logo-og.png`;
