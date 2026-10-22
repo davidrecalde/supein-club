@@ -11,6 +11,7 @@ import RegionCTA from '../../components/RegionCTA.astro';
 import NewsletterForm from '../../components/NewsletterForm.astro';
 import ArticleDisclaimer from '../../components/ArticleDisclaimer.astro';
 import AuthorBox from '../../components/AuthorBox.astro';
+import FAQSection from '../../components/FAQSection.astro';
 import { getArticleUrl } from '../../utils/articles';
 
 const author = await getEntry('authors', 'david-recalde');
@@ -90,6 +91,33 @@ const breadcrumbs = [
   { name: 'ホーム', url: '/' },
   { name: 'スペイン料理', url: '/food/' },
 ];
+
+const foodFaq = [
+  {
+    question: 'スペイン料理のコンテンツはどこから見ればいいですか？',
+    answer: 'バルとレストランでの過ごし方をまず知りたい方は<a href="/food/tapas/">「タパス文化完全ガイド」</a>から。地方ごとの食文化を一気に知りたい方は<a href="/food/food-routes/">「地方グルメルート」</a>がおすすめです。',
+  },
+  {
+    question: '本場のパエリアについて知りたい場合は？',
+    answer: '歴史・格付け・本場の技法までを<a href="/food/paella/">「パエリア完全ガイド」</a>で詳しく解説しています。',
+  },
+  {
+    question: 'ハモン・イベリコの格付けの違いを知りたい場合は？',
+    answer: '等級（ベジョータ・セボ・デ・カンポなど）の違いを<a href="/food/jamon-iberico/">「ハモン・イベリコ完全ガイド」</a>で解説しています。',
+  },
+  {
+    question: 'スペインワインの選び方がわかりません。',
+    answer: 'DO・DOCa・クリアンサなどの格付けと、11の主要産地を<a href="/food/spanish-wine/">「スペインワイン完全ガイド」</a>にまとめています。',
+  },
+  {
+    question: 'バルでの注文の仕方やマナーを知りたい場合は？',
+    answer: 'カウンターでの注文方法からチップの相場まで、<a href="/food/spain-bar-restaurant/">「バル・レストラン活用ガイド」</a>で解説しています。',
+  },
+  {
+    question: '県ごとのおすすめレストランを探すには？',
+    answer: '7つの美食ゾーンから探せるインタラクティブマップを<a href="/food/spain-map/">「スペイン美食マップ」</a>に用意しています。気になる県を選ぶと、その県の定番料理やおすすめレストランが確認できます。',
+  },
+];
 ---
 <BaseLayout>
   <SEO
@@ -99,6 +127,19 @@ const breadcrumbs = [
     canonical="https://supein.club/food/"
     image="/og/food.webp"
     breadcrumbs={breadcrumbs}
+  />
+  <script
+    type="application/ld+json"
+    slot="head"
+    set:html={JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'FAQPage',
+      mainEntity: foodFaq.map((item) => ({
+        '@type': 'Question',
+        name: item.question,
+        acceptedAnswer: { '@type': 'Answer', text: item.answer.replace(/<[^>]+>/g, '') },
+      })),
+    })}
   />
   <PillarHero
     title="スペイン料理"
@@ -161,7 +202,29 @@ const breadcrumbs = [
 
   <section class="max-w-6xl mx-auto px-5 pb-14 prose-content">
   <div class="max-w-[780px]">
+    <h2 class="font-sans font-bold text-xl text-navy mb-4">このサイトのスペイン料理コンテンツについて</h2>
+    <p class="text-muted leading-relaxed mb-6">
+      このカテゴリでは、本場の味や技法を深掘りする名物料理ガイド、バル・レストランでの過ごし方、県ごとのグルメ情報まで、目的別に情報を整理しています。まず何から見ればいいか迷ったら、下記の各セクションをご覧ください。
+    </p>
+
+    <h2 class="font-sans font-bold text-xl text-navy mb-4">地方ごとの食文化を知るなら</h2>
+    <p class="text-muted leading-relaxed mb-6">
+      スペインは地方ごとに驚くほど個性豊かな食文化を持っています。地域と名物料理の組み合わせをまとめて知りたい方は<a href="/food/food-routes/" class="text-primary underline">「地方グルメルート」</a>から。県単位でもっと詳しく探したい方は<a href="/food/spain-map/" class="text-primary underline">「スペイン美食マップ」</a>をご覧ください。
+    </p>
+
+    <h2 class="font-sans font-bold text-xl text-navy mb-4">名物料理を深く知るなら</h2>
+    <p class="text-muted leading-relaxed mb-6">
+      本場の技法や格付けまで深掘りしたい方には<a href="/food/paella/" class="text-primary underline">「パエリア完全ガイド」</a>と<a href="/food/jamon-iberico/" class="text-primary underline">「ハモン・イベリコ完全ガイド」</a>がおすすめです。ワイン選びに迷ったら<a href="/food/spanish-wine/" class="text-primary underline">「スペインワイン完全ガイド」</a>も参考にしてください。
+    </p>
+
+    <h2 class="font-sans font-bold text-xl text-navy mb-4">バル・レストランでの過ごし方</h2>
+    <p class="text-muted leading-relaxed mb-6">
+      タパスの文化やバルでの注文方法、食事の時間帯の違いなど、現地で戸惑わないための実践ガイドを<a href="/food/tapas/" class="text-primary underline">「タパス文化完全ガイド」</a>と<a href="/food/spain-bar-restaurant/" class="text-primary underline">「バル・レストラン活用ガイド」</a>にまとめています。
+    </p>
+
     <NewsletterForm variant="inline" />
+
+    <FAQSection faq={foodFaq} />
 
     {author && <ArticleDisclaimer />}
     {author && <AuthorBox author={author} />}
