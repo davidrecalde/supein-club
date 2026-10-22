@@ -10,6 +10,7 @@ import RegionCTA from '../../components/RegionCTA.astro';
 import NewsletterForm from '../../components/NewsletterForm.astro';
 import ArticleDisclaimer from '../../components/ArticleDisclaimer.astro';
 import AuthorBox from '../../components/AuthorBox.astro';
+import FAQSection from '../../components/FAQSection.astro';
 import { getArticleUrl } from '../../utils/articles';
 
 type Article = CollectionEntry<'articles'>;
@@ -54,6 +55,33 @@ const breadcrumbs = [
   { name: 'スペイン旅行', url: '/travel/' },
 ];
 
+const travelFaq = [
+  {
+    question: 'スペイン旅行のコンテンツはどこから見ればいいですか？',
+    answer: '初めての方は定番都市の<a href="/travel/barcelona/">「バルセロナ旅行ガイド」</a>と<a href="/travel/madrid/">「マドリード旅行ガイド」</a>から見るのがおすすめです。',
+  },
+  {
+    question: 'バルセロナ観光の見どころを知りたい場合は？',
+    answer: 'サグラダ・ファミリアやガウディ建築を中心に<a href="/travel/barcelona/">「バルセロナ旅行ガイド」</a>で詳しく解説しています。',
+  },
+  {
+    question: 'マドリード観光の見どころを知りたい場合は？',
+    answer: '美術館巡りから王宮、サラマンカ地区まで<a href="/travel/madrid/">「マドリード旅行ガイド」</a>にまとめています。',
+  },
+  {
+    question: '短期間でスペインを効率よく回るモデルコースはありますか？',
+    answer: '1週間での周遊モデルコースを<a href="/travel/spain-tours/spain-tour-1week/">「スペイン1週間モデルコース」</a>で紹介しています。',
+  },
+  {
+    question: '一人旅の予算の目安を知りたい場合は？',
+    answer: '航空券・宿泊・食費などの実際の費用感を<a href="/travel/travel-cost/spain-budget-solo/">「スペイン一人旅の予算」</a>にまとめています。',
+  },
+  {
+    question: 'スペインらしいお土産選びに迷ったら？',
+    answer: '伝統工芸品や地域ブランドを地域別に<a href="/travel/souvenirs/">「スペインお土産完全ガイド」</a>で紹介しています。',
+  },
+];
+
 function renderCard(a: Article) {
   return {
     title: a.data.title,
@@ -75,6 +103,19 @@ function renderCard(a: Article) {
     canonical="https://supein.club/travel/"
     image="/og/travel.webp"
     breadcrumbs={breadcrumbs}
+  />
+  <script
+    type="application/ld+json"
+    slot="head"
+    set:html={JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'FAQPage',
+      mainEntity: travelFaq.map((item) => ({
+        '@type': 'Question',
+        name: item.question,
+        acceptedAnswer: { '@type': 'Answer', text: item.answer.replace(/<[^>]+>/g, '') },
+      })),
+    })}
   />
   <PillarHero
     title="スペイン旅行"
@@ -128,7 +169,29 @@ function renderCard(a: Article) {
 
   <section class="max-w-6xl mx-auto px-5 pb-14 prose-content">
   <div class="max-w-[780px]">
+    <h2 class="font-sans font-bold text-xl text-navy mb-4">このサイトのスペイン旅行コンテンツについて</h2>
+    <p class="text-muted leading-relaxed mb-6">
+      このカテゴリでは、都市別の観光ガイド、モデルコースと予算の目安、お土産選びまで、実際の旅行計画に役立つ情報を目的別に整理しています。まず何から見ればいいか迷ったら、下記の各セクションをご覧ください。
+    </p>
+
+    <h2 class="font-sans font-bold text-xl text-navy mb-4">都市別の旅行ガイド</h2>
+    <p class="text-muted leading-relaxed mb-6">
+      定番都市の見どころを詳しく知りたい方は<a href="/travel/barcelona/" class="text-primary underline">「バルセロナ旅行ガイド」</a>と<a href="/travel/madrid/" class="text-primary underline">「マドリード旅行ガイド」</a>から。古都の魅力を知りたい方は<a href="/travel/segovia/" class="text-primary underline">「セゴビア旅行ガイド」</a>もご覧ください。
+    </p>
+
+    <h2 class="font-sans font-bold text-xl text-navy mb-4">モデルコースと予算の目安</h2>
+    <p class="text-muted leading-relaxed mb-6">
+      限られた日数で効率よく回りたい方には<a href="/travel/spain-tours/spain-tour-1week/" class="text-primary underline">「スペイン1週間モデルコース」</a>、予算を立てたい方には<a href="/travel/travel-cost/spain-budget-solo/" class="text-primary underline">「スペイン一人旅の予算」</a>が参考になります。
+    </p>
+
+    <h2 class="font-sans font-bold text-xl text-navy mb-4">お土産選びに迷ったら</h2>
+    <p class="text-muted leading-relaxed mb-6">
+      地域ごとの伝統工芸品や老舗ブランドを<a href="/travel/souvenirs/" class="text-primary underline">「スペインお土産完全ガイド」</a>で紹介しています。
+    </p>
+
     <NewsletterForm variant="inline" />
+
+    <FAQSection faq={travelFaq} />
 
     {author && <ArticleDisclaimer />}
     {author && <AuthorBox author={author} />}

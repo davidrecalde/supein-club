@@ -9,8 +9,24 @@ import FloatingActions from '../../components/FloatingActions.astro';
 import NewsletterForm from '../../components/NewsletterForm.astro';
 import ArticleDisclaimer from '../../components/ArticleDisclaimer.astro';
 import AuthorBox from '../../components/AuthorBox.astro';
+import FAQSection from '../../components/FAQSection.astro';
 
 const author = await getEntry('authors', 'david-recalde');
+
+const livingFaq = [
+  {
+    question: 'スペイン生活のリアルな話を知りたい場合は？',
+    answer: '実際にスペインで暮らす方々へのインタビューシリーズ<a href="/living/i-need-spain/">「I need Spain」</a>で、現地の暮らしぶりを紹介しています。',
+  },
+  {
+    question: 'セルバンテス文化センターのウェビナーとは何ですか？',
+    answer: 'スペインでの生活や留学の実体験を語っていただいたウェビナーの内容を<a href="/living/cervantes-webinar-experiencias-espana/">「セルバンテス文化センター ウェビナー」</a>にまとめています。',
+  },
+  {
+    question: 'ビザや留学手続きの詳しいガイドはありますか？',
+    answer: '現在、順次公開準備を進めています。公開され次第、このカテゴリでご案内します。',
+  },
+];
 
 const otherPillars = [
   { href: '/travel/', title: 'スペイン旅行', description: 'バルセロナ・マドリードから南部アンダルシア、離島まで、観光スポットとツアー情報を完全網羅' },
@@ -63,6 +79,19 @@ const breadcrumbs = [
     canonical="https://supein.club/living/"
     image="/og/living.webp"
     breadcrumbs={breadcrumbs}
+  />
+  <script
+    type="application/ld+json"
+    slot="head"
+    set:html={JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'FAQPage',
+      mainEntity: livingFaq.map((item) => ({
+        '@type': 'Question',
+        name: item.question,
+        acceptedAnswer: { '@type': 'Answer', text: item.answer.replace(/<[^>]+>/g, '') },
+      })),
+    })}
   />
   <PillarHero
     title="スペインに住む"
@@ -121,7 +150,24 @@ const breadcrumbs = [
 
   <section class="max-w-6xl mx-auto px-5 pb-14 prose-content">
   <div class="max-w-[780px]">
+    <h2 class="font-sans font-bold text-xl text-navy mb-4">このサイトのスペイン生活コンテンツについて</h2>
+    <p class="text-muted leading-relaxed mb-6">
+      このカテゴリでは、実際にスペインで暮らす方々の声や、現地生活・留学に関するウェビナーの内容を紹介しています。ビザ・就労・留学費用など、手続き面の詳しいガイドは順次公開を進めています。
+    </p>
+
+    <h2 class="font-sans font-bold text-xl text-navy mb-4">現地で暮らす人々の声を聞くなら</h2>
+    <p class="text-muted leading-relaxed mb-6">
+      スペインで実際に生活する方々へのインタビューシリーズ<a href="/living/i-need-spain/" class="text-primary underline">「I need Spain」</a>で、現地のリアルな暮らしぶりを紹介しています。
+    </p>
+
+    <h2 class="font-sans font-bold text-xl text-navy mb-4">留学・現地生活の実体験を知るなら</h2>
+    <p class="text-muted leading-relaxed mb-6">
+      セルバンテス文化センターとのウェビナーで語られた留学・現地生活の実体験を<a href="/living/cervantes-webinar-experiencias-espana/" class="text-primary underline">「セルバンテス文化センター ウェビナー」</a>にまとめています。
+    </p>
+
     <NewsletterForm variant="inline" />
+
+    <FAQSection faq={livingFaq} />
 
     {author && <ArticleDisclaimer />}
     {author && <AuthorBox author={author} />}
