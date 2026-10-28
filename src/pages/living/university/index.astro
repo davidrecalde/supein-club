@@ -1,10 +1,16 @@
 ---
-import { getCollection } from 'astro:content';
+import { getCollection, getEntry } from 'astro:content';
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import SEO from '../../../components/SEO.astro';
 import ArticleCard from '../../../components/ArticleCard.astro';
 import Breadcrumb from '../../../components/Breadcrumb.astro';
 import LineBanner from '../../../components/LineBanner.astro';
+import RelatedPages from '../../../components/RelatedPages.astro';
+import FAQSection from '../../../components/FAQSection.astro';
+import ArticleDisclaimer from '../../../components/ArticleDisclaimer.astro';
+import AuthorBox from '../../../components/AuthorBox.astro';
+
+const author = await getEntry('authors', 'david-recalde');
 
 const articles = await getCollection('articles', ({ data }) => !data.draft && data.pillar === 'living' && data.cluster === 'university');
 const sorted = articles.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
@@ -14,28 +20,111 @@ const breadcrumbs = [
   { name: 'スペインに住む', url: '/living/' },
   { name: 'スペイン 大学留学', url: '/living/university/' },
 ];
+
+const faqItems = [
+  { question: 'スペインの大学に留学する方法は何種類ありますか？', answer: '大きく分けて、学位取得を目的に現地の大学へ正規入学する方法と、在籍する日本の大学の協定を利用した交換留学の2種類があります。正規入学は入学審査・語学要件のハードルが高い一方、交換留学は在籍大学のサポートを受けながら比較的始めやすいのが特徴です。' },
+  { question: '日本の大学の単位はスペインの大学に認定されますか？学位は認められますか？', answer: '交換留学であれば、事前の協定に基づいて単位認定されるのが一般的です。正規留学や学位の国際的な通用性については、スペイン教育国際化事業団（SEPIE）や志望大学の公式情報で個別に確認する必要があります。' },
+  { question: '大学留学にはどんなビザが必要ですか？', answer: '90日を超えて在籍する場合は学生ビザが必要です。申請条件・在学中の就労ルール・卒業後の求職ビザについては「スペイン学生ビザ」で詳しく解説しています。' },
+  { question: '大学留学の費用はどれくらいですか？', answer: '公立大学の学費は学部・自治州によって異なり、私立大学は公立よりも高額になる傾向があります。生活費の目安は「スペイン留学費用」を参照してください。大学ごとの正確な学費は、各大学の公式サイトで確認することをおすすめします。' },
+];
 ---
 <BaseLayout>
-  <SEO slot="seo" title="スペイン 大学留学" description="スペインの大学留学・交換留学の方法を解説。主要大学・出願手続き・奨学金情報を日本語で紹介。" canonical="https://supein.club/living/university/" breadcrumbs={breadcrumbs} robots={sorted.length > 0 ? 'index, follow' : 'noindex, follow'} />
+  <SEO slot="seo" title="スペインの大学に留学する方法｜入学条件・学位認定・交換留学【2026年版】" description="スペインの大学への留学方法を解説。正規留学と交換留学の違い、入学条件、学生ビザとの関係まで、公的機関の情報に基づいて紹介します。" canonical="https://supein.club/living/university/" breadcrumbs={breadcrumbs} robots="index, follow" />
+  <script
+    type="application/ld+json"
+    slot="head"
+    set:html={JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'FAQPage',
+      mainEntity: faqItems.map((item) => ({
+        '@type': 'Question',
+        name: item.question,
+        acceptedAnswer: { '@type': 'Answer', text: item.answer },
+      })),
+    })}
+  />
   <section class="bg-navy text-white py-12 px-4">
     <div class="max-w-4xl mx-auto">
       <Breadcrumb items={breadcrumbs} dark />
-      <h1 class="font-serif text-3xl md:text-4xl font-bold leading-tight mt-4">スペイン大学留学 方法・大学一覧</h1>
-      <p class="text-white/80 text-lg mt-3 max-w-2xl">マドリード自治大学・バルセロナ大学など名門校への留学方法と必要な準備を詳しく解説します。</p>
+      <h1 class="font-serif text-3xl md:text-4xl font-bold leading-tight mt-4">スペイン大学留学 方法・選び方</h1>
+      <p class="text-white/80 text-lg mt-3 max-w-2xl">正規留学と交換留学、それぞれの進め方と必要な準備を詳しく解説します。</p>
     </div>
   </section>
-  <section class="max-w-7xl mx-auto px-4 py-12">
-    {sorted.length > 0 ? (
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-        {sorted.map((a) => {
-          const parts = a.id.replace(/\.(md|mdx)$/, '').split('/');
-          const slug = parts[2] ?? a.data.cluster;
-          return <ArticleCard title={a.data.title} description={a.data.description} href={`/living/university/${slug}/`} pillar="living" image={a.data.image} imageAlt={a.data.imageAlt} heroImage={a.data.heroImage} heroImageAlt={a.data.heroImageAlt} pubDate={a.data.pubDate} />;
-        })}
-      </div>
-    ) : (
-      <p class="text-muted text-center py-12">記事を準備中です。近日公開予定。</p>
+
+  <section class="max-w-4xl mx-auto px-4 py-12">
+    <div class="border-l-4 border-primary bg-[#F0F4F8] px-5 py-4 mb-10 text-ink leading-relaxed font-medium rounded-r-lg">
+      本記事は大学留学の進め方に焦点を当てています。学生ビザの申請条件は<a href="/living/student-visa/" class="underline">「スペイン学生ビザ」</a>、費用の目安は<a href="/living/study-cost/" class="underline">「スペイン留学費用」</a>で解説しています。
+    </div>
+
+    <h2 id="two-paths" class="font-serif font-bold text-navy text-2xl mb-4">正規留学と交換留学の違い</h2>
+    <div class="overflow-x-auto mb-8">
+      <table class="w-full text-sm border-collapse">
+        <thead>
+          <tr class="bg-[#F0F4F8] text-navy text-left">
+            <th class="p-3 font-semibold border border-[#E8E8E6]"></th>
+            <th class="p-3 font-semibold border border-[#E8E8E6]">正規留学</th>
+            <th class="p-3 font-semibold border border-[#E8E8E6]">交換留学</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="border border-[#E8E8E6]"><td class="p-3 border border-[#E8E8E6] font-semibold text-navy">目的</td><td class="p-3 border border-[#E8E8E6] text-muted">現地大学の学位取得</td><td class="p-3 border border-[#E8E8E6] text-muted">在籍大学に在籍したまま一定期間学ぶ</td></tr>
+          <tr class="border border-[#E8E8E6]"><td class="p-3 border border-[#E8E8E6] font-semibold text-navy">出願窓口</td><td class="p-3 border border-[#E8E8E6] text-muted">志望大学に直接出願</td><td class="p-3 border border-[#E8E8E6] text-muted">在籍大学の国際交流課を通じて出願</td></tr>
+          <tr class="border border-[#E8E8E6]"><td class="p-3 border border-[#E8E8E6] font-semibold text-navy">単位・学位</td><td class="p-3 border border-[#E8E8E6] text-muted">現地大学の学位を取得</td><td class="p-3 border border-[#E8E8E6] text-muted">協定に基づき在籍大学の単位として認定される場合が多い</td></tr>
+          <tr class="border border-[#E8E8E6]"><td class="p-3 border border-[#E8E8E6] font-semibold text-navy">難易度</td><td class="p-3 border border-[#E8E8E6] text-muted">語学要件・入学審査が厳格</td><td class="p-3 border border-[#E8E8E6] text-muted">在籍大学の選考を通れば始めやすい</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h2 id="requirements" class="font-serif font-bold text-navy text-2xl mb-4">入学に必要な準備</h2>
+    <ul class="list-disc pl-6 text-muted leading-relaxed mb-8 space-y-1">
+      <li>語学力の証明（授業がスペイン語の場合はDELE B2相当以上を求める大学が多い）</li>
+      <li>高校・大学の卒業（見込み）証明書、成績証明書</li>
+      <li>学位・単位の同等性に関する手続き（正規留学の場合）</li>
+      <li>90日を超える在籍に必要な学生ビザの取得</li>
+    </ul>
+
+    <h2 id="visa" class="font-serif font-bold text-navy text-2xl mb-4">学生ビザとの関係</h2>
+    <p class="text-muted leading-relaxed mb-8">
+      90日を超えて大学に在籍する場合は学生ビザが必要です。学生ビザは在学期間と同じ長さ（最長1年、更新可）で発給され、週30時間までの就労が自動的に認められます。卒業後は、条件を満たせば最長24ヶ月の求職・起業ビザに切り替えることも可能です。詳しくは<a href="/living/student-visa/" class="text-primary hover:underline">「スペイン学生ビザ」</a>で解説しています。
+    </p>
+  </section>
+
+  <section class="max-w-4xl mx-auto px-4">
+    <FAQSection faq={faqItems} />
+  </section>
+
+  <section class="max-w-4xl mx-auto px-4">
+    <section class="my-10 border-t border-[#E8E8E6] pt-8">
+      <h2 class="font-sans font-bold text-xl text-navy mb-4">出典・参考情報</h2>
+      <ul class="space-y-2 text-sm">
+        <li><a href="https://www.sepie.es/" target="_blank" rel="noopener nofollow noreferrer" class="text-primary hover:underline font-medium">スペイン教育国際化事業団（SEPIE）</a> — 高等教育の国際化・単位認定を所管する公的機関</li>
+        <li><a href="https://www.boe.es/buscar/act.php?id=BOE-A-2024-24099" target="_blank" rel="noopener nofollow noreferrer" class="text-primary hover:underline font-medium">王令1155/2024号（スペイン官報 BOE）</a> — 学生ビザの根拠法令</li>
+      </ul>
+    </section>
+
+    <RelatedPages relatedPages={[
+      { title: 'スペイン留学 完全ガイド', href: '/living/study-spain/' },
+      { title: 'スペイン学生ビザ 完全ガイド', href: '/living/student-visa/' },
+      { title: 'スペイン留学費用', href: '/living/study-cost/' },
+      { title: 'スペイン語学学校の選び方', href: '/living/language-school/' },
+    ]} />
+
+    {author && <ArticleDisclaimer />}
+    {author && <AuthorBox author={author} />}
+
+    {sorted.length > 0 && (
+      <section class="mt-12 border-t border-[#E8E8E6] pt-10">
+        <h2 class="font-sans font-bold text-xl text-navy mb-5">関連記事</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {sorted.map((a) => {
+            const parts = a.id.replace(/\.(md|mdx)$/, '').split('/');
+            const slug = parts[2] ?? a.data.cluster;
+            return <ArticleCard title={a.data.title} description={a.data.description} href={`/living/university/${slug}/`} pillar="living" image={a.data.image} imageAlt={a.data.imageAlt} heroImage={a.data.heroImage} heroImageAlt={a.data.heroImageAlt} pubDate={a.data.pubDate} />;
+          })}
+        </div>
+      </section>
     )}
   </section>
+
   <LineBanner slim />
 </BaseLayout>

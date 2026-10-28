@@ -24,8 +24,20 @@ const livingFaq = [
   },
   {
     question: 'ビザや留学手続きの詳しいガイドはありますか？',
-    answer: '現在、順次公開準備を進めています。公開され次第、このカテゴリでご案内します。',
+    answer: 'はい。目的別のビザ一覧は<a href="/living/spain-visa/">「スペインビザ 種類・申請方法」</a>、留学は<a href="/living/study-spain/">「スペイン留学 完全ガイド」</a>、就労は<a href="/living/work-in-spain/">「スペインで働く方法」</a>で詳しく解説しています。',
   },
+];
+
+const visaStudyWorkGuides = [
+  { href: '/living/spain-visa/', title: 'スペインビザ 種類・申請方法', description: '学生・就労・ワーキングホリデーなど目的別のビザを一覧で比較' },
+  { href: '/living/study-spain/', title: 'スペイン留学 完全ガイド', description: '語学学校か大学か、費用やビザまで含めた留学の全体像' },
+  { href: '/living/student-visa/', title: 'スペイン学生ビザ', description: '申請条件・週30時間の就労ルール・卒業後の求職ビザ' },
+  { href: '/living/study-cost/', title: 'スペイン留学費用', description: '語学学校の授業料と生活費の都市別相場' },
+  { href: '/living/university/', title: 'スペイン大学留学', description: '正規留学と交換留学の違い、入学に必要な準備' },
+  { href: '/living/language-school/', title: 'スペイン語学学校の選び方', description: 'FEDELE認定校の見分け方とDELE試験ガイド' },
+  { href: '/living/work-in-spain/', title: 'スペインで働く方法', description: '求人の探し方、必要なスペイン語レベル、就職までの流れ' },
+  { href: '/living/work-visa/', title: 'スペイン就労ビザ', description: '雇用主経由の申請手続きと審査期間（最長3ヶ月）' },
+  { href: '/living/working-holiday/', title: 'スペイン ワーキングホリデー', description: '18〜30歳対象、日西協定に基づく条件と申請方法' },
 ];
 
 const otherPillars = [
@@ -102,6 +114,16 @@ const breadcrumbs = [
       スペインでの生活は、目的や滞在スタイルによって必要な準備が大きく異なる、奥深いテーマです。本カテゴリでは、実際にスペインで暮らすために役立つ情報を日本語で幅広くご紹介しています。
     </p>
 
+    <h2 id="visa-study-work" class="font-sans font-bold text-xl text-navy mb-5">ビザ・留学・就労ガイド</h2>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+      {visaStudyWorkGuides.map((g) => (
+        <a href={g.href} class="block bg-white rounded-xl border border-[#E8E8E6] hover:border-primary/30 hover:shadow-sm transition-all p-6">
+          <h3 class="font-sans font-bold text-navy mb-2">{g.title}</h3>
+          <p class="text-muted text-sm leading-relaxed">{g.description}</p>
+        </a>
+      ))}
+    </div>
+
     {categoryAnchors.length > 0 && (
       <>
         <h2 id="categories" class="font-sans font-bold text-xl text-navy mb-5">カテゴリ</h2>
@@ -152,7 +174,7 @@ const breadcrumbs = [
   <div class="max-w-[780px]">
     <h2 class="font-sans font-bold text-xl text-navy mb-4">このサイトのスペイン生活コンテンツについて</h2>
     <p class="text-muted leading-relaxed mb-6">
-      このカテゴリでは、実際にスペインで暮らす方々の声や、現地生活・留学に関するウェビナーの内容を紹介しています。ビザ・就労・留学費用など、手続き面の詳しいガイドは順次公開を進めています。
+      このカテゴリでは、実際にスペインで暮らす方々の声や、現地生活・留学に関するウェビナーの内容に加えて、ビザ・留学・就労の手続き面を2025年5月施行の最新の外国人規則（王令1155/2024号）に基づいて詳しく解説するガイド記事をご紹介しています。
     </p>
 
     <h2 class="font-sans font-bold text-xl text-navy mb-4">現地で暮らす人々の声を聞くなら</h2>

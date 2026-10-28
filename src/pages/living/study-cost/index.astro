@@ -1,10 +1,16 @@
 ---
-import { getCollection } from 'astro:content';
+import { getCollection, getEntry } from 'astro:content';
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import SEO from '../../../components/SEO.astro';
 import ArticleCard from '../../../components/ArticleCard.astro';
 import Breadcrumb from '../../../components/Breadcrumb.astro';
 import LineBanner from '../../../components/LineBanner.astro';
+import RelatedPages from '../../../components/RelatedPages.astro';
+import FAQSection from '../../../components/FAQSection.astro';
+import ArticleDisclaimer from '../../../components/ArticleDisclaimer.astro';
+import AuthorBox from '../../../components/AuthorBox.astro';
+
+const author = await getEntry('authors', 'david-recalde');
 
 const articles = await getCollection('articles', ({ data }) => !data.draft && data.pillar === 'living' && data.cluster === 'study-cost');
 const sorted = articles.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
@@ -14,28 +20,149 @@ const breadcrumbs = [
   { name: 'スペインに住む', url: '/living/' },
   { name: 'スペイン留学費用', url: '/living/study-cost/' },
 ];
+
+const courseCosts = [
+  { city: 'マドリード', price: '週 約135〜165ユーロ' },
+  { city: 'バルセロナ', price: '週 約135〜180ユーロ' },
+  { city: 'サラマンカ', price: '週 約145〜260ユーロ' },
+];
+
+const livingCosts = [
+  { city: 'マドリード／バルセロナ', rent: '約500〜800ユーロ（相部屋の一室、平均600ユーロ前後）', total: '約1,000〜1,400ユーロ' },
+  { city: 'バレンシア／グラナダ／セビリア／サラマンカ', rent: 'マドリード・バルセロナより2〜3割安い傾向', total: 'マドリード・バルセロナより2〜3割安い傾向' },
+];
+
+const faqItems = [
+  { question: 'スペイン留学の費用に「公式な相場」はありますか？', answer: 'ありません。学費・家賃・生活費はいずれも民間の学校・不動産市場が決める価格であり、政府機関が公定価格を発表しているわけではありません。本記事の金額は、複数の語学学校の公式サイトや住宅プラットフォームの情報を個別に確認した上での目安であり、年度や為替レートによって変動します。' },
+  { question: '語学学校の授業料は都市によってどれくらい差がありますか？', answer: '週20時間の集中コースを基準にすると、マドリード・バルセロナが週135〜180ユーロ程度、サラマンカは学校により145〜260ユーロと幅があります。同じ都市内でも学校によって差があるため、複数校を比較することをおすすめします。' },
+  { question: '生活費が一番安く抑えられる都市はどこですか？', answer: '一般的に、バレンシア・グラナダ・セビリア・サラマンカなどの地方都市は、マドリード・バルセロナに比べて2〜3割ほど生活費を抑えられる傾向があります。特に家賃の差が大きく、総予算を抑えたい場合は検討の価値があります。' },
+  { question: '留学費用にビザの手数料や保険料は含まれますか？', answer: '本記事の金額は学費と生活費（家賃・食費など）の目安であり、査証（ビザ）の申請手数料や海外旅行保険料は別途かかります。ビザの手続きについては「スペイン学生ビザ」のページを参照してください。' },
+];
 ---
 <BaseLayout>
-  <SEO slot="seo" title="スペイン留学費用" description="スペイン留学にかかる費用の詳細を解説します。学費・生活費・家賃・交通費・保険料・査証申請費など、月ごとの費用内訳を都市別にまとめており、留学の予算を立てる際の目安として役立つ具体的な金額を実例や節約のコツとともに詳しく紹介しています。留学前の参考にご活用ください。" canonical="https://supein.club/living/study-cost/" breadcrumbs={breadcrumbs} robots={sorted.length > 0 ? 'index, follow' : 'noindex, follow'} />
+  <SEO slot="seo" title="スペイン留学の費用完全ガイド｜語学学校の授業料と生活費の相場【2026年版】" description="スペイン留学にかかる費用を都市別に解説。語学学校の授業料（週単位）と、家賃を含む生活費の目安を、複数の学校・住宅情報を基にまとめました。留学の予算を立てる際の参考にしてください。" canonical="https://supein.club/living/study-cost/" breadcrumbs={breadcrumbs} robots="index, follow" />
+  <script
+    type="application/ld+json"
+    slot="head"
+    set:html={JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'FAQPage',
+      mainEntity: faqItems.map((item) => ({
+        '@type': 'Question',
+        name: item.question,
+        acceptedAnswer: { '@type': 'Answer', text: item.answer },
+      })),
+    })}
+  />
   <section class="bg-navy text-white py-12 px-4">
     <div class="max-w-4xl mx-auto">
       <Breadcrumb items={breadcrumbs} dark />
       <h1 class="font-serif text-3xl md:text-4xl font-bold leading-tight mt-4">スペイン留学費用 詳細内訳</h1>
-      <p class="text-white/80 text-lg mt-3 max-w-2xl">スペイン留学の月々の費用相場は10万〜20万円。都市・滞在形式別の費用内訳を詳しく紹介。</p>
+      <p class="text-white/80 text-lg mt-3 max-w-2xl">都市・滞在形式別の費用内訳を詳しく紹介。学費・生活費の実例から予算を立てましょう。</p>
     </div>
   </section>
-  <section class="max-w-7xl mx-auto px-4 py-12">
-    {sorted.length > 0 ? (
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-        {sorted.map((a) => {
-          const parts = a.id.replace(/\.(md|mdx)$/, '').split('/');
-          const slug = parts[2] ?? a.data.cluster;
-          return <ArticleCard title={a.data.title} description={a.data.description} href={`/living/study-cost/${slug}/`} pillar="living" image={a.data.image} imageAlt={a.data.imageAlt} heroImage={a.data.heroImage} heroImageAlt={a.data.heroImageAlt} pubDate={a.data.pubDate} />;
-        })}
-      </div>
-    ) : (
-      <p class="text-muted text-center py-12">記事を準備中です。近日公開予定。</p>
+
+  <section class="max-w-4xl mx-auto px-4 py-12">
+    <div class="border-l-4 border-primary bg-[#F0F4F8] px-5 py-4 mb-10 text-ink leading-relaxed font-medium rounded-r-lg">
+      本記事の金額は、複数の語学学校の公式サイトおよび住宅プラットフォームの情報を個別に確認した目安であり、留学費用そのものを公表する公的統計は存在しません。最新の正確な金額は、必ず志望校・物件の公式情報で確認してください。学生ビザの法的な条件は<a href="/living/student-visa/" class="underline">「スペイン学生ビザ」</a>で解説しています。
+    </div>
+
+    <h2 id="course-fees" class="font-serif font-bold text-navy text-2xl mb-4">語学学校の授業料（週20時間コース目安）</h2>
+    <div class="overflow-x-auto mb-8">
+      <table class="w-full text-sm border-collapse">
+        <thead>
+          <tr class="bg-[#F0F4F8] text-navy text-left">
+            <th class="p-3 font-semibold border border-[#E8E8E6]">都市</th>
+            <th class="p-3 font-semibold border border-[#E8E8E6]">週あたりの授業料目安</th>
+          </tr>
+        </thead>
+        <tbody>
+          {courseCosts.map((c) => (
+            <tr class="border border-[#E8E8E6]">
+              <td class="p-3 border border-[#E8E8E6] font-semibold text-navy">{c.city}</td>
+              <td class="p-3 border border-[#E8E8E6] text-muted">{c.price}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+    <p class="text-sm text-muted leading-relaxed mb-8">
+      長期コース（4週間以上など）を選ぶと、週あたりの単価が下がる学校が多くあります。学校選びのポイントは<a href="/living/language-school/" class="text-primary hover:underline">「スペイン語学学校」</a>で詳しく解説しています。
+    </p>
+
+    <h2 id="living-costs" class="font-serif font-bold text-navy text-2xl mb-4">生活費の目安</h2>
+    <div class="overflow-x-auto mb-8">
+      <table class="w-full text-sm border-collapse">
+        <thead>
+          <tr class="bg-[#F0F4F8] text-navy text-left">
+            <th class="p-3 font-semibold border border-[#E8E8E6]">都市</th>
+            <th class="p-3 font-semibold border border-[#E8E8E6]">家賃（相部屋の一室）</th>
+            <th class="p-3 font-semibold border border-[#E8E8E6]">月の総生活費目安</th>
+          </tr>
+        </thead>
+        <tbody>
+          {livingCosts.map((c) => (
+            <tr class="border border-[#E8E8E6]">
+              <td class="p-3 border border-[#E8E8E6] font-semibold text-navy">{c.city}</td>
+              <td class="p-3 border border-[#E8E8E6] text-muted">{c.rent}</td>
+              <td class="p-3 border border-[#E8E8E6] text-muted">{c.total}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+    <p class="text-sm text-muted leading-relaxed mb-8">
+      ※ 住宅プラットフォーム等の情報を基にした目安であり、公的な生活費統計ではありません。時期・物件・生活スタイルにより大きく変動します。
+    </p>
+
+    <h2 id="budget-tips" class="font-serif font-bold text-navy text-2xl mb-4">費用を抑えるポイント</h2>
+    <ul class="list-disc pl-6 text-muted leading-relaxed mb-8 space-y-1">
+      <li>マドリード・バルセロナ以外の都市（サラマンカ・グラナダ・セビリア・バレンシアなど）を検討する</li>
+      <li>長期コースを選び、週あたりの授業料単価を下げる</li>
+      <li>学生寮・ホームステイなど、学校が提携する宿泊先を活用する（個人契約より初期費用を抑えられる場合がある）</li>
+      <li>複数の学校から見積もりを取り、含まれるサービス（教材費・登録料など）の違いを比較する</li>
+    </ul>
+  </section>
+
+  <section class="max-w-4xl mx-auto px-4">
+    <FAQSection faq={faqItems} />
+  </section>
+
+  <section class="max-w-4xl mx-auto px-4">
+    <section class="my-10 border-t border-[#E8E8E6] pt-8">
+      <h2 class="font-sans font-bold text-xl text-navy mb-4">出典・参考情報</h2>
+      <p class="text-sm text-muted leading-relaxed mb-3">
+        留学費用そのものを公表する単一の公的機関は存在しないため、本記事は複数の語学学校公式サイトの料金表を個別に確認して作成しています。制度面については以下の公的機関を参照してください。
+      </p>
+      <ul class="space-y-2 text-sm">
+        <li><a href="https://tokio.cervantes.es/" target="_blank" rel="noopener nofollow noreferrer" class="text-primary hover:underline font-medium">セルバンテス文化センター東京（Instituto Cervantes）</a></li>
+        <li><a href="https://fedele.org/" target="_blank" rel="noopener nofollow noreferrer" class="text-primary hover:underline font-medium">FEDELE（スペイン語学校連盟）</a></li>
+      </ul>
+    </section>
+
+    <RelatedPages relatedPages={[
+      { title: 'スペイン留学 完全ガイド', href: '/living/study-spain/' },
+      { title: 'スペイン学生ビザ 完全ガイド', href: '/living/student-visa/' },
+      { title: 'スペイン語学学校の選び方', href: '/living/language-school/' },
+      { title: 'スペイン大学留学', href: '/living/university/' },
+    ]} />
+
+    {author && <ArticleDisclaimer />}
+    {author && <AuthorBox author={author} />}
+
+    {sorted.length > 0 && (
+      <section class="mt-12 border-t border-[#E8E8E6] pt-10">
+        <h2 class="font-sans font-bold text-xl text-navy mb-5">関連記事</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {sorted.map((a) => {
+            const parts = a.id.replace(/\.(md|mdx)$/, '').split('/');
+            const slug = parts[2] ?? a.data.cluster;
+            return <ArticleCard title={a.data.title} description={a.data.description} href={`/living/study-cost/${slug}/`} pillar="living" image={a.data.image} imageAlt={a.data.imageAlt} heroImage={a.data.heroImage} heroImageAlt={a.data.heroImageAlt} pubDate={a.data.pubDate} />;
+          })}
+        </div>
+      </section>
     )}
   </section>
+
   <LineBanner slim />
 </BaseLayout>

@@ -1,10 +1,16 @@
 ---
-import { getCollection } from 'astro:content';
+import { getCollection, getEntry } from 'astro:content';
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import SEO from '../../../components/SEO.astro';
 import ArticleCard from '../../../components/ArticleCard.astro';
 import Breadcrumb from '../../../components/Breadcrumb.astro';
 import LineBanner from '../../../components/LineBanner.astro';
+import RelatedPages from '../../../components/RelatedPages.astro';
+import FAQSection from '../../../components/FAQSection.astro';
+import ArticleDisclaimer from '../../../components/ArticleDisclaimer.astro';
+import AuthorBox from '../../../components/AuthorBox.astro';
+
+const author = await getEntry('authors', 'david-recalde');
 
 const articles = await getCollection('articles', ({ data }) => !data.draft && data.pillar === 'living' && data.cluster === 'working-holiday');
 const sorted = articles.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
@@ -14,9 +20,30 @@ const breadcrumbs = [
   { name: 'スペインに住む', url: '/living/' },
   { name: 'スペイン ワーキングホリデー', url: '/living/working-holiday/' },
 ];
+
+const faqItems = [
+  { question: 'スペインのワーキングホリデーは何歳まで申請できますか？', answer: '申請時点で18歳から30歳までの日本国籍者が対象です。日西二国間のワーキング・ホリデー制度に関する協定（2017年4月5日署名）に基づく制度です。' },
+  { question: 'ビザの有効期間と更新の可否は？', answer: '最長1年間で、更新はできません。日本はスペインにとって18番目のワーキングホリデー協定国です。' },
+  { question: '年間の受け入れ人数に上限はありますか？', answer: 'あります。日本側の外務省基礎データによると、年間の受け入れ枠は700人です。枠に達すると、その年度の新規申請は締め切られる可能性があるため、早めの準備をおすすめします。' },
+  { question: '申請にはいくら資金を用意する必要がありますか？', answer: '在日スペイン大使館の案内では、滞在全体でおおむね月額538ユーロ相当、渡航直後の最初の3ヶ月分としておよそ1,614ユーロ相当の資金証明が求められるとされています。金額は改定される可能性があるため、申請前に必ず在日スペイン大使館の公式情報で最新の金額を確認してください。' },
+  { question: 'ワーキングホリデーと就労ビザはどう違いますか？', answer: '就労ビザは雇用主が主導し、事前に雇用契約が必要です。ワーキングホリデーは日西協定に基づく若者向けの制度で、事前の雇用契約なしに渡航でき、現地で働きながら滞在できる点が異なります。ただし就労時間や職種に関する制約がある場合があるため、詳細は在日スペイン大使館の公式情報で確認してください。' },
+];
 ---
 <BaseLayout>
-  <SEO slot="seo" title="スペイン ワーキングホリデー" description="スペインのワーキングホリデービザの条件・申請方法・準備リストを解説します。実際の現地生活の様子や仕事の探し方、滞在中に注意すべきポイント、必要な費用の目安、ビザ更新の可否、帰国後のキャリアへの活かし方まで、体験談を交えながら詳しく紹介しています。" canonical="https://supein.club/living/working-holiday/" breadcrumbs={breadcrumbs} robots={sorted.length > 0 ? 'index, follow' : 'noindex, follow'} />
+  <SEO slot="seo" title="スペイン ワーキングホリデー完全ガイド｜日西協定の条件と申請方法【2026年版】" description="スペインのワーキングホリデー制度を解説。対象年齢（18〜30歳）、滞在期間（最長1年）、年間受け入れ枠（700人）など、日西二国間協定と外務省公式データに基づく情報を日本語で紹介します。" canonical="https://supein.club/living/working-holiday/" breadcrumbs={breadcrumbs} robots="index, follow" />
+  <script
+    type="application/ld+json"
+    slot="head"
+    set:html={JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'FAQPage',
+      mainEntity: faqItems.map((item) => ({
+        '@type': 'Question',
+        name: item.question,
+        acceptedAnswer: { '@type': 'Answer', text: item.answer },
+      })),
+    })}
+  />
   <section class="bg-navy text-white py-12 px-4">
     <div class="max-w-4xl mx-auto">
       <Breadcrumb items={breadcrumbs} dark />
@@ -24,18 +51,76 @@ const breadcrumbs = [
       <p class="text-white/80 text-lg mt-3 max-w-2xl">スペインのワーホリビザを取得して、働きながらスペイン文化を体験しよう。条件と準備を解説。</p>
     </div>
   </section>
-  <section class="max-w-7xl mx-auto px-4 py-12">
-    {sorted.length > 0 ? (
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-        {sorted.map((a) => {
-          const parts = a.id.replace(/\.(md|mdx)$/, '').split('/');
-          const slug = parts[2] ?? a.data.cluster;
-          return <ArticleCard title={a.data.title} description={a.data.description} href={`/living/working-holiday/${slug}/`} pillar="living" image={a.data.image} imageAlt={a.data.imageAlt} heroImage={a.data.heroImage} heroImageAlt={a.data.heroImageAlt} pubDate={a.data.pubDate} />;
-        })}
-      </div>
-    ) : (
-      <p class="text-muted text-center py-12">記事を準備中です。近日公開予定。</p>
+
+  <section class="max-w-4xl mx-auto px-4 py-12">
+    <div class="border-l-4 border-primary bg-[#F0F4F8] px-5 py-4 mb-10 text-ink leading-relaxed font-medium rounded-r-lg">
+      日本とスペインのワーキング・ホリデー制度に関する協定は、2017年4月5日に署名されました。スペインは、日本が制度を導入している18番目の国・地域です。
+    </div>
+
+    <h2 id="overview" class="font-serif font-bold text-navy text-2xl mb-4">制度の概要</h2>
+    <p class="text-muted leading-relaxed mb-8">
+      ワーキングホリデーは、両国の青少年が主に休暇を目的として相手国に入国し、その休暇の付随的な活動として就労を認める相互協定に基づく制度です。事前の雇用契約や雇用主によるスポンサーなしに渡航でき、現地で働きながら生活費を補いつつ、長期滞在・文化体験ができる点が、<a href="/living/work-visa/" class="text-primary hover:underline">通常の就労ビザ</a>との大きな違いです。
+    </p>
+
+    <h2 id="conditions" class="font-serif font-bold text-navy text-2xl mb-4">主な条件</h2>
+    <div class="overflow-x-auto mb-8">
+      <table class="w-full text-sm border-collapse">
+        <tbody>
+          <tr class="border border-[#E8E8E6]"><td class="p-3 border border-[#E8E8E6] font-semibold text-navy w-1/3">対象年齢</td><td class="p-3 border border-[#E8E8E6] text-muted">申請時点で18歳〜30歳の日本国籍者</td></tr>
+          <tr class="border border-[#E8E8E6]"><td class="p-3 border border-[#E8E8E6] font-semibold text-navy">滞在期間</td><td class="p-3 border border-[#E8E8E6] text-muted">最長1年間（更新不可）</td></tr>
+          <tr class="border border-[#E8E8E6]"><td class="p-3 border border-[#E8E8E6] font-semibold text-navy">年間受け入れ枠</td><td class="p-3 border border-[#E8E8E6] text-muted">700人（日本外務省の基礎データによる）</td></tr>
+          <tr class="border border-[#E8E8E6]"><td class="p-3 border border-[#E8E8E6] font-semibold text-navy">必要資金の目安</td><td class="p-3 border border-[#E8E8E6] text-muted">月額約538ユーロ相当、渡航直後3ヶ月分として約1,614ユーロ相当（在日スペイン大使館の案内。要最新確認）</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="text-sm text-muted leading-relaxed mb-8">
+      ※ 年間枠や必要資金の金額は年度によって見直される可能性があります。申請前に必ず在日スペイン大使館の公式サイトで最新の案内を確認してください。
+    </p>
+
+    <h2 id="how-to-apply" class="font-serif font-bold text-navy text-2xl mb-4">申請の流れ</h2>
+    <p class="text-muted leading-relaxed mb-8">
+      在日スペイン大使館にワーキングホリデー査証を申請します。有効なパスポート、査証申請書、証明写真、必要資金の証明書類、海外旅行保険の加入証明などが一般的に求められます。年間の受け入れ枠が決まっている制度のため、申請の時期や予約方法については、在日スペイン大使館の公式サイトで最新の案内を必ず確認してください。
+    </p>
+  </section>
+
+  <section class="max-w-4xl mx-auto px-4">
+    <FAQSection faq={faqItems} />
+  </section>
+
+  <section class="max-w-4xl mx-auto px-4">
+    <section class="my-10 border-t border-[#E8E8E6] pt-8">
+      <h2 class="font-sans font-bold text-xl text-navy mb-4">出典・参考情報</h2>
+      <ul class="space-y-2 text-sm">
+        <li><a href="https://www.mofa.go.jp/mofaj/press/release/press4_004479.html" target="_blank" rel="noopener nofollow noreferrer" class="text-primary hover:underline font-medium">日本国外務省 — 日西ワーキング・ホリデー制度に関する協定署名（報道発表）</a></li>
+        <li><a href="https://www.mofa.go.jp/mofaj/area/spain/data.html" target="_blank" rel="noopener nofollow noreferrer" class="text-primary hover:underline font-medium">日本国外務省 — スペイン基礎データ（年間受け入れ枠）</a></li>
+        <li><a href="https://www.mofa.go.jp/mofaj/toko/visa/working_h.html" target="_blank" rel="noopener nofollow noreferrer" class="text-primary hover:underline font-medium">日本国外務省 — ワーキング・ホリデー制度</a></li>
+        <li><a href="https://www.exteriores.gob.es/Embajadas/tokio/ja/Paginas/index.aspx" target="_blank" rel="noopener nofollow noreferrer" class="text-primary hover:underline font-medium">在日スペイン大使館（外務省公式）</a> — 必要資金・申請手続きの最新案内</li>
+      </ul>
+    </section>
+
+    <RelatedPages relatedPages={[
+      { title: 'スペインビザ 種類・申請方法', href: '/living/spain-visa/' },
+      { title: 'スペイン就労ビザ 完全ガイド', href: '/living/work-visa/' },
+      { title: 'スペインで働く方法 完全ガイド', href: '/living/work-in-spain/' },
+      { title: 'スペインでインターンシップをする方法', href: '/living/work-in-spain/internship-spain/' },
+    ]} />
+
+    {author && <ArticleDisclaimer />}
+    {author && <AuthorBox author={author} />}
+
+    {sorted.length > 0 && (
+      <section class="mt-12 border-t border-[#E8E8E6] pt-10">
+        <h2 class="font-sans font-bold text-xl text-navy mb-5">関連記事</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {sorted.map((a) => {
+            const parts = a.id.replace(/\.(md|mdx)$/, '').split('/');
+            const slug = parts[2] ?? a.data.cluster;
+            return <ArticleCard title={a.data.title} description={a.data.description} href={`/living/working-holiday/${slug}/`} pillar="living" image={a.data.image} imageAlt={a.data.imageAlt} heroImage={a.data.heroImage} heroImageAlt={a.data.heroImageAlt} pubDate={a.data.pubDate} />;
+          })}
+        </div>
+      </section>
     )}
   </section>
+
   <LineBanner slim />
 </BaseLayout>
