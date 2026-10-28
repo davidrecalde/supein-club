@@ -1,10 +1,16 @@
 ---
-import { getCollection } from 'astro:content';
+import { getCollection, getEntry } from 'astro:content';
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import SEO from '../../../components/SEO.astro';
 import ArticleCard from '../../../components/ArticleCard.astro';
 import Breadcrumb from '../../../components/Breadcrumb.astro';
 import LineBanner from '../../../components/LineBanner.astro';
+import RelatedPages from '../../../components/RelatedPages.astro';
+import FAQSection from '../../../components/FAQSection.astro';
+import ArticleDisclaimer from '../../../components/ArticleDisclaimer.astro';
+import AuthorBox from '../../../components/AuthorBox.astro';
+
+const author = await getEntry('authors', 'david-recalde');
 
 const articles = await getCollection('articles', ({ data }) => !data.draft && data.pillar === 'living' && data.cluster === 'work-visa');
 const sorted = articles.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
@@ -14,9 +20,30 @@ const breadcrumbs = [
   { name: 'スペインに住む', url: '/living/' },
   { name: 'スペイン就労ビザ', url: '/living/work-visa/' },
 ];
+
+const faqItems = [
+  { question: 'スペイン就労ビザは誰が申請しますか？', answer: '申請の主体は労働者本人ではなく「雇用主（スペイン企業）」です（王令1155/2024号 第74条）。雇用主が外国人事務所（Oficina de Extranjería）に労働・居住許可を申請し、許可が下りた後に労働者本人が居住地を管轄する在日スペイン大使館で査証を申請する、という2段階の手続きになります。' },
+  { question: '審査にはどれくらい時間がかかりますか？', answer: '雇用主による初回申請（通常の手続き）の場合、行政機関は最長3ヶ月以内に理由を付した決定を通知しなければなりません（王令1155/2024号 第77条6項）。3ヶ月以内に回答がない場合は「否定的沈黙」として申請が却下されたものとみなされるため、学生ビザの求職ビザなど一部手続きとは扱いが異なる点に注意してください。' },
+  { question: '就労ビザの取得条件は何ですか？', answer: '主な条件は、（1）スペインの雇用状況（国内労働市場の状況）が外国人の採用を認めていること、（2）労使双方が署名した雇用契約書があること、（3）雇用主に労働者へ給与を支払う経済的な能力があること、（4）労働者が職務に必要な職業資格・能力を有していること、（5）所定の手数料を納付していることです（王令1155/2024号 第74条）。' },
+  { question: 'ビザが許可されたら、スペイン到着後は何をすればよいですか？', answer: '就労ビザで入国後、社会保障（Seguridad Social）への加入手続きを行い、到着から1ヶ月以内に外国人identity番号カード（TIE）を申請する必要があります。' },
+  { question: '就労ビザとワーキングホリデーの違いは何ですか？', answer: '就労ビザは雇用主が主導し、事前に雇用契約が必要な「通常の雇用労働」の制度です。一方<a href="/living/working-holiday/">ワーキングホリデー</a>は、18〜30歳の日本国籍者を対象に、日西二国間協定に基づいて事前の雇用契約なしに渡航・現地での就労を認める別制度で、法的根拠も対象年齢も異なります。' },
+];
 ---
 <BaseLayout>
-  <SEO slot="seo" title="スペイン就労ビザ" description="スペインで働くための就労ビザの種類・取得条件・申請方法を解説。会社員・フリーランスといった働き方別の手続きの違いや、必要書類・審査期間の目安、申請の際に注意すべきポイント、更新手続きの流れ、不許可になりやすい典型的な例まで詳しく紹介します。" canonical="https://supein.club/living/work-visa/" breadcrumbs={breadcrumbs} robots={sorted.length > 0 ? 'index, follow' : 'noindex, follow'} />
+  <SEO slot="seo" title="スペイン就労ビザ完全ガイド｜雇用主経由の申請手続きと必要書類【2025年規則改正対応】" description="スペインの就労ビザ（雇用労働）の取得条件・申請の流れ・審査期間（最長3ヶ月）を、2025年5月施行の新しい外国人規則（王令1155/2024号）の条文に基づいて詳しく解説します。" canonical="https://supein.club/living/work-visa/" breadcrumbs={breadcrumbs} robots="index, follow" />
+  <script
+    type="application/ld+json"
+    slot="head"
+    set:html={JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'FAQPage',
+      mainEntity: faqItems.map((item) => ({
+        '@type': 'Question',
+        name: item.question,
+        acceptedAnswer: { '@type': 'Answer', text: item.answer.replace(/<[^>]+>/g, '') },
+      })),
+    })}
+  />
   <section class="bg-navy text-white py-12 px-4">
     <div class="max-w-4xl mx-auto">
       <Breadcrumb items={breadcrumbs} dark />
@@ -24,18 +51,84 @@ const breadcrumbs = [
       <p class="text-white/80 text-lg mt-3 max-w-2xl">スペインで仕事をするために必要な就労ビザの種類と取得条件を詳しく説明します。</p>
     </div>
   </section>
-  <section class="max-w-7xl mx-auto px-4 py-12">
-    {sorted.length > 0 ? (
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-        {sorted.map((a) => {
-          const parts = a.id.replace(/\.(md|mdx)$/, '').split('/');
-          const slug = parts[2] ?? a.data.cluster;
-          return <ArticleCard title={a.data.title} description={a.data.description} href={`/living/work-visa/${slug}/`} pillar="living" image={a.data.image} imageAlt={a.data.imageAlt} heroImage={a.data.heroImage} heroImageAlt={a.data.heroImageAlt} pubDate={a.data.pubDate} />;
-        })}
-      </div>
-    ) : (
-      <p class="text-muted text-center py-12">記事を準備中です。近日公開予定。</p>
+
+  <section class="max-w-4xl mx-auto px-4 py-12">
+    <div class="border-l-4 border-primary bg-[#F0F4F8] px-5 py-4 mb-10 text-ink leading-relaxed font-medium rounded-r-lg">
+      2025年5月20日施行の王令1155/2024号に基づく最新情報です。求人の探し方や転職活動そのものについては<a href="/living/work-in-spain/" class="underline">「スペインで働く方法」</a>で、短期の実務研修（プラクティカス）については<a href="/living/work-in-spain/internship-spain/" class="underline">別記事</a>で解説しています。
+    </div>
+
+    <h2 id="who-applies" class="font-serif font-bold text-navy text-2xl mb-4">申請するのは労働者ではなく雇用主</h2>
+    <p class="text-muted leading-relaxed mb-8">
+      スペインの就労ビザ（居住・労働許可）の最大の特徴は、<strong class="text-navy">申請手続きを雇用主（受け入れ企業）が行う</strong>という点です（王令1155/2024号 第72条・第74条）。労働者本人が先に申請するのではなく、採用を決めたスペイン企業が外国人事務所に許可を申請し、許可が下りてから労働者が査証を申請するという順序になります。
+    </p>
+
+    <h2 id="requirements" class="font-serif font-bold text-navy text-2xl mb-4">取得の主な条件</h2>
+    <p class="text-muted leading-relaxed mb-4">王令1155/2024号 第74条が定める主な要件は次のとおりです。</p>
+    <ul class="list-disc pl-6 text-muted leading-relaxed mb-8 space-y-1">
+      <li>国内の雇用状況（労働市場の状況）が、その職種での外国人雇用を認めていること</li>
+      <li>労使双方が署名した雇用契約書が存在すること</li>
+      <li>雇用主に、契約した給与を支払うだけの経済的な能力があること</li>
+      <li>労働者が、職務の遂行に必要な職業資格・技能を有していること</li>
+      <li>所定の手数料（タサ）が納付されていること</li>
+    </ul>
+
+    <h2 id="procedure" class="font-serif font-bold text-navy text-2xl mb-4">申請から就労開始までの流れ</h2>
+    <div class="overflow-x-auto mb-8">
+      <table class="w-full text-sm border-collapse">
+        <tbody>
+          <tr class="border border-[#E8E8E6]"><td class="p-3 border border-[#E8E8E6] font-semibold text-navy w-10">1</td><td class="p-3 border border-[#E8E8E6] text-muted">雇用主がスペイン国内の外国人事務所に居住・労働許可を申請</td></tr>
+          <tr class="border border-[#E8E8E6]"><td class="p-3 border border-[#E8E8E6] font-semibold text-navy">2</td><td class="p-3 border border-[#E8E8E6] text-muted">許可が下りたら、労働者が居住地を管轄する在日スペイン大使館で査証を申請</td></tr>
+          <tr class="border border-[#E8E8E6]"><td class="p-3 border border-[#E8E8E6] font-semibold text-navy">3</td><td class="p-3 border border-[#E8E8E6] text-muted">査証を受け取り、スペインに入国</td></tr>
+          <tr class="border border-[#E8E8E6]"><td class="p-3 border border-[#E8E8E6] font-semibold text-navy">4</td><td class="p-3 border border-[#E8E8E6] text-muted">社会保障（Seguridad Social）への加入手続き</td></tr>
+          <tr class="border border-[#E8E8E6]"><td class="p-3 border border-[#E8E8E6] font-semibold text-navy">5</td><td class="p-3 border border-[#E8E8E6] text-muted">入国から1ヶ月以内に外国人identity番号カード（TIE）を申請</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h2 id="processing-time" class="font-serif font-bold text-navy text-2xl mb-4">審査期間 — 最長3ヶ月、回答がなければ「却下」扱い</h2>
+    <p class="text-muted leading-relaxed mb-8">
+      通常の初回申請手続きでは、行政機関は<strong class="text-navy">最長3ヶ月以内</strong>に理由を付した決定を通知しなければなりません（王令1155/2024号 第77条6項）。注意したいのは、3ヶ月を過ぎても回答がない場合、学生ビザの求職ビザなど一部の手続きのように「許可されたとみなす」のではなく、<strong class="text-navy">「申請が却下されたものとみなす」（否定的沈黙）</strong>という点です。期限内に進捗が分からない場合は、早めに雇用主を通じて状況を確認することをおすすめします。
+    </p>
+  </section>
+
+  <section class="max-w-4xl mx-auto px-4">
+    <FAQSection faq={faqItems} />
+  </section>
+
+  <section class="max-w-4xl mx-auto px-4">
+    <section class="my-10 border-t border-[#E8E8E6] pt-8">
+      <h2 class="font-sans font-bold text-xl text-navy mb-4">出典・参考情報</h2>
+      <ul class="space-y-2 text-sm">
+        <li><a href="https://www.boe.es/buscar/act.php?id=BOE-A-2024-24099" target="_blank" rel="noopener nofollow noreferrer" class="text-primary hover:underline font-medium">王令1155/2024号（スペイン官報 BOE）</a> — 就労ビザを定める第72条・第74条・第77条</li>
+        <li><a href="https://www.inclusion.gob.es/web/migraciones/" target="_blank" rel="noopener nofollow noreferrer" class="text-primary hover:underline font-medium">スペイン包摂・社会保障・移民省</a> — 外国人就労の所管官庁</li>
+        <li><a href="https://www.sepe.es/" target="_blank" rel="noopener nofollow noreferrer" class="text-primary hover:underline font-medium">スペイン国立雇用局（SEPE）</a> — 国内雇用状況・求人情報の公的機関</li>
+      </ul>
+    </section>
+
+    <RelatedPages relatedPages={[
+      { title: 'スペインビザ 種類・申請方法', href: '/living/spain-visa/' },
+      { title: 'スペインで働く方法 完全ガイド', href: '/living/work-in-spain/' },
+      { title: 'スペイン ワーキングホリデー 完全ガイド', href: '/living/working-holiday/' },
+      { title: 'スペインでインターンシップをする方法', href: '/living/work-in-spain/internship-spain/' },
+      { title: 'スペイン学生ビザ 完全ガイド', href: '/living/student-visa/' },
+    ]} />
+
+    {author && <ArticleDisclaimer />}
+    {author && <AuthorBox author={author} />}
+
+    {sorted.length > 0 && (
+      <section class="mt-12 border-t border-[#E8E8E6] pt-10">
+        <h2 class="font-sans font-bold text-xl text-navy mb-5">関連記事</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {sorted.map((a) => {
+            const parts = a.id.replace(/\.(md|mdx)$/, '').split('/');
+            const slug = parts[2] ?? a.data.cluster;
+            return <ArticleCard title={a.data.title} description={a.data.description} href={`/living/work-visa/${slug}/`} pillar="living" image={a.data.image} imageAlt={a.data.imageAlt} heroImage={a.data.heroImage} heroImageAlt={a.data.heroImageAlt} pubDate={a.data.pubDate} />;
+          })}
+        </div>
+      </section>
     )}
   </section>
+
   <LineBanner slim />
 </BaseLayout>

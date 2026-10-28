@@ -157,15 +157,20 @@ Desde el 2026-09-15, toda creación de artículo de food pregunta explícitament
 | `/living/` | publicado (hub) | スペイン 生活 | 5k | xlsx (HOME) |
 | `/living/cervantes-webinar-experiencias-espana/` | publicado (artículo, insignia) | — | N/D | N/D |
 | `/living/i-need-spain/{8 episodios}/` | publicado (artículos) | — | N/D | N/D — serie de entrevistas, no formaba parte de ningún plan de keywords |
-| `/living/language-school/` | stub, sin contenido | スペイン 語学学校 | 5k (nodo Nivel3 `/language-schools/`: 15k) | xlsx |
-| `/living/spain-visa/` | stub, sin contenido | スペイン ビザ | 5k (nodo Nivel2 `/visa/`: 15k) | xlsx |
-| `/living/student-visa/` | stub, sin contenido | スペイン 学生ビザ | 5k (nodo Nivel3 `/student-visa/`: 15k) | xlsx |
-| `/living/study-cost/` | stub, sin contenido | スペイン 留学 費用 | 5k (nodo Nivel3 `/cost/`: 15k) | xlsx |
-| `/living/study-spain/` | stub, sin contenido | スペイン 留学 | 5k (nodo Nivel2 `/study/`: 20k) | xlsx |
-| `/living/university/` | stub, sin contenido | スペイン 大学 | 5k (nodo Nivel3 `/universities/`: 15k) | xlsx |
-| `/living/work-in-spain/` | stub, sin contenido | スペイン 就職 | 5k (nodo Nivel3 `/jobs/`: 15k) | xlsx |
-| `/living/work-visa/` | stub, sin contenido | スペイン 就労ビザ | 5k (nodo Nivel3 `/work-visa/`: 15k) | xlsx |
-| `/living/working-holiday/` | stub, sin contenido | スペイン ワーホリ | 5k (nodo Nivel3 `/working-holiday/`: 15k) | xlsx |
+| `/living/language-school/` | publicado (hand-coded) | スペイン 語学学校 | 5k (nodo Nivel3 `/language-schools/`: 15k) | xlsx |
+| `/living/spain-visa/` | publicado (hand-coded, hub de visados) | スペイン ビザ | 5k (nodo Nivel2 `/visa/`: 15k) | xlsx |
+| `/living/student-visa/` | publicado (hand-coded) | スペイン 学生ビザ | 5k (nodo Nivel3 `/student-visa/`: 15k) | xlsx |
+| `/living/study-cost/` | publicado (hand-coded) | スペイン 留学 費用 | 5k (nodo Nivel3 `/cost/`: 15k) | xlsx |
+| `/living/study-spain/` | publicado (hand-coded, hub de estudios) | スペイン 留学 | 5k (nodo Nivel2 `/study/`: 20k) | xlsx |
+| `/living/university/` | publicado (hand-coded) | スペイン 大学 | 5k (nodo Nivel3 `/universities/`: 15k) | xlsx |
+| `/living/work-in-spain/` | publicado (hand-coded, hub de trabajo) | スペイン 就職 | 5k (nodo Nivel3 `/jobs/`: 15k) | xlsx |
+| `/living/work-in-spain/internship-spain/` | publicado (artículo, sub de work-in-spain) | スペイン インターンシップ | N/D | N/D — cluster nuevo, no existe en xlsx; nace de investigación ad-hoc sobre prácticas/visado (2026-10-28) |
+| `/living/work-visa/` | publicado (hand-coded) | スペイン 就労ビザ | 5k (nodo Nivel3 `/work-visa/`: 15k) | xlsx |
+| `/living/working-holiday/` | publicado (hand-coded) | スペイン ワーホリ | 5k (nodo Nivel3 `/working-holiday/`: 15k) | xlsx |
+
+**Nota arquitectura living — páginas hand-coded, no MDX (2026-10-28):** estos 9 stubs no son páginas `getStaticPaths` genéricas sobre la colección `articles` — son archivos `.astro` individuales en `src/pages/living/{cluster}/index.astro`, cada uno con su propio hero/SEO ya scaffoldeado desde antes. El contenido real se escribió directamente en esos archivos (mismo patrón que `/about-us/` y `/food/spain-map/`), no como `.mdx` en `src/content/articles/`, porque el catch-all `src/pages/living/[cluster]/[article]/index.astro` excluye explícitamente los artículos cuyo slug coincide con el cluster (`article !== cluster`) — un `.mdx` insignia con ese slug nunca habría tenido ruta propia. El `robots` condicional (`index` solo si `getCollection(...).length > 0`) se cambió a `'index, follow'` fijo en los 9, y se retiraron de `src/config/noindexPaths.ts`. Única excepción real-MDX: `/living/work-in-spain/internship-spain/` es un sub-artículo (slug≠cluster) que sí usa el catch-all normal, con `heroImage` propio.
+
+Todo el contenido legal (tipos de visado, duración, requisitos, plazos de resolución) está sourceado a texto oficial: BOE (王令1155/2024号, en vigor desde 2025-05-20, sustituye al 557/2011; y Ley 14/2013 para el régimen de prácticas y el visado de búsqueda de empleo post-estudios), MOFA Japón (Working Holiday: edad 18-30, 1 año, cupo 700/año), y fedele.org/tokio.cervantes.es (FEDELE/DELE). Los precios de cursos de idiomas y coste de vida (`study-cost`) se marcan explícitamente como estimación de mercado, no dato oficial, al no existir estadística pública que los cubra.
 
 ### culture
 

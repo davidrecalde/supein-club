@@ -1,10 +1,16 @@
 ---
-import { getCollection } from 'astro:content';
+import { getCollection, getEntry } from 'astro:content';
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import SEO from '../../../components/SEO.astro';
 import ArticleCard from '../../../components/ArticleCard.astro';
 import Breadcrumb from '../../../components/Breadcrumb.astro';
 import LineBanner from '../../../components/LineBanner.astro';
+import RelatedPages from '../../../components/RelatedPages.astro';
+import FAQSection from '../../../components/FAQSection.astro';
+import ArticleDisclaimer from '../../../components/ArticleDisclaimer.astro';
+import AuthorBox from '../../../components/AuthorBox.astro';
+
+const author = await getEntry('authors', 'david-recalde');
 
 const articles = await getCollection('articles', ({ data }) => !data.draft && data.pillar === 'living' && data.cluster === 'work-in-spain');
 const sorted = articles.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
@@ -14,9 +20,29 @@ const breadcrumbs = [
   { name: 'スペインに住む', url: '/living/' },
   { name: 'スペインで働く・仕事を探す', url: '/living/work-in-spain/' },
 ];
+
+const faqItems = [
+  { question: 'スペインで働くにはまずビザが必要ですか？', answer: '日本国籍者がスペインで就労するには、原則としてビザが必要です。すでに内定がある場合は雇用主が主導する<a href="/living/work-visa/">就労ビザ</a>、18〜30歳なら<a href="/living/working-holiday/">ワーキングホリデー</a>、大学で学んだ分野の実務経験を積みたいなら<a href="/living/work-in-spain/internship-spain/">プラクティカス（実務研修）</a>など、状況に応じたビザの選択が最初のステップになります。全体像は<a href="/living/spain-visa/">「スペインビザ 種類・申請方法」</a>で整理しています。' },
+  { question: 'スペイン語力はどれくらい必要ですか？', answer: '職種によりますが、現地採用の一般的な求人の多くはDELE B2相当（中上級）以上のスペイン語力を求める傾向があります。英語が社内公用語のIT・多国籍企業では英語のみで働ける求人も一部ありますが、日常生活や同僚とのコミュニケーションを考えると、最低限B1程度は準備しておくことをおすすめします。' },
+  { question: 'リモートワークでスペインに住むことはできますか？', answer: '日本企業に雇用されたまま日本の給与でリモートワークを行う場合、スペインでの就労ビザの対象にはならない可能性があります。この場合は長期滞在ビザ（非就労目的の居住許可など）の枠組みを検討する必要があり、税務上の居住地の扱いも別途確認が必要です。個別の状況によって扱いが大きく異なるため、専門家や在日スペイン大使館への確認をおすすめします。' },
+  { question: '新卒・未経験でもスペインで就職できますか？', answer: '労働市場の状況次第ですが、現地の若年層と競合するため難易度は高めです。語学力に加えて専門スキルや日本との架け橋になれる強み（日本語教育、貿易、観光など）があると採用されやすくなります。大学の学位がある場合は<a href="/living/work-in-spain/internship-spain/">プラクティカス制度</a>を通じて実務経験を積んでから本採用を目指すルートも現実的な選択肢です。' },
+];
 ---
 <BaseLayout>
-  <SEO slot="seo" title="スペインで働く・仕事を探す" description="スペインで仕事を探す方法を解説。現地就職・リモートワーク・フリーランスなど働き方別の求人の探し方、就労ビザの必要性、実際の転職活動の流れや注意点、求められるスペイン語レベルの目安、給与相場や求人サイトの情報まで日本語でわかりやすく詳しく紹介します。" canonical="https://supein.club/living/work-in-spain/" breadcrumbs={breadcrumbs} robots={sorted.length > 0 ? 'index, follow' : 'noindex, follow'} />
+  <SEO slot="seo" title="スペインで働く方法 完全ガイド｜求人の探し方と就労までの流れ【2026年版】" description="スペインで仕事を探す方法を解説。現地就職・リモートワーク・フリーランスなど働き方別の求人の探し方、就労ビザの必要性、実際の転職活動の流れや注意点、求められるスペイン語レベルの目安、求人サイトの情報まで日本語でわかりやすく詳しく紹介します。" canonical="https://supein.club/living/work-in-spain/" breadcrumbs={breadcrumbs} robots="index, follow" />
+  <script
+    type="application/ld+json"
+    slot="head"
+    set:html={JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'FAQPage',
+      mainEntity: faqItems.map((item) => ({
+        '@type': 'Question',
+        name: item.question,
+        acceptedAnswer: { '@type': 'Answer', text: item.answer.replace(/<[^>]+>/g, '') },
+      })),
+    })}
+  />
   <section class="bg-navy text-white py-12 px-4">
     <div class="max-w-4xl mx-auto">
       <Breadcrumb items={breadcrumbs} dark />
@@ -24,18 +50,75 @@ const breadcrumbs = [
       <p class="text-white/80 text-lg mt-3 max-w-2xl">スペインで就職する方法からリモートワークで滞在する方法まで、現地での仕事探しを詳しく紹介。</p>
     </div>
   </section>
-  <section class="max-w-7xl mx-auto px-4 py-12">
-    {sorted.length > 0 ? (
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-        {sorted.map((a) => {
-          const parts = a.id.replace(/\.(md|mdx)$/, '').split('/');
-          const slug = parts[2] ?? a.data.cluster;
-          return <ArticleCard title={a.data.title} description={a.data.description} href={`/living/work-in-spain/${slug}/`} pillar="living" image={a.data.image} imageAlt={a.data.imageAlt} heroImage={a.data.heroImage} heroImageAlt={a.data.heroImageAlt} pubDate={a.data.pubDate} />;
-        })}
-      </div>
-    ) : (
-      <p class="text-muted text-center py-12">記事を準備中です。近日公開予定。</p>
+
+  <section class="max-w-4xl mx-auto px-4 py-12">
+    <div class="border-l-4 border-primary bg-[#F0F4F8] px-5 py-4 mb-10 text-ink leading-relaxed font-medium rounded-r-lg">
+      本記事は求人の探し方や就職活動そのものに焦点を当てています。ビザの法的な取得条件は<a href="/living/work-visa/" class="underline">「スペイン就労ビザ」</a>、ワーキングホリデーは<a href="/living/working-holiday/" class="underline">別記事</a>、学位を活かした実務研修は<a href="/living/work-in-spain/internship-spain/" class="underline">「スペインでインターンシップをする方法」</a>で詳しく解説しています。
+    </div>
+
+    <h2 id="ways-to-work" class="font-serif font-bold text-navy text-2xl mb-4">スペインで働く3つの方法</h2>
+    <ul class="list-disc pl-6 text-muted leading-relaxed mb-8 space-y-2">
+      <li><strong class="text-navy">現地企業への就職</strong> — スペイン企業と直接雇用契約を結ぶ、最も一般的な方法。雇用主が<a href="/living/work-visa/" class="text-primary hover:underline">就労ビザ</a>の手続きを主導します。</li>
+      <li><strong class="text-navy">リモートワーク</strong> — 日本やその他の国の企業に雇用されたまま、スペインに居住して働く方法。就労ビザの対象にならない場合があり、ビザ・税務の扱いを個別に確認する必要があります。</li>
+      <li><strong class="text-navy">フリーランス（自営業）</strong> — スペインで自営業者（autónomo）として登録して働く方法。就労ビザとは別の枠組みで、社会保障の自営業者向け制度への加入が必要です。</li>
+    </ul>
+
+    <h2 id="job-search" class="font-serif font-bold text-navy text-2xl mb-4">求人の探し方</h2>
+    <p class="text-muted leading-relaxed mb-4">
+      スペインの求人は、スペイン国立雇用局（SEPE）が運営する公的な求人情報のほか、民間の求人サイト・LinkedIn・各業界の専門エージェントなどを通じて探すのが一般的です。日本人向けには、日本語対応の転職エージェントや、在スペイン日本商工会議所などのネットワークも参考になります。
+    </p>
+
+    <h2 id="language-level" class="font-serif font-bold text-navy text-2xl mb-4">求められるスペイン語レベルの目安</h2>
+    <p class="text-muted leading-relaxed mb-8">
+      一般的な現地採用の求人では、DELE B2（中上級）相当以上のスペイン語力が求められる傾向があります。IT・多国籍企業など英語が社内公用語の職場では例外もありますが、同僚との日常的なコミュニケーションや行政手続きを考えると、最低限B1程度の準備は欠かせません。語学力の証明方法は<a href="/living/language-school/" class="text-primary hover:underline">「スペイン語学学校」</a>のDELE試験セクションで解説しています。
+    </p>
+
+    <h2 id="process" class="font-serif font-bold text-navy text-2xl mb-4">内定からビザ取得までの流れ</h2>
+    <ol class="list-decimal pl-6 text-muted leading-relaxed mb-8 space-y-1">
+      <li>求人への応募・選考・内定</li>
+      <li>雇用契約書の締結</li>
+      <li>雇用主が外国人事務所に<a href="/living/work-visa/" class="text-primary hover:underline">就労・居住許可</a>を申請</li>
+      <li>許可後、本人が在日スペイン大使館で査証を申請</li>
+      <li>渡航・社会保障加入・TIE申請</li>
+    </ol>
+  </section>
+
+  <section class="max-w-4xl mx-auto px-4">
+    <FAQSection faq={faqItems} />
+  </section>
+
+  <section class="max-w-4xl mx-auto px-4">
+    <section class="my-10 border-t border-[#E8E8E6] pt-8">
+      <h2 class="font-sans font-bold text-xl text-navy mb-4">出典・参考情報</h2>
+      <ul class="space-y-2 text-sm">
+        <li><a href="https://www.sepe.es/" target="_blank" rel="noopener nofollow noreferrer" class="text-primary hover:underline font-medium">スペイン国立雇用局（SEPE）</a> — 公的な求人情報・雇用統計</li>
+        <li><a href="https://www.boe.es/buscar/act.php?id=BOE-A-2024-24099" target="_blank" rel="noopener nofollow noreferrer" class="text-primary hover:underline font-medium">王令1155/2024号（スペイン官報 BOE）</a> — 就労・居住許可制度の根拠法令</li>
+      </ul>
+    </section>
+
+    <RelatedPages relatedPages={[
+      { title: 'スペインビザ 種類・申請方法', href: '/living/spain-visa/' },
+      { title: 'スペイン就労ビザ 完全ガイド', href: '/living/work-visa/' },
+      { title: 'スペイン ワーキングホリデー 完全ガイド', href: '/living/working-holiday/' },
+      { title: 'スペイン学生ビザ 完全ガイド', href: '/living/student-visa/' },
+    ]} />
+
+    {author && <ArticleDisclaimer />}
+    {author && <AuthorBox author={author} />}
+
+    {sorted.length > 0 && (
+      <section class="mt-12 border-t border-[#E8E8E6] pt-10">
+        <h2 class="font-sans font-bold text-xl text-navy mb-5">関連記事</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {sorted.map((a) => {
+            const parts = a.id.replace(/\.(md|mdx)$/, '').split('/');
+            const slug = parts[2] ?? a.data.cluster;
+            return <ArticleCard title={a.data.title} description={a.data.description} href={`/living/work-in-spain/${slug}/`} pillar="living" image={a.data.image} imageAlt={a.data.imageAlt} heroImage={a.data.heroImage} heroImageAlt={a.data.heroImageAlt} pubDate={a.data.pubDate} />;
+          })}
+        </div>
+      </section>
     )}
   </section>
+
   <LineBanner slim />
 </BaseLayout>

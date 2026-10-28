@@ -18,6 +18,11 @@
 // y la página /sitemap/ lean la misma fuente de verdad (antes la página
 // /sitemap/ enlazaba a mano a 13 de estas rutas vacías, desincronizada de
 // esta lista).
+// Auditoría 2026-10-28: /living/language-school/, /living/spain-visa/,
+// /living/student-visa/, /living/study-cost/, /living/study-spain/,
+// /living/university/, /living/work-in-spain/, /living/work-visa/ y
+// /living/working-holiday/ pasan a tener contenido real (robots
+// index,follow fijo, ya no condicional) — retiradas de la lista.
 export const NOINDEX_PATHS = [
   '/culture/facts/',
   '/food/restaurants-osaka/',
@@ -28,15 +33,6 @@ export const NOINDEX_PATHS = [
   '/language/self-study/',
   '/language/spanish-books/',
   '/language/spanish-phrases/',
-  '/living/language-school/',
-  '/living/spain-visa/',
-  '/living/student-visa/',
-  '/living/study-cost/',
-  '/living/study-spain/',
-  '/living/university/',
-  '/living/work-in-spain/',
-  '/living/work-visa/',
-  '/living/working-holiday/',
   '/travel/andalusia/',
   '/travel/best-season/',
   '/travel/canarias/',
