@@ -73,4 +73,19 @@ export const courseSequence = {
     "living/i-need-spain/mayuko-sasayama-sake",
     "living/i-need-spain/yu-kaneko-in-cadiz",
   ],
+  // ビザ・留学・就労ガイド（2026-10-28）。留学の流れ（概要→学生ビザ→費用→
+  // 大学／語学学校）のあとに就労の流れ（概要→就労ビザ→プラクティカス→
+  // ワーホリ）を続ける、読者の意思決定順に合わせた並び。
+  livingGuides: [
+    "living/spain-visa/spain-visa",
+    "living/study-spain/study-spain",
+    "living/student-visa/student-visa",
+    "living/study-cost/study-cost",
+    "living/university/university",
+    "living/language-school/language-school",
+    "living/work-in-spain/work-in-spain",
+    "living/work-visa/work-visa",
+    "living/work-in-spain/internship-spain",
+    "living/working-holiday/working-holiday",
+  ],
 };
