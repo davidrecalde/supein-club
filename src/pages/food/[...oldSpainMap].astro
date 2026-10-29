@@ -1,0 +1,37 @@
+---
+// Redirecciones 301 para las URLs antiguas /food/spain-map-{provincia}/{articulo}/
+// (con guion) de antes de anidar las subpáginas de ranking bajo
+// /food/spain-map/{provincia}/{articulo}/.
+//
+// Por qué esto y no public/_redirects: Cloudflare Pages solo honraba las
+// primeras ~105 reglas de TODO ese archivo en este proyecto (muy por debajo
+// del límite documentado), así que un bloque de 156 reglas estáticas
+// (52 provincias x 3 subpáginas) se cortaba a partir de la #106.
+//
+// Por qué esto y no functions/_middleware.ts: el adaptador @astrojs/cloudflare
+// genera un dist/_worker.js — en cuanto existe _worker.js, Cloudflare Pages
+// entra en "Advanced Mode" e IGNORA por completo cualquier functions/,
+// esté donde esté (confirmado con curl en preview y producción: ni el
+// redirect nuevo ni el de ?amp= que ya existía se ejecutaban nunca).
+//
+// Esta ruta sí funciona porque prerender=false la compila dentro de ese
+// mismo _worker.js (mismo patrón ya usado en src/pages/api/subscribe.ts).
+// Cloudflare Pages sirve primero cualquier archivo estático real que exista
+// bajo /food/ (páginas reales, sin tocar esta ruta) y solo cae aquí cuando
+// no hay ningún archivo estático que coincida.
+export const prerender = false;
+
+const { oldSpainMap } = Astro.params;
+const segments = (oldSpainMap ?? '').split('/').filter(Boolean);
+
+if (segments.length === 2) {
+  const match = segments[0].match(/^spain-map-([a-z-]+)$/);
+  if (match) {
+    const [, province] = match;
+    const article = segments[1];
+    return Astro.redirect(`/food/spain-map/${province}/${article}/`, 301);
+  }
+}
+
+return new Response(null, { status: 404 });
+---
