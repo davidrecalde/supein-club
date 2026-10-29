@@ -37,7 +37,13 @@ export default defineConfig({
   integrations: [
     mdx(),
     sitemap({
-      filter: (page) => !NOINDEX_PATHS.some((path) => page.endsWith(path)),
+      // Las páginas 2+ de /articles/ (paginación del listado de novedades)
+      // son noindex,follow por diseño (ver src/pages/articles/[...page].astro)
+      // pero no son una ruta estática, así que no pueden vivir en
+      // NOINDEX_PATHS — se filtran aparte con esta regex.
+      filter: (page) =>
+        !NOINDEX_PATHS.some((path) => page.endsWith(path)) &&
+        !/\/articles\/\d+\/$/.test(page),
     }),
     pagefindIntegration(),
   ],
