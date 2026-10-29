@@ -20,9 +20,12 @@ entities:
   - "諸聖人の日"
   - "バルセロナ"
   - "ガリシア"
+  - "パンテオン"
+  - "ディア・デ・ムエルトス"
+  - "ドン・フアン・テノリオ"
 relatedArticles:
   - "culture/traditions"
-readingTime: 6
+readingTime: 11
 sources:
   - label: "donquijote.org｜All Saints' Day in Spain"
     url: "https://www.donquijote.org/spanish-culture/holidays/all-saints-day/"
@@ -32,13 +35,35 @@ sources:
     url: "https://barcelonasecreta.com/historia-origen-castanada-panellets-tots-sants-barcelona-catalunya/"
   - label: "diarimes.com｜Los orígenes de los panellets"
     url: "https://www.diarimes.com/es/actualidad/cataluna/231026/els-origens-dels-panellets-dolc-estrella-castanyada-tots-sants_136209.html"
+  - label: "newadvent.org｜Catholic Encyclopedia: Pope Boniface IV"
+    url: "https://www.newadvent.org/cathen/02660c.htm"
+  - label: "newadvent.org｜Catholic Encyclopedia: All Saints' Day"
+    url: "https://www.newadvent.org/cathen/01315a.htm"
+  - label: "vaticanstate.va｜November 1: All Saints' Day"
+    url: "https://www.vaticanstate.va/en/state-and-government/general-informations/saint-of-the-day/2959-november-1-all-saints-day.html"
+  - label: "newadvent.org｜Catholic Encyclopedia: St. Odilo"
+    url: "https://www.newadvent.org/cathen/11207c.htm"
+  - label: "ich.unesco.org｜Indigenous festivity dedicated to the dead"
+    url: "https://ich.unesco.org/en/RL/indigenous-festivity-dedicated-to-the-dead-00054"
+  - label: "cope.es｜Por qué se representa Don Juan Tenorio en Todos los Santos"
+    url: "https://www.cope.es/actualidad/sociedad/historia/noticias/motivo-famosa-obra-teatro-espanola-asocia-dia-todos-santos-fieles-difuntos-atmosfera-fantasmal-20251031_3243425.html"
+  - label: "gobiernodecanarias.org｜CanariWiki: Día de los Finaos"
+    url: "https://www3.gobiernodecanarias.org/medusa/wiki/index.php?title=D%C3%ADa_de_los_Finaos"
+  - label: "elcorreogallego.es｜Samaín: el origen de Halloween"
+    url: "https://www.elcorreogallego.es/7-dias/samain-el-origen-de-halloween-PD12449666"
+  - label: "enfoques.gal｜Galicia se reencuentra con sus raíces celtas en el Samaín"
+    url: "https://enfoques.gal/cultura/galicia-se-reencuentra-con-sus-raices-celtas-en-el-samain/"
 faq:
   - question: "11月にスペインで開催される主な行事は何ですか？"
     answer: "10月31日から11月1日にかけて行われる秋の伝統行事「カスタニャーダ」（カタルーニャ）・「マゴスト」（ガリシア）と、故人を偲ぶ全国的な祝日「諸聖人の日」（11月1日）が代表的です。大規模な観光祭りが少ない、比較的静かな時期でもあります。"
   - question: "カスタニャーダ・マゴストとは何ですか？"
     answer: "寒さが深まる10月末から11月頭にかけて、焼き栗（カスターニャ）を食べて秋の訪れを祝う伝統行事です。カタルーニャでは「カスタニャーダ」と呼ばれ、焼き栗・焼きサツマイモ・マジパン菓子「パネイェッツ」・甘口のモスカテルワインが定番。ガリシアでは「マゴスト」と呼ばれ、焼き栗を新酒のワインやチョリソと一緒に楽しみます。アストゥリアスでは甘口のシドラ（リンゴ酒）が添えられます。"
+  - question: "パネイェッツの材料は何ですか？"
+    answer: "基本はアーモンドパウダーと砂糖で作るマジパン生地です。一口大に丸めて松の実をまとわせ、卵液を塗って短時間オーブンで焼き上げる「ピニョンス（松の実）」タイプが定番ですが、ココナッツやチョコレート、マルメロのジャム、コーヒー風味など店によってさまざまなバリエーションがあります。"
   - question: "諸聖人の日とは何ですか？"
     answer: "11月1日、全国的な祝日です。多くの家族が墓地を訪れ、花を供えて故人を偲びます。この時期の菓子店には「ウエソス・デ・サント（聖人の骨）」と呼ばれるマジパン菓子や「ブニュエロス・デ・ビエント」という揚げ菓子が並び、季節の風物詩となっている。"
+  - question: "諸聖人の日の起源は何ですか？"
+    answer: "609年、教皇ボニファティウス4世がローマのパンテオンを聖母マリアとすべての殉教者に捧げる教会として奉献したのが起点とされます。8〜9世紀にかけて教皇グレゴリウス3世・4世が11月1日を諸聖人の日として定着させ、10〜11世紀にはクリュニー修道院の院長オディロが11月2日を死者のための祈りの日としました。スペインの植民地化を通じて中南米にも伝わり、メキシコの「ディア・デ・ムエルトス」のような独自の文化に発展しました。"
 ---
 
 import FestivalMap from '../../../../components/FestivalMap.astro';
@@ -54,11 +79,39 @@ import FestivalMap from '../../../../components/FestivalMap.astro';
 
 ## カスタニャーダ／マゴスト（10月31日〜11月1日）
 
-寒さが深まる10月末から11月頭にかけて、焼き栗（カスターニャ）を食べて秋の訪れを祝う、スペイン各地に伝わる素朴な伝統行事。起源は300年ほど前、教会の鐘で死者への祈りを呼びかけた際、人々が寒さをしのぐために焼き栗を食べたことに遡るとされる。
+寒さが深まる10月末から11月頭にかけて、焼き栗（カスターニャ）を食べて秋の訪れを祝う、スペイン各地に伝わる素朴な伝統行事。起源は300年ほど前、教会の鐘で死者への祈りを呼びかけた際、人々が寒さをしのぐために焼き栗を食べたことに遡るとされる。専用の焙煎器で栗を焼くスタイルは、何世代にもわたって街角で受け継がれてきた。
+
+<figure>
+<img src="/castanero-maquina-historica.webp" alt="スペインの街角にあった伝統的な栗焼き器、白黒写真" class="img-rounded-80" />
+<figcaption>街角の栗焼き器</figcaption>
+</figure>
+
+### 何世紀も、スペインの秋を支えてきた栗
+
+栗は寒さに強く、収穫期も長いことから、ジャガイモやトウモロコシが広く普及する以前のスペインでは、貴重な保存食として重宝されてきた。ガリシアやカスティーリャ・イ・レオンなど栗の産地では、何世紀にもわたって人々の冬の暮らしを支えてきた食材のひとつだ。
+
+<figure>
+<img src="/castano-otono-espana.webp" alt="黄金色に色づいた栗の木、スペインの秋" class="img-rounded-80" />
+<figcaption>栗の木、秋</figcaption>
+</figure>
 
 [カタルーニャ](/food/spain-map/barcelona/)では「カスタニャーダ」と呼ばれ、焼き栗や焼きサツマイモに加え、マジパン菓子「パネイェッツ」、甘口のモスカテルワインが定番だ。[ガリシア](/food/spain-map/la-coruna/)では「マゴスト」と呼ばれ、焼き栗を新酒のワインやチョリソと一緒に楽しむ。アストゥリアス地方では、甘口のシドラ（リンゴ酒）が添えられることが多い。
 
+### パネイェッツ――もうひとつの定番菓子
+
 主役の菓子「パネイェッツ」は、18世紀のカタルーニャの修道院で、死者への供物として作られたのが始まりと伝えられる。同世紀末のバルセロナでは、カール通りやボケリア通り周辺に焼き栗とパネイェッツの屋台が立ち並び、大きな賑わいを見せていたという。
+
+<figure>
+<img src="/monasterio-origen-panellets.webp" alt="カタルーニャの修道院の回廊、パネイェッツ発祥の地とされる" class="img-rounded-80" />
+<figcaption>パネイェッツ発祥の地とされるカタルーニャの修道院</figcaption>
+</figure>
+
+基本の生地は、アーモンドパウダーと砂糖で作るマジパン。一口大に丸めて松の実をまとわせ、卵液を塗って短時間オーブンで焼き上げる「ピニョンス（松の実）」タイプが最も定番だ。このほか、ココナッツやチョコレート、マルメロのジャム、コーヒー風味など、店によってさまざまなバリエーションがある。
+
+<figure>
+<img src="/panellets-pinones.webp" alt="松の実をまとわせて焼き上げたパネイェッツ" class="img-rounded-80" />
+<figcaption>松の実をまとわせたパネイェッツ</figcaption>
+</figure>
 
 ---
 
@@ -66,7 +119,31 @@ import FestivalMap from '../../../../components/FestivalMap.astro';
 
 11月1日、全国的な祝日「諸聖人の日（トドス・ロス・サントス）」。多くの家族が墓地を訪れ、花を供えて故人を偲ぶ、スペインで最も伝統的な宗教行事のひとつだ。
 
+### 起源：ローマのパンテオンから
+
+諸聖人の日のルーツは、古代ローマにまで遡るとされる。609年（610年説もある）、教皇ボニファティウス4世はビザンツ皇帝フォカスの許可を得て、ローマの神殿パンテオンを聖母マリアとすべての殉教者に捧げる教会として奉献した。異教の神殿がキリスト教会に転用された最初期の例のひとつとされ、この出来事が「すべての聖人」を祝う習慣の起点になったと考えられている。
+
+### キリスト教の祝日として定着するまで
+
+8世紀、教皇グレゴリウス3世はローマのサン・ピエトロ大聖堂に諸聖人の聖遺物を祀る礼拝堂を設けた。9世紀には教皇グレゴリウス4世が11月1日の諸聖人の日を教会全体の祝日に定めたとされ、835年にはフランク王国の皇帝ルートヴィヒ敬虔王がこの日を帝国全土の祝日としたことで、ヨーロッパ各地に定着していった。
+
+### 「死者の日」（11月2日）との結びつき
+
+11月2日の「死者の日（ディア・デ・ディフントス）」は、10世紀末から11世紀はじめにかけて、フランスのクリュニー修道院の院長オディロが死者のための祈りの日として定めたのが始まりとされる。この習慣はやがて西方教会全体に広まり、14世紀までにはローマでも祝われるようになった。スペインで墓地に花を供えて故人を偲ぶ習慣は、この「死者の日」の伝統とも深く結びついている。
+
+### スペインから新大陸へ
+
+大航海時代以降、スペインはカトリックの諸聖人の日・死者の日の習慣を中南米にもたらした。現地の先住民がもともと持っていた死者を敬う儀礼と混ざり合い、各地で独自の形に発展していく。メキシコの「ディア・デ・ムエルトス（死者の日）」はその代表例で、2008年にはユネスコの無形文化遺産に登録された。ただし、その起源をめぐっては、先住民の古い伝統を強く引き継いだとする説と、スペイン由来の習慣が20世紀に再構築されたとする説があり、研究者の間でも見解が分かれている。
+
+### スペイン各地の過ごし方
+
 この時期、街の菓子店には「ウエソス・デ・サント（聖人の骨）」と呼ばれる筒状のマジパン菓子や、「ブニュエロス・デ・ビエント」という中にクリームを詰めた揚げ菓子が並び、秋の風物詩として親しまれている。
+
+スペイン各地の劇場では、この時期に戯曲『ドン・フアン・テノリオ』を上演する伝統がある。亡霊と対峙した主人公が最後に赦しを得て救われるという物語が、墓地や夜の雰囲気と重なることから、19世紀以来、諸聖人の日前後の定番演目として親しまれてきた。
+
+[カナリア諸島](/food/spain-map/santa-cruz-de-tenerife/)では「フィナオス」と呼ばれる独自の風習が残る。栗やナッツを囲みながら夜を明かし、亡くなった家族の思い出を語り合う「フィナオスの夜」が伝統的に行われてきた。
+
+[ガリシア](/food/spain-map/la-coruna/)では近年、ケルトに起源を持つとされる「サマイン」を復興させる動きが広がっている。古代から連続して受け継がれてきた祭りというより、ここ数十年で地域のルーツを見直す形で再評価されてきた祭りだ。
 
 ---
 
