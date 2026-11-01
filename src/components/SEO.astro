@@ -319,20 +319,48 @@ if (type === 'article' && article) {
       },
     });
   } else if (schemaType === 'course') {
-    graph.push({
-      '@type': 'Course',
-      name: title,
+    // STEP de aprendizaje de español (ruta A1-C2): Article + LearningResource
+    // combinados, para no perder autor/imagen/fechas que el antiguo nodo
+    // "Course" suelto no llevaba.
+    const learningResourceTypeMap: Record<string, string> = {
+      'hub-nivel': 'レベル別学習ガイド',
+      'spoke-gramatica': '文法レッスン',
+      'spoke-vocabulario': '語彙リスト',
+      'spoke-pronunciacion': '発音ガイド',
+      'spoke-plan': '学習計画',
+    };
+    // Excepción: .../subjunctive.mdx usa articleRole "puente" pero es
+    // contenido de gramática (mismo caso especial que roleBadge() en
+    // src/pages/language/index.astro).
+    const isSubjunctiveBridge = article.id.endsWith('/subjunctive');
+    const articleObj: Record<string, unknown> = {
+      '@type': ['Article', 'LearningResource'],
+      '@id': `${canonical}#article`,
+      headline: title.slice(0, 110),
       description,
       url: canonical,
-      inLanguage: 'ja',
-      educationalLevel: article.data.courseData?.educationalLevel ?? 'Beginner',
-      provider: {
-        '@type': 'EducationalOrganization',
-        '@id': `${siteUrl}/#educational-organization`,
-        name: article.data.courseData?.provider ?? 'スペイン倶楽部',
-        url: siteUrl,
-      },
-    });
+      datePublished: article.data.pubDate.toISOString(),
+      dateModified: (article.data.updatedDate ?? article.data.pubDate).toISOString(),
+      author: articleAuthor,
+      publisher: { '@id': `${siteUrl}/#organization` },
+      image: articleImage,
+      inLanguage: lang === 'es' ? 'es' : 'ja',
+      isPartOf: { '@id': `${siteUrl}/#website` },
+      mainEntityOfPage: `${canonical}#webpage`,
+      about: { '@type': 'Thing', name: 'スペイン語' },
+      educationalLevel: article.data.courseData?.educationalLevel ?? article.data.level?.toUpperCase(),
+      teaches: title,
+      learningResourceType: isSubjunctiveBridge
+        ? '文法レッスン'
+        : (learningResourceTypeMap[article.data.articleRole ?? ''] ?? '学習コンテンツ'),
+    };
+    if (article.data.readingTime) {
+      articleObj.timeRequired = `PT${article.data.readingTime}M`;
+    }
+    if (article.data.tags && article.data.tags.length > 0) {
+      articleObj.keywords = article.data.tags.join(',');
+    }
+    graph.push(articleObj);
   } else if (schemaType === 'restaurant') {
     graph.push({
       '@type': ['Restaurant', 'LocalBusiness'],
@@ -434,6 +462,24 @@ if (faqItems && faqItems.length > 0) {
         '@type': 'Answer',
         text: item.answer,
       },
+    })),
+  });
+}
+
+// 6b. Quiz (if article has quiz or levelTest questions)
+const quizItems = article?.data.quiz ?? article?.data.levelTest;
+if (quizItems && quizItems.length > 0) {
+  graph.push({
+    '@type': 'Quiz',
+    '@id': `${canonical}#quiz`,
+    about: { '@type': 'Thing', name: title },
+    hasPart: quizItems.map((q, i) => ({
+      '@type': 'Question',
+      '@id': `${canonical}#quiz-${i + 1}`,
+      eduQuestionType: 'Multiple choice',
+      text: q.question,
+      suggestedAnswer: q.options.map((opt: string) => ({ '@type': 'Answer', text: opt })),
+      acceptedAnswer: { '@type': 'Answer', text: q.options[q.correctIndex] },
     })),
   });
 }
