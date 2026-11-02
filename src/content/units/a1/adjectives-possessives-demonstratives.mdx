@@ -5,89 +5,250 @@ levelName: "Acceso"
 slug: "adjectives-possessives-demonstratives"
 url: "/language/learn-spanish/a1/adjectives-possessives-demonstratives/"
 existing: false
-title: "形容詞・所有詞・指示詞"
+title: "スペイン語の形容詞・所有詞・指示詞｜性数一致と este・ese・aquel"
 shortTitle: "形容詞・所有詞・指示詞"
-titleEs: "adjetivos, posesivos y demostrativos"
-grammar: ["concordancia","posesivos","demostrativos"]
+titleEs: "Adjetivos, posesivos y demostrativos"
+description: "スペイン語の形容詞の性数一致と語順、mi・tu・su などの所有詞、este・ese・aquel の指示詞を基本から解説。買い物で人や物を説明し、選ぶときの言い方を、日本人が間違えやすい点と練習問題つきで学べます。"
+grammar: ["concordancia del adjetivo", "posesivos", "demostrativos"]
 tenses: []
-functions: []
-canDo: []
-vocabulary: []
+functions: ["人や物の特徴を説明する", "持ち主を言う", "近くの物・遠くの物を指す"]
+canDo:
+  - "人や物の色・大きさ・性格などを、形を合わせて説明できる"
+  - "「私の」「あなたの」など、持ち主を言える"
+  - "お店で「これ」「それ」「あれ」を指して、物を選べる"
+vocabulary:
+  # rank = «Rango frec.» del diccionario de frecuencias del CORPES XXI (RAE). Lo escribe
+  # npm run vocab:rank -- --write; lo que no es lema del diccionario va sin rank, al final.
+  - { es: "grande", ja: "大きい", rank: 55, example: "La Plaza Mayor es muy grande." }
+  - { es: "pequeño", ja: "小さい（女性形 pequeña）", rank: 274, example: "Mina vive en un piso pequeño." }
+  - { es: "bonito", ja: "きれいな・すてきな（女性形 bonita）", rank: 2959, example: "Este abanico es muy bonito." }
+  - { es: "nuevo", ja: "新しい（女性形 nueva）", rank: 45, example: "Mina tiene una maleta nueva." }
+  - { es: "caro", ja: "（値段が）高い（女性形 cara）", rank: 2596, example: "Esta camiseta es un poco cara." }
+  - { es: "barato", ja: "安い（女性形 barata）", rank: 2808, example: "Los recuerdos de esta tienda son baratos." }
+  - { es: "rojo", ja: "赤い（女性形 roja）", rank: 1232, example: "Quiero la bolsa roja." }
+  - { es: "azul", ja: "青い", rank: 2130, example: "Las camisetas azules son bonitas." }
+  - { es: "blanco", ja: "白い（女性形 blanca）", rank: 953, example: "Mina lleva una camiseta blanca." }
+  - { es: "negro", ja: "黒い（女性形 negra）", rank: 888, example: "¿Tiene esta camiseta en negro?" }
+  - { es: "la camiseta", ja: "Tシャツ", rank: 3009, la: "la playera", example: "¿Cuánto cuesta esta camiseta?" }
+  - { es: "la bolsa", ja: "袋・バッグ", rank: 1766, example: "¿Necesita una bolsa?" }
+  - { es: "el regalo", ja: "プレゼント・おみやげ", rank: 2848, example: "Es un regalo para mi madre." }
+  - { es: "el abanico", ja: "扇子", rank: 6110, example: "Mina compra un abanico para su madre." }
 verbs: []
 duration: 40
 prev: 5
 next: 7
-related: [5,7,12]
+related: [5, 7, 12]
 cast: ["mina"]
-audio: []
+audio:
+  - "Quiero aquel abanico rojo. ¿Cuánto cuesta?"
+  - "¿Cuánto cuesta esta camiseta?"
+  - "Es un regalo para mi madre."
+  - "¿Qué es esto?"
+  - "amarillo"
+  - "la calle"
 youtubeId: ""
-quiz: []
 draft: true
 updated: "2026-11-02"
+quiz:
+  - question: "「赤いスーツケース」。正しいのは？"
+    options: ["una roja maleta", "una maleta rojo", "una maleta roja"]
+    correctIndex: 2
+    explanation: "形容詞はふつう名詞の後ろに置き、名詞の性に合わせます。maleta は女性名詞なので roja です。"
+  - question: "「白いTシャツ（複数）」。正しいのは？"
+    options: ["las camisetas blancas", "las camisetas blanco", "las blancas camisetas"]
+    correctIndex: 0
+    explanation: "女性・複数の名詞には、形容詞も女性・複数の blancas を合わせます。"
+  - question: "「大きな都市」。正しいのは？"
+    options: ["una ciudad granda", "una grande ciudad", "una ciudad grande"]
+    correctIndex: 2
+    explanation: "grande は -e で終わるので、男性も女性も同じ形です。名詞の前に置くときは gran になります（una gran ciudad）。"
+  - question: "「私のスーツケース（複数）」。正しいのは？"
+    options: ["mi maletas", "mis maletas", "mías maletas"]
+    correctIndex: 1
+    explanation: "所有詞は、持ち主ではなく持ち物の数に合わせます。maletas は複数なので mis です。"
+  - question: "「私たちの家」。正しいのは？"
+    options: ["nuestra casa", "nuestro casa", "nuestras casa"]
+    correctIndex: 0
+    explanation: "nuestro は持ち物の性と数に合わせます。casa は女性・単数なので nuestra です。"
+  - question: "話し手のすぐそばにある「この本」は？"
+    options: ["este libro", "ese libro", "aquel libro"]
+    correctIndex: 0
+    explanation: "este は話し手の近く（この）、ese は聞き手の近く（その）、aquel はどちらからも遠く（あの）です。"
+  - question: "遠くに見える「あの山」は？"
+    options: ["esa montaña", "aquella montaña", "esta montaña"]
+    correctIndex: 1
+    explanation: "どちらからも遠い物は aquel。montaña は女性名詞なので aquella です。"
+  - question: "名前のわからない物を指して「これは何？」と聞くなら？"
+    options: ["¿Qué es este?", "¿Qué es esto?", "¿Qué es esta?"]
+    correctIndex: 1
+    explanation: "何かわからない物や、物事全体を指すときは、性のない esto / eso / aquello を使います。"
+  - question: "azul（青い）の複数形は？"
+    options: ["azules", "azuls", "azúles"]
+    correctIndex: 0
+    explanation: "子音で終わる形容詞は、名詞と同じく -es をつけます：azules。"
+  - question: "「いいホテル」。正しいのは？"
+    options: ["un bueno hotel", "un buen hotel", "un hotel buen"]
+    correctIndex: 1
+    explanation: "bueno は男性・単数の名詞の前に置くと buen になります。後ろに置くなら un hotel bueno です。"
 ---
 
-TODO:contenido（導入：このユニットの問いに、それだけで答えになる2文で答える）
+スペイン語の形容詞は、ふつう名詞の後ろに置き、名詞の性と数に合わせて形を変えます（una maleta roja、赤いスーツケース）。所有詞の mi・tu・su や、指示詞の este・ese・aquel も、後ろの名詞に合わせて形が変わります。
 
-## 文法 (Gramática)
+日本語の「この」「その」「あの」と同じように、スペイン語の指示詞も三つの距離を区別するので、日本人には覚えやすい文法です。このユニットでは、マドリードのお土産屋さんで、ミナがお母さんへのプレゼントを選ぶ場面を例に学びます。
 
-TODO:contenido
+## 文法：形容詞・所有詞・指示詞 (Gramática)
+
+まず形容詞の形と位置を、次に所有詞を、最後に指示詞を見ていきましょう。
+
+### 形容詞の性数一致
+
+形容詞は、説明する名詞の性（男性・女性）と数（単数・複数）に合わせます。
+
+| 語尾 | 男性・単数 | 女性・単数 | 男性・複数 | 女性・複数 |
+| --- | --- | --- | --- | --- |
+| -o | rojo | roja | rojos | rojas |
+| -e | grande | grande | grandes | grandes |
+| 子音 | azul | azul | azules | azules |
+| 国籍（子音） | español | española | españoles | españolas |
+
+-o で終わる形容詞は4つの形、-e や子音で終わる形容詞は2つの形です。国籍を表す形容詞は、子音で終わっても女性形に -a がつきます。
+
+<Examples>
+
+- Mina tiene una maleta nueva.（ミナは新しいスーツケースを持っている）
+- Las camisetas azules son bonitas.（青いTシャツはきれいだ）
+
+</Examples>
+
+### 形容詞の位置
+
+形容詞は、ふつう名詞の後ろに置きます：un hotel pequeño（小さいホテル）。日本語とは逆なので注意しましょう。ただし bueno（よい）と grande（大きい）は名詞の前にも置けて、そのときは形が短くなります：un buen hotel（いいホテル）、una gran ciudad（大都市）。
+
+### 所有詞（mi・tu・su…）
+
+| 持ち主 | 持ち物が単数 | 持ち物が複数 |
+| --- | --- | --- |
+| yo（私の） | mi | mis |
+| tú（君の） | tu | tus |
+| él / ella / usted（彼の・彼女の・あなたの） | su | sus |
+| nosotros（私たちの） | nuestro / nuestra | nuestros / nuestras |
+| vosotros（君たちの）※ | vuestro / vuestra | vuestros / vuestras |
+| ellos / ellas / ustedes（彼らの・あなた方の） | su | sus |
+
+※ vosotros はスペインのみで使う形です（→ [中南米のスペイン語](/language/learn-spanish/spanish-in-latin-america/)）。
+
+所有詞は、持ち主ではなく**持ち物**の数（と nuestro・vuestro は性）に合わせます：mis maletas（私のスーツケース・複数）、nuestra casa（私たちの家）。su は「彼の」「彼女の」「あなたの」「彼らの」のどれにもなるので、はっきりさせたいときは la maleta de Mina（ミナのスーツケース）のように de を使います。
+
+### 指示詞（este・ese・aquel）
+
+| 距離 | 男性・単数 | 女性・単数 | 男性・複数 | 女性・複数 |
+| --- | --- | --- | --- | --- |
+| 話し手の近く（この） | este | esta | estos | estas |
+| 聞き手の近く（その） | ese | esa | esos | esas |
+| どちらからも遠く（あの） | aquel | aquella | aquellos | aquellas |
+
+指示詞は、名詞の前に置いても（esta camiseta、このTシャツ）、名詞なしで使っても（Quiero esta.、これがほしい）かまいません。名前のわからない物や物事全体を指すときは、性のない esto・eso・aquello を使います：¿Qué es esto?（これは何？）
+
+お土産屋さんで、ミナが扇子を選びます。
+
+- Mina: Hola. ¿Cuánto cuesta este abanico?（こんにちは。この扇子はいくらですか？）
+- Dependienta: Veinte euros. Es de Sevilla.（20ユーロです。セビリアのものですよ）
+- Mina: Es muy bonito, pero quiero aquel abanico rojo. ¿Cuánto cuesta?（とてもきれいですね。でも、あの赤い扇子がほしいです。いくらですか？）
+- Dependienta: Ese es un poco más caro: treinta euros.（そちらは少し高くて、30ユーロです）
+- Mina: Vale, es un regalo para mi madre.（わかりました。母へのプレゼントなんです）
+
+店員さんにとって、ミナが指す「あの扇子」は自分に近いので、ese（その）と答えています。
+
+**ダニエル（バレンシア出身）のひとこと：** 色の言い方には地域差があります。茶色は、スペインでは marrón ですが、メキシコなど中南米の一部では café とも言います。Tシャツも、スペインの camiseta に対して、メキシコでは playera と言います。
 
 ## 活用：今日の動詞 (Conjugación)
 
-TODO:contenido
+人や物を説明するときは、ユニット3で学んだ [ser](/language/learn-spanish/verb-conjugation/ser/) と [estar](/language/learn-spanish/verb-conjugation/estar/) を形容詞と組み合わせます。性質なら ser（Este abanico es bonito.）、その時の状態なら estar（La camiseta está sucia.、Tシャツが汚れている）です。どちらの場合も、形容詞は主語に合わせます。
 
 ## 語彙 (Nociones específicas)
+
+買い物で使う形容詞と色、お店で出てくる名詞です。形容詞は男性形で載せています。
 
 <VocabList items={frontmatter.vocabulary} level={frontmatter.level} />
 
 ## 発音・正書法 (Pronunciación y ortografía)
 
-TODO:contenido
+スペインのほとんどの地域では、ll と y は同じ音で発音します。日本語の「ジャ」と「ヤ」の間くらいの音です。amarillo（黄色い）は「ア・マ・**リ**・ジョ」、la calle（通り）は「ラ・**カ**・ジェ」、yo（私）は「**ジョ**」に近く聞こえます。「リ・ル」のように l の音で読まないように注意しましょう。
 
 ## 日本人がよく間違える
 
-TODO:contenido
+- **形容詞を名詞の前に置く。** ×una roja maleta → ○una maleta **roja**。日本語の「赤いスーツケース」と語順が逆です。
+- **形容詞の性と数を合わせない。** ×las camisetas blanco、×una maleta nuevo → ○las camisetas **blancas**、○una maleta **nueva**。
+- **所有詞を持ち主に合わせる。** ×mi maletas → ○**mis** maletas。持ち主が一人でも、持ち物が複数なら mis です。
 
 ## 文化メモ (Referentes culturales)
 
 <CultureNote>
 
-TODO:contenido
+ミナが選んだ扇子（abanico）は、スペインの定番のお土産の一つです。暑い夏をしのぐ実用品であると同時に、フラメンコの舞台にも欠かせない小道具で、セビリアは扇子文化の発祥地とされています。手描きの絵がある扇子ほど値段が高くなる傾向があるので、店では este・ese・aquel と形容詞を使って、じっくり見比べてみましょう。扇子をはじめとするスペインの伝統工芸のお土産は、[スペインお土産完全ガイド](/travel/souvenirs/)で紹介しています。
 
 </CultureNote>
 
 ## 練習 (Procedimientos de aprendizaje)
 
-### 練習1：認識
+### 練習1：正しい形はどっち？
 
-TODO:contenido
+名詞に合う形容詞を選んでください。
+
+1. una camiseta (blanco / blanca)
+2. los hoteles (pequeño / pequeños)
+3. una ciudad (grande / granda)
+4. las bolsas (azul / azules)
+5. un abanico (bonito / bonita)
 
 <details>
 <summary>答えを見る</summary>
 
-TODO:contenido
+1. blanca
+2. pequeños
+3. grande（-e は男女同じ形）
+4. azules
+5. bonito
 
 </details>
 
-### 練習2：穴埋め
+### 練習2：指示詞と所有詞
 
-TODO:contenido
+（ ）の日本語に合う語を入れてください。
+
+1. ______ camiseta（この）
+2. ______ libros（それらの）
+3. ______ casa（あの）
+4. ______ maletas（私の）
+5. ______ hotel（私たちの）
+6. ______ regalo（君の）
 
 <details>
 <summary>答えを見る</summary>
 
-TODO:contenido
+1. esta
+2. esos
+3. aquella
+4. mis
+5. nuestro
+6. tu
 
 </details>
 
 ### 練習3：作文
 
-TODO:contenido
+ミナになったつもりで、スペイン語で言ってみましょう。
+
+1. このTシャツはいくらですか？
+2. あの赤いバッグがほしいです。
+3. これは母へのプレゼントです。
 
 <details>
-<summary>答えを見る</summary>
+<summary>解答例を見る</summary>
 
-TODO:contenido
+1. ¿Cuánto cuesta esta camiseta?
+2. Quiero aquella bolsa roja.
+3. Esto es un regalo para mi madre.
 
 </details>
 
@@ -97,4 +258,8 @@ TODO:contenido
 
 ## まとめ
 
-TODO:contenido
+- 形容詞はふつう名詞の後ろに置き、名詞の性と数に合わせる（una maleta roja、las camisetas blancas）。
+- 所有詞は持ち物の数に合わせる（mis maletas）。su があいまいなときは de + 人で言う。
+- este（この）・ese（その）・aquel（あの）は日本語の「こ・そ・あ」と同じ三つの距離。わからない物は esto。
+
+次のユニット7では、hay と estar、場所の前置詞を使って、物がどこにあるかを言います。
