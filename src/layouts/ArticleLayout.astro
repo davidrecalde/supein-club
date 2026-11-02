@@ -44,6 +44,11 @@ const isBottomCrestHero = pillar === 'football' && bottomCrestClusters.includes(
 // sub-artículos long-tail, para que búsquedas genéricas ("Dele") prioricen
 // la página principal del tema en lugar de un sub-artículo específico.
 const pagefindTitleWeight = isPillarArticle(entry) ? 2 : null;
+// Misma fecha que dateModified en SEO.astro. En /language/ se muestra siempre
+// como 「最終更新日」; en el resto, solo si difiere de la de publicación.
+const modifiedDate = updatedDate ?? pubDate;
+const showModifiedDate = pillar === 'language' || modifiedDate.getTime() !== pubDate.getTime();
+const modifiedLabel = pillar === 'language' ? '最終更新日' : '更新日';
 
 const { Content, headings } = await entry.render();
 
@@ -180,11 +185,11 @@ const stepItemList = isRoadmapHub
         <time datetime={pubDate.toISOString()} style="font-size:13px;color:rgba(255,255,255,0.6);">
           公開日：{pubDate.toLocaleDateString('ja-JP', { year: 'numeric', month: 'long', day: 'numeric' })}
         </time>
-        {updatedDate && updatedDate.getTime() !== pubDate.getTime() && (
+        {showModifiedDate && (
           <>
             <span style="color:rgba(255,255,255,0.25);">|</span>
-            <time datetime={updatedDate.toISOString()} style="font-size:13px;color:rgba(255,255,255,0.6);">
-              更新日：{updatedDate.toLocaleDateString('ja-JP', { year: 'numeric', month: 'long', day: 'numeric' })}
+            <time datetime={modifiedDate.toISOString()} style="font-size:13px;color:rgba(255,255,255,0.6);">
+              {modifiedLabel}：{modifiedDate.toLocaleDateString('ja-JP', { year: 'numeric', month: 'long', day: 'numeric' })}
             </time>
           </>
         )}

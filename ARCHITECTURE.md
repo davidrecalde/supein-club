@@ -127,6 +127,8 @@ Desde el 2026-09-15, toda creación de artículo de food pregunta explícitament
 ### language
 
 > **Replanteamiento (2026-11-02):** /language/ pasa de 36 STEP a un curso de 62 unidades A1-C2. La especificación, la semilla de unidades y la unidad modelo están en [`docs/language/`](docs/language/) (`curso-paso-a-paso.md`, `estrategia.md`, `units.json`, `examples/`); las reglas de trabajo, en la sección «Reglas de /language/» del CLAUDE.md. Esta tabla describe el estado previo al curso.
+>
+> **Prompt 1 (2026-11-02):** `dele-b1-tips` fusionada en `/dele/b1/` (sección 「合格のコツ」) con 301; DELE pasa a 9 páginas (1/9-9/9) en `course-sequence.ts`. 23 títulos y descriptions reescritos (tabla en el PR). Eliminado el H1 duplicado del cuerpo MDX en las 61 páginas de /language/ que lo tenían (el H1 visible es el del layout: `h1` del frontmatter o `title`). Las fichas de /language/ muestran siempre 「最終更新日」 (`updatedDate ?? pubDate`, igual que `dateModified`).
 
 | URL real | Estado | Keyword principal | Volumen (bucket) | Fuente del volumen |
 |---|---|---|---|---|
