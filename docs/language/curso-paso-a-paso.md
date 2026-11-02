@@ -303,7 +303,7 @@ Revisión de los documentos contra el repositorio y producción antes del prompt
 ### Orden ajustado
 
 1. **Prompt 1, solo lo pendiente.** Las 301 de conjugación, escuelas de Tokio y learn-spanish/learn-spanish ya funcionan en producción (comprobado el 2 de noviembre de 2026). Falta fusionar dele-b1-tips y los puntos 2-7. /spanish-for-beginners/ responde 404 y no tiene contenido: no se redirige salvo que Search Console muestre impresiones.
-2. **Prompt 2:** infraestructura, sin publicar contenido. En producción, los bloques del curso (niveles del hub, `Course` y listas de unidades en las páginas de nivel) se ocultan hasta que haya al menos una unidad publicada; los previews los muestran siempre.
+2. **Prompt 2:** infraestructura, sin publicar contenido. En producción, los bloques del curso (niveles del hub, `Course` y listas de unidades en las páginas de nivel) se ocultan hasta que las 62 unidades estén publicadas (decisión de David del 2 de noviembre de 2026, ver «Publicación del curso»); los previews los muestran siempre.
 3. **Prompt 9 (reparto, preferencias y transparencia),** añadido el 2 de noviembre de 2026. Va antes de producir unidades porque cambia la plantilla (CastBadge, preferencias) y el prompt 4.
 4. **Prompt 3 (conjugador):** es la mayor demanda medida y necesita la colección `units` para enlazar a las unidades.
 5. **Unidades 14, 15 y 16 primero** (la 14 ya tiene borrador modelo, pero hay que reescribir sus ejemplos desde Mina y Kenta), después A1 (1-12) y el resto por niveles.
@@ -316,7 +316,7 @@ Revisión de los documentos contra el repositorio y producción antes del prompt
 - **Reparto:** `cast.json` añade a cada personaje `tagline` (su línea de situación, sacada de su `bio`: 「ミナ・初めてのスペイン旅行」) y `color` (fondo de sus iniciales). La colección `cast` lee el archivo directamente; cada unidad lleva `cast` (1-2 personajes).
 - **Variedad:** cada palabra de `vocabulary` admite `la` (variante latinoamericana: `es: "coche"`, `la: "carro"`). Las filas de vosotros se detectan en las tablas por su primera celda y siempre se marcan 「スペインのみ」; con 中南米 se pliegan detrás de un botón.
 - **Ejemplos por punto:** los ejemplos de un mismo punto van en un bloque `<Examples>` con una lista; la preferencia decide cuántos se ven. Sin JavaScript se ven todos.
-- **Visibilidad:** /language/cast/, /language/learn-spanish/welcome/ y /language/about-this-course/ siguen la misma regla que el resto del curso: en producción solo existen cuando hay al menos una unidad publicada. La pantalla de ajustes lleva `noindex, follow` (es una herramienta, no responde a ninguna búsqueda).
+- **Visibilidad:** /language/cast/, /language/learn-spanish/welcome/ y /language/about-this-course/ siguen la misma regla que el resto del curso: en producción solo existen cuando el curso está completo y publicado. La pantalla de ajustes lleva `noindex, follow` (es una herramienta, no responde a ninguna búsqueda).
 - **Acceso a 学習設定:** desde la cabecera de cada unidad, las páginas de nivel, el bloque del curso en el hub y el resultado del test de nivel. No está en el menú general de la web.
 - **Calendario del ritmo:** la preferencia se guarda ya; el calendario de unidades por semana es parte del prompt 5.
 
@@ -334,7 +334,25 @@ Revisión de los documentos contra el repositorio y producción antes del prompt
 
 ### Pendiente de David
 
-- **Lista de frecuencia del Corpus del Español** (acceso o archivo). Sin ella no se pueden fijar `rank` ni los 50 verbos. Alternativa libre: los listados de frecuencia del CORPES XXI de la RAE; si se usa esa, hay que cambiar también la fuente citada en la web (FrequencyNote y el texto nuevo de A1 語彙).
+- ~~Lista de frecuencia para `rank`~~: resuelto el 2 de noviembre de 2026 (ver «Frecuencia del vocabulario» más abajo).
+- ~~Orden de los 50 verbos del conjugador~~: resuelto el 2 de noviembre de 2026. Regla de David: la referencia es siempre la RAE y el CORPES XXI; se mantiene su selección de 50 verbos y cada uno muestra su puesto real en el CORPES (ver «Prompt 3: conjugador»).
+
+### Publicación del curso (2 de noviembre de 2026)
+
+Decisión de David: el curso no se muestra a los visitantes hasta que esté 100 % terminado. Se trabaja por debajo:
+
+- Cada unidad se escribe, se revisa en el preview de Cloudflare y se fusiona en `main` con `draft: true`. En producción no genera página ni aparece en ningún bloque.
+- Cuando las 62 unidades estén revisadas, un único PR las pasa todas a `draft: false` con su `pubDate`, migra las unidades existentes (1, 25, 37, 49 y 57) desde `articles`, cambia los 36 STEP por la numeración de 62 unidades y activa los bloques del hub.
+- El build falla si se publica solo una parte (`course-link-check` en `astro.config.mjs`), e `isCourseVisible()` exige las 62 unidades publicadas.
+- Tampoco se anuncia en redes hasta entonces.
+
+### Frecuencia del vocabulario (2 de noviembre de 2026)
+
+- **Fuente:** el diccionario de frecuencias del CORPES XXI (RAE, CC BY-SA 4.0), que aportó David: unos 116.700 lemas de textos periodísticos de 21 países, con lema, categoría, frecuencia absoluta y normalizada, dispersión y número de países.
+- **Qué se usa:** la columna «Rango frec.», que ordena por frecuencia absoluta (comprobado: ninguna inversión). No se usa la relación ordenada por índice de dispersión.
+- **Cómo:** `npm run vocab:rank -- --write` escribe `rank` en el vocabulario de todas las unidades; sin `--write` solo comprueba. Solo lleva `rank` lo que es lema del diccionario («ayer», «por fin», «de vez en cuando»); el resto de expresiones («la semana pasada», «una vez») va sin `rank`, al final. Los casos que la regla general resuelve mal están en `OVERRIDES` (primero como adverbio, abuelos → abuelo, cartera → lema cartero, donde el CORPES agrupa sus formas).
+- **El archivo** (35 MB) se queda en local en `src/data/diccionario_frecuencias_corpes_alfa.tsv` y no se sube al repositorio (`.gitignore`).
+- **En la web:** cuando una unidad tiene `rank`, la lista de vocabulario lo explica en una línea y la unidad cita el diccionario en 出典. Las páginas /\<nivel>/vocabulary/ siguen citando el Corpus del Español (FrequencyNote) hasta que se rehagan con este diccionario.
 - **Capacidad de revisión nativa** (español y japonés) por semana. Es lo que fija el ritmo real del curso.
 - **Vídeos:** la pestaña «Curso A1-C2 y vídeos» está calculada sobre 36 STEP. Hay que recalcularla sobre 62 unidades y renombrar la línea A (「スペイン語36ステップ」) antes del 5 de enero de 2027.
 - ~~Sección «Reparto, preferencias y transparencia»~~: incorporada a este documento el 2 de noviembre de 2026.

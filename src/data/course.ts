@@ -29,6 +29,17 @@ export const PROGRESS_STORAGE_KEY = 'supein.course.v1';
 export const PREFS_STORAGE_KEY = 'supein.prefs.v1';
 export const QUIZ_PASS_SCORE = 7;
 
+/**
+ * Fuente del campo `rank` del vocabulario de las unidades: columna «Rango frec.»
+ * (orden por frecuencia absoluta) del diccionario de frecuencias del CORPES XXI.
+ * Licencia CC BY-SA 4.0: hay que citarlo allí donde se use el orden.
+ * Los puestos los escribe `npm run vocab:rank -- --write`.
+ */
+export const VOCAB_FREQUENCY_SOURCE = {
+  label: 'Real Academia Española『CORPES XXI 頻度辞典』（Diccionario de frecuencias del CORPES XXI、CC BY-SA 4.0）',
+  url: 'https://www.rae.es/banco-de-datos/corpes-xxi',
+};
+
 // Preferencias del alumno (docs/language/curso-paso-a-paso.md, «La pantalla de bienvenida»).
 // Estos son también los valores que ve quien no tiene JavaScript.
 export interface CoursePrefs {
