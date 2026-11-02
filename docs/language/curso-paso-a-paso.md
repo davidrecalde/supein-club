@@ -240,6 +240,37 @@ El audio de cada nivel se genera cuando el nivel está completo, y el vídeo de 
 
 Los prompts de implementación, en orden, están en la pestaña Prompts para Claude Code.
 
+## Reparto, preferencias y transparencia
+
+Tres mecánicas tomadas de Geeks in Kyoto y adaptadas. Las tres se deciden antes de escribir las unidades, porque afectan a todos los ejemplos.
+
+### El reparto
+
+Cinco personajes recorren el curso entero. Cada unidad se escribe desde la situación de quien le corresponde, y los mismos personajes reaparecen luego en el audio y en los vídeos, cada uno con su voz fija. Son ficticios y se ilustran, no se fotografían.
+
+| Personaje | Quién es | Niveles | Situaciones |
+| --- | --- | --- | --- |
+| ミナ (Mina), 28 | Diseñadora de Tokio, primer viaje a España, empieza de cero | A1, A2 | Aeropuerto, cafés, compras, preguntar el camino, museos |
+| ケンタ (Kenta), 42 | Ingeniero de Osaka que trabaja con una empresa de Valencia | A2, B1 | Presentarse, reuniones, correos, cenas de trabajo |
+| ユイ (Yui), 21 | Estudiante de intercambio en Salamanca, piso compartido | B1, B2 | Clase, convivencia, amigos, viajes de fin de semana, trámites |
+| ダニエル (Daniel), 35 | Español de Valencia que vive en Tokio y habla japonés | Todos | Explica matices, diferencias regionales, alternativas naturales |
+| カルメン先生 (Carmen), 58 | Profesora de Madrid | B2, C1, C2 | Gramática ordenada, registro formal, prensa, preparación del DELE |
+
+Daniel es el puente: aparece cuando hay que explicar por qué algo suena raro o cómo se diría en Latinoamérica. Carmen es la voz de la norma y toma el relevo en los niveles altos.
+
+### La pantalla de bienvenida
+
+Antes de la unidad 1, y accesible siempre desde el menú, el alumno fija cuatro preferencias que se guardan en el navegador y cambian lo que ve en todas las unidades:
+
+- **Variedad:** España o Latinoamérica. Decide si vosotros aparece en primer plano o marcado como regional, y qué vocabulario se muestra primero (coche/carro, móvil/celular).
+- **Ritmo:** 2, 3 o 5 unidades por semana; genera el calendario.
+- **Ejemplos por punto:** 1, 2 o 3.
+- **Audio:** natural o pausado, y duración de la pausa. Queda guardado desde ahora aunque el audio llegue después.
+
+### Transparencia sobre la IA
+
+Una página 「このコースの作り方」 explica el proceso con nombre y apellidos: quién decide el contenido (David Recalde), qué fuentes se siguen (Plan curricular del Instituto Cervantes y Nueva gramática de la RAE), en qué pasos interviene la IA (redacción asistida y voces generadas con Gemini TTS) y qué revisa una persona nativa antes de publicar. Cada unidad lleva el botón 「間違いを報告」 y cada audio generado se marca como tal. Es una señal de confianza para el lector y de autoría para los buscadores y los motores de IA.
+
 ## Decisiones del 2 de noviembre de 2026
 
 Revisión de los documentos contra el repositorio y producción antes del prompt 1. Donde el texto de un prompt no coincida con esta sección, manda esta sección.
@@ -280,10 +311,19 @@ Revisión de los documentos contra el repositorio y producción antes del prompt
 
 `units.json` (2 de noviembre de 2026, tarde) trae el campo `cast` de las 62 unidades; se incorpora tal cual. Las unidades 1, 11, 23, 35, 47, 55, 61 y 62 conservan su tercera relacionada (decisión 7), que esa versión había perdido. El reparto es coherente: ningún personaje aparece en una unidad de un nivel que no está en su `levels`.
 
+### Prompt 9: cómo se ha implementado
+
+- **Reparto:** `cast.json` añade a cada personaje `tagline` (su línea de situación, sacada de su `bio`: 「ミナ・初めてのスペイン旅行」) y `color` (fondo de sus iniciales). La colección `cast` lee el archivo directamente; cada unidad lleva `cast` (1-2 personajes).
+- **Variedad:** cada palabra de `vocabulary` admite `la` (variante latinoamericana: `es: "coche"`, `la: "carro"`). Las filas de vosotros se detectan en las tablas por su primera celda y siempre se marcan 「スペインのみ」; con 中南米 se pliegan detrás de un botón.
+- **Ejemplos por punto:** los ejemplos de un mismo punto van en un bloque `<Examples>` con una lista; la preferencia decide cuántos se ven. Sin JavaScript se ven todos.
+- **Visibilidad:** /language/cast/, /language/learn-spanish/welcome/ y /language/about-this-course/ siguen la misma regla que el resto del curso: en producción solo existen cuando hay al menos una unidad publicada. La pantalla de ajustes lleva `noindex, follow` (es una herramienta, no responde a ninguna búsqueda).
+- **Acceso a 学習設定:** desde la cabecera de cada unidad, las páginas de nivel, el bloque del curso en el hub y el resultado del test de nivel. No está en el menú general de la web.
+- **Calendario del ritmo:** la preferencia se guarda ya; el calendario de unidades por semana es parte del prompt 5.
+
 ### Pendiente de David
 
 - **Lista de frecuencia del Corpus del Español** (acceso o archivo). Sin ella no se pueden fijar `rank` ni los 50 verbos. Alternativa libre: los listados de frecuencia del CORPES XXI de la RAE; si se usa esa, hay que cambiar también la fuente citada en la web (FrequencyNote y el texto nuevo de A1 語彙).
 - **Capacidad de revisión nativa** (español y japonés) por semana. Es lo que fija el ritmo real del curso.
 - **Vídeos:** la pestaña «Curso A1-C2 y vídeos» está calculada sobre 36 STEP. Hay que recalcularla sobre 62 unidades y renombrar la línea A (「スペイン語36ステップ」) antes del 5 de enero de 2027.
-- **Sección «Reparto, preferencias y transparencia»:** el prompt 9 la cita como especificación, pero no está en este documento. Hay que exportarla antes de ejecutar el prompt 9.
-- **Retratos del reparto:** ilustraciones (nunca fotos ni imágenes fotorrealistas). Mientras no existan, se usa un marcador neutro.
+- ~~Sección «Reparto, preferencias y transparencia»~~: incorporada a este documento el 2 de noviembre de 2026.
+- **Retratos del reparto (decidido el 2 de noviembre de 2026):** por ahora, iniciales sobre un color por personaje. Las ilustraciones se añaden después sin bloquear nada; nunca fotos ni imágenes fotorrealistas.

@@ -1,0 +1,28 @@
+---
+import { CAST_URL } from '../../data/course';
+
+interface Member {
+  id: string;
+  name: string;
+  nameEs: string;
+  tagline: string;
+  color: string;
+}
+
+interface Props {
+  members: Member[];
+}
+
+const { members } = Astro.props;
+---
+<ul class="cast-badges" aria-label="このユニットの登場人物">
+  {members.map((m) => (
+    <li>
+      <a class="cast-badge" href={`${CAST_URL}#${m.id}`}>
+        {/* Retrato provisional: iniciales sobre el color del personaje (las ilustraciones llegarán después). */}
+        <span class="cast-avatar" style={`background:${m.color}`} aria-hidden="true">{m.nameEs.charAt(0)}</span>
+        <span class="cast-badge-line"><strong>{m.name}</strong>・{m.tagline}</span>
+      </a>
+    </li>
+  ))}
+</ul>

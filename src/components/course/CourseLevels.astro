@@ -1,5 +1,5 @@
 ---
-import { COURSE_LEVELS, TOTAL_UNITS, levelUrl } from '../../data/course';
+import { ABOUT_COURSE_URL, CAST_URL, COURSE_LEVELS, TOTAL_UNITS, WELCOME_URL, levelUrl } from '../../data/course';
 import { getAllUnits, isCourseVisible, isRoutable } from '../../utils/units';
 
 const visible = await isCourseVisible();
@@ -19,6 +19,11 @@ const levels = COURSE_LEVELS.map((level) => {
 <section class="course-levels" id="course" data-pagefind-ignore>
   <h2>スペイン語コース（A1〜C2・全{TOTAL_UNITS}ユニット）</h2>
   <p>無料・登録不要で、自分のペースで進められるコースです。進み具合はこのブラウザに保存されます。</p>
+  <p class="course-links">
+    <a href={WELCOME_URL}>学習設定（地域・ペース・例文の数）</a>
+    <a href={CAST_URL}>登場人物</a>
+    <a href={ABOUT_COURSE_URL}>このコースの作り方</a>
+  </p>
   <ol class="course-levels-grid">
     {levels.map((l) => (
       <li class="course-level" data-units={JSON.stringify(l.unitNumbers)} data-live-units={JSON.stringify(l.live)}>

@@ -1,0 +1,77 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import SEO from '../../../components/SEO.astro';
+import Breadcrumb from '../../../components/Breadcrumb.astro';
+import { ABOUT_COURSE_URL, CAST_URL, COURSE_URL } from '../../../data/course';
+import { getAllUnits, hasPage, isCourseVisible } from '../../../utils/units';
+
+// Como el resto del curso, solo existe en producción cuando ya hay una unidad publicada.
+export async function getStaticPaths() {
+  return (await isCourseVisible()) ? [{ params: { index: undefined } }] : [];
+}
+
+const cast = await getCollection('cast');
+const units = await getAllUnits();
+const appearances = (id: string) => units.filter((u) => u.data.cast.some((c) => c.id === id));
+
+const siteUrl = 'https://supein.club';
+const canonical = `${siteUrl}${CAST_URL}`;
+const title = 'スペイン語コースの登場人物｜ミナ・ケンタ・ユイ・ダニエル・カルメン先生';
+const description = 'スペイン倶楽部のスペイン語コースに登場する5人を紹介。旅行者のミナ、仕事で使うケンタ、留学生のユイ、ネイティブのダニエル、カルメン先生が、レベルごとに例文と会話を案内します。';
+const breadcrumbs = [
+  { name: 'ホーム', url: '/' },
+  { name: 'スペイン語', url: '/language/' },
+  { name: 'コース', url: COURSE_URL },
+  { name: '登場人物', url: canonical },
+];
+// Personajes ficticios: ItemList con nombre y descripción, nunca schema Person.
+const itemList = {
+  '@type': 'ItemList',
+  '@id': `${canonical}#cast`,
+  name: 'スペイン語コースの登場人物',
+  itemListElement: cast.map((c, i) => ({ '@type': 'ListItem', position: i + 1, name: c.data.name, description: c.data.bio })),
+};
+---
+<BaseLayout title={title}>
+  <SEO slot="seo" title={title} description={description} canonical={canonical} breadcrumbs={breadcrumbs} extraGraph={[itemList]} />
+
+  <section class="page-container py-10">
+    <Breadcrumb items={breadcrumbs} />
+    <h1 class="cast-page-title">スペイン語コースの登場人物</h1>
+    <p class="cast-page-intro">
+      このコースの例文や会話は、5人の登場人物の状況に沿って書いています。初級ではミナ、仕事の場面ではケンタ、中級以上ではユイとカルメン先生が中心になり、ダニエルはすべてのレベルでニュアンスや地域による違いを説明します。登場人物はすべて架空の人物です。
+    </p>
+
+    <ul class="cast-cards">
+      {cast.map((c) => {
+        const list = appearances(c.id);
+        return (
+          <li class="cast-card" id={c.id}>
+            <span class="cast-avatar is-large" style={`background:${c.data.color}`} aria-hidden="true">{c.data.nameEs.charAt(0)}</span>
+            <div>
+              <h2>{c.data.name} <span lang="es">{c.data.nameEs}</span></h2>
+              <p class="cast-card-meta">{c.data.age}歳・{c.data.from}・{c.data.role}</p>
+              <p>{c.data.bio}</p>
+              <p class="cast-card-meta">レベル：{c.data.levels.join('・')}　場面：{c.data.arcs.join('、')}</p>
+              {list.length > 0 && (
+                <details class="cast-card-units">
+                  <summary>登場するユニット（{list.length}）</summary>
+                  <ul>
+                    {list.map((u) => (
+                      <li>
+                        {hasPage(u) ? <a href={u.data.url}>ユニット{u.data.unit} {u.data.shortTitle}</a> : <span>ユニット{u.data.unit} {u.data.shortTitle}（準備中）</span>}
+                      </li>
+                    ))}
+                  </ul>
+                </details>
+              )}
+            </div>
+          </li>
+        );
+      })}
+    </ul>
+
+    <p class="cast-page-footer"><a href={ABOUT_COURSE_URL}>このコースの作り方</a></p>
+  </section>
+</BaseLayout>

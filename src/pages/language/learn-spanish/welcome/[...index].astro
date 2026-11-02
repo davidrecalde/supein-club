@@ -1,0 +1,146 @@
+---
+import BaseLayout from '../../../../layouts/BaseLayout.astro';
+import SEO from '../../../../components/SEO.astro';
+import Breadcrumb from '../../../../components/Breadcrumb.astro';
+import Examples from '../../../../components/course/Examples.astro';
+import { ABOUT_COURSE_URL, CAST_URL, COURSE_URL, DEFAULT_PREFS, levelUrl } from '../../../../data/course';
+import { isCourseVisible } from '../../../../utils/units';
+
+export async function getStaticPaths() {
+  return (await isCourseVisible()) ? [{ params: { index: undefined } }] : [];
+}
+
+const canonical = 'https://supein.club/language/learn-spanish/welcome/';
+const title = 'スペイン語コースを始める前に｜学習設定（地域・ペース・例文・音声）';
+const description = 'スペイン語コースの学習設定。スペインと中南米のどちらの表現を優先するか、週に進めるユニット数、例文の数、音声の速さを選べます。設定はこのブラウザに保存されます。';
+const breadcrumbs = [
+  { name: 'ホーム', url: '/' },
+  { name: 'スペイン語', url: '/language/' },
+  { name: 'コース', url: COURSE_URL },
+  { name: '学習設定', url: canonical },
+];
+const d = DEFAULT_PREFS;
+---
+<BaseLayout title={title}>
+  <SEO slot="seo" title={title} description={description} canonical={canonical} breadcrumbs={breadcrumbs} robots="noindex, follow" />
+
+  <section class="page-container py-10 prefs-page">
+    <Breadcrumb items={breadcrumbs} />
+    <h1 class="cast-page-title">スペイン語コースを始める前に</h1>
+    <p>4つの設定で、すべてのユニットの見え方が変わります。設定はこのブラウザにだけ保存され、いつでもここから変更できます。登録は不要です。</p>
+
+    <form class="prefs-form" id="prefs-form">
+      <fieldset>
+        <legend>地域：どちらのスペイン語を優先しますか？</legend>
+        <label><input type="radio" name="variety" value="es" checked={d.variety === 'es'} /> スペイン</label>
+        <label><input type="radio" name="variety" value="la" checked={d.variety === 'la'} /> 中南米</label>
+        <p class="prefs-hint">中南米を選ぶと、vosotros の形（スペインのみで使う）は折りたたまれ、単語は中南米の言い方が先に表示されます。</p>
+      </fieldset>
+
+      <fieldset>
+        <legend>ペース：1週間に進めるユニット数</legend>
+        {[2, 3, 5].map((n) => (
+          <label><input type="radio" name="pace" value={n} checked={d.pace === n} /> 週{n}ユニット</label>
+        ))}
+      </fieldset>
+
+      <fieldset>
+        <legend>例文の数：1つの文法項目に表示する例文</legend>
+        {[1, 2, 3].map((n) => (
+          <label><input type="radio" name="examples" value={n} checked={d.examples === n} /> {n}つ</label>
+        ))}
+      </fieldset>
+
+      <fieldset>
+        <legend>音声：読み上げの速さ</legend>
+        <label><input type="radio" name="audioMode" value="natural" checked={d.audio.mode === 'natural'} /> ナチュラル</label>
+        <label><input type="radio" name="audioMode" value="pausado" checked={d.audio.mode === 'pausado'} /> ゆっくり（文の間にポーズ）</label>
+        <p class="prefs-subtitle">ポーズの長さ</p>
+        {[0.5, 1, 1.5].map((n) => (
+          <label><input type="radio" name="audioPause" value={n} checked={d.audio.pause === n} /> {n}秒</label>
+        ))}
+        <p class="prefs-hint">音声は準備中です。設定は保存され、音声の公開後に使われます。</p>
+      </fieldset>
+
+      <p class="prefs-status" role="status" aria-live="polite"></p>
+    </form>
+
+    <section class="prefs-preview" aria-labelledby="prefs-preview-title">
+      <h2 id="prefs-preview-title">プレビュー</h2>
+      <p>設定を変えると、ここの表示がすぐに変わります。ユニットでも同じように表示されます。</p>
+
+      <table>
+        <thead><tr><th>スペイン語</th><th>日本語</th></tr></thead>
+        <tbody>
+          <tr><td lang="es"><span class="vocab-pair"><span class="v-es">coche<small class="v-tag">スペイン</small></span><span class="v-la">carro<small class="v-tag">中南米</small></span></span></td><td>車</td></tr>
+          <tr><td lang="es"><span class="vocab-pair"><span class="v-es">móvil<small class="v-tag">スペイン</small></span><span class="v-la">celular<small class="v-tag">中南米</small></span></span></td><td>携帯電話</td></tr>
+          <tr><td lang="es"><span class="vocab-pair"><span class="v-es">ordenador<small class="v-tag">スペイン</small></span><span class="v-la">computadora<small class="v-tag">中南米</small></span></span></td><td>パソコン</td></tr>
+        </tbody>
+      </table>
+
+      <table>
+        <thead><tr><th>人称</th><th>hablar（話す）の現在形</th></tr></thead>
+        <tbody>
+          <tr><td>yo</td><td lang="es">hablo</td></tr>
+          <tr><td>tú</td><td lang="es">hablas</td></tr>
+          <tr><td>él / ella / usted</td><td lang="es">habla</td></tr>
+          <tr><td>nosotros / nosotras</td><td lang="es">hablamos</td></tr>
+          <tr><td>vosotros / vosotras</td><td lang="es">habláis</td></tr>
+          <tr><td>ellos / ellas / ustedes</td><td lang="es">hablan</td></tr>
+        </tbody>
+      </table>
+
+      <Examples>
+        <ul>
+          <li><span lang="es">Ayer comí paella.</span>（昨日パエリアを食べた）</li>
+          <li><span lang="es">Anoche vimos una película.</span>（昨夜映画を見た）</li>
+          <li><span lang="es">La semana pasada fui a Osaka.</span>（先週大阪に行った）</li>
+        </ul>
+      </Examples>
+    </section>
+
+    <div class="prefs-next">
+      <a class="level-units-continue" href={levelUrl('A1')}>A1 から始める</a>
+      <a href="/language/learn-spanish/level-test/">レベルチェックテストで始めるユニットを決める</a>
+      <a href={CAST_URL}>登場人物を見る</a>
+      <a href={ABOUT_COURSE_URL}>このコースの作り方</a>
+    </div>
+  </section>
+</BaseLayout>
+
+<script>
+  import type { CoursePrefs } from '../../../../data/course';
+  import { applyPrefs, loadPrefs, savePrefs } from '../../../../utils/coursePrefs';
+
+  const form = document.getElementById('prefs-form') as HTMLFormElement;
+  const status = form.querySelector<HTMLElement>('.prefs-status')!;
+
+  function setRadio(name: string, value: string | number) {
+    const input = form.querySelector<HTMLInputElement>(`input[name="${name}"][value="${value}"]`);
+    if (input) input.checked = true;
+  }
+
+  const prefs = loadPrefs();
+  setRadio('variety', prefs.variety);
+  setRadio('pace', prefs.pace);
+  setRadio('examples', prefs.examples);
+  setRadio('audioMode', prefs.audio.mode);
+  setRadio('audioPause', prefs.audio.pause);
+  applyPrefs(prefs);
+
+  form.addEventListener('change', () => {
+    const data = new FormData(form);
+    const next: CoursePrefs = {
+      variety: data.get('variety') as CoursePrefs['variety'],
+      pace: Number(data.get('pace')) as CoursePrefs['pace'],
+      examples: Number(data.get('examples')) as CoursePrefs['examples'],
+      audio: {
+        mode: data.get('audioMode') as CoursePrefs['audio']['mode'],
+        pause: Number(data.get('audioPause')) as CoursePrefs['audio']['pause'],
+      },
+    };
+    savePrefs(next);
+    applyPrefs(next);
+    status.textContent = '設定を保存しました。';
+  });
+</script>

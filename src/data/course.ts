@@ -22,5 +22,25 @@ export function levelUrl(code: string): string {
 }
 
 export const COURSE_URL = '/language/learn-spanish/';
+export const WELCOME_URL = '/language/learn-spanish/welcome/';
+export const CAST_URL = '/language/cast/';
+export const ABOUT_COURSE_URL = '/language/about-this-course/';
 export const PROGRESS_STORAGE_KEY = 'supein.course.v1';
+export const PREFS_STORAGE_KEY = 'supein.prefs.v1';
 export const QUIZ_PASS_SCORE = 7;
+
+// Preferencias del alumno (docs/language/curso-paso-a-paso.md, «La pantalla de bienvenida»).
+// Estos son también los valores que ve quien no tiene JavaScript.
+export interface CoursePrefs {
+  variety: 'es' | 'la';
+  pace: 2 | 3 | 5;
+  examples: 1 | 2 | 3;
+  audio: { mode: 'natural' | 'pausado'; pause: 0.5 | 1 | 1.5 };
+}
+
+export const DEFAULT_PREFS: CoursePrefs = {
+  variety: 'es',
+  pace: 3,
+  examples: 2,
+  audio: { mode: 'natural', pause: 1 },
+};

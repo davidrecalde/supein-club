@@ -27,6 +27,8 @@ export const NOINDEX_PATHS = [
   '/culture/facts/',
   '/food/restaurants-osaka/',
   '/food/restaurants-tokyo/',
+  // Pantalla de preferencias del curso: herramienta sin intención de búsqueda (noindex,follow fijo).
+  '/language/learn-spanish/welcome/',
   '/language/lesson-price/',
   '/language/online-lessons/',
   '/language/pronunciation/',

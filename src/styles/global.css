@@ -761,3 +761,281 @@ a.unit-nav-step:hover {
   font-size: 13px;
   color: #6b7280;
 }
+
+/* ── Curso: reparto, preferencias y transparencia (prompt 9) ── */
+.cast-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 20px;
+  margin-top: 18px;
+}
+.cast-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: #fff;
+  text-decoration: none;
+}
+.cast-avatar {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.85);
+  color: #fff;
+  font-weight: 700;
+  font-size: 17px;
+}
+.cast-avatar.is-large {
+  width: 64px;
+  height: 64px;
+  font-size: 26px;
+  border-color: #fff;
+}
+.cast-badge-line {
+  font-size: 13px;
+  line-height: 1.4;
+  color: rgba(255, 255, 255, 0.8);
+}
+.cast-badge-line strong {
+  color: #fff;
+}
+.unit-settings-link,
+.unit-about-link a,
+.course-links a,
+.prefs-next a:not(.level-units-continue),
+.cast-page-footer a {
+  color: inherit;
+  text-decoration: underline;
+}
+.unit-about-link {
+  margin-top: 12px;
+  font-size: 14px;
+  color: #002147;
+}
+.course-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 18px;
+  font-size: 14px;
+  color: #C8102E;
+}
+.cast-page-title {
+  font-family: 'Noto Serif JP', serif;
+  font-size: clamp(24px, 4vw, 34px);
+  font-weight: 700;
+  color: #002147;
+  margin: 16px 0 12px;
+}
+.cast-page-intro {
+  max-width: 760px;
+  line-height: 1.9;
+  color: #374151;
+}
+.cast-cards {
+  display: grid;
+  gap: 16px;
+  margin-top: 24px;
+}
+.cast-card {
+  display: grid;
+  grid-template-columns: 64px 1fr;
+  gap: 16px;
+  padding: 18px;
+  border: 1px solid #E8E8E6;
+  border-radius: 12px;
+  background: #fff;
+  line-height: 1.8;
+  color: #374151;
+}
+.cast-card h2 {
+  font-weight: 700;
+  font-size: 18px;
+  color: #002147;
+}
+.cast-card h2 span {
+  font-weight: 400;
+  font-size: 14px;
+  color: #6b7280;
+}
+.cast-card-meta {
+  font-size: 13px;
+  color: #6b7280;
+}
+.cast-card-units summary {
+  cursor: pointer;
+  font-weight: 600;
+  color: #002147;
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+}
+.cast-card-units ul {
+  list-style: disc;
+  padding-left: 1.2em;
+}
+.cast-card-units a {
+  color: #C8102E;
+  text-decoration: underline;
+}
+.cast-page-footer {
+  margin-top: 24px;
+  color: #C8102E;
+}
+.prefs-page > p {
+  max-width: 760px;
+  line-height: 1.9;
+  color: #374151;
+}
+.prefs-form {
+  display: grid;
+  gap: 16px;
+  margin-top: 24px;
+  max-width: 760px;
+}
+.prefs-form fieldset {
+  border: 1px solid #E8E8E6;
+  border-radius: 12px;
+  padding: 14px 18px;
+  background: #fff;
+}
+.prefs-form legend {
+  font-weight: 700;
+  color: #002147;
+  padding: 0 6px;
+}
+.prefs-form label {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 44px;
+  margin-right: 20px;
+  color: #374151;
+}
+.prefs-form input[type='radio'] {
+  width: 18px;
+  height: 18px;
+  accent-color: #C8102E;
+}
+.prefs-subtitle {
+  margin-top: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #6b7280;
+}
+.prefs-hint {
+  font-size: 13px;
+  color: #6b7280;
+}
+.prefs-status {
+  min-height: 1.5em;
+  font-weight: 600;
+  color: #166534;
+}
+.prefs-preview {
+  margin-top: 32px;
+  max-width: 760px;
+}
+.prefs-preview h2 {
+  font-weight: 700;
+  font-size: 20px;
+  color: #002147;
+  margin-bottom: 8px;
+}
+.prefs-preview table {
+  width: 100%;
+  margin: 16px 0;
+  border-collapse: collapse;
+}
+.prefs-preview th,
+.prefs-preview td {
+  border-bottom: 1px solid #E8E8E6;
+  padding: 8px 10px;
+  text-align: left;
+}
+.prefs-preview th {
+  background: #002147;
+  color: #fff;
+}
+.prefs-next {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 20px;
+  margin-top: 28px;
+  color: #C8102E;
+}
+/* Variedad: vosotros solo en España. Con 「中南米」, sus filas se pliegan tras un botón. */
+.only-spain {
+  display: inline-block;
+  margin-left: 6px;
+  padding: 1px 6px;
+  border-radius: 999px;
+  background: #FDECEF;
+  color: #A00D24;
+  font-size: 11px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+html[data-variety='la'] table:not(.show-vosotros) .row-vosotros {
+  display: none;
+}
+.vosotros-toggle,
+.unit-examples-more {
+  min-height: 44px;
+  padding: 0 14px;
+  margin: 4px 0 12px;
+  border: 1px solid #E8E8E6;
+  border-radius: 8px;
+  background: #fff;
+  color: #002147;
+  font-size: 13px;
+  font-weight: 600;
+}
+/* Vocabulario regional: la variante preferida va primero; la otra, pequeña y con su etiqueta. */
+.vocab-pair {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 2px 8px;
+}
+.vocab-pair .v-tag {
+  margin-left: 4px;
+  font-size: 10px;
+  color: #6b7280;
+}
+.vocab-pair .v-es .v-tag {
+  display: none;
+}
+.vocab-pair .v-la {
+  font-size: 0.85em;
+  color: #6b7280;
+}
+html[data-variety='la'] .vocab-pair {
+  flex-direction: row-reverse;
+  justify-content: flex-end;
+}
+html[data-variety='la'] .vocab-pair .v-la {
+  font-size: 1em;
+  color: inherit;
+}
+html[data-variety='la'] .vocab-pair .v-la .v-tag {
+  display: none;
+}
+html[data-variety='la'] .vocab-pair .v-es {
+  font-size: 0.85em;
+  color: #6b7280;
+}
+html[data-variety='la'] .vocab-pair .v-es .v-tag {
+  display: inline;
+}
+.ai-audio-label {
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 600;
+  color: #6b7280;
+  text-decoration: underline;
+}

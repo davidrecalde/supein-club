@@ -1,5 +1,5 @@
 import { defineCollection, z, reference } from 'astro:content';
-import { glob } from 'astro/loaders';
+import { file, glob } from 'astro/loaders';
 
 const authors = defineCollection({
   type: 'content',
@@ -254,6 +254,29 @@ const LEVEL_NAMES = {
   C2: 'Maestría',
 } as const;
 
+// Reparto del curso (personajes ficticios: nunca se marcan como schema Person).
+// Se lee directamente de docs/language/cast.json, la fuente de verdad.
+const cast = defineCollection({
+  loader: file('docs/language/cast.json'),
+  schema: z.object({
+    name: z.string(),
+    nameEs: z.string(),
+    age: z.number().int().positive(),
+    from: z.string(),
+    role: z.string(),
+    bio: z.string(),
+    tagline: z.string(),
+    color: z.string().regex(/^#[0-9A-Fa-f]{6}$/),
+    levels: z.array(z.enum(['A1', 'A2', 'B1', 'B2', 'C1', 'C2'])).min(1),
+    arcs: z.array(z.string()).min(1),
+    voice: z.object({
+      gender: z.enum(['female', 'male']),
+      age: z.string(),
+      accent: z.string(),
+    }),
+  }),
+});
+
 const units = defineCollection({
   // El id sale de la ruta del archivo (p. ej. "b1/subjunctive"): con el id por
   // defecto, el campo `slug` repetido en cuatro niveles colisionaría.
@@ -280,7 +303,8 @@ const units = defineCollection({
       functions: z.array(z.string()).default([]),
       canDo: z.array(z.string()).max(3).default([]),
       vocabulary: z
-        .array(z.object({ es: z.string(), ja: z.string(), rank: z.number().int().positive().optional(), example: z.string().optional() }))
+        // `la`: variante latinoamericana de la palabra (coche → carro); la preferencia de variedad decide cuál va primero.
+        .array(z.object({ es: z.string(), ja: z.string(), la: z.string().optional(), rank: z.number().int().positive().optional(), example: z.string().optional() }))
         .max(15)
         .default([]),
       verbs: z.array(z.string()).default([]),
@@ -288,6 +312,8 @@ const units = defineCollection({
       prev: z.number().int().min(1).max(62).nullable(),
       next: z.number().int().min(1).max(62).nullable(),
       related: z.array(z.number().int().min(1).max(62)).length(3),
+      // Personajes desde cuya situación se escriben los ejemplos (docs/language/cast.json).
+      cast: z.array(reference('cast')).min(1).max(2),
       audio: z.array(z.string()).default([]),
       youtubeId: z.string().default(''),
       quiz: z
@@ -318,4 +344,4 @@ const units = defineCollection({
     }),
 });
 
-export const collections = { articles, authors, events, 'spain-map': spainMap, 'press-releases': pressReleases, units };
+export const collections = { articles, authors, events, 'spain-map': spainMap, 'press-releases': pressReleases, cast, units };

@@ -1,6 +1,7 @@
 ---
 import Breadcrumb from '../Breadcrumb.astro';
-import { TOTAL_UNITS, getCourseLevel } from '../../data/course';
+import CastBadge from './CastBadge.astro';
+import { TOTAL_UNITS, WELCOME_URL, getCourseLevel } from '../../data/course';
 
 interface Props {
   unit: number;
@@ -13,9 +14,10 @@ interface Props {
   pubDate?: Date;
   updated: Date;
   breadcrumbs: Array<{ name: string; url: string }>;
+  cast: Array<{ id: string; name: string; nameEs: string; tagline: string; color: string }>;
 }
 
-const { unit, level: levelCode, shortTitle, title, titleEs, canDo, duration, pubDate, updated, breadcrumbs } = Astro.props;
+const { unit, level: levelCode, shortTitle, title, titleEs, canDo, duration, pubDate, updated, breadcrumbs, cast } = Astro.props;
 const level = getCourseLevel(levelCode)!;
 const levelUnits = Array.from({ length: level.last - level.first + 1 }, (_, i) => level.first + i);
 const fmt = (d: Date) => d.toLocaleDateString('ja-JP', { year: 'numeric', month: 'long', day: 'numeric' });
@@ -27,6 +29,8 @@ const fmt = (d: Date) => d.toLocaleDateString('ja-JP', { year: 'numeric', month:
     <p class="unit-header-meta">ユニット {unit} / {TOTAL_UNITS} · {level.code} {level.name} · {shortTitle}</p>
     <h1 class="unit-header-title">{title}</h1>
     <p class="unit-header-es" lang="es">{titleEs}</p>
+
+    {cast.length > 0 && <CastBadge members={cast} />}
 
     {canDo.length > 0 && (
       <div class="unit-header-cando">
@@ -45,6 +49,7 @@ const fmt = (d: Date) => d.toLocaleDateString('ja-JP', { year: 'numeric', month:
         <input type="checkbox" data-unit-complete={unit} />
         <span>完了</span>
       </label>
+      <a class="unit-settings-link" href={WELCOME_URL}>学習設定</a>
     </div>
 
     <div class="unit-level-progress" data-level-units={JSON.stringify(levelUnits)} hidden>

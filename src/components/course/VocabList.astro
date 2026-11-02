@@ -1,6 +1,6 @@
 ---
 interface Props {
-  items?: Array<{ es: string; ja: string; rank?: number; example?: string }>;
+  items?: Array<{ es: string; ja: string; la?: string; rank?: number; example?: string }>;
   level: string;
 }
 
@@ -23,7 +23,14 @@ const levelCode = level.toUpperCase();
       <tbody>
         {sorted.map((item) => (
           <tr>
-            <td lang="es">{item.es}</td>
+            <td lang="es">
+              {item.la ? (
+                <span class="vocab-pair">
+                  <span class="v-es">{item.es}<small class="v-tag">スペイン</small></span>
+                  <span class="v-la">{item.la}<small class="v-tag">中南米</small></span>
+                </span>
+              ) : item.es}
+            </td>
             <td>{item.ja}</td>
             {hasExamples && <td lang="es">{item.example}</td>}
           </tr>
