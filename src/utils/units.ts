@@ -17,6 +17,12 @@ export async function getAllUnits(): Promise<Unit[]> {
   return cache;
 }
 
+/** Bloques del curso en el hub y en las páginas de nivel: en producción, solo
+ *  cuando ya hay al menos una unidad publicada (decisión de David, 2026-11-02). */
+export async function isCourseVisible(): Promise<boolean> {
+  return SHOW_DRAFTS || (await getAllUnits()).some((u) => !u.data.draft);
+}
+
 /** La unidad se genera con su plantilla. Una unidad «existente» en borrador no:
  *  su URL la sigue sirviendo la colección `articles` hasta que se publique. */
 export function isRoutable(u: Unit): boolean {

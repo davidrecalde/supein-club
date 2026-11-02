@@ -1,7 +1,8 @@
 ---
 import { COURSE_LEVELS, TOTAL_UNITS, levelUrl } from '../../data/course';
-import { getAllUnits, isRoutable } from '../../utils/units';
+import { getAllUnits, isCourseVisible, isRoutable } from '../../utils/units';
 
+const visible = await isCourseVisible();
 const units = await getAllUnits();
 const levels = COURSE_LEVELS.map((level) => {
   const levelUnits = units.filter((u) => u.data.level === level.code);
@@ -14,6 +15,7 @@ const levels = COURSE_LEVELS.map((level) => {
   };
 });
 ---
+{visible && (
 <section class="course-levels" id="course" data-pagefind-ignore>
   <h2>スペイン語コース（A1〜C2・全{TOTAL_UNITS}ユニット）</h2>
   <p>無料・登録不要で、自分のペースで進められるコースです。進み具合はこのブラウザに保存されます。</p>
@@ -31,6 +33,7 @@ const levels = COURSE_LEVELS.map((level) => {
     ))}
   </ol>
 </section>
+)}
 
 <script>
   import { PROGRESS_EVENT, isCompleted, loadProgress } from '../../utils/courseProgress';

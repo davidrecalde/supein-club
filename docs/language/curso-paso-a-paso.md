@@ -272,13 +272,18 @@ Revisión de los documentos contra el repositorio y producción antes del prompt
 ### Orden ajustado
 
 1. **Prompt 1, solo lo pendiente.** Las 301 de conjugación, escuelas de Tokio y learn-spanish/learn-spanish ya funcionan en producción (comprobado el 2 de noviembre de 2026). Falta fusionar dele-b1-tips y los puntos 2-7. /spanish-for-beginners/ responde 404 y no tiene contenido: no se redirige salvo que Search Console muestre impresiones.
-2. **Prompt 2:** infraestructura, sin publicar contenido.
-3. **Prompt 3 (conjugador),** justo después: es la mayor demanda medida y necesita la colección `units` para enlazar a las unidades.
-4. **Unidades 14, 15 y 16 primero** (la 14 ya tiene borrador modelo), después A1 (1-12) y el resto por niveles.
-5. **A las 8 semanas** de publicar las primeras unidades, revisión de impresiones, CTR, quizzes completados y altas en LINE antes de fijar el ritmo definitivo.
+2. **Prompt 2:** infraestructura, sin publicar contenido. En producción, los bloques del curso (niveles del hub, `Course` y listas de unidades en las páginas de nivel) se ocultan hasta que haya al menos una unidad publicada; los previews los muestran siempre.
+3. **Prompt 9 (reparto, preferencias y transparencia),** añadido el 2 de noviembre de 2026. Va antes de producir unidades porque cambia la plantilla (CastBadge, preferencias) y el prompt 4.
+4. **Prompt 3 (conjugador):** es la mayor demanda medida y necesita la colección `units` para enlazar a las unidades.
+5. **Unidades 14, 15 y 16 primero** (la 14 ya tiene borrador modelo, pero hay que reescribir sus ejemplos desde Mina y Kenta), después A1 (1-12) y el resto por niveles.
+6. **A las 8 semanas** de publicar las primeras unidades, revisión de impresiones, CTR, quizzes completados y altas en LINE antes de fijar el ritmo definitivo.
+
+`units.json` (2 de noviembre de 2026, tarde) trae el campo `cast` de las 62 unidades; se incorpora tal cual. Las unidades 1, 11, 23, 35, 47, 55, 61 y 62 conservan su tercera relacionada (decisión 7), que esa versión había perdido. El reparto es coherente: ningún personaje aparece en una unidad de un nivel que no está en su `levels`.
 
 ### Pendiente de David
 
 - **Lista de frecuencia del Corpus del Español** (acceso o archivo). Sin ella no se pueden fijar `rank` ni los 50 verbos. Alternativa libre: los listados de frecuencia del CORPES XXI de la RAE; si se usa esa, hay que cambiar también la fuente citada en la web (FrequencyNote y el texto nuevo de A1 語彙).
 - **Capacidad de revisión nativa** (español y japonés) por semana. Es lo que fija el ritmo real del curso.
 - **Vídeos:** la pestaña «Curso A1-C2 y vídeos» está calculada sobre 36 STEP. Hay que recalcularla sobre 62 unidades y renombrar la línea A (「スペイン語36ステップ」) antes del 5 de enero de 2027.
+- **Sección «Reparto, preferencias y transparencia»:** el prompt 9 la cita como especificación, pero no está en este documento. Hay que exportarla antes de ejecutar el prompt 9.
+- **Retratos del reparto:** ilustraciones (nunca fotos ni imágenes fotorrealistas). Mientras no existan, se usa un marcador neutro.

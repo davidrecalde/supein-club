@@ -1,11 +1,12 @@
 ---
 import { getCourseLevel } from '../../data/course';
-import { getAllUnits, hasPage, isRoutable } from '../../utils/units';
+import { getAllUnits, hasPage, isCourseVisible, isRoutable } from '../../utils/units';
 
 interface Props {
   level: string;
 }
 
+const visible = await isCourseVisible();
 const level = getCourseLevel(Astro.props.level)!;
 const units = (await getAllUnits()).filter((u) => u.data.level === level.code);
 const live = units.filter(isRoutable);
@@ -24,7 +25,8 @@ const itemList = published.length > 0 && {
   })),
 };
 ---
-{itemList && <script type="application/ld+json" set:html={JSON.stringify(itemList)} />}
+{visible && itemList && <script type="application/ld+json" set:html={JSON.stringify(itemList)} />}
+{visible && (
 <section class="level-units" id="units" data-pagefind-ignore>
   <h2>{level.code} {level.name}のユニット</h2>
   <p>
@@ -53,6 +55,7 @@ const itemList = published.length > 0 && {
     ))}
   </ol>
 </section>
+)}
 
 <script>
   import { PROGRESS_EVENT, isCompleted, loadProgress } from '../../utils/courseProgress';
