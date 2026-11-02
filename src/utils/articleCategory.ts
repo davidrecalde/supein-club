@@ -68,8 +68,7 @@ export function getCategoryBadgeLabel(entry: Article): string | undefined {
 
     const isDele =
       entry.id.includes('learn-spanish/dele/') ||
-      entry.id.includes('dele-vs-seiken') ||
-      entry.id.includes('dele-b1-tips');
+      entry.id.includes('dele-vs-seiken');
     if (isDele) return 'DELE';
 
     const introRoles = ['pilar', 'onboarding', 'diagnostico'];

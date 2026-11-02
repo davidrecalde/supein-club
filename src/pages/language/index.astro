@@ -38,7 +38,7 @@ const otherClusters = articles
   .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 
 const isDele = (a: Article) =>
-  a.id.includes('learn-spanish/dele/') || slugOf(a) === 'dele-vs-seiken' || slugOf(a) === 'dele-b1-tips';
+  a.id.includes('learn-spanish/dele/') || slugOf(a) === 'dele-vs-seiken';
 
 const introRoles = ['pilar', 'onboarding', 'diagnostico'];
 // 例外：zipf-law-methodology.mdx は articleRole "puente" のままだが、
@@ -110,22 +110,12 @@ const levelAnchors = [
   ...(otherClusters.length > 0 ? [{ href: '#schools', label: 'スペイン語学校' }] : []),
 ];
 
-// DELE: hub-dele → prep-dele(a1→c2) → info-dele → dele-vs-seiken → dele-b1-tips
-const delePriority = (a: Article) => {
-  if (a.data.articleRole === 'hub-dele') return 0;
-  if (a.data.articleRole === 'prep-dele') return 1;
-  if (a.data.articleRole === 'info-dele') return 2;
-  if (slugOf(a) === 'dele-vs-seiken') return 3;
-  if (slugOf(a) === 'dele-b1-tips') return 4;
-  return 5;
+// DELE: mismo orden que su insignia "DELE n / N" (course-sequence.ts); lo que no esté en la secuencia, al final.
+const deleRank = (a: Article) => {
+  const i = courseSequence.dele.indexOf(idNoExt(a));
+  return i === -1 ? courseSequence.dele.length : i;
 };
-deleArticles.sort((a, b) => {
-  const pa = delePriority(a);
-  const pb = delePriority(b);
-  if (pa !== pb) return pa - pb;
-  if (pa === 1) return levelOrder.indexOf(a.data.level ?? '') - levelOrder.indexOf(b.data.level ?? '');
-  return 0;
-});
+deleArticles.sort((a, b) => deleRank(a) - deleRank(b));
 
 // その他: 公開日の新しい順
 otherArticles.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());

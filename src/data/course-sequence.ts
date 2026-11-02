@@ -57,7 +57,6 @@ export const courseSequence = {
     "language/learn-spanish/dele/a1",
     "language/learn-spanish/dele/a2",
     "language/learn-spanish/dele/b1",
-    "language/learn-spanish/dele-b1-tips",
     "language/learn-spanish/dele/b2",
     "language/learn-spanish/dele/c1",
     "language/learn-spanish/dele/c2",
