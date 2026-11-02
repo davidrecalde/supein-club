@@ -126,6 +126,8 @@ Desde el 2026-09-15, toda creación de artículo de food pregunta explícitament
 
 ### language
 
+> **Replanteamiento (2026-11-02):** /language/ pasa de 36 STEP a un curso de 62 unidades A1-C2. La especificación, la semilla de unidades y la unidad modelo están en [`docs/language/`](docs/language/) (`curso-paso-a-paso.md`, `estrategia.md`, `units.json`, `examples/`); las reglas de trabajo, en la sección «Reglas de /language/» del CLAUDE.md. Esta tabla describe el estado previo al curso.
+
 | URL real | Estado | Keyword principal | Volumen (bucket) | Fuente del volumen |
 |---|---|---|---|---|
 | `/language/` | publicado (hub) | スペイン語 | 5k | xlsx (HOME) |

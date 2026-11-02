@@ -124,3 +124,33 @@ explícitamente cuál se necesita en ese momento (push o merge) y esperar la
 respuesta — no proceder por inferencia. Aprobar el contenido de un preview
 ("se ve bien", "está correcto") NO es autorización de push ni de merge;
 son confirmaciones separadas, incluso si llegan en el mismo mensaje.
+
+## Reglas de /language/ (curso de español para japoneses)
+
+- Fuente de verdad: docs/language/curso-paso-a-paso.md y docs/language/estrategia.md.
+  La sección «Decisiones del 2 de noviembre de 2026» de curso-paso-a-paso.md
+  prevalece sobre el texto de los prompts. Si una petición contradice esos
+  documentos, pregunta antes de implementar.
+- La web está en japonés. Nada de texto en español sin traducir, salvo los ejemplos
+  lingüísticos. Nomenclatura del Instituto Cervantes: A1 Acceso, A2 Plataforma,
+  B1 Umbral, B2 Avanzado, C1 Dominio operativo eficaz, C2 Maestría; secciones según el PCIC.
+- Español peninsular como norma. Vosotros se marca como 「スペインのみ」.
+- URLs estables: nunca cambies una URL existente sin 301. El número de unidad va en el
+  frontmatter, nunca en la URL.
+- Una intención de búsqueda, una página. Antes de crear una página, comprueba la sección
+  «Anti-canibalización» de curso-paso-a-paso.md. Si ya existe canónica, amplíala o redirige.
+- Todo el contenido visible va en el HTML inicial. JavaScript solo mejora: quizzes,
+  buscador, progreso.
+- Schema JSON-LD generado desde el frontmatter y solo con lo que se ve en la página.
+  Sin precios. Sin Course/Offer con datos que no existan.
+- Cada página: título de 60 caracteres como máximo con la palabra clave japonesa al inicio,
+  description que responda a la búsqueda, campo `updated` visible, migas de pan y al menos
+  5 enlaces internos entrantes.
+- Fechas: `pubDate`, `updated` y `updatedDate` solo cambian con la orden "HAZ FRESHNESS",
+  salvo al publicar una unidad por primera vez.
+- Audio: nunca muestres un control de audio sin archivo detrás. El campo `audio` del
+  frontmatter queda pendiente hasta la fase de TTS.
+- Imágenes con alt en japonés, sin saltos de maquetación, Lighthouse móvil ≥ 90.
+- Entrega siempre: plan, diff, PR. Nunca merge directo a main; push y merge siguen las
+  frases "HAZ PUSH" y "HAZ MERGE". Si falta texto pedagógico, deja un marcador
+  TODO:contenido y lista los huecos al final.
