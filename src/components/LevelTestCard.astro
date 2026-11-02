@@ -1,4 +1,7 @@
 ---
+import { WELCOME_URL } from '../data/course';
+import { isCourseVisible } from '../utils/units';
+
 interface LevelTestItem {
   question: string;
   options: string[];
@@ -14,6 +17,8 @@ interface Props {
 }
 
 const { levelTest, title = "レベル診断テスト" } = Astro.props;
+// Tras el resultado, paso siguiente hacia el curso (solo si el curso ya es visible).
+const courseVisible = await isCourseVisible();
 
 const widgetId = `level-test-${Math.random().toString(36).slice(2, 11)}`;
 ---
@@ -76,6 +81,11 @@ const widgetId = `level-test-${Math.random().toString(36).slice(2, 11)}`;
     >
       もう一度挑戦する
     </button>
+    {courseVisible && (
+      <p class="mt-6">
+        <a href={WELCOME_URL} class="font-semibold !text-navy underline">結果に合わせて学習設定をする（ペース・例文の数など）→</a>
+      </p>
+    )}
   </div>
 </div>
 

@@ -1,0 +1,78 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import SEO from '../../../components/SEO.astro';
+import Breadcrumb from '../../../components/Breadcrumb.astro';
+import { ABOUT_COURSE_URL, CAST_URL, COURSE_URL } from '../../../data/course';
+import { isCourseVisible } from '../../../utils/units';
+
+export async function getStaticPaths() {
+  return (await isCourseVisible()) ? [{ params: { index: undefined } }] : [];
+}
+
+const siteUrl = 'https://supein.club';
+const canonical = `${siteUrl}${ABOUT_COURSE_URL}`;
+const title = 'このコースの作り方｜内容の決め方・AIの使い方・ネイティブの確認';
+const description = 'スペイン倶楽部のスペイン語コースは、誰がどの基準で内容を決め、AIをどこで使い、公開前にネイティブが何を確認しているのか。作り方をすべて公開します。';
+const updated = new Date('2026-11-02');
+const breadcrumbs = [
+  { name: 'ホーム', url: '/' },
+  { name: 'スペイン語', url: '/language/' },
+  { name: 'このコースの作り方', url: canonical },
+];
+const authorUrl = `${siteUrl}/about-us/team/david-recalde/`;
+const article = {
+  '@type': 'Article',
+  '@id': `${canonical}#article`,
+  headline: 'このコースの作り方',
+  description,
+  url: canonical,
+  datePublished: updated.toISOString(),
+  dateModified: updated.toISOString(),
+  inLanguage: 'ja',
+  author: { '@type': 'Person', '@id': `${authorUrl}#person`, name: 'David Recalde', url: authorUrl },
+  publisher: { '@id': `${siteUrl}/#organization` },
+  mainEntityOfPage: `${canonical}#webpage`,
+  isPartOf: { '@id': `${siteUrl}/#website` },
+};
+---
+<BaseLayout title={title}>
+  <SEO slot="seo" title={title} description={description} canonical={canonical} type="article" breadcrumbs={breadcrumbs} authorName="David Recalde" authorUrl={authorUrl} extraGraph={[article]} />
+
+  <article class="page-container py-10">
+    <Breadcrumb items={breadcrumbs} />
+    <h1 class="cast-page-title">このコースの作り方</h1>
+    <p class="cast-card-meta">最終更新日：<time datetime={updated.toISOString()}>2026年11月2日</time></p>
+
+    <div class="prose about-course">
+      <p>スペイン倶楽部のスペイン語コースは、無料・登録不要で、A1からC2まで自分のペースで進められるコースです。このページでは、誰がどの基準で内容を決め、どこでAIを使い、公開前に人が何を確認しているのかをまとめています。</p>
+
+      <h2>内容を決めているのは</h2>
+      <p>コースの構成と各ユニットの内容は、スペイン倶楽部の創設者 <a href="/about-us/team/david-recalde/">David Recalde（ダビッド・レカルデ）</a> が決め、最終的な責任を持っています。</p>
+
+      <h2>基準にしている資料</h2>
+      <ul>
+        <li><a href="https://cvc.cervantes.es/ensenanza/biblioteca_ele/plan_curricular/indice.htm">セルバンテス文化センター（Instituto Cervantes）の『Plan curricular』（PCIC）</a>：レベルの名称（A1 Acceso〜C2 Maestría）と、各ユニットで扱う文法・機能・語彙の範囲。</li>
+        <li>スペイン王立アカデミー（RAE）の『Nueva gramática de la lengua española』：活用形と文法の説明。</li>
+      </ul>
+      <p>どの資料からも文章をそのまま写すことはせず、日本語で書き下ろしています。例文はスペインのスペイン語を基準にし、中南米の言い方は違いがあるときに添えています。</p>
+
+      <h2>AIを使っている部分</h2>
+      <ul>
+        <li><strong>文章の下書き：</strong>解説・例文・練習問題の下書きに、AIによる執筆支援を使っています。</li>
+        <li><strong>音声：</strong>例文の音声は、Gemini TTS で生成する予定です（現在準備中）。公開する音声には「AI音声（ネイティブ監修済み）」と表示します。</li>
+      </ul>
+      <p>AIが作るのは下書きまでです。何を教えるか、どの例文を使うかは人が決め、公開する内容はすべて人が確認しています。</p>
+
+      <h2>公開前にネイティブが確認すること</h2>
+      <p>各ユニットは、スペイン語の部分をスペイン語のネイティブが、日本語の部分を日本語のネイティブが確認してから公開します。どちらか一方の確認だけでは公開しません。音声も、公開前にネイティブが一つずつ聞いて確認します。</p>
+
+      <h2>登場人物について</h2>
+      <p>例文や会話に登場する5人（ミナ、ケンタ、ユイ、ダニエル、カルメン先生）は架空の人物です。<a href={CAST_URL}>登場人物の紹介</a>で、それぞれの設定を見られます。</p>
+
+      <h2>間違いを見つけたら</h2>
+      <p>各ユニットの「間違いを報告」ボタンから知らせてください。7日以内に確認して修正します。ほかのご意見は<a href="/contact/">お問い合わせ</a>からも受け付けています。</p>
+
+      <p><a href={COURSE_URL}>スペイン語コースのトップへ</a></p>
+    </div>
+  </article>
+</BaseLayout>

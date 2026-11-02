@@ -18,6 +18,8 @@
       "道をたずねる",
       "美術館"
     ],
+    "tagline": "初めてのスペイン旅行",
+    "color": "#C8203D",
     "voice": {
       "gender": "female",
       "age": "young-adult",
@@ -43,6 +45,8 @@
       "同僚との食事",
       "工場見学"
     ],
+    "tagline": "バレンシアの取引先と仕事",
+    "color": "#1F4E79",
     "voice": {
       "gender": "male",
       "age": "adult",
@@ -68,6 +72,8 @@
       "週末の旅行",
       "試験と手続き"
     ],
+    "tagline": "サラマンカに留学中",
+    "color": "#4A6B1F",
     "voice": {
       "gender": "female",
       "age": "young-adult",
@@ -95,6 +101,8 @@
       "スペインと中南米の違い",
       "自然な言い換え"
     ],
+    "tagline": "東京在住のバレンシア人",
+    "color": "#A4501A",
     "voice": {
       "gender": "male",
       "age": "adult",
@@ -120,6 +128,8 @@
       "報道と論説",
       "試験対策"
     ],
+    "tagline": "マドリードのスペイン語教師",
+    "color": "#5B3A8E",
     "voice": {
       "gender": "female",
       "age": "mature",

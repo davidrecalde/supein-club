@@ -1,5 +1,5 @@
 ---
-import { getEntry, render } from 'astro:content';
+import { getEntries, getEntry, render } from 'astro:content';
 import BaseLayout from './BaseLayout.astro';
 import SEO from '../components/SEO.astro';
 import TOC from '../components/TOC.astro';
@@ -13,6 +13,8 @@ import VocabList from '../components/course/VocabList.astro';
 import MiniQuiz from '../components/course/MiniQuiz.astro';
 import CultureNote from '../components/course/CultureNote.astro';
 import ReportError from '../components/course/ReportError.astro';
+import Examples from '../components/course/Examples.astro';
+import { ABOUT_COURSE_URL } from '../data/course';
 import { getAllUnits, hasPage, unitBreadcrumbs, type Unit } from '../utils/units';
 import { buildQuizNode } from '../utils/schema';
 
@@ -33,6 +35,8 @@ const navItem = (n: number | null) => {
   return u && { unit: u.data.unit, shortTitle: u.data.shortTitle, url: u.data.url, linkable: hasPage(u) };
 };
 const related = d.related.map(navItem).filter((r) => r !== undefined);
+
+const cast = (await getEntries(d.cast)).map((c) => ({ id: c.id, ...c.data }));
 
 const author = (await getEntry('authors', 'david-recalde'))!;
 const authorUrl = `${siteUrl}/about-us/team/david-recalde/`;
@@ -97,17 +101,19 @@ const sources = [
     pubDate={d.pubDate}
     updated={d.updated}
     breadcrumbs={unitBreadcrumbs(unit)}
+    cast={cast}
   />
 
   <div class="page-container py-10">
     <div class="content-grid">
       <div class="content-main">
         <div class="prose unit-body">
-          <Content components={{ VocabList, MiniQuiz, CultureNote }} />
+          <Content components={{ VocabList, MiniQuiz, CultureNote, Examples }} />
         </div>
 
         <UnitNav prev={navItem(d.prev)} next={navItem(d.next)} related={related} level={d.level} />
         <ReportError label={`ユニット${d.unit} ${d.shortTitle}`} pageUrl={canonical} />
+        <p class="unit-about-link"><a href={ABOUT_COURSE_URL}>このコースの作り方（AIの使い方とネイティブの確認）</a></p>
         <Sources sources={sources} />
         <AuthorBox author={author} />
       </div>
@@ -121,3 +127,15 @@ const sources = [
   <LineBanner slim />
   <FloatingActions shareUrl={canonical} shareTitle={d.title} />
 </BaseLayout>
+
+<script>
+  import { PREFS_STORAGE_KEY } from '../data/course';
+  import { PREFS_EVENT, applyPrefs } from '../utils/coursePrefs';
+
+  applyPrefs();
+  window.addEventListener(PREFS_EVENT, () => applyPrefs());
+  // Otra pestaña (p. ej. la de 学習設定) cambia las preferencias: se aplican sin recargar.
+  window.addEventListener('storage', (e) => {
+    if (e.key === PREFS_STORAGE_KEY) applyPrefs();
+  });
+</script>

@@ -138,7 +138,13 @@ Desde el 2026-09-15, toda creación de artículo de food pregunta explícitament
 > - Progreso sin cuenta en localStorage (`supein.course.v1`, `src/utils/courseProgress.ts`). Se ve en la cabecera de unidad, en las páginas de nivel (`LevelUnits`, 「続きから」) y en el hub (`CourseLevels`). Schema: `LearningResource` + `Quiz` por unidad, `ItemList` por nivel (solo publicadas) y `Course` en el hub.
 > - Migas de /language/learn-spanish/: ホーム › スペイン語 › コース › nivel › página.
 > - En producción, `CourseLevels`, `LevelUnits` y el `Course` del hub no se muestran hasta que haya al menos una unidad publicada (`isCourseVisible()` en `src/utils/units.ts`); los previews los muestran siempre.
-> - `docs/language/` incluye también `cast.json` (reparto) y `prompts-claude-code.md` (prompts 0-9). El campo `cast` de cada unidad está en `units.json` y llega a la colección con el prompt 9.
+> - `docs/language/` incluye también `cast.json` (reparto) y `prompts-claude-code.md` (prompts 0-9).
+>
+> **Prompt 9 (2026-11-02), reparto, preferencias y transparencia:**
+> - Colección `cast` con el loader `file('docs/language/cast.json')`; las unidades la referencian en `cast`. `CastBadge` (iniciales sobre color hasta que haya ilustraciones) va en la cabecera de cada unidad.
+> - Preferencias en localStorage (`supein.prefs.v1`, `src/utils/coursePrefs.ts`): variedad, ritmo, ejemplos y audio. `applyPrefs()` actúa sobre `html[data-variety]`, las filas de vosotros, `VocabList` (campo `la`) y los bloques `<Examples>`.
+> - Páginas nuevas, generadas solo cuando el curso es visible (`[...index].astro` + `getStaticPaths` condicional): /language/cast/ (ItemList, sin Person), /language/learn-spanish/welcome/ (noindex) y /language/about-this-course/ (Article de David Recalde).
+> - `AiAudioLabel` (「AI音声（ネイティブ監修済み）」) queda preparado para el reproductor del prompt 7.
 
 | URL real | Estado | Keyword principal | Volumen (bucket) | Fuente del volumen |
 |---|---|---|---|---|
