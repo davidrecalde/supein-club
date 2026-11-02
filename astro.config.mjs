@@ -50,14 +50,22 @@ function courseLinkCheckIntegration() {
     name: 'course-link-check',
     hooks: {
       'astro:build:done': ({ dir, logger }) => {
-        const published = listFiles('src/content/units', '.mdx').flatMap((file) => {
+        const unitFiles = listFiles('src/content/units', '.mdx');
+        const published = unitFiles.flatMap((file) => {
           const fm = readFileSync(file, 'utf8').match(/^---\r?\n([\s\S]*?)\r?\n---/)?.[1] ?? '';
           if (!/^draft:\s*false\s*$/m.test(fm)) return [];
           return [{ unit: fm.match(/^unit:\s*(\d+)/m)?.[1], url: fm.match(/^url:\s*"([^"]+)"/m)?.[1] }];
         });
         if (published.length === 0) {
-          logger.info('Curso: todavía no hay unidades publicadas.');
+          logger.info(`Curso: 0 de ${unitFiles.length} unidades publicadas; el curso sigue oculto en producción.`);
           return;
+        }
+        // Decisión de David (2026-11-02): el curso no se muestra hasta estar
+        // 100 % terminado. Las unidades se fusionan en borrador y se publican
+        // todas a la vez; publicar solo una parte es un error.
+        if (published.length < unitFiles.length) {
+          const list = published.map((p) => `ユニット${p.unit}`).join(', ');
+          throw new Error(`El curso se publica entero o nada: hay ${published.length} de ${unitFiles.length} unidades con draft: false (${list}).`);
         }
         const outDir = fileURLToPath(dir);
         const incoming = new Map(published.map((p) => [p.url, new Set()]));

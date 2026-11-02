@@ -137,7 +137,7 @@ Desde el 2026-09-15, toda creación de artículo de food pregunta explícitament
 > - El build falla si una unidad publicada contiene `TODO:`, si una URL la generan a la vez una unidad y un artículo, o si una unidad publicada tiene menos de 5 enlaces internos entrantes (integración `course-link-check`).
 > - Progreso sin cuenta en localStorage (`supein.course.v1`, `src/utils/courseProgress.ts`). Se ve en la cabecera de unidad, en las páginas de nivel (`LevelUnits`, 「続きから」) y en el hub (`CourseLevels`). Schema: `LearningResource` + `Quiz` por unidad, `ItemList` por nivel (solo publicadas) y `Course` en el hub.
 > - Migas de /language/learn-spanish/: ホーム › スペイン語 › コース › nivel › página.
-> - En producción, `CourseLevels`, `LevelUnits` y el `Course` del hub no se muestran hasta que haya al menos una unidad publicada (`isCourseVisible()` en `src/utils/units.ts`); los previews los muestran siempre.
+> - En producción, `CourseLevels`, `LevelUnits` y el `Course` del hub no se muestran hasta que las 62 unidades estén publicadas (`isCourseVisible()` en `src/utils/units.ts`); los previews los muestran siempre. El curso se publica entero o nada: `course-link-check` hace fallar el build si solo una parte de las unidades tiene `draft: false`.
 > - `docs/language/` incluye también `cast.json` (reparto) y `prompts-claude-code.md` (prompts 0-9).
 >
 > **Prompt 9 (2026-11-02), reparto, preferencias y transparencia:**

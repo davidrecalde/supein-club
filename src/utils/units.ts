@@ -18,9 +18,12 @@ export async function getAllUnits(): Promise<Unit[]> {
 }
 
 /** Bloques del curso en el hub y en las páginas de nivel: en producción, solo
- *  cuando ya hay al menos una unidad publicada (decisión de David, 2026-11-02). */
+ *  cuando las 62 unidades están publicadas. Decisión de David (2026-11-02): el
+ *  curso no se muestra a los visitantes hasta estar 100 % terminado. El build
+ *  falla si se publica solo una parte (course-link-check en astro.config.mjs). */
 export async function isCourseVisible(): Promise<boolean> {
-  return SHOW_DRAFTS || (await getAllUnits()).some((u) => !u.data.draft);
+  const units = await getAllUnits();
+  return SHOW_DRAFTS || (units.length === TOTAL_UNITS && units.every((u) => !u.data.draft));
 }
 
 /** La unidad se genera con su plantilla. Una unidad «existente» en borrador no:
