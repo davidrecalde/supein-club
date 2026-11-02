@@ -5,89 +5,277 @@ levelName: "Acceso"
 slug: "present-irregular"
 url: "/language/learn-spanish/a1/present-irregular/"
 existing: false
-title: "直説法現在・不規則動詞"
+title: "スペイン語の不規則動詞（現在形）｜tener・ir・hacer と語幹母音変化"
 shortTitle: "直説法現在・不規則動詞"
-titleEs: "presente de indicativo irregular"
-grammar: ["tener","ir","hacer","cambio vocálico"]
-tenses: []
-functions: []
-canDo: []
-vocabulary: []
-verbs: ["tener","ir","hacer","querer","poder"]
+titleEs: "Presente de indicativo: verbos irregulares"
+description: "スペイン語の現在形の不規則動詞を、パターン別に解説。querer・poder などの語幹母音変化、hago・salgo など yo だけ変わる動詞、tener・ir の活用と tener que・tener hambre などの表現を、日本人が間違えやすい点と練習問題つきで学べます。"
+grammar: ["presente irregular", "cambio vocálico e>ie, o>ue, e>i", "primera persona irregular", "tener, ir, hacer"]
+tenses: ["presente de indicativo"]
+functions: ["したいこと・できることを言う", "年齢や体の状態を言う", "しなければならないことを言う"]
+canDo:
+  - "したいことや、できるかどうかを言える"
+  - "年齢や、お腹がすいた・暑いなどの状態を言える"
+  - "旅先で、許可を求めたり、しなければならないことを言ったりできる"
+vocabulary:
+  # rank = «Rango frec.» del diccionario de frecuencias del CORPES XXI (RAE). Lo escribe
+  # npm run vocab:rank -- --write; lo que no es lema del diccionario va sin rank, al final.
+  - { es: "tener", ja: "持つ・（年齢が）〜歳である", rank: 18, example: "Mina tiene veintiocho años." }
+  - { es: "ir", ja: "行く", rank: 46, example: "Mañana Mina va al Museo del Prado." }
+  - { es: "hacer", ja: "する・作る", rank: 23, example: "Mina hace muchas fotos." }
+  - { es: "querer", ja: "欲しい・〜したい", rank: 81, example: "Quiero un café con leche." }
+  - { es: "poder", ja: "〜できる・〜してもよい", rank: 21, example: "¿Puedo pagar con tarjeta?" }
+  - { es: "pensar", ja: "考える・〜するつもりだ", rank: 213, example: "Mina piensa visitar Toledo." }
+  - { es: "empezar", ja: "始まる・始める", rank: 282, example: "La visita empieza a las diez." }
+  - { es: "dormir", ja: "眠る", rank: 1709, example: "Mina duerme poco en el avión." }
+  - { es: "volver", ja: "戻る・帰る", rank: 204, example: "Mina vuelve al hotel a las nueve." }
+  - { es: "pedir", ja: "頼む・注文する", rank: 286, example: "Mina pide una tortilla." }
+  - { es: "salir", ja: "出る・出かける", rank: 199, example: "El tren sale a las ocho." }
+  - { es: "conocer", ja: "（人・場所を）知っている", rank: 130, example: "Mina no conoce Madrid." }
+  - { es: "venir", ja: "来る", rank: 224, example: "¿Vienes al bar?" }
+  - { es: "tener hambre", ja: "お腹がすいている", example: "Tengo mucha hambre." }
+verbs: ["tener", "ir", "hacer", "querer", "poder"]
 duration: 40
 prev: 4
 next: 6
-related: [4,6,12]
+related: [4, 6, 12]
 cast: ["mina"]
-audio: []
+audio:
+  - "Quiero un café con leche."
+  - "¿Puedo pagar con tarjeta?"
+  - "Tengo veintiocho años."
+  - "Tengo que comprar un billete."
+  - "Mañana voy al Museo del Prado."
+  - "¿Me pones una caña, por favor?"
+  - "Hola, buenos días. Quiero una entrada, por favor."
+  - "¿A qué hora cierra el museo?"
+  - "quiero"
+  - "puedo"
 youtubeId: ""
-quiz: []
 draft: true
 updated: "2026-11-02"
+quiz:
+  - question: "tener の1人称単数（yo）は？"
+    options: ["teno", "tengo", "tiene"]
+    correctIndex: 1
+    explanation: "tener は yo が -go になります：tengo。ほかの人称では e → ie（tienes, tiene…）に変わります。"
+  - question: "querer の1人称複数（nosotros）は？"
+    options: ["queremos", "quieremos", "quieren"]
+    correctIndex: 0
+    explanation: "語幹母音の変化（e → ie）は、nosotros と vosotros では起こりません：queremos。"
+  - question: "poder の3人称単数は？"
+    options: ["puedo", "pode", "puede"]
+    correctIndex: 2
+    explanation: "poder は o → ue に変わります：puede。puedo は yo の形です。"
+  - question: "ir の1人称単数（yo）は？"
+    options: ["iro", "vo", "voy"]
+    correctIndex: 2
+    explanation: "ir は完全な不規則動詞です：voy, vas, va, vamos, vais, van。"
+  - question: "hacer の1人称単数（yo）は？"
+    options: ["haco", "hago", "hace"]
+    correctIndex: 1
+    explanation: "hacer は yo だけ不規則で hago。ほかは規則どおり（haces, hace…）です。"
+  - question: "pedir の3人称複数（ellos）は？"
+    options: ["piden", "peden", "pidan"]
+    correctIndex: 0
+    explanation: "pedir は e → i に変わります：piden。pidan は接続法の形です。"
+  - question: "「私は28歳です」。正しいのは？"
+    options: ["Soy 28 años.", "Estoy 28 años.", "Tengo 28 años."]
+    correctIndex: 2
+    explanation: "年齢は tener で「〜年を持っている」と言います：Tengo 28 años。"
+  - question: "「切符を買わなければならない」。正しいのは？"
+    options: ["Tengo que comprar un billete.", "Tengo comprar un billete.", "Tengo de comprar un billete."]
+    correctIndex: 0
+    explanation: "「〜しなければならない」は tener que + 動詞の原形です。que を忘れないようにしましょう。"
+  - question: "dormir の1人称単数（yo）は？"
+    options: ["dormo", "duermo", "durmo"]
+    correctIndex: 1
+    explanation: "dormir は o → ue に変わります：duermo。"
+  - question: "saber（知っている）の1人称単数は？"
+    options: ["sé", "sabo", "se"]
+    correctIndex: 0
+    explanation: "saber の yo は sé。アクセント記号のない se は代名詞なので、記号を忘れないようにしましょう。"
 ---
 
-TODO:contenido（導入：このユニットの問いに、それだけで答えになる2文で答える）
+スペイン語の現在形には、規則どおりに活用しない不規則動詞があります。よく使う動詞ほど不規則で、tener（持つ）、ir（行く）、hacer（する）のほか、quiero（querer）、puedo（poder）のように語幹の母音が変わる動詞も、毎日の会話に欠かせません。
 
-## 文法 (Gramática)
+不規則動詞は数が多く見えますが、ほとんどはいくつかのパターンに分けられます。このユニットでは、マドリードで旅を続けるミナが、注文したり、許可を求めたり、予定を話したりする場面を例に、パターンごとに覚えていきます。
 
-TODO:contenido
+## 文法：現在形の不規則動詞 (Gramática)
+
+不規則動詞は、大きく三つのパターンに分けられます。
+
+### パターン1：語幹の母音が変わる動詞
+
+強く読む語幹の母音が、e → ie、o → ue、e → i と変わります。**nosotros と vosotros だけは変わらない**のが大きな特徴です。
+
+| 人称 | querer（e → ie） | poder（o → ue） | pedir（e → i） |
+| --- | --- | --- | --- |
+| yo | qu**ie**ro | p**ue**do | p**i**do |
+| tú | qu**ie**res | p**ue**des | p**i**des |
+| él / ella / usted | qu**ie**re | p**ue**de | p**i**de |
+| nosotros / nosotras | queremos | podemos | pedimos |
+| vosotros / vosotras ※ | queréis | podéis | pedís |
+| ellos / ellas / ustedes | qu**ie**ren | p**ue**den | p**i**den |
+
+※ vosotros はスペインのみで使う形です。中南米では ustedes を使います（→ [中南米のスペイン語](/language/learn-spanish/spanish-in-latin-america/)）。
+
+同じ変化をする動詞：
+
+- e → ie：pensar（考える）、empezar（始まる）、cerrar（閉まる）、entender（理解する）
+- o → ue：dormir（眠る）、volver（戻る）、encontrar（見つける）、costar（値段が〜である：¿Cuánto cuesta?）
+- e → i：pedir（頼む）、repetir（くり返す）、servir（出す・役に立つ）
+
+### パターン2：yo だけが不規則な動詞
+
+yo の形だけが変わり、ほかは規則どおりです。
+
+| 動詞 | yo | tú |
+| --- | --- | --- |
+| hacer（する） | hago | haces |
+| poner（置く） | pongo | pones |
+| salir（出る） | salgo | sales |
+| conocer（知っている） | conozco | conoces |
+| saber（知っている） | sé | sabes |
+| ver（見る） | veo | ves |
+| dar（与える） | doy | das |
+
+conocer と saber は、どちらも「知っている」と訳せますが、使い分けがあります。conocer は人や場所を、会ったり行ったりして知っていること。saber は情報や、やり方を知っていることです：Mina no conoce Madrid.（ミナはマドリードに行ったことがない）／ Mina sabe hablar un poco de español.（ミナはスペイン語を少し話せる）。
+
+### パターン3：二つの変化が重なる動詞と、完全な不規則動詞
+
+tener と venir は、yo が -go になり、ほかの人称では語幹の母音も変わります。ir はどのパターンにも当てはまらない、完全な不規則動詞です。
+
+| 人称 | tener（持つ） | venir（来る） | ir（行く） |
+| --- | --- | --- | --- |
+| yo | tengo | vengo | voy |
+| tú | tienes | vienes | vas |
+| él / ella / usted | tiene | viene | va |
+| nosotros / nosotras | tenemos | venimos | vamos |
+| vosotros / vosotras | tenéis | venís | vais |
+| ellos / ellas / ustedes | tienen | vienen | van |
+
+### 旅先で使う表現
+
+<Examples>
+
+- Quiero un café con leche.（カフェ・コン・レチェが欲しいです）
+- ¿Puedo pagar con tarjeta?（カードで払えますか？）
+- Tengo que comprar un billete.（切符を買わなければならない）
+- Mañana voy al Museo del Prado.（明日、プラド美術館に行く）
+
+</Examples>
+
+美術館のチケット売り場で、ミナが係の人と話します。不規則動詞がいくつ出てくるか、数えてみましょう。
+
+- Mina: Hola, buenos días. Quiero una entrada, por favor.（こんにちは。入場券を1枚ください）
+- Empleado: Muy bien. Son doce euros.（かしこまりました。12ユーロです）
+- Mina: ¿Puedo pagar con tarjeta?（カードで払えますか？）
+- Empleado: Sí, claro.（ええ、もちろん）
+- Mina: ¿A qué hora cierra el museo?（美術館は何時に閉まりますか？）
+- Empleado: Cierra a las ocho.（8時に閉まります）
+
+quiero（querer）、puedo（poder）、cierra（cerrar）の三つは、どれも語幹の母音が変わる動詞です。
+
+**tener を使う表現**も覚えておきましょう。日本語では「〜です」と言う場面でも、スペイン語では「〜を持っている」と考えます。
+
+- 年齢：Mina tiene veintiocho años.（ミナは28歳です）
+- 体の状態：Tengo hambre / sed / calor / frío.（お腹がすいた／のどがかわいた／暑い／寒い）
+- 義務：tener que + 動詞の原形（〜しなければならない）
+
+**ダニエル（バレンシア出身）のひとこと：** スペインでは「写真を撮る」を hacer fotos と言います（Mina hace muchas fotos.）。中南米では tomar fotos の方がふつうです。どちらも通じますが、スペインで hacer fotos と言えると、ぐっと自然に聞こえます。
 
 ## 活用：今日の動詞 (Conjugación)
 
-TODO:contenido
+このユニットの中心は [tener](/language/learn-spanish/verb-conjugation/tener/)、[ir](/language/learn-spanish/verb-conjugation/ir/)、[hacer](/language/learn-spanish/verb-conjugation/hacer/)、[poder](/language/learn-spanish/verb-conjugation/poder/) です。どれも全時制の活用表で確認できます。querer などのほかの基本動詞も、[動詞の活用一覧](/language/learn-spanish/verb-conjugation/)の「よく使う動詞50」に、使用頻度の順に並んでいます。
 
 ## 語彙 (Nociones específicas)
+
+このユニットの不規則動詞と、tener を使う表現です。どのパターンかを確かめながら覚えましょう。
 
 <VocabList items={frontmatter.vocabulary} level={frontmatter.level} />
 
 ## 発音・正書法 (Pronunciación y ortografía)
 
-TODO:contenido
+語幹母音の変化でできる ie と ue は、それぞれ一つの音節として、まとめて強く読みます。quiero は「キエ・ロ」の2音節で、**キエ**を強く、puedo は「プエ・ド」の2音節で、**プエ**を強く読みます。「キ・エ・ロ」と3つに分けないのがコツです。
 
 ## 日本人がよく間違える
 
-TODO:contenido
+- **nosotros まで母音を変える。** ×quieremos、×puedemos → ○**queremos**、○**podemos**。語幹母音が変わるのは、強く読む位置が語幹にある形だけです。
+- **yo を規則どおりに作る。** ×Yo teno、×Yo haco、×Yo sabo → ○**tengo**、○**hago**、○**sé**。よく使う動詞の yo の形は、そのまま覚えましょう。
+- **年齢を ser で言う。** ×Soy 28 años. → ○**Tengo** 28 años. 日本語の「28歳です」につられないように注意しましょう。
 
 ## 文化メモ (Referentes culturales)
 
 <CultureNote>
 
-TODO:contenido
+スペインのバルでは、注文に poner（置く）を使うのがふつうです。¿Me pones una caña, por favor?（生ビールを一杯もらえる？）は、直訳すると「私に一杯置いてくれる？」。カウンターで店の人に tú で話しかけるのも、よくあることです。ビールと一緒に出てくる小皿の楽しみ方は、[タパス文化完全ガイド](/food/tapas/)で紹介しています。
 
 </CultureNote>
 
 ## 練習 (Procedimientos de aprendizaje)
 
-### 練習1：認識
+### 練習1：どのパターン？
 
-TODO:contenido
+次の yo の形は、どのパターンの不規則動詞ですか（e → ie / o → ue / e → i / yo だけ不規則）。
+
+1. quiero
+2. puedo
+3. pido
+4. hago
+5. salgo
+6. duermo
 
 <details>
 <summary>答えを見る</summary>
 
-TODO:contenido
+1. e → ie（querer）
+2. o → ue（poder）
+3. e → i（pedir）
+4. yo だけ不規則（hacer）
+5. yo だけ不規則（salir）
+6. o → ue（dormir）
 
 </details>
 
 ### 練習2：穴埋め
 
-TODO:contenido
+（ ）の動詞を、主語に合わせた現在形にしてください。
+
+1. Yo (tener) ______ 28 años.
+2. Mina (querer) ______ un café.
+3. Nosotros (poder) ______ pagar con tarjeta.
+4. ¿Tú (ir) ______ al museo?
+5. Yo (hacer) ______ muchas fotos.
+6. El museo (cerrar) ______ a las ocho.
 
 <details>
 <summary>答えを見る</summary>
 
-TODO:contenido
+1. tengo
+2. quiere
+3. podemos（nosotros は母音が変わらない）
+4. vas
+5. hago
+6. cierra（e → ie）
 
 </details>
 
 ### 練習3：作文
 
-TODO:contenido
+ミナになったつもりで、スペイン語で言ってみましょう。
+
+1. お腹がすいています。
+2. コーヒーを一杯ください（querer を使って）。
+3. カードで払えますか？
+4. 明日、プラド美術館に行きます。
 
 <details>
-<summary>答えを見る</summary>
+<summary>解答例を見る</summary>
 
-TODO:contenido
+1. Tengo hambre.
+2. Quiero un café, por favor.
+3. ¿Puedo pagar con tarjeta?
+4. Mañana voy al Museo del Prado.
 
 </details>
 
@@ -97,4 +285,8 @@ TODO:contenido
 
 ## まとめ
 
-TODO:contenido
+- 語幹母音が変わる動詞（quiero, puedo, pido）は、nosotros と vosotros だけ変わらない。
+- yo だけ不規則な動詞（hago, salgo, sé）と、tener・venir・ir は形ごと覚える。
+- 年齢・空腹・暑さ寒さは tener、「〜しなければならない」は tener que + 原形。
+
+次のユニット6では、形容詞・所有詞・指示詞を使って、人や物を説明します。
