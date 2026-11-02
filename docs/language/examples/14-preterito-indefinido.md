@@ -1,0 +1,303 @@
+---
+unit: 14
+level: "A2"
+levelName: "Plataforma"
+slug: "preterito-indefinido"
+url: "/language/learn-spanish/a2/preterito-indefinido/"
+existing: false
+title: "スペイン語の点過去（pretérito indefinido）｜活用・不規則動詞・使い方"
+titleEs: "Pretérito indefinido"
+description: "スペイン語の点過去（pretérito indefinido）を一から解説。-ar/-er/-ir の規則活用、語幹が変わる不規則動詞、ser と ir の同じ形、「昨日〜した」と言うときの使い方を、日本人が間違えやすい点と練習問題つきで学べます。"
+grammar: ["pretérito indefinido", "verbos regulares", "pretéritos fuertes", "ser e ir"]
+tenses: ["pretérito indefinido"]
+functions: ["過去の出来事を語る", "いつ何をしたか言う"]
+canDo:
+  - "昨日・先週・去年にしたことを言える"
+  - "旅行や週末の出来事を順番に話せる"
+  - "tener, hacer, ir, ser を点過去で正しく使える"
+vocabulary:
+  # rank = puesto en la lista de frecuencia del Corpus del Español. Los valores de este
+  # ejemplo son provisionales (orden interno): TODO:contenido verificar contra la lista.
+  - { es: "ayer", ja: "昨日", rank: 1 }
+  - { es: "anoche", ja: "昨夜", rank: 2 }
+  - { es: "la semana pasada", ja: "先週", rank: 3 }
+  - { es: "el año pasado", ja: "去年", rank: 4 }
+  - { es: "hace dos días", ja: "2日前に", rank: 5 }
+  - { es: "el fin de semana", ja: "週末（に）", rank: 6 }
+  - { es: "primero", ja: "まず", rank: 7 }
+  - { es: "después", ja: "その後", rank: 8 }
+  - { es: "luego", ja: "それから", rank: 9 }
+  - { es: "al final", ja: "最後に", rank: 10 }
+  - { es: "de repente", ja: "突然", rank: 11 }
+  - { es: "el viaje", ja: "旅行", rank: 12 }
+verbs: ["ser", "ir", "tener", "estar", "hacer", "hablar", "comer", "vivir"]
+duration: 40
+prev: 13
+next: 15
+related: [15, 16, 13]
+audio:
+  - "Ayer comí paella."
+  - "Anoche vimos una película."
+  - "La semana pasada fui a Osaka."
+  - "El año pasado estudié español."
+  - "Llegué hace dos días."
+  - "Primero visitamos la Sagrada Familia, después comimos en el barrio Gótico y al final volvimos al hotel."
+  - "Fuimos a la sierra, comimos cordero y luego dormimos la siesta."
+  - "habló"
+  - "hablo"
+youtubeId: ""
+draft: true
+updated: "2026-11-02"
+quiz:
+  - question: "「昨日、私はパエリアを食べた」。正しいのは？"
+    options: ["Ayer como paella.", "Ayer comí paella.", "Ayer comía paella."]
+    correctIndex: 1
+    explanation: "ayer（昨日）は終わった出来事の目印なので点過去 comí。como は現在形、comía は線過去（ユニット15）です。"
+  - question: "hablar の点過去、3人称単数（él/ella/usted）は？"
+    options: ["hablo", "habló", "hablé"]
+    correctIndex: 1
+    explanation: "habló。アクセント記号を落とすと hablo（私は話す・現在形）になり、人称も時制も変わってしまいます。"
+  - question: "ser と ir の点過去で共通している形は？"
+    options: ["fui, fuiste, fue…", "era, eras, era…", "soy, eres, es…"]
+    correctIndex: 0
+    explanation: "ser と ir は点過去で全く同じ形（fui, fuiste, fue, fuimos, fuisteis, fueron）。era… は ser の線過去、soy… は現在形です。"
+  - question: "tener の点過去、1人称単数は？"
+    options: ["tení", "tuve", "tuvé"]
+    correctIndex: 1
+    explanation: "tener は語幹が tuv- に変わる強変化動詞。語尾は -e で、アクセント記号はつきません（tuve）。"
+  - question: "「私たちは去年マドリードに住んでいた／住んだ」。点過去は？"
+    options: ["Vivimos en Madrid el año pasado.", "Vivemos en Madrid el año pasado.", "Vivimos en Madrid ahora."]
+    correctIndex: 0
+    explanation: "-ir 動詞の nosotros は現在形と点過去が同じ形（vivimos）。el año pasado があるので点過去だとわかります。"
+  - question: "hacer の点過去、3人称単数は？"
+    options: ["hació", "hizo", "hico"]
+    correctIndex: 1
+    explanation: "hacer は語幹 hic- ですが、3人称単数だけ発音を保つために c が z になり hizo となります。"
+  - question: "「私はバルセロナに行った」。正しいのは？"
+    options: ["Fui a Barcelona.", "Fue a Barcelona.", "Iba a Barcelona."]
+    correctIndex: 0
+    explanation: "fui は ir（行く）と ser（〜である）の1人称単数。fue は3人称単数、iba は線過去です。"
+  - question: "llegar の点過去、1人称単数は？"
+    options: ["llegé", "llegué", "llego"]
+    correctIndex: 1
+    explanation: "-gar で終わる動詞は yo の形で g の発音を保つために gu になります：llegué。"
+  - question: "decir の点過去、3人称複数は？"
+    options: ["dijieron", "dijeron", "decieron"]
+    correctIndex: 1
+    explanation: "語幹が j で終わる強変化動詞（decir, traer, conducir）は3人称複数が -eron になります：dijeron。"
+  - question: "スペインで「今朝コーヒーを飲んだ」と言うなら？"
+    options: ["Esta mañana tomé café.", "Esta mañana he tomado café.", "Esta mañana tomaba café."]
+    correctIndex: 1
+    explanation: "スペインでは esta mañana（今朝）や hoy（今日）など「今日の中」の出来事には現在完了（ユニット13）を使います。点過去は ayer 以前の完結した出来事に使います。"
+---
+
+スペイン語の点過去（pretérito indefinido）は、過去のある時点で完結した出来事を言うための時制です。「昨日食べた」「去年スペインに行った」「2010年に生まれた」のように、いつ起きたかがはっきりしていて、もう終わっている行為に使います。日本語の「〜した」に一番近い時制ですが、日本語にはない区別が二つあります。一つは現在完了との使い分け、もう一つは線過去との使い分けで、それぞれユニット13とユニット16で扱います。
+
+## 文法：点過去とは (Gramática)
+
+点過去は動詞の語尾で「誰が」と「過去」を同時に表します。主語を言わなくても伝わるのはそのためです。まずは規則動詞の語尾を、次に不規則動詞を、最後に使う場面を見ていきましょう。
+
+### 規則動詞の活用
+
+点過去の規則活用は2種類しかありません。-ar 動詞の語尾と、-er / -ir 動詞に共通の語尾です。
+
+| 人称 | hablar（話す） | comer（食べる） | vivir（住む） |
+| --- | --- | --- | --- |
+| yo | habl**é** | com**í** | viv**í** |
+| tú | habl**aste** | com**iste** | viv**iste** |
+| él / ella / usted | habl**ó** | com**ió** | viv**ió** |
+| nosotros / nosotras | habl**amos** | com**imos** | viv**imos** |
+| vosotros / vosotras ※ | habl**asteis** | com**isteis** | viv**isteis** |
+| ellos / ellas / ustedes | habl**aron** | com**ieron** | viv**ieron** |
+
+※ vosotros はスペインのみで使う形です。中南米では ustedes を使います（→ [中南米のスペイン語](/language/learn-spanish/spanish-in-latin-america/)）。
+
+覚えるポイントは三つです。
+
+1. **yo と él/ella/usted にアクセント記号がある。** hablé、habló、comí、comió。この記号は飾りではなく、現在形との唯一の違いになることがあります（下の「日本人がよく間違える」を参照）。
+2. **-er と -ir は語尾が完全に同じ。** 覚える量は実質2セットです。
+3. **nosotros の形は -ar と -ir で現在形と同じ。** hablamos、vivimos は現在にも過去にもなります。区別は文脈と時の表現（ayer、el año pasado など）でつけます。-er だけは comemos（現在）／comimos（過去）と形が違います。
+
+### つづりが変わる動詞
+
+発音を保つために、yo の形だけつづりが変わる動詞があります。音は規則どおりなので、書くときだけ注意します。
+
+| 語尾 | 変化 | 例 |
+| --- | --- | --- |
+| -car | c → qu | buscar → bus**qué**（探した） |
+| -gar | g → gu | llegar → lle**gué**（着いた） |
+| -zar | z → c | empezar → empe**cé**（始めた） |
+
+また、語幹が母音で終わる -er / -ir 動詞は、3人称の i が y に変わります：leer → le**yó**, le**yeron**（読んだ）、oír → o**yó**, o**yeron**（聞いた）。
+
+### 強変化動詞（pretéritos fuertes）
+
+点過去でいちばん大切な不規則動詞のグループです。語幹が別の形に変わり、語尾は -e, -iste, -o, -imos, -isteis, -ieron。**yo と él の形にアクセント記号がつかない**のが規則動詞との大きな違いです。
+
+| 動詞 | 語幹 | yo | él / ella / usted | ellos / ellas / ustedes |
+| --- | --- | --- | --- | --- |
+| tener（持つ） | tuv- | tuve | tuvo | tuvieron |
+| estar（いる・ある） | estuv- | estuve | estuvo | estuvieron |
+| poder（できる） | pud- | pude | pudo | pudieron |
+| poner（置く） | pus- | puse | puso | pusieron |
+| saber（知る） | sup- | supe | supo | supieron |
+| querer（欲しい） | quis- | quise | quiso | quisieron |
+| venir（来る） | vin- | vine | vino | vinieron |
+| hacer（する・作る） | hic- | hice | **hizo** | hicieron |
+| decir（言う） | dij- | dije | dijo | **dijeron** |
+| traer（持ってくる） | traj- | traje | trajo | **trajeron** |
+
+二つだけ例外を覚えてください。hacer の3人称単数は hizo（c → z）。語幹が j で終わる decir、traer、conducir などは3人称複数が -eron（dijeron、trajeron）になります。
+
+### ser と ir、dar と ver
+
+ser（〜である）と ir（行く）は点過去で**まったく同じ形**になります。意味は文脈で判断します。
+
+| 人称 | ser / ir | dar（与える） | ver（見る） |
+| --- | --- | --- | --- |
+| yo | fui | di | vi |
+| tú | fuiste | diste | viste |
+| él / ella / usted | fue | dio | vio |
+| nosotros / nosotras | fuimos | dimos | vimos |
+| vosotros / vosotras | fuisteis | disteis | visteis |
+| ellos / ellas / ustedes | fueron | dieron | vieron |
+
+Fui a Madrid.（マドリードに行った）／Fui profesor.（私は教師だった）。dar と ver は1音節なので、di、vi、dio、vio にアクセント記号はつきません。
+
+### 3人称だけ母音が変わる動詞
+
+現在形で語幹の母音が変わる -ir 動詞（pedir、dormir など）は、点過去では **3人称だけ** e → i、o → u に変わります。
+
+- pedir（頼む）：pedí, pediste, **pidió**, pedimos, pedisteis, **pidieron**
+- dormir（眠る）：dormí, dormiste, **durmió**, dormimos, dormisteis, **durmieron**
+
+### いつ使う？時を表す表現
+
+点過去は、終わった時点を示す表現と一緒に使うのが基本です。
+
+| 表現 | 意味 | 例文 |
+| --- | --- | --- |
+| ayer | 昨日 | Ayer comí paella.（昨日パエリアを食べた） |
+| anoche | 昨夜 | Anoche vimos una película.（昨夜映画を見た） |
+| la semana pasada | 先週 | La semana pasada fui a Osaka.（先週大阪に行った） |
+| el año pasado | 去年 | El año pasado estudié español.（去年スペイン語を勉強した） |
+| en 2019 | 2019年に | Viajé a España en 2019.（2019年にスペインを旅行した） |
+| hace dos días | 2日前に | Llegué hace dos días.（2日前に着いた） |
+
+旅行や週末の出来事を順番に語るときは、primero（まず）、después（その後）、luego（それから）、al final（最後に）でつなぎます：Primero visitamos la Sagrada Familia, después comimos en el barrio Gótico y al final volvimos al hotel.
+
+## 活用：今日の動詞 (Conjugación)
+
+このユニットで何度も出てくる動詞は [tener](/language/learn-spanish/verb-conjugation/tener/)（tuve, tuviste, tuvo…）と [ir](/language/learn-spanish/verb-conjugation/ir/)（fui, fuiste, fue…）です。それぞれのページで全時制の活用表と、同じ変化をする動詞（tener → mantener, obtener）を確認できます。[hacer](/language/learn-spanish/verb-conjugation/hacer/) の hizo も忘れずに。
+
+## 語彙 (Nociones específicas)
+
+点過去と一緒に使う時の表現と、出来事を並べる語です。使用頻度の高い順に並べています。
+
+| スペイン語 | 日本語 | 例 |
+| --- | --- | --- |
+| ayer | 昨日 | Ayer llegué tarde. |
+| anoche | 昨夜 | Anoche no dormí bien. |
+| la semana pasada | 先週 | La semana pasada tuve un examen. |
+| el año pasado | 去年 | El año pasado fuimos a Granada. |
+| hace dos días | 2日前に | Hace dos días vi a Marta. |
+| el fin de semana | 週末（に） | El fin de semana hicimos una excursión. |
+| primero | まず | Primero compré las entradas. |
+| después | その後 | Después tomamos un café. |
+| luego | それから | Luego dimos un paseo. |
+| al final | 最後に | Al final volvimos en tren. |
+| de repente | 突然 | De repente empezó a llover. |
+| el viaje | 旅行 | El viaje duró una semana. |
+
+A2 の単語一覧全体は [A2 単語リスト](/language/learn-spanish/a2/vocabulary/) で確認できます。
+
+## 発音・正書法 (Pronunciación y ortografía)
+
+点過去の yo と él/ella/usted は、**最後の母音を強く**読みます：hablé（ア・ブ**レ**）、habló（ア・ブ**ロ**）。現在形の hablo（**ア**・ブロ）とは強さの位置が違うだけなので、声に出して差をつける練習をしてください。強変化動詞（tuve, hizo, dijo）は反対に、語幹を強く読みます。
+
+## 日本人がよく間違える
+
+日本語には「〜した」の一種類しかないため、形と使い分けの両方でつまずきやすいポイントがあります。
+
+- **アクセント記号を落とす。** ×Ayer hablo con María. → ○Ayer habl**ó** con María.（昨日彼女はマリアと話した）。記号がないと「私は話す（現在）」になり、人称も時制もずれます。手書きでもメッセージでも、点過去の yo と él には必ずつけてください。
+- **ayer に現在完了を使う。** ×Ayer he comido paella. → ○Ayer **comí** paella. スペインでは ayer 以前の出来事は点過去、「今日の中」の出来事は現在完了（ユニット13）と分けます。
+- **強変化動詞にアクセント記号をつける。** ×tuvé, ×hizó → ○tuve, ○hizo。強変化動詞は語幹が変わる代わりに、語尾にアクセント記号はつきません。
+- **fui を ir だけだと思う。** Fui camarero en Tokio.（東京でウェイターだった）は ser です。fui を見たら、後ろに a + 場所があるか（ir）、職業や性質があるか（ser）を確認しましょう。
+
+## 文化メモ (Referentes culturales)
+
+スペイン人に週末のことを聞くと、点過去の洪水が返ってきます。Fuimos a la sierra, comimos cordero y luego dormimos la siesta.（山に行って、子羊を食べて、それから昼寝をした）。食事と出来事を順番に語るのがスペイン流の雑談です。週末の小旅行については、旅行セクションの記事（TODO:リンク /travel の該当記事）も参考にしてください。
+
+## 練習 (Procedimientos de aprendizaje)
+
+### 練習1：現在か過去か？
+
+次の動詞は現在形ですか、点過去ですか。
+
+1. Hablo con mi madre.
+2. Habló con mi madre.
+3. Vivimos en Sevilla.（文脈：el año pasado）
+4. Comemos a las dos.
+5. Fuimos al mercado.
+
+<details><summary>答えを見る</summary>
+
+1. 現在形（私は話す）
+2. 点過去（彼／彼女は話した）── 違いはアクセント記号だけ
+3. 点過去（去年住んでいた）── 形は現在と同じ、文脈で判断
+4. 現在形（私たちは2時に食べる）── -er 動詞は過去なら comimos
+5. 点過去（私たちは市場に行った）
+
+</details>
+
+### 練習2：穴埋め
+
+点過去の正しい形を入れてください。
+
+1. Ayer (yo, comprar) ______ un libro.
+2. El sábado (nosotros, ir) ______ a la playa.
+3. ¿Qué (tú, hacer) ______ anoche?
+4. Mi hermano (tener) ______ un examen la semana pasada.
+5. Ellos (llegar) ______ tarde al concierto.
+6. Marta (dormir) ______ diez horas.
+
+<details><summary>答えを見る</summary>
+
+1. compré
+2. fuimos
+3. hiciste
+4. tuvo
+5. llegaron
+6. durmió（3人称だけ o → u）
+
+</details>
+
+### 練習3：作文
+
+次の内容をスペイン語で書いてみましょう。
+
+1. 先週、私は京都に行った。
+2. 昨夜、私たちはレストランで夕食を食べた（cenar）。
+3. 彼女は2日前にスペインに着いた。
+
+<details><summary>解答例を見る</summary>
+
+1. La semana pasada fui a Kioto.
+2. Anoche cenamos en un restaurante.
+3. Ella llegó a España hace dos días.
+
+</details>
+
+## ミニテスト
+
+10問のテストで、このユニットの内容を確認しましょう。7問以上正解でユニット完了です。
+
+<!-- MiniQuiz はフロントマターの quiz から生成されます -->
+
+## まとめ
+
+- 点過去は、終わった時点の出来事を言う「〜した」の時制。規則語尾は -ar 用と -er/-ir 用の2セット。
+- yo と él/ella/usted のアクセント記号が現在形との境目。強変化動詞（tuve, hizo, dijo）には記号がつかない。
+- ser と ir は点過去で同じ形（fui, fuiste, fue…）。意味は文脈で決まる。
+
+次のユニット15では、もう一つの過去「線過去」を学び、ユニット16で二つの過去の使い分けを練習します。

@@ -1,0 +1,1873 @@
+[
+  {
+    "unit": 1,
+    "level": "A1",
+    "levelName": "Acceso",
+    "slug": "pronunciation",
+    "url": "/language/learn-spanish/a1/pronunciation/",
+    "existing": true,
+    "title": "発音と読み方",
+    "titleEs": "alfabeto y acentuación",
+    "grammar": [
+      "sonidos",
+      "acento",
+      "entonación"
+    ],
+    "verbs": [],
+    "canDo": [],
+    "vocabulary": [],
+    "duration": 40,
+    "prev": null,
+    "next": 2,
+    "related": [
+      2,
+      12,
+      10
+    ],
+    "audio": [],
+    "youtubeId": "",
+    "draft": true,
+    "updated": "2026-11-02"
+  },
+  {
+    "unit": 2,
+    "level": "A1",
+    "levelName": "Acceso",
+    "slug": "gender-number-articles",
+    "url": "/language/learn-spanish/a1/gender-number-articles/",
+    "existing": false,
+    "title": "名詞の性・数と冠詞",
+    "titleEs": "género, número y artículos",
+    "grammar": [
+      "género",
+      "número",
+      "artículos"
+    ],
+    "verbs": [],
+    "canDo": [],
+    "vocabulary": [],
+    "duration": 40,
+    "prev": 1,
+    "next": 3,
+    "related": [
+      1,
+      3,
+      12
+    ],
+    "audio": [],
+    "youtubeId": "",
+    "draft": true,
+    "updated": "2026-11-02"
+  },
+  {
+    "unit": 3,
+    "level": "A1",
+    "levelName": "Acceso",
+    "slug": "ser-estar",
+    "url": "/language/learn-spanish/a1/ser-estar/",
+    "existing": false,
+    "title": "ser と estar・自己紹介",
+    "titleEs": "ser y estar",
+    "grammar": [
+      "ser",
+      "estar",
+      "nacionalidad",
+      "profesión"
+    ],
+    "verbs": [
+      "ser",
+      "estar"
+    ],
+    "canDo": [],
+    "vocabulary": [],
+    "duration": 40,
+    "prev": 2,
+    "next": 4,
+    "related": [
+      2,
+      4,
+      12
+    ],
+    "audio": [],
+    "youtubeId": "",
+    "draft": true,
+    "updated": "2026-11-02"
+  },
+  {
+    "unit": 4,
+    "level": "A1",
+    "levelName": "Acceso",
+    "slug": "present-regular",
+    "url": "/language/learn-spanish/a1/present-regular/",
+    "existing": false,
+    "title": "直説法現在・規則動詞",
+    "titleEs": "presente de indicativo regular",
+    "grammar": [
+      "-ar",
+      "-er",
+      "-ir"
+    ],
+    "verbs": [
+      "hablar",
+      "comer",
+      "vivir"
+    ],
+    "canDo": [],
+    "vocabulary": [],
+    "duration": 40,
+    "prev": 3,
+    "next": 5,
+    "related": [
+      3,
+      5,
+      12
+    ],
+    "audio": [],
+    "youtubeId": "",
+    "draft": true,
+    "updated": "2026-11-02"
+  },
+  {
+    "unit": 5,
+    "level": "A1",
+    "levelName": "Acceso",
+    "slug": "present-irregular",
+    "url": "/language/learn-spanish/a1/present-irregular/",
+    "existing": false,
+    "title": "直説法現在・不規則動詞",
+    "titleEs": "presente de indicativo irregular",
+    "grammar": [
+      "tener",
+      "ir",
+      "hacer",
+      "cambio vocálico"
+    ],
+    "verbs": [
+      "tener",
+      "ir",
+      "hacer",
+      "querer",
+      "poder"
+    ],
+    "canDo": [],
+    "vocabulary": [],
+    "duration": 40,
+    "prev": 4,
+    "next": 6,
+    "related": [
+      4,
+      6,
+      12
+    ],
+    "audio": [],
+    "youtubeId": "",
+    "draft": true,
+    "updated": "2026-11-02"
+  },
+  {
+    "unit": 6,
+    "level": "A1",
+    "levelName": "Acceso",
+    "slug": "adjectives-possessives-demonstratives",
+    "url": "/language/learn-spanish/a1/adjectives-possessives-demonstratives/",
+    "existing": false,
+    "title": "形容詞・所有詞・指示詞",
+    "titleEs": "adjetivos, posesivos y demostrativos",
+    "grammar": [
+      "concordancia",
+      "posesivos",
+      "demostrativos"
+    ],
+    "verbs": [],
+    "canDo": [],
+    "vocabulary": [],
+    "duration": 40,
+    "prev": 5,
+    "next": 7,
+    "related": [
+      5,
+      7,
+      12
+    ],
+    "audio": [],
+    "youtubeId": "",
+    "draft": true,
+    "updated": "2026-11-02"
+  },
+  {
+    "unit": 7,
+    "level": "A1",
+    "levelName": "Acceso",
+    "slug": "hay-estar-prepositions",
+    "url": "/language/learn-spanish/a1/hay-estar-prepositions/",
+    "existing": false,
+    "title": "hay と estar・場所の前置詞",
+    "titleEs": "hay, estar y preposiciones de lugar",
+    "grammar": [
+      "hay/estar",
+      "preposiciones de lugar"
+    ],
+    "verbs": [
+      "estar",
+      "haber"
+    ],
+    "canDo": [],
+    "vocabulary": [],
+    "duration": 40,
+    "prev": 6,
+    "next": 8,
+    "related": [
+      6,
+      8,
+      12
+    ],
+    "audio": [],
+    "youtubeId": "",
+    "draft": true,
+    "updated": "2026-11-02"
+  },
+  {
+    "unit": 8,
+    "level": "A1",
+    "levelName": "Acceso",
+    "slug": "gustar",
+    "url": "/language/learn-spanish/a1/gustar/",
+    "existing": false,
+    "title": "gustar 型動詞",
+    "titleEs": "gustar y verbos similares",
+    "grammar": [
+      "gustar",
+      "encantar",
+      "pronombres de OI"
+    ],
+    "verbs": [
+      "gustar"
+    ],
+    "canDo": [],
+    "vocabulary": [],
+    "duration": 40,
+    "prev": 7,
+    "next": 9,
+    "related": [
+      7,
+      9,
+      12
+    ],
+    "audio": [],
+    "youtubeId": "",
+    "draft": true,
+    "updated": "2026-11-02"
+  },
+  {
+    "unit": 9,
+    "level": "A1",
+    "levelName": "Acceso",
+    "slug": "reflexive-verbs",
+    "url": "/language/learn-spanish/a1/reflexive-verbs/",
+    "existing": false,
+    "title": "再帰動詞と一日の流れ",
+    "titleEs": "verbos reflexivos",
+    "grammar": [
+      "verbos reflexivos",
+      "rutina"
+    ],
+    "verbs": [],
+    "canDo": [],
+    "vocabulary": [],
+    "duration": 40,
+    "prev": 8,
+    "next": 10,
+    "related": [
+      8,
+      10,
+      12
+    ],
+    "audio": [],
+    "youtubeId": "",
+    "draft": true,
+    "updated": "2026-11-02"
+  },
+  {
+    "unit": 10,
+    "level": "A1",
+    "levelName": "Acceso",
+    "slug": "questions-numbers-time",
+    "url": "/language/learn-spanish/a1/questions-numbers-time/",
+    "existing": false,
+    "title": "疑問詞・数・時刻・日付",
+    "titleEs": "interrogativos, números, hora y fecha",
+    "grammar": [
+      "interrogativos",
+      "números",
+      "hora",
+      "fecha"
+    ],
+    "verbs": [],
+    "canDo": [],
+    "vocabulary": [],
+    "duration": 40,
+    "prev": 9,
+    "next": 11,
+    "related": [
+      9,
+      11,
+      12
+    ],
+    "audio": [],
+    "youtubeId": "",
+    "draft": true,
+    "updated": "2026-11-02"
+  },
+  {
+    "unit": 11,
+    "level": "A1",
+    "levelName": "Acceso",
+    "slug": "near-future-progressive",
+    "url": "/language/learn-spanish/a1/near-future-progressive/",
+    "existing": false,
+    "title": "近い未来と進行形",
+    "titleEs": "ir a + infinitivo, estar + gerundio",
+    "grammar": [
+      "ir a + infinitivo",
+      "estar + gerundio"
+    ],
+    "verbs": [
+      "ir",
+      "estar"
+    ],
+    "canDo": [],
+    "vocabulary": [],
+    "duration": 40,
+    "prev": 10,
+    "next": 12,
+    "related": [
+      10,
+      12,
+      20
+    ],
+    "audio": [],
+    "youtubeId": "",
+    "draft": true,
+    "updated": "2026-11-02"
+  },
+  {
+    "unit": 12,
+    "level": "A1",
+    "levelName": "Acceso",
+    "slug": "review-dele-a1",
+    "url": "/language/learn-spanish/a1/review-dele-a1/",
+    "existing": false,
+    "title": "A1 総復習と模擬試験 DELE A1",
+    "titleEs": "repaso A1 y simulacro DELE A1",
+    "grammar": [
+      "repaso"
+    ],
+    "verbs": [],
+    "canDo": [],
+    "vocabulary": [],
+    "duration": 90,
+    "prev": 11,
+    "next": 13,
+    "related": [
+      11,
+      13,
+      1
+    ],
+    "audio": [],
+    "youtubeId": "",
+    "draft": true,
+    "updated": "2026-11-02"
+  },
+  {
+    "unit": 13,
+    "level": "A2",
+    "levelName": "Plataforma",
+    "slug": "preterito-perfecto",
+    "url": "/language/learn-spanish/a2/preterito-perfecto/",
+    "existing": false,
+    "title": "現在完了",
+    "titleEs": "pretérito perfecto",
+    "grammar": [
+      "haber + participio",
+      "participios irregulares"
+    ],
+    "verbs": [
+      "haber"
+    ],
+    "canDo": [],
+    "vocabulary": [],
+    "duration": 40,
+    "prev": 12,
+    "next": 14,
+    "related": [
+      12,
+      14,
+      24
+    ],
+    "audio": [],
+    "youtubeId": "",
+    "draft": true,
+    "updated": "2026-11-02"
+  },
+  {
+    "unit": 14,
+    "level": "A2",
+    "levelName": "Plataforma",
+    "slug": "preterito-indefinido",
+    "url": "/language/learn-spanish/a2/preterito-indefinido/",
+    "existing": false,
+    "title": "点過去",
+    "titleEs": "pretérito indefinido",
+    "grammar": [
+      "regulares",
+      "pretéritos fuertes",
+      "ser/ir"
+    ],
+    "verbs": [
+      "ser",
+      "ir",
+      "tener",
+      "estar",
+      "hacer"
+    ],
+    "canDo": [],
+    "vocabulary": [],
+    "duration": 40,
+    "prev": 13,
+    "next": 15,
+    "related": [
+      15,
+      16,
+      13
+    ],
+    "audio": [],
+    "youtubeId": "",
+    "draft": true,
+    "updated": "2026-11-02"
+  },
+  {
+    "unit": 15,
+    "level": "A2",
+    "levelName": "Plataforma",
+    "slug": "preterito-imperfecto",
+    "url": "/language/learn-spanish/a2/preterito-imperfecto/",
+    "existing": false,
+    "title": "線過去",
+    "titleEs": "pretérito imperfecto",
+    "grammar": [
+      "regulares",
+      "ser/ir/ver"
+    ],
+    "verbs": [
+      "ser",
+      "ir",
+      "ver"
+    ],
+    "canDo": [],
+    "vocabulary": [],
+    "duration": 40,
+    "prev": 14,
+    "next": 16,
+    "related": [
+      14,
+      16,
+      13
+    ],
+    "audio": [],
+    "youtubeId": "",
+    "draft": true,
+    "updated": "2026-11-02"
+  },
+  {
+    "unit": 16,
+    "level": "A2",
+    "levelName": "Plataforma",
+    "slug": "indefinido-vs-imperfecto",
+    "url": "/language/learn-spanish/a2/indefinido-vs-imperfecto/",
+    "existing": false,
+    "title": "点過去と線過去の使い分け",
+    "titleEs": "indefinido frente a imperfecto",
+    "grammar": [
+      "contraste de pasados"
+    ],
+    "verbs": [],
+    "canDo": [],
+    "vocabulary": [],
+    "duration": 40,
+    "prev": 15,
+    "next": 17,
+    "related": [
+      14,
+      15,
+      24
+    ],
+    "audio": [],
+    "youtubeId": "",
+    "draft": true,
+    "updated": "2026-11-02"
+  },
+  {
+    "unit": 17,
+    "level": "A2",
+    "levelName": "Plataforma",
+    "slug": "object-pronouns",
+    "url": "/language/learn-spanish/a2/object-pronouns/",
+    "existing": false,
+    "title": "目的格代名詞",
+    "titleEs": "pronombres de objeto directo e indirecto",
+    "grammar": [
+      "lo/la/le",
+      "posición"
+    ],
+    "verbs": [],
+    "canDo": [],
+    "vocabulary": [],
+    "duration": 40,
+    "prev": 16,
+    "next": 18,
+    "related": [
+      16,
+      18,
+      24
+    ],
+    "audio": [],
+    "youtubeId": "",
+    "draft": true,
+    "updated": "2026-11-02"
+  },
+  {
+    "unit": 18,
+    "level": "A2",
+    "levelName": "Plataforma",
+    "slug": "comparatives-superlatives",
+    "url": "/language/learn-spanish/a2/comparatives-superlatives/",
+    "existing": false,
+    "title": "比較と最上級",
+    "titleEs": "comparativos y superlativos",
+    "grammar": [
+      "más que",
+      "el más"
+    ],
+    "verbs": [],
+    "canDo": [],
+    "vocabulary": [],
+    "duration": 40,
+    "prev": 17,
+    "next": 19,
+    "related": [
+      17,
+      19,
+      24
+    ],
+    "audio": [],
+    "youtubeId": "",
+    "draft": true,
+    "updated": "2026-11-02"
+  },
+  {
+    "unit": 19,
+    "level": "A2",
+    "levelName": "Plataforma",
+    "slug": "imperative",
+    "url": "/language/learn-spanish/a2/imperative/",
+    "existing": false,
+    "title": "命令形",
+    "titleEs": "imperativo",
+    "grammar": [
+      "afirmativo",
+      "negativo",
+      "usted"
+    ],
+    "verbs": [
+      "poner",
+      "decir",
+      "hacer",
+      "salir"
+    ],
+    "canDo": [],
+    "vocabulary": [],
+    "duration": 40,
+    "prev": 18,
+    "next": 20,
+    "related": [
+      18,
+      20,
+      24
+    ],
+    "audio": [],
+    "youtubeId": "",
+    "draft": true,
+    "updated": "2026-11-02"
+  },
+  {
+    "unit": 20,
+    "level": "A2",
+    "levelName": "Plataforma",
+    "slug": "future",
+    "url": "/language/learn-spanish/a2/future/",
+    "existing": false,
+    "title": "未来形",
+    "titleEs": "futuro simple",
+    "grammar": [
+      "regulares",
+      "raíces irregulares"
+    ],
+    "verbs": [
+      "tener",
+      "poder",
+      "decir",
+      "hacer",
+      "saber"
+    ],
+    "canDo": [],
+    "vocabulary": [],
+    "duration": 40,
+    "prev": 19,
+    "next": 21,
+    "related": [
+      21,
+      42,
+      14
+    ],
+    "audio": [],
+    "youtubeId": "",
+    "draft": true,
+    "updated": "2026-11-02"
+  },
+  {
+    "unit": 21,
+    "level": "A2",
+    "levelName": "Plataforma",
+    "slug": "conditional",
+    "url": "/language/learn-spanish/a2/conditional/",
+    "existing": false,
+    "title": "過去未来",
+    "titleEs": "condicional simple",
+    "grammar": [
+      "forma",
+      "cortesía"
+    ],
+    "verbs": [
+      "querer",
+      "poder",
+      "deber"
+    ],
+    "canDo": [],
+    "vocabulary": [],
+    "duration": 40,
+    "prev": 20,
+    "next": 22,
+    "related": [
+      20,
+      30,
+      38
+    ],
+    "audio": [],
+    "youtubeId": "",
+    "draft": true,
+    "updated": "2026-11-02"
+  },
+  {
+    "unit": 22,
+    "level": "A2",
+    "levelName": "Plataforma",
+    "slug": "periphrasis-time-markers",
+    "url": "/language/learn-spanish/a2/periphrasis-time-markers/",
+    "existing": false,
+    "title": "動詞句と時の表現",
+    "titleEs": "perífrasis y marcadores temporales",
+    "grammar": [
+      "tener que",
+      "acabar de",
+      "hace... que"
+    ],
+    "verbs": [
+      "tener",
+      "acabar"
+    ],
+    "canDo": [],
+    "vocabulary": [],
+    "duration": 40,
+    "prev": 21,
+    "next": 23,
+    "related": [
+      21,
+      23,
+      24
+    ],
+    "audio": [],
+    "youtubeId": "",
+    "draft": true,
+    "updated": "2026-11-02"
+  },
+  {
+    "unit": 23,
+    "level": "A2",
+    "levelName": "Plataforma",
+    "slug": "basic-connectors",
+    "url": "/language/learn-spanish/a2/basic-connectors/",
+    "existing": false,
+    "title": "文をつなぐ",
+    "titleEs": "conectores básicos",
+    "grammar": [
+      "y",
+      "pero",
+      "porque",
+      "aunque",
+      "por eso"
+    ],
+    "verbs": [],
+    "canDo": [],
+    "vocabulary": [],
+    "duration": 40,
+    "prev": 22,
+    "next": 24,
+    "related": [
+      22,
+      24,
+      34
+    ],
+    "audio": [],
+    "youtubeId": "",
+    "draft": true,
+    "updated": "2026-11-02"
+  },
+  {
+    "unit": 24,
+    "level": "A2",
+    "levelName": "Plataforma",
+    "slug": "review-dele-a2",
+    "url": "/language/learn-spanish/a2/review-dele-a2/",
+    "existing": false,
+    "title": "A2 総復習と模擬試験 DELE A2",
+    "titleEs": "repaso A2 y simulacro DELE A2",
+    "grammar": [
+      "repaso"
+    ],
+    "verbs": [],
+    "canDo": [],
+    "vocabulary": [],
+    "duration": 90,
+    "prev": 23,
+    "next": 25,
+    "related": [
+      23,
+      25,
+      13
+    ],
+    "audio": [],
+    "youtubeId": "",
+    "draft": true,
+    "updated": "2026-11-02"
+  },
+  {
+    "unit": 25,
+    "level": "B1",
+    "levelName": "Umbral",
+    "slug": "subjunctive",
+    "url": "/language/learn-spanish/b1/subjunctive/",
+    "existing": true,
+    "title": "接続法現在・活用",
+    "titleEs": "presente de subjuntivo: formas",
+    "grammar": [
+      "regulares",
+      "irregulares"
+    ],
+    "verbs": [
+      "tener",
+      "venir",
+      "ir",
+      "ser",
+      "saber"
+    ],
+    "canDo": [],
+    "vocabulary": [],
+    "duration": 40,
+    "prev": 24,
+    "next": 26,
+    "related": [
+      26,
+      27,
+      37
+    ],
+    "audio": [],
+    "youtubeId": "",
+    "draft": true,
+    "updated": "2026-11-02"
+  },
+  {
+    "unit": 26,
+    "level": "B1",
+    "levelName": "Umbral",
+    "slug": "subjunctive-wishes-emotions-doubt",
+    "url": "/language/learn-spanish/b1/subjunctive-wishes-emotions-doubt/",
+    "existing": false,
+    "title": "接続法：願望・感情・疑い",
+    "titleEs": "subjuntivo con deseos, emociones y duda",
+    "grammar": [
+      "querer que",
+      "me alegra que",
+      "no creo que"
+    ],
+    "verbs": [],
+    "canDo": [],
+    "vocabulary": [],
+    "duration": 40,
+    "prev": 25,
+    "next": 27,
+    "related": [
+      25,
+      27,
+      36
+    ],
+    "audio": [],
+    "youtubeId": "",
+    "draft": true,
+    "updated": "2026-11-02"
+  },
+  {
+    "unit": 27,
+    "level": "B1",
+    "levelName": "Umbral",
+    "slug": "subjunctive-time-purpose-relative",
+    "url": "/language/learn-spanish/b1/subjunctive-time-purpose-relative/",
+    "existing": false,
+    "title": "接続法：時・目的・関係節",
+    "titleEs": "subjuntivo en temporales, finales y relativas",
+    "grammar": [
+      "cuando",
+      "para que",
+      "que + subjuntivo"
+    ],
+    "verbs": [],
+    "canDo": [],
+    "vocabulary": [],
+    "duration": 40,
+    "prev": 26,
+    "next": 28,
+    "related": [
+      26,
+      28,
+      36
+    ],
+    "audio": [],
+    "youtubeId": "",
+    "draft": true,
+    "updated": "2026-11-02"
+  },
+  {
+    "unit": 28,
+    "level": "B1",
+    "levelName": "Umbral",
+    "slug": "pluscuamperfecto",
+    "url": "/language/learn-spanish/b1/pluscuamperfecto/",
+    "existing": false,
+    "title": "過去完了",
+    "titleEs": "pretérito pluscuamperfecto",
+    "grammar": [
+      "había + participio"
+    ],
+    "verbs": [
+      "haber"
+    ],
+    "canDo": [],
+    "vocabulary": [],
+    "duration": 40,
+    "prev": 27,
+    "next": 29,
+    "related": [
+      27,
+      29,
+      36
+    ],
+    "audio": [],
+    "youtubeId": "",
+    "draft": true,
+    "updated": "2026-11-02"
+  },
+  {
+    "unit": 29,
+    "level": "B1",
+    "levelName": "Umbral",
+    "slug": "reported-speech",
+    "url": "/language/learn-spanish/b1/reported-speech/",
+    "existing": false,
+    "title": "間接話法",
+    "titleEs": "estilo indirecto",
+    "grammar": [
+      "dijo que",
+      "cambio de tiempo"
+    ],
+    "verbs": [
+      "decir"
+    ],
+    "canDo": [],
+    "vocabulary": [],
+    "duration": 40,
+    "prev": 28,
+    "next": 30,
+    "related": [
+      28,
+      30,
+      36
+    ],
+    "audio": [],
+    "youtubeId": "",
+    "draft": true,
+    "updated": "2026-11-02"
+  },
+  {
+    "unit": 30,
+    "level": "B1",
+    "levelName": "Umbral",
+    "slug": "conditionals-real",
+    "url": "/language/learn-spanish/b1/conditionals-real/",
+    "existing": false,
+    "title": "条件文①現実的",
+    "titleEs": "condicionales reales",
+    "grammar": [
+      "si + presente"
+    ],
+    "verbs": [],
+    "canDo": [],
+    "vocabulary": [],
+    "duration": 40,
+    "prev": 29,
+    "next": 31,
+    "related": [
+      21,
+      38,
+      31
+    ],
+    "audio": [],
+    "youtubeId": "",
+    "draft": true,
+    "updated": "2026-11-02"
+  },
+  {
+    "unit": 31,
+    "level": "B1",
+    "levelName": "Umbral",
+    "slug": "relative-pronouns",
+    "url": "/language/learn-spanish/b1/relative-pronouns/",
+    "existing": false,
+    "title": "関係代名詞",
+    "titleEs": "pronombres relativos",
+    "grammar": [
+      "que",
+      "quien",
+      "donde",
+      "cuyo"
+    ],
+    "verbs": [],
+    "canDo": [],
+    "vocabulary": [],
+    "duration": 40,
+    "prev": 30,
+    "next": 32,
+    "related": [
+      30,
+      32,
+      36
+    ],
+    "audio": [],
+    "youtubeId": "",
+    "draft": true,
+    "updated": "2026-11-02"
+  },
+  {
+    "unit": 32,
+    "level": "B1",
+    "levelName": "Umbral",
+    "slug": "ser-estar-passive",
+    "url": "/language/learn-spanish/b1/ser-estar-passive/",
+    "existing": false,
+    "title": "ser/estar の応用と受動態",
+    "titleEs": "ser y estar avanzados; pasiva",
+    "grammar": [
+      "ser/estar + participio",
+      "pasiva"
+    ],
+    "verbs": [
+      "ser",
+      "estar"
+    ],
+    "canDo": [],
+    "vocabulary": [],
+    "duration": 40,
+    "prev": 31,
+    "next": 33,
+    "related": [
+      31,
+      33,
+      36
+    ],
+    "audio": [],
+    "youtubeId": "",
+    "draft": true,
+    "updated": "2026-11-02"
+  },
+  {
+    "unit": 33,
+    "level": "B1",
+    "levelName": "Umbral",
+    "slug": "por-para",
+    "url": "/language/learn-spanish/b1/por-para/",
+    "existing": false,
+    "title": "por と para・前置詞",
+    "titleEs": "por y para",
+    "grammar": [
+      "por",
+      "para",
+      "preposiciones"
+    ],
+    "verbs": [],
+    "canDo": [],
+    "vocabulary": [],
+    "duration": 40,
+    "prev": 32,
+    "next": 34,
+    "related": [
+      32,
+      34,
+      36
+    ],
+    "audio": [],
+    "youtubeId": "",
+    "draft": true,
+    "updated": "2026-11-02"
+  },
+  {
+    "unit": 34,
+    "level": "B1",
+    "levelName": "Umbral",
+    "slug": "discourse-markers",
+    "url": "/language/learn-spanish/b1/discourse-markers/",
+    "existing": false,
+    "title": "談話標識",
+    "titleEs": "marcadores del discurso",
+    "grammar": [
+      "sin embargo",
+      "además",
+      "en cambio"
+    ],
+    "verbs": [],
+    "canDo": [],
+    "vocabulary": [],
+    "duration": 40,
+    "prev": 33,
+    "next": 35,
+    "related": [
+      33,
+      35,
+      36
+    ],
+    "audio": [],
+    "youtubeId": "",
+    "draft": true,
+    "updated": "2026-11-02"
+  },
+  {
+    "unit": 35,
+    "level": "B1",
+    "levelName": "Umbral",
+    "slug": "opinions-argumentation",
+    "url": "/language/learn-spanish/b1/opinions-argumentation/",
+    "existing": false,
+    "title": "意見・賛成・反対",
+    "titleEs": "opinar y argumentar",
+    "grammar": [
+      "funciones"
+    ],
+    "verbs": [],
+    "canDo": [],
+    "vocabulary": [],
+    "duration": 40,
+    "prev": 34,
+    "next": 36,
+    "related": [
+      34,
+      36,
+      26
+    ],
+    "audio": [],
+    "youtubeId": "",
+    "draft": true,
+    "updated": "2026-11-02"
+  },
+  {
+    "unit": 36,
+    "level": "B1",
+    "levelName": "Umbral",
+    "slug": "review-dele-b1",
+    "url": "/language/learn-spanish/b1/review-dele-b1/",
+    "existing": false,
+    "title": "B1 総復習と模擬試験 DELE B1",
+    "titleEs": "repaso B1 y simulacro DELE B1",
+    "grammar": [
+      "repaso"
+    ],
+    "verbs": [],
+    "canDo": [],
+    "vocabulary": [],
+    "duration": 90,
+    "prev": 35,
+    "next": 37,
+    "related": [
+      35,
+      37,
+      25
+    ],
+    "audio": [],
+    "youtubeId": "",
+    "draft": true,
+    "updated": "2026-11-02"
+  },
+  {
+    "unit": 37,
+    "level": "B2",
+    "levelName": "Avanzado",
+    "slug": "subjunctive",
+    "url": "/language/learn-spanish/b2/subjunctive/",
+    "existing": true,
+    "title": "接続法過去",
+    "titleEs": "imperfecto de subjuntivo",
+    "grammar": [
+      "-ra/-se"
+    ],
+    "verbs": [
+      "tener",
+      "hacer",
+      "ir"
+    ],
+    "canDo": [],
+    "vocabulary": [],
+    "duration": 40,
+    "prev": 36,
+    "next": 38,
+    "related": [
+      25,
+      38,
+      39
+    ],
+    "audio": [],
+    "youtubeId": "",
+    "draft": true,
+    "updated": "2026-11-02"
+  },
+  {
+    "unit": 38,
+    "level": "B2",
+    "levelName": "Avanzado",
+    "slug": "conditionals-unreal",
+    "url": "/language/learn-spanish/b2/conditionals-unreal/",
+    "existing": false,
+    "title": "条件文②非現実",
+    "titleEs": "condicionales irreales",
+    "grammar": [
+      "si + imperfecto de subjuntivo + condicional"
+    ],
+    "verbs": [],
+    "canDo": [],
+    "vocabulary": [],
+    "duration": 40,
+    "prev": 37,
+    "next": 39,
+    "related": [
+      37,
+      30,
+      39
+    ],
+    "audio": [],
+    "youtubeId": "",
+    "draft": true,
+    "updated": "2026-11-02"
+  },
+  {
+    "unit": 39,
+    "level": "B2",
+    "levelName": "Avanzado",
+    "slug": "subjunctive-perfect",
+    "url": "/language/learn-spanish/b2/subjunctive-perfect/",
+    "existing": false,
+    "title": "接続法の完了形",
+    "titleEs": "perfecto y pluscuamperfecto de subjuntivo",
+    "grammar": [
+      "haya + participio",
+      "hubiera + participio"
+    ],
+    "verbs": [
+      "haber"
+    ],
+    "canDo": [],
+    "vocabulary": [],
+    "duration": 40,
+    "prev": 38,
+    "next": 40,
+    "related": [
+      38,
+      40,
+      48
+    ],
+    "audio": [],
+    "youtubeId": "",
+    "draft": true,
+    "updated": "2026-11-02"
+  },
+  {
+    "unit": 40,
+    "level": "B2",
+    "levelName": "Avanzado",
+    "slug": "tense-agreement",
+    "url": "/language/learn-spanish/b2/tense-agreement/",
+    "existing": false,
+    "title": "時制の一致",
+    "titleEs": "correlación temporal",
+    "grammar": [
+      "correlación"
+    ],
+    "verbs": [],
+    "canDo": [],
+    "vocabulary": [],
+    "duration": 40,
+    "prev": 39,
+    "next": 41,
+    "related": [
+      39,
+      41,
+      48
+    ],
+    "audio": [],
+    "youtubeId": "",
+    "draft": true,
+    "updated": "2026-11-02"
+  },
+  {
+    "unit": 41,
+    "level": "B2",
+    "levelName": "Avanzado",
+    "slug": "concessive-purpose-result",
+    "url": "/language/learn-spanish/b2/concessive-purpose-result/",
+    "existing": false,
+    "title": "譲歩・目的・結果",
+    "titleEs": "concesivas, finales y consecutivas",
+    "grammar": [
+      "aunque",
+      "para que",
+      "de modo que"
+    ],
+    "verbs": [],
+    "canDo": [],
+    "vocabulary": [],
+    "duration": 40,
+    "prev": 40,
+    "next": 42,
+    "related": [
+      40,
+      42,
+      48
+    ],
+    "audio": [],
+    "youtubeId": "",
+    "draft": true,
+    "updated": "2026-11-02"
+  },
+  {
+    "unit": 42,
+    "level": "B2",
+    "levelName": "Avanzado",
+    "slug": "compound-future-conditional",
+    "url": "/language/learn-spanish/b2/compound-future-conditional/",
+    "existing": false,
+    "title": "未来完了・過去未来完了と推量",
+    "titleEs": "futuro y condicional compuestos",
+    "grammar": [
+      "habré + participio",
+      "habría + participio",
+      "probabilidad"
+    ],
+    "verbs": [
+      "haber"
+    ],
+    "canDo": [],
+    "vocabulary": [],
+    "duration": 40,
+    "prev": 41,
+    "next": 43,
+    "related": [
+      41,
+      43,
+      48
+    ],
+    "audio": [],
+    "youtubeId": "",
+    "draft": true,
+    "updated": "2026-11-02"
+  },
+  {
+    "unit": 43,
+    "level": "B2",
+    "levelName": "Avanzado",
+    "slug": "aspectual-periphrasis",
+    "url": "/language/learn-spanish/b2/aspectual-periphrasis/",
+    "existing": false,
+    "title": "動詞句とアスペクト",
+    "titleEs": "perífrasis aspectuales",
+    "grammar": [
+      "ir + gerundio",
+      "llevar + gerundio",
+      "seguir + gerundio"
+    ],
+    "verbs": [],
+    "canDo": [],
+    "vocabulary": [],
+    "duration": 40,
+    "prev": 42,
+    "next": 44,
+    "related": [
+      42,
+      44,
+      48
+    ],
+    "audio": [],
+    "youtubeId": "",
+    "draft": true,
+    "updated": "2026-11-02"
+  },
+  {
+    "unit": 44,
+    "level": "B2",
+    "levelName": "Avanzado",
+    "slug": "se-passive-impersonal",
+    "url": "/language/learn-spanish/b2/se-passive-impersonal/",
+    "existing": false,
+    "title": "再帰受動と無人称の se",
+    "titleEs": "pasiva refleja y se impersonal",
+    "grammar": [
+      "se + verbo"
+    ],
+    "verbs": [],
+    "canDo": [],
+    "vocabulary": [],
+    "duration": 40,
+    "prev": 43,
+    "next": 45,
+    "related": [
+      43,
+      45,
+      48
+    ],
+    "audio": [],
+    "youtubeId": "",
+    "draft": true,
+    "updated": "2026-11-02"
+  },
+  {
+    "unit": 45,
+    "level": "B2",
+    "levelName": "Avanzado",
+    "slug": "register",
+    "url": "/language/learn-spanish/b2/register/",
+    "existing": false,
+    "title": "フォーマルとインフォーマル",
+    "titleEs": "registro formal e informal",
+    "grammar": [
+      "registro",
+      "cartas",
+      "correos"
+    ],
+    "verbs": [],
+    "canDo": [],
+    "vocabulary": [],
+    "duration": 40,
+    "prev": 44,
+    "next": 46,
+    "related": [
+      44,
+      46,
+      48
+    ],
+    "audio": [],
+    "youtubeId": "",
+    "draft": true,
+    "updated": "2026-11-02"
+  },
+  {
+    "unit": 46,
+    "level": "B2",
+    "levelName": "Avanzado",
+    "slug": "cohesion",
+    "url": "/language/learn-spanish/b2/cohesion/",
+    "existing": false,
+    "title": "テキストの結束性",
+    "titleEs": "cohesión textual",
+    "grammar": [
+      "cohesión",
+      "conectores"
+    ],
+    "verbs": [],
+    "canDo": [],
+    "vocabulary": [],
+    "duration": 40,
+    "prev": 45,
+    "next": 47,
+    "related": [
+      45,
+      47,
+      48
+    ],
+    "audio": [],
+    "youtubeId": "",
+    "draft": true,
+    "updated": "2026-11-02"
+  },
+  {
+    "unit": 47,
+    "level": "B2",
+    "levelName": "Avanzado",
+    "slug": "idioms",
+    "url": "/language/learn-spanish/b2/idioms/",
+    "existing": false,
+    "title": "慣用表現",
+    "titleEs": "expresiones idiomáticas",
+    "grammar": [
+      "expresiones idiomáticas"
+    ],
+    "verbs": [],
+    "canDo": [],
+    "vocabulary": [],
+    "duration": 40,
+    "prev": 46,
+    "next": 48,
+    "related": [
+      46,
+      48,
+      59
+    ],
+    "audio": [],
+    "youtubeId": "",
+    "draft": true,
+    "updated": "2026-11-02"
+  },
+  {
+    "unit": 48,
+    "level": "B2",
+    "levelName": "Avanzado",
+    "slug": "review-dele-b2",
+    "url": "/language/learn-spanish/b2/review-dele-b2/",
+    "existing": false,
+    "title": "B2 総復習と模擬試験 DELE B2",
+    "titleEs": "repaso B2 y simulacro DELE B2",
+    "grammar": [
+      "repaso"
+    ],
+    "verbs": [],
+    "canDo": [],
+    "vocabulary": [],
+    "duration": 90,
+    "prev": 47,
+    "next": 49,
+    "related": [
+      47,
+      49,
+      37
+    ],
+    "audio": [],
+    "youtubeId": "",
+    "draft": true,
+    "updated": "2026-11-02"
+  },
+  {
+    "unit": 49,
+    "level": "C1",
+    "levelName": "Dominio operativo eficaz",
+    "slug": "subjunctive",
+    "url": "/language/learn-spanish/c1/subjunctive/",
+    "existing": true,
+    "title": "接続法の高度な用法",
+    "titleEs": "matices del subjuntivo",
+    "grammar": [
+      "matices"
+    ],
+    "verbs": [],
+    "canDo": [],
+    "vocabulary": [],
+    "duration": 40,
+    "prev": 48,
+    "next": 50,
+    "related": [
+      25,
+      37,
+      57
+    ],
+    "audio": [],
+    "youtubeId": "",
+    "draft": true,
+    "updated": "2026-11-02"
+  },
+  {
+    "unit": 50,
+    "level": "C1",
+    "levelName": "Dominio operativo eficaz",
+    "slug": "aspect-nuance",
+    "url": "/language/learn-spanish/c1/aspect-nuance/",
+    "existing": false,
+    "title": "アスペクトとニュアンス",
+    "titleEs": "valores aspectuales",
+    "grammar": [
+      "aspecto",
+      "perífrasis"
+    ],
+    "verbs": [],
+    "canDo": [],
+    "vocabulary": [],
+    "duration": 40,
+    "prev": 49,
+    "next": 51,
+    "related": [
+      49,
+      51,
+      56
+    ],
+    "audio": [],
+    "youtubeId": "",
+    "draft": true,
+    "updated": "2026-11-02"
+  },
+  {
+    "unit": 51,
+    "level": "C1",
+    "levelName": "Dominio operativo eficaz",
+    "slug": "complex-subordination",
+    "url": "/language/learn-spanish/c1/complex-subordination/",
+    "existing": false,
+    "title": "複文の構築",
+    "titleEs": "subordinación compleja",
+    "grammar": [
+      "subordinación"
+    ],
+    "verbs": [],
+    "canDo": [],
+    "vocabulary": [],
+    "duration": 40,
+    "prev": 50,
+    "next": 52,
+    "related": [
+      50,
+      52,
+      56
+    ],
+    "audio": [],
+    "youtubeId": "",
+    "draft": true,
+    "updated": "2026-11-02"
+  },
+  {
+    "unit": 52,
+    "level": "C1",
+    "levelName": "Dominio operativo eficaz",
+    "slug": "collocations",
+    "url": "/language/learn-spanish/c1/collocations/",
+    "existing": false,
+    "title": "コロケーションと語彙の精度",
+    "titleEs": "colocaciones",
+    "grammar": [
+      "colocaciones"
+    ],
+    "verbs": [],
+    "canDo": [],
+    "vocabulary": [],
+    "duration": 40,
+    "prev": 51,
+    "next": 53,
+    "related": [
+      51,
+      53,
+      56
+    ],
+    "audio": [],
+    "youtubeId": "",
+    "draft": true,
+    "updated": "2026-11-02"
+  },
+  {
+    "unit": 53,
+    "level": "C1",
+    "levelName": "Dominio operativo eficaz",
+    "slug": "colloquial-register",
+    "url": "/language/learn-spanish/c1/colloquial-register/",
+    "existing": false,
+    "title": "口語のレジスターと表現",
+    "titleEs": "registro coloquial",
+    "grammar": [
+      "registro coloquial"
+    ],
+    "verbs": [],
+    "canDo": [],
+    "vocabulary": [],
+    "duration": 40,
+    "prev": 52,
+    "next": 54,
+    "related": [
+      52,
+      54,
+      56
+    ],
+    "audio": [],
+    "youtubeId": "",
+    "draft": true,
+    "updated": "2026-11-02"
+  },
+  {
+    "unit": 54,
+    "level": "C1",
+    "levelName": "Dominio operativo eficaz",
+    "slug": "academic-writing",
+    "url": "/language/learn-spanish/c1/academic-writing/",
+    "existing": false,
+    "title": "論述と学術的文章",
+    "titleEs": "textos argumentativos y académicos",
+    "grammar": [
+      "géneros discursivos"
+    ],
+    "verbs": [],
+    "canDo": [],
+    "vocabulary": [],
+    "duration": 40,
+    "prev": 53,
+    "next": 55,
+    "related": [
+      53,
+      55,
+      56
+    ],
+    "audio": [],
+    "youtubeId": "",
+    "draft": true,
+    "updated": "2026-11-02"
+  },
+  {
+    "unit": 55,
+    "level": "C1",
+    "levelName": "Dominio operativo eficaz",
+    "slug": "irony-implicature",
+    "url": "/language/learn-spanish/c1/irony-implicature/",
+    "existing": false,
+    "title": "皮肉・ユーモア・暗示",
+    "titleEs": "ironía e implícitos",
+    "grammar": [
+      "tácticas pragmáticas"
+    ],
+    "verbs": [],
+    "canDo": [],
+    "vocabulary": [],
+    "duration": 40,
+    "prev": 54,
+    "next": 56,
+    "related": [
+      54,
+      56,
+      53
+    ],
+    "audio": [],
+    "youtubeId": "",
+    "draft": true,
+    "updated": "2026-11-02"
+  },
+  {
+    "unit": 56,
+    "level": "C1",
+    "levelName": "Dominio operativo eficaz",
+    "slug": "review-dele-c1",
+    "url": "/language/learn-spanish/c1/review-dele-c1/",
+    "existing": false,
+    "title": "C1 総復習と模擬試験 DELE C1",
+    "titleEs": "repaso C1 y simulacro DELE C1",
+    "grammar": [
+      "repaso"
+    ],
+    "verbs": [],
+    "canDo": [],
+    "vocabulary": [],
+    "duration": 40,
+    "prev": 55,
+    "next": 57,
+    "related": [
+      55,
+      57,
+      49
+    ],
+    "audio": [],
+    "youtubeId": "",
+    "draft": true,
+    "updated": "2026-11-02"
+  },
+  {
+    "unit": 57,
+    "level": "C2",
+    "levelName": "Maestría",
+    "slug": "subjunctive",
+    "url": "/language/learn-spanish/c2/subjunctive/",
+    "existing": true,
+    "title": "接続法の総仕上げと稀な形",
+    "titleEs": "futuro de subjuntivo y formas raras",
+    "grammar": [
+      "futuro de subjuntivo"
+    ],
+    "verbs": [],
+    "canDo": [],
+    "vocabulary": [],
+    "duration": 40,
+    "prev": 56,
+    "next": 58,
+    "related": [
+      49,
+      37,
+      62
+    ],
+    "audio": [],
+    "youtubeId": "",
+    "draft": true,
+    "updated": "2026-11-02"
+  },
+  {
+    "unit": 58,
+    "level": "C2",
+    "levelName": "Maestría",
+    "slug": "stylistics-rhetoric",
+    "url": "/language/learn-spanish/c2/stylistics-rhetoric/",
+    "existing": false,
+    "title": "文体論と修辞",
+    "titleEs": "estilística y retórica",
+    "grammar": [
+      "estilística"
+    ],
+    "verbs": [],
+    "canDo": [],
+    "vocabulary": [],
+    "duration": 40,
+    "prev": 57,
+    "next": 59,
+    "related": [
+      57,
+      59,
+      62
+    ],
+    "audio": [],
+    "youtubeId": "",
+    "draft": true,
+    "updated": "2026-11-02"
+  },
+  {
+    "unit": 59,
+    "level": "C2",
+    "levelName": "Maestría",
+    "slug": "proverbs-cultural-references",
+    "url": "/language/learn-spanish/c2/proverbs-cultural-references/",
+    "existing": false,
+    "title": "ことわざと文化的参照",
+    "titleEs": "refranes y referentes culturales",
+    "grammar": [
+      "referentes culturales"
+    ],
+    "verbs": [],
+    "canDo": [],
+    "vocabulary": [],
+    "duration": 40,
+    "prev": 58,
+    "next": 60,
+    "related": [
+      58,
+      60,
+      62
+    ],
+    "audio": [],
+    "youtubeId": "",
+    "draft": true,
+    "updated": "2026-11-02"
+  },
+  {
+    "unit": 60,
+    "level": "C2",
+    "levelName": "Maestría",
+    "slug": "specialized-texts",
+    "url": "/language/learn-spanish/c2/specialized-texts/",
+    "existing": false,
+    "title": "専門分野のテキスト",
+    "titleEs": "textos especializados",
+    "grammar": [
+      "géneros especializados"
+    ],
+    "verbs": [],
+    "canDo": [],
+    "vocabulary": [],
+    "duration": 90,
+    "prev": 59,
+    "next": 61,
+    "related": [
+      59,
+      61,
+      62
+    ],
+    "audio": [],
+    "youtubeId": "",
+    "draft": true,
+    "updated": "2026-11-02"
+  },
+  {
+    "unit": 61,
+    "level": "C2",
+    "levelName": "Maestría",
+    "slug": "mediation",
+    "url": "/language/learn-spanish/c2/mediation/",
+    "existing": false,
+    "title": "仲介：要約・言い換え・通訳",
+    "titleEs": "mediación",
+    "grammar": [
+      "mediación"
+    ],
+    "verbs": [],
+    "canDo": [],
+    "vocabulary": [],
+    "duration": 40,
+    "prev": 60,
+    "next": 62,
+    "related": [
+      60,
+      62,
+      54
+    ],
+    "audio": [],
+    "youtubeId": "",
+    "draft": true,
+    "updated": "2026-11-02"
+  },
+  {
+    "unit": 62,
+    "level": "C2",
+    "levelName": "Maestría",
+    "slug": "review-dele-c2",
+    "url": "/language/learn-spanish/c2/review-dele-c2/",
+    "existing": false,
+    "title": "C2 総復習と模擬試験 DELE C2",
+    "titleEs": "repaso C2 y simulacro DELE C2",
+    "grammar": [
+      "repaso"
+    ],
+    "verbs": [],
+    "canDo": [],
+    "vocabulary": [],
+    "duration": 40,
+    "prev": 61,
+    "next": null,
+    "related": [
+      61,
+      57,
+      56
+    ],
+    "audio": [],
+    "youtubeId": "",
+    "draft": true,
+    "updated": "2026-11-02"
+  }
+]
