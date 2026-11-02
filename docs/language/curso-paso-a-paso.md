@@ -334,7 +334,16 @@ Revisión de los documentos contra el repositorio y producción antes del prompt
 
 ### Pendiente de David
 
-- **Lista de frecuencia del Corpus del Español** (acceso o archivo). Sin ella no se pueden fijar `rank` ni los 50 verbos. Alternativa libre: los listados de frecuencia del CORPES XXI de la RAE; si se usa esa, hay que cambiar también la fuente citada en la web (FrequencyNote y el texto nuevo de A1 語彙).
+- ~~Lista de frecuencia para `rank`~~: resuelto el 2 de noviembre de 2026 (ver «Frecuencia del vocabulario» más abajo).
+- **Orden de los 50 verbos del conjugador.** La lista publicada (1 ser … 50 recordar) cita «RAE, CORPES XXI», pero no coincide con el diccionario de frecuencias del CORPES: solo 5 de los 50 puestos son iguales (haber es el 6.º verbo, mirar el 189.º) y 12 verbos del top 50 del CORPES no están en la lista (realizar, presentar, permitir, explicar, considerar, señalar, mantener, asegurar, lograr, ganar, mostrar, comenzar). Hay que elegir entre mantener la selección mostrando el puesto real del CORPES, citar la fuente real de esa lista o sustituirla por el top 50 del CORPES (muy periodístico).
+
+### Frecuencia del vocabulario (2 de noviembre de 2026)
+
+- **Fuente:** el diccionario de frecuencias del CORPES XXI (RAE, CC BY-SA 4.0), que aportó David: unos 116.700 lemas de textos periodísticos de 21 países, con lema, categoría, frecuencia absoluta y normalizada, dispersión y número de países.
+- **Qué se usa:** la columna «Rango frec.», que ordena por frecuencia absoluta (comprobado: ninguna inversión). No se usa la relación ordenada por índice de dispersión.
+- **Cómo:** `npm run vocab:rank -- --write` escribe `rank` en el vocabulario de todas las unidades; sin `--write` solo comprueba. Solo lleva `rank` lo que es lema del diccionario («ayer», «por fin», «de vez en cuando»); el resto de expresiones («la semana pasada», «una vez») va sin `rank`, al final. Los casos que la regla general resuelve mal están en `OVERRIDES` (primero como adverbio, abuelos → abuelo, cartera → lema cartero, donde el CORPES agrupa sus formas).
+- **El archivo** (35 MB) se queda en local en `src/data/diccionario_frecuencias_corpes_alfa.tsv` y no se sube al repositorio (`.gitignore`).
+- **En la web:** cuando una unidad tiene `rank`, la lista de vocabulario lo explica en una línea y la unidad cita el diccionario en 出典. Las páginas /\<nivel>/vocabulary/ siguen citando el Corpus del Español (FrequencyNote) hasta que se rehagan con este diccionario.
 - **Capacidad de revisión nativa** (español y japonés) por semana. Es lo que fija el ritmo real del curso.
 - **Vídeos:** la pestaña «Curso A1-C2 y vídeos» está calculada sobre 36 STEP. Hay que recalcularla sobre 62 unidades y renombrar la línea A (「スペイン語36ステップ」) antes del 5 de enero de 2027.
 - ~~Sección «Reparto, preferencias y transparencia»~~: incorporada a este documento el 2 de noviembre de 2026.

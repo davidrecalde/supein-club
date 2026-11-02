@@ -37,3 +37,7 @@ supein.club Design System.zip
 
 # Archivos locales con credenciales
 Imágenes.txt
+
+# Diccionario de frecuencias del CORPES XXI (RAE, CC BY-SA 4.0, 35 MB): se usa en local
+# con npm run vocab:rank; no se sube al repositorio.
+src/data/diccionario_frecuencias_corpes_alfa.tsv

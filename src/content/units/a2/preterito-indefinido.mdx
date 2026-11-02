@@ -17,20 +17,20 @@ canDo:
   - "旅行や出張の出来事を、起きた順に簡単に話せる"
   - "過去の出来事について質問し、答えられる"
 vocabulary:
-  # rank = puesto en una lista de frecuencia real. TODO:contenido añadir rank cuando David
-  # confirme la fuente de frecuencia del vocabulario; hasta entonces, orden de la unidad.
-  - { es: "ayer", ja: "昨日", example: "Ayer visité el Retiro con una amiga." }
-  - { es: "anoche", ja: "昨夜", example: "Anoche no dormí bien." }
+  # rank = «Rango frec.» del diccionario de frecuencias del CORPES XXI (RAE). Lo escribe
+  # npm run vocab:rank -- --write; lo que no es lema del diccionario va sin rank, al final.
+  - { es: "ayer", ja: "昨日", rank: 155, example: "Ayer visité el Retiro con una amiga." }
+  - { es: "anoche", ja: "昨夜", rank: 2347, example: "Anoche no dormí bien." }
   - { es: "la semana pasada", ja: "先週", example: "La semana pasada Kenta tuvo tres reuniones." }
   - { es: "el año pasado", ja: "去年", example: "El año pasado Kenta fue cuatro veces a Valencia." }
   - { es: "hace dos días", ja: "2日前に", example: "Mina llegó a Madrid hace dos días." }
   - { es: "el fin de semana", ja: "週末（に）", example: "El fin de semana Mina hizo una excursión a Toledo." }
-  - { es: "primero", ja: "まず", example: "Primero compré un billete de metro." }
-  - { es: "después", ja: "その後", example: "Después tomamos un café." }
-  - { es: "luego", ja: "それから", example: "Luego dimos un paseo por la Gran Vía." }
+  - { es: "primero", ja: "まず", rank: 1170, example: "Primero compré un billete de metro." }
+  - { es: "después", ja: "その後", rank: 87, example: "Después tomamos un café." }
+  - { es: "luego", ja: "それから", rank: 175, example: "Luego dimos un paseo por la Gran Vía." }
   - { es: "al final", ja: "最後に", example: "Al final volví al hotel en taxi." }
   - { es: "de repente", ja: "突然", example: "De repente empezó a llover." }
-  - { es: "el viaje", ja: "旅行・出張", example: "El viaje de Kenta duró cinco días." }
+  - { es: "el viaje", ja: "旅行・出張", rank: 677, example: "El viaje de Kenta duró cinco días." }
 verbs: ["ser", "ir", "tener", "estar", "hacer"]
 duration: 40
 prev: 13

@@ -10,6 +10,7 @@ import FloatingActions from '../components/FloatingActions.astro';
 import UnitHeader from '../components/course/UnitHeader.astro';
 import UnitNav from '../components/course/UnitNav.astro';
 import VocabList from '../components/course/VocabList.astro';
+import { VOCAB_FREQUENCY_SOURCE } from '../data/course';
 import MiniQuiz from '../components/course/MiniQuiz.astro';
 import CultureNote from '../components/course/CultureNote.astro';
 import ReportError from '../components/course/ReportError.astro';
@@ -70,6 +71,7 @@ const extraGraph = [learningResource, ...(d.quiz.length > 0 ? [buildQuizNode(can
 const sources = [
   { label: 'Instituto Cervantes『Plan curricular del Instituto Cervantes（PCIC）』', url: 'https://cvc.cervantes.es/ensenanza/biblioteca_ele/plan_curricular/indice.htm' },
   { label: 'Real Academia Española『Nueva gramática de la lengua española』' },
+  ...(d.vocabulary.some((v) => v.rank) ? [VOCAB_FREQUENCY_SOURCE] : []),
 ];
 ---
 <BaseLayout title={d.title}>
