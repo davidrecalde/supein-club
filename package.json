@@ -8,7 +8,9 @@
     "start": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "conjugation:generate": "node scripts/conjugation/generate.ts",
+    "test:conjugation": "node --test \"scripts/conjugation/*.test.ts\""
   },
   "pnpm": {
     "onlyBuiltDependencies": [

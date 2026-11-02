@@ -1,0 +1,367 @@
+{
+  "infinitive": "hacer",
+  "gerund": "haciendo",
+  "gerundIrregular": false,
+  "participle": "hecho",
+  "participleIrregular": true,
+  "tenses": {
+    "presente": {
+      "forms": [
+        "hago",
+        "haces",
+        "hace",
+        "hacemos",
+        "hacéis",
+        "hacen"
+      ],
+      "irregular": [
+        true,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "preterito-indefinido": {
+      "forms": [
+        "hice",
+        "hiciste",
+        "hizo",
+        "hicimos",
+        "hicisteis",
+        "hicieron"
+      ],
+      "irregular": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    "preterito-imperfecto": {
+      "forms": [
+        "hacía",
+        "hacías",
+        "hacía",
+        "hacíamos",
+        "hacíais",
+        "hacían"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "futuro": {
+      "forms": [
+        "haré",
+        "harás",
+        "hará",
+        "haremos",
+        "haréis",
+        "harán"
+      ],
+      "irregular": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    "condicional": {
+      "forms": [
+        "haría",
+        "harías",
+        "haría",
+        "haríamos",
+        "haríais",
+        "harían"
+      ],
+      "irregular": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    "subjuntivo-presente": {
+      "forms": [
+        "haga",
+        "hagas",
+        "haga",
+        "hagamos",
+        "hagáis",
+        "hagan"
+      ],
+      "irregular": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    "subjuntivo-imperfecto-ra": {
+      "forms": [
+        "hiciera",
+        "hicieras",
+        "hiciera",
+        "hiciéramos",
+        "hicierais",
+        "hicieran"
+      ],
+      "irregular": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    "subjuntivo-imperfecto-se": {
+      "forms": [
+        "hiciese",
+        "hicieses",
+        "hiciese",
+        "hiciésemos",
+        "hicieseis",
+        "hiciesen"
+      ],
+      "irregular": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    "imperativo-afirmativo": {
+      "forms": [
+        null,
+        "haz",
+        "haga",
+        "hagamos",
+        "haced",
+        "hagan"
+      ],
+      "irregular": [
+        false,
+        true,
+        true,
+        true,
+        false,
+        true
+      ]
+    },
+    "imperativo-negativo": {
+      "forms": [
+        null,
+        "no hagas",
+        "no haga",
+        "no hagamos",
+        "no hagáis",
+        "no hagan"
+      ],
+      "irregular": [
+        false,
+        true,
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    "preterito-perfecto": {
+      "forms": [
+        "he hecho",
+        "has hecho",
+        "ha hecho",
+        "hemos hecho",
+        "habéis hecho",
+        "han hecho"
+      ],
+      "irregular": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    "pluscuamperfecto": {
+      "forms": [
+        "había hecho",
+        "habías hecho",
+        "había hecho",
+        "habíamos hecho",
+        "habíais hecho",
+        "habían hecho"
+      ],
+      "irregular": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    "futuro-perfecto": {
+      "forms": [
+        "habré hecho",
+        "habrás hecho",
+        "habrá hecho",
+        "habremos hecho",
+        "habréis hecho",
+        "habrán hecho"
+      ],
+      "irregular": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    "condicional-perfecto": {
+      "forms": [
+        "habría hecho",
+        "habrías hecho",
+        "habría hecho",
+        "habríamos hecho",
+        "habríais hecho",
+        "habrían hecho"
+      ],
+      "irregular": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    "subjuntivo-perfecto": {
+      "forms": [
+        "haya hecho",
+        "hayas hecho",
+        "haya hecho",
+        "hayamos hecho",
+        "hayáis hecho",
+        "hayan hecho"
+      ],
+      "irregular": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    "subjuntivo-pluscuamperfecto": {
+      "forms": [
+        "hubiera hecho",
+        "hubieras hecho",
+        "hubiera hecho",
+        "hubiéramos hecho",
+        "hubierais hecho",
+        "hubieran hecho"
+      ],
+      "irregular": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    "subjuntivo-pluscuamperfecto-se": {
+      "forms": [
+        "hubiese hecho",
+        "hubieses hecho",
+        "hubiese hecho",
+        "hubiésemos hecho",
+        "hubieseis hecho",
+        "hubiesen hecho"
+      ],
+      "irregular": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ]
+    }
+  },
+  "quiz": [
+    {
+      "question": "hacer の直説法現在、1人称単数（yo）は？",
+      "options": [
+        "hago",
+        "haco",
+        "hace"
+      ],
+      "correctIndex": 0,
+      "explanation": "正解は hago。hacer のこの形は不規則で、規則どおりの haco にはなりません。"
+    },
+    {
+      "question": "hacer の点過去、3人称単数（él / ella / usted）は？",
+      "options": [
+        "hació",
+        "hizo",
+        "hice"
+      ],
+      "correctIndex": 1,
+      "explanation": "正解は hizo。hacer のこの形は不規則で、規則どおりの hació にはなりません。"
+    },
+    {
+      "question": "hacer の未来、1人称単数（yo）は？",
+      "options": [
+        "haceré",
+        "hará",
+        "haré"
+      ],
+      "correctIndex": 2,
+      "explanation": "正解は haré。hacer のこの形は不規則で、規則どおりの haceré にはなりません。"
+    },
+    {
+      "question": "hacer の接続法現在、1人称単数（yo）は？",
+      "options": [
+        "haga",
+        "haca",
+        "hagan"
+      ],
+      "correctIndex": 0,
+      "explanation": "正解は haga。hacer のこの形は不規則で、規則どおりの haca にはなりません。"
+    },
+    {
+      "question": "hacer の肯定命令、2人称単数（tú）は？",
+      "options": [
+        "hace",
+        "haz",
+        "haga"
+      ],
+      "correctIndex": 1,
+      "explanation": "正解は haz。hacer のこの形は不規則で、規則どおりの hace にはなりません。"
+    }
+  ]
+}

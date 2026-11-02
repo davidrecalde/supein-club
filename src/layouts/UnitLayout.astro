@@ -15,6 +15,7 @@ import CultureNote from '../components/course/CultureNote.astro';
 import ReportError from '../components/course/ReportError.astro';
 import Examples from '../components/course/Examples.astro';
 import { ABOUT_COURSE_URL } from '../data/course';
+import { VERBS, verbUrl } from '../data/conjugation';
 import { getAllUnits, hasPage, unitBreadcrumbs, type Unit } from '../utils/units';
 import { buildQuizNode } from '../utils/schema';
 
@@ -37,6 +38,8 @@ const navItem = (n: number | null) => {
 const related = d.related.map(navItem).filter((r) => r !== undefined);
 
 const cast = (await getEntries(d.cast)).map((c) => ({ id: c.id, ...c.data }));
+// Verbos de la unidad con página en el conjugador.
+const unitVerbs = d.verbs.filter((v) => VERBS.has(v));
 
 const author = (await getEntry('authors', 'david-recalde'))!;
 const authorUrl = `${siteUrl}/about-us/team/david-recalde/`;
@@ -110,6 +113,13 @@ const sources = [
         <div class="prose unit-body">
           <Content components={{ VocabList, MiniQuiz, CultureNote, Examples }} />
         </div>
+
+        {unitVerbs.length > 0 && (
+          <section class="unit-verbs">
+            <h2>このユニットの動詞</h2>
+            <p>{unitVerbs.map((v, i) => <>{i > 0 && '・'}<a href={verbUrl(v)}><span lang="es">{v}</span> の活用</a></>)}</p>
+          </section>
+        )}
 
         <UnitNav prev={navItem(d.prev)} next={navItem(d.next)} related={related} level={d.level} />
         <ReportError label={`ユニット${d.unit} ${d.shortTitle}`} pageUrl={canonical} />

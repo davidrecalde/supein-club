@@ -1,0 +1,367 @@
+{
+  "infinitive": "dar",
+  "gerund": "dando",
+  "gerundIrregular": false,
+  "participle": "dado",
+  "participleIrregular": false,
+  "tenses": {
+    "presente": {
+      "forms": [
+        "doy",
+        "das",
+        "da",
+        "damos",
+        "dais",
+        "dan"
+      ],
+      "irregular": [
+        true,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "preterito-indefinido": {
+      "forms": [
+        "di",
+        "diste",
+        "dio",
+        "dimos",
+        "disteis",
+        "dieron"
+      ],
+      "irregular": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    "preterito-imperfecto": {
+      "forms": [
+        "daba",
+        "dabas",
+        "daba",
+        "dábamos",
+        "dabais",
+        "daban"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "futuro": {
+      "forms": [
+        "daré",
+        "darás",
+        "dará",
+        "daremos",
+        "daréis",
+        "darán"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "condicional": {
+      "forms": [
+        "daría",
+        "darías",
+        "daría",
+        "daríamos",
+        "daríais",
+        "darían"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "subjuntivo-presente": {
+      "forms": [
+        "dé",
+        "des",
+        "dé",
+        "demos",
+        "deis",
+        "den"
+      ],
+      "irregular": [
+        true,
+        false,
+        true,
+        false,
+        false,
+        false
+      ]
+    },
+    "subjuntivo-imperfecto-ra": {
+      "forms": [
+        "diera",
+        "dieras",
+        "diera",
+        "diéramos",
+        "dierais",
+        "dieran"
+      ],
+      "irregular": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    "subjuntivo-imperfecto-se": {
+      "forms": [
+        "diese",
+        "dieses",
+        "diese",
+        "diésemos",
+        "dieseis",
+        "diesen"
+      ],
+      "irregular": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    "imperativo-afirmativo": {
+      "forms": [
+        null,
+        "da",
+        "dé",
+        "demos",
+        "dad",
+        "den"
+      ],
+      "irregular": [
+        false,
+        false,
+        true,
+        false,
+        false,
+        false
+      ]
+    },
+    "imperativo-negativo": {
+      "forms": [
+        null,
+        "no des",
+        "no dé",
+        "no demos",
+        "no deis",
+        "no den"
+      ],
+      "irregular": [
+        false,
+        false,
+        true,
+        false,
+        false,
+        false
+      ]
+    },
+    "preterito-perfecto": {
+      "forms": [
+        "he dado",
+        "has dado",
+        "ha dado",
+        "hemos dado",
+        "habéis dado",
+        "han dado"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "pluscuamperfecto": {
+      "forms": [
+        "había dado",
+        "habías dado",
+        "había dado",
+        "habíamos dado",
+        "habíais dado",
+        "habían dado"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "futuro-perfecto": {
+      "forms": [
+        "habré dado",
+        "habrás dado",
+        "habrá dado",
+        "habremos dado",
+        "habréis dado",
+        "habrán dado"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "condicional-perfecto": {
+      "forms": [
+        "habría dado",
+        "habrías dado",
+        "habría dado",
+        "habríamos dado",
+        "habríais dado",
+        "habrían dado"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "subjuntivo-perfecto": {
+      "forms": [
+        "haya dado",
+        "hayas dado",
+        "haya dado",
+        "hayamos dado",
+        "hayáis dado",
+        "hayan dado"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "subjuntivo-pluscuamperfecto": {
+      "forms": [
+        "hubiera dado",
+        "hubieras dado",
+        "hubiera dado",
+        "hubiéramos dado",
+        "hubierais dado",
+        "hubieran dado"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "subjuntivo-pluscuamperfecto-se": {
+      "forms": [
+        "hubiese dado",
+        "hubieses dado",
+        "hubiese dado",
+        "hubiésemos dado",
+        "hubieseis dado",
+        "hubiesen dado"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    }
+  },
+  "quiz": [
+    {
+      "question": "dar の直説法現在、1人称単数（yo）は？",
+      "options": [
+        "doy",
+        "do",
+        "da"
+      ],
+      "correctIndex": 0,
+      "explanation": "正解は doy。dar のこの形は不規則で、規則どおりの do にはなりません。"
+    },
+    {
+      "question": "dar の点過去、3人称単数（él / ella / usted）は？",
+      "options": [
+        "do",
+        "dio",
+        "di"
+      ],
+      "correctIndex": 1,
+      "explanation": "正解は dio。dar のこの形は不規則で、規則どおりの do にはなりません。"
+    },
+    {
+      "question": "dar の接続法現在、1人称単数（yo）は？",
+      "options": [
+        "de",
+        "den",
+        "dé"
+      ],
+      "correctIndex": 2,
+      "explanation": "正解は dé。dar のこの形は不規則で、規則どおりの de にはなりません。"
+    },
+    {
+      "question": "dar の未来、1人称単数（yo）は？",
+      "options": [
+        "daré",
+        "dará",
+        "darán"
+      ],
+      "correctIndex": 0,
+      "explanation": "正解は daré。dar のこの形は規則どおりです。"
+    },
+    {
+      "question": "dar の肯定命令、2人称単数（tú）は？",
+      "options": [
+        "dé",
+        "da",
+        "den"
+      ],
+      "correctIndex": 1,
+      "explanation": "正解は da。dar のこの形は規則どおりです。"
+    }
+  ]
+}

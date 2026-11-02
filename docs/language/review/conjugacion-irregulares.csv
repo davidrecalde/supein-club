@@ -1,0 +1,577 @@
+﻿verbo,tiempo,persona,forma,forma_regular_esperada,revisado_DLE,comentario,estado_revision,observaciones_revision,fuente_revision
+ser,presente,yo,soy,so,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+ser,presente,tú,eres,ses,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+ser,presente,él / ella / usted,es,se,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+ser,presente,nosotros / nosotras,somos,semos,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+ser,presente,vosotros / vosotras,sois,seis,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+ser,presente,ellos / ellas / ustedes,son,sen,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+ser,preterito-indefinido,yo,fui,si,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+ser,preterito-indefinido,tú,fuiste,siste,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+ser,preterito-indefinido,él / ella / usted,fue,sio,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+ser,preterito-indefinido,nosotros / nosotras,fuimos,simos,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+ser,preterito-indefinido,vosotros / vosotras,fuisteis,sisteis,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+ser,preterito-indefinido,ellos / ellas / ustedes,fueron,sieron,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+ser,preterito-imperfecto,yo,era,sía,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+ser,preterito-imperfecto,tú,eras,sías,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+ser,preterito-imperfecto,él / ella / usted,era,sía,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+ser,preterito-imperfecto,nosotros / nosotras,éramos,síamos,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+ser,preterito-imperfecto,vosotros / vosotras,erais,síais,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+ser,preterito-imperfecto,ellos / ellas / ustedes,eran,sían,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+ser,subjuntivo-presente,yo,sea,sa,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+ser,subjuntivo-presente,tú,seas,sas,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+ser,subjuntivo-presente,él / ella / usted,sea,sa,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+ser,subjuntivo-presente,nosotros / nosotras,seamos,samos,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+ser,subjuntivo-presente,vosotros / vosotras,seáis,sais,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+ser,subjuntivo-presente,ellos / ellas / ustedes,sean,san,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+ser,subjuntivo-imperfecto-ra,yo,fuera,siera,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+ser,subjuntivo-imperfecto-ra,tú,fueras,sieras,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+ser,subjuntivo-imperfecto-ra,él / ella / usted,fuera,siera,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+ser,subjuntivo-imperfecto-ra,nosotros / nosotras,fuéramos,siéramos,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+ser,subjuntivo-imperfecto-ra,vosotros / vosotras,fuerais,sierais,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+ser,subjuntivo-imperfecto-ra,ellos / ellas / ustedes,fueran,sieran,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+ser,subjuntivo-imperfecto-se,yo,fuese,siese,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+ser,subjuntivo-imperfecto-se,tú,fueses,sieses,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+ser,subjuntivo-imperfecto-se,él / ella / usted,fuese,siese,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+ser,subjuntivo-imperfecto-se,nosotros / nosotras,fuésemos,siésemos,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+ser,subjuntivo-imperfecto-se,vosotros / vosotras,fueseis,sieseis,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+ser,subjuntivo-imperfecto-se,ellos / ellas / ustedes,fuesen,siesen,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+ser,imperativo-afirmativo,tú,sé,se,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+ser,imperativo-afirmativo,él / ella / usted,sea,sa,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+ser,imperativo-afirmativo,nosotros / nosotras,seamos,samos,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+ser,imperativo-afirmativo,ellos / ellas / ustedes,sean,san,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+ser,imperativo-negativo,tú,no seas,no sas,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+ser,imperativo-negativo,él / ella / usted,no sea,no sa,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+ser,imperativo-negativo,nosotros / nosotras,no seamos,no samos,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+ser,imperativo-negativo,vosotros / vosotras,no seáis,no sais,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+ser,imperativo-negativo,ellos / ellas / ustedes,no sean,no san,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+ser,gerundio,,siendo,seriendo,Sí,Gerundio irregular recogido por la RAE en el paradigma de «ser».,Correcta (forma añadida),Gerundio irregular recogido por la RAE en el paradigma de «ser».,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+haber,presente,yo,he,habo,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+haber,presente,tú,has,habes,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+haber,presente,él / ella / usted,ha,habe,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+haber,presente,nosotros / nosotras,hemos,habemos,,La forma normativa actual es «hemos». «Habemos» es arcaica y no se usa hoy para formar los tiempos compuestos; el DPD la admite en la locución «habérselas».,Correcta con nota de uso,La forma normativa actual es «hemos». «Habemos» es arcaica y no se usa hoy para formar los tiempos compuestos; el DPD la admite en la locución «habérselas».,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf | https://www.rae.es/dpd/haber
+haber,presente,ellos / ellas / ustedes,han,haben,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+haber,preterito-indefinido,yo,hube,habí,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+haber,preterito-indefinido,tú,hubiste,habiste,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+haber,preterito-indefinido,él / ella / usted,hubo,habió,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+haber,preterito-indefinido,nosotros / nosotras,hubimos,habimos,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+haber,preterito-indefinido,vosotros / vosotras,hubisteis,habisteis,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+haber,preterito-indefinido,ellos / ellas / ustedes,hubieron,habieron,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+haber,futuro,yo,habré,haberé,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+haber,futuro,tú,habrás,haberás,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+haber,futuro,él / ella / usted,habrá,haberá,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+haber,futuro,nosotros / nosotras,habremos,haberemos,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+haber,futuro,vosotros / vosotras,habréis,haberéis,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+haber,futuro,ellos / ellas / ustedes,habrán,haberán,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+haber,condicional,yo,habría,habería,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+haber,condicional,tú,habrías,haberías,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+haber,condicional,él / ella / usted,habría,habería,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+haber,condicional,nosotros / nosotras,habríamos,haberíamos,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+haber,condicional,vosotros / vosotras,habríais,haberíais,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+haber,condicional,ellos / ellas / ustedes,habrían,haberían,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+haber,subjuntivo-presente,yo,haya,haba,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+haber,subjuntivo-presente,tú,hayas,habas,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+haber,subjuntivo-presente,él / ella / usted,haya,haba,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+haber,subjuntivo-presente,nosotros / nosotras,hayamos,habamos,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+haber,subjuntivo-presente,vosotros / vosotras,hayáis,habáis,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+haber,subjuntivo-presente,ellos / ellas / ustedes,hayan,haban,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+haber,subjuntivo-imperfecto-ra,yo,hubiera,habiera,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+haber,subjuntivo-imperfecto-ra,tú,hubieras,habieras,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+haber,subjuntivo-imperfecto-ra,él / ella / usted,hubiera,habiera,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+haber,subjuntivo-imperfecto-ra,nosotros / nosotras,hubiéramos,habiéramos,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+haber,subjuntivo-imperfecto-ra,vosotros / vosotras,hubierais,habierais,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+haber,subjuntivo-imperfecto-ra,ellos / ellas / ustedes,hubieran,habieran,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+haber,subjuntivo-imperfecto-se,yo,hubiese,habiese,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+haber,subjuntivo-imperfecto-se,tú,hubieses,habieses,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+haber,subjuntivo-imperfecto-se,él / ella / usted,hubiese,habiese,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+haber,subjuntivo-imperfecto-se,nosotros / nosotras,hubiésemos,habiésemos,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+haber,subjuntivo-imperfecto-se,vosotros / vosotras,hubieseis,habieseis,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+haber,subjuntivo-imperfecto-se,ellos / ellas / ustedes,hubiesen,habiesen,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+haber,preterito-perfecto,yo,he habido,habo habido,,"Forma compuesta personal del verbo haber; no debe usarse con sentido impersonal de existir/ocurrir. En ese uso, haber permanece en 3.ª persona singular (p. ej., ha habido, habrá habido, haya habido, hubiera habido). El uso personal de haber con valor de «tener» es hoy arcaico.",Correcta con restricción de uso,"Forma compuesta personal del verbo haber; no debe usarse con sentido impersonal de existir/ocurrir. En ese uso, haber permanece en 3.ª persona singular (p. ej., ha habido, habrá habido, haya habido, hubiera habido). El uso personal de haber con valor de «tener» es hoy arcaico.",https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf ; https://www.fundeu.es/recomendacion/habia-muchas-personas-no-habian-muchas-personas-haber-uso-impersonal/ | https://www.rae.es/dpd/haber
+haber,preterito-perfecto,tú,has habido,habes habido,,"Forma compuesta personal del verbo haber; no debe usarse con sentido impersonal de existir/ocurrir. En ese uso, haber permanece en 3.ª persona singular (p. ej., ha habido, habrá habido, haya habido, hubiera habido). El uso personal de haber con valor de «tener» es hoy arcaico.",Correcta con restricción de uso,"Forma compuesta personal del verbo haber; no debe usarse con sentido impersonal de existir/ocurrir. En ese uso, haber permanece en 3.ª persona singular (p. ej., ha habido, habrá habido, haya habido, hubiera habido). El uso personal de haber con valor de «tener» es hoy arcaico.",https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf ; https://www.fundeu.es/recomendacion/habia-muchas-personas-no-habian-muchas-personas-haber-uso-impersonal/ | https://www.rae.es/dpd/haber
+haber,preterito-perfecto,él / ella / usted,ha habido,habe habido,,"En uso impersonal con sentido de existir/ocurrir, esta forma en 3.ª persona singular es la adecuada: ha/habrá/habría/haya/hubiera habido, según el tiempo.",Correcta con restricción de uso,"En uso impersonal con sentido de existir/ocurrir, esta forma en 3.ª persona singular es la adecuada: ha/habrá/habría/haya/hubiera habido, según el tiempo.",https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf ; https://www.fundeu.es/recomendacion/habia-muchas-personas-no-habian-muchas-personas-haber-uso-impersonal/ | https://www.rae.es/dpd/haber
+haber,preterito-perfecto,nosotros / nosotras,hemos habido,habemos habido,,"Forma compuesta personal del verbo haber; no debe usarse con sentido impersonal de existir/ocurrir. En ese uso, haber permanece en 3.ª persona singular (p. ej., ha habido, habrá habido, haya habido, hubiera habido). El uso personal de haber con valor de «tener» es hoy arcaico.",Correcta con restricción de uso,"Forma compuesta personal del verbo haber; no debe usarse con sentido impersonal de existir/ocurrir. En ese uso, haber permanece en 3.ª persona singular (p. ej., ha habido, habrá habido, haya habido, hubiera habido). El uso personal de haber con valor de «tener» es hoy arcaico.",https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf ; https://www.fundeu.es/recomendacion/habia-muchas-personas-no-habian-muchas-personas-haber-uso-impersonal/ | https://www.rae.es/dpd/haber
+haber,preterito-perfecto,ellos / ellas / ustedes,han habido,haben habido,,"Forma compuesta personal del verbo haber; no debe usarse con sentido impersonal de existir/ocurrir. En ese uso, haber permanece en 3.ª persona singular (p. ej., ha habido, habrá habido, haya habido, hubiera habido). El uso personal de haber con valor de «tener» es hoy arcaico.",Correcta con restricción de uso,"Forma compuesta personal del verbo haber; no debe usarse con sentido impersonal de existir/ocurrir. En ese uso, haber permanece en 3.ª persona singular (p. ej., ha habido, habrá habido, haya habido, hubiera habido). El uso personal de haber con valor de «tener» es hoy arcaico.",https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf ; https://www.fundeu.es/recomendacion/habia-muchas-personas-no-habian-muchas-personas-haber-uso-impersonal/ | https://www.rae.es/dpd/haber
+haber,futuro-perfecto,yo,habré habido,haberé habido,,"Forma compuesta personal del verbo haber; no debe usarse con sentido impersonal de existir/ocurrir. En ese uso, haber permanece en 3.ª persona singular (p. ej., ha habido, habrá habido, haya habido, hubiera habido). El uso personal de haber con valor de «tener» es hoy arcaico.",Correcta con restricción de uso,"Forma compuesta personal del verbo haber; no debe usarse con sentido impersonal de existir/ocurrir. En ese uso, haber permanece en 3.ª persona singular (p. ej., ha habido, habrá habido, haya habido, hubiera habido). El uso personal de haber con valor de «tener» es hoy arcaico.",https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf ; https://www.fundeu.es/recomendacion/habia-muchas-personas-no-habian-muchas-personas-haber-uso-impersonal/ | https://www.rae.es/dpd/haber
+haber,futuro-perfecto,tú,habrás habido,haberás habido,,"Forma compuesta personal del verbo haber; no debe usarse con sentido impersonal de existir/ocurrir. En ese uso, haber permanece en 3.ª persona singular (p. ej., ha habido, habrá habido, haya habido, hubiera habido). El uso personal de haber con valor de «tener» es hoy arcaico.",Correcta con restricción de uso,"Forma compuesta personal del verbo haber; no debe usarse con sentido impersonal de existir/ocurrir. En ese uso, haber permanece en 3.ª persona singular (p. ej., ha habido, habrá habido, haya habido, hubiera habido). El uso personal de haber con valor de «tener» es hoy arcaico.",https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf ; https://www.fundeu.es/recomendacion/habia-muchas-personas-no-habian-muchas-personas-haber-uso-impersonal/ | https://www.rae.es/dpd/haber
+haber,futuro-perfecto,él / ella / usted,habrá habido,haberá habido,,"En uso impersonal con sentido de existir/ocurrir, esta forma en 3.ª persona singular es la adecuada: ha/habrá/habría/haya/hubiera habido, según el tiempo.",Correcta con restricción de uso,"En uso impersonal con sentido de existir/ocurrir, esta forma en 3.ª persona singular es la adecuada: ha/habrá/habría/haya/hubiera habido, según el tiempo.",https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf ; https://www.fundeu.es/recomendacion/habia-muchas-personas-no-habian-muchas-personas-haber-uso-impersonal/ | https://www.rae.es/dpd/haber
+haber,futuro-perfecto,nosotros / nosotras,habremos habido,haberemos habido,,"Forma compuesta personal del verbo haber; no debe usarse con sentido impersonal de existir/ocurrir. En ese uso, haber permanece en 3.ª persona singular (p. ej., ha habido, habrá habido, haya habido, hubiera habido). El uso personal de haber con valor de «tener» es hoy arcaico.",Correcta con restricción de uso,"Forma compuesta personal del verbo haber; no debe usarse con sentido impersonal de existir/ocurrir. En ese uso, haber permanece en 3.ª persona singular (p. ej., ha habido, habrá habido, haya habido, hubiera habido). El uso personal de haber con valor de «tener» es hoy arcaico.",https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf ; https://www.fundeu.es/recomendacion/habia-muchas-personas-no-habian-muchas-personas-haber-uso-impersonal/ | https://www.rae.es/dpd/haber
+haber,futuro-perfecto,vosotros / vosotras,habréis habido,haberéis habido,,"Forma compuesta personal del verbo haber; no debe usarse con sentido impersonal de existir/ocurrir. En ese uso, haber permanece en 3.ª persona singular (p. ej., ha habido, habrá habido, haya habido, hubiera habido). El uso personal de haber con valor de «tener» es hoy arcaico.",Correcta con restricción de uso,"Forma compuesta personal del verbo haber; no debe usarse con sentido impersonal de existir/ocurrir. En ese uso, haber permanece en 3.ª persona singular (p. ej., ha habido, habrá habido, haya habido, hubiera habido). El uso personal de haber con valor de «tener» es hoy arcaico.",https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf ; https://www.fundeu.es/recomendacion/habia-muchas-personas-no-habian-muchas-personas-haber-uso-impersonal/ | https://www.rae.es/dpd/haber
+haber,futuro-perfecto,ellos / ellas / ustedes,habrán habido,haberán habido,,"Forma compuesta personal del verbo haber; no debe usarse con sentido impersonal de existir/ocurrir. En ese uso, haber permanece en 3.ª persona singular (p. ej., ha habido, habrá habido, haya habido, hubiera habido). El uso personal de haber con valor de «tener» es hoy arcaico.",Correcta con restricción de uso,"Forma compuesta personal del verbo haber; no debe usarse con sentido impersonal de existir/ocurrir. En ese uso, haber permanece en 3.ª persona singular (p. ej., ha habido, habrá habido, haya habido, hubiera habido). El uso personal de haber con valor de «tener» es hoy arcaico.",https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf ; https://www.fundeu.es/recomendacion/habia-muchas-personas-no-habian-muchas-personas-haber-uso-impersonal/ | https://www.rae.es/dpd/haber
+haber,condicional-perfecto,yo,habría habido,habería habido,,"Forma compuesta personal del verbo haber; no debe usarse con sentido impersonal de existir/ocurrir. En ese uso, haber permanece en 3.ª persona singular (p. ej., ha habido, habrá habido, haya habido, hubiera habido). El uso personal de haber con valor de «tener» es hoy arcaico.",Correcta con restricción de uso,"Forma compuesta personal del verbo haber; no debe usarse con sentido impersonal de existir/ocurrir. En ese uso, haber permanece en 3.ª persona singular (p. ej., ha habido, habrá habido, haya habido, hubiera habido). El uso personal de haber con valor de «tener» es hoy arcaico.",https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf ; https://www.fundeu.es/recomendacion/habia-muchas-personas-no-habian-muchas-personas-haber-uso-impersonal/ | https://www.rae.es/dpd/haber
+haber,condicional-perfecto,tú,habrías habido,haberías habido,,"Forma compuesta personal del verbo haber; no debe usarse con sentido impersonal de existir/ocurrir. En ese uso, haber permanece en 3.ª persona singular (p. ej., ha habido, habrá habido, haya habido, hubiera habido). El uso personal de haber con valor de «tener» es hoy arcaico.",Correcta con restricción de uso,"Forma compuesta personal del verbo haber; no debe usarse con sentido impersonal de existir/ocurrir. En ese uso, haber permanece en 3.ª persona singular (p. ej., ha habido, habrá habido, haya habido, hubiera habido). El uso personal de haber con valor de «tener» es hoy arcaico.",https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf ; https://www.fundeu.es/recomendacion/habia-muchas-personas-no-habian-muchas-personas-haber-uso-impersonal/ | https://www.rae.es/dpd/haber
+haber,condicional-perfecto,él / ella / usted,habría habido,habería habido,,"En uso impersonal con sentido de existir/ocurrir, esta forma en 3.ª persona singular es la adecuada: ha/habrá/habría/haya/hubiera habido, según el tiempo.",Correcta con restricción de uso,"En uso impersonal con sentido de existir/ocurrir, esta forma en 3.ª persona singular es la adecuada: ha/habrá/habría/haya/hubiera habido, según el tiempo.",https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf ; https://www.fundeu.es/recomendacion/habia-muchas-personas-no-habian-muchas-personas-haber-uso-impersonal/ | https://www.rae.es/dpd/haber
+haber,condicional-perfecto,nosotros / nosotras,habríamos habido,haberíamos habido,,"Forma compuesta personal del verbo haber; no debe usarse con sentido impersonal de existir/ocurrir. En ese uso, haber permanece en 3.ª persona singular (p. ej., ha habido, habrá habido, haya habido, hubiera habido). El uso personal de haber con valor de «tener» es hoy arcaico.",Correcta con restricción de uso,"Forma compuesta personal del verbo haber; no debe usarse con sentido impersonal de existir/ocurrir. En ese uso, haber permanece en 3.ª persona singular (p. ej., ha habido, habrá habido, haya habido, hubiera habido). El uso personal de haber con valor de «tener» es hoy arcaico.",https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf ; https://www.fundeu.es/recomendacion/habia-muchas-personas-no-habian-muchas-personas-haber-uso-impersonal/ | https://www.rae.es/dpd/haber
+haber,condicional-perfecto,vosotros / vosotras,habríais habido,haberíais habido,,"Forma compuesta personal del verbo haber; no debe usarse con sentido impersonal de existir/ocurrir. En ese uso, haber permanece en 3.ª persona singular (p. ej., ha habido, habrá habido, haya habido, hubiera habido). El uso personal de haber con valor de «tener» es hoy arcaico.",Correcta con restricción de uso,"Forma compuesta personal del verbo haber; no debe usarse con sentido impersonal de existir/ocurrir. En ese uso, haber permanece en 3.ª persona singular (p. ej., ha habido, habrá habido, haya habido, hubiera habido). El uso personal de haber con valor de «tener» es hoy arcaico.",https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf ; https://www.fundeu.es/recomendacion/habia-muchas-personas-no-habian-muchas-personas-haber-uso-impersonal/ | https://www.rae.es/dpd/haber
+haber,condicional-perfecto,ellos / ellas / ustedes,habrían habido,haberían habido,,"Forma compuesta personal del verbo haber; no debe usarse con sentido impersonal de existir/ocurrir. En ese uso, haber permanece en 3.ª persona singular (p. ej., ha habido, habrá habido, haya habido, hubiera habido). El uso personal de haber con valor de «tener» es hoy arcaico.",Correcta con restricción de uso,"Forma compuesta personal del verbo haber; no debe usarse con sentido impersonal de existir/ocurrir. En ese uso, haber permanece en 3.ª persona singular (p. ej., ha habido, habrá habido, haya habido, hubiera habido). El uso personal de haber con valor de «tener» es hoy arcaico.",https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf ; https://www.fundeu.es/recomendacion/habia-muchas-personas-no-habian-muchas-personas-haber-uso-impersonal/ | https://www.rae.es/dpd/haber
+haber,subjuntivo-perfecto,yo,haya habido,haba habido,,"Forma compuesta personal del verbo haber; no debe usarse con sentido impersonal de existir/ocurrir. En ese uso, haber permanece en 3.ª persona singular (p. ej., ha habido, habrá habido, haya habido, hubiera habido). El uso personal de haber con valor de «tener» es hoy arcaico.",Correcta con restricción de uso,"Forma compuesta personal del verbo haber; no debe usarse con sentido impersonal de existir/ocurrir. En ese uso, haber permanece en 3.ª persona singular (p. ej., ha habido, habrá habido, haya habido, hubiera habido). El uso personal de haber con valor de «tener» es hoy arcaico.",https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf ; https://www.fundeu.es/recomendacion/habia-muchas-personas-no-habian-muchas-personas-haber-uso-impersonal/ | https://www.rae.es/dpd/haber
+haber,subjuntivo-perfecto,tú,hayas habido,habas habido,,"Forma compuesta personal del verbo haber; no debe usarse con sentido impersonal de existir/ocurrir. En ese uso, haber permanece en 3.ª persona singular (p. ej., ha habido, habrá habido, haya habido, hubiera habido). El uso personal de haber con valor de «tener» es hoy arcaico.",Correcta con restricción de uso,"Forma compuesta personal del verbo haber; no debe usarse con sentido impersonal de existir/ocurrir. En ese uso, haber permanece en 3.ª persona singular (p. ej., ha habido, habrá habido, haya habido, hubiera habido). El uso personal de haber con valor de «tener» es hoy arcaico.",https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf ; https://www.fundeu.es/recomendacion/habia-muchas-personas-no-habian-muchas-personas-haber-uso-impersonal/ | https://www.rae.es/dpd/haber
+haber,subjuntivo-perfecto,él / ella / usted,haya habido,haba habido,,"En uso impersonal con sentido de existir/ocurrir, esta forma en 3.ª persona singular es la adecuada: ha/habrá/habría/haya/hubiera habido, según el tiempo.",Correcta con restricción de uso,"En uso impersonal con sentido de existir/ocurrir, esta forma en 3.ª persona singular es la adecuada: ha/habrá/habría/haya/hubiera habido, según el tiempo.",https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf ; https://www.fundeu.es/recomendacion/habia-muchas-personas-no-habian-muchas-personas-haber-uso-impersonal/ | https://www.rae.es/dpd/haber
+haber,subjuntivo-perfecto,nosotros / nosotras,hayamos habido,habamos habido,,"Forma compuesta personal del verbo haber; no debe usarse con sentido impersonal de existir/ocurrir. En ese uso, haber permanece en 3.ª persona singular (p. ej., ha habido, habrá habido, haya habido, hubiera habido). El uso personal de haber con valor de «tener» es hoy arcaico.",Correcta con restricción de uso,"Forma compuesta personal del verbo haber; no debe usarse con sentido impersonal de existir/ocurrir. En ese uso, haber permanece en 3.ª persona singular (p. ej., ha habido, habrá habido, haya habido, hubiera habido). El uso personal de haber con valor de «tener» es hoy arcaico.",https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf ; https://www.fundeu.es/recomendacion/habia-muchas-personas-no-habian-muchas-personas-haber-uso-impersonal/ | https://www.rae.es/dpd/haber
+haber,subjuntivo-perfecto,vosotros / vosotras,hayáis habido,habáis habido,,"Forma compuesta personal del verbo haber; no debe usarse con sentido impersonal de existir/ocurrir. En ese uso, haber permanece en 3.ª persona singular (p. ej., ha habido, habrá habido, haya habido, hubiera habido). El uso personal de haber con valor de «tener» es hoy arcaico.",Correcta con restricción de uso,"Forma compuesta personal del verbo haber; no debe usarse con sentido impersonal de existir/ocurrir. En ese uso, haber permanece en 3.ª persona singular (p. ej., ha habido, habrá habido, haya habido, hubiera habido). El uso personal de haber con valor de «tener» es hoy arcaico.",https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf ; https://www.fundeu.es/recomendacion/habia-muchas-personas-no-habian-muchas-personas-haber-uso-impersonal/ | https://www.rae.es/dpd/haber
+haber,subjuntivo-perfecto,ellos / ellas / ustedes,hayan habido,haban habido,,"Forma compuesta personal del verbo haber; no debe usarse con sentido impersonal de existir/ocurrir. En ese uso, haber permanece en 3.ª persona singular (p. ej., ha habido, habrá habido, haya habido, hubiera habido). El uso personal de haber con valor de «tener» es hoy arcaico.",Correcta con restricción de uso,"Forma compuesta personal del verbo haber; no debe usarse con sentido impersonal de existir/ocurrir. En ese uso, haber permanece en 3.ª persona singular (p. ej., ha habido, habrá habido, haya habido, hubiera habido). El uso personal de haber con valor de «tener» es hoy arcaico.",https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf ; https://www.fundeu.es/recomendacion/habia-muchas-personas-no-habian-muchas-personas-haber-uso-impersonal/ | https://www.rae.es/dpd/haber
+haber,subjuntivo-pluscuamperfecto,yo,hubiera habido,habiera habido,,"Forma compuesta personal del verbo haber; no debe usarse con sentido impersonal de existir/ocurrir. En ese uso, haber permanece en 3.ª persona singular (p. ej., ha habido, habrá habido, haya habido, hubiera habido). El uso personal de haber con valor de «tener» es hoy arcaico.",Correcta con restricción de uso,"Forma compuesta personal del verbo haber; no debe usarse con sentido impersonal de existir/ocurrir. En ese uso, haber permanece en 3.ª persona singular (p. ej., ha habido, habrá habido, haya habido, hubiera habido). El uso personal de haber con valor de «tener» es hoy arcaico.",https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf ; https://www.fundeu.es/recomendacion/habia-muchas-personas-no-habian-muchas-personas-haber-uso-impersonal/ | https://www.rae.es/dpd/haber
+haber,subjuntivo-pluscuamperfecto,tú,hubieras habido,habieras habido,,"Forma compuesta personal del verbo haber; no debe usarse con sentido impersonal de existir/ocurrir. En ese uso, haber permanece en 3.ª persona singular (p. ej., ha habido, habrá habido, haya habido, hubiera habido). El uso personal de haber con valor de «tener» es hoy arcaico.",Correcta con restricción de uso,"Forma compuesta personal del verbo haber; no debe usarse con sentido impersonal de existir/ocurrir. En ese uso, haber permanece en 3.ª persona singular (p. ej., ha habido, habrá habido, haya habido, hubiera habido). El uso personal de haber con valor de «tener» es hoy arcaico.",https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf ; https://www.fundeu.es/recomendacion/habia-muchas-personas-no-habian-muchas-personas-haber-uso-impersonal/ | https://www.rae.es/dpd/haber
+haber,subjuntivo-pluscuamperfecto,él / ella / usted,hubiera habido,habiera habido,,"En uso impersonal con sentido de existir/ocurrir, esta forma en 3.ª persona singular es la adecuada: ha/habrá/habría/haya/hubiera habido, según el tiempo.",Correcta con restricción de uso,"En uso impersonal con sentido de existir/ocurrir, esta forma en 3.ª persona singular es la adecuada: ha/habrá/habría/haya/hubiera habido, según el tiempo.",https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf ; https://www.fundeu.es/recomendacion/habia-muchas-personas-no-habian-muchas-personas-haber-uso-impersonal/ | https://www.rae.es/dpd/haber
+haber,subjuntivo-pluscuamperfecto,nosotros / nosotras,hubiéramos habido,habiéramos habido,,"Forma compuesta personal del verbo haber; no debe usarse con sentido impersonal de existir/ocurrir. En ese uso, haber permanece en 3.ª persona singular (p. ej., ha habido, habrá habido, haya habido, hubiera habido). El uso personal de haber con valor de «tener» es hoy arcaico.",Correcta con restricción de uso,"Forma compuesta personal del verbo haber; no debe usarse con sentido impersonal de existir/ocurrir. En ese uso, haber permanece en 3.ª persona singular (p. ej., ha habido, habrá habido, haya habido, hubiera habido). El uso personal de haber con valor de «tener» es hoy arcaico.",https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf ; https://www.fundeu.es/recomendacion/habia-muchas-personas-no-habian-muchas-personas-haber-uso-impersonal/ | https://www.rae.es/dpd/haber
+haber,subjuntivo-pluscuamperfecto,vosotros / vosotras,hubierais habido,habierais habido,,"Forma compuesta personal del verbo haber; no debe usarse con sentido impersonal de existir/ocurrir. En ese uso, haber permanece en 3.ª persona singular (p. ej., ha habido, habrá habido, haya habido, hubiera habido). El uso personal de haber con valor de «tener» es hoy arcaico.",Correcta con restricción de uso,"Forma compuesta personal del verbo haber; no debe usarse con sentido impersonal de existir/ocurrir. En ese uso, haber permanece en 3.ª persona singular (p. ej., ha habido, habrá habido, haya habido, hubiera habido). El uso personal de haber con valor de «tener» es hoy arcaico.",https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf ; https://www.fundeu.es/recomendacion/habia-muchas-personas-no-habian-muchas-personas-haber-uso-impersonal/ | https://www.rae.es/dpd/haber
+haber,subjuntivo-pluscuamperfecto,ellos / ellas / ustedes,hubieran habido,habieran habido,,"Forma compuesta personal del verbo haber; no debe usarse con sentido impersonal de existir/ocurrir. En ese uso, haber permanece en 3.ª persona singular (p. ej., ha habido, habrá habido, haya habido, hubiera habido). El uso personal de haber con valor de «tener» es hoy arcaico.",Correcta con restricción de uso,"Forma compuesta personal del verbo haber; no debe usarse con sentido impersonal de existir/ocurrir. En ese uso, haber permanece en 3.ª persona singular (p. ej., ha habido, habrá habido, haya habido, hubiera habido). El uso personal de haber con valor de «tener» es hoy arcaico.",https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf ; https://www.fundeu.es/recomendacion/habia-muchas-personas-no-habian-muchas-personas-haber-uso-impersonal/ | https://www.rae.es/dpd/haber
+haber,subjuntivo-pluscuamperfecto-se,yo,hubiese habido,habiese habido,Sí,Variante en -se del pretérito pluscuamperfecto de subjuntivo: «hubiese» + participio. Se añade para reflejar la doble variante recogida por la RAE.,Correcta (forma añadida),Variante en -se del pretérito pluscuamperfecto de subjuntivo: «hubiese» + participio. Se añade para reflejar la doble variante recogida por la RAE.,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+haber,subjuntivo-pluscuamperfecto-se,tú,hubieses habido,habieses habido,Sí,Variante en -se del pretérito pluscuamperfecto de subjuntivo: «hubiese» + participio. Se añade para reflejar la doble variante recogida por la RAE.,Correcta (forma añadida),Variante en -se del pretérito pluscuamperfecto de subjuntivo: «hubiese» + participio. Se añade para reflejar la doble variante recogida por la RAE.,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+haber,subjuntivo-pluscuamperfecto-se,él / ella / usted,hubiese habido,habiese habido,Sí,Variante en -se del pretérito pluscuamperfecto de subjuntivo: «hubiese» + participio. Se añade para reflejar la doble variante recogida por la RAE.,Correcta (forma añadida),Variante en -se del pretérito pluscuamperfecto de subjuntivo: «hubiese» + participio. Se añade para reflejar la doble variante recogida por la RAE.,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+haber,subjuntivo-pluscuamperfecto-se,nosotros / nosotras,hubiésemos habido,habiésemos habido,Sí,Variante en -se del pretérito pluscuamperfecto de subjuntivo: «hubiese» + participio. Se añade para reflejar la doble variante recogida por la RAE.,Correcta (forma añadida),Variante en -se del pretérito pluscuamperfecto de subjuntivo: «hubiese» + participio. Se añade para reflejar la doble variante recogida por la RAE.,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+haber,subjuntivo-pluscuamperfecto-se,vosotros / vosotras,hubieseis habido,habieseis habido,Sí,Variante en -se del pretérito pluscuamperfecto de subjuntivo: «hubiese» + participio. Se añade para reflejar la doble variante recogida por la RAE.,Correcta (forma añadida),Variante en -se del pretérito pluscuamperfecto de subjuntivo: «hubiese» + participio. Se añade para reflejar la doble variante recogida por la RAE.,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+haber,subjuntivo-pluscuamperfecto-se,ellos / ellas / ustedes,hubiesen habido,habiesen habido,Sí,Variante en -se del pretérito pluscuamperfecto de subjuntivo: «hubiese» + participio. Se añade para reflejar la doble variante recogida por la RAE.,Correcta (forma añadida),Variante en -se del pretérito pluscuamperfecto de subjuntivo: «hubiese» + participio. Se añade para reflejar la doble variante recogida por la RAE.,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+haber,presente,impersonal (3.ª persona singular),hay,ha,Sí,Forma especial de la 3.ª persona singular del presente de indicativo cuando «haber» se usa como impersonal existencial. No tiene sujeto.,Correcta (forma impersonal especial),Forma especial de la 3.ª persona singular del presente de indicativo cuando «haber» se usa como impersonal existencial. No tiene sujeto.,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf | https://www.rae.es/dpd/haber
+estar,presente,yo,estoy,esto,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+estar,presente,tú,estás,estas,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+estar,presente,él / ella / usted,está,esta,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+estar,presente,ellos / ellas / ustedes,están,estan,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+estar,preterito-indefinido,yo,estuve,esté,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+estar,preterito-indefinido,tú,estuviste,estaste,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+estar,preterito-indefinido,él / ella / usted,estuvo,estó,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+estar,preterito-indefinido,nosotros / nosotras,estuvimos,estamos,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+estar,preterito-indefinido,vosotros / vosotras,estuvisteis,estasteis,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+estar,preterito-indefinido,ellos / ellas / ustedes,estuvieron,estaron,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+estar,subjuntivo-presente,yo,esté,este,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+estar,subjuntivo-presente,tú,estés,estes,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+estar,subjuntivo-presente,él / ella / usted,esté,este,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+estar,subjuntivo-presente,ellos / ellas / ustedes,estén,esten,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+estar,subjuntivo-imperfecto-ra,yo,estuviera,estara,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+estar,subjuntivo-imperfecto-ra,tú,estuvieras,estaras,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+estar,subjuntivo-imperfecto-ra,él / ella / usted,estuviera,estara,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+estar,subjuntivo-imperfecto-ra,nosotros / nosotras,estuviéramos,estáramos,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+estar,subjuntivo-imperfecto-ra,vosotros / vosotras,estuvierais,estarais,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+estar,subjuntivo-imperfecto-ra,ellos / ellas / ustedes,estuvieran,estaran,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+estar,subjuntivo-imperfecto-se,yo,estuviese,estase,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+estar,subjuntivo-imperfecto-se,tú,estuvieses,estases,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+estar,subjuntivo-imperfecto-se,él / ella / usted,estuviese,estase,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+estar,subjuntivo-imperfecto-se,nosotros / nosotras,estuviésemos,estásemos,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+estar,subjuntivo-imperfecto-se,vosotros / vosotras,estuvieseis,estaseis,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+estar,subjuntivo-imperfecto-se,ellos / ellas / ustedes,estuviesen,estasen,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+estar,imperativo-afirmativo,tú,está,esta,,"«Está» es la forma de imperativo; la RAE especifica que la 2.ª persona singular solo se usa en forma pronominal: «estate» (p. ej., «Estate tranquilo»).",Correcta con nota de uso,"«Está» es la forma de imperativo; la RAE especifica que la 2.ª persona singular solo se usa en forma pronominal: «estate» (p. ej., «Estate tranquilo»).",https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+estar,imperativo-afirmativo,él / ella / usted,esté,este,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+estar,imperativo-afirmativo,ellos / ellas / ustedes,estén,esten,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+estar,imperativo-negativo,tú,no estés,no estes,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+estar,imperativo-negativo,él / ella / usted,no esté,no este,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+estar,imperativo-negativo,ellos / ellas / ustedes,no estén,no esten,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+tener,presente,yo,tengo,teno,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+tener,presente,tú,tienes,tenes,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+tener,presente,él / ella / usted,tiene,tene,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+tener,presente,ellos / ellas / ustedes,tienen,tenen,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+tener,preterito-indefinido,yo,tuve,tení,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+tener,preterito-indefinido,tú,tuviste,teniste,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+tener,preterito-indefinido,él / ella / usted,tuvo,tenió,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+tener,preterito-indefinido,nosotros / nosotras,tuvimos,tenimos,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+tener,preterito-indefinido,vosotros / vosotras,tuvisteis,tenisteis,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+tener,preterito-indefinido,ellos / ellas / ustedes,tuvieron,tenieron,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+tener,futuro,yo,tendré,teneré,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+tener,futuro,tú,tendrás,tenerás,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+tener,futuro,él / ella / usted,tendrá,tenerá,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+tener,futuro,nosotros / nosotras,tendremos,teneremos,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+tener,futuro,vosotros / vosotras,tendréis,teneréis,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+tener,futuro,ellos / ellas / ustedes,tendrán,tenerán,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+tener,condicional,yo,tendría,tenería,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+tener,condicional,tú,tendrías,tenerías,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+tener,condicional,él / ella / usted,tendría,tenería,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+tener,condicional,nosotros / nosotras,tendríamos,teneríamos,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+tener,condicional,vosotros / vosotras,tendríais,teneríais,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+tener,condicional,ellos / ellas / ustedes,tendrían,tenerían,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+tener,subjuntivo-presente,yo,tenga,tena,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+tener,subjuntivo-presente,tú,tengas,tenas,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+tener,subjuntivo-presente,él / ella / usted,tenga,tena,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+tener,subjuntivo-presente,nosotros / nosotras,tengamos,tenamos,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+tener,subjuntivo-presente,vosotros / vosotras,tengáis,tenáis,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+tener,subjuntivo-presente,ellos / ellas / ustedes,tengan,tenan,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+tener,subjuntivo-imperfecto-ra,yo,tuviera,teniera,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+tener,subjuntivo-imperfecto-ra,tú,tuvieras,tenieras,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+tener,subjuntivo-imperfecto-ra,él / ella / usted,tuviera,teniera,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+tener,subjuntivo-imperfecto-ra,nosotros / nosotras,tuviéramos,teniéramos,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+tener,subjuntivo-imperfecto-ra,vosotros / vosotras,tuvierais,tenierais,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+tener,subjuntivo-imperfecto-ra,ellos / ellas / ustedes,tuvieran,tenieran,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+tener,subjuntivo-imperfecto-se,yo,tuviese,teniese,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+tener,subjuntivo-imperfecto-se,tú,tuvieses,tenieses,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+tener,subjuntivo-imperfecto-se,él / ella / usted,tuviese,teniese,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+tener,subjuntivo-imperfecto-se,nosotros / nosotras,tuviésemos,teniésemos,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+tener,subjuntivo-imperfecto-se,vosotros / vosotras,tuvieseis,tenieseis,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+tener,subjuntivo-imperfecto-se,ellos / ellas / ustedes,tuviesen,teniesen,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+tener,imperativo-afirmativo,tú,ten,tene,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+tener,imperativo-afirmativo,él / ella / usted,tenga,tena,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+tener,imperativo-afirmativo,nosotros / nosotras,tengamos,tenamos,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+tener,imperativo-afirmativo,ellos / ellas / ustedes,tengan,tenan,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+tener,imperativo-negativo,tú,no tengas,no tenas,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+tener,imperativo-negativo,él / ella / usted,no tenga,no tena,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+tener,imperativo-negativo,nosotros / nosotras,no tengamos,no tenamos,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+tener,imperativo-negativo,vosotros / vosotras,no tengáis,no tenáis,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+tener,imperativo-negativo,ellos / ellas / ustedes,no tengan,no tenan,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+hacer,participio,,hecho,hacido,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+hacer,presente,yo,hago,haco,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+hacer,preterito-indefinido,yo,hice,hací,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+hacer,preterito-indefinido,tú,hiciste,haciste,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+hacer,preterito-indefinido,él / ella / usted,hizo,hació,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+hacer,preterito-indefinido,nosotros / nosotras,hicimos,hacimos,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+hacer,preterito-indefinido,vosotros / vosotras,hicisteis,hacisteis,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+hacer,preterito-indefinido,ellos / ellas / ustedes,hicieron,hacieron,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+hacer,futuro,yo,haré,haceré,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+hacer,futuro,tú,harás,hacerás,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+hacer,futuro,él / ella / usted,hará,hacerá,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+hacer,futuro,nosotros / nosotras,haremos,haceremos,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+hacer,futuro,vosotros / vosotras,haréis,haceréis,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+hacer,futuro,ellos / ellas / ustedes,harán,hacerán,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+hacer,condicional,yo,haría,hacería,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+hacer,condicional,tú,harías,hacerías,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+hacer,condicional,él / ella / usted,haría,hacería,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+hacer,condicional,nosotros / nosotras,haríamos,haceríamos,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+hacer,condicional,vosotros / vosotras,haríais,haceríais,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+hacer,condicional,ellos / ellas / ustedes,harían,hacerían,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+hacer,subjuntivo-presente,yo,haga,haca,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+hacer,subjuntivo-presente,tú,hagas,hacas,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+hacer,subjuntivo-presente,él / ella / usted,haga,haca,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+hacer,subjuntivo-presente,nosotros / nosotras,hagamos,hacamos,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+hacer,subjuntivo-presente,vosotros / vosotras,hagáis,hacáis,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+hacer,subjuntivo-presente,ellos / ellas / ustedes,hagan,hacan,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+hacer,subjuntivo-imperfecto-ra,yo,hiciera,haciera,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+hacer,subjuntivo-imperfecto-ra,tú,hicieras,hacieras,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+hacer,subjuntivo-imperfecto-ra,él / ella / usted,hiciera,haciera,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+hacer,subjuntivo-imperfecto-ra,nosotros / nosotras,hiciéramos,haciéramos,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+hacer,subjuntivo-imperfecto-ra,vosotros / vosotras,hicierais,hacierais,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+hacer,subjuntivo-imperfecto-ra,ellos / ellas / ustedes,hicieran,hacieran,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+hacer,subjuntivo-imperfecto-se,yo,hiciese,haciese,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+hacer,subjuntivo-imperfecto-se,tú,hicieses,hacieses,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+hacer,subjuntivo-imperfecto-se,él / ella / usted,hiciese,haciese,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+hacer,subjuntivo-imperfecto-se,nosotros / nosotras,hiciésemos,haciésemos,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+hacer,subjuntivo-imperfecto-se,vosotros / vosotras,hicieseis,hacieseis,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+hacer,subjuntivo-imperfecto-se,ellos / ellas / ustedes,hiciesen,haciesen,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+hacer,imperativo-afirmativo,tú,haz,hace,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+hacer,imperativo-afirmativo,él / ella / usted,haga,haca,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+hacer,imperativo-afirmativo,nosotros / nosotras,hagamos,hacamos,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+hacer,imperativo-afirmativo,ellos / ellas / ustedes,hagan,hacan,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+hacer,imperativo-negativo,tú,no hagas,no hacas,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+hacer,imperativo-negativo,él / ella / usted,no haga,no haca,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+hacer,imperativo-negativo,nosotros / nosotras,no hagamos,no hacamos,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+hacer,imperativo-negativo,vosotros / vosotras,no hagáis,no hacáis,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+hacer,imperativo-negativo,ellos / ellas / ustedes,no hagan,no hacan,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+hacer,preterito-perfecto,yo,he hecho,he hacido,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+hacer,preterito-perfecto,tú,has hecho,has hacido,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+hacer,preterito-perfecto,él / ella / usted,ha hecho,ha hacido,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+hacer,preterito-perfecto,nosotros / nosotras,hemos hecho,hemos hacido,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+hacer,preterito-perfecto,vosotros / vosotras,habéis hecho,habéis hacido,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+hacer,preterito-perfecto,ellos / ellas / ustedes,han hecho,han hacido,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+hacer,pluscuamperfecto,yo,había hecho,había hacido,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+hacer,pluscuamperfecto,tú,habías hecho,habías hacido,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+hacer,pluscuamperfecto,él / ella / usted,había hecho,había hacido,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+hacer,pluscuamperfecto,nosotros / nosotras,habíamos hecho,habíamos hacido,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+hacer,pluscuamperfecto,vosotros / vosotras,habíais hecho,habíais hacido,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+hacer,pluscuamperfecto,ellos / ellas / ustedes,habían hecho,habían hacido,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+hacer,futuro-perfecto,yo,habré hecho,habré hacido,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+hacer,futuro-perfecto,tú,habrás hecho,habrás hacido,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+hacer,futuro-perfecto,él / ella / usted,habrá hecho,habrá hacido,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+hacer,futuro-perfecto,nosotros / nosotras,habremos hecho,habremos hacido,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+hacer,futuro-perfecto,vosotros / vosotras,habréis hecho,habréis hacido,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+hacer,futuro-perfecto,ellos / ellas / ustedes,habrán hecho,habrán hacido,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+hacer,condicional-perfecto,yo,habría hecho,habría hacido,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+hacer,condicional-perfecto,tú,habrías hecho,habrías hacido,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+hacer,condicional-perfecto,él / ella / usted,habría hecho,habría hacido,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+hacer,condicional-perfecto,nosotros / nosotras,habríamos hecho,habríamos hacido,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+hacer,condicional-perfecto,vosotros / vosotras,habríais hecho,habríais hacido,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+hacer,condicional-perfecto,ellos / ellas / ustedes,habrían hecho,habrían hacido,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+hacer,subjuntivo-perfecto,yo,haya hecho,haya hacido,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+hacer,subjuntivo-perfecto,tú,hayas hecho,hayas hacido,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+hacer,subjuntivo-perfecto,él / ella / usted,haya hecho,haya hacido,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+hacer,subjuntivo-perfecto,nosotros / nosotras,hayamos hecho,hayamos hacido,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+hacer,subjuntivo-perfecto,vosotros / vosotras,hayáis hecho,hayáis hacido,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+hacer,subjuntivo-perfecto,ellos / ellas / ustedes,hayan hecho,hayan hacido,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+hacer,subjuntivo-pluscuamperfecto,yo,hubiera hecho,hubiera hacido,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+hacer,subjuntivo-pluscuamperfecto,tú,hubieras hecho,hubieras hacido,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+hacer,subjuntivo-pluscuamperfecto,él / ella / usted,hubiera hecho,hubiera hacido,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+hacer,subjuntivo-pluscuamperfecto,nosotros / nosotras,hubiéramos hecho,hubiéramos hacido,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+hacer,subjuntivo-pluscuamperfecto,vosotros / vosotras,hubierais hecho,hubierais hacido,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+hacer,subjuntivo-pluscuamperfecto,ellos / ellas / ustedes,hubieran hecho,hubieran hacido,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+hacer,subjuntivo-pluscuamperfecto-se,yo,hubiese hecho,hubiese hacido,Sí,Variante en -se del pretérito pluscuamperfecto de subjuntivo: «hubiese» + participio. Se añade para reflejar la doble variante recogida por la RAE.,Correcta (forma añadida),Variante en -se del pretérito pluscuamperfecto de subjuntivo: «hubiese» + participio. Se añade para reflejar la doble variante recogida por la RAE.,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+hacer,subjuntivo-pluscuamperfecto-se,tú,hubieses hecho,hubieses hacido,Sí,Variante en -se del pretérito pluscuamperfecto de subjuntivo: «hubiese» + participio. Se añade para reflejar la doble variante recogida por la RAE.,Correcta (forma añadida),Variante en -se del pretérito pluscuamperfecto de subjuntivo: «hubiese» + participio. Se añade para reflejar la doble variante recogida por la RAE.,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+hacer,subjuntivo-pluscuamperfecto-se,él / ella / usted,hubiese hecho,hubiese hacido,Sí,Variante en -se del pretérito pluscuamperfecto de subjuntivo: «hubiese» + participio. Se añade para reflejar la doble variante recogida por la RAE.,Correcta (forma añadida),Variante en -se del pretérito pluscuamperfecto de subjuntivo: «hubiese» + participio. Se añade para reflejar la doble variante recogida por la RAE.,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+hacer,subjuntivo-pluscuamperfecto-se,nosotros / nosotras,hubiésemos hecho,hubiésemos hacido,Sí,Variante en -se del pretérito pluscuamperfecto de subjuntivo: «hubiese» + participio. Se añade para reflejar la doble variante recogida por la RAE.,Correcta (forma añadida),Variante en -se del pretérito pluscuamperfecto de subjuntivo: «hubiese» + participio. Se añade para reflejar la doble variante recogida por la RAE.,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+hacer,subjuntivo-pluscuamperfecto-se,vosotros / vosotras,hubieseis hecho,hubieseis hacido,Sí,Variante en -se del pretérito pluscuamperfecto de subjuntivo: «hubiese» + participio. Se añade para reflejar la doble variante recogida por la RAE.,Correcta (forma añadida),Variante en -se del pretérito pluscuamperfecto de subjuntivo: «hubiese» + participio. Se añade para reflejar la doble variante recogida por la RAE.,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+hacer,subjuntivo-pluscuamperfecto-se,ellos / ellas / ustedes,hubiesen hecho,hubiesen hacido,Sí,Variante en -se del pretérito pluscuamperfecto de subjuntivo: «hubiese» + participio. Se añade para reflejar la doble variante recogida por la RAE.,Correcta (forma añadida),Variante en -se del pretérito pluscuamperfecto de subjuntivo: «hubiese» + participio. Se añade para reflejar la doble variante recogida por la RAE.,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+poder,gerundio,,pudiendo,podiendo,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+poder,presente,yo,puedo,podo,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+poder,presente,tú,puedes,podes,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+poder,presente,él / ella / usted,puede,pode,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+poder,presente,ellos / ellas / ustedes,pueden,poden,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+poder,preterito-indefinido,yo,pude,podí,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+poder,preterito-indefinido,tú,pudiste,podiste,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+poder,preterito-indefinido,él / ella / usted,pudo,podió,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+poder,preterito-indefinido,nosotros / nosotras,pudimos,podimos,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+poder,preterito-indefinido,vosotros / vosotras,pudisteis,podisteis,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+poder,preterito-indefinido,ellos / ellas / ustedes,pudieron,podieron,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+poder,futuro,yo,podré,poderé,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+poder,futuro,tú,podrás,poderás,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+poder,futuro,él / ella / usted,podrá,poderá,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+poder,futuro,nosotros / nosotras,podremos,poderemos,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+poder,futuro,vosotros / vosotras,podréis,poderéis,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+poder,futuro,ellos / ellas / ustedes,podrán,poderán,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+poder,condicional,yo,podría,podería,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+poder,condicional,tú,podrías,poderías,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+poder,condicional,él / ella / usted,podría,podería,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+poder,condicional,nosotros / nosotras,podríamos,poderíamos,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+poder,condicional,vosotros / vosotras,podríais,poderíais,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+poder,condicional,ellos / ellas / ustedes,podrían,poderían,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+poder,subjuntivo-presente,yo,pueda,poda,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+poder,subjuntivo-presente,tú,puedas,podas,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+poder,subjuntivo-presente,él / ella / usted,pueda,poda,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+poder,subjuntivo-presente,ellos / ellas / ustedes,puedan,podan,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+poder,subjuntivo-imperfecto-ra,yo,pudiera,podiera,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+poder,subjuntivo-imperfecto-ra,tú,pudieras,podieras,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+poder,subjuntivo-imperfecto-ra,él / ella / usted,pudiera,podiera,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+poder,subjuntivo-imperfecto-ra,nosotros / nosotras,pudiéramos,podiéramos,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+poder,subjuntivo-imperfecto-ra,vosotros / vosotras,pudierais,podierais,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+poder,subjuntivo-imperfecto-ra,ellos / ellas / ustedes,pudieran,podieran,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+poder,subjuntivo-imperfecto-se,yo,pudiese,podiese,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+poder,subjuntivo-imperfecto-se,tú,pudieses,podieses,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+poder,subjuntivo-imperfecto-se,él / ella / usted,pudiese,podiese,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+poder,subjuntivo-imperfecto-se,nosotros / nosotras,pudiésemos,podiésemos,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+poder,subjuntivo-imperfecto-se,vosotros / vosotras,pudieseis,podieseis,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+poder,subjuntivo-imperfecto-se,ellos / ellas / ustedes,pudiesen,podiesen,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+poder,imperativo-afirmativo,tú,puede,pode,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+poder,imperativo-afirmativo,él / ella / usted,pueda,poda,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+poder,imperativo-afirmativo,ellos / ellas / ustedes,puedan,podan,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+poder,imperativo-negativo,tú,no puedas,no podas,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+poder,imperativo-negativo,él / ella / usted,no pueda,no poda,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+poder,imperativo-negativo,ellos / ellas / ustedes,no puedan,no podan,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+decir,gerundio,,diciendo,deciendo,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+decir,participio,,dicho,decido,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+decir,presente,yo,digo,deco,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+decir,presente,tú,dices,deces,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+decir,presente,él / ella / usted,dice,dece,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+decir,presente,ellos / ellas / ustedes,dicen,decen,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+decir,preterito-indefinido,yo,dije,decí,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+decir,preterito-indefinido,tú,dijiste,deciste,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+decir,preterito-indefinido,él / ella / usted,dijo,deció,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+decir,preterito-indefinido,nosotros / nosotras,dijimos,decimos,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+decir,preterito-indefinido,vosotros / vosotras,dijisteis,decisteis,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+decir,preterito-indefinido,ellos / ellas / ustedes,dijeron,decieron,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+decir,futuro,yo,diré,deciré,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+decir,futuro,tú,dirás,decirás,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+decir,futuro,él / ella / usted,dirá,decirá,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+decir,futuro,nosotros / nosotras,diremos,deciremos,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+decir,futuro,vosotros / vosotras,diréis,deciréis,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+decir,futuro,ellos / ellas / ustedes,dirán,decirán,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+decir,condicional,yo,diría,deciría,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+decir,condicional,tú,dirías,decirías,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+decir,condicional,él / ella / usted,diría,deciría,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+decir,condicional,nosotros / nosotras,diríamos,deciríamos,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+decir,condicional,vosotros / vosotras,diríais,deciríais,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+decir,condicional,ellos / ellas / ustedes,dirían,decirían,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+decir,subjuntivo-presente,yo,diga,deca,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+decir,subjuntivo-presente,tú,digas,decas,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+decir,subjuntivo-presente,él / ella / usted,diga,deca,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+decir,subjuntivo-presente,nosotros / nosotras,digamos,decamos,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+decir,subjuntivo-presente,vosotros / vosotras,digáis,decáis,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+decir,subjuntivo-presente,ellos / ellas / ustedes,digan,decan,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+decir,subjuntivo-imperfecto-ra,yo,dijera,deciera,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+decir,subjuntivo-imperfecto-ra,tú,dijeras,decieras,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+decir,subjuntivo-imperfecto-ra,él / ella / usted,dijera,deciera,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+decir,subjuntivo-imperfecto-ra,nosotros / nosotras,dijéramos,deciéramos,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+decir,subjuntivo-imperfecto-ra,vosotros / vosotras,dijerais,decierais,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+decir,subjuntivo-imperfecto-ra,ellos / ellas / ustedes,dijeran,decieran,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+decir,subjuntivo-imperfecto-se,yo,dijese,deciese,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+decir,subjuntivo-imperfecto-se,tú,dijeses,decieses,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+decir,subjuntivo-imperfecto-se,él / ella / usted,dijese,deciese,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+decir,subjuntivo-imperfecto-se,nosotros / nosotras,dijésemos,deciésemos,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+decir,subjuntivo-imperfecto-se,vosotros / vosotras,dijeseis,decieseis,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+decir,subjuntivo-imperfecto-se,ellos / ellas / ustedes,dijesen,deciesen,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+decir,imperativo-afirmativo,tú,di,dece,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+decir,imperativo-afirmativo,él / ella / usted,diga,deca,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+decir,imperativo-afirmativo,nosotros / nosotras,digamos,decamos,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+decir,imperativo-afirmativo,ellos / ellas / ustedes,digan,decan,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+decir,imperativo-negativo,tú,no digas,no decas,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+decir,imperativo-negativo,él / ella / usted,no diga,no deca,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+decir,imperativo-negativo,nosotros / nosotras,no digamos,no decamos,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+decir,imperativo-negativo,vosotros / vosotras,no digáis,no decáis,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+decir,imperativo-negativo,ellos / ellas / ustedes,no digan,no decan,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+decir,preterito-perfecto,yo,he dicho,he decido,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+decir,preterito-perfecto,tú,has dicho,has decido,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+decir,preterito-perfecto,él / ella / usted,ha dicho,ha decido,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+decir,preterito-perfecto,nosotros / nosotras,hemos dicho,hemos decido,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+decir,preterito-perfecto,vosotros / vosotras,habéis dicho,habéis decido,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+decir,preterito-perfecto,ellos / ellas / ustedes,han dicho,han decido,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+decir,pluscuamperfecto,yo,había dicho,había decido,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+decir,pluscuamperfecto,tú,habías dicho,habías decido,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+decir,pluscuamperfecto,él / ella / usted,había dicho,había decido,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+decir,pluscuamperfecto,nosotros / nosotras,habíamos dicho,habíamos decido,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+decir,pluscuamperfecto,vosotros / vosotras,habíais dicho,habíais decido,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+decir,pluscuamperfecto,ellos / ellas / ustedes,habían dicho,habían decido,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+decir,futuro-perfecto,yo,habré dicho,habré decido,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+decir,futuro-perfecto,tú,habrás dicho,habrás decido,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+decir,futuro-perfecto,él / ella / usted,habrá dicho,habrá decido,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+decir,futuro-perfecto,nosotros / nosotras,habremos dicho,habremos decido,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+decir,futuro-perfecto,vosotros / vosotras,habréis dicho,habréis decido,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+decir,futuro-perfecto,ellos / ellas / ustedes,habrán dicho,habrán decido,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+decir,condicional-perfecto,yo,habría dicho,habría decido,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+decir,condicional-perfecto,tú,habrías dicho,habrías decido,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+decir,condicional-perfecto,él / ella / usted,habría dicho,habría decido,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+decir,condicional-perfecto,nosotros / nosotras,habríamos dicho,habríamos decido,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+decir,condicional-perfecto,vosotros / vosotras,habríais dicho,habríais decido,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+decir,condicional-perfecto,ellos / ellas / ustedes,habrían dicho,habrían decido,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+decir,subjuntivo-perfecto,yo,haya dicho,haya decido,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+decir,subjuntivo-perfecto,tú,hayas dicho,hayas decido,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+decir,subjuntivo-perfecto,él / ella / usted,haya dicho,haya decido,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+decir,subjuntivo-perfecto,nosotros / nosotras,hayamos dicho,hayamos decido,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+decir,subjuntivo-perfecto,vosotros / vosotras,hayáis dicho,hayáis decido,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+decir,subjuntivo-perfecto,ellos / ellas / ustedes,hayan dicho,hayan decido,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+decir,subjuntivo-pluscuamperfecto,yo,hubiera dicho,hubiera decido,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+decir,subjuntivo-pluscuamperfecto,tú,hubieras dicho,hubieras decido,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+decir,subjuntivo-pluscuamperfecto,él / ella / usted,hubiera dicho,hubiera decido,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+decir,subjuntivo-pluscuamperfecto,nosotros / nosotras,hubiéramos dicho,hubiéramos decido,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+decir,subjuntivo-pluscuamperfecto,vosotros / vosotras,hubierais dicho,hubierais decido,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+decir,subjuntivo-pluscuamperfecto,ellos / ellas / ustedes,hubieran dicho,hubieran decido,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+decir,subjuntivo-pluscuamperfecto-se,yo,hubiese dicho,hubiese decido,Sí,Variante en -se del pretérito pluscuamperfecto de subjuntivo: «hubiese» + participio. Se añade para reflejar la doble variante recogida por la RAE.,Correcta (forma añadida),Variante en -se del pretérito pluscuamperfecto de subjuntivo: «hubiese» + participio. Se añade para reflejar la doble variante recogida por la RAE.,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+decir,subjuntivo-pluscuamperfecto-se,tú,hubieses dicho,hubieses decido,Sí,Variante en -se del pretérito pluscuamperfecto de subjuntivo: «hubiese» + participio. Se añade para reflejar la doble variante recogida por la RAE.,Correcta (forma añadida),Variante en -se del pretérito pluscuamperfecto de subjuntivo: «hubiese» + participio. Se añade para reflejar la doble variante recogida por la RAE.,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+decir,subjuntivo-pluscuamperfecto-se,él / ella / usted,hubiese dicho,hubiese decido,Sí,Variante en -se del pretérito pluscuamperfecto de subjuntivo: «hubiese» + participio. Se añade para reflejar la doble variante recogida por la RAE.,Correcta (forma añadida),Variante en -se del pretérito pluscuamperfecto de subjuntivo: «hubiese» + participio. Se añade para reflejar la doble variante recogida por la RAE.,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+decir,subjuntivo-pluscuamperfecto-se,nosotros / nosotras,hubiésemos dicho,hubiésemos decido,Sí,Variante en -se del pretérito pluscuamperfecto de subjuntivo: «hubiese» + participio. Se añade para reflejar la doble variante recogida por la RAE.,Correcta (forma añadida),Variante en -se del pretérito pluscuamperfecto de subjuntivo: «hubiese» + participio. Se añade para reflejar la doble variante recogida por la RAE.,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+decir,subjuntivo-pluscuamperfecto-se,vosotros / vosotras,hubieseis dicho,hubieseis decido,Sí,Variante en -se del pretérito pluscuamperfecto de subjuntivo: «hubiese» + participio. Se añade para reflejar la doble variante recogida por la RAE.,Correcta (forma añadida),Variante en -se del pretérito pluscuamperfecto de subjuntivo: «hubiese» + participio. Se añade para reflejar la doble variante recogida por la RAE.,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+decir,subjuntivo-pluscuamperfecto-se,ellos / ellas / ustedes,hubiesen dicho,hubiesen decido,Sí,Variante en -se del pretérito pluscuamperfecto de subjuntivo: «hubiese» + participio. Se añade para reflejar la doble variante recogida por la RAE.,Correcta (forma añadida),Variante en -se del pretérito pluscuamperfecto de subjuntivo: «hubiese» + participio. Se añade para reflejar la doble variante recogida por la RAE.,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+ir,gerundio,,yendo,iendo,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+ir,presente,yo,voy,o,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+ir,presente,tú,vas,es,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+ir,presente,él / ella / usted,va,e,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+ir,presente,nosotros / nosotras,vamos,imos,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+ir,presente,vosotros / vosotras,vais,is,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+ir,presente,ellos / ellas / ustedes,van,en,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+ir,preterito-indefinido,yo,fui,i,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+ir,preterito-indefinido,tú,fuiste,iste,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+ir,preterito-indefinido,él / ella / usted,fue,io,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+ir,preterito-indefinido,nosotros / nosotras,fuimos,imos,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+ir,preterito-indefinido,vosotros / vosotras,fuisteis,isteis,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+ir,preterito-indefinido,ellos / ellas / ustedes,fueron,ieron,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+ir,preterito-imperfecto,yo,iba,ía,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+ir,preterito-imperfecto,tú,ibas,ías,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+ir,preterito-imperfecto,él / ella / usted,iba,ía,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+ir,preterito-imperfecto,nosotros / nosotras,íbamos,íamos,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+ir,preterito-imperfecto,vosotros / vosotras,ibais,íais,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+ir,preterito-imperfecto,ellos / ellas / ustedes,iban,ían,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+ir,subjuntivo-presente,yo,vaya,a,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+ir,subjuntivo-presente,tú,vayas,as,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+ir,subjuntivo-presente,él / ella / usted,vaya,a,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+ir,subjuntivo-presente,nosotros / nosotras,vayamos,amos,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+ir,subjuntivo-presente,vosotros / vosotras,vayáis,ais,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+ir,subjuntivo-presente,ellos / ellas / ustedes,vayan,an,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+ir,subjuntivo-imperfecto-ra,yo,fuera,iera,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+ir,subjuntivo-imperfecto-ra,tú,fueras,ieras,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+ir,subjuntivo-imperfecto-ra,él / ella / usted,fuera,iera,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+ir,subjuntivo-imperfecto-ra,nosotros / nosotras,fuéramos,iéramos,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+ir,subjuntivo-imperfecto-ra,vosotros / vosotras,fuerais,ierais,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+ir,subjuntivo-imperfecto-ra,ellos / ellas / ustedes,fueran,ieran,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+ir,subjuntivo-imperfecto-se,yo,fuese,iese,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+ir,subjuntivo-imperfecto-se,tú,fueses,ieses,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+ir,subjuntivo-imperfecto-se,él / ella / usted,fuese,iese,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+ir,subjuntivo-imperfecto-se,nosotros / nosotras,fuésemos,iésemos,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+ir,subjuntivo-imperfecto-se,vosotros / vosotras,fueseis,ieseis,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+ir,subjuntivo-imperfecto-se,ellos / ellas / ustedes,fuesen,iesen,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+ir,imperativo-afirmativo,tú,ve,e,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+ir,imperativo-afirmativo,él / ella / usted,vaya,a,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+ir,imperativo-afirmativo,nosotros / nosotras,vamos,amos,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+ir,imperativo-afirmativo,ellos / ellas / ustedes,vayan,an,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+ir,imperativo-negativo,tú,no vayas,no as,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+ir,imperativo-negativo,él / ella / usted,no vaya,no a,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+ir,imperativo-negativo,nosotros / nosotras,no vayamos,no amos,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+ir,imperativo-negativo,vosotros / vosotras,no vayáis,no ais,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+ir,imperativo-negativo,ellos / ellas / ustedes,no vayan,no an,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+ver,participio,,visto,vido,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+ver,presente,yo,veo,vo,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+ver,preterito-imperfecto,yo,veía,vía,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+ver,preterito-imperfecto,tú,veías,vías,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+ver,preterito-imperfecto,él / ella / usted,veía,vía,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+ver,preterito-imperfecto,nosotros / nosotras,veíamos,víamos,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+ver,preterito-imperfecto,vosotros / vosotras,veíais,víais,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+ver,preterito-imperfecto,ellos / ellas / ustedes,veían,vían,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+ver,subjuntivo-presente,yo,vea,va,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+ver,subjuntivo-presente,tú,veas,vas,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+ver,subjuntivo-presente,él / ella / usted,vea,va,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+ver,subjuntivo-presente,nosotros / nosotras,veamos,vamos,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+ver,subjuntivo-presente,vosotros / vosotras,veáis,vais,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+ver,subjuntivo-presente,ellos / ellas / ustedes,vean,van,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+ver,imperativo-afirmativo,él / ella / usted,vea,va,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+ver,imperativo-afirmativo,nosotros / nosotras,veamos,vamos,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+ver,imperativo-afirmativo,ellos / ellas / ustedes,vean,van,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+ver,imperativo-negativo,tú,no veas,no vas,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+ver,imperativo-negativo,él / ella / usted,no vea,no va,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+ver,imperativo-negativo,nosotros / nosotras,no veamos,no vamos,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+ver,imperativo-negativo,vosotros / vosotras,no veáis,no vais,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+ver,imperativo-negativo,ellos / ellas / ustedes,no vean,no van,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+ver,preterito-perfecto,yo,he visto,he vido,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+ver,preterito-perfecto,tú,has visto,has vido,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+ver,preterito-perfecto,él / ella / usted,ha visto,ha vido,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+ver,preterito-perfecto,nosotros / nosotras,hemos visto,hemos vido,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+ver,preterito-perfecto,vosotros / vosotras,habéis visto,habéis vido,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+ver,preterito-perfecto,ellos / ellas / ustedes,han visto,han vido,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+ver,pluscuamperfecto,yo,había visto,había vido,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+ver,pluscuamperfecto,tú,habías visto,habías vido,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+ver,pluscuamperfecto,él / ella / usted,había visto,había vido,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+ver,pluscuamperfecto,nosotros / nosotras,habíamos visto,habíamos vido,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+ver,pluscuamperfecto,vosotros / vosotras,habíais visto,habíais vido,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+ver,pluscuamperfecto,ellos / ellas / ustedes,habían visto,habían vido,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+ver,futuro-perfecto,yo,habré visto,habré vido,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+ver,futuro-perfecto,tú,habrás visto,habrás vido,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+ver,futuro-perfecto,él / ella / usted,habrá visto,habrá vido,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+ver,futuro-perfecto,nosotros / nosotras,habremos visto,habremos vido,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+ver,futuro-perfecto,vosotros / vosotras,habréis visto,habréis vido,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+ver,futuro-perfecto,ellos / ellas / ustedes,habrán visto,habrán vido,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+ver,condicional-perfecto,yo,habría visto,habría vido,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+ver,condicional-perfecto,tú,habrías visto,habrías vido,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+ver,condicional-perfecto,él / ella / usted,habría visto,habría vido,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+ver,condicional-perfecto,nosotros / nosotras,habríamos visto,habríamos vido,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+ver,condicional-perfecto,vosotros / vosotras,habríais visto,habríais vido,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+ver,condicional-perfecto,ellos / ellas / ustedes,habrían visto,habrían vido,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+ver,subjuntivo-perfecto,yo,haya visto,haya vido,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+ver,subjuntivo-perfecto,tú,hayas visto,hayas vido,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+ver,subjuntivo-perfecto,él / ella / usted,haya visto,haya vido,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+ver,subjuntivo-perfecto,nosotros / nosotras,hayamos visto,hayamos vido,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+ver,subjuntivo-perfecto,vosotros / vosotras,hayáis visto,hayáis vido,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+ver,subjuntivo-perfecto,ellos / ellas / ustedes,hayan visto,hayan vido,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+ver,subjuntivo-pluscuamperfecto,yo,hubiera visto,hubiera vido,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+ver,subjuntivo-pluscuamperfecto,tú,hubieras visto,hubieras vido,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+ver,subjuntivo-pluscuamperfecto,él / ella / usted,hubiera visto,hubiera vido,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+ver,subjuntivo-pluscuamperfecto,nosotros / nosotras,hubiéramos visto,hubiéramos vido,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+ver,subjuntivo-pluscuamperfecto,vosotros / vosotras,hubierais visto,hubierais vido,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+ver,subjuntivo-pluscuamperfecto,ellos / ellas / ustedes,hubieran visto,hubieran vido,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+ver,subjuntivo-pluscuamperfecto-se,yo,hubiese visto,hubiese vido,Sí,Variante en -se del pretérito pluscuamperfecto de subjuntivo: «hubiese» + participio. Se añade para reflejar la doble variante recogida por la RAE.,Correcta (forma añadida),Variante en -se del pretérito pluscuamperfecto de subjuntivo: «hubiese» + participio. Se añade para reflejar la doble variante recogida por la RAE.,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+ver,subjuntivo-pluscuamperfecto-se,tú,hubieses visto,hubieses vido,Sí,Variante en -se del pretérito pluscuamperfecto de subjuntivo: «hubiese» + participio. Se añade para reflejar la doble variante recogida por la RAE.,Correcta (forma añadida),Variante en -se del pretérito pluscuamperfecto de subjuntivo: «hubiese» + participio. Se añade para reflejar la doble variante recogida por la RAE.,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+ver,subjuntivo-pluscuamperfecto-se,él / ella / usted,hubiese visto,hubiese vido,Sí,Variante en -se del pretérito pluscuamperfecto de subjuntivo: «hubiese» + participio. Se añade para reflejar la doble variante recogida por la RAE.,Correcta (forma añadida),Variante en -se del pretérito pluscuamperfecto de subjuntivo: «hubiese» + participio. Se añade para reflejar la doble variante recogida por la RAE.,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+ver,subjuntivo-pluscuamperfecto-se,nosotros / nosotras,hubiésemos visto,hubiésemos vido,Sí,Variante en -se del pretérito pluscuamperfecto de subjuntivo: «hubiese» + participio. Se añade para reflejar la doble variante recogida por la RAE.,Correcta (forma añadida),Variante en -se del pretérito pluscuamperfecto de subjuntivo: «hubiese» + participio. Se añade para reflejar la doble variante recogida por la RAE.,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+ver,subjuntivo-pluscuamperfecto-se,vosotros / vosotras,hubieseis visto,hubieseis vido,Sí,Variante en -se del pretérito pluscuamperfecto de subjuntivo: «hubiese» + participio. Se añade para reflejar la doble variante recogida por la RAE.,Correcta (forma añadida),Variante en -se del pretérito pluscuamperfecto de subjuntivo: «hubiese» + participio. Se añade para reflejar la doble variante recogida por la RAE.,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+ver,subjuntivo-pluscuamperfecto-se,ellos / ellas / ustedes,hubiesen visto,hubiesen vido,Sí,Variante en -se del pretérito pluscuamperfecto de subjuntivo: «hubiese» + participio. Se añade para reflejar la doble variante recogida por la RAE.,Correcta (forma añadida),Variante en -se del pretérito pluscuamperfecto de subjuntivo: «hubiese» + participio. Se añade para reflejar la doble variante recogida por la RAE.,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+ver,subjuntivo-imperfecto-ra,yo,viera,veriera,Sí,"Forma irregular del pretérito imperfecto de subjuntivo, variante en -ra, recogida en el paradigma de la RAE.",Correcta (forma añadida),"Forma irregular del pretérito imperfecto de subjuntivo, variante en -ra, recogida en el paradigma de la RAE.",https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+ver,subjuntivo-imperfecto-se,yo,viese,veriese,Sí,"Forma irregular del pretérito imperfecto de subjuntivo, variante en -se, recogida en el paradigma de la RAE.",Correcta (forma añadida),"Forma irregular del pretérito imperfecto de subjuntivo, variante en -se, recogida en el paradigma de la RAE.",https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+ver,subjuntivo-imperfecto-ra,tú,vieras,verieras,Sí,"Forma irregular del pretérito imperfecto de subjuntivo, variante en -ra, recogida en el paradigma de la RAE.",Correcta (forma añadida),"Forma irregular del pretérito imperfecto de subjuntivo, variante en -ra, recogida en el paradigma de la RAE.",https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+ver,subjuntivo-imperfecto-se,tú,vieses,verieses,Sí,"Forma irregular del pretérito imperfecto de subjuntivo, variante en -se, recogida en el paradigma de la RAE.",Correcta (forma añadida),"Forma irregular del pretérito imperfecto de subjuntivo, variante en -se, recogida en el paradigma de la RAE.",https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+ver,subjuntivo-imperfecto-ra,él / ella / usted,viera,veriera,Sí,"Forma irregular del pretérito imperfecto de subjuntivo, variante en -ra, recogida en el paradigma de la RAE.",Correcta (forma añadida),"Forma irregular del pretérito imperfecto de subjuntivo, variante en -ra, recogida en el paradigma de la RAE.",https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+ver,subjuntivo-imperfecto-se,él / ella / usted,viese,veriese,Sí,"Forma irregular del pretérito imperfecto de subjuntivo, variante en -se, recogida en el paradigma de la RAE.",Correcta (forma añadida),"Forma irregular del pretérito imperfecto de subjuntivo, variante en -se, recogida en el paradigma de la RAE.",https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+ver,subjuntivo-imperfecto-ra,nosotros / nosotras,viéramos,veriéramos,Sí,"Forma irregular del pretérito imperfecto de subjuntivo, variante en -ra, recogida en el paradigma de la RAE.",Correcta (forma añadida),"Forma irregular del pretérito imperfecto de subjuntivo, variante en -ra, recogida en el paradigma de la RAE.",https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+ver,subjuntivo-imperfecto-se,nosotros / nosotras,viésemos,veriésemos,Sí,"Forma irregular del pretérito imperfecto de subjuntivo, variante en -se, recogida en el paradigma de la RAE.",Correcta (forma añadida),"Forma irregular del pretérito imperfecto de subjuntivo, variante en -se, recogida en el paradigma de la RAE.",https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+ver,subjuntivo-imperfecto-ra,vosotros / vosotras,vierais,verierais,Sí,"Forma irregular del pretérito imperfecto de subjuntivo, variante en -ra, recogida en el paradigma de la RAE.",Correcta (forma añadida),"Forma irregular del pretérito imperfecto de subjuntivo, variante en -ra, recogida en el paradigma de la RAE.",https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+ver,subjuntivo-imperfecto-se,vosotros / vosotras,vieseis,verieseis,Sí,"Forma irregular del pretérito imperfecto de subjuntivo, variante en -se, recogida en el paradigma de la RAE.",Correcta (forma añadida),"Forma irregular del pretérito imperfecto de subjuntivo, variante en -se, recogida en el paradigma de la RAE.",https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+ver,subjuntivo-imperfecto-ra,ellos / ellas / ustedes,vieran,verieran,Sí,"Forma irregular del pretérito imperfecto de subjuntivo, variante en -ra, recogida en el paradigma de la RAE.",Correcta (forma añadida),"Forma irregular del pretérito imperfecto de subjuntivo, variante en -ra, recogida en el paradigma de la RAE.",https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+ver,subjuntivo-imperfecto-se,ellos / ellas / ustedes,viesen,veriesen,Sí,"Forma irregular del pretérito imperfecto de subjuntivo, variante en -se, recogida en el paradigma de la RAE.",Correcta (forma añadida),"Forma irregular del pretérito imperfecto de subjuntivo, variante en -se, recogida en el paradigma de la RAE.",https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+dar,presente,yo,doy,do,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+dar,preterito-indefinido,yo,di,de,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+dar,preterito-indefinido,tú,diste,daste,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+dar,preterito-indefinido,él / ella / usted,dio,do,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+dar,preterito-indefinido,nosotros / nosotras,dimos,damos,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+dar,preterito-indefinido,vosotros / vosotras,disteis,dasteis,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+dar,preterito-indefinido,ellos / ellas / ustedes,dieron,daron,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+dar,subjuntivo-presente,yo,dé,de,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+dar,subjuntivo-presente,él / ella / usted,dé,de,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+dar,subjuntivo-imperfecto-ra,yo,diera,dara,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+dar,subjuntivo-imperfecto-ra,tú,dieras,daras,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+dar,subjuntivo-imperfecto-ra,él / ella / usted,diera,dara,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+dar,subjuntivo-imperfecto-ra,nosotros / nosotras,diéramos,dáramos,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+dar,subjuntivo-imperfecto-ra,vosotros / vosotras,dierais,darais,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+dar,subjuntivo-imperfecto-ra,ellos / ellas / ustedes,dieran,daran,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+dar,subjuntivo-imperfecto-se,yo,diese,dase,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+dar,subjuntivo-imperfecto-se,tú,dieses,dases,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+dar,subjuntivo-imperfecto-se,él / ella / usted,diese,dase,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+dar,subjuntivo-imperfecto-se,nosotros / nosotras,diésemos,dásemos,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+dar,subjuntivo-imperfecto-se,vosotros / vosotras,dieseis,daseis,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+dar,subjuntivo-imperfecto-se,ellos / ellas / ustedes,diesen,dasen,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+dar,imperativo-afirmativo,él / ella / usted,dé,de,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf
+dar,imperativo-negativo,él / ella / usted,no dé,no de,,,Correcta,,https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf

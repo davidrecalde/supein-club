@@ -1,0 +1,367 @@
+{
+  "infinitive": "estar",
+  "gerund": "estando",
+  "gerundIrregular": false,
+  "participle": "estado",
+  "participleIrregular": false,
+  "tenses": {
+    "presente": {
+      "forms": [
+        "estoy",
+        "estás",
+        "está",
+        "estamos",
+        "estáis",
+        "están"
+      ],
+      "irregular": [
+        true,
+        true,
+        true,
+        false,
+        false,
+        true
+      ]
+    },
+    "preterito-indefinido": {
+      "forms": [
+        "estuve",
+        "estuviste",
+        "estuvo",
+        "estuvimos",
+        "estuvisteis",
+        "estuvieron"
+      ],
+      "irregular": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    "preterito-imperfecto": {
+      "forms": [
+        "estaba",
+        "estabas",
+        "estaba",
+        "estábamos",
+        "estabais",
+        "estaban"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "futuro": {
+      "forms": [
+        "estaré",
+        "estarás",
+        "estará",
+        "estaremos",
+        "estaréis",
+        "estarán"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "condicional": {
+      "forms": [
+        "estaría",
+        "estarías",
+        "estaría",
+        "estaríamos",
+        "estaríais",
+        "estarían"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "subjuntivo-presente": {
+      "forms": [
+        "esté",
+        "estés",
+        "esté",
+        "estemos",
+        "estéis",
+        "estén"
+      ],
+      "irregular": [
+        true,
+        true,
+        true,
+        false,
+        false,
+        true
+      ]
+    },
+    "subjuntivo-imperfecto-ra": {
+      "forms": [
+        "estuviera",
+        "estuvieras",
+        "estuviera",
+        "estuviéramos",
+        "estuvierais",
+        "estuvieran"
+      ],
+      "irregular": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    "subjuntivo-imperfecto-se": {
+      "forms": [
+        "estuviese",
+        "estuvieses",
+        "estuviese",
+        "estuviésemos",
+        "estuvieseis",
+        "estuviesen"
+      ],
+      "irregular": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    "imperativo-afirmativo": {
+      "forms": [
+        null,
+        "está",
+        "esté",
+        "estemos",
+        "estad",
+        "estén"
+      ],
+      "irregular": [
+        false,
+        true,
+        true,
+        false,
+        false,
+        true
+      ]
+    },
+    "imperativo-negativo": {
+      "forms": [
+        null,
+        "no estés",
+        "no esté",
+        "no estemos",
+        "no estéis",
+        "no estén"
+      ],
+      "irregular": [
+        false,
+        true,
+        true,
+        false,
+        false,
+        true
+      ]
+    },
+    "preterito-perfecto": {
+      "forms": [
+        "he estado",
+        "has estado",
+        "ha estado",
+        "hemos estado",
+        "habéis estado",
+        "han estado"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "pluscuamperfecto": {
+      "forms": [
+        "había estado",
+        "habías estado",
+        "había estado",
+        "habíamos estado",
+        "habíais estado",
+        "habían estado"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "futuro-perfecto": {
+      "forms": [
+        "habré estado",
+        "habrás estado",
+        "habrá estado",
+        "habremos estado",
+        "habréis estado",
+        "habrán estado"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "condicional-perfecto": {
+      "forms": [
+        "habría estado",
+        "habrías estado",
+        "habría estado",
+        "habríamos estado",
+        "habríais estado",
+        "habrían estado"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "subjuntivo-perfecto": {
+      "forms": [
+        "haya estado",
+        "hayas estado",
+        "haya estado",
+        "hayamos estado",
+        "hayáis estado",
+        "hayan estado"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "subjuntivo-pluscuamperfecto": {
+      "forms": [
+        "hubiera estado",
+        "hubieras estado",
+        "hubiera estado",
+        "hubiéramos estado",
+        "hubierais estado",
+        "hubieran estado"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "subjuntivo-pluscuamperfecto-se": {
+      "forms": [
+        "hubiese estado",
+        "hubieses estado",
+        "hubiese estado",
+        "hubiésemos estado",
+        "hubieseis estado",
+        "hubiesen estado"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    }
+  },
+  "quiz": [
+    {
+      "question": "estar の直説法現在、1人称単数（yo）は？",
+      "options": [
+        "estoy",
+        "esto",
+        "está"
+      ],
+      "correctIndex": 0,
+      "explanation": "正解は estoy。estar のこの形は不規則で、規則どおりの esto にはなりません。"
+    },
+    {
+      "question": "estar の点過去、3人称単数（él / ella / usted）は？",
+      "options": [
+        "estó",
+        "estuvo",
+        "estuve"
+      ],
+      "correctIndex": 1,
+      "explanation": "正解は estuvo。estar のこの形は不規則で、規則どおりの estó にはなりません。"
+    },
+    {
+      "question": "estar の接続法現在、1人称単数（yo）は？",
+      "options": [
+        "este",
+        "estén",
+        "esté"
+      ],
+      "correctIndex": 2,
+      "explanation": "正解は esté。estar のこの形は不規則で、規則どおりの este にはなりません。"
+    },
+    {
+      "question": "estar の肯定命令、2人称単数（tú）は？",
+      "options": [
+        "está",
+        "esta",
+        "esté"
+      ],
+      "correctIndex": 0,
+      "explanation": "正解は está。estar のこの形は不規則で、規則どおりの esta にはなりません。"
+    },
+    {
+      "question": "estar の未来、1人称単数（yo）は？",
+      "options": [
+        "estará",
+        "estaré",
+        "estarán"
+      ],
+      "correctIndex": 1,
+      "explanation": "正解は estaré。estar のこの形は規則どおりです。"
+    }
+  ]
+}

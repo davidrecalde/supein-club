@@ -1,0 +1,367 @@
+{
+  "infinitive": "poder",
+  "gerund": "pudiendo",
+  "gerundIrregular": true,
+  "participle": "podido",
+  "participleIrregular": false,
+  "tenses": {
+    "presente": {
+      "forms": [
+        "puedo",
+        "puedes",
+        "puede",
+        "podemos",
+        "podéis",
+        "pueden"
+      ],
+      "irregular": [
+        true,
+        true,
+        true,
+        false,
+        false,
+        true
+      ]
+    },
+    "preterito-indefinido": {
+      "forms": [
+        "pude",
+        "pudiste",
+        "pudo",
+        "pudimos",
+        "pudisteis",
+        "pudieron"
+      ],
+      "irregular": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    "preterito-imperfecto": {
+      "forms": [
+        "podía",
+        "podías",
+        "podía",
+        "podíamos",
+        "podíais",
+        "podían"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "futuro": {
+      "forms": [
+        "podré",
+        "podrás",
+        "podrá",
+        "podremos",
+        "podréis",
+        "podrán"
+      ],
+      "irregular": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    "condicional": {
+      "forms": [
+        "podría",
+        "podrías",
+        "podría",
+        "podríamos",
+        "podríais",
+        "podrían"
+      ],
+      "irregular": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    "subjuntivo-presente": {
+      "forms": [
+        "pueda",
+        "puedas",
+        "pueda",
+        "podamos",
+        "podáis",
+        "puedan"
+      ],
+      "irregular": [
+        true,
+        true,
+        true,
+        false,
+        false,
+        true
+      ]
+    },
+    "subjuntivo-imperfecto-ra": {
+      "forms": [
+        "pudiera",
+        "pudieras",
+        "pudiera",
+        "pudiéramos",
+        "pudierais",
+        "pudieran"
+      ],
+      "irregular": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    "subjuntivo-imperfecto-se": {
+      "forms": [
+        "pudiese",
+        "pudieses",
+        "pudiese",
+        "pudiésemos",
+        "pudieseis",
+        "pudiesen"
+      ],
+      "irregular": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    "imperativo-afirmativo": {
+      "forms": [
+        null,
+        "puede",
+        "pueda",
+        "podamos",
+        "poded",
+        "puedan"
+      ],
+      "irregular": [
+        false,
+        true,
+        true,
+        false,
+        false,
+        true
+      ]
+    },
+    "imperativo-negativo": {
+      "forms": [
+        null,
+        "no puedas",
+        "no pueda",
+        "no podamos",
+        "no podáis",
+        "no puedan"
+      ],
+      "irregular": [
+        false,
+        true,
+        true,
+        false,
+        false,
+        true
+      ]
+    },
+    "preterito-perfecto": {
+      "forms": [
+        "he podido",
+        "has podido",
+        "ha podido",
+        "hemos podido",
+        "habéis podido",
+        "han podido"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "pluscuamperfecto": {
+      "forms": [
+        "había podido",
+        "habías podido",
+        "había podido",
+        "habíamos podido",
+        "habíais podido",
+        "habían podido"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "futuro-perfecto": {
+      "forms": [
+        "habré podido",
+        "habrás podido",
+        "habrá podido",
+        "habremos podido",
+        "habréis podido",
+        "habrán podido"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "condicional-perfecto": {
+      "forms": [
+        "habría podido",
+        "habrías podido",
+        "habría podido",
+        "habríamos podido",
+        "habríais podido",
+        "habrían podido"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "subjuntivo-perfecto": {
+      "forms": [
+        "haya podido",
+        "hayas podido",
+        "haya podido",
+        "hayamos podido",
+        "hayáis podido",
+        "hayan podido"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "subjuntivo-pluscuamperfecto": {
+      "forms": [
+        "hubiera podido",
+        "hubieras podido",
+        "hubiera podido",
+        "hubiéramos podido",
+        "hubierais podido",
+        "hubieran podido"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "subjuntivo-pluscuamperfecto-se": {
+      "forms": [
+        "hubiese podido",
+        "hubieses podido",
+        "hubiese podido",
+        "hubiésemos podido",
+        "hubieseis podido",
+        "hubiesen podido"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    }
+  },
+  "quiz": [
+    {
+      "question": "poder の直説法現在、1人称単数（yo）は？",
+      "options": [
+        "puedo",
+        "podo",
+        "puede"
+      ],
+      "correctIndex": 0,
+      "explanation": "正解は puedo。poder のこの形は不規則で、規則どおりの podo にはなりません。"
+    },
+    {
+      "question": "poder の点過去、3人称単数（él / ella / usted）は？",
+      "options": [
+        "podió",
+        "pudo",
+        "pude"
+      ],
+      "correctIndex": 1,
+      "explanation": "正解は pudo。poder のこの形は不規則で、規則どおりの podió にはなりません。"
+    },
+    {
+      "question": "poder の未来、1人称単数（yo）は？",
+      "options": [
+        "poderé",
+        "podrá",
+        "podré"
+      ],
+      "correctIndex": 2,
+      "explanation": "正解は podré。poder のこの形は不規則で、規則どおりの poderé にはなりません。"
+    },
+    {
+      "question": "poder の接続法現在、1人称単数（yo）は？",
+      "options": [
+        "pueda",
+        "poda",
+        "puedan"
+      ],
+      "correctIndex": 0,
+      "explanation": "正解は pueda。poder のこの形は不規則で、規則どおりの poda にはなりません。"
+    },
+    {
+      "question": "poder の肯定命令、2人称単数（tú）は？",
+      "options": [
+        "pode",
+        "puede",
+        "pueda"
+      ],
+      "correctIndex": 1,
+      "explanation": "正解は puede。poder のこの形は不規則で、規則どおりの pode にはなりません。"
+    }
+  ]
+}

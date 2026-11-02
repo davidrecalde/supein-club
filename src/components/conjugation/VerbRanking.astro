@@ -1,0 +1,16 @@
+---
+// Los 50 verbos más frecuentes, con enlace a su página cuando ya existe.
+import { VERBS, verbUrl } from '../../data/conjugation';
+import { FREQUENCY_SOURCE, VERB_RANKING } from '../../data/conjugation/ranking';
+---
+<ol class="verb-ranking">
+  {VERB_RANKING.map((v) => (
+    <li value={v.rank}>
+      {VERBS.has(v.infinitive) ? <a href={verbUrl(v.infinitive)} lang="es">{v.infinitive}</a> : <span lang="es">{v.infinitive}</span>}
+      <span class="verb-ranking-meaning">{v.meaning}</span>
+    </li>
+  ))}
+</ol>
+<p class="verb-ranking-source">
+  頻度順位の出典：<a href={FREQUENCY_SOURCE.url}>{FREQUENCY_SOURCE.label}</a>。リンクのある動詞は、全時制の活用表を公開しています（順次追加中）。
+</p>

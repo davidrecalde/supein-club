@@ -320,6 +320,18 @@ Revisión de los documentos contra el repositorio y producción antes del prompt
 - **Acceso a 学習設定:** desde la cabecera de cada unidad, las páginas de nivel, el bloque del curso en el hub y el resultado del test de nivel. No está en el menú general de la web.
 - **Calendario del ritmo:** la preferencia se guarda ya; el calendario de unidades por semana es parte del prompt 5.
 
+### Prompt 3: conjugador
+
+- **Los 50 verbos** (lista de David, 2 de noviembre de 2026): ser, haber, estar, tener, hacer, poder, decir, ir, ver, dar, saber, querer, llegar, pasar, deber, poner, parecer, quedar, creer, hablar, llevar, dejar, seguir, encontrar, llamar, venir, pensar, salir, volver, tomar, conocer, vivir, sentir, tratar, mirar, contar, empezar, esperar, buscar, existir, entrar, trabajar, escribir, perder, producir, ocurrir, entender, pedir, recibir, recordar. Están en `src/data/conjugation/ranking.ts`.
+- **Fuente:** se cita «RAE, CORPES XXI», confirmada por David el 2 de noviembre de 2026. El estudio de 2023 (Pérez y Rojas, *Lengua y Sociedad*) no aparece en ninguna búsqueda y no se cita hasta tener enlace o DOI.
+- **Revisión nativa del primer lote (2 de noviembre de 2026):** las 538 formas irregulares generadas son correctas según el cuadro de conjugaciones del *Diccionario del estudiante* de la RAE. El revisor añadió 38 filas: el pluscuamperfecto de subjuntivo en -se (ahora es una tabla más, 17 en total), «hay», siendo y el imperfecto de subjuntivo de ver. Se conservan en el CSV, pero siendo y viera no se marcan en rojo, porque su formación sigue la regla. Sus notas de uso pasan a las páginas: haber impersonal solo en 3.ª persona del singular (hubo, ×hubieron) y el imperativo pronominal estate.
+- **CSV de revisión:** `npm run conjugation:generate` conserva las columnas de revisión (`estado_revision`, `observaciones_revision`, `fuente_revision`…) de las filas cuya forma no cambia, y vacía las que cambian. Las filas añadidas a mano se mantienen. El generador informa de cuántas filas quedan pendientes; en el segundo lote serán las de los 40 verbos nuevos.
+- **comer, gustar y acabar** están en el campo `verbs` de las unidades, pero no entre los 50: tendrán página propia (53 en total) o se quitarán de `verbs`. Se decide en el segundo lote.
+- **Motor y datos:** `scripts/conjugation/` (motor de reglas, tabla manual, tests con `npm run test:conjugation`). `npm run conjugation:generate` escribe `src/data/conjugation/` y el CSV de irregulares para revisión nativa contra el DLE en `docs/language/review/conjugacion-irregulares.csv`. Los JSON no se editan a mano.
+- **Quiz de cada verbo:** se genera de los datos; el distractor principal es la forma regularizada (tení, hació), salvo en ser e ir.
+- **Contenido editorial de cada verbo** (resumen, ejemplos, error típico, verbos que se conjugan igual): `src/data/conjugation/content.ts`. Revisado por David para los 10 verbos del primer lote el 2 de noviembre de 2026.
+- **Visibilidad:** las páginas de verbo son públicas (no son bloques del curso); su bloque 「この動詞を学ぶユニット」 y la columna de unidades del mapa de tiempos solo aparecen cuando el curso es visible.
+
 ### Pendiente de David
 
 - **Lista de frecuencia del Corpus del Español** (acceso o archivo). Sin ella no se pueden fijar `rank` ni los 50 verbos. Alternativa libre: los listados de frecuencia del CORPES XXI de la RAE; si se usa esa, hay que cambiar también la fuente citada en la web (FrequencyNote y el texto nuevo de A1 語彙).
