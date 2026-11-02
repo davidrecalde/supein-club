@@ -250,7 +250,8 @@ Revisión de los documentos contra el repositorio y producción antes del prompt
 2. **Numeración DELE en el hub:** al fusionar dele-b1-tips en /dele/b1/ quedan 9 páginas, numeradas de 1/9 a 9/9 (sustituye el «1/10 a 10/10» del prompt 1.5).
 3. **Título de la guía de dificultad:** 「DELEの難易度｜A1〜C2をレベル別に比較（合格率は非公開）」 en lugar de 「…と合格率の目安…」. La página no da cifras de 合格率: explica que el Instituto Cervantes no las publica.
 4. **Esquema de la colección `units`** (sustituye la lista del prompt 2.1):
-   - Obligatorios siempre: `unit`, `level`, `levelName`, `slug`, `url`, `existing`, `title`, `titleEs`, `duration`, `prev`, `next`, `related` (3), `draft`, `updated`.
+   - Obligatorios siempre: `unit`, `level`, `levelName`, `slug`, `url`, `existing`, `title`, `shortTitle`, `titleEs`, `duration`, `prev`, `next`, `related` (3), `draft`, `updated`. `title` es el título SEO (≤ 60 caracteres); `shortTitle` es el nombre corto de la unidad (「点過去」) para la cabecera 「ユニット 14 / 62 · A2 Plataforma · 点過去」, las listas de nivel, las migas y la navegación (añadido en el prompt 2).
+   - Cada palabra de `vocabulary` admite un `example` opcional: la lista de la unidad se genera desde el frontmatter con el componente VocabList, sin tabla escrita a mano en el cuerpo (añadido en el prompt 2).
    - Obligatorios solo con `draft: false`: `description`, `canDo` (2-3), `vocabulary` (10-15), `quiz` (10) y `pubDate`.
    - Opcionales: `grammar`, `tenses`, `functions`, `verbs`, `audio`, `youtubeId` y los cinco ejes de la estrategia (`skills`, `format`, `theme`, `goal`; el nivel ya es `level`).
    - `quiz` usa los mismos nombres que la colección `articles` (`question`, `options`, `correctIndex`, `explanation`) para reutilizar QuizCard y el schema Quiz. Se aprueba con 7 de 10.

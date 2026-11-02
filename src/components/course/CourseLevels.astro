@@ -1,0 +1,67 @@
+---
+import { COURSE_LEVELS, TOTAL_UNITS, levelUrl } from '../../data/course';
+import { getAllUnits, isRoutable } from '../../utils/units';
+
+const units = await getAllUnits();
+const levels = COURSE_LEVELS.map((level) => {
+  const levelUnits = units.filter((u) => u.data.level === level.code);
+  return {
+    ...level,
+    total: levelUnits.length,
+    unitNumbers: levelUnits.map((u) => u.data.unit),
+    published: levelUnits.filter((u) => !u.data.draft).length,
+    live: levelUnits.filter(isRoutable).map((u) => ({ unit: u.data.unit, url: u.data.url, shortTitle: u.data.shortTitle })),
+  };
+});
+---
+<section class="course-levels" id="course" data-pagefind-ignore>
+  <h2>スペイン語コース（A1〜C2・全{TOTAL_UNITS}ユニット）</h2>
+  <p>無料・登録不要で、自分のペースで進められるコースです。進み具合はこのブラウザに保存されます。</p>
+  <ol class="course-levels-grid">
+    {levels.map((l) => (
+      <li class="course-level" data-units={JSON.stringify(l.unitNumbers)} data-live-units={JSON.stringify(l.live)}>
+        <a href={levelUrl(l.code)} class="course-level-name">
+          <span class="course-level-code">{l.code}</span> {l.name}
+        </a>
+        <span class="course-level-range">ユニット{l.first}〜{l.last}・公開中 {l.published} / {l.total}</span>
+        <div class="course-level-bar" hidden><div class="course-level-fill"></div></div>
+        <span class="course-level-percent" hidden>0%</span>
+        <span class="course-level-next" hidden></span>
+      </li>
+    ))}
+  </ol>
+</section>
+
+<script>
+  import { PROGRESS_EVENT, isCompleted, loadProgress } from '../../utils/courseProgress';
+
+  function render() {
+    const progress = loadProgress();
+    document.querySelectorAll<HTMLElement>('.course-level').forEach((card) => {
+      const units: number[] = JSON.parse(card.dataset.units ?? '[]');
+      const live: Array<{ unit: number; url: string; shortTitle: string }> = JSON.parse(card.dataset.liveUnits ?? '[]');
+      const done = units.filter((u) => isCompleted(progress, u)).length;
+      const percent = units.length ? Math.round((done / units.length) * 100) : 0;
+      card.querySelector<HTMLElement>('.course-level-fill')!.style.width = `${percent}%`;
+      card.querySelector<HTMLElement>('.course-level-bar')!.hidden = false;
+      const percentEl = card.querySelector<HTMLElement>('.course-level-percent')!;
+      percentEl.textContent = `${percent}% 完了`;
+      percentEl.hidden = false;
+      const next = live.find((u) => !isCompleted(progress, u.unit));
+      const nextEl = card.querySelector<HTMLElement>('.course-level-next')!;
+      if (next) {
+        nextEl.innerHTML = '';
+        const link = document.createElement('a');
+        link.href = next.url;
+        link.textContent = `次：ユニット${next.unit} ${next.shortTitle}`;
+        nextEl.append(link);
+        nextEl.hidden = false;
+      } else {
+        nextEl.hidden = true;
+      }
+    });
+  }
+
+  window.addEventListener(PROGRESS_EVENT, render);
+  render();
+</script>

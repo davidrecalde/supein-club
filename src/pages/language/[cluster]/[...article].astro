@@ -1,11 +1,14 @@
 ---
-import { getCollection } from 'astro:content';
+import { readFileSync } from 'node:fs';
+import { getCollection, type CollectionEntry } from 'astro:content';
 import type { GetStaticPaths } from 'astro';
 import ArticleLayout from '../../../layouts/ArticleLayout.astro';
+import UnitLayout from '../../../layouts/UnitLayout.astro';
+import { getAllUnits, isRoutable, unitRouteParams, type Unit } from '../../../utils/units';
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const articles = await getCollection('articles', ({ data }) => !data.draft && data.pillar === 'language');
-  return articles
+  const articlePaths = articles
     .map((entry) => {
       const parts = entry.id.replace(/\.(md|mdx)$/, '').split('/');
       const cluster = parts[1];
@@ -22,8 +25,26 @@ export const getStaticPaths: GetStaticPaths = async () => {
       params: { cluster, article },
       props: { entry },
     }));
+
+  // Unidades del curso (colección `units`): publicadas, más los borradores en dev/preview.
+  const takenByArticles = new Set(articlePaths.map(({ params }) => `${params.cluster}/${params.article}`));
+  const unitPaths = (await getAllUnits()).filter(isRoutable).map((unit) => {
+    // Archivo completo (no solo `body`): los avisos de datos provisionales también van en comentarios del frontmatter.
+    if (!unit.data.draft && unit.filePath && readFileSync(unit.filePath, 'utf8').includes('TODO:')) {
+      throw new Error(`ユニット${unit.data.unit} (${unit.data.url}) está publicada pero contiene marcadores TODO:.`);
+    }
+    const params = unitRouteParams(unit);
+    if (takenByArticles.has(`${params.cluster}/${params.article}`)) {
+      throw new Error(
+        `La URL ${unit.data.url} la generan a la vez la unidad ${unit.data.unit} y un artículo. Al publicar una unidad «existente», elimina su artículo de la colección articles en el mismo PR.`,
+      );
+    }
+    return { params, props: { unit } };
+  });
+
+  return [...articlePaths, ...unitPaths];
 };
 
-const { entry } = Astro.props;
+const { entry, unit } = Astro.props as { entry?: CollectionEntry<'articles'>; unit?: Unit };
 ---
-<ArticleLayout entry={entry} />
+{unit ? <UnitLayout unit={unit} /> : <ArticleLayout entry={entry!} />}

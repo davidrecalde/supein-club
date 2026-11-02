@@ -1,0 +1,81 @@
+---
+import Breadcrumb from '../Breadcrumb.astro';
+import { TOTAL_UNITS, getCourseLevel } from '../../data/course';
+
+interface Props {
+  unit: number;
+  level: string;
+  shortTitle: string;
+  title: string;
+  titleEs: string;
+  canDo: string[];
+  duration: number;
+  pubDate?: Date;
+  updated: Date;
+  breadcrumbs: Array<{ name: string; url: string }>;
+}
+
+const { unit, level: levelCode, shortTitle, title, titleEs, canDo, duration, pubDate, updated, breadcrumbs } = Astro.props;
+const level = getCourseLevel(levelCode)!;
+const levelUnits = Array.from({ length: level.last - level.first + 1 }, (_, i) => level.first + i);
+const fmt = (d: Date) => d.toLocaleDateString('ja-JP', { year: 'numeric', month: 'long', day: 'numeric' });
+---
+<header class="unit-header">
+  <div class="page-container">
+    <Breadcrumb items={breadcrumbs} dark />
+
+    <p class="unit-header-meta">ユニット {unit} / {TOTAL_UNITS} · {level.code} {level.name} · {shortTitle}</p>
+    <h1 class="unit-header-title">{title}</h1>
+    <p class="unit-header-es" lang="es">{titleEs}</p>
+
+    {canDo.length > 0 && (
+      <div class="unit-header-cando">
+        <p class="unit-header-label">できること</p>
+        <ul>
+          {canDo.map((item) => <li>{item}</li>)}
+        </ul>
+      </div>
+    )}
+
+    <div class="unit-header-facts">
+      <span>所要時間：約{duration}分</span>
+      {pubDate && <time datetime={pubDate.toISOString()}>公開日：{fmt(pubDate)}</time>}
+      <time datetime={updated.toISOString()}>最終更新日：{fmt(updated)}</time>
+      <label class="unit-complete" hidden>
+        <input type="checkbox" data-unit-complete={unit} />
+        <span>完了</span>
+      </label>
+    </div>
+
+    <div class="unit-level-progress" data-level-units={JSON.stringify(levelUnits)} hidden>
+      <div class="unit-level-progress-bar"><div class="unit-level-progress-fill"></div></div>
+      <span>{level.code} {level.name}の進捗：<span class="unit-level-progress-count">0</span> / {levelUnits.length}</span>
+    </div>
+  </div>
+</header>
+
+<script>
+  import { PROGRESS_EVENT, isCompleted, loadProgress, setCompleted } from '../../utils/courseProgress';
+
+  const checkbox = document.querySelector<HTMLInputElement>('[data-unit-complete]');
+  const progressBox = document.querySelector<HTMLElement>('.unit-level-progress');
+
+  function render() {
+    const progress = loadProgress();
+    if (checkbox) {
+      checkbox.checked = isCompleted(progress, Number(checkbox.dataset.unitComplete));
+      checkbox.closest('label')?.removeAttribute('hidden');
+    }
+    if (progressBox) {
+      const units: number[] = JSON.parse(progressBox.dataset.levelUnits ?? '[]');
+      const done = units.filter((u) => isCompleted(progress, u)).length;
+      progressBox.querySelector('.unit-level-progress-count')!.textContent = String(done);
+      progressBox.querySelector<HTMLElement>('.unit-level-progress-fill')!.style.width = `${(done / units.length) * 100}%`;
+      progressBox.hidden = false;
+    }
+  }
+
+  checkbox?.addEventListener('change', () => setCompleted(Number(checkbox.dataset.unitComplete), checkbox.checked));
+  window.addEventListener(PROGRESS_EVENT, render);
+  render();
+</script>

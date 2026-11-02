@@ -5,6 +5,8 @@ import mdx from '@astrojs/mdx';
 import sitemap from '@astrojs/sitemap';
 import rehypeExternalLinks from 'rehype-external-links';
 import { execFileSync } from 'node:child_process';
+import { readdirSync, readFileSync } from 'node:fs';
+import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { NOINDEX_PATHS } from './src/config/noindexPaths.ts';
 
@@ -30,6 +32,55 @@ function pagefindIntegration() {
   };
 }
 
+// Regla del curso (docs/language/curso-paso-a-paso.md, «Enlazado interno»):
+// ninguna unidad publicada con menos de 5 páginas que la enlacen. Se comprueba
+// sobre el HTML final, así que cuentan todos los enlaces reales (nivel, otras
+// unidades, conjugador, artículos…). Las unidades en borrador no cuentan.
+const MIN_INCOMING_UNIT_LINKS = 5;
+
+function listFiles(dir, ext) {
+  return readdirSync(dir, { withFileTypes: true }).flatMap((e) => {
+    const full = path.join(dir, e.name);
+    return e.isDirectory() ? listFiles(full, ext) : full.endsWith(ext) ? [full] : [];
+  });
+}
+
+function courseLinkCheckIntegration() {
+  return {
+    name: 'course-link-check',
+    hooks: {
+      'astro:build:done': ({ dir, logger }) => {
+        const published = listFiles('src/content/units', '.mdx').flatMap((file) => {
+          const fm = readFileSync(file, 'utf8').match(/^---\r?\n([\s\S]*?)\r?\n---/)?.[1] ?? '';
+          if (!/^draft:\s*false\s*$/m.test(fm)) return [];
+          return [{ unit: fm.match(/^unit:\s*(\d+)/m)?.[1], url: fm.match(/^url:\s*"([^"]+)"/m)?.[1] }];
+        });
+        if (published.length === 0) {
+          logger.info('Curso: todavía no hay unidades publicadas.');
+          return;
+        }
+        const outDir = fileURLToPath(dir);
+        const incoming = new Map(published.map((p) => [p.url, new Set()]));
+        for (const file of listFiles(outDir, '.html')) {
+          const html = readFileSync(file, 'utf8');
+          const page = `/${path.relative(outDir, path.dirname(file)).split(path.sep).join('/')}/`.replace(/^\/\/$/, '/');
+          for (const p of published) {
+            if (page !== p.url && (html.includes(`href="${p.url}"`) || html.includes(`href="https://supein.club${p.url}"`))) {
+              incoming.get(p.url).add(page);
+            }
+          }
+        }
+        const failing = published.filter((p) => incoming.get(p.url).size < MIN_INCOMING_UNIT_LINKS);
+        if (failing.length > 0) {
+          const list = failing.map((p) => `ユニット${p.unit} ${p.url}: ${incoming.get(p.url).size} enlaces entrantes`).join('\n  ');
+          throw new Error(`Unidades publicadas con menos de ${MIN_INCOMING_UNIT_LINKS} enlaces internos entrantes:\n  ${list}`);
+        }
+        logger.info(`Curso: ${published.length} unidades publicadas, todas con ≥ ${MIN_INCOMING_UNIT_LINKS} enlaces entrantes.`);
+      },
+    },
+  };
+}
+
 export default defineConfig({
   site: 'https://supein.club',
   output: 'static',
@@ -45,6 +96,7 @@ export default defineConfig({
         !NOINDEX_PATHS.some((path) => page.endsWith(path)) &&
         !/\/articles\/\d+\/$/.test(page),
     }),
+    courseLinkCheckIntegration(),
     pagefindIntegration(),
   ],
   markdown: {
@@ -57,6 +109,10 @@ export default defineConfig({
   },
   vite: {
     plugins: [tailwindcss()],
+    define: {
+      // Previews de Cloudflare Pages (rama ≠ main): muestran las unidades del curso en borrador (src/utils/units.ts).
+      __SHOW_COURSE_DRAFTS__: JSON.stringify(!!process.env.CF_PAGES_BRANCH && process.env.CF_PAGES_BRANCH !== 'main'),
+    },
   },
   i18n: {
     defaultLocale: 'ja',

@@ -129,6 +129,14 @@ Desde el 2026-09-15, toda creación de artículo de food pregunta explícitament
 > **Replanteamiento (2026-11-02):** /language/ pasa de 36 STEP a un curso de 62 unidades A1-C2. La especificación, la semilla de unidades y la unidad modelo están en [`docs/language/`](docs/language/) (`curso-paso-a-paso.md`, `estrategia.md`, `units.json`, `examples/`); las reglas de trabajo, en la sección «Reglas de /language/» del CLAUDE.md. Esta tabla describe el estado previo al curso.
 >
 > **Prompt 1 (2026-11-02):** `dele-b1-tips` fusionada en `/dele/b1/` (sección 「合格のコツ」) con 301; DELE pasa a 9 páginas (1/9-9/9) en `course-sequence.ts`. 23 títulos y descriptions reescritos (tabla en el PR). Eliminado el H1 duplicado del cuerpo MDX en las 61 páginas de /language/ que lo tenían (el H1 visible es el del layout: `h1` del frontmatter o `title`). Las fichas de /language/ muestran siempre 「最終更新日」 (`updatedDate ?? pubDate`, igual que `dateModified`).
+>
+> **Prompt 2 (2026-11-02), infraestructura del curso:**
+> - Colección `units` (loader `glob` en `src/content/units/<nivel>/<slug>.mdx`, id = ruta del archivo). Esquema zod en `src/content/config.ts`: los campos de contenido solo son obligatorios con `draft: false`.
+> - Las unidades las genera el mismo catch-all `src/pages/language/[cluster]/[...article].astro`, con `src/layouts/UnitLayout.astro` y los componentes de `src/components/course/`. El cuerpo MDX usa `<VocabList>`, `<MiniQuiz>` y `<CultureNote>` sin `import` (los pasa el layout), con datos de `frontmatter`.
+> - Borradores: no se generan en producción. En `astro dev` y en los previews de Cloudflare (rama ≠ main, vía `__SHOW_COURSE_DRAFTS__` en `astro.config.mjs`) sí, con `noindex` y aviso. Una unidad `existing` en borrador nunca se genera: su URL la sirve el artículo.
+> - El build falla si una unidad publicada contiene `TODO:`, si una URL la generan a la vez una unidad y un artículo, o si una unidad publicada tiene menos de 5 enlaces internos entrantes (integración `course-link-check`).
+> - Progreso sin cuenta en localStorage (`supein.course.v1`, `src/utils/courseProgress.ts`). Se ve en la cabecera de unidad, en las páginas de nivel (`LevelUnits`, 「続きから」) y en el hub (`CourseLevels`). Schema: `LearningResource` + `Quiz` por unidad, `ItemList` por nivel (solo publicadas) y `Course` en el hub.
+> - Migas de /language/learn-spanish/: ホーム › スペイン語 › コース › nivel › página.
 
 | URL real | Estado | Keyword principal | Volumen (bucket) | Fuente del volumen |
 |---|---|---|---|---|

@@ -1,0 +1,55 @@
+---
+import { WEB3FORMS_ACCESS_KEY, WEB3FORMS_ENDPOINT } from '../../config/forms';
+
+interface Props {
+  label: string;
+  pageUrl: string;
+}
+
+const { label, pageUrl } = Astro.props;
+---
+<details class="report-error" id="report" data-pagefind-ignore>
+  <summary>間違いを報告</summary>
+  <p>このページの内容に誤りを見つけたら、お知らせください。7日以内に確認して修正します。</p>
+  <form class="report-error-form" action={WEB3FORMS_ENDPOINT} method="POST">
+    <input type="hidden" name="access_key" value={WEB3FORMS_ACCESS_KEY} />
+    <input type="hidden" name="subject" value={`【間違いを報告】${label}`} />
+    <input type="hidden" name="from_name" value="supein.club 間違いの報告" />
+    <input type="hidden" name="page" value={pageUrl} />
+    <input type="checkbox" name="botcheck" class="report-error-honeypot" tabindex="-1" autocomplete="off" />
+    <label>
+      どこが間違っていますか？
+      <textarea name="message" rows="4" required></textarea>
+    </label>
+    <label>
+      メールアドレス（返信が必要な場合のみ）
+      <input type="email" name="email" autocomplete="email" />
+    </label>
+    <button type="submit">送信する</button>
+    <p class="report-error-status" role="status" hidden></p>
+  </form>
+</details>
+
+<script>
+  document.querySelectorAll<HTMLFormElement>('.report-error-form').forEach((form) => {
+    form.addEventListener('submit', async (event) => {
+      event.preventDefault();
+      const status = form.querySelector<HTMLElement>('.report-error-status')!;
+      const button = form.querySelector<HTMLButtonElement>('button[type="submit"]')!;
+      button.disabled = true;
+      status.hidden = false;
+      status.textContent = '送信中…';
+      try {
+        const response = await fetch(form.action, { method: 'POST', body: new FormData(form) });
+        const data = await response.json();
+        if (!data.success) throw new Error(data.message);
+        status.textContent = 'ありがとうございます。報告を受け付けました。';
+        form.reset();
+      } catch {
+        status.textContent = '送信できませんでした。時間をおいて、もう一度お試しください。';
+      } finally {
+        button.disabled = false;
+      }
+    });
+  });
+</script>

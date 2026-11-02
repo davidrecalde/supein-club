@@ -1,0 +1,39 @@
+---
+interface Props {
+  items?: Array<{ es: string; ja: string; rank?: number; example?: string }>;
+  level: string;
+}
+
+const { items = [], level } = Astro.props;
+// Primero las palabras con puesto de frecuencia real (rank), en orden; las expresiones sin puesto, al final.
+const sorted = [...items].sort((a, b) => (a.rank ?? Infinity) - (b.rank ?? Infinity));
+const hasExamples = sorted.some((i) => i.example);
+const levelCode = level.toUpperCase();
+---
+{sorted.length > 0 ? (
+  <>
+    <table class="vocab-list">
+      <thead>
+        <tr>
+          <th>スペイン語</th>
+          <th>日本語</th>
+          {hasExamples && <th>例</th>}
+        </tr>
+      </thead>
+      <tbody>
+        {sorted.map((item) => (
+          <tr>
+            <td lang="es">{item.es}</td>
+            <td>{item.ja}</td>
+            {hasExamples && <td lang="es">{item.example}</td>}
+          </tr>
+        ))}
+      </tbody>
+    </table>
+    <p>
+      {levelCode} の単語一覧全体は<a href={`/language/learn-spanish/${level.toLowerCase()}/vocabulary/`}>{levelCode} 単語リスト</a>で確認できます。
+    </p>
+  </>
+) : (
+  <p class="unit-pending">語彙リストは準備中です。</p>
+)}

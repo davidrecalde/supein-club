@@ -127,6 +127,13 @@ function updateQuizSummary(widget: Element) {
     '.quiz-question[data-correct="true"]'
   ).length;
   scoreEl.textContent = String(correctCount);
+
+  // Aviso a quien envuelva el quiz (p. ej. MiniQuiz de las unidades) cuando ya no quedan preguntas.
+  const total = widget.querySelectorAll('.quiz-question').length;
+  const answered = widget.querySelectorAll('.quiz-question[data-answered="true"]').length;
+  if (total > 0 && answered === total) {
+    widget.dispatchEvent(new CustomEvent('quizcomplete', { bubbles: true, detail: { score: correctCount, total } }));
+  }
 }
 
 function resetQuiz(widgetId: string) {
