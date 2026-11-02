@@ -5,89 +5,250 @@ levelName: "Acceso"
 slug: "present-regular"
 url: "/language/learn-spanish/a1/present-regular/"
 existing: false
-title: "直説法現在・規則動詞"
+title: "スペイン語の現在形（規則動詞）｜-ar・-er・-ir の活用と使い方"
 shortTitle: "直説法現在・規則動詞"
-titleEs: "presente de indicativo regular"
-grammar: ["-ar","-er","-ir"]
-tenses: []
-functions: []
-canDo: []
-vocabulary: []
-verbs: ["hablar","comer","vivir"]
+titleEs: "Presente de indicativo: verbos regulares"
+description: "スペイン語の直説法現在の規則活用を一から解説。-ar・-er・-ir の三つの語尾、主語を省略できる理由、否定文と疑問文の作り方、毎日の習慣を言う使い方を、日本人が間違えやすい点と練習問題つきで学べます。"
+grammar: ["presente de indicativo", "verbos regulares -ar, -er, -ir", "negación e interrogación"]
+tenses: ["presente de indicativo"]
+functions: ["毎日の習慣を言う", "仕事・勉強・住まいについて話す"]
+canDo:
+  - "毎日の生活や習慣について、簡単に言える"
+  - "仕事や勉強、住んでいる場所について話せる"
+  - "相手の習慣についてたずね、答えられる"
+vocabulary:
+  # rank = «Rango frec.» del diccionario de frecuencias del CORPES XXI (RAE). Lo escribe
+  # npm run vocab:rank -- --write; lo que no es lema del diccionario va sin rank, al final.
+  - { es: "hablar", ja: "話す", rank: 162, example: "Mina habla un poco de español." }
+  - { es: "trabajar", ja: "働く", rank: 159, example: "Mina trabaja en una oficina de diseño." }
+  - { es: "estudiar", ja: "勉強する", rank: 569, example: "Por la noche, Mina estudia español." }
+  - { es: "tomar", ja: "取る・飲む・（乗り物に）乗る", rank: 153, example: "Mina toma el tren todos los días." }
+  - { es: "comprar", ja: "買う", rank: 745, example: "Mina compra pan en el supermercado." }
+  - { es: "escuchar", ja: "聞く", rank: 689, example: "Mina escucha música en el tren." }
+  - { es: "comer", ja: "食べる・昼食をとる", rank: 1015, example: "En España, la gente come a las dos." }
+  - { es: "beber", ja: "飲む", rank: 3021, example: "Mina no bebe café por la noche." }
+  - { es: "leer", ja: "読む", rank: 567, example: "Mina lee una guía de Madrid." }
+  - { es: "aprender", ja: "学ぶ・覚える", rank: 800, example: "Mina aprende palabras nuevas cada día." }
+  - { es: "vivir", ja: "住む・暮らす", rank: 188, example: "Mina vive en Tokio." }
+  - { es: "escribir", ja: "書く", rank: 305, example: "Mina escribe un mensaje a Daniel." }
+  - { es: "abrir", ja: "開ける・開く", rank: 341, example: "¿A qué hora abre el museo?" }
+  - { es: "todos los días", ja: "毎日", example: "Mina estudia español todos los días." }
+verbs: ["hablar", "comer", "vivir"]
 duration: 40
 prev: 3
 next: 5
-related: [3,5,12]
+related: [3, 5, 12]
 cast: ["mina"]
-audio: []
+audio:
+  - "Mina vive en Tokio y trabaja en una oficina de diseño."
+  - "Por la noche, estudia español."
+  - "¿Hablas español?"
+  - "Sí, hablo un poco."
+  - "No, no hablo francés."
+  - "¿Usted habla inglés?"
+  - "Los domingos por la mañana, muchos madrileños visitan el Rastro."
+  - "hablamos"
+  - "habláis"
 youtubeId: ""
-quiz: []
 draft: true
 updated: "2026-11-02"
+quiz:
+  - question: "hablar の1人称単数（yo）は？"
+    options: ["habla", "hablo", "hablas"]
+    correctIndex: 1
+    explanation: "yo の形は、どの規則動詞も -o で終わります：hablo。habla は3人称単数、hablas は tú の形です。"
+  - question: "comer の1人称複数（nosotros）は？"
+    options: ["comimos", "comamos", "comemos"]
+    correctIndex: 2
+    explanation: "-er 動詞の nosotros は -emos：comemos。comimos は点過去（ユニット14）です。"
+  - question: "vivir の1人称複数（nosotros）は？"
+    options: ["vivimos", "vivemos", "viven"]
+    correctIndex: 0
+    explanation: "-ir 動詞の nosotros は -imos：vivimos。-er 動詞と違うのは nosotros と vosotros だけです。"
+  - question: "escribir の2人称単数（tú）は？"
+    options: ["escribas", "escribes", "escribís"]
+    correctIndex: 1
+    explanation: "-er と -ir は tú の形が同じ -es：escribes。escribís は vosotros の形です。"
+  - question: "「ミナは毎日電車に乗る」。正しいのは？"
+    options: ["Mina toma el tren todos los días.", "Mina tomo el tren todos los días.", "Mina toman el tren todos los días."]
+    correctIndex: 0
+    explanation: "主語は Mina（3人称単数）なので toma。tomo は yo、toman は ellos の形です。"
+  - question: "店員さんに「英語を話しますか？」と丁寧にたずねるなら？"
+    options: ["¿Usted hablas inglés?", "¿Usted habla inglés?", "¿Usted hablan inglés?"]
+    correctIndex: 1
+    explanation: "usted は「あなた」ですが、動詞は3人称単数の形を使います：¿Usted habla inglés?"
+  - question: "「私はフランス語を話さない」。正しいのは？"
+    options: ["Hablo no francés.", "No hablo francés.", "No francés hablo."]
+    correctIndex: 1
+    explanation: "否定の no は、動詞のすぐ前に置きます：No hablo francés。"
+  - question: "疑問文の正しい書き方は？"
+    options: ["Hablas español?", "¿Hablas español?", "¿Hablas español."]
+    correctIndex: 1
+    explanation: "スペイン語の疑問文は、文頭に逆さの ¿、文末に ? をつけます。"
+  - question: "vosotros の形「君たちは話す」は？"
+    options: ["hablais", "hablan", "habláis"]
+    correctIndex: 2
+    explanation: "vosotros（スペインのみ）の形は habláis で、アクセント記号がつきます。中南米では ustedes の hablan を使います。"
+  - question: "「明日、美術館に行く（訪れる）」を現在形で言うと？"
+    options: ["Mañana visito el museo.", "Mañana visita el museo yo.", "Mañana visitar el museo."]
+    correctIndex: 0
+    explanation: "予定の決まった近い未来は、現在形でも言えます：Mañana visito el museo。visitar は動詞の原形です。"
 ---
 
-TODO:contenido（導入：このユニットの問いに、それだけで答えになる2文で答える）
+スペイン語の直説法現在は、毎日の習慣や今の事実を表す、いちばん基本の時制です。規則動詞は、原形の語尾 -ar・-er・-ir を取って、主語に合わせた語尾をつけるだけで活用できます。
 
-## 文法 (Gramática)
+動詞の語尾を見れば主語がわかるので、スペイン語では主語を省略するのがふつうです。Hablo español. だけで「私はスペイン語を話す」になります。このユニットでは、東京でデザイナーとして働くミナの一日と、旅先マドリードでの過ごし方を例に、規則動詞の現在形を身につけます。
 
-TODO:contenido
+## 文法：直説法現在・規則動詞 (Gramática)
+
+まず主語の代名詞を確認し、次に三つの型の活用、最後に否定文と疑問文を見ていきましょう。
+
+### 主語の代名詞
+
+| 人称 | 単数 | 複数 |
+| --- | --- | --- |
+| 1人称 | yo（私） | nosotros / nosotras（私たち） |
+| 2人称 | tú（君・あなた） | vosotros / vosotras（君たち）※ |
+| 3人称 | él / ella / usted（彼・彼女・あなた） | ellos / ellas / ustedes（彼ら・彼女ら・あなた方） |
+
+※ vosotros はスペインのみで使います。中南米では ustedes を使います（→ [中南米のスペイン語](/language/learn-spanish/spanish-in-latin-america/)）。
+
+usted（あなた）と ustedes（あなた方）は丁寧な言い方で、意味は2人称ですが、動詞は3人称の形を使います。
+
+### 規則活用：-ar・-er・-ir
+
+| 人称 | hablar（話す） | comer（食べる） | vivir（住む） |
+| --- | --- | --- | --- |
+| yo | habl**o** | com**o** | viv**o** |
+| tú | habl**as** | com**es** | viv**es** |
+| él / ella / usted | habl**a** | com**e** | viv**e** |
+| nosotros / nosotras | habl**amos** | com**emos** | viv**imos** |
+| vosotros / vosotras | habl**áis** | com**éis** | viv**ís** |
+| ellos / ellas / ustedes | habl**an** | com**en** | viv**en** |
+
+覚えるポイントは三つです。
+
+1. **yo はいつも -o。** hablo、como、vivo。
+2. **-ar は a、-er / -ir は e が目印。** hablas / comes / vives。
+3. **-er と -ir が違うのは nosotros と vosotros だけ。** comemos / vivimos、coméis / vivís。
+
+### 使い方：習慣・事実・近い予定
+
+- **毎日の習慣：** Mina toma el tren todos los días.（ミナは毎日電車に乗る）
+- **今の事実：** Mina vive en Tokio y trabaja en una oficina de diseño.（ミナは東京に住み、デザイン事務所で働いている）
+- **予定の決まった近い未来：** Mañana visito el Museo del Prado.（明日、プラド美術館に行く）
+
+<Examples>
+
+- Por la noche, Mina estudia español.（夜、ミナはスペイン語を勉強する）
+- En Madrid, Mina desayuna en un bar.（マドリードでは、ミナはバルで朝食をとる）
+- Mina escribe un mensaje a Daniel.（ミナはダニエルにメッセージを書く）
+
+</Examples>
+
+### 否定文と疑問文
+
+**否定文**は、動詞の前に no を置くだけです：No hablo francés.（フランス語は話しません）
+
+**疑問文**は、語順を変えずに文末を上げて読みます。書くときは、文頭に逆さの ¿、文末に ? をつけます。
+
+- ¿Hablas español?（スペイン語を話す？）── Sí, hablo un poco.（うん、少し話すよ）
+- ¿Usted habla inglés?（英語を話されますか？）── No, no hablo inglés.（いいえ、英語は話しません）
+
+答えの No, no hablo… の最初の no は「いいえ」、二つ目の no は動詞の否定です。
+
+**ダニエル（バレンシア出身）のひとこと：** tomar は「取る」「飲む」「乗る」と、とても便利な動詞です。スペインでは「バスに乗る」を coger el autobús ともよく言いますが、中南米の多くの国では coger を避けて tomar を使います。tomar el autobús なら、どこでも通じますよ。
 
 ## 活用：今日の動詞 (Conjugación)
 
-TODO:contenido
+このユニットの三つの型、hablar・comer・vivir は、[動詞の活用一覧](/language/learn-spanish/verb-conjugation/#models)で、現在形と点過去・線過去・未来を並べて確認できます。規則動詞と違って形が大きく変わる [ser](/language/learn-spanish/verb-conjugation/ser/) や [tener](/language/learn-spanish/verb-conjugation/tener/) との違いも見ておきましょう。不規則動詞はユニット5で学びます。
 
 ## 語彙 (Nociones específicas)
+
+毎日の生活でよく使う規則動詞です。-ar・-er・-ir のどの型かを確かめながら覚えましょう。
 
 <VocabList items={frontmatter.vocabulary} level={frontmatter.level} />
 
 ## 発音・正書法 (Pronunciación y ortografía)
 
-TODO:contenido
+現在形は、多くの形で語幹を強く読みます：hablo（**ア**・ブロ）、hablas（**ア**・ブラス）。nosotros と vosotros だけは語尾を強く読み、vosotros にはアクセント記号がつきます：hablamos（ア・**ブラ**・モス）、habláis（ア・**ブライ**ス）、coméis（コ・**メイ**ス）、vivís（ビ・**ビ**ス）。
 
 ## 日本人がよく間違える
 
-TODO:contenido
+- **主語を毎回つける。** △Yo trabajo en Tokio. Yo vivo en un piso pequeño. Yo como en la oficina. → ○**Trabajo** en Tokio. **Vivo** en un piso pequeño. **Como** en la oficina. 間違いではありませんが、毎回 yo をつけると不自然です。yo は「私は（ほかの人と違って）」と強調したいときに使います。
+- **usted に2人称の形を使う。** ×¿Usted hablas inglés? → ○¿Usted **habla** inglés? usted は意味が「あなた」でも、動詞は3人称単数です。
+- **-er と -ir の nosotros を混ぜる。** ×vivemos、×comimos（現在のつもりで） → ○**vivimos**、○**comemos**。-er は -emos、-ir は -imos です。
 
 ## 文化メモ (Referentes culturales)
 
 <CultureNote>
 
-TODO:contenido
+マドリードの日曜日には、決まった過ごし方があります。Los domingos por la mañana, muchos madrileños visitan el Rastro.（日曜の朝、多くのマドリードの人はエル・ラストロに行く）。エル・ラストロは日曜日の朝だけ開かれる青空市で、午後はレティーロ公園を散歩する人も大勢います。習慣を言うときは、このように現在形を使います。エル・ラストロやレティーロ公園は、[マドリード観光完全ガイド](/travel/madrid/)で紹介しています。
 
 </CultureNote>
 
 ## 練習 (Procedimientos de aprendizaje)
 
-### 練習1：認識
+### 練習1：主語はだれ？
 
-TODO:contenido
+主語を省略した文です。主語を yo / tú / ella / nosotros / ellos から選んでください。
+
+1. Trabajo en una oficina.
+2. ¿Vives en Madrid?
+3. Come en un bar.
+4. Estudiamos español.
+5. Escriben un mensaje.
 
 <details>
 <summary>答えを見る</summary>
 
-TODO:contenido
+1. yo（-o）
+2. tú（-es）
+3. ella（-e、él や usted の場合もある）
+4. nosotros（-amos）
+5. ellos（-en、ustedes の場合もある）
 
 </details>
 
 ### 練習2：穴埋め
 
-TODO:contenido
+（ ）の動詞を、主語に合わせた現在形にしてください。
+
+1. Mina (trabajar) ______ en Tokio.
+2. Yo (vivir) ______ en Osaka.
+3. ¿Tú (hablar) ______ inglés?
+4. Nosotros (comer) ______ a las dos.
+5. Ellos (aprender) ______ español.
+6. ¿Usted (escribir) ______ en japonés?
 
 <details>
 <summary>答えを見る</summary>
 
-TODO:contenido
+1. trabaja
+2. vivo
+3. hablas
+4. comemos
+5. aprenden
+6. escribe（usted は3人称単数の形）
 
 </details>
 
 ### 練習3：作文
 
-TODO:contenido
+自分の一日について、スペイン語で書いてみましょう。
+
+1. 私は東京に住んでいます。
+2. 毎日、電車に乗ります（tomar el tren）。
+3. 夜、スペイン語を勉強します。
+4. コーヒーは飲みません。
 
 <details>
-<summary>答えを見る</summary>
+<summary>解答例を見る</summary>
 
-TODO:contenido
+1. Vivo en Tokio.
+2. Tomo el tren todos los días.
+3. Por la noche, estudio español.
+4. No bebo café.
 
 </details>
 
@@ -97,4 +258,8 @@ TODO:contenido
 
 ## まとめ
 
-TODO:contenido
+- 規則動詞の現在形は、-ar・-er・-ir を取って語尾をつける。yo はいつも -o。
+- 語尾で主語がわかるので、主語はふつう省略する。usted / ustedes は3人称の形。
+- 否定は動詞の前に no。疑問文は ¿…? で囲み、文末を上げて読む。
+
+次のユニット5では、tener・ir・hacer など、現在形で形が変わる不規則動詞を学びます。

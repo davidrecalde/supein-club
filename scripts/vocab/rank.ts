@@ -26,6 +26,7 @@ const write = process.argv.includes('--write');
  */
 const OVERRIDES: Record<string, { lemma?: string; cat?: string; note: string }> = {
   primero: { cat: 'R', note: 'adverbio «まず»; como numeral (M) tiene otro puesto' },
+  adiós: { cat: 'I', note: 'interjección «さようなら»; como nombre (el adiós) tiene otro puesto' },
   abuelos: { lemma: 'abuelo', note: 'plural' },
   cartera: { lemma: 'cartero', note: 'el CORPES agrupa las formas cartera/carteras bajo el lema cartero' },
 };
@@ -46,10 +47,13 @@ for (const line of readFileSync(TSV, 'utf8').split(/\r?\n/)) {
 
 const ARTICLE = /^(el|la|los|las)\s+/; // solo el artículo definido con el que se presentan los nombres
 function lookup(es: string): { rank?: number; why: string } {
-  const key = es.trim().toLowerCase().replace(ARTICLE, '');
+  const lower = es.trim().toLowerCase();
+  const key = lower.replace(ARTICLE, '');
   const o = OVERRIDES[key];
   const entries = lemmas.get(o?.lemma ?? key) ?? [];
-  const pool = o?.cat ? entries.filter((e) => e.cat === o.cat) : entries;
+  // Con artículo es un nombre: «el móvil» toma el puesto de N, no el del adjetivo.
+  const cat = o?.cat ?? (ARTICLE.test(lower) && entries.some((e) => e.cat === 'N') ? 'N' : undefined);
+  const pool = cat ? entries.filter((e) => e.cat === cat) : entries;
   if (pool.length === 0) return { why: 'no es un lema del diccionario: sin rank' };
   const best = pool.reduce((a, b) => (b.rank < a.rank ? b : a));
   const others = entries.filter((e) => e !== best).map((e) => `${e.cat} ${e.rank}`);
