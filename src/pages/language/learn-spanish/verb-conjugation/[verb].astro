@@ -84,7 +84,7 @@ const fmt = (d: Date) => d.toLocaleDateString('ja-JP', { year: 'numeric', month:
     <ul class="verb-facts">
       <li><span>意味</span>{rank?.meaning}</li>
       <li><span>種類</span>{content.type}</li>
-      {rank && <li><span>使用頻度</span>{rank.rank}位</li>}
+      {rank && <li><span>使用頻度</span>動詞で{rank.rank}位（全単語で{rank.lemmaRank}位）</li>}
       <li><span>レベル</span>{content.level}</li>
     </ul>
     <p class="cast-card-meta">最終更新日：<time datetime={updated.toISOString()}>{fmt(updated)}</time></p>
