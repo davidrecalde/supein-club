@@ -335,7 +335,7 @@ Revisión de los documentos contra el repositorio y producción antes del prompt
 ### Pendiente de David
 
 - ~~Lista de frecuencia para `rank`~~: resuelto el 2 de noviembre de 2026 (ver «Frecuencia del vocabulario» más abajo).
-- **Orden de los 50 verbos del conjugador.** La lista publicada (1 ser … 50 recordar) cita «RAE, CORPES XXI», pero no coincide con el diccionario de frecuencias del CORPES: solo 5 de los 50 puestos son iguales (haber es el 6.º verbo, mirar el 189.º) y 12 verbos del top 50 del CORPES no están en la lista (realizar, presentar, permitir, explicar, considerar, señalar, mantener, asegurar, lograr, ganar, mostrar, comenzar). Hay que elegir entre mantener la selección mostrando el puesto real del CORPES, citar la fuente real de esa lista o sustituirla por el top 50 del CORPES (muy periodístico).
+- ~~Orden de los 50 verbos del conjugador~~: resuelto el 2 de noviembre de 2026. Regla de David: la referencia es siempre la RAE y el CORPES XXI; se mantiene su selección de 50 verbos y cada uno muestra su puesto real en el CORPES (ver «Prompt 3: conjugador»).
 
 ### Frecuencia del vocabulario (2 de noviembre de 2026)
 
