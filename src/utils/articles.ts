@@ -1,6 +1,7 @@
 import type { CollectionEntry } from 'astro:content';
 import { getEntry } from 'astro:content';
 import { slugToJa } from '../config/breadcrumbs';
+import { getCourseLevel, levelUrl } from '../data/course';
 
 export const pillarLabels: Record<string, string> = {
   travel: 'スペイン旅行',
@@ -104,17 +105,22 @@ export async function getArticleBreadcrumbs(entry: CollectionEntry<'articles'>):
 
   const clusterUrl = `/${pillar}/${cluster}/`;
   const isFlagship = isFlagshipArticle(entry);
+  const home = { name: 'ホーム', url: '/' };
+  const pillarCrumb = { name: pillarLabel, url: `/${pillar}/` };
 
-  return isFlagship
-    ? [
-        { name: 'ホーム', url: '/' },
-        { name: pillarLabel, url: `/${pillar}/` },
-        { name: title, url: canonical },
-      ]
-    : [
-        { name: 'ホーム', url: '/' },
-        { name: pillarLabel, url: `/${pillar}/` },
-        { name: slugToJa(cluster), url: clusterUrl },
-        { name: title, url: canonical },
-      ];
+  if (isFlagship) return [home, pillarCrumb, { name: title, url: canonical }];
+
+  // Curso de español: /language/ › コース › nivel › página (docs/language/curso-paso-a-paso.md).
+  const isCourse = pillar === 'language' && cluster === 'learn-spanish';
+  const clusterCrumb = { name: isCourse ? 'コース' : slugToJa(cluster), url: clusterUrl };
+  const level = isCourse && entry.data.level ? getCourseLevel(entry.data.level) : undefined;
+  const levelPath = level ? levelUrl(level.code) : undefined;
+  if (level && levelPath && articleUrl.startsWith(levelPath)) {
+    const levelName = `${level.code} ${level.name}`;
+    return articleUrl === levelPath
+      ? [home, pillarCrumb, clusterCrumb, { name: levelName, url: canonical }]
+      : [home, pillarCrumb, clusterCrumb, { name: levelName, url: levelPath }, { name: title, url: canonical }];
+  }
+
+  return [home, pillarCrumb, clusterCrumb, { name: title, url: canonical }];
 }

@@ -1,0 +1,55 @@
+---
+import { levelUrl, getCourseLevel } from '../../data/course';
+
+interface NavItem {
+  unit: number;
+  shortTitle: string;
+  url: string;
+  linkable: boolean;
+}
+
+interface Props {
+  prev?: NavItem;
+  next?: NavItem;
+  related: NavItem[];
+  level: string;
+}
+
+const { prev, next, related, level: levelCode } = Astro.props;
+const level = getCourseLevel(levelCode)!;
+---
+<nav class="unit-nav" aria-label="ユニットナビゲーション" data-pagefind-ignore>
+  <div class="unit-nav-steps">
+    {prev ? (
+      prev.linkable ? (
+        <a class="unit-nav-step" href={prev.url}><span>前のユニット</span>ユニット{prev.unit} {prev.shortTitle}</a>
+      ) : (
+        <span class="unit-nav-step is-pending"><span>前のユニット</span>ユニット{prev.unit} {prev.shortTitle}（準備中）</span>
+      )
+    ) : <span></span>}
+    {next ? (
+      next.linkable ? (
+        <a class="unit-nav-step is-next" href={next.url}><span>次のユニットへ</span>ユニット{next.unit} {next.shortTitle}</a>
+      ) : (
+        <span class="unit-nav-step is-next is-pending"><span>次のユニット</span>ユニット{next.unit} {next.shortTitle}（準備中）</span>
+      )
+    ) : (
+      <a class="unit-nav-step is-next" href="/language/learn-spanish/"><span>コース修了</span>コースのトップへ</a>
+    )}
+  </div>
+
+  {related.length > 0 && (
+    <div class="unit-nav-related">
+      <h2>関連ユニット</h2>
+      <ul>
+        {related.map((r) => (
+          <li>
+            {r.linkable ? <a href={r.url}>ユニット{r.unit} {r.shortTitle}</a> : <span>ユニット{r.unit} {r.shortTitle}（準備中）</span>}
+          </li>
+        ))}
+      </ul>
+    </div>
+  )}
+
+  <p class="unit-nav-level"><a href={levelUrl(level.code)}>{level.code} {level.name}のユニット一覧</a></p>
+</nav>

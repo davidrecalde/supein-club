@@ -1,4 +1,5 @@
 import { defineCollection, z, reference } from 'astro:content';
+import { glob } from 'astro/loaders';
 
 const authors = defineCollection({
   type: 'content',
@@ -242,4 +243,79 @@ const pressReleases = defineCollection({
   }),
 });
 
-export const collections = { articles, authors, events, 'spain-map': spainMap, 'press-releases': pressReleases };
+// Curso de 62 unidades A1-C2. Especificación: docs/language/curso-paso-a-paso.md
+// (sección «Decisiones del 2 de noviembre de 2026», punto 4).
+const LEVEL_NAMES = {
+  A1: 'Acceso',
+  A2: 'Plataforma',
+  B1: 'Umbral',
+  B2: 'Avanzado',
+  C1: 'Dominio operativo eficaz',
+  C2: 'Maestría',
+} as const;
+
+const units = defineCollection({
+  // El id sale de la ruta del archivo (p. ej. "b1/subjunctive"): con el id por
+  // defecto, el campo `slug` repetido en cuatro niveles colisionaría.
+  loader: glob({
+    pattern: '**/*.mdx',
+    base: './src/content/units',
+    generateId: ({ entry }) => entry.replace(/\.mdx$/, ''),
+  }),
+  schema: z
+    .object({
+      unit: z.number().int().min(1).max(62),
+      level: z.enum(['A1', 'A2', 'B1', 'B2', 'C1', 'C2']),
+      levelName: z.enum(['Acceso', 'Plataforma', 'Umbral', 'Avanzado', 'Dominio operativo eficaz', 'Maestría']),
+      slug: z.string().regex(/^[a-z0-9-]+$/),
+      url: z.string().regex(/^\/language\/learn-spanish\/[a-c][12]\/[a-z0-9-]+\/$/),
+      existing: z.boolean(),
+      title: z.string().max(60),
+      // Nombre corto para cabecera, listas, migas y navegación (「点過去」); `title` es el título SEO.
+      shortTitle: z.string().max(30),
+      titleEs: z.string(),
+      description: z.string().max(160).optional(),
+      grammar: z.array(z.string()).default([]),
+      tenses: z.array(z.string()).default([]),
+      functions: z.array(z.string()).default([]),
+      canDo: z.array(z.string()).max(3).default([]),
+      vocabulary: z
+        .array(z.object({ es: z.string(), ja: z.string(), rank: z.number().int().positive().optional(), example: z.string().optional() }))
+        .max(15)
+        .default([]),
+      verbs: z.array(z.string()).default([]),
+      duration: z.number().int().positive(),
+      prev: z.number().int().min(1).max(62).nullable(),
+      next: z.number().int().min(1).max(62).nullable(),
+      related: z.array(z.number().int().min(1).max(62)).length(3),
+      audio: z.array(z.string()).default([]),
+      youtubeId: z.string().default(''),
+      quiz: z
+        .array(z.object({ question: z.string(), options: z.array(z.string()).min(2), correctIndex: z.number().int().min(0), explanation: z.string() }))
+        .default([]),
+      skills: z.array(z.string()).optional(),
+      format: z.array(z.string()).optional(),
+      theme: z.array(z.string()).optional(),
+      goal: z.array(z.string()).optional(),
+      draft: z.boolean(),
+      pubDate: z.coerce.date().optional(),
+      updated: z.coerce.date(),
+    })
+    .superRefine((u, ctx) => {
+      const fail = (message: string) => ctx.addIssue({ code: z.ZodIssueCode.custom, message: `ユニット${u.unit}: ${message}` });
+      if (LEVEL_NAMES[u.level] !== u.levelName) fail(`levelName debe ser "${LEVEL_NAMES[u.level]}"`);
+      if (!u.url.includes(`/${u.level.toLowerCase()}/${u.slug}/`)) fail('url no coincide con level y slug');
+      u.quiz.forEach((q, i) => {
+        if (q.correctIndex >= q.options.length) fail(`quiz ${i + 1}: correctIndex fuera de rango`);
+      });
+      // Obligatorios solo para publicar (draft: false).
+      if (u.draft) return;
+      if (!u.description) fail('falta description');
+      if (u.canDo.length < 2) fail('canDo necesita 2-3 descriptores');
+      if (u.vocabulary.length < 10) fail('vocabulary necesita 10-15 palabras');
+      if (u.quiz.length !== 10) fail('quiz necesita 10 preguntas');
+      if (!u.pubDate) fail('falta pubDate');
+    }),
+});
+
+export const collections = { articles, authors, events, 'spain-map': spainMap, 'press-releases': pressReleases, units };

@@ -1,0 +1,80 @@
+---
+import { getCourseLevel } from '../../data/course';
+import { getAllUnits, hasPage, isCourseVisible, isRoutable } from '../../utils/units';
+
+interface Props {
+  level: string;
+}
+
+const visible = await isCourseVisible();
+const level = getCourseLevel(Astro.props.level)!;
+const units = (await getAllUnits()).filter((u) => u.data.level === level.code);
+const live = units.filter(isRoutable);
+// ItemList solo con unidades publicadas: es lo que la página enlaza en producción.
+const published = units.filter((u) => !u.data.draft);
+const itemList = published.length > 0 && {
+  '@context': 'https://schema.org',
+  '@type': 'ItemList',
+  '@id': `https://supein.club/language/learn-spanish/${level.code.toLowerCase()}/#units`,
+  name: `${level.code} ${level.name}のユニット`,
+  itemListElement: published.map((u, i) => ({
+    '@type': 'ListItem',
+    position: i + 1,
+    url: `https://supein.club${u.data.url}`,
+    name: `ユニット${u.data.unit} ${u.data.shortTitle}`,
+  })),
+};
+---
+{visible && itemList && <script type="application/ld+json" set:html={JSON.stringify(itemList)} />}
+{visible && (
+<section class="level-units" id="units" data-pagefind-ignore>
+  <h2>{level.code} {level.name}のユニット</h2>
+  <p>
+    ユニット{level.first}〜{level.last}（全{units.length}ユニット）。公開中：{published.length}ユニット。
+    {published.length < units.length && '準備中のユニットは、公開され次第リンクが付きます。'}
+  </p>
+
+  {live.length > 0 && (
+    <a class="level-units-continue" href={live[0].data.url} data-live-units={JSON.stringify(live.map((u) => ({ unit: u.data.unit, url: u.data.url })))}>
+      続きから
+    </a>
+  )}
+
+  <ol class="level-units-list">
+    {units.map((u) => (
+      <li data-unit={u.data.unit}>
+        <span class="level-units-num">ユニット {u.data.unit}</span>
+        <span class="level-units-title">
+          {hasPage(u) ? <a href={u.data.url}>{u.data.shortTitle}</a> : u.data.shortTitle}
+          <span class="level-units-es" lang="es">{u.data.titleEs}</span>
+        </span>
+        {!hasPage(u) && <span class="level-units-badge">準備中</span>}
+        {u.data.draft && isRoutable(u) && <span class="level-units-badge is-draft">下書き</span>}
+        <span class="level-units-badge is-done" hidden>完了</span>
+      </li>
+    ))}
+  </ol>
+</section>
+)}
+
+<script>
+  import { PROGRESS_EVENT, isCompleted, loadProgress } from '../../utils/courseProgress';
+
+  function render() {
+    const progress = loadProgress();
+    document.querySelectorAll<HTMLElement>('.level-units-list li[data-unit]').forEach((li) => {
+      const done = li.querySelector<HTMLElement>('.is-done');
+      if (done) done.hidden = !isCompleted(progress, Number(li.dataset.unit));
+    });
+    const button = document.querySelector<HTMLAnchorElement>('.level-units-continue');
+    if (!button) return;
+    const live: Array<{ unit: number; url: string }> = JSON.parse(button.dataset.liveUnits ?? '[]');
+    const next = live.find((u) => !isCompleted(progress, u.unit));
+    const started = live.some((u) => isCompleted(progress, u.unit));
+    button.href = (next ?? live[0]).url;
+    button.textContent = !next ? '公開中のユニットはすべて完了' : started ? `続きから（ユニット${next.unit}）` : '最初から始める';
+  }
+
+  window.addEventListener(PROGRESS_EVENT, render);
+  render();
+</script>

@@ -12,6 +12,9 @@ import ArticleDisclaimer from '../../components/ArticleDisclaimer.astro';
 import AuthorBox from '../../components/AuthorBox.astro';
 import { getArticleUrl } from '../../utils/articles';
 import { courseSequence } from '../../data/course-sequence';
+import CourseLevels from '../../components/course/CourseLevels.astro';
+import { COURSE_LEVELS, TOTAL_UNITS, levelUrl } from '../../data/course';
+import { isCourseVisible } from '../../utils/units';
 
 type Article = CollectionEntry<'articles'>;
 
@@ -148,6 +151,27 @@ const languageSchema = {
   },
 };
 
+// Curso gratuito A1-C2: sin Offer ni hasCourseInstance (no hay precio ni fechas que marcar).
+// Solo se marca cuando el bloque del curso es visible (ver isCourseVisible).
+const courseVisible = await isCourseVisible();
+const courseSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Course',
+  '@id': 'https://supein.club/language/#course',
+  name: `スペイン語コース（A1〜C2・全${TOTAL_UNITS}ユニット）`,
+  description: 'セルバンテス学院の基準（A1 Acceso〜C2 Maestría）に沿った、日本人のための無料スペイン語コース。登録不要で、自分のペースで進められます。',
+  url: 'https://supein.club/language/',
+  inLanguage: 'ja',
+  isAccessibleForFree: true,
+  provider: { '@id': 'https://supein.club/#organization' },
+  about: { '@type': 'Language', name: 'スペイン語', alternateName: 'es' },
+  hasPart: COURSE_LEVELS.map((l) => ({
+    '@type': 'CreativeWork',
+    name: `${l.code} ${l.name}`,
+    url: `https://supein.club${levelUrl(l.code)}`,
+  })),
+};
+
 const languageFaq = [
   {
     question: 'このサイトのスペイン語学習コンテンツはどこから見ればいいですか？',
@@ -185,6 +209,7 @@ const languageFaq = [
     breadcrumbs={breadcrumbs}
   />
   <script type="application/ld+json" slot="head" set:html={JSON.stringify(languageSchema)} />
+  {courseVisible && <script type="application/ld+json" slot="head" set:html={JSON.stringify(courseSchema)} />}
   <script
     type="application/ld+json"
     slot="head"
@@ -206,6 +231,7 @@ const languageFaq = [
     <p class="text-muted text-base leading-relaxed mb-12 border-l-2 border-primary pl-5">
       スペイン語学習には、独学での勉強法から、教室・オンラインレッスンの活用まで、自分に合ったスタイルを選ぶことが上達の近道です。基礎文法や日常会話フレーズ、学習アプリ・参考書の選び方まで、幅広いトピックで役立つ情報をまとめています。
     </p>
+    <CourseLevels />
     <h2 id="categories" class="font-sans font-bold text-xl text-navy mb-5">カテゴリ</h2>
     <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3 mb-12">
       {levelAnchors.map(({ href, label }) => (

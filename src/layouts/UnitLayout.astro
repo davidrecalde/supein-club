@@ -1,0 +1,123 @@
+---
+import { getEntry, render } from 'astro:content';
+import BaseLayout from './BaseLayout.astro';
+import SEO from '../components/SEO.astro';
+import TOC from '../components/TOC.astro';
+import Sources from '../components/Sources.astro';
+import AuthorBox from '../components/AuthorBox.astro';
+import LineBanner from '../components/LineBanner.astro';
+import FloatingActions from '../components/FloatingActions.astro';
+import UnitHeader from '../components/course/UnitHeader.astro';
+import UnitNav from '../components/course/UnitNav.astro';
+import VocabList from '../components/course/VocabList.astro';
+import MiniQuiz from '../components/course/MiniQuiz.astro';
+import CultureNote from '../components/course/CultureNote.astro';
+import ReportError from '../components/course/ReportError.astro';
+import { getAllUnits, hasPage, unitBreadcrumbs, type Unit } from '../utils/units';
+import { buildQuizNode } from '../utils/schema';
+
+interface Props {
+  unit: Unit;
+}
+
+const { unit } = Astro.props;
+const d = unit.data;
+const { Content, headings } = await render(unit);
+const siteUrl = 'https://supein.club';
+const canonical = `${siteUrl}${d.url}`;
+const description = d.description ?? `${d.shortTitle}（${d.titleEs}）`;
+
+const byNumber = new Map((await getAllUnits()).map((u) => [u.data.unit, u]));
+const navItem = (n: number | null) => {
+  const u = n ? byNumber.get(n) : undefined;
+  return u && { unit: u.data.unit, shortTitle: u.data.shortTitle, url: u.data.url, linkable: hasPage(u) };
+};
+const related = d.related.map(navItem).filter((r) => r !== undefined);
+
+const author = (await getEntry('authors', 'david-recalde'))!;
+const authorUrl = `${siteUrl}/about-us/team/david-recalde/`;
+
+const learningResource = {
+  '@type': ['Article', 'LearningResource'],
+  '@id': `${canonical}#article`,
+  headline: d.title,
+  description,
+  url: canonical,
+  ...(d.pubDate && { datePublished: d.pubDate.toISOString() }),
+  dateModified: d.updated.toISOString(),
+  author: { '@type': 'Person', '@id': `${authorUrl}#person`, name: author.data.name, url: authorUrl },
+  publisher: { '@id': `${siteUrl}/#organization` },
+  inLanguage: 'ja',
+  isPartOf: [{ '@id': `${siteUrl}/#website` }, { '@id': `${siteUrl}/language/#course` }],
+  mainEntityOfPage: `${canonical}#webpage`,
+  about: { '@type': 'Thing', name: 'スペイン語' },
+  educationalLevel: d.level,
+  teaches: [d.shortTitle, d.titleEs],
+  learningResourceType: d.slug.startsWith('review-dele') ? '総復習・模擬試験' : 'レッスン',
+  timeRequired: `PT${d.duration}M`,
+  isAccessibleForFree: true,
+  position: d.unit,
+};
+const extraGraph = [learningResource, ...(d.quiz.length > 0 ? [buildQuizNode(canonical, d.title, d.quiz)] : [])];
+
+const sources = [
+  { label: 'Instituto Cervantes『Plan curricular del Instituto Cervantes（PCIC）』', url: 'https://cvc.cervantes.es/ensenanza/biblioteca_ele/plan_curricular/indice.htm' },
+  { label: 'Real Academia Española『Nueva gramática de la lengua española』' },
+];
+---
+<BaseLayout title={d.title}>
+  <SEO
+    slot="seo"
+    title={d.title}
+    description={description}
+    canonical={canonical}
+    type="article"
+    breadcrumbs={unitBreadcrumbs(unit)}
+    keywords={[d.shortTitle, d.titleEs, ...d.grammar]}
+    authorName={author.data.name}
+    authorUrl={authorUrl}
+    robots={d.draft ? 'noindex, nofollow' : undefined}
+    extraGraph={extraGraph}
+  />
+
+  {d.draft && (
+    <div class="unit-draft-banner" data-pagefind-ignore="all">
+      下書き（未公開）：この画面はプレビュー専用で、本番サイトには表示されません。
+    </div>
+  )}
+
+  <UnitHeader
+    unit={d.unit}
+    level={d.level}
+    shortTitle={d.shortTitle}
+    title={d.title}
+    titleEs={d.titleEs}
+    canDo={d.canDo}
+    duration={d.duration}
+    pubDate={d.pubDate}
+    updated={d.updated}
+    breadcrumbs={unitBreadcrumbs(unit)}
+  />
+
+  <div class="page-container py-10">
+    <div class="content-grid">
+      <div class="content-main">
+        <div class="prose unit-body">
+          <Content components={{ VocabList, MiniQuiz, CultureNote }} />
+        </div>
+
+        <UnitNav prev={navItem(d.prev)} next={navItem(d.next)} related={related} level={d.level} />
+        <ReportError label={`ユニット${d.unit} ${d.shortTitle}`} pageUrl={canonical} />
+        <Sources sources={sources} />
+        <AuthorBox author={author} />
+      </div>
+
+      <aside class="content-sidebar">
+        <TOC headings={headings} />
+      </aside>
+    </div>
+  </div>
+
+  <LineBanner slim />
+  <FloatingActions shareUrl={canonical} shareTitle={d.title} />
+</BaseLayout>

@@ -1,6 +1,7 @@
 ﻿---
 import type { CollectionEntry } from 'astro:content';
 import { getRegion } from '../config/regions';
+import { buildQuizNode } from '../utils/schema';
 
 interface Props {
   title: string;
@@ -15,6 +16,8 @@ interface Props {
   authorName?: string;
   authorUrl?: string;
   robots?: string;
+  /** Nodos adicionales para el @graph (p. ej. LearningResource y Quiz de las unidades del curso). */
+  extraGraph?: object[];
 }
 
 const {
@@ -30,6 +33,7 @@ const {
   authorName,
   authorUrl,
   robots: robotsProp = 'index, follow',
+  extraGraph = [],
 } = Astro.props;
 
 // Sin max-image-preview:large, Google limita el tamaño de miniatura que
@@ -469,20 +473,10 @@ if (faqItems && faqItems.length > 0) {
 // 6b. Quiz (if article has quiz or levelTest questions)
 const quizItems = article?.data.quiz ?? article?.data.levelTest;
 if (quizItems && quizItems.length > 0) {
-  graph.push({
-    '@type': 'Quiz',
-    '@id': `${canonical}#quiz`,
-    about: { '@type': 'Thing', name: title },
-    hasPart: quizItems.map((q, i) => ({
-      '@type': 'Question',
-      '@id': `${canonical}#quiz-${i + 1}`,
-      eduQuestionType: 'Multiple choice',
-      text: q.question,
-      suggestedAnswer: q.options.map((opt: string) => ({ '@type': 'Answer', text: opt })),
-      acceptedAnswer: { '@type': 'Answer', text: q.options[q.correctIndex] },
-    })),
-  });
+  graph.push(buildQuizNode(canonical, title, quizItems));
 }
+
+graph.push(...extraGraph);
 
 // 7. SiteNavigationElement (home page only)
 if (canonical === `${siteUrl}/`) {

@@ -1,0 +1,40 @@
+---
+import QuizCard from '../QuizCard.astro';
+import { QUIZ_PASS_SCORE } from '../../data/course';
+
+interface Props {
+  quiz?: Array<{ question: string; options: string[]; correctIndex: number; explanation: string }>;
+  unit: number;
+}
+
+const { quiz = [], unit } = Astro.props;
+---
+{quiz.length > 0 ? (
+  <div class="mini-quiz" data-unit={unit} data-pass={QUIZ_PASS_SCORE}>
+    <p>{quiz.length}問のテストで、このユニットの内容を確認しましょう。{QUIZ_PASS_SCORE}問以上正解でユニット完了です。</p>
+    <QuizCard quiz={quiz} title="ミニテスト" />
+    <p class="mini-quiz-result font-semibold text-navy" role="status" hidden></p>
+  </div>
+) : (
+  <p class="unit-pending">ミニテストは準備中です。</p>
+)}
+
+<script>
+  import { recordQuiz } from '../../utils/courseProgress';
+
+  document.querySelectorAll<HTMLElement>('.mini-quiz').forEach((el) => {
+    el.addEventListener('quizcomplete', (event) => {
+      const { score, total } = (event as CustomEvent<{ score: number; total: number }>).detail;
+      const unit = Number(el.dataset.unit);
+      const pass = Number(el.dataset.pass);
+      recordQuiz(unit, score, total, pass);
+      const result = el.querySelector<HTMLElement>('.mini-quiz-result');
+      if (!result) return;
+      result.hidden = false;
+      result.textContent =
+        score >= pass
+          ? `${total}問中${score}問正解。ユニット完了です！`
+          : `${total}問中${score}問正解。${pass}問以上でユニット完了です。もう一度挑戦してみましょう。`;
+    });
+  });
+</script>
