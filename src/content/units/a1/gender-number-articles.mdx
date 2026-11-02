@@ -5,89 +5,258 @@ levelName: "Acceso"
 slug: "gender-number-articles"
 url: "/language/learn-spanish/a1/gender-number-articles/"
 existing: false
-title: "名詞の性・数と冠詞"
+title: "スペイン語の名詞の性・数と冠詞｜男性名詞・女性名詞の見分け方"
 shortTitle: "名詞の性・数と冠詞"
-titleEs: "género, número y artículos"
-grammar: ["género","número","artículos"]
+titleEs: "Género, número y artículos"
+description: "スペイン語の名詞には、すべて男性・女性の区別があります。-o と -a による見分け方と例外、複数形の作り方、定冠詞 el/la/los/las と不定冠詞 un/una の使い分けを、日本人が間違えやすい点と練習問題つきで解説します。"
+grammar: ["género del sustantivo", "número", "artículo determinado e indeterminado"]
 tenses: []
-functions: []
-canDo: []
-vocabulary: []
+functions: ["身の回りの物の名前を言う", "物の数を言う"]
+canDo:
+  - "身の回りの物を、正しい冠詞をつけて言える"
+  - "名詞の単数形から複数形を作れる"
+  - "初めて話題にする物と、すでにわかっている物を、冠詞で区別できる"
+vocabulary:
+  # rank = «Rango frec.» del diccionario de frecuencias del CORPES XXI (RAE). Lo escribe
+  # npm run vocab:rank -- --write; lo que no es lema del diccionario va sin rank, al final.
+  - { es: "el billete", ja: "切符・チケット", rank: 4248, la: "el boleto", example: "Necesito un billete de metro." }
+  - { es: "la maleta", ja: "スーツケース", rank: 5677, example: "Mina tiene una maleta grande." }
+  - { es: "el pasaporte", ja: "パスポート", rank: 4723, example: "El pasaporte, por favor." }
+  - { es: "la tarjeta", ja: "カード", rank: 1757, example: "¿Puedo pagar con tarjeta?" }
+  - { es: "el móvil", ja: "携帯電話", rank: 2950, la: "el celular", example: "Mina usa el móvil para ver el mapa." }
+  - { es: "la llave", ja: "鍵", rank: 3805, example: "La llave de la habitación, por favor." }
+  - { es: "el mapa", ja: "地図", rank: 2221, example: "Un mapa de Madrid, por favor." }
+  - { es: "el día", ja: "日", rank: 56, example: "Buenos días." }
+  - { es: "la ciudad", ja: "都市・街", rank: 136, example: "Madrid es una ciudad grande." }
+  - { es: "la estación", ja: "駅", rank: 1395, example: "La estación está cerca." }
+  - { es: "el hotel", ja: "ホテル", rank: 1044, example: "El hotel de Mina está en el centro." }
+  - { es: "la calle", ja: "通り", rank: 426, example: "La calle Mayor es muy bonita." }
+  - { es: "el zumo", ja: "ジュース", rank: 8553, la: "el jugo", example: "Un zumo de naranja, por favor." }
+  - { es: "la cuenta", ja: "会計・勘定", rank: 215, example: "La cuenta, por favor." }
 verbs: []
 duration: 40
 prev: 1
 next: 3
-related: [1,3,12]
+related: [1, 3, 12]
 cast: ["mina"]
-audio: []
+audio:
+  - "Un café con leche, por favor."
+  - "La cuenta, por favor."
+  - "Mina tiene una maleta. La maleta es azul."
+  - "Voy al museo."
+  - "la llave del hotel"
+  - "estación"
+  - "estaciones"
 youtubeId: ""
-quiz: []
 draft: true
 updated: "2026-11-02"
+quiz:
+  - question: "mapa（地図）につく定冠詞は？"
+    options: ["la", "el", "los"]
+    correctIndex: 1
+    explanation: "mapa は -a で終わりますが男性名詞で、el mapa です。día、problema、idioma も同じ例外です。"
+  - question: "「都市」ciudad。正しいのは？"
+    options: ["el ciudad", "la ciudad", "lo ciudad"]
+    correctIndex: 1
+    explanation: "-dad で終わる名詞は女性名詞なので la ciudad。-ción、-sión、-tad、-tud も女性です。"
+  - question: "hotel の複数形は？"
+    options: ["hoteles", "hotels", "hotelos"]
+    correctIndex: 0
+    explanation: "子音で終わる名詞は -es をつけます：hoteles。英語のように -s だけにはなりません。"
+  - question: "estación の複数形は？"
+    options: ["estaciónes", "estacions", "estaciones"]
+    correctIndex: 2
+    explanation: "子音で終わるので -es をつけ、強く読む位置が後ろから2番目になるため、アクセント記号は消えます：estaciones。"
+  - question: "lápiz（鉛筆）の複数形は？"
+    options: ["lápizes", "lápiz", "lápices"]
+    correctIndex: 2
+    explanation: "-z で終わる名詞は、z を c に変えて -es をつけます：lápices。"
+  - question: "「ミナはスーツケースを1つ持っている」。正しいのは？"
+    options: ["Mina tiene una maleta.", "Mina tiene un maleta.", "Mina tiene maleta."]
+    correctIndex: 0
+    explanation: "maleta は女性名詞なので una maleta。数えられる物を初めて話題にするときは、冠詞を省略しません。"
+  - question: "「美術館に行く」。正しいのは？"
+    options: ["Voy a el museo.", "Voy al museo.", "Voy a la museo."]
+    correctIndex: 1
+    explanation: "a と el が続くと、必ず al になります。de と el も del になります。"
+  - question: "「ホテルの鍵」。正しいのは？"
+    options: ["la llave del hotel", "la llave de el hotel", "el llave del hotel"]
+    correctIndex: 0
+    explanation: "llave は女性名詞で la llave。de + el は del になります。"
+  - question: "「冷たい水」。正しいのは？"
+    options: ["la agua fría", "el agua fría", "el agua frío"]
+    correctIndex: 1
+    explanation: "agua は女性名詞ですが、強く読む a で始まるため、単数では el をつけます。形容詞は女性形の fría のままです。"
+  - question: "el lunes（月曜日）の複数形は？"
+    options: ["los lunes", "los luneses", "las lunes"]
+    correctIndex: 0
+    explanation: "強く読まない母音 + s で終わる語は、複数形でも形が変わりません：los lunes。冠詞だけが変わります。"
 ---
 
-TODO:contenido（導入：このユニットの問いに、それだけで答えになる2文で答える）
+スペイン語の名詞は、人だけでなく物にもすべて男性・女性の区別があり、その性と数（単数・複数）に合わせて冠詞の形が変わります。多くは -o で終わると男性名詞（el libro）、-a で終わると女性名詞（la maleta）ですが、例外もあるので、名詞は冠詞といっしょに覚えるのが近道です。
 
-## 文法 (Gramática)
+日本語には冠詞がないので、最初は面倒に感じるかもしれません。でも、el と la、un と una の区別は、スペイン語のあらゆる文に出てきます。このユニットでは、初めてのスペイン旅行でマドリードに着いたミナといっしょに、空港やホテル、バルで出会う物の名前を覚えていきます。
 
-TODO:contenido
+## 文法：名詞の性・数と冠詞 (Gramática)
+
+まず名詞の性の見分け方を、次に複数形の作り方を、最後に冠詞の使い分けを見ていきましょう。
+
+### 名詞の性：男性名詞と女性名詞
+
+語尾を見ると、多くの名詞の性がわかります。
+
+| 語尾 | 性 | 例 |
+| --- | --- | --- |
+| -o | 男性 | el museo（美術館）、el libro（本） |
+| -a | 女性 | la maleta（スーツケース）、la tarjeta（カード） |
+| -ción, -sión | 女性 | la estación（駅）、la televisión（テレビ） |
+| -dad, -tad, -tud | 女性 | la ciudad（都市）、la libertad（自由） |
+| -aje, -or | 男性（ほとんど） | el viaje（旅行）、el color（色） |
+| -e、子音 | 決まりなし | el hotel（ホテル）、la calle（通り）、el billete（切符）、la llave（鍵） |
+
+-e や子音で終わる名詞は、語尾から性がわかりません。新しい名詞は、必ず el / la をつけて覚えましょう。
+
+**よく使う例外**もあります。
+
+- -a でも男性：el día（日）、el mapa（地図）、el problema（問題）、el idioma（言語）
+- -o でも女性：la mano（手）、la foto（写真）、la moto（バイク）。foto と moto は fotografía、motocicleta の短縮形です。
+
+人を表す名詞は、多くが男女で形を変えます：el chico / la chica（男の子／女の子）、el profesor / la profesora（先生）。el estudiante / la estudiante（学生）のように、冠詞だけで性を示す名詞もあります。
+
+### 数：複数形の作り方
+
+| 単数の語尾 | 複数の作り方 | 例 |
+| --- | --- | --- |
+| 母音 | -s | el libro → los libros、la calle → las calles |
+| 子音 | -es | el hotel → los hoteles、la ciudad → las ciudades |
+| -z | z → c + -es | el lápiz → los lápices |
+| 強く読まない母音 + s | 変わらない | el lunes → los lunes |
+
+<Examples>
+
+- Dos billetes, por favor.（切符を2枚ください）
+- Mina tiene dos maletas.（ミナはスーツケースを2つ持っている）
+
+</Examples>
+
+### 冠詞：定冠詞と不定冠詞
+
+| | 男性・単数 | 女性・単数 | 男性・複数 | 女性・複数 |
+| --- | --- | --- | --- | --- |
+| 定冠詞（その〜） | el | la | los | las |
+| 不定冠詞（ある〜・一つの〜） | un | una | unos | unas |
+
+使い分けの基本は、日本語の「が」と「は」に少し似ています。
+
+- **un / una**：初めて話題にする物、数えて「一つの」と言う物。
+- **el / la**：話し手と聞き手の両方がどれのことかわかっている物、一つしかない物。
+
+<Examples>
+
+- Mina tiene una maleta. La maleta es azul.（ミナはスーツケースを持っている。そのスーツケースは青い）
+- Un café con leche, por favor.（カフェ・コン・レチェを一つください）
+- La cuenta, por favor.（お会計をお願いします）
+
+</Examples>
+
+**a + el と de + el** は、必ず一語にまとめます：Voy al museo.（美術館に行く）、la llave del hotel（ホテルの鍵）。la、los、las はまとめません（a la estación）。
+
+**el agua**：強く読む a で始まる女性名詞は、単数のときだけ el をつけます（el agua fría、冷たい水）。複数は las aguas です。
+
+**ダニエル（バレンシア出身）のひとこと：** 同じ物でも、スペインと中南米で単語が違うことがあります。携帯電話はスペインでは el móvil、中南米では el celular。ジュースは el zumo と el jugo です。パソコンはスペインでは el ordenador（男性）、中南米では la computadora（女性）で、単語が変わると性も変わります。単語ごとに冠詞をつけて覚えておけば安心です。
 
 ## 活用：今日の動詞 (Conjugación)
 
-TODO:contenido
+このユニットに新しい活用はありません。例文によく出てくる「持っている」の [tener](/language/learn-spanish/verb-conjugation/tener/)（tengo, tienes, tiene…）は、ユニット5で詳しく学びます。先に活用表をのぞいておくと、Mina tiene una maleta. のような文が読みやすくなります。
 
 ## 語彙 (Nociones específicas)
+
+ミナが空港、ホテル、バルで出会う物の名前です。冠詞をつけたまま覚えましょう。
 
 <VocabList items={frontmatter.vocabulary} level={frontmatter.level} />
 
 ## 発音・正書法 (Pronunciación y ortografía)
 
-TODO:contenido
+複数形にすると、アクセント記号が消えたり、ついたりすることがあります。強く読む音節の位置は単数でも複数でも同じですが、語が長くなるとアクセント記号の決まりが変わるためです。la estación（エス・タ・**シオン**）→ las estaciones（エス・タ・**シオ**・ネス）では記号が消え、el joven（**ホ**・ベン）→ los jóvenes（**ホ**・ベ・ネス）では記号がつきます。
 
 ## 日本人がよく間違える
 
-TODO:contenido
+日本語には冠詞も名詞の性もないので、次の三つでつまずく人がとても多いです。
+
+- **冠詞を落とす。** ×Necesito billete. → ○Necesito **un** billete.（切符が1枚必要です）。数えられる名詞を単数で使うときは、ほぼ必ず冠詞がつきます。
+- **語尾だけで性を決める。** ×la mapa、×el mano、×el ciudad → ○**el** mapa、○**la** mano、○**la** ciudad。-a / -o の例外と、-dad、-ción などの女性名詞に注意しましょう。
+- **英語のように -s だけで複数にする。** ×hotels、×lápizs → ○hotel**es**、○lápi**ces**。子音で終わる名詞は -es です。
 
 ## 文化メモ (Referentes culturales)
 
 <CultureNote>
 
-TODO:contenido
+スペインのバルでは、短い注文の中に冠詞がよく登場します。Un café con leche, por favor.（カフェ・コン・レチェを一つ）、Un zumo de naranja, por favor.（オレンジジュースを一つ）と頼むときは un、食べ終わって La cuenta, por favor.（お会計をお願いします）と言うときは la です。お会計はそのテーブルのものだと、店の人もわかっているからです。バルでの注文の流れやマナーは、[バル・レストラン活用ガイド](/food/spain-bar-restaurant/)で紹介しています。
 
 </CultureNote>
 
 ## 練習 (Procedimientos de aprendizaje)
 
-### 練習1：認識
+### 練習1：el か la か？
 
-TODO:contenido
+次の名詞につく定冠詞を答えてください。
+
+1. ___ día
+2. ___ ciudad
+3. ___ mapa
+4. ___ estación
+5. ___ mano
+6. ___ hotel
 
 <details>
 <summary>答えを見る</summary>
 
-TODO:contenido
+1. el día（-a でも男性）
+2. la ciudad（-dad は女性）
+3. el mapa（-a でも男性）
+4. la estación（-ción は女性）
+5. la mano（-o でも女性）
+6. el hotel（子音で終わる名詞は、冠詞といっしょに覚える）
 
 </details>
 
-### 練習2：穴埋め
+### 練習2：複数形と冠詞
 
-TODO:contenido
+1〜5 は冠詞ごと複数形にしてください。6 には un / una / el / la のどれかを入れてください。
+
+1. el hotel
+2. la calle
+3. la estación
+4. el lápiz
+5. el lunes
+6. Mina tiene ___ maleta. ___ maleta es azul.
 
 <details>
 <summary>答えを見る</summary>
 
-TODO:contenido
+1. los hoteles
+2. las calles
+3. las estaciones（アクセント記号が消える）
+4. los lápices
+5. los lunes（形は変わらない）
+6. una / La（初めて話題にするときは una、その後は la）
 
 </details>
 
 ### 練習3：作文
 
-TODO:contenido
+ミナになったつもりで、スペイン語で言ってみましょう。
+
+1. 切符を2枚ください。
+2. カフェ・コン・レチェとオレンジジュースを一つずつください。
+3. ホテルの鍵をください。
 
 <details>
-<summary>答えを見る</summary>
+<summary>解答例を見る</summary>
 
-TODO:contenido
+1. Dos billetes, por favor.
+2. Un café con leche y un zumo de naranja, por favor.
+3. La llave del hotel, por favor.
 
 </details>
 
@@ -97,4 +266,8 @@ TODO:contenido
 
 ## まとめ
 
-TODO:contenido
+- スペイン語の名詞は、すべて男性か女性。-o は男性、-a は女性が多いが、el día や la mano などの例外もある。
+- 複数形は、母音で終われば -s、子音で終われば -es。
+- un / una は初めて話題にする物、el / la はどれのことかわかっている物。a + el は al、de + el は del。
+
+次のユニット3では、ser と estar を使って自己紹介をします。

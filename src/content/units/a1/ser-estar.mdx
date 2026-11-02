@@ -5,89 +5,254 @@ levelName: "Acceso"
 slug: "ser-estar"
 url: "/language/learn-spanish/a1/ser-estar/"
 existing: false
-title: "ser と estar・自己紹介"
+title: "ser と estar の違い｜スペイン語の自己紹介と使い分けの基本"
 shortTitle: "ser と estar・自己紹介"
-titleEs: "ser y estar"
-grammar: ["ser","estar","nacionalidad","profesión"]
-tenses: []
-functions: []
-canDo: []
-vocabulary: []
-verbs: ["ser","estar"]
+titleEs: "Ser y estar"
+description: "スペイン語の ser と estar の違いを基本から解説。国籍・職業・性格は ser、体調・気分・場所は estar という使い分けと現在形の活用、自己紹介とあいさつの表現を、日本人が間違えやすい点と練習問題つきで学べます。"
+grammar: ["ser", "estar", "nacionalidad", "profesión"]
+tenses: ["presente de indicativo"]
+functions: ["あいさつする", "自己紹介する", "体調や気分を言う"]
+canDo:
+  - "名前・出身・職業を言って、簡単な自己紹介ができる"
+  - "あいさつをして、相手の調子をたずねたり答えたりできる"
+  - "人や物の性質と、その時の状態を区別して言える"
+vocabulary:
+  # rank = «Rango frec.» del diccionario de frecuencias del CORPES XXI (RAE). Lo escribe
+  # npm run vocab:rank -- --write; lo que no es lema del diccionario va sin rank, al final.
+  - { es: "hola", ja: "こんにちは・やあ", rank: 9591, example: "Hola, me llamo Mina." }
+  - { es: "buenos días", ja: "おはようございます", example: "Buenos días, ¿qué tal?" }
+  - { es: "adiós", ja: "さようなら", rank: 16992, example: "Adiós, hasta mañana." }
+  - { es: "encantado", ja: "はじめまして（女性が言うときは encantada）", rank: 6048, example: "Encantada, Daniel." }
+  - { es: "bien", ja: "元気で・よく", rank: 157, example: "Estoy bien, gracias." }
+  - { es: "el nombre", ja: "名前", rank: 313, example: "¿Cuál es tu nombre?" }
+  - { es: "el país", ja: "国", rank: 42, example: "Japón es un país muy bonito." }
+  - { es: "japonés", ja: "日本人・日本の（女性形 japonesa）", rank: 2434, example: "Mina es japonesa." }
+  - { es: "español", ja: "スペイン人・スペインの（女性形 española）", rank: 257, example: "Daniel es español." }
+  - { es: "diseñador", ja: "デザイナー（女性形 diseñadora）", rank: 2517, example: "Mina es diseñadora." }
+  - { es: "el profesor", ja: "先生（女性形 la profesora）", rank: 608, example: "La profesora de Mina es muy simpática." }
+  - { es: "cansado", ja: "疲れた（女性形 cansada）", rank: 5094, example: "Mina está cansada después del vuelo." }
+  - { es: "contento", ja: "うれしい・満足した（女性形 contenta）", rank: 2388, example: "Daniel está muy contento." }
+  - { es: "nervioso", ja: "緊張した（女性形 nerviosa）", rank: 2810, example: "Mina está un poco nerviosa." }
+  - { es: "simpático", ja: "感じのいい（女性形 simpática）", rank: 5973, example: "El recepcionista es muy simpático." }
+verbs: ["ser", "estar"]
 duration: 40
 prev: 2
 next: 4
-related: [2,4,12]
+related: [2, 4, 12]
 cast: ["mina"]
-audio: []
+audio:
+  - "Hola, ¿cómo te llamas?"
+  - "Me llamo Mina. ¿Y tú?"
+  - "Soy Daniel. Encantado."
+  - "Encantada. ¿De dónde eres?"
+  - "Soy de Valencia, pero vivo en Tokio. ¿Y tú?"
+  - "Soy de Tokio. Soy diseñadora."
+  - "¿Qué tal estás?"
+  - "Estoy un poco nerviosa, pero bien."
+  - "está"
+  - "esta"
 youtubeId: ""
-quiz: []
 draft: true
 updated: "2026-11-02"
+quiz:
+  - question: "ミナが「私は日本人です」と言うとき、正しいのは？"
+    options: ["Estoy japonesa.", "Soy japonesa.", "Soy Japonesa."]
+    correctIndex: 1
+    explanation: "国籍は ser で言います。女性なので japonesa。スペイン語では国籍の形容詞を小文字で書きます。"
+  - question: "ミナが「私は疲れている」と言うとき、正しいのは？"
+    options: ["Soy cansada.", "Estoy cansado.", "Estoy cansada."]
+    correctIndex: 2
+    explanation: "体調や気分は estar。形容詞は話し手の性に合わせるので、ミナは cansada です。"
+  - question: "ser の3人称複数（ellos / ellas / ustedes）は？"
+    options: ["son", "están", "sois"]
+    correctIndex: 0
+    explanation: "ser の現在形は soy, eres, es, somos, sois, son。están は estar、sois は vosotros の形です。"
+  - question: "estar の2人称単数（tú）は？"
+    options: ["estas", "estás", "eres"]
+    correctIndex: 1
+    explanation: "estás にはアクセント記号が必要です。記号のない estas は「これらの」という意味になります。eres は ser です。"
+  - question: "「ホテルは中心部にある」。正しいのは？"
+    options: ["El hotel es en el centro.", "El hotel está en el centro.", "El hotel están en el centro."]
+    correctIndex: 1
+    explanation: "建物や人がどこにあるか・いるかは estar で言います。主語は el hotel（単数）なので está です。"
+  - question: "「ミナはデザイナーだ」。正しいのは？"
+    options: ["Mina es diseñadora.", "Mina es una diseñadora.", "Mina está diseñadora."]
+    correctIndex: 0
+    explanation: "職業は ser で言い、ふつうは冠詞をつけません：Mina es diseñadora。"
+  - question: "「ダニエルはスペイン人だ」。正しいのは？"
+    options: ["Daniel es Español.", "Daniel está español.", "Daniel es español."]
+    correctIndex: 2
+    explanation: "国籍は ser で、小文字で書きます：Daniel es español。"
+  - question: "初めて会った人に、女性が「はじめまして」と言うなら？"
+    options: ["Encantado.", "Encantada.", "Encantados."]
+    correctIndex: 1
+    explanation: "encantado / encantada は話し手の性に合わせます。女性は encantada、男性は encantado です。"
+  - question: "友だちに「元気？」とたずねるなら？"
+    options: ["¿Cómo estás?", "¿Cómo eres?", "¿Qué eres?"]
+    correctIndex: 0
+    explanation: "その時の調子は estar で ¿Cómo estás?。¿Cómo eres? は「あなたはどんな人？」と性格や外見をたずねる質問です。"
+  - question: "「準備できた？」とたずねるなら？"
+    options: ["¿Eres listo?", "¿Es listo?", "¿Estás listo?"]
+    correctIndex: 2
+    explanation: "estar listo は「準備ができている」、ser listo は「頭がいい」。動詞によって意味が変わる形容詞です。"
 ---
 
-TODO:contenido（導入：このユニットの問いに、それだけで答えになる2文で答える）
+スペイン語の ser と estar は、どちらも「〜である」と訳せる動詞です。ser は国籍・職業・性格など、その人や物の性質を表し、estar は体調・気分・場所など、その時の状態を表します。「私は日本人です」は Soy japonesa.、「私は疲れています」は Estoy cansada. と言い分けます。
 
-## 文法 (Gramática)
+日本語ではどちらも「〜です」なので、最初はとまどうかもしれません。でも、自己紹介やあいさつで毎日使う動詞なので、すぐに慣れます。このユニットでは、東京のスペイン語教室で、ミナがバレンシア出身のダニエルと初めて会う場面から始めます。
 
-TODO:contenido
+## 文法：ser と estar の違い (Gramática)
+
+まず二つの動詞の現在形を覚え、次にそれぞれを使う場面と、自己紹介の表現を見ていきましょう。
+
+### 現在形の活用
+
+ser も estar も、よく使う動詞ほど不規則になる、という典型です。
+
+| 人称 | ser（〜である） | estar（〜にいる・〜の状態である） |
+| --- | --- | --- |
+| yo | soy | estoy |
+| tú | eres | estás |
+| él / ella / usted | es | está |
+| nosotros / nosotras | somos | estamos |
+| vosotros / vosotras ※ | sois | estáis |
+| ellos / ellas / ustedes | son | están |
+
+※ vosotros はスペインのみで使う形です。中南米では ustedes を使います（→ [中南米のスペイン語](/language/learn-spanish/spanish-in-latin-america/)）。
+
+### ser を使うとき：性質
+
+その人や物を説明する、変わりにくい特徴に使います。
+
+- **名前・国籍・出身：** Soy Mina. Soy japonesa. Soy de Tokio.（ミナです。日本人です。東京出身です）
+- **職業：** Soy diseñadora.（デザイナーです）。職業には、ふつう冠詞をつけません。
+- **性格・特徴：** Daniel es simpático. Madrid es grande.（ダニエルは感じがいい。マドリードは大きい）
+
+### estar を使うとき：状態と場所
+
+その時の様子や、どこにいるかに使います。
+
+- **体調・気分：** Estoy bien. Estoy cansada.（元気です。疲れています）
+- **場所：** Estoy en Madrid. El hotel está en el centro.（マドリードにいます。ホテルは中心部にあります）
+- **一時的な状態：** El café está frío.（コーヒーが冷めている）
+
+形容詞は、主語の性と数に合わせます：Mina está cansada. / Daniel está cansado. / Mina y Daniel están cansados.
+
+<Examples>
+
+- Mina es simpática.（ミナは感じのいい人だ：性格）
+- Mina está contenta.（ミナは今うれしい：気分）
+
+</Examples>
+
+### 自己紹介とあいさつ
+
+東京のスペイン語教室で、ミナとダニエルが初めて会います。
+
+- Daniel: Hola, ¿cómo te llamas?（こんにちは、名前は？）
+- Mina: Hola. Me llamo Mina. ¿Y tú?（こんにちは。ミナです。あなたは？）
+- Daniel: Soy Daniel. Encantado.（ダニエルです。はじめまして）
+- Mina: Encantada. ¿De dónde eres?（はじめまして。どこの出身？）
+- Daniel: Soy de Valencia, pero vivo en Tokio. ¿Y tú?（バレンシア出身だけど、東京に住んでいるんだ。きみは？）
+- Mina: Soy de Tokio. Soy diseñadora.（東京出身です。デザイナーをしています）
+- Daniel: ¿Qué tal estás?（調子はどう？）
+- Mina: Estoy un poco nerviosa, pero bien.（少し緊張しているけど、元気です）
+
+me llamo（〜という名前です）は、「自分を〜と呼ぶ」という形の表現です。このまま覚えましょう。あいさつは、昼食まで Buenos días、昼食後から夕方まで Buenas tardes、夜は Buenas noches です。
+
+**ダニエル（バレンシア出身）のひとこと：** スペインでは、初対面でも同じくらいの年齢なら tú で話すことが多いです。お店の人や年上の人には usted（¿Cómo está usted?）を使うと丁寧ですが、相手が tú で話しかけてきたら、tú で返してかまいません。
 
 ## 活用：今日の動詞 (Conjugación)
 
-TODO:contenido
+このユニットの主役は [ser](/language/learn-spanish/verb-conjugation/ser/) と [estar](/language/learn-spanish/verb-conjugation/estar/) です。どちらも全時制の活用表で、点過去（fui / estuve）や線過去（era / estaba）まで確認できます。まずは現在形の6つの形を、声に出して言えるようにしましょう。
 
 ## 語彙 (Nociones específicas)
+
+あいさつと自己紹介、気分を言うときの語です。形容詞は男性形で載せています。女性が自分のことを言うときは -a の形にしましょう。
 
 <VocabList items={frontmatter.vocabulary} level={frontmatter.level} />
 
 ## 発音・正書法 (Pronunciación y ortografía)
 
-TODO:contenido
+estar の está（エス・**タ**）と、指示詞の esta（**エ**ス・タ、「この」）は、アクセント記号と強く読む位置だけが違います。¿Dónde está la estación?（駅はどこですか）の está は最後の音節を強く、esta maleta（このスーツケース）の esta は最初の音節を強く読みます。
 
 ## 日本人がよく間違える
 
-TODO:contenido
+日本語の「〜です」を、全部 ser にしてしまうのがいちばん多い間違いです。
+
+- **体調や気分に ser を使う。** ×Soy cansada. → ○**Estoy** cansada.（疲れています）。その時の状態は estar です。
+- **場所に ser を使う。** ×Soy en Madrid. → ○**Estoy** en Madrid.（マドリードにいます）。人や物がどこにいるか・あるかは estar です。
+- **国籍を大文字で、男性形のまま書く。** ×Mina es Japonés. → ○Mina es **japonesa**. 国籍は小文字で書き、主語の性に合わせます。
 
 ## 文化メモ (Referentes culturales)
 
 <CultureNote>
 
-TODO:contenido
+スペイン人どうしで ¿De dónde eres? と聞くと、国より先に、町や地方の名前で答えることがよくあります。ダニエルなら Soy de Valencia.、あるいは Soy valenciano.（バレンシア人です）。ほかにも madrileño（マドリードの人）、andaluz（アンダルシアの人）など、出身地を表す言葉がたくさんあります。地方ごとの違いは料理にも表れます。県ごとの郷土料理は、[スペイン美食マップ](/food/spain-map/)で探せます。
 
 </CultureNote>
 
 ## 練習 (Procedimientos de aprendizaje)
 
-### 練習1：認識
+### 練習1：ser？ estar？ どうして？
 
-TODO:contenido
+次の文で使われているのは ser と estar のどちらですか。理由も答えてください。
+
+1. Mina es japonesa.
+2. Mina está en Madrid.
+3. Daniel es simpático.
+4. Estoy cansada.
+5. Soy diseñadora.
 
 <details>
 <summary>答えを見る</summary>
 
-TODO:contenido
+1. ser：国籍
+2. estar：場所
+3. ser：性格
+4. estar：体調
+5. ser：職業
 
 </details>
 
 ### 練習2：穴埋め
 
-TODO:contenido
+ser か estar を、正しい形にして入れてください。
+
+1. Yo ______ de Tokio.
+2. ¿Cómo ______ (tú)?
+3. Daniel ______ español.
+4. Nosotros ______ en el hotel.
+5. Madrid ______ una ciudad grande.
+6. El café ______ frío.
 
 <details>
 <summary>答えを見る</summary>
 
-TODO:contenido
+1. soy（出身）
+2. estás（調子）
+3. es（国籍）
+4. estamos（場所）
+5. es（特徴）
+6. está（一時的な状態）
 
 </details>
 
-### 練習3：作文
+### 練習3：自己紹介を書く
 
-TODO:contenido
+次の四つを入れて、スペイン語で自己紹介を書いてみましょう。
+
+1. 名前
+2. 出身地
+3. 職業
+4. 今の気分
 
 <details>
-<summary>答えを見る</summary>
+<summary>解答例を見る</summary>
 
-TODO:contenido
+Hola. Me llamo Mina. Soy de Tokio. Soy diseñadora. Estoy un poco nerviosa, pero muy contenta.
+
+（こんにちは。ミナです。東京出身です。デザイナーです。少し緊張していますが、とてもうれしいです）
 
 </details>
 
@@ -97,4 +262,8 @@ TODO:contenido
 
 ## まとめ
 
-TODO:contenido
+- ser は性質（名前・国籍・職業・性格）、estar は状態（体調・気分・場所）。
+- 現在形は ser が soy, eres, es…、estar が estoy, estás, está…。está のアクセント記号を忘れない。
+- 自己紹介は Me llamo… / Soy de… / Soy + 職業。形容詞と encantado / encantada は話し手の性に合わせる。
+
+次のユニット4では、規則動詞の現在形を学びます。
