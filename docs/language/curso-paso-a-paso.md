@@ -320,6 +320,16 @@ Revisión de los documentos contra el repositorio y producción antes del prompt
 - **Acceso a 学習設定:** desde la cabecera de cada unidad, las páginas de nivel, el bloque del curso en el hub y el resultado del test de nivel. No está en el menú general de la web.
 - **Calendario del ritmo:** la preferencia se guarda ya; el calendario de unidades por semana es parte del prompt 5.
 
+### Prompt 3: conjugador
+
+- **Los 50 verbos** (lista de David, 2 de noviembre de 2026): ser, haber, estar, tener, hacer, poder, decir, ir, ver, dar, saber, querer, llegar, pasar, deber, poner, parecer, quedar, creer, hablar, llevar, dejar, seguir, encontrar, llamar, venir, pensar, salir, volver, tomar, conocer, vivir, sentir, tratar, mirar, contar, empezar, esperar, buscar, existir, entrar, trabajar, escribir, perder, producir, ocurrir, entender, pedir, recibir, recordar. Están en `src/data/conjugation/ranking.ts`.
+- **Fuente:** se cita «RAE, CORPES XXI». No se ha podido verificar que este orden concreto salga del diccionario de frecuencias del CORPES (existe desde 2024); hay que confirmarlo antes de publicar. El estudio de 2023 (Pérez y Rojas, *Lengua y Sociedad*) no aparece en ninguna búsqueda y no se cita hasta tener enlace o DOI.
+- **comer, gustar y acabar** están en el campo `verbs` de las unidades, pero no entre los 50: tendrán página propia (53 en total) o se quitarán de `verbs`. Se decide en el segundo lote.
+- **Motor y datos:** `scripts/conjugation/` (motor de reglas, tabla manual, tests con `npm run test:conjugation`). `npm run conjugation:generate` escribe `src/data/conjugation/` y el CSV de irregulares para revisión nativa contra el DLE en `docs/language/review/conjugacion-irregulares.csv`. Los JSON no se editan a mano.
+- **Quiz de cada verbo:** se genera de los datos; el distractor principal es la forma regularizada (tení, hació), salvo en ser e ir.
+- **Contenido editorial de cada verbo** (resumen, ejemplos, error típico, verbos que se conjugan igual): `src/data/conjugation/content.ts`. Necesita revisión nativa.
+- **Visibilidad:** las páginas de verbo son públicas (no son bloques del curso); su bloque 「この動詞を学ぶユニット」 y la columna de unidades del mapa de tiempos solo aparecen cuando el curso es visible.
+
 ### Pendiente de David
 
 - **Lista de frecuencia del Corpus del Español** (acceso o archivo). Sin ella no se pueden fijar `rank` ni los 50 verbos. Alternativa libre: los listados de frecuencia del CORPES XXI de la RAE; si se usa esa, hay que cambiar también la fuente citada en la web (FrequencyNote y el texto nuevo de A1 語彙).

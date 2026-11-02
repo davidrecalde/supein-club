@@ -5,7 +5,7 @@ articleRole: blog
 title: "スペイン語 動詞の活用一覧と覚え方｜現在形・点過去の早見表"
 heroImage: "../../../../assets/hero/verb-conjugation.webp"
 heroImageAlt: "スペイン語動詞活用表のイメージ"
-lead: "スペイン語の動詞活用（現在形・点過去・近接未来形）を、規則動詞と最重要不規則動詞5つに絞って一覧表にまとめました。レベル別の文法レッスンではなく、活用形をすぐに調べられる早見表です。"
+lead: "スペイン語の動詞活用を一覧で確認できる早見表です。活用形から動詞を調べられる検索、規則動詞（-ar/-er/-ir）の4つの時制、最重要不規則動詞、時制マップ、よく使う動詞50をまとめました。"
 description: "スペイン語の動詞活用を一覧表で確認。規則動詞-ar/-er/-irのモデルと、最重要不規則動詞5つ（ser・estar・tener・ir・hacer）の現在形・点過去、覚え方のコツを日本人向けに解説。"
 intent: informational
 schemaType: article
@@ -25,6 +25,42 @@ entities:
 - estar
 - tener
 author: david-recalde
+quiz:
+- question: "hablar の点過去、1人称単数（yo）は？"
+  options:
+  - hablo
+  - hablé
+  - hablaba
+  correctIndex: 1
+  explanation: "点過去の -ar 動詞の yo は -é（hablé）。hablo は現在形、hablaba は線過去です。"
+- question: "fui は、どの動詞の点過去？"
+  options:
+  - ir だけ
+  - ser だけ
+  - ir と ser の両方
+  correctIndex: 2
+  explanation: "ser と ir は点過去でまったく同じ形（fui, fuiste, fue…）になります。意味は文脈で判断します。"
+- question: "comer の線過去、1人称複数（nosotros）は？"
+  options:
+  - comíamos
+  - comimos
+  - comemos
+  correctIndex: 0
+  explanation: "-er/-ir 動詞の線過去は -ía の形（comíamos）。comimos は点過去、comemos は現在形です。"
+- question: "tener の未来、1人称単数（yo）は？"
+  options:
+  - teneré
+  - tendré
+  - tuve
+  correctIndex: 1
+  explanation: "tener は未来で語幹が tendr- に変わります（tendré）。tuve は点過去です。"
+- question: "vosotros の形について正しいのは？"
+  options:
+  - スペインでも中南米でも使う
+  - スペインだけで使い、中南米では ustedes を使う
+  - 中南米だけで使う
+  correctIndex: 1
+  explanation: "vosotros はスペインで使う2人称複数の形です。中南米では親しい相手にも ustedes を使います。"
 relatedPages:
 - title: スペイン語A1文法まとめ
   href: /language/learn-spanish/a1/grammar/
@@ -49,38 +85,43 @@ sources:
 - label: セルバンテス学院 カリキュラム大綱
   url: https://cvc.cervantes.es/ensenanza/biblioteca_ele/plan_curricular/indice.htm
 ---
+import ConjugationSearch from '../../../../components/conjugation/ConjugationSearch.astro';
+import ModelTable from '../../../../components/conjugation/ModelTable.astro';
+import TenseMap from '../../../../components/conjugation/TenseMap.astro';
+import VerbRanking from '../../../../components/conjugation/VerbRanking.astro';
+import CourseUnitLinks from '../../../../components/conjugation/CourseUnitLinks.astro';
 
-スペイン語の動詞活用は、日本人学習者が最初にぶつかる大きな壁です。このページは、文法を一から学ぶレッスンではなく、**活用形をすぐに調べられる早見表**として作っています。レベル別に体系立てて学びたい方は[「スペイン語A1文法まとめ」](/language/learn-spanish/a1/grammar/)、点過去と線過去の使い分けを理解したい方は[「スペイン語A2文法まとめ」](/language/learn-spanish/a2/grammar/)をご覧ください。
+<ConjugationSearch />
+
+スペイン語の動詞は、主語（人称）と時制に合わせて語尾が変わります。規則動詞は -ar・-er・-ir の3つの型で活用が決まり、ser や ir のようによく使う動詞ほど不規則になる傾向があります。
+
+スペイン語の動詞活用は、日本人学習者が最初にぶつかる大きな壁です。このページは、文法を一から学ぶレッスンではなく、**活用形をすぐに調べられる早見表**として作っています。上の検索ボックスには、動詞の原形（tener）でも活用形（fui、hice）でも入力できます。レベル別に体系立てて学びたい方は[「スペイン語A1文法まとめ」](/language/learn-spanish/a1/grammar/)、点過去と線過去の使い分けを理解したい方は[「スペイン語A2文法まとめ」](/language/learn-spanish/a2/grammar/)をご覧ください。
 
 ---
 
+<span id="models"></span>
+
 ## 規則動詞の活用表（-ar / -er / -ir）
 
-規則動詞は語尾の**-ar、-er、-ir**によってパターンが決まります。まず現在形、次に点過去（過去形）を一覧にまとめました。
+規則動詞は語尾の**-ar、-er、-ir**によってパターンが決まります。よく使う4つの時制（現在形・点過去・線過去・未来形）を一覧にまとめました。
 
 ### 現在形
 
-| 人称 | hablar（-ar型） | comer（-er型） | vivir（-ir型） |
-|---|---|---|---|
-| yo | hablo | como | vivo |
-| tú | hablas | comes | vives |
-| él/ella/usted | habla | come | vive |
-| nosotros/as | hablamos | comemos | vivimos |
-| vosotros/as | habláis | coméis | vivís |
-| ellos/ellas/ustedes | hablan | comen | viven |
+<ModelTable tense="presente" />
 
 ### 点過去（過去形）
 
-| 人称 | hablar（-ar型） | comer（-er型） | vivir（-ir型） |
-|---|---|---|---|
-| yo | hablé | comí | viví |
-| tú | hablaste | comiste | viviste |
-| él/ella/usted | habló | comió | vivió |
-| nosotros/as | hablamos | comimos | vivimos |
-| vosotros/as | hablasteis | comisteis | vivisteis |
-| ellos/ellas/ustedes | hablaron | comieron | vivieron |
+<ModelTable tense="preterito-indefinido" />
 
 > **ポイント：** -er動詞と-ir動詞は点過去でまったく同じ語尾（-í, -iste, -ió, -imos, -isteis, -ieron）になります。-ar動詞の語尾だけ別に覚えれば、点過去の規則活用は実質2パターンで済みます。
+
+### 線過去
+
+<ModelTable tense="preterito-imperfecto" />
+
+### 未来形
+
+<ModelTable tense="futuro" />
 
 ---
 
@@ -112,6 +153,26 @@ sources:
 
 > **ご注意：** *ser*（〜である）と*ir*（行く）は、点過去でまったく同じ活用形（fui, fuiste, fue...）になります。文脈で判断します（例：Fui a Tokio＝東京に行った／Fui estudiante＝学生だった）。
 
+全時制の活用表・例文・確認クイズは、動詞ごとのページにまとめています：[ser](/language/learn-spanish/verb-conjugation/ser/)・[estar](/language/learn-spanish/verb-conjugation/estar/)・[tener](/language/learn-spanish/verb-conjugation/tener/)・[ir](/language/learn-spanish/verb-conjugation/ir/)・[hacer](/language/learn-spanish/verb-conjugation/hacer/)。ほかの頻出動詞も [haber](/language/learn-spanish/verb-conjugation/haber/)・[poder](/language/learn-spanish/verb-conjugation/poder/)・[decir](/language/learn-spanish/verb-conjugation/decir/)・[ver](/language/learn-spanish/verb-conjugation/ver/)・[dar](/language/learn-spanish/verb-conjugation/dar/) のページで確認できます。
+
+---
+
+## 過去形は2つある
+
+日本語の「〜した」にあたるスペイン語の過去形は、主に2つあります。**点過去**（pretérito indefinido）は「昨日〜した」のように終わった出来事を、**線過去**（pretérito imperfecto）は「昔はよく〜していた」「〜だった」のように過去の習慣や状態を表します。さらにスペインでは、「今日〜した」のように今日の中の出来事には**現在完了**（he comido）を使います。
+
+<CourseUnitLinks units={[14, 15, 16]} />
+
+点過去と線過去の使い分けは[「スペイン語A2文法まとめ」](/language/learn-spanish/a2/grammar/)でも解説しています。
+
+---
+
+## 時制マップ（やさしい順）
+
+スペイン語の主な時制を、学ぶ順番（やさしい順）に並べました。レベルは、それぞれの時制を学ぶ段階の目安です。
+
+<TenseMap />
+
 ---
 
 ## 近接未来形（ir a + 不定詞）
@@ -130,6 +191,14 @@ sources:
 - **不規則動詞は声に出して繰り返す：** 特にser・estar・tener・ir・hacerの6人称を、書くだけでなく音読して身体で覚えるのが効果的です。
 - **一度に全部覚えようとしない：** まず現在形、慣れたら点過去、というように段階を分けて取り組むと定着しやすくなります。
 - **単語自体の覚え方：** 動詞以外の語彙の暗記法は[「スペイン語の単語を効率よく覚える方法」](/language/learn-spanish/memorize-vocabulary/)にまとめています。
+
+---
+
+## よく使う動詞50（使用頻度順）
+
+スペイン語でよく使われる動詞を、使用頻度の高い順に50個並べました。上位の動詞ほど不規則なものが多いので、リンクのある動詞から活用表を確認していきましょう。
+
+<VerbRanking />
 
 ---
 

@@ -1,0 +1,22 @@
+---
+// Enlaces a unidades del curso desde páginas que no son del curso. No muestra
+// nada mientras el curso no sea visible en producción; nunca enlaza a borradores.
+import { getAllUnits, hasPage, isCourseVisible } from '../../utils/units';
+
+interface Props {
+  units: number[];
+}
+
+const visible = await isCourseVisible();
+const byNumber = new Map((await getAllUnits()).map((u) => [u.data.unit, u]));
+const items = Astro.props.units.map((n) => byNumber.get(n)).filter((u) => u !== undefined);
+---
+{visible && items.length > 0 && (
+  <ul>
+    {items.map((u) => (
+      <li>
+        {hasPage(u) ? <a href={u.data.url}>ユニット{u.data.unit}「{u.data.shortTitle}」</a> : <span>ユニット{u.data.unit}「{u.data.shortTitle}」（準備中）</span>}
+      </li>
+    ))}
+  </ul>
+)}

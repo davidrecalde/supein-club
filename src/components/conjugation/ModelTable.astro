@@ -1,0 +1,32 @@
+---
+// Tabla rápida de los modelos regulares hablar / comer / vivir para un tiempo.
+import models from '../../data/conjugation/models.json';
+import { PERSONS, VOSOTROS_INDEX } from '../../data/conjugation/tenses';
+
+interface Props {
+  tense: 'presente' | 'preterito-indefinido' | 'preterito-imperfecto' | 'futuro';
+}
+
+const { tense } = Astro.props;
+const verbs = [
+  { inf: 'hablar', label: 'hablar（-ar型）' },
+  { inf: 'comer', label: 'comer（-er型）' },
+  { inf: 'vivir', label: 'vivir（-ir型）' },
+] as const;
+---
+<table>
+  <thead>
+    <tr>
+      <th>人称</th>
+      {verbs.map((v) => <th>{v.label}</th>)}
+    </tr>
+  </thead>
+  <tbody>
+    {PERSONS.map((person, i) => (
+      <tr>
+        <td>{person}{i === VOSOTROS_INDEX && <span class="only-spain">スペインのみ</span>}</td>
+        {verbs.map((v) => <td lang="es">{models[v.inf][tense][i]}</td>)}
+      </tr>
+    ))}
+  </tbody>
+</table>

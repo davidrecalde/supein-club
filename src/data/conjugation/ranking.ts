@@ -1,0 +1,63 @@
+// Los 50 verbos más frecuentes del español, en orden (lista facilitada por
+// David Recalde el 2026-11-02). Fuente indicada: RAE, CORPES XXI.
+// Pendiente de confirmar que el orden procede del diccionario de frecuencias
+// del CORPES antes de citarlo como tal (ver PR del conjugador).
+export const FREQUENCY_SOURCE = {
+  label: 'Real Academia Española, CORPES XXI（21世紀スペイン語コーパス）',
+  url: 'https://www.rae.es/banco-de-datos/corpes-xxi',
+};
+
+export const VERB_RANKING: Array<{ rank: number; infinitive: string; meaning: string }> = [
+  { rank: 1, infinitive: 'ser', meaning: '〜である' },
+  { rank: 2, infinitive: 'haber', meaning: '（完了形の助動詞）／ある（hay）' },
+  { rank: 3, infinitive: 'estar', meaning: '〜にいる・〜の状態である' },
+  { rank: 4, infinitive: 'tener', meaning: '持つ' },
+  { rank: 5, infinitive: 'hacer', meaning: 'する・作る' },
+  { rank: 6, infinitive: 'poder', meaning: '〜できる' },
+  { rank: 7, infinitive: 'decir', meaning: '言う' },
+  { rank: 8, infinitive: 'ir', meaning: '行く' },
+  { rank: 9, infinitive: 'ver', meaning: '見る・会う' },
+  { rank: 10, infinitive: 'dar', meaning: '与える' },
+  { rank: 11, infinitive: 'saber', meaning: '知っている' },
+  { rank: 12, infinitive: 'querer', meaning: '欲しい・愛する' },
+  { rank: 13, infinitive: 'llegar', meaning: '着く' },
+  { rank: 14, infinitive: 'pasar', meaning: '過ごす・起こる・通る' },
+  { rank: 15, infinitive: 'deber', meaning: '〜しなければならない' },
+  { rank: 16, infinitive: 'poner', meaning: '置く' },
+  { rank: 17, infinitive: 'parecer', meaning: '〜のように見える' },
+  { rank: 18, infinitive: 'quedar', meaning: '残る・待ち合わせる' },
+  { rank: 19, infinitive: 'creer', meaning: '信じる・思う' },
+  { rank: 20, infinitive: 'hablar', meaning: '話す' },
+  { rank: 21, infinitive: 'llevar', meaning: '持っていく・身につける' },
+  { rank: 22, infinitive: 'dejar', meaning: '置いていく・〜させる' },
+  { rank: 23, infinitive: 'seguir', meaning: '続ける・従う' },
+  { rank: 24, infinitive: 'encontrar', meaning: '見つける' },
+  { rank: 25, infinitive: 'llamar', meaning: '呼ぶ・電話する' },
+  { rank: 26, infinitive: 'venir', meaning: '来る' },
+  { rank: 27, infinitive: 'pensar', meaning: '考える' },
+  { rank: 28, infinitive: 'salir', meaning: '出る・出かける' },
+  { rank: 29, infinitive: 'volver', meaning: '戻る' },
+  { rank: 30, infinitive: 'tomar', meaning: '取る・飲む' },
+  { rank: 31, infinitive: 'conocer', meaning: '（人・場所を）知っている' },
+  { rank: 32, infinitive: 'vivir', meaning: '住む・生きる' },
+  { rank: 33, infinitive: 'sentir', meaning: '感じる' },
+  { rank: 34, infinitive: 'tratar', meaning: '扱う・〜しようとする' },
+  { rank: 35, infinitive: 'mirar', meaning: '見る・眺める' },
+  { rank: 36, infinitive: 'contar', meaning: '数える・話す' },
+  { rank: 37, infinitive: 'empezar', meaning: '始める・始まる' },
+  { rank: 38, infinitive: 'esperar', meaning: '待つ・期待する' },
+  { rank: 39, infinitive: 'buscar', meaning: '探す' },
+  { rank: 40, infinitive: 'existir', meaning: '存在する' },
+  { rank: 41, infinitive: 'entrar', meaning: '入る' },
+  { rank: 42, infinitive: 'trabajar', meaning: '働く' },
+  { rank: 43, infinitive: 'escribir', meaning: '書く' },
+  { rank: 44, infinitive: 'perder', meaning: '失う・負ける' },
+  { rank: 45, infinitive: 'producir', meaning: '生産する・引き起こす' },
+  { rank: 46, infinitive: 'ocurrir', meaning: '起こる' },
+  { rank: 47, infinitive: 'entender', meaning: '理解する' },
+  { rank: 48, infinitive: 'pedir', meaning: '頼む・注文する' },
+  { rank: 49, infinitive: 'recibir', meaning: '受け取る' },
+  { rank: 50, infinitive: 'recordar', meaning: '覚えている・思い出す' },
+];
+
+export const RANK_BY_VERB = new Map(VERB_RANKING.map((v) => [v.infinitive, v]));

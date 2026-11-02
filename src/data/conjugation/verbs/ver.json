@@ -1,0 +1,349 @@
+{
+  "infinitive": "ver",
+  "gerund": "viendo",
+  "gerundIrregular": false,
+  "participle": "visto",
+  "participleIrregular": true,
+  "tenses": {
+    "presente": {
+      "forms": [
+        "veo",
+        "ves",
+        "ve",
+        "vemos",
+        "veis",
+        "ven"
+      ],
+      "irregular": [
+        true,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "preterito-indefinido": {
+      "forms": [
+        "vi",
+        "viste",
+        "vio",
+        "vimos",
+        "visteis",
+        "vieron"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "preterito-imperfecto": {
+      "forms": [
+        "veía",
+        "veías",
+        "veía",
+        "veíamos",
+        "veíais",
+        "veían"
+      ],
+      "irregular": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    "futuro": {
+      "forms": [
+        "veré",
+        "verás",
+        "verá",
+        "veremos",
+        "veréis",
+        "verán"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "condicional": {
+      "forms": [
+        "vería",
+        "verías",
+        "vería",
+        "veríamos",
+        "veríais",
+        "verían"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "subjuntivo-presente": {
+      "forms": [
+        "vea",
+        "veas",
+        "vea",
+        "veamos",
+        "veáis",
+        "vean"
+      ],
+      "irregular": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    "subjuntivo-imperfecto-ra": {
+      "forms": [
+        "viera",
+        "vieras",
+        "viera",
+        "viéramos",
+        "vierais",
+        "vieran"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "subjuntivo-imperfecto-se": {
+      "forms": [
+        "viese",
+        "vieses",
+        "viese",
+        "viésemos",
+        "vieseis",
+        "viesen"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "imperativo-afirmativo": {
+      "forms": [
+        null,
+        "ve",
+        "vea",
+        "veamos",
+        "ved",
+        "vean"
+      ],
+      "irregular": [
+        false,
+        false,
+        true,
+        true,
+        false,
+        true
+      ]
+    },
+    "imperativo-negativo": {
+      "forms": [
+        null,
+        "no veas",
+        "no vea",
+        "no veamos",
+        "no veáis",
+        "no vean"
+      ],
+      "irregular": [
+        false,
+        true,
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    "preterito-perfecto": {
+      "forms": [
+        "he visto",
+        "has visto",
+        "ha visto",
+        "hemos visto",
+        "habéis visto",
+        "han visto"
+      ],
+      "irregular": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    "pluscuamperfecto": {
+      "forms": [
+        "había visto",
+        "habías visto",
+        "había visto",
+        "habíamos visto",
+        "habíais visto",
+        "habían visto"
+      ],
+      "irregular": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    "futuro-perfecto": {
+      "forms": [
+        "habré visto",
+        "habrás visto",
+        "habrá visto",
+        "habremos visto",
+        "habréis visto",
+        "habrán visto"
+      ],
+      "irregular": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    "condicional-perfecto": {
+      "forms": [
+        "habría visto",
+        "habrías visto",
+        "habría visto",
+        "habríamos visto",
+        "habríais visto",
+        "habrían visto"
+      ],
+      "irregular": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    "subjuntivo-perfecto": {
+      "forms": [
+        "haya visto",
+        "hayas visto",
+        "haya visto",
+        "hayamos visto",
+        "hayáis visto",
+        "hayan visto"
+      ],
+      "irregular": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    "subjuntivo-pluscuamperfecto": {
+      "forms": [
+        "hubiera visto",
+        "hubieras visto",
+        "hubiera visto",
+        "hubiéramos visto",
+        "hubierais visto",
+        "hubieran visto"
+      ],
+      "irregular": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ]
+    }
+  },
+  "quiz": [
+    {
+      "question": "ver の直説法現在、1人称単数（yo）は？",
+      "options": [
+        "veo",
+        "vo",
+        "ve"
+      ],
+      "correctIndex": 0,
+      "explanation": "正解は veo。ver のこの形は不規則で、規則どおりの vo にはなりません。"
+    },
+    {
+      "question": "ver の接続法現在、1人称単数（yo）は？",
+      "options": [
+        "va",
+        "vea",
+        "vean"
+      ],
+      "correctIndex": 1,
+      "explanation": "正解は vea。ver のこの形は不規則で、規則どおりの va にはなりません。"
+    },
+    {
+      "question": "ver の線過去、1人称複数（nosotros / nosotras）は？",
+      "options": [
+        "víamos",
+        "veía",
+        "veíamos"
+      ],
+      "correctIndex": 2,
+      "explanation": "正解は veíamos。ver のこの形は不規則で、規則どおりの víamos にはなりません。"
+    },
+    {
+      "question": "ver の過去分詞は？",
+      "options": [
+        "visto",
+        "vido",
+        "viendo"
+      ],
+      "correctIndex": 0,
+      "explanation": "正解は visto。ver のこの形は不規則で、規則どおりの vido にはなりません。"
+    },
+    {
+      "question": "ver の点過去、3人称単数（él / ella / usted）は？",
+      "options": [
+        "vi",
+        "vio",
+        "vieron"
+      ],
+      "correctIndex": 1,
+      "explanation": "正解は vio。ver のこの形は規則どおりです。"
+    }
+  ]
+}

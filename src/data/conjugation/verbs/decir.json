@@ -1,0 +1,349 @@
+{
+  "infinitive": "decir",
+  "gerund": "diciendo",
+  "gerundIrregular": true,
+  "participle": "dicho",
+  "participleIrregular": true,
+  "tenses": {
+    "presente": {
+      "forms": [
+        "digo",
+        "dices",
+        "dice",
+        "decimos",
+        "decís",
+        "dicen"
+      ],
+      "irregular": [
+        true,
+        true,
+        true,
+        false,
+        false,
+        true
+      ]
+    },
+    "preterito-indefinido": {
+      "forms": [
+        "dije",
+        "dijiste",
+        "dijo",
+        "dijimos",
+        "dijisteis",
+        "dijeron"
+      ],
+      "irregular": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    "preterito-imperfecto": {
+      "forms": [
+        "decía",
+        "decías",
+        "decía",
+        "decíamos",
+        "decíais",
+        "decían"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "futuro": {
+      "forms": [
+        "diré",
+        "dirás",
+        "dirá",
+        "diremos",
+        "diréis",
+        "dirán"
+      ],
+      "irregular": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    "condicional": {
+      "forms": [
+        "diría",
+        "dirías",
+        "diría",
+        "diríamos",
+        "diríais",
+        "dirían"
+      ],
+      "irregular": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    "subjuntivo-presente": {
+      "forms": [
+        "diga",
+        "digas",
+        "diga",
+        "digamos",
+        "digáis",
+        "digan"
+      ],
+      "irregular": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    "subjuntivo-imperfecto-ra": {
+      "forms": [
+        "dijera",
+        "dijeras",
+        "dijera",
+        "dijéramos",
+        "dijerais",
+        "dijeran"
+      ],
+      "irregular": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    "subjuntivo-imperfecto-se": {
+      "forms": [
+        "dijese",
+        "dijeses",
+        "dijese",
+        "dijésemos",
+        "dijeseis",
+        "dijesen"
+      ],
+      "irregular": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    "imperativo-afirmativo": {
+      "forms": [
+        null,
+        "di",
+        "diga",
+        "digamos",
+        "decid",
+        "digan"
+      ],
+      "irregular": [
+        false,
+        true,
+        true,
+        true,
+        false,
+        true
+      ]
+    },
+    "imperativo-negativo": {
+      "forms": [
+        null,
+        "no digas",
+        "no diga",
+        "no digamos",
+        "no digáis",
+        "no digan"
+      ],
+      "irregular": [
+        false,
+        true,
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    "preterito-perfecto": {
+      "forms": [
+        "he dicho",
+        "has dicho",
+        "ha dicho",
+        "hemos dicho",
+        "habéis dicho",
+        "han dicho"
+      ],
+      "irregular": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    "pluscuamperfecto": {
+      "forms": [
+        "había dicho",
+        "habías dicho",
+        "había dicho",
+        "habíamos dicho",
+        "habíais dicho",
+        "habían dicho"
+      ],
+      "irregular": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    "futuro-perfecto": {
+      "forms": [
+        "habré dicho",
+        "habrás dicho",
+        "habrá dicho",
+        "habremos dicho",
+        "habréis dicho",
+        "habrán dicho"
+      ],
+      "irregular": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    "condicional-perfecto": {
+      "forms": [
+        "habría dicho",
+        "habrías dicho",
+        "habría dicho",
+        "habríamos dicho",
+        "habríais dicho",
+        "habrían dicho"
+      ],
+      "irregular": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    "subjuntivo-perfecto": {
+      "forms": [
+        "haya dicho",
+        "hayas dicho",
+        "haya dicho",
+        "hayamos dicho",
+        "hayáis dicho",
+        "hayan dicho"
+      ],
+      "irregular": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    "subjuntivo-pluscuamperfecto": {
+      "forms": [
+        "hubiera dicho",
+        "hubieras dicho",
+        "hubiera dicho",
+        "hubiéramos dicho",
+        "hubierais dicho",
+        "hubieran dicho"
+      ],
+      "irregular": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ]
+    }
+  },
+  "quiz": [
+    {
+      "question": "decir の直説法現在、1人称単数（yo）は？",
+      "options": [
+        "digo",
+        "deco",
+        "dice"
+      ],
+      "correctIndex": 0,
+      "explanation": "正解は digo。decir のこの形は不規則で、規則どおりの deco にはなりません。"
+    },
+    {
+      "question": "decir の点過去、3人称単数（él / ella / usted）は？",
+      "options": [
+        "deció",
+        "dijo",
+        "dije"
+      ],
+      "correctIndex": 1,
+      "explanation": "正解は dijo。decir のこの形は不規則で、規則どおりの deció にはなりません。"
+    },
+    {
+      "question": "decir の未来、1人称単数（yo）は？",
+      "options": [
+        "deciré",
+        "dirá",
+        "diré"
+      ],
+      "correctIndex": 2,
+      "explanation": "正解は diré。decir のこの形は不規則で、規則どおりの deciré にはなりません。"
+    },
+    {
+      "question": "decir の接続法現在、1人称単数（yo）は？",
+      "options": [
+        "diga",
+        "deca",
+        "digan"
+      ],
+      "correctIndex": 0,
+      "explanation": "正解は diga。decir のこの形は不規則で、規則どおりの deca にはなりません。"
+    },
+    {
+      "question": "decir の肯定命令、2人称単数（tú）は？",
+      "options": [
+        "dece",
+        "di",
+        "diga"
+      ],
+      "correctIndex": 1,
+      "explanation": "正解は di。decir のこの形は不規則で、規則どおりの dece にはなりません。"
+    }
+  ]
+}

@@ -1,0 +1,43 @@
+---
+// Mapa de tiempos por orden de dificultad, con su nivel y la unidad que lo
+// enseña (enlace solo si la unidad está publicada; columna oculta mientras el
+// curso no sea visible en producción).
+import { TENSES } from '../../data/conjugation/tenses';
+import { getAllUnits, hasPage, isCourseVisible } from '../../utils/units';
+
+const courseVisible = await isCourseVisible();
+const byNumber = new Map((await getAllUnits()).map((u) => [u.data.unit, u]));
+const rows = [...TENSES].sort((a, b) => a.order - b.order);
+---
+<table class="tense-map">
+  <thead>
+    <tr>
+      <th>順</th>
+      <th>時制</th>
+      <th>スペイン語</th>
+      <th>レベル</th>
+      {courseVisible && <th>学ぶユニット</th>}
+    </tr>
+  </thead>
+  <tbody>
+    {rows.map((t) => (
+      <tr>
+        <td>{t.order}</td>
+        <td>{t.ja}</td>
+        <td lang="es">{t.es}</td>
+        <td>{t.level}</td>
+        {courseVisible && (
+          <td>
+            {t.units.map((n) => {
+              const u = byNumber.get(n);
+              if (!u) return null;
+              return hasPage(u)
+                ? <a href={u.data.url}>ユニット{n}</a>
+                : <span>ユニット{n}（準備中）</span>;
+            })}
+          </td>
+        )}
+      </tr>
+    ))}
+  </tbody>
+</table>

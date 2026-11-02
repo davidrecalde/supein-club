@@ -1,0 +1,349 @@
+{
+  "infinitive": "tener",
+  "gerund": "teniendo",
+  "gerundIrregular": false,
+  "participle": "tenido",
+  "participleIrregular": false,
+  "tenses": {
+    "presente": {
+      "forms": [
+        "tengo",
+        "tienes",
+        "tiene",
+        "tenemos",
+        "tenéis",
+        "tienen"
+      ],
+      "irregular": [
+        true,
+        true,
+        true,
+        false,
+        false,
+        true
+      ]
+    },
+    "preterito-indefinido": {
+      "forms": [
+        "tuve",
+        "tuviste",
+        "tuvo",
+        "tuvimos",
+        "tuvisteis",
+        "tuvieron"
+      ],
+      "irregular": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    "preterito-imperfecto": {
+      "forms": [
+        "tenía",
+        "tenías",
+        "tenía",
+        "teníamos",
+        "teníais",
+        "tenían"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "futuro": {
+      "forms": [
+        "tendré",
+        "tendrás",
+        "tendrá",
+        "tendremos",
+        "tendréis",
+        "tendrán"
+      ],
+      "irregular": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    "condicional": {
+      "forms": [
+        "tendría",
+        "tendrías",
+        "tendría",
+        "tendríamos",
+        "tendríais",
+        "tendrían"
+      ],
+      "irregular": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    "subjuntivo-presente": {
+      "forms": [
+        "tenga",
+        "tengas",
+        "tenga",
+        "tengamos",
+        "tengáis",
+        "tengan"
+      ],
+      "irregular": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    "subjuntivo-imperfecto-ra": {
+      "forms": [
+        "tuviera",
+        "tuvieras",
+        "tuviera",
+        "tuviéramos",
+        "tuvierais",
+        "tuvieran"
+      ],
+      "irregular": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    "subjuntivo-imperfecto-se": {
+      "forms": [
+        "tuviese",
+        "tuvieses",
+        "tuviese",
+        "tuviésemos",
+        "tuvieseis",
+        "tuviesen"
+      ],
+      "irregular": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    "imperativo-afirmativo": {
+      "forms": [
+        null,
+        "ten",
+        "tenga",
+        "tengamos",
+        "tened",
+        "tengan"
+      ],
+      "irregular": [
+        false,
+        true,
+        true,
+        true,
+        false,
+        true
+      ]
+    },
+    "imperativo-negativo": {
+      "forms": [
+        null,
+        "no tengas",
+        "no tenga",
+        "no tengamos",
+        "no tengáis",
+        "no tengan"
+      ],
+      "irregular": [
+        false,
+        true,
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    "preterito-perfecto": {
+      "forms": [
+        "he tenido",
+        "has tenido",
+        "ha tenido",
+        "hemos tenido",
+        "habéis tenido",
+        "han tenido"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "pluscuamperfecto": {
+      "forms": [
+        "había tenido",
+        "habías tenido",
+        "había tenido",
+        "habíamos tenido",
+        "habíais tenido",
+        "habían tenido"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "futuro-perfecto": {
+      "forms": [
+        "habré tenido",
+        "habrás tenido",
+        "habrá tenido",
+        "habremos tenido",
+        "habréis tenido",
+        "habrán tenido"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "condicional-perfecto": {
+      "forms": [
+        "habría tenido",
+        "habrías tenido",
+        "habría tenido",
+        "habríamos tenido",
+        "habríais tenido",
+        "habrían tenido"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "subjuntivo-perfecto": {
+      "forms": [
+        "haya tenido",
+        "hayas tenido",
+        "haya tenido",
+        "hayamos tenido",
+        "hayáis tenido",
+        "hayan tenido"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "subjuntivo-pluscuamperfecto": {
+      "forms": [
+        "hubiera tenido",
+        "hubieras tenido",
+        "hubiera tenido",
+        "hubiéramos tenido",
+        "hubierais tenido",
+        "hubieran tenido"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    }
+  },
+  "quiz": [
+    {
+      "question": "tener の直説法現在、1人称単数（yo）は？",
+      "options": [
+        "tengo",
+        "teno",
+        "tiene"
+      ],
+      "correctIndex": 0,
+      "explanation": "正解は tengo。tener のこの形は不規則で、規則どおりの teno にはなりません。"
+    },
+    {
+      "question": "tener の点過去、3人称単数（él / ella / usted）は？",
+      "options": [
+        "tenió",
+        "tuvo",
+        "tuve"
+      ],
+      "correctIndex": 1,
+      "explanation": "正解は tuvo。tener のこの形は不規則で、規則どおりの tenió にはなりません。"
+    },
+    {
+      "question": "tener の未来、1人称単数（yo）は？",
+      "options": [
+        "teneré",
+        "tendrá",
+        "tendré"
+      ],
+      "correctIndex": 2,
+      "explanation": "正解は tendré。tener のこの形は不規則で、規則どおりの teneré にはなりません。"
+    },
+    {
+      "question": "tener の接続法現在、1人称単数（yo）は？",
+      "options": [
+        "tenga",
+        "tena",
+        "tengan"
+      ],
+      "correctIndex": 0,
+      "explanation": "正解は tenga。tener のこの形は不規則で、規則どおりの tena にはなりません。"
+    },
+    {
+      "question": "tener の肯定命令、2人称単数（tú）は？",
+      "options": [
+        "tene",
+        "ten",
+        "tenga"
+      ],
+      "correctIndex": 1,
+      "explanation": "正解は ten。tener のこの形は不規則で、規則どおりの tene にはなりません。"
+    }
+  ]
+}

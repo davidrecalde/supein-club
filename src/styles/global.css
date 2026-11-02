@@ -1039,3 +1039,119 @@ html[data-variety='la'] .vocab-pair .v-es .v-tag {
   color: #6b7280;
   text-decoration: underline;
 }
+
+/* ── Conjugador (prompt 3) ── */
+.conj-search {
+  margin: 0 0 28px;
+  padding: 16px 18px;
+  border: 2px solid #002147;
+  border-radius: 12px;
+  background: #fff;
+}
+.conj-search label {
+  display: block;
+  font-weight: 700;
+  color: #002147;
+  margin-bottom: 8px;
+}
+.conj-search input {
+  width: 100%;
+  min-height: 48px;
+  padding: 0 14px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  font-size: 18px;
+}
+.conj-search-results p {
+  margin: 10px 0 0;
+  font-size: 15px;
+  color: #374151;
+}
+.conj-search-results a,
+.verb-ranking a,
+.verb-others a,
+.unit-verbs a {
+  color: #C8102E;
+  text-decoration: underline;
+}
+.verb-ranking {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 4px 20px;
+  padding-left: 2.2em;
+  list-style: decimal;
+}
+.verb-ranking li {
+  padding: 4px 0;
+}
+.verb-ranking-meaning {
+  margin-left: 8px;
+  font-size: 13px;
+  color: #6b7280;
+}
+.verb-ranking-source {
+  font-size: 13px;
+  color: #6b7280;
+}
+.verb-facts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 12px;
+  margin: 4px 0 8px;
+}
+.verb-facts li {
+  padding: 6px 12px;
+  border: 1px solid #E8E8E6;
+  border-radius: 999px;
+  background: #fff;
+  font-size: 14px;
+  color: #002147;
+}
+.verb-facts span {
+  margin-right: 6px;
+  font-size: 12px;
+  color: #6b7280;
+}
+.verb-note {
+  border-left: 3px solid #C8102E;
+  padding-left: 12px;
+}
+.verb-tense {
+  margin-bottom: 20px;
+}
+.verb-tense-title {
+  font-weight: 700;
+  color: #002147;
+  margin-bottom: 4px;
+}
+.verb-tense-title span {
+  font-weight: 400;
+  font-size: 13px;
+  color: #6b7280;
+}
+.verb-tense-level {
+  margin-left: 8px;
+  padding: 1px 8px;
+  border-radius: 999px;
+  background: #F3F4F6;
+}
+.irregular {
+  color: #C8102E;
+}
+.verb-video iframe {
+  width: 100%;
+  max-width: 360px;
+  aspect-ratio: 9 / 16;
+  border: 0;
+}
+.verb-others,
+.unit-verbs {
+  margin-top: 32px;
+}
+.verb-others h2,
+.unit-verbs h2 {
+  font-weight: 700;
+  font-size: 20px;
+  color: #002147;
+  margin-bottom: 8px;
+}

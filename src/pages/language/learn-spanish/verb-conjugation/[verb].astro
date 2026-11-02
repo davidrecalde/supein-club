@@ -1,0 +1,188 @@
+---
+import { getEntry } from 'astro:content';
+import BaseLayout from '../../../../layouts/BaseLayout.astro';
+import SEO from '../../../../components/SEO.astro';
+import Breadcrumb from '../../../../components/Breadcrumb.astro';
+import QuizCard from '../../../../components/QuizCard.astro';
+import Sources from '../../../../components/Sources.astro';
+import AuthorBox from '../../../../components/AuthorBox.astro';
+import LineBanner from '../../../../components/LineBanner.astro';
+import { CONJUGATION_URL, VERBS, verbUrl, type VerbData } from '../../../../data/conjugation';
+import { VERB_CONTENT } from '../../../../data/conjugation/content';
+import { FREQUENCY_SOURCE, RANK_BY_VERB } from '../../../../data/conjugation/ranking';
+import { NON_FINITE, PERSONS, TENSES, TENSE_BY_ID, TENSE_GROUPS, VOSOTROS_INDEX } from '../../../../data/conjugation/tenses';
+import { COURSE_URL } from '../../../../data/course';
+import { buildQuizNode } from '../../../../utils/schema';
+import { getAllUnits, hasPage, isCourseVisible } from '../../../../utils/units';
+
+export function getStaticPaths() {
+  return [...VERBS.keys()].filter((verb) => VERB_CONTENT[verb]).map((verb) => ({ params: { verb } }));
+}
+
+const { verb } = Astro.params as { verb: string };
+const data = VERBS.get(verb) as VerbData & { quiz: Array<{ question: string; options: string[]; correctIndex: number; explanation: string }> };
+const content = VERB_CONTENT[verb];
+const rank = RANK_BY_VERB.get(verb);
+const siteUrl = 'https://supein.club';
+const canonical = `${siteUrl}${verbUrl(verb)}`;
+const title = `${verb} の活用｜スペイン語動詞活用表（全時制）`;
+const description = `スペイン語の動詞 ${verb}（${rank?.meaning ?? ''}）の活用表。直説法・接続法・命令形の全時制を、不規則な形を強調して一覧にしました。例文、日本人がよく間違えるポイント、確認クイズ付き。`;
+const updated = new Date(content.updated);
+const breadcrumbs = [
+  { name: 'ホーム', url: '/' },
+  { name: 'スペイン語', url: '/language/' },
+  { name: 'コース', url: COURSE_URL },
+  { name: '動詞の活用', url: CONJUGATION_URL },
+  { name: `${verb} の活用`, url: canonical },
+];
+
+// 「この動詞を学ぶユニット」: tiempos → unidades (solo si el curso es visible; nunca enlaza a borradores).
+const courseVisible = await isCourseVisible();
+const byNumber = new Map((await getAllUnits()).map((u) => [u.data.unit, u]));
+const learnRows = [...TENSES]
+  .sort((a, b) => a.order - b.order)
+  .map((t) => ({ tense: t, units: t.units.map((n) => byNumber.get(n)).filter((u) => u !== undefined) }));
+
+const otherVerbs = [...VERBS.keys()].filter((v) => v !== verb && VERB_CONTENT[v]).sort((a, b) => (RANK_BY_VERB.get(a)?.rank ?? 99) - (RANK_BY_VERB.get(b)?.rank ?? 99));
+
+const author = (await getEntry('authors', 'david-recalde'))!;
+const authorUrl = `${siteUrl}/about-us/team/david-recalde/`;
+const learningResource = {
+  '@type': ['Article', 'LearningResource'],
+  '@id': `${canonical}#article`,
+  headline: title,
+  description,
+  url: canonical,
+  datePublished: updated.toISOString(),
+  dateModified: updated.toISOString(),
+  author: { '@type': 'Person', '@id': `${authorUrl}#person`, name: author.data.name, url: authorUrl },
+  publisher: { '@id': `${siteUrl}/#organization` },
+  inLanguage: 'ja',
+  isPartOf: { '@id': `${siteUrl}/#website` },
+  mainEntityOfPage: `${canonical}#webpage`,
+  about: { '@type': 'Thing', name: 'スペイン語' },
+  educationalLevel: content.level,
+  teaches: `${verb} の活用`,
+  learningResourceType: '活用表',
+  isAccessibleForFree: true,
+};
+const extraGraph = [learningResource, buildQuizNode(canonical, title, data.quiz)];
+const sources = [
+  { label: 'Real Academia Española『Diccionario de la lengua española』（活用表）', url: `https://dle.rae.es/${verb}` },
+  { label: 'Real Academia Española『Nueva gramática de la lengua española』' },
+  ...(rank ? [{ label: `頻度順位：${FREQUENCY_SOURCE.label}`, url: FREQUENCY_SOURCE.url }] : []),
+];
+const fmt = (d: Date) => d.toLocaleDateString('ja-JP', { year: 'numeric', month: 'long', day: 'numeric' });
+---
+<BaseLayout title={title}>
+  <SEO slot="seo" title={title} description={description} canonical={canonical} type="article" breadcrumbs={breadcrumbs} keywords={[verb, `${verb} 活用`, 'スペイン語 活用']} authorName={author.data.name} authorUrl={authorUrl} extraGraph={extraGraph} />
+
+  <article class="page-container py-10 verb-page">
+    <Breadcrumb items={breadcrumbs} />
+    <h1 class="cast-page-title"><span lang="es">{verb}</span> の活用</h1>
+    <ul class="verb-facts">
+      <li><span>意味</span>{rank?.meaning}</li>
+      <li><span>種類</span>{content.type}</li>
+      {rank && <li><span>使用頻度</span>{rank.rank}位</li>}
+      <li><span>レベル</span>{content.level}</li>
+    </ul>
+    <p class="cast-card-meta">最終更新日：<time datetime={updated.toISOString()}>{fmt(updated)}</time></p>
+
+    <div class="prose verb-body">
+      <p>{content.summary}</p>
+      {content.notes?.map((note) => <p class="verb-note">{note}</p>)}
+
+      <h2 id="table">活用表（全時制）</h2>
+      <p>
+        <strong class="irregular">赤い太字</strong>が不規則な形です。vosotros の形はスペインのみで使い、中南米では ustedes を使います（→ <a href="/language/learn-spanish/spanish-in-latin-america/">中南米のスペイン語</a>）。
+      </p>
+
+      {TENSE_GROUPS.map((group) => (
+        <>
+          <h3>{group.title}</h3>
+          {group.ids.map((id) => {
+            const meta = TENSE_BY_ID.get(id)!;
+            const t = data.tenses[id];
+            if (t.forms.every((f) => f === null)) return null;
+            return (
+              <div class="verb-tense">
+                <p class="verb-tense-title">{meta.ja} <span lang="es">（{meta.es}）</span><span class="verb-tense-level">{meta.level}</span></p>
+                <table>
+                  <tbody>
+                    {PERSONS.map((person, i) => (
+                      <tr>
+                        <td>{person}{i === VOSOTROS_INDEX && <span class="only-spain">スペインのみ</span>}</td>
+                        <td lang="es">{t.forms[i] === null ? '—' : t.irregular[i] ? <strong class="irregular">{t.forms[i]}</strong> : t.forms[i]}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            );
+          })}
+        </>
+      ))}
+
+      <h3>不定形（formas no personales）</h3>
+      <table>
+        <tbody>
+          <tr><td>{NON_FINITE.gerund.ja}（{NON_FINITE.gerund.es}）</td><td lang="es">{data.gerundIrregular ? <strong class="irregular">{data.gerund}</strong> : data.gerund}</td></tr>
+          <tr><td>{NON_FINITE.participle.ja}（{NON_FINITE.participle.es}）</td><td lang="es">{data.participleIrregular ? <strong class="irregular">{data.participle}</strong> : data.participle}</td></tr>
+        </tbody>
+      </table>
+
+      <h2 id="examples">例文</h2>
+      <ul>
+        {content.examples.map((ex) => <li><span lang="es">{ex.es}</span>（{ex.ja}）</li>)}
+      </ul>
+
+      <h2 id="mistake">日本人がよく間違える</h2>
+      <p>×<span lang="es">{content.mistake.wrong}</span> → ○<strong lang="es">{content.mistake.right}</strong></p>
+      <p>{content.mistake.note}</p>
+
+      {courseVisible && (
+        <>
+          <h2 id="units">この動詞を学ぶユニット</h2>
+          <ul>
+            {learnRows.map((row) => (
+              <li>
+                {row.tense.ja}：
+                {row.units.map((u, i) => (
+                  <>
+                    {i > 0 && '・'}
+                    {hasPage(u) ? <a href={u.data.url}>ユニット{u.data.unit}「{u.data.shortTitle}」</a> : <span>ユニット{u.data.unit}（準備中）</span>}
+                  </>
+                ))}
+              </li>
+            ))}
+          </ul>
+        </>
+      )}
+
+      {content.similar.length > 0 && (
+        <>
+          <h2 id="similar">同じように活用する動詞</h2>
+          <p>{content.similar.map((s, i) => <>{i > 0 && '、'}{VERBS.has(s) ? <a href={verbUrl(s)} lang="es">{s}</a> : <span lang="es">{s}</span>}</>)}</p>
+        </>
+      )}
+
+      {content.youtubeId && (
+        <div class="verb-video">
+          <iframe src={`https://www.youtube-nocookie.com/embed/${content.youtubeId}`} title={`${verb} の活用（動画）`} loading="lazy" allowfullscreen></iframe>
+        </div>
+      )}
+    </div>
+
+    <QuizCard quiz={data.quiz} title={`${verb} の活用クイズ`} />
+
+    <section class="verb-others">
+      <h2>ほかの動詞の活用</h2>
+      <p>{otherVerbs.map((v, i) => <>{i > 0 && '・'}<a href={verbUrl(v)} lang="es">{v}</a></>)}</p>
+      <p><a href={CONJUGATION_URL}>スペイン語 動詞の活用一覧（検索・時制マップ・頻出50動詞）へ</a></p>
+    </section>
+
+    <Sources sources={sources} />
+    <AuthorBox author={author} />
+  </article>
+  <LineBanner slim />
+</BaseLayout>

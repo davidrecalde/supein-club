@@ -1,0 +1,349 @@
+{
+  "infinitive": "ir",
+  "gerund": "yendo",
+  "gerundIrregular": true,
+  "participle": "ido",
+  "participleIrregular": false,
+  "tenses": {
+    "presente": {
+      "forms": [
+        "voy",
+        "vas",
+        "va",
+        "vamos",
+        "vais",
+        "van"
+      ],
+      "irregular": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    "preterito-indefinido": {
+      "forms": [
+        "fui",
+        "fuiste",
+        "fue",
+        "fuimos",
+        "fuisteis",
+        "fueron"
+      ],
+      "irregular": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    "preterito-imperfecto": {
+      "forms": [
+        "iba",
+        "ibas",
+        "iba",
+        "íbamos",
+        "ibais",
+        "iban"
+      ],
+      "irregular": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    "futuro": {
+      "forms": [
+        "iré",
+        "irás",
+        "irá",
+        "iremos",
+        "iréis",
+        "irán"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "condicional": {
+      "forms": [
+        "iría",
+        "irías",
+        "iría",
+        "iríamos",
+        "iríais",
+        "irían"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "subjuntivo-presente": {
+      "forms": [
+        "vaya",
+        "vayas",
+        "vaya",
+        "vayamos",
+        "vayáis",
+        "vayan"
+      ],
+      "irregular": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    "subjuntivo-imperfecto-ra": {
+      "forms": [
+        "fuera",
+        "fueras",
+        "fuera",
+        "fuéramos",
+        "fuerais",
+        "fueran"
+      ],
+      "irregular": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    "subjuntivo-imperfecto-se": {
+      "forms": [
+        "fuese",
+        "fueses",
+        "fuese",
+        "fuésemos",
+        "fueseis",
+        "fuesen"
+      ],
+      "irregular": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    "imperativo-afirmativo": {
+      "forms": [
+        null,
+        "ve",
+        "vaya",
+        "vamos",
+        "id",
+        "vayan"
+      ],
+      "irregular": [
+        false,
+        true,
+        true,
+        true,
+        false,
+        true
+      ]
+    },
+    "imperativo-negativo": {
+      "forms": [
+        null,
+        "no vayas",
+        "no vaya",
+        "no vayamos",
+        "no vayáis",
+        "no vayan"
+      ],
+      "irregular": [
+        false,
+        true,
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    "preterito-perfecto": {
+      "forms": [
+        "he ido",
+        "has ido",
+        "ha ido",
+        "hemos ido",
+        "habéis ido",
+        "han ido"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "pluscuamperfecto": {
+      "forms": [
+        "había ido",
+        "habías ido",
+        "había ido",
+        "habíamos ido",
+        "habíais ido",
+        "habían ido"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "futuro-perfecto": {
+      "forms": [
+        "habré ido",
+        "habrás ido",
+        "habrá ido",
+        "habremos ido",
+        "habréis ido",
+        "habrán ido"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "condicional-perfecto": {
+      "forms": [
+        "habría ido",
+        "habrías ido",
+        "habría ido",
+        "habríamos ido",
+        "habríais ido",
+        "habrían ido"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "subjuntivo-perfecto": {
+      "forms": [
+        "haya ido",
+        "hayas ido",
+        "haya ido",
+        "hayamos ido",
+        "hayáis ido",
+        "hayan ido"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "subjuntivo-pluscuamperfecto": {
+      "forms": [
+        "hubiera ido",
+        "hubieras ido",
+        "hubiera ido",
+        "hubiéramos ido",
+        "hubierais ido",
+        "hubieran ido"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    }
+  },
+  "quiz": [
+    {
+      "question": "ir の直説法現在、1人称単数（yo）は？",
+      "options": [
+        "voy",
+        "va",
+        "van"
+      ],
+      "correctIndex": 0,
+      "explanation": "正解は voy。ir は規則がほとんど当てはまらない動詞で、この形も覚えるしかありません。"
+    },
+    {
+      "question": "ir の点過去、3人称単数（él / ella / usted）は？",
+      "options": [
+        "fui",
+        "fue",
+        "fueron"
+      ],
+      "correctIndex": 1,
+      "explanation": "正解は fue。ir は規則がほとんど当てはまらない動詞で、この形も覚えるしかありません。"
+    },
+    {
+      "question": "ir の接続法現在、1人称単数（yo）は？",
+      "options": [
+        "vayan",
+        "vayas",
+        "vaya"
+      ],
+      "correctIndex": 2,
+      "explanation": "正解は vaya。ir は規則がほとんど当てはまらない動詞で、この形も覚えるしかありません。"
+    },
+    {
+      "question": "ir の肯定命令、2人称単数（tú）は？",
+      "options": [
+        "ve",
+        "vaya",
+        "vayan"
+      ],
+      "correctIndex": 0,
+      "explanation": "正解は ve。ir は規則がほとんど当てはまらない動詞で、この形も覚えるしかありません。"
+    },
+    {
+      "question": "ir の線過去、1人称複数（nosotros / nosotras）は？",
+      "options": [
+        "iba",
+        "íbamos",
+        "iban"
+      ],
+      "correctIndex": 1,
+      "explanation": "正解は íbamos。ir は規則がほとんど当てはまらない動詞で、この形も覚えるしかありません。"
+    }
+  ]
+}

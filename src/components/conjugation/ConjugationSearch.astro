@@ -1,0 +1,96 @@
+---
+// Buscador del conjugador: acepta infinitivo o forma conjugada (con o sin tilde).
+// Es una isla: sin JavaScript queda oculto y la página sigue completa.
+import { CONJUGATION_URL } from '../../data/conjugation';
+---
+<div class="conj-search" data-pagefind-ignore hidden>
+  <label for="conj-search-input">動詞・活用形を検索</label>
+  <input id="conj-search-input" type="search" lang="es" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="例：tener、fui、hice" data-base={CONJUGATION_URL} />
+  <div class="conj-search-results" role="status" aria-live="polite"></div>
+</div>
+
+<script>
+  import { PERSONS, PERSONS_JA, TENSE_BY_ID } from '../../data/conjugation/tenses';
+
+  type Entry = [string, string, number, 0 | 1];
+  const box = document.querySelector<HTMLElement>('.conj-search');
+  const input = document.querySelector<HTMLInputElement>('#conj-search-input');
+  const results = document.querySelector<HTMLElement>('.conj-search-results');
+
+  if (box && input && results) {
+    box.hidden = false;
+    const base = input.dataset.base ?? '';
+    let index: Record<string, Entry[]> | null = null;
+    let plain: Map<string, string[]> | null = null;
+    const strip = (s: string) => s.replace(/[áéíóú]/g, (c) => ({ á: 'a', é: 'e', í: 'i', ó: 'o', ú: 'u' })[c] ?? c);
+
+    async function load() {
+      if (index) return;
+      index = (await import('../../data/conjugation/search-index.json')).default as Record<string, Entry[]>;
+      plain = new Map();
+      for (const form of Object.keys(index)) {
+        const key = strip(form);
+        plain.set(key, [...(plain.get(key) ?? []), form]);
+      }
+    }
+
+    function label(tense: string, person: number): string {
+      if (tense === 'infinitivo') return '動詞の原形';
+      if (tense === 'gerundio') return '現在分詞';
+      if (tense === 'participio') return '過去分詞';
+      const ja = TENSE_BY_ID.get(tense)?.ja ?? tense;
+      return `${ja}、${PERSONS_JA[person]}（${PERSONS[person]}）`;
+    }
+
+    function render(query: string) {
+      results!.replaceChildren();
+      const q = query.trim().toLowerCase();
+      if (!q || !index || !plain) return;
+      const forms = index[q] ? [q] : (plain.get(strip(q)) ?? []);
+      if (forms.length === 0) {
+        results!.textContent = 'この活用表に、その形はまだありません。';
+        return;
+      }
+      for (const form of forms) {
+        // 同じ時制・人称の動詞はまとめて「fui = ir / ser の点過去、1人称単数」の形にする。
+        const groups = new Map<string, Entry[]>();
+        for (const e of index[form]) {
+          const key = `${e[1]}|${e[2]}`;
+          groups.set(key, [...(groups.get(key) ?? []), e]);
+        }
+        for (const entries of groups.values()) {
+          const p = document.createElement('p');
+          if (entries[0][1] === 'infinitivo') {
+            const a = document.createElement('a');
+            a.href = entries[0][3] ? `${base}${entries[0][0]}/` : '#models';
+            a.textContent = `${entries[0][0]} の活用表（全時制）を見る`;
+            p.append(a);
+            results!.append(p);
+            continue;
+          }
+          const verbs = [...entries].sort((a, b) => a[0].localeCompare(b[0]));
+          p.append(`${form} = `);
+          verbs.forEach((e, i) => {
+            if (i > 0) p.append(' / ');
+            const a = document.createElement('a');
+            a.href = e[3] ? `${base}${e[0]}/` : '#models';
+            a.textContent = e[0];
+            p.append(a);
+          });
+          p.append(` の${label(entries[0][1], entries[0][2])}`);
+          results!.append(p);
+        }
+      }
+    }
+
+    let timer: number | undefined;
+    input.addEventListener('focus', () => void load(), { once: true });
+    input.addEventListener('input', () => {
+      window.clearTimeout(timer);
+      timer = window.setTimeout(async () => {
+        await load();
+        render(input.value);
+      }, 120);
+    });
+  }
+</script>

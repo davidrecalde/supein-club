@@ -1,0 +1,349 @@
+{
+  "infinitive": "haber",
+  "gerund": "habiendo",
+  "gerundIrregular": false,
+  "participle": "habido",
+  "participleIrregular": false,
+  "tenses": {
+    "presente": {
+      "forms": [
+        "he",
+        "has",
+        "ha",
+        "hemos",
+        "habéis",
+        "han"
+      ],
+      "irregular": [
+        true,
+        true,
+        true,
+        true,
+        false,
+        true
+      ]
+    },
+    "preterito-indefinido": {
+      "forms": [
+        "hube",
+        "hubiste",
+        "hubo",
+        "hubimos",
+        "hubisteis",
+        "hubieron"
+      ],
+      "irregular": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    "preterito-imperfecto": {
+      "forms": [
+        "había",
+        "habías",
+        "había",
+        "habíamos",
+        "habíais",
+        "habían"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "futuro": {
+      "forms": [
+        "habré",
+        "habrás",
+        "habrá",
+        "habremos",
+        "habréis",
+        "habrán"
+      ],
+      "irregular": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    "condicional": {
+      "forms": [
+        "habría",
+        "habrías",
+        "habría",
+        "habríamos",
+        "habríais",
+        "habrían"
+      ],
+      "irregular": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    "subjuntivo-presente": {
+      "forms": [
+        "haya",
+        "hayas",
+        "haya",
+        "hayamos",
+        "hayáis",
+        "hayan"
+      ],
+      "irregular": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    "subjuntivo-imperfecto-ra": {
+      "forms": [
+        "hubiera",
+        "hubieras",
+        "hubiera",
+        "hubiéramos",
+        "hubierais",
+        "hubieran"
+      ],
+      "irregular": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    "subjuntivo-imperfecto-se": {
+      "forms": [
+        "hubiese",
+        "hubieses",
+        "hubiese",
+        "hubiésemos",
+        "hubieseis",
+        "hubiesen"
+      ],
+      "irregular": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    "imperativo-afirmativo": {
+      "forms": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "imperativo-negativo": {
+      "forms": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "preterito-perfecto": {
+      "forms": [
+        "he habido",
+        "has habido",
+        "ha habido",
+        "hemos habido",
+        "habéis habido",
+        "han habido"
+      ],
+      "irregular": [
+        true,
+        true,
+        true,
+        true,
+        false,
+        true
+      ]
+    },
+    "pluscuamperfecto": {
+      "forms": [
+        "había habido",
+        "habías habido",
+        "había habido",
+        "habíamos habido",
+        "habíais habido",
+        "habían habido"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "futuro-perfecto": {
+      "forms": [
+        "habré habido",
+        "habrás habido",
+        "habrá habido",
+        "habremos habido",
+        "habréis habido",
+        "habrán habido"
+      ],
+      "irregular": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    "condicional-perfecto": {
+      "forms": [
+        "habría habido",
+        "habrías habido",
+        "habría habido",
+        "habríamos habido",
+        "habríais habido",
+        "habrían habido"
+      ],
+      "irregular": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    "subjuntivo-perfecto": {
+      "forms": [
+        "haya habido",
+        "hayas habido",
+        "haya habido",
+        "hayamos habido",
+        "hayáis habido",
+        "hayan habido"
+      ],
+      "irregular": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    "subjuntivo-pluscuamperfecto": {
+      "forms": [
+        "hubiera habido",
+        "hubieras habido",
+        "hubiera habido",
+        "hubiéramos habido",
+        "hubierais habido",
+        "hubieran habido"
+      ],
+      "irregular": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ]
+    }
+  },
+  "quiz": [
+    {
+      "question": "haber の直説法現在、1人称単数（yo）は？",
+      "options": [
+        "he",
+        "habo",
+        "ha"
+      ],
+      "correctIndex": 0,
+      "explanation": "正解は he。haber のこの形は不規則で、規則どおりの habo にはなりません。"
+    },
+    {
+      "question": "haber の点過去、3人称単数（él / ella / usted）は？",
+      "options": [
+        "habió",
+        "hubo",
+        "hube"
+      ],
+      "correctIndex": 1,
+      "explanation": "正解は hubo。haber のこの形は不規則で、規則どおりの habió にはなりません。"
+    },
+    {
+      "question": "haber の未来、1人称単数（yo）は？",
+      "options": [
+        "haberé",
+        "habrá",
+        "habré"
+      ],
+      "correctIndex": 2,
+      "explanation": "正解は habré。haber のこの形は不規則で、規則どおりの haberé にはなりません。"
+    },
+    {
+      "question": "haber の接続法現在、1人称単数（yo）は？",
+      "options": [
+        "haya",
+        "haba",
+        "hayan"
+      ],
+      "correctIndex": 0,
+      "explanation": "正解は haya。haber のこの形は不規則で、規則どおりの haba にはなりません。"
+    },
+    {
+      "question": "haber の直説法現在、1人称複数（nosotros / nosotras）は？",
+      "options": [
+        "habemos",
+        "hemos",
+        "he"
+      ],
+      "correctIndex": 1,
+      "explanation": "正解は hemos。haber のこの形は不規則で、規則どおりの habemos にはなりません。"
+    }
+  ]
+}

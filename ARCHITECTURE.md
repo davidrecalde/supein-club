@@ -145,6 +145,11 @@ Desde el 2026-09-15, toda creación de artículo de food pregunta explícitament
 > - Preferencias en localStorage (`supein.prefs.v1`, `src/utils/coursePrefs.ts`): variedad, ritmo, ejemplos y audio. `applyPrefs()` actúa sobre `html[data-variety]`, las filas de vosotros, `VocabList` (campo `la`) y los bloques `<Examples>`.
 > - Páginas nuevas, generadas solo cuando el curso es visible (`[...index].astro` + `getStaticPaths` condicional): /language/cast/ (ItemList, sin Person), /language/learn-spanish/welcome/ (noindex) y /language/about-this-course/ (Article de David Recalde).
 > - `AiAudioLabel` (「AI音声（ネイティブ監修済み）」) queda preparado para el reproductor del prompt 7.
+>
+> **Prompt 3 (2026-11-02), conjugador (primer lote, 10 verbos):**
+> - Motor de reglas en `scripts/conjugation/engine.ts`, tabla manual en `specs.ts` y tests con `node --test`. El generador (`npm run conjugation:generate`) escribe `src/data/conjugation/verbs/*.json`, `models.json` y `search-index.json`, además del CSV de irregulares en `docs/language/review/`.
+> - Páginas de verbo en `src/pages/language/learn-spanish/verb-conjugation/[verb].astro` (LearningResource + Quiz; 16 tiempos con los irregulares resaltados). La página central sigue siendo el artículo `verb-conjugation.mdx`, con los componentes de `src/components/conjugation/` (buscador como isla con el índice cargado bajo demanda, tablas modelo, mapa de tiempos, 50 verbos).
+> - Las unidades enlazan a las páginas de los verbos de su campo `verbs` (bloque 「このユニットの動詞」 en `UnitLayout`).
 
 | URL real | Estado | Keyword principal | Volumen (bucket) | Fuente del volumen |
 |---|---|---|---|---|

@@ -1,0 +1,104 @@
+{
+  "hablar": {
+    "presente": [
+      "hablo",
+      "hablas",
+      "habla",
+      "hablamos",
+      "habláis",
+      "hablan"
+    ],
+    "preterito-indefinido": [
+      "hablé",
+      "hablaste",
+      "habló",
+      "hablamos",
+      "hablasteis",
+      "hablaron"
+    ],
+    "preterito-imperfecto": [
+      "hablaba",
+      "hablabas",
+      "hablaba",
+      "hablábamos",
+      "hablabais",
+      "hablaban"
+    ],
+    "futuro": [
+      "hablaré",
+      "hablarás",
+      "hablará",
+      "hablaremos",
+      "hablaréis",
+      "hablarán"
+    ]
+  },
+  "comer": {
+    "presente": [
+      "como",
+      "comes",
+      "come",
+      "comemos",
+      "coméis",
+      "comen"
+    ],
+    "preterito-indefinido": [
+      "comí",
+      "comiste",
+      "comió",
+      "comimos",
+      "comisteis",
+      "comieron"
+    ],
+    "preterito-imperfecto": [
+      "comía",
+      "comías",
+      "comía",
+      "comíamos",
+      "comíais",
+      "comían"
+    ],
+    "futuro": [
+      "comeré",
+      "comerás",
+      "comerá",
+      "comeremos",
+      "comeréis",
+      "comerán"
+    ]
+  },
+  "vivir": {
+    "presente": [
+      "vivo",
+      "vives",
+      "vive",
+      "vivimos",
+      "vivís",
+      "viven"
+    ],
+    "preterito-indefinido": [
+      "viví",
+      "viviste",
+      "vivió",
+      "vivimos",
+      "vivisteis",
+      "vivieron"
+    ],
+    "preterito-imperfecto": [
+      "vivía",
+      "vivías",
+      "vivía",
+      "vivíamos",
+      "vivíais",
+      "vivían"
+    ],
+    "futuro": [
+      "viviré",
+      "vivirás",
+      "vivirá",
+      "viviremos",
+      "viviréis",
+      "vivirán"
+    ]
+  }
+}
