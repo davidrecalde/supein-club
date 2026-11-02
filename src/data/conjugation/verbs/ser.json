@@ -292,6 +292,24 @@
         false,
         false
       ]
+    },
+    "subjuntivo-pluscuamperfecto-se": {
+      "forms": [
+        "hubiese sido",
+        "hubieses sido",
+        "hubiese sido",
+        "hubiésemos sido",
+        "hubieseis sido",
+        "hubiesen sido"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
     }
   },
   "quiz": [

@@ -1,6 +1,6 @@
 // Contenido editorial de cada página de verbo (lo que no sale del motor de
-// reglas). Español peninsular; requiere revisión nativa (español y japonés)
-// antes de publicar.
+// reglas). Español peninsular. Revisado por David (2026-11-02) para el
+// primer lote; los verbos nuevos necesitan revisión nativa antes de publicar.
 
 export interface VerbContent {
   type: string;
@@ -42,7 +42,11 @@ export const VERB_CONTENT: Record<string, VerbContent> = {
     ],
     mistake: { wrong: 'Hay los libros en la mesa.', right: 'Los libros están en la mesa.', note: 'hay は不特定のもの（un libro, libros）があることを言うときに使います。特定のもの（los libros）がどこにあるかを言うときは estar を使います。' },
     similar: [],
-    notes: ['存在を表す「〜がある」の意味では、現在形は hay を使います（Hay un bar…）。', '命令形はほとんど使わないため、表には載せていません。'],
+    notes: [
+      '存在を表す「〜がある」の意味では、現在形は hay を使います（Hay un bar…）。',
+      '「〜がある」の意味の haber は、どの時制でも3人称単数の形だけを使います（Hubo muchas personas. ×Hubieron muchas personas.）。表の he habido などの人称形は、この意味では使いません。',
+      '命令形はほとんど使わないため、表には載せていません。',
+    ],
     updated: '2026-11-02',
   },
   estar: {
@@ -56,6 +60,7 @@ export const VERB_CONTENT: Record<string, VerbContent> = {
     ],
     mistake: { wrong: 'Esta en casa.', right: 'Está en casa.', note: 'アクセント記号のない esta は「この」という意味の指示詞になります。estar の3人称単数は必ず está と書きます。' },
     similar: [],
+    notes: ['tú に対する肯定命令は、実際には再帰形の estate を使います（Estate tranquilo.「落ち着いて」）。'],
     updated: '2026-11-02',
   },
   tener: {

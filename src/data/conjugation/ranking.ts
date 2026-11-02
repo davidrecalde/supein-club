@@ -1,7 +1,6 @@
 // Los 50 verbos más frecuentes del español, en orden (lista facilitada por
-// David Recalde el 2026-11-02). Fuente indicada: RAE, CORPES XXI.
-// Pendiente de confirmar que el orden procede del diccionario de frecuencias
-// del CORPES antes de citarlo como tal (ver PR del conjugador).
+// David Recalde el 2026-11-02). Fuente: RAE, CORPES XXI, confirmada por David
+// el mismo día en la revisión del primer lote del conjugador.
 export const FREQUENCY_SOURCE = {
   label: 'Real Academia Española, CORPES XXI（21世紀スペイン語コーパス）',
   url: 'https://www.rae.es/banco-de-datos/corpes-xxi',

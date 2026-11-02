@@ -38,6 +38,7 @@ import { CONJUGATION_URL } from '../../data/conjugation';
       if (tense === 'infinitivo') return '動詞の原形';
       if (tense === 'gerundio') return '現在分詞';
       if (tense === 'participio') return '過去分詞';
+      if (tense === 'impersonal') return '直説法現在の無人称形（「〜がある」）';
       const ja = TENSE_BY_ID.get(tense)?.ja ?? tense;
       return `${ja}、${PERSONS_JA[person]}（${PERSONS[person]}）`;
     }

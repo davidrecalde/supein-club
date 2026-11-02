@@ -28,9 +28,10 @@ export const TENSES: TenseMeta[] = [
   { id: 'subjuntivo-imperfecto-ra', ja: '接続法過去（-ra形）', es: 'pretérito imperfecto de subjuntivo (-ra)', level: 'B2', order: 11, units: [37], mood: 'subjuntivo' },
   { id: 'subjuntivo-imperfecto-se', ja: '接続法過去（-se形）', es: 'pretérito imperfecto de subjuntivo (-se)', level: 'B2', order: 12, units: [37], mood: 'subjuntivo' },
   { id: 'subjuntivo-perfecto', ja: '接続法現在完了', es: 'pretérito perfecto de subjuntivo', level: 'B2', order: 13, units: [39], mood: 'subjuntivo' },
-  { id: 'subjuntivo-pluscuamperfecto', ja: '接続法過去完了', es: 'pretérito pluscuamperfecto de subjuntivo', level: 'B2', order: 14, units: [39], mood: 'subjuntivo' },
-  { id: 'futuro-perfecto', ja: '未来完了', es: 'futuro perfecto', level: 'B2', order: 15, units: [42], mood: 'compuesto' },
-  { id: 'condicional-perfecto', ja: '過去未来完了', es: 'condicional perfecto', level: 'B2', order: 16, units: [42], mood: 'compuesto' },
+  { id: 'subjuntivo-pluscuamperfecto', ja: '接続法過去完了（-ra形）', es: 'pretérito pluscuamperfecto de subjuntivo (-ra)', level: 'B2', order: 14, units: [39], mood: 'subjuntivo' },
+  { id: 'subjuntivo-pluscuamperfecto-se', ja: '接続法過去完了（-se形）', es: 'pretérito pluscuamperfecto de subjuntivo (-se)', level: 'B2', order: 15, units: [39], mood: 'subjuntivo' },
+  { id: 'futuro-perfecto', ja: '未来完了', es: 'futuro perfecto', level: 'B2', order: 16, units: [42], mood: 'compuesto' },
+  { id: 'condicional-perfecto', ja: '過去未来完了', es: 'condicional perfecto', level: 'B2', order: 17, units: [42], mood: 'compuesto' },
 ];
 
 export const TENSE_BY_ID = new Map(TENSES.map((t) => [t.id, t]));
@@ -39,7 +40,7 @@ export const TENSE_BY_ID = new Map(TENSES.map((t) => [t.id, t]));
 export const TENSE_GROUPS: Array<{ title: string; ids: string[] }> = [
   { title: '直説法（indicativo）', ids: ['presente', 'preterito-indefinido', 'preterito-imperfecto', 'futuro', 'condicional'] },
   { title: '完了形（tiempos compuestos）', ids: ['preterito-perfecto', 'pluscuamperfecto', 'futuro-perfecto', 'condicional-perfecto'] },
-  { title: '接続法（subjuntivo）', ids: ['subjuntivo-presente', 'subjuntivo-imperfecto-ra', 'subjuntivo-imperfecto-se', 'subjuntivo-perfecto', 'subjuntivo-pluscuamperfecto'] },
+  { title: '接続法（subjuntivo）', ids: ['subjuntivo-presente', 'subjuntivo-imperfecto-ra', 'subjuntivo-imperfecto-se', 'subjuntivo-perfecto', 'subjuntivo-pluscuamperfecto', 'subjuntivo-pluscuamperfecto-se'] },
   { title: '命令形（imperativo）', ids: ['imperativo-afirmativo', 'imperativo-negativo'] },
 ];
 

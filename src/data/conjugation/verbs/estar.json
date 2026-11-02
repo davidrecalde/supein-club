@@ -292,6 +292,24 @@
         false,
         false
       ]
+    },
+    "subjuntivo-pluscuamperfecto-se": {
+      "forms": [
+        "hubiese estado",
+        "hubieses estado",
+        "hubiese estado",
+        "hubiésemos estado",
+        "hubieseis estado",
+        "hubiesen estado"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
     }
   },
   "quiz": [

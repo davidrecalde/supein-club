@@ -69,6 +69,7 @@ const learningResource = {
 const extraGraph = [learningResource, buildQuizNode(canonical, title, data.quiz)];
 const sources = [
   { label: 'Real Academia Española『Diccionario de la lengua española』（活用表）', url: `https://dle.rae.es/${verb}` },
+  { label: 'Real Academia Española『Diccionario del estudiante』動詞の活用モデル', url: 'https://www.rae.es/diccionario-estudiante/docs/conjugaciones-verbales.pdf' },
   { label: 'Real Academia Española『Nueva gramática de la lengua española』' },
   ...(rank ? [{ label: `頻度順位：${FREQUENCY_SOURCE.label}`, url: FREQUENCY_SOURCE.url }] : []),
 ];

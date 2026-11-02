@@ -292,6 +292,24 @@
         false,
         false
       ]
+    },
+    "subjuntivo-pluscuamperfecto-se": {
+      "forms": [
+        "hubiese ido",
+        "hubieses ido",
+        "hubiese ido",
+        "hubiésemos ido",
+        "hubieseis ido",
+        "hubiesen ido"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
     }
   },
   "quiz": [

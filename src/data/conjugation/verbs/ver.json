@@ -292,6 +292,24 @@
         true,
         true
       ]
+    },
+    "subjuntivo-pluscuamperfecto-se": {
+      "forms": [
+        "hubiese visto",
+        "hubieses visto",
+        "hubiese visto",
+        "hubiésemos visto",
+        "hubieseis visto",
+        "hubiesen visto"
+      ],
+      "irregular": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ]
     }
   },
   "quiz": [

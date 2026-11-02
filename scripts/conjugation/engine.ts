@@ -37,6 +37,7 @@ export const COMPOUND_TENSES = {
   'condicional-perfecto': 'condicional',
   'subjuntivo-perfecto': 'subjuntivo-presente',
   'subjuntivo-pluscuamperfecto': 'subjuntivo-imperfecto-ra',
+  'subjuntivo-pluscuamperfecto-se': 'subjuntivo-imperfecto-se',
 } as const;
 
 export type SimpleTense = (typeof SIMPLE_TENSES)[number];

@@ -34,6 +34,8 @@ test('tiempos compuestos con haber', () => {
   assert.equal(forms('ver', 'condicional-perfecto')[3], 'habríamos visto');
   assert.equal(forms('ser', 'subjuntivo-perfecto')[0], 'haya sido');
   assert.equal(forms('tener', 'subjuntivo-pluscuamperfecto')[5], 'hubieran tenido');
+  assert.equal(forms('hacer', 'subjuntivo-pluscuamperfecto-se')[3], 'hubiésemos hecho');
+  assert.equal(forms('ver', 'subjuntivo-pluscuamperfecto-se')[0], 'hubiese visto');
 });
 
 test('los 10 primeros verbos: formas clave', () => {

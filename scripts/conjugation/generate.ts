@@ -4,7 +4,7 @@
 //   src/data/conjugation/search-index.json    (buscador de la página central)
 //   docs/language/review/conjugacion-irregulares.csv (revisión nativa contra el DLE)
 // Uso: node scripts/conjugation/generate.ts
-import { mkdirSync, writeFileSync } from 'node:fs';
+import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { conjugate, regularOf, PERSONS, SIMPLE_TENSES, type Conjugation, type TenseId } from './engine.ts';
 import { MODEL_SPECS, VERB_SPECS } from './specs.ts';
 import { PERSONS_JA, TENSE_BY_ID } from '../../src/data/conjugation/tenses.ts';
@@ -113,20 +113,77 @@ for (const spec of [...VERB_SPECS, ...MODEL_SPECS]) {
     c.tenses[tense].forEach((form, person) => form && add(form, [c.infinitive, tense, person, hasPage]));
   }
 }
+// hay: forma impersonal de haber («〜がある»), fuera del paradigma personal.
+add('hay', ['haber', 'impersonal', -1, pages.has('haber') ? 1 : 0]);
 writeFileSync(`${DATA}/search-index.json`, JSON.stringify(index) + '\n');
 
 // CSV de formas irregulares para la revisión nativa (contra el DLE de la RAE).
-const csv = (cells: Array<string | number>) => cells.map((c) => `"${String(c).replace(/"/g, '""')}"`).join(',');
-const rows = [csv(['verbo', 'tiempo', 'persona', 'forma', 'forma_regular_esperada', 'revisado_DLE', 'comentario'])];
+// Se regenera conservando la revisión ya hecha: si una fila (verbo, tiempo,
+// persona) mantiene la misma forma, conserva sus columnas de revisión; si la
+// forma cambia, la revisión se vacía y vuelve a quedar pendiente. Las filas
+// añadidas por el revisor (hay, siendo…) se conservan al final de su verbo.
+const CSV_PATH = 'docs/language/review/conjugacion-irregulares.csv';
+const HEADER = ['verbo', 'tiempo', 'persona', 'forma', 'forma_regular_esperada', 'revisado_DLE', 'comentario', 'estado_revision', 'observaciones_revision', 'fuente_revision'];
+const REVIEW_COLUMNS = HEADER.slice(5);
+
+function parseCsv(text: string): string[][] {
+  const out: string[][] = [];
+  let row: string[] = [];
+  let cell = '';
+  let quoted = false;
+  for (let i = 0; i < text.length; i++) {
+    const ch = text[i];
+    if (quoted) {
+      if (ch === '"' && text[i + 1] === '"') { cell += '"'; i++; }
+      else if (ch === '"') quoted = false;
+      else cell += ch;
+    } else if (ch === '"') quoted = true;
+    else if (ch === ',') { row.push(cell); cell = ''; }
+    else if (ch === '\n' || ch === '\r') {
+      if (ch === '\r' && text[i + 1] === '\n') i++;
+      row.push(cell); out.push(row); row = []; cell = '';
+    } else cell += ch;
+  }
+  if (cell || row.length) { row.push(cell); out.push(row); }
+  return out;
+}
+
+type CsvRow = Record<string, string>;
+const keyOf = (r: CsvRow) => `${r.verbo}|${r.tiempo}|${r.persona}`;
+const previous: CsvRow[] = existsSync(CSV_PATH)
+  ? (() => {
+      const [head, ...body] = parseCsv(readFileSync(CSV_PATH, 'utf8').replace(/^﻿/, ''));
+      return body.filter((cells) => cells.some((c) => c)).map((cells) => Object.fromEntries(head.map((h, i) => [h, cells[i] ?? ''])));
+    })()
+  : [];
+const previousByKey = new Map(previous.map((r) => [keyOf(r), r]));
+
+const generated: CsvRow[] = [];
+const push = (verbo: string, tiempo: string, persona: string, forma: string, regular: string) =>
+  generated.push({ verbo, tiempo, persona, forma, forma_regular_esperada: regular });
 for (const v of verbs) {
-  if (v.gerundIrregular) rows.push(csv([v.infinitive, 'gerundio', '', v.gerund, v.regular.gerund, '', '']));
-  if (v.participleIrregular) rows.push(csv([v.infinitive, 'participio', '', v.participle, v.regular.participle, '', '']));
+  if (v.gerundIrregular) push(v.infinitive, 'gerundio', '', v.gerund, v.regular.gerund);
+  if (v.participleIrregular) push(v.infinitive, 'participio', '', v.participle, v.regular.participle);
   for (const [tense, { forms, irregular }] of Object.entries(v.tenses)) {
     forms.forEach((form, i) => {
-      if (irregular[i]) rows.push(csv([v.infinitive, tense, PERSONS[i], form ?? '', v.regular.tenses[tense as TenseId][i] ?? '', '', '']));
+      if (irregular[i]) push(v.infinitive, tense, PERSONS[i], form ?? '', v.regular.tenses[tense as TenseId][i] ?? '');
     });
   }
 }
-writeFileSync('docs/language/review/conjugacion-irregulares.csv', '﻿' + rows.join('\r\n') + '\r\n');
+const generatedKeys = new Set(generated.map(keyOf));
+const merged: CsvRow[] = [];
+for (const v of verbs) {
+  for (const row of generated.filter((r) => r.verbo === v.infinitive)) {
+    const old = previousByKey.get(keyOf(row));
+    const review = old && old.forma === row.forma ? old : {};
+    merged.push({ ...row, ...Object.fromEntries(REVIEW_COLUMNS.map((c) => [c, review[c as keyof typeof review] ?? ''])) });
+  }
+  merged.push(...previous.filter((r) => r.verbo === v.infinitive && !generatedKeys.has(keyOf(r))));
+}
 
-console.log(`verbos: ${verbs.length} | formas en el índice: ${Object.keys(index).length} | filas irregulares en el CSV: ${rows.length - 1}`);
+const csvCell = (c: string) => (/[",\r\n]/.test(c) ? `"${c.replace(/"/g, '""')}"` : c);
+const lines = [HEADER.join(','), ...merged.map((r) => HEADER.map((h) => csvCell(r[h] ?? '')).join(','))];
+writeFileSync(CSV_PATH, '﻿' + lines.join('\r\n') + '\r\n');
+const pending = merged.filter((r) => !r.estado_revision).length;
+
+console.log(`verbos: ${verbs.length} | formas en el índice: ${Object.keys(index).length} | filas en el CSV: ${merged.length} | pendientes de revisión: ${pending}`);

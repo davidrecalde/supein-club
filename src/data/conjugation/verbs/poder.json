@@ -292,6 +292,24 @@
         false,
         false
       ]
+    },
+    "subjuntivo-pluscuamperfecto-se": {
+      "forms": [
+        "hubiese podido",
+        "hubieses podido",
+        "hubiese podido",
+        "hubiésemos podido",
+        "hubieseis podido",
+        "hubiesen podido"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
     }
   },
   "quiz": [
