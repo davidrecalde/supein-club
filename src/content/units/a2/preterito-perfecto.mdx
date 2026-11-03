@@ -5,89 +5,270 @@ levelName: "Plataforma"
 slug: "preterito-perfecto"
 url: "/language/learn-spanish/a2/preterito-perfecto/"
 existing: false
-title: "現在完了"
+title: "スペイン語の現在完了（pretérito perfecto）｜haber + 過去分詞の使い方"
 shortTitle: "現在完了"
-titleEs: "pretérito perfecto"
-grammar: ["haber + participio","participios irregulares"]
-tenses: []
-functions: []
-canDo: []
-vocabulary: []
-verbs: ["haber"]
+titleEs: "Pretérito perfecto"
+description: "スペイン語の現在完了（pretérito perfecto）を一から解説。haber + 過去分詞の作り方、hecho・dicho・visto などの不規則な過去分詞、「今日〜した」「〜したことがある」の使い方と点過去との違いを、日本人が間違えやすい点と練習問題つきで学べます。"
+grammar: ["pretérito perfecto", "participio regular e irregular", "ya / todavía no / alguna vez / nunca"]
+tenses: ["pretérito perfecto"]
+functions: ["今日・今週したことを言う", "経験を言う・たずねる"]
+canDo:
+  - "今日や今週したことを言える"
+  - "「〜したことがある／ない」と、経験を話したりたずねたりできる"
+  - "ya と todavía no を使って、済んだことと、まだのことを言える"
+vocabulary:
+  # rank = «Rango frec.» del diccionario de frecuencias del CORPES XXI (RAE). Lo escribe
+  # npm run vocab:rank -- --write; lo que no es lema del diccionario va sin rank, al final.
+  - { es: "hoy", ja: "今日", rank: 93, example: "Hoy Kenta ha tenido tres reuniones." }
+  - { es: "esta semana", ja: "今週", example: "Esta semana he trabajado mucho." }
+  - { es: "ya", ja: "もう・すでに", rank: 57, example: "Ya he terminado el informe." }
+  - { es: "todavía no", ja: "まだ〜ない", example: "Todavía no he comido." }
+  - { es: "alguna vez", ja: "（今までに）一度でも", example: "¿Has estado alguna vez en Sevilla?" }
+  - { es: "probar", ja: "試す・味見する", rank: 1514, example: "¿Has probado el jamón ibérico?" }
+  - { es: "terminar", ja: "終える・終わる", rank: 335, example: "La reunión ha terminado a las doce." }
+  - { es: "llegar", ja: "着く", rank: 68, example: "Kenta ha llegado a Valencia esta mañana." }
+  - { es: "olvidar", ja: "忘れる", rank: 1092, example: "He olvidado el pasaporte en el hotel." }
+  - { es: "perder", ja: "なくす・乗り遅れる", rank: 266, example: "Mina nunca ha perdido un tren." }
+  - { es: "la reunión", ja: "会議", rank: 549, example: "Hoy he tenido una reunión con el cliente." }
+  - { es: "el correo", ja: "メール・郵便", rank: 1801, example: "¿Has leído mi correo?" }
+  - { es: "el informe", ja: "報告書", rank: 525, example: "Todavía no he escrito el informe." }
+  - { es: "la experiencia", ja: "経験", rank: 346, example: "Ha sido una experiencia muy bonita." }
+verbs: ["haber", "hacer", "ver", "decir"]
 duration: 40
 prev: 12
 next: 14
-related: [12,14,24]
-cast: ["mina","kenta"]
-audio: []
+related: [12, 14, 24]
+cast: ["mina", "kenta"]
+audio:
+  - "Esta mañana he tenido una reunión y he visitado la fábrica."
+  - "¿Has estado alguna vez en Sevilla?"
+  - "No, nunca he estado en Sevilla."
+  - "¿Ya has comido? No, todavía no he comido."
+  - "Ayer visité la fábrica. Hoy he escrito el informe."
+  - "cansado"
 youtubeId: ""
-quiz: []
 draft: true
 updated: "2026-11-02"
+quiz:
+  - question: "「私は今日パエリアを食べた」（スペインの用法）。正しいのは？"
+    options: ["Hoy comí paella.", "Hoy he comido paella.", "Hoy he comida paella."]
+    correctIndex: 1
+    explanation: "スペインでは hoy など「今日の中」の出来事に現在完了を使います：he comido。過去分詞は主語に合わせて変化しません。"
+  - question: "hacer の過去分詞は？"
+    options: ["hacido", "hecho", "haciendo"]
+    correctIndex: 1
+    explanation: "hacer の過去分詞は不規則で hecho。haciendo は現在分詞です。"
+  - question: "ver の過去分詞は？"
+    options: ["visto", "vido", "veído"]
+    correctIndex: 0
+    explanation: "ver の過去分詞は visto です。"
+  - question: "escribir の過去分詞は？"
+    options: ["escribido", "escrito", "escribiendo"]
+    correctIndex: 1
+    explanation: "escribir の過去分詞は escrito。abrir（abierto）、volver（vuelto）なども不規則です。"
+  - question: "haber の現在形、1人称複数（nosotros）は？"
+    options: ["habemos", "hemos", "han"]
+    correctIndex: 1
+    explanation: "現在完了の助動詞は he, has, ha, hemos, habéis, han。habemos は今は使いません。"
+  - question: "「セビリアに行ったことある？」。正しいのは？"
+    options: ["¿Estuviste alguna vez en Sevilla?", "¿Has estado alguna vez en Sevilla?", "¿Estás alguna vez en Sevilla?"]
+    correctIndex: 1
+    explanation: "今までの経験をたずねるときは、スペインでは現在完了：¿Has estado alguna vez…?"
+  - question: "「もう報告書を書いた」。正しい語順は？"
+    options: ["He ya escrito el informe.", "Ya he escrito el informe.", "He escrito ya el informe."]
+    correctIndex: 1
+    explanation: "haber と過去分詞の間には何も入れません。ya はふつう前に置きます：Ya he escrito…"
+  - question: "「昨日工場を見学した」（スペインの用法）。正しいのは？"
+    options: ["Ayer he visitado la fábrica.", "Ayer visité la fábrica.", "Ayer visitaba la fábrica."]
+    correctIndex: 1
+    explanation: "ayer（昨日）は「今日の外」なので、スペインでは点過去：visité。"
+  - question: "「まだ食べていない」。正しいのは？"
+    options: ["Todavía no he comido.", "Ya no he comido.", "Todavía he no comido."]
+    correctIndex: 0
+    explanation: "「まだ〜ない」は todavía no。no は haber の前に置きます。"
+  - question: "decir の過去分詞は？"
+    options: ["decido", "dicho", "diciendo"]
+    correctIndex: 1
+    explanation: "decir の過去分詞は dicho。¿Qué has dicho?（何て言ったの？）のように使います。"
 ---
 
-TODO:contenido（導入：このユニットの問いに、それだけで答えになる2文で答える）
+スペイン語の現在完了（pretérito perfecto）は、haber の現在形 + 過去分詞で作る時制です。スペインでは、「今日〜した」「今週〜した」のように今を含む時間の出来事と、「〜したことがある」という経験を言うときに使います。
 
-## 文法 (Gramática)
+日本語ではどちらも「〜した」なので、点過去（ユニット14）との使い分けがポイントです。このユニットでは、バレンシアに出張中のケンタが今日の仕事をふり返り、東京のミナがスペイン旅行の経験を話す場面を例に学びます。
 
-TODO:contenido
+## 文法：現在完了 (Gramática)
+
+まず作り方を、次に不規則な過去分詞を、最後に使う場面と点過去との違いを見ていきましょう。
+
+### 作り方：haber + 過去分詞
+
+| 人称 | haber | 例 |
+| --- | --- | --- |
+| yo | he | he hablado |
+| tú | has | has comido |
+| él / ella / usted | ha | ha vivido |
+| nosotros / nosotras | hemos | hemos visitado |
+| vosotros / vosotras ※ | habéis | habéis llegado |
+| ellos / ellas / ustedes | han | han terminado |
+
+※ vosotros はスペインのみで使う形です（→ [中南米のスペイン語](/language/learn-spanish/spanish-in-latin-america/)）。
+
+過去分詞は、-ar 動詞が -ado（hablado）、-er / -ir 動詞が -ido（comido、vivido）です。現在完了では、過去分詞は主語の性や数で変化しません：Mina ha llegado. / Mina y Kenta han llegado.
+
+### 不規則な過去分詞
+
+よく使う動詞ほど、過去分詞が不規則です。
+
+| 原形 | 過去分詞 | 原形 | 過去分詞 |
+| --- | --- | --- | --- |
+| hacer（する） | hecho | abrir（開ける） | abierto |
+| decir（言う） | dicho | poner（置く） | puesto |
+| ver（見る） | visto | volver（戻る） | vuelto |
+| escribir（書く） | escrito | romper（壊す） | roto |
+
+### 使い方1：今を含む時間の出来事
+
+hoy（今日）、esta mañana（今朝）、esta semana（今週）、este año（今年）のように、今を含む時間の中で起きたことに使います。
+
+<Examples>
+
+- Esta mañana he tenido una reunión y he visitado la fábrica.（今朝は会議があって、工場を見学した）
+- Esta semana Kenta ha trabajado mucho.（今週、ケンタはたくさん働いた）
+
+</Examples>
+
+### 使い方2：経験
+
+alguna vez（今までに一度でも）、nunca（一度も〜ない）と一緒に、経験をたずねたり答えたりします。
+
+<Examples>
+
+- ¿Has estado alguna vez en Sevilla?（セビリアに行ったことある？）
+- No, nunca he estado en Sevilla.（いいえ、一度もない）
+
+</Examples>
+
+### ya と todavía no
+
+ya は「もう（済んだ）」、todavía no は「まだ〜ない」です。haber と過去分詞の間には何も入れず、ya や no は前に置きます。
+
+- ¿Ya has comido?（もう食べた？）── Sí, ya he comido. / No, todavía no he comido.
+
+### 点過去との使い分け（スペインの場合）
+
+| 時の表現 | 時制 | 例 |
+| --- | --- | --- |
+| hoy、esta mañana、esta semana | 現在完了 | Hoy he escrito el informe. |
+| ayer、la semana pasada、en 2019 | 点過去 | Ayer visité la fábrica. |
+
+ケンタの出張なら、Ayer visité la fábrica. Hoy he escrito el informe.（昨日は工場を見学した。今日は報告書を書いた）のように言い分けます。
+
+### ¿Qué has hecho hoy?：今日の出来事を話す
+
+夜、ミナとケンタがオンラインで話します。
+
+- Mina: ¿Qué tal el día? ¿Qué has hecho hoy?（今日はどうだった？　何をしたの？）
+- Kenta: He tenido dos reuniones y he comido con los compañeros. ¿Y tú?（会議が二つあって、同僚とお昼を食べたよ。きみは？）
+- Mina: Yo he trabajado en casa y he escrito un correo en español.（私は家で仕事をして、スペイン語でメールを書いたの）
+- Kenta: ¡Muy bien! ¿Ya has terminado el libro de gramática?（すごいね！　文法の本はもう終わった？）
+- Mina: No, todavía no. Me faltan dos unidades.（ううん、まだ。あと二つ残ってる）
+
+¿Qué has hecho hoy?（今日は何をした？）は、スペインで一日の終わりによく交わされる質問です。答えるときも、今日のことなので現在完了を使います。
+
+経験をたずねられたときの答え方も覚えておきましょう。Sí, una vez.（うん、一度）、Sí, muchas veces.（うん、何度も）、No, nunca.（いいえ、一度も）。¿Cuántas veces has estado en España?（スペインには何回行ったことがある？）と回数をたずねることもできます。
+
+ya を使った質問は、¿Ya has comido? のほか、¿Has comido ya? のように ya を文末に置く形もよく使います。
+
+**ダニエル（バレンシア出身）のひとこと：** 中南米やカナリア諸島では、今日のことでも点過去を使うのがふつうです（Hoy escribí el informe.）。このコースはスペインの使い方を基準にしていますが、中南米の人の Hoy comí paella. は間違いではありません。
 
 ## 活用：今日の動詞 (Conjugación)
 
-TODO:contenido
+現在完了の助動詞は [haber](/language/learn-spanish/verb-conjugation/haber/) です。不規則な過去分詞を持つ [hacer](/language/learn-spanish/verb-conjugation/hacer/)（hecho）、[ver](/language/learn-spanish/verb-conjugation/ver/)（visto）、[decir](/language/learn-spanish/verb-conjugation/decir/)（dicho）は、活用表の「完了形」で、すべての人称の形を確認できます。過去分詞は形容詞としても使い、そのときは性と数を合わせます：La puerta está abierta.（ドアが開いている）。
 
 ## 語彙 (Nociones específicas)
+
+今日のことや経験を話すときによく使う表現と、ケンタの仕事の語です。
 
 <VocabList items={frontmatter.vocabulary} level={frontmatter.level} />
 
 ## 発音・正書法 (Pronunciación y ortografía)
 
-TODO:contenido
+スペインのくだけた会話では、-ado の d がとても弱くなり、cansado が「カンサオ」、he terminado が「エ・テルミナオ」に近く聞こえることがあります。聞き取りのときは -ado だと考えれば大丈夫です。ただし書くときや、試験で話すときは、必ず -ado と発音・表記しましょう。
 
 ## 日本人がよく間違える
 
-TODO:contenido
+- **ayer に現在完了を使う。** ×Ayer he visitado la fábrica. → ○Ayer **visité** la fábrica. スペインでは、今日の外の出来事は点過去です。
+- **不規則な過去分詞を規則どおりに作る。** ×He hacido、×He escribido、×He vido → ○He **hecho**、○He **escrito**、○He **visto**。
+- **過去分詞を主語に合わせて変える。** ×Mina ha llegada. → ○Mina ha **llegado**. 現在完了の過去分詞は、いつも -o の形です。
 
 ## 文化メモ (Referentes culturales)
 
 <CultureNote>
 
-TODO:contenido
+スペインを旅した人に、スペイン人がよく聞くのが ¿Has probado el jamón ibérico?（ハモン・イベリコは食べてみた？）です。ハモン・イベリコの等級には「ベジョータ（bellota）」という名前がありますが、これはスペイン語で「どんぐり」のことです。Sí, en Madrid. ¡Me encanta!（うん、マドリードで。大好き！）と答えられると、会話が弾みます。等級や熟成、切り方については、[ハモン・イベリコ完全ガイド](/food/jamon-iberico/)で紹介しています。
 
 </CultureNote>
 
 ## 練習 (Procedimientos de aprendizaje)
 
-### 練習1：認識
+### 練習1：原形はどれ？
 
-TODO:contenido
+次の過去分詞の原形（動詞の不定形）を答えてください。
+
+1. hecho
+2. visto
+3. dicho
+4. escrito
+5. vuelto
 
 <details>
 <summary>答えを見る</summary>
 
-TODO:contenido
+1. hacer
+2. ver
+3. decir
+4. escribir
+5. volver
 
 </details>
 
 ### 練習2：穴埋め
 
-TODO:contenido
+（ ）の動詞を現在完了にしてください。
+
+1. Hoy (yo, tener) ______ tres reuniones.
+2. ¿(Tú, estar) ______ alguna vez en Japón?
+3. Kenta (escribir) ______ el informe.
+4. Esta semana (nosotros, ver) ______ dos películas.
+5. Todavía no (ellos, llegar) ______.
+6. ¿Qué (vosotros, hacer) ______ hoy?
 
 <details>
 <summary>答えを見る</summary>
 
-TODO:contenido
+1. he tenido
+2. Has estado
+3. ha escrito
+4. hemos visto
+5. han llegado
+6. habéis hecho（vosotros はスペインのみ）
 
 </details>
 
 ### 練習3：作文
 
-TODO:contenido
+ケンタになったつもりで、スペイン語で言ってみましょう。
+
+1. 今朝、取引先と会議があった。
+2. まだ報告書を書いていない。
+3. セビリアには一度も行ったことがない。
 
 <details>
-<summary>答えを見る</summary>
+<summary>解答例を見る</summary>
 
-TODO:contenido
+1. Esta mañana he tenido una reunión con el cliente.
+2. Todavía no he escrito el informe.
+3. Nunca he estado en Sevilla.
 
 </details>
 
@@ -97,4 +278,8 @@ TODO:contenido
 
 ## まとめ
 
-TODO:contenido
+- 現在完了は haber（he, has, ha…）+ 過去分詞（-ado / -ido）。hecho・dicho・visto・escrito は不規則。
+- スペインでは、今を含む時間（hoy、esta semana）の出来事と、経験（alguna vez、nunca）に使う。
+- ayer など今日の外の出来事は点過去。ya と todavía no は haber の前に置く。
+
+次のユニット14では、もう一つの過去「点過去」を学びます。
