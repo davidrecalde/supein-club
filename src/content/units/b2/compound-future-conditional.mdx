@@ -5,89 +5,240 @@ levelName: "Avanzado"
 slug: "compound-future-conditional"
 url: "/language/learn-spanish/b2/compound-future-conditional/"
 existing: false
-title: "未来完了・過去未来完了と推量"
+title: "スペイン語の未来完了・過去未来完了｜habré hecho と推量の言い方"
 shortTitle: "未来完了・過去未来完了と推量"
-titleEs: "futuro y condicional compuestos"
-grammar: ["habré + participio","habría + participio","probabilidad"]
-tenses: []
-functions: []
-canDo: []
-vocabulary: []
+titleEs: "Futuro perfecto, condicional compuesto y probabilidad"
+description: "スペイン語の未来完了（habré + 過去分詞）と過去未来完了（habría + 過去分詞）を解説。「〜までに〜しているだろう」の言い方と、habrá salido・estaría cansado のような推量の段階を、日本語の「〜だろう」と比べながら練習問題で学べます。"
+grammar: ["futuro perfecto (habré + participio)", "condicional compuesto (habría + participio)", "futuro y condicional de probabilidad"]
+tenses: ["futuro perfecto", "condicional compuesto"]
+functions: ["未来のある時点までに済んでいることを言う", "過去や現在のことを推量する"]
+canDo:
+  - "「〜までには〜し終えているだろう」と言える"
+  - "「もう〜したのだろう」「〜だったのだろう」と、推量して言える"
+  - "推量の段階に合わせて、未来・未来完了・過去未来・過去未来完了を使い分けられる"
+vocabulary:
+  # rank = «Rango frec.» del diccionario de frecuencias del CORPES XXI (RAE). Lo escribe
+  # npm run vocab:rank -- --write; lo que no es lema del diccionario va sin rank, al final.
+  - { es: "para entonces", ja: "その頃までには", example: "Para entonces ya habré terminado la carrera." }
+  - { es: "dentro de", ja: "〜後に", example: "Dentro de un año habré vuelto a Japón." }
+  - { es: "suponer", ja: "推測する", rank: 533, example: "Supongo que ya habrá llegado." }
+  - { es: "probablemente", ja: "おそらく", rank: 1692, example: "Probablemente estaba cansada." }
+  - { es: "seguramente", ja: "きっと・たぶん", rank: 2172, example: "Seguramente se habría dormido." }
+  - { es: "aterrizar", ja: "着陸する", rank: 4642, example: "El avión habrá aterrizado ya." }
+  - { es: "el vuelo", ja: "フライト", rank: 1655, example: "El vuelo salió hace doce horas." }
+  - { es: "el retraso", ja: "遅れ", rank: 3200, example: "Habría algún retraso." }
+  - { es: "graduarse", ja: "卒業する", rank: 5163, example: "Para junio me habré graduado." }
+  - { es: "olvidar", ja: "忘れる", rank: 1092, example: "Se le habrá olvidado." }
+  - { es: "la mudanza", ja: "引っ越し", rank: 11187, example: "Para el lunes habré terminado la mudanza." }
+  - { es: "el plazo", ja: "期限", rank: 693, example: "Antes del plazo habremos enviado el trabajo." }
+  - { es: "quizá", ja: "もしかすると", rank: 1377, example: "Quizá ya se habrá ido." }
+  - { es: "a estas horas", ja: "今ごろ", example: "A estas horas ya habrá llegado a Tokio." }
 verbs: ["haber"]
-duration: 40
+duration: 45
 prev: 41
 next: 43
-related: [41,43,48]
-cast: ["yui","daniel"]
-audio: []
+related: [41, 43, 48]
+cast: ["yui", "daniel"]
+audio:
+  - "Para junio ya habré terminado la carrera."
+  - "¿Dónde está Yui? Habrá salido."
+  - "No contestó. Estaría durmiendo."
+  - "Cuando llegamos, ya se habrían ido."
+  - "A estas horas ya habrá aterrizado en Tokio."
 youtubeId: ""
-quiz: []
 draft: true
 updated: "2026-11-02"
+quiz:
+  - question: "「6月までには大学を終えているだろう」。正しいのは？"
+    options: ["Para junio habré terminado la carrera.", "Para junio habría terminado la carrera.", "Para junio he terminado la carrera."]
+    correctIndex: 0
+    explanation: "未来のある時点までに済んでいることは、未来完了：habré terminado。"
+  - question: "「（彼女は今いない）もう出かけたのだろう」。正しいのは？"
+    options: ["Saldrá.", "Habrá salido.", "Habría salido mañana."]
+    correctIndex: 1
+    explanation: "「もう〜したのだろう」（現在完了の推量）は未来完了：habrá salido。"
+  - question: "「（昨日電話に出なかった）寝ていたのだろう」。正しいのは？"
+    options: ["Estará durmiendo.", "Estaría durmiendo.", "Habrá dormido mañana."]
+    correctIndex: 1
+    explanation: "過去（線過去）の推量は過去未来：estaría。"
+  - question: "「（私たちが着いたとき）彼らはもう帰っていたのだろう」。正しいのは？"
+    options: ["Ya se habrán ido.", "Ya se habrían ido.", "Ya se irían ido."]
+    correctIndex: 1
+    explanation: "過去完了（se habían ido）の推量は過去未来完了：se habrían ido。"
+  - question: "「（今）彼は家にいるだろう」。正しいのは？"
+    options: ["Esté en casa.", "Estará en casa.", "Estaría en casa."]
+    correctIndex: 1
+    explanation: "今のことの推量は未来形：estará（ユニット20）。"
+  - question: "haber の未来形、1人称単数（yo）は？"
+    options: ["habré", "habría", "habrá"]
+    correctIndex: 0
+    explanation: "未来完了の助動詞は habré, habrás, habrá, habremos, habréis, habrán。"
+  - question: "「彼は6月までに終えていると言っていた」。正しいのは？"
+    options: ["Dijo que para junio habrá terminado.", "Dijo que para junio habría terminado.", "Dijo que para junio hubo terminado."]
+    correctIndex: 1
+    explanation: "dijo que のあと、未来完了は過去未来完了に変わります（ユニット29）：habría terminado。"
+  - question: "「今ごろはもう東京に着陸しているだろう」。正しいのは？"
+    options: ["A estas horas ya habrá aterrizado en Tokio.", "A estas horas ya habría aterrizado en Tokio ayer.", "A estas horas ya aterrizará en Tokio."]
+    correctIndex: 0
+    explanation: "今の時点ですでに済んでいるはずのことは、未来完了で推量します。"
+  - question: "「（あのとき）10時ごろだっただろう」。正しいのは？"
+    options: ["Serán las diez.", "Serían las diez.", "Habrán sido las diez."]
+    correctIndex: 1
+    explanation: "過去の時刻の推量は過去未来：serían las diez。"
+  - question: "「（その頃）何か遅れがあったのだろう」。正しいのは？"
+    options: ["Habrá algún retraso.", "Habría algún retraso.", "Hay algún retraso."]
+    correctIndex: 1
+    explanation: "過去の状況の推量は過去未来：habría（hay の過去未来）。"
 ---
 
-TODO:contenido（導入：このユニットの問いに、それだけで答えになる2文で答える）
+スペイン語の未来完了（habré + 過去分詞）は、「〜までには〜し終えているだろう」と、未来のある時点までに済んでいることを表します：Para junio ya habré terminado la carrera.（6月までには大学を終えているだろう）。過去未来完了（habría + 過去分詞）は、ユニット38の過去の仮定の結果や、過去のある時点より前のことの推量に使います。
 
-## 文法 (Gramática)
+この二つの完了形は、未来形・過去未来と組み合わせて、「〜だろう」「〜したのだろう」「〜だったのだろう」と、推量の段階を細かく言い分けるのにも使います。このユニットでは、一時帰国するユイと、東京で到着を待つダニエルの会話を例に学びます。
 
-TODO:contenido
+## 文法：未来完了・過去未来完了と推量 (Gramática)
+
+まず二つの完了形の作り方と基本の使い方を、次に推量の段階を見ていきましょう。
+
+### 作り方
+
+| 人称 | 未来完了 | 過去未来完了 |
+| --- | --- | --- |
+| yo | habré terminado | habría terminado |
+| tú | habrás terminado | habrías terminado |
+| él / ella / usted | habrá terminado | habría terminado |
+| nosotros / nosotras | habremos terminado | habríamos terminado |
+| vosotros / vosotras ※ | habréis terminado | habríais terminado |
+| ellos / ellas / ustedes | habrán terminado | habrían terminado |
+
+※ vosotros はスペインのみで使う形です（→ [中南米のスペイン語](/language/learn-spanish/spanish-in-latin-america/)）。
+
+### 未来完了：未来のある時点までに
+
+para + 時点（〜までに）、dentro de + 期間（〜後には）、para entonces（その頃までには）とよく一緒に使います。
+
+<Examples>
+
+- Para junio ya habré terminado la carrera.（6月までには大学を終えているだろう）
+- Dentro de un año habré vuelto a Japón.（1年後には日本に戻っているだろう）
+
+</Examples>
+
+過去の時点から見た「〜までには〜しているだろう」は、過去未来完了で言います。時制の一致（ユニット40）と同じく、主節が過去になると未来完了が過去未来完了に変わります：Me dijo que para junio habría terminado la carrera.（6月までには大学を終えているだろうと彼女は言った）。
+
+### 推量の段階
+
+ユニット20で学んだ「未来形の推量」は、時制を一つずつずらすと、過去のことにも使えます。
+
+| 確かな言い方 | 推量（〜だろう） | 日本語 |
+| --- | --- | --- |
+| Está en casa. | Estará en casa. | 家にいるだろう |
+| Ha salido. | Habrá salido. | もう出かけたのだろう |
+| Estaba cansada. / Fue un error. | Estaría cansada. / Sería un error. | 疲れていたのだろう／間違いだったのだろう |
+| Había salido. | Habría salido. | （その時までに）出かけていたのだろう |
+
+現在のことは未来形、現在完了のことは未来完了、過去（線過去・点過去）のことは過去未来、過去完了のことは過去未来完了、と一段ずつ未来の側へずらすのがコツです。
+
+### 副詞で推量する
+
+未来形を使わずに、probablemente、seguramente、a lo mejor などの副詞で推量を表すこともできます：Seguramente ya ha aterrizado.（きっともう着陸している）。quizá（quizás）と tal vez のあとには、直説法も接続法も来ます。接続法にすると、可能性がより低いという気持ちになります：Quizá llegue tarde.（もしかすると遅れるかもしれない）。a lo mejor のあとは、いつも直説法です：A lo mejor llega tarde.
+
+### 空港で待つ
+
+ユイが一時帰国する日、ダニエルが成田空港で待っています。
+
+- Amigo: ¿Ya ha llegado el vuelo de Yui?（ユイの便はもう着いた？）
+- Daniel: Supongo que sí. Salió de Madrid hace muchas horas, así que a estas horas ya habrá aterrizado.（たぶんね。マドリードを出てだいぶたつから、今ごろはもう着陸しているはずだよ）
+- Amigo: Pero no contesta al móvil.（でも携帯に出ないね）
+- Daniel: Estará esperando las maletas. O se le habrá acabado la batería.（荷物を待っているんだろう。それか、電池が切れたのかもね）
+
+**ダニエル（バレンシア出身）のひとこと：** 推量の未来形は、驚きや疑いを表す質問にも使います：¿Qué hora será?（今何時だろう）、¿Quién habrá llamado?（だれが電話してきたんだろう）。答えを知らないときの独り言のような言い方で、スペイン人の会話でとてもよく聞きます。
 
 ## 活用：今日の動詞 (Conjugación)
 
-TODO:contenido
+未来完了は [haber](/language/learn-spanish/verb-conjugation/haber/) の未来形（habré…）、過去未来完了は過去未来（habría…）+ 過去分詞です。haber の活用表で「未来完了」と「過去未来完了」の欄を確認しましょう。どちらも語幹は habr- で、未来形・過去未来の不規則な語幹（ユニット20・21）と同じタイプです。
 
 ## 語彙 (Nociones específicas)
+
+未来の時点や推量を表す表現と、旅や引っ越しの語です。
 
 <VocabList items={frontmatter.vocabulary} level={frontmatter.level} />
 
 ## 発音・正書法 (Pronunciación y ortografía)
 
-TODO:contenido
+habrá（ア・**ブラ**：未来）と habría（ア・**ブリ**・ア：過去未来）、había（ア・**ビ**・ア：線過去）は、音が似ているので聞き分けに注意しましょう。r があるかどうか、i を強く読むかどうかが目印です。書くときも、habrá と habría のアクセント記号の位置が違います。
 
 ## 日本人がよく間違える
 
-TODO:contenido
+- **過去の推量に未来形を使う。** ×（昨日のこと）Estará durmiendo. → ○**Estaría** durmiendo.
+- **「もう〜したのだろう」に未来形を使う。** ×Ya saldrá.（もう出かけたはず）→ ○Ya **habrá salido**.
+- **未来完了と過去未来完了を混同する。** ×Para junio habría terminado.（自分の予定）→ ○Para junio **habré terminado**.
 
 ## 文化メモ (Referentes culturales)
 
 <CultureNote>
 
-TODO:contenido
+日本とスペインを結ぶフライトは、乗り継ぎを含めると長い移動になります。到着を待つ人は、A estas horas ya habrá aterrizado.（今ごろはもう着陸しているはず）、Estará pasando el control de pasaportes.（入国審査を通っているところだろう）と、推量の言い方を何度も使うことになります。東京・大阪とマドリード・バルセロナを結ぶ便の情報は、[スペイン航空券 最安値・直行便ガイド](/travel/spain-flights/)で紹介しています。
 
 </CultureNote>
 
 ## 練習 (Procedimientos de aprendizaje)
 
-### 練習1：認識
+### 練習1：推量に書きかえる
 
-TODO:contenido
+次の文を、「〜だろう」という推量の文にしてください。
+
+1. Está en la biblioteca.
+2. Ha salido ya.
+3. Estaba cansada.
+4. Eran las diez.
+5. Había terminado.
 
 <details>
 <summary>答えを見る</summary>
 
-TODO:contenido
+1. Estará en la biblioteca.
+2. Habrá salido ya.
+3. Estaría cansada.
+4. Serían las diez.
+5. Habría terminado.
 
 </details>
 
 ### 練習2：穴埋め
 
-TODO:contenido
+（ ）の動詞を、未来完了か過去未来完了にしてください。
+
+1. Para el lunes (yo, terminar) ______ la mudanza.
+2. A estas horas ya (ellos, llegar) ______ a casa.
+3. Dijo que para junio (él, graduarse) ______.
+4. Cuando llegamos, ya (ellos, irse) ______.
+5. Dentro de un año (nosotros, volver) ______ a Japón.
 
 <details>
 <summary>答えを見る</summary>
 
-TODO:contenido
+1. habré terminado
+2. habrán llegado（推量）
+3. se habría graduado（dijo que のあと）
+4. se habrían ido（過去の推量）
+5. habremos vuelto
 
 </details>
 
 ### 練習3：作文
 
-TODO:contenido
+スペイン語で言ってみましょう。
+
+1. 6月までには大学を終えているだろう。
+2. （電話に出ない友だちについて）もう寝たのだろう（acostarse）。
+3. （昨日来なかった人について）病気だったのだろう（estar enfermo）。
 
 <details>
-<summary>答えを見る</summary>
+<summary>解答例を見る</summary>
 
-TODO:contenido
+1. Para junio habré terminado la carrera.
+2. Ya se habrá acostado.
+3. Estaría enfermo.
 
 </details>
 
@@ -97,4 +248,8 @@ TODO:contenido
 
 ## まとめ
 
-TODO:contenido
+- 未来完了（habré + 過去分詞）は「〜までには〜しているだろう」、過去未来完了（habría + 過去分詞）は過去の仮定の結果や過去の過去の推量。
+- 推量は一段ずらす：現在 → 未来、現在完了 → 未来完了、過去 → 過去未来、過去完了 → 過去未来完了。
+- ¿Qué hora será? のような推量の疑問文は、独り言のようによく使う。
+
+次のユニット43では、ir・llevar・seguir + 現在分詞などの動詞句で、動作の進み方を表します。
