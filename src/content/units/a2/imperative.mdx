@@ -5,89 +5,253 @@ levelName: "Plataforma"
 slug: "imperative"
 url: "/language/learn-spanish/a2/imperative/"
 existing: false
-title: "命令形"
+title: "スペイン語の命令形｜肯定・否定と usted の命令の作り方"
 shortTitle: "命令形"
-titleEs: "imperativo"
-grammar: ["afirmativo","negativo","usted"]
-tenses: []
-functions: []
-canDo: []
-vocabulary: []
-verbs: ["poner","decir","hacer","salir"]
-duration: 40
+titleEs: "Imperativo"
+description: "スペイン語の命令形を基本から解説。tú・usted・vosotros・ustedes の肯定命令、no をつけた否定命令、pon・di・haz・sal などの不規則な形、代名詞をつなげる位置を、道案内やレシピの例文と、日本人が間違えやすい点、練習問題つきで学べます。"
+grammar: ["imperativo afirmativo", "imperativo negativo", "imperativos irregulares de tú", "pronombres con imperativo"]
+tenses: ["imperativo"]
+functions: ["道を案内する", "指示や手順を伝える", "お願いする・勧める"]
+canDo:
+  - "道順や手順を、命令形を使って説明できる"
+  - "「〜しないで」と、してはいけないことを伝えられる"
+  - "tú と usted を使い分けて、指示やお願いができる"
+vocabulary:
+  # rank = «Rango frec.» del diccionario de frecuencias del CORPES XXI (RAE). Lo escribe
+  # npm run vocab:rank -- --write; lo que no es lema del diccionario va sin rank, al final.
+  - { es: "girar", ja: "曲がる・回る", rank: 2820, example: "Gire a la derecha en el semáforo." }
+  - { es: "seguir", ja: "続ける・進む", rank: 84, example: "Siga todo recto." }
+  - { es: "cruzar", ja: "渡る", rank: 1853, example: "Cruza la plaza." }
+  - { es: "todo recto", ja: "まっすぐ", example: "Sigue todo recto hasta el museo." }
+  - { es: "el semáforo", ja: "信号", rank: 7045, example: "En el semáforo, gira a la izquierda." }
+  - { es: "la izquierda", ja: "左", rank: 1312, example: "La farmacia está a la izquierda." }
+  - { es: "la derecha", ja: "右", rank: 1637, example: "Gire a la derecha." }
+  - { es: "el casco", ja: "ヘルメット", rank: 3912, example: "Pónganse el casco, por favor." }
+  - { es: "cortar", ja: "切る", rank: 1874, example: "Corta las verduras." }
+  - { es: "añadir", ja: "加える", rank: 508, example: "Añade el agua." }
+  - { es: "mezclar", ja: "混ぜる", rank: 2269, example: "No mezcles el arroz." }
+  - { es: "esperar", ja: "待つ", rank: 190, example: "Espera un momento, por favor." }
+  - { es: "tocar", ja: "触る・弾く", rank: 716, example: "No toques la máquina." }
+  - { es: "pasar", ja: "通る・入る", rank: 70, example: "Pase, por favor." }
+verbs: ["poner", "decir", "hacer", "salir"]
+duration: 45
 prev: 18
 next: 20
-related: [18,20,24]
-cast: ["mina","kenta"]
-audio: []
+related: [18, 20, 24]
+cast: ["mina", "kenta"]
+audio:
+  - "Perdone, ¿cómo voy a la catedral?"
+  - "Siga todo recto y gire a la derecha en el semáforo."
+  - "Pasen, por favor. Pónganse el casco."
+  - "No toquen las máquinas."
+  - "Pon el aceite en la paellera. No muevas el arroz."
+  - "dímelo"
 youtubeId: ""
-quiz: []
 draft: true
 updated: "2026-11-02"
+quiz:
+  - question: "hablar の tú に対する肯定命令は？"
+    options: ["habla", "hablas", "hable"]
+    correctIndex: 0
+    explanation: "tú の肯定命令は、多くの動詞で現在形3人称単数と同じ形です：habla。"
+  - question: "hacer の tú に対する肯定命令は？"
+    options: ["hace", "haz", "haga"]
+    correctIndex: 1
+    explanation: "hacer は不規則で haz。ほかに pon（poner）、di（decir）、sal（salir）、ten（tener）、ven（venir）、ve（ir）なども不規則です。"
+  - question: "usted に「右に曲がってください」と言うなら？"
+    options: ["Gira a la derecha.", "Gire a la derecha.", "Giras a la derecha."]
+    correctIndex: 1
+    explanation: "usted への命令は、-ar 動詞なら語尾が -e：gire。"
+  - question: "tú に「さわらないで」と言うなら？"
+    options: ["No toca.", "No toques.", "No tocas."]
+    correctIndex: 1
+    explanation: "否定命令は no + 接続法の形です。tocar → no toques（c は qu に変わる）。"
+  - question: "decir の tú に対する肯定命令は？"
+    options: ["di", "dice", "dime"]
+    correctIndex: 0
+    explanation: "decir の命令形は di。代名詞をつなげると dime（私に言って）になります。"
+  - question: "「それを（tú が）置いて」。正しいのは？"
+    options: ["Lo pon.", "Ponlo.", "Pon lo."]
+    correctIndex: 1
+    explanation: "肯定命令では、代名詞を動詞の後ろにつなげて一語で書きます：ponlo。"
+  - question: "「それを（tú が）置かないで」。正しいのは？"
+    options: ["No ponlo.", "No lo pongas.", "No pongaslo."]
+    correctIndex: 1
+    explanation: "否定命令では、代名詞は動詞の前に置きます：No lo pongas。"
+  - question: "vosotros に「来て」と言うなら？（スペインのみ）"
+    options: ["venid", "vened", "venís"]
+    correctIndex: 0
+    explanation: "vosotros の肯定命令は、原形の -r を -d に変えます：venir → venid。"
+  - question: "ustedes に「入ってください」と言うなら？"
+    options: ["Pasan, por favor.", "Pasen, por favor.", "Pasad, por favor."]
+    correctIndex: 1
+    explanation: "ustedes への命令は usted の形に -n：pasen。pasad は vosotros の形です。"
+  - question: "salir の tú に対する肯定命令は？"
+    options: ["sale", "salga", "sal"]
+    correctIndex: 2
+    explanation: "salir の命令形は不規則で sal です。"
 ---
 
-TODO:contenido（導入：このユニットの問いに、それだけで答えになる2文で答える）
+スペイン語の命令形は、指示やお願い、道案内を伝える形です。tú に対しては、多くの動詞で現在形3人称単数と同じ形を使い（Habla.、話して）、usted に対しては -ar 動詞が -e、-er / -ir 動詞が -a で終わる形を使います（Gire a la derecha.、右に曲がってください）。
 
-## 文法 (Gramática)
+「〜しないで」という否定命令は、no のあとに肯定命令とは別の形を使うのが特徴です。このユニットでは、道をたずねるミナと、バレンシアの工場を見学するケンタの場面を例に、tú と usted の命令の言い分けを学びます。
 
-TODO:contenido
+## 文法：命令形 (Gramática)
+
+まず肯定命令の作り方を、次に不規則な形を、最後に否定命令と代名詞の位置を見ていきましょう。
+
+### 肯定命令
+
+| 相手 | -ar（hablar） | -er（comer） | -ir（escribir） |
+| --- | --- | --- | --- |
+| tú | habla | come | escribe |
+| usted | hable | coma | escriba |
+| vosotros ※ | hablad | comed | escribid |
+| ustedes | hablen | coman | escriban |
+
+※ vosotros はスペインのみで使う形です（→ [中南米のスペイン語](/language/learn-spanish/spanish-in-latin-america/)）。
+
+- **tú**：現在形の3人称単数と同じ形（habla、come）。
+- **usted / ustedes**：-ar は e、-er / -ir は a に母音が入れかわります。yo の形をもとに作るので、yo が不規則な動詞はここも不規則です（hacer → haga、tener → tenga、poner → ponga）。
+- **vosotros**：原形の -r を -d に変えます（hablad、venid）。
+
+### tú に対する不規則な肯定命令
+
+| 原形 | 命令形 | 原形 | 命令形 |
+| --- | --- | --- | --- |
+| poner（置く） | pon | tener（持つ） | ten |
+| decir（言う） | di | venir（来る） | ven |
+| hacer（する） | haz | ir（行く） | ve |
+| salir（出る） | sal | ser（〜である） | sé |
+
+### 否定命令
+
+否定命令は、no のあとに、接続法現在という形を使います（接続法はユニット25でくわしく学びます）。今は、usted の命令の形をもとに作る、と覚えておけば十分です。
+
+| 相手 | hablar | comer | tocar |
+| --- | --- | --- | --- |
+| tú | no hables | no comas | no toques |
+| usted | no hable | no coma | no toque |
+| vosotros ※ | no habléis | no comáis | no toquéis |
+| ustedes | no hablen | no coman | no toquen |
+
+tocar → no toques のように、発音を保つためにつづりが変わる動詞があります。
+
+### 代名詞の位置
+
+- **肯定命令**：動詞の後ろにつなげて一語で書きます。強く読む位置を示すためにアクセント記号がつくことがあります：ponlo、dímelo、siéntese。
+- **否定命令**：動詞の前に置きます：no lo pongas、no me lo digas。
+
+### 道案内と工場見学
+
+ミナが、マドリードで道をたずねます。
+
+- Mina: Perdone, ¿cómo voy a la catedral?（すみません、大聖堂へはどう行けばいいですか？）
+- Señora: Siga todo recto y gire a la derecha en el semáforo. La catedral está al final de la calle.（まっすぐ進んで、信号を右に曲がってください。大聖堂は通りの突き当たりです）
+
+バレンシアの工場では、案内係がケンタたちに指示します。
+
+- Pasen, por favor. Pónganse el casco.（どうぞお入りください。ヘルメットをかぶってください）
+- No toquen las máquinas.（機械には触らないでください）
+
+知らない人やお客には usted / ustedes、友だちには tú で命令します。
+
+### 会話でよく使う命令形
+
+命令形は、指示だけでなく、会話のあいづちや呼びかけにもよく使われます。¡Mira!（ほら、見て）、¡Oye!（ねえ）、Dime.（言って・どうぞ：電話に出るときなど）、¡Vamos!（さあ、行こう）、Perdona / Perdone（すみません）は、どれも命令形から生まれた決まり文句です。スペインでは、話を切り上げるときの ¡Venga!（じゃあね・よし）もよく聞きます。
+
+禁止の掲示では、命令形のかわりに動詞の原形もよく使われます：No fumar.（禁煙）、No tocar.（触らないでください）。Prohibido fumar. のように prohibido（禁止）を使う掲示もあります。
+
+**ダニエル（バレンシア出身）のひとこと：** 命令形は強く聞こえそうですが、スペインでは por favor をつければ、ていねいなお願いとしてふつうに使います（Pásame la sal, por favor.、塩を取って）。もっとやわらかくしたいときは、ユニット21の ¿Podrías…? を使いましょう。
 
 ## 活用：今日の動詞 (Conjugación)
 
-TODO:contenido
+tú の命令形が不規則な [hacer](/language/learn-spanish/verb-conjugation/hacer/)（haz）、[decir](/language/learn-spanish/verb-conjugation/decir/)（di）、[tener](/language/learn-spanish/verb-conjugation/tener/)（ten）、[ir](/language/learn-spanish/verb-conjugation/ir/)（ve）は、活用表の「命令形」で、肯定と否定のすべての形を確認できます。poner（pon）と salir（sal）も同じタイプです。
 
 ## 語彙 (Nociones específicas)
+
+道案内、工場見学、料理の手順でよく使う語です。
 
 <VocabList items={frontmatter.vocabulary} level={frontmatter.level} />
 
 ## 発音・正書法 (Pronunciación y ortografía)
 
-TODO:contenido
+命令形に代名詞をつなげると、強く読む位置はそのままなので、アクセント記号が必要になることがあります。di + me + lo → dímelo（**ディ**・メ・ロ）、siente + se → siéntese（シ**エン**・テ・セ）。一方、pon + lo → ponlo（**ポン**・ロ）のように、記号がいらない形もあります。
 
 ## 日本人がよく間違える
 
-TODO:contenido
+- **否定命令を肯定命令の形のまま作る。** ×No toca. ×No habla. → ○No **toques**. ○No **hables**. 否定命令は形が変わります。
+- **肯定命令で代名詞を前に置く。** ×Lo pon. → ○**Ponlo**. 肯定命令では後ろにつなげます。
+- **知らない人に tú の命令を使う。** 道で会った人や店の人には、×Gira a la derecha. より ○**Gire** a la derecha. のように usted の形を使う方が自然です。
 
 ## 文化メモ (Referentes culturales)
 
 <CultureNote>
 
-TODO:contenido
+料理のレシピは、命令形の宝庫です。パエリアなら、Pon el aceite en la paellera.（パエリア鍋に油を入れて）、Añade el arroz.（米を加えて）、そして本場の作り手が口をそろえる No muevas el arroz.（米は動かさないで）。米を入れたあとは触らない、というのがおいしいパエリアのコツの一つです。本格的なパエリア・バレンシアーナの作り方は、[パエリア完全ガイド](/food/paella/)で紹介しています。
 
 </CultureNote>
 
 ## 練習 (Procedimientos de aprendizaje)
 
-### 練習1：認識
+### 練習1：だれに対する命令？
 
-TODO:contenido
+次の命令は、tú・usted・vosotros・ustedes のだれに向けたものですか。
+
+1. Gire a la derecha.
+2. Habla más despacio.
+3. Pasen, por favor.
+4. Venid a mi casa.
+5. No toques eso.
 
 <details>
 <summary>答えを見る</summary>
 
-TODO:contenido
+1. usted
+2. tú
+3. ustedes
+4. vosotros（スペインのみ）
+5. tú（否定命令）
 
 </details>
 
 ### 練習2：穴埋め
 
-TODO:contenido
+（ ）の動詞を、指示に合わせた命令形にしてください。
+
+1. (tú, hacer) ______ los deberes.
+2. (usted, seguir) ______ todo recto.
+3. (tú, poner) ______ la mesa, por favor.
+4. No (tú, tocar) ______ la máquina.
+5. (tú, decir + me) ______ la verdad.
+6. No (ustedes, hablar) ______ en el museo.
 
 <details>
 <summary>答えを見る</summary>
 
-TODO:contenido
+1. Haz
+2. Siga（e → i）
+3. Pon
+4. toques
+5. Dime
+6. hablen
 
 </details>
 
 ### 練習3：作文
 
-TODO:contenido
+スペイン語で言ってみましょう。
+
+1. （道を聞かれて、usted に）まっすぐ進んで、信号を左に曲がってください。
+2. （友だちに）ちょっと待って。
+3. （友だちに）それを言わないで（decir + lo）。
 
 <details>
-<summary>答えを見る</summary>
+<summary>解答例を見る</summary>
 
-TODO:contenido
+1. Siga todo recto y gire a la izquierda en el semáforo.
+2. Espera un momento.
+3. No lo digas.
 
 </details>
 
@@ -97,4 +261,8 @@ TODO:contenido
 
 ## まとめ
 
-TODO:contenido
+- tú の肯定命令は現在形3人称単数と同じ（habla）。haz・pon・di・sal・ten・ven・ve は不規則。
+- usted は母音を入れかえる（hable、coma）。vosotros は -r → -d（hablad）。
+- 否定命令は no + 別の形（no hables）。代名詞は肯定なら後ろにつなげ（ponlo）、否定なら前（no lo pongas）。
+
+次のユニット20では、未来形を使って、これからのことを話します。
