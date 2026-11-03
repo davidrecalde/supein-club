@@ -5,89 +5,265 @@ levelName: "Plataforma"
 slug: "conditional"
 url: "/language/learn-spanish/a2/conditional/"
 existing: false
-title: "過去未来"
+title: "スペイン語の過去未来（条件法）｜me gustaría・podría の丁寧な言い方"
 shortTitle: "過去未来"
-titleEs: "condicional simple"
-grammar: ["forma","cortesía"]
-tenses: []
-functions: []
-canDo: []
-vocabulary: []
-verbs: ["querer","poder","deber"]
+titleEs: "Condicional simple"
+description: "スペイン語の過去未来（condicional simple、条件法）を一から解説。原形に -ía をつける活用と不規則な語幹、me gustaría・¿podría…? を使った丁寧なお願い、deberías・yo que tú のアドバイス、「〜したらいいのに」という願望の言い方を、練習問題つきで学べます。"
+grammar: ["condicional simple", "raíces irregulares", "cortesía", "consejo"]
+tenses: ["condicional simple"]
+functions: ["丁寧にお願いする", "アドバイスする", "願望を言う"]
+canDo:
+  - "レストランやお店で、丁寧にお願いや注文ができる"
+  - "deberías や yo que tú を使って、アドバイスできる"
+  - "「〜したい」「〜できたらいいな」と、控えめに希望を言える"
+vocabulary:
+  # rank = «Rango frec.» del diccionario de frecuencias del CORPES XXI (RAE). Lo escribe
+  # npm run vocab:rank -- --write; lo que no es lema del diccionario va sin rank, al final.
+  - { es: "deber", ja: "〜すべきだ", rank: 49, example: "Deberías descansar un poco." }
+  - { es: "reservar", ja: "予約する", rank: 3547, example: "Me gustaría reservar una mesa." }
+  - { es: "recomendar", ja: "すすめる", rank: 1102, example: "¿Qué vino me recomendaría?" }
+  - { es: "probar", ja: "試す・味見する", rank: 1514, example: "Me gustaría probar un vino de Rioja." }
+  - { es: "el consejo", ja: "アドバイス", rank: 514, example: "¿Me darías un consejo?" }
+  - { es: "el vino", ja: "ワイン", rank: 1672, example: "Este vino es de Rioja." }
+  - { es: "la carta", ja: "メニュー・手紙", rank: 939, example: "¿Podría traerme la carta, por favor?" }
+  - { es: "la mesa", ja: "テーブル", rank: 986, example: "Una mesa para dos, por favor." }
+  - { es: "el favor", ja: "好意・お願い", rank: 957, example: "¿Me harías un favor?" }
+  - { es: "amable", ja: "親切な", rank: 5042, example: "¿Sería tan amable de ayudarme?" }
+  - { es: "ayudar", ja: "手伝う・助ける", rank: 379, example: "¿Podrías ayudarme?" }
+  - { es: "descansar", ja: "休む", rank: 3025, example: "Yo que tú, descansaría un poco." }
+  - { es: "por supuesto", ja: "もちろん", rank: 1616, example: "Por supuesto, ahora mismo." }
+  - { es: "encantar", ja: "大好きだ", rank: 2761, example: "Me encantaría vivir en España." }
+verbs: ["querer", "poder", "deber"]
 duration: 40
 prev: 20
 next: 22
-related: [20,30,38]
-cast: ["mina","kenta"]
-audio: []
+related: [20, 30, 38]
+cast: ["mina", "kenta"]
+audio:
+  - "Buenas noches. Me gustaría reservar una mesa para dos."
+  - "¿Podría traerme la carta, por favor?"
+  - "¿Qué vino me recomendaría?"
+  - "Yo que tú, probaría este vino de Rioja."
+  - "Me encantaría vivir en España."
+  - "podría, podríamos"
 youtubeId: ""
-quiz: []
 draft: true
 updated: "2026-11-02"
+quiz:
+  - question: "hablar の過去未来、1人称単数（yo）は？"
+    options: ["hablaría", "hablaré", "hablaba"]
+    correctIndex: 0
+    explanation: "過去未来は原形 + -ía：hablaría。hablaré は未来形、hablaba は線過去です。"
+  - question: "poder の過去未来、3人称単数（usted）は？"
+    options: ["podería", "podría", "puede"]
+    correctIndex: 1
+    explanation: "poder の語幹は未来形と同じ podr-：podría。"
+  - question: "「テーブルを予約したいのですが」。丁寧なのは？"
+    options: ["Quiero reservar una mesa.", "Me gustaría reservar una mesa.", "Reservo una mesa."]
+    correctIndex: 1
+    explanation: "me gustaría + 原形は、「〜したいのですが」という丁寧な言い方です。"
+  - question: "店員に「メニューを持ってきていただけますか？」と言うなら？"
+    options: ["¿Podría traerme la carta?", "¿Puedes traerme la carta?", "¿Traerías la carta?"]
+    correctIndex: 0
+    explanation: "usted に丁寧にお願いするときは ¿Podría…? が自然です。"
+  - question: "「（君は）少し休むべきだよ」とやわらかく言うなら？"
+    options: ["Debes descansar.", "Deberías descansar.", "Debías descansar."]
+    correctIndex: 1
+    explanation: "deber の過去未来 deberías は、命令より控えめなアドバイスになります。"
+  - question: "「私が君なら、この電車に乗るね」。正しいのは？"
+    options: ["Yo que tú, tomaré este tren.", "Yo que tú, tomaría este tren.", "Yo que tú, tomo este tren."]
+    correctIndex: 1
+    explanation: "yo que tú（私が君なら）のあとは過去未来：tomaría。"
+  - question: "hacer の過去未来、1人称単数は？"
+    options: ["hacería", "haría", "haré"]
+    correctIndex: 1
+    explanation: "hacer の語幹は har-：haría。haré は未来形です。"
+  - question: "tener の過去未来、1人称複数（nosotros）は？"
+    options: ["tendríamos", "teneríamos", "tendremos"]
+    correctIndex: 0
+    explanation: "tener の語幹は tendr-：tendríamos。tendremos は未来形です。"
+  - question: "「スペインに住めたらすてきだろうな」。正しいのは？"
+    options: ["Me encantaría vivir en España.", "Me encantará vivir en España.", "Me encantaba vivir en España."]
+    correctIndex: 0
+    explanation: "実現するかわからない願望は、過去未来 encantaría で言います。"
+  - question: "querer の過去未来、1人称単数は？"
+    options: ["quería", "querría", "quiera"]
+    correctIndex: 1
+    explanation: "querer の語幹は querr- で querría（r が二つ）。quería は線過去です。"
 ---
 
-TODO:contenido（導入：このユニットの問いに、それだけで答えになる2文で答える）
+スペイン語の過去未来（condicional simple、条件法）は、動詞の原形に -ía・-ías・-ía… をつけて作る形です。会話でいちばんよく使うのは、Me gustaría reservar una mesa.（テーブルを予約したいのですが）や ¿Podría traerme la carta?（メニューを持ってきていただけますか？）のような、丁寧なお願いの言い方です。
 
-## 文法 (Gramática)
+ほかにも、Deberías descansar.（休んだ方がいいよ）のようなアドバイスや、Me encantaría vivir en España.（スペインに住めたらすてきだな）のような願望を言うときに使います。このユニットでは、バレンシアのレストランで取引先と食事をするケンタの場面を例に学びます。
 
-TODO:contenido
+## 文法：過去未来 (Gramática)
+
+まず作り方を、次に不規則な語幹を、最後に三つの使い方を見ていきましょう。
+
+### 作り方：原形 + -ía
+
+| 人称 | 語尾 | hablar | comer | vivir |
+| --- | --- | --- | --- | --- |
+| yo | -ía | hablaría | comería | viviría |
+| tú | -ías | hablarías | comerías | vivirías |
+| él / ella / usted | -ía | hablaría | comería | viviría |
+| nosotros / nosotras | -íamos | hablaríamos | comeríamos | viviríamos |
+| vosotros / vosotras ※ | -íais | hablaríais | comeríais | viviríais |
+| ellos / ellas / ustedes | -ían | hablarían | comerían | vivirían |
+
+※ vosotros はスペインのみで使う形です（→ [中南米のスペイン語](/language/learn-spanish/spanish-in-latin-america/)）。
+
+未来形（ユニット20）と同じく原形に語尾をつけるだけで、-ar・-er・-ir の区別はありません。語尾は線過去の -er / -ir 動詞（comía）と同じ形ですが、原形につくところが違います（comía / comería）。
+
+### 不規則な語幹
+
+語幹は未来形とまったく同じです。
+
+| 原形 | 語幹 | 過去未来（yo） |
+| --- | --- | --- |
+| poder / saber / querer | podr- / sabr- / querr- | podría / sabría / querría |
+| tener / poner / salir / venir | tendr- / pondr- / saldr- / vendr- | tendría / pondría / saldría / vendría |
+| hacer / decir | har- / dir- | haría / diría |
+
+### 使い方1：丁寧なお願い
+
+| 言い方 | 意味 |
+| --- | --- |
+| Me gustaría + 原形 | 〜したいのですが |
+| ¿Podría + 原形? | 〜していただけますか（usted） |
+| ¿Podrías + 原形? | 〜してくれる？（tú） |
+| ¿Le importaría + 原形? | 〜していただいてもかまいませんか |
+
+quiero（〜がほしい）や ¿Puedes…?（〜できる？）よりやわらかく、お店や仕事の場面で好まれます。
+
+### 使い方2：アドバイス
+
+<Examples>
+
+- Deberías descansar un poco.（少し休んだ方がいいよ）
+- Yo que tú, probaría este vino.（私があなたなら、このワインを試すね）
+
+</Examples>
+
+### 使い方3：願望・仮定
+
+実現するかどうかわからないことを、控えめに言います：Me encantaría vivir en España.（スペインに住めたらすてきだろうな）。「もし〜なら」という仮定の文（Si tuviera tiempo, viajaría…）は、B1 以降で学びます。
+
+### レストランで
+
+ケンタが、バレンシアの取引先と夕食に行きます。
+
+- Kenta: Buenas noches. Me gustaría reservar una mesa para dos.（こんばんは。2人でテーブルを予約したいのですが）
+- Camarero: Por supuesto. ¿A qué hora?（もちろんです。何時に？）
+- Kenta: A las nueve, si es posible. ¿Podría traerme la carta de vinos?（できれば9時に。ワインリストを持ってきていただけますか？）
+- Camarero: Ahora mismo.（ただいま）
+- Kenta: ¿Qué vino me recomendaría?（おすすめのワインはどれですか？）
+- Camarero: Yo que usted, probaría este vino de Rioja.（私でしたら、このリオハのワインをお試しになりますね）
+
+### 仕事のメールで
+
+ケンタは、取引先へのメールでも過去未来を使います。
+
+¿Podría enviarme el presupuesto antes del viernes? Me gustaría revisarlo con mi equipo. También querría saber si sería posible visitar la fábrica en marzo.
+
+（金曜日までに見積もりを送っていただけますか。チームと確認したいと思います。また、3月に工場を見学できるかどうかも知りたいのですが）
+
+podría、me gustaría、querría、sería を重ねることで、お願いが押しつけがましくならず、ていねいな印象になります。
+
+yo que tú のかわりに、En tu lugar, …（君の立場なら）や Si yo fuera tú, …（もし私が君なら）とも言います。Si yo fuera tú の fuera は、B2 で学ぶ接続法過去の形です。今は決まった言い方として覚えておきましょう。
+
+deberías を否定にすると、「〜しない方がいい」になります：No deberías trabajar tanto.（そんなに働かない方がいいよ）。
+
+**ダニエル（バレンシア出身）のひとこと：** スペインのバルでは、¿Me pones un café?（コーヒーくれる？）のように現在形でも十分ていねいです。ただ、レストランやホテル、仕事のメールでは、¿Podría…? や Me gustaría… を使うと、きちんとした印象になります。
 
 ## 活用：今日の動詞 (Conjugación)
 
-TODO:contenido
+お願いで使う [poder](/language/learn-spanish/verb-conjugation/poder/)（podría）は、活用表の「過去未来」で全人称の形を確認できます。querer（querría）と deber（debería）も、この表現でよく使う動詞です。過去未来と線過去は語尾が似ているので、poder なら podría（過去未来）と podía（線過去）を並べて見比べておきましょう。
 
 ## 語彙 (Nociones específicas)
+
+レストランやお願いの場面で使う語です。
 
 <VocabList items={frontmatter.vocabulary} level={frontmatter.level} />
 
 ## 発音・正書法 (Pronunciación y ortografía)
 
-TODO:contenido
+過去未来の語尾 -ía は、í を強く読み、i と a を分けて発音します：podría（ポ・**ドリ**・ア）、me gustaría（メ・グス・タ・**リ**・ア）。アクセント記号を落として podria と書くと、強く読む位置がわからなくなるので、必ず í と書きましょう。
 
 ## 日本人がよく間違える
 
-TODO:contenido
+- **お店で quiero ばかり使う。** △Quiero una mesa. → ○**Me gustaría** reservar una mesa. quiero は間違いではありませんが、レストランやホテルでは少し直接的に聞こえます。
+- **不規則な語幹を規則どおりに作る。** ×podería、×hacería、×tenería → ○**podría**、○**haría**、○**tendría**。
+- **過去未来と線過去を混同する。** ×Yo que tú, probaba este vino. → ○Yo que tú, **probaría** este vino. アドバイスは過去未来です。
 
 ## 文化メモ (Referentes culturales)
 
 <CultureNote>
 
-TODO:contenido
+ケンタが勧められたリオハは、スペインを代表するワインの産地の一つです。レストランで ¿Qué vino me recomendaría?（おすすめのワインは？）と聞けば、料理に合うワインを教えてもらえます。Me gustaría probar un vino de la zona.（この地方のワインを飲んでみたいのですが）と言えば、その土地のワインを出してくれることも多いでしょう。格付けや熟成の違い、主な産地は、[スペインワイン完全ガイド](/food/spanish-wine/)で紹介しています。
 
 </CultureNote>
 
 ## 練習 (Procedimientos de aprendizaje)
 
-### 練習1：認識
+### 練習1：どの使い方？
 
-TODO:contenido
+次の文の過去未来は、「丁寧なお願い」「アドバイス」「願望」のどれですか。
+
+1. ¿Podría traerme la carta?
+2. Deberías descansar.
+3. Me encantaría vivir en España.
+4. Me gustaría reservar una mesa.
+5. Yo que tú, tomaría el tren.
 
 <details>
 <summary>答えを見る</summary>
 
-TODO:contenido
+1. 丁寧なお願い
+2. アドバイス
+3. 願望
+4. 丁寧なお願い
+5. アドバイス
 
 </details>
 
 ### 練習2：穴埋め
 
-TODO:contenido
+（ ）の動詞を過去未来にしてください。
+
+1. ¿(Usted, poder) ______ ayudarme?
+2. Me (gustar) ______ probar el vino de la casa.
+3. (Tú, deber) ______ llamar a tu madre.
+4. Yo que tú, (hacer) ______ una reserva.
+5. ¿Te (importar) ______ cerrar la ventana?
+6. Nosotros (querer) ______ una mesa en la terraza.
 
 <details>
 <summary>答えを見る</summary>
 
-TODO:contenido
+1. Podría
+2. gustaría
+3. Deberías
+4. haría
+5. importaría
+6. querríamos
 
 </details>
 
 ### 練習3：作文
 
-TODO:contenido
+ケンタになったつもりで、スペイン語で言ってみましょう。
+
+1. 2人でテーブルを予約したいのですが。
+2. おすすめのワインは何ですか？（usted に）
+3. （同僚に）少し休んだ方がいいよ。
 
 <details>
-<summary>答えを見る</summary>
+<summary>解答例を見る</summary>
 
-TODO:contenido
+1. Me gustaría reservar una mesa para dos.
+2. ¿Qué vino me recomendaría?
+3. Deberías descansar un poco.
 
 </details>
 
@@ -97,4 +273,8 @@ TODO:contenido
 
 ## まとめ
 
-TODO:contenido
+- 過去未来は原形 + -ía・-ías・-ía…。不規則な語幹は未来形と同じ（podría、haría、tendría）。
+- 丁寧なお願いは Me gustaría…、¿Podría…?。アドバイスは Deberías…、Yo que tú….
+- 実現するかわからない願望は Me encantaría…。線過去（podía）と形を混同しない。
+
+次のユニット22では、tener que や acabar de などの動詞句と、時の表現を学びます。

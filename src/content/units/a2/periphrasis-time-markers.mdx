@@ -5,89 +5,244 @@ levelName: "Plataforma"
 slug: "periphrasis-time-markers"
 url: "/language/learn-spanish/a2/periphrasis-time-markers/"
 existing: false
-title: "動詞句と時の表現"
+title: "スペイン語の動詞句と時の表現｜tener que・acabar de・hace … que"
 shortTitle: "動詞句と時の表現"
-titleEs: "perífrasis y marcadores temporales"
-grammar: ["tener que","acabar de","hace... que"]
-tenses: []
-functions: []
-canDo: []
-vocabulary: []
-verbs: ["tener","acabar"]
+titleEs: "Perífrasis verbales y marcadores temporales"
+description: "スペイン語の動詞句（tener que・hay que・acabar de・volver a・dejar de・seguir + 現在分詞）と、hace … que・desde などの時の表現を解説。「〜したばかり」「〜して何年になる」の言い方を、練習問題つきで学べます。"
+grammar: ["tener que / hay que", "acabar de, volver a, empezar a, dejar de", "seguir + gerundio, llevar + tiempo + gerundio", "hace … que, desde, desde hace, durante"]
+tenses: ["presente de indicativo"]
+functions: ["義務や必要を言う", "動作の始まり・終わり・くり返しを言う", "期間を言う"]
+canDo:
+  - "しなければならないことと、一般的に必要なことを言い分けられる"
+  - "「〜したばかり」「また〜する」「〜するのをやめる」と言える"
+  - "「〜して何年になる」と、続いている期間を言える"
+vocabulary:
+  # rank = «Rango frec.» del diccionario de frecuencias del CORPES XXI (RAE). Lo escribe
+  # npm run vocab:rank -- --write; lo que no es lema del diccionario va sin rank, al final.
+  - { es: "acabar", ja: "終える（acabar de：〜したばかり）", rank: 455, example: "Acabo de llegar a Valencia." }
+  - { es: "dejar", ja: "やめる・置いておく（dejar de：〜するのをやめる）", rank: 104, example: "Mi jefe ha dejado de fumar." }
+  - { es: "seguir", ja: "続ける", rank: 84, example: "Sigo estudiando español." }
+  - { es: "llevar", ja: "（期間を）過ごす・持っていく", rank: 88, example: "Llevo dos años estudiando español." }
+  - { es: "desde", ja: "〜から（起点）", rank: 38, example: "Trabajo aquí desde 2019." }
+  - { es: "durante", ja: "〜の間", rank: 73, example: "Kenta vivió en Osaka durante diez años." }
+  - { es: "el minuto", ja: "分", rank: 288, example: "Hace diez minutos que espero el autobús." }
+  - { es: "el retraso", ja: "遅れ", rank: 3200, example: "El tren lleva veinte minutos de retraso." }
+  - { es: "la costumbre", ja: "習慣", rank: 2225, example: "Volver a casa tarde es una costumbre española." }
+  - { es: "practicar", ja: "練習する・（スポーツを）する", rank: 1730, example: "Hay que practicar todos los días." }
+  - { es: "fumar", ja: "たばこを吸う", rank: 3155, example: "Aquí no se puede fumar." }
+  - { es: "empezar", ja: "始める（empezar a：〜し始める）", rank: 282, example: "Mina empezó a estudiar español el año pasado." }
+  - { es: "volver", ja: "戻る（volver a：また〜する）", rank: 204, example: "Quiero volver a visitar Toledo." }
+  - { es: "la vez", ja: "回・度", rank: 64, example: "Es la tercera vez que vengo a Valencia." }
+verbs: ["tener", "acabar"]
 duration: 40
 prev: 21
 next: 23
-related: [21,23,24]
-cast: ["mina","kenta"]
-audio: []
+related: [21, 23, 24]
+cast: ["mina", "kenta"]
+audio:
+  - "Tengo que terminar el informe hoy."
+  - "Hay que practicar todos los días."
+  - "Acabo de llegar a Valencia."
+  - "Hace siete años que trabajo con esta empresa."
+  - "Llevo dos años estudiando español."
+  - "El Real Madrid existe desde 1902."
 youtubeId: ""
-quiz: []
 draft: true
 updated: "2026-11-02"
+quiz:
+  - question: "「（私は）今日報告書を終えなければならない」。正しいのは？"
+    options: ["Tengo terminar el informe hoy.", "Tengo que terminar el informe hoy.", "Hay que yo termine el informe hoy."]
+    correctIndex: 1
+    explanation: "「（自分が）〜しなければならない」は tener que + 原形。que を忘れないようにしましょう。"
+  - question: "「（一般に）毎日練習する必要がある」。自然なのは？"
+    options: ["Hay que practicar todos los días.", "Tiene que practicar todos los días.", "Hay practicar todos los días."]
+    correctIndex: 0
+    explanation: "主語を決めずに「〜する必要がある」と言うときは hay que + 原形です。"
+  - question: "「バレンシアに着いたばかりだ」。正しいのは？"
+    options: ["Acabo llegar a Valencia.", "Acabo de llegar a Valencia.", "Acabé llegar a Valencia."]
+    correctIndex: 1
+    explanation: "「〜したばかり」は acabar de + 原形（現在形）：Acabo de llegar."
+  - question: "「スペイン語を勉強して2年になる」。正しいのは？"
+    options: ["Hace dos años que estudio español.", "Hace dos años que estudié español.", "Desde dos años estudio español."]
+    correctIndex: 0
+    explanation: "今も続いていることは hace + 期間 + que + 現在形。Estudio español desde hace dos años. とも言えます。"
+  - question: "「2019年からここで働いている」。正しいのは？"
+    options: ["Trabajo aquí desde hace 2019.", "Trabajo aquí desde 2019.", "Trabajo aquí hace 2019."]
+    correctIndex: 1
+    explanation: "起点（年・日付）は desde、期間（2年）は desde hace です。"
+  - question: "「上司はたばこをやめた」。正しいのは？"
+    options: ["Mi jefe ha dejado de fumar.", "Mi jefe ha dejado fumar.", "Mi jefe ha acabado de fumar."]
+    correctIndex: 0
+    explanation: "「〜するのをやめる」は dejar de + 原形。acabar de は「〜したばかり」です。"
+  - question: "「まだスペイン語を勉強し続けている」。正しいのは？"
+    options: ["Sigo estudiar español.", "Sigo estudiando español.", "Sigo a estudiar español."]
+    correctIndex: 1
+    explanation: "seguir のあとは現在分詞：Sigo estudiando."
+  - question: "「またトレドを訪れたい」。正しいのは？"
+    options: ["Quiero volver visitar Toledo.", "Quiero volver a visitar Toledo.", "Quiero visitar otra vez de Toledo."]
+    correctIndex: 1
+    explanation: "「また〜する」は volver a + 原形。a を忘れないようにしましょう。"
+  - question: "「電車は20分遅れている」。自然なのは？"
+    options: ["El tren lleva veinte minutos de retraso.", "El tren hace veinte minutos de retraso.", "El tren es veinte minutos de retraso."]
+    correctIndex: 0
+    explanation: "llevar + 期間で、続いている時間を表します：lleva veinte minutos de retraso。"
+  - question: "「10年間大阪に住んでいた（今は住んでいない）」。正しいのは？"
+    options: ["Vivo en Osaka durante diez años.", "Viví en Osaka durante diez años.", "Hace diez años que vivo en Osaka."]
+    correctIndex: 1
+    explanation: "終わった期間は点過去 + durante。Hace diez años que vivo… は「今も住んでいる」になります。"
 ---
 
-TODO:contenido（導入：このユニットの問いに、それだけで答えになる2文で答える）
+スペイン語の動詞句は、「動詞 + 前置詞 + 原形」のように二つの動詞を組み合わせて、義務や動作の始まり・終わりを表す言い方です。Tengo que terminar el informe.（報告書を終えなければならない）、Acabo de llegar.（着いたばかりだ）のように、会話で毎日のように使います。
 
-## 文法 (Gramática)
+「〜して何年になる」と期間を言うときは、Hace cinco años que trabajo aquí.（ここで働いて5年になる）のように hace … que を使います。このユニットでは、2019年からバレンシアの会社と仕事をしているケンタと、スペイン語を勉強し続けるミナの話を例に学びます。
 
-TODO:contenido
+## 文法：動詞句と時の表現 (Gramática)
+
+まず義務の言い方を、次に動作の流れを表す動詞句を、最後に期間を言う表現を見ていきましょう。
+
+### 義務と必要：tener que / hay que
+
+| 形 | 意味 | 例 |
+| --- | --- | --- |
+| tener que + 原形 | （主語が）〜しなければならない | Tengo que terminar el informe hoy. |
+| hay que + 原形 | （一般に）〜する必要がある | Hay que practicar todos los días. |
+| deber + 原形 | 〜すべきだ | Debes descansar más. |
+
+tener que は「だれが」がはっきりしていて、hay que は主語を決めずに一般的な必要を言います。
+
+### 動作の流れを表す動詞句
+
+| 動詞句 | 意味 | 例 |
+| --- | --- | --- |
+| empezar a + 原形 | 〜し始める | Mina empezó a estudiar español el año pasado. |
+| acabar de + 原形 | 〜したばかり | Acabo de llegar a Valencia. |
+| volver a + 原形 | また〜する | Quiero volver a visitar Toledo. |
+| dejar de + 原形 | 〜するのをやめる | Mi jefe ha dejado de fumar. |
+| seguir + 現在分詞 | 〜し続けている | Sigo estudiando español. |
+
+acabar de は「〜したばかり」で、現在形の acabo de のまま過去の出来事を表します。日本語の「終える」につられて ×Acabo llegar. と de を落とさないようにしましょう。
+
+### 期間を言う
+
+| 表現 | 意味 | 例 |
+| --- | --- | --- |
+| hace + 期間 + que + 現在形 | 〜して（期間）になる | Hace siete años que trabajo con esta empresa. |
+| 現在形 + desde hace + 期間 | （期間）前から〜している | Trabajo con esta empresa desde hace siete años. |
+| 現在形 + desde + 起点 | 〜から…している | Trabajo aquí desde 2019. |
+| llevar + 期間 + 現在分詞 | 〜して（期間）になる | Llevo dos años estudiando español. |
+| 点過去 + durante + 期間 | 〜の間…した | Kenta vivió en Osaka durante diez años. |
+
+今も続いていることには、日本語の「〜してきた」につられずに現在形を使うのがポイントです。durante は、終わった期間を言うときに使います。durante を使わずに、期間だけを言うこともできます：Viví en Osaka diez años.（大阪に10年住んでいた）。
+
+### バレンシアのオフィスで
+
+- Colega: ¿Cuánto tiempo hace que trabajas con nosotros?（私たちと仕事をしてどのくらいになる？）
+- Kenta: Hace siete años. Empecé en 2019.（7年になるよ。2019年に始めたんだ）
+- Colega: ¡Y hablas muy bien español!（それにスペイン語がとても上手だね！）
+- Kenta: Gracias. Llevo tres años estudiando, pero tengo que practicar más.（ありがとう。勉強して3年になるけど、もっと練習しないと）
+
+### ミナのスペイン語学習
+
+ミナが、スペイン語の勉強について話します。
+
+Empecé a estudiar español hace dos años. Al principio, no entendía nada, pero seguí estudiando todos los días. El año pasado dejé de usar el diccionario en el móvil para todo y empecé a ver series en español. Acabo de volver de Madrid y quiero volver a ir pronto. Tengo que practicar más la conversación.
+
+（2年前にスペイン語の勉強を始めました。最初は何もわからなかったけれど、毎日勉強を続けました。去年は何でも携帯の辞書で調べるのをやめて、スペイン語のドラマを見始めました。マドリードから帰ってきたばかりで、またすぐに行きたいです。もっと会話の練習をしなければなりません）
+
+一つの文章の中に、empezar a・seguir・dejar de・acabar de・volver a・tener que が全部入っています。
+
+hace … que と、ユニット14で学んだ hace（〜前に）を混同しないようにしましょう。Llegué hace dos días.（2日前に着いた）は過去の一点、Hace dos días que estoy aquí.（ここに来て2日になる）は今も続いている期間です。また、llevar は sin + 原形 と組み合わせて「〜しないで（期間）になる」とも言えます：Llevo tres días sin fumar.（たばこを吸わずに3日になる）。
+
+期間をたずねるときは、¿Cuánto tiempo hace que…? のほか、¿Desde cuándo…?（いつから？）も使います：¿Desde cuándo vives aquí?（いつからここに住んでいるの？）
+
+**ダニエル（バレンシア出身）のひとこと：** 「〜したばかり」は、スペインでは Acabo de llegar. のほかに、現在完了で Ya he llegado. とも言います。どちらも自然ですが、「本当に今さっき」と言いたいときは acabar de の方がぴったりです。
 
 ## 活用：今日の動詞 (Conjugación)
 
-TODO:contenido
+義務の tener que で使う [tener](/language/learn-spanish/verb-conjugation/tener/) は、点過去（tuve que）、未来（tendré que）、過去未来（tendría que）と、どの時制でも同じ形で動詞句を作れます：Ayer tuve que trabajar.（昨日は働かなければならなかった）。acabar は規則動詞なので、hablar と同じように活用します。
 
 ## 語彙 (Nociones específicas)
+
+動詞句を作る動詞と、時間や期間の表現です。
 
 <VocabList items={frontmatter.vocabulary} level={frontmatter.level} />
 
 ## 発音・正書法 (Pronunciación y ortografía)
 
-TODO:contenido
+hay que の hay は「アイ」、que は「ケ」で、二つを続けて「アイ・ケ」と読みます。h は発音しないので、hace（ア・セ）、hasta（アス・タ）も「ハ」とは読みません。hace の ce は、ユニット10で学んだ th に近い音です。
 
 ## 日本人がよく間違える
 
-TODO:contenido
+- **動詞句の前置詞を落とす。** ×Tengo terminar. ×Acabo llegar. ×Quiero volver visitar. → ○Tengo **que** terminar. ○Acabo **de** llegar. ○Quiero volver **a** visitar.
+- **続いていることに過去形を使う。** ×Hace dos años que estudié español.（今も勉強しているのに）→ ○Hace dos años que **estudio** español.
+- **desde と desde hace を混同する。** ×desde hace 2019 → ○**desde** 2019（起点）。○**desde hace** dos años（期間）。
 
 ## 文化メモ (Referentes culturales)
 
 <CultureNote>
 
-TODO:contenido
+スペインのサッカークラブには、長い歴史を持つチームがたくさんあります。たとえばレアル・マドリードは1902年の創設で、El Real Madrid existe desde 1902.（レアル・マドリードは1902年からある）、Hace más de cien años que existe.（できてから100年以上になる）と、このユニットの表現で言えます。サポーターに ¿Desde cuándo eres del Real Madrid?（いつからマドリーのファン？）と聞いてみるのもいいでしょう。クラブの歴史やタイトルは、[レアル・マドリード完全ガイド](/football/real-madrid/)で紹介しています。
 
 </CultureNote>
 
 ## 練習 (Procedimientos de aprendizaje)
 
-### 練習1：認識
+### 練習1：意味を選ぶ
 
-TODO:contenido
+次の文の意味に合うものを選んでください（〜したばかり／また〜する／〜するのをやめる／〜し続ける）。
+
+1. Acabo de comer.
+2. Sigo trabajando.
+3. He dejado de fumar.
+4. Quiero volver a verte.
 
 <details>
 <summary>答えを見る</summary>
 
-TODO:contenido
+1. 〜したばかり（食べたばかり）
+2. 〜し続ける（まだ働いている）
+3. 〜するのをやめる（たばこをやめた）
+4. また〜する（また君に会いたい）
 
 </details>
 
 ### 練習2：穴埋め
 
-TODO:contenido
+（ ）に入る語を答えてください。
+
+1. Tengo ______ terminar el informe.
+2. ______ que practicar todos los días.（一般に必要）
+3. Acabo ______ llegar.
+4. ______ dos años ______ estudio español.（勉強して2年になる）
+5. Trabajo aquí ______ 2019.
+6. Llevo tres años ______（estudiar）español.
 
 <details>
 <summary>答えを見る</summary>
 
-TODO:contenido
+1. que
+2. Hay
+3. de
+4. Hace / que
+5. desde
+6. estudiando
 
 </details>
 
 ### 練習3：作文
 
-TODO:contenido
+ケンタになったつもりで、スペイン語で言ってみましょう。
+
+1. バレンシアに着いたばかりだ。
+2. 今日は報告書を終えなければならない。
+3. この会社と仕事をして7年になる。
 
 <details>
-<summary>答えを見る</summary>
+<summary>解答例を見る</summary>
 
-TODO:contenido
+1. Acabo de llegar a Valencia.
+2. Hoy tengo que terminar el informe.
+3. Hace siete años que trabajo con esta empresa.
 
 </details>
 
@@ -97,4 +252,8 @@ TODO:contenido
 
 ## まとめ
 
-TODO:contenido
+- 義務は tener que（主語あり）と hay que（一般）。前置詞の que を忘れない。
+- acabar de（したばかり）、volver a（また）、dejar de（やめる）、seguir + 現在分詞（続ける）。
+- 続いている期間は hace … que + 現在形、desde hace、llevar + 現在分詞。起点は desde、終わった期間は durante。
+
+次のユニット23では、pero や porque などの接続詞を使って、まとまった文章を書きます。

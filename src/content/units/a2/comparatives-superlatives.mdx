@@ -5,89 +5,250 @@ levelName: "Plataforma"
 slug: "comparatives-superlatives"
 url: "/language/learn-spanish/a2/comparatives-superlatives/"
 existing: false
-title: "比較と最上級"
+title: "スペイン語の比較級と最上級｜más que・tan como・el más の使い方"
 shortTitle: "比較と最上級"
-titleEs: "comparativos y superlativos"
-grammar: ["más que","el más"]
-tenses: []
-functions: []
-canDo: []
-vocabulary: []
-verbs: []
+titleEs: "Comparativos y superlativos"
+description: "スペイン語の比較級と最上級を基本から解説。más … que・menos … que・tan … como の作り方、mejor・peor・mayor・menor の不規則な形、el más … de の最上級と -ísimo の強調を、都市やホテルを比べる例文と、日本人が間違えやすい点、練習問題つきで学べます。"
+grammar: ["comparativos de superioridad, inferioridad e igualdad", "comparativos irregulares", "superlativo relativo", "-ísimo"]
+tenses: ["presente de indicativo"]
+functions: ["人・物・場所を比べる", "いちばんの物を言う"]
+canDo:
+  - "二つの物や場所を、「より〜」「同じくらい〜」と比べられる"
+  - "グループの中で「いちばん〜」の物を言える"
+  - "旅先のホテルや町を、比べながら選べる"
+vocabulary:
+  # rank = «Rango frec.» del diccionario de frecuencias del CORPES XXI (RAE). Lo escribe
+  # npm run vocab:rank -- --write; lo que no es lema del diccionario va sin rank, al final.
+  - { es: "más", ja: "もっと・より多く", rank: 20, example: "Madrid es más grande que Valencia." }
+  - { es: "menos", ja: "より少なく", rank: 182, example: "Este hotel es menos caro que el otro." }
+  - { es: "tan", ja: "それほど・同じくらい", rank: 170, example: "Valencia es tan bonita como Sevilla." }
+  - { es: "mejor", ja: "よりよい・いちばんよい", rank: 109, example: "Este restaurante es mejor que aquel." }
+  - { es: "peor", ja: "より悪い", rank: 1202, example: "Hoy el tiempo es peor que ayer." }
+  - { es: "mayor", ja: "年上の・より大きい", rank: 79, example: "Mi hermano es mayor que yo." }
+  - { es: "menor", ja: "年下の・より小さい", rank: 474, example: "Kenta es menor que su jefe." }
+  - { es: "igual", ja: "同じ", rank: 1055, example: "Los dos hoteles cuestan igual." }
+  - { es: "moderno", ja: "現代的な・新しい（女性形 moderna）", rank: 1087, example: "Este barrio es más moderno." }
+  - { es: "antiguo", ja: "古い・歴史のある（女性形 antigua）", rank: 831, example: "Toledo es una ciudad muy antigua." }
+  - { es: "tranquilo", ja: "静かな（女性形 tranquila）", rank: 2209, example: "Este hotel es más tranquilo." }
+  - { es: "ruidoso", ja: "うるさい・にぎやかな（女性形 ruidosa）", rank: 10000, example: "El centro es un poco ruidoso." }
+  - { es: "cómodo", ja: "快適な（女性形 cómoda）", rank: 2741, example: "Esta habitación es más cómoda." }
+  - { es: "rápido", ja: "速い（女性形 rápida）", rank: 858, example: "El tren es más rápido que el autobús." }
+verbs: ["ser"]
 duration: 40
 prev: 17
 next: 19
-related: [17,19,24]
-cast: ["mina","kenta"]
-audio: []
+related: [17, 19, 24]
+cast: ["mina", "kenta"]
+audio:
+  - "Madrid es más grande que Barcelona."
+  - "Este hotel es menos caro que el otro."
+  - "Valencia es tan bonita como Sevilla."
+  - "Es el hotel más tranquilo de la zona."
+  - "La paella está buenísima."
+  - "Barcelona tiene playa y Madrid no."
 youtubeId: ""
-quiz: []
 draft: true
 updated: "2026-11-02"
+quiz:
+  - question: "「この電車はバスより速い」。正しいのは？"
+    options: ["El tren es más rápido que el autobús.", "El tren es más rápido de el autobús.", "El tren es rápido más que el autobús."]
+    correctIndex: 0
+    explanation: "比較級は más + 形容詞 + que。比べる相手の前には que を置きます。"
+  - question: "「このホテルはあのホテルほど高くない」。正しいのは？"
+    options: ["Este hotel es menos caro que aquel.", "Este hotel es tan caro que aquel.", "Este hotel es menos caro de aquel."]
+    correctIndex: 0
+    explanation: "「〜より…でない」は menos + 形容詞 + que です。"
+  - question: "「バレンシアはセビリアと同じくらいきれいだ」。正しいのは？"
+    options: ["Valencia es tan bonita que Sevilla.", "Valencia es tan bonita como Sevilla.", "Valencia es más bonita como Sevilla."]
+    correctIndex: 1
+    explanation: "同じ程度は tan + 形容詞 + como。tan のときだけ que ではなく como を使います。"
+  - question: "bueno の比較級「よりよい」は？"
+    options: ["más bueno", "mejor", "buenísimo"]
+    correctIndex: 1
+    explanation: "bueno の比較級は mejor、malo は peor です。料理や品質を言うときは más bueno ではなく mejor を使いましょう。"
+  - question: "「兄は私より年上だ」。正しいのは？"
+    options: ["Mi hermano es mayor que yo.", "Mi hermano es mayor que mí.", "Mi hermano es más viejo de yo."]
+    correctIndex: 0
+    explanation: "年上は mayor。que のあとは yo、tú の形を使います（que mí とは言いません）。"
+  - question: "「この地区でいちばん静かなホテル」。正しいのは？"
+    options: ["el hotel más tranquilo de la zona", "el hotel más tranquilo que la zona", "el más hotel tranquilo de la zona"]
+    correctIndex: 0
+    explanation: "最上級は el / la + 名詞 + más + 形容詞 + de。範囲は de で表します。"
+  - question: "「（この）パエリア、すごくおいしい！」。強調の形は？"
+    options: ["¡La paella está muy buenísima!", "¡La paella está buenísima!", "¡La paella está más buena!"]
+    correctIndex: 1
+    explanation: "-ísimo は「とても〜」の強い形。それだけで強いので muy はつけません。"
+  - question: "「二つのホテルは同じ値段だ」。自然なのは？"
+    options: ["Los dos hoteles cuestan igual.", "Los dos hoteles cuestan tan.", "Los dos hoteles cuestan como."]
+    correctIndex: 0
+    explanation: "動詞を比べて「同じだけ〜」は igual（または lo mismo）で言えます。"
+  - question: "「ケンタは私と同じくらい働く」。正しいのは？"
+    options: ["Kenta trabaja tan como yo.", "Kenta trabaja tanto como yo.", "Kenta trabaja más como yo."]
+    correctIndex: 1
+    explanation: "動詞の量を比べるときは tanto como を使います（形容詞なら tan … como）。"
+  - question: "「マドリードはスペインでいちばん大きい都市だ」。正しいのは？"
+    options: ["Madrid es la ciudad más grande de España.", "Madrid es la más grande ciudad en España.", "Madrid es la ciudad más grande que España."]
+    correctIndex: 0
+    explanation: "la ciudad más grande de España：名詞のあとに más + 形容詞、範囲は de です。"
 ---
 
-TODO:contenido（導入：このユニットの問いに、それだけで答えになる2文で答える）
+スペイン語で物を比べるときは、más（より多く）や menos（より少なく）を形容詞の前に置き、比べる相手を que で示して Madrid es más grande que Barcelona.（マドリードはバルセロナより大きい）と言います。「いちばん〜」と言う最上級は、el / la と de を使って la ciudad más grande de España（スペインでいちばん大きい都市）と言います。
 
-## 文法 (Gramática)
+旅先でホテルや町を選ぶとき、比べる表現はとても役に立ちます。このユニットでは、バレンシア出張のホテルを選ぶケンタと、次のスペイン旅行の行き先を考えるミナの会話を例に学びます。
 
-TODO:contenido
+## 文法：比較級と最上級 (Gramática)
+
+まず三つの比較の形を、次に不規則な比較級を、最後に最上級と -ísimo を見ていきましょう。
+
+### 三つの比較
+
+| 比較 | 形 | 例 |
+| --- | --- | --- |
+| 〜より…だ | más + 形容詞 + que | El tren es más rápido que el autobús. |
+| 〜ほど…でない | menos + 形容詞 + que | Este hotel es menos caro que aquel. |
+| 〜と同じくらい…だ | tan + 形容詞 + como | Valencia es tan bonita como Sevilla. |
+
+形容詞は、主語の性と数に合わせます：Valencia es tan bonita como Sevilla. 名詞の量を比べるときは más / menos + 名詞 + que（Madrid tiene más museos que Valencia.）、同じくらいなら tanto / tanta / tantos / tantas + 名詞 + como を使います。動詞を比べるなら trabajar más que…、trabajar tanto como… です。
+
+### 不規則な比較級
+
+| 原形 | 比較級 | 例 |
+| --- | --- | --- |
+| bueno（よい） | mejor | Este restaurante es mejor que aquel. |
+| malo（悪い） | peor | Hoy el tiempo es peor que ayer. |
+| grande（年齢が上） | mayor | Mi hermano es mayor que yo. |
+| pequeño（年齢が下） | menor | Kenta es menor que su jefe. |
+
+大きさを比べるときは más grande / más pequeño、年齢を比べるときは mayor / menor を使うのがふつうです。
+
+### 最上級
+
+グループの中で「いちばん〜」と言うときは、el / la / los / las + 名詞 + más + 形容詞 + de の形です。
+
+<Examples>
+
+- Es el hotel más tranquilo de la zona.（この地区でいちばん静かなホテルだ）
+- Madrid es la ciudad más grande de España.（マドリードはスペインでいちばん大きい都市だ）
+
+</Examples>
+
+比べる相手がなく、ただ「とても〜」と強調するときは、形容詞に -ísimo をつけます：buenísimo（すごくおいしい）、carísimo（すごく高い）。-ísimo はそれだけで強いので、muy はつけません。
+
+### ホテルを選ぶ
+
+出張の前に、ケンタとダニエルがメッセージで相談します。
+
+- Kenta: ¿Qué hotel es mejor, el del centro o el de la playa?（中心部のホテルと海辺のホテル、どっちがいい？）
+- Daniel: El del centro es más caro, pero está más cerca de la oficina.（中心部の方が高いけど、オフィスに近いよ）
+- Kenta: ¿Y el de la playa?（海辺の方は？）
+- Daniel: Es más tranquilo y más barato, pero el autobús tarda mucho.（静かで安いけど、バスがすごく時間かかるんだ）
+- Kenta: Entonces el del centro. Es el más cómodo para el trabajo.（じゃあ中心部にしよう。仕事にはいちばん便利だから）
+
+el del centro は「中心部のもの（ホテル）」の意味で、同じ名詞をくり返さない言い方です。
+
+### 東京とマドリードを比べる
+
+マドリードから帰ったミナが、ダニエルと話します。
+
+- Daniel: ¿Qué te gustó más, Tokio o Madrid?（東京とマドリード、どっちがよかった？）
+- Mina: Madrid es más pequeña que Tokio, pero tiene más vida en la calle.（マドリードは東京より小さいけど、通りがもっとにぎやかなの）
+- Daniel: ¿Y la comida?（食べ物は？）
+- Mina: La comida de Madrid es buenísima, pero los horarios son muy diferentes. En Madrid se cena mucho más tarde que en Tokio.（マドリードの料理はすごくおいしいけど、食事の時間がぜんぜん違う。マドリードでは東京よりずっと遅く夕食をとるの）
+
+mucho más tarde（ずっと遅く）のように、比較を強めるときは más の前に mucho を置きます。
+
+数を比べるときは、que ではなく de を使います：En la plaza hay más de cien personas.（広場には100人以上いる）。Cuesta menos de diez euros.（10ユーロもしない）。「〜より多い・少ない」の後ろが数字なら de、と覚えておきましょう。
+
+形容詞を使わずに「〜の方が好き」と言うなら、preferir（〜の方を好む）を使います：Prefiero Madrid.（マドリードの方が好き）。比べる相手は a で示します：Prefiero el té al café.（コーヒーより紅茶が好き）。
+
+**ダニエル（バレンシア出身）のひとこと：** 料理がおいしいときは ¡Está buenísimo! と言うと、とても喜ばれます。比べる意味の más bueno は、料理や品質についてはふつう使わず、mejor を使います。
 
 ## 活用：今日の動詞 (Conjugación)
 
-TODO:contenido
+比べる文の多くは、[ser](/language/learn-spanish/verb-conjugation/ser/) と形容詞で作ります（Madrid es más grande…）。その時の状態を比べるなら [estar](/language/learn-spanish/verb-conjugation/estar/) です（Hoy estoy más cansado que ayer.、今日は昨日より疲れている）。ser と estar の使い分けは、比較の文でも変わりません。
 
 ## 語彙 (Nociones específicas)
+
+比較に使う語と、町やホテルを説明する形容詞です。形容詞は男性形で載せています。
 
 <VocabList items={frontmatter.vocabulary} level={frontmatter.level} />
 
 ## 発音・正書法 (Pronunciación y ortografía)
 
-TODO:contenido
+-ísimo の形では、í を強く読み、アクセント記号をつけます：buenísimo（ブエ・**ニ**・シ・モ）、carísimo（カ・**リ**・シ・モ）。元の形容詞の強く読む位置は消えるので、bueno の「ブ**エ**」ではなく「**ニ**」を強く読みます。
 
 ## 日本人がよく間違える
 
-TODO:contenido
+- **比べる相手の前に de を使う。** ×Madrid es más grande de Valencia. → ○Madrid es más grande **que** Valencia. de は最上級の範囲（de España）に使います。
+- **tan … como の como を que にする。** ×tan bonita que Sevilla → ○tan bonita **como** Sevilla.
+- **bueno を más bueno にする。** ×Este restaurante es más bueno. → ○Este restaurante es **mejor**.
 
 ## 文化メモ (Referentes culturales)
 
 <CultureNote>
 
-TODO:contenido
+スペインで旅先を比べると、マドリードとバルセロナの話はいつも盛り上がります。Madrid es la ciudad más grande de España, pero Barcelona tiene playa y Madrid no.（マドリードはスペインでいちばん大きい都市だけど、バルセロナには海がある）。どちらが好きかは人それぞれで、¿Qué ciudad te gusta más?（どの町がいちばん好き？）は、スペイン人との会話の定番の話題です。ガウディ建築など、バルセロナの見どころは[バルセロナ観光完全ガイド](/travel/barcelona/)で紹介しています。
 
 </CultureNote>
 
 ## 練習 (Procedimientos de aprendizaje)
 
-### 練習1：認識
+### 練習1：どの比較？
 
-TODO:contenido
+次の文は「〜より…だ」「〜ほど…でない」「同じくらい」「いちばん」のどれですか。
+
+1. El tren es más rápido que el autobús.
+2. Este hotel es menos caro que aquel.
+3. Valencia es tan bonita como Sevilla.
+4. Es el hotel más tranquilo de la zona.
+5. Mi hermano es mayor que yo.
 
 <details>
 <summary>答えを見る</summary>
 
-TODO:contenido
+1. 〜より…だ（más … que）
+2. 〜ほど…でない（menos … que）
+3. 同じくらい（tan … como）
+4. いちばん（el … más … de）
+5. 〜より…だ（mayor：年上）
 
 </details>
 
 ### 練習2：穴埋め
 
-TODO:contenido
+（ ）の日本語に合う語を入れてください。
+
+1. Madrid es ______ grande ______ Valencia.（〜より大きい）
+2. Este restaurante es ______ que aquel.（よりよい）
+3. El autobús es ______ rápido ______ el tren.（〜ほど速くない）
+4. Sevilla es ______ bonita ______ Granada.（同じくらい）
+5. Es la habitación ______ cómoda ______ hotel.（ホテルでいちばん）
 
 <details>
 <summary>答えを見る</summary>
 
-TODO:contenido
+1. más / que
+2. mejor
+3. menos / que
+4. tan / como
+5. más / del（de + el）
 
 </details>
 
 ### 練習3：作文
 
-TODO:contenido
+ケンタになったつもりで、スペイン語で言ってみましょう。
+
+1. 中心部のホテルは海辺のホテルより高い。
+2. 海辺のホテルの方が静かだ。
+3. このパエリア、すごくおいしい！
 
 <details>
-<summary>答えを見る</summary>
+<summary>解答例を見る</summary>
 
-TODO:contenido
+1. El hotel del centro es más caro que el hotel de la playa.
+2. El hotel de la playa es más tranquilo.
+3. ¡Esta paella está buenísima!
 
 </details>
 
@@ -97,4 +258,8 @@ TODO:contenido
 
 ## まとめ
 
-TODO:contenido
+- 比較は más / menos + 形容詞 + que、同じくらいは tan + 形容詞 + como。
+- bueno → mejor、malo → peor。年齢は mayor / menor。
+- 最上級は el / la + 名詞 + más + 形容詞 + de。強調は -ísimo（muy はつけない）。
+
+次のユニット19では、命令形を使って、指示やお願いを伝えます。

@@ -5,89 +5,245 @@ levelName: "Plataforma"
 slug: "object-pronouns"
 url: "/language/learn-spanish/a2/object-pronouns/"
 existing: false
-title: "目的格代名詞"
+title: "スペイン語の目的格代名詞｜lo・la・le と se lo の使い方"
 shortTitle: "目的格代名詞"
-titleEs: "pronombres de objeto directo e indirecto"
-grammar: ["lo/la/le","posición"]
-tenses: []
-functions: []
-canDo: []
-vocabulary: []
-verbs: []
+titleEs: "Pronombres de objeto directo e indirecto"
+description: "スペイン語の目的格代名詞を基本から解説。「〜を」の lo・la・los・las、「〜に」の le・les、二つ重なるときの se lo、代名詞を置く位置を、買い物やプレゼントの場面の例文と、日本人が間違えやすい点、練習問題つきで学べます。"
+grammar: ["pronombres de objeto directo", "pronombres de objeto indirecto", "se lo / se la", "posición del pronombre"]
+tenses: ["presente de indicativo"]
+functions: ["物のやりとりを言う", "同じ名詞のくり返しを避ける"]
+canDo:
+  - "すでに話に出た物や人を、代名詞で言いかえられる"
+  - "「だれに何をあげる・送る」を言える"
+  - "お店で物を選んだり、包んでもらったりするやりとりができる"
+vocabulary:
+  # rank = «Rango frec.» del diccionario de frecuencias del CORPES XXI (RAE). Lo escribe
+  # npm run vocab:rank -- --write; lo que no es lema del diccionario va sin rank, al final.
+  - { es: "regalar", ja: "プレゼントする", rank: 2898, example: "Kenta le regala aceite a su jefe." }
+  - { es: "dar", ja: "あげる・渡す", rank: 44, example: "¿Me das la bolsa, por favor?" }
+  - { es: "enviar", ja: "送る", rank: 697, example: "Te envío las fotos esta noche." }
+  - { es: "traer", ja: "持ってくる", rank: 982, example: "¿Me traes un café?" }
+  - { es: "prestar", ja: "貸す", rank: 1583, example: "¿Me prestas tu bolígrafo?" }
+  - { es: "devolver", ja: "返す", rank: 2073, example: "Mañana te devuelvo el libro." }
+  - { es: "envolver", ja: "包む", rank: 3335, example: "¿Se lo envuelvo?" }
+  - { es: "buscar", ja: "探す", rank: 179, example: "Busco un regalo para mi jefe." }
+  - { es: "el aceite", ja: "油（aceite de oliva：オリーブオイル）", rank: 2074, example: "Este aceite es de Jaén." }
+  - { es: "el paquete", ja: "小包・包み", rank: 2513, example: "El paquete llega mañana." }
+  - { es: "el jefe", ja: "上司（女性形 la jefa）", rank: 476, example: "Es un regalo para mi jefe." }
+  - { es: "el compañero", ja: "同僚・仲間（女性形 la compañera）", rank: 779, example: "Kenta come con sus compañeros." }
+  - { es: "la tienda", ja: "店", rank: 1588, example: "Hay una tienda de aceite cerca del mercado." }
+  - { es: "la miel", ja: "はちみつ", rank: 4223, example: "¿La miel? La compro para mi madre." }
+verbs: ["dar", "decir"]
 duration: 40
 prev: 16
 next: 18
-related: [16,18,24]
-cast: ["mina","kenta"]
-audio: []
+related: [16, 18, 24]
+cast: ["mina", "kenta"]
+audio:
+  - "Buenos días. Busco aceite de oliva para regalar."
+  - "Este aceite es muy bueno. ¿Lo quiere probar?"
+  - "Me gusta mucho. Lo compro."
+  - "¿Se lo envuelvo?"
+  - "Sí, por favor. Se lo voy a regalar a mi jefe."
+  - "regalárselo"
 youtubeId: ""
-quiz: []
 draft: true
 updated: "2026-11-02"
+quiz:
+  - question: "「その本（el libro）を買う」を代名詞で言うと？"
+    options: ["Lo compro.", "La compro.", "Le compro."]
+    correctIndex: 0
+    explanation: "「〜を」（直接目的語）の男性・単数は lo。el libro → lo です。"
+  - question: "「そのはちみつ（la miel）を買う」を代名詞で言うと？"
+    options: ["Lo compro.", "La compro.", "Les compro."]
+    correctIndex: 1
+    explanation: "miel は女性名詞なので la：La compro."
+  - question: "「（私は）上司にプレゼントを買う」。正しいのは？"
+    options: ["Lo compro un regalo a mi jefe.", "Le compro un regalo a mi jefe.", "Me compro un regalo a mi jefe."]
+    correctIndex: 1
+    explanation: "「〜に」（間接目的語）は le。a mi jefe と一緒に使い、le も残すのがふつうです。"
+  - question: "「それを彼に贈る」（le + lo）。正しいのは？"
+    options: ["Le lo regalo.", "Se lo regalo.", "Lo le regalo."]
+    correctIndex: 1
+    explanation: "le / les と lo / la が続くと、le は se に変わります：Se lo regalo."
+  - question: "「それを買うつもりだ」。正しくないのは？"
+    options: ["Lo voy a comprar.", "Voy a comprarlo.", "Voy a lo comprar."]
+    correctIndex: 2
+    explanation: "代名詞は活用した動詞の前か、原形の後ろにつなげます。原形の前には置けません。"
+  - question: "「私に水を持ってきてくれる？」。正しいのは？"
+    options: ["¿Me traes agua?", "¿Te traes agua?", "¿Le traigo agua?"]
+    correctIndex: 0
+    explanation: "「私に」は me：¿Me traes agua?"
+  - question: "「それらのチケット（las entradas）を君に送る」。正しいのは？"
+    options: ["Te las envío.", "Las te envío.", "Te los envío."]
+    correctIndex: 0
+    explanation: "「〜に」（te）を先に、「〜を」（las）を後に置きます。entradas は女性・複数なので las。"
+  - question: "「君に写真を送る」。正しいのは？"
+    options: ["Te envío las fotos.", "Envío te las fotos.", "Las envío te fotos."]
+    correctIndex: 0
+    explanation: "代名詞（te）は活用した動詞（envío）の前に置きます。"
+  - question: "店員がお客（usted）に「お包みしましょうか？」と聞くなら？"
+    options: ["¿Le lo envuelvo?", "¿Se lo envuelvo?", "¿Lo se envuelvo?"]
+    correctIndex: 1
+    explanation: "usted への「〜に」は le ですが、lo の前では se になります：¿Se lo envuelvo?"
+  - question: "「それを返して（君が私に）」を、原形を使って言うと？「Tienes que …」"
+    options: ["Tienes que devolvérmelo.", "Tienes que me lo devolver.", "Tienes que devolverlome."]
+    correctIndex: 0
+    explanation: "原形の後ろには、「〜に」（me）、「〜を」（lo）の順につなげ、アクセント記号をつけます：devolvérmelo。"
 ---
 
-TODO:contenido（導入：このユニットの問いに、それだけで答えになる2文で答える）
+スペイン語の目的格代名詞は、すでに話に出た物や人を「それを」「彼に」と言いかえる短い語です。「〜を」は lo・la・los・las、「〜に」は le・les で、活用した動詞の前に置いて ¿El aceite? Lo compro.（オリーブオイル？それを買います）のように言います。
 
-## 文法 (Gramática)
+日本語では「それ、買います」と目的語を省略できますが、スペイン語では代名詞で言うのが自然です。このユニットでは、バレンシアに出張中のケンタが、大阪の上司へのお土産を買う場面を例に、物のやりとりの言い方を学びます。
 
-TODO:contenido
+## 文法：目的格代名詞 (Gramática)
+
+まず「〜を」と「〜に」の形を、次に置く位置を、最後に二つが重なるときの形を見ていきましょう。
+
+### 「〜を」と「〜に」の代名詞
+
+| 人称 | 〜を（直接目的語） | 〜に（間接目的語） |
+| --- | --- | --- |
+| 私 | me | me |
+| 君 | te | te |
+| 彼・彼女・あなた・それ | lo / la | le |
+| 私たち | nos | nos |
+| 君たち ※ | os | os |
+| 彼ら・あなた方・それら | los / las | les |
+
+※ os はスペインのみで使う形です（→ [中南米のスペイン語](/language/learn-spanish/spanish-in-latin-america/)）。
+
+me・te・nos・os は、「〜を」と「〜に」で同じ形です。違うのは3人称だけで、「〜を」は名詞の性と数に合わせて lo・la・los・las、「〜に」は性に関係なく le・les です。
+
+<Examples>
+
+- ¿El aceite? Lo compro.（オリーブオイル？それを買います）
+- ¿La miel? La compro para mi madre.（はちみつ？母に買います）
+- Kenta le compra un regalo a su jefe.（ケンタは上司にプレゼントを買う）
+
+</Examples>
+
+「〜に」の le は、a + 人と一緒に使うのがふつうです（le… a su jefe）。だれのことか、はっきりさせるためです。
+
+### 代名詞を置く位置
+
+- 活用した動詞の**前**：Lo compro.（それを買う）
+- 動詞の原形や現在分詞といっしょのときは、その**後ろ**につなげてもよい：Lo voy a comprar. = Voy a comprarlo.
+- 否定の no は代名詞の前：No lo compro.
+
+### 二つの代名詞が重なるとき
+
+「〜に」を先に、「〜を」を後に置きます：Te lo doy.（それを君にあげる）。le・les のあとに lo・la・los・las が続くときは、le・les が **se** に変わります。
+
+| 元の形 | 実際の形 | 例 |
+| --- | --- | --- |
+| le + lo | se lo | Se lo regalo a mi jefe.（それを上司に贈る） |
+| les + la | se la | Se la envío a mis compañeros.（それを同僚たちに送る） |
+
+### お店で
+
+バレンシアの食料品店で、ケンタがお土産を探します。
+
+- Kenta: Buenos días. Busco aceite de oliva para regalar.（おはようございます。贈り物用のオリーブオイルを探しています）
+- Dependienta: Este aceite es muy bueno. ¿Lo quiere probar?（このオイルはとてもいいですよ。味見されますか？）
+- Kenta: Sí, gracias… Me gusta mucho. Lo compro.（はい、ありがとう…とても気に入りました。これを買います）
+- Dependienta: ¿Se lo envuelvo?（お包みしましょうか？）
+- Kenta: Sí, por favor. Se lo voy a regalar a mi jefe.（はい、お願いします。上司に贈るつもりなんです）
+
+店員の ¿Se lo envuelvo? は、le（あなたに）+ lo（それを）の組み合わせです。
+
+代名詞を使った決まり文句も覚えておくと便利です。No lo sé.（わからない）、Lo siento.（ごめんなさい）、¿Me lo dices otra vez?（もう一度言ってくれる？）は、どれも会話で毎日のように使います。
+
+人を表す「〜を」には、名詞の前に a をつけます：Veo a Kenta.（ケンタに会う）。代名詞にするときは a ごと消えて Lo veo. になります。
+
+**ダニエル（バレンシア出身）のひとこと：** スペインでは、男性の人を指す「〜を」に le を使う人がたくさんいます（A Kenta le veo mañana.、ケンタには明日会う）。RAE もこの使い方を認めていますが、このコースでは基本の lo（Lo veo mañana.）で覚えておけば大丈夫です。
 
 ## 活用：今日の動詞 (Conjugación)
 
-TODO:contenido
+物のやりとりでよく使う [dar](/language/learn-spanish/verb-conjugation/dar/)（あげる）と [decir](/language/learn-spanish/verb-conjugation/decir/)（言う）は、どちらも「〜に」の代名詞と一緒に使うことが多い動詞です：Te doy mi número.（君に私の番号をあげる）、Le digo la verdad.（彼に本当のことを言う）。dar の yo の形は doy、decir は digo と、どちらも不規則です。
 
 ## 語彙 (Nociones específicas)
+
+物をあげたり、送ったり、借りたりするときの動詞と、お土産選びの語です。
 
 <VocabList items={frontmatter.vocabulary} level={frontmatter.level} />
 
 ## 発音・正書法 (Pronunciación y ortografía)
 
-TODO:contenido
+原形の後ろに代名詞を二つつなげると、語が長くなります。強く読む位置は元の動詞のままなので、その位置を示すためにアクセント記号をつけます：regalar（レ・ガ・**ラル**）→ regalárselo（レ・ガ・**ラル**・セ・ロ）、devolver → devolvérmelo。書くときに記号を忘れやすいので注意しましょう。
 
 ## 日本人がよく間違える
 
-TODO:contenido
+- **「〜を」と「〜に」を取り違える。** ×Lo compro un regalo a mi jefe. → ○**Le** compro un regalo a mi jefe. 人に「〜に」あげるのは le です。
+- **le lo と言ってしまう。** ×Le lo regalo. → ○**Se** lo regalo. le・les は、lo・la の前で se になります。
+- **代名詞を動詞の後ろに置く。** ×Compro lo. → ○**Lo** compro. 活用した動詞の後ろには置けません（原形なら comprarlo）。
 
 ## 文化メモ (Referentes culturales)
 
 <CultureNote>
 
-TODO:contenido
+ケンタが選んだオリーブオイルは、スペインの定番のお土産です。スペインは世界最大のオリーブオイルの生産国で、ハエン県を中心に、各地で質の高いオイルが作られています。お店では ¿Lo quiere probar?（味見されますか？）と勧められることもあるので、Sí, gracias. Lo compro. と代名詞で答えてみましょう。格付けや品種、産地の違いは、[スペインオリーブオイル完全ガイド](/food/olive-oil/)で紹介しています。
 
 </CultureNote>
 
 ## 練習 (Procedimientos de aprendizaje)
 
-### 練習1：認識
+### 練習1：どの代名詞？
 
-TODO:contenido
+目的語の名詞を、代名詞（lo / la / los / las）に置きかえてください。
+
+1. Compro el aceite.
+2. Kenta lee la carta.
+3. Mina busca los billetes.
+4. Envío las fotos.
+5. Veo a Kenta mañana.
 
 <details>
 <summary>答えを見る</summary>
 
-TODO:contenido
+1. Lo compro.
+2. Kenta la lee.
+3. Mina los busca.
+4. Las envío.
+5. Lo veo mañana.（スペインでは Le veo mañana. も使われる）
 
 </details>
 
 ### 練習2：穴埋め
 
-TODO:contenido
+（ ）の日本語に合う代名詞を入れてください。
+
+1. ¿(私に) ______ prestas tu bolígrafo?
+2. Kenta (上司に) ______ compra un regalo a su jefe.
+3. —¿Y el regalo? —(それを彼に) ______ ______ doy mañana.
+4. (君に) ______ envío las fotos esta noche.
+5. —¿Las entradas? —Voy a comprar______.（それらを）
 
 <details>
 <summary>答えを見る</summary>
 
-TODO:contenido
+1. Me
+2. le
+3. Se lo（le + lo → se lo）
+4. Te
+5. comprarlas（原形の後ろにつなげる）
 
 </details>
 
 ### 練習3：作文
 
-TODO:contenido
+ケンタになったつもりで、スペイン語で言ってみましょう。
+
+1. 贈り物用のオリーブオイルを探しています。
+2. （オイルを味見して）気に入りました。これを買います。
+3. それを上司に贈るつもりです。
 
 <details>
-<summary>答えを見る</summary>
+<summary>解答例を見る</summary>
 
-TODO:contenido
+1. Busco aceite de oliva para regalar.
+2. Me gusta mucho. Lo compro.
+3. Se lo voy a regalar a mi jefe.（Voy a regalárselo a mi jefe.）
 
 </details>
 
@@ -97,4 +253,8 @@ TODO:contenido
 
 ## まとめ
 
-TODO:contenido
+- 「〜を」は lo・la・los・las（名詞の性と数に合わせる）、「〜に」は le・les。me・te・nos・os は共通。
+- 代名詞は活用した動詞の前。原形や現在分詞なら後ろにつなげてもよい。
+- 二つ重なるときは「〜に」が先。le・les + lo・la は se lo・se la になる。
+
+次のユニット18では、比較級と最上級を使って、物や場所を比べます。

@@ -5,89 +5,241 @@ levelName: "Plataforma"
 slug: "basic-connectors"
 url: "/language/learn-spanish/a2/basic-connectors/"
 existing: false
-title: "文をつなぐ"
+title: "スペイン語の接続詞｜pero・porque・aunque・por eso で文をつなぐ"
 shortTitle: "文をつなぐ"
-titleEs: "conectores básicos"
-grammar: ["y","pero","porque","aunque","por eso"]
-tenses: []
-functions: []
-canDo: []
-vocabulary: []
+titleEs: "Conectores básicos"
+description: "スペイン語の基本の接続詞を解説。y・o・pero・porque・como・por eso・así que・aunque・además の使い方と、y が e、o が u に変わる規則、メールや旅の日記を書くときの文のつなぎ方を、日本人が間違えやすい点と練習問題つきで学べます。"
+grammar: ["y / e, o / u, pero", "porque, como", "por eso, así que", "aunque, además, cuando, si"]
+tenses: ["presente de indicativo", "pretérito indefinido"]
+functions: ["理由と結果を言う", "対比する", "短い文章を書く"]
+canDo:
+  - "理由や結果を、接続詞を使ってつなげて言える"
+  - "「〜だけど」「〜にもかかわらず」と、対比して言える"
+  - "旅の感想や近況を、短いまとまった文章で書ける"
+vocabulary:
+  # rank = «Rango frec.» del diccionario de frecuencias del CORPES XXI (RAE). Lo escribe
+  # npm run vocab:rank -- --write; lo que no es lema del diccionario va sin rank, al final.
+  - { es: "pero", ja: "でも・しかし", rank: 28, example: "Toledo es pequeña, pero muy bonita." }
+  - { es: "porque", ja: "なぜなら・〜だから", rank: 51, example: "No salí porque llovía." }
+  - { es: "como", ja: "〜なので（文頭で）", rank: 17, example: "Como llovía, no salí." }
+  - { es: "aunque", ja: "〜だけれども", rank: 92, example: "Aunque estaba cansada, fui al museo." }
+  - { es: "además", ja: "そのうえ", rank: 129, example: "El hotel es barato y, además, está en el centro." }
+  - { es: "por eso", ja: "だから", example: "Llovía; por eso, no salí." }
+  - { es: "así que", ja: "それで・だから", rank: 1160, example: "Estaba cansada, así que me acosté pronto." }
+  - { es: "cuando", ja: "〜するとき", rank: 43, example: "Cuando llegué, el museo estaba cerrado." }
+  - { es: "si", ja: "もし〜なら", rank: 39, example: "Si tienes tiempo, visita Toledo." }
+  - { es: "o", ja: "または", rank: 25, example: "¿Café o té?" }
+  - { es: "el blog", ja: "ブログ", rank: 3835, example: "Mina escribe un blog sobre su viaje." }
+  - { es: "el recuerdo", ja: "思い出・お土産", rank: 1747, example: "Fue un viaje con muchos recuerdos." }
+  - { es: "la opinión", ja: "意見", rank: 802, example: "En mi opinión, Toledo es preciosa." }
+  - { es: "precioso", ja: "とても美しい（女性形 preciosa）", rank: 4857, example: "La catedral es preciosa." }
 verbs: []
 duration: 40
 prev: 22
 next: 24
-related: [22,24,34]
-cast: ["mina","kenta"]
-audio: []
+related: [22, 24, 34]
+cast: ["mina", "kenta"]
+audio:
+  - "Toledo es pequeña, pero muy bonita."
+  - "No salí porque llovía."
+  - "Como llovía, no salí."
+  - "Aunque estaba cansada, fui al museo."
+  - "Estaba cansada, así que me acosté pronto."
+  - "Si tienes tiempo, visita Toledo."
 youtubeId: ""
-quiz: []
 draft: true
 updated: "2026-11-02"
+quiz:
+  - question: "「スペインとイタリア」。正しいのは？"
+    options: ["España y Italia", "España e Italia", "España u Italia"]
+    correctIndex: 1
+    explanation: "y は、i- や hi- で始まる語の前で e に変わります：España e Italia。"
+  - question: "「7か8」。正しいのは？"
+    options: ["siete o ocho", "siete u ocho", "siete e ocho"]
+    correctIndex: 1
+    explanation: "o は、o- や ho- で始まる語の前で u に変わります：siete u ocho。"
+  - question: "「雨が降っていたので、出かけなかった」。文頭に理由を置くなら？"
+    options: ["Porque llovía, no salí.", "Como llovía, no salí.", "Por eso llovía, no salí."]
+    correctIndex: 1
+    explanation: "文頭に理由を置くときは como がふつうです。porque は主に文の後半で使います。"
+  - question: "「疲れていたけれど、美術館に行った」。正しいのは？"
+    options: ["Aunque estaba cansada, fui al museo.", "Pero estaba cansada, fui al museo.", "Porque estaba cansada, fui al museo."]
+    correctIndex: 0
+    explanation: "「〜だけれども」は aunque。文の最初に置けます。"
+  - question: "「疲れていた。だから早く寝た」。（ ）に入るのは？「Estaba cansada, (　) me acosté pronto.」"
+    options: ["porque", "así que", "aunque"]
+    correctIndex: 1
+    explanation: "結果を続けるときは así que（または por eso）です。"
+  - question: "「どうして？」と「〜だから」の組み合わせで正しいのは？"
+    options: ["¿Porque? — Por qué…", "¿Por qué? — Porque…", "¿Por que? — Porqué…"]
+    correctIndex: 1
+    explanation: "質問は2語でアクセント記号つきの por qué、答えは1語の porque です。"
+  - question: "「ホテルは安くて、そのうえ中心部にある」。（ ）に入るのは？「El hotel es barato y, (　), está en el centro.」"
+    options: ["además", "aunque", "como"]
+    correctIndex: 0
+    explanation: "情報を付け加えるときは además（そのうえ）。"
+  - question: "「時間があれば、トレドに行ってね」。正しいのは？"
+    options: ["Si tienes tiempo, visita Toledo.", "Cuando tienes tiempo, visita Toledo.", "Como tienes tiempo, visita Toledo."]
+    correctIndex: 0
+    explanation: "「もし〜なら」は si + 現在形です。"
+  - question: "「着いたとき、美術館は閉まっていた」。正しいのは？"
+    options: ["Si llegué, el museo estaba cerrado.", "Cuando llegué, el museo estaba cerrado.", "Como llegué, el museo estaba cerrado."]
+    correctIndex: 1
+    explanation: "「〜したとき」は cuando。着いたのは点過去、閉まっていたのは線過去です。"
+  - question: "「トレドは小さいけれど、とてもきれいだ」。正しいのは？"
+    options: ["Toledo es pequeña, porque muy bonita.", "Toledo es pequeña, pero muy bonita.", "Toledo es pequeña, así que muy bonita."]
+    correctIndex: 1
+    explanation: "対比は pero（でも）。pero の前にはふつうコンマを打ちます。"
 ---
 
-TODO:contenido（導入：このユニットの問いに、それだけで答えになる2文で答える）
+スペイン語の接続詞は、文と文をつないで、理由・結果・対比を伝える語です。y（そして）、pero（でも）、porque（〜だから）、por eso（だから）、aunque（〜だけれども）などを使うと、Toledo es pequeña, pero muy bonita.（トレドは小さいけれど、とてもきれいだ）のように、短い文をまとまった文章にできます。
 
-## 文法 (Gramática)
+このユニットでは、スペイン旅行のブログを書くミナと、取引先にメールを書くケンタを例に、DELE A2 の作文でも役立つ文のつなぎ方を学びます。
 
-TODO:contenido
+## 文法：接続詞 (Gramática)
+
+まず基本の接続詞を、次に理由と結果の言い方を、最後に対比と条件の言い方を見ていきましょう。
+
+### 基本の接続詞：y・o・pero
+
+- **y**（そして）：i- や hi- で始まる語の前では e に変わります：España e Italia、padres e hijos。
+- **o**（または）：o- や ho- で始まる語の前では u に変わります：siete u ocho、mujeres u hombres。
+- **pero**（でも）：前にコンマを打つのがふつうです：Es caro, pero es muy bueno.
+
+### 理由と結果
+
+| 接続詞 | 意味 | 位置 | 例 |
+| --- | --- | --- | --- |
+| porque | 〜だから | 文の後半 | No salí porque llovía. |
+| como | 〜なので | 文の最初 | Como llovía, no salí. |
+| por eso | だから | 結果の前 | Llovía; por eso, no salí. |
+| así que | それで | 結果の前 | Estaba cansada, así que me acosté pronto. |
+
+同じ「雨が降っていたので出かけなかった」でも、理由を先に言うなら como、後に言うなら porque を使います。por qué（なぜ）と porque（〜だから）のつづりの違いにも注意しましょう。
+
+### 対比・付け加え・時・条件
+
+| 接続詞 | 意味 | 例 |
+| --- | --- | --- |
+| aunque | 〜だけれども | Aunque estaba cansada, fui al museo. |
+| además | そのうえ | El hotel es barato y, además, está en el centro. |
+| cuando | 〜するとき | Cuando llegué, el museo estaba cerrado. |
+| si | もし〜なら | Si tienes tiempo, visita Toledo. |
+
+si のあとは、未来のことでも現在形を使います：Si mañana hace sol, iremos a la playa.（明日晴れたら、海に行こう）。
+
+### ミナの旅ブログ
+
+ミナが、トレドへの日帰り旅行についてブログを書きました。
+
+El sábado fui a Toledo en tren. Como el viaje es corto, llegué muy pronto. Toledo es pequeña, pero muy bonita, y la catedral es preciosa. Aunque hacía calor, caminé por todo el centro. Además, compré mazapán para mi familia. Por la tarde estaba muy cansada, así que volví a Madrid a las seis. Si tenéis tiempo, ¡visitad Toledo!
+
+（土曜日、電車でトレドに行きました。移動が短いので、とても早く着きました。トレドは小さいけれど、とてもきれいで、大聖堂は本当に美しいです。暑かったけれど、中心部を全部歩きました。そのうえ、家族にマサパンを買いました。午後はとても疲れていたので、6時にマドリードに戻りました。時間があれば、ぜひトレドへ！）
+
+点過去（fui、llegué）と線過去（hacía、estaba）を、接続詞でつないでいるのがわかります。最後の tenéis・visitad は vosotros の形（スペインのみ）で、読者みんなに呼びかけています。
+
+### ケンタの仕事のメール
+
+ケンタが、バレンシアの同僚にメールを書きます。
+
+Hola, Laura: Te escribo porque el lunes no podré ir a la reunión. Tengo que terminar un informe urgente; por eso, mi compañero irá en mi lugar. Además, te envío los documentos que me pediste. Si tienes alguna pregunta, llámame. Un saludo, Kenta
+
+（ラウラへ：月曜日の会議に出られないので連絡します。急ぎの報告書を終えなければならないので、同僚が代わりに出ます。それと、頼まれていた資料を送ります。何か質問があれば電話してください。ケンタ）
+
+porque で理由、por eso で結果、además で付け加え、si で条件と、メールの流れを接続詞で作っています。書くときは、y を何度も続けるより、además や también で言いかえると、ずっと読みやすくなります。
+
+話し言葉では、porque のかわりに es que（実は〜なんだ）で理由を言うこともよくあります：No puedo ir; es que tengo trabajo.（行けないんだ、実は仕事があって）。
+
+**ダニエル（バレンシア出身）のひとこと：** 仕事のメールでは、por eso や así que のかわりに por lo tanto（したがって）を使うと、少し改まった印象になります。ケンタのメールなら、Hemos terminado el informe; por lo tanto, se lo enviamos hoy.（報告書が完成しました。したがって、本日お送りします）のように使えます。
 
 ## 活用：今日の動詞 (Conjugación)
 
-TODO:contenido
+接続詞でつなぐ文には、ユニット14〜16で学んだ二つの過去がよく出てきます。ミナのブログの fui は [ir](/language/learn-spanish/verb-conjugation/ir/) の点過去、estaba は [estar](/language/learn-spanish/verb-conjugation/estar/) の線過去です。cuando や aunque の文で、出来事と背景を言い分ける練習をしましょう。
 
 ## 語彙 (Nociones específicas)
+
+文をつなぐ接続詞と、旅の感想を書くときの語です。
 
 <VocabList items={frontmatter.vocabulary} level={frontmatter.level} />
 
 ## 発音・正書法 (Pronunciación y ortografía)
 
-TODO:contenido
+接続詞の前後では、書くときにコンマを打つ場所が決まっています。pero の前、por eso・además のあと、文頭の como や aunque の節の終わりには、ふつうコンマを打ちます：Como llovía, no salí. 一方、porque の前にはふつうコンマを打ちません：No salí porque llovía. 読むときも、コンマのところで少し間をあけると自然に聞こえます。
 
 ## 日本人がよく間違える
 
-TODO:contenido
+- **文頭で porque を使う。** △Porque llovía, no salí. → ○**Como** llovía, no salí. 理由を先に言うときは como が自然です。
+- **y と o の変化を忘れる。** ×España y Italia、×siete o ocho → ○España **e** Italia、○siete **u** ocho。
+- **por qué と porque を混同する。** ×¿Porque no viniste? → ○¿**Por qué** no viniste? 質問は2語、答えは1語です。
 
 ## 文化メモ (Referentes culturales)
 
 <CultureNote>
 
-TODO:contenido
+ミナが日帰りで訪れたトレドのように、マドリードを起点に近くの古都を回るのは、スペイン旅行の定番のルートの一つです。旅の感想を書くときは、Aunque el viaje fue corto, fue precioso.（短い旅だったけれど、すばらしかった）のように、接続詞で気持ちを伝えてみましょう。1週間でスペインを回るツアーのモデルコースは、[スペイン1週間ツアー完全ガイド](/travel/spain-tours/spain-tour-1week/)で紹介しています。
 
 </CultureNote>
 
 ## 練習 (Procedimientos de aprendizaje)
 
-### 練習1：認識
+### 練習1：意味を選ぶ
 
-TODO:contenido
+次の接続詞の意味を選んでください（〜だから／〜なので／だから／〜だけれども／そのうえ）。
+
+1. porque
+2. aunque
+3. además
+4. por eso
+5. como（文頭）
 
 <details>
 <summary>答えを見る</summary>
 
-TODO:contenido
+1. 〜だから
+2. 〜だけれども
+3. そのうえ
+4. だから
+5. 〜なので
 
 </details>
 
 ### 練習2：穴埋め
 
-TODO:contenido
+（ ）に入る接続詞を選んでください（pero / porque / como / aunque / así que / e / u）。
+
+1. Me gusta, (　) es muy caro.
+2. (　) estaba cansada, me acosté pronto.
+3. No fui (　) estaba enferma.
+4. (　) llovía, salimos a pasear.
+5. Hablo español (　) inglés.
+6. ¿Tienes siete (　) ocho euros?
 
 <details>
 <summary>答えを見る</summary>
 
-TODO:contenido
+1. pero
+2. Como
+3. porque
+4. Aunque
+5. e（inglés は i- で始まる）
+6. u（ocho は o- で始まる）
 
 </details>
 
 ### 練習3：作文
 
-TODO:contenido
+旅の感想を、接続詞を使って書いてみましょう。
+
+1. ホテルは小さいけれど、とても快適だった。
+2. 雨が降っていたので、美術館に行った（como を使って）。
+3. 疲れていたけれど、とても楽しかった（aunque を使って）。
 
 <details>
-<summary>答えを見る</summary>
+<summary>解答例を見る</summary>
 
-TODO:contenido
+1. El hotel era pequeño, pero muy cómodo.
+2. Como llovía, fui al museo.
+3. Aunque estaba cansada, me divertí mucho.
 
 </details>
 
@@ -97,4 +249,8 @@ TODO:contenido
 
 ## まとめ
 
-TODO:contenido
+- y は i- の前で e、o は o- の前で u に変わる。pero の前にはコンマ。
+- 理由は porque（後半）と como（文頭）、結果は por eso・así que。
+- 対比は aunque、付け加えは además、時は cuando、条件は si + 現在形。
+
+次のユニット24では、A2 の総復習と DELE A2 の模擬試験に挑戦します。
