@@ -28,6 +28,8 @@ const OVERRIDES: Record<string, { lemma?: string; cat?: string; note: string }> 
   primero: { cat: 'R', note: 'adverbio «まず»; como numeral (M) tiene otro puesto' },
   adiós: { cat: 'I', note: 'interjección «さようなら»; como nombre (el adiós) tiene otro puesto' },
   abuelos: { lemma: 'abuelo', note: 'plural' },
+  'el primero': { cat: 'M', note: 'ordinal «前者»; como adverbio (R) tiene otro puesto' },
+  uno: { cat: 'Q', note: 'pronombre indefinido «（一般に）人は»; como numeral (M) tiene otro puesto' },
 };
 
 if (!existsSync(TSV)) {
@@ -59,7 +61,7 @@ const ARTICLE = /^(el|la|los|las)\s+/; // solo el artículo definido con el que 
 function lookup(es: string): { rank?: number; why: string } {
   const lower = es.trim().toLowerCase();
   const key = lower.replace(ARTICLE, '');
-  let o = OVERRIDES[key];
+  let o = OVERRIDES[lower] ?? OVERRIDES[key];
   // Verbo pronominal: el CORPES no tiene lema «levantarse», solo «levantar».
   const base = key.endsWith('se') ? key.slice(0, -2) : '';
   if (!o && !lemmas.has(key) && base && (lemmas.get(base) ?? []).some((e) => e.cat === 'V')) {
