@@ -5,96 +5,264 @@ levelName: "Plataforma"
 slug: "review-dele-a2"
 url: "/language/learn-spanish/a2/review-dele-a2/"
 existing: false
-title: "A2 総復習と模擬試験 DELE A2"
-shortTitle: "A2 総復習と模擬試験 DELE A2"
-titleEs: "repaso A2 y simulacro DELE A2"
-grammar: ["repaso"]
-tenses: []
-functions: []
-canDo: []
-vocabulary: []
-verbs: []
+title: "DELE A2 模擬試験と A2 総復習｜過去形・未来形・命令形をチェック"
+shortTitle: "A2 総復習と模擬試験"
+titleEs: "Repaso A2 y simulacro DELE A2"
+description: "DELE A2 と同じ4つのテスト（読解・聴解・作文・会話）で構成したオリジナル模擬試験と、A2 文法の総復習。現在完了・点過去・線過去・未来形・過去未来・命令形の使い分けを、解答と解説つきで確認できます。聴解の音声は準備中のため、今はスクリプトで練習できます。"
+grammar: ["repaso de las unidades 13-23", "simulacro DELE A2"]
+tenses: ["pretérito perfecto", "pretérito indefinido", "pretérito imperfecto", "futuro simple", "condicional simple", "imperativo"]
+functions: ["A2 の文法と語彙を確認する", "DELE A2 の4つのテストを体験する"]
+canDo:
+  - "過去の出来事や将来の予定について、まとまった文章を読んだり書いたりできる"
+  - "DELE A2 の4つのテストの形式を知り、それぞれの課題に取り組める"
+  - "A2 の文法の苦手な項目を見つけ、復習するユニットを選べる"
+vocabulary:
+  # rank = «Rango frec.» del diccionario de frecuencias del CORPES XXI (RAE). Lo escribe
+  # npm run vocab:rank -- --write; lo que no es lema del diccionario va sin rank, al final.
+  - { es: "describir", ja: "描写する・説明する", rank: 1204, example: "Describa la foto." }
+  - { es: "contar", ja: "語る・数える", rank: 120, example: "Cuente sus últimas vacaciones." }
+  - { es: "explicar", ja: "説明する", rank: 141, example: "Explique por qué." }
+  - { es: "responder", ja: "答える", rank: 548, example: "Responda a las preguntas." }
+  - { es: "el anuncio", ja: "広告・お知らせ", rank: 1626, example: "Lea los anuncios." }
+  - { es: "la tarea", ja: "課題・宿題", rank: 843, example: "Esta prueba tiene cuatro tareas." }
+  - { es: "el tema", ja: "テーマ・話題", rank: 173, example: "Elija un tema." }
+  - { es: "la imagen", ja: "画像・写真", rank: 336, example: "Mire la imagen." }
+  - { es: "la conversación", ja: "会話", rank: 1445, example: "Escuche la conversación." }
+  - { es: "la situación", ja: "状況・場面", rank: 193, example: "Imagine esta situación." }
+  - { es: "el aviso", ja: "お知らせ・警告", rank: 3397, example: "Escuche el aviso del aeropuerto." }
+  - { es: "el vuelo", ja: "フライト・便", rank: 1655, example: "El vuelo a Valencia lleva retraso." }
+  - { es: "la oferta", ja: "特価・提案", rank: 997, example: "Hay una oferta en la tienda." }
+  - { es: "las vacaciones", ja: "休暇", rank: 2428, example: "¿Qué hiciste en tus últimas vacaciones?" }
+verbs: ["haber", "ir", "hacer", "tener"]
 duration: 90
 prev: 23
 next: 25
-related: [23,25,13]
-cast: ["mina","kenta"]
-audio: []
+related: [23, 25, 13]
+cast: ["mina", "kenta"]
+audio:
+  - "Hola, Kenta. Soy Daniel. Te llamo porque el viernes hay una fiesta en mi casa."
+  - "¿Podrías traer algo de beber? Llámame cuando puedas."
+  - "Atención, por favor. El vuelo con destino a Valencia lleva cuarenta minutos de retraso."
+  - "Los pasajeros deben esperar en la puerta doce."
+  - "¿Has estado alguna vez en Valencia?"
 youtubeId: ""
-quiz: []
 draft: true
 updated: "2026-11-02"
+quiz:
+  - question: "「今日、私は報告書を書いた」（スペインの用法）。正しいのは？"
+    options: ["Hoy he escrito el informe.", "Hoy escribí el informe.", "Hoy he escribido el informe."]
+    correctIndex: 0
+    explanation: "スペインでは今日の出来事に現在完了。escribir の過去分詞は escrito。→ ユニット13"
+  - question: "「昨日、ケンタはバレンシアに行った」。正しいのは？"
+    options: ["Ayer Kenta ha ido a Valencia.", "Ayer Kenta fue a Valencia.", "Ayer Kenta iba a Valencia."]
+    correctIndex: 1
+    explanation: "ayer の出来事は点過去：fue。→ ユニット14"
+  - question: "「子どもの頃、毎日サッカーをしていた」。正しいのは？"
+    options: ["De niño, jugué al fútbol todos los días.", "De niño, jugaba al fútbol todos los días.", "De niño, he jugado al fútbol todos los días."]
+    correctIndex: 1
+    explanation: "過去の習慣は線過去：jugaba。→ ユニット15"
+  - question: "「それを彼に贈る」。正しいのは？"
+    options: ["Le lo regalo.", "Se lo regalo.", "Lo le regalo."]
+    correctIndex: 1
+    explanation: "le + lo は se lo になります。→ ユニット17"
+  - question: "「この電車はバスより速い」。正しいのは？"
+    options: ["El tren es más rápido que el autobús.", "El tren es más rápido de el autobús.", "El tren es tan rápido que el autobús."]
+    correctIndex: 0
+    explanation: "比較は más + 形容詞 + que。→ ユニット18"
+  - question: "（tú に）「それを言わないで」。正しいのは？"
+    options: ["No lo dices.", "No dilo.", "No lo digas."]
+    correctIndex: 2
+    explanation: "否定命令は no + 別の形、代名詞は前：No lo digas。→ ユニット19"
+  - question: "tener の未来形、1人称単数は？"
+    options: ["teneré", "tendré", "tenía"]
+    correctIndex: 1
+    explanation: "tener の未来の語幹は tendr-：tendré。→ ユニット20"
+  - question: "店員に「メニューを持ってきていただけますか？」。丁寧なのは？"
+    options: ["¿Podría traerme la carta?", "¿Puede traer la carta yo?", "¿Traería la carta?"]
+    correctIndex: 0
+    explanation: "丁寧なお願いは過去未来の ¿Podría…?。→ ユニット21"
+  - question: "「スペイン語を勉強して2年になる」。正しいのは？"
+    options: ["Hace dos años que estudio español.", "Hace dos años que estudié español.", "Desde dos años estudio español."]
+    correctIndex: 0
+    explanation: "今も続いていることは hace … que + 現在形。→ ユニット22"
+  - question: "「雨が降っていたので、出かけなかった」。文頭に理由を置くなら？"
+    options: ["Porque llovía, no salí.", "Como llovía, no salí.", "Así que llovía, no salí."]
+    correctIndex: 1
+    explanation: "理由を文頭に置くときは como。→ ユニット23"
 ---
 
-TODO:contenido（導入：このユニットの問いに、それだけで答えになる2文で答える）
+このユニットは、A2（Plataforma）レベルの総まとめです。前半でユニット13〜23の文法をふり返り、後半では DELE A2 と同じ4つのテスト（読解・聴解・作文・会話）で構成した、当サイトオリジナルの模擬試験に挑戦します。
 
-## 文法 (Gramática)
+A2 では、三つの過去（現在完了・点過去・線過去）、未来形と過去未来、命令形を学び、過去・現在・未来を行き来して話せるようになりました。問題の分量は本番より少なく、形式に慣れるための練習です。試験の構成や時間は [DELE A2 対策](/language/learn-spanish/dele/a2/)で確認してください。模擬試験には、A2 で一緒に学んできたミナとケンタが登場します。
 
-TODO:contenido
+## 文法：A2 の総復習 (Gramática)
+
+A2 で学んだ文法を、一覧で確認しましょう。ミニテストで間違えた問題には、復習するユニットの番号を示しています。
+
+| 項目 | ポイント | ユニット |
+| --- | --- | --- |
+| 現在完了 | 今日・今週の出来事と経験（he comido） | 13 |
+| 点過去 | 完結した出来事（comí、fui、tuve） | 14 |
+| 線過去 | 習慣と背景（comía、era、iba） | 15 |
+| 点過去と線過去 | 出来事と背景、「〜していたら〜した」 | 16 |
+| 目的格代名詞 | lo・la・le、se lo、置く位置 | 17 |
+| 比較と最上級 | más … que、tan … como、el más … de | 18 |
+| 命令形 | habla / hable、no hables、haz・pon・di | 19 |
+| 未来形 | hablaré、tendré、推量 | 20 |
+| 過去未来 | me gustaría、¿podría…?、deberías | 21 |
+| 動詞句と時の表現 | tener que、acabar de、hace … que | 22 |
+| 接続詞 | porque / como、aunque、por eso | 23 |
+
+A2 のポイントは、時制の使い分けです。過去なら「今日の中か外か」（現在完了・点過去）と「出来事か背景か」（点過去・線過去）、未来なら「決まった予定か予測か」（ir a・未来形）を意識して選びましょう。
+
+**ダニエル（バレンシア出身）のひとこと：** A2 の作文では、時制の使い分けに加えて、接続詞で文をつなげているかも大切です。El fin de semana fui a la playa porque hacía calor, pero… のように、短い文を porque や pero でつなぐだけで、ぐっと読みやすい文章になります。
 
 ## 活用：今日の動詞 (Conjugación)
 
-TODO:contenido
+A2 の時制で形が大きく変わる [ir](/language/learn-spanish/verb-conjugation/ir/)、[hacer](/language/learn-spanish/verb-conjugation/hacer/)、[tener](/language/learn-spanish/verb-conjugation/tener/) を、点過去・線過去・未来・過去未来で並べて確認しましょう。現在完了の助動詞 [haber](/language/learn-spanish/verb-conjugation/haber/) は、B1 で学ぶ過去完了（había comido）でも使います。
 
 ## 語彙 (Nociones específicas)
+
+DELE A2 の指示文や課題によく出てくる語です。指示の動詞は、usted の命令形（Describa、Cuente など）で出てきます。
 
 <VocabList items={frontmatter.vocabulary} level={frontmatter.level} />
 
 ## 発音・正書法 (Pronunciación y ortografía)
 
-TODO:contenido
+A2 で学んだ時制には、アクセント記号だけで区別する形がたくさんあります。hablo（現在）と habló（点過去）、hablaré（未来）と hablare（接続法）、esta（この）と está（estar）など、記号の有無で時制や人称、意味が変わります。作文テストでは、動詞のアクセント記号を最後に必ず見直しましょう。
 
 ## 日本人がよく間違える
 
-TODO:contenido
+A2 の模擬試験で特に多い間違いを、三つふり返ります。
+
+- **ayer に現在完了を使う。** ×Ayer he visitado el museo. → ○Ayer **visité** el museo.（ユニット13・14）
+- **過去の習慣や背景に点過去を使う。** ×De niño, jugué al fútbol todos los días. → ○De niño, **jugaba**…（ユニット15・16）
+- **否定命令を肯定の形で作る。** ×No toca. → ○No **toques**.（ユニット19）
 
 ## 文化メモ (Referentes culturales)
 
 <CultureNote>
 
-TODO:contenido
+ケンタがバレンシアの取引先に教わった夏の楽しみが、オルチャタ（horchata）です。チュファ（タイガーナッツ）から作る冷たく甘い飲み物で、ファルトン（fartón）という細長い揚げ菓子をひたして食べるのがバレンシア流です。¿Has probado la horchata?（オルチャタ飲んだことある？）と聞かれたら、このユニットで復習した現在完了で答えてみましょう。バレンシアの郷土料理は、[バレンシア 完全グルメガイド](/food/spain-map/valencia/)で紹介しています。
 
 </CultureNote>
 
-## 練習 (Procedimientos de aprendizaje)
+## 練習：DELE A2 ミニ模擬試験 (Procedimientos de aprendizaje)
 
-### 練習1：認識
+### テスト1：読解（Comprensión de lectura）
 
-TODO:contenido
+**課題1.** ケンタが、バレンシアの同僚ラウラに書いたメールを読んで、質問に a・b・c で答えてください。
 
-<details>
-<summary>答えを見る</summary>
+Hola, Laura: Ya he vuelto a Osaka. El viaje fue muy bien, aunque el vuelo llegó con dos horas de retraso. Esta semana he tenido muchas reuniones, por eso no te he escrito antes. Cuando estaba en Valencia, siempre comíamos juntos en el bar de la esquina; ¡echo de menos la paella! El año que viene volveré en primavera. ¿Podrías enviarme las fotos de la fábrica? Un saludo, Kenta
 
-TODO:contenido
+1. ¿Dónde está Kenta ahora? a) en Valencia　b) en Osaka　c) en el avión
+2. ¿Cómo llegó el vuelo? a) a la hora　b) con dos horas de retraso　c) antes de la hora
+3. ¿Por qué no escribió antes? a) porque estaba enfermo　b) porque tuvo muchas reuniones　c) porque perdió el móvil
+4. ¿Qué hacían Kenta y Laura en Valencia? a) comían juntos en un bar　b) jugaban al fútbol　c) cocinaban paella
+5. ¿Qué le pide Kenta a Laura? a) una paella　b) las fotos de la fábrica　c) un billete de avión
 
-</details>
+**課題2.** 次の三つのお知らせ（A・B・C）を読んで、質問に答えてください。
 
-### 練習2：穴埋め
+- A：Oferta: dos entradas de cine por el precio de una. Solo los miércoles.
+- B：Clases de cocina española. Grupos pequeños. Empiezan el 15 de enero.
+- C：Se busca compañero de piso. Habitación con ventana, cerca del metro.
 
-TODO:contenido
-
-<details>
-<summary>答えを見る</summary>
-
-TODO:contenido
-
-</details>
-
-### 練習3：作文
-
-TODO:contenido
+6. 料理を習いたい人に合うのは？
+7. 住む部屋を探している人に合うのは？
+8. 安く映画を見たい人に合うのは？ それは何曜日？
 
 <details>
 <summary>答えを見る</summary>
 
-TODO:contenido
+1. b（Ya he vuelto a Osaka）
+2. b（con dos horas de retraso）
+3. b（he tenido muchas reuniones, por eso…）
+4. a（siempre comíamos juntos en el bar：線過去の習慣）
+5. b（¿Podrías enviarme las fotos…?）
+6. B
+7. C
+8. A、水曜日（Solo los miércoles）
 
 </details>
+
+### テスト2：聴解（Comprensión auditiva）
+
+音声準備中です。今は下のスクリプトを読んで、聞いているつもりで答えを考えてみましょう。
+
+**課題1.** ダニエルからケンタへの留守番電話です。金曜日に何がありますか。ダニエルはケンタに何を頼んでいますか。
+
+**課題2.** 空港のアナウンスです。バレンシア行きの便は、どのくらい遅れていますか。乗客はどこで待てばいいですか。
+
+<details>
+<summary>スクリプトと答えを見る</summary>
+
+**課題1**
+
+Hola, Kenta. Soy Daniel. Te llamo porque el viernes hay una fiesta en mi casa. Vendrán unos amigos de la escuela de español. ¿Podrías traer algo de beber? Llámame cuando puedas. ¡Hasta luego!
+
+答え：金曜日にダニエルの家でパーティーがある。飲み物を持ってきてほしい（¿Podrías traer algo de beber?）。
+
+**課題2**
+
+Atención, por favor. El vuelo con destino a Valencia lleva cuarenta minutos de retraso. Los pasajeros deben esperar en la puerta doce.
+
+答え：40分遅れている（lleva cuarenta minutos de retraso）。12番ゲートで待つ。
+
+</details>
+
+### テスト3：作文（Expresión e interacción escritas）
+
+**課題1.** 友だちに、先週末にしたことを伝えるメールを書いてください（60〜70語）。どこへ行ったか、何をしたか、天気や気分はどうだったか、感想を入れましょう。
+
+**課題2.** あなたの町と、行ったことのある別の町を比べる文章を書いてください（50〜60語）。比較級と最上級を使いましょう。
+
+<details>
+<summary>解答例を見る</summary>
+
+**課題1**
+
+Hola, Ana: ¿Qué tal? El fin de semana pasado fui a Kamakura con mi hermana. Hacía muy buen tiempo, así que caminamos mucho. Primero visitamos un templo muy antiguo y después comimos en un restaurante cerca del mar. Aunque estábamos cansadas, fue un día precioso. ¿Y tú? ¿Qué hiciste? Un abrazo, Yoko
+
+**課題2**
+
+Vivo en Osaka. Es una ciudad grande, pero Tokio es más grande que Osaka. En mi opinión, la comida de Osaka es la mejor de Japón. Kioto es más tranquila y más antigua, pero Osaka es más divertida. Además, la gente de Osaka es muy simpática.
+
+</details>
+
+### テスト4：会話（Expresión e interacción orales）
+
+**課題1.** 「最近の休暇」について、2〜3分で話してください。いつ、どこへ、だれと行ったか、何をしたか、感想を入れましょう。
+
+**課題2.** レストランで、店員（試験官）と話す場面です。テーブルを予約し、おすすめをたずね、会計を頼んでください。
+
+<details>
+<summary>解答例を見る</summary>
+
+**課題1**
+
+El verano pasado fui a Valencia con dos amigos. Estuvimos allí cinco días. Hacía mucho calor, así que íbamos a la playa todas las mañanas. Por la noche cenábamos en el centro. Un día probamos la horchata y nos encantó. Fue un viaje muy bonito y el año que viene volveré.
+
+**課題2**
+
+- Buenas noches. Me gustaría reservar una mesa para dos, por favor.
+- ¿Qué plato me recomendaría?
+- Muy bien, tomaré la paella. ¿Podría traerme agua, por favor?
+- ¿Me trae la cuenta, por favor?
+
+</details>
+
+会話テストの流れや、試験官とのやり取りのコツは、[DELE面接・口頭試験 完全対策ガイド](/language/learn-spanish/dele-oral-interview-guide/)でくわしく紹介しています。
 
 ## ミニテスト
+
+A2 の文法の総まとめです。7問以上正解でこのユニットは完了です。間違えた問題は、解説のユニットに戻って復習しましょう。
 
 <MiniQuiz quiz={frontmatter.quiz} unit={frontmatter.unit} />
 
 ## まとめ
 
-TODO:contenido
+- A2 は時制の使い分け。過去は「今日の中か外か」「出来事か背景か」、未来は「予定か予測か」。
+- 目的格代名詞・比較・命令形・動詞句で、言えることが大きく広がった。
+- 作文では接続詞で文をつなぎ、動詞のアクセント記号を見直す。
+
+次のユニット25からは B1 Umbral です。接続法現在を学び、願望や感情を表現します。
