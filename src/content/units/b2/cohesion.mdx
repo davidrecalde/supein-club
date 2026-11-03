@@ -5,89 +5,216 @@ levelName: "Avanzado"
 slug: "cohesion"
 url: "/language/learn-spanish/b2/cohesion/"
 existing: false
-title: "テキストの結束性"
+title: "スペイン語の文章の結束性｜くり返しを避けて読みやすく書くコツ"
 shortTitle: "テキストの結束性"
-titleEs: "cohesión textual"
-grammar: ["cohesión","conectores"]
-tenses: []
-functions: []
-canDo: []
-vocabulary: []
+titleEs: "Cohesión textual"
+description: "スペイン語の文章を読みやすくする結束性（cohesión）を解説。代名詞・指示詞・este último などの照応、同義語や上位語での言いかえ、省略、接続詞と段落の使い方を、DELE B2 の作文で使える例文と練習問題で学べます。"
+grammar: ["referencia: pronombres, demostrativos, este último, el primero / el segundo", "sustitución léxica: sinónimos e hiperónimos", "elipsis", "conectores y párrafos"]
+tenses: ["presente de indicativo"]
+functions: ["くり返しを避けて文章を書く", "まとまりのある文章を組み立てる"]
+canDo:
+  - "代名詞や指示詞で、前に出た語を言いかえられる"
+  - "同義語や上位語で、同じ語のくり返しを避けられる"
+  - "段落と接続詞を使って、まとまりのある文章を書ける"
+vocabulary:
+  # rank = «Rango frec.» del diccionario de frecuencias del CORPES XXI (RAE). Lo escribe
+  # npm run vocab:rank -- --write; lo que no es lema del diccionario va sin rank, al final.
+  - { es: "este último", ja: "後者（女性形 esta última）", example: "Visitamos el País Vasco y La Rioja; esta última es famosa por sus vinos." }
+  - { es: "el primero", ja: "前者（女性形 la primera）", rank: 37, example: "El primero es famoso por los pintxos." }
+  - { es: "dicho", ja: "上記の・その（女性形 dicha）", rank: 563, example: "Dicha región es famosa por sus vinos." }
+  - { es: "el mismo", ja: "同じもの・当該の（女性形 la misma）", rank: 53, example: "El vino y la comida de la misma región combinan bien." }
+  - { es: "la región", ja: "地方・地域", rank: 348, example: "Esta región es famosa por sus vinos." }
+  - { es: "la comunidad", ja: "自治州・共同体", rank: 296, example: "La Rioja es una comunidad autónoma." }
+  - { es: "la capital", ja: "首都・州都", rank: 411, example: "Logroño es la capital de La Rioja." }
+  - { es: "el párrafo", ja: "段落", rank: 5141, example: "Cada párrafo debe tener una idea principal." }
+  - { es: "repetir", ja: "くり返す", rank: 1109, example: "Intenta no repetir la misma palabra." }
+  - { es: "evitar", ja: "避ける", rank: 365, example: "Usa sinónimos para evitar repeticiones." }
+  - { es: "el sinónimo", ja: "同義語", rank: 6722, example: "Busca un sinónimo de «bonito»." }
+  - { es: "la idea", ja: "考え・主旨", rank: 277, example: "La idea principal está en el primer párrafo." }
+  - { es: "el vino", ja: "ワイン", rank: 1672, example: "La Rioja es conocida por sus vinos." }
+  - { es: "la bodega", ja: "ワイナリー・酒蔵", rank: 4338, example: "Visitamos una bodega familiar." }
 verbs: []
-duration: 40
+duration: 45
 prev: 45
 next: 47
-related: [45,47,48]
-cast: ["yui","daniel"]
-audio: []
+related: [45, 47, 48]
+cast: ["yui", "daniel"]
+audio:
+  - "El País Vasco y La Rioja están muy cerca. El primero es famoso por los pintxos; la segunda, por sus vinos."
+  - "Visitamos una bodega. Esta era pequeña y familiar."
+  - "Dicha región es famosa por sus vinos."
 youtubeId: ""
-quiz: []
 draft: true
 updated: "2026-11-02"
+quiz:
+  - question: "「バスク地方とラ・リオハを訪れた。後者はワインで有名だ」。（ ）に入るのは？「…; (　) es famosa por sus vinos.」"
+    options: ["esta última", "el primero", "dicho"]
+    correctIndex: 0
+    explanation: "二つ挙げたうちの後の方は este último / esta última。La Rioja は女性名詞なので esta última です。"
+  - question: "「バスクとリオハ。前者はピンチョスで有名だ」。（ ）に入るのは？"
+    options: ["El primero", "Este último", "El mismo"]
+    correctIndex: 0
+    explanation: "二つのうち前の方は el primero / la primera。"
+  - question: "改まった文章で「その地方（前に出た地方）」と言うなら？"
+    options: ["dicha región", "la región eso", "región dicha la"]
+    correctIndex: 0
+    explanation: "dicho / dicha + 名詞は「上記の・当該の」で、改まった書き言葉で使います。"
+  - question: "同じ語のくり返しを避ける方法として、適切でないのは？"
+    options: ["代名詞で言いかえる", "同義語で言いかえる", "同じ名詞を毎回くり返す"]
+    correctIndex: 2
+    explanation: "スペイン語の文章では、同じ名詞のくり返しを避けるのが基本です。"
+  - question: "「Salamanca」のくり返しを避ける上位語・言いかえとして自然なのは？"
+    options: ["la ciudad universitaria", "el país", "la persona"]
+    correctIndex: 0
+    explanation: "Salamanca → la ciudad universitaria（大学の町）のように、意味の広い語や特徴で言いかえます。"
+  - question: "「ワイナリーを訪れた。それは小さかった」。自然なのは？"
+    options: ["Visitamos una bodega. La bodega era pequeña.", "Visitamos una bodega. Era pequeña.", "Visitamos una bodega. Ella era pequeña bodega."]
+    correctIndex: 1
+    explanation: "主語が明らかなら省略します（省略：elipsis）。物を受ける主語に ella は使いません。"
+  - question: "段落の役割として正しいのは？"
+    options: ["一つの段落に一つの主な考え", "一文ごとに段落を変える", "段落は分けない"]
+    correctIndex: 0
+    explanation: "スペイン語の作文でも、一つの段落に一つの主な考えを書くのが基本です。"
+  - question: "「このワイン」（話し手の近く・今述べたもの）は？"
+    options: ["este vino", "aquel vino", "ese vinos"]
+    correctIndex: 0
+    explanation: "今述べたばかりのものを指すときは este / esta が自然です。"
+  - question: "前の文全体の内容を指すとき使うのは？「Llovió mucho. (　) causó retrasos.」"
+    options: ["Esto", "Este", "Esta"]
+    correctIndex: 0
+    explanation: "前の内容全体を指すときは、性のない esto / eso を使います。"
+  - question: "「バスクとリオハは近い」の後、「両方とも」と受けるなら？"
+    options: ["ambas", "las dos mismas", "cada"]
+    correctIndex: 0
+    explanation: "ambos / ambas（両方の）で、前に出た二つをまとめて受けられます：Ambas regiones…"
 ---
 
-TODO:contenido（導入：このユニットの問いに、それだけで答えになる2文で答える）
+スペイン語の文章の結束性（cohesión）とは、文と文がきちんとつながり、まとまりのある文章になっていることです。スペイン語では同じ語をくり返すのをとても嫌うので、代名詞（lo、la）、指示詞（este、esta）、este último（後者）、同義語などで言いかえながら書くのが基本です。
 
-## 文法 (Gramática)
+日本語では同じ言葉をくり返しても不自然ではないことが多いのですが、スペイン語の作文では、くり返しが多いと「語彙が乏しい」と評価されてしまいます。このユニットでは、バスク地方とラ・リオハを旅したユイが書いた旅行記を、ダニエルと一緒に推敲しながら、結束性を高める方法を学びます。
 
-TODO:contenido
+## 文法：結束性を高める方法 (Gramática)
+
+照応、語彙の言いかえ、省略、接続詞と段落の四つに分けて見ていきましょう。
+
+### 照応：前に出た語を受ける
+
+| 方法 | 例 |
+| --- | --- |
+| 代名詞 | Visité una bodega y la recomiendo.（ワイナリーを訪れた。おすすめだ） |
+| 指示詞 | Probamos un vino tinto. Este era excelente.（赤ワインを飲んだ。それは素晴らしかった） |
+| el primero / este último | El País Vasco y La Rioja están cerca. El primero es famoso por los pintxos; la segunda, por sus vinos.（前者はピンチョス、後者はワインで有名だ） |
+| dicho / dicha | Dicha región es famosa por sus vinos.（その地方はワインで有名だ：改まった言い方） |
+| esto / eso | Llovió mucho. Esto causó retrasos.（大雨が降った。このことが遅れの原因になった） |
+
+esto / eso は、名詞ではなく前の文全体の内容を受けます。eso は、少し前の内容や相手が言ったことを受けるときによく使います：Eso es verdad.（それは本当だね）。
+
+### 語彙の言いかえ：同義語と上位語
+
+同じ名詞をくり返すかわりに、同義語（意味の近い語）や上位語（意味の広い語）、特徴を表す言い方で言いかえます。
+
+<Examples>
+
+- Salamanca → la ciudad → la ciudad universitaria
+- el vino → la bebida → el tinto
+- La Rioja → la región → la comunidad
+
+</Examples>
+
+上位語で言いかえるときは、何を指しているかすぐわかるように、la ciudad のように定冠詞をつけます。人なら、el entrenador や el jugador japonés のように職業や特徴で言いかえるのも、新聞記事でよく使われる方法です。
+
+### 省略
+
+スペイン語では、主語がわかっているときは省略するのがふつうです：Visitamos una bodega. Era pequeña y familiar.（ワイナリーを訪れた。小さな家族経営の店だった）。物を指す主語に ella / él を使うのは不自然です（×Ella era pequeña.）。くり返しになる名詞も省略できます：Me gusta el vino tinto, pero también el blanco.（赤ワインが好きだが、白も好きだ）。el blanco は、el vino blanco の vino を省いた形です。
+
+### 接続詞と段落
+
+ユニット23と34で学んだ接続詞・談話標識で、文と文の関係をはっきりさせます。段落は「一つの段落に一つの主な考え」が基本で、段落の最初の文で、その段落で言いたいことを示します。段落と段落をつなぐときは、Por otro lado（一方で）、En cuanto a…（〜については）、Por último（最後に）などの談話標識を段落の最初に置くと、文章の流れがわかりやすくなります。
+
+### ユイの旅行記を推敲する
+
+**推敲前：**
+El verano pasado fui al País Vasco y a La Rioja. El País Vasco es famoso por los pintxos. La Rioja es famosa por los vinos. En La Rioja visité una bodega. La bodega era pequeña. La bodega era de una familia.
+
+**推敲後：**
+El verano pasado fui al País Vasco y a La Rioja. El primero es famoso por los pintxos; la segunda, por sus vinos. En esta última región visité una bodega pequeña y familiar, donde probamos un tinto excelente.
+
+推敲後の文では、el primero / la segunda、esta última、関係副詞の donde（ユニット31）、言いかえの tinto を使って、同じ名詞のくり返しを避けています。
+
+**ダニエル（バレンシア出身）のひとこと：** 作文を書き終えたら、同じ名詞が2回以上続けて出ていないか、蛍光ペンで印をつけてみてください。くり返しが見つかったら、代名詞・指示詞・同義語のどれかで言いかえるだけで、文章の評価がぐっと上がります。
 
 ## 活用：今日の動詞 (Conjugación)
 
-TODO:contenido
+結束性を高めるには、動詞の主語を省略できることが大切です。動詞の語尾で主語がわかるので、visitamos（私たちは訪れた）、era（それは〜だった）のように、主語を言わなくても文がつながります。[ser](/language/learn-spanish/verb-conjugation/ser/) の線過去（era）と点過去（fue）の使い分けも、旅行記ではよく出てきます。
 
 ## 語彙 (Nociones específicas)
+
+照応や言いかえに使う表現と、ワインの産地の旅で使う語です。
 
 <VocabList items={frontmatter.vocabulary} level={frontmatter.level} />
 
 ## 発音・正書法 (Pronunciación y ortografía)
 
-TODO:contenido
+指示詞の este・ese・aquel は、名詞なしで使うとき（代名詞）も、現在の正書法ではアクセント記号をつけません：Este era excelente. 以前は éste のように記号をつける書き方もありましたが、RAE の現在の規範では、あいまいさがない限り記号は不要です。古い本で éste を見かけても、同じ語だと考えて大丈夫です。
 
 ## 日本人がよく間違える
 
-TODO:contenido
+- **同じ名詞をくり返す。** ×La bodega era pequeña. La bodega era de una familia. → ○**Era** pequeña y familiar.
+- **物を受ける主語に ella / él を使う。** ×Visité una bodega. Ella era pequeña. → ○Visité una bodega. **Era** pequeña.
+- **前の文全体を este で受ける。** ×Llovió mucho. Este causó retrasos. → ○…**Esto** causó retrasos.
 
 ## 文化メモ (Referentes culturales)
 
 <CultureNote>
 
-TODO:contenido
+ユイが旅したバスク地方とラ・リオハは、隣り合う二つの地域ですが、食の楽しみ方は違います。El primero es famoso por los pintxos; la segunda, por sus vinos.（前者はピンチョスで、後者はワインで有名だ）と、このユニットの結束性の表現で一文にまとめられます。バルでピンチョスをつまみ、ワイナリーでワインを味わう旅のモデルルートは、[バスク・リオハのグルメルート](/food/food-routes/rioja-pais-vasco-vino-pintxos/)で紹介しています。
 
 </CultureNote>
 
 ## 練習 (Procedimientos de aprendizaje)
 
-### 練習1：認識
+### 練習1：何を指している？
 
-TODO:contenido
+下の文章で、（ ）の語が指しているものを答えてください。
+
+Visité el País Vasco y La Rioja. (1) Esta última me encantó. Probé muchos pintxos y (2) los recomiendo. Además, llovió todo el fin de semana; (3) esto no fue un problema.
 
 <details>
 <summary>答えを見る</summary>
 
-TODO:contenido
+1. La Rioja（後者）
+2. los pintxos
+3. 週末ずっと雨が降ったこと（前の文全体）
 
 </details>
 
-### 練習2：穴埋め
+### 練習2：くり返しを直す
 
-TODO:contenido
+くり返しを避けて、自然な文章に書きかえてください。
+
+1. Compré un libro. El libro era muy interesante.
+2. Mi hermana vive en Madrid. Mi hermana trabaja en un hospital.
+3. Visitamos Toledo y Segovia. Segovia nos gustó más.
 
 <details>
 <summary>答えを見る</summary>
 
-TODO:contenido
+1. Compré un libro que era muy interesante.（Compré un libro. Era muy interesante.）
+2. Mi hermana vive en Madrid y trabaja en un hospital.
+3. Visitamos Toledo y Segovia. Esta última nos gustó más.
 
 </details>
 
 ### 練習3：作文
 
-TODO:contenido
+旅行の思い出を、くり返しを避けて3〜4文で書いてみましょう。el primero / este último、代名詞、省略を少なくとも一つずつ使ってください。
 
 <details>
-<summary>答えを見る</summary>
+<summary>解答例を見る</summary>
 
-TODO:contenido
+El año pasado viajé a Sevilla y a Granada. La primera me pareció muy alegre; la segunda, muy tranquila. En Granada visité la Alhambra y la recomiendo a todo el mundo. Fue un viaje inolvidable.
+
+（去年、セビリアとグラナダを旅した。前者はとても陽気で、後者はとても静かに感じた。グラナダではアルハンブラを訪れたが、みんなにおすすめしたい。忘れられない旅になった）
 
 </details>
 
@@ -97,4 +224,8 @@ TODO:contenido
 
 ## まとめ
 
-TODO:contenido
+- 同じ名詞のくり返しを避け、代名詞・指示詞・el primero / este último・dicho で受ける。前の内容全体は esto / eso。
+- 同義語や上位語（la ciudad、la región）で言いかえ、わかっている主語は省略する。
+- 接続詞で文の関係を示し、一つの段落に一つの主な考えを書く。
+
+次のユニット47では、スペイン語の慣用表現を学びます。

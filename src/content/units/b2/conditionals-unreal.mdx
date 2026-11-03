@@ -5,89 +5,252 @@ levelName: "Avanzado"
 slug: "conditionals-unreal"
 url: "/language/learn-spanish/b2/conditionals-unreal/"
 existing: false
-title: "条件文②非現実"
+title: "スペイン語の条件文②｜si + 接続法過去で言う「もし〜なら」"
 shortTitle: "条件文②非現実"
-titleEs: "condicionales irreales"
-grammar: ["si + imperfecto de subjuntivo + condicional"]
-tenses: []
-functions: []
-canDo: []
-vocabulary: []
+titleEs: "Oraciones condicionales irreales"
+description: "スペイン語の非現実の条件文を解説。現在の事実に反する si + 接続法過去 + 過去未来、過去の事実に反する si + 接続法過去完了 + 過去未来完了、como si の使い方を、現実的な条件文との違いと練習問題で学べます。"
+grammar: ["si + imperfecto de subjuntivo + condicional", "si + pluscuamperfecto de subjuntivo + condicional compuesto", "como si + imperfecto de subjuntivo", "de + infinitivo"]
+tenses: ["pretérito imperfecto de subjuntivo", "condicional simple", "condicional compuesto"]
+functions: ["現実と違う仮定を言う", "過去を振り返って仮定する", "たとえを言う"]
+canDo:
+  - "「もし〜だったら…するのに」と、現在の事実に反する仮定を言える"
+  - "「もしあのとき〜していたら…しただろう」と、過去の仮定を言える"
+  - "como si を使って「まるで〜のように」と言える"
+vocabulary:
+  # rank = «Rango frec.» del diccionario de frecuencias del CORPES XXI (RAE). Lo escribe
+  # npm run vocab:rank -- --write; lo que no es lema del diccionario va sin rank, al final.
+  - { es: "si", ja: "もし〜なら", rank: 39, example: "Si tuviera tiempo, viajaría más." }
+  - { es: "como si", ja: "まるで〜のように", example: "Habla como si fuera de Madrid." }
+  - { es: "imaginar", ja: "想像する", rank: 1439, example: "Imagina que vivieras en Canarias." }
+  - { es: "suponer", ja: "仮定する・推測する", rank: 533, example: "Supongamos que ganaras la lotería." }
+  - { es: "la lotería", ja: "宝くじ", rank: 6844, example: "Si me tocara la lotería, dejaría de trabajar." }
+  - { es: "tocar", ja: "（くじが）当たる・触る", rank: 716, example: "Si me tocara la lotería, viajaría por el mundo." }
+  - { es: "la oportunidad", ja: "機会", rank: 422, example: "Si tuviera la oportunidad, estudiaría un máster." }
+  - { es: "el máster", ja: "修士課程", rank: 6725, example: "Yui quiere hacer un máster en Madrid." }
+  - { es: "dejar", ja: "やめる・残す", rank: 104, example: "Si pudiera, dejaría el trabajo." }
+  - { es: "arrepentirse", ja: "後悔する", rank: 6559, example: "Si no lo intentas, te arrepentirás." }
+  - { es: "la isla", ja: "島", rank: 946, example: "Si viviera en una isla, iría a la playa todos los días." }
+  - { es: "el sueño", ja: "夢", rank: 905, example: "Mi sueño sería vivir en España." }
+  - { es: "la realidad", ja: "現実（en realidad：実際には）", rank: 325, example: "En realidad, no tengo tiempo." }
+  - { es: "ojalá", ja: "〜ならいいのに", rank: 3909, example: "Ojalá tuviera más vacaciones." }
 verbs: []
-duration: 40
+duration: 45
 prev: 37
 next: 39
-related: [37,30,39]
-cast: ["yui","daniel"]
-audio: []
+related: [37, 30, 39]
+cast: ["yui", "daniel"]
+audio:
+  - "Si tuviera tiempo, viajaría más."
+  - "Si hubiera estudiado más, habría aprobado."
+  - "Habla como si fuera de Madrid."
+  - "Si me tocara la lotería, dejaría de trabajar."
+  - "Si pudiera vivir en cualquier parte de España, viviría en Canarias."
 youtubeId: ""
-quiz: []
 draft: true
 updated: "2026-11-02"
+quiz:
+  - question: "「もし時間があれば、もっと旅行するのに」（実際は時間がない）。正しいのは？"
+    options: ["Si tengo tiempo, viajaré más.", "Si tuviera tiempo, viajaría más.", "Si tendría tiempo, viajaría más."]
+    correctIndex: 1
+    explanation: "現在の事実に反する仮定は si + 接続法過去（tuviera）+ 過去未来（viajaría）。si のあとに過去未来は使いません。"
+  - question: "「もっと勉強していたら、合格していただろう」。正しいのは？"
+    options: ["Si estudiaba más, aprobaría.", "Si hubiera estudiado más, habría aprobado.", "Si habría estudiado más, hubiera aprobado."]
+    correctIndex: 1
+    explanation: "過去の事実に反する仮定は si + 接続法過去完了（hubiera estudiado）+ 過去未来完了（habría aprobado）。"
+  - question: "「彼はまるでマドリード出身のように話す」。正しいのは？"
+    options: ["Habla como si es de Madrid.", "Habla como si fuera de Madrid.", "Habla como si sea de Madrid."]
+    correctIndex: 1
+    explanation: "como si のあとは、いつも接続法過去：fuera。"
+  - question: "現実的な条件（実現しそう）はどれ？"
+    options: ["Si llueve, me quedo en casa.", "Si lloviera, me quedaría en casa.", "Si hubiera llovido, me habría quedado en casa."]
+    correctIndex: 0
+    explanation: "si + 現在形は、実現しそうな条件（ユニット30）。接続法過去は「実際はそうではない」仮定です。"
+  - question: "tener の接続法過去（-ra 形）、1人称単数は？"
+    options: ["tenía", "tuviera", "tendría"]
+    correctIndex: 1
+    explanation: "接続法過去は点過去3人称複数（tuvieron）から作ります：tuviera。tenía は線過去、tendría は過去未来です。"
+  - question: "「宝くじが当たったら、仕事をやめるのに」。正しいのは？"
+    options: ["Si me tocara la lotería, dejaría de trabajar.", "Si me toca la lotería, dejaría de trabajar.", "Si me tocaría la lotería, dejaría de trabajar."]
+    correctIndex: 0
+    explanation: "si + 接続法過去（tocara）+ 過去未来（dejaría）。"
+  - question: "ser の接続法過去、1人称単数は？"
+    options: ["fuera", "era", "sería"]
+    correctIndex: 0
+    explanation: "ser と ir の接続法過去は同じ fuera（fuese）。点過去 fueron から作ります。"
+  - question: "「もっと休みがあればいいのに」。正しいのは？"
+    options: ["Ojalá tengo más vacaciones.", "Ojalá tuviera más vacaciones.", "Ojalá tendría más vacaciones."]
+    correctIndex: 1
+    explanation: "実現しにくい願いは ojalá + 接続法過去：tuviera。"
+  - question: "「もし知っていたら、来たのに」を de + 原形で言うと？"
+    options: ["De haberlo sabido, habría venido.", "De saber, vendría ayer.", "De lo sabía, habría venido."]
+    correctIndex: 0
+    explanation: "de + haber + 過去分詞で、過去の仮定を短く言えます：De haberlo sabido… = Si lo hubiera sabido…"
+  - question: "「私があなたなら、受けるね」。正しいのは？"
+    options: ["Si yo fuera tú, lo aceptaría.", "Si yo era tú, lo aceptaría.", "Si yo sería tú, lo aceptaba."]
+    correctIndex: 0
+    explanation: "si yo fuera tú（私があなたなら）は、アドバイスの決まった言い方です。"
 ---
 
-TODO:contenido（導入：このユニットの問いに、それだけで答えになる2文で答える）
+スペイン語で現実と違う仮定を言うときは、si + 接続法過去 + 過去未来の形を使います。Si tuviera tiempo, viajaría más.（時間があれば、もっと旅行するのに）は、「実際には時間がない」という気持ちを含んだ文です。過去の事実に反する仮定は、si + 接続法過去完了 + 過去未来完了で、Si hubiera estudiado más, habría aprobado.（もっと勉強していたら、合格していたのに）と言います。
 
-## 文法 (Gramática)
+ユニット30の si + 現在形（Si llueve, me quedo en casa.）は実現しそうな条件でしたが、このユニットの条件文は「そうではない現実」を前提にしています。接続法過去の形はユニット37で学びました。このユニットでは、卒業後の進路に迷うユイと、東京のダニエルとの会話を例に、非現実の条件文を学びます。
 
-TODO:contenido
+## 文法：非現実の条件文 (Gramática)
+
+まず三つの条件文を比べ、次に現在の仮定、過去の仮定、como si の使い方を見ていきましょう。
+
+### 三つの条件文を比べる
+
+| 種類 | 条件（si） | 結果 | 例 |
+| --- | --- | --- | --- |
+| 現実的 | 現在形 | 現在形・未来形 | Si llueve, me quedo en casa. |
+| 現在の非現実 | 接続法過去 | 過去未来 | Si lloviera, me quedaría en casa. |
+| 過去の非現実 | 接続法過去完了 | 過去未来完了 | Si hubiera llovido, me habría quedado en casa. |
+
+同じ「雨が降ったら」でも、二つ目は「（実際は降らないけれど）もし降ったら」、三つ目は「（実際は降らなかったけれど）もし降っていたら」という意味になります。
+
+### 現在の事実に反する仮定
+
+接続法過去は、点過去の3人称複数から -ron を取って -ra（または -se）をつけて作ります：tuvieron → tuviera、fueron → fuera、pudieron → pudiera。
+
+<Examples>
+
+- Si tuviera tiempo, viajaría más.（時間があれば、もっと旅行するのに）
+- Si me tocara la lotería, dejaría de trabajar.（宝くじが当たったら、仕事をやめるのに）
+- Si yo fuera tú, aceptaría el trabajo.（私があなたなら、その仕事を受けるね）
+
+</Examples>
+
+si yo fuera tú は、ユニット21の yo que tú と同じく、アドバイスでよく使う言い方です。
+
+### 過去の事実に反する仮定
+
+<Examples>
+
+- Si hubiera estudiado más, habría aprobado.（もっと勉強していたら、合格していたのに）
+- Si hubiera sabido que venías, te habría esperado.（君が来ると知っていたら、待っていたのに）
+
+</Examples>
+
+結果の habría aprobado のかわりに、hubiera aprobado もよく使います。会話では「Si lo hubiera sabido, te lo hubiera dicho.」のように、両方に hubiera を使う人も多いです。de + haber + 過去分詞で、条件を短く言うこともできます：De haberlo sabido, habría venido.（知っていたら来たのに）。
+
+### 過去の条件と現在の結果
+
+条件と結果の時が違う文もあります。過去の事実に反する条件に、現在の結果を組み合わせると、「あのとき〜していたら、今ごろ〜なのに」という意味になります。
+
+<Examples>
+
+- Si hubiera aceptado aquel trabajo, ahora viviría en Madrid.（あのときあの仕事を受けていたら、今ごろマドリードに住んでいるのに）
+- Si no hubiera estudiado español, no te conocería.（スペイン語を勉強していなかったら、今ごろ君のことを知らなかっただろう）
+
+</Examples>
+
+条件の部分が「いつのことか」で hubiera か接続法過去かを選び、結果の部分が「いつのことか」で habría + 過去分詞か過去未来かを選びます。二つの部分を別々に考えるのがコツです。
+
+### como si：まるで〜のように
+
+como si のあとは、いつも接続法過去（または過去完了）です。
+
+- Habla como si fuera de Madrid.（彼はまるでマドリード出身のように話す）
+- Me miró como si no me hubiera visto nunca.（まるで一度も会ったことがないかのように私を見た）
+
+### 卒業後の進路
+
+- Daniel: ¿Qué vas a hacer cuando termines la carrera?（大学を卒業したら、どうするの？）
+- Yui: No lo sé. Si tuviera dinero, haría un máster en Madrid.（わからない。お金があったら、マドリードで修士課程に行くんだけど）
+- Daniel: ¿Y si pidieras una beca?（奨学金を申請したら？）
+- Yui: Ojalá la consiguiera… Si la hubiera pedido el año pasado, ya lo sabría.（もらえたらいいけど…去年申請していたら、もう結果がわかっていたのに）
+
+**ダニエル（バレンシア出身）のひとこと：** 接続法過去には -ra 形（tuviera）と -se 形（tuviese）があります。スペインではどちらも使いますが、会話では -ra 形の方がよく聞かれます。まずは -ra 形を使いこなせるようにしましょう。
 
 ## 活用：今日の動詞 (Conjugación)
 
-TODO:contenido
+接続法過去は、点過去の3人称複数から作ります。[tener](/language/learn-spanish/verb-conjugation/tener/)（tuvieron → tuviera）、[hacer](/language/learn-spanish/verb-conjugation/hacer/)（hicieron → hiciera）、[poder](/language/learn-spanish/verb-conjugation/poder/)（pudieron → pudiera）、[ser](/language/learn-spanish/verb-conjugation/ser/) と [ir](/language/learn-spanish/verb-conjugation/ir/)（fueron → fuera）の活用表で、「接続法過去（-ra形）」と「接続法過去（-se形）」の欄を確認しましょう。
 
 ## 語彙 (Nociones específicas)
+
+仮定や願望を言うときの表現と、夢や将来の話でよく使う語です。
 
 <VocabList items={frontmatter.vocabulary} level={frontmatter.level} />
 
 ## 発音・正書法 (Pronunciación y ortografía)
 
-TODO:contenido
+接続法過去の nosotros の形には、アクセント記号がつきます：tuviéramos（トゥ・ビ**エ**・ラ・モス）、fuéramos（フ**エ**・ラ・モス）、hubiéramos（ウ・ビ**エ**・ラ・モス）。強く読む音節が後ろから3番目になるためです。ほかの人称（tuviera、tuvieras）には記号がつきません。
 
 ## 日本人がよく間違える
 
-TODO:contenido
+- **si のあとに過去未来を使う。** ×Si tendría tiempo, viajaría. → ○Si **tuviera** tiempo, viajaría. 過去未来は結果の部分だけです。
+- **非現実の仮定に si + 現在形を使う。** ×Si soy rico, compraría una casa.（実際はお金持ちではない）→ ○Si **fuera** rico, compraría una casa.
+- **como si のあとに直説法を使う。** ×Habla como si es de Madrid. → ○Habla como si **fuera** de Madrid.
 
 ## 文化メモ (Referentes culturales)
 
 <CultureNote>
 
-TODO:contenido
+「スペインのどこにでも住めるとしたら、どこに住む？」は、スペイン人とよく盛り上がる話題です。¿Dónde vivirías si pudieras vivir en cualquier parte de España?（スペインのどこにでも住めるとしたら、どこに住む？）と聞かれたユイは、Si pudiera, viviría en Canarias, porque me encanta el mar.（できるなら、カナリア諸島に住むな。海が大好きだから）と答えました。大西洋に浮かぶカナリア諸島の見どころは、[カナリア諸島 観光・旅行ガイド](/travel/canarias/)で紹介しています。
 
 </CultureNote>
 
 ## 練習 (Procedimientos de aprendizaje)
 
-### 練習1：認識
+### 練習1：どの種類の条件文？
 
-TODO:contenido
+次の文は、現実的・現在の非現実・過去の非現実のどれですか。
+
+1. Si llueve, no salgo.
+2. Si lloviera, no saldría.
+3. Si hubiera llovido, no habría salido.
+4. Si tengo tiempo, te llamo.
+5. Si tuviera tiempo, te llamaría.
 
 <details>
 <summary>答えを見る</summary>
 
-TODO:contenido
+1. 現実的（降ったら出かけない）
+2. 現在の非現実（もし降ったら出かけないのに）
+3. 過去の非現実（もし降っていたら出かけなかったのに）
+4. 現実的
+5. 現在の非現実（実際は時間がない）
 
 </details>
 
 ### 練習2：穴埋め
 
-TODO:contenido
+（ ）の動詞を正しい形にしてください。
+
+1. Si (yo, tener) ______ dinero, haría un máster.
+2. Si (tú, estudiar) ______ más, habrías aprobado.
+3. Habla como si lo (saber) ______ todo.
+4. Si yo (ser) ______ tú, no lo haría.
+5. Si hubiéramos salido antes, no (nosotros, perder) ______ el tren.
+6. Ojalá (yo, poder) ______ ir contigo.
 
 <details>
 <summary>答えを見る</summary>
 
-TODO:contenido
+1. tuviera
+2. hubieras estudiado
+3. supiera
+4. fuera
+5. habríamos perdido（hubiéramos perdido も可）
+6. pudiera
 
 </details>
 
 ### 練習3：作文
 
-TODO:contenido
+スペイン語で言ってみましょう。
+
+1. お金があれば、スペインで修士課程に行くのに。
+2. 君が来ると知っていたら、待っていたのに。
+3. 彼女はまるでスペイン人のように話す。
 
 <details>
-<summary>答えを見る</summary>
+<summary>解答例を見る</summary>
 
-TODO:contenido
+1. Si tuviera dinero, haría un máster en España.
+2. Si hubiera sabido que venías, te habría esperado.
+3. Habla como si fuera española.
 
 </details>
 
@@ -97,4 +260,8 @@ TODO:contenido
 
 ## まとめ
 
-TODO:contenido
+- 現在の事実に反する仮定は si + 接続法過去 + 過去未来（Si tuviera tiempo, viajaría.）。
+- 過去の事実に反する仮定は si + 接続法過去完了 + 過去未来完了（Si hubiera estudiado, habría aprobado.）。
+- si のあとに過去未来は使わない。como si のあとはいつも接続法過去。
+
+次のユニット39では、接続法の現在完了と過去完了（haya hecho、hubiera hecho）を学びます。

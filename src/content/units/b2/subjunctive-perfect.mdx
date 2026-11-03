@@ -5,89 +5,250 @@ levelName: "Avanzado"
 slug: "subjunctive-perfect"
 url: "/language/learn-spanish/b2/subjunctive-perfect/"
 existing: false
-title: "接続法の完了形"
+title: "スペイン語の hubiera の使い方｜接続法の現在完了と過去完了"
 shortTitle: "接続法の完了形"
-titleEs: "perfecto y pluscuamperfecto de subjuntivo"
-grammar: ["haya + participio","hubiera + participio"]
-tenses: []
-functions: []
-canDo: []
-vocabulary: []
+titleEs: "Pretérito perfecto y pluscuamperfecto de subjuntivo"
+description: "スペイン語の hubiera の使い方を解説。接続法現在完了（haya hecho）と接続法過去完了（hubiera hecho）の作り方、Ojalá hubiera… の後悔、過去の仮定、debería haber + 過去分詞の言い方を、練習問題つきで学べます。"
+grammar: ["pretérito perfecto de subjuntivo (haya + participio)", "pluscuamperfecto de subjuntivo (hubiera + participio)", "ojalá + hubiera", "debería haber + participio"]
+tenses: ["pretérito perfecto de subjuntivo", "pretérito pluscuamperfecto de subjuntivo"]
+functions: ["後悔を言う", "済んだことへの気持ちを伝える", "過去の仮定をする"]
+canDo:
+  - "「〜してよかった」「〜したとは思わない」と、済んだことについて気持ちや疑いを伝えられる"
+  - "「〜していればよかった」と、過去の後悔を言える"
+  - "「もし〜していたら」と、過去の仮定を言える"
+vocabulary:
+  # rank = «Rango frec.» del diccionario de frecuencias del CORPES XXI (RAE). Lo escribe
+  # npm run vocab:rank -- --write; lo que no es lema del diccionario va sin rank, al final.
+  - { es: "lamentar", ja: "残念に思う", rank: 2198, example: "Lamento que no hayas podido venir." }
+  - { es: "arrepentirse", ja: "後悔する", rank: 6559, example: "Me arrepiento de no haber estudiado más." }
+  - { es: "ojalá", ja: "〜だったらよかったのに", rank: 3909, example: "Ojalá hubiera reservado antes." }
+  - { es: "reservar", ja: "予約する", rank: 3547, example: "Debería haber reservado el hotel antes." }
+  - { es: "planificar", ja: "計画する", rank: 3697, example: "Si hubiera planificado mejor el viaje, habría visto más." }
+  - { es: "conseguir", ja: "手に入れる・達成する", rank: 404, example: "Me alegra que hayas conseguido la beca." }
+  - { es: "suspender", ja: "（試験に）落ちる・中止する", rank: 1706, example: "No creo que haya suspendido." }
+  - { es: "el error", ja: "間違い", rank: 928, example: "Ojalá no hubiera cometido ese error." }
+  - { es: "cometer", ja: "（過ちを）犯す", rank: 1441, example: "Cometí un error en el examen." }
+  - { es: "la decisión", ja: "決定", rank: 312, example: "Me alegro de que hayas tomado esa decisión." }
+  - { es: "tomar una decisión", ja: "決断する", example: "Tomé la decisión de quedarme en España." }
+  - { es: "la carrera", ja: "（大学の）専攻・学業", rank: 352, example: "Cuando hayas terminado la carrera, ¿qué harás?" }
+  - { es: "aprovechar", ja: "活用する・生かす", rank: 827, example: "Debería haber aprovechado más el tiempo." }
+  - { es: "la pena", ja: "残念なこと", rank: 1290, example: "¡Qué pena que no hayas venido!" }
 verbs: ["haber"]
-duration: 40
+duration: 45
 prev: 38
 next: 40
-related: [38,40,48]
-cast: ["yui","daniel"]
-audio: []
+related: [38, 40, 48]
+cast: ["yui", "daniel"]
+audio:
+  - "Espero que hayas llegado bien."
+  - "No creo que haya terminado todavía."
+  - "Ojalá hubiera estudiado más."
+  - "Si hubiera reservado antes, habría tenido un hotel mejor."
+  - "Debería haber aprovechado más el tiempo."
 youtubeId: ""
-quiz: []
 draft: true
 updated: "2026-11-02"
+quiz:
+  - question: "「無事に着いているといいな」。正しいのは？"
+    options: ["Espero que llegaste bien.", "Espero que hayas llegado bien.", "Espero que hubieras llegado bien."]
+    correctIndex: 1
+    explanation: "今の時点ですでに済んでいるはずのことは、接続法現在完了：hayas llegado。"
+  - question: "「彼がもう終えたとは思わない」。正しいのは？"
+    options: ["No creo que ha terminado.", "No creo que haya terminado.", "No creo que terminara ya ahora."]
+    correctIndex: 1
+    explanation: "no creo que + 済んだこと → 接続法現在完了：haya terminado。"
+  - question: "「もっと勉強していればよかった」。正しいのは？"
+    options: ["Ojalá estudié más.", "Ojalá hubiera estudiado más.", "Ojalá he estudiado más."]
+    correctIndex: 1
+    explanation: "過去の後悔は ojalá + 接続法過去完了：hubiera estudiado。"
+  - question: "haber の接続法現在、2人称単数（tú）は？"
+    options: ["has", "hayas", "hubieras"]
+    correctIndex: 1
+    explanation: "接続法現在完了の助動詞は haya, hayas, haya, hayamos, hayáis, hayan。"
+  - question: "「もっと早く予約しておくべきだった」。正しいのは？"
+    options: ["Debería haber reservado antes.", "Debería reservado antes.", "Debía haber reservar antes."]
+    correctIndex: 0
+    explanation: "「〜すべきだった」は debería haber + 過去分詞です。"
+  - question: "「奨学金がもらえてよかったね」。正しいのは？"
+    options: ["Me alegra que consigues la beca.", "Me alegra que hayas conseguido la beca.", "Me alegra que conseguiste la beca."]
+    correctIndex: 1
+    explanation: "感情（me alegra que）+ 済んだこと → 接続法現在完了：hayas conseguido。"
+  - question: "「もし早く予約していたら、もっといいホテルだったのに」。正しいのは？"
+    options: ["Si reservaba antes, tendría un hotel mejor.", "Si hubiera reservado antes, habría tenido un hotel mejor.", "Si habría reservado antes, hubiera tenido un hotel mejor."]
+    correctIndex: 1
+    explanation: "過去の非現実の仮定：si + 接続法過去完了 + 過去未来完了（ユニット38）。"
+  - question: "「（過去のある時点で）彼が終えていたとは思わなかった」。正しいのは？"
+    options: ["No creía que hubiera terminado.", "No creía que haya terminado.", "No creía que había terminado ayer."]
+    correctIndex: 0
+    explanation: "主節が過去（no creía）なら、済んでいたことは接続法過去完了：hubiera terminado。"
+  - question: "「（君が）大学を終えたら、何をする？」。正しいのは？"
+    options: ["Cuando hayas terminado la carrera, ¿qué harás?", "Cuando habrás terminado la carrera, ¿qué harás?", "Cuando terminaste la carrera, ¿qué harás?"]
+    correctIndex: 0
+    explanation: "未来のある時点で済んでいることは、cuando + 接続法現在完了でも言えます。"
+  - question: "「君が来られなかったのは残念だ」。正しいのは？"
+    options: ["¡Qué pena que no hayas podido venir!", "¡Qué pena que no has podido venir!", "¡Qué pena que no podías venir!"]
+    correctIndex: 0
+    explanation: "感情（qué pena que）+ 済んだこと → 接続法現在完了：hayas podido。"
 ---
 
-TODO:contenido（導入：このユニットの問いに、それだけで答えになる2文で答える）
+スペイン語の hubiera は、haber の接続法過去です。hubiera + 過去分詞（接続法過去完了）で、Ojalá hubiera estudiado más.（もっと勉強していればよかった）のような過去の後悔や、Si hubiera reservado antes…（もっと早く予約していたら…）のような過去の仮定を表します。
 
-## 文法 (Gramática)
+もう一つの完了形、haya + 過去分詞（接続法現在完了）は、Espero que hayas llegado bien.（無事に着いているといいな）のように、すでに済んだはずのことへの願いや気持ち、疑いを表します。このユニットでは、卒業を前にこれまでの留学生活をふり返るユイと、東京から声をかけるダニエルの会話を例に、二つの完了形を学びます。
 
-TODO:contenido
+## 文法：接続法の完了形 (Gramática)
+
+まず二つの形の作り方を、次に接続法現在完了の使い方を、最後に接続法過去完了の使い方を見ていきましょう。
+
+### 作り方
+
+| 人称 | 接続法現在完了 | 接続法過去完了 |
+| --- | --- | --- |
+| yo | haya hecho | hubiera hecho |
+| tú | hayas hecho | hubieras hecho |
+| él / ella / usted | haya hecho | hubiera hecho |
+| nosotros / nosotras | hayamos hecho | hubiéramos hecho |
+| vosotros / vosotras ※ | hayáis hecho | hubierais hecho |
+| ellos / ellas / ustedes | hayan hecho | hubieran hecho |
+
+※ vosotros はスペインのみで使う形です（→ [中南米のスペイン語](/language/learn-spanish/spanish-in-latin-america/)）。
+
+接続法過去完了には -se 形もあります（hubiese hecho）。意味は同じです。書き言葉や改まった場面では -se 形も見かけますが、まずは -ra 形の hubiera を使いこなせるようにしましょう。
+
+### 接続法現在完了：済んだことへの気持ち・疑い
+
+接続法が必要な表現（ユニット26）のあとで、その内容がすでに済んでいるときに使います。
+
+<Examples>
+
+- Espero que hayas llegado bien.（無事に着いているといいな）
+- Me alegra que hayas conseguido la beca.（奨学金がもらえてよかったね）
+- No creo que haya terminado todavía.（彼がもう終えたとは思わない）
+
+</Examples>
+
+cuando などのあとで、未来のある時点までに済んでいることを言うときにも使います：Cuando hayas terminado la carrera, ¿qué harás?（大学を終えたら、何をするの？）未来のある時点を基準にした「〜し終えたら」ですが、cuando のあとなので、未来完了の habrás terminado ではなく、接続法の hayas terminado を使います。
+
+### 接続法過去完了：後悔と過去の仮定
+
+| 使い方 | 例 |
+| --- | --- |
+| 過去の後悔（ojalá） | Ojalá hubiera estudiado más.（もっと勉強していればよかった） |
+| 過去の仮定（si） | Si hubiera reservado antes, habría tenido un hotel mejor. |
+| 主節が過去のとき | No creía que hubiera terminado.（彼が終えていたとは思わなかった） |
+| 過去未来完了のかわり | Yo lo hubiera hecho.（私ならそうしたのに：= lo habría hecho） |
+
+後悔は、debería haber + 過去分詞（〜すべきだった）や me habría gustado + 原形（〜したかった）でも言えます：Debería haber aprovechado más el tiempo.（もっと時間を生かすべきだった）。
+
+### Ojalá haya… と Ojalá hubiera… の違い
+
+ojalá のあとの完了形は、話し手が結果を知っているかどうかで使い分けます。
+
+<Examples>
+
+- Ojalá haya aprobado el examen.（彼が試験に受かっているといいな：結果はまだ知らない）
+- Ojalá hubiera aprobado el examen.（彼が試験に受かっていたらよかったのに：実際は落ちた）
+
+</Examples>
+
+haya の方はまだ可能性が残っている願い、hubiera の方はもう変えられない過去への後悔です。同じ ojalá でも話し手の気持ちが大きく違うので、結果を知っているかどうかを考えてから形を選びましょう。
+
+### 留学をふり返る
+
+- Daniel: ¡Ya casi terminas la carrera! ¿Cómo te sientes?（もうすぐ卒業だね！どんな気持ち？）
+- Yui: Contenta, pero ojalá hubiera viajado más por España. Debería haber aprovechado más los fines de semana.（うれしいけど、もっとスペインを旅行すればよかったな。週末をもっと生かすべきだった）
+- Daniel: Bueno, me alegro de que hayas aprendido tanto. ¡Tu español es increíble!（でも、たくさん学べてよかったじゃない。君のスペイン語はすごいよ！）
+- Yui: Gracias. Si no hubiera venido a Salamanca, nunca habría hablado así.（ありがとう。サラマンカに来ていなかったら、こんなふうには話せなかったと思う）
+
+**ダニエル（バレンシア出身）のひとこと：** 「〜しておけばよかった」は、スペイン語では Ojalá hubiera… がいちばん気持ちのこもった言い方です。Si lo hubiera sabido…（知っていたらなあ…）と、結果を言わずに途中で止めるのも、会話でよく使われる自然な後悔の言い方です。
 
 ## 活用：今日の動詞 (Conjugación)
 
-TODO:contenido
+二つの完了形の助動詞は、どちらも [haber](/language/learn-spanish/verb-conjugation/haber/) の接続法です。haber の活用表で、「接続法現在完了」（haya hecho）と「接続法過去完了」（hubiera hecho、hubiese hecho）の欄を確認しましょう。過去分詞は、hecho・dicho・visto・puesto などの不規則な形もそのまま使います。
 
 ## 語彙 (Nociones específicas)
+
+後悔や気持ちを伝える表現と、留学や進路の語です。
 
 <VocabList items={frontmatter.vocabulary} level={frontmatter.level} />
 
 ## 発音・正書法 (Pronunciación y ortografía)
 
-TODO:contenido
+hubiera は「ウ・ビ**エ**・ラ」と読み、h は発音しません。nosotros の hubiéramos（ウ・ビ**エ**・ラ・モス）にはアクセント記号がつきます。また、haya（haber の接続法）と halla（hallar：見つける）は、スペインの多くの地域で同じ「アジャ」に近い音になるので、書くときに文の意味で区別しましょう。似た音の allá（あちらに）は、最後の音節を強く読みます。
 
 ## 日本人がよく間違える
 
-TODO:contenido
+- **済んだことに接続法現在を使う。** ×Espero que llegues bien.（もう着いているはずのとき）→ ○Espero que **hayas llegado** bien.
+- **ojalá の後悔に直説法を使う。** ×Ojalá he estudiado más. → ○Ojalá **hubiera estudiado** más.
+- **debería haber の過去分詞を忘れる。** ×Debería haber reservar. → ○Debería haber **reservado**.
 
 ## 文化メモ (Referentes culturales)
 
 <CultureNote>
 
-TODO:contenido
+スペイン旅行のあとで、Si hubiera planificado mejor el viaje, habría visto más cosas.（もっとよく計画していたら、もっといろいろ見られたのに）と思う人は少なくありません。スペインは見どころが多く、移動にも時間がかかるからです。Ojalá hubiera tenido más días.（もっと日数があればよかった）とならないように、旅の日程は先に組み立てておきましょう。地域ごとのモデルコースは、[スペイン旅行 モデルコース・日程プラン](/travel/itineraries/)で紹介しています。
 
 </CultureNote>
 
 ## 練習 (Procedimientos de aprendizaje)
 
-### 練習1：認識
+### 練習1：どちらの完了形？
 
-TODO:contenido
+正しい方を選んでください。
+
+1. Me alegra que (hayas / hubieras) venido.（今のことへの気持ち）
+2. Ojalá (haya / hubiera) estudiado más.（過去の後悔）
+3. No creo que (haya / hubiera) llegado todavía.（今の時点）
+4. No creía que (haya / hubiera) llegado.（過去の時点）
+5. Si (hayas / hubieras) reservado antes, tendrías un hotel mejor.
 
 <details>
 <summary>答えを見る</summary>
 
-TODO:contenido
+1. hayas
+2. hubiera
+3. haya
+4. hubiera
+5. hubieras
 
 </details>
 
 ### 練習2：穴埋め
 
-TODO:contenido
+（ ）の動詞を、接続法現在完了か接続法過去完了にしてください。
+
+1. Espero que (tú, aprobar) ______ el examen.
+2. Ojalá (yo, saber) ______ la verdad antes.
+3. ¡Qué pena que no (vosotros, venir) ______!
+4. Si (nosotros, salir) ______ antes, no habríamos perdido el tren.
+5. Cuando (tú, terminar) ______, avísame.
+6. No me parecía que (ellos, entender) ______ la explicación.
 
 <details>
 <summary>答えを見る</summary>
 
-TODO:contenido
+1. hayas aprobado
+2. hubiera sabido
+3. hayáis venido
+4. hubiéramos salido
+5. hayas terminado
+6. hubieran entendido
 
 </details>
 
 ### 練習3：作文
 
-TODO:contenido
+ユイになったつもりで、スペイン語で言ってみましょう。
+
+1. もっとスペインを旅行すればよかった（ojalá）。
+2. 奨学金がもらえてよかったね。
+3. もっと早く予約しておくべきだった（debería haber）。
 
 <details>
-<summary>答えを見る</summary>
+<summary>解答例を見る</summary>
 
-TODO:contenido
+1. Ojalá hubiera viajado más por España.
+2. Me alegro de que hayas conseguido la beca.
+3. Debería haber reservado antes.
 
 </details>
 
@@ -97,4 +258,8 @@ TODO:contenido
 
 ## まとめ
 
-TODO:contenido
+- 接続法現在完了（haya + 過去分詞）は、すでに済んだことへの気持ち・願い・疑い。
+- 接続法過去完了（hubiera + 過去分詞）は、過去の後悔（Ojalá hubiera…）、過去の仮定（Si hubiera…）、主節が過去のとき。
+- 後悔は debería haber + 過去分詞でも言える。
+
+次のユニット40では、主節と従属節の時制をそろえる「時制の一致」を学びます。
