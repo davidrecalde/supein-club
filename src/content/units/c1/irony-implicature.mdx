@@ -5,89 +5,230 @@ levelName: "Dominio operativo eficaz"
 slug: "irony-implicature"
 url: "/language/learn-spanish/c1/irony-implicature/"
 existing: false
-title: "皮肉・ユーモア・暗示"
+title: "スペイン語の皮肉と遠回しな言い方｜言葉の裏を読む表現"
 shortTitle: "皮肉・ユーモア・暗示"
 titleEs: "ironía e implícitos"
+description: "スペイン語の皮肉（¡Qué bien! ¡Muy bonito!）、控えめな言い方（No está nada mal.）、遠回しな依頼や断り（Ya veremos.）など、言葉どおりではない意味の読み取り方と使い方を、例文で解説します。"
 grammar: ["tácticas pragmáticas"]
 tenses: []
-functions: []
-canDo: []
-vocabulary: []
-verbs: []
+functions: ["皮肉やユーモアを理解する", "遠回しに依頼する・断る"]
+canDo:
+  - "皮肉や冗談を、イントネーションと文脈から読み取れる"
+  - "控えめな言い方や誇張の表現を理解し、効果的に使える"
+  - "遠回しな依頼や断りに気づき、場面に合わせて応じられる"
+vocabulary:
+  # rank = «Rango frec.» del diccionario de frecuencias del CORPES XXI (RAE). Lo escribe
+  # npm run vocab:rank -- --write; lo que no es lema del diccionario va sin rank, al final.
+  - { es: "el tono", ja: "口調", rank: 1798, example: "Lo dijo en un tono irónico." }
+  - { es: "la crítica", ja: "批判", rank: 703, example: "Las chirigotas mezclan crítica y humor." }
+  - { es: "el humor", ja: "ユーモア", rank: 1966, example: "Tiene un gran sentido del humor." }
+  - { es: "la broma", ja: "冗談・いたずら", rank: 4518, example: "No te enfades, era una broma." }
+  - { es: "criticar", ja: "批判する", rank: 1641, example: "Critican a los políticos con humor." }
+  - { es: "la ironía", ja: "皮肉", rank: 4718, example: "No entendió la ironía." }
+  - { es: "exagerar", ja: "大げさに言う", rank: 7796, example: "No exageres, no es para tanto." }
+  - { es: "el chiste", ja: "笑い話・ジョーク", rank: 5335, example: "Contó un chiste muy bueno." }
+  - { es: "menudo", ja: "（¡Menudo + 名詞!：なんという〜だ）", rank: 3176, example: "¡Menudo día he tenido!" }
+  - { es: "el carnaval", ja: "カーニバル", rank: 3480, example: "El carnaval de Cádiz es famoso por su humor." }
+  - { es: "insinuar", ja: "ほのめかす", rank: 7540, example: "¿Qué insinúas?" }
+  - { es: "burlarse", ja: "からかう（burlarse de）", rank: 5810, example: "No te burles de mí." }
+  - { es: "la indirecta", ja: "あてこすり（echar una indirecta）", rank: 33480, example: "Me echó una indirecta." }
+  - { es: "el doble sentido", ja: "二重の意味", example: "La frase tiene doble sentido." }
+verbs: ["decir", "querer"]
 duration: 40
 prev: 54
 next: 56
 related: [54,56,53]
 cast: ["daniel","carmen"]
-audio: []
+audio:
+  - "¡Qué bien! Otra vez lloviendo."
+  - "¡Muy bonito! Llegas dos horas tarde."
+  - "No está nada mal."
+  - "—¿Vienes a la fiesta? —Ya veremos."
 youtubeId: ""
-quiz: []
+quiz:
+  - question: "雨の日の朝、窓の外を見て「¡Qué bien! Otra vez lloviendo.」。本当の気持ちは？"
+    options: ["うれしい", "不満だ", "驚いて喜んでいる"]
+    correctIndex: 1
+    explanation: "言葉どおりとは反対の意味を伝える皮肉です。状況（また雨）とほめ言葉（qué bien）が合わないのが手がかりです。"
+  - question: "2時間遅れて帰ってきた人に「¡Muy bonito!」。意味は？"
+    options: ["相手を責めている", "相手をほめている", "景色をほめている"]
+    correctIndex: 0
+    explanation: "¡Muy bonito! は、相手の行動をとがめるときの決まった皮肉です。"
+  - question: "料理を食べて「No está nada mal.」。意味は？"
+    options: ["全然おいしくない", "少しまずい", "なかなかおいしい"]
+    correctIndex: 2
+    explanation: "否定で控えめに言うことで、かえって「かなりいい」という評価になります（緩叙法：lítote）。"
+  - question: "「No es precisamente barato.」の意味は？"
+    options: ["ちょうど安い", "かなり高い", "正確な値段だ"]
+    correctIndex: 1
+    explanation: "no es precisamente + 形容詞は「決して〜ではない」と、反対の意味をやわらかく強調します。"
+  - question: "道で「¿Tienes hora?」と聞かれた。相手が知りたいのは？"
+    options: ["今何時か", "あなたが暇かどうか", "時計を売ってほしいか"]
+    correctIndex: 0
+    explanation: "¿Tienes hora? は「今何時かわかる？」という意味です。「暇？」は ¿Tienes tiempo?"
+  - question: "部屋で「Hace calor aquí, ¿no?」と言いながら窓を見た。言いたいことは？"
+    options: ["天気予報を知りたい", "暑いのが好きだ", "窓を開けてほしい"]
+    correctIndex: 2
+    explanation: "状況を述べることで、遠回しに依頼しています（暗示：implícito）。"
+  - question: "「—¿Vienes a la fiesta? —Ya veremos.」。答えた人の気持ちとして多いのは？"
+    options: ["必ず行く", "たぶん行かない（やんわり）", "一緒に見に行こう"]
+    correctIndex: 1
+    explanation: "Ya veremos. や Lo pensaré. は、はっきり断らずに、行かない可能性が高いことを伝える言い方です。"
+  - question: "「¿Me prestas tu coche nuevo? —Sí, hombre, ¿y qué más?」。答えた人は？"
+    options: ["喜んで貸す", "断っている", "ほかに必要なものを聞いている"]
+    correctIndex: 1
+    explanation: "Sí, hombre と ¿y qué más?（それから何？）を組み合わせた皮肉で、「そんなこと、するわけない」という意味です。"
+  - question: "「No es por nada, pero…」のあとに続くことが多いのは？"
+    options: ["言いにくい指摘や批判", "お礼", "あいさつ"]
+    correctIndex: 0
+    explanation: "No es por nada, pero…（別に他意はないけど…）は、指摘や批判の前置きです。"
+  - question: "財布をなくした直後に雨が降り出して「¡Lo que faltaba!」。意味は？"
+    options: ["ちょうど欲しかったものだ（喜び）", "足りないものは何もない", "これで最悪だ"]
+    correctIndex: 2
+    explanation: "¡Lo que faltaba!（足りなかったのはこれだけだ）は、悪いことが重なったときの皮肉です。"
 draft: true
 updated: "2026-11-02"
 ---
 
-TODO:contenido（導入：このユニットの問いに、それだけで答えになる2文で答える）
+スペイン語の皮肉（ironía）は、言葉どおりとは反対の意味を伝える言い方で、雨の日の ¡Qué bien! Otra vez lloviendo.（いいね、また雨だ）は実際には不満を表します。暗示（implícitos）は、Hace calor aquí, ¿no?（ここ暑くない？）が「窓を開けて」というお願いになるように、言葉にしない意味を相手に読み取ってもらう伝え方です。
 
-## 文法 (Gramática)
+C1 では、文法や語彙が正しく理解できても、皮肉や暗示を読み取れないと、相手の本当の気持ちを誤解してしまいます。このユニットでは、カルメン先生の授業での質問を例に、言葉の裏にある意味の読み取り方と使い方を学びます。
 
-TODO:contenido
+## 文法：皮肉・ユーモア・暗示 (Gramática)
+
+まず皮肉の言い方を、次に控えめな言い方と誇張を、最後に遠回しな依頼と断りを見ていきましょう。
+
+### 皮肉の言い方
+
+皮肉は、ほめ言葉や肯定の言葉を、それに合わない状況で使うことで生まれます。
+
+| 表現 | 皮肉の意味 | 例 |
+| --- | --- | --- |
+| ¡Qué bien! / ¡Genial! / ¡Estupendo! | 不満・がっかり | ¡Genial! Se ha estropeado la lavadora. |
+| ¡Muy bonito! | 相手をとがめる | ¡Muy bonito! Llegas dos horas tarde. |
+| ¡Lo que faltaba! | 悪いことが重なった | ¡Lo que faltaba! Ahora llueve. |
+| Sí, hombre / Sí, claro | 「そんなわけない」 | —¿Me prestas el coche? —Sí, hombre, ¿y qué más? |
+| ¡Menudo + 名詞! | なんという〜だ（悪い意味にも） | ¡Menudo día he tenido! |
+
+¡Menudo día! は、文脈によって「ひどい一日だった」にも「すごい一日だった」にもなります。皮肉かどうかを決めるのは、言葉そのものより、状況とイントネーションです。皮肉のときは、ほめ言葉を少し大げさに、ゆっくり言うことが多くあります。
+
+### 控えめな言い方と誇張
+
+否定を使って控えめに言う緩叙法（lítote）は、かえって評価を強めます。
+
+<Examples>
+
+- No está nada mal.（なかなかいい＝かなりいい）
+- No es precisamente barato.（決して安くない＝かなり高い）
+- No es que me encante.（大好きというわけではない＝あまり好きではない）
+
+</Examples>
+
+反対に、誇張（hipérbole）で気持ちを強めることもあります：Te lo he dicho mil veces.（もう千回も言ったでしょう）、Me muero de hambre.（お腹がすいて死にそう）、Hace siglos que no te veo.（何世紀も会っていない＝久しぶり）。どちらも、言葉どおりに受け取らないことが大切です。
+
+### 遠回しな依頼と断り
+
+依頼や断りを、状況の説明や質問の形で伝えることもよくあります。
+
+| 言い方 | 本当の意味 |
+| --- | --- |
+| ¿Tienes hora? | 今何時か教えて |
+| Hace calor aquí, ¿no? | 窓を開けて／エアコンをつけて |
+| ¿Te importaría cerrar la puerta? | ドアを閉めてもらえますか |
+| Uf, es que tengo que estudiar… | （誘いを）断る |
+| Ya veremos. / Lo pensaré. | たぶん行かない・しない |
+| No es por nada, pero… | （このあとに指摘・批判が続く） |
+
+es que…（だって〜なので）で理由だけを言い、結論を言わずに止めると、やんわりとした断りになります。
+
+### カルメン先生への質問
+
+- Alumna: Ayer llegué a casa a las tres de la mañana y mi compañera de piso me dijo «¡Muy bonito!». ¿Le gustó algo?（昨日朝の3時に帰ったら、ルームメイトに「とてもすてきね」と言われました。何か気に入ったんでしょうか）
+- Carmen: ¡Qué va! Es ironía. Te estaba echando la bronca.（とんでもない。皮肉よ。あなたを叱っていたの）
+- Alumna: ¿Y cuando le pregunté si venía a la fiesta y me dijo «Ya veremos»?（パーティーに来るかと聞いたら「Ya veremos」と言われたのは？）
+- Carmen: Muchas veces significa «no» de forma educada.（たいていは、ていねいな「ノー」ね）
+
+echar la bronca（叱りつける）は、口語のコロケーションです（ユニット52・53）。
+
+**ダニエル（バレンシア出身）のひとこと：** スペインでも、Ya veremos. や Lo pensaré. はやんわりとした断りになることが多いです。ただ、日本ほど遠回しにする必要はなく、No puedo, lo siento.（行けないんだ、ごめんね）とはっきり言っても失礼にはなりません。むしろ、はっきり言わないと、相手が返事を待ち続けてしまうこともあります。
 
 ## 活用：今日の動詞 (Conjugación)
 
-TODO:contenido
+皮肉や暗示を説明するときは、[decir](/language/learn-spanish/verb-conjugation/decir/) と querer を組み合わせた querer decir（〜という意味だ）がよく使われます：¿Qué quieres decir?（どういう意味？）／ Quería decir que no.（「ノー」という意味だった）。decir の点過去 dijo（不規則）を活用表で確認しましょう。querer の線過去は規則的な quería です。
 
 ## 語彙 (Nociones específicas)
+
+皮肉やユーモア、批判について話すときの語です。burlarse は、元の動詞（burlar）の使用頻度の順に並べています。
 
 <VocabList items={frontmatter.vocabulary} level={frontmatter.level} />
 
 ## 発音・正書法 (Pronunciación y ortografía)
 
-TODO:contenido
+皮肉は、イントネーションで伝わります。ほめ言葉の ¡Qué bien! を、ふつうは明るく高めの声で短く言いますが、皮肉のときは低めの声で、qué と bien を引き伸ばすようにゆっくり言います。書き言葉では、皮肉を伝えるのは文脈だけなので、メールやメッセージでは誤解されないよう注意しましょう。皮肉を示すために、文のあとに（!）や（?）を添える人もいます。
 
 ## 日本人がよく間違える
 
-TODO:contenido
+- **皮肉を言葉どおりに受け取る。** ¡Muy bonito!（遅刻を責められて）を「ほめられた」と思う → ○相手は**怒っている**。
+- **¿Tienes hora? と ¿Tienes tiempo? を混同する。** ¿Tienes hora?（何時？）に「暇だよ」と答える → ○Son las **cinco**.
+- **断りをあいまいにしすぎる。** △（行けないのに）Ya veremos. ばかり言う → ○No puedo, **lo siento**. はっきり断っても失礼ではない。
 
 ## 文化メモ (Referentes culturales)
 
 <CultureNote>
 
-TODO:contenido
+スペインで皮肉とユーモアの文化といえば、アンダルシアのカディスです。2〜3月に開かれるカディスのカーニバルの時期は街全体が祝祭の雰囲気になり、バルも大変にぎわいます。カーニバルでは、チリゴタ（chirigota）と呼ばれるグループが、時事問題を皮肉とユーモアたっぷりの歌にして、ファリャ大劇場のコンクールで競います。歌詞を聞き取れるようになれば、C1 の聴解力は本物です。カディスの郷土料理とバルは、[カディス 完全グルメガイド](/food/spain-map/cadiz/)で紹介しています。
 
 </CultureNote>
 
 ## 練習 (Procedimientos de aprendizaje)
 
-### 練習1：認識
+### 練習1：本当の意味は？
 
-TODO:contenido
+次の発言の本当の意味を選んでください。
+
+1. （渋滞で1時間動けない）¡Estupendo!（a. うれしい　b. うんざりだ）
+2. （友だちの新作の料理を食べて）No está nada mal.（a. かなりおいしい　b. まずい）
+3. （寒い部屋で）¿No tienes frío?（a. 暖房をつけてほしい　b. 体調を心配している）
+4. —¿Me ayudas con la mudanza el sábado? —Uf, es que tengo un montón de cosas…（a. 手伝う　b. 手伝えない）
 
 <details>
 <summary>答えを見る</summary>
 
-TODO:contenido
+1. b（皮肉）
+2. a（緩叙法）
+3. a（遠回しな依頼。b の場合もありますが、多くは依頼です）
+4. b（es que で理由だけを言う断り）
 
 </details>
 
-### 練習2：穴埋め
+### 練習2：言いかえ
 
-TODO:contenido
+次の文を、（ ）の表現を使って、皮肉・控えめな言い方・遠回しな言い方に言いかえてください。
+
+1. Este hotel es muy caro.（no es precisamente）
+2. Esta película es muy buena.（no está nada mal）
+3. Cierra la ventana, por favor.（hace frío aquí, ¿no?）
+4. Llegas tarde y estoy enfadada.（¡muy bonito!）
 
 <details>
 <summary>答えを見る</summary>
 
-TODO:contenido
+1. Este hotel no es precisamente barato.
+2. Esta película no está nada mal.
+3. Hace frío aquí, ¿no?
+4. ¡Muy bonito! Llegas tarde.
 
 </details>
 
 ### 練習3：作文
 
-TODO:contenido
+友だちからの誘い「¿Vamos al cine el viernes?」に、二通りで答えてみましょう。①遠回しに断る　②はっきり、でもていねいに断る。
 
 <details>
-<summary>答えを見る</summary>
+<summary>解答例を見る</summary>
 
-TODO:contenido
+1. Uf, el viernes… es que tengo que terminar un trabajo. Ya veremos.
+2. Lo siento, el viernes no puedo. ¿Qué tal el sábado?
 
 </details>
 
@@ -97,4 +238,8 @@ TODO:contenido
 
 ## まとめ
 
-TODO:contenido
+- 皮肉は、ほめ言葉を合わない状況で使う：¡Qué bien!、¡Muy bonito!、¡Lo que faltaba!、Sí, hombre。状況とイントネーションで見分ける。
+- 控えめな言い方（No está nada mal.）と誇張（Te lo he dicho mil veces.）は、言葉どおりに受け取らない。
+- 遠回しな依頼（Hace calor aquí, ¿no?）や断り（Ya veremos.、es que…）に気づき、必要ならはっきり言う。
+
+次のユニット56では、C1 の総復習と、DELE C1 の形式に沿ったオリジナル模擬試験に挑戦します。
