@@ -5,96 +5,226 @@ levelName: "Dominio operativo eficaz"
 slug: "review-dele-c1"
 url: "/language/learn-spanish/c1/review-dele-c1/"
 existing: false
-title: "C1 総復習と模擬試験 DELE C1"
-shortTitle: "C1 総復習と模擬試験 DELE C1"
-titleEs: "repaso C1 y simulacro DELE C1"
-grammar: ["repaso"]
-tenses: []
-functions: []
-canDo: []
-vocabulary: []
-verbs: []
-duration: 40
+title: "DELE C1 模擬試験と C1 総復習｜接続法・複文・語用論をチェック"
+shortTitle: "C1 総復習と模擬試験"
+titleEs: "Repaso C1 y simulacro DELE C1"
+description: "DELE C1 で試される読解・聴解・作文・会話の4つの力を体験できるオリジナル模擬試験と、C1 の総復習。接続法の高度な用法、アスペクト、複文、コロケーション、口語、論述文、皮肉と暗示を確認できます。聴解の音声は準備中です。"
+grammar: ["repaso de las unidades 49-55", "simulacro DELE C1"]
+tenses: ["pretérito imperfecto de subjuntivo", "pretérito indefinido", "pretérito imperfecto"]
+functions: ["C1 の文法と語用論を確認する", "DELE C1 の4つの力を試す"]
+canDo:
+  - "社会的なテーマの長い文章や講演を理解し、要点と話し手の立場を読み取れる"
+  - "資料をふまえて、構成のしっかりした論述文を書き、口頭で議論できる"
+  - "C1 の文法と語用論の苦手な項目を見つけ、復習するユニットを選べる"
+vocabulary:
+  # rank = «Rango frec.» del diccionario de frecuencias del CORPES XXI (RAE). Lo escribe
+  # npm run vocab:rank -- --write; lo que no es lema del diccionario va sin rank, al final.
+  - { es: "la presión", ja: "プレッシャー・圧力", rank: 941, example: "Los jóvenes sufren mucha presión." }
+  - { es: "el talento", ja: "才能", rank: 1560, example: "Es un talento excepcional." }
+  - { es: "la exposición", ja: "（メディアへの）露出・展示", rank: 782, example: "La exposición mediática es enorme." }
+  - { es: "mediático", ja: "メディアの（女性形 mediática）", rank: 3332, example: "Es un fenómeno mediático." }
+  - { es: "el menor", ja: "未成年者（menor de edad）", rank: 1497, example: "Hay que proteger a los menores." }
+  - { es: "la cantera", ja: "（クラブの）下部組織", rank: 6036, example: "Salió de la cantera del club." }
+  - { es: "el equilibrio", ja: "バランス", rank: 2201, example: "Hay que buscar un equilibrio." }
+  - { es: "la madurez", ja: "成熟", rank: 4278, example: "Muestra una gran madurez para su edad." }
+  - { es: "la polémica", ja: "論争", rank: 2425, example: "La decisión generó polémica." }
+  - { es: "gestionar", ja: "管理する・対処する", rank: 2677, example: "Sabe gestionar la presión." }
+  - { es: "proteger", ja: "守る", rank: 874, example: "El club debe proteger a sus jugadores." }
+  - { es: "abordar", ja: "（問題に）取り組む", rank: 1337, example: "Este texto aborda un tema complejo." }
+  - { es: "cuestionar", ja: "疑問視する", rank: 1773, example: "Algunos cuestionan esta medida." }
+  - { es: "sobrellevar", ja: "（困難に）耐える", rank: 9787, example: "Es difícil sobrellevar tanta fama." }
+verbs: ["haber", "ser", "decir", "poder"]
+duration: 180
 prev: 55
 next: 57
 related: [55,57,49]
 cast: ["daniel","carmen"]
-audio: []
+audio:
+  - "Bienvenidos a «Deporte y sociedad». Hoy hablamos de la presión sobre los deportistas jóvenes."
+  - "No es que la fama sea mala en sí misma, pero hay que saber gestionarla."
+  - "Si bien es cierto que el talento es importante, no es menos cierto que la madurez lleva tiempo."
+  - "Digan lo que digan, la salud de los jugadores es lo primero."
 youtubeId: ""
-quiz: []
+quiz:
+  - question: "「質問させていただきたいのですが」。もっとも控えめなのは？"
+    options: ["Quiero hacerle una pregunta.", "Quisiera hacerle una pregunta.", "Quise hacerle una pregunta."]
+    correctIndex: 1
+    explanation: "接続法過去の quisiera は、願望をもっとも控えめに伝えます。→ ユニット49"
+  - question: "「（人が）何を言おうとも、私は自分の判断で行動する」。正しいのは？"
+    options: ["Dicen lo que dicen, actuaré según mi criterio.", "Dijeran lo que dicen, actuaré según mi criterio.", "Digan lo que digan, actuaré según mi criterio."]
+    correctIndex: 2
+    explanation: "接続法 + lo que + 同じ接続法で、「何を〜しようとも」という譲歩になります。→ ユニット49"
+  - question: "「彼はパーティーに来るのを拒んだ」。正しいのは？"
+    options: ["No quiso venir a la fiesta.", "No quería venir a la fiesta.", "No ha querido venir ayer a la fiesta."]
+    correctIndex: 0
+    explanation: "否定の点過去 no quiso は「拒んだ」。no quería は「来たくなかった」という気持ちです。→ ユニット50"
+  - question: "「Perdí el tren, (　) me obligó a coger un taxi.」"
+    options: ["el cual", "lo cual", "cuyo"]
+    correctIndex: 1
+    explanation: "前の文全体を受けるのは lo cual。→ ユニット51"
+  - question: "「ほとんど眠れなかった。だから疲れていたのだ」。正しいのは？"
+    options: ["…de ahí que estaba cansada.", "…de ahí estuviera cansada.", "…de ahí que estuviera cansada."]
+    correctIndex: 2
+    explanation: "de ahí que のあとは接続法。→ ユニット51"
+  - question: "「注意を払う」。自然なのは？"
+    options: ["prestar atención", "pagar atención", "hacer atención"]
+    correctIndex: 0
+    explanation: "atención は prestar と結びつきます。→ ユニット52"
+  - question: "口語の「Me mola mucho.」を標準的に言うと？"
+    options: ["Me molesta mucho.", "Me gusta mucho.", "Me mojo mucho."]
+    correctIndex: 1
+    explanation: "molar は「気に入る」という口語。molestar（迷惑をかける）と混同しないようにしましょう。→ ユニット53"
+  - question: "論述文の結論の書き出しとして適切なのは？"
+    options: ["En primer lugar, …", "En definitiva, …", "Por un lado, …"]
+    correctIndex: 1
+    explanation: "En definitiva / Por todo lo expuesto で結論を始めます。→ ユニット54"
+  - question: "友人の料理を食べて「No está nada mal.」。意味は？"
+    options: ["なかなかおいしい", "まったくおいしくない", "少し塩辛い"]
+    correctIndex: 0
+    explanation: "否定で控えめに言うと、かえって高い評価になります。→ ユニット55"
+  - question: "「—¿Vienes al concierto? —Ya veremos.」。答えた人の気持ちとして多いのは？"
+    options: ["必ず行く", "一緒に見よう", "たぶん行かない（やんわり）"]
+    correctIndex: 2
+    explanation: "Ya veremos. は、はっきり断らずに「たぶん行かない」と伝えることが多い言い方です。→ ユニット55"
 draft: true
 updated: "2026-11-02"
 ---
 
-TODO:contenido（導入：このユニットの問いに、それだけで答えになる2文で答える）
+このユニットは、C1（Dominio operativo eficaz）レベルの総まとめです。前半でユニット49〜55の文法と語用論をふり返り、後半では DELE C1 で試される読解・聴解・作文・会話の4つの力を体験できる、当サイトオリジナルの模擬試験に挑戦します。
 
-## 文法 (Gramática)
+C1 では、正しいスペイン語を書けるだけでなく、ニュアンスを選び分け、長く論理的な文章を組み立て、皮肉や暗示を読み取る力を身につけてきました。問題の分量は本番より少なく、形式に慣れるための練習です。試験の構成や時間は [DELE C1 対策](/language/learn-spanish/dele/c1/)で確認してください。
 
-TODO:contenido
+## 文法：C1 の総復習 (Gramática)
+
+C1 で学んだ項目を、一覧で確認しましょう。ミニテストで間違えた問題には、復習するユニットの番号を示しています。
+
+| 項目 | ポイント | ユニット |
+| --- | --- | --- |
+| 接続法の高度な用法 | quisiera、No es que + 接続法、Digan lo que digan | 49 |
+| アスペクトとニュアンス | supe / sabía、婉曲の線過去、歴史的現在 | 50 |
+| 複文の構築 | lo cual・el cual、強調構文、de ahí que + 接続法 | 51 |
+| コロケーション | tomar una decisión、prestar atención、éxito rotundo | 52 |
+| 口語のレジスター | vale、mola、finde、es que | 53 |
+| 論述と学術的文章 | 序論・本論・反論・結論、Cabe señalar que… | 54 |
+| 皮肉・ユーモア・暗示 | ¡Muy bonito!、No está nada mal.、Ya veremos. | 55 |
+
+C1 の模擬試験では、文法の正確さに加えて、場面に合った言葉づかい（レジスター）と、文章全体のまとまりが評価されます。書き終えたら、口語が混ざっていないか、同じ語をくり返していないか、接続表現が論理に合っているかを見直しましょう。
+
+**カルメン先生のひとこと：** C1 の作文と会話では、資料の内容をそのまま写すのではなく、自分の言葉で言いかえ、自分の立場と結びつけることが大切です。資料の表現を言いかえる練習は、語彙を増やすいちばんの近道でもあります。
+
+**ダニエル（バレンシア出身）のひとこと：** 会話のテストでは、試験官の皮肉や冗談に、あわてずに反応できるかも大切です。Ya, claro…（ええ、まあ…）のような相づちの裏にある疑いの気持ちに気づいたら、Entiendo que no esté del todo de acuerdo, pero…（完全には賛成でないのはわかりますが…）と受けとめてから続けましょう。
 
 ## 活用：今日の動詞 (Conjugación)
 
-TODO:contenido
+C1 で特に大切な形を復習しましょう。[haber](/language/learn-spanish/verb-conjugation/haber/) の接続法（haya、hubiera）、[ser](/language/learn-spanish/verb-conjugation/ser/) の接続法（sea、fuera：Sea como sea…）、[decir](/language/learn-spanish/verb-conjugation/decir/) の接続法（digan：Digan lo que digan…）、[poder](/language/learn-spanish/verb-conjugation/poder/) の点過去と接続法過去（pude、pudiera）です。活用表の「接続法現在」「接続法過去」「点過去」の欄を、まとめて確認しておきましょう。
 
 ## 語彙 (Nociones específicas)
+
+模擬試験のテーマ「若い選手とプレッシャー」で使う語です。社会的な問題を論じるときにも役立ちます。
 
 <VocabList items={frontmatter.vocabulary} level={frontmatter.level} />
 
 ## 発音・正書法 (Pronunciación y ortografía)
 
-TODO:contenido
+C1 の作文では、句読点も文体の一部です。長い文では、挿入句の前後にコンマを打ち（La presión, como es sabido, aumenta cada año.）、引用には « » を使います（ユニット54）。会話では、長い文の途中で意味のまとまりごとに短く間を置くと、論理の流れが伝わりやすくなります。
 
 ## 日本人がよく間違える
 
-TODO:contenido
+C1 の模擬試験で特に多い間違いを、三つふり返ります。
+
+- **改まった作文に口語が混ざる。** △Hay un montón de jugadores… → ○**Numerosos** jugadores…（ユニット53）
+- **de ahí que のあとに直説法を使う。** ×De ahí que estaba cansado. → ○De ahí que **estuviera** cansado.（ユニット51）
+- **反論を取り上げない。** △賛成の理由だけを並べる → ○**Si bien es cierto que**…, no es menos cierto que… で反対の意見に答える（ユニット54）
 
 ## 文化メモ (Referentes culturales)
 
 <CultureNote>
 
-TODO:contenido
+若い選手とプレッシャーは、スペインでもよく議論されるテーマです。その象徴の一人が、FCバルセロナのラミン・ヤマルです。2007年生まれのヤマルは、2023年4月、15歳9か月16日でクラブのリーグ戦史上最年少デビューを果たし、ユーロ2024では大会の最年少得点記録を打ち立てました。El jugador, cuya madurez sorprende a todos, tuvo que aprender a gestionar la fama muy pronto.（その成熟ぶりで皆を驚かせる選手は、早くから名声と向き合うことを学ばなければならなかった）。ヤマルの歩みは、[ラミン・ヤマル完全ガイド](/football/lamine-yamal/)で紹介しています。
 
 </CultureNote>
 
-## 練習 (Procedimientos de aprendizaje)
+## 練習：DELE C1 ミニ模擬試験 (Procedimientos de aprendizaje)
 
-### 練習1：認識
+### テスト1：読解と語彙（Comprensión de lectura y uso de la lengua）
 
-TODO:contenido
+**課題1.** 次の意見記事を読んで、質問に a・b・c で答えてください。
 
-<details>
-<summary>答えを見る</summary>
+En los últimos años, el fútbol ha visto debutar a jugadores cada vez más jóvenes. No es que el talento precoz sea una novedad, pero la exposición mediática actual no tiene precedentes: cualquier error se analiza en directo y se comenta en las redes sociales. De ahí que muchos expertos cuestionen si un adolescente puede sobrellevar semejante presión. Si bien es cierto que los clubes cuentan hoy con psicólogos y programas de apoyo, no es menos cierto que la madurez emocional no se puede acelerar. Por consiguiente, cabría plantearse si la protección de los menores no debería ser una obligación compartida por clubes, medios y aficionados.
 
-TODO:contenido
+1. Según el autor, lo nuevo es… a) el talento precoz　b) la exposición mediática　c) el número de clubes
+2. Los expertos cuestionan… a) si los jóvenes pueden soportar la presión　b) si los clubes tienen psicólogos　c) si las redes son útiles
+3. El autor reconoce que… a) los clubes no hacen nada　b) los clubes ofrecen apoyo　c) la madurez se puede acelerar
+4. La propuesta final es… a) prohibir el debut de menores　b) compartir la responsabilidad de proteger a los menores　c) cerrar las redes sociales
+5. «No es que el talento precoz sea una novedad» significa que… a) el talento precoz no es nuevo　b) el talento precoz no existe　c) el talento precoz es una novedad
 
-</details>
+**課題2.** （ ）に入る語を選んでください。
 
-### 練習2：穴埋め
-
-TODO:contenido
-
-<details>
-<summary>答えを見る</summary>
-
-TODO:contenido
-
-</details>
-
-### 練習3：作文
-
-TODO:contenido
+Los jóvenes jugadores deben (1)(tomar / hacer) decisiones muy pronto, (2)(lo cual / el cual) no siempre es fácil. (3)(Sea / Es) como sea, el club debe (4)(prestar / pagar) atención a su salud.
 
 <details>
 <summary>答えを見る</summary>
 
-TODO:contenido
+課題1：1. b　2. a　3. b　4. b　5. a（No es que + 接続法：「〜というわけではない」→ ユニット49）
+
+課題2：(1) tomar（ユニット52）　(2) lo cual（ユニット51）　(3) Sea（ユニット49）　(4) prestar（ユニット52）
 
 </details>
+
+### テスト2：聴解（Comprensión auditiva）
+
+音声準備中です。今は下のスクリプトを読んで、聞いているつもりで答えを考えてみましょう。
+
+**課題.** ラジオ番組で、スポーツ心理学者が話しています。①話し手はメディアでの名声をどう考えていますか。②若い選手に何がいちばん大切だと言っていますか。
+
+<details>
+<summary>スクリプトと答えを見る</summary>
+
+Bienvenidos a «Deporte y sociedad». Hoy hablamos de la presión sobre los deportistas jóvenes con una psicóloga deportiva. «No es que la fama sea mala en sí misma, pero hay que saber gestionarla. Si bien es cierto que el talento es importante, no es menos cierto que la madurez lleva tiempo. Por eso, lo que más necesita un jugador joven no es un contrato millonario, sino un entorno estable. Digan lo que digan, la salud de los jugadores es lo primero».
+
+答え：①名声そのものが悪いわけではないが、うまく対処する必要がある（No es que… sea…）。②高額な契約ではなく、安定した環境。選手の健康がいちばん大切だと考えている。
+
+</details>
+
+### テスト3：作文（Expresión e interacción escritas）
+
+**課題.** テスト1の記事とテスト2の番組の内容をふまえて、大学の雑誌に意見記事を書いてください（200〜250語）。テーマ：「クラブは未成年選手のメディア露出を制限すべきか」。序論・本論・反論への応答・結論の構成で書きましょう。
+
+<details>
+<summary>解答例を見る（序論と反論への応答）</summary>
+
+En la actualidad, cada vez más futbolistas debutan antes de cumplir los dieciocho años, lo cual plantea un debate necesario: ¿deberían los clubes limitar su exposición mediática? […] Si bien es cierto que la visibilidad puede impulsar la carrera de un jugador, no es menos cierto que un adolescente no siempre está preparado para gestionar la presión. De ahí que consideremos imprescindible establecer ciertos límites…
+
+（現在、18歳になる前にデビューする選手がますます増えており、そのことは必要な議論を提起している。クラブは彼らのメディア露出を制限すべきだろうか。〔…〕確かに注目されることは選手のキャリアを後押ししうるが、思春期の若者が常にプレッシャーに対処する準備ができているわけではないこともまた事実である。だからこそ、一定の制限を設けることが不可欠だと私たちは考える…）
+
+</details>
+
+### テスト4：会話（Expresión e interacción orales）
+
+**課題1.** テスト1の記事を資料に、「若い選手をプレッシャーから守るために、だれが何をすべきか」について、3〜4分で自分の考えを述べてください。
+
+**課題2.** 試験官と議論してください。試験官は「プロになった以上、年齢は言い訳にならない」と主張し、ときに皮肉も交えてきます。相手の意見を受けとめたうえで、反論してください。
+
+<details>
+<summary>解答例を見る（課題2）</summary>
+
+- Examinador: Ya, claro… pero si cobran como profesionales, la edad no es una excusa, ¿no?
+- Candidato: Entiendo que no esté del todo de acuerdo conmigo. No es que la edad sea una excusa, pero la madurez no depende solo del contrato. Por eso, yo no hablaría de privilegios, sino de proteger a un menor, sea quien sea.
+
+</details>
+
+会話テストの流れや、試験官とのやり取りのコツは、[DELE面接・口頭試験 完全対策ガイド](/language/learn-spanish/dele-oral-interview-guide/)でくわしく紹介しています。
 
 ## ミニテスト
+
+C1 の総まとめです。7問以上正解でこのユニットは完了です。間違えた問題は、解説のユニットに戻って復習しましょう。
 
 <MiniQuiz quiz={frontmatter.quiz} unit={frontmatter.unit} />
 
 ## まとめ
 
-TODO:contenido
+- C1 の中心はニュアンスの選択：接続法の高度な用法、点過去と線過去の意味の違い、コロケーション。
+- 書き言葉では複文と論述の構成、話し言葉では口語・皮肉・暗示を、場面に合わせて使い分ける。
+- 作文と会話では、資料を自分の言葉で言いかえ、反論を受けとめてから自分の立場を述べる。
+
+次のユニット57からは C2 Maestría です。スペイン語のあらゆる文体とニュアンスを、ネイティブに近い精度で使いこなすことを目指します。
