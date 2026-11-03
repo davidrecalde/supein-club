@@ -5,89 +5,247 @@ levelName: "Acceso"
 slug: "reflexive-verbs"
 url: "/language/learn-spanish/a1/reflexive-verbs/"
 existing: false
-title: "再帰動詞と一日の流れ"
+title: "スペイン語の再帰動詞｜levantarse など一日の流れを言う表現"
 shortTitle: "再帰動詞と一日の流れ"
-titleEs: "verbos reflexivos"
-grammar: ["verbos reflexivos","rutina"]
-tenses: []
-functions: []
-canDo: []
-vocabulary: []
+titleEs: "Verbos reflexivos y la rutina diaria"
+description: "スペイン語の再帰動詞を基本から解説。levantarse・ducharse などの活用と me・te・se の位置、再帰にすると意味が変わる動詞、起きてから寝るまでの一日の流れを言う表現を、日本人が間違えやすい点と練習問題つきで学べます。"
+grammar: ["verbos reflexivos", "pronombres me, te, se, nos, os, se", "posición del pronombre", "frecuencia"]
+tenses: ["presente de indicativo"]
+functions: ["一日の流れを説明する", "毎日の習慣と頻度を言う", "相手の生活についてたずねる"]
+canDo:
+  - "起きてから寝るまでの一日の流れを、簡単に説明できる"
+  - "毎日の習慣を、頻度の表現を使って言える"
+  - "相手の毎日の生活についてたずね、答えられる"
+vocabulary:
+  # rank = «Rango frec.» del diccionario de frecuencias del CORPES XXI (RAE). Lo escribe
+  # npm run vocab:rank -- --write; lo que no es lema del diccionario va sin rank, al final.
+  - { es: "levantarse", ja: "起きる・立ち上がる", rank: 1164, example: "Mina se levanta a las siete." }
+  - { es: "despertarse", ja: "目が覚める", rank: 2042, example: "Me despierto muy temprano." }
+  - { es: "ducharse", ja: "シャワーを浴びる", rank: 16493, example: "Mina se ducha por la mañana." }
+  - { es: "lavarse", ja: "（自分の体を）洗う", rank: 3596, example: "Me lavo los dientes después de comer." }
+  - { es: "vestirse", ja: "服を着る", rank: 1968, example: "Me visto rápido." }
+  - { es: "acostarse", ja: "寝る・床につく", rank: 6287, example: "Normalmente me acuesto a las doce." }
+  - { es: "llamarse", ja: "〜という名前である", rank: 192, example: "¿Cómo te llamas?" }
+  - { es: "desayunar", ja: "朝食をとる", rank: 8358, example: "Mina desayuna café y tostadas." }
+  - { es: "cenar", ja: "夕食をとる", rank: 6407, example: "En España, la gente cena tarde." }
+  - { es: "la mañana", ja: "朝・午前", rank: 730, example: "Por la mañana, Mina va a la oficina." }
+  - { es: "la tarde", ja: "午後・夕方", rank: 834, example: "Por la tarde, Mina tiene reuniones." }
+  - { es: "la noche", ja: "夜", rank: 364, example: "Por la noche, Mina estudia español." }
+  - { es: "a veces", ja: "ときどき", example: "A veces, Mina cena con sus amigas." }
+  - { es: "nunca", ja: "決して〜ない", rank: 289, example: "Mina nunca se acuesta antes de las once." }
 verbs: []
 duration: 40
 prev: 8
 next: 10
-related: [8,10,12]
+related: [8, 10, 12]
 cast: ["mina"]
-audio: []
+audio:
+  - "Me despierto a las siete, me levanto y me ducho."
+  - "Luego me visto, desayuno y salgo de casa a las ocho."
+  - "Por la noche, ceno, me lavo los dientes y me acuesto a las doce."
+  - "En Madrid, me levanto a las nueve, desayuno en un bar y me acuesto a la una."
+  - "¿A qué hora te levantas?"
+  - "Los fines de semana, a veces me echo la siesta."
+  - "mañana"
+  - "España"
 youtubeId: ""
-quiz: []
 draft: true
 updated: "2026-11-02"
+quiz:
+  - question: "levantarse の1人称単数（yo）は？"
+    options: ["levanto", "me levanto", "se levanto"]
+    correctIndex: 1
+    explanation: "再帰動詞は、動詞の前に主語に合わせた代名詞をつけます。yo なら me：me levanto。"
+  - question: "levantarse の3人称単数（ella）は？"
+    options: ["se levanta", "me levanta", "le levanta"]
+    correctIndex: 0
+    explanation: "él / ella / usted の代名詞は se：se levanta。"
+  - question: "acostarse の1人称単数は？"
+    options: ["me acosto", "me acuesto", "me acuesta"]
+    correctIndex: 1
+    explanation: "acostarse は o → ue の語幹母音変化をする動詞です：me acuesto。"
+  - question: "「早く起きなければならない」。正しいのは？"
+    options: ["Tengo que me levantar temprano.", "Me tengo que levantar temprano.", "Tengo que levantar temprano."]
+    correctIndex: 1
+    explanation: "代名詞は活用した動詞の前（Me tengo que levantar）か、原形の後ろにつけます（Tengo que levantarme）。"
+  - question: "「（私は）手を洗う」。自然なのは？"
+    options: ["Me lavo mis manos.", "Me lavo las manos.", "Lavo las manos."]
+    correctIndex: 1
+    explanation: "自分の体の部分には、所有詞ではなく定冠詞を使います。me がすでに「自分の」を表しているからです。"
+  - question: "「私の名前はミナです」。正しいのは？"
+    options: ["Llamo Mina.", "Me llamo Mina.", "Se llamo Mina."]
+    correctIndex: 1
+    explanation: "llamarse（〜という名前である）も再帰動詞です：Me llamo Mina。"
+  - question: "vestirse の1人称単数は？"
+    options: ["me vesto", "me vista", "me visto"]
+    correctIndex: 2
+    explanation: "vestirse は pedir と同じ e → i の変化をします：me visto。"
+  - question: "ducharse の1人称複数（nosotros）は？"
+    options: ["se duchamos", "nos duchamos", "nos duchan"]
+    correctIndex: 1
+    explanation: "nosotros の代名詞は nos、動詞は -amos：nos duchamos。"
+  - question: "「ミナは11時前には決して寝ない」。正しい語順は？"
+    options: ["Mina nunca se acuesta antes de las once.", "Mina se nunca acuesta antes de las once.", "Mina nunca acuesta se antes de las once."]
+    correctIndex: 0
+    explanation: "nunca は代名詞と動詞のかたまり（se acuesta）の前に置きます。代名詞と動詞の間には何も入りません。"
+  - question: "「私は6時に目が覚める」。正しいのは？"
+    options: ["Me desperto a las seis.", "Despierto a las seis.", "Me despierto a las seis."]
+    correctIndex: 2
+    explanation: "despertarse は e → ie の変化をする再帰動詞です：me despierto。代名詞がないと「（だれかを）起こす」になります。"
 ---
 
-TODO:contenido（導入：このユニットの問いに、それだけで答えになる2文で答える）
+スペイン語の再帰動詞は、levantarse（起きる）のように原形に se がつく動詞で、「自分自身を〜する」という意味を表します。活用するときは、主語に合わせて me・te・se などの代名詞を動詞の前に置き、Me levanto a las siete.（私は7時に起きる）のように言います。
 
-## 文法 (Gramática)
+起きる、シャワーを浴びる、服を着る、寝る、と毎日の動作の多くが再帰動詞なので、一日の流れを話すのに欠かせません。このユニットでは、東京で働くミナの一日と、マドリードで過ごした休日を比べながら、再帰動詞を身につけます。
 
-TODO:contenido
+## 文法：再帰動詞 (Gramática)
+
+まず活用の形を、次に代名詞の位置を、最後に再帰にすると意味が変わる動詞を見ていきましょう。
+
+### 再帰動詞の活用
+
+levantar は「（何かを）起こす・持ち上げる」、levantarse は「自分を起こす」、つまり「起きる」です。動詞の部分はふつうの -ar 動詞と同じように活用し、前に代名詞をつけます。
+
+| 人称 | 代名詞 | levantarse（起きる） | acostarse（寝る：o → ue） |
+| --- | --- | --- | --- |
+| yo | me | me levanto | me acuesto |
+| tú | te | te levantas | te acuestas |
+| él / ella / usted | se | se levanta | se acuesta |
+| nosotros / nosotras | nos | nos levantamos | nos acostamos |
+| vosotros / vosotras ※ | os | os levantáis | os acostáis |
+| ellos / ellas / ustedes | se | se levantan | se acuestan |
+
+※ vosotros はスペインのみで使う形です（→ [中南米のスペイン語](/language/learn-spanish/spanish-in-latin-america/)）。
+
+ユニット5で学んだ語幹母音の変化は、再帰動詞でも同じです：despertarse（e → ie：me despierto）、vestirse（e → i：me visto）。
+
+### 代名詞の位置
+
+- 活用した動詞の**前**に置きます：Me ducho por la mañana.（朝シャワーを浴びる）
+- 動詞の原形といっしょのときは、原形の**後ろ**につなげて書くこともできます：Tengo que levantarme temprano. = Me tengo que levantar temprano.（早く起きなければならない）
+- 否定の no や nunca は、代名詞の前に置きます：No me levanto tarde. / Nunca me acuesto antes de las once.
+
+### 再帰にすると意味が変わる動詞
+
+| 動詞 | 意味 | 再帰動詞 | 意味 |
+| --- | --- | --- | --- |
+| llamar | 呼ぶ・電話する | llamarse | 〜という名前である |
+| despertar | （人を）起こす | despertarse | 目が覚める |
+| lavar | 洗う | lavarse | （自分の体を）洗う |
+| ir | 行く | irse | 立ち去る・帰る |
+
+ユニット3の Me llamo Mina. も、実は再帰動詞です。体の部分を洗うときは、所有詞ではなく定冠詞を使います：Me lavo las manos.（手を洗う）。me がすでに「自分の」を表しているからです。
+
+### 一日の流れを話す
+
+東京で働くミナの、平日の一日です。
+
+Me despierto a las siete, me levanto y me ducho. Luego me visto, desayuno y salgo de casa a las ocho. Por la noche, ceno, me lavo los dientes y me acuesto a las doce.
+
+（7時に目が覚めて、起きて、シャワーを浴びる。それから服を着て、朝食をとって、8時に家を出る。夜は夕食をとって、歯を磨いて、12時に寝る）
+
+マドリードで過ごした休日は、ずいぶん違いました。
+
+En Madrid, me levanto a las nueve, desayuno en un bar y me acuesto a la una.
+
+（マドリードでは、9時に起きて、バルで朝食をとって、1時に寝る）。スペインは夕食の時間が遅いので、寝る時間も遅くなりがちです。
+
+desayunar や cenar のように、再帰動詞でない動詞も混ざっています。相手の一日をたずねるときは、¿A qué hora te levantas?（何時に起きるの？）と聞きます。時刻の言い方は、ユニット10でくわしく学びます。
+
+**頻度の表現**も組み合わせましょう：siempre（いつも）、normalmente（ふだんは）、a veces（ときどき）、nunca（決して〜ない）。
+
+**ダニエル（バレンシア出身）のひとこと：** 「シャワーを浴びる」は、スペインでは ducharse がふつうです。メキシコなどでは bañarse もよく使いますが、スペインで bañarse と言うと、お風呂につかったり、海やプールで泳いだりする意味に聞こえます。
 
 ## 活用：今日の動詞 (Conjugación)
 
-TODO:contenido
+再帰動詞は、代名詞を除けばふつうの動詞と同じ活用です。levantarse は hablar と同じ -ar 動詞の規則活用なので、[動詞の活用一覧](/language/learn-spanish/verb-conjugation/#models)の hablar の表で、点過去（me levanté）や線過去（me levantaba）の形も確かめられます。
 
 ## 語彙 (Nociones específicas)
+
+一日の流れでよく使う再帰動詞と、時間帯・頻度の表現です。再帰動詞は、元の動詞（levantar など）の使用頻度の順に並べています。
 
 <VocabList items={frontmatter.vocabulary} level={frontmatter.level} />
 
 ## 発音・正書法 (Pronunciación y ortografía)
 
-TODO:contenido
+ñ は、日本語の「ニャ・ニュ・ニョ」に近い音です。mañana（朝）は「マ・**ニャ**・ナ」、España（スペイン）は「エス・**パ**・ニャ」と読みます。n とは別の文字なので、ñ の「~」を忘れると別の語になります。たとえば año（年）から「~」を落とすと ano になり、まったく違う意味の語になってしまいます。
 
 ## 日本人がよく間違える
 
-TODO:contenido
+- **代名詞を落とす。** ×Levanto a las siete. → ○**Me** levanto a las siete. 代名詞がないと、「（何かを）持ち上げる」という別の意味になります。
+- **代名詞を原形の前に置く。** ×Tengo que me levantar. → ○Tengo que **levantarme**. または ○**Me** tengo que levantar.
+- **体の部分に所有詞を使う。** ×Me lavo mis manos. → ○Me lavo **las** manos. 自分の体の部分には定冠詞を使います。
 
 ## 文化メモ (Referentes culturales)
 
 <CultureNote>
 
-TODO:contenido
+ミナがマドリードで驚いたのは、昼食後の街の静けさでした。スペインでは、昼食後に休む習慣（シエスタ）があり、地元の個人商店やレストランでは、14時から16時ごろに長い昼休みを取る店が珍しくありません。「昼寝をする」は echarse la siesta と言い、これも再帰動詞です：Los fines de semana, a veces me echo la siesta.（週末はときどき昼寝をする）。お店の営業時間など、旅の前に知っておきたい生活のリズムは、[スペイン旅行の基本情報完全ガイド](/travel/spain-travel-basics/)で紹介しています。
 
 </CultureNote>
 
 ## 練習 (Procedimientos de aprendizaje)
 
-### 練習1：認識
+### 練習1：代名詞を選ぶ
 
-TODO:contenido
+（ ）に me / te / se / nos のどれかを入れてください。
+
+1. Yo (　) levanto a las siete.
+2. ¿A qué hora (　) acuestas?
+3. Mina (　) ducha por la mañana.
+4. Nosotros (　) vestimos rápido.
+5. Ellos (　) despiertan tarde.
 
 <details>
 <summary>答えを見る</summary>
 
-TODO:contenido
+1. me
+2. te
+3. se
+4. nos
+5. se
 
 </details>
 
 ### 練習2：穴埋め
 
-TODO:contenido
+（ ）の動詞を、主語に合わせた現在形にしてください。
+
+1. Mina (levantarse) ______ a las siete.
+2. Yo (ducharse) ______ por la noche.
+3. ¿Tú (acostarse) ______ tarde?
+4. Nosotros (vestirse) ______ rápido.
+5. Tengo que (levantarse) ______ temprano.
+6. Ellos (llamarse) ______ Ana y Luis.
 
 <details>
 <summary>答えを見る</summary>
 
-TODO:contenido
+1. se levanta
+2. me ducho
+3. te acuestas（o → ue）
+4. nos vestimos
+5. levantarme（原形の後ろにつなげる）
+6. se llaman
 
 </details>
 
 ### 練習3：作文
 
-TODO:contenido
+自分の一日を、スペイン語で書いてみましょう。
+
+1. 私は7時に起きます。
+2. シャワーを浴びて、朝食をとります。
+3. 夜は12時に寝ます。
+4. 週末はときどき昼寝をします。
 
 <details>
-<summary>答えを見る</summary>
+<summary>解答例を見る</summary>
 
-TODO:contenido
+1. Me levanto a las siete.
+2. Me ducho y desayuno.
+3. Por la noche, me acuesto a las doce.
+4. Los fines de semana, a veces me echo la siesta.
 
 </details>
 
@@ -97,4 +255,8 @@ TODO:contenido
 
 ## まとめ
 
-TODO:contenido
+- 再帰動詞は、主語に合わせた代名詞（me・te・se・nos・os・se）を動詞の前に置く。
+- 動詞の原形といっしょのときは、原形の後ろにつなげてもよい（levantarme）。
+- 体の部分は定冠詞（Me lavo las manos.）。llamarse・despertarse など、再帰にすると意味が変わる動詞もある。
+
+次のユニット10では、疑問詞と数、時刻や日付の言い方を学びます。

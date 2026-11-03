@@ -60,6 +60,11 @@ function lookup(es: string): { rank?: number; why: string } {
   const lower = es.trim().toLowerCase();
   const key = lower.replace(ARTICLE, '');
   let o = OVERRIDES[key];
+  // Verbo pronominal: el CORPES no tiene lema «levantarse», solo «levantar».
+  const base = key.endsWith('se') ? key.slice(0, -2) : '';
+  if (!o && !lemmas.has(key) && base && (lemmas.get(base) ?? []).some((e) => e.cat === 'V')) {
+    o = { lemma: base, cat: 'V', note: `verbo pronominal: puesto del lema ${base}` };
+  }
   // Nombre cuya forma el CORPES cuenta sobre todo bajo otro lema (cartera → cartero).
   const owner = formOwner.get(key);
   const ownN = (lemmas.get(key) ?? []).find((e) => e.cat === 'N');
