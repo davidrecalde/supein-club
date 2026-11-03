@@ -5,89 +5,269 @@ levelName: "Acceso"
 slug: "gustar"
 url: "/language/learn-spanish/a1/gustar/"
 existing: false
-title: "gustar 型動詞"
+title: "gustar の使い方｜スペイン語の me gusta・me gustan と好き嫌いの表現"
 shortTitle: "gustar 型動詞"
-titleEs: "gustar y verbos similares"
-grammar: ["gustar","encantar","pronombres de OI"]
-tenses: []
-functions: []
-canDo: []
-vocabulary: []
+titleEs: "Gustar y verbos similares"
+description: "スペイン語の gustar の使い方を基本から解説。me gusta と me gustan の違い、me・te・le などの代名詞、a mí también と a mí tampoco の返し方、encantar・interesar など同じ型の動詞を、日本人が間違えやすい点と練習問題つきで学べます。"
+grammar: ["gustar", "pronombres me, te, le, nos, os, les", "también / tampoco", "encantar, interesar, doler"]
+tenses: ["presente de indicativo"]
+functions: ["好きなこと・嫌いなことを言う", "相手の好みをたずねる", "同意する・しない"]
+canDo:
+  - "好きな物や好きなことを言える"
+  - "相手の好みをたずね、同じか違うかを答えられる"
+  - "encantar や interesar を使って、気持ちの強さを変えて言える"
+vocabulary:
+  # rank = «Rango frec.» del diccionario de frecuencias del CORPES XXI (RAE). Lo escribe
+  # npm run vocab:rank -- --write; lo que no es lema del diccionario va sin rank, al final.
+  - { es: "gustar", ja: "（〜が）好きだ・気に入る", rank: 519, example: "Me gusta mucho Madrid." }
+  - { es: "encantar", ja: "（〜が）大好きだ", rank: 2761, example: "A Mina le encanta el arte." }
+  - { es: "interesar", ja: "（〜に）興味がある", rank: 1223, example: "Me interesa la historia de España." }
+  - { es: "la comida", ja: "料理・食事", rank: 1179, example: "¿Te gusta la comida española?" }
+  - { es: "la música", ja: "音楽", rank: 254, example: "Me gusta la música española." }
+  - { es: "el arte", ja: "芸術・美術", rank: 299, example: "A Mina le encanta el arte." }
+  - { es: "el fútbol", ja: "サッカー", rank: 601, example: "¿Te gusta el fútbol?" }
+  - { es: "el cine", ja: "映画（館）", rank: 429, example: "Nos gusta mucho el cine." }
+  - { es: "la playa", ja: "海辺・ビーチ", rank: 1537, example: "No me gusta mucho la playa." }
+  - { es: "viajar", ja: "旅行する", rank: 821, example: "Me gusta viajar." }
+  - { es: "bailar", ja: "踊る", rank: 2311, example: "¿Te gusta bailar?" }
+  - { es: "la croqueta", ja: "クロケッタ（スペイン風コロッケ）", rank: 14688, example: "Me gustan las croquetas de jamón." }
+  - { es: "el flamenco", ja: "フラメンコ", rank: 5171, example: "A Mina le interesa el flamenco." }
+  - { es: "también", ja: "〜も（肯定）", rank: 34, example: "A mí también." }
+  - { es: "tampoco", ja: "〜も…ない（否定）", rank: 631, example: "A mí tampoco." }
 verbs: ["gustar"]
 duration: 40
 prev: 7
 next: 9
-related: [7,9,12]
+related: [7, 9, 12]
 cast: ["mina"]
-audio: []
+audio:
+  - "¿Te gusta la comida española?"
+  - "Sí, me encanta. Me gustan mucho las croquetas."
+  - "¿Y el flamenco?"
+  - "Me interesa mucho. ¿Y a ti?"
+  - "A mí también. Pero no me gusta el café solo."
+  - "A mí tampoco."
+  - "¿De qué equipo eres?"
+  - "¿Qué te gusta hacer los fines de semana?"
+  - "Me gusta mucho dibujar y ver películas."
+  - "guitarra"
+  - "gente"
 youtubeId: ""
-quiz: []
 draft: true
 updated: "2026-11-02"
+quiz:
+  - question: "「私はコーヒーが好き」。正しいのは？"
+    options: ["Yo gusto el café.", "Me gusta el café.", "Me gusto el café."]
+    correctIndex: 1
+    explanation: "gustar の主語は「好きな物」（el café）です。「コーヒーが私に気に入る」と考えて Me gusta el café. と言います。"
+  - question: "「私はクロケッタが好き」。正しいのは？"
+    options: ["Me gustan las croquetas.", "Me gusta las croquetas.", "Me gustas las croquetas."]
+    correctIndex: 0
+    explanation: "好きな物が複数（las croquetas）なので、動詞も複数の gustan です。"
+  - question: "「私は旅行するのが好き」。正しいのは？"
+    options: ["Me gustan viajar.", "Me gusta viajar.", "Me gusto viajar."]
+    correctIndex: 1
+    explanation: "好きなことが動詞の原形（viajar）のときは、いつも単数の gusta です。"
+  - question: "「ミナは美術が好き」。正しいのは？"
+    options: ["Mina le gusta el arte.", "A Mina gusta el arte.", "A Mina le gusta el arte."]
+    correctIndex: 2
+    explanation: "人の名前を言うときは a + 名前 をつけ、代名詞の le も残します：A Mina le gusta el arte."
+  - question: "「ブラックコーヒーは好きじゃない」と言われて「私も（好きじゃない）」と返すなら？"
+    options: ["A mí también.", "A mí tampoco.", "Yo no."]
+    correctIndex: 1
+    explanation: "否定の文に「私も」と同意するときは tampoco：A mí tampoco."
+  - question: "「フラメンコが大好き」と言われて「私も」と返すなら？"
+    options: ["A mí también.", "A mí tampoco.", "Yo también me."]
+    correctIndex: 0
+    explanation: "肯定の文に同意するときは también：A mí también."
+  - question: "「私たちはこの町が好き」。正しいのは？"
+    options: ["Nos gusta esta ciudad.", "Nos gustamos esta ciudad.", "Les gusta esta ciudad."]
+    correctIndex: 0
+    explanation: "「私たち」は nos。好きな物（esta ciudad）は単数なので gusta です。les は「彼ら・あなた方」です。"
+  - question: "一つの物について「大好き」と言う自然な言い方は？"
+    options: ["Me encanta mucho.", "Me encanta.", "Me encantan mucho."]
+    correctIndex: 1
+    explanation: "encantar はそれだけで「大好き」という強い意味なので、ふつう mucho をつけません。"
+  - question: "「頭が痛い」。正しいのは？"
+    options: ["Me duele la cabeza.", "Tengo duele la cabeza.", "Me duelo la cabeza."]
+    correctIndex: 0
+    explanation: "doler（痛む）も gustar と同じ型です。主語は痛い場所（la cabeza）なので duele になります。"
+  - question: "「彼らはサッカーが好き」。正しいのは？"
+    options: ["Le gusta el fútbol.", "Les gusta el fútbol.", "Les gustan el fútbol."]
+    correctIndex: 1
+    explanation: "「彼らに」は les。好きな物（el fútbol）は単数なので gusta です。"
 ---
 
-TODO:contenido（導入：このユニットの問いに、それだけで答えになる2文で答える）
+スペイン語の「好き」は、gustar という動詞で言います。日本語の「〜が好き」とは仕組みが違い、好きな物が文の主語になって、「〜が私に気に入る」という形で Me gusta el café.（私はコーヒーが好き）と言います。
 
-## 文法 (Gramática)
+そのため、好きな物が複数なら Me gustan las croquetas. のように動詞も複数になります。このユニットでは、東京に戻ったミナが、ダニエルとスペインの料理や文化について話す場面を例に、gustar とその仲間の動詞を学びます。
 
-TODO:contenido
+## 文法：gustar の仕組み (Gramática)
+
+まず gustar の基本の形を、次に人を表す代名詞、最後に同意の返し方と、同じ型の動詞を見ていきましょう。
+
+### 「好きな物」が主語になる
+
+| 好きな物 | 形 | 例 |
+| --- | --- | --- |
+| 単数の名詞 | gusta | Me gusta el café.（コーヒーが好き） |
+| 動詞の原形 | gusta | Me gusta viajar.（旅行するのが好き） |
+| 複数の名詞 | gustan | Me gustan las croquetas.（クロケッタが好き） |
+
+否定は、代名詞の前に no を置きます：No me gusta el café solo.（ブラックコーヒーは好きじゃない）。
+
+### 「だれが」好きかを表す代名詞
+
+| だれが | 代名詞 | 例 |
+| --- | --- | --- |
+| (a mí) 私 | me | Me gusta el cine. |
+| (a ti) 君 | te | ¿Te gusta el fútbol? |
+| (a él / a ella / a usted) 彼・彼女・あなた | le | Le gusta la música. |
+| (a nosotros) 私たち | nos | Nos gusta esta ciudad. |
+| (a vosotros) 君たち ※ | os | ¿Os gusta bailar? |
+| (a ellos / a ustedes) 彼ら・あなた方 | les | Les gusta el fútbol. |
+
+※ vosotros はスペインのみで使う形です（→ [中南米のスペイン語](/language/learn-spanish/spanish-in-latin-america/)）。
+
+le と les はだれのことかわかりにくいので、人の名前や a él などを前に置いてはっきりさせます。このときも、代名詞の le は残します：A Mina le encanta el arte.（ミナは美術が大好き）。a mí、a ti は「私は（ほかの人と違って）」と強調したいときに使います：A mí me gusta el café, pero a Daniel no.
+
+### 好みをたずねる・返す
+
+東京のスペイン語教室のあと、ミナとダニエルが話します。
+
+- Daniel: ¿Te gusta la comida española?（スペイン料理は好き？）
+- Mina: Sí, me encanta. Me gustan mucho las croquetas.（うん、大好き。特にクロケッタが好き）
+- Daniel: ¿Y el flamenco?（フラメンコは？）
+- Mina: Me interesa mucho. ¿Y a ti?（すごく興味がある。あなたは？）
+- Daniel: A mí también. Pero no me gusta el café solo.（ぼくも。でも、ブラックコーヒーは好きじゃないんだ）
+- Mina: A mí tampoco.（私も好きじゃない）
+
+相手の言ったことに「私も」と同意するとき、肯定の文には también、否定の文には tampoco を使います。違う意見なら、A mí sí.（私は好き）、A mí no.（私は好きじゃない）です。
+
+| 相手の文 | 同じ | 違う |
+| --- | --- | --- |
+| Me gusta el fútbol. | A mí también. | A mí no. |
+| No me gusta el fútbol. | A mí tampoco. | A mí sí. |
+
+### 好きの度合いを言う
+
+「好き」の強さは、mucho（とても）や nada（まったく〜ない）を組み合わせて言い分けます。
+
+| 言い方 | 意味 |
+| --- | --- |
+| Me encanta. | 大好き |
+| Me gusta mucho. | とても好き |
+| Me gusta. | 好き |
+| No me gusta mucho. | あまり好きじゃない |
+| No me gusta nada. | まったく好きじゃない |
+
+日本語では「あまり好きじゃない」とやわらかく言うことが多いですが、スペイン語でも No me gusta mucho. を使えば、角を立てずに好みを伝えられます。
+
+趣味をたずねるときは、¿Qué te gusta hacer?（何をするのが好き？）と聞きます。答えは動詞の原形を並べるだけです：Me gusta leer y viajar.（読書と旅行が好き）。好きなことがいくつあっても、動詞の原形なら gusta のままです。
+
+<Examples>
+
+- ¿Qué te gusta hacer los fines de semana?（週末は何をするのが好き？）
+- Me gusta mucho dibujar y ver películas.（絵を描くのと映画を見るのが大好き）
+
+</Examples>
+
+### gustar と同じ型の動詞
+
+- **encantar**（大好きだ）：Me encanta el flamenco. それだけで強い意味なので、ふつう mucho はつけません。
+- **interesar**（興味がある）：Me interesa la historia de España.
+- **doler**（痛む）：Me duele la cabeza.（頭が痛い）。痛い場所が主語です。
+
+**ダニエル（バレンシア出身）のひとこと：** 人について Me gustas.（君が好き）と言うと、恋愛の「好き」に聞こえます。友だちや同僚を「いい人だね」と言いたいときは、Me cae bien Daniel.（ダニエルは感じがいい）のように caer bien を使いましょう。
 
 ## 活用：今日の動詞 (Conjugación)
 
-TODO:contenido
+gustar は、好きな物が主語になるので、実際に使う形はほとんど3人称の gusta と gustan です。点過去なら Me gustó la película.（その映画が気に入った）、線過去なら De niña, me gustaban los dibujos animados.（子どもの頃はアニメが好きだった）となります。ほかの時制の作り方は、[動詞の活用一覧](/language/learn-spanish/verb-conjugation/#models)の -ar 動詞の表（hablar）と同じです。
 
 ## 語彙 (Nociones específicas)
+
+好き嫌いを話すときによく出てくる動詞と、趣味や文化の名詞です。
 
 <VocabList items={frontmatter.vocabulary} level={frontmatter.level} />
 
 ## 発音・正書法 (Pronunciación y ortografía)
 
-TODO:contenido
+g の音は、後ろの母音で変わります。ga・go・gu は日本語の「ガ・ゴ・グ」に近く（gusta：**グ**ス・タ）、ge・gi は喉の奥から出す「へ・ヒ」の音です（gente：**ヘ**ン・テ）。「ゲ・ギ」と読みたいときは u をはさんで gue・gui と書き、この u は発音しません（guitarra：ギ・**タ**・ラ）。
 
 ## 日本人がよく間違える
 
-TODO:contenido
+- **好きな人を主語にする。** ×Yo gusto el café. → ○**Me gusta** el café. 主語は「好きな物」で、好きな人は me・te・le で表します。
+- **好きな物が複数なのに gusta のまま。** ×Me gusta las croquetas. → ○Me **gustan** las croquetas. 動詞は好きな物の数に合わせます。
+- **否定の文に también で返す。** —No me gusta el café solo. —×A mí también. → ○A mí **tampoco**. 否定に「私も」と言うときは tampoco です。
 
 ## 文化メモ (Referentes culturales)
 
 <CultureNote>
 
-TODO:contenido
+スペインで ¿Te gusta el fútbol?（サッカーは好き？）と聞かれて Sí と答えると、たいてい次は ¿De qué equipo eres?（どのチームのファン？）です。ダニエルなら Soy del Valencia.（バレンシアのファンだよ）。好きなチームは出身地と結びついていることが多く、自己紹介の続きのような質問です。特定のチームがなければ、Me gusta el fútbol, pero no soy de ningún equipo.（サッカーは好きだけど、どこのファンでもない）と答えれば大丈夫です。リーグの仕組みや主なクラブは、[ラ・リーガ完全ガイド](/football/la-liga/)で紹介しています。
 
 </CultureNote>
 
 ## 練習 (Procedimientos de aprendizaje)
 
-### 練習1：認識
+### 練習1：だれが好き？
 
-TODO:contenido
+（ ）の人に合う代名詞（me / te / le / nos / les）を入れてください。
+
+1. (a mí) ______ gusta el cine.
+2. (a ti) ¿______ gusta bailar?
+3. (a Mina) A Mina ______ encanta el arte.
+4. (a nosotros) ______ gusta esta ciudad.
+5. (a ellos) ______ gusta el fútbol.
 
 <details>
 <summary>答えを見る</summary>
 
-TODO:contenido
+1. Me
+2. Te
+3. le
+4. Nos
+5. Les
 
 </details>
 
-### 練習2：穴埋め
+### 練習2：gusta か gustan か、también か tampoco か
 
-TODO:contenido
+1. Me ______ las croquetas.
+2. ¿Te ______ viajar?
+3. A Mina le ______ los museos.
+4. Nos ______ la música española.
+5. —Me gusta el flamenco. —A mí ______.
+6. —No me gusta la playa. —A mí ______.
 
 <details>
 <summary>答えを見る</summary>
 
-TODO:contenido
+1. gustan（las croquetas は複数）
+2. gusta（動詞の原形）
+3. gustan（los museos は複数）
+4. gusta
+5. también
+6. tampoco
 
 </details>
 
 ### 練習3：作文
 
-TODO:contenido
+ミナになったつもりで、スペイン語で言ってみましょう。
+
+1. 私はスペイン料理が大好きです。
+2. 君はサッカーが好き？
+3. ミナは美術館が好きです。
+4. （ブラックコーヒーは好きじゃない、と言われて）私も好きじゃない。
 
 <details>
-<summary>答えを見る</summary>
+<summary>解答例を見る</summary>
 
-TODO:contenido
+1. Me encanta la comida española.
+2. ¿Te gusta el fútbol?
+3. A Mina le gustan los museos.
+4. A mí tampoco.
 
 </details>
 
@@ -97,4 +277,8 @@ TODO:contenido
 
 ## まとめ
 
-TODO:contenido
+- gustar は「好きな物」が主語。単数と動詞の原形には gusta、複数には gustan。
+- 好きな人は me・te・le・nos・os・les で表す。名前を言うときは A Mina le gusta…。
+- 同意は肯定なら A mí también、否定なら A mí tampoco。encantar・interesar・doler も同じ型。
+
+次のユニット9では、再帰動詞を使って一日の流れを話します。
