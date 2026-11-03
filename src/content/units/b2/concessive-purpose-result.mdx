@@ -5,89 +5,237 @@ levelName: "Avanzado"
 slug: "concessive-purpose-result"
 url: "/language/learn-spanish/b2/concessive-purpose-result/"
 existing: false
-title: "譲歩・目的・結果"
+title: "スペイン語の譲歩・目的・結果｜aunque + 直説法と接続法の違い"
 shortTitle: "譲歩・目的・結果"
-titleEs: "concesivas, finales y consecutivas"
-grammar: ["aunque","para que","de modo que"]
-tenses: []
-functions: []
-canDo: []
-vocabulary: []
+titleEs: "Oraciones concesivas, finales y consecutivas"
+description: "スペイン語の譲歩・目的・結果の表現を解説。aunque + 直説法と接続法の意味の違い、por mucho que、a fin de que、de modo que の二つの使い方、tan … que の結果を、日本人が間違えやすい点と練習問題つきで学べます。"
+grammar: ["aunque + indicativo / subjuntivo", "a pesar de que, por mucho que", "para que, a fin de que, de modo que + subjuntivo", "de modo que, así que, por lo que + indicativo", "tan / tanto … que"]
+tenses: ["presente de indicativo", "presente de subjuntivo"]
+functions: ["譲歩する", "目的を言う", "結果を言う"]
+canDo:
+  - "aunque を直説法と接続法で使い分けて、事実と仮定の譲歩を言える"
+  - "de modo que を、目的と結果の二つの意味で使い分けられる"
+  - "「とても〜なので…」と、程度と結果を言える"
+vocabulary:
+  # rank = «Rango frec.» del diccionario de frecuencias del CORPES XXI (RAE). Lo escribe
+  # npm run vocab:rank -- --write; lo que no es lema del diccionario va sin rank, al final.
+  - { es: "aunque", ja: "〜だけれども・たとえ〜でも", rank: 92, example: "Aunque llueva, iré al partido." }
+  - { es: "a pesar de", ja: "〜にもかかわらず", rank: 497, example: "A pesar del frío, salimos." }
+  - { es: "por mucho que", ja: "どんなに〜しても", rank: 8936, example: "Por mucho que estudie, no lo entiendo." }
+  - { es: "aun así", ja: "それでも", example: "Estaba cansada; aun así, terminé el trabajo." }
+  - { es: "a fin de que", ja: "〜するように（改まった言い方）", example: "Le envío el documento a fin de que lo revise." }
+  - { es: "de modo que", ja: "〜するように／だから", rank: 3562, example: "Habla despacio de modo que todos te entiendan." }
+  - { es: "por lo que", ja: "そのため", example: "Llovía, por lo que se suspendió el partido." }
+  - { es: "tan", ja: "とても（tan … que：とても〜なので）", rank: 170, example: "Estaba tan cansada que me dormí en el tren." }
+  - { es: "el partido", ja: "試合", rank: 95, example: "Aunque llovía, el partido se jugó." }
+  - { es: "la afición", ja: "ファン（全体）・趣味", rank: 3005, example: "La afición llenó el estadio." }
+  - { es: "el estadio", ja: "スタジアム", rank: 964, example: "El estadio estaba lleno." }
+  - { es: "femenino", ja: "女子の・女性の（女性形 femenina）", rank: 1288, example: "El fútbol femenino tiene cada vez más público." }
+  - { es: "el público", ja: "観客・一般の人々", rank: 449, example: "Había mucho público en el estadio." }
+  - { es: "suspender", ja: "中止する", rank: 1706, example: "El partido se suspendió por la lluvia." }
 verbs: []
-duration: 40
+duration: 45
 prev: 40
 next: 42
-related: [40,42,48]
-cast: ["yui","daniel"]
-audio: []
+related: [40, 42, 48]
+cast: ["yui", "daniel"]
+audio:
+  - "Aunque llueve, voy al partido."
+  - "Aunque llueva, iré al partido."
+  - "Habla despacio de modo que todos te entiendan."
+  - "Llovía, de modo que no salimos."
+  - "Estaba tan cansada que me dormí en el tren."
 youtubeId: ""
-quiz: []
 draft: true
 updated: "2026-11-02"
+quiz:
+  - question: "「（今）雨が降っているけれど、試合に行く」。正しいのは？"
+    options: ["Aunque llueve, voy al partido.", "Aunque lloviendo, voy al partido.", "Aunque lloverá, voy al partido."]
+    correctIndex: 0
+    explanation: "実際に起きている事実を認めるときは aunque + 直説法：llueve。"
+  - question: "「たとえ雨が降っても、試合に行く」。正しいのは？"
+    options: ["Aunque llueve, iré al partido.", "Aunque llueva, iré al partido.", "Aunque lloverá, iré al partido."]
+    correctIndex: 1
+    explanation: "降るかどうかわからない仮定の譲歩は aunque + 接続法：llueva。"
+  - question: "「どんなに勉強しても、わからない」。正しいのは？"
+    options: ["Por mucho que estudiar, no lo entiendo.", "Por mucho que estudie, no lo entiendo.", "Por mucho estudiar que, no lo entiendo."]
+    correctIndex: 1
+    explanation: "por mucho que（どんなに〜しても）のあとは、ふつう接続法：estudie。"
+  - question: "「みんながわかるように、ゆっくり話して」。正しいのは？"
+    options: ["Habla despacio de modo que todos te entienden.", "Habla despacio de modo que todos te entiendan.", "Habla despacio de modo todos te entiendan."]
+    correctIndex: 1
+    explanation: "目的の de modo que（〜するように）は接続法：entiendan。"
+  - question: "「雨が降っていたので、出かけなかった」。正しいのは？"
+    options: ["Llovía, de modo que no salimos.", "Llovía, de modo que no saliéramos.", "Llovía, de modo no salimos."]
+    correctIndex: 0
+    explanation: "結果の de modo que（だから）は直説法：salimos。"
+  - question: "「とても疲れていたので、電車で寝てしまった」。正しいのは？"
+    options: ["Estaba tan cansada como me dormí.", "Estaba tan cansada que me dormí.", "Estaba tanto cansada que me dormí."]
+    correctIndex: 1
+    explanation: "程度と結果は tan + 形容詞 + que。比較の tan … como（ユニット18）と区別しましょう。"
+  - question: "「寒さにもかかわらず、出かけた」。正しいのは？"
+    options: ["A pesar del frío, salimos.", "A pesar el frío, salimos.", "Aunque del frío, salimos."]
+    correctIndex: 0
+    explanation: "名詞が続くときは a pesar de + 名詞（de + el = del）。"
+  - question: "「確認していただけるよう、書類をお送りします」（改まった言い方）。正しいのは？"
+    options: ["Le envío el documento a fin de que lo revisa.", "Le envío el documento a fin de que lo revise.", "Le envío el documento a fin que lo revise."]
+    correctIndex: 1
+    explanation: "a fin de que は para que の改まった言い方で、あとは接続法：revise。"
+  - question: "「疲れていた。それでも仕事を終えた」。（ ）に入るのは？「Estaba cansada; (　), terminé el trabajo.」"
+    options: ["aun así", "de modo que", "a fin de que"]
+    correctIndex: 0
+    explanation: "前の内容にもかかわらず、と続けるときは aun así（それでも）。"
+  - question: "「（彼が疲れているのは知っているが）たとえ疲れていても来るべきだ」。正しいのは？"
+    options: ["Aunque está cansado, debe venir.", "Aunque esté cansado, debe venir.", "Aunque estará cansado, debe venir."]
+    correctIndex: 1
+    explanation: "事実でも、それを「問題ではない」と軽く扱うときは、aunque + 接続法を使います：esté。"
 ---
 
-TODO:contenido（導入：このユニットの問いに、それだけで答えになる2文で答える）
+スペイン語の aunque（〜だけれども・たとえ〜でも）は、あとに直説法と接続法のどちらも来ます。Aunque llueve, voy al partido.（雨が降っているけれど試合に行く）は実際の事実を認める言い方、Aunque llueva, iré al partido.（たとえ雨が降っても試合に行く）は、降るかどうかわからない仮定の言い方です。
 
-## 文法 (Gramática)
+同じように、de modo que も、接続法なら「〜するように」（目的）、直説法なら「だから」（結果）と意味が変わります。このユニットでは、女子サッカーの試合を見に行くユイと、東京のダニエルとのやり取りを例に、譲歩・目的・結果の表現を学びます。
 
-TODO:contenido
+## 文法：譲歩・目的・結果 (Gramática)
+
+まず譲歩の aunque を、次に目的の表現を、最後に結果の表現を見ていきましょう。
+
+### 譲歩：aunque + 直説法と接続法
+
+| aunque のあと | 意味 | 例 |
+| --- | --- | --- |
+| 直説法 | 事実を認める（〜だけれども） | Aunque llueve, voy al partido. |
+| 接続法 | 仮定・未確定（たとえ〜でも） | Aunque llueva, iré al partido. |
+| 接続法 | 事実を「問題ではない」と軽く扱う | Aunque esté cansado, debe venir. |
+
+三つ目は少し難しい使い方です。疲れているのはわかっているけれど、それは理由にならない、という気持ちを表します。話し手は相手の言い分を認めたうえで、「それでも」と反論しています。
+
+a pesar de que（〜にもかかわらず）も aunque と同じく、直説法と接続法の両方が来ます。名詞なら a pesar de + 名詞です：A pesar del frío, salimos.（寒さにもかかわらず出かけた）。por mucho que（どんなに〜しても）のあとは、ふつう接続法です：Por mucho que estudie, no lo entiendo. 実際の事実を強調するときは、直説法も使われます。
+
+aunque と pero を一つの文で一緒に使わないことにも注意しましょう。日本語の「〜けれど、でも…」の感覚で ×Aunque llueve, pero voy. と言いがちですが、aunque か pero のどちらか一つにします：Aunque llueve, voy. / Llueve, pero voy.
+
+### 目的：para que・a fin de que・de modo que + 接続法
+
+ユニット27の para que に加えて、改まった a fin de que や、de modo que / de manera que も「〜するように」の意味で使えます。どれもあとは接続法です。
+
+<Examples>
+
+- Le envío el documento a fin de que lo revise.（ご確認いただけるよう、書類をお送りします）
+- Habla despacio de modo que todos te entiendan.（みんながわかるように、ゆっくり話して）
+
+</Examples>
+
+主語が同じなら、que を使わずに a fin de + 不定詞の形にします：Le escribo a fin de solicitar información.（情報をお願いしたく、ご連絡しました）。改まったメール（ユニット45）でよく使う言い方です。
+
+### 結果：de modo que・por lo que・tan … que + 直説法
+
+| 表現 | 意味 | 例 |
+| --- | --- | --- |
+| de modo que / de manera que | だから | Llovía, de modo que no salimos. |
+| por lo que | そのため | Llovía, por lo que se suspendió el partido. |
+| tan + 形容詞 + que | とても〜なので | Estaba tan cansada que me dormí. |
+| tanto/a + 名詞 + que | とても多くの〜なので | Había tanta gente que no pudimos entrar. |
+
+de modo que は、接続法なら目的、直説法なら結果です。tan は形容詞だけでなく副詞の前にも置けます：Habla tan rápido que no lo entiendo.（とても速く話すので、わからない）。動詞を強めるときは tanto をそのまま使います：Estudió tanto que aprobó con nota.（たくさん勉強したので、いい成績で合格した）。どちらの意味かは、あとの動詞の形でわかります。書き言葉では、結果の de modo que の前にはふつうコンマを置き（Llovía, de modo que no salimos.）、目的の de modo que の前には置きません。
+
+### 雨の日の試合
+
+- Daniel: ¿Al final fuiste al partido? Llovía muchísimo.（結局、試合には行ったの？すごい雨だったよね）
+- Yui: Sí. Aunque llovía, el estadio estaba lleno. Había tanta gente que casi no encontré mi asiento.（うん。雨だったけど、スタジアムは満員だったよ。人が多すぎて、席がなかなか見つからなかった）
+- Daniel: ¿Y el próximo?（次の試合は？）
+- Yui: Aunque llueva otra vez, iré. ¡Me encantó!（また雨が降っても行くよ。最高だったから！）
+
+一つ目の aunque llovía（降っていたけれど）は事実、二つ目の aunque llueva（たとえ降っても）は仮定です。二つ目は次の試合についての話なので、主節も未来形の iré になっています。
+
+**ダニエル（バレンシア出身）のひとこと：** 会話では、aunque の文に y eso que（〜なのに）を使うこともよくあります：Llegó tarde, y eso que salió temprano.（早く出たのに遅れた）。y eso que のあとは直説法です。
 
 ## 活用：今日の動詞 (Conjugación)
 
-TODO:contenido
+aunque のあとの接続法は、ユニット25で学んだ接続法現在の形です。llover（llueva）、estar（esté）、ser（sea）、[tener](/language/learn-spanish/verb-conjugation/tener/)（tenga）などを、直説法の形と並べて確認しておきましょう。[estar](/language/learn-spanish/verb-conjugation/estar/) の接続法 esté にはアクセント記号がつきます。
 
 ## 語彙 (Nociones específicas)
+
+譲歩・目的・結果の表現と、サッカー観戦の語です。
 
 <VocabList items={frontmatter.vocabulary} level={frontmatter.level} />
 
 ## 発音・正書法 (Pronunciación y ortografía)
 
-TODO:contenido
+aun（〜さえ）と aún（まだ）は、アクセント記号で区別します：aun así（それでも）、aun los niños（子どもでさえ）／ aún no ha llegado（まだ着いていない）。aún は todavía に言いかえられるときにだけ記号がつく、と覚えておきましょう。aunque は一語で、記号はつきません。
 
 ## 日本人がよく間違える
 
-TODO:contenido
+- **仮定の譲歩に直説法を使う。** ×Aunque llueve mañana, iré.（降るかわからない）→ ○Aunque **llueva** mañana, iré.
+- **目的の de modo que に直説法を使う。** ×Habla despacio de modo que todos te entienden. → ○…de modo que todos te **entiendan**.
+- **tan … que と tan … como を混同する。** ×Estaba tan cansada como me dormí. → ○Estaba tan cansada **que** me dormí.
 
 ## 文化メモ (Referentes culturales)
 
 <CultureNote>
 
-TODO:contenido
+スペインのサッカーというと、男子のラ・リーガを思い浮かべる人が多いかもしれません。Aunque muchos piensan primero en LaLiga, el fútbol femenino también tiene una liga de gran nivel: la Liga F.（多くの人はまずラ・リーガを思い浮かべるが、女子サッカーにもリーガFという高いレベルのリーグがある）。2025-26シーズンには、FCバルセロナが優勝しています。女子サッカーリーグのクラブやしくみは、[リーガF完全ガイド](/football/liga-f-women/)で紹介しています。
 
 </CultureNote>
 
 ## 練習 (Procedimientos de aprendizaje)
 
-### 練習1：認識
+### 練習1：直説法？ 接続法？
 
-TODO:contenido
+正しい方を選んでください。
+
+1. Aunque (llueve / llueva) ahora, voy a salir.（今降っている）
+2. Aunque (llueve / llueva) mañana, iré.（降るかわからない）
+3. Te lo explico de modo que lo (entiendes / entiendas).（目的）
+4. No había nadie, de modo que (me fui / me fuera).（結果）
+5. Por mucho que (insistes / insistas), no cambiaré de opinión.（仮定）
 
 <details>
 <summary>答えを見る</summary>
 
-TODO:contenido
+1. llueve（事実）
+2. llueva（仮定）
+3. entiendas（目的）
+4. me fui（結果）
+5. insistas
 
 </details>
 
 ### 練習2：穴埋め
 
-TODO:contenido
+（ ）に入る表現を選んでください（aunque / a pesar de / tan / tanta / por lo que / aun así）。
+
+1. (　) el frío, fuimos a la playa.
+2. Estaba (　) contenta que no podía dormir.
+3. Había (　) gente que no pudimos entrar.
+4. Perdí el tren, (　) llegué tarde.
+5. (　) no tengo tiempo, te ayudaré.
+6. Era muy caro; (　), lo compré.
 
 <details>
 <summary>答えを見る</summary>
 
-TODO:contenido
+1. A pesar del（a pesar de + el = del。あとは名詞）
+2. tan
+3. tanta
+4. por lo que（結果）
+5. Aunque
+6. aun así（それでも：前の文を受ける）
 
 </details>
 
 ### 練習3：作文
 
-TODO:contenido
+スペイン語で言ってみましょう。
+
+1. たとえ雨が降っても、試合に行く。
+2. みんながわかるように、ゆっくり話してください（usted）。
+3. とても疲れていたので、電車で寝てしまった。
 
 <details>
-<summary>答えを見る</summary>
+<summary>解答例を見る</summary>
 
-TODO:contenido
+1. Aunque llueva, iré al partido.
+2. Hable despacio de modo que todos lo entiendan.
+3. Estaba tan cansada que me dormí en el tren.
 
 </details>
 
@@ -97,4 +245,8 @@ TODO:contenido
 
 ## まとめ
 
-TODO:contenido
+- aunque + 直説法は事実を認める譲歩、+ 接続法は仮定（たとえ〜でも）。por mucho que は接続法。
+- 目的（para que・a fin de que・de modo que）は接続法。
+- 結果（de modo que・por lo que・tan … que）は直説法。de modo que は形で意味が変わる。
+
+次のユニット42では、未来完了と過去未来完了、そして推量の言い方を学びます。
