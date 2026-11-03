@@ -5,89 +5,251 @@ levelName: "Avanzado"
 slug: "se-passive-impersonal"
 url: "/language/learn-spanish/b2/se-passive-impersonal/"
 existing: false
-title: "再帰受動と無人称の se"
+title: "スペイン語の se の受け身と無人称｜se venden と se busca の違い"
 shortTitle: "再帰受動と無人称の se"
-titleEs: "pasiva refleja y se impersonal"
-grammar: ["se + verbo"]
-tenses: []
-functions: []
-canDo: []
-vocabulary: []
+titleEs: "Pasiva refleja y se impersonal"
+description: "スペイン語の再帰受動（se venden pisos）と無人称の se（se vive bien、se busca a dos camareros）の違いを解説。動詞の数の合わせ方、人が目的語のときの a、3人称複数や uno を使ったほかの無人称表現を、練習問題つきで学べます。"
+grammar: ["pasiva refleja (se + verbo concordado)", "se impersonal (se + 3.ª persona singular)", "se + a + persona", "impersonalidad con 3.ª persona plural y uno"]
+tenses: ["presente de indicativo", "pretérito indefinido"]
+functions: ["だれがするかを言わずに説明する", "手順や規則を説明する", "一般論を述べる"]
+canDo:
+  - "再帰受動と無人称の se を使い分けて、主語を言わずに説明できる"
+  - "レシピや手順を、se を使って説明できる"
+  - "dicen que や uno を使って、一般的なことを言える"
+vocabulary:
+  # rank = «Rango frec.» del diccionario de frecuencias del CORPES XXI (RAE). Lo escribe
+  # npm run vocab:rank -- --write; lo que no es lema del diccionario va sin rank, al final.
+  - { es: "vender", ja: "売る", rank: 613, example: "Se venden pisos en el centro." }
+  - { es: "alquilar", ja: "賃貸する・借りる", rank: 5600, example: "Se alquila habitación." }
+  - { es: "buscar", ja: "探す・募集する", rank: 179, example: "Se busca a dos camareros." }
+  - { es: "necesitar", ja: "必要とする", rank: 368, example: "Se necesitan voluntarios." }
+  - { es: "permitir", ja: "許可する", rank: 124, example: "No se permite fumar." }
+  - { es: "pelar", ja: "皮をむく", rank: 8006, example: "Se pelan las patatas." }
+  - { es: "freír", ja: "揚げる・炒める", rank: 4976, example: "Se fríen las patatas a fuego lento." }
+  - { es: "batir", ja: "（卵を）溶く・泡立てる", rank: 3781, example: "Se baten los huevos." }
+  - { es: "la receta", ja: "レシピ", rank: 2522, example: "En las recetas se usa mucho el se." }
+  - { es: "el huevo", ja: "卵", rank: 2455, example: "Se añaden los huevos batidos." }
+  - { es: "el voluntario", ja: "ボランティア（女性形 la voluntaria）", rank: 4025, example: "Se buscan voluntarios para el festival." }
+  - { es: "el anuncio", ja: "広告・張り紙", rank: 1626, example: "Vi un anuncio que decía «Se alquila»." }
+  - { es: "uno", ja: "（一般に）人は", rank: 259, example: "Uno nunca sabe lo que puede pasar." }
+  - { es: "la regla", ja: "規則", rank: 1547, example: "Aquí no se puede hablar alto: es una regla." }
 verbs: []
-duration: 40
+duration: 45
 prev: 43
 next: 45
-related: [43,45,48]
-cast: ["yui","daniel"]
-audio: []
+related: [43, 45, 48]
+cast: ["yui", "daniel"]
+audio:
+  - "Se venden pisos."
+  - "Se alquila habitación."
+  - "Se busca a dos camareros."
+  - "En España se cena tarde."
+  - "Se pelan las patatas, se cortan en rodajas y se fríen."
 youtubeId: ""
-quiz: []
 draft: true
 updated: "2026-11-02"
+quiz:
+  - question: "「マンション売ります（複数）」。正しいのは？"
+    options: ["Se vende pisos.", "Se venden pisos.", "Se vendemos pisos."]
+    correctIndex: 1
+    explanation: "再帰受動では、動詞を物の数に合わせます：pisos（複数）→ venden。"
+  - question: "「ウェイターを2名募集」。正しいのは？"
+    options: ["Se busca dos camareros.", "Se busca a dos camareros.", "Se buscan a dos camareros."]
+    correctIndex: 1
+    explanation: "人を表す目的語に a がつくときは、無人称の se で動詞は単数：Se busca a dos camareros.（a をつけないなら Se buscan dos camareros. と複数）"
+  - question: "「スペインでは夕食が遅い」（人は一般に遅く夕食をとる）。正しいのは？"
+    options: ["En España se cena tarde.", "En España se cenan tarde.", "En España cena tarde."]
+    correctIndex: 0
+    explanation: "目的語のない一般的なことは、無人称の se + 3人称単数：se cena。"
+  - question: "「部屋貸します（1部屋）」。正しいのは？"
+    options: ["Se alquila habitación.", "Se alquilan habitación.", "Alquila se habitación."]
+    correctIndex: 0
+    explanation: "habitación は単数なので alquila。張り紙では冠詞を省くのがふつうです。"
+  - question: "レシピ「じゃがいもの皮をむく」。正しいのは？"
+    options: ["Se pela las patatas.", "Se pelan las patatas.", "Se pelamos las patatas."]
+    correctIndex: 1
+    explanation: "las patatas（複数）に合わせて pelan。"
+  - question: "「（人は）ここでは喫煙できない」。正しいのは？"
+    options: ["Aquí no se puede fumar.", "Aquí no se pueden fumar.", "Aquí no puede se fumar."]
+    correctIndex: 0
+    explanation: "se + poder + 原形。後ろが動詞の原形なので、動詞は単数：se puede。"
+  - question: "「ボランティアを募集している」（人を特定しない）。正しいのは？"
+    options: ["Se necesita voluntarios.", "Se necesitan voluntarios.", "Se necesitan a voluntarios."]
+    correctIndex: 1
+    explanation: "特定の人ではない不特定の人には a をつけず、再帰受動で数を合わせます：Se necesitan voluntarios."
+  - question: "「スペインでは〜だと言われている」の別の言い方は？"
+    options: ["Dicen que…", "Digo que…", "Dices que…"]
+    correctIndex: 0
+    explanation: "3人称複数の dicen que も、だれが言うかを特定しない無人称表現です。"
+  - question: "「（人は）何が起こるかわからないものだ」。自然なのは？"
+    options: ["Uno nunca sabe lo que puede pasar.", "Uno nunca saben lo que puede pasar.", "Se nunca sabe lo que puede pasar."]
+    correctIndex: 0
+    explanation: "uno + 3人称単数で、「人は（一般に）」を表します。"
+  - question: "再帰動詞（lavarse など）を無人称にするとき使うのは？"
+    options: ["se se lava", "uno se lava", "se lavan uno"]
+    correctIndex: 1
+    explanation: "se を二つ重ねることはできないので、再帰動詞の無人称は uno を使います：uno se acostumbra（人は慣れるものだ）。"
 ---
 
-TODO:contenido（導入：このユニットの問いに、それだけで答えになる2文で答える）
+スペイン語の se には、「だれがするか」を言わずに説明する二つの使い方があります。一つは再帰受動で、Se venden pisos.（マンション売ります）のように、動詞を物の数に合わせます。もう一つは無人称の se で、En España se cena tarde.（スペインでは夕食が遅い）、Se busca a dos camareros.（ウェイター2名募集）のように、動詞はいつも3人称単数です。
 
-## 文法 (Gramática)
+ユニット32で se の受け身の基本を学びました。このユニットでは、二つの違いと見分け方、そしてレシピや張り紙、一般論で使う言い方を、アルバイトを探すユイと、料理を教えるダニエルの例で学びます。
 
-TODO:contenido
+## 文法：再帰受動と無人称の se (Gramática)
+
+まず二つの se の違いを、次に人が目的語のときの形を、最後に se 以外の無人称表現を見ていきましょう。
+
+### 再帰受動：動詞を物の数に合わせる
+
+se + 他動詞 + 物（主語）の形で、物が「〜される」ことを表します。動詞は物の数に合わせます。
+
+| 物 | 形 | 例 |
+| --- | --- | --- |
+| 単数 | se + 3人称単数 | Se alquila habitación.（部屋貸します） |
+| 複数 | se + 3人称複数 | Se venden pisos.（マンション売ります） |
+
+物の名詞は動詞の後ろに置くのがふつうです。前に置くときは、Las entradas se venden en la taquilla.（チケットは窓口で売っています）のように、冠詞をつけて特定の物について話す言い方になります。
+
+### 無人称の se：いつも3人称単数
+
+目的語がないとき、人が目的語（a + 人）のとき、後ろが動詞の原形のときは、動詞はいつも3人称単数です。
+
+二つの se は、se の後ろの名詞が動詞の主語になれるかどうかで見分けます。Se venden pisos. の pisos は主語なので、動詞を数に合わせます。Se busca a dos camareros. の a dos camareros は前置詞 a がついているので主語になれず、動詞は単数のままです。
+
+<Examples>
+
+- En España se cena tarde.（スペインでは夕食が遅い）
+- Se busca a dos camareros.（ウェイター2名募集）
+- Aquí no se puede fumar.（ここではたばこが吸えない）
+
+</Examples>
+
+### 人が目的語のとき：a の有無で変わる
+
+| 人の扱い | 形 | 例 |
+| --- | --- | --- |
+| a + 人 | 無人称：単数 | Se busca a dos camareros con experiencia. |
+| a のない人（不特定の人をまとめて言う） | 再帰受動：数を合わせる | Se necesitan voluntarios. |
+
+人に a をつけるかどうかは、だれを指すかがはっきりしているかで決まることが多く、求人の張り紙ではどちらの形も見かけます。a があれば動詞は単数、と覚えておきましょう。
+
+### 張り紙の決まった表現
+
+| 表現 | 意味 | 動詞の形 |
+| --- | --- | --- |
+| Se prohíbe fumar. | 禁煙 | 単数（後ろが原形） |
+| Se ruega silencio. | お静かに願います | 単数（silencio に合わせる） |
+| Se aceptan tarjetas. | カード使えます | 複数（tarjetas に合わせる） |
+| Aquí se habla inglés. | 英語が通じます | 単数（目的語なし） |
+
+駅や美術館、店の入り口などで見かける短い文です。どれも「だれが」を言わずに、規則や情報を伝えています。
+
+### se 以外の無人称表現
+
+| 表現 | 例 | 意味 |
+| --- | --- | --- |
+| 3人称複数 | Dicen que va a llover. | 雨が降るそうだ |
+| uno + 3人称単数 | Uno nunca sabe lo que puede pasar. | 何が起こるかわからないものだ |
+| tú（一般の「あなた」） | Si estudias, aprendes. | 勉強すれば身につく |
+
+再帰動詞（acostumbrarse など）を無人称にするときは、se を二つ重ねられないので uno を使います：Uno se acostumbra a todo.（人は何にでも慣れるものだ）。
+
+三つは、se がいちばん客観的で書き言葉にも向き、uno は話し手自身の実感を込めた言い方、tú は会話で相手を巻き込むくだけた言い方です。作文では se を中心に使いましょう。
+
+### アルバイト探し
+
+- Yui: Mira, en esta cafetería se busca a una camarera. Y en la tienda de al lado se necesitan dependientes.（見て、このカフェでウェイトレスを募集してる。隣の店でも店員が必要だって）
+- Daniel: ¿Y qué se pide?（何が求められてるの？）
+- Yui: Se valora hablar inglés y se requiere experiencia. Bueno, dicen que en verano se contrata a mucha gente.（英語が話せると評価されて、経験が必要だって。まあ、夏はたくさん雇うらしいけど）
+
+ユイの文には、se busca a una camarera（a + 人：単数）、se necesitan dependientes（a のない人：複数）、se valora hablar inglés（後ろが原形：単数）と、三つの形がそろっています。dicen que は、3人称複数の無人称表現です。
+
+**ダニエル（バレンシア出身）のひとこと：** 日本語の「〜されている」「〜と言われている」は、スペイン語では ser の受動態（ユニット32）より、se を使う方がずっと自然なことが多いです。Aquí se habla inglés. や Se dice que… は、看板や会話の定番です。
 
 ## 活用：今日の動詞 (Conjugación)
 
-TODO:contenido
+se の文で使う動詞は、ほとんどが3人称の単数か複数です。freír（揚げる）は fríe / fríen と i にアクセント記号がつき、過去分詞は frito（freído も可）です。[hacer](/language/learn-spanish/verb-conjugation/hacer/)（se hace）、[poder](/language/learn-spanish/verb-conjugation/poder/)（se puede）の現在形と点過去を、活用表で確認しておきましょう。
 
 ## 語彙 (Nociones específicas)
+
+張り紙や求人、レシピでよく使う動詞と名詞です。
 
 <VocabList items={frontmatter.vocabulary} level={frontmatter.level} />
 
 ## 発音・正書法 (Pronunciación y ortografía)
 
-TODO:contenido
+張り紙や看板の文は短く、冠詞が省かれることがよくあります：Se alquila habitación.（Se alquila una habitación. とも言えますが、張り紙では冠詞を省くのがふつうです）、Se vende piso. 読むときは、se を弱く、後ろの動詞を強く読みます：se **ven**de、se al**qui**la。
 
 ## 日本人がよく間違える
 
-TODO:contenido
+- **再帰受動で動詞の数を合わせない。** ×Se vende pisos. → ○Se **venden** pisos.
+- **a + 人のときに動詞を複数にする。** ×Se buscan a dos camareros. → ○Se **busca** a dos camareros.
+- **後ろが原形なのに動詞を複数にする。** ×Aquí no se pueden fumar. → ○Aquí no se **puede** fumar.
 
 ## 文化メモ (Referentes culturales)
 
 <CultureNote>
 
-TODO:contenido
+スペイン語のレシピは、se の文の宝庫です。トルティージャ・エスパニョーラなら、Se pelan las patatas, se cortan en rodajas y se fríen. Luego se baten los huevos y se mezcla todo.（じゃがいもの皮をむき、薄切りにして揚げる。それから卵を溶き、全部を混ぜる）。最後の論点は、玉ねぎを入れるかどうかです。¿Se pone cebolla o no se pone?（玉ねぎは入れる？入れない？）は、スペイン人の間でも意見が分かれます。タパスの定番料理は、[タパス文化完全ガイド](/food/tapas/)で紹介しています。
 
 </CultureNote>
 
 ## 練習 (Procedimientos de aprendizaje)
 
-### 練習1：認識
+### 練習1：単数？ 複数？
 
-TODO:contenido
+正しい方を選んでください。
+
+1. Se (vende / venden) coches usados.
+2. Se (alquila / alquilan) habitación.
+3. Se (busca / buscan) a una profesora de inglés.
+4. En verano se (come / comen) mucho gazpacho.
+5. Aquí no se (puede / pueden) aparcar.
 
 <details>
 <summary>答えを見る</summary>
 
-TODO:contenido
+1. venden（coches は複数）
+2. alquila（habitación は単数）
+3. busca（a + 人）
+4. come（gazpacho は単数）
+5. puede（後ろが原形）
 
 </details>
 
-### 練習2：穴埋め
+### 練習2：se を使って書きかえる
 
-TODO:contenido
+次の文を、se を使って書きかえてください。
+
+1. La gente cena tarde en España.
+2. Venden entradas en la taquilla.
+3. Buscamos a un camarero.
+4. Hablan inglés en esta tienda.
 
 <details>
 <summary>答えを見る</summary>
 
-TODO:contenido
+1. En España se cena tarde.
+2. Se venden entradas en la taquilla.
+3. Se busca a un camarero.
+4. En esta tienda se habla inglés.
 
 </details>
 
 ### 練習3：作文
 
-TODO:contenido
+レシピの手順を、se を使って書いてみましょう。
+
+1. じゃがいもの皮をむく。
+2. 卵を溶く。
+3. 全部を混ぜる。
 
 <details>
-<summary>答えを見る</summary>
+<summary>解答例を見る</summary>
 
-TODO:contenido
+1. Se pelan las patatas.
+2. Se baten los huevos.
+3. Se mezcla todo.
 
 </details>
 
@@ -97,4 +259,8 @@ TODO:contenido
 
 ## まとめ
 
-TODO:contenido
+- 再帰受動は se + 動詞（物の数に合わせる）：Se venden pisos.
+- 無人称の se はいつも3人称単数：目的語がない、a + 人、後ろが原形のとき。
+- ほかの無人称表現：dicen que（3人称複数）、uno + 3人称単数。再帰動詞の無人称は uno。
+
+次のユニット45では、フォーマルとインフォーマルの言葉づかいを学びます。
