@@ -5,89 +5,240 @@ levelName: "Umbral"
 slug: "relative-pronouns"
 url: "/language/learn-spanish/b1/relative-pronouns/"
 existing: false
-title: "関係代名詞"
+title: "スペイン語の関係代名詞｜que・quien・donde・lo que の使い方"
 shortTitle: "関係代名詞"
-titleEs: "pronombres relativos"
-grammar: ["que","quien","donde","cuyo"]
-tenses: []
-functions: []
-canDo: []
-vocabulary: []
+titleEs: "Pronombres relativos"
+description: "スペイン語の関係代名詞を基本から解説。いちばんよく使う que、人を表す quien、場所の donde、前置詞と使う el que・la que、「〜なこと」の lo que、所有の cuyo を、人や物を説明する例文と練習問題で学べます。"
+grammar: ["que", "quien / quienes", "donde", "el que, la que, lo que", "preposición + el que", "cuyo"]
+tenses: ["presente de indicativo", "pretérito indefinido"]
+functions: ["人・物・場所を説明する", "情報を付け加える"]
+canDo:
+  - "que や donde を使って、人・物・場所をくわしく説明できる"
+  - "lo que を使って、「〜なこと・もの」と言える"
+  - "前置詞と関係代名詞を組み合わせて、二つの文を一つにできる"
+vocabulary:
+  # rank = «Rango frec.» del diccionario de frecuencias del CORPES XXI (RAE). Lo escribe
+  # npm run vocab:rank -- --write; lo que no es lema del diccionario va sin rank, al final.
+  - { es: "que", ja: "〜する・〜である（関係代名詞）", rank: 7, example: "El chico que vive conmigo es italiano." }
+  - { es: "quien", ja: "〜する人（前置詞のあとで）", rank: 62, example: "La profesora con quien hablé es de Madrid." }
+  - { es: "donde", ja: "〜する場所", rank: 63, example: "Esta es la cafetería donde estudio." }
+  - { es: "cuyo", ja: "その〜が（女性形 cuya）", rank: 281, example: "Es un club cuya historia es muy larga." }
+  - { es: "lo que", ja: "〜なこと・もの", example: "Lo que más me gusta es la Plaza Mayor." }
+  - { es: "el compañero de piso", ja: "ルームメイト", example: "Mi compañero de piso, que es de Roma, cocina muy bien." }
+  - { es: "la cafetería", ja: "カフェ", rank: 6994, example: "Es la cafetería donde nos conocimos." }
+  - { es: "la biblioteca", ja: "図書館", rank: 1932, example: "La biblioteca en la que estudio abre a las ocho." }
+  - { es: "el edificio", ja: "建物", rank: 992, example: "Es un edificio que tiene más de quinientos años." }
+  - { es: "el club", ja: "クラブ", rank: 463, example: "Es un club que nunca ha bajado a Segunda." }
+  - { es: "el jugador", ja: "選手（女性形 la jugadora）", rank: 297, example: "Es un jugador que nació en Bilbao." }
+  - { es: "conocerse", ja: "知り合う", rank: 130, example: "Es el bar donde nos conocimos." }
+  - { es: "nacer", ja: "生まれる", rank: 486, example: "Bilbao es la ciudad donde nació." }
+  - { es: "la universidad", ja: "大学", rank: 240, example: "La universidad en la que estudio es muy antigua." }
 verbs: []
 duration: 40
 prev: 30
 next: 32
-related: [30,32,36]
-cast: ["yui","kenta"]
-audio: []
+related: [30, 32, 36]
+cast: ["yui", "kenta"]
+audio:
+  - "El chico que vive conmigo es italiano."
+  - "Esta es la cafetería donde estudio todos los días."
+  - "La profesora con quien hablé es de Madrid."
+  - "Lo que más me gusta de Salamanca es la Plaza Mayor."
+  - "La universidad en la que estudio es muy antigua."
 youtubeId: ""
-quiz: []
 draft: true
 updated: "2026-11-02"
+quiz:
+  - question: "「私と住んでいる男の子はイタリア人だ」。正しいのは？"
+    options: ["El chico quien vive conmigo es italiano.", "El chico que vive conmigo es italiano.", "El chico donde vive conmigo es italiano."]
+    correctIndex: 1
+    explanation: "人でも物でも、前置詞がなければふつう que を使います。"
+  - question: "「これは私が毎日勉強するカフェだ」。正しいのは？"
+    options: ["Esta es la cafetería que estudio todos los días.", "Esta es la cafetería donde estudio todos los días.", "Esta es la cafetería quien estudio."]
+    correctIndex: 1
+    explanation: "場所を説明するときは donde（= en la que）です。"
+  - question: "「私が話した先生はマドリード出身だ」。正しいのは？"
+    options: ["La profesora con quien hablé es de Madrid.", "La profesora con que hablé es de Madrid.", "La profesora quien hablé con es de Madrid."]
+    correctIndex: 0
+    explanation: "前置詞（con）のあとで人を指すときは quien（または la que）。前置詞は関係代名詞の前に置きます。"
+  - question: "「サラマンカでいちばん好きなのはマヨール広場だ」。正しいのは？"
+    options: ["Que más me gusta es la Plaza Mayor.", "Lo que más me gusta es la Plaza Mayor.", "El que más me gusta es la Plaza Mayor de Salamanca lo."]
+    correctIndex: 1
+    explanation: "「〜なこと・もの」と、特定の名詞を指さずに言うときは lo que です。"
+  - question: "「私が勉強している大学はとても古い」。正しいのは？"
+    options: ["La universidad en la que estudio es muy antigua.", "La universidad la que estudio en es muy antigua.", "La universidad que estudio en es muy antigua."]
+    correctIndex: 0
+    explanation: "前置詞 en は関係代名詞の前に置き、el que / la que を名詞の性に合わせます。"
+  - question: "「歴史がとても長いクラブ」。正しいのは？"
+    options: ["un club cuyo historia es muy larga", "un club cuya historia es muy larga", "un club que su historia es muy larga"]
+    correctIndex: 1
+    explanation: "cuyo は「その〜が」で、後ろの名詞（historia）の性と数に合わせます：cuya。"
+  - question: "「君が言ったことがわからない」。正しいのは？"
+    options: ["No entiendo lo que dijiste.", "No entiendo que dijiste.", "No entiendo el que dijiste."]
+    correctIndex: 0
+    explanation: "「〜なこと」は lo que：lo que dijiste（君が言ったこと）。"
+  - question: "コンマではさんで情報を付け加える文。正しいのは？「マルコスは、ローマ出身で、料理がうまい」"
+    options: ["Marcos, que es de Roma, cocina muy bien.", "Marcos que es de Roma cocina muy bien, .", "Marcos, quien que es de Roma, cocina muy bien."]
+    correctIndex: 0
+    explanation: "付け加えの情報はコンマではさみます。この場合、que のかわりに quien も使えます。"
+  - question: "「私たちが知り合ったバル」。正しいのは？"
+    options: ["el bar donde nos conocimos", "el bar que nos conocimos", "el bar quien nos conocimos"]
+    correctIndex: 0
+    explanation: "場所なので donde（= en el que）。que だけでは前置詞の意味が抜けてしまいます。"
+  - question: "「彼が生まれた町」。正しいのは？"
+    options: ["la ciudad donde nació", "la ciudad que nació", "la ciudad cuya nació"]
+    correctIndex: 0
+    explanation: "場所を説明するので donde：la ciudad donde nació。"
 ---
 
-TODO:contenido（導入：このユニットの問いに、それだけで答えになる2文で答える）
+スペイン語の関係代名詞は、人や物を「〜する…」と説明して、二つの文を一つにつなぐ語です。いちばんよく使うのは que で、El chico que vive conmigo es italiano.（私と住んでいる男の子はイタリア人だ）のように、人にも物にも使います。場所なら donde、「〜なこと」なら lo que を使います。
 
-## 文法 (Gramática)
+日本語では説明の部分を名詞の前に置きますが（「私と住んでいる」男の子）、スペイン語では名詞のあとに置くのが大きな違いです。このユニットでは、サラマンカでの生活を紹介するユイと、スペインのサッカークラブについて話すケンタの例で学びます。
 
-TODO:contenido
+## 文法：関係代名詞 (Gramática)
+
+まず基本の que を、次に場所の donde と前置詞のつく形を、最後に lo que と cuyo を見ていきましょう。
+
+### que：人にも物にも使う基本形
+
+| 説明する名詞 | 例 |
+| --- | --- |
+| 人 | El chico que vive conmigo es italiano.（私と住んでいる男の子はイタリア人だ） |
+| 物 | El libro que estoy leyendo es muy interesante.（今読んでいる本はとても面白い） |
+
+日本語と語順が逆なので、「名詞 + que + 説明」の順で組み立てましょう。
+
+### 付け加えの情報：コンマではさむ
+
+すでにだれのことかわかっている人や物に、情報を付け加えるときは、コンマではさみます。この場合、人なら que のかわりに quien も使えます。
+
+- Mi compañero de piso, que es de Roma, cocina muy bien.（ルームメイトは、ローマ出身で、料理がとても上手だ）
+
+### donde と、前置詞のつく形
+
+場所を説明するときは donde を使います。前置詞（en、con、de など）が必要なときは、前置詞 + el que / la que / los que / las que を使い、前置詞は関係代名詞の前に置きます。人なら前置詞 + quien も使えます。
+
+| 形 | 例 |
+| --- | --- |
+| donde | Esta es la cafetería donde estudio.（私が勉強するカフェ） |
+| en la que | La universidad en la que estudio es muy antigua.（私が勉強する大学はとても古い） |
+| con quien / con la que | La profesora con quien hablé es de Madrid.（私が話した先生はマドリード出身だ） |
+
+日本語や英語のように、前置詞を文末に残すことはできません（×la profesora que hablé con）。
+
+### lo que：「〜なこと・もの」
+
+特定の名詞を指さずに、「〜なこと」と言うときは lo que です。
+
+<Examples>
+
+- Lo que más me gusta de Salamanca es la Plaza Mayor.（サラマンカでいちばん好きなのはマヨール広場だ）
+- No entiendo lo que dijiste.（君が言ったことがわからない）
+
+</Examples>
+
+### cuyo：「その〜が」
+
+cuyo は所有を表し、後ろの名詞の性と数に合わせます（cuyo / cuya / cuyos / cuyas）。書き言葉でよく使います：un club cuya historia es muy larga（歴史がとても長いクラブ）。会話では、un club que tiene una historia muy larga のように言いかえることも多いです。
+
+### ユイのサラマンカ紹介
+
+Vivo en un piso que está en el centro, con tres compañeros que estudian conmigo. La cafetería donde estudio por las tardes está en una calle muy tranquila. Lo que más me gusta de Salamanca es la Plaza Mayor por la noche, cuando las luces se encienden.
+
+（私は中心部にある部屋に、一緒に勉強している3人のルームメイトと住んでいます。午後に勉強するカフェは、とても静かな通りにあります。サラマンカでいちばん好きなのは、明かりがともる夜のマヨール広場です）
+
+### el que・lo que で強調する
+
+el que / la que / lo que は、文の一部を強調するときにも使います：El que llegó tarde fue Kenta.（遅れて来たのはケンタだった）、Lo que necesito es descansar.（私に必要なのは休むことだ）。日本語の「〜のは…だ」にあたる言い方で、会話でとてもよく使います。
+
+ことわざにも関係代名詞はよく出てきます：Quien mucho abarca, poco aprieta.（多くを抱える者は、少ししか握れない＝二兎を追う者は一兎をも得ず）。この quien は「〜する人」という意味です。
+
+**ダニエル（バレンシア出身）のひとこと：** 会話では、quien や cuyo より que がずっとよく使われます。迷ったら、まず que で言えないか考えてみてください。ただし、前置詞がつくときは que だけではだめで、en el que や donde のように言う必要があります。
 
 ## 活用：今日の動詞 (Conjugación)
 
-TODO:contenido
+関係代名詞の文の中の動詞も、ふつうの文と同じように主語に合わせて活用します：El chico que vive conmigo（彼が住む）／ Los chicos que viven conmigo（彼らが住む）。説明の部分が過去の出来事なら点過去、背景なら線過去と、ユニット16の使い分けもそのまま使います。[ser](/language/learn-spanish/verb-conjugation/ser/) と [estar](/language/learn-spanish/verb-conjugation/estar/) を使った説明（que es de Roma、que está en el centro）は、関係節でもとてもよく出てきます。
 
 ## 語彙 (Nociones específicas)
+
+関係代名詞と、人や場所を説明するときによく使う語です。
 
 <VocabList items={frontmatter.vocabulary} level={frontmatter.level} />
 
 ## 発音・正書法 (Pronunciación y ortografía)
 
-TODO:contenido
+関係代名詞の que・quien・donde・cuyo には、アクセント記号がつきません。疑問詞のときだけ記号がつきます：¿Dónde estudias?（どこで勉強してるの？）／ la cafetería donde estudio（私が勉強するカフェ）。読むときも、関係代名詞は弱く、疑問詞は強く読みます。
 
 ## 日本人がよく間違える
 
-TODO:contenido
+- **説明を名詞の前に置く。** ×el conmigo vive chico → ○el chico **que vive conmigo**。説明は名詞のあとです。
+- **前置詞を文末に残す。** ×la profesora que hablé con → ○la profesora **con quien** hablé。
+- **「〜なこと」に que だけを使う。** ×Que más me gusta es… → ○**Lo que** más me gusta es…
 
 ## 文化メモ (Referentes culturales)
 
 <CultureNote>
 
-TODO:contenido
+スペインのサッカークラブを説明するとき、関係代名詞はとても便利です。たとえばビルバオのアスレティック・クラブは、El Athletic, que nació en 1901, es un club que solo tiene jugadores vascos y que nunca ha bajado a Segunda.（1901年に生まれたアスレティックは、バスク人選手だけで戦い、2部に一度も降格したことのないクラブだ）と、一文で紹介できます。バスクの誇りといわれるクラブの歴史は、[アスレティック・ビルバオ完全ガイド](/football/athletic-club/)で紹介しています。
 
 </CultureNote>
 
 ## 練習 (Procedimientos de aprendizaje)
 
-### 練習1：認識
+### 練習1：どの関係代名詞？
 
-TODO:contenido
+（ ）に que・donde・lo que のどれかを入れてください。
+
+1. El chico (　) vive conmigo es italiano.
+2. Es la ciudad (　) nací.
+3. (　) necesito es descansar.
+4. El libro (　) leo es muy bueno.
+5. Es el bar (　) nos conocimos.
 
 <details>
 <summary>答えを見る</summary>
 
-TODO:contenido
+1. que
+2. donde
+3. Lo que
+4. que
+5. donde
 
 </details>
 
-### 練習2：穴埋め
+### 練習2：二つの文を一つに
 
-TODO:contenido
+関係代名詞を使って、一つの文にしてください。
+
+1. Tengo una amiga. Mi amiga habla cinco idiomas.
+2. Esta es la biblioteca. Estudio en esta biblioteca.
+3. Hablé con un profesor. El profesor es de Sevilla.
+4. Marcos es de Roma. Marcos cocina muy bien.（コンマではさむ）
 
 <details>
 <summary>答えを見る</summary>
 
-TODO:contenido
+1. Tengo una amiga que habla cinco idiomas.
+2. Esta es la biblioteca donde estudio.（en la que estudio）
+3. El profesor con quien hablé es de Sevilla.（con el que hablé）
+4. Marcos, que es de Roma, cocina muy bien.
 
 </details>
 
 ### 練習3：作文
 
-TODO:contenido
+ユイになったつもりで、スペイン語で言ってみましょう。
+
+1. 私が住んでいる部屋は中心部にある。
+2. ここは私たちが知り合ったカフェだ。
+3. サラマンカでいちばん好きなのは大学だ（lo que）。
 
 <details>
-<summary>答えを見る</summary>
+<summary>解答例を見る</summary>
 
-TODO:contenido
+1. El piso donde vivo está en el centro.（El piso en el que vivo…）
+2. Esta es la cafetería donde nos conocimos.
+3. Lo que más me gusta de Salamanca es la universidad.
 
 </details>
 
@@ -97,4 +248,8 @@ TODO:contenido
 
 ## まとめ
 
-TODO:contenido
+- 基本は que（人にも物にも）。説明は名詞のあとに置く。
+- 場所は donde。前置詞が必要なら、前置詞 + el que / la que / quien を関係代名詞の前に置く。
+- 「〜なこと」は lo que。cuyo は後ろの名詞に性数を合わせる。
+
+次のユニット32では、ser と estar の応用と、受動態を学びます。
