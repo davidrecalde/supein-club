@@ -5,89 +5,255 @@ levelName: "Acceso"
 slug: "near-future-progressive"
 url: "/language/learn-spanish/a1/near-future-progressive/"
 existing: false
-title: "近い未来と進行形"
+title: "スペイン語の ir a と進行形｜予定と「今〜している」の言い方"
 shortTitle: "近い未来と進行形"
-titleEs: "ir a + infinitivo, estar + gerundio"
-grammar: ["ir a + infinitivo","estar + gerundio"]
-tenses: []
-functions: []
-canDo: []
-vocabulary: []
-verbs: ["ir","estar"]
+titleEs: "Ir a + infinitivo y estar + gerundio"
+description: "スペイン語の近い未来（ir a + 動詞の原形）と進行形（estar + 現在分詞）を基本から解説。予定や予想の言い方、現在分詞の作り方と不規則形、日本語の「〜している」と進行形のずれを、日本人が間違えやすい点と練習問題つきで学べます。"
+grammar: ["ir a + infinitivo", "gerundio", "estar + gerundio"]
+tenses: ["perífrasis de futuro", "presente progresivo"]
+functions: ["予定や計画を言う", "今していることを言う", "状況から予想する"]
+canDo:
+  - "週末や明日の予定を言ったり、たずねたりできる"
+  - "今していることを説明できる"
+  - "空模様などから、これから起きることを予想して言える"
+vocabulary:
+  # rank = «Rango frec.» del diccionario de frecuencias del CORPES XXI (RAE). Lo escribe
+  # npm run vocab:rank -- --write; lo que no es lema del diccionario va sin rank, al final.
+  - { es: "ahora", ja: "今", rank: 99, example: "Ahora Mina está en la Plaza Mayor." }
+  - { es: "ahora mismo", ja: "ちょうど今", example: "Ahora mismo estoy comiendo." }
+  - { es: "mañana", ja: "明日", rank: 990, example: "Mañana voy a ir a Toledo." }
+  - { es: "pronto", ja: "もうすぐ・早く", rank: 1227, example: "Mina va a volver a Tokio pronto." }
+  - { es: "todavía", ja: "まだ", rank: 461, example: "Todavía estoy en el museo." }
+  - { es: "ya", ja: "もう・すでに", rank: 57, example: "Ya estoy en el hotel." }
+  - { es: "próximo", ja: "次の（女性形 próxima）", rank: 191, example: "El próximo lunes, Mina va a volver a Tokio." }
+  - { es: "el plan", ja: "予定・計画", rank: 337, example: "¿Qué planes tienes para el fin de semana?" }
+  - { es: "llover", ja: "雨が降る", rank: 4981, example: "Mira las nubes. Va a llover." }
+  - { es: "esperar", ja: "待つ・期待する", rank: 190, example: "Estoy esperando el autobús." }
+  - { es: "llamar", ja: "呼ぶ・電話する", rank: 192, example: "Daniel está llamando a Mina." }
+  - { es: "visitar", ja: "訪れる", rank: 936, example: "Mañana voy a visitar la catedral." }
+  - { es: "el mensaje", ja: "メッセージ", rank: 790, example: "Mina está escribiendo un mensaje." }
+  - { es: "la foto", ja: "写真", rank: 1023, example: "Estoy haciendo fotos de la catedral." }
+verbs: ["ir", "estar"]
 duration: 40
 prev: 10
 next: 12
-related: [10,12,20]
+related: [10, 12, 20]
 cast: ["mina"]
-audio: []
+audio:
+  - "Mañana voy a ir a Toledo."
+  - "Mira las nubes. Va a llover."
+  - "¿Qué estás haciendo?"
+  - "Estoy tomando un café en la Plaza Mayor."
+  - "¿Y qué vas a hacer mañana?"
+  - "Voy a ir a Toledo. Voy a visitar la catedral y voy a comprar mazapán."
+  - "comiendo"
+  - "duchándome"
 youtubeId: ""
-quiz: []
 draft: true
 updated: "2026-11-02"
+quiz:
+  - question: "「明日トレドに行くつもりだ」。正しいのは？"
+    options: ["Mañana voy ir a Toledo.", "Mañana voy a ir a Toledo.", "Mañana estoy yendo a Toledo."]
+    correctIndex: 1
+    explanation: "予定は ir a + 動詞の原形：voy a ir。a を落とさないようにしましょう。進行形は、未来の予定には使いません。"
+  - question: "hablar の現在分詞は？"
+    options: ["hablando", "habliendo", "hablado"]
+    correctIndex: 0
+    explanation: "-ar 動詞は -ando：hablando。hablado は過去分詞です。"
+  - question: "comer の現在分詞は？"
+    options: ["comando", "comido", "comiendo"]
+    correctIndex: 2
+    explanation: "-er / -ir 動詞は -iendo：comiendo。"
+  - question: "leer の現在分詞は？"
+    options: ["leiendo", "leyendo", "leando"]
+    correctIndex: 1
+    explanation: "語幹が母音で終わる -er / -ir 動詞は、i が y に変わります：leyendo。"
+  - question: "dormir の現在分詞は？"
+    options: ["durmiendo", "dormiendo", "duermiendo"]
+    correctIndex: 0
+    explanation: "o → ue の -ir 動詞は、現在分詞で o → u に変わります：durmiendo。"
+  - question: "「今、何してるの？」。正しいのは？"
+    options: ["¿Qué estás haciendo?", "¿Qué eres haciendo?", "¿Qué estás hacer?"]
+    correctIndex: 0
+    explanation: "進行形は estar + 現在分詞：¿Qué estás haciendo?"
+  - question: "「（空を見て）雨が降りそうだ」。自然なのは？"
+    options: ["Está lloviendo.", "Va a llover.", "Llueve mañana."]
+    correctIndex: 1
+    explanation: "目の前の状況から予想するときも ir a を使います：Va a llover。Está lloviendo は「今降っている」です。"
+  - question: "「私はその答えを知っている」。正しいのは？"
+    options: ["Estoy sabiendo la respuesta.", "Sé la respuesta.", "Estoy sé la respuesta."]
+    correctIndex: 1
+    explanation: "日本語の「知っている」は状態なので、進行形ではなく現在形 sé を使います。"
+  - question: "「ミナは結婚している」。正しいのは？"
+    options: ["Mina está casándose.", "Mina está casada.", "Mina es casándose."]
+    correctIndex: 1
+    explanation: "「結婚している」は結果の状態なので、estar + 形容詞（casada）。está casándose は「今まさに結婚式の最中」です。"
+  - question: "「シャワーを浴びているところだ」。つづりが正しいのは？"
+    options: ["Estoy duchandome.", "Estoy duchándome.", "Estoy me duchando."]
+    correctIndex: 1
+    explanation: "代名詞を現在分詞の後ろにつなげると、強く読む位置を示すためにアクセント記号が必要です：duchándome（Me estoy duchando. とも言えます）。"
 ---
 
-TODO:contenido（導入：このユニットの問いに、それだけで答えになる2文で答える）
+スペイン語で近い予定を言うときは、ir a + 動詞の原形を使い、Mañana voy a visitar Toledo.（明日トレドに行くつもりだ）と言います。今まさにしていることは、estar + 現在分詞で Estoy comiendo.（今食べているところだ）と言います。
 
-## 文法 (Gramática)
+どちらも、すでに学んだ ir と estar の現在形に、動詞の原形や現在分詞をつなげるだけなので、すぐに使えるようになります。このユニットでは、マドリードで最後の週末を過ごすミナが、東京のダニエルとビデオ通話で、今していることと明日の予定を話します。
 
-TODO:contenido
+## 文法：近い未来と進行形 (Gramática)
+
+まず ir a + 原形を、次に現在分詞の作り方を、最後に estar + 現在分詞を見ていきましょう。
+
+### ir a + 動詞の原形：予定と予想
+
+ir の現在形（voy, vas, va, vamos, vais, van）のあとに a と動詞の原形を続けます。
+
+| 人称 | ir a + 原形 |
+| --- | --- |
+| yo | voy a visitar |
+| tú | vas a visitar |
+| él / ella / usted | va a visitar |
+| nosotros / nosotras | vamos a visitar |
+| vosotros / vosotras ※ | vais a visitar |
+| ellos / ellas / ustedes | van a visitar |
+
+※ vosotros はスペインのみで使う形です（→ [中南米のスペイン語](/language/learn-spanish/spanish-in-latin-america/)）。
+
+使い方は二つです。
+
+- **予定・計画：** Mañana voy a ir a Toledo.（明日トレドに行くつもりだ）
+- **状況からの予想：** Mira las nubes. Va a llover.（雲を見て。雨が降りそうだ）
+
+mañana（明日）、esta tarde（今日の午後）、el fin de semana（週末）、el próximo lunes（次の月曜日）などの表現とよく一緒に使います。
+
+### 現在分詞の作り方
+
+| 語尾 | 現在分詞 | 例 |
+| --- | --- | --- |
+| -ar | -ando | hablar → hablando、tomar → tomando |
+| -er / -ir | -iendo | comer → comiendo、escribir → escribiendo |
+| 母音 + -er / -ir | -yendo | leer → leyendo、oír → oyendo |
+| 語幹母音が変わる -ir 動詞 | e → i、o → u | pedir → pidiendo、decir → diciendo、dormir → durmiendo |
+
+ir の現在分詞は yendo です。語幹母音が変わる動詞でも、-ar と -er の動詞は現在分詞では変わりません（pensar → pensando、volver → volviendo）。
+
+### estar + 現在分詞：今していること
+
+estar の現在形（estoy, estás, está…）のあとに現在分詞を続けます。「ちょうど今〜しているところだ」と、動作が進行中であることを強調します。
+
+<Examples>
+
+- ¿Qué estás haciendo?（今、何してるの？）
+- Estoy tomando un café en la Plaza Mayor.（マヨール広場でコーヒーを飲んでいるところ）
+- Daniel está llamando a Mina.（ダニエルがミナに電話をかけているところだ）
+
+</Examples>
+
+再帰動詞の代名詞は、estar の前に置くか、現在分詞の後ろにつなげます：Me estoy duchando. = Estoy duchándome.（シャワーを浴びているところ）。
+
+### ビデオ通話で予定を話す
+
+マドリード最後の週末、ミナがダニエルとビデオ通話をします。
+
+- Daniel: Hola, Mina. ¿Qué estás haciendo?（やあ、ミナ。今何してるの？）
+- Mina: Estoy tomando un café en la Plaza Mayor.（マヨール広場でコーヒーを飲んでるところ）
+- Daniel: ¿Y qué vas a hacer mañana?（明日は何をするの？）
+- Mina: Voy a ir a Toledo. Voy a visitar la catedral y voy a comprar mazapán.（トレドに行くの。大聖堂を見て、マサパンを買うつもり）
+- Daniel: ¡Qué bien! ¿Y cuándo vas a volver a Tokio?（いいね！　東京にはいつ戻るの？）
+- Mina: El próximo lunes.（次の月曜日）
+
+今のこと（estoy tomando）と、これからの予定（voy a ir）を、二つの形で言い分けているのがわかります。ダニエルの ¡Qué bien!（いいね！）は、相手の話にあいづちを打つときの定番の一言です。
+
+**ダニエル（バレンシア出身）のひとこと：** スペイン語には未来形（ユニット20）もありますが、会話で予定を言うときは ir a の方がよく使われます。Voy a ir.（行くつもり）のように、ir a のあとに ir を続けても問題ありません。
 
 ## 活用：今日の動詞 (Conjugación)
 
-TODO:contenido
+このユニットの主役は [ir](/language/learn-spanish/verb-conjugation/ir/) と [estar](/language/learn-spanish/verb-conjugation/estar/) です。ir のページでは、現在分詞 yendo が赤い文字（不規則な形）で示されています。現在分詞と過去分詞（hablado）は形が似ているので、活用表の「不定形」の欄で並べて確認しましょう。
 
 ## 語彙 (Nociones específicas)
+
+予定や今の様子を話すときに使う、時の表現と動詞です。
 
 <VocabList items={frontmatter.vocabulary} level={frontmatter.level} />
 
 ## 発音・正書法 (Pronunciación y ortografía)
 
-TODO:contenido
+現在分詞は、-ando・-iendo の a・e を強く読みます：hablando（ア・**ブラン**・ド）、comiendo（コ・**ミエン**・ド）。後ろに代名詞をつなげると語が長くなるので、強く読む位置がそのままであることを示すためにアクセント記号をつけます：duchándome（ドゥ・**チャン**・ド・メ）、haciéndolo（ア・**シエン**・ド・ロ）。
 
 ## 日本人がよく間違える
 
-TODO:contenido
+日本語の「〜している」は、進行中の動作だけでなく、状態や結果にも使います。スペイン語の進行形は、進行中の動作にしか使えません。
+
+- **状態の「〜している」に進行形を使う。** ×Estoy sabiendo la respuesta. → ○**Sé** la respuesta.（答えを知っている）。×Mina está casándose.（結婚式の最中）→ ○Mina está **casada**.（結婚している）
+- **未来の予定に進行形を使う。** ×Mañana estoy visitando Toledo. → ○Mañana **voy a visitar** Toledo. 予定は ir a で言います。
+- **ir a の a を落とす。** ×Voy visitar Toledo. → ○Voy **a** visitar Toledo.
 
 ## 文化メモ (Referentes culturales)
 
 <CultureNote>
 
-TODO:contenido
+ミナがトレドで買うつもりのマサパン（mazapán）は、アーモンドと砂糖を主な材料にした伝統菓子で、トレドの修道院で生まれたという言い伝えが残っています。¿Qué vas a comprar en Toledo?（トレドで何を買うの？）と聞かれたら、Voy a comprar mazapán. と答えてみましょう。スペインのお菓子のお土産は、[スペインお土産完全ガイド（食べ物・グルメ編）](/food/souvenirs/)で紹介しています。
 
 </CultureNote>
 
 ## 練習 (Procedimientos de aprendizaje)
 
-### 練習1：認識
+### 練習1：予定？ それとも今していること？
 
-TODO:contenido
+次の文は、予定・予想（ir a）と、今していること（estar + 現在分詞）のどちらですか。
+
+1. Voy a visitar la catedral.
+2. Estoy esperando el autobús.
+3. Va a llover.
+4. Mina está escribiendo un mensaje.
+5. ¿Qué vas a hacer el sábado?
 
 <details>
 <summary>答えを見る</summary>
 
-TODO:contenido
+1. 予定（大聖堂に行くつもり）
+2. 今していること（バスを待っているところ）
+3. 予想（雨が降りそう）
+4. 今していること（メッセージを書いているところ）
+5. 予定（土曜日は何をするの？）
 
 </details>
 
 ### 練習2：穴埋め
 
-TODO:contenido
+（ ）の語を使って、文を完成させてください。
+
+1. Mañana (yo, ir a + comprar) ______ un regalo.
+2. Ahora mismo (yo, estar + comer) ______.
+3. ¿Qué (tú, estar + leer) ______?
+4. El sábado (nosotros, ir a + ir) ______ a la playa.
+5. Mina (estar + dormir) ______.
+6. Mira las nubes. (ir a + llover) ______.
 
 <details>
 <summary>答えを見る</summary>
 
-TODO:contenido
+1. voy a comprar
+2. estoy comiendo
+3. estás leyendo（i → y）
+4. vamos a ir
+5. está durmiendo（o → u）
+6. Va a llover
 
 </details>
 
 ### 練習3：作文
 
-TODO:contenido
+ミナになったつもりで、スペイン語で言ってみましょう。
+
+1. 今、マヨール広場でコーヒーを飲んでいます。
+2. 明日、トレドに行くつもりです。
+3. 次の月曜日に東京に戻ります（ir a + volver）。
 
 <details>
-<summary>答えを見る</summary>
+<summary>解答例を見る</summary>
 
-TODO:contenido
+1. Ahora estoy tomando un café en la Plaza Mayor.
+2. Mañana voy a ir a Toledo.
+3. El próximo lunes voy a volver a Tokio.
 
 </details>
 
@@ -97,4 +263,8 @@ TODO:contenido
 
 ## まとめ
 
-TODO:contenido
+- 予定と状況からの予想は ir a + 動詞の原形（Voy a visitar Toledo. / Va a llover.）。
+- 現在分詞は -ando・-iendo。leyendo、durmiendo、yendo などの形に注意。
+- estar + 現在分詞は「今〜しているところ」。日本語の「知っている」「結婚している」のような状態には使わない。
+
+次のユニット12では、A1 の総復習と DELE A1 の模擬試験に挑戦します。
