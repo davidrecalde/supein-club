@@ -5,96 +5,228 @@ levelName: "Avanzado"
 slug: "review-dele-b2"
 url: "/language/learn-spanish/b2/review-dele-b2/"
 existing: false
-title: "B2 総復習と模擬試験 DELE B2"
-shortTitle: "B2 総復習と模擬試験 DELE B2"
-titleEs: "repaso B2 y simulacro DELE B2"
-grammar: ["repaso"]
-tenses: []
-functions: []
-canDo: []
-vocabulary: []
-verbs: []
-duration: 90
+title: "DELE B2 模擬試験と B2 総復習｜接続法過去・非現実の条件文をチェック"
+shortTitle: "B2 総復習と模擬試験"
+titleEs: "Repaso B2 y simulacro DELE B2"
+description: "DELE B2 と同じ4つのテスト（読解・聴解・作文・会話）で構成したオリジナル模擬試験と、B2 文法の総復習。接続法過去と完了形、非現実の条件文、時制の一致、譲歩、無人称の se、言葉づかいを確認できます。聴解の音声は準備中です。"
+grammar: ["repaso de las unidades 37-47", "simulacro DELE B2"]
+tenses: ["pretérito imperfecto de subjuntivo", "pluscuamperfecto de subjuntivo", "condicional compuesto"]
+functions: ["B2 の文法と語彙を確認する", "DELE B2 の4つのテストを体験する"]
+canDo:
+  - "抽象的な話題についても、論理的に意見を述べたり書いたりできる"
+  - "DELE B2 の4つのテストの形式を知り、それぞれの課題に取り組める"
+  - "B2 の文法の苦手な項目を見つけ、復習するユニットを選べる"
+vocabulary:
+  # rank = «Rango frec.» del diccionario de frecuencias del CORPES XXI (RAE). Lo escribe
+  # npm run vocab:rank -- --write; lo que no es lema del diccionario va sin rank, al final.
+  - { es: "la postura", ja: "立場・姿勢", rank: 2090, example: "Defienda su postura con argumentos." }
+  - { es: "defender", ja: "守る・擁護する", rank: 770, example: "Defiende tu opinión con ejemplos." }
+  - { es: "valorar", ja: "評価する", rank: 1650, example: "Valore las ventajas y los inconvenientes." }
+  - { es: "la reseña", ja: "レビュー・書評", rank: 6539, example: "Escriba una reseña de una película." }
+  - { es: "el ensayo", ja: "小論文・エッセイ", rank: 1379, example: "Redacte un ensayo de opinión." }
+  - { es: "la identidad", ja: "アイデンティティ", rank: 1124, example: "El club es un símbolo de identidad." }
+  - { es: "el símbolo", ja: "象徴", rank: 2248, example: "Es un símbolo de la ciudad." }
+  - { es: "el teletrabajo", ja: "テレワーク", rank: 11129, example: "El teletrabajo tiene ventajas e inconvenientes." }
+  - { es: "la conciliación", ja: "（仕事と家庭の）両立", rank: 7360, example: "La conciliación familiar es muy importante." }
+  - { es: "el aislamiento", ja: "孤立", rank: 3915, example: "Uno de los riesgos es el aislamiento." }
+  - { es: "el rendimiento", ja: "成果・能率", rank: 1693, example: "El rendimiento no siempre baja." }
+  - { es: "plantear", ja: "提起する・持ち出す", rank: 673, example: "Este tema plantea muchas preguntas." }
+  - { es: "el debate", ja: "議論", rank: 966, example: "Es un debate abierto." }
+  - { es: "matizar", ja: "微妙な違いをつける・補足する", rank: 5090, example: "Me gustaría matizar lo que ha dicho." }
+verbs: ["haber", "ser", "tener", "hacer"]
+duration: 150
 prev: 47
 next: 49
-related: [47,49,37]
-cast: ["yui","daniel"]
-audio: []
+related: [47, 49, 37]
+cast: ["yui", "daniel"]
+audio:
+  - "Bienvenidos a «Hablemos de trabajo». Hoy hablamos del teletrabajo."
+  - "Si hubiera sabido que el teletrabajo era tan cómodo, lo habría pedido antes."
+  - "Aunque trabajar desde casa tenga ventajas, también plantea problemas."
+  - "Me gustaría matizar lo que ha dicho."
 youtubeId: ""
-quiz: []
 draft: true
 updated: "2026-11-02"
+quiz:
+  - question: "「もし時間があれば、修士課程に行くのに」。正しいのは？"
+    options: ["Si tendría tiempo, haría un máster.", "Si tuviera tiempo, haría un máster.", "Si tengo tiempo, haría un máster."]
+    correctIndex: 1
+    explanation: "現在の事実に反する仮定は si + 接続法過去 + 過去未来。→ ユニット38"
+  - question: "「もっと勉強していればよかった」。正しいのは？"
+    options: ["Ojalá hubiera estudiado más.", "Ojalá he estudiado más.", "Ojalá estudiaba más."]
+    correctIndex: 0
+    explanation: "過去の後悔は ojalá + 接続法過去完了。→ ユニット39"
+  - question: "「指導教員はタイトルを変えるよう頼んだ」。正しいのは？"
+    options: ["Me pidió que cambie el título.", "Me pidió que cambiara el título.", "Me pidió que cambiaría el título."]
+    correctIndex: 1
+    explanation: "主節が過去なら接続法過去。→ ユニット40"
+  - question: "「たとえ雨が降っても、行く」。正しいのは？"
+    options: ["Aunque llueve, iré.", "Aunque llueva, iré.", "Aunque lloverá, iré."]
+    correctIndex: 1
+    explanation: "仮定の譲歩は aunque + 接続法。→ ユニット41"
+  - question: "「（彼は今いない）もう出かけたのだろう」。正しいのは？"
+    options: ["Habrá salido.", "Saldrá.", "Habría salido mañana."]
+    correctIndex: 0
+    explanation: "現在完了の推量は未来完了。→ ユニット42"
+  - question: "「結局、チームで一番の選手になった」。正しいのは？"
+    options: ["Acabó siendo el mejor.", "Acabó de ser el mejor.", "Acabó ser el mejor."]
+    correctIndex: 0
+    explanation: "acabar + 現在分詞は「結局〜することになる」。→ ユニット43"
+  - question: "「ウェイターを2名募集」。正しいのは？"
+    options: ["Se buscan a dos camareros.", "Se busca a dos camareros.", "Se busca dos camareros."]
+    correctIndex: 1
+    explanation: "a + 人なら無人称の se で単数。→ ユニット44"
+  - question: "大学への改まったメールの結びとして適切なのは？"
+    options: ["Un abrazo.", "Atentamente.", "Besos."]
+    correctIndex: 1
+    explanation: "改まったメールは Atentamente で結びます。→ ユニット45"
+  - question: "「バスクとリオハ。後者はワインで有名だ」。（ ）に入るのは？「(　) es famosa por sus vinos.」"
+    options: ["Esta última", "El primero", "Esto"]
+    correctIndex: 0
+    explanation: "二つのうち後の方は esta última。→ ユニット46"
+  - question: "「Meter la pata」の意味は？"
+    options: ["へまをする", "手伝う", "からかう"]
+    correctIndex: 0
+    explanation: "meter la pata は「へまをする・失言する」。→ ユニット47"
 ---
 
-TODO:contenido（導入：このユニットの問いに、それだけで答えになる2文で答える）
+このユニットは、B2（Avanzado）レベルの総まとめです。前半でユニット37〜47の文法をふり返り、後半では DELE B2 と同じ4つのテスト（読解・聴解・作文・会話）で構成した、当サイトオリジナルの模擬試験に挑戦します。
 
-## 文法 (Gramática)
+B2 では、接続法過去とその完了形、非現実の条件文、時制の一致を中心に、譲歩や推量、言葉づかい、文章の結束性まで学び、抽象的な話題でも論理的に意見を述べられるようになりました。問題の分量は本番より少なく、形式に慣れるための練習です。試験の構成や時間は [DELE B2 対策](/language/learn-spanish/dele/b2/)で確認してください。
 
-TODO:contenido
+## 文法：B2 の総復習 (Gramática)
+
+B2 で学んだ文法を、一覧で確認しましょう。ミニテストで間違えた問題には、復習するユニットの番号を示しています。
+
+| 項目 | ポイント | ユニット |
+| --- | --- | --- |
+| 接続法過去 | 点過去3人称複数から作る（tuviera、fuera） | 37 |
+| 条件文②非現実 | si + 接続法過去 + 過去未来、si + hubiera + habría | 38 |
+| 接続法の完了形 | haya hecho、hubiera hecho、Ojalá hubiera… | 39 |
+| 時制の一致 | 主節が過去・過去未来なら接続法過去 | 40 |
+| 譲歩・目的・結果 | aunque + 直説法／接続法、de modo que | 41 |
+| 未来完了・過去未来完了と推量 | habrá salido、estaría cansado | 42 |
+| 動詞句とアスペクト | ir + 現在分詞、acabar + 現在分詞、soler | 43 |
+| 再帰受動と無人称の se | Se venden pisos / Se busca a dos camareros | 44 |
+| フォーマルとインフォーマル | tú / usted、Estimado/a…: Atentamente | 45 |
+| テキストの結束性 | este último、dicho、同義語、省略 | 46 |
+| 慣用表現 | ser pan comido、meter la pata | 47 |
+
+B2 のポイントは、時制と法（直説法・接続法）を組み合わせて、事実・仮定・推量・後悔を細かく言い分けることです。作文と会話では、それを談話標識と結束性の技術でまとまりのある文章にできるかが評価されます。
+
+**ダニエル（バレンシア出身）のひとこと：** DELE B2 の会話テストでは、試験官があえて反対の意見を出してくることがあります。Entiendo su punto de vista, pero me gustaría matizar…（おっしゃることはわかりますが、補足したいのは…）のように、相手の意見を受けとめてから自分の意見を述べると、B2 らしい落ち着いたやり取りになります。
 
 ## 活用：今日の動詞 (Conjugación)
 
-TODO:contenido
+B2 で特に大切な形を復習しましょう。接続法過去と完了形の助動詞としての [haber](/language/learn-spanish/verb-conjugation/haber/)（hubiera、habría、habrá）、接続法過去の [ser](/language/learn-spanish/verb-conjugation/ser/)（fuera）、[tener](/language/learn-spanish/verb-conjugation/tener/)（tuviera）、[hacer](/language/learn-spanish/verb-conjugation/hacer/)（hiciera）です。活用表の「接続法過去」「接続法過去完了」「過去未来完了」の欄を、まとめて確認しておきましょう。
 
 ## 語彙 (Nociones específicas)
+
+DELE B2 の課題や、社会的なテーマの議論でよく出てくる語です。
 
 <VocabList items={frontmatter.vocabulary} level={frontmatter.level} />
 
 ## 発音・正書法 (Pronunciación y ortografía)
 
-TODO:contenido
+B2 の作文では、つづりと句読点の小さなミスも評価に影響します。接続法過去の nosotros（tuviéramos、hubiéramos）のアクセント記号、aun と aún、este と esto の使い分け、談話標識の前後のコンマを、書き終えたあとに必ず見直しましょう。会話では、長い文でも息つぎの位置を考えて、意味のまとまりごとに区切って話すと伝わりやすくなります。
 
 ## 日本人がよく間違える
 
-TODO:contenido
+B2 の模擬試験で特に多い間違いを、三つふり返ります。
+
+- **si のあとに過去未来を使う。** ×Si tendría tiempo… → ○Si **tuviera** tiempo…（ユニット38）
+- **過去の主節に接続法現在を使う。** ×Me pidió que cambie… → ○Me pidió que **cambiara**…（ユニット40）
+- **同じ名詞をくり返す。** ×El teletrabajo… El teletrabajo… → ○El teletrabajo… **Esta modalidad**…（ユニット46）
 
 ## 文化メモ (Referentes culturales)
 
 <CultureNote>
 
-TODO:contenido
+DELE B2 の読解では、スポーツや文化を社会的な視点から論じる文章も出題されます。たとえば FCバルセロナのモットー「Més que un club」は、カタルーニャ語で「クラブ以上の存在」という意味です。El club se ha convertido en un símbolo de identidad que va más allá del deporte.（クラブはスポーツを超えたアイデンティティの象徴になっている）のような文を読み解く力が求められます。クラブの歴史とその哲学は、[FCバルセロナ完全ガイド](/football/fcbarcelona/)で紹介しています。
 
 </CultureNote>
 
-## 練習 (Procedimientos de aprendizaje)
+## 練習：DELE B2 ミニ模擬試験 (Procedimientos de aprendizaje)
 
-### 練習1：認識
+### テスト1：読解（Comprensión de lectura）
 
-TODO:contenido
+**課題.** テレワークについての意見文を読んで、質問に a・b・c で答えてください。
 
-<details>
-<summary>答えを見る</summary>
+Hace unos años, pocos habrían imaginado que tantas personas acabarían trabajando desde casa. Aunque el teletrabajo tenga ventajas evidentes, como la conciliación familiar o el ahorro de tiempo, también plantea problemas. Por un lado, muchos trabajadores dicen que su rendimiento no ha bajado; por otro, algunos echan de menos el contacto con sus compañeros. Dicho aislamiento puede afectar a la salud mental, de modo que las empresas deberían buscar un equilibrio. Si se combinaran días en casa y días en la oficina, se aprovecharían las ventajas de ambas modalidades.
 
-TODO:contenido
-
-</details>
-
-### 練習2：穴埋め
-
-TODO:contenido
+1. Según el texto, hace unos años… a) todos teletrabajaban.　b) pocos imaginaban el teletrabajo actual.　c) el teletrabajo era obligatorio.
+2. ¿Qué ventaja menciona? a) el ahorro de tiempo　b) un sueldo más alto　c) menos reuniones
+3. ¿Qué problema menciona? a) el aislamiento　b) el ruido　c) el precio de internet
+4. ¿Qué propone el autor? a) volver a la oficina siempre　b) combinar casa y oficina　c) prohibir el teletrabajo
+5. «Dicho aislamiento» se refiere a… a) la falta de contacto con los compañeros　b) la conciliación　c) el ahorro de tiempo
 
 <details>
 <summary>答えを見る</summary>
 
-TODO:contenido
+1. b（pocos habrían imaginado…：過去未来完了の推量）
+2. a（el ahorro de tiempo）
+3. a（el aislamiento）
+4. b（Si se combinaran días en casa y días en la oficina…：非現実の条件文）
+5. a（dicho で前の内容を受ける結束性：ユニット46）
 
 </details>
 
-### 練習3：作文
+### テスト2：聴解（Comprensión auditiva）
 
-TODO:contenido
+音声準備中です。今は下のスクリプトを読んで、聞いているつもりで答えを考えてみましょう。
+
+**課題.** ラジオ番組の一部です。ゲストはテレワークについてどう考えていますか。前は何を知らなかったと言っていますか。
 
 <details>
-<summary>答えを見る</summary>
+<summary>スクリプトと答えを見る</summary>
 
-TODO:contenido
+Bienvenidos a «Hablemos de trabajo». Hoy hablamos del teletrabajo con Marta, que trabaja desde casa desde hace dos años. «Si hubiera sabido que el teletrabajo era tan cómodo, lo habría pedido antes. Aunque trabajar desde casa tenga ventajas, también plantea problemas: a veces me siento sola. Por eso, voy a la oficina dos días a la semana».
+
+答え：テレワークは快適だが、孤独を感じるという問題もあると考えている。週に2日はオフィスに行っている。前は、テレワークがこんなに快適だとは知らなかった（Si hubiera sabido…）。
 
 </details>
+
+### テスト3：作文（Expresión e interacción escritas）
+
+**課題1.** 友人から「テレワークの仕事に応募するか迷っている」というメールが届きました。あなたの経験や知識をもとに、アドバイスを書いてください（150〜180語）。
+
+**課題2.** 「若者はもっと外国に住む経験をするべきか」について、意見文を書いてください（150〜180語）。賛否の両面を示し、自分の立場と理由を述べましょう。
+
+<details>
+<summary>解答例を見る（課題2・冒頭）</summary>
+
+Hoy en día, cada vez más jóvenes deciden vivir en el extranjero. Aunque esta experiencia tenga algunos inconvenientes, considero que sus ventajas son mucho mayores. En primer lugar, vivir fuera permite aprender un idioma de verdad. En segundo lugar, obliga a salir de la zona de confort. Si yo no hubiera vivido en Salamanca, nunca habría desarrollado la confianza que tengo ahora…
+
+（今日、外国に住むことを選ぶ若者がますます増えている。この経験にはいくつかの不都合があるとしても、その利点の方がはるかに大きいと私は考える。第一に、外国に住めば、本当に言語を身につけることができる。第二に、慣れた環境から出ることを余儀なくされる。もし私がサラマンカに住んでいなかったら、今のような自信を身につけることは決してなかっただろう…）
+
+</details>
+
+### テスト4：会話（Expresión e interacción orales）
+
+**課題1.** 「テレワーク」について、賛成・反対の論点を挙げながら、3〜4分で意見を述べてください。
+
+**課題2.** 試験官と議論してください。試験官は「テレワークは会社にとって損失だ」と主張します。相手の意見を受けとめたうえで、反論してください。
+
+<details>
+<summary>解答例を見る（課題2）</summary>
+
+- Examinador: Creo que el teletrabajo es una pérdida para las empresas.
+- Candidato: Entiendo su punto de vista, pero me gustaría matizarlo. Es cierto que algunos trabajadores se sienten aislados; sin embargo, muchos trabajadores dicen que su rendimiento no ha bajado. Por lo tanto, yo no diría que es una pérdida, sino un cambio que hay que gestionar bien.
+
+</details>
+
+会話テストの流れや、試験官とのやり取りのコツは、[DELE面接・口頭試験 完全対策ガイド](/language/learn-spanish/dele-oral-interview-guide/)でくわしく紹介しています。
 
 ## ミニテスト
+
+B2 の文法の総まとめです。7問以上正解でこのユニットは完了です。間違えた問題は、解説のユニットに戻って復習しましょう。
 
 <MiniQuiz quiz={frontmatter.quiz} unit={frontmatter.unit} />
 
 ## まとめ
 
-TODO:contenido
+- B2 の中心は接続法過去とその完了形：非現実の条件文、後悔、時制の一致。
+- 譲歩・推量・アスペクト・無人称の se で、事実と仮定、推量を細かく言い分けられるようになった。
+- 作文と会話では、言葉づかいと結束性に気を配り、相手の意見を受けとめてから自分の立場を述べる。
+
+次のユニット49からは C1 Dominio operativo eficaz です。接続法のさらに細かな使い分けと、文体の幅を広げていきます。
