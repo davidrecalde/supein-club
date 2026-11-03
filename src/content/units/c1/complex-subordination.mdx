@@ -5,89 +5,246 @@ levelName: "Dominio operativo eficaz"
 slug: "complex-subordination"
 url: "/language/learn-spanish/c1/complex-subordination/"
 existing: false
-title: "複文の構築"
+title: "スペイン語の lo cual・el cual の使い方｜強調構文と複文の組み立て"
 shortTitle: "複文の構築"
 titleEs: "subordinación compleja"
+description: "スペイン語の書き言葉で長く論理的な文を組み立てる方法。el cual・lo cual などの関係詞、Fue en 2008 cuando… の強調構文、como・siempre y cuando の条件、dado que・de ahí que の原因と帰結を例文で解説します。"
 grammar: ["subordinación"]
-tenses: []
-functions: []
-canDo: []
-vocabulary: []
-verbs: []
+tenses: ["presente de subjuntivo", "pretérito imperfecto de subjuntivo"]
+functions: ["論理的に説明する", "情報を強調する"]
+canDo:
+  - "el cual・lo cual や前置詞つきの関係詞を使って、情報の多い文を書き言葉で組み立てられる"
+  - "強調構文（Fue en 2008 cuando…）で、伝えたい情報を際立たせられる"
+  - "条件・原因・帰結を表す改まった接続表現を、法を正しく選んで使える"
+vocabulary:
+  # rank = «Rango frec.» del diccionario de frecuencias del CORPES XXI (RAE). Lo escribe
+  # npm run vocab:rank -- --write; lo que no es lema del diccionario va sin rank, al final.
+  - { es: "la época", ja: "時代", rank: 595, example: "Fue una época dorada para la selección." }
+  - { es: "la causa", ja: "原因", rank: 503, example: "La causa del retraso fue la lluvia." }
+  - { es: "la condición", ja: "条件", rank: 280, example: "Acepto con una condición." }
+  - { es: "la consecuencia", ja: "結果・帰結", rank: 644, example: "Fue la consecuencia de muchos años de trabajo." }
+  - { es: "el estilo", ja: "スタイル", rank: 773, example: "El equipo cambió de estilo." }
+  - { es: "la selección", ja: "代表チーム", rank: 591, example: "La selección ganó la Eurocopa." }
+  - { es: "consolidar", ja: "確立する・固める", rank: 2170, example: "Aquel título consolidó un estilo de juego." }
+  - { es: "puesto que", ja: "〜なので（改まった言い方）", rank: 2089, example: "Puesto que no hay tiempo, empecemos." }
+  - { es: "dado que", ja: "〜であるから", rank: 2351, example: "Dado que el plazo termina mañana, hay que darse prisa." }
+  - { es: "gracias a", ja: "〜のおかげで", rank: 570, example: "Gracias a su trabajo, lo conseguimos." }
+  - { es: "de ahí que", ja: "だから〜なのだ（+ 接続法）", rank: 4127, example: "No durmió; de ahí que esté cansado." }
+  - { es: "siempre y cuando", ja: "〜という条件でのみ（+ 接続法）", rank: 4896, example: "Te lo presto siempre y cuando me lo devuelvas." }
+  - { es: "con tal de que", ja: "〜さえすれば（+ 接続法）", example: "Con tal de que llegues a tiempo, no importa." }
+  - { es: "salvo que", ja: "〜でない限り（+ 接続法）", example: "Iremos mañana, salvo que llueva." }
+verbs: ["ser", "decir"]
 duration: 40
 prev: 50
 next: 52
 related: [50,52,56]
 cast: ["daniel","carmen"]
-audio: []
+audio:
+  - "Llovió toda la semana, lo cual nos obligó a cambiar de planes."
+  - "Fue en 2008 cuando España ganó su segunda Eurocopa."
+  - "Como no estudies, suspenderás."
+  - "El equipo apenas descansó; de ahí que llegara cansado a la final."
 youtubeId: ""
-quiz: []
+quiz:
+  - question: "「雨が一週間降り続き、そのせいで予定を変えなければならなかった」。「Llovió toda la semana, (　) nos obligó a cambiar de planes.」"
+    options: ["el cual", "lo cual", "cuyo"]
+    correctIndex: 1
+    explanation: "前の文全体の内容を受けるときは、性のない lo cual（または lo que）を使います。"
+  - question: "「それは、多くの人が意見を変えるきっかけになった考えだ」。「Es una idea (　) muchos cambiaron de opinión.」"
+    options: ["gracias a cual", "gracias a que", "gracias a la cual"]
+    correctIndex: 2
+    explanation: "gracias a のような長い前置詞句のあとでは、el cual / la cual が自然です。idea は女性名詞なので la cual。"
+  - question: "「私が読んだ本はおもしろかった」。正しいのは？"
+    options: ["El libro que leí era interesante.", "El libro el cual leí era interesante.", "El libro lo que leí era interesante."]
+    correctIndex: 0
+    explanation: "コンマのない関係節（限定用法）で、前置詞がないときは que だけを使います。el cual は使えません。"
+  - question: "「スペインがW杯で初優勝したのは2010年だった」。強調構文で正しいのは？"
+    options: ["Fue en 2010 donde España ganó su primer Mundial.", "Fue en 2010 cuando España ganó su primer Mundial.", "Fue en 2010 quien España ganó su primer Mundial."]
+    correctIndex: 1
+    explanation: "強調する要素が時なら cuando、場所なら donde、人なら quien を使います。"
+  - question: "「勉強しないと、落ちるよ」（警告）。正しいのは？"
+    options: ["Como no estudies, suspenderás.", "Como no estudiarás, suspenderás.", "Como no estudiar, suspenderás."]
+    correctIndex: 0
+    explanation: "como + 接続法は「〜しないと（大変なことになる）」という警告の条件です。"
+  - question: "「返してくれるという条件でなら、貸すよ」。正しいのは？"
+    options: ["Te lo presto siempre y cuando me lo devuelves.", "Te lo presto siempre y cuando devolvérmelo.", "Te lo presto siempre y cuando me lo devuelvas."]
+    correctIndex: 2
+    explanation: "siempre y cuando（〜という条件でのみ）のあとは接続法です。"
+  - question: "「チームはほとんど休めなかった。だから決勝で疲れていたのだ」。正しいのは？"
+    options: ["…de ahí que llegara cansado a la final.", "…de ahí que llegó cansado a la final.", "…de ahí llegara cansado a la final."]
+    correctIndex: 0
+    explanation: "de ahí que（だから〜なのだ）のあとは接続法です。主節が過去なので接続法過去の llegara。"
+  - question: "「締め切りは明日なので、急がなければならない」（書き言葉）。正しいのは？"
+    options: ["Dado que el plazo termine mañana, hay que darse prisa.", "Dado que el plazo termina mañana, hay que darse prisa.", "Dado el plazo termina mañana, hay que darse prisa."]
+    correctIndex: 1
+    explanation: "dado que・puesto que・ya que は、すでにわかっている理由を述べるので直説法です。"
+  - question: "「会議が終わると、私たちは帰った」。正しいのは？"
+    options: ["Terminado la reunión, nos fuimos.", "Terminadas la reunión, nos fuimos.", "Terminada la reunión, nos fuimos."]
+    correctIndex: 2
+    explanation: "過去分詞の独立構文では、過去分詞を名詞（la reunión）の性と数に合わせます：terminada。"
+  - question: "「Los alumnos, que estudiaron, aprobaron.」の意味は？"
+    options: ["生徒たちは（みんな）勉強して、合格した", "勉強した生徒だけが合格した", "生徒たちは勉強しなかったが、合格した"]
+    correctIndex: 0
+    explanation: "コンマのある関係節（説明用法）は、生徒全員についての補足です。コンマがなければ「勉強した生徒だけ」という意味になります。"
 draft: true
 updated: "2026-11-02"
 ---
 
-TODO:contenido（導入：このユニットの問いに、それだけで答えになる2文で答える）
+スペイン語の複文（oraciones compuestas）を組み立てるには、関係詞と接続表現で情報をつなぎ、一つの文の中で原因・条件・帰結の関係をはっきり示します。書き言葉では el cual・lo cual などの関係詞や、Fue en 2008 cuando…（〜したのは2008年だった）の強調構文、dado que・de ahí que のような改まった接続表現がよく使われます。
 
-## 文法 (Gramática)
+関係代名詞の基本（que、quien、donde、cuyo）はユニット31で、条件の基本はユニット30で学びました。このユニットでは、カルメン先生が学生の作文を添削する場面を例に、C1 らしい長く論理的な文の組み立て方を学びます。
 
-TODO:contenido
+## 文法：複文の構築 (Gramática)
+
+書き言葉の関係詞、強調構文、複雑な条件、原因と帰結の四つに分けて見ていきましょう。
+
+### 書き言葉の関係詞：el cual と lo cual
+
+el cual（la cual、los cuales、las cuales）は el que と同じ意味ですが、より改まった書き言葉です。特に、長い前置詞句のあとやコンマのある関係節で使います。
+
+| 使う場面 | 例 |
+| --- | --- |
+| 長い前置詞句のあと | Es una idea gracias a la cual muchos cambiaron de opinión. |
+| 短い前置詞のあと | La sala en la cual (en la que) se celebró la reunión era pequeña. |
+| コンマのある関係節 | Hablé con la directora, la cual me dio la razón. |
+| 前の文全体を受ける | Llovió toda la semana, lo cual nos obligó a cambiar de planes. |
+
+コンマのない関係節で前置詞もないときは、el cual は使えません：×El libro el cual leí → ○El libro que leí. また、según el cual（それによれば）、a través del cual（それを通じて）、durante el cual（その間に）は、論文や報道でよく使う組み合わせです。
+
+### 強調構文：Fue en 2008 cuando…
+
+ser + 強調したい要素 + 関係詞の形で、文の一部を際立たせます。強調する要素の種類によって、関係詞が変わります。
+
+<Examples>
+
+- Fue en 2008 cuando España ganó su segunda Eurocopa.（スペインが2度目の欧州選手権を制したのは2008年だった）
+- Fue Luis Aragonés quien cambió el estilo del equipo.（チームのスタイルを変えたのはルイス・アラゴネスだった）
+- Es en Madrid donde vive mi familia.（私の家族が住んでいるのはマドリードだ）
+
+</Examples>
+
+時は cuando、場所は donde、人は quien（el que）、方法は como です。ser の時制は、ふつう後ろの動詞の時制に合わせます（Fue… ganó）。
+
+### 複雑な条件
+
+| 表現 | 意味 | 例 |
+| --- | --- | --- |
+| como + 接続法 | 〜しないと（警告） | Como no estudies, suspenderás. |
+| siempre y cuando + 接続法 | 〜という条件でのみ | Te lo presto siempre y cuando me lo devuelvas. |
+| con tal de que + 接続法 | 〜さえすれば | Con tal de que llegues a tiempo, no importa. |
+| salvo que / a no ser que + 接続法 | 〜でない限り | Iremos mañana, salvo que llueva. |
+| 現在分詞 | 〜すれば | Saliendo ahora, llegaremos a tiempo. |
+
+como は文頭で直説法なら「〜なので」（Como llovía, no salimos.）、接続法なら「〜しないと」という条件になります。法で意味が変わる、C1 らしい表現です。
+
+### 原因と帰結
+
+dado que・puesto que・ya que は、聞き手もわかっている理由を述べる改まった言い方で、直説法を使います：Dado que el plazo termina mañana, hay que darse prisa. 帰結を「だから〜なのだ」と説明する de ahí que のあとは、接続法です：El equipo apenas descansó; de ahí que llegara cansado a la final.
+
+過去分詞の独立構文も、書き言葉で時や条件を短く表すのに便利です：Terminada la reunión, nos fuimos.（会議が終わると、私たちは帰った）。Una vez firmado el contrato, empezaremos.（契約が結ばれたら、始めましょう）。過去分詞は名詞の性と数に合わせます。
+
+### カルメン先生の添削
+
+学生が書いた短い文章を、カルメン先生が一緒に書き直しました。
+
+**添削前：**
+España ganó la Eurocopa en 2008. El entrenador era Luis Aragonés. Él cambió el estilo del equipo. Es por eso que la selección empezó a ganar.
+
+**添削後：**
+Fue en 2008, con Luis Aragonés en el banquillo, cuando España ganó su segunda Eurocopa. El entrenador, quien había cambiado el estilo del equipo, abrió así una época de éxitos, lo cual consolidó una forma de jugar que aún hoy se asocia con la selección.
+
+- Carmen: Has escrito «Es por eso que». En un texto formal, mejor «Por eso» o «Es por eso por lo que».（「Es por eso que」と書いたわね。改まった文章では「Por eso」か「Es por eso por lo que」の方がいいわ）
+
+添削後の文では、強調構文（Fue en 2008… cuando）、コンマのある関係節（quien había cambiado）、前の内容を受ける lo cual、限定の que を組み合わせ、四つの短い文を二つの文にまとめています。
+
+**ダニエル（バレンシア出身）のひとこと：** 話し言葉では Es por eso que… もよく耳にしますし、中南米ではさらに一般的です。ただ、RAE は改まった文章では Es por eso por lo que… か、単に Por eso… を使うよう勧めています。DELE の作文では避けておくのが安全です。
 
 ## 活用：今日の動詞 (Conjugación)
 
-TODO:contenido
+強調構文の中心は [ser](/language/learn-spanish/verb-conjugation/ser/) です。後ろの動詞の時制に合わせて es / fue / era を選ぶので、ser の現在形・点過去・線過去を活用表で確認しましょう。また、報告や論文で使う según el cual や Se dice que… の [decir](/language/learn-spanish/verb-conjugation/decir/) も、点過去（dijo、dijeron）の不規則な形をおさえておきましょう。
 
 ## 語彙 (Nociones específicas)
+
+原因・条件・帰結を表す名詞と接続表現、それにスポーツの歴史を語るときの語です。
 
 <VocabList items={frontmatter.vocabulary} level={frontmatter.level} />
 
 ## 発音・正書法 (Pronunciación y ortografía)
 
-TODO:contenido
+関係節の前のコンマは、意味を変えます。Los alumnos que estudiaron aprobaron.（勉強した生徒は合格した：勉強しなかった生徒もいる）は限定用法、Los alumnos, que estudiaron, aprobaron.（生徒たちは勉強して合格した：全員）は説明用法です。読むときも、コンマのところで短く間を置き、説明用法の関係節を少し低い声で読みます。
 
 ## 日本人がよく間違える
 
-TODO:contenido
+- **限定用法に el cual を使う。** ×El libro el cual leí era interesante. → ○El libro **que** leí era interesante.
+- **強調構文の関係詞を que にする。** ×Fue en 2010 que España ganó. → ○Fue en 2010 **cuando** España ganó.
+- **de ahí que のあとに直説法を使う。** ×De ahí que llegó cansado. → ○De ahí que **llegara** cansado.
 
 ## 文化メモ (Referentes culturales)
 
 <CultureNote>
 
-TODO:contenido
+スペイン代表の歴史は、複文の練習にぴったりの題材です。La selección, cuyo primer gran título fue la Eurocopa de 1964, tuvo que esperar 44 años para ganar la segunda.（最初の大きなタイトルが1964年の欧州選手権だった代表チームは、2度目まで44年待たなければならなかった）。2008年にルイス・アラゴネスのもとで生まれ変わったチームのパスサッカーは「ティキ・タカ」と呼ばれますが、この言葉はもともと、やや否定的な意味で使われていたそうです。代表の歩みは、[スペイン代表の歴史とタイトル](/football/spain-national-team/)で紹介しています。
 
 </CultureNote>
 
 ## 練習 (Procedimientos de aprendizaje)
 
-### 練習1：認識
+### 練習1：意味を見分ける
 
-TODO:contenido
+それぞれの文の意味を選んでください。
+
+1. Como no vengas, me enfado.（a. 来ないなら怒るよ　b. 来ないので怒っている）
+2. Como no viniste, me enfadé.（a. 来ないなら怒るよ　b. 君が来なかったので怒った）
+3. Los vecinos que tenían perro protestaron.（a. 犬を飼っている住民だけが抗議した　b. 住民は皆、犬を飼っていて抗議した）
+4. Fue Carmen quien me corrigió el texto.（a. 文章を直してくれたのはカルメンだった　b. カルメンは文章を直さなかった）
 
 <details>
 <summary>答えを見る</summary>
 
-TODO:contenido
+1. a（como + 接続法：警告）
+2. b（como + 直説法：原因）
+3. a（コンマなし：限定用法）
+4. a（強調構文）
 
 </details>
 
 ### 練習2：穴埋め
 
-TODO:contenido
+（ ）に入る語を選んでください（lo cual / la cual / cuando / donde / de ahí que / siempre y cuando）。
+
+1. Fue en Salamanca (　) aprendí a escribir en español.
+2. Fue entonces (　) entendí el problema.
+3. Perdí el tren, (　) me obligó a coger un taxi.
+4. Es la razón por (　) no vine.
+5. Te ayudo, (　) me lo pidas con tiempo.
+6. No ha dormido; (　) esté de mal humor.
 
 <details>
 <summary>答えを見る</summary>
 
-TODO:contenido
+1. donde（場所の強調）
+2. cuando（時の強調）
+3. lo cual（前の文全体）
+4. la cual（la razón は女性名詞）
+5. siempre y cuando（条件）
+6. de ahí que（帰結＋接続法）
 
 </details>
 
 ### 練習3：作文
 
-TODO:contenido
+二つの文を、（ ）の表現を使って一つにしてください。
+
+1. Llovió mucho. Por eso se suspendió el partido.（lo cual）
+2. España ganó su primer Mundial en 2010.（強調構文：Fue en 2010…）
+3. Puedes salir. Pero tienes que volver antes de las diez.（siempre y cuando）
 
 <details>
-<summary>答えを見る</summary>
+<summary>解答例を見る</summary>
 
-TODO:contenido
+1. Llovió mucho, lo cual provocó la suspensión del partido.
+2. Fue en 2010 cuando España ganó su primer Mundial.
+3. Puedes salir siempre y cuando vuelvas antes de las diez.
 
 </details>
 
@@ -97,4 +254,8 @@ TODO:contenido
 
 ## まとめ
 
-TODO:contenido
+- el cual・lo cual は書き言葉の関係詞。長い前置詞句のあと、コンマのある関係節、前の文全体を受けるときに使う。
+- 強調構文は ser + 要素 + cuando / donde / quien。改まった文章では Es por eso que を避ける。
+- como・siempre y cuando・con tal de que・de ahí que は接続法、dado que・puesto que は直説法。
+
+次のユニット52では、tomar una decisión のような語と語の自然な組み合わせ（コロケーション）を学びます。

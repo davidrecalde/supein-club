@@ -5,89 +5,245 @@ levelName: "Dominio operativo eficaz"
 slug: "aspect-nuance"
 url: "/language/learn-spanish/c1/aspect-nuance/"
 existing: false
-title: "アスペクトとニュアンス"
+title: "スペイン語の supe と sabía の違い｜点過去・線過去のニュアンス"
 shortTitle: "アスペクトとニュアンス"
 titleEs: "valores aspectuales"
+description: "スペイン語の supe（知った）と sabía（知っていた）のように、点過去と線過去の選択で意味が変わる動詞と、線過去の婉曲・予定・報道の用法、現在形と現在完了の特別な使い方を、例文で解説します。"
 grammar: ["aspecto","perífrasis"]
-tenses: []
-functions: []
-canDo: []
-vocabulary: []
-verbs: []
+tenses: ["pretérito indefinido", "pretérito imperfecto", "presente", "pretérito perfecto"]
+functions: ["ニュアンスの違いを伝える", "出来事を語る・報じる"]
+canDo:
+  - "点過去と線過去の選択で生まれる意味の違い（supe / sabía など）を理解し、使い分けられる"
+  - "線過去の婉曲・予定・報道の用法を、文脈から読み取れる"
+  - "現在形と現在完了の特別な用法を、話し言葉と書き言葉で使い分けられる"
+vocabulary:
+  # rank = «Rango frec.» del diccionario de frecuencias del CORPES XXI (RAE). Lo escribe
+  # npm run vocab:rank -- --write; lo que no es lema del diccionario va sin rank, al final.
+  - { es: "el matiz", ja: "ニュアンス", rank: 4490, example: "Hay un matiz importante entre «sabía» y «supe»." }
+  - { es: "el aspecto", ja: "アスペクト・側面", rank: 561, example: "El aspecto del verbo cambia el sentido." }
+  - { es: "la intención", ja: "意図", rank: 1036, example: "Tenía la intención de llamarte." }
+  - { es: "el intento", ja: "試み", rank: 1474, example: "Fue un intento fallido." }
+  - { es: "lograr", ja: "成し遂げる", rank: 189, example: "Por fin logró aprobar el examen." }
+  - { es: "negarse", ja: "拒む（negarse a + 原形）", rank: 1072, example: "Se negó a firmar el contrato." }
+  - { es: "enterarse", ja: "（情報を）知る・耳にする", rank: 2739, example: "Me enteré de la noticia por la radio." }
+  - { es: "el resultado", ja: "結果", rank: 180, example: "Supe el resultado esta mañana." }
+  - { es: "el proceso", ja: "過程", rank: 146, example: "El imperfecto describe el proceso." }
+  - { es: "la costumbre", ja: "習慣", rank: 2225, example: "Tenía la costumbre de leer el periódico." }
+  - { es: "soñar", ja: "夢を見る", rank: 2512, example: "Soñé que volaba sobre Madrid." }
+  - { es: "fundar", ja: "創設する", rank: 2087, example: "El club se fundó en 1903." }
+  - { es: "el banquillo", ja: "ベンチ・監督の座", rank: 4838, example: "Simeone dirige el equipo desde el banquillo." }
+  - { es: "darse cuenta", ja: "気づく（darse cuenta de）", example: "Me di cuenta del error demasiado tarde." }
+verbs: ["saber", "conocer", "querer", "poder", "tener"]
 duration: 40
 prev: 49
 next: 51
 related: [49,51,56]
 cast: ["daniel","carmen"]
-audio: []
+audio:
+  - "Perdone, venía a preguntarle una cosa sobre el examen."
+  - "Ayer quise llamarla, pero no pude."
+  - "Justo iba a escribirte un correo."
+  - "Lo supe esta mañana: has aprobado."
 youtubeId: ""
-quiz: []
+quiz:
+  - question: "「昨日、その知らせを知った」。正しいのは？"
+    options: ["Ayer sabía la noticia.", "Ayer supe la noticia.", "Ayer he sabido la noticia."]
+    correctIndex: 1
+    explanation: "「知った」（その時点で情報を得た）は点過去の supe。sabía は「知っていた」という状態です。ayer があるので、スペインでも現在完了は使いません。"
+  - question: "「2010年に妻と知り合った」。正しいのは？"
+    options: ["Conocí a mi mujer en 2010.", "Conocía a mi mujer en 2010.", "He conocido a mi mujer en 2010."]
+    correctIndex: 0
+    explanation: "「知り合った」は点過去の conocí。conocía は「（すでに）知り合いだった」という状態です。"
+  - question: "「彼は来るのを拒んだ」。正しいのは？"
+    options: ["No quería venir.", "No ha querido venir ayer.", "No quiso venir."]
+    correctIndex: 2
+    explanation: "否定の点過去 no quiso は「拒んだ」。no quería は「来たくなかった」という気持ちで、実際に来たかどうかはわかりません。"
+  - question: "「行かなければならなかった（そして実際に行った）」。正しいのは？"
+    options: ["Tenía que ir.", "Tuve que ir.", "Tengo que ir."]
+    correctIndex: 1
+    explanation: "tuve que は義務を果たしたことまで表します。tenía que は義務があったことだけで、行ったかどうかは文脈しだいです。"
+  - question: "店員に「お願いしたいことがあるのですが」と丁寧に言うなら？"
+    options: ["Quería pedirle un favor.", "Quise pedirle un favor.", "Quiero pedirte un favor ya."]
+    correctIndex: 0
+    explanation: "婉曲の線過去：Quería pedirle… は、今のお願いを控えめに伝えます。quise は「頼もうとした」という過去の出来事です。"
+  - question: "「ちょうど君に電話しようとしていたところだ」。正しいのは？"
+    options: ["Fui a llamarte ahora mismo.", "Voy a llamarte ayer.", "Iba a llamarte ahora mismo."]
+    correctIndex: 2
+    explanation: "線過去の iba a + 原形は、実行されなかった（中断された）予定を表します。"
+  - question: "ごっこ遊びで「ぼくがキーパーで、君がフォワードね」。自然なのは？"
+    options: ["Yo era el portero y tú el delantero.", "Yo fui el portero y tú el delantero.", "Yo he sido el portero y tú el delantero."]
+    correctIndex: 0
+    explanation: "遊びの役割分担には線過去を使います（遊びの線過去：imperfecto lúdico）。"
+  - question: "歴史的現在（過去の出来事を現在形で語る）の例はどれ？"
+    options: ["Mañana te llamo.", "En 1903 se funda el Atlético de Madrid.", "Ahora estudio en Madrid."]
+    correctIndex: 1
+    explanation: "年号とともに過去の出来事を現在形で語るのが歴史的現在です。Mañana te llamo. は現在形で未来を表す用法です。"
+  - question: "スペインで「今日、銀行に行ってきた」と言うとき、自然なのは？"
+    options: ["Hoy iba al banco.", "Hoy he ido al banco.", "Hoy voy al banco ayer."]
+    correctIndex: 1
+    explanation: "スペインでは、hoy や esta semana など今を含む期間の出来事には現在完了を使います。中南米の多くの地域では Hoy fui al banco. と点過去を使います。"
+  - question: "不動産屋に入ってすぐ「Venía a preguntar por el piso.」と言った。意味は？"
+    options: ["物件のことを聞きに来ていた（習慣）", "物件のことでお伺いしたのですが", "物件のことを聞きに来るだろう"]
+    correctIndex: 1
+    explanation: "来店の目的を控えめに伝える婉曲の線過去です。venir や querer の線過去は、店や窓口での決まった言い方です。"
 draft: true
 updated: "2026-11-02"
 ---
 
-TODO:contenido（導入：このユニットの問いに、それだけで答えになる2文で答える）
+スペイン語のアスペクト（aspecto）とは、動作を「完結したひとまとまり」として見るか、「途中の様子・背景」として見るかの違いで、点過去と線過去の選択に表れます。たとえば Supe la verdad. は「真実を知った（その瞬間）」、Sabía la verdad. は「真実を知っていた（状態）」で、同じ saber でも意味が変わります。
 
-## 文法 (Gramática)
+C1 では、さらに線過去の婉曲・予定・報道の用法や、現在形・現在完了の特別な使い方など、時制が「時」以外のニュアンスを伝える使い方を身につけます。このユニットでは、マドリードでスペイン語を教えるカルメン先生の授業を例に学びます。
 
-TODO:contenido
+## 文法：アスペクトとニュアンス (Gramática)
+
+まず点過去と線過去で意味が変わる動詞を、次に線過去の特別な用法を、最後に現在形と現在完了の用法を見ていきましょう。
+
+### 点過去と線過去で意味が変わる動詞
+
+状態を表す動詞は、点過去にすると「その状態が始まった瞬間」や「試みの結果」を表し、日本語では別の動詞で訳すことになります。
+
+| 動詞 | 線過去（状態） | 点過去（出来事） |
+| --- | --- | --- |
+| saber | sabía：知っていた | supe：知った・わかった |
+| conocer | conocía：知り合いだった | conocí：知り合った |
+| querer | quería：〜したかった | quise：〜しようとした／no quise：拒んだ |
+| poder | podía：〜できた（能力・可能性） | pude：やり遂げた／no pude：（試みたが）できなかった |
+| tener que | tenía que：〜しなければならなかった | tuve que：（実際に）〜しなければならなかった |
+
+<Examples>
+
+- Sabía que era difícil, pero no supe cuánto hasta el examen.（難しいとは知っていたが、どれほどかは試験まで知らなかった）
+- Conocí a Lucía en 2015. Ya conocía su libro.（2015年にルシアと知り合った。彼女の本はもう知っていた）
+- Quise abrir la puerta, pero no pude.（ドアを開けようとしたが、開けられなかった）
+
+</Examples>
+
+no quise は「〜するのを拒んだ」という強い意味になるので、「〜したくなかった」と言いたいだけなら no quería を使います。
+
+### 線過去の特別な用法
+
+線過去は、過去の背景を描くだけでなく、話し手の気持ちや物語の語り方を表すこともあります。
+
+| 用法 | 意味 | 例 |
+| --- | --- | --- |
+| 婉曲（cortesía） | 今の依頼・目的を控えめに伝える | Quería pedirle un favor. / Venía a preguntar por el piso. |
+| 予定（prospectivo） | 実行されなかった予定 | Iba a llamarte ahora mismo. / El tren salía a las ocho, pero se retrasó. |
+| 報道・物語（narrativo） | 出来事を臨場感をもって語る | En la temporada 2013-14, el Atlético ganaba la Liga. |
+| 遊び・夢（lúdico / onírico） | ごっこ遊びの役や夢の中の出来事 | Yo era el portero y tú el delantero. |
+
+報道の線過去は、新聞やスポーツ記事でよく使われる書き言葉の用法です。日常会話で点過去のかわりに使うと不自然なので、まずは読んで理解できるようにしましょう。また、話し言葉では、条件文の結果に過去未来のかわりに線過去を使うこともあります：Si tuviera dinero, me compraba una casa.（お金があったら、家を買うのに）。作文では過去未来の compraría を使いましょう。
+
+### 現在形と現在完了の特別な用法
+
+現在形は「今」だけでなく、過去や未来、命令も表します。
+
+- **歴史的現在：** En 1903 se funda el Atlético de Madrid.（1903年、アトレティコ・マドリードが創設される）
+- **近い未来：** Mañana te llamo.（明日電話するね）
+- **強い指示：** Tú te sientas aquí y esperas.（あなたはここに座って待っていなさい）
+
+歴史的現在は、年表や伝記、ドキュメンタリーのナレーションでよく使われ、過去の出来事を目の前で起きているように伝えます。
+
+スペインでは、hoy、esta semana、este año など今を含む期間の出来事や、ついさっき起きたことに現在完了を使います：Hoy he ido al banco. / ¿Qué ha pasado?（何があったの？）。
+
+### カルメン先生の研究室で
+
+- Alumna: Perdone, venía a preguntarle una cosa sobre el examen.（すみません、試験のことでお聞きしたいことがあって）
+- Carmen: Claro, pasa. ¿Qué querías?（ええ、入って。何かしら？）
+- Alumna: Ayer quise llamarla, pero no pude. No sabía que ya teníamos las notas.（昨日お電話しようとしたのですが、つながりませんでした。もう成績が出ているとは知らなくて）
+- Carmen: Justo iba a escribirte un correo. Lo supe esta mañana: has aprobado.（ちょうどメールを書こうとしていたところよ。今朝わかったの。合格よ）
+
+venía・querías は婉曲、quise… no pude は試みと失敗、iba a は中断された予定、no sabía は状態、lo supe は「知った瞬間」です。一つの短い会話の中で、線過去と点過去がそれぞれ違うニュアンスを伝えています。
+
+**ダニエル（バレンシア出身）のひとこと：** 今日のことを話すとき、スペインでは Hoy he comido paella. と現在完了を使いますが、中南米の多くの地域では Hoy comí paella. と点過去を使います。どちらも正しいスペイン語です。スペインの人と話すときやスペインの試験では、現在完了に慣れておきましょう。
 
 ## 活用：今日の動詞 (Conjugación)
 
-TODO:contenido
+意味が変わる動詞の点過去は、conocer（conocí）を除いて不規則です：saber → supe、supiste、supo…／querer → quise、quisiste、quiso…。[poder](/language/learn-spanish/verb-conjugation/poder/)（pude）と [tener](/language/learn-spanish/verb-conjugation/tener/)（tuve）の活用表で「点過去」の欄を確認すると、同じタイプの不規則な語幹（sup-、quis-、pud-、tuv-）であることがわかります。
 
 ## 語彙 (Nociones específicas)
+
+ニュアンスや意図、出来事の結果を語るときの語です。negarse と enterarse は、元の動詞（negar・enterar）の使用頻度の順に並べています。
 
 <VocabList items={frontmatter.vocabulary} level={frontmatter.level} />
 
 ## 発音・正書法 (Pronunciación y ortografía)
 
-TODO:contenido
+不規則な点過去にはアクセント記号がつきません：supe（**ス**ペ）、quise（**キ**セ）、pude（**プ**デ）、tuve（**トゥ**ベ）。規則動詞の hablé（アブ**レ**）、conocí（コノ**シ**）は最後の音節を強く読むので記号がつきますが、不規則な形は最後から2番目の音節を強く読むので、記号は不要です。×supé、×quisé と書かないように注意しましょう。
 
 ## 日本人がよく間違える
 
-TODO:contenido
+- **「知り合った」に線過去を使う。** ×Conocía a mi mujer en 2010. → ○**Conocí** a mi mujer en 2010.
+- **「知った」に線過去を使う。** ×Ayer sabía la noticia. → ○Ayer **supe** la noticia.（Ayer **me enteré** de la noticia. とも言えます）
+- **スペインで今日のことに点過去を使う。** △Hoy fui al banco. → ○Hoy **he ido** al banco.（中南米では点過去が自然）
 
 ## 文化メモ (Referentes culturales)
 
 <CultureNote>
 
-TODO:contenido
+スペインのスポーツ記事では、報道の線過去がよく使われます。たとえば En la temporada 2013-14, el Atlético de Simeone ganaba la Liga.（2013-14シーズン、シメオネのアトレティコがリーグを制した）のように、点過去 ganó のかわりに ganaba を使うと、記事に臨場感が生まれます。1903年に創設されたアトレティコ・マドリードは、ディエゴ・シメオネ監督のもとで2013-14シーズンと2020-21シーズンにリーグ優勝を果たしています。クラブの歴史は、[アトレティコ・マドリード完全ガイド](/football/atletico-madrid/)で紹介しています。
 
 </CultureNote>
 
 ## 練習 (Procedimientos de aprendizaje)
 
-### 練習1：認識
+### 練習1：意味の違いを見分ける
 
-TODO:contenido
+それぞれの文の意味を選んでください。
+
+1. No quise ir a la fiesta.（a. 行きたくなかった　b. 行くのを拒んだ）
+2. No pude abrir la puerta.（a. 開けようとしたが開かなかった　b. 開ける能力がなかった）
+3. Supe la verdad en junio.（a. 6月に真実を知った　b. 6月には真実を知っていた）
+4. Quería pedirle un favor.（a. 昨日お願いしたかった　b. お願いしたいことがあるのですが）
+5. Iba a salir, pero empezó a llover.（a. 出かけるところだったが、雨が降り出した　b. 出かけて、雨が降り出した）
 
 <details>
 <summary>答えを見る</summary>
 
-TODO:contenido
+1. b（no quise：拒んだ）
+2. a（no pude：試みたができなかった）
+3. a（supe：知った瞬間）
+4. b（婉曲の線過去）
+5. a（iba a：実行されなかった予定）
 
 </details>
 
 ### 練習2：穴埋め
 
-TODO:contenido
+（ ）の動詞を、点過去か線過去にしてください。
+
+1. Cuando era niña, (yo, saber) ______ nadar, pero no me gustaba.
+2. Anoche (yo, saber) ______ que habías aprobado.
+3. (Nosotros, conocer) ______ a la autora en una conferencia en 2015.
+4. (Él, querer) ______ ayudarme, pero no sabía cómo.
+5. Al final (yo, tener) ______ que coger un taxi.
+6. Perdone, (yo, querer) ______ hacerle una pregunta.
 
 <details>
 <summary>答えを見る</summary>
 
-TODO:contenido
+1. sabía（能力・状態）
+2. supe（知った瞬間）
+3. conocimos（知り合った）
+4. quería（気持ち）
+5. tuve（実際にそうした）
+6. quería（婉曲）
 
 </details>
 
 ### 練習3：作文
 
-TODO:contenido
+スペイン語で言ってみましょう。
+
+1. 試験の結果は今朝わかった。
+2. 電話しようとしたが、つながらなかった。
+3. ちょうど君にメールを書こうとしていたところだ。
 
 <details>
-<summary>答えを見る</summary>
+<summary>解答例を見る</summary>
 
-TODO:contenido
+1. Supe el resultado del examen esta mañana.
+2. Quise llamarte, pero no pude.
+3. Justo iba a escribirte un correo.
 
 </details>
 
@@ -97,4 +253,8 @@ TODO:contenido
 
 ## まとめ
 
-TODO:contenido
+- saber・conocer・querer・poder・tener que は、点過去にすると「知った」「知り合った」「試みた／拒んだ」「やり遂げた」と意味が変わる。
+- 線過去には、婉曲（Quería…）、実行されなかった予定（Iba a…）、報道、遊び・夢の用法がある。
+- 現在形は過去（歴史的現在）や未来も表す。スペインでは今日のことに現在完了を使う。
+
+次のユニット51では、関係詞や複雑な接続表現を使って、長く論理的な文を組み立てる方法を学びます。

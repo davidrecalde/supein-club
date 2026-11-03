@@ -5,89 +5,246 @@ levelName: "Dominio operativo eficaz"
 slug: "collocations"
 url: "/language/learn-spanish/c1/collocations/"
 existing: false
-title: "コロケーションと語彙の精度"
-shortTitle: "コロケーションと語彙の精度"
+title: "スペイン語のコロケーション｜tomar una decisión など自然な組み合わせ"
+shortTitle: "コロケーション"
 titleEs: "colocaciones"
+description: "スペイン語のコロケーションとは、tomar una decisión（決断する）のように自然に結びつく語の組み合わせです。動詞＋名詞、形容詞＋名詞、副詞＋形容詞の代表的なものと、日本人が英語の影響でしがちな間違いを解説します。"
 grammar: ["colocaciones"]
 tenses: []
-functions: []
-canDo: []
-vocabulary: []
-verbs: []
+functions: ["正確で自然な語を選ぶ", "程度や評価を的確に伝える"]
+canDo:
+  - "動詞＋名詞のコロケーション（tomar una decisión、llevar a cabo など）を使って、正確に表現できる"
+  - "形容詞・副詞の強めのコロケーション（éxito rotundo、profundamente agradecido）で、程度を的確に伝えられる"
+  - "不自然な組み合わせに気づき、辞書やコーパスで自然な形を確かめられる"
+vocabulary:
+  # rank = «Rango frec.» del diccionario de frecuencias del CORPES XXI (RAE). Lo escribe
+  # npm run vocab:rank -- --write; lo que no es lema del diccionario va sin rank, al final.
+  - { es: "el papel", ja: "役割（desempeñar un papel）・紙", rank: 488, example: "El turismo desempeña un papel clave." }
+  - { es: "la medida", ja: "対策（tomar medidas）", rank: 255, example: "El Gobierno tomó medidas urgentes." }
+  - { es: "la atención", ja: "注意（prestar atención）", rank: 407, example: "Presta atención a las instrucciones." }
+  - { es: "el riesgo", ja: "危険・リスク（correr un riesgo）", rank: 309, example: "No quiero correr ese riesgo." }
+  - { es: "el éxito", ja: "成功（un éxito rotundo）", rank: 522, example: "El concierto fue un éxito rotundo." }
+  - { es: "la conclusión", ja: "結論（sacar una conclusión）", rank: 1375, example: "Saqué mis propias conclusiones." }
+  - { es: "el respeto", ja: "敬意（profundo respeto）", rank: 1351, example: "Le tengo un profundo respeto." }
+  - { es: "el dolor", ja: "痛み（un fuerte dolor）", rank: 1006, example: "Tenía un fuerte dolor de cabeza." }
+  - { es: "la ola", ja: "波（una ola de calor：熱波）", rank: 2582, example: "Este verano hubo una ola de calor." }
+  - { es: "prestar", ja: "貸す・（注意を）払う", rank: 1583, example: "Hay que prestar atención." }
+  - { es: "desempeñar", ja: "（役割を）果たす", rank: 2431, example: "Desempeña un papel importante." }
+  - { es: "profundamente", ja: "深く・心から", rank: 3941, example: "Estoy profundamente agradecida." }
+  - { es: "rotundo", ja: "きっぱりとした・完全な（女性形 rotunda）", rank: 5928, example: "Fue un no rotundo." }
+  - { es: "mojar", ja: "浸す・ぬらす", rank: 7689, example: "Moja los churros en el chocolate." }
+verbs: ["tomar", "dar", "hacer"]
 duration: 40
 prev: 51
 next: 53
 related: [51,53,56]
 cast: ["daniel","carmen"]
-audio: []
+audio:
+  - "Hay que tomar una decisión."
+  - "Presta atención a las instrucciones."
+  - "El concierto fue un éxito rotundo."
+  - "Estoy profundamente agradecida."
 youtubeId: ""
-quiz: []
+quiz:
+  - question: "「決断する」。自然なのは？"
+    options: ["hacer una decisión", "tomar una decisión", "poner una decisión"]
+    correctIndex: 1
+    explanation: "decisión は tomar と結びつきます。英語の make a decision につられて hacer にしないようにしましょう。"
+  - question: "「注意を払う」。自然なのは？"
+    options: ["prestar atención", "pagar atención", "hacer atención"]
+    correctIndex: 0
+    explanation: "「注意を払う」は prestar atención。日本語の「払う」や英語の pay にあたる pagar は使いません。"
+  - question: "「間違いを犯す」（書き言葉）。自然なのは？"
+    options: ["hacer un error", "tomar un error", "cometer un error"]
+    correctIndex: 2
+    explanation: "error は cometer と結びつきます。hacer un error は英語の make a mistake の直訳です。"
+  - question: "「計画を実行する」。正しいのは？"
+    options: ["llevar a cabo el plan", "llevar al cabo el plan", "hacer a cabo el plan"]
+    correctIndex: 0
+    explanation: "llevar a cabo（実行する）は決まった形です。"
+  - question: "「危険を冒す」。自然なのは？"
+    options: ["hacer un riesgo", "correr un riesgo", "caminar un riesgo"]
+    correctIndex: 1
+    explanation: "riesgo は correr と結びつきます：correr un riesgo / correr el riesgo de + 原形。"
+  - question: "「大成功」。自然なのは？"
+    options: ["un éxito pesado", "un éxito torrencial", "un éxito rotundo"]
+    correctIndex: 2
+    explanation: "éxito を強めるのは rotundo（完全な）。torrencial は lluvia torrencial（豪雨）のように雨と結びつきます。"
+  - question: "「心から感謝しています」。自然なのは？"
+    options: ["Estoy profundamente agradecido.", "Estoy torrencialmente agradecido.", "Estoy pesadamente agradecido."]
+    correctIndex: 0
+    explanation: "agradecido を強める副詞は profundamente（深く）や sinceramente（心から）です。"
+  - question: "「熱波」。正しいのは？"
+    options: ["una lluvia de calor", "una ola de calor", "una nube de calor"]
+    correctIndex: 1
+    explanation: "una ola de calor（熱波）、una ola de frío（寒波）。una lluvia de críticas（批判の嵐）のように、lluvia は数の多さを表します。"
+  - question: "「¿Qué papel desempeña el turismo en la economía?」の意味は？"
+    options: ["観光は経済でどんな紙を使うか", "観光をやめると経済はどうなるか", "観光は経済でどんな役割を果たしているか"]
+    correctIndex: 2
+    explanation: "desempeñar un papel は「役割を果たす」。papel は「紙」のほかに「役割」の意味があります。"
+  - question: "スペインで「家族が恋しい」と言うとき、よく使うのは？"
+    options: ["Echo de menos a mi familia.", "Echo a menos a mi familia.", "Hago de menos a mi familia."]
+    correctIndex: 0
+    explanation: "echar de menos（恋しく思う）はスペインでよく使う形です。中南米では extrañar がふつうです。"
 draft: true
 updated: "2026-11-02"
 ---
 
-TODO:contenido（導入：このユニットの問いに、それだけで答えになる2文で答える）
+スペイン語のコロケーション（colocaciones）とは、tomar una decisión（決断する）や prestar atención（注意を払う）のように、ある語と自然に結びつく決まった語の組み合わせのことです。文法的には正しくても、×hacer una decisión や ×pagar atención のような組み合わせは、ネイティブには不自然に聞こえます。
 
-## 文法 (Gramática)
+C1 では、言いたいことが伝わるだけでなく、「その言い方が自然かどうか」も評価されます。このユニットでは、カルメン先生の授業の会話を例に、動詞＋名詞、形容詞＋名詞、副詞＋形容詞の代表的なコロケーションを学びます。
 
-TODO:contenido
+## 文法：コロケーション (Gramática)
+
+まず動詞と名詞の組み合わせを、次に程度を強める形容詞と副詞を、最後にコロケーションの調べ方を見ていきましょう。
+
+### 動詞＋名詞
+
+もっとも大切なのは、名詞と結びつく動詞です。日本語や英語から直訳すると、違う動詞を選んでしまいがちです。
+
+| 動詞 | コロケーション | 意味 |
+| --- | --- | --- |
+| tomar | tomar una decisión / tomar medidas / tomar nota | 決断する／対策をとる／メモする |
+| hacer | hacer una pregunta / hacer caso / hacer cola | 質問する／言うことを聞く／列に並ぶ |
+| dar | dar un paseo / dar la razón / dar importancia | 散歩する／（相手が）正しいと認める／重視する |
+| poner | poner en marcha / poner fin a | 始動させる／終止符を打つ |
+| llevar | llevar a cabo | 実行する |
+| echar | echar una siesta / echar de menos | 昼寝をする／恋しく思う |
+| そのほか | prestar atención / cometer un error / correr un riesgo / desempeñar un papel / sacar una conclusión | 注意を払う／過ちを犯す／危険を冒す／役割を果たす／結論を出す |
+
+日本語の「注意を払う」は prestar（貸す）、「危険を冒す」は correr（走る）と、動詞の意味だけでは予想できない組み合わせが多くあります。一つずつ、名詞とセットで覚えましょう。
+
+### 形容詞＋名詞：程度を強める
+
+「とても大きい」と言いたいとき、muy grande のかわりに、名詞ごとに決まった形容詞を使うと、表現がぐっと自然になります。
+
+<Examples>
+
+- una lluvia torrencial（豪雨）
+- un éxito rotundo（大成功）
+- un fuerte dolor de cabeza（激しい頭痛）
+- un profundo respeto（深い敬意）
+- un problema grave（深刻な問題）
+
+</Examples>
+
+名詞＋de＋名詞の組み合わせもあります：una ola de calor（熱波）、una lluvia de críticas（批判の嵐）、un ataque de nervios（ひどく取り乱すこと）、un golpe de suerte（思いがけない幸運）。
+
+### 副詞＋形容詞
+
+改まった文章では、muy のかわりに形容詞と結びつく副詞を使います。
+
+| 副詞＋形容詞 | 意味 |
+| --- | --- |
+| profundamente agradecido | 心から感謝している |
+| sumamente importante | きわめて重要な |
+| rotundamente falso | まったくの誤りである |
+| altamente recomendable | 強くおすすめできる |
+| plenamente consciente | 十分に自覚している |
+
+### コロケーションの調べ方
+
+自然な組み合わせかどうか迷ったら、コロケーションの辞典（Ignacio Bosque の『REDES』など）を引くか、RAE の CORPES XXI で、その組み合わせが実際の文章でどれくらい使われているかを検索してみましょう。例文が多く見つかる組み合わせほど、自然な言い方です。
+
+### カルメン先生の授業で
+
+- Alumno: Tengo que hacer una decisión importante.（大事な決断をしなければならないんです）
+- Carmen: Se dice «tomar una decisión». Y, por cierto, también se dice «cometer un error», no «hacer un error».（「tomar una decisión」と言うのよ。ついでに言うと、「hacer un error」ではなく「cometer un error」ね）
+- Alumno: ¡Uf! El inglés me juega malas pasadas.（うわあ、英語のせいでよく失敗します）
+- Carmen: Es normal. Presta atención a qué verbo acompaña a cada sustantivo y tómalo como una sola palabra.（よくあることよ。名詞ごとにどの動詞がつくかに注意して、一つの語として覚えなさい）
+
+Carmen の言葉にも、prestar atención と tomar（〜を…として受けとめる）が使われています。jugar una mala pasada（ひどい目にあわせる）も、会話でよく使うコロケーションです。
+
+**ダニエル（バレンシア出身）のひとこと：** コロケーションには地域差もあります。スペインでは「恋しい」を echar de menos と言いますが、中南米では extrañar がふつうです。また、「バスに乗る」はスペインでは coger el autobús、中南米の多くの地域では tomar el autobús と言います。どちらの地域のスペイン語で話しているかを意識しましょう。
 
 ## 活用：今日の動詞 (Conjugación)
 
-TODO:contenido
+コロケーションでは、tomar、[dar](/language/learn-spanish/verb-conjugation/dar/)、[hacer](/language/learn-spanish/verb-conjugation/hacer/) のような基本動詞が、もとの意味を薄めて使われます。dar の点過去（di、dio）と hacer の点過去（hice、hizo）は不規則なので、活用表で確認しておきましょう：Tomé una decisión. / Di un paseo. / Hice una pregunta.
 
 ## 語彙 (Nociones específicas)
+
+コロケーションでよく使う名詞・動詞・形容詞・副詞です。それぞれ、カッコの中の組み合わせと一緒に覚えましょう。
 
 <VocabList items={frontmatter.vocabulary} level={frontmatter.level} />
 
 ## 発音・正書法 (Pronunciación y ortografía)
 
-TODO:contenido
+コロケーションは一つの語のように、つなげて読みます。子音で終わる語のあとに母音で始まる語が続くと、子音が次の母音とくっついて一つの音節になります：tomar una decisión（ト・マ・ル・ナ・デ・シ・シ**オン**）、hacer una pregunta（ア・セ・ル・ナ・プレ・**グン**・タ）。単語ごとに区切って読むより、ずっと自然に聞こえます。
 
 ## 日本人がよく間違える
 
-TODO:contenido
+- **英語の make につられて hacer を使う。** ×hacer una decisión → ○**tomar** una decisión ／ ×hacer un error → ○**cometer** un error
+- **日本語の「払う」を pagar にする。** ×pagar atención → ○**prestar** atención
+- **何でも muy で強める。** △un éxito muy grande → ○un éxito **rotundo** ／ △muy agradecido（改まった手紙）→ ○**profundamente** agradecido
 
 ## 文化メモ (Referentes culturales)
 
 <CultureNote>
 
-TODO:contenido
+食べ物にも決まった組み合わせがあります。マドリードの定番といえば chocolate con churros（チョコレートとチュロス）で、この順番で言うのがふつうです。チュロスは濃厚なホットチョコレートに mojar（浸す）して食べ、朝食やおやつのほか、夜遊びの締めくくりにも食べられています。1894年にはマドリードで最初のチュロス専門店が開業したという記録もあるそうです。スペインの伝統菓子は、[スペイン伝統菓子ガイド](/food/spanish-desserts/)で紹介しています。
 
 </CultureNote>
 
 ## 練習 (Procedimientos de aprendizaje)
 
-### 練習1：認識
+### 練習1：自然な組み合わせを選ぶ
 
-TODO:contenido
+正しい方を選んでください。
+
+1. (tomar / hacer) una pregunta
+2. (tomar / hacer) medidas
+3. (dar / hacer) un paseo
+4. (llevar / poner) a cabo
+5. (cometer / hacer) un error
+6. (correr / tomar) un riesgo
 
 <details>
 <summary>答えを見る</summary>
 
-TODO:contenido
+1. hacer
+2. tomar
+3. dar
+4. llevar
+5. cometer
+6. correr
 
 </details>
 
-### 練習2：穴埋め
+### 練習2：強めの表現に書きかえる
 
-TODO:contenido
+muy を使わずに、自然なコロケーションに書きかえてください。
+
+1. Fue un éxito muy grande.
+2. Llovió muchísimo（una lluvia ______）.
+3. Estoy muy agradecida por su ayuda.（改まった手紙）
+4. Es muy importante.（改まった文章）
+5. Hace muchísimo calor estos días（una ______ de calor）.
 
 <details>
 <summary>答えを見る</summary>
 
-TODO:contenido
+1. Fue un éxito rotundo.
+2. una lluvia torrencial
+3. Estoy profundamente agradecida por su ayuda.
+4. Es sumamente importante.
+5. una ola de calor
 
 </details>
 
 ### 練習3：作文
 
-TODO:contenido
+コロケーションを使って、スペイン語で言ってみましょう。
+
+1. 政府は緊急の対策をとった。
+2. 説明にもっと注意を払うべきだ。
+3. 観光は経済で重要な役割を果たしている。
 
 <details>
-<summary>答えを見る</summary>
+<summary>解答例を見る</summary>
 
-TODO:contenido
+1. El Gobierno tomó medidas urgentes.
+2. Deberíamos prestar más atención a las explicaciones.
+3. El turismo desempeña un papel importante en la economía.
 
 </details>
 
@@ -97,4 +254,8 @@ TODO:contenido
 
 ## まとめ
 
-TODO:contenido
+- コロケーションは、名詞と動詞を一つのセットで覚える：tomar una decisión、prestar atención、cometer un error、llevar a cabo。
+- 程度は muy のかわりに、名詞・形容詞ごとの決まった語で強める：éxito rotundo、lluvia torrencial、profundamente agradecido。
+- 迷ったら、コロケーション辞典や CORPES XXI で、実際に使われているかを確かめる。
+
+次のユニット53では、スペインの若者や友だち同士の会話で使う、くだけた話し言葉の表現を学びます。
