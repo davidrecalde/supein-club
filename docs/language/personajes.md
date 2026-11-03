@@ -29,6 +29,9 @@ exaggerated or stereotyped ethnic features, text, letters, labels, watermark, lo
 brand names, extra fingers, distorted hands, cluttered background.
 ```
 
+- **Imágenes de referencia (decisión de David, 3 de noviembre de 2026):** la carpeta `Imágenes/personajes/` es la referencia obligatoria para todas las imágenes del curso. Por personaje: `<Nombre>-retrato.jpg` (retrato oficial en Variante A: referencia de estilo y de cara) y `<Nombre>-hoja-de-giro.jpg` (hoja de giro: referencia de cuerpo, ropa y accesorios; más limpia, no se publica).
+- **Cómo se genera cada imagen nueva:** se adjuntan el retrato (estilo y cara) y la hoja de giro (ropa) del personaje; si hay dos personajes, los cuatro archivos. Si la hoja y el retrato no coinciden en la cara, manda el retrato.
+- **Detalles fijos:** Mina, flequillo recto, chaqueta azul marino con ribetes rojos, camisa de rayas, cámara compacta y bolsa de tela. Kenta, gafas de montura fina, chaqueta azul lisa sin ribetes, bolígrafo rojo en el bolsillo y maletín marrón. Yui, coleta alta sin flequillo, jersey verde oliva, mochila azul marino con chapas y café para llevar. Daniel, camisa de cuadros naranja tostado abierta sobre camiseta blanca, vaqueros oscuros y bandolera de lona. Carmen, media melena oscura con canas, gafas con cordón, pañuelo morado con florecitas rojas y chaqueta de punto crema.
 - En la web: `alt` en japonés y la nota de imagen generada por IA; nada de logos ni obras de arte reales reconocibles; se descarta cualquier imagen con rasgos estereotipados.
 
 ## Mina (ミナ)
