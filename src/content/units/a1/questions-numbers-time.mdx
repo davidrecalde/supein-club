@@ -5,89 +5,273 @@ levelName: "Acceso"
 slug: "questions-numbers-time"
 url: "/language/learn-spanish/a1/questions-numbers-time/"
 existing: false
-title: "疑問詞・数・時刻・日付"
+title: "スペイン語の数字・時刻・日付と疑問詞｜¿Qué hora es? の答え方"
 shortTitle: "疑問詞・数・時刻・日付"
-titleEs: "interrogativos, números, hora y fecha"
-grammar: ["interrogativos","números","hora","fecha"]
-tenses: []
-functions: []
-canDo: []
-vocabulary: []
+titleEs: "Interrogativos, números, la hora y la fecha"
+description: "スペイン語の数字（0〜1000）、時刻の言い方（Es la una / Son las dos y media）、曜日・月・日付、qué・cuánto・dónde などの疑問詞を基本から解説。値段や電車の時間をたずねる表現を、日本人が間違えやすい点と練習問題つきで学べます。"
+grammar: ["interrogativos", "números cardinales", "la hora", "la fecha, los días y los meses"]
+tenses: ["presente de indicativo"]
+functions: ["値段や数をたずねる・答える", "時刻や日付を言う", "疑問詞を使って質問する"]
+canDo:
+  - "値段や数をたずね、数字で答えられる"
+  - "時刻、曜日、日付を言ったり、たずねたりできる"
+  - "qué・dónde・cuándo などの疑問詞で、簡単な質問ができる"
+vocabulary:
+  # rank = «Rango frec.» del diccionario de frecuencias del CORPES XXI (RAE). Lo escribe
+  # npm run vocab:rank -- --write; lo que no es lema del diccionario va sin rank, al final.
+  - { es: "qué", ja: "何・どんな", rank: 97, example: "¿Qué hora es?" }
+  - { es: "cuánto", ja: "いくつ・いくら（女性形 cuánta）", rank: 1823, example: "¿Cuánto cuesta el billete?" }
+  - { es: "dónde", ja: "どこ", rank: 1190, example: "¿Dónde está el andén tres?" }
+  - { es: "cuándo", ja: "いつ", rank: 2298, example: "¿Cuándo es tu cumpleaños?" }
+  - { es: "la hora", ja: "時刻・時間", rank: 112, example: "¿A qué hora sale el tren?" }
+  - { es: "la semana", ja: "週", rank: 148, example: "Mina está en Madrid una semana." }
+  - { es: "el mes", ja: "月（暦の）", rank: 119, example: "Noviembre es un mes tranquilo." }
+  - { es: "el año", ja: "年・〜歳", rank: 26, example: "Mina tiene veintiocho años." }
+  - { es: "el lunes", ja: "月曜日", rank: 720, example: "El lunes, Mina va a Toledo." }
+  - { es: "el euro", ja: "ユーロ", rank: 394, example: "El billete cuesta doce euros." }
+  - { es: "el tren", ja: "電車・列車", rank: 2239, example: "El tren sale a las diez y cuarto." }
+  - { es: "el andén", ja: "（駅の）ホーム", rank: 12047, example: "El tren sale del andén tres." }
+  - { es: "el cumpleaños", ja: "誕生日", rank: 4187, example: "Mi cumpleaños es el tres de mayo." }
+  - { es: "la fecha", ja: "日付", rank: 481, example: "¿Qué fecha es hoy?" }
+  - { es: "el precio", ja: "値段", rank: 322, example: "El precio incluye el desayuno." }
 verbs: []
-duration: 40
+duration: 45
 prev: 9
 next: 11
-related: [9,11,12]
+related: [9, 11, 12]
 cast: ["mina"]
-audio: []
+audio:
+  - "Buenos días. ¿A qué hora sale el próximo tren a Toledo?"
+  - "A las diez y cuarto."
+  - "¿Cuánto cuesta el billete?"
+  - "Doce euros con cincuenta."
+  - "¿Y de qué andén sale?"
+  - "Del andén tres."
+  - "Es la una. Son las dos y media. Son las nueve menos cuarto."
+  - "Hoy es lunes, dos de noviembre."
+  - "¿Cuál es tu número de teléfono?"
+  - "¿Cuántos años tienes? Tengo veintiocho años."
+  - "cinco, doce, cien, zumo"
 youtubeId: ""
-quiz: []
 draft: true
 updated: "2026-11-02"
+quiz:
+  - question: "15 をスペイン語で言うと？"
+    options: ["quince", "cinco", "cincuenta"]
+    correctIndex: 0
+    explanation: "15 は quince。cinco は 5、cincuenta は 50 です。"
+  - question: "「21ユーロ」。正しいのは？"
+    options: ["veintiuno euros", "veintiún euros", "veinte y uno euros"]
+    correctIndex: 1
+    explanation: "uno は男性名詞の前で un になり、veintiuno も veintiún になります。20台は一語で書きます。"
+  - question: "100 をそれだけで言うと？"
+    options: ["ciento", "cien", "cientos"]
+    correctIndex: 1
+    explanation: "ちょうど 100 は cien。101 からは ciento uno、ciento dos… になります。"
+  - question: "500 をスペイン語で言うと？"
+    options: ["cincocientos", "quiniento", "quinientos"]
+    correctIndex: 2
+    explanation: "500 は不規則な形で quinientos です。700（setecientos）と 900（novecientos）も形が変わります。"
+  - question: "1時です。正しいのは？"
+    options: ["Son la una.", "Es la una.", "Es las una."]
+    correctIndex: 1
+    explanation: "1時だけは単数で Es la una。2時からは Son las dos… と複数になります。"
+  - question: "3時半です。正しいのは？"
+    options: ["Son las tres y media.", "Es la tres y media.", "Son tres y media."]
+    correctIndex: 0
+    explanation: "時刻は Son las + 数字。「半」は y media です。las を落とさないようにしましょう。"
+  - question: "8時45分の言い方として、スペインでよく使うのは？"
+    options: ["Son las nueve menos cuarto.", "Son las ocho menos cuarto.", "Son las nueve y cuarto."]
+    correctIndex: 0
+    explanation: "45分は「次の時間の15分前」と考え、las nueve menos cuarto（9時15分前）と言います。"
+  - question: "「どこ？」をたずねる疑問詞は？"
+    options: ["¿Cuándo?", "¿Dónde?", "¿Cómo?"]
+    correctIndex: 1
+    explanation: "dónde は「どこ」、cuándo は「いつ」、cómo は「どう」です。疑問詞にはアクセント記号がつきます。"
+  - question: "「なぜ？」「疲れているから」。正しいのは？"
+    options: ["¿Porque? — Por qué estoy cansada.", "¿Por qué? — Porque estoy cansada.", "¿Por qué? — Por qué estoy cansada."]
+    correctIndex: 1
+    explanation: "質問は2語でアクセント記号つきの por qué、答えは1語の porque です。"
+  - question: "「11月2日」。正しいのは？"
+    options: ["el 2 de noviembre", "el noviembre 2", "el dos noviembre"]
+    correctIndex: 0
+    explanation: "日付は el + 日 + de + 月 の順です。月の名前は小文字で書きます。"
 ---
 
-TODO:contenido（導入：このユニットの問いに、それだけで答えになる2文で答える）
+スペイン語で時刻を言うときは、ser を使って ¿Qué hora es?（何時ですか）とたずね、Es la una.（1時です）、Son las dos.（2時です）と答えます。1時だけが単数の es la una で、2時からは son las… になるのが特徴です。
 
-## 文法 (Gramática)
+このユニットでは、時刻のほかに、0から1000までの数字、曜日・月・日付、そして qué・dónde・cuánto などの疑問詞をまとめて学びます。マドリードの駅で、トレド行きの電車の切符を買うミナといっしょに、値段や時間をたずねる表現を身につけましょう。
 
-TODO:contenido
+## 文法：疑問詞・数・時刻・日付 (Gramática)
+
+まず疑問詞を、次に数字と値段の言い方を、最後に時刻と日付を見ていきましょう。
+
+### 疑問詞
+
+| 疑問詞 | 意味 | 例 |
+| --- | --- | --- |
+| qué | 何・どんな | ¿Qué es esto?（これは何？） |
+| quién / quiénes | だれ | ¿Quién es?（だれですか？） |
+| dónde | どこ | ¿Dónde está el andén?（ホームはどこ？） |
+| cuándo | いつ | ¿Cuándo es tu cumpleaños?（誕生日はいつ？） |
+| cómo | どう・どのように | ¿Cómo estás?（元気？） |
+| cuánto / cuánta / cuántos / cuántas | いくら・いくつ | ¿Cuántas entradas quieres?（入場券は何枚？） |
+| cuál / cuáles | どれ | ¿Cuál es tu tren?（あなたの電車はどれ？） |
+| por qué | なぜ | ¿Por qué estás aquí?（どうしてここに？） |
+
+疑問詞には、必ずアクセント記号がつきます。cuánto は、後ろの名詞の性と数に合わせて形が変わります（¿Cuántos años tienes?、何歳？）。「なぜ」の por qué に答えるときは、1語でアクセント記号のない porque（〜だから）を使います。
+
+**qué と cuál** は、どちらも「何」と訳せるので迷いやすい疑問詞です。ser の前で、いくつかの中から一つを答えてほしいときは cuál を使います：¿Cuál es tu número de teléfono?（あなたの電話番号は？）、¿Cuál es tu nombre?（お名前は？）。日本語につられて ¿Qué es tu número? と言うと、「番号とは何か」をたずねる不自然な文になります。名詞の前では qué を使います：¿Qué tren tomas?（どの電車に乗るの？）。
+
+年齢は、ユニット5で学んだ tener を使ってたずねます：¿Cuántos años tienes? ── Tengo veintiocho años.（何歳？ ── 28歳です）。
+
+### 数字
+
+| 数 | 言い方 | 数 | 言い方 |
+| --- | --- | --- | --- |
+| 0〜5 | cero, uno, dos, tres, cuatro, cinco | 30 | treinta |
+| 6〜10 | seis, siete, ocho, nueve, diez | 31 | treinta y uno |
+| 11〜15 | once, doce, trece, catorce, quince | 40〜90 | cuarenta, cincuenta, sesenta, setenta, ochenta, noventa |
+| 16〜19 | dieciséis, diecisiete, dieciocho, diecinueve | 100 | cien |
+| 20〜22 | veinte, veintiuno, veintidós | 101 | ciento uno |
+| 23〜29 | veintitrés, veinticuatro… veintinueve | 200 / 500 / 1000 | doscientos / quinientos / mil |
+
+覚えるポイントは三つです。
+
+1. **29までは1語、31からは y でつなぐ。** veintidós（22）、treinta y dos（32）。
+2. **ちょうど 100 は cien、101 からは ciento。** 200〜900 は、名詞の性に合わせます（doscientas personas、200人）。500（quinientos）、700（setecientos）、900（novecientos）は形が不規則です。
+3. **uno は名詞の前で un / una になる。** un euro、una entrada、veintiún euros。
+
+### 値段をたずねる
+
+¿Cuánto cuesta…?（いくらですか）とたずね、Cuesta doce euros.（12ユーロです）と答えます。複数の物なら ¿Cuánto cuestan? / Cuestan… です。2,50 € は dos euros con cincuenta（céntimos）、または短く dos cincuenta と読みます。
+
+### 時刻
+
+| 時刻 | 言い方 |
+| --- | --- |
+| 1:00 | Es la una. |
+| 2:00 | Son las dos. |
+| 2:15 | Son las dos y cuarto. |
+| 2:30 | Son las dos y media. |
+| 2:45 | Son las tres menos cuarto. |
+| 2:50 | Son las tres menos diez. |
+
+「〜時に」は a la una、a las dos のように a を使います：¿A qué hora sale el tren?（電車は何時に出ますか？）。午前・午後は de la mañana（朝の）、de la tarde（午後の）、de la noche（夜の）で区別します。駅の時刻表など公式の場面では、24時間制もよく使います（a las dieciocho treinta、18時30分）。
+
+### 曜日・月・日付
+
+- **曜日：** lunes, martes, miércoles, jueves, viernes, sábado, domingo（すべて男性名詞）。el lunes は「（今度の）月曜日に」、los lunes は「毎週月曜日に」です。
+- **月：** enero, febrero, marzo, abril, mayo, junio, julio, agosto, septiembre, octubre, noviembre, diciembre。
+- **日付：** el + 日 + de + 月 の順です：Hoy es lunes, dos de noviembre.（今日は11月2日、月曜日）。年は数字で読みます：2026 = dos mil veintiséis。
+
+曜日も月も、スペイン語では小文字で書きます。
+
+### 駅で切符を買う
+
+駅の窓口で、ミナがトレド行きの切符を買います（時刻と値段は例です）。
+
+- Mina: Buenos días. ¿A qué hora sale el próximo tren a Toledo?（おはようございます。トレド行きの次の電車は何時に出ますか？）
+- Empleado: A las diez y cuarto.（10時15分です）
+- Mina: ¿Cuánto cuesta el billete?（切符はいくらですか？）
+- Empleado: Doce euros con cincuenta.（12ユーロ50セントです）
+- Mina: ¿Y de qué andén sale?（何番ホームから出ますか？）
+- Empleado: Del andén tres.（3番ホームです）
+
+**ダニエル（バレンシア出身）のひとこと：** 月の1日は、スペインではふつう el uno de enero（1月1日）と言います。中南米では el primero de enero（「最初の日」）もよく使います。どちらも通じますが、スペインで日付を言うなら uno で大丈夫です。
 
 ## 活用：今日の動詞 (Conjugación)
 
-TODO:contenido
+このユニットで大事なのは、時刻を言う [ser](/language/learn-spanish/verb-conjugation/ser/) の es と son の使い分けです（Es la una. / Son las dos.）。値段をたずねる costar（cuesta / cuestan）は、ユニット5で学んだ o → ue の動詞です。年齢を言う tener（Tengo veintiocho años.）は [tener](/language/learn-spanish/verb-conjugation/tener/) のページで確認できます。
 
 ## 語彙 (Nociones específicas)
+
+質問に使う疑問詞と、時間・日付・買い物の名詞です。
 
 <VocabList items={frontmatter.vocabulary} level={frontmatter.level} />
 
 ## 発音・正書法 (Pronunciación y ortografía)
 
-TODO:contenido
+スペインの大部分では、ce・ci と z を、英語の think の th のように、舌先を軽く歯ではさんで発音します。cinco（**シン**・コ）、doce（**ド**・セ）、cien（**シエン**）、zumo（**ス**・モ）の「シ」「セ」「ス」の部分です。中南米や、アンダルシアの一部・カナリア諸島では、この音を s で発音しますが、このコースはスペインの発音を基準にしています。
 
 ## 日本人がよく間違える
 
-TODO:contenido
+- **疑問詞のアクセント記号と ¿ を落とす。** ×Donde esta el anden? → ○**¿Dónde** está el andén? 疑問詞にはアクセント記号がつき、文頭には ¿ が必要です。
+- **名詞の前で uno のまま使う。** ×veintiuno euros、×uno billete → ○**veintiún** euros、○**un** billete。
+- **時刻の es と son を取り違える。** ×Es las dos. ×Son la una. → ○**Son las** dos. ○**Es la** una. 1時だけが単数です。
 
 ## 文化メモ (Referentes culturales)
 
 <CultureNote>
 
-TODO:contenido
+スペインでは、値段の小数点にコンマを使い、ユーロ記号を数字の後ろに書きます。カフェのメニューに 2,50 € とあれば、2ユーロ50セントのことです。読むときは dos euros con cincuenta、お店ではさらに短く dos cincuenta と言うことも多いので、耳を慣らしておくと会計がスムーズです。旅の予算や物価の目安は、[スペイン旅行の費用ガイド](/travel/travel-cost/)で紹介しています。
 
 </CultureNote>
 
 ## 練習 (Procedimientos de aprendizaje)
 
-### 練習1：認識
+### 練習1：数字を読む
 
-TODO:contenido
+次のスペイン語を、算用数字にしてください。
+
+1. dieciséis
+2. veintitrés
+3. cuarenta y ocho
+4. ciento cinco
+5. quinientos
+6. dos mil veintiséis
 
 <details>
 <summary>答えを見る</summary>
 
-TODO:contenido
+1. 16
+2. 23
+3. 48
+4. 105
+5. 500
+6. 2026
 
 </details>
 
 ### 練習2：穴埋め
 
-TODO:contenido
+（ ）に入る語を答えてください。
+
+1. ¿(　) hora es? — Son las dos.
+2. ¿(　) cuesta el billete? — Doce euros.
+3. ¿(　) está la estación? — Allí.
+4. Es (　) una y media.
+5. ¿(　) es tu cumpleaños? — El tres de mayo.
+6. ¿(　) entradas quieres? — Dos.
 
 <details>
 <summary>答えを見る</summary>
 
-TODO:contenido
+1. Qué
+2. Cuánto
+3. Dónde
+4. la（1時台は es la una）
+5. Cuándo
+6. Cuántas（entradas は女性・複数）
 
 </details>
 
 ### 練習3：作文
 
-TODO:contenido
+ミナになったつもりで、スペイン語で言ってみましょう。
+
+1. 今何時ですか？ ── 10時15分です。
+2. この切符はいくらですか？
+3. 今日は11月2日、月曜日です。
+4. 次の電車は何時に出ますか？
 
 <details>
-<summary>答えを見る</summary>
+<summary>解答例を見る</summary>
 
-TODO:contenido
+1. ¿Qué hora es? — Son las diez y cuarto.
+2. ¿Cuánto cuesta este billete?
+3. Hoy es lunes, dos de noviembre.
+4. ¿A qué hora sale el próximo tren?
 
 </details>
 
@@ -97,4 +281,8 @@ TODO:contenido
 
 ## まとめ
 
-TODO:contenido
+- 疑問詞（qué・dónde・cuándo・cuánto…）にはアクセント記号がつく。cuánto は名詞に合わせて形が変わる。
+- 29までは1語、31からは y でつなぐ。100 は cien、uno は名詞の前で un / una。
+- 時刻は Es la una / Son las dos。y cuarto・y media・menos cuarto。日付は el + 日 + de + 月。
+
+次のユニット11では、ir a + 動詞の原形で予定を、estar + 現在分詞で進行中の動作を言います。
