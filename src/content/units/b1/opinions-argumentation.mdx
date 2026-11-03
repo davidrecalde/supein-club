@@ -5,89 +5,235 @@ levelName: "Umbral"
 slug: "opinions-argumentation"
 url: "/language/learn-spanish/b1/opinions-argumentation/"
 existing: false
-title: "意見・賛成・反対"
+title: "スペイン語で意見を言う｜creo que・estoy de acuerdo・no creo que"
 shortTitle: "意見・賛成・反対"
-titleEs: "opinar y argumentar"
-grammar: ["funciones"]
-tenses: []
-functions: []
-canDo: []
-vocabulary: []
+titleEs: "Opinar, estar de acuerdo y argumentar"
+description: "スペイン語で意見を言い、賛成・反対を伝える表現を解説。creo que と no creo que の違い、en mi opinión、estoy de acuerdo・tienes razón・depende など、DELE B1 の会話テストで使える言い方を、例文と練習問題で身につけます。"
+grammar: ["creo que / pienso que + indicativo", "no creo que + subjuntivo", "en mi opinión, desde mi punto de vista", "estar de acuerdo con", "es + adjetivo + que + subjuntivo"]
+tenses: ["presente de indicativo", "presente de subjuntivo"]
+functions: ["意見を言う", "賛成・反対を伝える", "理由を挙げて意見を支える"]
+canDo:
+  - "身近な話題について、理由を挙げて自分の意見を言える"
+  - "相手の意見に、賛成・反対・部分的な賛成を伝えられる"
+  - "DELE B1 の会話テストで、意見を述べるやり取りができる"
+vocabulary:
+  # rank = «Rango frec.» del diccionario de frecuencias del CORPES XXI (RAE). Lo escribe
+  # npm run vocab:rank -- --write; lo que no es lema del diccionario va sin rank, al final.
+  - { es: "opinar", ja: "意見を言う・〜と思う", rank: 1866, example: "¿Qué opinas de esto?" }
+  - { es: "pensar", ja: "考える・思う", rank: 213, example: "Pienso que es una buena idea." }
+  - { es: "parecer", ja: "〜に思える", rank: 168, example: "Me parece que tienes razón." }
+  - { es: "la opinión", ja: "意見", rank: 802, example: "En mi opinión, es demasiado caro." }
+  - { es: "el punto de vista", ja: "観点・見方", example: "Desde mi punto de vista, es lo mejor." }
+  - { es: "de acuerdo", ja: "賛成して・了解", example: "Estoy de acuerdo contigo." }
+  - { es: "la razón", ja: "理由・正しさ", rank: 440, example: "Tienes razón." }
+  - { es: "depender", ja: "〜による・〜次第である", rank: 815, example: "Depende del precio." }
+  - { es: "importante", ja: "大切な", rank: 114, example: "Es importante que todos participen." }
+  - { es: "necesario", ja: "必要な（女性形 necesaria）", rank: 301, example: "Es necesario que hablemos." }
+  - { es: "la ventaja", ja: "利点", rank: 996, example: "La principal ventaja es el precio." }
+  - { es: "el argumento", ja: "論拠・主張", rank: 1602, example: "Es un buen argumento." }
+  - { es: "la cebolla", ja: "玉ねぎ", rank: 4567, example: "Yo prefiero la tortilla con cebolla." }
+  - { es: "el debate", ja: "討論・論争", rank: 966, example: "Es un debate muy antiguo en España." }
 verbs: []
-duration: 40
+duration: 45
 prev: 34
 next: 36
-related: [34,36,26]
-cast: ["yui","kenta"]
-audio: []
+related: [34, 36, 26]
+cast: ["yui", "kenta"]
+audio:
+  - "Creo que es una buena idea."
+  - "No creo que sea una buena idea."
+  - "En mi opinión, la tortilla está mejor con cebolla."
+  - "Estoy de acuerdo contigo."
+  - "Depende. Por un lado, sí; por otro, no."
 youtubeId: ""
-quiz: []
 draft: true
 updated: "2026-11-02"
+quiz:
+  - question: "「いい考えだと思う」。正しいのは？"
+    options: ["Creo que es una buena idea.", "Creo que sea una buena idea.", "Creo ser una buena idea."]
+    correctIndex: 0
+    explanation: "肯定の creo que は直説法：es。"
+  - question: "「いい考えだとは思わない」。正しいのは？"
+    options: ["No creo que es una buena idea.", "No creo que sea una buena idea.", "No creo ser una buena idea."]
+    correctIndex: 1
+    explanation: "否定の no creo que は接続法：sea。"
+  - question: "「君の言うとおりだ」。正しいのは？"
+    options: ["Tienes razón.", "Eres razón.", "Estás razón."]
+    correctIndex: 0
+    explanation: "「正しい」は tener razón。ser や estar は使いません。"
+  - question: "「君に賛成だ」。正しいのは？"
+    options: ["Estoy de acuerdo contigo.", "Soy de acuerdo contigo.", "Estoy de acuerdo a ti."]
+    correctIndex: 0
+    explanation: "賛成は estar de acuerdo con。「君と」は contigo です。"
+  - question: "「みんなが参加することが大切だ」。正しいのは？"
+    options: ["Es importante que todos participan.", "Es importante que todos participen.", "Es importante todos participar."]
+    correctIndex: 1
+    explanation: "es importante que のように「es + 形容詞 + que」で評価を言うときは、接続法：participen。"
+  - question: "「それは値段による」。正しいのは？"
+    options: ["Depende del precio.", "Depende al precio.", "Es depende del precio."]
+    correctIndex: 0
+    explanation: "「〜による」は depender de：depende del precio。"
+  - question: "「私の考えでは、高すぎる」。正しいのは？"
+    options: ["En mi opinión, es demasiado caro.", "Para mi opinión, es demasiado caro.", "En mi opinión que es demasiado caro."]
+    correctIndex: 0
+    explanation: "en mi opinión（私の意見では）のあとにコンマを打ち、意見を続けます。"
+  - question: "相手の意見に一部だけ賛成するときの言い方は？"
+    options: ["Tienes toda la razón.", "En parte sí, pero…", "No estoy nada de acuerdo."]
+    correctIndex: 1
+    explanation: "En parte sí, pero…（部分的にはそうだけど…）で、一部賛成しながら別の意見を出せます。"
+  - question: "「君はこれについてどう思う？」。自然なのは？"
+    options: ["¿Qué opinas de esto?", "¿Cómo opinas esto?", "¿Qué opinas que esto?"]
+    correctIndex: 0
+    explanation: "意見をたずねるときは ¿Qué opinas de…? や ¿Qué piensas de…? を使います。"
+  - question: "「それは本当ではないと思う」。正しいのは？"
+    options: ["No creo que es verdad.", "No creo que sea verdad.", "Creo que no sea verdad."]
+    correctIndex: 1
+    explanation: "no creo que のあとは接続法：sea。"
 ---
 
-TODO:contenido（導入：このユニットの問いに、それだけで答えになる2文で答える）
+スペイン語で意見を言うときは、creo que（〜だと思う）、pienso que、me parece que、en mi opinión（私の意見では）などを使います。肯定の Creo que es una buena idea.（いい考えだと思う）は直説法ですが、否定の No creo que sea una buena idea.（いい考えだとは思わない）は接続法になるのがポイントです。
 
-## 文法 (Gramática)
+相手の意見には、Estoy de acuerdo.（賛成）、Tienes razón.（そのとおり）、No estoy de acuerdo.（反対）、Depende.（場合による）のように返します。このユニットでは、ルームメイトと議論するユイの例を使って、DELE B1 の会話テストでも役立つ、意見と賛成・反対の言い方を学びます。
 
-TODO:contenido
+## 文法：意見・賛成・反対 (Gramática)
+
+まず意見の言い方と接続法の関係を、次に賛成・反対の表現を、最後に理由を挙げて意見を支える方法を見ていきましょう。
+
+### 意見を言う
+
+| 表現 | あとに来る形 | 例 |
+| --- | --- | --- |
+| creo que / pienso que / me parece que | 直説法 | Creo que es una buena idea. |
+| no creo que / no pienso que | 接続法 | No creo que sea una buena idea. |
+| en mi opinión / desde mi punto de vista / para mí | （文が続く） | En mi opinión, es demasiado caro. |
+| es importante / necesario / mejor que | 接続法 | Es importante que todos participen. |
+
+ユニット26で学んだとおり、否定の no creo que は「事実ではないかもしれない」ので接続法です。es importante que のように「es + 形容詞 + que」で評価を言うときも、接続法を使います。
+
+### 意見をたずねる
+
+¿Qué opinas de…?（〜をどう思う？）、¿Qué piensas de…?、¿Tú qué crees?（君はどう思う？）、¿Estás de acuerdo?（賛成？）でたずねます。
+
+### 賛成・反対
+
+| 気持ち | 表現 |
+| --- | --- |
+| 賛成 | Estoy de acuerdo (contigo). / Tienes razón. / Claro. / Por supuesto. |
+| 一部賛成 | En parte sí, pero… / Puede ser, pero… / Depende. |
+| 反対 | No estoy de acuerdo. / No creo que tengas razón. / Para nada. |
+
+「正しい」は tener razón で、×ser razón や ×estar razón とは言いません。賛成は estar de acuerdo con で、「君と」は contigo、「私と」は conmigo です。
+
+### 理由を挙げて意見を支える
+
+意見のあとに理由を続けると、説得力が増します。ユニット23と34で学んだ porque、además、por un lado / por otro、sin embargo を組み合わせましょう。
+
+<Examples>
+
+- Creo que es mejor vivir en el centro porque está todo cerca.（中心部に住む方がいいと思う。何でも近いから）
+- No creo que sea buena idea; además, es muy caro.（いい考えだとは思わない。そのうえ、とても高い）
+
+</Examples>
+
+### シェアハウスの議論
+
+ルームメイトのマルコスと、週末の過ごし方について話します。
+
+- Marcos: ¿Qué opinas? ¿Vamos a la sierra el sábado?（どう思う？　土曜日に山に行かない？）
+- Yui: No creo que sea buena idea. Dicen que va a llover.（いい考えだとは思わないな。雨が降るって言ってるよ）
+- Marcos: Tienes razón, pero podemos ir el domingo.（そうだね。でも日曜日なら行けるよ）
+- Yui: Estoy de acuerdo. Además, el domingo no tengo clase.（賛成。それに、日曜日は授業もないし）
+
+### DELE B1 の会話テストで
+
+会話テストでは、意見を言うときの「つなぎ」の表現も役立ちます。話し始めに Para empezar, …（まず）、考える時間がほしいときに Es una buena pregunta…（いい質問ですね…）、言いたいことを言い直すときに Lo que quiero decir es que…（私が言いたいのは…）。質問が聞き取れなかったときは、¿Me puede repetir la pregunta, por favor?（質問をもう一度言っていただけますか）と聞き返して大丈夫です。黙ってしまうより、こうした表現で会話を続ける方が評価されます。
+
+日本語では、反対意見をはっきり言わずにすませることも多いですが、スペイン語の会話テストでは、自分の意見をはっきり述べることが求められます。まず Yo creo que… と言い切ってから、porque で理由を続けましょう。
+
+相手の意見に強く賛成するときは、¡Exacto!（そのとおり）や ¡Claro que sí!（もちろん）も使えます。
+
+**ダニエル（バレンシア出身）のひとこと：** スペイン人は議論が大好きで、反対意見を言うことも失礼ではありません。ただし、いきなり No estoy de acuerdo. と言うより、Entiendo lo que dices, pero…（言いたいことはわかるけど…）と前置きすると、ぐっとやわらかくなります。
 
 ## 活用：今日の動詞 (Conjugación)
 
-TODO:contenido
+意見の表現でよく使う接続法は、ser（sea）、tener（tenga）、haber（haya）、estar（esté）です。no creo que のあとで正しい形が出てくるように、[ser](/language/learn-spanish/verb-conjugation/ser/) と [tener](/language/learn-spanish/verb-conjugation/tener/) の活用表の「接続法現在」を確認しておきましょう。
 
 ## 語彙 (Nociones específicas)
+
+意見を言うときの動詞と、賛成・反対や議論の語です。
 
 <VocabList items={frontmatter.vocabulary} level={frontmatter.level} />
 
 ## 発音・正書法 (Pronunciación y ortografía)
 
-TODO:contenido
+意見を言うときは、イントネーションも大切です。賛成の Claro.（もちろん）は短くはっきり、迷いのある Bueno…（まあ…）や Depende…（場合によるね…）は、語尾をのばして下げると、考えている様子が伝わります。反対するときに語尾を強く上げると、きつく聞こえることがあるので注意しましょう。
 
 ## 日本人がよく間違える
 
-TODO:contenido
+- **no creo que のあとに直説法を使う。** ×No creo que es verdad. → ○No creo que **sea** verdad.
+- **tener razón を ser や estar で言う。** ×Eres razón. → ○**Tienes** razón.
+- **es importante que のあとに直説法を使う。** ×Es importante que todos participan. → ○Es importante que todos **participen**.
 
 ## 文化メモ (Referentes culturales)
 
 <CultureNote>
 
-TODO:contenido
+スペインで最も有名な「論争」の一つが、トルティージャ・エスパニョーラ（じゃがいもの卵焼き）に玉ねぎを入れるかどうかです。¿Tortilla con cebolla o sin cebolla?（玉ねぎ入り？なし？）と聞かれたら、En mi opinión, está mejor con cebolla porque es más jugosa.（私は玉ねぎ入りの方がおいしいと思う。しっとりするから）のように、理由をつけて答えてみましょう。スペイン人どうしでも意見が分かれる、楽しい議論の定番です。タパスの定番料理は、[タパス文化完全ガイド](/food/tapas/)で紹介しています。
 
 </CultureNote>
 
 ## 練習 (Procedimientos de aprendizaje)
 
-### 練習1：認識
+### 練習1：直説法？ 接続法？
 
-TODO:contenido
+正しい方を選んでください。
+
+1. Creo que (es / sea) caro.
+2. No creo que (es / sea) caro.
+3. Me parece que (tienes / tengas) razón.
+4. Es importante que (estudias / estudies) todos los días.
+5. Pienso que (va / vaya) a llover.
 
 <details>
 <summary>答えを見る</summary>
 
-TODO:contenido
+1. es
+2. sea
+3. tienes
+4. estudies
+5. va
 
 </details>
 
-### 練習2：穴埋め
+### 練習2：返事を選ぶ
 
-TODO:contenido
+次の場面に合う返事を選んでください（Tienes razón. / No estoy de acuerdo. / Depende. / Estoy de acuerdo.）。
+
+1. 相手の意見に全面的に賛成する。
+2. 状況によって答えが変わる。
+3. 相手が正しいと認める。
+4. 相手の意見に反対する。
 
 <details>
 <summary>答えを見る</summary>
 
-TODO:contenido
+1. Estoy de acuerdo.
+2. Depende.
+3. Tienes razón.
+4. No estoy de acuerdo.
 
 </details>
 
 ### 練習3：作文
 
-TODO:contenido
+「大学生は留学するべきか」について、理由を一つ挙げて、あなたの意見を書いてください（en mi opinión / porque / además など）。
 
 <details>
-<summary>答えを見る</summary>
+<summary>解答例を見る</summary>
 
-TODO:contenido
+En mi opinión, es muy importante que los estudiantes estudien en el extranjero, porque aprenden otro idioma y conocen otra cultura. Además, es una experiencia que les ayuda en el futuro.
+
+（私の意見では、学生が海外で勉強することはとても大切です。ほかの言語を学び、別の文化を知ることができるからです。そのうえ、将来に役立つ経験になります）
 
 </details>
 
@@ -97,4 +243,8 @@ TODO:contenido
 
 ## まとめ
 
-TODO:contenido
+- 意見は creo que・pienso que・me parece que + 直説法。否定の no creo que と es importante que は接続法。
+- 賛成は Estoy de acuerdo・Tienes razón、一部賛成は En parte sí, pero…・Depende、反対は No estoy de acuerdo。
+- 意見のあとに porque や además で理由を続けると、説得力が増す。
+
+次のユニット36では、B1 の総復習と DELE B1 の模擬試験に挑戦します。
