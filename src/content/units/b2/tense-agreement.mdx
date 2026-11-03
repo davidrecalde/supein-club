@@ -5,89 +5,242 @@ levelName: "Avanzado"
 slug: "tense-agreement"
 url: "/language/learn-spanish/b2/tense-agreement/"
 existing: false
-title: "時制の一致"
+title: "スペイン語の時制の一致｜quiero que vengas と quería que vinieras"
 shortTitle: "時制の一致"
-titleEs: "correlación temporal"
-grammar: ["correlación"]
-tenses: []
-functions: []
-canDo: []
-vocabulary: []
+titleEs: "Correlación de tiempos verbales"
+description: "スペイン語の時制の一致（correlación temporal）を解説。主節が現在・未来なら接続法現在、過去・過去未来なら接続法過去になる規則と、me gustaría que・me pidió que などのよく使う組み合わせ、例外を、練習問題つきで学べます。"
+grammar: ["presente / futuro / imperativo + que + presente de subjuntivo", "pasado / condicional + que + imperfecto de subjuntivo", "excepciones de la correlación"]
+tenses: ["presente de subjuntivo", "pretérito imperfecto de subjuntivo"]
+functions: ["過去の依頼や希望を伝える", "控えめに希望を言う"]
+canDo:
+  - "主節の時制に合わせて、接続法現在と接続法過去を使い分けられる"
+  - "「〜してほしいと頼まれた」と、過去の依頼を伝えられる"
+  - "me gustaría que を使って、控えめに希望を言える"
+vocabulary:
+  # rank = «Rango frec.» del diccionario de frecuencias del CORPES XXI (RAE). Lo escribe
+  # npm run vocab:rank -- --write; lo que no es lema del diccionario va sin rank, al final.
+  - { es: "pedir", ja: "頼む", rank: 286, example: "Me pidió que la llamara." }
+  - { es: "recomendar", ja: "すすめる", rank: 1102, example: "Me recomendaron que visitara Ibiza." }
+  - { es: "aconsejar", ja: "忠告する", rank: 3299, example: "Te aconsejo que descanses." }
+  - { es: "exigir", ja: "要求する", rank: 832, example: "El profesor exigió que entregáramos el trabajo." }
+  - { es: "permitir", ja: "許す", rank: 124, example: "No me permitieron que entrara." }
+  - { es: "prohibir", ja: "禁じる", rank: 2030, example: "Nos prohibieron que hiciéramos fotos." }
+  - { es: "insistir", ja: "言い張る", rank: 1173, example: "Insistió en que me quedara a cenar." }
+  - { es: "sugerir", ja: "提案する", rank: 1456, example: "Te sugiero que leas este libro." }
+  - { es: "ordenar", ja: "命じる", rank: 1601, example: "El jefe ordenó que todos vinieran." }
+  - { es: "la tutora", ja: "指導教員・チューター（男性形 el tutor）", rank: 7925, example: "Mi tutora me pidió que cambiara el título." }
+  - { es: "el trabajo de fin de grado", ja: "卒業論文", example: "Estoy escribiendo el trabajo de fin de grado." }
+  - { es: "el título", ja: "タイトル・学位", rank: 443, example: "Me pidió que cambiara el título." }
+  - { es: "la temporada", ja: "シーズン", rank: 462, example: "Me aconsejaron que fuera fuera de temporada." }
+  - { es: "corregir", ja: "直す・添削する", rank: 2652, example: "Le pedí que corrigiera mi texto." }
 verbs: []
-duration: 40
+duration: 45
 prev: 39
 next: 41
-related: [39,41,48]
-cast: ["yui","daniel"]
-audio: []
+related: [39, 41, 48]
+cast: ["yui", "daniel"]
+audio:
+  - "Quiero que vengas a mi fiesta."
+  - "Quería que vinieras a mi fiesta."
+  - "Me gustaría que me ayudaras."
+  - "Mi tutora me pidió que cambiara el título."
+  - "Me recomendaron que visitara Ibiza fuera de temporada."
 youtubeId: ""
-quiz: []
 draft: true
 updated: "2026-11-02"
+quiz:
+  - question: "「（今）君にパーティーに来てほしい」。正しいのは？"
+    options: ["Quiero que vengas.", "Quiero que vinieras.", "Quiero que vienes."]
+    correctIndex: 0
+    explanation: "主節が現在（quiero）なら、接続法現在：vengas。"
+  - question: "「（あのとき）君にパーティーに来てほしかった」。正しいのは？"
+    options: ["Quería que vengas.", "Quería que vinieras.", "Quería que venías."]
+    correctIndex: 1
+    explanation: "主節が過去（quería）なら、接続法過去：vinieras。"
+  - question: "「手伝ってくれるとうれしいのですが」。正しいのは？"
+    options: ["Me gustaría que me ayudas.", "Me gustaría que me ayudes.", "Me gustaría que me ayudaras."]
+    correctIndex: 2
+    explanation: "主節が過去未来（me gustaría）なら、接続法過去：ayudaras。"
+  - question: "「指導教員は私にタイトルを変えるよう頼んだ」。正しいのは？"
+    options: ["Mi tutora me pidió que cambie el título.", "Mi tutora me pidió que cambiara el título.", "Mi tutora me pidió cambiaré el título."]
+    correctIndex: 1
+    explanation: "主節が点過去（pidió）なら、接続法過去：cambiara。"
+  - question: "「君に休むようすすめるよ」。正しいのは？"
+    options: ["Te aconsejo que descanses.", "Te aconsejo que descansaras.", "Te aconsejé que descanses mañana ayer."]
+    correctIndex: 0
+    explanation: "主節が現在（aconsejo）なら、接続法現在：descanses。"
+  - question: "「写真を撮るのを禁じられた」。正しいのは？"
+    options: ["Nos prohíben que hiciéramos fotos.", "Nos prohibieron que hiciéramos fotos.", "Nos prohibieron que hacemos fotos."]
+    correctIndex: 1
+    explanation: "過去の禁止：prohibieron（点過去）+ 接続法過去：hiciéramos。"
+  - question: "「彼に手伝ってくれるよう頼むつもりだ」（未来）。続きは？「Le pediré que…」"
+    options: ["…me ayude.", "…me ayudara.", "…me ayudaría."]
+    correctIndex: 0
+    explanation: "主節が未来（pediré）でも、接続法現在：ayude。"
+  - question: "「そこに行けばいいと言われた（すすめられた）」。正しいのは？"
+    options: ["Me recomendaron que fuera.", "Me recomendaron que vaya ayer.", "Me recomendaron que iría."]
+    correctIndex: 0
+    explanation: "recomendaron（過去）+ 接続法過去：fuera。"
+  - question: "現在の主節に接続法過去が続くのはどんなとき？「No creo que lo hiciera.」"
+    options: ["今の気持ちで、過去の出来事を疑うとき", "主節が未来のとき", "ありえない"]
+    correctIndex: 0
+    explanation: "今（no creo）、過去の出来事（lo hiciera）を疑うときは、主節が現在でも接続法過去になります。"
+  - question: "「彼は私に夕食をしていくよう言い張った」。正しいのは？"
+    options: ["Insistió en que me quedara a cenar.", "Insistió que me quedo a cenar.", "Insistió en que me quede a cenar ayer."]
+    correctIndex: 0
+    explanation: "insistir en que + 接続法（依頼の意味）。主節が過去なので quedara。"
 ---
 
-TODO:contenido（導入：このユニットの問いに、それだけで答えになる2文で答える）
+スペイン語の時制の一致（correlación temporal）は、que の前の動詞（主節）の時制に合わせて、que のあとの接続法の時制を決める規則です。主節が現在なら Quiero que vengas.（来てほしい）と接続法現在、主節が過去なら Quería que vinieras.（来てほしかった）と接続法過去を使います。
 
-## 文法 (Gramática)
+日本語では「来てほしい」「来てほしかった」と主節の語尾だけが変わりますが、スペイン語では que のあとの動詞も一緒に変わります。このユニットでは、卒業論文（TFG）を書くユイが、指導教員とのやり取りをダニエルに話す場面を例に、時制の一致を学びます。
 
-TODO:contenido
+## 文法：時制の一致 (Gramática)
+
+まず基本の対応を、次によく使う組み合わせを、最後に例外を見ていきましょう。
+
+### 基本の対応
+
+| 主節の時制 | que のあとの接続法 | 例 |
+| --- | --- | --- |
+| 現在 | 接続法現在 | Quiero que vengas. |
+| 未来 | 接続法現在 | Le pediré que me ayude. |
+| 命令 | 接続法現在 | Dile que me llame. |
+| 現在完了 | 接続法現在 | Me ha pedido que vaya. |
+| 点過去・線過去 | 接続法過去 | Quería que vinieras. / Me pidió que fuera. |
+| 過去未来 | 接続法過去 | Me gustaría que me ayudaras. |
+
+大まかに言うと、主節が「今・これから」なら接続法現在、「過去・仮定」なら接続法過去です。
+
+### よく使う組み合わせ
+
+依頼・助言・命令の動詞（pedir、recomendar、aconsejar、exigir、prohibir、permitir）は、時制の一致の練習にぴったりです。ユニット29の間接話法で「命令を伝える」形も、これと同じ仕組みです。
+
+<Examples>
+
+- Mi tutora me pidió que cambiara el título.（指導教員はタイトルを変えるよう頼んだ）
+- Me recomendaron que visitara Ibiza fuera de temporada.（オフシーズンにイビサへ行くようすすめられた）
+- Me gustaría que me ayudaras con el resumen.（要約を手伝ってくれるとうれしいな）
+
+</Examples>
+
+me gustaría que + 接続法過去は、quiero que + 接続法現在より控えめで、ていねいなお願いになります。
+
+### decir que：直説法と接続法で意味が変わる
+
+decir や escribir は、que のあとの法によって意味が変わります。直説法なら「〜だと言う（情報を伝える）」、接続法なら「〜するように言う（命令・依頼）」です。
+
+<Examples>
+
+- Me dijo que venía.（彼は来ると言った：情報）
+- Me dijo que viniera.（彼は来るようにと言った：依頼）
+
+</Examples>
+
+日本語では「〜と言った」と「〜ように言った」で区別しますが、スペイン語では que のあとの動詞の形だけで区別します。聞き取りや読解でも、この違いに注意しましょう。
+
+### 例外：主節が現在でも接続法過去になるとき
+
+今の気持ちで、過去の出来事について疑ったり感情を表したりするときは、主節が現在でも接続法過去を使います。
+
+- No creo que lo hiciera él.（彼がそれをやったとは思わない）
+- Me alegra que vinieras ayer.（昨日来てくれてうれしい）
+
+また、過去の依頼の内容が今もこれからのことなら、話し言葉では接続法現在が使われることもあります：Me pidió que la llame mañana.（明日電話するように頼まれた）。ただし、試験や作文では基本の対応どおり llamara を使うのが安全です。
+
+### 論文指導のあとで
+
+- Daniel: ¿Qué tal la reunión con tu tutora?（指導教員との面談はどうだった？）
+- Yui: Bien, pero me pidió que cambiara el título y que añadiera más fuentes.（よかったよ。でも、タイトルを変えて、資料をもっと加えるようにって）
+- Daniel: ¿Y te dio tiempo?（時間はもらえたの？）
+- Yui: Sí, me dijo que se lo enviara antes del viernes. Me gustaría que lo leyeras tú también.（うん、金曜日までに送るようにって。あなたにも読んでもらえるとうれしいな）
+
+**ダニエル（バレンシア出身）のひとこと：** 時制の一致で迷ったら、主節の動詞が「過去」か「過去未来（-ría）」かだけ確かめてください。どちらかなら接続法過去、それ以外は接続法現在。この一つのチェックで、ほとんどの文は正しく作れます。
 
 ## 活用：今日の動詞 (Conjugación)
 
-TODO:contenido
+時制の一致で使う接続法過去は、点過去の3人称複数から作ります。[decir](/language/learn-spanish/verb-conjugation/decir/)（dijeron → dijera）、[hacer](/language/learn-spanish/verb-conjugation/hacer/)（hicieron → hiciera）、[ir](/language/learn-spanish/verb-conjugation/ir/)（fueron → fuera）、[poder](/language/learn-spanish/verb-conjugation/poder/)（pudieron → pudiera）の活用表で、「接続法過去」の欄を確認しましょう。
 
 ## 語彙 (Nociones específicas)
+
+依頼・助言・命令を表す動詞と、卒業論文に関する語です。
 
 <VocabList items={frontmatter.vocabulary} level={frontmatter.level} />
 
 ## 発音・正書法 (Pronunciación y ortografía)
 
-TODO:contenido
+接続法過去の nosotros にはアクセント記号がつきます：entregáramos（エン・トレ・**ガ**・ラ・モス）、hiciéramos（イ・シ**エ**・ラ・モス）。また、-ar 動詞の接続法過去（cambiara）と未来形（cambiará）は、アクセント記号と強く読む位置だけが違います：cambiara（カン・ビ**ア**・ラ）／ cambiará（カン・ビア・**ラ**）。
 
 ## 日本人がよく間違える
 
-TODO:contenido
+- **過去の主節に接続法現在を使う。** ×Me pidió que cambie el título. → ○Me pidió que **cambiara** el título.
+- **me gustaría que のあとに接続法現在を使う。** ×Me gustaría que me ayudes. → ○Me gustaría que me **ayudaras**.
+- **接続法過去と未来形を混同する。** ×Me pidió que lo cambiará. → ○Me pidió que lo **cambiara**.（アクセント記号なし）
 
 ## 文化メモ (Referentes culturales)
 
 <CultureNote>
 
-TODO:contenido
+スペインの友人に旅のアドバイスを求めると、Te recomiendo que vayas…（〜に行くといいよ）、旅のあとで話すときは Me recomendaron que fuera…（〜に行くようすすめられた）と、時制の一致がたくさん出てきます。ユイも、バレアレス諸島のイビサについて、Me aconsejaron que fuera fuera de temporada.（オフシーズンに行くようにとアドバイスされた）と話していました。島の見どころと旅の情報は、[イビサ島 観光・旅行ガイド](/travel/ibiza/)で紹介しています。
 
 </CultureNote>
 
 ## 練習 (Procedimientos de aprendizaje)
 
-### 練習1：認識
+### 練習1：接続法現在？ 接続法過去？
 
-TODO:contenido
+主節の時制を見て、正しい方を選んでください。
+
+1. Quiero que (vengas / vinieras).
+2. Quería que (vengas / vinieras).
+3. Me gustaría que (vengas / vinieras).
+4. Te pediré que (vengas / vinieras).
+5. Me pidió que (venga / viniera).
 
 <details>
 <summary>答えを見る</summary>
 
-TODO:contenido
+1. vengas（現在）
+2. vinieras（線過去）
+3. vinieras（過去未来）
+4. vengas（未来）
+5. viniera（点過去）
 
 </details>
 
-### 練習2：穴埋め
+### 練習2：書きかえ
 
-TODO:contenido
+主節を過去にして書きかえてください。
+
+1. Quiero que me llames. → Quería que…
+2. Me pide que escriba el resumen. → Me pidió que…
+3. Te aconsejo que descanses. → Te aconsejé que…
+4. No permiten que hagamos fotos. → No permitieron que…
 
 <details>
 <summary>答えを見る</summary>
 
-TODO:contenido
+1. Quería que me llamaras.
+2. Me pidió que escribiera el resumen.
+3. Te aconsejé que descansaras.
+4. No permitieron que hiciéramos fotos.
 
 </details>
 
 ### 練習3：作文
 
-TODO:contenido
+ユイになったつもりで、スペイン語で言ってみましょう。
+
+1. 指導教員は、タイトルを変えるよう私に頼んだ。
+2. あなたにも読んでもらえるとうれしいな（me gustaría que）。
+3. オフシーズンにイビサへ行くようすすめられた。
 
 <details>
-<summary>答えを見る</summary>
+<summary>解答例を見る</summary>
 
-TODO:contenido
+1. Mi tutora me pidió que cambiara el título.
+2. Me gustaría que lo leyeras tú también.
+3. Me recomendaron que fuera a Ibiza fuera de temporada.
 
 </details>
 
@@ -97,4 +250,8 @@ TODO:contenido
 
 ## まとめ
 
-TODO:contenido
+- 主節が現在・未来・命令・現在完了なら接続法現在、過去・過去未来なら接続法過去。
+- 依頼・助言・命令の動詞（pedir、recomendar、aconsejar）と me gustaría que でよく使う。
+- 今の気持ちで過去の出来事を言うときは、主節が現在でも接続法過去になる。
+
+次のユニット41では、aunque や de modo que を使った譲歩・目的・結果の表現を学びます。
