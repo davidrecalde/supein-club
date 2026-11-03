@@ -5,89 +5,237 @@ levelName: "Avanzado"
 slug: "aspectual-periphrasis"
 url: "/language/learn-spanish/b2/aspectual-periphrasis/"
 existing: false
-title: "動詞句とアスペクト"
+title: "スペイン語の動詞句とアスペクト｜ir + 現在分詞・acabar + 現在分詞"
 shortTitle: "動詞句とアスペクト"
-titleEs: "perífrasis aspectuales"
-grammar: ["ir + gerundio","llevar + gerundio","seguir + gerundio"]
-tenses: []
-functions: []
-canDo: []
-vocabulary: []
+titleEs: "Perífrasis verbales aspectuales"
+description: "スペイン語のアスペクトを表す動詞句を解説。ir・andar・venir・seguir + 現在分詞、estar a punto de、ponerse a、echarse a、acabar + 現在分詞、llegar a、soler、tener + 過去分詞を、動作の段階ごとに例文と練習問題で学べます。"
+grammar: ["ir / andar / venir / seguir + gerundio", "estar a punto de, ponerse a, echarse a, romper a + infinitivo", "acabar + gerundio, llegar a + infinitivo", "soler + infinitivo", "tener + participio"]
+tenses: ["presente de indicativo", "pretérito indefinido", "pretérito perfecto"]
+functions: ["動作の始まり・進み方・終わりを言う", "変化や結果を描写する"]
+canDo:
+  - "「少しずつ〜していく」「とうとう〜するようになる」と、変化の過程を言える"
+  - "「〜しかけている」「急に〜し始める」と、動作の始まりを言える"
+  - "soler で習慣を、tener + 過去分詞で結果を言える"
+vocabulary:
+  # rank = «Rango frec.» del diccionario de frecuencias del CORPES XXI (RAE). Lo escribe
+  # npm run vocab:rank -- --write; lo que no es lema del diccionario va sin rank, al final.
+  - { es: "ir", ja: "行く（ir + 現在分詞：少しずつ〜していく）", rank: 46, example: "Voy entendiendo mejor a los profesores." }
+  - { es: "andar", ja: "歩く（andar + 現在分詞：あちこち〜して回る）", rank: 1815, example: "Anda buscando piso." }
+  - { es: "soler", ja: "よく〜する（習慣）", rank: 863, example: "Suelo estudiar por la noche." }
+  - { es: "a punto de", ja: "まさに〜しようとして", example: "Estaba a punto de salir cuando llamaste." }
+  - { es: "ponerse", ja: "（ponerse a：急に〜し始める）", rank: 125, example: "Se puso a llover." }
+  - { es: "echarse", ja: "（echarse a：急に〜しだす）", rank: 1584, example: "Todos se echaron a reír." }
+  - { es: "acabar", ja: "終わる（acabar + 現在分詞：結局〜することになる）", rank: 455, example: "Acabó siendo el mejor del equipo." }
+  - { es: "llegar", ja: "着く（llegar a：〜するまでになる）", rank: 68, example: "Llegó a jugar en Primera División." }
+  - { es: "poco a poco", ja: "少しずつ", example: "Poco a poco, voy mejorando." }
+  - { es: "mejorar", ja: "よくなる・上達する", rank: 471, example: "Ha ido mejorando cada temporada." }
+  - { es: "la cesión", ja: "（選手の）期限付き移籍", rank: 7407, example: "Después de varias cesiones, encontró su sitio." }
+  - { es: "la temporada", ja: "シーズン", rank: 462, example: "Fue mejorando temporada tras temporada." }
+  - { es: "llorar", ja: "泣く", rank: 3049, example: "Se echó a llorar de alegría." }
+  - { es: "reír", ja: "笑う", rank: 2821, example: "Nos echamos a reír." }
 verbs: []
-duration: 40
+duration: 45
 prev: 42
 next: 44
-related: [42,44,48]
-cast: ["yui","daniel"]
-audio: []
+related: [42, 44, 48]
+cast: ["yui", "daniel"]
+audio:
+  - "Voy entendiendo mejor a los profesores."
+  - "Estaba a punto de salir cuando llamaste."
+  - "De repente, se puso a llover."
+  - "Acabó siendo el mejor del equipo."
+  - "Suelo estudiar por la noche."
 youtubeId: ""
-quiz: []
 draft: true
 updated: "2026-11-02"
+quiz:
+  - question: "「先生の話が少しずつわかるようになってきた」。自然なのは？"
+    options: ["Voy entendiendo a los profesores.", "Estoy entender a los profesores.", "Suelo entendido a los profesores."]
+    correctIndex: 0
+    explanation: "ir + 現在分詞で、「少しずつ〜していく」という変化の過程を表します。"
+  - question: "「君が電話したとき、ちょうど出かけるところだった」。正しいのは？"
+    options: ["Estaba a punto de salir cuando llamaste.", "Estaba punto salir cuando llamaste.", "Iba saliendo cuando llamaste mañana."]
+    correctIndex: 0
+    explanation: "「まさに〜しようとしていた」は estar a punto de + 原形。"
+  - question: "「急に雨が降り出した」。正しいのは？"
+    options: ["Se puso a llover.", "Se puso lloviendo.", "Se puso de llover."]
+    correctIndex: 0
+    explanation: "「急に〜し始める」は ponerse a + 原形。"
+  - question: "「結局、チームで一番の選手になった」。正しいのは？"
+    options: ["Acabó siendo el mejor del equipo.", "Acabó de ser el mejor del equipo.", "Acabó ser el mejor del equipo."]
+    correctIndex: 0
+    explanation: "acabar + 現在分詞は「結局〜することになる」。acabar de + 原形は「〜したばかり」（ユニット22）なので意味が違います。"
+  - question: "「私はよく夜に勉強する」。正しいのは？"
+    options: ["Suelo estudiar por la noche.", "Suelo estudiando por la noche.", "Suelo a estudiar por la noche."]
+    correctIndex: 0
+    explanation: "soler + 原形で習慣を表します。"
+  - question: "「みんなが急に笑いだした」。正しいのは？"
+    options: ["Todos se echaron a reír.", "Todos se echaron reír.", "Todos se echaron riendo."]
+    correctIndex: 0
+    explanation: "echarse a + reír / llorar で「急に笑いだす／泣きだす」。"
+  - question: "「彼は1部リーグでプレーするまでになった」。正しいのは？"
+    options: ["Llegó a jugar en Primera División.", "Llegó jugando en Primera División.", "Llegó de jugar en Primera División."]
+    correctIndex: 0
+    explanation: "llegar a + 原形で「（努力の末）〜するまでになる」。"
+  - question: "「（彼女は）部屋を探して回っている」。くだけた言い方で自然なのは？"
+    options: ["Anda buscando piso.", "Anda a buscar piso.", "Anda buscado piso."]
+    correctIndex: 0
+    explanation: "andar + 現在分詞は「あちこち〜して回っている」というくだけた言い方です。"
+  - question: "「宿題はもう全部やってある」。正しいのは？"
+    options: ["Tengo hechos todos los deberes.", "Tengo hecho todos los deberes.", "Tengo haciendo todos los deberes."]
+    correctIndex: 0
+    explanation: "tener + 過去分詞は結果を表し、過去分詞を目的語（los deberes）に合わせます：hechos。"
+  - question: "「シーズンごとに上達していった」。自然なのは？"
+    options: ["Fue mejorando temporada tras temporada.", "Fue mejorar temporada tras temporada.", "Fue mejorado temporada tras temporada."]
+    correctIndex: 0
+    explanation: "ir の点過去 + 現在分詞で、過去の変化の過程を表します。"
 ---
 
-TODO:contenido（導入：このユニットの問いに、それだけで答えになる2文で答える）
+スペイン語のアスペクトを表す動詞句は、「動詞 + 現在分詞」や「動詞 + 前置詞 + 原形」の形で、動作がどの段階にあるか（始まる・進んでいく・終わる・くり返す）を表します。たとえば Voy entendiendo mejor.（少しずつわかってきた）は ir + 現在分詞で変化の過程を、Acabó siendo el mejor.（結局いちばんになった）は acabar + 現在分詞で最終的な結果を表します。
 
-## 文法 (Gramática)
+日本語の「〜ていく」「〜てくる」「〜だす」「結局〜」にあたる言い方で、スペイン語らしい表現力を大きく広げてくれます。このユニットでは、留学生活の変化をふり返るユイと、サッカー選手のキャリアを語るダニエルの会話を例に学びます。
 
-TODO:contenido
+## 文法：動詞句とアスペクト (Gramática)
+
+動作の段階ごとに、始まり、進み方、終わりと結果、習慣の四つに分けて見ていきましょう。
+
+### 始まり
+
+| 動詞句 | 意味 | 例 |
+| --- | --- | --- |
+| estar a punto de + 原形 | まさに〜しようとしている | Estaba a punto de salir cuando llamaste. |
+| ponerse a + 原形 | 急に〜し始める | De repente, se puso a llover. |
+| echarse a + reír / llorar / correr | 急に〜しだす | Todos se echaron a reír. |
+| empezar a + 原形 | 〜し始める（ユニット22） | Empecé a estudiar español hace tres años. |
+
+ponerse a と echarse a は、どちらも「急に」始まる感じを表しますが、echarse a は reír、llorar、correr など限られた動詞とだけ使います。始まりをふつうに言うときは empezar a を使いましょう。
+
+### 進み方：現在分詞を使う動詞句
+
+| 動詞句 | 意味 | 例 |
+| --- | --- | --- |
+| ir + 現在分詞 | 少しずつ〜していく | Voy entendiendo mejor a los profesores. |
+| venir + 現在分詞 | （前から今まで）ずっと〜してきた | Vengo diciéndolo desde hace meses. |
+| andar + 現在分詞 | あちこち〜して回っている（くだけた言い方） | Anda buscando piso. |
+| seguir + 現在分詞 | 〜し続けている（ユニット22） | Sigo estudiando español. |
+| llevar + 期間 + 現在分詞 | 〜して（期間）になる（ユニット22） | Llevo tres años estudiando. |
+
+ir + 現在分詞は、変化が少しずつ進む様子を表し、日本語の「〜ていく」「〜てきた」にぴったり重なります。venir + 現在分詞は、過去から今に向かって続いてきたことを表し、不満を込めることもあります：Te lo vengo diciendo desde hace meses.（何か月も前から言ってるじゃない）。
+
+### 終わりと結果
+
+| 動詞句 | 意味 | 例 |
+| --- | --- | --- |
+| acabar / terminar + 現在分詞 | 結局〜することになる | Acabó siendo el mejor del equipo. |
+| llegar a + 原形 | （努力の末）〜するまでになる | Llegó a jugar en Primera División. |
+| dejar de + 原形 | 〜するのをやめる（ユニット22） | He dejado de fumar. |
+| tener + 過去分詞 | 〜してある（結果） | Tengo hechos todos los deberes. |
+
+tener + 過去分詞では、過去分詞を目的語の性と数に合わせます（los deberes → hechos）。haber の完了形（He hecho los deberes.）より、「やってあって、今その状態にある」という結果を強調する言い方です。tener pensado + 原形（〜するつもりだ）も決まった言い方です：Tengo pensado viajar a Ibiza.（イビサに旅行しようと考えている）。
+
+### 習慣：soler + 原形
+
+soler（よく〜する）は、習慣を表す動詞句です：Suelo estudiar por la noche.（私はよく夜に勉強する）。線過去でも使えます：De niña, solía jugar en el parque.（子どもの頃は、よく公園で遊んでいた）。soler には未来形と過去未来の形がなく、点過去（solí）もほとんど使いません。過去の習慣は線過去の solía で言いましょう。
+
+### 留学生活の変化
+
+- Daniel: ¿Qué tal tu español después de tres años?（3年たって、スペイン語はどう？）
+- Yui: Voy mejorando poco a poco. Al principio no entendía nada, pero ahora suelo pensar directamente en español.（少しずつ上達しているよ。最初は何もわからなかったけど、今はたいていスペイン語で直接考えるの）
+- Daniel: ¡Al final vas a acabar hablando como una salmantina!（最後には、サラマンカの人みたいに話すことになるね！）
+- Yui: Ja, ja. Estaba a punto de decir lo mismo.（ハハ。ちょうど同じことを言おうとしてた）
+
+ダニエルの vas a acabar hablando は、ir a + 原形（〜することになる）と acabar + 現在分詞（結局〜する）を重ねた形です。このように、動詞句は組み合わせて使うこともできます。
+
+**ダニエル（バレンシア出身）のひとこと：** acabar + 現在分詞（結局〜することになる）と acabar de + 原形（〜したばかり）は、前置詞 de の有無だけで意味がまったく変わります。Acabo de comer.（食べたばかり）／ Acabé comiendo pizza.（結局ピザを食べることになった）。会話でとても使い分けが大事なペアです。
 
 ## 活用：今日の動詞 (Conjugación)
 
-TODO:contenido
+このユニットの動詞句は、ir、estar、tener などを活用させ、後ろの動詞は現在分詞・原形・過去分詞の形で使います。[ir](/language/learn-spanish/verb-conjugation/ir/) の点過去（fue mejorando）や、[tener](/language/learn-spanish/verb-conjugation/tener/) の現在形（tengo hechos）を活用表で確認しましょう。現在分詞の不規則な形（diciendo、yendo、durmiendo）は、ユニット11で学んだとおりです。
 
 ## 語彙 (Nociones específicas)
+
+動作の段階を表す動詞句と、変化やキャリアを語るときの語です。
 
 <VocabList items={frontmatter.vocabulary} level={frontmatter.level} />
 
 ## 発音・正書法 (Pronunciación y ortografía)
 
-TODO:contenido
+現在分詞に代名詞をつなげると、アクセント記号が必要になります：Voy entendiéndolo poco a poco.（少しずつそれがわかってきた）、Estoy buscándolo.（それを探している）。代名詞を前に置けば記号はいりません：Lo voy entendiendo poco a poco.
 
 ## 日本人がよく間違える
 
-TODO:contenido
+- **acabar + 現在分詞と acabar de を混同する。** ×Acabó de ser el mejor.（結局いちばんになった）→ ○Acabó **siendo** el mejor.
+- **ponerse a の a を落とす。** ×Se puso llover. → ○Se puso **a** llover.
+- **soler のあとに現在分詞を使う。** ×Suelo estudiando por la noche. → ○Suelo **estudiar** por la noche.
 
 ## 文化メモ (Referentes culturales)
 
 <CultureNote>
 
-TODO:contenido
+サッカー選手のキャリアを語るとき、アスペクトの動詞句はとても役に立ちます。たとえば久保建英は、FCバルセロナの下部組織ラ・マシアを離れ、レアル・マドリードに加わったあと、4度の期限付き移籍を経験しました。Fue mejorando temporada tras temporada y acabó siendo una pieza clave de la Real Sociedad.（シーズンごとに成長していき、最終的にレアル・ソシエダの主力になった）。その歩みは、[久保建英完全ガイド](/football/kubo-takefusa/)で紹介しています。
 
 </CultureNote>
 
 ## 練習 (Procedimientos de aprendizaje)
 
-### 練習1：認識
+### 練習1：意味を選ぶ
 
-TODO:contenido
+次の動詞句の意味を選んでください（少しずつ〜していく／まさに〜しようとしている／急に〜し始める／結局〜することになる／よく〜する）。
+
+1. ir + 現在分詞
+2. estar a punto de + 原形
+3. ponerse a + 原形
+4. acabar + 現在分詞
+5. soler + 原形
 
 <details>
 <summary>答えを見る</summary>
 
-TODO:contenido
+1. 少しずつ〜していく
+2. まさに〜しようとしている
+3. 急に〜し始める
+4. 結局〜することになる
+5. よく〜する
 
 </details>
 
 ### 練習2：穴埋め
 
-TODO:contenido
+（ ）に入る語を答えてください。
+
+1. Estaba a punto ______ llorar.
+2. De repente, se puso ______ nevar.
+3. Al final, acabamos ______（cenar）en casa.
+4. ______ ir al gimnasio los lunes.（私はよく〜する）
+5. Poco a poco, voy ______（entender）la gramática.
+6. Tengo ______（escribir）las dos cartas.
 
 <details>
 <summary>答えを見る</summary>
 
-TODO:contenido
+1. de
+2. a
+3. cenando
+4. Suelo
+5. entendiendo
+6. escritas（cartas に合わせて女性・複数）
 
 </details>
 
 ### 練習3：作文
 
-TODO:contenido
+ユイになったつもりで、スペイン語で言ってみましょう。
+
+1. 少しずつ先生の話がわかるようになってきた。
+2. 出かけようとしていたとき、雨が降りだした。
+3. 結局、スペインに残ることになった（quedarse）。
 
 <details>
-<summary>答えを見る</summary>
+<summary>解答例を見る</summary>
 
-TODO:contenido
+1. Voy entendiendo mejor a los profesores poco a poco.
+2. Estaba a punto de salir cuando se puso a llover.
+3. Al final, acabé quedándome en España.
 
 </details>
 
@@ -97,4 +245,8 @@ TODO:contenido
 
 ## まとめ
 
-TODO:contenido
+- 始まり：estar a punto de・ponerse a・echarse a。進み方：ir・venir・andar・seguir + 現在分詞。
+- 終わりと結果：acabar + 現在分詞（結局〜）、llegar a（〜するまでになる）、tener + 過去分詞（〜してある）。
+- 習慣は soler + 原形。acabar + 現在分詞と acabar de + 原形を区別する。
+
+次のユニット44では、再帰受動と無人称の se を学びます。
