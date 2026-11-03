@@ -5,96 +5,283 @@ levelName: "Acceso"
 slug: "review-dele-a1"
 url: "/language/learn-spanish/a1/review-dele-a1/"
 existing: false
-title: "A1 総復習と模擬試験 DELE A1"
-shortTitle: "A1 総復習と模擬試験 DELE A1"
-titleEs: "repaso A1 y simulacro DELE A1"
-grammar: ["repaso"]
-tenses: []
-functions: []
-canDo: []
-vocabulary: []
-verbs: []
+title: "DELE A1 模擬試験と A1 総復習｜スペイン語の4技能をチェック"
+shortTitle: "A1 総復習と模擬試験"
+titleEs: "Repaso A1 y simulacro DELE A1"
+description: "DELE A1 と同じ4つのテスト（読解・聴解・作文・会話）で構成したオリジナル模擬試験と、A1 文法の総復習。解答と解説つきで、苦手な項目と復習するユニットがわかります。聴解の音声は準備中のため、今はスクリプトで練習できます。"
+grammar: ["repaso de las unidades 1-11", "simulacro DELE A1"]
+tenses: ["presente de indicativo", "ir a + infinitivo", "estar + gerundio"]
+functions: ["A1 の文法と語彙を確認する", "DELE A1 の4つのテストを体験する"]
+canDo:
+  - "自分や身の回りのことについて、短い文章を読んだり書いたりできる"
+  - "DELE A1 の4つのテストの形式を知り、それぞれの課題に取り組める"
+  - "A1 の文法の苦手な項目を見つけ、復習するユニットを選べる"
+vocabulary:
+  # rank = «Rango frec.» del diccionario de frecuencias del CORPES XXI (RAE). Lo escribe
+  # npm run vocab:rank -- --write; lo que no es lema del diccionario va sin rank, al final.
+  - { es: "leer", ja: "読む（試験の指示では Lea：読みなさい）", rank: 567, example: "Lea el texto." }
+  - { es: "escuchar", ja: "聞く（指示では Escuche）", rank: 689, example: "Escuche el diálogo." }
+  - { es: "marcar", ja: "印をつける（指示では Marque）", rank: 633, example: "Marque la opción correcta." }
+  - { es: "completar", ja: "完成させる・記入する（指示では Complete）", rank: 1466, example: "Complete el formulario." }
+  - { es: "elegir", ja: "選ぶ（指示では Elija）", rank: 609, example: "Elija la respuesta correcta." }
+  - { es: "escribir", ja: "書く（指示では Escriba）", rank: 305, example: "Escriba un mensaje a un amigo." }
+  - { es: "la pregunta", ja: "質問・設問", rank: 859, example: "Conteste a las preguntas." }
+  - { es: "la respuesta", ja: "答え", rank: 492, example: "Elija la respuesta correcta." }
+  - { es: "la opción", ja: "選択肢", rank: 652, example: "Marque la opción a, b o c." }
+  - { es: "el texto", ja: "文章", rank: 576, example: "Lea el texto y conteste." }
+  - { es: "el formulario", ja: "申込書・記入用紙", rank: 6898, example: "Complete el formulario con sus datos." }
+  - { es: "el apellido", ja: "名字", rank: 3841, example: "¿Cuál es su apellido?" }
+  - { es: "la nacionalidad", ja: "国籍", rank: 3341, example: "Nacionalidad: japonesa." }
+  - { es: "la edad", ja: "年齢", rank: 412, example: "Edad: veintiocho años." }
+  - { es: "la afición", ja: "趣味", rank: 3005, example: "Mis aficiones son leer y viajar." }
+verbs: ["ser", "estar", "tener", "ir"]
 duration: 90
 prev: 11
 next: 13
-related: [11,13,1]
+related: [11, 13, 1]
 cast: ["mina"]
-audio: []
+audio:
+  - "Hola, ¿qué quieres?"
+  - "Un café con leche y un cruasán, por favor."
+  - "¿Algo más?"
+  - "Sí, un zumo de naranja. ¿Cuánto es?"
+  - "Son cinco euros con cincuenta."
+  - "El tren con destino a Toledo sale a las diez y cuarto del andén tres."
+  - "¿Hablas español?"
+  - "¿Dónde vives?"
 youtubeId: ""
-quiz: []
 draft: true
 updated: "2026-11-02"
+quiz:
+  - question: "「ミナは日本人です」。正しいのは？"
+    options: ["Mina está japonesa.", "Mina es japonesa.", "Mina es japonés."]
+    correctIndex: 1
+    explanation: "国籍は ser、形容詞は主語の性に合わせて japonesa。→ ユニット3"
+  - question: "ミナが「私は疲れている」と言うなら？"
+    options: ["Estoy cansada.", "Soy cansada.", "Tengo cansada."]
+    correctIndex: 0
+    explanation: "体調や気分は estar。→ ユニット3"
+  - question: "「近くに銀行はありますか？」。正しいのは？"
+    options: ["¿Está un banco cerca?", "¿Es un banco cerca?", "¿Hay un banco cerca?"]
+    correctIndex: 2
+    explanation: "あるかどうかわからない物（un banco）の存在は hay でたずねます。→ ユニット7"
+  - question: "「私はクロケッタが好き」。正しいのは？"
+    options: ["Me gusta las croquetas.", "Me gustan las croquetas.", "Yo gusto las croquetas."]
+    correctIndex: 1
+    explanation: "gustar の主語は好きな物。las croquetas は複数なので gustan。→ ユニット8"
+  - question: "「私は7時に起きる」。正しいのは？"
+    options: ["Levanto a las siete.", "Me levanto a las siete.", "Me levanta a las siete."]
+    correctIndex: 1
+    explanation: "levantarse は再帰動詞。yo なら me levanto。→ ユニット9"
+  - question: "「2時半です」。正しいのは？"
+    options: ["Son las dos y media.", "Es las dos y media.", "Son dos y media."]
+    correctIndex: 0
+    explanation: "2時からは Son las…。1時だけ Es la una。→ ユニット10"
+  - question: "「明日マドリードに行くつもりだ」。正しいのは？"
+    options: ["Mañana voy a ir a Madrid.", "Mañana voy ir a Madrid.", "Mañana estoy yendo a Madrid."]
+    correctIndex: 0
+    explanation: "予定は ir a + 動詞の原形。進行形は予定には使いません。→ ユニット11"
+  - question: "tener の1人称単数（yo）は？"
+    options: ["teno", "tengo", "tiene"]
+    correctIndex: 1
+    explanation: "tener は yo が -go になる不規則動詞です。→ ユニット5"
+  - question: "「白いTシャツ（複数）」。正しいのは？"
+    options: ["las blancas camisetas", "las camisetas blanco", "las camisetas blancas"]
+    correctIndex: 2
+    explanation: "形容詞は名詞の後ろに置き、性と数を合わせます。→ ユニット6"
+  - question: "mapa（地図）につく定冠詞は？"
+    options: ["la", "el", "los"]
+    correctIndex: 1
+    explanation: "mapa は -a で終わりますが男性名詞です：el mapa。→ ユニット2"
 ---
 
-TODO:contenido（導入：このユニットの問いに、それだけで答えになる2文で答える）
+このユニットは、A1（Acceso）レベルの総まとめです。前半でユニット1〜11の文法をふり返り、後半では DELE A1 と同じ4つのテスト（読解・聴解・作文・会話）で構成した、当サイトオリジナルの模擬試験に挑戦します。
 
-## 文法 (Gramática)
+問題の分量は本番より少なく、形式に慣れるための練習です。試験の構成や時間は [DELE A1 対策](/language/learn-spanish/dele/a1/)で確認してください。模擬試験の文章や会話には、このレベルで一緒に学んできたミナが登場します。
 
-TODO:contenido
+## 文法：A1 の総復習 (Gramática)
+
+A1 で学んだ文法を、一覧で確認しましょう。ミニテストで間違えた問題には、復習するユニットの番号を示しています。
+
+| 項目 | ポイント | ユニット |
+| --- | --- | --- |
+| 発音と読み方 | 強く読む位置、アクセント記号 | 1 |
+| 名詞の性・数と冠詞 | el / la、un / una、-s / -es | 2 |
+| ser と estar | 性質は ser、状態と場所は estar | 3 |
+| 現在形・規則動詞 | -o、-as / -es…、主語の省略 | 4 |
+| 現在形・不規則動詞 | quiero、puedo、tengo、voy | 5 |
+| 形容詞・所有詞・指示詞 | 性数一致、mis、este / ese / aquel | 6 |
+| hay と estar | 存在は hay、場所は estar | 7 |
+| gustar | Me gusta / Me gustan | 8 |
+| 再帰動詞 | me levanto、代名詞の位置 | 9 |
+| 疑問詞・数・時刻・日付 | Son las dos、el 2 de noviembre | 10 |
+| 近い未来と進行形 | voy a + 原形、estoy + 現在分詞 | 11 |
+
+A1 のスペイン語は、ほとんどが現在形でできています。「〜です」「〜がある」「〜が好き」「〜するつもり」の四つを、ser と estar、hay、gustar、ir a で言い分けられれば、A1 の土台はできています。
+
+**ダニエル（バレンシア出身）のひとこと：** 模擬試験で間違えた問題は、正解を覚えるより、なぜそうなるのかをユニットに戻って確かめる方が力になります。特に ser と estar、gustar は、A2 以降もずっと使う形です。
 
 ## 活用：今日の動詞 (Conjugación)
 
-TODO:contenido
+A1 でいちばん大切な四つの動詞、[ser](/language/learn-spanish/verb-conjugation/ser/)、[estar](/language/learn-spanish/verb-conjugation/estar/)、[tener](/language/learn-spanish/verb-conjugation/tener/)、[ir](/language/learn-spanish/verb-conjugation/ir/) の現在形を、もう一度声に出して確認しましょう。どれも不規則動詞で、A2 で学ぶ点過去でも形が大きく変わります。
 
 ## 語彙 (Nociones específicas)
+
+DELE の問題用紙では、指示文がスペイン語で書かれています。よく出る指示の動詞は、usted に対する命令の形（Lea、Marque など）で出てくるので、原形と一緒に覚えておきましょう。
 
 <VocabList items={frontmatter.vocabulary} level={frontmatter.level} />
 
 ## 発音・正書法 (Pronunciación y ortografía)
 
-TODO:contenido
+はい・いいえで答える疑問文は、文末を上げて読みます：¿Hablas español?（↗）。疑問詞で始まる疑問文は、ふつう文末を下げて読みます：¿Dónde vives?（↘）。会話テストでは、試験官の質問がどちらの形かを聞き分けると、答え方がすぐにわかります。
 
 ## 日本人がよく間違える
 
-TODO:contenido
+A1 の模擬試験で特に多い間違いを、三つだけふり返ります。
+
+- **体調や場所に ser を使う。** ×Soy cansada. ×Soy en Madrid. → ○**Estoy** cansada. ○**Estoy** en Madrid.（ユニット3）
+- **gustar の主語を取り違える。** ×Yo gusto el fútbol. → ○**Me gusta** el fútbol.（ユニット8）
+- **形容詞の性と数を合わせない。** ×una ciudad bonito、×los hoteles barato → ○una ciudad **bonita**、○los hoteles **baratos**（ユニット6）
 
 ## 文化メモ (Referentes culturales)
 
 <CultureNote>
 
-TODO:contenido
+作文テストの申込書には、Apellidos（名字）の欄があります。スペインの人は、ふつう二つの名字を持っていて、伝統的には父親の名字のあとに母親の名字が続きます（今は、両親が順番を選ぶこともできます）。そのため書類の欄も複数形の apellidos になっていることが多いのです。日本人なら、名字を一つ書けば大丈夫です。旅先のホテルや手続きで役立つ基本情報は、[スペイン旅行の基本情報完全ガイド](/travel/spain-travel-basics/)で紹介しています。
 
 </CultureNote>
 
-## 練習 (Procedimientos de aprendizaje)
+## 練習：DELE A1 ミニ模擬試験 (Procedimientos de aprendizaje)
 
-### 練習1：認識
+### テスト1：読解（Comprensión de lectura）
 
-TODO:contenido
+**課題1.** ミナがダニエルに書いたメールを読んで、質問に a・b・c で答えてください。
 
-<details>
-<summary>答えを見る</summary>
+¡Hola, Daniel! ¿Qué tal? Estoy en Madrid. Mi hotel está en el centro, cerca de la Plaza Mayor. La habitación es pequeña, pero muy bonita. Todos los días me levanto a las nueve y desayuno en un bar. Me gustan mucho los churros. Mañana voy a ir a Toledo en tren. El tren sale a las diez y cuarto. ¡Hasta pronto! Mina
 
-TODO:contenido
+1. ¿Dónde está el hotel de Mina? a) cerca de la estación　b) cerca de la Plaza Mayor　c) en Toledo
+2. ¿Cómo es la habitación? a) grande y bonita　b) pequeña y fea　c) pequeña y bonita
+3. ¿Qué hace Mina todos los días? a) desayuna en un bar　b) desayuna en el hotel　c) no desayuna
+4. ¿Qué le gusta a Mina? a) el café solo　b) los churros　c) el chocolate
+5. ¿A qué hora sale el tren a Toledo? a) a las diez y cuarto　b) a las nueve　c) a las diez menos cuarto
 
-</details>
+**課題2.** 次の三つの掲示（A・B・C）を読んで、質問に答えてください。
 
-### 練習2：穴埋め
+- A：Museo. Abierto de martes a domingo, de 10:00 a 20:00. Lunes: cerrado.
+- B：Supermercado. Abierto todos los días de 9:00 a 21:30.
+- C：Prohibido hacer fotos.
 
-TODO:contenido
-
-<details>
-<summary>答えを見る</summary>
-
-TODO:contenido
-
-</details>
-
-### 練習3：作文
-
-TODO:contenido
+6. 月曜日に入れないのは、どの掲示の場所ですか？
+7. 夜9時に買い物ができるのは、どの掲示の場所ですか？
+8. 写真を撮ってはいけないのは、どの掲示ですか？
 
 <details>
 <summary>答えを見る</summary>
 
-TODO:contenido
+1. b（cerca de la Plaza Mayor）
+2. c（pequeña, pero muy bonita）
+3. a（desayuno en un bar）
+4. b（Me gustan mucho los churros）
+5. a（a las diez y cuarto）
+6. A（Lunes: cerrado）
+7. B（21:30 まで開いている）
+8. C（Prohibido：禁止）
 
 </details>
+
+### テスト2：聴解（Comprensión auditiva）
+
+音声準備中です。今は下のスクリプトを読んで、会話を聞いているつもりで答えを考えてみましょう。
+
+**課題1.** カフェでの会話です。ミナは何を三つ注文しましたか。また、全部でいくらですか。
+
+**課題2.** 駅のアナウンスです。トレド行きの電車は、何時に、何番ホームから出ますか。
+
+<details>
+<summary>スクリプトと答えを見る</summary>
+
+**課題1**
+
+- Camarero: Hola, ¿qué quieres?
+- Mina: Un café con leche y un cruasán, por favor.
+- Camarero: ¿Algo más?
+- Mina: Sí, un zumo de naranja. ¿Cuánto es?
+- Camarero: Son cinco euros con cincuenta.
+
+答え：カフェ・コン・レチェ、クロワッサン、オレンジジュース。全部で5ユーロ50セント（cinco euros con cincuenta）。
+
+**課題2**
+
+El tren con destino a Toledo sale a las diez y cuarto del andén tres.
+
+答え：10時15分（a las diez y cuarto）、3番ホーム（del andén tres）。
+
+</details>
+
+### テスト3：作文（Expresión e interacción escritas）
+
+**課題1.** スペイン語教室の申込書に、自分のことを記入してください。
+
+Nombre / Apellidos / Nacionalidad / Edad / Profesión / Aficiones
+
+**課題2.** ダニエルに、週末の予定を伝えるメッセージを書いてください（25〜35語）。どこに行くか、何をするか、何時にどこで会うかを入れましょう。
+
+<details>
+<summary>解答例を見る</summary>
+
+**課題1（記入例）**
+
+Nombre: Kenji / Apellidos: Yamada / Nacionalidad: japonés / Edad: 35 años / Profesión: profesor / Aficiones: el fútbol y la cocina
+
+**課題2**
+
+Hola, Daniel: El sábado voy a ir al cine con una amiga. Después vamos a cenar en un restaurante. ¿Quieres venir? Podemos quedar a las siete delante del cine. Un abrazo, Mina
+
+（土曜日に友だちと映画に行くの。そのあとレストランで夕食をとるつもり。一緒に来る？　7時に映画館の前で待ち合わせしよう）
+
+</details>
+
+### テスト4：会話（Expresión e interacción orales）
+
+**課題1.** 1〜2分で自己紹介をしてください。名前、出身、仕事、住んでいる所、好きなこと、一日の過ごし方を入れましょう。
+
+**課題2.** 試験官の質問に答えてください。
+
+- ¿Dónde vives?
+- ¿Qué te gusta hacer los fines de semana?
+- ¿A qué hora te levantas?
+- ¿Qué vas a hacer mañana?
+- ¿Cómo es tu ciudad?
+
+<details>
+<summary>解答例を見る</summary>
+
+**課題1**
+
+Hola, me llamo Mina. Soy japonesa, de Tokio. Soy diseñadora y trabajo en una oficina de diseño. Vivo en un piso pequeño en el centro. Me gusta mucho dibujar y viajar. Normalmente me levanto a las siete y por la noche estudio español.
+
+**課題2**
+
+- Vivo en Tokio.
+- Me gusta ver películas y salir con mis amigas.
+- Me levanto a las siete.
+- Mañana voy a trabajar y por la noche voy a cenar con Daniel.
+- Mi ciudad es muy grande y moderna. Hay muchos restaurantes.
+
+</details>
+
+会話テストの流れや、試験官とのやり取りのコツは、[DELE面接・口頭試験 完全対策ガイド](/language/learn-spanish/dele-oral-interview-guide/)でくわしく紹介しています。
 
 ## ミニテスト
+
+A1 の文法の総まとめです。7問以上正解でこのユニットは完了です。間違えた問題は、解説のユニットに戻って復習しましょう。
 
 <MiniQuiz quiz={frontmatter.quiz} unit={frontmatter.unit} />
 
 ## まとめ
 
-TODO:contenido
+- A1 の土台は現在形。ser と estar、hay、gustar、ir a の使い分けができれば、身の回りのことを話せる。
+- DELE A1 は読解・聴解・作文・会話の4つのテスト。指示文の動詞（Lea、Marque、Complete…）も覚えておく。
+- 模擬試験で間違えた項目は、ユニットに戻って理由から確かめる。
+
+次のユニット13からは A2 Plataforma です。まず現在完了を使って、「今日〜した」「〜したことがある」と言えるようにします。

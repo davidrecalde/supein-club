@@ -287,8 +287,8 @@ Revisión de los documentos contra el repositorio y producción antes del prompt
    - Opcionales: `grammar`, `tenses`, `functions`, `verbs`, `audio`, `youtubeId` y los cinco ejes de la estrategia (`skills`, `format`, `theme`, `goal`; el nivel ya es `level`).
    - `quiz` usa los mismos nombres que la colección `articles` (`question`, `options`, `correctIndex`, `explanation`) para reutilizar QuizCard y el schema Quiz. Se aprueba con 7 de 10.
    - `pubDate` alimenta `datePublished` y `updated` alimenta `dateModified`. Ninguna de las dos fechas cambia sin la orden HAZ FRESHNESS, salvo `pubDate` y `updated` en la primera publicación.
-5. **`rank` del vocabulario:** es el puesto en la lista de frecuencia del Corpus del Español, la misma fuente que ya cita la web. Las expresiones de varias palabras sin puesto propio van sin `rank`, al final de la tabla. No se dice «ordenado por frecuencia» de nada que no tenga `rank` real. Los valores de la unidad modelo son provisionales.
-6. **Los 50 verbos del conjugador:** los 50 verbos más frecuentes de esa misma lista, no una selección propia. Los 20 verbos que ya citan las unidades tienen que estar entre ellos o añadirse.
+5. **`rank` del vocabulario:** *(sustituido el 2 de noviembre de 2026)* sale del diccionario de frecuencias del CORPES XXI de la RAE; ver «Frecuencia del vocabulario». Las expresiones sin lema propio van sin `rank`, al final de la tabla, y no se dice «ordenado por frecuencia» de nada que no tenga `rank` real.
+6. **Los 50 verbos del conjugador:** *(sustituido el 2 de noviembre de 2026)* es la selección de David, con el puesto real de cada verbo en el CORPES XXI; ver «Prompt 3: conjugador».
 7. **`related`:** completadas a tres las unidades 1, 11, 23, 35, 47, 55, 61 y 62 (se añaden 10, 20, 34, 26, 59, 53, 54 y 56).
 8. **Conjugador:** desarrollo propio, como en el prompt 3. La estrategia ya lo marca como decidido.
 
@@ -345,6 +345,7 @@ Decisión de David: el curso no se muestra a los visitantes hasta que esté 100 
 - Cuando las 62 unidades estén revisadas, un único PR las pasa todas a `draft: false` con su `pubDate`, migra las unidades existentes (1, 25, 37, 49 y 57) desde `articles`, cambia los 36 STEP por la numeración de 62 unidades y activa los bloques del hub.
 - El build falla si se publica solo una parte (`course-link-check` en `astro.config.mjs`), e `isCourseVisible()` exige las 62 unidades publicadas.
 - Tampoco se anuncia en redes hasta entonces.
+- **Unidades de cierre (12, 24, 36, 48, 56 y 62):** el simulacro va en la sección 練習, con una tarea numerada por prueba y las respuestas en 「解答を見る」. La prueba auditiva se muestra como 「音声準備中」 con la transcripción oculta, sin reproductor. Cuando exista el componente ExamMode (prompt 6), envolverá esas tareas. Las duraciones del examen no se citan en la unidad: remite a /dele/<nivel>/, porque las fuentes del Instituto Cervantes no coinciden (la guía oficial de 2019 da 25 min de auditiva y 10 + 10 de oral para A1; varias sedes, 20 y 15 + 15).
 - En ese mismo PR, las páginas existentes que hoy responden a la búsqueda de una unidad pasan a enlazarla con el texto de la consulta (anti-canibalización): la sección 「近接未来形」 de la página central del conjugador → unidad 11; los números y los días de /a1/vocabulary/ → unidad 10; /a1/grammar/ y el resto de resúmenes de nivel → cada unidad de su nivel. Ir anotando aquí los casos que aparezcan al escribir las unidades.
 
 ### Frecuencia del vocabulario (2 de noviembre de 2026)
