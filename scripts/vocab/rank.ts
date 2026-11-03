@@ -74,7 +74,9 @@ function lookup(es: string): { rank?: number; why: string } {
   const entries = lemmas.get(o?.lemma ?? key) ?? [];
   // Con artículo es un nombre: «el móvil» toma el puesto de N, no el del adjetivo.
   const cat = o?.cat ?? (ARTICLE.test(lower) && entries.some((e) => e.cat === 'N') ? 'N' : undefined);
-  const pool = cat ? entries.filter((e) => e.cat === cat) : entries;
+  // Sin artículo no es un nombre (los nombres se escriben con el / la): «mañana» = 明日 (R), no «la mañana».
+  const notNoun = entries.filter((e) => e.cat !== 'N');
+  const pool = cat ? entries.filter((e) => e.cat === cat) : !ARTICLE.test(lower) && notNoun.length ? notNoun : entries;
   if (pool.length === 0) return { why: 'no es un lema del diccionario: sin rank' };
   const best = pool.reduce((a, b) => (b.rank < a.rank ? b : a));
   const others = entries.filter((e) => e !== best).map((e) => `${e.cat} ${e.rank}`);
