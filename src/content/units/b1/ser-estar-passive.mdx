@@ -5,89 +5,256 @@ levelName: "Umbral"
 slug: "ser-estar-passive"
 url: "/language/learn-spanish/b1/ser-estar-passive/"
 existing: false
-title: "ser/estar の応用と受動態"
+title: "ser と estar の応用と受動態｜意味が変わる形容詞と se の受け身"
 shortTitle: "ser/estar の応用と受動態"
-titleEs: "ser y estar avanzados; pasiva"
-grammar: ["ser/estar + participio","pasiva"]
-tenses: []
-functions: []
-canDo: []
-vocabulary: []
-verbs: ["ser","estar"]
-duration: 40
+titleEs: "Ser y estar: usos avanzados y voz pasiva"
+description: "ser と estar の応用を解説。ser + 過去分詞の受動態、estar + 過去分詞の結果の状態、se habla español のような se の受け身、ser listo / estar listo のように意味が変わる形容詞を、日本人が間違えやすい点と練習問題つきで学べます。"
+grammar: ["ser + participio (voz pasiva)", "estar + participio (resultado)", "pasiva refleja con se", "adjetivos que cambian de significado con ser y estar"]
+tenses: ["presente de indicativo", "pretérito indefinido"]
+functions: ["建物や作品の歴史を説明する", "物の状態を言う", "一般的なことを se で言う"]
+canDo:
+  - "「〜によって作られた」と、受動態で建物や作品を説明できる"
+  - "「閉まっている」「壊れている」と、結果の状態を言える"
+  - "ser と estar で意味が変わる形容詞を使い分けられる"
+vocabulary:
+  # rank = «Rango frec.» del diccionario de frecuencias del CORPES XXI (RAE). Lo escribe
+  # npm run vocab:rank -- --write; lo que no es lema del diccionario va sin rank, al final.
+  - { es: "construir", ja: "建てる", rank: 550, example: "La catedral fue construida en el siglo XVI." }
+  - { es: "diseñar", ja: "設計する", rank: 1515, example: "El edificio fue diseñado por un arquitecto famoso." }
+  - { es: "pintar", ja: "描く", rank: 2228, example: "Este cuadro fue pintado por Velázquez." }
+  - { es: "cerrar", ja: "閉める", rank: 635, example: "La biblioteca está cerrada los domingos." }
+  - { es: "romper", ja: "壊す", rank: 1172, example: "La ventana está rota." }
+  - { es: "declarar", ja: "宣言する・指定する", rank: 603, example: "Fue declarada Patrimonio de la Humanidad." }
+  - { es: "el siglo", ja: "世紀", rank: 371, example: "La universidad fue fundada en el siglo XIII." }
+  - { es: "el arquitecto", ja: "建築家（女性形 la arquitecta）", rank: 2326, example: "Gaudí fue un arquitecto catalán." }
+  - { es: "la obra", ja: "作品・工事", rank: 122, example: "Es la obra más famosa de Gaudí." }
+  - { es: "el patrimonio", ja: "遺産", rank: 1510, example: "Es Patrimonio de la Humanidad." }
+  - { es: "listo", ja: "（ser）賢い／（estar）準備ができた", rank: 1872, example: "¿Estás lista? Nos vamos." }
+  - { es: "rico", ja: "（ser）金持ちの／（estar）おいしい", rank: 1564, example: "¡Esta tortilla está muy rica!" }
+  - { es: "aburrido", ja: "（ser）退屈な／（estar）退屈している", rank: 5769, example: "La película es aburrida." }
+  - { es: "malo", ja: "（ser）悪い／（estar）体調が悪い", rank: 511, example: "Hoy no voy a clase; estoy malo." }
+verbs: ["ser", "estar"]
+duration: 45
 prev: 31
 next: 33
-related: [31,33,36]
-cast: ["yui","kenta"]
-audio: []
+related: [31, 33, 36]
+cast: ["yui", "kenta"]
+audio:
+  - "La catedral fue construida en el siglo XVI."
+  - "La biblioteca está cerrada los domingos."
+  - "En esta tienda se habla inglés."
+  - "Se venden pisos."
+  - "¡Esta tortilla está muy rica!"
 youtubeId: ""
-quiz: []
 draft: true
 updated: "2026-11-02"
+quiz:
+  - question: "「この絵はベラスケスによって描かれた」。正しいのは？"
+    options: ["Este cuadro fue pintado por Velázquez.", "Este cuadro estuvo pintado por Velázquez.", "Este cuadro fue pintada de Velázquez."]
+    correctIndex: 0
+    explanation: "受動態は ser + 過去分詞 + por。過去分詞は主語（cuadro）の性と数に合わせます。"
+  - question: "「大聖堂は16世紀に建てられた」。正しいのは？"
+    options: ["La catedral fue construido en el siglo XVI.", "La catedral fue construida en el siglo XVI.", "La catedral está construyendo en el siglo XVI."]
+    correctIndex: 1
+    explanation: "主語 la catedral は女性・単数なので、過去分詞も construida。"
+  - question: "「図書館は日曜日は閉まっている」。正しいのは？"
+    options: ["La biblioteca es cerrada los domingos.", "La biblioteca está cerrada los domingos.", "La biblioteca está cerrado los domingos."]
+    correctIndex: 1
+    explanation: "結果の状態は estar + 過去分詞：está cerrada（女性形）。"
+  - question: "「この店では英語が話されている（英語が通じる）」。自然なのは？"
+    options: ["En esta tienda se habla inglés.", "En esta tienda es hablado inglés.", "En esta tienda habla inglés."]
+    correctIndex: 0
+    explanation: "だれがするかを言わない一般的なことは、se + 3人称の受け身が自然です。"
+  - question: "「マンション売ります（複数の物件）」。正しいのは？"
+    options: ["Se vende pisos.", "Se venden pisos.", "Se vendemos pisos."]
+    correctIndex: 1
+    explanation: "se の受け身では、動詞を物の数に合わせます：pisos（複数）→ venden。"
+  - question: "「このトルティージャ、すごくおいしい！」。正しいのは？"
+    options: ["¡Esta tortilla es muy rica!", "¡Esta tortilla está muy rica!", "¡Esta tortilla está muy rico!"]
+    correctIndex: 1
+    explanation: "食べ物の味が「おいしい」は estar rico。ser rico は「金持ちだ」になります。"
+  - question: "「準備できた？」（女性に）。正しいのは？"
+    options: ["¿Eres lista?", "¿Estás lista?", "¿Estás listo?"]
+    correctIndex: 1
+    explanation: "estar listo は「準備ができた」。女性なので lista。ser listo は「賢い」です。"
+  - question: "「今日は体調が悪い」（男性）。正しいのは？"
+    options: ["Hoy soy malo.", "Hoy estoy malo.", "Hoy estoy mala de clase."]
+    correctIndex: 1
+    explanation: "estar malo は「体調が悪い」。ser malo は「悪い人だ」になります。"
+  - question: "「窓が割れている」。正しいのは？"
+    options: ["La ventana es rota.", "La ventana está rota.", "La ventana está rompida."]
+    correctIndex: 1
+    explanation: "結果の状態は estar + 過去分詞。romper の過去分詞は不規則で roto（女性形 rota）。"
+  - question: "「その映画は退屈だ」（映画の性質）。正しいのは？"
+    options: ["La película es aburrida.", "La película está aburrida.", "La película es aburriendo."]
+    correctIndex: 0
+    explanation: "映画の性質は ser aburrido。estar aburrido は「（人が）退屈している」です。"
 ---
 
-TODO:contenido（導入：このユニットの問いに、それだけで答えになる2文で答える）
+スペイン語の ser と estar は、A1 で学んだ「性質と状態」の区別に加えて、過去分詞と組み合わせると違う働きをします。ser + 過去分詞は「〜される」という受動態（La catedral fue construida en el siglo XVI.、大聖堂は16世紀に建てられた）、estar + 過去分詞は「〜されている」という結果の状態（La biblioteca está cerrada.、図書館は閉まっている）です。
 
-## 文法 (Gramática)
+さらに、だれがするかを言わない一般的なことは、se を使って Se habla inglés.（英語が通じます）と言います。このユニットでは、サラマンカの歴史を案内するユイと、出張の合間に観光するケンタの場面を例に、ser と estar の応用を学びます。
 
-TODO:contenido
+## 文法：ser と estar の応用、受動態 (Gramática)
+
+まず ser の受動態を、次に estar の結果の状態を、最後に se の受け身と、意味が変わる形容詞を見ていきましょう。
+
+### ser + 過去分詞：受動態
+
+「（だれかによって）〜される・された」と、行為そのものを表します。行為をした人は por で示します。過去分詞は主語の性と数に合わせます。
+
+<Examples>
+
+- Este cuadro fue pintado por Velázquez.（この絵はベラスケスによって描かれた）
+- La catedral fue construida en el siglo XVI.（大聖堂は16世紀に建てられた）
+
+</Examples>
+
+受動態は、建物や作品の歴史を説明する文、ニュースや案内の文でよく使います。会話では、能動態（Velázquez pintó este cuadro.）の方が自然なことも多いです。
+
+### estar + 過去分詞：結果の状態
+
+行為のあとに残っている状態を表します。
+
+| ser（行為） | estar（状態） |
+| --- | --- |
+| La tienda fue cerrada por la policía.（店は警察に閉鎖された） | La tienda está cerrada.（店は閉まっている） |
+| La ventana fue rota por un niño.（窓は子どもに割られた） | La ventana está rota.（窓が割れている） |
+
+### se を使った受け身
+
+だれがするかを言わず、一般的なことを言うときは、se + 3人称の動詞を使います。動詞は物の数に合わせます。
+
+| 形 | 例 |
+| --- | --- |
+| se + 3人称単数 | Se habla inglés.（英語が通じます） |
+| se + 3人称複数 | Se venden pisos.（マンション売ります） |
+| se + 3人称単数（人一般） | Aquí se come muy bien.（ここはおいしいものが食べられる） |
+
+お店の看板や案内には、この形がたくさん出てきます：Se alquila habitación.（部屋貸します）、Se prohíbe fumar.（禁煙）。
+
+### ser と estar で意味が変わる形容詞
+
+| 形容詞 | ser | estar |
+| --- | --- | --- |
+| listo | 賢い | 準備ができた |
+| rico | 金持ちの | （食べ物が）おいしい |
+| aburrido | 退屈な（性質） | 退屈している（状態） |
+| malo | 悪い（性質） | 体調が悪い |
+
+<Examples>
+
+- ¡Esta tortilla está muy rica!（このトルティージャ、すごくおいしい！）
+- ¿Estás lista? Nos vamos.（準備できた？行くよ）
+
+</Examples>
+
+### サラマンカを案内する
+
+ユイが、サラマンカを訪れたケンタを案内します。
+
+Esta es la universidad. Fue fundada en el siglo XIII y es una de las más antiguas de España. Con la visita, se puede ver la biblioteca histórica. En esta plaza se come muy bien y los precios son buenos.
+
+（これが大学です。13世紀に創設された、スペインで最も古い大学の一つです。見学をすると、歴史的な図書館も見ることができます。この広場ではおいしいものが食べられて、値段も手ごろです）
+
+### se を使った一般的な言い方
+
+se は受け身のほかに、「人は一般に〜する」という意味でも使います：Se dice que Salamanca es la ciudad más bonita de Castilla.（サラマンカはカスティーリャでいちばん美しい町だと言われている）、En España se cena tarde.（スペインでは夕食が遅い）、¿Se puede pagar con tarjeta?（カードで払えますか）。日本語の「〜と言われている」「（一般に）〜する」にあたり、ガイドブックやお店でとてもよく見かけます。
+
+estar casado（結婚している）、estar sentado（座っている）、estar cansado（疲れている）のように、日本語の「〜している」の多くは estar + 過去分詞で言います。ユニット11の進行形（estar + 現在分詞）と混同しないようにしましょう。
+
+ニュースの見出しでは、ser を省いて過去分詞だけを書くこともあります：Inaugurado el nuevo museo.（新しい美術館が開館）。
+
+**ダニエル（バレンシア出身）のひとこと：** 料理をほめるときの ¡Está riquísimo! は、スペインの食卓で一番よく聞く言葉かもしれません。ser を使って ¡Es rico! と言うと「（この料理は）お金持ちだ」のようなおかしな意味になるので、味には必ず estar を使ってください。
 
 ## 活用：今日の動詞 (Conjugación)
 
-TODO:contenido
+受動態では [ser](/language/learn-spanish/verb-conjugation/ser/) の点過去（fue、fueron）が、結果の状態では [estar](/language/learn-spanish/verb-conjugation/estar/) の現在形（está、están）が中心です。活用表で ser の点過去を確認しておきましょう。過去分詞の不規則な形（roto、hecho、escrito、abierto）も、受動態や結果の状態でよく使います。
 
 ## 語彙 (Nociones específicas)
+
+建物や作品の歴史を説明するときの語と、ser と estar で意味が変わる形容詞です。
 
 <VocabList items={frontmatter.vocabulary} level={frontmatter.level} />
 
 ## 発音・正書法 (Pronunciación y ortografía)
 
-TODO:contenido
+世紀はローマ数字で書き、読むときはふつうの数字で読みます：el siglo XVI（エル・**シ**グロ・ディエシ**セイ**ス）、el siglo XIII（エル・**シ**グロ・**トレ**セ）。日本語の「16世紀」と違って、siglo（世紀）が数字の前に来ます。
 
 ## 日本人がよく間違える
 
-TODO:contenido
+- **受動態の過去分詞を主語に合わせない。** ×La catedral fue construido. → ○La catedral fue **construida**.
+- **閉まっている・壊れている状態に ser を使う。** ×La tienda es cerrada. → ○La tienda **está** cerrada.
+- **se の受け身で動詞の数を合わせない。** ×Se vende pisos. → ○Se **venden** pisos.
 
 ## 文化メモ (Referentes culturales)
 
 <CultureNote>
 
-TODO:contenido
+バルセロナのサグラダ・ファミリアは、ガウディの最も有名な作品です。案内板やガイドブックには、受動態の文がたくさん出てきます。Partes del templo fueron declaradas Patrimonio de la Humanidad por la UNESCO.（聖堂の一部は、ユネスコによって世界遺産に登録された）。El templo es visitado por turistas de todo el mundo.（聖堂は世界中の観光客が訪れる）。見学の予約やみどころは、[サグラダファミリア完全ガイド](/travel/barcelona/sagrada-familia-guide/)で紹介しています。
 
 </CultureNote>
 
 ## 練習 (Procedimientos de aprendizaje)
 
-### 練習1：認識
+### 練習1：ser？ estar？
 
-TODO:contenido
+正しい方を選んでください。
+
+1. La catedral (fue / estuvo) construida en el siglo XVI.
+2. La tienda (es / está) cerrada hoy.
+3. ¡Esta paella (es / está) muy rica!
+4. Mi hermano (es / está) muy listo; siempre saca buenas notas.
+5. Hoy no voy a trabajar; (soy / estoy) malo.
 
 <details>
 <summary>答えを見る</summary>
 
-TODO:contenido
+1. fue（受動態）
+2. está（結果の状態）
+3. está（味）
+4. es（賢い）
+5. estoy（体調が悪い）
 
 </details>
 
 ### 練習2：穴埋め
 
-TODO:contenido
+（ ）の動詞を、指示に合わせた形にしてください。
+
+1. El cuadro fue (pintar) ______ por Goya.
+2. Las puertas están (abrir) ______.
+3. Aquí se (hablar) ______ español e inglés.
+4. Se (vender) ______ bicicletas.
+5. La ventana está (romper) ______.
+6. Las casas fueron (construir) ______ en 1950.
 
 <details>
 <summary>答えを見る</summary>
 
-TODO:contenido
+1. pintado
+2. abiertas（abrir の過去分詞は不規則）
+3. habla
+4. venden（bicicletas は複数）
+5. rota（romper の過去分詞は不規則）
+6. construidas
 
 </details>
 
 ### 練習3：作文
 
-TODO:contenido
+スペイン語で言ってみましょう。
+
+1. この大学は13世紀に創設された（fundar）。
+2. 図書館は日曜日は閉まっている。
+3. このトルティージャ、すごくおいしい！
 
 <details>
-<summary>答えを見る</summary>
+<summary>解答例を見る</summary>
 
-TODO:contenido
+1. Esta universidad fue fundada en el siglo XIII.
+2. La biblioteca está cerrada los domingos.
+3. ¡Esta tortilla está muy rica!
 
 </details>
 
@@ -97,4 +264,8 @@ TODO:contenido
 
 ## まとめ
 
-TODO:contenido
+- ser + 過去分詞（+ por）は受動態、estar + 過去分詞は結果の状態。過去分詞は主語に性数を合わせる。
+- だれがするかを言わない一般的なことは se + 3人称（Se habla inglés. / Se venden pisos.）。
+- listo・rico・aburrido・malo は、ser と estar で意味が変わる。
+
+次のユニット33では、por と para の使い分けと、よく使う前置詞を学びます。

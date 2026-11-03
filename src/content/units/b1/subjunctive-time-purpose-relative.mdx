@@ -5,89 +5,241 @@ levelName: "Umbral"
 slug: "subjunctive-time-purpose-relative"
 url: "/language/learn-spanish/b1/subjunctive-time-purpose-relative/"
 existing: false
-title: "接続法：時・目的・関係節"
+title: "接続法の使い方②｜cuando・para que・関係節で使う接続法"
 shortTitle: "接続法：時・目的・関係節"
-titleEs: "subjuntivo en temporales, finales y relativas"
-grammar: ["cuando","para que","que + subjuntivo"]
-tenses: []
-functions: []
-canDo: []
-vocabulary: []
+titleEs: "Subjuntivo: tiempo, finalidad y oraciones de relativo"
+description: "スペイン語の接続法の使い方を解説。未来のことを言う cuando + 接続法、目的の para que、antes de que、まだ見つかっていない物を言う関係節（Busco un piso que tenga…）と直説法との違いを、練習問題つきで学べます。"
+grammar: ["cuando + subjuntivo (futuro)", "para que, antes de que, hasta que", "oraciones de relativo con antecedente desconocido"]
+tenses: ["presente de subjuntivo"]
+functions: ["これからのことを時の表現で言う", "目的を言う", "探している物の条件を言う"]
+canDo:
+  - "「〜したら」と、これからのことを cuando で言える"
+  - "「〜が…できるように」と、目的を言える"
+  - "「〜のような部屋を探している」と、条件をつけて物を探せる"
+vocabulary:
+  # rank = «Rango frec.» del diccionario de frecuencias del CORPES XXI (RAE). Lo escribe
+  # npm run vocab:rank -- --write; lo que no es lema del diccionario va sin rank, al final.
+  - { es: "cuando", ja: "〜するとき・〜したら", rank: 43, example: "Cuando termine los exámenes, viajaré." }
+  - { es: "hasta que", ja: "〜するまで", example: "Espera aquí hasta que vuelva." }
+  - { es: "antes de que", ja: "〜する前に", example: "Llámame antes de que salgas." }
+  - { es: "para que", ja: "〜が…するように", example: "Te lo explico para que lo entiendas." }
+  - { es: "en cuanto", ja: "〜したらすぐ", rank: 4133, example: "En cuanto llegue, te escribo." }
+  - { es: "buscar", ja: "探す", rank: 179, example: "Busco un piso que tenga terraza." }
+  - { es: "la terraza", ja: "テラス・ベランダ", rank: 5019, example: "Quiero un piso con terraza." }
+  - { es: "el alquiler", ja: "家賃・賃貸", rank: 4437, example: "El alquiler no puede costar más de 400 euros." }
+  - { es: "la luz", ja: "光・電気", rank: 534, example: "Busco una habitación que tenga mucha luz." }
+  - { es: "el ruido", ja: "騒音", rank: 2807, example: "Necesito un piso donde no haya ruido." }
+  - { es: "el examen", ja: "試験", rank: 2025, example: "Cuando acabe el examen, iré a la playa." }
+  - { es: "graduarse", ja: "卒業する", rank: 5163, example: "Cuando me gradúe, volveré a Japón." }
+  - { es: "necesitar", ja: "必要とする", rank: 368, example: "Necesito a alguien que hable japonés." }
+  - { es: "alguien", ja: "だれか", rank: 926, example: "¿Hay alguien que sepa cocinar?" }
 verbs: []
-duration: 40
+duration: 45
 prev: 26
 next: 28
-related: [26,28,36]
-cast: ["yui","kenta"]
-audio: []
+related: [26, 28, 36]
+cast: ["yui", "kenta"]
+audio:
+  - "Cuando termine los exámenes, viajaré por España."
+  - "Te lo explico para que lo entiendas."
+  - "Busco un piso que tenga terraza."
+  - "Vivo en un piso que tiene terraza."
+  - "¿Hay alguien que hable japonés?"
 youtubeId: ""
-quiz: []
 draft: true
 updated: "2026-11-02"
+quiz:
+  - question: "「試験が終わったら、旅行する」。正しいのは？"
+    options: ["Cuando termino los exámenes, viajaré.", "Cuando termine los exámenes, viajaré.", "Cuando terminaré los exámenes, viajaré."]
+    correctIndex: 1
+    explanation: "これからのことを言う cuando のあとは接続法：termine。cuando のあとに未来形は使いません。"
+  - question: "「家に帰ると、いつも料理をする」（習慣）。正しいのは？"
+    options: ["Cuando llego a casa, siempre cocino.", "Cuando llegue a casa, siempre cocino.", "Cuando llegaré a casa, siempre cocino."]
+    correctIndex: 0
+    explanation: "習慣や事実を言う cuando は直説法：llego。接続法になるのは、まだ起きていない未来のときです。"
+  - question: "「君がわかるように説明する」。正しいのは？"
+    options: ["Te lo explico para entiendas.", "Te lo explico para que lo entiendas.", "Te lo explico para que lo entiendes."]
+    correctIndex: 1
+    explanation: "目的で主語が違うときは para que + 接続法：entiendas。"
+  - question: "「（私が）スペイン語を学ぶためにサラマンカに来た」。正しいのは？"
+    options: ["Vine a Salamanca para aprender español.", "Vine a Salamanca para que aprenda español.", "Vine a Salamanca para aprendo español."]
+    correctIndex: 0
+    explanation: "主語が同じ（私が来て、私が学ぶ）なら para + 原形です。"
+  - question: "「出かける前に電話して」。正しいのは？"
+    options: ["Llámame antes de que sales.", "Llámame antes de que salgas.", "Llámame antes que saldrás."]
+    correctIndex: 1
+    explanation: "antes de que のあとは、いつも接続法：salgas。"
+  - question: "「テラスのある部屋を探している」（まだ見つかっていない）。正しいのは？"
+    options: ["Busco un piso que tiene terraza.", "Busco un piso que tenga terraza.", "Busco un piso que tendrá terraza."]
+    correctIndex: 1
+    explanation: "まだ存在がわからない物を説明する関係節は接続法：tenga。"
+  - question: "「テラスのある部屋に住んでいる」。正しいのは？"
+    options: ["Vivo en un piso que tiene terraza.", "Vivo en un piso que tenga terraza.", "Vivo en un piso tiene terraza."]
+    correctIndex: 0
+    explanation: "実際にある部屋を説明するので直説法：tiene。"
+  - question: "「日本語を話せる人はいますか？」。正しいのは？"
+    options: ["¿Hay alguien que habla japonés?", "¿Hay alguien que hable japonés?", "¿Hay alguien hable japonés?"]
+    correctIndex: 1
+    explanation: "いるかどうかわからない人を探すので接続法：hable。"
+  - question: "「着いたらすぐメールするね」。正しいのは？"
+    options: ["En cuanto llego, te escribo.", "En cuanto llegue, te escribo.", "En cuanto llegaré, te escribo."]
+    correctIndex: 1
+    explanation: "en cuanto（〜したらすぐ）も、未来のことなら接続法：llegue。"
+  - question: "「戻るまでここで待っていて」。正しいのは？"
+    options: ["Espera aquí hasta que vuelvo.", "Espera aquí hasta que vuelva.", "Espera aquí hasta volveré."]
+    correctIndex: 1
+    explanation: "hasta que も、まだ起きていない未来なら接続法：vuelva。"
 ---
 
-TODO:contenido（導入：このユニットの問いに、それだけで答えになる2文で答える）
+スペイン語の接続法は、ユニット26の願望・感情・疑いのほかに、「〜したら」「〜するように」「〜のような」と、まだ起きていないことや、まだ見つかっていない物を言うときにも使います。Cuando termine los exámenes, viajaré.（試験が終わったら旅行する）、Busco un piso que tenga terraza.（テラスのある部屋を探している）のような文です。
 
-## 文法 (Gramática)
+どちらも、同じ形の直説法の文と意味が変わるのがポイントです。このユニットでは、試験のあとの旅行を計画し、新しい部屋を探しているサラマンカのユイの話を例に、時・目的・関係節の接続法を学びます。
 
-TODO:contenido
+## 文法：時・目的・関係節の接続法 (Gramática)
+
+まず時の表現のあとの接続法を、次に目的の para que を、最後に関係節の接続法を見ていきましょう。
+
+### 時の表現：未来なら接続法
+
+cuando（〜するとき）、hasta que（〜するまで）、en cuanto（〜したらすぐ）のあとは、まだ起きていない未来のことなら接続法、習慣や過去の事実なら直説法です。
+
+| 内容 | 形 | 例 |
+| --- | --- | --- |
+| 未来（まだ起きていない） | 接続法 | Cuando termine los exámenes, viajaré por España. |
+| 習慣 | 直説法 | Cuando llego a casa, siempre cocino. |
+| 過去の事実 | 直説法 | Cuando llegué a Salamanca, no conocía a nadie. |
+
+日本語の「〜したら」につられて、cuando のあとに未来形（×cuando terminaré）を使わないように注意しましょう。antes de que（〜する前に）は、いつも接続法です：Llámame antes de que salgas.
+
+### 目的：para que + 接続法
+
+「〜のために」は、主語が同じなら para + 原形、違うなら para que + 接続法です。
+
+<Examples>
+
+- Vine a Salamanca para aprender español.（スペイン語を学ぶためにサラマンカに来た：主語は同じ）
+- Te lo explico para que lo entiendas.（君がわかるように説明する：主語が違う）
+
+</Examples>
+
+### 関係節：まだ見つかっていない物は接続法
+
+que で人や物を説明するとき、それが実際にあるとわかっていれば直説法、あるかどうかわからない（探している・必要な）物なら接続法です。
+
+| 状況 | 形 | 例 |
+| --- | --- | --- |
+| 実際にある | 直説法 | Vivo en un piso que tiene terraza.（テラスのある部屋に住んでいる） |
+| 探している | 接続法 | Busco un piso que tenga terraza.（テラスのある部屋を探している） |
+| いるかわからない | 接続法 | ¿Hay alguien que hable japonés?（日本語を話せる人はいる？） |
+
+### 部屋探し
+
+来年の部屋を探しているユイが、不動産屋さんに条件を伝えます。
+
+- Yui: Busco una habitación que tenga mucha luz y que esté cerca de la universidad.（日当たりがよくて、大学に近い部屋を探しています）
+- Agente: ¿Y el precio?（お値段は？）
+- Yui: El alquiler no puede costar más de 400 euros. Y necesito un piso donde no haya mucho ruido, para que pueda estudiar.（家賃は400ユーロ以下でないと困ります。それに、勉強できるように、あまりうるさくないところがいいです）
+- Agente: Tengo un piso que tiene todo eso. ¿Quiere verlo?（その条件に全部合う部屋がありますよ。ご覧になりますか？）
+- Yui: Sí, cuando usted pueda.（はい、そちらのご都合のいいときに）
+
+ユイが探している部屋は tenga（接続法）、不動産屋さんが実際に持っている部屋は tiene（直説法）と、形が変わっています。
+
+después de que（〜したあとで）も、未来のことなら接続法です：Te llamo después de que termine la clase.（授業が終わったら電話するね）。主語が同じなら、después de + 原形でも言えます：Después de cenar, estudio.（夕食のあと、勉強する）。antes de + 原形、para + 原形と同じ考え方です。
+
+mientras（〜する間は）も、これからのことなら接続法です：Mientras estés aquí, puedes usar mi bici.（ここにいる間は、私の自転車を使っていいよ）。
+
+「〜するといいね」という Que + 接続法も便利です：¡Que te vaya bien!（うまくいくといいね）、¡Que aproveche!（召し上がれ）。
+
+**ダニエル（バレンシア出身）のひとこと：** Cuando quieras.（いつでもいいよ）、Como quieras.（好きなように）、Lo que tú digas.（君の言うとおりに）は、接続法を使った決まり文句です。友だちとの約束で ¿Cuándo quedamos? と聞かれたら、Cuando quieras. と答えてみてください。
 
 ## 活用：今日の動詞 (Conjugación)
 
-TODO:contenido
+このユニットによく出てくる接続法は、tener（tenga）、poder（pueda）、hacer（haga）、salir（salga）などです。[tener](/language/learn-spanish/verb-conjugation/tener/)、[poder](/language/learn-spanish/verb-conjugation/poder/)、[hacer](/language/learn-spanish/verb-conjugation/hacer/) の活用表の「接続法現在」で、すべての人称を確認しましょう。haber の接続法 haya は、「〜がある」の hay の接続法として、関係節でよく使います（un piso donde no haya ruido）。
 
 ## 語彙 (Nociones específicas)
+
+時や目的を表す接続詞と、部屋探しで使う語です。
 
 <VocabList items={frontmatter.vocabulary} level={frontmatter.level} />
 
 ## 発音・正書法 (Pronunciación y ortografía)
 
-TODO:contenido
+cuando は、疑問詞のときだけアクセント記号がつきます：¿Cuándo vienes?（いつ来るの？）／ Cuando vengas, te llamo.（来たら電話するね）。同じように、donde（〜するところ）と ¿dónde?（どこ？）、que（〜という）と ¿qué?（何？）も、記号の有無で使い方が変わります。
 
 ## 日本人がよく間違える
 
-TODO:contenido
+- **cuando のあとに未来形を使う。** ×Cuando terminaré los exámenes, viajaré. → ○Cuando **termine** los exámenes, viajaré.
+- **para のあとに主語の違う文を続ける。** ×Te lo explico para entiendas. → ○Te lo explico **para que** lo **entiendas**.
+- **探している物に直説法を使う。** ×Busco un piso que tiene terraza. → ○Busco un piso que **tenga** terraza.
 
 ## 文化メモ (Referentes culturales)
 
 <CultureNote>
 
-TODO:contenido
+スペインの大学の学期末は、試験のあとの旅行の計画で盛り上がります。ユイも Cuando termine los exámenes, haré un viaje por España.（試験が終わったら、スペインを旅行するつもり）と考えています。学生には、交通と宿がセットになった手ごろなツアーも人気です。費用を抑えてスペインを回るツアーの選び方は、[格安スペインツアー完全ガイド](/travel/spain-tours/budget-spain-tours/)で紹介しています。
 
 </CultureNote>
 
 ## 練習 (Procedimientos de aprendizaje)
 
-### 練習1：認識
+### 練習1：直説法？ 接続法？
 
-TODO:contenido
+正しい方を選んでください。
+
+1. Cuando (llego / llegue) a casa, siempre ceno.（習慣）
+2. Cuando (llego / llegue) a Japón, te llamaré.（未来）
+3. Busco a alguien que (habla / hable) inglés.
+4. Tengo un amigo que (habla / hable) inglés.
+5. Llámame antes de que (sales / salgas).
 
 <details>
 <summary>答えを見る</summary>
 
-TODO:contenido
+1. llego（習慣は直説法）
+2. llegue（未来は接続法）
+3. hable（いるかわからない人）
+4. habla（実際にいる友だち）
+5. salgas（antes de que はいつも接続法）
 
 </details>
 
 ### 練習2：穴埋め
 
-TODO:contenido
+（ ）の動詞を正しい形にしてください。
+
+1. Cuando (yo, graduarse) ______, volveré a Japón.
+2. Te lo digo para que (tú, saber) ______ la verdad.
+3. Necesito un piso que (estar) ______ cerca de la universidad.
+4. Espera aquí hasta que (yo, volver) ______.
+5. En cuanto (ellos, llegar) ______, cenamos.
+6. Vine a España para (aprender) ______ español.
 
 <details>
 <summary>答えを見る</summary>
 
-TODO:contenido
+1. me gradúe
+2. sepas
+3. esté
+4. vuelva
+5. lleguen
+6. aprender（主語が同じなので原形）
 
 </details>
 
 ### 練習3：作文
 
-TODO:contenido
+ユイになったつもりで、スペイン語で言ってみましょう。
+
+1. 試験が終わったら、スペインを旅行するつもりだ。
+2. 大学に近い部屋を探している（estar cerca de）。
+3. 君がわかるように、ゆっくり話すね（hablar despacio）。
 
 <details>
-<summary>答えを見る</summary>
+<summary>解答例を見る</summary>
 
-TODO:contenido
+1. Cuando termine los exámenes, viajaré por España.
+2. Busco una habitación que esté cerca de la universidad.
+3. Hablo despacio para que me entiendas.
 
 </details>
 
@@ -97,4 +249,8 @@ TODO:contenido
 
 ## まとめ
 
-TODO:contenido
+- cuando・hasta que・en cuanto は、未来なら接続法、習慣や過去の事実なら直説法。antes de que はいつも接続法。
+- 目的は、主語が同じなら para + 原形、違うなら para que + 接続法。
+- 関係節は、実際にある物なら直説法、探している・あるかわからない物なら接続法。
+
+次のユニット28では、過去完了（había + 過去分詞）で「過去のある時点より前のこと」を言います。

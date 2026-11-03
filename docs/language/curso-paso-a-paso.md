@@ -343,6 +343,7 @@ Decisión de David: el curso no se muestra a los visitantes hasta que esté 100 
 
 - Cada unidad se escribe, se revisa en el preview de Cloudflare y se fusiona en `main` con `draft: true`. En producción no genera página ni aparece en ningún bloque.
 - Cuando las 62 unidades estén revisadas, un único PR las pasa todas a `draft: false` con su `pubDate`, migra las unidades existentes (1, 25, 37, 49 y 57) desde `articles`, cambia los 36 STEP por la numeración de 62 unidades y activa los bloques del hub.
+- **Unidades existentes (1, 25, 37, 49 y 57):** en borrador no se pueden previsualizar, porque su URL la sigue sirviendo la colección `articles`. Su contenido de unidad se redacta en el PR final, partiendo del artículo publicado (prompt 4: «parte de su contenido y conserva lo que ya posiciona»), y se revisa en ese mismo preview.
 - El build falla si se publica solo una parte (`course-link-check` en `astro.config.mjs`), e `isCourseVisible()` exige las 62 unidades publicadas.
 - Tampoco se anuncia en redes hasta entonces.
 - **Unidades de cierre (12, 24, 36, 48, 56 y 62):** el simulacro va en la sección 練習, con una tarea numerada por prueba y las respuestas en 「解答を見る」. La prueba auditiva se muestra como 「音声準備中」 con la transcripción oculta, sin reproductor. Cuando exista el componente ExamMode (prompt 6), envolverá esas tareas. Las duraciones del examen no se citan en la unidad: remite a /dele/<nivel>/, porque las fuentes del Instituto Cervantes no coinciden (la guía oficial de 2019 da 25 min de auditiva y 10 + 10 de oral para A1; varias sedes, 20 y 15 + 15).

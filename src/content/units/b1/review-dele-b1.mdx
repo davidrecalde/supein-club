@@ -5,96 +5,241 @@ levelName: "Umbral"
 slug: "review-dele-b1"
 url: "/language/learn-spanish/b1/review-dele-b1/"
 existing: false
-title: "B1 総復習と模擬試験 DELE B1"
-shortTitle: "B1 総復習と模擬試験 DELE B1"
-titleEs: "repaso B1 y simulacro DELE B1"
-grammar: ["repaso"]
-tenses: []
-functions: []
-canDo: []
-vocabulary: []
-verbs: []
-duration: 90
+title: "DELE B1 模擬試験と B1 総復習｜接続法・過去完了・間接話法をチェック"
+shortTitle: "B1 総復習と模擬試験"
+titleEs: "Repaso B1 y simulacro DELE B1"
+description: "DELE B1 と同じ4つのテスト（読解・聴解・作文・会話）で構成したオリジナル模擬試験と、B1 文法の総復習。接続法・過去完了・間接話法・条件文・por と para を、解答と解説で確認できます。聴解の音声は準備中です。"
+grammar: ["repaso de las unidades 25-35", "simulacro DELE B1"]
+tenses: ["presente de subjuntivo", "pretérito pluscuamperfecto", "condicional simple"]
+functions: ["B1 の文法と語彙を確認する", "DELE B1 の4つのテストを体験する"]
+canDo:
+  - "身近な話題について、理由を挙げて意見を言ったり書いたりできる"
+  - "DELE B1 の4つのテストの形式を知り、それぞれの課題に取り組める"
+  - "B1 の文法の苦手な項目を見つけ、復習するユニットを選べる"
+vocabulary:
+  # rank = «Rango frec.» del diccionario de frecuencias del CORPES XXI (RAE). Lo escribe
+  # npm run vocab:rank -- --write; lo que no es lema del diccionario va sin rank, al final.
+  - { es: "redactar", ja: "（文章を）書く・作成する", rank: 4710, example: "Redacte un texto de 100 palabras." }
+  - { es: "argumentar", ja: "論じる・理由を述べる", rank: 2255, example: "Argumente su opinión." }
+  - { es: "justificar", ja: "理由づける", rank: 1816, example: "Justifique su respuesta." }
+  - { es: "relacionar", ja: "結びつける", rank: 1059, example: "Relacione los textos con los enunciados." }
+  - { es: "el enunciado", ja: "設問文・文", rank: 9273, example: "Lea los enunciados." }
+  - { es: "el fragmento", ja: "抜粋・一部分", rank: 3252, example: "Escuche el fragmento dos veces." }
+  - { es: "la experiencia", ja: "経験", rank: 346, example: "Cuente una experiencia personal." }
+  - { es: "el intercambio", ja: "交換・交流", rank: 1991, example: "Busco un intercambio de idiomas." }
+  - { es: "la residencia", ja: "寮・居住", rank: 2195, example: "Vivo en una residencia de estudiantes." }
+  - { es: "la beca", ja: "奨学金", rank: 3012, example: "Conseguí una beca para estudiar en España." }
+  - { es: "el extranjero", ja: "外国・外国人", rank: 1817, example: "Es bueno estudiar en el extranjero." }
+  - { es: "el idioma", ja: "言語", rank: 1949, example: "Aprender un idioma abre muchas puertas." }
+  - { es: "la ventaja", ja: "利点", rank: 996, example: "Una ventaja es conocer otra cultura." }
+  - { es: "el inconveniente", ja: "不都合・短所", rank: 3843, example: "El inconveniente es echar de menos a la familia." }
+verbs: ["haber", "ser", "tener", "decir"]
+duration: 120
 prev: 35
 next: 37
-related: [35,37,25]
-cast: ["yui","kenta"]
-audio: []
+related: [35, 37, 25]
+cast: ["yui", "kenta"]
+audio:
+  - "Hola, Yui. Soy Marcos. Te llamo porque el intercambio de idiomas de mañana se ha cambiado al jueves."
+  - "Será en la cafetería de la facultad, a las seis. Si no puedes venir, avísame."
+  - "¿Qué opinas de estudiar en el extranjero?"
+  - "En mi opinión, es una experiencia muy positiva."
 youtubeId: ""
-quiz: []
 draft: true
 updated: "2026-11-02"
+quiz:
+  - question: "「君に手伝ってほしい」。正しいのは？"
+    options: ["Quiero que me ayudas.", "Quiero que me ayudes.", "Quiero ayudarme tú."]
+    correctIndex: 1
+    explanation: "主語が違う願望は que + 接続法：ayudes。→ ユニット26"
+  - question: "「雨が降るとは思わない」。正しいのは？"
+    options: ["No creo que llueve.", "No creo que llueva.", "No creo que lloverá."]
+    correctIndex: 1
+    explanation: "否定の no creo que は接続法。→ ユニット26・35"
+  - question: "「試験が終わったら、旅行する」。正しいのは？"
+    options: ["Cuando termine los exámenes, viajaré.", "Cuando terminaré los exámenes, viajaré.", "Cuando termino los exámenes, viajaré mañana."]
+    correctIndex: 0
+    explanation: "未来のことを言う cuando のあとは接続法。→ ユニット27"
+  - question: "「着いたとき、会議はもう始まっていた」。正しいのは？"
+    options: ["Cuando llegué, la reunión ya había empezado.", "Cuando llegué, la reunión ya empezó.", "Cuando llegaba, la reunión ya ha empezado."]
+    correctIndex: 0
+    explanation: "過去の時点より前のことは過去完了。→ ユニット28"
+  - question: "直接話法「Te llamaré.」を伝えると？「Me prometió que…」"
+    options: ["…me llamará.", "…me llamaría.", "…me llamó."]
+    correctIndex: 1
+    explanation: "dijo que・prometió que のあと、未来形は過去未来に。→ ユニット29"
+  - question: "「もし明日晴れたら、海に行く」。正しいのは？"
+    options: ["Si mañana hará sol, iré a la playa.", "Si mañana hace sol, iré a la playa.", "Si mañana haga sol, iré a la playa."]
+    correctIndex: 1
+    explanation: "si のあとは現在形。未来形や接続法現在は使いません。→ ユニット30"
+  - question: "「私が勉強している大学はとても古い」。正しいのは？"
+    options: ["La universidad en la que estudio es muy antigua.", "La universidad que estudio en es muy antigua.", "La universidad quien estudio es muy antigua."]
+    correctIndex: 0
+    explanation: "前置詞は関係代名詞の前に置きます。→ ユニット31"
+  - question: "「このトルティージャ、すごくおいしい！」。正しいのは？"
+    options: ["¡Esta tortilla es muy rica!", "¡Esta tortilla está muy rica!", "¡Esta tortilla tiene muy rica!"]
+    correctIndex: 1
+    explanation: "味の「おいしい」は estar rico。→ ユニット32"
+  - question: "「月曜日までにレポートを提出しなければならない」。正しいのは？"
+    options: ["Tengo que entregarlo por el lunes.", "Tengo que entregarlo para el lunes.", "Tengo que entregarlo en el lunes."]
+    correctIndex: 1
+    explanation: "期限は para。→ ユニット33"
+  - question: "「高い。しかしながら、その価値はある」。正しいのは？"
+    options: ["Es caro; sin embargo, vale la pena.", "Es caro; por lo tanto, vale la pena.", "Es caro; es decir, vale la pena."]
+    correctIndex: 0
+    explanation: "逆接は sin embargo。→ ユニット34"
 ---
 
-TODO:contenido（導入：このユニットの問いに、それだけで答えになる2文で答える）
+このユニットは、B1（Umbral）レベルの総まとめです。前半でユニット25〜35の文法をふり返り、後半では DELE B1 と同じ4つのテスト（読解・聴解・作文・会話）で構成した、当サイトオリジナルの模擬試験に挑戦します。
 
-## 文法 (Gramática)
+B1 では接続法を中心に、過去完了、間接話法、条件文、関係代名詞を学び、意見を理由とともに伝えられるようになりました。問題の分量は本番より少なく、形式に慣れるための練習です。試験の構成や時間は [DELE B1 対策](/language/learn-spanish/dele/b1/)で確認してください。模擬試験には、B1 で一緒に学んできたユイとケンタが登場します。
 
-TODO:contenido
+## 文法：B1 の総復習 (Gramática)
+
+B1 で学んだ文法を、一覧で確認しましょう。ミニテストで間違えた問題には、復習するユニットの番号を示しています。
+
+| 項目 | ポイント | ユニット |
+| --- | --- | --- |
+| 接続法現在の活用 | yo の形から作る、不規則な6動詞 | 25 |
+| 接続法①願望・感情・疑い | quiero que、me alegra que、no creo que | 26 |
+| 接続法②時・目的・関係節 | cuando + 接続法（未来）、para que、Busco un piso que tenga… | 27 |
+| 過去完了 | había + 過去分詞（過去の過去） | 28 |
+| 間接話法 | dijo que + 時制の変化 | 29 |
+| 条件文①現実的 | si + 現在形 | 30 |
+| 関係代名詞 | que、donde、lo que、en el que | 31 |
+| ser / estar の応用と受動態 | fue construido、está cerrado、se venden | 32 |
+| por と para | 目的・期限の para、理由・経路の por | 33 |
+| 談話標識 | sin embargo、por lo tanto、por un lado | 34 |
+| 意見・賛成・反対 | creo que / no creo que、estoy de acuerdo | 35 |
+
+B1 のポイントは、事実を言う直説法と、願い・感情・疑い・まだ起きていないことを言う接続法の使い分けです。迷ったら、「que のあとの内容は、話し手が事実だと考えているか」を自分に聞いてみましょう。
+
+**ダニエル（バレンシア出身）のひとこと：** DELE B1 の作文と会話では、意見に理由をつけられるかが大切です。Creo que… porque… / Por un lado…, por otro… / Sin embargo… の三つの型を使うだけで、文章の説得力がぐっと上がります。
 
 ## 活用：今日の動詞 (Conjugación)
 
-TODO:contenido
+B1 の文法で特に大切な動詞を復習しましょう。接続法の不規則な形の [ser](/language/learn-spanish/verb-conjugation/ser/)（sea）と [haber](/language/learn-spanish/verb-conjugation/haber/)（haya）、過去完了の助動詞としての haber（había）、間接話法で使う [decir](/language/learn-spanish/verb-conjugation/decir/)（dijo que）、そして接続法でもよく出てくる [tener](/language/learn-spanish/verb-conjugation/tener/)（tenga）です。
 
 ## 語彙 (Nociones específicas)
+
+DELE B1 の指示文と、留学や国際交流のテーマでよく出てくる語です。
 
 <VocabList items={frontmatter.vocabulary} level={frontmatter.level} />
 
 ## 発音・正書法 (Pronunciación y ortografía)
 
-TODO:contenido
+B1 の作文では、句読点も評価の対象になります。談話標識の前後のコンマ（Sin embargo, …）、疑問文と感嘆文の ¿ ? ¡ !、直接話法の引用符 «…» を正しく使いましょう。書き終えたら、接続法の形（sea、tenga、haya）とアクセント記号もあわせて見直すと安心です。
 
 ## 日本人がよく間違える
 
-TODO:contenido
+B1 の模擬試験で特に多い間違いを、三つふり返ります。
+
+- **主語が違うのに原形を使う。** ×Quiero ayudarme tú. → ○Quiero que me **ayudes**.（ユニット26）
+- **cuando や si のあとに未来形を使う。** ×Cuando terminaré… ×Si hará sol… → ○Cuando **termine**… ○Si **hace** sol…（ユニット27・30）
+- **dijo que のあとで時制を変えない。** ×Dijo que está cansada.（昨日の話）→ ○Dijo que **estaba** cansada.（ユニット29）
 
 ## 文化メモ (Referentes culturales)
 
 <CultureNote>
 
-TODO:contenido
+サラマンカで学ぶユイが、週末に訪ねたいと思っているのが、カスティーリャの食の町です。セゴビアの仔豚の丸焼き（cochinillo）や、リベラ・デル・ドゥエロの赤ワインは、この地方の名物です。Si vas a Segovia, no te vayas sin probar el cochinillo.（セゴビアに行くなら、コチニージョを食べずに帰らないで）のように、条件文と否定命令を組み合わせたおすすめの言い方も、B1 なら使いこなせます。カスティーリャの食をめぐる旅は、[マドリード・カスティーリャのグルメルート](/food/food-routes/centro-asado-vino-tinto/)で紹介しています。
 
 </CultureNote>
 
-## 練習 (Procedimientos de aprendizaje)
+## 練習：DELE B1 ミニ模擬試験 (Procedimientos de aprendizaje)
 
-### 練習1：認識
+### テスト1：読解（Comprensión de lectura）
 
-TODO:contenido
+**課題1.** ユイが学生向けのブログに書いた文章を読んで、質問に a・b・c で答えてください。
 
-<details>
-<summary>答えを見る</summary>
+Cuando llegué a Salamanca hace un año, no conocía a nadie y casi no entendía lo que decían los profesores. Antes de venir, había estudiado español en Fukuoka durante dos años, pero hablar con nativos era muy diferente. Por suerte, encontré un intercambio de idiomas donde conocí a Marcos, un chico italiano que ahora vive conmigo. Al principio fue difícil; sin embargo, poco a poco empecé a entender todo. Si alguien me pregunta si vale la pena estudiar en el extranjero, siempre digo que sí, aunque es normal echar de menos a la familia.
 
-TODO:contenido
+1. ¿Qué le pasaba a Yui cuando llegó? a) Entendía todo.　b) No conocía a nadie.　c) Vivía con su familia.
+2. ¿Dónde había estudiado español antes? a) en Salamanca　b) en Italia　c) en Fukuoka
+3. ¿Dónde conoció a Marcos? a) en clase　b) en un intercambio de idiomas　c) en la residencia
+4. ¿Qué opina Yui de estudiar en el extranjero? a) Que vale la pena.　b) Que es demasiado difícil.　c) Que es mejor no ir.
+5. ¿Qué inconveniente menciona? a) el precio　b) echar de menos a la familia　c) el clima
 
-</details>
+**課題2.** 次の三つの掲示（A・B・C）を読んで、質問に答えてください。
 
-### 練習2：穴埋め
+- A：Intercambio de idiomas español-japonés. Todos los jueves, a las seis, en la cafetería de la facultad.
+- B：Se busca estudiante para compartir piso. Habitación con terraza. Imprescindible que no fume.
+- C：Becas para cursos de verano. Plazo: hasta el 30 de abril.
 
-TODO:contenido
-
-<details>
-<summary>答えを見る</summary>
-
-TODO:contenido
-
-</details>
-
-### 練習3：作文
-
-TODO:contenido
+6. 日本語を教えながらスペイン語を練習したい人に合うのは？ それは何曜日？
+7. たばこを吸う人が応募できないのは？
+8. 5月に申し込んでも間に合わないのは？
 
 <details>
 <summary>答えを見る</summary>
 
-TODO:contenido
+1. b（no conocía a nadie）
+2. c（había estudiado español en Fukuoka：過去完了）
+3. b（encontré un intercambio de idiomas donde conocí a Marcos）
+4. a（siempre digo que sí）
+5. b（echar de menos a la familia）
+6. A、木曜日（todos los jueves）
+7. B（Imprescindible que no fume：que + 接続法）
+8. C（締め切りは4月30日）
 
 </details>
+
+### テスト2：聴解（Comprensión auditiva）
+
+音声準備中です。今は下のスクリプトを読んで、聞いているつもりで答えを考えてみましょう。
+
+**課題.** マルコスからユイへの留守番電話です。言語交換はいつ、どこに変わりましたか。行けないときはどうすればいいですか。
+
+<details>
+<summary>スクリプトと答えを見る</summary>
+
+Hola, Yui. Soy Marcos. Te llamo porque el intercambio de idiomas de mañana se ha cambiado al jueves. Será en la cafetería de la facultad, a las seis. Si no puedes venir, avísame, ¿vale? ¡Hasta luego!
+
+答え：木曜日の6時、学部のカフェテリアに変更。行けない場合はマルコスに連絡する（Si no puedes venir, avísame）。
+
+</details>
+
+### テスト3：作文（Expresión e interacción escritas）
+
+**課題1.** 友だちに、最近あった印象的な出来事を伝えるメールを書いてください（100〜120語）。何があったか、そのときの状況、気持ちを入れ、最後に誘いの言葉で締めましょう。
+
+**課題2.** 「若いうちに留学するべきか」について、あなたの意見を書いてください（100〜120語）。利点と不都合を挙げ、結論を述べましょう。
+
+<details>
+<summary>解答例を見る（課題2）</summary>
+
+En mi opinión, estudiar en el extranjero cuando eres joven es una experiencia muy positiva. Por un lado, aprendes otro idioma de verdad, porque lo usas todos los días. Además, conoces otra cultura y a personas de muchos países. Por otro lado, hay inconvenientes: es caro y es normal echar de menos a la familia. Sin embargo, creo que las ventajas son mayores. Por lo tanto, recomiendo a todos los jóvenes que estudien fuera, aunque sea solo unos meses.
+
+（若いうちに留学するのは、とても有意義な経験だと思います。一方で、毎日使うので、外国語が本当に身につきます。そのうえ、別の文化や多くの国の人を知ることができます。他方で、費用がかかり、家族が恋しくなるという不都合もあります。しかしながら、利点の方が大きいと思います。したがって、たとえ数か月でも、すべての若者に留学をすすめます）
+
+</details>
+
+### テスト4：会話（Expresión e interacción orales）
+
+**課題1.** 「外国語の学び方」について、2〜3分で話してください。自分の経験、効果的だと思う方法、その理由を入れましょう。
+
+**課題2.** 試験官と意見を交わしてください。試験官は「外国語はアプリだけで学べる」と言います。賛成か反対かを、理由とともに伝えましょう。
+
+<details>
+<summary>解答例を見る（課題2）</summary>
+
+- Examinador: Creo que hoy se puede aprender un idioma solo con aplicaciones.
+- Candidato: Entiendo lo que dice, pero no estoy totalmente de acuerdo. Las aplicaciones son útiles para el vocabulario; sin embargo, no creo que sean suficientes para hablar con fluidez. Para mí, es necesario que practiquemos con personas reales.
+
+</details>
+
+会話テストの流れや、試験官とのやり取りのコツは、[DELE面接・口頭試験 完全対策ガイド](/language/learn-spanish/dele-oral-interview-guide/)でくわしく紹介しています。
 
 ## ミニテスト
+
+B1 の文法の総まとめです。7問以上正解でこのユニットは完了です。間違えた問題は、解説のユニットに戻って復習しましょう。
 
 <MiniQuiz quiz={frontmatter.quiz} unit={frontmatter.unit} />
 
 ## まとめ
 
-TODO:contenido
+- B1 の中心は接続法：願望・感情・疑い、未来の cuando、目的の para que、探している物の関係節。
+- 過去完了で出来事の順番を、間接話法で人の言葉を、条件文で可能性を表せるようになった。
+- 作文と会話では、意見に理由をつけ、談話標識で文章を組み立てる。
+
+次のユニット37からは B2 Avanzado です。接続法過去を学び、仮定や過去の願望を表現します。

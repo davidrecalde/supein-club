@@ -5,89 +5,255 @@ levelName: "Umbral"
 slug: "reported-speech"
 url: "/language/learn-spanish/b1/reported-speech/"
 existing: false
-title: "間接話法"
+title: "スペイン語の間接話法｜dijo que と時制の変化の規則"
 shortTitle: "間接話法"
-titleEs: "estilo indirecto"
-grammar: ["dijo que","cambio de tiempo"]
-tenses: []
-functions: []
-canDo: []
-vocabulary: []
+titleEs: "Estilo indirecto"
+description: "スペイン語の間接話法（estilo indirecto）を解説。dice que と dijo que の違い、時制の変化（現在→線過去、点過去→過去完了、未来→過去未来）、質問を伝える preguntó si、時と場所の言いかえを、練習問題つきで学べます。"
+grammar: ["dice que / dijo que", "cambio de tiempos verbales", "preguntar si / qué", "cambio de referencias de tiempo y lugar"]
+tenses: ["pretérito imperfecto", "pretérito pluscuamperfecto", "condicional simple"]
+functions: ["ほかの人の言ったことを伝える", "質問の内容を伝える"]
+canDo:
+  - "ほかの人が言ったことを、時制を変えて正しく伝えられる"
+  - "「〜かどうか聞かれた」と、質問の内容を伝えられる"
+  - "授業や会議の連絡を、聞いていない人に伝えられる"
+vocabulary:
+  # rank = «Rango frec.» del diccionario de frecuencias del CORPES XXI (RAE). Lo escribe
+  # npm run vocab:rank -- --write; lo que no es lema del diccionario va sin rank, al final.
+  - { es: "decir", ja: "言う", rank: 33, example: "La profesora dijo que el examen sería el lunes." }
+  - { es: "preguntar", ja: "たずねる", rank: 687, example: "Kenta me preguntó si podía venir." }
+  - { es: "contestar", ja: "答える", rank: 2526, example: "Le contesté que no podía." }
+  - { es: "explicar", ja: "説明する", rank: 141, example: "Nos explicó que el tren llegaba tarde." }
+  - { es: "contar", ja: "語る・話して聞かせる", rank: 120, example: "Yui me contó que había aprobado." }
+  - { es: "comentar", ja: "コメントする・言う", rank: 552, example: "El director comentó que estaba contento." }
+  - { es: "avisar", ja: "知らせる", rank: 3505, example: "Me avisaron de que la clase había cambiado de aula." }
+  - { es: "prometer", ja: "約束する", rank: 1808, example: "Me prometió que me llamaría." }
+  - { es: "el aula", ja: "教室（el aula / las aulas）", rank: 2606, example: "La clase será en otra aula." }
+  - { es: "la clase", ja: "授業・クラス", rank: 560, example: "La profesora dijo que no había clase." }
+  - { es: "el mensaje", ja: "メッセージ", rank: 790, example: "En su mensaje decía que llegaría tarde." }
+  - { es: "el narrador", ja: "実況アナウンサー・語り手", rank: 3359, example: "El narrador dijo que era el mejor gol del año." }
+  - { es: "al día siguiente", ja: "翌日", example: "Dijo que vendría al día siguiente." }
+  - { es: "ese día", ja: "その日", example: "Dijo que ese día estaba cansada." }
 verbs: ["decir"]
-duration: 40
+duration: 45
 prev: 28
 next: 30
-related: [28,30,36]
-cast: ["yui","kenta"]
-audio: []
+related: [28, 30, 36]
+cast: ["yui", "kenta"]
+audio:
+  - "La profesora dice que el examen es el lunes."
+  - "La profesora dijo que el examen sería el lunes."
+  - "Kenta me preguntó si podía venir a la cena."
+  - "Me dijo que había llegado tarde."
+  - "Me prometió que me llamaría al día siguiente."
 youtubeId: ""
-quiz: []
 draft: true
 updated: "2026-11-02"
+quiz:
+  - question: "「先生は、試験は月曜だと言っている（今）」。正しいのは？"
+    options: ["La profesora dice que el examen es el lunes.", "La profesora dice que el examen era el lunes.", "La profesora dijo que el examen es el lunes ayer."]
+    correctIndex: 0
+    explanation: "伝える動詞が現在形（dice que）なら、時制はそのままです。"
+  - question: "直接話法「Estoy cansada.」を、昨日聞いた話として伝えると？「Yui dijo que…」"
+    options: ["…está cansada.", "…estaba cansada.", "…estuvo cansada."]
+    correctIndex: 1
+    explanation: "dijo que のあと、現在形は線過去に変わります：estaba。"
+  - question: "直接話法「Llegué tarde.」を伝えると？「Me dijo que…」"
+    options: ["…llegó tarde.", "…había llegado tarde.", "…llegaba tarde."]
+    correctIndex: 1
+    explanation: "点過去は過去完了に変わります：había llegado。話し言葉では llegó のままも聞かれます。"
+  - question: "直接話法「Te llamaré.」を伝えると？「Me prometió que…」"
+    options: ["…me llamará.", "…me llamaría.", "…me llamó."]
+    correctIndex: 1
+    explanation: "未来形は過去未来に変わります：llamaría。"
+  - question: "「ケンタは、夕食に来られるかと私に聞いた」。正しいのは？"
+    options: ["Kenta me preguntó que podía venir.", "Kenta me preguntó si podía venir.", "Kenta me preguntó ¿puedes venir?"]
+    correctIndex: 1
+    explanation: "はい・いいえで答える質問を伝えるときは preguntar si（〜かどうか）です。"
+  - question: "「どこに住んでいるかと聞かれた」。正しいのは？"
+    options: ["Me preguntó dónde vivía.", "Me preguntó si dónde vivía.", "Me preguntó que dónde vive ayer."]
+    correctIndex: 0
+    explanation: "疑問詞のある質問は、疑問詞をそのまま使います：preguntó dónde vivía。"
+  - question: "直接話法の「mañana（明日）」は、過去の話として伝えると何になる？"
+    options: ["mañana", "al día siguiente", "ayer"]
+    correctIndex: 1
+    explanation: "話した日を基準にした「明日」は、伝えるときは al día siguiente（翌日）になります。"
+  - question: "直接話法「Vivo aquí.」を伝えると？「Dijo que…」"
+    options: ["…vivía allí.", "…vivo aquí.", "…vivió aquí."]
+    correctIndex: 0
+    explanation: "時制は線過去に、aquí（ここ）は allí（そこ）に変わります。"
+  - question: "直接話法「Hemos terminado.」を伝えると？「Dijeron que…」"
+    options: ["…habían terminado.", "…han terminado.", "…terminaron."]
+    correctIndex: 0
+    explanation: "現在完了は過去完了に変わります：habían terminado。"
+  - question: "直接話法「Estaba en casa.」を伝えると？「Dijo que…」"
+    options: ["…había estado en casa.", "…estaba en casa.", "…está en casa."]
+    correctIndex: 1
+    explanation: "線過去は、伝えるときもそのまま線過去です：estaba。"
 ---
 
-TODO:contenido（導入：このユニットの問いに、それだけで答えになる2文で答える）
+スペイン語の間接話法は、ほかの人が言ったことを、「〜と言っていた」と自分の言葉で伝える言い方です。伝える動詞が現在形なら時制はそのままですが、Dijo que…（〜と言った）のように過去形で伝えると、Estoy cansada. が Dijo que estaba cansada.（疲れていると言っていた）のように、時制が一つ前の過去に移ります。
 
-## 文法 (Gramática)
+時制のほかに、yo → ella、aquí → allí、mañana → al día siguiente のように、人や場所、時の言葉も変わります。このユニットでは、授業の連絡をルームメイトに伝えるユイと、会議の内容を同僚に伝えるケンタの場面を例に学びます。
 
-TODO:contenido
+## 文法：間接話法 (Gramática)
+
+まず dice que と dijo que の違いを、次に時制の変わり方を、最後に質問の伝え方を見ていきましょう。
+
+### dice que：時制はそのまま
+
+伝える動詞が現在形（dice que、dicen que）なら、元の文の時制は変わりません。
+
+- 「El examen es el lunes.」 → La profesora dice que el examen es el lunes.（先生は、試験は月曜だと言っている）
+
+### dijo que：時制が一つ前に移る
+
+伝える動詞が過去形（dijo que、me contó que）なら、時制が次のように変わります。
+
+| 元の文（直接話法） | 伝える文（dijo que…） |
+| --- | --- |
+| 現在：Estoy cansada. | 線過去：…estaba cansada. |
+| 点過去：Llegué tarde. | 過去完了：…había llegado tarde. |
+| 現在完了：Hemos terminado. | 過去完了：…habían terminado. |
+| 未来：Te llamaré. | 過去未来：…me llamaría. |
+| 線過去：Estaba en casa. | 変わらない：…estaba en casa. |
+
+<Examples>
+
+- La profesora dijo que el examen sería el lunes.（先生は、試験は月曜になると言った）
+- Kenta me contó que había llegado tarde a la reunión.（ケンタは、会議に遅れたと話した）
+
+</Examples>
+
+話し言葉では、点過去を過去完了に変えずに Me dijo que llegó tarde. と言うこともよくあります。ただし、DELE の作文などでは、表のとおりに変えるのが確実です。
+
+### 人・場所・時の言葉も変わる
+
+| 直接話法 | 間接話法 |
+| --- | --- |
+| yo / tú | él / ella など |
+| aquí（ここ） | allí（そこ） |
+| hoy（今日） | ese día（その日） |
+| mañana（明日） | al día siguiente（翌日） |
+| ayer（昨日） | el día anterior（前日） |
+
+「Vivo aquí.」 → Dijo que vivía allí.（そこに住んでいると言った）
+
+### 質問を伝える
+
+| 質問の種類 | 伝え方 | 例 |
+| --- | --- | --- |
+| はい・いいえの質問 | preguntar si | ¿Puedes venir? → Me preguntó si podía venir. |
+| 疑問詞のある質問 | 疑問詞をそのまま | ¿Dónde vives? → Me preguntó dónde vivía. |
+
+### 授業の連絡を伝える
+
+授業を休んだルームメイトに、ユイが先生の連絡を伝えます。
+
+- Compañera: ¿Qué dijo la profesora hoy?（今日、先生は何て言ってた？）
+- Yui: Dijo que el examen sería el lunes y que teníamos que leer el capítulo cinco. También preguntó si alguien quería hacer una presentación.（試験は月曜になるって。それと、5章を読まなきゃいけないって。あと、だれか発表したい人はいるかって聞いてたよ）
+- Compañera: ¿Y dijo algo de la clase de mañana?（明日の授業について何か言ってた？）
+- Yui: Sí, dijo que mañana la clase sería en otra aula.（うん、明日の授業は別の教室だって）
+
+同じ日のうちに伝えるときは、mañana を al día siguiente に変えずに、そのまま使うのが自然です。
+
+### お願いや命令を伝える
+
+命令やお願いを伝えるときは、que + 接続法を使います。伝える動詞が現在形なら接続法現在です：La profesora dice que leamos el capítulo cinco.（先生が、5章を読むようにって言ってるよ）。Mi madre me pide que la llame.（母が電話してほしいって）。伝える動詞が過去形（dijo que、me pidió que）のときは、接続法過去という形になります（Me pidió que la llamara.）。この形はユニット37でくわしく学びます。
+
+伝える動詞は、dijo que ばかりくり返さず、comentar（話す）、explicar（説明する）、añadir（付け加える）、responder（答える）、contar（語る）で言いかえると、文章が生き生きします：Me explicó que el tren llegaba tarde y añadió que no había taxis.
+
+伝言では、Te manda saludos.（よろしくって）や Dice que te llamará luego.（あとで電話するって）のような言い方もよく使います。
+
+伝える内容が今も変わらず正しいことなら、dijo que のあとで現在形を残すこともあります：Dijo que Salamanca es preciosa.（サラマンカはとてもきれいだと言っていた）。
+
+**ダニエル（バレンシア出身）のひとこと：** 会話では、dice que を省略して、Que el examen es el lunes.（試験は月曜だって）のように que から始めることもよくあります。メッセージを転送するときの「〜だって」にあたる、とても口語的な言い方です。
 
 ## 活用：今日の動詞 (Conjugación)
 
-TODO:contenido
+間接話法の中心は [decir](/language/learn-spanish/verb-conjugation/decir/) です。dijo（点過去）、decía（線過去）、ha dicho（現在完了）など、伝える動詞の時制によって、後ろの時制が変わります。decir の点過去は dije, dijiste, dijo, dijimos, dijisteis, dijeron と不規則なので、活用表で確認しておきましょう。
 
 ## 語彙 (Nociones específicas)
+
+人の言葉を伝える動詞と、時の言いかえの表現です。
 
 <VocabList items={frontmatter.vocabulary} level={frontmatter.level} />
 
 ## 発音・正書法 (Pronunciación y ortografía)
 
-TODO:contenido
+直接話法を書くときは、引用符に «…»（スペインで正式な引用符）や "…" を使います：La profesora dijo: «El examen es el lunes». 会話文では、行頭にダッシュ（—）をつけて話し手が変わったことを示すのも、スペイン語らしい書き方です。間接話法にすると、引用符もダッシュもいりません。
 
 ## 日本人がよく間違える
 
-TODO:contenido
+- **dijo que のあとに現在形を残す。** ×Yui dijo que está cansada.（昨日の話）→ ○Yui dijo que **estaba** cansada.
+- **未来形をそのまま使う。** ×Me prometió que me llamará. → ○Me prometió que me **llamaría**.
+- **はい・いいえの質問に que を使う。** ×Me preguntó que podía venir. → ○Me preguntó **si** podía venir.
 
 ## 文化メモ (Referentes culturales)
 
 <CultureNote>
 
-TODO:contenido
+スペインのサッカー中継は、実況アナウンサー（el narrador）の熱い語りでも有名です。ゴールの瞬間には ¡Gooool! と母音を長く伸ばして叫びます。試合の翌日、ケンタは同僚に El narrador dijo que había sido el mejor gol de la temporada.（実況は、今シーズン最高のゴールだったと言っていた）と、間接話法で伝えました。サッカー中継でよく聞く言葉は、[サッカー用語で学ぶスペイン語完全ガイド](/football/spanish-vocabulary/)で紹介しています。
 
 </CultureNote>
 
 ## 練習 (Procedimientos de aprendizaje)
 
-### 練習1：認識
+### 練習1：時制はどう変わる？
 
-TODO:contenido
+dijo que のあとで、次の動詞は何の時制になりますか。
+
+1. Estoy（現在）
+2. Llegué（点過去）
+3. Llamaré（未来）
+4. He terminado（現在完了）
+5. Estaba（線過去）
 
 <details>
 <summary>答えを見る</summary>
 
-TODO:contenido
+1. estaba（線過去）
+2. había llegado（過去完了）
+3. llamaría（過去未来）
+4. había terminado（過去完了）
+5. estaba（変わらない）
 
 </details>
 
-### 練習2：穴埋め
+### 練習2：間接話法に書きかえる
 
-TODO:contenido
+次の文を、Dijo que… / Me preguntó… で始めて書きかえてください。
+
+1. Yui: «Tengo hambre».
+2. Kenta: «Llegué ayer».
+3. La profesora: «El examen será difícil».
+4. Mi compañera: «¿Vienes a la fiesta?»
+5. Daniel: «¿Dónde está el hotel?»
 
 <details>
 <summary>答えを見る</summary>
 
-TODO:contenido
+1. Dijo que tenía hambre.
+2. Dijo que había llegado el día anterior.
+3. Dijo que el examen sería difícil.
+4. Me preguntó si iba a la fiesta.
+5. Me preguntó dónde estaba el hotel.
 
 </details>
 
 ### 練習3：作文
 
-TODO:contenido
+ユイになったつもりで、スペイン語で伝えてみましょう。
+
+1. 先生は、試験は月曜になると言った。
+2. ケンタは、明日（翌日）電話すると約束した。
+3. ルームメイトは、私が疲れているかと聞いた。
 
 <details>
-<summary>答えを見る</summary>
+<summary>解答例を見る</summary>
 
-TODO:contenido
+1. La profesora dijo que el examen sería el lunes.
+2. Kenta me prometió que me llamaría al día siguiente.
+3. Mi compañera me preguntó si estaba cansada.
 
 </details>
 
@@ -97,4 +263,8 @@ TODO:contenido
 
 ## まとめ
 
-TODO:contenido
+- dice que なら時制はそのまま。dijo que なら一つ前の過去へ（現在→線過去、点過去・現在完了→過去完了、未来→過去未来）。
+- 人・場所・時の言葉も変わる（aquí → allí、mañana → al día siguiente）。
+- はい・いいえの質問は preguntar si、疑問詞の質問は疑問詞をそのまま使う。
+
+次のユニット30では、si を使った現実的な条件文を学びます。

@@ -5,89 +5,250 @@ levelName: "Umbral"
 slug: "conditionals-real"
 url: "/language/learn-spanish/b1/conditionals-real/"
 existing: false
-title: "条件文①現実的"
+title: "スペイン語の条件文①｜si + 現在形で言う現実的な条件"
 shortTitle: "条件文①現実的"
-titleEs: "condicionales reales"
-grammar: ["si + presente"]
-tenses: []
-functions: []
-canDo: []
-vocabulary: []
+titleEs: "Oraciones condicionales reales"
+description: "スペイン語の現実的な条件文を解説。si + 現在形のあとに続く現在形・未来形・命令形の三つの組み合わせ、si のあとに未来形を使わない規則、si no と a menos que の言い方を、日本人が間違えやすい点と練習問題つきで学べます。"
+grammar: ["si + presente, presente / futuro / imperativo", "si no", "en caso de que, a menos que"]
+tenses: ["presente de indicativo", "futuro simple", "imperativo"]
+functions: ["実現しそうな条件を言う", "条件つきで約束・助言する"]
+canDo:
+  - "「もし〜なら、…する」と、実現しそうな条件と結果を言える"
+  - "条件をつけて、アドバイスや指示ができる"
+  - "「〜しない限り」と、例外の条件を言える"
+vocabulary:
+  # rank = «Rango frec.» del diccionario de frecuencias del CORPES XXI (RAE). Lo escribe
+  # npm run vocab:rank -- --write; lo que no es lema del diccionario va sin rank, al final.
+  - { es: "si", ja: "もし〜なら", rank: 39, example: "Si llueve, nos quedamos en casa." }
+  - { es: "si no", ja: "もし〜でなければ・さもないと", example: "Date prisa; si no, perderás el tren." }
+  - { es: "en caso de que", ja: "〜の場合には", example: "En caso de que llueva, la fiesta será dentro." }
+  - { es: "a menos que", ja: "〜でない限り", rank: 6522, example: "Iré a menos que tenga trabajo." }
+  - { es: "siempre que", ja: "〜する時はいつも・〜するなら", rank: 3611, example: "Siempre que puedo, voy en bici." }
+  - { es: "la condición", ja: "条件", rank: 280, example: "Te lo presto con una condición." }
+  - { es: "la entrada", ja: "入場券・チケット", rank: 682, example: "Si compras la entrada hoy, es más barata." }
+  - { es: "el descuento", ja: "割引", rank: 3659, example: "Si eres estudiante, tienes descuento." }
+  - { es: "llover", ja: "雨が降る", rank: 4981, example: "Si llueve, el partido se suspende." }
+  - { es: "suspender", ja: "中止する・（試験に）落ちる", rank: 1706, example: "Si no estudias, suspenderás." }
+  - { es: "ganar", ja: "勝つ", rank: 207, example: "Si gana este partido, será líder." }
+  - { es: "perder", ja: "負ける・乗り遅れる", rank: 266, example: "Si perdemos, quedaremos terceros." }
+  - { es: "darse prisa", ja: "急ぐ", example: "Si te das prisa, llegarás a tiempo." }
+  - { es: "a tiempo", ja: "間に合って", example: "Si salimos ahora, llegaremos a tiempo." }
 verbs: []
 duration: 40
 prev: 29
 next: 31
-related: [21,38,31]
-cast: ["yui","kenta"]
-audio: []
+related: [21, 38, 31]
+cast: ["yui", "kenta"]
+audio:
+  - "Si llueve, nos quedamos en casa."
+  - "Si estudias, aprobarás el examen."
+  - "Si tienes tiempo, llámame."
+  - "Date prisa; si no, perderás el tren."
+  - "Iré a la fiesta a menos que tenga trabajo."
 youtubeId: ""
-quiz: []
 draft: true
 updated: "2026-11-02"
+quiz:
+  - question: "「もし明日雨が降ったら、家にいるつもりだ」。正しいのは？"
+    options: ["Si lloverá mañana, me quedaré en casa.", "Si llueve mañana, me quedaré en casa.", "Si llueva mañana, me quedaré en casa."]
+    correctIndex: 1
+    explanation: "si のあとは、未来のことでも現在形：si llueve。未来形や接続法現在は使いません。"
+  - question: "「勉強すれば、試験に受かるよ」。正しいのは？"
+    options: ["Si estudias, aprobarás.", "Si estudiarás, apruebas.", "Si estudies, aprobarás."]
+    correctIndex: 0
+    explanation: "si + 現在形、結果は未来形：Si estudias, aprobarás."
+  - question: "「時間があったら電話して」。正しいのは？"
+    options: ["Si tienes tiempo, llámame.", "Si tendrás tiempo, llámame.", "Si tienes tiempo, me llamas mañana ayer."]
+    correctIndex: 0
+    explanation: "結果の部分に命令形を使うこともできます：llámame。"
+  - question: "「急いで、さもないと電車に乗り遅れるよ」。正しいのは？"
+    options: ["Date prisa; si no, perderás el tren.", "Date prisa; sino, perderás el tren.", "Date prisa; si no perderás el tren tampoco."]
+    correctIndex: 0
+    explanation: "「さもないと」は2語の si no。1語の sino は「〜ではなく…」という別の語です。"
+  - question: "「仕事がない限り、パーティーに行く」。正しいのは？"
+    options: ["Iré a menos que tengo trabajo.", "Iré a menos que tenga trabajo.", "Iré a menos tener trabajo."]
+    correctIndex: 1
+    explanation: "a menos que（〜でない限り）のあとは接続法：tenga。"
+  - question: "「学生なら割引がある」（一般的な事実）。正しいのは？"
+    options: ["Si eres estudiante, tienes descuento.", "Si serás estudiante, tienes descuento.", "Si seas estudiante, tienes descuento."]
+    correctIndex: 0
+    explanation: "一般的な事実の条件は、si + 現在形、結果も現在形です。"
+  - question: "「雨が降った場合は、パーティーは屋内でします」。正しいのは？"
+    options: ["En caso de que llueve, la fiesta será dentro.", "En caso de que llueva, la fiesta será dentro.", "En caso que lloverá, la fiesta será dentro."]
+    correctIndex: 1
+    explanation: "en caso de que のあとは接続法：llueva。"
+  - question: "si と同じ「もし〜なら」でも、あとに接続法が来るのは？"
+    options: ["si", "en caso de que", "cuando（習慣）"]
+    correctIndex: 1
+    explanation: "en caso de que と a menos que は接続法。si のあとに接続法現在は来ません。"
+  - question: "「（このまま）負けたら、3位になる」。正しいのは？"
+    options: ["Si perdemos, quedaremos terceros.", "Si perderemos, quedaremos terceros.", "Si perdamos, quedamos terceros."]
+    correctIndex: 0
+    explanation: "si + 現在形（perdemos）、結果は未来形（quedaremos）。"
+  - question: "「（いつも）時間があるときは、自転車で行く」。正しいのは？"
+    options: ["Siempre que puedo, voy en bici.", "Siempre que podré, voy en bici.", "Siempre que pueda, iba en bici."]
+    correctIndex: 0
+    explanation: "習慣を言う siempre que は直説法：puedo。"
 ---
 
-TODO:contenido（導入：このユニットの問いに、それだけで答えになる2文で答える）
+スペイン語の現実的な条件文は、si（もし〜なら）+ 現在形で条件を言い、そのあとに結果を続けます。Si llueve, nos quedamos en casa.（雨が降ったら家にいる）、Si estudias, aprobarás.（勉強すれば受かるよ）のように、実現しそうなことや一般的な事実に使います。
 
-## 文法 (Gramática)
+大事な規則は、si のあとには未来のことでも未来形を使わないことです。日本語の「〜したら」につられて ×Si lloverá… と言わないようにしましょう。このユニットでは、試験前のユイと、週末の予定を立てるケンタの会話を例に、条件文の三つの組み合わせを学びます。実現しそうにない条件（Si tuviera…）は、ユニット38で学びます。
 
-TODO:contenido
+## 文法：現実的な条件文 (Gramática)
+
+まず si の文の三つの組み合わせを、次に si 以外の条件の言い方を見ていきましょう。
+
+### si + 現在形：三つの組み合わせ
+
+| 条件（si + 現在形） | 結果 | 使い方 |
+| --- | --- | --- |
+| Si llueve, | nos quedamos en casa.（現在形） | 一般的な事実・習慣 |
+| Si estudias, | aprobarás.（未来形） | これからの予測・約束 |
+| Si tienes tiempo, | llámame.（命令形） | 条件つきのお願い・指示 |
+
+結果の部分には、ir a + 原形（Si hace sol, vamos a ir a la playa.）も使えます。si の節は、文の前にも後ろにも置けます：Te llamo si tengo tiempo.（時間があったら電話するね）。前に置くときは、si の節のあとにコンマを打ちます。
+
+### si のあとに来ない形
+
+| ✕ | ○ |
+| --- | --- |
+| Si lloverá mañana… | Si llueve mañana… |
+| Si llueva mañana… | Si llueve mañana… |
+
+si のあとには、未来形も接続法現在も使いません。この点は、ユニット27の cuando（Cuando llueva…）と違うので注意しましょう。
+
+### si no：さもないと
+
+si no は「もし〜でなければ」「さもないと」です：Date prisa; si no, perderás el tren.（急いで、さもないと電車に乗り遅れるよ）。1語の sino は「〜ではなく…」という別の語です（No es japonés, sino coreano.）。
+
+### si 以外の条件の言い方
+
+| 表現 | 意味 | あとに来る形 |
+| --- | --- | --- |
+| en caso de que | 〜の場合には | 接続法 |
+| a menos que | 〜でない限り | 接続法 |
+| siempre que（習慣） | 〜するときはいつも | 直説法 |
+
+<Examples>
+
+- En caso de que llueva, la fiesta será dentro.（雨の場合は、パーティーは屋内でします）
+- Iré a la fiesta a menos que tenga trabajo.（仕事がない限り、パーティーに行く）
+
+</Examples>
+
+### 試験前の会話
+
+- Yui: Estoy nerviosa. Si suspendo el examen, tendré que repetirlo en julio.（緊張する。もし試験に落ちたら、7月に受け直さなきゃいけないの）
+- Kenta: Si estudias un poco cada día, aprobarás. ¿Quieres que te ayude?（毎日少しずつ勉強すれば受かるよ。手伝おうか？）
+- Yui: ¡Sí, gracias! Si tienes tiempo el domingo, llámame.（うん、ありがとう！日曜日に時間があったら電話して）
+
+¿Quieres que te ayude? は、ユニット26で学んだ querer que + 接続法です。
+
+### シェアハウスのルール
+
+ユイのシェアハウスの冷蔵庫には、こんなルールが貼ってあります。
+
+Si usas la cocina, límpiala después. Si llegas tarde, no hagas ruido. Si se acaba la leche, compra más. Y si tienes algún problema, ¡habla con nosotros!
+
+（台所を使ったら、そのあと片づけること。帰りが遅くなったら、静かにすること。牛乳がなくなったら、買い足すこと。そして何か困ったことがあったら、私たちに話してね！）
+
+si + 現在形のあとに命令形を続けた、条件つきの指示の典型です。否定命令（no hagas）や代名詞つきの命令（límpiala）も、ユニット19で学んだ形です。
+
+過去の習慣を言うときは、si のあとも結果も線過去にします：De niña, si llovía, nos quedábamos en casa.（子どもの頃、雨が降ると家で過ごしていた）。
+
+スペインの会話では、como + 接続法で「〜しないと（大変なことになる）」と警告することもあります：Como no estudies, vas a suspender.（勉強しないと落ちるよ）。si より強い、くだけた言い方です。
+
+Si quieres, te ayudo.（よかったら手伝うよ）は、申し出の決まり文句です。
+
+**ダニエル（バレンシア出身）のひとこと：** スペイン人は、約束するときに Si puedo, voy.（行けたら行くね）とよく言います。日本語の「行けたら行く」と同じで、実際には来ないこともあるので、相手の口調で判断してください。
 
 ## 活用：今日の動詞 (Conjugación)
 
-TODO:contenido
+条件文の結果では、ユニット20の未来形がよく出てきます。[tener](/language/learn-spanish/verb-conjugation/tener/)（tendré）、[poder](/language/learn-spanish/verb-conjugation/poder/)（podré）、[hacer](/language/learn-spanish/verb-conjugation/hacer/)（haré）の不規則な未来の語幹を、活用表の「未来」で確認しておきましょう。条件の si の節には、これらの動詞の現在形（tengo、puedo、hago）を使います。
 
 ## 語彙 (Nociones específicas)
+
+条件を言う表現と、試験や試合の結果の語です。
 
 <VocabList items={frontmatter.vocabulary} level={frontmatter.level} />
 
 ## 発音・正書法 (Pronunciación y ortografía)
 
-TODO:contenido
+条件の si（もし）と、肯定の sí（はい）は、アクセント記号だけで区別します。si は弱く、sí は強く読みます：Si quieres, ven.（よかったら来て）／ Sí, quiero.（うん、行きたい）。同じように、si no（さもないと）と sino（〜ではなく）は、続けて読むと同じ音になるので、書くときに文の意味で区別しましょう。
 
 ## 日本人がよく間違える
 
-TODO:contenido
+- **si のあとに未来形を使う。** ×Si lloverá, me quedaré en casa. → ○Si **llueve**, me quedaré en casa.
+- **si のあとに接続法現在を使う。** ×Si tengas tiempo, llámame. → ○Si **tienes** tiempo, llámame.
+- **si no と sino を混同する。** ×Date prisa; sino, perderás el tren. → ○Date prisa; **si no**, perderás el tren.
 
 ## 文化メモ (Referentes culturales)
 
 <CultureNote>
 
-TODO:contenido
+シーズンの終盤になると、スペインのサッカー談義は条件文だらけになります。Si el Madrid gana el clásico, será líder.（マドリーがクラシコに勝てば首位だ）、Si el Barça pierde, se complica la Liga.（バルサが負けたら、リーグ優勝が難しくなる）。レアル・マドリードとFCバルセロナの伝統の一戦、エル・クラシコの歴史と記録は、[エル・クラシコ完全ガイド](/football/el-clasico/)で紹介しています。
 
 </CultureNote>
 
 ## 練習 (Procedimientos de aprendizaje)
 
-### 練習1：認識
+### 練習1：結果の形は？
 
-TODO:contenido
+次の条件文の結果は、現在形・未来形・命令形のどれですか。
+
+1. Si llueve, nos quedamos en casa.
+2. Si estudias, aprobarás.
+3. Si tienes hambre, come algo.
+4. Si eres estudiante, tienes descuento.
 
 <details>
 <summary>答えを見る</summary>
 
-TODO:contenido
+1. 現在形（一般的な習慣）
+2. 未来形（予測）
+3. 命令形（条件つきの指示）
+4. 現在形（一般的な事実）
 
 </details>
 
 ### 練習2：穴埋め
 
-TODO:contenido
+（ ）の動詞を正しい形にしてください。
+
+1. Si (tú, venir) ______ mañana, cenamos juntos.
+2. Si no (nosotros, darse) ______ prisa, perderemos el tren.
+3. Si (tú, ver) ______ a Yui, dile que la llamo luego.
+4. Iré a menos que (llover) ______.
+5. En caso de que (tú, necesitar) ______ ayuda, llámame.
+6. Si (ellos, ganar) ______ el partido, serán campeones.
 
 <details>
 <summary>答えを見る</summary>
 
-TODO:contenido
+1. vienes
+2. nos damos
+3. ves
+4. llueva（a menos que は接続法）
+5. necesites（en caso de que は接続法）
+6. ganan
 
 </details>
 
 ### 練習3：作文
 
-TODO:contenido
+スペイン語で言ってみましょう。
+
+1. もし明日晴れたら、海に行くつもりだ。
+2. 時間があったら、私に電話して。
+3. 急いで、さもないと授業に遅れるよ（llegar tarde a clase）。
 
 <details>
-<summary>答えを見る</summary>
+<summary>解答例を見る</summary>
 
-TODO:contenido
+1. Si mañana hace sol, iré a la playa.（Si mañana hace sol, voy a ir a la playa.）
+2. Si tienes tiempo, llámame.
+3. Date prisa; si no, llegarás tarde a clase.
 
 </details>
 
@@ -97,4 +258,8 @@ TODO:contenido
 
 ## まとめ
 
-TODO:contenido
+- 現実的な条件は si + 現在形。結果は現在形（事実）、未来形（予測）、命令形（指示）。
+- si のあとには、未来のことでも未来形・接続法現在を使わない。
+- en caso de que・a menos que のあとは接続法。si no（さもないと）と sino（〜ではなく）を区別する。
+
+次のユニット31では、que・quien・donde などの関係代名詞を学びます。
