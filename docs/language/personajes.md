@@ -8,6 +8,29 @@ Reglas que no cambian:
 - No se inventan datos que contradigan las unidades ya escritas (ver «Hechos ya establecidos» en cada ficha). Tampoco apellidos ni familia más allá de lo que ya aparece.
 - La pronunciación de todo el audio es español peninsular estándar, porque las frases son modelo para el alumno (pendiente de confirmar: ver «Decisiones pendientes»).
 
+## Estilo visual (decisión de David, 3 de noviembre de 2026)
+
+- **Estilo fijo para todas las ilustraciones del curso:** la «Variante A» de la prueba con Daniel: acuarela suelta (húmedo sobre húmedo) con líneas de tinta o lápiz muy ligeras, aguadas que se desvanecen hacia los bordes, papel crema y sombras con un tono azul marino. Imagen de referencia: `Imágenes/Prueba de estilo Daniel.jpg` (la columna izquierda).
+- Como este estilo varía más entre generaciones, cada imagen nueva se genera con la referencia de estilo y, para los personajes, con su hoja de giro como referencia de personaje.
+- Bloque de estilo que encabeza todos los prompts:
+
+```
+STYLE: loose wet-on-wet watercolor illustration with very light, sketchy ink and pencil
+lines, soft translucent washes that bleed and fade out toward the edges (no hard borders),
+visible cold-press paper texture, cream off-white background (#FAFAF8), cool navy-blue
+(#002147) tints in shadows and dark hair, warm natural skin tones, limited palette with
+small warm red (#C8102E) accents, gentle natural light, semi-realistic adult proportions,
+calm and warm mood. NOT photorealistic, NOT 3D render, NOT anime, NOT chibi.
+```
+
+```
+NEGATIVE: photorealistic, photograph, 3D render, CGI, anime, manga, chibi, caricature,
+exaggerated or stereotyped ethnic features, text, letters, labels, watermark, logo,
+brand names, extra fingers, distorted hands, cluttered background.
+```
+
+- En la web: `alt` en japonés y la nota de imagen generada por IA; nada de logos ni obras de arte reales reconocibles; se descarta cualquier imagen con rasgos estereotipados.
+
 ## Mina (ミナ)
 
 - **Ficha:** 28 años, de Tokio, diseñadora. A1-A2. Primer viaje a España, empieza casi sin hablar.
