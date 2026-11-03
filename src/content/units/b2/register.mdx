@@ -5,89 +5,244 @@ levelName: "Avanzado"
 slug: "register"
 url: "/language/learn-spanish/b2/register/"
 existing: false
-title: "フォーマルとインフォーマル"
+title: "スペイン語のフォーマルとインフォーマル｜メールと手紙の書き方"
 shortTitle: "フォーマルとインフォーマル"
-titleEs: "registro formal e informal"
-grammar: ["registro","cartas","correos"]
-tenses: []
-functions: []
-canDo: []
-vocabulary: []
+titleEs: "Registro formal e informal"
+description: "スペイン語のフォーマルとインフォーマルの言葉づかいを解説。tú と usted の使い分け、改まったメールの書き出し（Estimado/a）と結び（Atentamente）、友だちへのメッセージとの違い、丁寧にする表現を、例文と練習問題で学べます。"
+grammar: ["tú / usted, vosotros / ustedes", "fórmulas de saludo y despedida en cartas y correos", "recursos de cortesía: condicional, imperfecto de cortesía", "léxico formal e informal"]
+tenses: ["presente de indicativo", "condicional simple", "pretérito imperfecto"]
+functions: ["改まったメールや手紙を書く", "相手と場面に合わせて言葉を選ぶ"]
+canDo:
+  - "相手との関係に合わせて、tú と usted を使い分けられる"
+  - "大学や会社に、改まったメールを書ける"
+  - "同じ内容を、フォーマルとインフォーマルで言いかえられる"
+vocabulary:
+  # rank = «Rango frec.» del diccionario de frecuencias del CORPES XXI (RAE). Lo escribe
+  # npm run vocab:rank -- --write; lo que no es lema del diccionario va sin rank, al final.
+  - { es: "estimado", ja: "（手紙の書き出しで）〜様（女性形 estimada）", rank: 5809, example: "Estimada señora García:" }
+  - { es: "atentamente", ja: "敬具", rank: 12076, example: "Atentamente, Yui" }
+  - { es: "el saludo", ja: "あいさつ（Un saludo：よろしく）", rank: 5521, example: "Un saludo cordial." }
+  - { es: "solicitar", ja: "申請する・お願いする", rank: 972, example: "Le escribo para solicitar información." }
+  - { es: "agradecer", ja: "感謝する", rank: 1929, example: "Le agradezco su respuesta." }
+  - { es: "adjuntar", ja: "添付する", rank: 12281, example: "Le adjunto mi currículum." }
+  - { es: "el currículum", ja: "履歴書", rank: 7723, example: "Adjunto mi currículum." }
+  - { es: "la disposición", ja: "（a su disposición：何なりとお申しつけください）", rank: 1380, example: "Quedo a su disposición para cualquier consulta." }
+  - { es: "la reserva", ja: "予約", rank: 1388, example: "Me gustaría confirmar mi reserva." }
+  - { es: "confirmar", ja: "確認する", rank: 672, example: "¿Podría confirmarme la fecha?" }
+  - { es: "cordial", ja: "心からの", rank: 9343, example: "Reciba un cordial saludo." }
+  - { es: "el abrazo", ja: "抱擁（Un abrazo：手紙の結びで「またね」）", rank: 5072, example: "Un abrazo, Yui" }
+  - { es: "el beso", ja: "キス（Besos：親しい人への結び）", rank: 4923, example: "¡Besos!" }
+  - { es: "el asunto", ja: "件名・用件", rank: 771, example: "Asunto: Solicitud de información" }
 verbs: []
-duration: 40
+duration: 45
 prev: 44
 next: 46
-related: [44,46,48]
-cast: ["yui","daniel"]
-audio: []
+related: [44, 46, 48]
+cast: ["yui", "daniel"]
+audio:
+  - "Estimada señora García:"
+  - "Le escribo para solicitar información sobre el máster."
+  - "Quedo a la espera de su respuesta. Atentamente."
+  - "¡Hola, Daniel! ¿Qué tal?"
+  - "Un abrazo."
 youtubeId: ""
-quiz: []
 draft: true
 updated: "2026-11-02"
+quiz:
+  - question: "大学の事務局にメールを書くとき、書き出しとして適切なのは？"
+    options: ["¡Hola, guapa!", "Estimada señora:", "¿Qué pasa?"]
+    correctIndex: 1
+    explanation: "改まったメールは Estimado/a + 敬称で始め、スペインではふつうコロン（:）を打ちます。"
+  - question: "改まったメールの結びとして適切なのは？"
+    options: ["Besos.", "Atentamente.", "¡Chao!"]
+    correctIndex: 1
+    explanation: "Atentamente（敬具）や Un cordial saludo が改まった結びです。Besos は親しい人への結びです。"
+  - question: "「〜についての情報をお願いしたく、ご連絡いたします」。適切なのは？"
+    options: ["Te escribo para pedirte info.", "Le escribo para solicitar información.", "Escribo pedir información."]
+    correctIndex: 1
+    explanation: "usted に対する改まった言い方：Le escribo para solicitar información。"
+  - question: "「履歴書を添付いたします」。適切なのは？"
+    options: ["Le adjunto mi currículum.", "Te mando el CV.", "Adjunto currículum mi."]
+    correctIndex: 0
+    explanation: "adjuntar（添付する）を使い、usted に対しては le をつけます。"
+  - question: "初対面の年上の人に話しかけるとき、ふつう使うのは？"
+    options: ["tú", "usted", "vosotros"]
+    correctIndex: 1
+    explanation: "初対面の年上の人や改まった場面では usted がふつうです。相手が tú で話してきたら、合わせてかまいません。"
+  - question: "「お返事をお待ちしております」。適切なのは？"
+    options: ["Quedo a la espera de su respuesta.", "Espero que me respondas pronto, ¿vale?", "Respóndeme ya."]
+    correctIndex: 0
+    explanation: "Quedo a la espera de su respuesta は、改まったメールの結びの定番です。"
+  - question: "「〜していただけますでしょうか」と、もっとも丁寧なのは？"
+    options: ["¿Puedes enviarme el formulario?", "¿Podría enviarme el formulario?", "Envíame el formulario."]
+    correctIndex: 1
+    explanation: "usted + 過去未来の ¿Podría…? が、もっとも丁寧なお願いです（ユニット21）。"
+  - question: "「〜をお願いしたいのですが」と、線過去で丁寧に言うと？"
+    options: ["Quería pedirle un favor.", "Quiero pedirte un favor ya.", "Quise pedirle un favor."]
+    correctIndex: 0
+    explanation: "願望の動詞を線過去にすると、控えめで丁寧な言い方になります：Quería pedirle…（丁寧の線過去）。"
+  - question: "友だちへのメッセージの結びとして自然なのは？"
+    options: ["Atentamente.", "Un abrazo.", "Le saluda atentamente."]
+    correctIndex: 1
+    explanation: "Un abrazo（またね、ハグを）は、友だちや親しい人への結びです。"
+  - question: "メールの件名を表す語は？"
+    options: ["el asunto", "el saludo", "la firma"]
+    correctIndex: 0
+    explanation: "件名は asunto：Asunto: Solicitud de información。"
 ---
 
-TODO:contenido（導入：このユニットの問いに、それだけで答えになる2文で答える）
+スペイン語の言葉づかいは、相手との関係と場面によって大きく変わります。友だちには tú を使い、¡Hola! ¿Qué tal? と気軽に話しかけますが、初めての相手や改まった場面では usted を使い、メールなら Estimada señora García:（ガルシア様）で始めて Atentamente（敬具）で結びます。
 
-## 文法 (Gramática)
+スペインは日本に比べて tú を使う場面が多い国ですが、大学や会社への問い合わせ、就職活動のメールでは、決まった改まった表現が求められます。このユニットでは、マドリードの大学院に問い合わせるユイの改まったメールと、ダニエルへの気軽なメッセージを比べながら学びます。
 
-TODO:contenido
+## 文法：フォーマルとインフォーマル (Gramática)
+
+まず tú と usted の使い分けを、次にメールの書き方を、最後に丁寧にする表現を見ていきましょう。
+
+### tú と usted
+
+| | インフォーマル | フォーマル |
+| --- | --- | --- |
+| 単数 | tú（habla**s**） | usted（habl**a**） |
+| 複数 | vosotros ※（habl**áis**） | ustedes（habl**an**） |
+| 相手 | 友だち、家族、同年代、同僚 | 初対面の年上、お客、役所、改まった場面 |
+
+※ vosotros はスペインのみで使う形です。中南米では、親しい相手の複数にも ustedes を使います（→ [中南米のスペイン語](/language/learn-spanish/spanish-in-latin-america/)）。
+
+スペインでは、職場の同僚や店員とも tú で話すことがよくあります。迷ったら usted で始め、相手が tú で話してきたら合わせる、というのが安全なやり方です。
+
+usted で話す相手には、señor / señora + 名字（señora García）で呼びかけます。don / doña は名前の前につける敬称で（don Manuel、doña Carmen）、年配の人への敬意を表します。メールで相手の名前がわからないときは、Estimados señores: で始めます。
+
+人を呼び止めるときの命令形も、相手に合わせて変わります。usted なら Perdone / Disculpe、tú なら Perdona / Disculpa です。
+
+### メールの書き方
+
+| 部分 | フォーマル | インフォーマル |
+| --- | --- | --- |
+| 件名 | Asunto: Solicitud de información | （なくてもよい） |
+| 書き出し | Estimado señor / Estimada señora: | ¡Hola, Daniel! |
+| 用件 | Le escribo para… / Me pongo en contacto con usted para… | Te escribo porque… |
+| お願い | ¿Podría enviarme…? / Le agradecería que… | ¿Me mandas…? |
+| 結び | Quedo a la espera de su respuesta. Atentamente, / Un cordial saludo, | Un abrazo, / Besos, |
+
+スペインでは、書き出しのあとにコロン（:）を打つのがふつうです（Estimada señora:）。Le agradecería que のあとは接続法過去（Le agradecería que me enviara…）になります（ユニット40）。
+
+### 丁寧にする表現
+
+- **過去未来：** ¿Podría…? / Me gustaría…（ユニット21）
+- **丁寧の線過去：** Quería pedirle un favor.（お願いがあるのですが）。願望の動詞を線過去にすると、控えめになります。
+- **語彙の言いかえ：** pedir → solicitar、mandar → enviar、decir → comunicar、ver → consultar
+
+スペイン語には、日本語の尊敬語・謙譲語のような特別な動詞はありません。ていねいさは、usted を使うこと、過去未来や線過去で控えめにすること、改まった語彙を選ぶことの三つで表します。
+
+### ユイの二つのメール
+
+**大学院への問い合わせ（フォーマル）**
+
+Asunto: Solicitud de información sobre el máster
+
+Estimada señora García:
+
+Me llamo Yui y soy estudiante de último curso en la Universidad de Salamanca. Le escribo para solicitar información sobre el proceso de admisión del máster. ¿Podría indicarme cuál es el plazo de inscripción? Le adjunto mi currículum.
+
+Quedo a la espera de su respuesta. Atentamente,
+Yui（実際のメールでは名字も書きます）
+
+**ダニエルへのメッセージ（インフォーマル）**
+
+¡Hola, Daniel! ¿Qué tal? Te escribo porque he mandado un correo al máster de Madrid. ¡Estoy nerviosa! Ya te contaré. Un abrazo, Yui
+
+同じ「メールを送った」でも、フォーマルでは solicitar・indicar・adjuntar、インフォーマルでは mandar・contar と、言葉そのものが変わります。インフォーマルでは、Ya te contaré.（またあとで話すね）のような話し言葉の表現もそのまま使えます。
+
+**ダニエル（バレンシア出身）のひとこと：** 日本語のメールのような長い前置きは、スペイン語の改まったメールでは必要ありません。Le escribo para… ですぐに用件に入り、最後に Atentamente で結べば、それで十分ていねいです。
 
 ## 活用：今日の動詞 (Conjugación)
 
-TODO:contenido
+usted に対しては、動詞を3人称単数で活用します：¿Usted tiene…?、¿Podría…?。[tener](/language/learn-spanish/verb-conjugation/tener/) や [poder](/language/learn-spanish/verb-conjugation/poder/) の活用表で、3人称単数と、過去未来（podría）、接続法過去（pudiera）の形を確認しておきましょう。
 
 ## 語彙 (Nociones específicas)
+
+改まったメールや手紙で使う語と、親しい人への結びの言葉です。
 
 <VocabList items={frontmatter.vocabulary} level={frontmatter.level} />
 
 ## 発音・正書法 (Pronunciación y ortografía)
 
-TODO:contenido
+改まった文章では、敬称の略語もよく使います：Sr.（señor）、Sra.（señora）、Srta.（señorita）、D.（don）、Dña.（doña）、Ud.（usted）、Uds.（ustedes）。略語は大文字で始め、ピリオドを打ちます。読むときは、略さずに señor、usted と読みます。メールの結びの Atentamente, や Un saludo, のあとには、コンマを打ってから改行して名前を書きます。
 
 ## 日本人がよく間違える
 
-TODO:contenido
+- **改まったメールで tú を使う。** ×Te escribo para pedirte información.（大学への問い合わせ）→ ○**Le** escribo para **solicitar** información.
+- **書き出しのあとにカンマを打つ。** △Estimada señora García, → ○Estimada señora García**:** スペインではコロンがふつうです。
+- **友だちに改まった結びを使う。** △Atentamente, Yui（ダニエルへのメッセージ）→ ○**Un abrazo**, Yui
 
 ## 文化メモ (Referentes culturales)
 
 <CultureNote>
 
-TODO:contenido
+旅行の準備でも、改まったメールを書く場面があります。スペインのホテルに直接問い合わせるなら、Estimados señores: Me gustaría confirmar mi reserva para los días 10 y 11 de mayo. ¿Podrían indicarme a qué hora es el check-in?（5月10日と11日の予約を確認したいのですが、チェックインは何時か教えていただけますか）のように書けば、ていねいに伝わります。スペインのホテルの選び方は、[スペインホテル おすすめ・選び方ガイド](/travel/spain-hotels/)で紹介しています。
 
 </CultureNote>
 
 ## 練習 (Procedimientos de aprendizaje)
 
-### 練習1：認識
+### 練習1：フォーマル？ インフォーマル？
 
-TODO:contenido
+次の表現は、フォーマルとインフォーマルのどちらですか。
+
+1. Estimado señor:
+2. ¡Hola! ¿Qué tal?
+3. Atentamente,
+4. Un abrazo,
+5. Le escribo para…
+6. Te escribo porque…
 
 <details>
 <summary>答えを見る</summary>
 
-TODO:contenido
+1. フォーマル
+2. インフォーマル
+3. フォーマル
+4. インフォーマル
+5. フォーマル
+6. インフォーマル
 
 </details>
 
-### 練習2：穴埋め
+### 練習2：フォーマルに書きかえる
 
-TODO:contenido
+次の文を、usted を使ったフォーマルな文に書きかえてください。
+
+1. ¿Me mandas el formulario?
+2. Te escribo para pedir información.
+3. Quiero saber el precio.
+4. Gracias por tu respuesta.
 
 <details>
 <summary>答えを見る</summary>
 
-TODO:contenido
+1. ¿Podría enviarme el formulario?
+2. Le escribo para solicitar información.
+3. Me gustaría saber el precio.（Quería saber el precio.）
+4. Le agradezco su respuesta.
 
 </details>
 
 ### 練習3：作文
 
-TODO:contenido
+スペイン語の学校に、改まったメールで問い合わせてみましょう。書き出し、用件（夏期講座の情報がほしい）、お願い（料金を教えてほしい）、結びを入れてください。
 
 <details>
-<summary>答えを見る</summary>
+<summary>解答例を見る</summary>
 
-TODO:contenido
+Estimados señores:
+
+Les escribo para solicitar información sobre los cursos de verano. ¿Podrían indicarme el precio y las fechas? Quedo a la espera de su respuesta.
+
+学校のように相手がだれかわからないときは、Estimados señores: で始め、複数の ustedes に合わせて Les escribo、¿Podrían…? を使います。
+
+Atentamente,
+Yui（実際のメールでは名字も書きます）
 
 </details>
 
@@ -97,4 +252,8 @@ TODO:contenido
 
 ## まとめ
 
-TODO:contenido
+- 友だちには tú、初対面の年上や改まった場面では usted。迷ったら usted で始めて相手に合わせる。
+- 改まったメールは Estimado/a…: で始め、Le escribo para… で用件、Atentamente で結ぶ。
+- ¿Podría…?・Me gustaría…・丁寧の線過去（Quería…）で、お願いをやわらかくする。
+
+次のユニット46では、文章のまとまりをつくる結束性を学びます。
