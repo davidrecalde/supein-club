@@ -5,89 +5,261 @@ levelName: "Plataforma"
 slug: "future"
 url: "/language/learn-spanish/a2/future/"
 existing: false
-title: "未来形"
+title: "スペイン語の未来形（futuro simple）｜活用・不規則形と推量の使い方"
 shortTitle: "未来形"
-titleEs: "futuro simple"
-grammar: ["regulares","raíces irregulares"]
-tenses: []
-functions: []
-canDo: []
-vocabulary: []
-verbs: ["tener","poder","decir","hacer","saber"]
+titleEs: "Futuro simple"
+description: "スペイン語の未来形（futuro simple）を一から解説。原形に -é・-ás・-á をつける規則活用、tendr-・har-・dir- などの不規則な語幹、ir a との違い、「たぶん〜だろう」という推量の使い方を、日本人が間違えやすい点と練習問題つきで学べます。"
+grammar: ["futuro simple", "raíces irregulares", "futuro de probabilidad"]
+tenses: ["futuro simple"]
+functions: ["将来の予定や計画を言う", "予測する", "現在のことを推量する"]
+canDo:
+  - "来年や将来の計画を、未来形で言える"
+  - "天気や結果などを予測して言える"
+  - "「たぶん〜だろう」と、今のことを推量して言える"
+vocabulary:
+  # rank = «Rango frec.» del diccionario de frecuencias del CORPES XXI (RAE). Lo escribe
+  # npm run vocab:rank -- --write; lo que no es lema del diccionario va sin rank, al final.
+  - { es: "el año que viene", ja: "来年", example: "El año que viene iré a Sevilla." }
+  - { es: "pasado mañana", ja: "あさって", example: "Pasado mañana Kenta volverá a Osaka." }
+  - { es: "dentro de", ja: "〜後に", example: "Dentro de dos meses, Kenta irá a Valencia." }
+  - { es: "el futuro", ja: "未来・将来", rank: 496, example: "En el futuro, quiero vivir en España." }
+  - { es: "seguramente", ja: "きっと・たぶん", rank: 2172, example: "Seguramente lloverá mañana." }
+  - { es: "quizás", ja: "もしかすると", rank: 1500, example: "Quizás Mina vendrá en verano." }
+  - { es: "el tiempo", ja: "天気・時間", rank: 71, example: "¿Qué tiempo hará mañana?" }
+  - { es: "el sol", ja: "太陽・日差し", rank: 1097, example: "Mañana hará sol en Valencia." }
+  - { es: "la lluvia", ja: "雨", rank: 1435, example: "Habrá lluvia por la tarde." }
+  - { es: "la primavera", ja: "春", rank: 3298, example: "En primavera, Kenta visitará la fábrica." }
+  - { es: "el verano", ja: "夏", rank: 1303, example: "Este verano iremos a la playa." }
+  - { es: "ganar", ja: "勝つ・稼ぐ", rank: 207, example: "¿Quién ganará el partido?" }
+  - { es: "la ruta", ja: "ルート・道筋", rank: 1285, example: "Haremos una ruta por el norte de España." }
+  - { es: "jubilarse", ja: "定年退職する", rank: 7479, example: "Mi jefe se jubilará el año que viene." }
+verbs: ["tener", "poder", "decir", "hacer", "saber"]
 duration: 40
 prev: 19
 next: 21
-related: [21,42,14]
-cast: ["mina","kenta"]
-audio: []
+related: [21, 42, 14]
+cast: ["mina", "kenta"]
+audio:
+  - "El año que viene iré a Sevilla."
+  - "Dentro de dos meses, Kenta volverá a Valencia."
+  - "Mañana hará sol y no lloverá."
+  - "¿Dónde está Daniel? Estará en la oficina."
+  - "¿Qué hora es? Serán las diez."
+  - "haré, harás, hará"
 youtubeId: ""
-quiz: []
 draft: true
 updated: "2026-11-02"
+quiz:
+  - question: "hablar の未来形、1人称単数（yo）は？"
+    options: ["hablaré", "hablare", "hablaría"]
+    correctIndex: 0
+    explanation: "未来形は原形 + -é：hablaré。アクセント記号を忘れないようにしましょう。hablaría は過去未来です。"
+  - question: "comer の未来形、1人称複数（nosotros）は？"
+    options: ["comeremos", "comiremos", "comamos"]
+    correctIndex: 0
+    explanation: "未来形の語尾は -ar・-er・-ir で共通：comer + -emos = comeremos。"
+  - question: "tener の未来形、1人称単数は？"
+    options: ["teneré", "tendré", "tenré"]
+    correctIndex: 1
+    explanation: "tener の未来の語幹は tendr-：tendré。poner（pondr-）、salir（saldr-）、venir（vendr-）も同じタイプです。"
+  - question: "hacer の未来形、3人称単数は？"
+    options: ["hacerá", "hará", "haga"]
+    correctIndex: 1
+    explanation: "hacer の未来の語幹は har-：hará。decir は dir-（dirá）です。"
+  - question: "poder の未来形、2人称単数（tú）は？"
+    options: ["poderás", "podrás", "puedes"]
+    correctIndex: 1
+    explanation: "poder の未来の語幹は podr-：podrás。saber（sabr-）、haber（habr-）、querer（querr-）も同じタイプです。"
+  - question: "「明日は晴れるだろう」。正しいのは？"
+    options: ["Mañana hará sol.", "Mañana hacerá sol.", "Mañana hace sol ayer."]
+    correctIndex: 0
+    explanation: "天気の hacer の未来形は hará：Mañana hará sol."
+  - question: "「（今）10時ごろだろう」と推量するなら？"
+    options: ["Son las diez.", "Serán las diez.", "Fueron las diez."]
+    correctIndex: 1
+    explanation: "未来形は、今のことを「たぶん〜だろう」と推量するときにも使います：Serán las diez."
+  - question: "「来年セビリアに行く」。未来形で正しいのは？"
+    options: ["El año que viene iré a Sevilla.", "El año que viene voy ir a Sevilla.", "El año que viene iría a Sevilla."]
+    correctIndex: 0
+    explanation: "ir の未来形は iré。ir a + 原形なら voy a ir（a が必要）、iría は過去未来です。"
+  - question: "saber の未来形、1人称単数は？"
+    options: ["saberé", "sabré", "sepa"]
+    correctIndex: 1
+    explanation: "saber の未来の語幹は sabr-：sabré。"
+  - question: "「（ダニエルは）たぶんオフィスにいるだろう」。正しいのは？"
+    options: ["Estará en la oficina.", "Estaría en la oficina ayer.", "Estuvo en la oficina."]
+    correctIndex: 0
+    explanation: "今の居場所を推量するので、estar の未来形 estará を使います。"
 ---
 
-TODO:contenido（導入：このユニットの問いに、それだけで答えになる2文で答える）
+スペイン語の未来形（futuro simple）は、動詞の原形のあとに -é・-ás・-á・-emos・-éis・-án をつけて作ります。-ar・-er・-ir の区別がなく、El año que viene iré a Sevilla.（来年セビリアに行くつもりだ）のように、将来のことを言うときに使います。
 
-## 文法 (Gramática)
+未来形には、「たぶん〜だろう」と今のことを推量する使い方もあります：Serán las diez.（10時ごろだろう）。このユニットでは、来年のバレンシア出張を計画するケンタと、次のスペイン旅行を考えるミナの会話を例に、未来形を身につけます。
 
-TODO:contenido
+## 文法：未来形 (Gramática)
+
+まず規則活用を、次に不規則な語幹を、最後に ir a との違いと推量の使い方を見ていきましょう。
+
+### 規則活用：原形 + 語尾
+
+| 人称 | 語尾 | hablar | comer | vivir |
+| --- | --- | --- | --- | --- |
+| yo | -é | hablaré | comeré | viviré |
+| tú | -ás | hablarás | comerás | vivirás |
+| él / ella / usted | -á | hablará | comerá | vivirá |
+| nosotros / nosotras | -emos | hablaremos | comeremos | viviremos |
+| vosotros / vosotras ※ | -éis | hablaréis | comeréis | viviréis |
+| ellos / ellas / ustedes | -án | hablarán | comerán | vivirán |
+
+※ vosotros はスペインのみで使う形です（→ [中南米のスペイン語](/language/learn-spanish/spanish-in-latin-america/)）。
+
+原形をそのまま語幹にして、語尾をつけるだけです。nosotros 以外の形にはアクセント記号がつきます。
+
+### 不規則な語幹
+
+語尾は同じで、語幹だけが変わる動詞があります。
+
+| 変わり方 | 原形 → 語幹 | 例（yo） |
+| --- | --- | --- |
+| e が消える | poder → podr-、saber → sabr-、haber → habr-、querer → querr- | podré、sabré |
+| d が入る | tener → tendr-、poner → pondr-、salir → saldr-、venir → vendr- | tendré、saldré |
+| 特別な形 | hacer → har-、decir → dir- | haré、diré |
+
+この語幹は、ユニット21の過去未来（tendría、haría）でもそのまま使います。
+
+### ir a との違い
+
+予定は ir a + 原形（ユニット11）でも言えます。会話では ir a がよく使われ、未来形は少し改まった言い方や、遠い将来、予測に使われることが多いです。
+
+<Examples>
+
+- Voy a ir a Valencia el lunes.（月曜日にバレンシアへ行く：決まった予定）
+- Dentro de dos meses, Kenta volverá a Valencia.（2か月後、ケンタはまたバレンシアへ行くだろう）
+- Mañana hará sol y no lloverá.（明日は晴れて、雨は降らないだろう）
+
+</Examples>
+
+### 推量：「たぶん〜だろう」
+
+未来形は、今のことを推量するときにも使います。日本語の「〜だろう」「〜かな」にあたります。
+
+- ¿Dónde está Daniel? ── Estará en la oficina.（ダニエルはどこ？ ── オフィスにいるんじゃないかな）
+- ¿Qué hora es? ── Serán las diez.（何時？ ── 10時ごろだろう）
+
+### 来年の計画
+
+ケンタとミナが、オンラインで来年の話をします。
+
+- Mina: ¿Volverás a Valencia el año que viene?（来年もバレンシアに行くの？）
+- Kenta: Sí, iré en primavera. Visitaré la fábrica nueva.（うん、春に行くよ。新しい工場を見学するんだ）
+- Mina: ¡Qué bien! Yo haré una ruta por el norte de España.（いいね！　私はスペイン北部を回るつもり）
+- Kenta: ¿Cuándo?（いつ？）
+- Mina: No sé, quizás en verano. Tendré vacaciones en agosto.（わからないけど、たぶん夏かな。8月に休みがあるから）
+
+### 天気予報を読む
+
+ケンタが、出張前にバレンシアの天気予報をチェックします。
+
+Mañana hará sol en Valencia y las temperaturas subirán hasta los veinticinco grados. El jueves habrá nubes y, por la tarde, lloverá un poco. El fin de semana volverá el buen tiempo.
+
+（明日のバレンシアは晴れで、気温は25度まで上がるでしょう。木曜日は雲が多く、午後は少し雨が降るでしょう。週末はまた天気がよくなるでしょう）
+
+天気予報は、未来形がいちばんよく出てくる場面の一つです。hará（hacer）、habrá（haber）、lloverá（llover）のように、天気の言い方をまとめて覚えましょう。
+
+未来形は、約束をするときにも使います：Te llamaré mañana.（明日電話するね）、Te escribiré desde Valencia.（バレンシアからメールするね）。ir a よりも、「必ずそうする」という気持ちが伝わります。
+
+推量の未来形は、疑問文でもよく使います：¿Dónde estará Mina?（ミナはどこにいるのかな）。答えがわからないまま、独り言のように言う表現です。
+
+**ダニエル（バレンシア出身）のひとこと：** 天気予報やスポーツの予想は、未来形の出番です。¿Quién ganará el partido?（試合はどっちが勝つかな？）と聞かれたら、Ganará el Valencia, seguro.（バレンシアが勝つよ、きっと）と答えてみてください。
 
 ## 活用：今日の動詞 (Conjugación)
 
-TODO:contenido
+未来の語幹が不規則な [tener](/language/learn-spanish/verb-conjugation/tener/)（tendr-）、[poder](/language/learn-spanish/verb-conjugation/poder/)（podr-）、[decir](/language/learn-spanish/verb-conjugation/decir/)（dir-）、[hacer](/language/learn-spanish/verb-conjugation/hacer/)（har-）は、活用表の「未来」で全人称の形を確認できます。[haber](/language/learn-spanish/verb-conjugation/haber/) の未来形 habrá は、「〜があるだろう」という意味で使います（Habrá lluvia por la tarde.、午後は雨になるだろう）。未来形の語幹は、ユニット21の過去未来でもそのまま使うので、ここでしっかり覚えておきましょう。
 
 ## 語彙 (Nociones específicas)
+
+将来のことを言う時の表現と、天気・季節の語です。
 
 <VocabList items={frontmatter.vocabulary} level={frontmatter.level} />
 
 ## 発音・正書法 (Pronunciación y ortografía)
 
-TODO:contenido
+未来形は、語尾を強く読みます：hablaré（ア・ブラ・**レ**）、hablará（ア・ブラ・**ラ**）。アクセント記号を落とすと、hablare や hablara という別の形（接続法）になってしまうので、書くときは必ず記号をつけましょう。nosotros の hablaremos（ア・ブラ・**レ**・モス）だけは記号がつきません。
 
 ## 日本人がよく間違える
 
-TODO:contenido
+- **不規則な語幹を規則どおりに作る。** ×teneré、×hacerá、×poderé → ○**tendré**、○**hará**、○**podré**。
+- **アクセント記号を落とす。** ×Mañana hablare con el cliente. → ○Mañana **hablaré** con el cliente.
+- **ir a の a を落として未来形と混ぜる。** ×Voy ir a Sevilla. → ○**Voy a ir** a Sevilla. または ○**Iré** a Sevilla.
 
 ## 文化メモ (Referentes culturales)
 
 <CultureNote>
 
-TODO:contenido
+ミナが計画している「スペイン北部を回る旅」のように、スペインには地方ごとに名物料理をたどる食の旅があります。El año que viene haremos una ruta gastronómica.（来年はグルメの旅をするつもり）と言えると、スペイン人からおすすめの店を教えてもらえるかもしれません。地方ごとの食の旅のルートは、[地方グルメルート](/food/food-routes/)で紹介しています。
 
 </CultureNote>
 
 ## 練習 (Procedimientos de aprendizaje)
 
-### 練習1：認識
+### 練習1：原形はどれ？
 
-TODO:contenido
+次の未来形の原形を答えてください。
+
+1. tendré
+2. haremos
+3. dirá
+4. saldrán
+5. podréis
 
 <details>
 <summary>答えを見る</summary>
 
-TODO:contenido
+1. tener
+2. hacer
+3. decir
+4. salir
+5. poder
 
 </details>
 
 ### 練習2：穴埋め
 
-TODO:contenido
+（ ）の動詞を未来形にしてください。
+
+1. Mañana (llover) ______ en Madrid.
+2. El año que viene (yo, ir) ______ a Sevilla.
+3. ¿(Tú, venir) ______ a la fiesta?
+4. Kenta (tener) ______ una reunión el lunes.
+5. ¿Dónde está Mina? ── (estar) ______ en casa.
+6. Nosotros (hacer) ______ una ruta por el norte.
 
 <details>
 <summary>答えを見る</summary>
 
-TODO:contenido
+1. lloverá
+2. iré
+3. Vendrás
+4. tendrá
+5. Estará（推量）
+6. haremos
 
 </details>
 
 ### 練習3：作文
 
-TODO:contenido
+未来形を使って、スペイン語で言ってみましょう。
+
+1. 来年、私はスペインに行くつもりだ。
+2. 明日は晴れるだろう。
+3. （電話に出ない友だちについて）たぶん寝ているんだろう（estar durmiendo）。
 
 <details>
-<summary>答えを見る</summary>
+<summary>解答例を見る</summary>
 
-TODO:contenido
+1. El año que viene iré a España.
+2. Mañana hará sol.
+3. Estará durmiendo.
 
 </details>
 
@@ -97,4 +269,8 @@ TODO:contenido
 
 ## まとめ
 
-TODO:contenido
+- 未来形は原形 + -é・-ás・-á・-emos・-éis・-án。-ar・-er・-ir の区別はない。
+- 不規則な語幹：tendr-・podr-・sabr-・saldr-・vendr-・pondr-・har-・dir- など。
+- 予定や予測のほか、「たぶん〜だろう」と今のことを推量するときにも使う。
+
+次のユニット21では、同じ語幹を使う過去未来で、ていねいなお願いやアドバイスを言います。
