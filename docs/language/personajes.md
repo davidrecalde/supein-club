@@ -67,7 +67,8 @@ Para personajes de una sola escena (camareros, Laura, Marcos, Lucía y Pablo, pr
 - Proyecto «Open Code» de Google AI Studio, clave en la variable de entorno `GEMINI_API_KEY` (nunca en el repositorio). Nivel gratuito: 3 peticiones por minuto, 10 al día. Las frases del curso son públicas, así que no importa que el nivel gratuito permita a Google usar el contenido.
 - Para no gastar una petición por frase, cada petición genera todas las frases de una unidad seguidas, con pausas largas entre ellas; el script corta el audio por los silencios y comprueba que salen tantos archivos como frases. Dos peticiones por unidad (lenta y natural): unas 130 en total con las 62 unidades y las transcripciones de los simulacros, es decir, de dos a tres semanas a ritmo de 6-8 al día, dejando margen para repetir.
 - Los diálogos de dos personas usan el modo de varios hablantes, con la voz fija de cada personaje.
-- El WAV de Gemini ocupa unos 48 KB por segundo; se convierte a un formato comprimido antes de publicarlo (pendiente: en este equipo no está instalado ffmpeg).
+- **Carpetas:** el audio sin comprimir se guarda en `audio-src/` (fuera de git, en `.gitignore`): `audio-src/pruebas-voces/` para el casting, con nombres `<personaje>-<voz>.wav` (p. ej. `daniel-charon.wav`), y `audio-src/unidades/<nivel>/<unidad>/` para el curso. El audio ya comprimido para la web irá en `public/audio/`.
+- El WAV de Gemini ocupa unos 48 KB por segundo; se convierte a un formato comprimido con ffmpeg (David lo instalará) antes de publicarlo.
 - David escucha cada audio antes de publicarlo; ningún reproductor aparece sin su archivo.
 
 ## Decisiones pendientes
