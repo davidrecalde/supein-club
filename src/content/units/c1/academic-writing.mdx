@@ -5,89 +5,221 @@ levelName: "Dominio operativo eficaz"
 slug: "academic-writing"
 url: "/language/learn-spanish/c1/academic-writing/"
 existing: false
-title: "論述と学術的文章"
+title: "スペイン語の小論文・レポートの書き方｜論述の構成と学術的な表現"
 shortTitle: "論述と学術的文章"
 titleEs: "textos argumentativos y académicos"
+description: "スペイン語の小論文・レポートは、序論・本論・反論への応答・結論の構成で書きます。Cabe señalar que… などの無人称表現、名詞化、断定をやわらげる言い方、出典の示し方を、例文つきで解説します。"
 grammar: ["géneros discursivos"]
 tenses: []
-functions: []
-canDo: []
-vocabulary: []
-verbs: []
+functions: ["論理的に主張する", "出典を示して客観的に書く"]
+canDo:
+  - "序論・本論・反論への応答・結論の構成で、論述的な文章を書ける"
+  - "無人称表現や名詞化を使い、客観的で改まった文体で書ける"
+  - "断定をやわらげる表現や出典を示す表現を使い、学術的な文章の慣習に沿って書ける"
+vocabulary:
+  # rank = «Rango frec.» del diccionario de frecuencias del CORPES XXI (RAE). Lo escribe
+  # npm run vocab:rank -- --write; lo que no es lema del diccionario va sin rank, al final.
+  - { es: "el objetivo", ja: "目的", rank: 291, example: "El objetivo de este trabajo es analizar el fenómeno." }
+  - { es: "el análisis", ja: "分析", rank: 618, example: "El análisis de los datos es fundamental." }
+  - { es: "el argumento", ja: "論拠・論点", rank: 1602, example: "Este argumento no es convincente." }
+  - { es: "el fenómeno", ja: "現象", rank: 1005, example: "Es un fenómeno reciente." }
+  - { es: "la trayectoria", ja: "経歴・歩み", rank: 1755, example: "Su trayectoria en España fue larga." }
+  - { es: "la tesis", ja: "主張・論文", rank: 2844, example: "Defendió su tesis con datos." }
+  - { es: "la hipótesis", ja: "仮説", rank: 2718, example: "Los datos confirman la hipótesis." }
+  - { es: "afirmar", ja: "断言する・述べる", rank: 263, example: "Podría afirmarse que el resultado es positivo." }
+  - { es: "señalar", ja: "指摘する", rank: 167, example: "Cabe señalar que los datos son de 2025." }
+  - { es: "sostener", ja: "主張する・支える", rank: 501, example: "La autora sostiene que el cambio es necesario." }
+  - { es: "subrayar", ja: "強調する", rank: 1443, example: "Conviene subrayar este punto." }
+  - { es: "caber", ja: "（cabe + 原形：〜しておくべきだ）", rank: 1421, example: "Cabe destacar el papel del entrenador." }
+  - { es: "asimismo", ja: "同様に・さらに", rank: 880, example: "Asimismo, hay que tener en cuenta el idioma." }
+  - { es: "no obstante", ja: "しかしながら", rank: 994, example: "No obstante, el problema persiste." }
+verbs: ["decir", "creer", "parecer"]
 duration: 40
 prev: 53
 next: 55
 related: [53,55,56]
 cast: ["daniel","carmen"]
-audio: []
+audio:
+  - "Cabe señalar que los datos son de 2025."
+  - "Si bien es cierto que el idioma es un reto, no es menos cierto que la adaptación es posible."
+  - "Todo parece indicar que el fenómeno seguirá creciendo."
+  - "En definitiva, podría afirmarse que la experiencia ha sido positiva."
 youtubeId: ""
-quiz: []
+quiz:
+  - question: "論述文の結論の書き出しとして適切なのは？"
+    options: ["En primer lugar, …", "Por un lado, …", "En definitiva, …"]
+    correctIndex: 2
+    explanation: "En definitiva / En conclusión / Por todo lo expuesto で結論を始めます。En primer lugar や Por un lado は本論の書き出しです。"
+  - question: "「〜ということを指摘しておくべきだ」。正しいのは？"
+    options: ["Cabe señalar que…", "Cabe señalando que…", "Cabe que señalar…"]
+    correctIndex: 0
+    explanation: "cabe + 原形（〜しておくべきだ・〜することができる）は、論文でよく使う無人称の表現です。"
+  - question: "「確かに〜だが、〜もまた事実だ」。正しいのは？"
+    options: ["Si bien es cierto que…, es menos cierto que…", "Si bien es cierto que…, no es menos cierto que…", "Aunque es menos cierto que…, …"]
+    correctIndex: 1
+    explanation: "Si bien es cierto que…, no es menos cierto que… は、反対の論点を認めたうえで自分の論点を示す決まった言い方です。"
+  - question: "「価格が大きく上がったこと」を名詞化すると？"
+    options: ["el aumentar fuerte de precios", "lo fuerte aumentaron los precios", "el fuerte aumento de los precios"]
+    correctIndex: 2
+    explanation: "動詞 aumentar を名詞 el aumento に、副詞を形容詞 fuerte にして、名詞句にまとめます。"
+  - question: "断定をやわらげる言い方は？"
+    options: ["Todo parece indicar que…", "Es totalmente seguro que…", "Todo el mundo sabe que…"]
+    correctIndex: 0
+    explanation: "Todo parece indicar que…（すべてが〜を示しているように見える）は、根拠を示しつつ断定を避ける表現です。"
+  - question: "「データによれば」。正しいのは？"
+    options: ["Acuerdo con los datos, …", "De acuerdo con los datos, …", "De acuerdo los datos, …"]
+    correctIndex: 1
+    explanation: "de acuerdo con（〜によれば）。según los datos とも言えます。"
+  - question: "論文の「謙遜の複数」（plural de modestia）を使った文は？"
+    options: ["En este trabajo analizan el fenómeno.", "En este trabajo analizaréis el fenómeno.", "En este trabajo analizamos el fenómeno."]
+    correctIndex: 2
+    explanation: "論文では、筆者一人でも nosotros の形（analizamos、consideramos）で書くことがあります。"
+  - question: "「〜と主張する」の意味で、改まった文章に向く動詞は？"
+    options: ["sostener", "soltar", "charlar"]
+    correctIndex: 0
+    explanation: "sostener que（〜と主張する）、afirmar、señalar、subrayar は、出典を紹介するときの動詞です。"
+  - question: "RAE が引用に最初に使うよう勧めている記号は？"
+    options: ["「 」", "« »", "( )"]
+    correctIndex: 1
+    explanation: "スペイン語の正書法では、角の引用符 « » を最初に使い、その中で “ ” を使うよう勧めています。"
+  - question: "「Asimismo」の意味は？"
+    options: ["しかしながら", "結論として", "同様に・さらに"]
+    correctIndex: 2
+    explanation: "asimismo は、同じ方向の論点を加えるときの改まった接続表現です。「しかしながら」は no obstante / sin embargo。"
 draft: true
 updated: "2026-11-02"
 ---
 
-TODO:contenido（導入：このユニットの問いに、それだけで答えになる2文で答える）
+スペイン語の小論文やレポート（textos argumentativos y académicos）は、序論で主張（tesis）を示し、本論で根拠と反論への応答を述べ、結論でまとめる構成が基本です。表現では、Cabe señalar que…（〜を指摘しておくべきだ）のような無人称の言い方、断定をやわらげる言い方、出典を示す言い方を使って、客観的に書くことが求められます。
 
-## 文法 (Gramática)
+意見の述べ方の基本はユニット35で、談話標識はユニット34で学びました。このユニットでは、報道や論説の文章を専門とするカルメン先生の作文指導を例に、大学のレポートや DELE C1 の作文で通用する、改まった書き方を学びます。
 
-TODO:contenido
+## 文法：論述と学術的文章 (Gramática)
+
+まず文章の構成を、次に客観的に書く方法を、最後に断定のやわらげ方と出典の示し方を見ていきましょう。
+
+### 論述文の構成
+
+| 部分 | 役割 | よく使う表現 |
+| --- | --- | --- |
+| 序論（introducción） | テーマを示し、主張を述べる | En la actualidad, … / El objetivo de este trabajo es… |
+| 本論（desarrollo） | 根拠と例を示す | En primer lugar, … / Asimismo, … / Cabe destacar que… |
+| 反論への応答（refutación） | 反対の意見を認め、答える | Si bien es cierto que…, no es menos cierto que… / Cabría objetar que…; sin embargo, … |
+| 結論（conclusión） | まとめ、立場を示す | En definitiva, … / Por todo lo expuesto, … |
+
+スペイン語の論述文では、反対の意見をまったく取り上げないと、一方的な文章だと評価されます。一つは反論を取り上げ、それに答える段落を入れましょう。
+
+### 客観的に書く：無人称と名詞化
+
+学術的な文章では、yo creo que… をくり返すかわりに、無人称の表現を使います。
+
+<Examples>
+
+- Se considera que el turismo es clave para la economía.（観光は経済の鍵だと考えられている）
+- Cabe señalar que los datos son de 2025.（データは2025年のものであることを指摘しておくべきだ）
+- Es sabido que la adaptación lleva tiempo.（適応に時間がかかることは知られている）
+
+</Examples>
+
+論文では、筆者が一人でも nosotros の形で書く「謙遜の複数」（plural de modestia）もよく使われます：En este trabajo analizamos…（本稿では〜を分析する）。
+
+また、動詞や形容詞を名詞に変える名詞化（nominalización）で、情報を短くまとめます：Los precios aumentaron mucho. → el fuerte aumento de los precios（価格の大幅な上昇）／ Llegaron muchos turistas. → la llegada masiva de turistas（観光客の大量流入）。名詞化すると、その名詞句を次の文の主語にでき、文章の結束性も高まります（ユニット46）。
+
+### 断定をやわらげる・出典を示す
+
+根拠が十分でないことを断定すると、説得力が下がります。断定をやわらげる表現（atenuación）を使いましょう：Parece que…（〜のようだ）、Todo parece indicar que…（すべてが〜を示しているように見える）、Podría afirmarse que…（〜と言えるだろう）、en cierta medida（ある程度）。
+
+他人の意見やデータを紹介するときは、出典をはっきり示します：Según…、De acuerdo con…、Tal como señala…（〜が指摘するとおり）。動詞は decir のかわりに、afirmar（述べる）、sostener（主張する）、señalar（指摘する）、subrayar（強調する）、advertir（警告する）を使い分けます。
+
+### カルメン先生の作文指導
+
+テーマ「日本人選手は、なぜラ・リーガに適応できるようになったのか」で、学生が書いた段落を、カルメン先生が改まった文体に直しました。
+
+**添削後：**
+En las últimas décadas, cada vez más futbolistas japoneses han jugado en la liga española. Cabe recordar que fue Shoji Jo quien, en la temporada 1999-2000, marcó los primeros goles de un japonés en Primera División con el Valladolid. Si bien es cierto que el idioma sigue siendo un reto, no es menos cierto que la adaptación es posible: la trayectoria de Takashi Inui, que jugó seis años en el Eibar, el Betis y el Alavés, así lo demuestra. En definitiva, todo parece indicar que el fenómeno seguirá creciendo.
+
+- Carmen: Fíjate en que no hay ningún «yo creo». La postura está clara, pero se apoya en datos.（「yo creo」が一つもないでしょう。立場ははっきりしているけれど、データに支えられているの）
+
+無人称の Cabe recordar que…、強調構文（ユニット51）、反論を認める Si bien es cierto que…、断定をやわらげる todo parece indicar que… が、一つの段落に組み込まれています。
+
+**ダニエル（バレンシア出身）のひとこと：** 日本語の論文の「〜と思われる」にあたるのが、Parece que… や Cabe pensar que… です。ただ、スペイン語の小論文では、結論で自分の立場をはっきり示すことが評価されます。最後まであいまいにせず、結論では Considero que… や En mi opinión… で立場を述べましょう。
 
 ## 活用：今日の動詞 (Conjugación)
 
-TODO:contenido
+論述文では、parecer（parece que、parecería que）や creer（no creo que + 接続法）、[decir](/language/learn-spanish/verb-conjugation/decir/)（se dice que）が、主張の強さを調整するのに使われます。parecer の過去未来 parecería は、断定をさらにやわらげる形です：Parecería que el problema está resuelto.（問題は解決したかのように見える）。creer の点過去3人称は creyó、creyeron と i が y に変わり、decir の点過去（dijo、dijeron）は不規則なので、decir の活用表で確認しておきましょう。
 
 ## 語彙 (Nociones específicas)
+
+論文やレポートで使う名詞と、出典や論点を示す動詞・接続表現です。
 
 <VocabList items={frontmatter.vocabulary} level={frontmatter.level} />
 
 ## 発音・正書法 (Pronunciación y ortografía)
 
-TODO:contenido
+引用には、日本語の「 」ではなく、スペイン語の引用符を使います。RAE は、まず角の引用符 « » を使い、その中でさらに引用するときに “ ” を使うよう勧めています：Según la autora, «el cambio es “inevitable” a largo plazo». 引用の終わりのピリオドは、閉じる引用符のあとに打ちます（…plazo».）。
 
 ## 日本人がよく間違える
 
-TODO:contenido
+- **「私は〜と思う」をくり返す。** △Yo creo que… Yo pienso que… → ○**Se considera que**… / **Cabe pensar que**…（結論では Considero que…）
+- **根拠なしに一般化する。** △Todos los japoneses son trabajadores. → ○**Muchos** japoneses… / **En la mayoría de los casos**…
+- **会話の接続表現を使う。** △Y además, … Pero, … → ○**Asimismo**, … **No obstante**, …
 
 ## 文化メモ (Referentes culturales)
 
 <CultureNote>
 
-TODO:contenido
+日本人選手のスペイン挑戦の歴史は、論述文の題材にもなります。1996年に財前宣之がログローニェスに加入し（出場はなし）、1999-2000シーズンには城彰二がバジャドリードで1部初ゴールを記録しました。その後、乾貴士がエイバル、ベティス、アラベスで6年間プレーし、現在は久保建英がレアル・ソシエダの中心選手として活躍しています。こうした事実を時系列で整理し、根拠として使うのが論述文の基本です。歴代の日本人選手の記録は、[日本人選手のラ・リーガ挑戦史](/football/japanese-players-laliga/)で紹介しています。
 
 </CultureNote>
 
 ## 練習 (Procedimientos de aprendizaje)
 
-### 練習1：認識
+### 練習1：文章のどの部分？
 
-TODO:contenido
+次の文は、序論・本論・反論への応答・結論のどれに向いていますか。
+
+1. En definitiva, el teletrabajo ha llegado para quedarse.
+2. El objetivo de este trabajo es analizar el teletrabajo en España.
+3. Si bien es cierto que el teletrabajo aísla, no es menos cierto que mejora la conciliación.
+4. En primer lugar, el teletrabajo ahorra tiempo de transporte.
 
 <details>
 <summary>答えを見る</summary>
 
-TODO:contenido
+1. 結論
+2. 序論
+3. 反論への応答
+4. 本論
 
 </details>
 
-### 練習2：穴埋め
+### 練習2：改まった文体に書きかえる
 
-TODO:contenido
+（ ）のヒントを使って、学術的な文体に書きかえてください。
+
+1. Yo creo que el turismo es importante.（se considera）
+2. Hay que decir que los datos son antiguos.（cabe）
+3. Los precios subieron mucho y la gente protestó.（名詞化：la fuerte subida）
+4. Seguro que el problema va a crecer.（todo parece indicar）
 
 <details>
 <summary>答えを見る</summary>
 
-TODO:contenido
+1. Se considera que el turismo es importante.
+2. Cabe señalar que los datos son antiguos.
+3. La fuerte subida de los precios provocó protestas.
+4. Todo parece indicar que el problema seguirá creciendo.
 
 </details>
 
 ### 練習3：作文
 
-TODO:contenido
+テーマ「大学の授業はオンラインにすべきか」で、反論への応答の段落を、Si bien es cierto que…, no es menos cierto que… を使って書いてみましょう（3〜4文）。
 
 <details>
-<summary>答えを見る</summary>
+<summary>解答例を見る</summary>
 
-TODO:contenido
+Si bien es cierto que las clases en línea permiten ahorrar tiempo, no es menos cierto que dificultan la relación entre los estudiantes. Cabe señalar, además, que no todos disponen de una buena conexión. Por todo ello, consideramos que el modelo más adecuado es el mixto.
 
 </details>
 
@@ -97,4 +229,8 @@ TODO:contenido
 
 ## まとめ
 
-TODO:contenido
+- 論述文は、序論（主張）・本論（根拠）・反論への応答・結論（立場）の構成で書く。
+- 無人称（Se considera que…、Cabe señalar que…）、謙遜の複数、名詞化で、客観的な文体にする。
+- 断定をやわらげ（Todo parece indicar que…）、出典を示す（Según…、Tal como señala…）。引用には « » を使う。
+
+次のユニット55では、皮肉やユーモア、言葉の裏にある意味（暗示）の読み取り方を学びます。
