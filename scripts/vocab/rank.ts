@@ -28,7 +28,6 @@ const OVERRIDES: Record<string, { lemma?: string; cat?: string; note: string }> 
   primero: { cat: 'R', note: 'adverbio «まず»; como numeral (M) tiene otro puesto' },
   adiós: { cat: 'I', note: 'interjección «さようなら»; como nombre (el adiós) tiene otro puesto' },
   abuelos: { lemma: 'abuelo', note: 'plural' },
-  cartera: { lemma: 'cartero', note: 'el CORPES agrupa las formas cartera/carteras bajo el lema cartero' },
 };
 
 if (!existsSync(TSV)) {
@@ -37,19 +36,36 @@ if (!existsSync(TSV)) {
 }
 
 // Líneas de lema: «  N. \t rango \t lema \t \t categoría \t frecuencia …». Las de forma empiezan por tabulador.
-const lemmas = new Map<string, Array<{ rank: number; cat: string }>>();
+const lemmas = new Map<string, Array<{ rank: number; cat: string; freq: number }>>();
+// Forma → lema que la contiene con más frecuencia (solo nombres). Sirve para los
+// femeninos que el CORPES agrupa bajo el masculino: cartera → cartero, música → músico.
+const formOwner = new Map<string, { lemma: string; freq: number }>();
+let current: { lemma: string; cat: string } | undefined;
 for (const line of readFileSync(TSV, 'utf8').split(/\r?\n/)) {
   const c = line.split('\t');
-  if (c.length < 6 || !/^\s*\d+\.\s*$/.test(c[0])) continue;
-  const lemma = c[2].trim().toLowerCase();
-  lemmas.set(lemma, [...(lemmas.get(lemma) ?? []), { rank: Number(c[1].trim()), cat: c[4].trim() }]);
+  if (c.length < 6) continue;
+  if (/^\s*\d+\.\s*$/.test(c[0])) {
+    const lemma = c[2].trim().toLowerCase();
+    current = { lemma, cat: c[4].trim() };
+    lemmas.set(lemma, [...(lemmas.get(lemma) ?? []), { rank: Number(c[1].trim()), cat: current.cat, freq: Number(c[5].trim()) }]);
+  } else if (current?.cat === 'N' && c[0] === '' && c[3]) {
+    const form = c[3].trim().toLowerCase();
+    const freq = Number(c[5].trim());
+    if (freq > (formOwner.get(form)?.freq ?? 0)) formOwner.set(form, { lemma: current.lemma, freq });
+  }
 }
 
 const ARTICLE = /^(el|la|los|las)\s+/; // solo el artículo definido con el que se presentan los nombres
 function lookup(es: string): { rank?: number; why: string } {
   const lower = es.trim().toLowerCase();
   const key = lower.replace(ARTICLE, '');
-  const o = OVERRIDES[key];
+  let o = OVERRIDES[key];
+  // Nombre cuya forma el CORPES cuenta sobre todo bajo otro lema (cartera → cartero).
+  const owner = formOwner.get(key);
+  const ownN = (lemmas.get(key) ?? []).find((e) => e.cat === 'N');
+  if (!o && ARTICLE.test(lower) && owner && owner.lemma !== key && owner.freq > (ownN?.freq ?? 0)) {
+    o = { lemma: owner.lemma, cat: 'N', note: `el CORPES agrupa la forma «${key}» bajo el lema ${owner.lemma}` };
+  }
   const entries = lemmas.get(o?.lemma ?? key) ?? [];
   // Con artículo es un nombre: «el móvil» toma el puesto de N, no el del adjetivo.
   const cat = o?.cat ?? (ARTICLE.test(lower) && entries.some((e) => e.cat === 'N') ? 'N' : undefined);
