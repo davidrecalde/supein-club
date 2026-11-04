@@ -220,6 +220,7 @@ El audio se genera después, con Gemini TTS, pero cada unidad se escribe ya prep
 - Cada frase que llevará audio va marcada en el contenido y recogida en el campo `audio` del frontmatter, para generar todo un nivel de una vez.
 - Voz peninsular, ritmo lento en A1-A2 y normal desde B1. Las frases de ejemplo se graban dos veces: lenta y natural.
 - Todo el audio generado lo revisa un hablante nativo antes de publicarse.
+- **Pipeline (4 de noviembre de 2026):** `npm run tts:generate` (`scripts/tts/generate.mjs`) lee el campo `audio` de las unidades y asigna cada frase a su hablante: si aparece en un diálogo («- Mina: …»), a ese personaje; si no, a la narradora (correcciones en `overrides` de `docs/language/tts-voices.json`). Hace una petición por unidad y hablante, corta el audio por los silencios y guarda el WAV en `audio-src/unidades/` y el avance en `audio-src/manifest.json` (fuera de git). Respeta la cuota gratuita (25 s entre peticiones, 9 al día y 1 de reserva) y no genera nada hasta que la plantilla del prompt esté confirmada con el «Get code» de AI Studio. `--dry-run` muestra el plan sin llamar a la API.
 - Los dictados y las pruebas de comprensión auditiva de los simulacros quedan redactados ahora y se activan cuando llegue el audio.
 
 ## Orden de producción

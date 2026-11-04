@@ -1,0 +1,134 @@
+{
+  "_doc": "Fuente única de verdad de las voces del curso (Gemini TTS). La usa scripts/tts/generate.mjs. Cada hablante usa siempre su voz y su perfil; si se cambia algo aquí, el script vuelve a generar las frases afectadas (el hash incluye voz, perfil, plantilla y texto).",
+  "model": "gemini-3.1-flash-tts-preview",
+  "mode": "single-speaker",
+  "temperature": 1,
+  "output": { "format": "wav", "sampleRate": 24000, "channels": 1, "bitsPerSample": 16 },
+  "quota": {
+    "_doc": "Nivel gratuito del proyecto «Open Code»: 3 peticiones por minuto y 10 al día (el día de la cuota termina a medianoche de la hora del Pacífico). Se deja 1 petición diaria de reserva para pruebas.",
+    "minIntervalSeconds": 25,
+    "maxRequestsPerDay": 10,
+    "reservePerDay": 1
+  },
+  "promptTemplate": {
+    "status": "provisional",
+    "_doc": "Estructura con la que AI Studio envía el Audio Profile dentro del texto, según el informe de Claude en Chrome del 3 de noviembre de 2026 (« # Audio Profile » + « ## Transcript: »). Hay que confirmarla copiando literalmente el «Get code» de AI Studio y, si difiere, corregirla aquí antes de la primera generación real.",
+    "text": "# Audio Profile\n{profile}\n\n## Transcript:\n{transcript}"
+  },
+  "speakers": {
+    "mina": {
+      "status": "aprobada",
+      "voice": "Laomedeia",
+      "voiceTags": ["Upbeat", "Higher pitch"],
+      "accent": "japonés suave",
+      "profile": "Mujer japonesa de 28 años que empieza a aprender español. Habla despacio y con un acento japonés suave y natural, pero se le entiende bien. Pronuncia con cuidado, con amabilidad y curiosidad, sin exagerar ni imitar estereotipos.",
+      "testSentence": "Hola, me llamo Mina y soy de Tokio. Perdone, ¿dónde está la estación de metro?"
+    },
+    "kenta": {
+      "status": "aprobada",
+      "voice": "Schedar",
+      "voiceTags": ["Even", "Lower middle pitch"],
+      "accent": "japonés moderado",
+      "profile": "Hombre japonés de 42 años que habla español de nivel intermedio. Acento japonés moderado y respetuoso, ritmo pausado y cortés, como en una reunión de trabajo. Se le entiende muy bien. Sin exagerar ni imitar estereotipos.",
+      "testSentence": "Buenos días. Soy Kenta, ingeniero de Osaka. ¿Sería posible cambiar la reunión al jueves?"
+    },
+    "yui": {
+      "status": "aprobada",
+      "voice": "Zephyr",
+      "voiceTags": ["Bright", "Higher pitch"],
+      "accent": "japonés ligerísimo",
+      "profile": "Mujer japonesa de 21 años que vive en España desde hace años y estudia en la universidad. Habla español con fluidez, de forma natural y cercana, con solo un ligerísimo acento japonés. Sin exagerar ni imitar estereotipos.",
+      "testSentence": "¡Hola! Soy Yui y estudio en Salamanca. Este fin de semana voy a Segovia con mi compañera de piso."
+    },
+    "daniel": {
+      "status": "pendiente",
+      "voice": null,
+      "candidates": ["Charon", "Achird", "Umbriel"],
+      "accent": "peninsular estándar",
+      "profile": "Hombre de 35 años, de Valencia. Habla español de España con pronunciación peninsular estándar, cálido y cercano, como un amigo que explica algo con paciencia.",
+      "testSentence": "Hola, soy Daniel. Soy de Valencia, pero vivo en Tokio. En España decimos «vale» para casi todo."
+    },
+    "carmen": {
+      "status": "pendiente",
+      "voice": null,
+      "candidates": ["Gacrux", "Sulafat", "Vindemiatrix"],
+      "accent": "peninsular estándar",
+      "profile": "Mujer de 58 años, profesora de Madrid. Habla español de España con pronunciación peninsular estándar, culta, segura y amable, articulando con claridad.",
+      "testSentence": "Buenos días. Hoy vamos a analizar el subjuntivo en la prensa. Fijaos en este titular."
+    },
+    "narrator": {
+      "status": "pendiente",
+      "_doc": "Lee las frases modelo que no pertenecen a ningún diálogo (274 de 335).",
+      "voice": null,
+      "candidates": ["Kore", "Achernar"],
+      "accent": "peninsular estándar",
+      "profile": "Locutora de un curso de español. Habla español de España con pronunciación peninsular estándar, clara, neutra y cálida, a ritmo lento y muy claro para estudiantes.",
+      "testSentence": "¿Cuánto cuesta esta camiseta? Quiero aquel abanico rojo."
+    },
+    "male-adult": {
+      "status": "propuesta",
+      "_doc": "Secundarios: camareros, empleados, colegas, examinadores. Voz propuesta sin probar; se revisa al escuchar el primer lote.",
+      "voice": "Orus",
+      "accent": "peninsular estándar",
+      "profile": "Hombre español de unos 40 años. Habla español de España con pronunciación peninsular estándar, amable y natural, a ritmo normal."
+    },
+    "female-adult": {
+      "status": "propuesta",
+      "voice": "Despina",
+      "accent": "peninsular estándar",
+      "profile": "Mujer española de unos 40 años. Habla español de España con pronunciación peninsular estándar, amable y natural, a ritmo normal."
+    },
+    "male-senior": {
+      "status": "propuesta",
+      "voice": "Algenib",
+      "accent": "peninsular estándar",
+      "profile": "Hombre español de unos 70 años. Habla español de España con pronunciación peninsular estándar, con calma y amabilidad."
+    },
+    "female-senior": {
+      "status": "propuesta",
+      "voice": "Erinome",
+      "accent": "peninsular estándar",
+      "profile": "Mujer española de unos 65 años. Habla español de España con pronunciación peninsular estándar, con calma y amabilidad."
+    },
+    "male-young": {
+      "status": "propuesta",
+      "voice": "Fenrir",
+      "accent": "peninsular estándar",
+      "profile": "Hombre español de unos 22 años, universitario. Habla español de España con pronunciación peninsular estándar, de forma informal y animada."
+    },
+    "female-young": {
+      "status": "propuesta",
+      "voice": "Autonoe",
+      "accent": "peninsular estándar",
+      "profile": "Mujer española de unos 22 años, universitaria. Habla español de España con pronunciación peninsular estándar, de forma informal y animada."
+    }
+  },
+  "roles": {
+    "_doc": "Nombre del hablante en los diálogos de las unidades («- Nombre: frase») → clave de speakers. Las frases del campo audio que no aparecen en ningún diálogo las lee narrator.",
+    "Mina": "mina",
+    "Kenta": "kenta",
+    "Yui": "yui",
+    "Daniel": "daniel",
+    "Carmen": "carmen",
+    "Señor": "male-senior",
+    "Señora": "female-senior",
+    "Empleado": "male-adult",
+    "Camarero": "male-adult",
+    "Agente": "male-adult",
+    "Colega": "male-adult",
+    "Cliente": "male-adult",
+    "Amigo": "male-adult",
+    "Examinador": "male-adult",
+    "Candidato": "male-young",
+    "Dependienta": "female-adult",
+    "Compañera": "female-young",
+    "Alumna": "female-young",
+    "Alumno": "male-young",
+    "Lucía": "female-young",
+    "Pablo": "male-young",
+    "Marcos": "male-young"
+  },
+  "overrides": {
+    "_doc": "Correcciones manuales de hablante por frase: «unidad:índice» → clave de speakers (índice desde 0 en el campo audio)."
+  }
+}
