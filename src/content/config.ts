@@ -274,6 +274,19 @@ const cast = defineCollection({
       age: z.string(),
       accent: z.string(),
     }),
+    // Ficha para la página de personajes (/language/cast/); el retrato está en /images/course/cast/<id>.webp.
+    profile: z
+      .object({
+        birthplace: z.string(),
+        home: z.string(),
+        occupation: z.string(),
+        education: z.string(),
+        hobbies: z.array(z.string()).min(1),
+        whySpanish: z.string(),
+        goal: z.string(),
+        personality: z.string(),
+      })
+      .optional(),
   }),
 });
 
@@ -316,6 +329,16 @@ const units = defineCollection({
       cast: z.array(reference('cast')).min(1).max(2),
       audio: z.array(z.string()).default([]),
       youtubeId: z.string().default(''),
+      // Ilustración de la unidad (acuarela generada con IA a partir de las referencias de Imágenes/personajes/).
+      // La escribe `npm run course:images`, salvo `alt`, que se redacta a mano en japonés.
+      image: z
+        .object({
+          src: z.string().regex(/^\/images\/course\/units\/u\d{2}\.webp$/),
+          width: z.number().int().positive(),
+          height: z.number().int().positive(),
+          alt: z.string().min(10),
+        })
+        .optional(),
       quiz: z
         .array(z.object({ question: z.string(), options: z.array(z.string()).min(2), correctIndex: z.number().int().min(0), explanation: z.string() }))
         .default([]),

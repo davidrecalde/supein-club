@@ -29,6 +29,7 @@ const d = unit.data;
 const { Content, headings } = await render(unit);
 const siteUrl = 'https://supein.club';
 const canonical = `${siteUrl}${d.url}`;
+const imageUrl = d.image && `${siteUrl}${d.image.src}`;
 const description = d.description ?? `${d.shortTitle}（${d.titleEs}）`;
 
 const byNumber = new Map((await getAllUnits()).map((u) => [u.data.unit, u]));
@@ -58,6 +59,7 @@ const learningResource = {
   inLanguage: 'ja',
   isPartOf: [{ '@id': `${siteUrl}/#website` }, { '@id': `${siteUrl}/language/#course` }],
   mainEntityOfPage: `${canonical}#webpage`,
+  ...(imageUrl && { image: imageUrl }),
   about: { '@type': 'Thing', name: 'スペイン語' },
   educationalLevel: d.level,
   teaches: [d.shortTitle, d.titleEs],
@@ -80,6 +82,7 @@ const sources = [
     title={d.title}
     description={description}
     canonical={canonical}
+    image={d.image?.src}
     type="article"
     breadcrumbs={unitBreadcrumbs(unit)}
     keywords={[d.shortTitle, d.titleEs, ...d.grammar]}
@@ -112,6 +115,13 @@ const sources = [
   <div class="page-container py-10">
     <div class="content-grid">
       <div class="content-main">
+        {d.image && (
+          <figure class="unit-hero">
+            <img src={d.image.src} width={d.image.width} height={d.image.height} alt={d.image.alt} fetchpriority="high" decoding="async" />
+            <figcaption>※この画像はAIで生成したイメージです。登場人物とユニットの場面を分かりやすく伝えるための参考画像としてご覧ください。</figcaption>
+          </figure>
+        )}
+
         <div class="prose unit-body">
           <Content components={{ VocabList, MiniQuiz, CultureNote, Examples }} />
         </div>

@@ -19,8 +19,7 @@ const { members } = Astro.props;
   {members.map((m) => (
     <li>
       <a class="cast-badge" href={`${CAST_URL}#${m.id}`}>
-        {/* Retrato provisional: iniciales sobre el color del personaje (las ilustraciones llegarán después). */}
-        <span class="cast-avatar" style={`background:${m.color}`} aria-hidden="true">{m.nameEs.charAt(0)}</span>
+        <img class="cast-avatar" src={`/images/course/cast/${m.id}-96.webp`} width="40" height="40" alt="" style={`background:${m.color}`} loading="lazy" decoding="async" />
         <span class="cast-badge-line"><strong>{m.name}</strong>・{m.tagline}</span>
       </a>
     </li>

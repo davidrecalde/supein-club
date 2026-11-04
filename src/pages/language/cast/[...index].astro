@@ -16,9 +16,10 @@ const units = await getAllUnits();
 const appearances = (id: string) => units.filter((u) => u.data.cast.some((c) => c.id === id));
 
 const siteUrl = 'https://supein.club';
+const portrait = (id: string) => `/images/course/cast/${id}.webp`;
 const canonical = `${siteUrl}${CAST_URL}`;
 const title = 'スペイン語コースの登場人物｜ミナ・ケンタ・ユイ・ダニエル・カルメン先生';
-const description = 'スペイン倶楽部のスペイン語コースに登場する5人を紹介。旅行者のミナ、仕事で使うケンタ、留学生のユイ、ネイティブのダニエル、カルメン先生が、レベルごとに例文と会話を案内します。';
+const description = 'スペイン倶楽部のスペイン語コースに登場する5人のプロフィール。旅行者のミナ、仕事で使うケンタ、留学生のユイ、ネイティブのダニエル、カルメン先生の出身・仕事・趣味・スペイン語を学ぶ理由と目標を紹介します。';
 const breadcrumbs = [
   { name: 'ホーム', url: '/' },
   { name: 'スペイン語', url: '/language/' },
@@ -30,7 +31,7 @@ const itemList = {
   '@type': 'ItemList',
   '@id': `${canonical}#cast`,
   name: 'スペイン語コースの登場人物',
-  itemListElement: cast.map((c, i) => ({ '@type': 'ListItem', position: i + 1, name: c.data.name, description: c.data.bio })),
+  itemListElement: cast.map((c, i) => ({ '@type': 'ListItem', position: i + 1, name: c.data.name, description: c.data.bio, image: `${siteUrl}${portrait(c.id)}` })),
 };
 ---
 <BaseLayout title={title}>
@@ -40,7 +41,7 @@ const itemList = {
     <Breadcrumb items={breadcrumbs} />
     <h1 class="cast-page-title">スペイン語コースの登場人物</h1>
     <p class="cast-page-intro">
-      このコースの例文や会話は、5人の登場人物の状況に沿って書いています。初級ではミナ、仕事の場面ではケンタ、中級以上ではユイとカルメン先生が中心になり、ダニエルはすべてのレベルでニュアンスや地域による違いを説明します。登場人物はすべて架空の人物です。
+      このコースの例文や会話は、5人の登場人物の状況に沿って書いています。初級ではミナとケンタ、中級ではユイ、上級ではカルメン先生が中心になり、ダニエルはすべてのレベルでニュアンスや地域による違いを説明します。登場人物はすべて架空の人物で、イラストはAIで生成したイメージです。
     </p>
 
     <ul class="cast-cards">
@@ -48,11 +49,23 @@ const itemList = {
         const list = appearances(c.id);
         return (
           <li class="cast-card" id={c.id}>
-            <span class="cast-avatar is-large" style={`background:${c.data.color}`} aria-hidden="true">{c.data.nameEs.charAt(0)}</span>
+            <img class="cast-portrait" src={portrait(c.id)} width="640" height="640" alt={`${c.data.name}のイラスト`} loading="lazy" decoding="async" style={`border-color:${c.data.color}`} />
             <div>
               <h2>{c.data.name} <span lang="es">{c.data.nameEs}</span></h2>
               <p class="cast-card-meta">{c.data.age}歳・{c.data.from}・{c.data.role}</p>
               <p>{c.data.bio}</p>
+              {c.data.profile && (
+                <dl class="cast-profile">
+                  <dt>出身</dt><dd>{c.data.profile.birthplace}</dd>
+                  <dt>住まい</dt><dd>{c.data.profile.home}</dd>
+                  <dt>仕事・学業</dt><dd>{c.data.profile.occupation}</dd>
+                  <dt>学歴</dt><dd>{c.data.profile.education}</dd>
+                  <dt>趣味</dt><dd>{c.data.profile.hobbies.join('、')}</dd>
+                  <dt>性格</dt><dd>{c.data.profile.personality}</dd>
+                  <dt>スペイン語との関わり</dt><dd>{c.data.profile.whySpanish}</dd>
+                  <dt>目標</dt><dd>{c.data.profile.goal}</dd>
+                </dl>
+              )}
               <p class="cast-card-meta">レベル：{c.data.levels.join('・')}　場面：{c.data.arcs.join('、')}</p>
               {list.length > 0 && (
                 <details class="cast-card-units">

@@ -455,6 +455,21 @@ table {
 }
 
 /* ── Curso de español: unidades (src/components/course/) ── */
+.unit-hero {
+  margin: 0 0 28px;
+}
+.unit-hero img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+}
+.unit-hero figcaption {
+  margin-top: 8px;
+  font-size: 12px;
+  line-height: 1.6;
+  color: #6b7280;
+}
 .unit-draft-banner {
   background: #FDECEF;
   color: #A00D24;
@@ -795,6 +810,9 @@ a.unit-nav-step:hover {
   font-size: 26px;
   border-color: #fff;
 }
+img.cast-avatar {
+  object-fit: cover;
+}
 .cast-badge-line {
   font-size: 13px;
   line-height: 1.4;
@@ -842,7 +860,7 @@ a.unit-nav-step:hover {
 }
 .cast-card {
   display: grid;
-  grid-template-columns: 64px 1fr;
+  grid-template-columns: 120px 1fr;
   gap: 16px;
   padding: 18px;
   border: 1px solid #E8E8E6;
@@ -850,6 +868,41 @@ a.unit-nav-step:hover {
   background: #fff;
   line-height: 1.8;
   color: #374151;
+}
+.cast-portrait {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  border: 3px solid;
+  object-fit: cover;
+  background: #FAFAF8;
+}
+.cast-profile {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  gap: 4px 14px;
+  margin: 10px 0;
+  font-size: 14px;
+}
+.cast-profile dt {
+  font-weight: 700;
+  color: #002147;
+}
+@media (max-width: 640px) {
+  .cast-card {
+    grid-template-columns: 1fr;
+  }
+  .cast-portrait {
+    width: 104px;
+    height: 104px;
+  }
+  .cast-profile {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+  .cast-profile dd {
+    margin-bottom: 6px;
+  }
 }
 .cast-card h2 {
   font-weight: 700;
