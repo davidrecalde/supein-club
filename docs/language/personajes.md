@@ -88,7 +88,7 @@ brand names, extra fingers, distorted hands, cluttered background.
 
 - La biografía de cada personaje (出身・住まい・仕事・学歴・趣味・性格・スペイン語との関わり・目標) está en el campo `profile` de `cast.json` y se muestra en /language/cast/ con su retrato. Es canon desde ahora: las unidades nuevas no pueden contradecirla.
 - Cada unidad tiene su escena en `public/images/course/units/uNN.webp` (WebP de menos de 100 KB) y su `alt` japonés en el campo `image` del frontmatter. Para sustituir una escena: guardar el nuevo PNG en `Imágenes/personajes/<nivel>/` con el mismo prefijo `uNN` y ejecutar `npm run course:images`.
-- **Escenas por rehacer (revisión del 4 de noviembre):** u40 (la tutora sale igual que Carmen: pañuelo morado y gafas con cordón), u52 y u61 (el hombre que debería ser Daniel lleva gafas y no tiene barba) y u62 (solo Carmen se reconoce entre los cinco). Detalles menores: en u18, Daniel lleva camisa verde en lugar de la de cuadros naranja, y en el B2 el pelo de Yui tira a morado.
+- **Revisión del 4 de noviembre:** la u62 se rehízo (los cinco personajes reconocibles). David decidió mantener u18, u40, u52 y u61 como están, porque las versiones nuevas cambiaban de estilo respecto al resto; se aceptan sus diferencias (la tutora de la u40 se parece a Carmen, Daniel sale con gafas en u52 y u61, camisa verde en u18).
 - **Secundarios fijos del B1:** Marcos (23 años, pelo castaño corto y rizado, barba de pocos días, sudadera gris) y la compañera de piso de Yui (22 años, pelo castaño ondulado en un moño, gafas redondas, chaqueta de punto mostaza).
 
 ## Voces secundarias
