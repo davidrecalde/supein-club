@@ -5,89 +5,224 @@ levelName: "Maestría"
 slug: "stylistics-rhetoric"
 url: "/language/learn-spanish/c2/stylistics-rhetoric/"
 existing: false
-title: "文体論と修辞"
+title: "スペイン語の修辞技法｜比喩・換喩・倒置と形容詞の位置"
 shortTitle: "文体論と修辞"
 titleEs: "estilística y retórica"
+description: "スペイン語の文体と修辞技法を解説。un pobre hombre と un hombre pobre のような形容詞の位置による意味の違い、比喩・換喩（La Moncloa、los celestes）、倒置・反復・対照法を、文学や報道の例で学べます。"
 grammar: ["estilística"]
 tenses: []
-functions: []
-canDo: []
-vocabulary: []
-verbs: []
+functions: ["文体の効果を読み取る", "修辞技法を使って表現を豊かにする"]
+canDo:
+  - "形容詞の位置による意味や文体の違い（un pobre hombre / un hombre pobre）を理解し、使い分けられる"
+  - "文学・報道・広告に使われる比喩・換喩・倒置・反復・対照法を見分け、その効果を説明できる"
+  - "冗語や不自然な直訳を避け、洗練された文体で書ける"
+vocabulary:
+  # rank = «Rango frec.» del diccionario de frecuencias del CORPES XXI (RAE). Lo escribe
+  # npm run vocab:rank -- --write; lo que no es lema del diccionario va sin rank, al final.
+  - { es: "la imagen", ja: "イメージ・像", rank: 336, example: "El poema crea una imagen muy viva." }
+  - { es: "el recurso", ja: "技法・手段", rank: 293, example: "La metáfora es un recurso literario." }
+  - { es: "el lector", ja: "読者（女性形 la lectora）", rank: 1076, example: "El autor sorprende al lector." }
+  - { es: "el ritmo", ja: "リズム", rank: 1128, example: "La repetición da ritmo al texto." }
+  - { es: "el poema", ja: "詩", rank: 1842, example: "Es un poema muy conocido." }
+  - { es: "literario", ja: "文学の（女性形 literaria）", rank: 1300, example: "Es un recurso literario." }
+  - { es: "el contraste", ja: "対比", rank: 3258, example: "El autor juega con el contraste." }
+  - { es: "resaltar", ja: "際立たせる", rank: 1525, example: "El adjetivo resalta una cualidad." }
+  - { es: "el verso", ja: "詩の行", rank: 3371, example: "El primer verso es famoso." }
+  - { es: "la repetición", ja: "反復", rank: 4802, example: "La repetición refuerza la idea." }
+  - { es: "evocar", ja: "思い起こさせる", rank: 4036, example: "El color evoca el mar." }
+  - { es: "el adjetivo", ja: "形容詞", rank: 7637, example: "La posición del adjetivo cambia el sentido." }
+  - { es: "la metáfora", ja: "隠喩", rank: 3934, example: "Es una metáfora del paso del tiempo." }
+  - { es: "la redundancia", ja: "冗語・重複", rank: 15886, example: "Evita las redundancias." }
+verbs: ["ser", "dar"]
 duration: 40
 prev: 57
 next: 59
 related: [57,59,62]
 cast: ["carmen","daniel"]
-audio: []
+audio:
+  - "Es un pobre hombre."
+  - "Del salón en el ángulo oscuro."
+  - "Verde que te quiero verde."
+  - "Es tan corto el amor, y es tan largo el olvido."
 youtubeId: ""
-quiz: []
+quiz:
+  - question: "「かわいそうな男だ」。正しいのは？"
+    options: ["Es un hombre pobre.", "Es un pobre hombre.", "Es un hombre de pobre."]
+    correctIndex: 1
+    explanation: "名詞の前の pobre は「かわいそうな」、後ろの pobre は「貧しい」という意味です。"
+  - question: "「偉大な作家」。正しいのは？"
+    options: ["un gran escritor", "un escritor grande", "un grande escritor"]
+    correctIndex: 0
+    explanation: "名詞の前では gran（偉大な）。後ろの grande は「体が大きい」の意味になります。"
+  - question: "「昔からの友人」。正しいのは？"
+    options: ["un amigo viejo", "un amigo de viejo", "un viejo amigo"]
+    correctIndex: 2
+    explanation: "名詞の前の viejo は「昔からの・古なじみの」。後ろの viejo は「年をとった」です。"
+  - question: "新聞の「La Moncloa ha anunciado nuevas medidas.」の La Moncloa は何を指す？"
+    options: ["スペイン政府（首相府）", "マドリードのある地区の住民", "スペイン王室"]
+    correctIndex: 0
+    explanation: "首相府のある建物の名前で政府を表す換喩（metonimia）です。王室は la Zarzuela と言います。"
+  - question: "セルタ・デ・ビーゴの選手を「los celestes」と呼ぶのは、どの修辞技法？"
+    options: ["倒置（hipérbaton）", "換喩（metonimia）", "反復（anáfora）"]
+    correctIndex: 1
+    explanation: "ユニフォームの色（空色）でチームを表す換喩です。スペイン代表を la Roja と呼ぶのも同じです。"
+  - question: "「Del salón en el ángulo oscuro」を、ふつうの語順にすると？"
+    options: ["El salón del ángulo oscuro en", "Del ángulo salón oscuro en el", "En el ángulo oscuro del salón"]
+    correctIndex: 2
+    explanation: "詩では語順を入れかえる倒置（hipérbaton）がよく使われます。ふつうの語順は En el ángulo oscuro del salón（広間の暗い片隅に）。"
+  - question: "「Es tan corto el amor, y es tan largo el olvido.」で使われている技法は？"
+    options: ["対照法（antítesis）", "換喩（metonimia）", "婉曲（eufemismo）"]
+    correctIndex: 0
+    explanation: "corto / largo、amor / olvido という反対の語を並べる対照法です。"
+  - question: "改まった文章で避けたい冗語（redundancia）はどれ？"
+    options: ["subir la escalera", "subir arriba", "subir rápido"]
+    correctIndex: 1
+    explanation: "subir（上がる）にはすでに「上へ」の意味があるので、arriba は重複です。volver a repetir、lapso de tiempo も同じ種類の冗語です。"
+  - question: "日本語の「目が高い（見る目がある）」にあたるのは？"
+    options: ["tener los ojos altos", "tener ojos grandes", "tener buen ojo"]
+    correctIndex: 2
+    explanation: "比喩は言語ごとに違います。「見る目がある」は tener buen ojo（para algo）です。"
+  - question: "「Verde que te quiero verde」は、スペイン語の詩の数え方で何音節？"
+    options: ["7音節", "8音節", "10音節"]
+    correctIndex: 1
+    explanation: "Ver-de-que-te-quie-ro-ver-de の8音節（八音節詩：octosílabo）。スペイン語の民謡や物語詩でもっとも多い長さです。"
 draft: true
 updated: "2026-11-02"
 ---
 
-TODO:contenido（導入：このユニットの問いに、それだけで答えになる2文で答える）
+スペイン語の文体（estilo）は、同じ内容でも語順や語の選び方で印象が変わることを利用して作られ、修辞技法（recursos retóricos）はその効果を意図的に高める方法です。たとえば un pobre hombre（かわいそうな男）と un hombre pobre（貧しい男）のように形容詞の位置だけで意味が変わり、新聞の La Moncloa（首相府）が「スペイン政府」を表すように、換喩は報道でも日常的に使われます。
 
-## 文法 (Gramática)
+C2 では、文学や報道、広告の文章を読んで、書き手がなぜその表現を選んだのかを理解し、自分の文章でも効果的に使える力が求められます。このユニットでは、報道と論説の読み方を教えるカルメン先生の授業を例に学びます。
 
-TODO:contenido
+## 文法：文体論と修辞 (Gramática)
+
+まず形容詞の位置を、次に比喩と換喩を、最後に語順と反復の技法を見ていきましょう。
+
+### 形容詞の位置で変わる意味
+
+ふつう形容詞は名詞の後ろに置き、客観的な性質を区別します。名詞の前に置くと、話し手の評価や、名詞がもともと持つ性質を強調する言い方になり、意味が変わる形容詞もあります。
+
+| 形容詞 | 名詞の前 | 名詞の後ろ |
+| --- | --- | --- |
+| pobre | un pobre hombre（かわいそうな男） | un hombre pobre（貧しい男） |
+| grande | un gran escritor（偉大な作家） | un escritor grande（体の大きい作家） |
+| viejo | un viejo amigo（昔からの友人） | un amigo viejo（年をとった友人） |
+| nuevo | un nuevo coche（今度の車・別の車） | un coche nuevo（新車） |
+| cierto | cierto dato（ある情報） | un dato cierto（確かな情報） |
+
+名詞の前の形容詞には、名詞がもともと持つ性質を描く「エピテート」（epíteto）の用法もあります：la blanca nieve（白い雪）、el frío invierno（寒い冬）。雪は白いと決まっているので情報は増えませんが、文学的で印象的な響きになります。
+
+### 比喩と換喩
+
+| 技法 | 仕組み | 例 |
+| --- | --- | --- |
+| 隠喩（metáfora） | 似ているものに置きかえる | El aceite de oliva es el oro líquido de España. |
+| 換喩（metonimia） | 関係の深いもので表す | La Moncloa（政府）、la Zarzuela（王室）、Bruselas（EU）、la Roja（スペイン代表） |
+| 提喩（sinécdoque） | 部分で全体を表す | Hay cinco bocas que alimentar.（養うべき口が五つある＝家族が5人） |
+
+報道では、建物や都市の名前で組織を表す換喩がとても多く、見出しは換喩を知らないと読めないことがあります：La Moncloa responde a Bruselas.（スペイン政府がEUに回答）。
+
+### 語順と反復の技法
+
+- **倒置（hipérbaton）：** 詩で語順を入れかえる。Del salón en el ángulo oscuro…（広間の暗い片隅に：ベッケル）
+- **反復（anáfora）：** 同じ語を文や行の初めにくり返す。Verde que te quiero verde. Verde viento. Verdes ramas.（ロルカ）
+- **対照法（antítesis）：** 反対の語を並べる。Es tan corto el amor, y es tan largo el olvido.（ネルーダ）
+- **漸層法（gradación）：** 意味を段階的に強める。Llegué, vi y vencí.
+- **修辞疑問（interrogación retórica）：** 答えを求めない問い。¿Quién no ha soñado alguna vez con vivir junto al mar?
+
+演説や広告では、三つの語や句を並べてリズムを作る方法もよく使われます：Más rápido, más barato, más cerca.
+
+### カルメン先生の授業：見出しを読む
+
+- Carmen: Leed este titular: «La Moncloa responde a Bruselas». ¿Quién responde a quién?（この見出しを読んで。だれがだれに答えているの？）※vosotros はスペインのみ
+- Alumna: ¿Un barrio de Madrid responde a la capital de Bélgica?（マドリードの地区がベルギーの首都に答える…んですか？）
+- Carmen: No, es una metonimia: el Gobierno español responde a la Unión Europea. En la prensa, los edificios y las ciudades hablan por las instituciones.（いいえ、換喩よ。スペイン政府が EU に答えているの。新聞では、建物や都市が組織のかわりに話すのよ）
+
+換喩を知らずに読むと、見出しはまったく違う意味になってしまいます。新聞を読むときは、地名や建物の名前が何を表しているかに注意しましょう。
+
+**ダニエル（バレンシア出身）のひとこと：** 換喩は国ごとに違います。スペインの la Moncloa にあたるのは、アルゼンチンでは la Casa Rosada（大統領府）です。また、同じ「赤」でも、スペインのサッカーファンが la Roja と言えばスペイン代表のことです。どの国の新聞を読んでいるかを意識してください。
 
 ## 活用：今日の動詞 (Conjugación)
 
-TODO:contenido
+文体の分析でよく使うのは、[ser](/language/learn-spanish/verb-conjugation/ser/)（Es una metáfora.）や [dar](/language/learn-spanish/verb-conjugation/dar/)（La repetición da ritmo al texto.／dar en el clavo）です。文学作品では、ser の点過去（fue）と線過去（era）の使い分けや、dar の点過去（dio）の不規則な形がよく出てくるので、活用表で確認しておきましょう。
 
 ## 語彙 (Nociones específicas)
+
+文学や文章の分析で使う語です。
 
 <VocabList items={frontmatter.vocabulary} level={frontmatter.level} />
 
 ## 発音・正書法 (Pronunciación y ortografía)
 
-TODO:contenido
+スペイン語の詩は、音節の数でリズムを作ります。Verde que te quiero verde は Ver-de-que-te-quie-ro-ver-de の8音節で、民謡や物語詩でよく使われる八音節詩（octosílabo）です。詩の音節を数えるときは、語末の母音と次の語頭の母音を一つの音節としてまとめます（シナレファ：sinalefa）：mi amigo → mia-mi-go（3音節）。声に出して読むと、スペイン語の詩のリズムが体でわかります。
 
 ## 日本人がよく間違える
 
-TODO:contenido
+- **形容詞の位置を気にしない。** ×Es un hombre pobre.（かわいそうな男、と言いたい）→ ○Es un **pobre hombre**.
+- **冗語を使う。** ×Voy a subir arriba. ×Volvió a repetirlo. → ○Voy a **subir**. ○Lo **repitió**.（改まった文章で）
+- **日本語の比喩を直訳する。** ×Tiene los ojos altos.（目が高い）→ ○Tiene **buen ojo**.
 
 ## 文化メモ (Referentes culturales)
 
 <CultureNote>
 
-TODO:contenido
+スペインのサッカー報道は、換喩の宝庫です。ガリシア地方ビーゴのクラブ、セルタ・デ・ビーゴは、愛称の「セレステ（空色）」のとおり、大西洋に面した土地の空と海を思わせる色を掲げています。そのため新聞では、選手たちを los celestes（空色の人たち）と呼びます。Los celestes remontaron en Balaídos.（セルタはバライドスで逆転した）のように、色と本拠地スタジアムの名前だけでクラブを表せるのです。クラブの歴史は、[セルタ・デ・ビーゴ完全ガイド](/football/celta-de-vigo/)で紹介しています。
 
 </CultureNote>
 
 ## 練習 (Procedimientos de aprendizaje)
 
-### 練習1：認識
+### 練習1：技法を見分ける
 
-TODO:contenido
+次の文で使われている技法を選んでください（隠喩／換喩／倒置／反復／対照法）。
+
+1. La Zarzuela ha emitido un comunicado.
+2. Tus ojos son dos luceros.
+3. Del salón en el ángulo oscuro…
+4. Verde que te quiero verde. Verde viento. Verdes ramas.
+5. Es tan corto el amor, y es tan largo el olvido.
 
 <details>
 <summary>答えを見る</summary>
 
-TODO:contenido
+1. 換喩（王室）
+2. 隠喩
+3. 倒置
+4. 反復
+5. 対照法
 
 </details>
 
-### 練習2：穴埋め
+### 練習2：形容詞の位置
 
-TODO:contenido
+（ ）の形容詞を、意味に合う位置に置いてください。
+
+1. 彼はかわいそうな人だ：Es un (pobre) hombre.
+2. 貧しい国：un (pobre) país
+3. 偉大な女優：una (grande) actriz
+4. 古なじみの友だち：una (vieja) amiga
+5. 確かな情報：un (cierto) dato
 
 <details>
 <summary>答えを見る</summary>
 
-TODO:contenido
+1. un pobre hombre
+2. un país pobre
+3. una gran actriz
+4. una vieja amiga
+5. un dato cierto
 
 </details>
 
 ### 練習3：作文
 
-TODO:contenido
+修辞技法を使って、旅行パンフレットの一文を書いてみましょう。①三つの語を並べる、②修辞疑問を使う。テーマ：スペインの海辺の町。
 
 <details>
-<summary>答えを見る</summary>
+<summary>解答例を見る</summary>
 
-TODO:contenido
+1. Sol, mar y buena mesa: todo lo que buscas, en un solo lugar.
+2. ¿Quién no ha soñado alguna vez con despertarse frente al Mediterráneo?
 
 </details>
 
@@ -97,4 +232,8 @@ TODO:contenido
 
 ## まとめ
 
-TODO:contenido
+- 形容詞は位置で意味と文体が変わる：un pobre hombre / un hombre pobre、un gran escritor / un escritor grande。
+- 隠喩・換喩・提喩は文学だけでなく報道でも使われる（La Moncloa、la Roja、los celestes）。
+- 倒置・反復・対照法・漸層法・修辞疑問で、文章にリズムと強調を与える。冗語や比喩の直訳は避ける。
+
+次のユニット59では、ことわざや『ドン・キホーテ』など、スペイン語話者が共有する文化的な参照を学びます。
