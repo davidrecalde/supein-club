@@ -363,4 +363,4 @@ Decisión de David: el curso no se muestra a los visitantes hasta que esté 100 
 - **Capacidad de revisión nativa** (español y japonés) por semana. Es lo que fija el ritmo real del curso.
 - **Vídeos:** la pestaña «Curso A1-C2 y vídeos» está calculada sobre 36 STEP. Hay que recalcularla sobre 62 unidades y renombrar la línea A (「スペイン語36ステップ」) antes del 5 de enero de 2027.
 - ~~Sección «Reparto, preferencias y transparencia»~~: incorporada a este documento el 2 de noviembre de 2026.
-- **Retratos del reparto (decidido el 2 de noviembre de 2026):** por ahora, iniciales sobre un color por personaje. Las ilustraciones se añaden después sin bloquear nada; nunca fotos ni imágenes fotorrealistas.
+- **Retratos del reparto (decidido el 2 de noviembre de 2026; sustituido el 4 de noviembre):** desde el 4 de noviembre, retratos en acuarela (`docs/language/personajes.md`) en la cabecera de cada unidad y en /language/cast/, y una ilustración por unidad. Antes eran iniciales sobre un color por personaje. Las ilustraciones se añaden después sin bloquear nada; nunca fotos ni imágenes fotorrealistas.
