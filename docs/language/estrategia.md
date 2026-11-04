@@ -156,6 +156,8 @@ Desde la semana 3 la web publica dos fichas por semana. La pausa de 年末年始
 
 ## Enlazado interno y conversión a LINE
 
+> **4 de noviembre de 2026:** el plan detallado del hub como embudo (curso como centro, mapa de intenciones, LINE en puntos intermedios y email como meta final) está en [`plan-hub-embudo.md`](plan-hub-embudo.md). Donde difiera de esta sección, manda ese plan.
+
 Cada página ofrece un único siguiente paso según el momento del alumno: leer, practicar, medirse y unirse a LINE. Los enlaces sostienen la ruta, y LINE se ofrece cuando el alumno acaba de conseguir algo, no antes.
 
 Reglas de enlazado:
