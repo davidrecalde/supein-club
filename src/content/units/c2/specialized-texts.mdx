@@ -5,89 +5,222 @@ levelName: "Maestría"
 slug: "specialized-texts"
 url: "/language/learn-spanish/c2/specialized-texts/"
 existing: false
-title: "専門分野のテキスト"
+title: "スペイン語の専門文書の読み方｜法律・経済・医学のテキストの特徴"
 shortTitle: "専門分野のテキスト"
 titleEs: "textos especializados"
+description: "スペイン語の契約書や規則、経済記事、医学・科学の文章の読み方。Queda prohibido…、El solicitante deberá… などの決まった言い方、名詞化と無人称、略語（ADN、OTAN、las ONG）と数字の書き方（15 %）を解説します。"
 grammar: ["géneros especializados"]
-tenses: []
-functions: []
-canDo: []
-vocabulary: []
-verbs: []
+tenses: ["futuro simple", "futuro de subjuntivo"]
+functions: ["専門分野の文章を正確に読む", "規則・報告書の文体で書く"]
+canDo:
+  - "契約書・規則・行政文書の決まった言い方（Queda prohibido…、deberá…）を理解し、正確に読める"
+  - "経済・科学・医学の文章の特徴（名詞化、無人称、専門用語の語源）をふまえて、要点を読み取れる"
+  - "スペイン語の略語や数字・記号の書き方の規範に従って書ける"
+vocabulary:
+  # rank = «Rango frec.» del diccionario de frecuencias del CORPES XXI (RAE). Lo escribe
+  # npm run vocab:rank -- --write; lo que no es lema del diccionario va sin rank, al final.
+  - { es: "el contrato", ja: "契約・契約書", rank: 899, example: "Firmó el contrato de alquiler." }
+  - { es: "el crecimiento", ja: "成長", rank: 520, example: "La economía registró un crecimiento moderado." }
+  - { es: "la tasa", ja: "率・料金", rank: 893, example: "La tasa de paro bajó." }
+  - { es: "registrar", ja: "記録する・登録する", rank: 702, example: "El PIB registró un crecimiento del 2,5 %." }
+  - { es: "vigente", ja: "現行の・有効な", rank: 2041, example: "La normativa vigente lo prohíbe." }
+  - { es: "el síntoma", ja: "症状", rank: 1392, example: "Los síntomas desaparecieron en dos días." }
+  - { es: "el diagnóstico", ja: "診断", rank: 1414, example: "El diagnóstico fue rápido." }
+  - { es: "la normativa", ja: "規則・規定", rank: 2935, example: "Según la normativa, hay que acreditar un nivel B1." }
+  - { es: "acreditar", ja: "証明する", rank: 4501, example: "Los aspirantes deberán acreditar un nivel B1 de español." }
+  - { es: "abonar", ja: "支払う（改まった言い方）", rank: 5108, example: "El arrendatario abonará la renta mensualmente." }
+  - { es: "la cláusula", ja: "条項", rank: 5173, example: "Lea atentamente la cláusula tercera." }
+  - { es: "el solicitante", ja: "申請者（女性形 la solicitante）", rank: 10150, example: "El solicitante deberá presentar su pasaporte." }
+  - { es: "la sigla", ja: "略語（頭字語）", rank: 2892, example: "ADN es la sigla de ácido desoxirribonucleico." }
+  - { es: "el arrendatario", ja: "借り手・入居者（女性形 la arrendataria）", rank: 17543, example: "El arrendatario deberá abonar la fianza." }
+verbs: ["ser", "haber", "deber"]
 duration: 90
 prev: 59
 next: 61
 related: [59,61,62]
 cast: ["carmen","daniel"]
-audio: []
+audio:
+  - "Queda prohibido fumar en todo el recinto."
+  - "El arrendatario deberá abonar la renta dentro de los cinco primeros días de cada mes."
+  - "El PIB registró un crecimiento interanual del 2,5 %."
+  - "Se observó una mejora en el 70 % de los pacientes."
 youtubeId: ""
-quiz: []
+quiz:
+  - question: "規則の文「喫煙は禁止されている」。正しいのは？"
+    options: ["Se queda prohibido fumar.", "Queda prohibida fumar.", "Queda prohibido fumar."]
+    correctIndex: 2
+    explanation: "quedar + 過去分詞は、規則や決定の結果を表します。不定詞が主語なので、過去分詞は男性単数の prohibido です。"
+  - question: "規則の文「申請者は書類を提出しなければならない」。正しいのは？"
+    options: ["El solicitante deberá presentar la documentación.", "El solicitante deberá de presentar la documentación.", "El solicitante debe de presentar la documentación."]
+    correctIndex: 0
+    explanation: "義務は deber + 原形。deber de + 原形は「〜にちがいない」という推量なので、規則には使いません。"
+  - question: "「国内総生産（GDP）」をスペイン語の略語で言うと？"
+    options: ["GDP", "PIB", "IVA"]
+    correctIndex: 1
+    explanation: "スペインでは PIB（producto interior bruto）。IVA は付加価値税です。"
+  - question: "「DNA」をスペイン語の略語で書くと？"
+    options: ["ADN", "DNA", "AND"]
+    correctIndex: 0
+    explanation: "ácido desoxirribonucleico の頭文字で ADN。OTAN（NATO）、ONU（UN）なども英語と語順が違います。"
+  - question: "「（複数の）NGO」を、RAE の規範どおりに書くと？"
+    options: ["las ONGs", "las ONG's", "las ONG"]
+    correctIndex: 2
+    explanation: "略語は複数でも形を変えず、冠詞で複数を示します：las ONG。"
+  - question: "RAE が勧めるパーセントの書き方は？"
+    options: ["15%", "15 %", "% 15"]
+    correctIndex: 1
+    explanation: "スペイン語の正書法では、数字と % の間にスペースを入れます：15 %。"
+  - question: "医学用語の gastritis、otitis の -itis が表すのは？"
+    options: ["恐怖症", "学問", "炎症"]
+    correctIndex: 2
+    explanation: "-itis は「炎症」。ギリシャ語・ラテン語由来の接尾辞を知ると、専門用語の意味が推測できます（-algia：痛み、-fobia：恐怖症、-logía：学問）。"
+  - question: "賃貸契約の「El arrendatario abonará la renta.」の意味は？"
+    options: ["大家が家賃を値上げする", "借り手が家賃を支払う", "借り手が庭に肥料をやる"]
+    correctIndex: 1
+    explanation: "契約書では pagar のかわりに abonar、alquiler のかわりに renta を使います。arrendatario は借り手、arrendador は貸し手です。"
+  - question: "「Se observó una mejora en el 70 % de los pacientes.」の文体の特徴は？"
+    options: ["無人称の se で、だれが観察したかを言わない", "口語のくだけた言い方", "相手への命令"]
+    correctIndex: 0
+    explanation: "科学の論文や報告では、行為者よりも結果を重視するため、無人称の se や受動態をよく使います。"
+  - question: "法律文の「Quien infringiere esta norma será sancionado.」の infringiere は何という形？"
+    options: ["直説法未来", "接続法未来", "過去未来"]
+    correctIndex: 1
+    explanation: "接続法未来（ユニット57）は、現代では法律や規則の文に残る形です。日常語では Quien infrinja… と接続法現在を使います。"
 draft: true
 updated: "2026-11-02"
 ---
 
-TODO:contenido（導入：このユニットの問いに、それだけで答えになる2文で答える）
+スペイン語の専門分野のテキスト（textos especializados）は、法律・行政、経済、科学・医学などの分野で、正確さと客観性を最優先にして書かれる文章です。専門用語に加えて、Queda prohibido fumar.（喫煙は禁止されている）や El solicitante deberá…（申請者は〜しなければならない）のような決まった言い方、名詞化、無人称の表現が特徴です。
 
-## 文法 (Gramática)
+スペインで部屋を借りる、ビザや奨学金を申請する、仕事で報告書を読む、といった場面では、こうした文章を正確に読めることが欠かせません。このユニットでは、賃貸契約書を読む学生に、カルメン先生がその読み方を教える場面を例に学びます。
 
-TODO:contenido
+## 文法：専門分野のテキスト (Gramática)
+
+法律・行政、経済、科学・医学の三つの分野の特徴と、略語と数字の書き方を見ていきましょう。
+
+### 法律・行政の文章
+
+| 特徴 | 例 | 意味 |
+| --- | --- | --- |
+| 義務の未来形 | El solicitante deberá presentar su pasaporte. | 申請者はパスポートを提出しなければならない |
+| quedar + 過去分詞 | Queda prohibido fumar. / Queda anulada la reserva. | 喫煙は禁止／予約は取り消しとなる |
+| haber de + 原形 | Los documentos habrán de entregarse antes del día 15. | 書類は15日までに提出すること |
+| 決まった前置詞句 | en virtud de / conforme a / a efectos de | 〜に基づき／〜に従って／〜のために |
+| 指示の言い方 | el presente contrato / dicha cláusula | 本契約／当該条項 |
+
+法律や規則の文では、ユニット57で学んだ接続法未来も見られます：Quien infringiere esta norma será sancionado.（この規則に違反した者は処罰される）。日常語では Quien infrinja… と接続法現在を使います。また、義務の deber + 原形と、推量の deber de + 原形（Debe de estar en casa. 家にいるにちがいない）は区別しましょう。
+
+### 経済の文章
+
+経済記事では、数値の変化を表す動詞と名詞化がよく使われます。
+
+<Examples>
+
+- El PIB registró un crecimiento interanual del 2,5 %.（GDPは前年比2.5%の成長を記録した）
+- La tasa de paro se situó en el 11 %.（失業率は11%となった）
+- Las exportaciones experimentaron un fuerte descenso.（輸出は大幅に減少した）
+
+</Examples>
+
+※例文の数字は説明のためのもので、実際の統計ではありません。subir や bajar のかわりに、registrar un aumento（増加を記録する）、situarse en（〜となる）、experimentar un descenso（減少する）、repuntar（持ち直す）、desplomarse（急落する）を使うと、報道らしい文体になります。
+
+### 科学・医学の文章
+
+科学や医学の文章では、だれが行ったかより結果が大切なので、無人称の se や受動態を使います：Se observó una mejora en el 70 % de los pacientes.（患者の70%に改善が見られた）／ Las muestras fueron analizadas en el laboratorio.（試料は研究所で分析された）。
+
+専門用語の多くはギリシャ語・ラテン語に由来し、漢字の部首のように意味を推測できます：-itis（炎症：gastritis 胃炎）、-algia（痛み：neuralgia 神経痛）、-fobia（恐怖症）、-logía（学問：cardiología 循環器科）、hiper-（過剰：hipertensión 高血圧）、hipo-（不足：hipotermia 低体温症）。
+
+### 略語と数字の書き方
+
+スペイン語の略語は、英語と語順が違うことが多くあります：ADN（DNA）、OTAN（NATO）、ONU（UN）、UE（EU）、OMS（WHO）、PIB（GDP）。略語は複数でも形を変えず、冠詞で複数を示します：las ONG（×las ONGs）。
+
+### カルメン先生と賃貸契約書
+
+- Alumna: En mi contrato pone: «El arrendatario deberá abonar la renta dentro de los cinco primeros días de cada mes». ¿Qué significa?（契約書に「借り手は毎月最初の5日以内に賃料を支払わなければならない」とあるんですが、どういう意味ですか？）
+- Carmen: El arrendatario eres tú, y el arrendador es el propietario. «Abonar la renta» es «pagar el alquiler». Y «deberá» indica una obligación, no un consejo.（借り手はあなた、貸し手は大家さんよ。abonar la renta は家賃を払うこと。deberá は助言ではなく義務を表すの）
+- Alumna: ¿Y «fianza»?（fianza は？）
+- Carmen: Es el dinero que se deja como garantía y que te devuelven al final, si todo está en orden.（保証として預けて、問題がなければ最後に返してもらうお金、つまり敷金ね）
+
+契約書では、pagar → abonar、alquiler → renta、dueño → arrendador のように、日常語とは違う語が使われます。わからない語は、日常語に言いかえてから読むと理解しやすくなります。
+
+**ダニエル（バレンシア出身）のひとこと：** 専門用語にも地域差があります。スペインの ordenador（パソコン）、móvil（携帯電話）は、中南米ではそれぞれ computadora、celular がふつうです。経済の PIB も、アルゼンチンやペルーでは PBI（producto bruto interno）と言うことがあります。
 
 ## 活用：今日の動詞 (Conjugación)
 
-TODO:contenido
+専門分野の文章では、[ser](/language/learn-spanish/verb-conjugation/ser/) + 過去分詞の受動態（Las muestras fueron analizadas.）と、[haber](/language/learn-spanish/verb-conjugation/haber/) の未来形を使った haber de + 原形（habrán de entregarse）がよく出てきます。ser の点過去（fue、fueron）と、haber の未来形（habrá、habrán）を活用表で確認しましょう。deber の未来形 deberá は規則的な形です。
 
 ## 語彙 (Nociones específicas)
+
+契約・規則・経済・医学の文章でよく使う語です。
 
 <VocabList items={frontmatter.vocabulary} level={frontmatter.level} />
 
 ## 発音・正書法 (Pronunciación y ortografía)
 
-TODO:contenido
+専門的な文章では、数字と記号の書き方にも規範があります。RAE は、% の前にスペースを入れ（15 %）、4桁を超える数は3桁ごとに小さなスペースで区切る（10 000）よう勧めています。年号やページ番号は区切りません（2026年、p. 1250）。小数点は、スペインではふつうコンマを使います（2,5 %）。読むときは、2,5 % を dos coma cinco por ciento と読みます。
 
 ## 日本人がよく間違える
 
-TODO:contenido
+- **英語の略語をそのまま使う。** ×el DNA、×la NATO → ○el **ADN**、○la **OTAN**
+- **略語に複数の -s をつける。** ×las ONGs → ○las **ONG**
+- **義務に deber de を使う。** ×El solicitante deberá de presentar… → ○El solicitante **deberá presentar**…
 
 ## 文化メモ (Referentes culturales)
 
 <CultureNote>
 
-TODO:contenido
+スペインでサッカーの指導者を目指す人にとっても、専門的な文章を読む力は欠かせません。スペインサッカー連盟（RFEF）の指導者養成コースは UEFA C・B・A・Pro の4段階で、スペイン語を母語としない受講者にはスペイン語 B1 レベルの証明が求められます。受講条件や規則は、Los aspirantes deberán acreditar un nivel B1 de español.（志願者はスペイン語 B1 レベルを証明しなければならない）のような行政文書の文体で書かれています。コースの詳細は、[スペインでサッカー指導者になる方法](/football/football-coach-license/)で紹介しています。
 
 </CultureNote>
 
 ## 練習 (Procedimientos de aprendizaje)
 
-### 練習1：認識
+### 練習1：日常語に言いかえる
 
-TODO:contenido
+契約書や規則の表現を、日常のスペイン語に言いかえてください。
+
+1. El arrendatario abonará la renta.
+2. Queda prohibido el acceso.
+3. Conforme a la normativa vigente…
+4. El solicitante deberá acreditar su identidad.
 
 <details>
 <summary>答えを見る</summary>
 
-TODO:contenido
+1. El inquilino pagará el alquiler.
+2. No se puede entrar.
+3. Según las normas actuales…
+4. La persona que lo pide tiene que demostrar quién es.
 
 </details>
 
-### 練習2：穴埋め
+### 練習2：報道の文体にする
 
-TODO:contenido
+（ ）の表現を使って、経済記事の文体に書きかえてください。
+
+1. Los precios subieron un 3 %.（registrar un aumento）
+2. Las ventas bajaron mucho.（experimentar un fuerte descenso）
+3. El paro es ahora del 11 %.（situarse en）
 
 <details>
 <summary>答えを見る</summary>
 
-TODO:contenido
+1. Los precios registraron un aumento del 3 %.
+2. Las ventas experimentaron un fuerte descenso.
+3. La tasa de paro se sitúa en el 11 %.
 
 </details>
 
 ### 練習3：作文
 
-TODO:contenido
+語学学校の掲示板に貼る規則を、規則の文体で3つ書いてみましょう（例：教室での飲食、遅刻、欠席の連絡）。
 
 <details>
-<summary>答えを見る</summary>
+<summary>解答例を見る</summary>
 
-TODO:contenido
+1. Queda prohibido comer en las aulas.
+2. Los alumnos deberán llegar puntualmente a clase.
+3. Las ausencias habrán de comunicarse a la secretaría con antelación.
 
 </details>
 
@@ -97,4 +230,8 @@ TODO:contenido
 
 ## まとめ
 
-TODO:contenido
+- 法律・行政の文章は、義務の未来形（deberá）、quedar + 過去分詞、haber de + 原形、決まった前置詞句で書かれる。
+- 経済は数値の変化を表す動詞と名詞化、科学・医学は無人称の se と受動態、ギリシャ語・ラテン語の語源が特徴。
+- 略語は英語と語順が違い、複数でも形を変えない（las ONG）。% の前にはスペースを入れる（15 %）。
+
+次のユニット61では、スペイン語と日本語の間で、要約・言いかえ・通訳をする「仲介」の技術を学びます。

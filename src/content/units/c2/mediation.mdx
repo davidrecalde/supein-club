@@ -5,89 +5,234 @@ levelName: "Maestría"
 slug: "mediation"
 url: "/language/learn-spanish/c2/mediation/"
 existing: false
-title: "仲介：要約・言い換え・通訳"
+title: "スペイン語の要約・言い換え・通訳｜仲介（mediación）の技術"
 shortTitle: "仲介：要約・言い換え・通訳"
 titleEs: "mediación"
+description: "スペイン語の仲介（mediación）とは、要約・言いかえ・通訳で情報を相手に合わせて伝えることです。es decir などの言いかえの表現、要約の手順、「よろしくお願いします」のような日本語の訳し方と文化の説明のしかたを解説します。"
 grammar: ["mediación"]
 tenses: []
-functions: []
-canDo: []
-vocabulary: []
-verbs: []
+functions: ["要約する・言いかえる", "日本語とスペイン語の間で意図を伝える"]
+canDo:
+  - "長い文章や話の要点を、自分の言葉で正確に要約できる"
+  - "言いかえの表現（es decir、dicho de otro modo など）を使い、相手に合わせて説明し直せる"
+  - "日本語とスペイン語の間で、言葉どおりではなく意図と文化的な背景を伝えられる"
+vocabulary:
+  # rank = «Rango frec.» del diccionario de frecuencias del CORPES XXI (RAE). Lo escribe
+  # npm run vocab:rank -- --write; lo que no es lema del diccionario va sin rank, al final.
+  - { es: "la comunicación", ja: "コミュニケーション", rank: 480, example: "La mediación facilita la comunicación." }
+  - { es: "interpretar", ja: "通訳する・解釈する", rank: 1050, example: "Interpretó la reunión del japonés al español." }
+  - { es: "traducir", ja: "翻訳する", rank: 2016, example: "Es difícil traducir este saludo." }
+  - { es: "la traducción", ja: "翻訳", rank: 3457, example: "Una traducción literal no siempre funciona." }
+  - { es: "el resumen", ja: "要約", rank: 3245, example: "Haz un resumen de diez líneas." }
+  - { es: "aclarar", ja: "明らかにする・説明する", rank: 1138, example: "¿Podría aclarar este punto?" }
+  - { es: "el destinatario", ja: "受け手（女性形 la destinataria）", rank: 7240, example: "Piensa en el destinatario del mensaje." }
+  - { es: "resumir", ja: "要約する", rank: 2734, example: "Resume el texto con tus palabras." }
+  - { es: "el equivalente", ja: "相当するもの", rank: 5734, example: "No hay un equivalente exacto en español." }
+  - { es: "el intérprete", ja: "通訳者（女性形 la intérprete）", rank: 2586, example: "Trabaja como intérprete." }
+  - { es: "el malentendido", ja: "誤解", rank: 10545, example: "Fue un malentendido cultural." }
+  - { es: "intercultural", ja: "異文化間の", rank: 9638, example: "La competencia intercultural es clave." }
+  - { es: "reformular", ja: "言いかえる・述べ直す", rank: 11565, example: "Reformula la idea con otras palabras." }
+  - { es: "la paráfrasis", ja: "言いかえ", rank: 27232, example: "Una buena paráfrasis conserva el sentido." }
+verbs: ["decir", "ser"]
 duration: 40
 prev: 60
 next: 62
 related: [60,62,54]
 cast: ["carmen","daniel"]
-audio: []
+audio:
+  - "Es decir, el texto defiende la conciliación familiar."
+  - "Dicho de otro modo, no hay un equivalente exacto."
+  - "Muchas gracias por venir hoy; sabemos que tienen una agenda muy apretada."
+  - "Esperamos seguir colaborando con ustedes."
 youtubeId: ""
-quiz: []
+quiz:
+  - question: "言いかえを示す表現ではないのはどれ？"
+    options: ["es decir", "sin embargo", "dicho de otro modo"]
+    correctIndex: 1
+    explanation: "sin embargo は対立（しかし）を表します。es decir、dicho de otro modo、o sea、en otras palabras は言いかえの表現です。"
+  - question: "要約の書き出し「El texto trata de…」の役割は？"
+    options: ["文章のテーマを示す", "反論する", "結論を述べる"]
+    correctIndex: 0
+    explanation: "El texto trata de… / El autor sostiene que… で、まずテーマと主張を示します。"
+  - question: "要約でいちばん大切なのは？"
+    options: ["例をすべて残す", "元の文章より詳しく書く", "元の文を写さず、自分の言葉で言いかえる"]
+    correctIndex: 2
+    explanation: "要約では主な考えだけを残し、例や重複を省いて、自分の言葉で言いかえます。"
+  - question: "初めて会う取引先への「よろしくお願いします」に近いのは？"
+    options: ["Por favor, trátame bien.", "Encantado de conocerle.", "Le pido bien."]
+    correctIndex: 1
+    explanation: "「よろしくお願いします」に決まった訳はなく、場面で訳し分けます。初対面なら Encantado/a de conocerle、依頼のあとなら Gracias de antemano など。"
+  - question: "職場で先に帰る同僚への「お疲れ様でした」に近いのは？"
+    options: ["¿Estás cansado?", "¡Qué cansado!", "¡Hasta mañana! ¡Buen trabajo!"]
+    correctIndex: 2
+    explanation: "「お疲れ様」を直訳すると「疲れているの？」になってしまいます。別れのあいさつやねぎらいの言葉に置きかえます。"
+  - question: "スペインで、食事をしている人のそばを通るときにかける言葉は？"
+    options: ["¡Que aproveche!", "¡Que te mejores!", "¡Enhorabuena!"]
+    correctIndex: 0
+    explanation: "¡Que aproveche!（召し上がれ・どうぞごゆっくり）は、食事中の人にかける言葉です。¡Que te mejores! は「お大事に」。"
+  - question: "スペイン人に「お盆」を説明する仲介として適切なのは？"
+    options: ["la Navidad japonesa", "el Obon, una bandeja", "el Obon, una festividad budista en la que se honra a los antepasados"]
+    correctIndex: 2
+    explanation: "文化的な語は、元の語を残して短い説明を加えます。似た行事に置きかえると誤解を生みます。"
+  - question: "RAE が勧める「京都」のスペイン語のつづりは？"
+    options: ["Kyoto", "Kioto", "Quioto"]
+    correctIndex: 1
+    explanation: "スペイン語では Kioto、Tokio と書くのが勧められています（Japón も同じく、スペイン語の形）。"
+  - question: "「mejor dicho」の働きは？"
+    options: ["自分の言ったことを訂正して言い直す", "もっと上手に言う", "結論を述べる"]
+    correctIndex: 0
+    explanation: "mejor dicho（というより）は、直前の言葉を訂正して言い直すときに使います。"
+  - question: "通訳で、日本語の長い前置き（お忙しいところ…）を訳すときは？"
+    options: ["一語ずつ直訳する", "意図を保ちつつ、スペイン語として自然な長さにまとめる", "すべて省く"]
+    correctIndex: 1
+    explanation: "仲介では、言葉ではなく意図（感謝・敬意）を伝えます。完全に省くと失礼に、直訳すると不自然になります。"
 draft: true
 updated: "2026-11-02"
 ---
 
-TODO:contenido（導入：このユニットの問いに、それだけで答えになる2文で答える）
+スペイン語の仲介（mediación）とは、ある言語や文化で伝えられた情報を、別の人がわかるように伝え直すことで、要約・言いかえ・通訳や翻訳が含まれます。大切なのは言葉を一つずつ置きかえることではなく、受け手（destinatario）に合わせて、内容と意図を正確に伝えることです。
 
-## 文法 (Gramática)
+ヨーロッパ言語共通参照枠（CEFR）の増補版でも、仲介は重要な言語活動として位置づけられています。このユニットでは、日本語も話すダニエルが日本の会社とスペインの取引先の打ち合わせを通訳する、という場面を例に、日本語とスペイン語の間の仲介を学びます。
 
-TODO:contenido
+## 文法：仲介の技術 (Gramática)
+
+要約、言いかえ、通訳・翻訳、文化の説明の四つに分けて見ていきましょう。
+
+### 要約する（resumir）
+
+要約は、①主な考えを見つける、②例や重複を省く、③自分の言葉で言いかえる、④接続表現でつなぐ、の順に作ります。
+
+| 目的 | 表現 |
+| --- | --- |
+| テーマを示す | El texto trata de… / El artículo aborda… |
+| 主張を示す | El autor sostiene que… / Según la autora, … |
+| 論点を加える | Además, señala que… / Asimismo, … |
+| まとめる | En resumen, … / En pocas palabras, … |
+
+要約では、元の文をそのまま写さず、名詞化（ユニット54）や上位語（ユニット46）を使って短くまとめます：Muchos turistas llegan cada verano y los precios suben. → la llegada masiva de turistas y la subida de los precios.
+
+### 言いかえる（reformular）
+
+言いかえの表現を使うと、難しい内容を相手に合わせて説明し直せます。
+
+<Examples>
+
+- Es decir, el texto defiende la conciliación familiar.（つまり、文章は仕事と家庭の両立を擁護している）
+- Dicho de otro modo, no hay un equivalente exacto.（言いかえれば、正確に相当する語はない）
+- Vendrán treinta personas, mejor dicho, unas veinticinco.（30人来る、というより25人くらいだ）
+
+</Examples>
+
+es decir・o sea・en otras palabras・dicho de otro modo は同じ内容の言いかえ、mejor dicho は訂正です。o sea は会話的なので、改まった場面では es decir を使いましょう。
+
+### 通訳・翻訳する：言葉ではなく意図を
+
+日本語のあいさつや決まり文句の多くは、スペイン語に直訳すると意味が変わってしまいます。
+
+| 日本語 | 直訳すると | 場面に合う言い方 |
+| --- | --- | --- |
+| よろしくお願いします | ×Por favor, trátame bien. | Encantado/a de conocerle.（初対面）／ Gracias de antemano.（依頼のあと） |
+| お疲れ様でした | ×¿Estás cansado? | ¡Hasta mañana! ¡Buen trabajo! |
+| すみません | Perdón. | Perdone.（呼びかけ）／ Gracias.（お礼の場面） |
+| つまらないものですが | ×No es nada interesante. | Es un pequeño detalle. Espero que le guste. |
+
+反対に、スペイン語から日本語に訳すときは、¡Que aproveche!（食事中の人に）を「召し上がれ」「ごゆっくり」のように、日本語でその場面に言う言葉に置きかえます。
+
+### 文化を説明する
+
+相手の文化にない物事は、元の語を残して短い説明を加えます（説明の追加：explicitación）：el Obon, una festividad budista en la que se honra a los antepasados（お盆、先祖を供養する仏教の行事）／ un konbini, una tienda abierta las 24 horas。似ているからといって別の行事に置きかえる（×la Navidad japonesa）と、誤解を生みます。
+
+### 打ち合わせの通訳
+
+ダニエルが、東京の会社とスペインから来た取引先の打ち合わせを通訳する場面です。
+
+- 日本の担当者：本日はお忙しいところお越しいただき、ありがとうございます。今後ともよろしくお願いいたします。
+- Daniel: Muchas gracias por venir hoy; sabemos que tienen una agenda muy apretada. Esperamos seguir colaborando con ustedes.
+- Cliente: Encantados. Para nosotros es un placer. ¡Vamos a hacer grandes cosas juntos!
+- Daniel：お招きいただき光栄です、ぜひ一緒に大きな成果を出しましょう、とのことです。
+
+ダニエルは「よろしくお願いいたします」を「今後も協力していきたい」という意図で訳し、スペイン語の明るい ¡Vamos a hacer grandes cosas juntos! を、日本のビジネスの場に合う落ち着いた言葉に直しています。
+
+**カルメン先生のひとこと：** DELE C2 の試験では、資料の内容を別の目的や読み手に合わせて書き直す課題が出ます。元の文の表現を写すのではなく、読み手がだれかを考えてから、語彙と文体を選び直しましょう。それが仲介の力です。
+
+**ダニエル（バレンシア出身）のひとこと：** 通訳をしていていちばん難しいのは、言葉より沈黙や間です。日本の会議では少し間を置いてから答えるのが自然ですが、スペインではすぐに反応がないと、相手は「不満なのかな」と感じることがあります。そんなときは、Lo están pensando con calma.（落ち着いて検討しているところです）と一言添えるのも、仲介の大切な仕事です。
 
 ## 活用：今日の動詞 (Conjugación)
 
-TODO:contenido
+仲介でもっとも使う動詞は [decir](/language/learn-spanish/verb-conjugation/decir/) です。es decir、dicho de otro modo（過去分詞 dicho）、Dice que…（〜とのことです）、Quería decir que…（〜という意味でした）と、言いかえや伝達の中心になります。[ser](/language/learn-spanish/verb-conjugation/ser/) の現在形 es も、es decir や O sea… の形で使われます。dicho（過去分詞）と dijo（点過去）の不規則な形を、活用表で確認しましょう。
 
 ## 語彙 (Nociones específicas)
+
+要約・言いかえ・通訳・異文化コミュニケーションの語です。
 
 <VocabList items={frontmatter.vocabulary} level={frontmatter.level} />
 
 ## 発音・正書法 (Pronunciación y ortografía)
 
-TODO:contenido
+日本の地名には、スペイン語の決まったつづりがあります。RAE は Tokio、Kioto と書くよう勧めており、英語式の Tokyo、Kyoto は使いません。国名は Japón、形容詞は japonés / japonesa です。日本人の名前は長音記号をつけずに書くのがふつうで（Sato、Ono）、スペイン語話者は後ろから2番目の音節を強く読む傾向があります（Sa**to** ではなく **Sa**to）。通訳では、名前を一度はっきり言い直すと伝わりやすくなります。
 
 ## 日本人がよく間違える
 
-TODO:contenido
+- **決まり文句を直訳する。** ×Por favor, trátame bien.（よろしくお願いします）→ ○**Encantado de conocerle.** ／ ○**Gracias de antemano.**
+- **要約で元の文を写す。** △元の文章の文をつなぎ合わせる → ○主な考えを選び、**自分の言葉で言いかえる**。
+- **文化的な語を別の行事に置きかえる。** ×el Obon, la Navidad japonesa → ○el Obon, **una festividad budista en la que se honra a los antepasados**
 
 ## 文化メモ (Referentes culturales)
 
 <CultureNote>
 
-TODO:contenido
+言語と文化の仲介は、サッカーのファンの世界でも行われています。バルセロナのクラブ RCDエスパニョールには、2006年にクラブから公式ペーニャとして認定された日本のサポーターズクラブ「ペリコ・ニッポン（Perico Nippon）」があり、クラブの最新情報を日本語で発信しています。スペイン語のニュースの要点を日本のファンに向けてまとめ直すことは、まさにこのユニットで学んだ仲介です。クラブと日本人選手の関わりは、[RCDエスパニョールの歴史](/football/espanyol/)で紹介しています。
 
 </CultureNote>
 
 ## 練習 (Procedimientos de aprendizaje)
 
-### 練習1：認識
+### 練習1：言いかえの表現
 
-TODO:contenido
+（ ）に合う表現を選んでください（es decir / mejor dicho / en resumen / sin embargo）。
+
+1. El texto es largo; (　), los argumentos son claros.
+2. Llegaremos a las ocho, (　), a las ocho y media.
+3. El TFG, (　), el trabajo de fin de grado, se entrega en junio.
+4. (　), el autor defiende un modelo mixto.
 
 <details>
 <summary>答えを見る</summary>
 
-TODO:contenido
+1. sin embargo（対立）
+2. mejor dicho（訂正）
+3. es decir（言いかえ）
+4. En resumen（まとめ）
 
 </details>
 
-### 練習2：穴埋め
+### 練習2：要約する
 
-TODO:contenido
+次の文章を、1文で要約してください（El texto trata de… で始める）。
+
+Cada vez más empresas permiten trabajar desde casa. Esto ahorra tiempo de transporte y mejora la conciliación. Sin embargo, algunos trabajadores se sienten aislados. Por eso, muchas empresas combinan días en casa y en la oficina.
 
 <details>
-<summary>答えを見る</summary>
+<summary>解答例を見る</summary>
 
-TODO:contenido
+El texto trata del teletrabajo, que ofrece ventajas como el ahorro de tiempo y la conciliación, pero también provoca aislamiento, por lo que muchas empresas optan por un modelo mixto.
 
 </details>
 
-### 練習3：作文
+### 練習3：仲介する
 
-TODO:contenido
+スペイン人の友だちに、次の日本語を、意図が伝わるように説明してください。
+
+1. 「つまらないものですが」と言って、お土産を渡す。
+2. 「いただきます」。
+3. 「お盆休み」。
 
 <details>
-<summary>答えを見る</summary>
+<summary>解答例を見る</summary>
 
-TODO:contenido
+1. Es un pequeño detalle; en Japón decimos algo como «no es gran cosa» por modestia.
+2. Es lo que decimos antes de comer para dar las gracias por la comida.
+3. Son unas vacaciones de verano en torno al Obon, una festividad budista en la que se honra a los antepasados.
 
 </details>
 
@@ -97,4 +242,8 @@ TODO:contenido
 
 ## まとめ
 
-TODO:contenido
+- 要約は、主な考えを選び、例と重複を省き、自分の言葉で言いかえる（El texto trata de…、En resumen…）。
+- 言いかえは es decir・dicho de otro modo・en otras palabras、訂正は mejor dicho。
+- 通訳・翻訳では言葉ではなく意図を伝え、文化的な語は元の語を残して説明を加える。
+
+次のユニット62は、C2 の総復習と、DELE C2 の形式に沿ったオリジナル模擬試験です。このコースの最後のユニットです。

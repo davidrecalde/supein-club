@@ -351,6 +351,8 @@ Decisión de David: el curso no se muestra a los visitantes hasta que esté 100 
 
 - **Casos anotados al escribir C1:** en /c1/grammar/, la sección 「皮肉と緩和表現」 enlaza a la unidad 55 y 「談話の結束」 a la unidad 46. La unidad 49 se redacta en el PR final desde /c1/subjunctive/, que ya cubre el subjuntivo de cortesía (quisiera), No es que + subjuntivo y las concesivas (Digan lo que digan); la unidad 56 las repasa así. En 活用 de las unidades 50-55, saber, querer, conocer, tomar, quedar, pasar, parecer y creer van sin enlace porque aún no tienen página: enlazarlos cuando se publiquen los 40 verbos restantes (ya están en `verbs`, así que el bloque 「このユニットの動詞」 los mostrará solo).
 
+- **Casos anotados al escribir C2:** en /c2/grammar/, la sección 「文体の熟達と話体」 enlaza a la unidad 58 (修辞技法); en /c2/vocabulary/, 「教養ある文語的な言い回し」 y 「地域ごとの慣用表現」 enlazan a la unidad 59 (ことわざ) y a la 47 (慣用表現). La unidad 57 se redacta en el PR final desde /c2/subjunctive/ y debe incluir el futuro de subjuntivo (fueres, hubiere, infringiere), que ya usan las unidades 60 y 62.
+
 ### Frecuencia del vocabulario (2 de noviembre de 2026)
 
 - **Fuente:** el diccionario de frecuencias del CORPES XXI (RAE, CC BY-SA 4.0), que aportó David: unos 116.700 lemas de textos periodísticos de 21 países, con lema, categoría, frecuencia absoluta y normalizada, dispersión y número de países.

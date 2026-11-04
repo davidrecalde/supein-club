@@ -5,89 +5,234 @@ levelName: "Maestría"
 slug: "proverbs-cultural-references"
 url: "/language/learn-spanish/c2/proverbs-cultural-references/"
 existing: false
-title: "ことわざと文化的参照"
+title: "スペイン語のことわざ｜日本語と比べて覚える refranes と文化的な表現"
 shortTitle: "ことわざと文化的参照"
 titleEs: "refranes y referentes culturales"
+description: "スペイン語のことわざ（refranes）を日本語のことわざと比べて解説。En casa del herrero, cuchillo de palo（紺屋の白袴）などの定番と、『ドン・キホーテ』に由来する luchar contra molinos de viento など文化的な表現がわかります。"
 grammar: ["referentes culturales"]
 tenses: []
-functions: []
-canDo: []
-vocabulary: []
-verbs: []
+functions: ["ことわざや文化的な参照を理解する", "ことわざを場面に合わせて引用する"]
+canDo:
+  - "よく使われることわざの意味と使われる場面を理解し、会話で適切に引用できる"
+  - "文学や歴史に由来する表現（quijotesco、donjuán、estar en Babia など）を理解できる"
+  - "日本語のことわざに近いスペイン語の表現を選び、直訳を避けられる"
+vocabulary:
+  # rank = «Rango frec.» del diccionario de frecuencias del CORPES XXI (RAE). Lo escribe
+  # npm run vocab:rank -- --write; lo que no es lema del diccionario va sin rank, al final.
+  - { es: "popular", ja: "民間の・人気のある", rank: 460, example: "Es un dicho popular." }
+  - { es: "la aventura", ja: "冒険", rank: 1857, example: "Don Quijote vive muchas aventuras." }
+  - { es: "el ideal", ja: "理想", rank: 4038, example: "Luchó por sus ideales." }
+  - { es: "citar", ja: "引用する", rank: 1201, example: "Citó un refrán muy conocido." }
+  - { es: "el caballero", ja: "騎士・紳士", rank: 4544, example: "Don Quijote es un caballero andante." }
+  - { es: "la sabiduría", ja: "知恵", rank: 5018, example: "Los refranes recogen la sabiduría popular." }
+  - { es: "el molino", ja: "風車・製粉所", rank: 6826, example: "Luchó contra molinos de viento." }
+  - { es: "el dicho", ja: "言い習わし", rank: 6509, example: "Como dice el dicho…" }
+  - { es: "el refrán", ja: "ことわざ", rank: 10733, example: "Como dice el refrán, más vale tarde que nunca." }
+  - { es: "el cazador", ja: "狩人（女性形 la cazadora）", rank: 5931, example: "Al mejor cazador se le va la liebre." }
+  - { es: "madrugar", ja: "早起きする", rank: 13875, example: "A quien madruga, Dios le ayuda." }
+  - { es: "la liebre", ja: "野うさぎ", rank: 12741, example: "Se le escapó la liebre." }
+  - { es: "el herrero", ja: "鍛冶屋", rank: 18749, example: "En casa del herrero, cuchillo de palo." }
+  - { es: "el refranero", ja: "ことわざ集・ことわざの全体", rank: 25750, example: "El refranero español es muy rico." }
+verbs: ["decir", "ver"]
 duration: 40
 prev: 58
 next: 60
 related: [58,60,62]
 cast: ["carmen","daniel"]
-audio: []
+audio:
+  - "En casa del herrero, cuchillo de palo."
+  - "A quien madruga, Dios le ayuda."
+  - "Al mejor cazador se le va la liebre."
+  - "Luchar contra molinos de viento."
 youtubeId: ""
-quiz: []
+quiz:
+  - question: "日本語の「紺屋の白袴」にあたるのは？"
+    options: ["A quien madruga, Dios le ayuda.", "En casa del herrero, cuchillo de palo.", "Más vale tarde que nunca."]
+    correctIndex: 1
+    explanation: "鍛冶屋の家なのに木のナイフ、つまり専門家ほど自分のことには手が回らない、という意味です。"
+  - question: "日本語の「早起きは三文の徳」にあたるのは？"
+    options: ["A quien madruga, Dios le ayuda.", "No hay mal que por bien no venga.", "Del dicho al hecho hay mucho trecho."]
+    correctIndex: 0
+    explanation: "「早起きする者を神は助ける」。早く動き始める人が得をする、という意味です。"
+  - question: "日本語の「知らぬが仏」にあたるのは？"
+    options: ["En boca cerrada no entran moscas.", "Dime con quién andas y te diré quién eres.", "Ojos que no ven, corazón que no siente."]
+    correctIndex: 2
+    explanation: "「見ない目に、感じない心」。知らなければ悩まずにすむ、という意味です。"
+  - question: "日本語の「猿も木から落ちる」にあたるのは？"
+    options: ["Al mejor cazador se le va la liebre.", "El mono también se cae del árbol.", "Camarón que se duerme, se lo lleva la corriente."]
+    correctIndex: 0
+    explanation: "「いちばんの狩人でも野うさぎを逃がす」。日本語のことわざを直訳しても、スペイン語では通じません。"
+  - question: "「luchar contra molinos de viento」の意味は？"
+    options: ["風力発電に反対する", "嵐の中を進む", "勝ち目のない相手や空想の敵と戦う"]
+    correctIndex: 2
+    explanation: "ドン・キホーテが風車を巨人だと思い込んで挑んだ場面に由来する表現です。"
+  - question: "「Es un donjuán.」の意味は？"
+    options: ["貴族の出身だ", "女性を次々に口説く男だ", "気前のいい人だ"]
+    correctIndex: 1
+    explanation: "伝説の誘惑者ドン・フアンに由来します。普通名詞なので、一語で小文字で書きます。"
+  - question: "授業中に先生から「¿Estás en Babia?」と言われた。意味は？"
+    options: ["上の空なの？", "外国にいるの？", "道に迷ったの？"]
+    correctIndex: 0
+    explanation: "estar en Babia は「上の空だ」。Babia はレオン県の地方の名前です。"
+  - question: "「hacer las Américas」の意味は？"
+    options: ["アメリカ大陸を発見する", "アメリカを観光旅行する", "中南米に渡って一旗あげる"]
+    correctIndex: 2
+    explanation: "かつて中南米に移住して財産を築いた人々に由来する表現です。"
+  - question: "正書法として正しいのは？"
+    options: ["Es un Don Juan.", "Es un donjuán.", "Es un don-juan."]
+    correctIndex: 1
+    explanation: "人名から生まれた普通名詞は、小文字で書きます：un donjuán、un quijote、una celestina、un lazarillo。"
+  - question: "「No por mucho madrugar amanece más temprano.」の意味は？"
+    options: ["早起きすれば得をする", "急いでも、物事が早く進むわけではない", "夜明けは毎日早くなる"]
+    correctIndex: 1
+    explanation: "「早起きしても夜明けが早まるわけではない」。A quien madruga, Dios le ayuda. と反対のことを言うことわざです。"
 draft: true
 updated: "2026-11-02"
 ---
 
-TODO:contenido（導入：このユニットの問いに、それだけで答えになる2文で答える）
+スペイン語のことわざ（refranes）は、En casa del herrero, cuchillo de palo.（鍛冶屋の家に木のナイフ＝紺屋の白袴）のように、日常の経験から生まれた知恵を短くリズムのよい文にしたもので、会話でもよく引用されます。また、luchar contra molinos de viento（風車と戦う）のように、『ドン・キホーテ』などの文学や歴史に由来する表現も、スペイン語話者が共有する文化的な参照として使われています。
 
-## 文法 (Gramática)
+C2 では、こうした表現を知っているだけでなく、だれかが前半だけを引用したときに続きがわかり、話の文脈の中で効果的に使える力が求められます。このユニットでは、カルメン先生の授業での会話を例に学びます。
 
-TODO:contenido
+## 文法：ことわざと文化的参照 (Gramática)
+
+まず日本語と比べながら定番のことわざを、次に文学や歴史に由来する表現を、最後にことわざの使い方を見ていきましょう。
+
+### 日本語と比べて覚えることわざ
+
+| スペイン語のことわざ | 直訳 | 近い日本語 |
+| --- | --- | --- |
+| En casa del herrero, cuchillo de palo. | 鍛冶屋の家に木のナイフ | 紺屋の白袴 |
+| A quien madruga, Dios le ayuda. | 早起きする者を神は助ける | 早起きは三文の徳 |
+| Ojos que no ven, corazón que no siente. | 見ない目に、感じない心 | 知らぬが仏 |
+| Al mejor cazador se le va la liebre. | いちばんの狩人も野うさぎを逃がす | 猿も木から落ちる |
+| En boca cerrada no entran moscas. | 閉じた口にハエは入らない | 口は災いの元 |
+| Del dicho al hecho hay mucho trecho. | 言うことと行うことの間は遠い | 言うは易く行うは難し |
+| No hay mal que por bien no venga. | 良いことにつながらない悪いことはない | 災い転じて福となす |
+| Camarón que se duerme, se lo lleva la corriente. | 眠るエビは流れに運ばれる | 油断大敵 |
+
+スペイン語にも、反対のことを言うことわざの組み合わせがあります。A quien madruga, Dios le ayuda.（早起きは得）に対して、No por mucho madrugar amanece más temprano.（早起きしても夜明けは早まらない＝急いでも物事は早く進まない）。どちらを使うかで、話し手の立場がわかります。
+
+### 文学や歴史に由来する表現
+
+| 表現 | 意味 | 由来 |
+| --- | --- | --- |
+| luchar contra molinos de viento | 勝ち目のない相手や空想の敵と戦う | 『ドン・キホーテ』の風車の場面 |
+| quijotesco / un quijote | 理想のために現実を顧みない（人） | ドン・キホーテ |
+| un donjuán | 女性を次々に口説く男 | 伝説の誘惑者ドン・フアン |
+| una celestina | 恋の仲を取り持つ人 | 『ラ・セレスティーナ』 |
+| un lazarillo / un perro lazarillo | 案内役／盲導犬 | 『ラサリーリョ・デ・トルメスの生涯』 |
+| estar en Babia | 上の空だ | レオン県の地方 Babia |
+| hacer las Américas | 中南米に渡って一旗あげる | 中南米への移住の歴史 |
+| poner una pica en Flandes | 非常に難しいことを成し遂げる | 遠いフランドルへ槍兵を送り込む難しさ |
+
+『ドン・キホーテ』の従者サンチョ・パンサは、会話の中で次々にことわざを並べる人物として描かれています。スペイン語のことわざの多くは、こうした古典の中でも使われてきたものです。
+
+### ことわざの使い方
+
+ことわざを引用するときは、Como dice el refrán…（ことわざにもあるように）や Ya lo dice el refrán…（ことわざでも言うとおり）を前に置きます。また、よく知られたことわざは、前半だけを言って後半を省くことが多くあります：Bueno, ya sabes: en casa del herrero…（まあ、ほら、紺屋の…ってやつだよ）。
+
+ことわざは会話を生き生きさせますが、論文や改まった報告で多用すると、古めかしく、軽い印象を与えます。書き言葉では、一つの文章に一つ程度にしましょう。
+
+### カルメン先生の授業で
+
+- Alumno: Profesora, creo que en el examen de ayer había un error.（先生、昨日の試験に間違いがあったと思います）
+- Carmen: ¡Vaya! Pues sí: en casa del herrero, cuchillo de palo.（あら！まさに紺屋の白袴ね）
+- Alumno: Bueno, al mejor cazador se le va la liebre.（まあ、猿も木から落ちる、ですよ）
+- Carmen: Muy bien citado. Y ahora, a corregirlo: del dicho al hecho hay mucho trecho.（引用がうまいわね。では、直しましょう。言うは易く行うは難し、よ）
+
+スペイン語のテストを作る先生が、自分のテストで間違える、という状況に en casa del herrero を当てはめ、学生は al mejor cazador で先生をかばっています。ことわざの選び方で、相手との関係や気持ちも表れます。
+
+**ダニエル（バレンシア出身）のひとこと：** 中南米でも多くのことわざはスペインと共通ですが、形が少しずつ違うことがあります。スペインで聞いた形をそのまま覚えておけば、どこでも意味は通じます。日本のことわざを紹介するときは、直訳したうえで、Es como decir… en español（スペイン語で言えば…のようなもの）と、近いことわざを添えると喜ばれます。
 
 ## 活用：今日の動詞 (Conjugación)
 
-TODO:contenido
+ことわざを引用するときは、[decir](/language/learn-spanish/verb-conjugation/decir/)（Como dice el refrán / Como decía mi abuela）と [ver](/language/learn-spanish/verb-conjugation/ver/)（Ojos que no ven…）がよく使われます。decir の線過去 decía は「（昔から）よく言っていた」という習慣を表し、ことわざを家族の思い出とともに紹介するときにぴったりです。ver の現在形 ven、過去分詞 visto（不規則）も活用表で確認しましょう。
 
 ## 語彙 (Nociones específicas)
+
+ことわざや文学の話題で使う語です。
 
 <VocabList items={frontmatter.vocabulary} level={frontmatter.level} />
 
 ## 発音・正書法 (Pronunciación y ortografía)
 
-TODO:contenido
+ことわざは、韻（rima）とリズムで覚えやすく作られています。Del dicho al hecho hay mucho trecho. では hecho と trecho が、A quien madruga, Dios le ayuda. では madruga と ayuda の母音（u-a）が響き合っています。声に出して、韻を踏んでいる語を少し強めに読むと、ことわざらしいリズムになり、覚えやすくなります。
 
 ## 日本人がよく間違える
 
-TODO:contenido
+- **日本語のことわざを直訳する。** ×El mono también se cae del árbol. → ○**Al mejor cazador se le va la liebre.**
+- **人名由来の普通名詞を大文字で書く。** ×Es un Don Juan. → ○Es un **donjuán**.（un quijote、una celestina も小文字）
+- **改まった文章でことわざを多用する。** △（報告書で）Como dice el refrán… を何度も使う → ○一つの文章に一つ程度にする。
 
 ## 文化メモ (Referentes culturales)
 
 <CultureNote>
 
-TODO:contenido
+luchar contra molinos de viento の舞台は、カスティーリャ・ラ・マンチャ州の広い平原です。シウダ・レアル県は小説『ドン・キホーテ』の舞台として知られ、県内には風車で有名なカンポ・デ・クリプターナなど、物語ゆかりの地が点在しています。風車の並ぶ丘に立つと、ドン・キホーテが風車を巨人だと思い込んで突進した場面が目に浮かびます。シウダ・レアルの郷土料理とバルは、[シウダ・レアル 完全グルメガイド](/food/spain-map/ciudad-real/)で紹介しています。
 
 </CultureNote>
 
 ## 練習 (Procedimientos de aprendizaje)
 
-### 練習1：認識
+### 練習1：近いことわざを選ぶ
 
-TODO:contenido
+次の日本語のことわざに近いスペイン語を選んでください。
+
+1. 紺屋の白袴
+2. 知らぬが仏
+3. 猿も木から落ちる
+4. 口は災いの元
+5. 言うは易く行うは難し
+
+（A quien madruga, Dios le ayuda. / En boca cerrada no entran moscas. / Al mejor cazador se le va la liebre. / Ojos que no ven, corazón que no siente. / En casa del herrero, cuchillo de palo. / Del dicho al hecho hay mucho trecho.）
 
 <details>
 <summary>答えを見る</summary>
 
-TODO:contenido
+1. En casa del herrero, cuchillo de palo.
+2. Ojos que no ven, corazón que no siente.
+3. Al mejor cazador se le va la liebre.
+4. En boca cerrada no entran moscas.
+5. Del dicho al hecho hay mucho trecho.
 
 </details>
 
-### 練習2：穴埋め
+### 練習2：後半を補う
 
-TODO:contenido
+前半だけ引用されたことわざの後半を書いてください。
+
+1. A quien madruga…
+2. Más vale tarde…
+3. Dime con quién andas…
+4. No hay mal…
+5. Camarón que se duerme…
 
 <details>
 <summary>答えを見る</summary>
 
-TODO:contenido
+1. …Dios le ayuda.
+2. …que nunca.
+3. …y te diré quién eres.
+4. …que por bien no venga.
+5. …se lo lleva la corriente.
 
 </details>
 
 ### 練習3：作文
 
-TODO:contenido
+次の場面で、ことわざや文化的な表現を使ってひとこと言ってみましょう。
+
+1. 料理人の友だちが、家ではいつも冷凍食品を食べている。
+2. 同僚が、絶対に勝てない相手に一人で立ち向かおうとしている。
+3. 雨で旅行が中止になったが、そのおかげで素敵なカフェを見つけた。
 
 <details>
-<summary>答えを見る</summary>
+<summary>解答例を見る</summary>
 
-TODO:contenido
+1. ¡En casa del herrero, cuchillo de palo!
+2. No luches contra molinos de viento.
+3. No hay mal que por bien no venga.
 
 </details>
 
@@ -97,4 +242,8 @@ TODO:contenido
 
 ## まとめ
 
-TODO:contenido
+- ことわざは日本語の近い表現と比べて覚える：En casa del herrero, cuchillo de palo（紺屋の白袴）、Al mejor cazador se le va la liebre（猿も木から落ちる）。
+- 文学や歴史に由来する表現（molinos de viento、donjuán、estar en Babia）は、スペイン語話者が共有する文化の一部。普通名詞は小文字で書く。
+- 引用は Como dice el refrán… で始め、前半だけで伝わることも多い。改まった文章では控えめに。
+
+次のユニット60では、法律・経済・科学など、専門分野の文章の読み方と書き方を学びます。
