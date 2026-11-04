@@ -11,7 +11,8 @@
     "astro": "astro",
     "conjugation:generate": "node scripts/conjugation/generate.ts",
     "test:conjugation": "node --test \"scripts/conjugation/*.test.ts\"",
-    "vocab:rank": "node scripts/vocab/rank.ts"
+    "vocab:rank": "node scripts/vocab/rank.ts",
+    "course:images": "node scripts/course/images.mjs"
   },
   "pnpm": {
     "onlyBuiltDependencies": [
