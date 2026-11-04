@@ -1,0 +1,87 @@
+---
+// Audio de la unidad (prompt 7): las frases del campo `audio` que ya tienen archivo aprobado
+// (src/data/course-audio.json, lo escribe `npm run tts:encode`). Sin archivos no se muestra nada.
+import { Play, Pause } from 'lucide-astro';
+import AiAudioLabel from './AiAudioLabel.astro';
+import courseAudio from '../../data/course-audio.json';
+
+interface Props {
+  unit: number;
+}
+
+const { unit } = Astro.props;
+const items: Array<{ index: number; text: string; speaker: string; src: string; slow: string }> =
+  (courseAudio as Record<string, any>)[String(unit)] ?? [];
+
+const SPEAKERS: Record<string, string> = {
+  mina: 'ミナ',
+  kenta: 'ケンタ',
+  yui: 'ユイ',
+  daniel: 'ダニエル',
+  carmen: 'カルメン先生',
+  narrator: 'ナレーター',
+  'male-adult': '男性',
+  'female-adult': '女性',
+  'male-senior': '年配の男性',
+  'female-senior': '年配の女性',
+  'male-young': '若い男性',
+  'female-young': '若い女性',
+};
+---
+{items.length > 0 && (
+  <details class="unit-audio" data-unit-audio>
+    <summary>
+      <span class="unit-audio-title">このユニットの音声を聞く（{items.length}文）</span>
+      <AiAudioLabel />
+    </summary>
+    <div class="unit-audio-speed" role="group" aria-label="再生の速さ">
+      <button type="button" data-speed="normal" aria-pressed="true">ふつう</button>
+      <button type="button" data-speed="slow" aria-pressed="false">ゆっくり</button>
+    </div>
+    <ol class="unit-audio-list">
+      {items.map((item) => (
+        <li>
+          <button type="button" class="unit-audio-play" data-normal={item.src} data-slow={item.slow} aria-label={`再生：${item.text}`}>
+            <Play class="icon-play" size={18} aria-hidden="true" />
+            <Pause class="icon-pause" size={18} aria-hidden="true" />
+          </button>
+          <span class="unit-audio-text" lang="es">{item.text}</span>
+          <span class="unit-audio-who">{SPEAKERS[item.speaker] ?? ''}</span>
+        </li>
+      ))}
+    </ol>
+  </details>
+)}
+
+<script>
+  document.querySelectorAll<HTMLElement>('[data-unit-audio]').forEach((box) => {
+    const audio = new Audio();
+    let speed: 'normal' | 'slow' = 'normal';
+    let current: HTMLButtonElement | null = null;
+    const setPlaying = (btn: HTMLButtonElement | null) => {
+      box.querySelectorAll('.unit-audio-play.is-playing').forEach((b) => b.classList.remove('is-playing'));
+      if (btn) btn.classList.add('is-playing');
+      current = btn;
+    };
+    audio.addEventListener('ended', () => setPlaying(null));
+    audio.addEventListener('pause', () => setPlaying(null));
+
+    box.querySelectorAll<HTMLButtonElement>('[data-speed]').forEach((b) =>
+      b.addEventListener('click', () => {
+        speed = b.dataset.speed as 'normal' | 'slow';
+        box.querySelectorAll('[data-speed]').forEach((o) => o.setAttribute('aria-pressed', String(o === b)));
+      }),
+    );
+    box.querySelectorAll<HTMLButtonElement>('.unit-audio-play').forEach((btn) =>
+      btn.addEventListener('click', () => {
+        if (current === btn && !audio.paused) {
+          audio.pause();
+          return;
+        }
+        audio.src = (speed === 'slow' ? btn.dataset.slow : btn.dataset.normal) ?? '';
+        audio.play().then(() => setPlaying(btn)).catch(() => setPlaying(null));
+        (window as any).gtag?.('event', 'audio_played', { unit: location.pathname, speed });
+      }),
+    );
+  });
+</script>

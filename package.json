@@ -13,7 +13,8 @@
     "test:conjugation": "node --test \"scripts/conjugation/*.test.ts\"",
     "vocab:rank": "node scripts/vocab/rank.ts",
     "course:images": "node scripts/course/images.mjs",
-    "tts:generate": "node scripts/tts/generate.mjs"
+    "tts:generate": "node scripts/tts/generate.mjs",
+    "tts:encode": "node scripts/tts/encode.mjs"
   },
   "pnpm": {
     "onlyBuiltDependencies": [
