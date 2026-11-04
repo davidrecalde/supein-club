@@ -15,6 +15,7 @@ import MiniQuiz from '../components/course/MiniQuiz.astro';
 import CultureNote from '../components/course/CultureNote.astro';
 import ReportError from '../components/course/ReportError.astro';
 import Examples from '../components/course/Examples.astro';
+import UnitAudio from '../components/course/UnitAudio.astro';
 import { ABOUT_COURSE_URL } from '../data/course';
 import { VERBS, verbUrl } from '../data/conjugation';
 import { getAllUnits, hasPage, unitBreadcrumbs, type Unit } from '../utils/units';
@@ -121,6 +122,8 @@ const sources = [
             <figcaption>※この画像はAIで生成したイメージです。登場人物とユニットの場面を分かりやすく伝えるための参考画像としてご覧ください。</figcaption>
           </figure>
         )}
+
+        <UnitAudio unit={d.unit} />
 
         <div class="prose unit-body">
           <Content components={{ VocabList, MiniQuiz, CultureNote, Examples }} />

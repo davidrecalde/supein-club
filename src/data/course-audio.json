@@ -1,0 +1,352 @@
+{
+  "2": [
+    {
+      "index": 0,
+      "text": "Un café con leche, por favor.",
+      "speaker": "narrator",
+      "src": "/audio/units/u02/u02-01.mp3",
+      "slow": "/audio/units/u02/u02-01-slow.mp3",
+      "seconds": 2.59,
+      "hash": "f81ccb54bd31644e"
+    },
+    {
+      "index": 1,
+      "text": "La cuenta, por favor.",
+      "speaker": "narrator",
+      "src": "/audio/units/u02/u02-02.mp3",
+      "slow": "/audio/units/u02/u02-02-slow.mp3",
+      "seconds": 1.7,
+      "hash": "89386c598a3f3640"
+    },
+    {
+      "index": 2,
+      "text": "Mina tiene una maleta. La maleta es azul.",
+      "speaker": "narrator",
+      "src": "/audio/units/u02/u02-03.mp3",
+      "slow": "/audio/units/u02/u02-03-slow.mp3",
+      "seconds": 5.03,
+      "hash": "cdfedf48088b6a83"
+    },
+    {
+      "index": 3,
+      "text": "Voy al museo.",
+      "speaker": "narrator",
+      "src": "/audio/units/u02/u02-04.mp3",
+      "slow": "/audio/units/u02/u02-04-slow.mp3",
+      "seconds": 1.25,
+      "hash": "8d3d60d896deae35"
+    },
+    {
+      "index": 4,
+      "text": "la llave del hotel",
+      "speaker": "narrator",
+      "src": "/audio/units/u02/u02-05.mp3",
+      "slow": "/audio/units/u02/u02-05-slow.mp3",
+      "seconds": 1.79,
+      "hash": "28150be5f33f8dec"
+    },
+    {
+      "index": 5,
+      "text": "estación",
+      "speaker": "narrator",
+      "src": "/audio/units/u02/u02-06.mp3",
+      "slow": "/audio/units/u02/u02-06-slow.mp3",
+      "seconds": 0.91,
+      "hash": "9f2b05906e79ed87"
+    },
+    {
+      "index": 6,
+      "text": "estaciones",
+      "speaker": "narrator",
+      "src": "/audio/units/u02/u02-07.mp3",
+      "slow": "/audio/units/u02/u02-07-slow.mp3",
+      "seconds": 1.16,
+      "hash": "abdb5958c30f3b43"
+    }
+  ],
+  "3": [
+    {
+      "index": 0,
+      "text": "Hola, ¿cómo te llamas?",
+      "speaker": "daniel",
+      "src": "/audio/units/u03/u03-01.mp3",
+      "slow": "/audio/units/u03/u03-01-slow.mp3",
+      "seconds": 1.62,
+      "hash": "0c400ecc3be5c105"
+    },
+    {
+      "index": 1,
+      "text": "Me llamo Mina. ¿Y tú?",
+      "speaker": "mina",
+      "src": "/audio/units/u03/u03-02.mp3",
+      "slow": "/audio/units/u03/u03-02-slow.mp3",
+      "seconds": 3.24,
+      "hash": "8a8f67c68099751b"
+    },
+    {
+      "index": 2,
+      "text": "Soy Daniel. Encantado.",
+      "speaker": "daniel",
+      "src": "/audio/units/u03/u03-03.mp3",
+      "slow": "/audio/units/u03/u03-03-slow.mp3",
+      "seconds": 1.77,
+      "hash": "8d5859e0bbfbbebe"
+    },
+    {
+      "index": 3,
+      "text": "Encantada. ¿De dónde eres?",
+      "speaker": "mina",
+      "src": "/audio/units/u03/u03-04.mp3",
+      "slow": "/audio/units/u03/u03-04-slow.mp3",
+      "seconds": 3.27,
+      "hash": "f91fdb74f8576fa3"
+    },
+    {
+      "index": 4,
+      "text": "Soy de Valencia, pero vivo en Tokio. ¿Y tú?",
+      "speaker": "daniel",
+      "src": "/audio/units/u03/u03-05.mp3",
+      "slow": "/audio/units/u03/u03-05-slow.mp3",
+      "seconds": 3.22,
+      "hash": "7ae962c6a50d6a50"
+    },
+    {
+      "index": 5,
+      "text": "Soy de Tokio. Soy diseñadora.",
+      "speaker": "mina",
+      "src": "/audio/units/u03/u03-06.mp3",
+      "slow": "/audio/units/u03/u03-06-slow.mp3",
+      "seconds": 3.77,
+      "hash": "03bd484dd68e3d44"
+    },
+    {
+      "index": 6,
+      "text": "¿Qué tal estás?",
+      "speaker": "daniel",
+      "src": "/audio/units/u03/u03-07.mp3",
+      "slow": "/audio/units/u03/u03-07-slow.mp3",
+      "seconds": 0.8,
+      "hash": "426d9dcea4d8b605"
+    },
+    {
+      "index": 7,
+      "text": "Estoy un poco nerviosa, pero bien.",
+      "speaker": "mina",
+      "src": "/audio/units/u03/u03-08.mp3",
+      "slow": "/audio/units/u03/u03-08-slow.mp3",
+      "seconds": 3.76,
+      "hash": "76821f6b2946a278"
+    },
+    {
+      "index": 8,
+      "text": "está",
+      "speaker": "daniel",
+      "src": "/audio/units/u03/u03-09.mp3",
+      "slow": "/audio/units/u03/u03-09-slow.mp3",
+      "seconds": 0.59,
+      "hash": "9d28aa6a2a4c31cb"
+    },
+    {
+      "index": 9,
+      "text": "esta",
+      "speaker": "narrator",
+      "src": "/audio/units/u03/u03-10.mp3",
+      "slow": "/audio/units/u03/u03-10-slow.mp3",
+      "seconds": 1.04,
+      "hash": "a729b03736277199"
+    }
+  ],
+  "4": [
+    {
+      "index": 0,
+      "text": "Mina vive en Tokio y trabaja en una oficina de diseño.",
+      "speaker": "narrator",
+      "src": "/audio/units/u04/u04-01.mp3",
+      "slow": "/audio/units/u04/u04-01-slow.mp3",
+      "seconds": 4.7,
+      "hash": "288f15ec3ea8a990"
+    },
+    {
+      "index": 1,
+      "text": "Por la noche, estudia español.",
+      "speaker": "narrator",
+      "src": "/audio/units/u04/u04-02.mp3",
+      "slow": "/audio/units/u04/u04-02-slow.mp3",
+      "seconds": 2.43,
+      "hash": "bd054d17a21be236"
+    },
+    {
+      "index": 2,
+      "text": "¿Hablas español?",
+      "speaker": "narrator",
+      "src": "/audio/units/u04/u04-03.mp3",
+      "slow": "/audio/units/u04/u04-03-slow.mp3",
+      "seconds": 1.11,
+      "hash": "0dd77b162da0bd97"
+    },
+    {
+      "index": 3,
+      "text": "Sí, hablo un poco.",
+      "speaker": "narrator",
+      "src": "/audio/units/u04/u04-04.mp3",
+      "slow": "/audio/units/u04/u04-04-slow.mp3",
+      "seconds": 1.85,
+      "hash": "067bcc28929896ff"
+    },
+    {
+      "index": 4,
+      "text": "No, no hablo francés.",
+      "speaker": "narrator",
+      "src": "/audio/units/u04/u04-05.mp3",
+      "slow": "/audio/units/u04/u04-05-slow.mp3",
+      "seconds": 1.95,
+      "hash": "2f67daed237dfd7f"
+    },
+    {
+      "index": 5,
+      "text": "¿Usted habla inglés?",
+      "speaker": "narrator",
+      "src": "/audio/units/u04/u04-06.mp3",
+      "slow": "/audio/units/u04/u04-06-slow.mp3",
+      "seconds": 1.22,
+      "hash": "2790fe9fd93548aa"
+    },
+    {
+      "index": 6,
+      "text": "Los domingos por la mañana, muchos madrileños visitan el Rastro.",
+      "speaker": "narrator",
+      "src": "/audio/units/u04/u04-07.mp3",
+      "slow": "/audio/units/u04/u04-07-slow.mp3",
+      "seconds": 4.66,
+      "hash": "a9a24cab4e99f69f"
+    },
+    {
+      "index": 7,
+      "text": "Normalmente como en un bar cerca del hotel, a las dos y media.",
+      "speaker": "mina",
+      "src": "/audio/units/u04/u04-08.mp3",
+      "slow": "/audio/units/u04/u04-08-slow.mp3",
+      "seconds": 7.6,
+      "hash": "ad024a80ac6d233e"
+    },
+    {
+      "index": 8,
+      "text": "Claro, en España comemos tarde.",
+      "speaker": "daniel",
+      "src": "/audio/units/u04/u04-09.mp3",
+      "slow": "/audio/units/u04/u04-09-slow.mp3",
+      "seconds": 3.04,
+      "hash": "75ac8a09f8a2bffd"
+    },
+    {
+      "index": 9,
+      "text": "hablamos",
+      "speaker": "narrator",
+      "src": "/audio/units/u04/u04-10.mp3",
+      "slow": "/audio/units/u04/u04-10-slow.mp3",
+      "seconds": 0.77,
+      "hash": "45548afe6f9c08e7"
+    },
+    {
+      "index": 10,
+      "text": "habláis",
+      "speaker": "narrator",
+      "src": "/audio/units/u04/u04-11.mp3",
+      "slow": "/audio/units/u04/u04-11-slow.mp3",
+      "seconds": 0.72,
+      "hash": "7105a37847f8a5a1"
+    }
+  ],
+  "5": [
+    {
+      "index": 0,
+      "text": "Quiero un café con leche.",
+      "speaker": "narrator",
+      "src": "/audio/units/u05/u05-01.mp3",
+      "slow": "/audio/units/u05/u05-01-slow.mp3",
+      "seconds": 2.69,
+      "hash": "76f6e6300ad322a0"
+    },
+    {
+      "index": 1,
+      "text": "¿Puedo pagar con tarjeta?",
+      "speaker": "mina",
+      "src": "/audio/units/u05/u05-02.mp3",
+      "slow": "/audio/units/u05/u05-02-slow.mp3",
+      "seconds": 2.37,
+      "hash": "1895fe061e6dfb5a"
+    },
+    {
+      "index": 2,
+      "text": "Tengo veintiocho años.",
+      "speaker": "narrator",
+      "src": "/audio/units/u05/u05-03.mp3",
+      "slow": "/audio/units/u05/u05-03-slow.mp3",
+      "seconds": 2.52,
+      "hash": "16aadff2e8012b1b"
+    },
+    {
+      "index": 3,
+      "text": "Tengo que comprar un billete.",
+      "speaker": "narrator",
+      "src": "/audio/units/u05/u05-04.mp3",
+      "slow": "/audio/units/u05/u05-04-slow.mp3",
+      "seconds": 2.21,
+      "hash": "8795c9c5dd7b6015"
+    },
+    {
+      "index": 4,
+      "text": "Mañana voy al Museo del Prado.",
+      "speaker": "narrator",
+      "src": "/audio/units/u05/u05-05.mp3",
+      "slow": "/audio/units/u05/u05-05-slow.mp3",
+      "seconds": 3.12,
+      "hash": "863c4caefc58708d"
+    },
+    {
+      "index": 5,
+      "text": "¿Me pones una caña, por favor?",
+      "speaker": "narrator",
+      "src": "/audio/units/u05/u05-06.mp3",
+      "slow": "/audio/units/u05/u05-06-slow.mp3",
+      "seconds": 2.33,
+      "hash": "6872f2232168f514"
+    },
+    {
+      "index": 6,
+      "text": "Hola, buenos días. Quiero una entrada, por favor.",
+      "speaker": "mina",
+      "src": "/audio/units/u05/u05-07.mp3",
+      "slow": "/audio/units/u05/u05-07-slow.mp3",
+      "seconds": 5.7,
+      "hash": "d9aef2156be559cd"
+    },
+    {
+      "index": 7,
+      "text": "¿A qué hora cierra el museo?",
+      "speaker": "mina",
+      "src": "/audio/units/u05/u05-08.mp3",
+      "slow": "/audio/units/u05/u05-08-slow.mp3",
+      "seconds": 2.79,
+      "hash": "9f921e6d9483500e"
+    },
+    {
+      "index": 8,
+      "text": "quiero",
+      "speaker": "narrator",
+      "src": "/audio/units/u05/u05-09.mp3",
+      "slow": "/audio/units/u05/u05-09-slow.mp3",
+      "seconds": 0.6,
+      "hash": "a449075cdacaa5a3"
+    },
+    {
+      "index": 9,
+      "text": "puedo",
+      "speaker": "narrator",
+      "src": "/audio/units/u05/u05-10.mp3",
+      "slow": "/audio/units/u05/u05-10-slow.mp3",
+      "seconds": 0.61,
+      "hash": "189a1a4a84000976"
+    }
+  ]
+}

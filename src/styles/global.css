@@ -1093,6 +1093,112 @@ html[data-variety='la'] .vocab-pair .v-es .v-tag {
   text-decoration: underline;
 }
 
+/* Audio de la unidad (UnitAudio.astro): solo aparece cuando hay archivos aprobados */
+.unit-audio {
+  margin: 0 0 28px;
+  border: 1px solid #E8E8E6;
+  border-radius: 12px;
+  background: #fff;
+}
+.unit-audio summary {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px 12px;
+  padding: 14px 18px;
+  cursor: pointer;
+  list-style: none;
+}
+.unit-audio summary::-webkit-details-marker {
+  display: none;
+}
+.unit-audio summary::before {
+  content: '';
+  width: 8px;
+  height: 8px;
+  border-right: 2px solid #002147;
+  border-bottom: 2px solid #002147;
+  transform: rotate(-45deg);
+  transition: transform 0.15s;
+}
+.unit-audio[open] summary::before {
+  transform: rotate(45deg);
+}
+.unit-audio-title {
+  font-weight: 700;
+  color: #002147;
+}
+.unit-audio-speed {
+  display: flex;
+  gap: 8px;
+  padding: 0 18px 12px;
+}
+.unit-audio-speed button {
+  min-height: 36px;
+  padding: 4px 14px;
+  border: 1px solid #002147;
+  border-radius: 999px;
+  background: #fff;
+  color: #002147;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+}
+.unit-audio-speed button[aria-pressed='true'] {
+  background: #002147;
+  color: #fff;
+}
+.unit-audio-list {
+  margin: 0;
+  padding: 0 18px 14px;
+  list-style: none;
+}
+.unit-audio-list li {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 0;
+  border-top: 1px solid #E8E8E6;
+}
+.unit-audio-play {
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border: 0;
+  border-radius: 50%;
+  background: #002147;
+  color: #fff;
+  cursor: pointer;
+}
+.unit-audio-play:focus-visible,
+.unit-audio-speed button:focus-visible {
+  outline: 2px solid #C8102E;
+  outline-offset: 2px;
+}
+.unit-audio-play .icon-pause,
+.unit-audio-play.is-playing .icon-play {
+  display: none;
+}
+.unit-audio-play.is-playing .icon-pause {
+  display: block;
+}
+.unit-audio-play.is-playing {
+  background: #C8102E;
+}
+.unit-audio-text {
+  flex: 1;
+  min-width: 0;
+  line-height: 1.5;
+}
+.unit-audio-who {
+  flex: none;
+  font-size: 12px;
+  color: #6b7280;
+}
+
 /* ── Conjugador (prompt 3) ── */
 .conj-search {
   margin: 0 0 28px;
