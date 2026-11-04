@@ -12,7 +12,8 @@
     "conjugation:generate": "node scripts/conjugation/generate.ts",
     "test:conjugation": "node --test \"scripts/conjugation/*.test.ts\"",
     "vocab:rank": "node scripts/vocab/rank.ts",
-    "course:images": "node scripts/course/images.mjs"
+    "course:images": "node scripts/course/images.mjs",
+    "tts:generate": "node scripts/tts/generate.mjs"
   },
   "pnpm": {
     "onlyBuiltDependencies": [

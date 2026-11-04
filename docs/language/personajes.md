@@ -91,6 +91,25 @@ brand names, extra fingers, distorted hands, cluttered background.
 - **Revisión del 4 de noviembre:** la u62 se rehízo (los cinco personajes reconocibles). David decidió mantener u18, u40, u52 y u61 como están, porque las versiones nuevas cambiaban de estilo respecto al resto; se aceptan sus diferencias (la tutora de la u40 se parece a Carmen, Daniel sale con gafas en u52 y u61, camisa verde en u18).
 - **Secundarios fijos del B1:** Marcos (23 años, pelo castaño corto y rizado, barba de pocos días, sudadera gris) y la compañera de piso de Yui (22 años, pelo castaño ondulado en un moño, gafas redondas, chaqueta de punto mostaza).
 
+## Voces del audio (decisión de David, 4 de noviembre de 2026)
+
+- **La fuente de verdad de las voces es `docs/language/tts-voices.json`** (voz, perfil y ajustes de cada hablante). Lo usa `npm run tts:generate`; las candidatas de esta página quedan como historial.
+- **Mina, Kenta y Yui hablan con acento japonés**, cada vez más suave según su nivel: Mina → Laomedeia (acento suave), Kenta → Schedar (acento moderado), Yui → Zephyr (acento ligerísimo). Probadas y escuchadas por David en AI Studio (modo de una voz, temperature 1, solo Audio Profile).
+- Las frases modelo sin hablante (274 de 335) las lee una narradora nativa; Daniel, Carmen y los secundarios hablan con pronunciación peninsular estándar.
+- **Reparto definitivo (David, 4 de noviembre de 2026):**
+
+| Hablante | Voz | Etiquetas de AI Studio | Acento |
+| --- | --- | --- | --- |
+| Mina | Laomedeia | Upbeat, Higher pitch | japonés suave |
+| Kenta | Schedar | Even, Lower middle pitch | japonés moderado |
+| Yui | Zephyr | Bright, Higher pitch | japonés ligerísimo |
+| Daniel | Achird | Friendly, Lower middle pitch | peninsular estándar |
+| Carmen | Vindemiatrix | Gentle, Middle pitch | peninsular estándar |
+| Narradora | Gacrux | Mature, Middle pitch | peninsular estándar |
+
+- **Narradora:** Gacrux, aprobada por David el 4 de noviembre de 2026 (la eligió al oírla con el perfil de Carmen). Gacrux (narradora) y Vindemiatrix (Carmen) no se intercambian.
+- Los secundarios (camareros, empleados, compañeros…) tienen voces propuestas sin probar, distintas de las seis anteriores; se revisan al escuchar el primer lote.
+
 ## Voces secundarias
 
 Para personajes de una sola escena (camareros, Laura, Marcos, Lucía y Pablo, presentadores de radio de los simulacros) se usan voces distintas de las cinco principales, elegidas por edad y sexo. Narradora de vocabulario y ejemplos sin personaje: **Kore** (firm). Los nombres y descripciones de las voces son los de la documentación de Google; hay que escucharlas antes de fijarlas.
