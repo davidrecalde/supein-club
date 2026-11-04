@@ -17,32 +17,28 @@ export const courseSequence = {
     "language/learn-spanish/a1/vocabulary",
     "language/learn-spanish/a1/pronunciation",
     "language/learn-spanish/a1/study-plan",
-    // A2 (5)
+    // A2 (4)
     "language/learn-spanish/a2/index",
     "language/learn-spanish/a2/grammar",
     "language/learn-spanish/a2/vocabulary",
-    "language/learn-spanish/a2/pronunciation",
     "language/learn-spanish/a2/study-plan",
-    // B1 (6, subjunctive al final del nivel)
+    // B1 (5, subjunctive al final del nivel)
     "language/learn-spanish/b1/index",
     "language/learn-spanish/b1/grammar",
     "language/learn-spanish/b1/vocabulary",
-    "language/learn-spanish/b1/pronunciation",
     "language/learn-spanish/b1/study-plan",
     "language/learn-spanish/b1/subjunctive",
-    // B2 (6, subjunctive tras grammar)
+    // B2 (5, subjunctive tras grammar)
     "language/learn-spanish/b2/index",
     "language/learn-spanish/b2/grammar",
     "language/learn-spanish/b2/subjunctive",
     "language/learn-spanish/b2/vocabulary",
-    "language/learn-spanish/b2/pronunciation",
     "language/learn-spanish/b2/study-plan",
-    // C1 (6, subjunctive tras grammar)
+    // C1 (5, subjunctive tras grammar)
     "language/learn-spanish/c1/index",
     "language/learn-spanish/c1/grammar",
     "language/learn-spanish/c1/subjunctive",
     "language/learn-spanish/c1/vocabulary",
-    "language/learn-spanish/c1/pronunciation",
     "language/learn-spanish/c1/study-plan",
     // C2 (5, sin pronunciation, subjunctive tras grammar)
     "language/learn-spanish/c2/index",

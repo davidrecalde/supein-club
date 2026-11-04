@@ -78,11 +78,13 @@ Plan del 4 de noviembre de 2026, a partir del informe de Search Console de los �
 
 ## Plan numerado
 
-### Fase A. Proteger y arreglar (ya, sin mostrar el curso)
+### Fase A. Proteger y arreglar (ya, sin mostrar el curso) — hecha el 4 de noviembre de 2026
+
+La entonación y la conexión entre palabras (A2 y B1) se añadieron a `pronunciation-for-japanese`, que las anunciaba sin tenerlas; el yeísmo y la s debilitada (B2), a `spanish-in-latin-america`. Las fichas de pronunciación salieron de la secuencia de STEP. Eventos de GA4: `line_clicked` (con `source`: `banner`, `floating`, `footer` u `other`), `newsletter_signup` y `level_test_completed`.
 
 1. **301 de `/language/learn-spanish/spanish-for-beginners/`** (hoy da 404 y en septiembre tenía clics) hacia `/language/learn-spanish/a1/`.
 2. **301 de las seis páginas antiguas con `noindex`:** `/language/self-study/` → `/language/`; `/language/pronunciation/` → `pronunciation-for-japanese`; `/language/spanish-phrases/` → `travel-phrases-spanish`; `/language/online-lessons/` y `/language/lesson-price/` → `spanish-schools-in-japan`; `/language/spanish-books/` → `/language/`. Se retiran de `noindexPaths.ts`, del sitemap y de las migas.
-3. **301 de la pronunciación por nivel sin clics:** `a2`, `b1` y `c1/pronunciation` → `pronunciation-for-japanese`; `b2/pronunciation` → `spanish-in-latin-america`. Antes, lo útil de cada una se lleva a la página de destino. `a1/pronunciation` no se toca: será la unidad 1.
+3. **301 de la pronunciación por nivel sin clics:** `a2` y `b1/pronunciation` → `pronunciation-for-japanese`; `b2` y `c1/pronunciation` (variación regional y registro) → `spanish-in-latin-america`. Antes, lo útil de cada una se lleva a la página de destino. `a1/pronunciation` no se toca: será la unidad 1.
 4. **Hub DELE:** nuevo título y description orientados a 「DELEとは・レベル・難易度・日程」, tabla comparativa de los seis niveles con enlaces a cada guía y bloque 「DELEと西検の違い」 hacia `dele-vs-seiken`.
 5. **Títulos y descriptions con CTR bajo:** `spanish-vs-japanese` (la búsqueda es 「難しい？」), `zipf-law-methodology` (título natural para un lector japonés: 「よく使う単語から覚える方法」), `pronunciation-for-japanese` (posición 10), `a2/vocabulary` y `b1/vocabulary`, y los hubs `a2` y `b2` (buena posición, poco clic).
 6. **Escuelas:** `spanish-schools-in-japan` pasa a ser la página madre; cada ciudad enlaza a ella y a las otras ciudades.
