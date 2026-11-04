@@ -81,6 +81,13 @@ export function isPillarArticle(entry: CollectionEntry<'articles'>): boolean {
  * artículo (Home › Pilar [› Cluster] › Título), incluyendo el caso
  * "artículo insignia" (ver getArticleUrl).
  */
+const SCHOOL_CITIES: Record<string, string> = {
+  'tokyo-spanish-schools': '東京',
+  'yokohama-spanish-schools': '横浜',
+  'osaka-spanish-schools': '大阪',
+  'kyoto-spanish-schools': '京都',
+};
+
 export async function getArticleBreadcrumbs(entry: CollectionEntry<'articles'>): Promise<Array<{ name: string; url: string }>> {
   const { pillar, cluster, title } = entry.data;
   const articleUrl = getArticleUrl(entry);
@@ -107,6 +114,12 @@ export async function getArticleBreadcrumbs(entry: CollectionEntry<'articles'>):
   const isFlagship = isFlagshipArticle(entry);
   const home = { name: 'ホーム', url: '/' };
   const pillarCrumb = { name: pillarLabel, url: `/${pillar}/` };
+
+  // Escuelas por ciudad: cuelgan de la guía nacional (docs/language/plan-hub-embudo.md, punto 6).
+  const schoolCity = SCHOOL_CITIES[cluster];
+  if (pillar === 'language' && schoolCity) {
+    return [home, pillarCrumb, { name: '日本のスペイン語教室', url: '/language/spanish-schools-in-japan/' }, { name: `${schoolCity}のスペイン語教室`, url: canonical }];
+  }
 
   if (isFlagship) return [home, pillarCrumb, { name: title, url: canonical }];
 

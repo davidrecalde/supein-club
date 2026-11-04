@@ -29,12 +29,6 @@ export const NOINDEX_PATHS = [
   '/food/restaurants-tokyo/',
   // Pantalla de preferencias del curso: herramienta sin intención de búsqueda (noindex,follow fijo).
   '/language/learn-spanish/welcome/',
-  '/language/lesson-price/',
-  '/language/online-lessons/',
-  '/language/pronunciation/',
-  '/language/self-study/',
-  '/language/spanish-books/',
-  '/language/spanish-phrases/',
   '/travel/andalusia/',
   '/travel/best-season/',
   '/travel/canarias/',

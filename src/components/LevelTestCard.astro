@@ -152,6 +152,15 @@ function updateLevelTestSummary(widget: Element) {
   ).length;
   scoreEl.textContent = String(correctCount);
   levelEl.textContent = levelForScore(correctCount);
+
+  // Medición del embudo (docs/language/plan-hub-embudo.md, punto 7): test completado.
+  const total = widget.querySelectorAll('.lt-question').length;
+  const answered = widget.querySelectorAll('.lt-question[data-answered="true"]').length;
+  const w = widget as HTMLElement;
+  if (answered === total && w.dataset.tracked !== 'true') {
+    w.dataset.tracked = 'true';
+    (window as any).gtag?.('event', 'level_test_completed', { score: correctCount, total, level: levelForScore(correctCount) });
+  }
 }
 
 function resetLevelTest(widgetId: string) {

@@ -269,6 +269,7 @@ async function submitNewsletter(variant: string) {
     }
 
     if (data.success) {
+      (window as any).gtag?.('event', 'newsletter_signup', { form: variant, page: location.pathname });
       submitBtn.style.display = 'none';
       emailEl.style.display = 'none';
       if (nameEl) nameEl.parentElement!.style.display = 'none';

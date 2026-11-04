@@ -50,6 +50,13 @@ const { title = 'supein.club', lang = 'ja' } = Astro.props;
       gtag('config', 'G-9QDF9607ZV', {
         anonymize_ip: true
       });
+      // Clics hacia LINE con su origen (docs/language/plan-hub-embudo.md, punto 7).
+      document.addEventListener('click', function (e) {
+        var a = e.target && e.target.closest ? e.target.closest('a[href*="lin.ee/"], a[href*="line.me/"]') : null;
+        if (!a) return;
+        var block = a.closest('[data-line-source]');
+        gtag('event', 'line_clicked', { page: location.pathname, source: block ? block.getAttribute('data-line-source') : 'other' });
+      });
     </script>
   </head>
   <body class="bg-canvas text-ink font-sans antialiased flex flex-col min-h-screen">
