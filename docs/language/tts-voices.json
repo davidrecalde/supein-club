@@ -84,7 +84,7 @@
       "_doc": "Elegida entre Gacrux, Sulafat y Vindemiatrix (prueba 6). No intercambiar con la narradora."
     },
     "narrator": {
-      "status": "muestra-pendiente",
+      "status": "aprobada",
       "voice": "Gacrux",
       "voiceTags": [
         "Mature",
@@ -94,7 +94,7 @@
       "accent": "peninsular estándar (sin acento)",
       "profile": "Locutora de un curso de español. Habla español de España con pronunciación peninsular estándar, clara, neutra y cálida, a ritmo lento y muy claro para estudiantes.",
       "testSentence": "¿Cuánto cuesta esta camiseta? Quiero aquel abanico rojo.",
-      "_doc": "David eligió Gacrux al oírla con el perfil de Carmen; la combinación Gacrux + perfil de narradora no se ha generado nunca. No se usa en el curso hasta que David escuche la muestra (npm run tts:generate -- --sample narrator) y la apruebe."
+      "_doc": "Aprobada por David el 4 de noviembre de 2026 (la eligió al oírla con el perfil de Carmen). Gacrux es solo de la narradora; no se intercambia con Carmen (Vindemiatrix)."
     },
     "male-adult": {
       "status": "propuesta",

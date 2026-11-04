@@ -107,7 +107,7 @@ brand names, extra fingers, distorted hands, cluttered background.
 | Carmen | Vindemiatrix | Gentle, Middle pitch | peninsular estándar |
 | Narradora | Gacrux | Mature, Middle pitch | peninsular estándar |
 
-- **Narradora, punto abierto:** David eligió Gacrux al oírla con el perfil de Carmen. La combinación Gacrux + perfil de narradora no se ha generado nunca, así que el pipeline no la usa hasta que David escuche la muestra (`npm run tts:generate -- --sample narrator`) y la apruebe en `tts-voices.json` (`status: "aprobada"`). Gacrux (narradora) y Vindemiatrix (Carmen) no se intercambian.
+- **Narradora:** Gacrux, aprobada por David el 4 de noviembre de 2026 (la eligió al oírla con el perfil de Carmen). Gacrux (narradora) y Vindemiatrix (Carmen) no se intercambian.
 - Los secundarios (camareros, empleados, compañeros…) tienen voces propuestas sin probar, distintas de las seis anteriores; se revisan al escuchar el primer lote.
 
 ## Voces secundarias
