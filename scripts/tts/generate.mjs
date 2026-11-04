@@ -5,6 +5,7 @@
 //   npm run tts:generate -- --max 3          → como mucho 3 peticiones en esta ejecución
 //   npm run tts:generate -- --unit 3         → solo la unidad 3
 //   npm run tts:generate -- --retry          → vuelve a intentar los lotes que no se pudieron cortar
+//   npm run tts:generate -- --sample narrator → solo la frase de prueba de ese hablante, en audio-src/pruebas-voces/
 //
 // Una petición por unidad y hablante: las frases van seguidas y el audio se corta por los
 // silencios. Si el número de trozos no coincide con el de frases, el lote queda marcado para
@@ -26,6 +27,7 @@ const value = (name) => (args.indexOf(`--${name}`) > -1 ? args[args.indexOf(`--$
 const DRY = flag('dry-run');
 const ONLY_UNIT = value('unit') ? Number(value('unit')) : undefined;
 const MAX_RUN = value('max') ? Number(value('max')) : Infinity;
+const SAMPLE = value('sample');
 
 const config = JSON.parse(readFileSync(CONFIG, 'utf8'));
 const usable = (key) => {
@@ -152,8 +154,11 @@ async function synthesize(speakerKey, transcript) {
       return { pcm: Buffer.from(part.inlineData.data, 'base64'), rate };
     }
     const detail = await res.text();
-    if (res.status === 429 && /PerDay|per day|daily/i.test(detail)) throw Object.assign(new Error('Cuota diaria agotada.'), { daily: true });
-    if (res.status === 429 || res.status >= 500) {
+    if (res.status === 429) {
+      const daily = /PerDay|per day|daily/i.test(detail);
+      throw Object.assign(new Error(`Aviso de cuota (429${daily ? ', diaria' : ''}): el proceso se detiene. Revisa la cuota en AI Studio antes de seguir.`), { quota: true });
+    }
+    if (res.status >= 500) {
       console.log(`  ${res.status}: reintento ${attempt} de 3 dentro de ${attempt * 30} s`);
       await sleep(attempt * 30_000);
       continue;
@@ -161,6 +166,31 @@ async function synthesize(speakerKey, transcript) {
     throw new Error(`Error ${res.status}: ${detail.slice(0, 300)}`);
   }
   throw new Error('Demasiados reintentos.');
+}
+
+// ── Muestra de un hablante (no entra en el curso ni en el manifiesto de frases) ──
+if (SAMPLE) {
+  const s = config.speakers[SAMPLE];
+  if (!s?.voice || !s.testSentence) {
+    console.error(`El hablante «${SAMPLE}» no tiene voz o frase de prueba en ${CONFIG}.`);
+    process.exit(1);
+  }
+  if (usedToday() >= config.quota.maxRequestsPerDay) {
+    console.error('La cuota de hoy ya está agotada.');
+    process.exit(1);
+  }
+  try {
+    const audio = await synthesize(SAMPLE, s.testSentence);
+    mkdirSync('audio-src/pruebas-voces', { recursive: true });
+    const file = `audio-src/pruebas-voces/${SAMPLE}-${s.voice.toLowerCase()}.wav`;
+    writeFileSync(file, wav(audio.pcm, audio.rate));
+    console.log(`Muestra guardada: ${file} (${(audio.pcm.length / 2 / audio.rate).toFixed(1)} s, voz ${s.voice}).`);
+  } catch (e) {
+    console.error(e.message);
+    process.exit(1);
+  }
+  console.log(`Peticiones usadas hoy: ${usedToday()}.`);
+  process.exit(0);
 }
 
 // ── Ejecución ───────────────────────────────────────────────────────────
@@ -179,7 +209,7 @@ for (const job of jobs) {
     audio = await synthesize(job.speaker, job.items.map((i) => i.text).join('\n\n'));
   } catch (e) {
     console.error(`  ${e.message}`);
-    if (e.daily) break;
+    if (e.quota) break;
     continue;
   }
   done++;

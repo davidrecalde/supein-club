@@ -3,7 +3,12 @@
   "model": "gemini-3.1-flash-tts-preview",
   "mode": "single-speaker",
   "temperature": 1,
-  "output": { "format": "wav", "sampleRate": 24000, "channels": 1, "bitsPerSample": 16 },
+  "output": {
+    "format": "wav",
+    "sampleRate": 24000,
+    "channels": 1,
+    "bitsPerSample": 16
+  },
   "quota": {
     "_doc": "Nivel gratuito del proyecto «Open Code»: 3 peticiones por minuto y 10 al día (el día de la cuota termina a medianoche de la hora del Pacífico). Se deja 1 petición diaria de reserva para pruebas.",
     "minIntervalSeconds": 25,
@@ -11,59 +16,85 @@
     "reservePerDay": 1
   },
   "promptTemplate": {
-    "status": "provisional",
-    "_doc": "Estructura con la que AI Studio envía el Audio Profile dentro del texto, según el informe de Claude en Chrome del 3 de noviembre de 2026 (« # Audio Profile » + « ## Transcript: »). Hay que confirmarla copiando literalmente el «Get code» de AI Studio y, si difiere, corregirla aquí antes de la primera generación real.",
-    "text": "# Audio Profile\n{profile}\n\n## Transcript:\n{transcript}"
+    "status": "confirmada",
+    "_doc": "Estructura literal del «Get code» de AI Studio (4 de noviembre de 2026): un único prompt de usuario. Con Director's note la primera línea cambia a «…based on the audio profile and director's note.» y se añade un bloque «# Director's note»; no se usa.",
+    "text": "Read the following transcript based on the audio profile.\n\n# Audio Profile\n{profile}\n\n## Transcript:\n{transcript}"
   },
   "speakers": {
     "mina": {
       "status": "aprobada",
       "voice": "Laomedeia",
-      "voiceTags": ["Upbeat", "Higher pitch"],
+      "voiceTags": [
+        "Upbeat",
+        "Higher pitch"
+      ],
       "accent": "japonés suave",
       "profile": "Mujer japonesa de 28 años que empieza a aprender español. Habla despacio y con un acento japonés suave y natural, pero se le entiende bien. Pronuncia con cuidado, con amabilidad y curiosidad, sin exagerar ni imitar estereotipos.",
-      "testSentence": "Hola, me llamo Mina y soy de Tokio. Perdone, ¿dónde está la estación de metro?"
+      "testSentence": "Hola, me llamo Mina y soy de Tokio. Perdone, ¿dónde está la estación de metro?",
+      "level": "A1–A2, principiante, ritmo lento"
     },
     "kenta": {
       "status": "aprobada",
       "voice": "Schedar",
-      "voiceTags": ["Even", "Lower middle pitch"],
+      "voiceTags": [
+        "Even",
+        "Lower middle pitch"
+      ],
       "accent": "japonés moderado",
       "profile": "Hombre japonés de 42 años que habla español de nivel intermedio. Acento japonés moderado y respetuoso, ritmo pausado y cortés, como en una reunión de trabajo. Se le entiende muy bien. Sin exagerar ni imitar estereotipos.",
-      "testSentence": "Buenos días. Soy Kenta, ingeniero de Osaka. ¿Sería posible cambiar la reunión al jueves?"
+      "testSentence": "Buenos días. Soy Kenta, ingeniero de Osaka. ¿Sería posible cambiar la reunión al jueves?",
+      "level": "A2–B1, intermedio, registro formal"
     },
     "yui": {
       "status": "aprobada",
       "voice": "Zephyr",
-      "voiceTags": ["Bright", "Higher pitch"],
+      "voiceTags": [
+        "Bright",
+        "Higher pitch"
+      ],
       "accent": "japonés ligerísimo",
       "profile": "Mujer japonesa de 21 años que vive en España desde hace años y estudia en la universidad. Habla español con fluidez, de forma natural y cercana, con solo un ligerísimo acento japonés. Sin exagerar ni imitar estereotipos.",
-      "testSentence": "¡Hola! Soy Yui y estudio en Salamanca. Este fin de semana voy a Segovia con mi compañera de piso."
+      "testSentence": "¡Hola! Soy Yui y estudio en Salamanca. Este fin de semana voy a Segovia con mi compañera de piso.",
+      "level": "B1–B2, avanzado, habla fluida y juvenil"
     },
     "daniel": {
-      "status": "pendiente",
-      "voice": null,
-      "candidates": ["Charon", "Achird", "Umbriel"],
-      "accent": "peninsular estándar",
+      "status": "aprobada",
+      "voice": "Achird",
+      "voiceTags": [
+        "Friendly",
+        "Lower middle pitch"
+      ],
+      "level": "todos los niveles",
+      "accent": "peninsular estándar (sin acento)",
       "profile": "Hombre de 35 años, de Valencia. Habla español de España con pronunciación peninsular estándar, cálido y cercano, como un amigo que explica algo con paciencia.",
-      "testSentence": "Hola, soy Daniel. Soy de Valencia, pero vivo en Tokio. En España decimos «vale» para casi todo."
+      "testSentence": "Hola, soy Daniel. Soy de Valencia, pero vivo en Tokio. En España decimos «vale» para casi todo.",
+      "_doc": "Elegida entre Charon, Achird y Umbriel (prueba 2)."
     },
     "carmen": {
-      "status": "pendiente",
-      "voice": null,
-      "candidates": ["Gacrux", "Sulafat", "Vindemiatrix"],
-      "accent": "peninsular estándar",
+      "status": "aprobada",
+      "voice": "Vindemiatrix",
+      "voiceTags": [
+        "Gentle",
+        "Middle pitch"
+      ],
+      "level": "B2–C2",
+      "accent": "peninsular estándar (sin acento)",
       "profile": "Mujer de 58 años, profesora de Madrid. Habla español de España con pronunciación peninsular estándar, culta, segura y amable, articulando con claridad.",
-      "testSentence": "Buenos días. Hoy vamos a analizar el subjuntivo en la prensa. Fijaos en este titular."
+      "testSentence": "Buenos días. Hoy vamos a analizar el subjuntivo en la prensa. Fijaos en este titular.",
+      "_doc": "Elegida entre Gacrux, Sulafat y Vindemiatrix (prueba 6). No intercambiar con la narradora."
     },
     "narrator": {
-      "status": "pendiente",
-      "_doc": "Lee las frases modelo que no pertenecen a ningún diálogo (274 de 335).",
-      "voice": null,
-      "candidates": ["Kore", "Achernar"],
-      "accent": "peninsular estándar",
+      "status": "muestra-pendiente",
+      "voice": "Gacrux",
+      "voiceTags": [
+        "Mature",
+        "Middle pitch"
+      ],
+      "level": "todos los niveles (frases modelo sin hablante)",
+      "accent": "peninsular estándar (sin acento)",
       "profile": "Locutora de un curso de español. Habla español de España con pronunciación peninsular estándar, clara, neutra y cálida, a ritmo lento y muy claro para estudiantes.",
-      "testSentence": "¿Cuánto cuesta esta camiseta? Quiero aquel abanico rojo."
+      "testSentence": "¿Cuánto cuesta esta camiseta? Quiero aquel abanico rojo.",
+      "_doc": "David eligió Gacrux al oírla con el perfil de Carmen; la combinación Gacrux + perfil de narradora no se ha generado nunca. No se usa en el curso hasta que David escuche la muestra (npm run tts:generate -- --sample narrator) y la apruebe."
     },
     "male-adult": {
       "status": "propuesta",

@@ -95,7 +95,20 @@ brand names, extra fingers, distorted hands, cluttered background.
 
 - **La fuente de verdad de las voces es `docs/language/tts-voices.json`** (voz, perfil y ajustes de cada hablante). Lo usa `npm run tts:generate`; las candidatas de esta página quedan como historial.
 - **Mina, Kenta y Yui hablan con acento japonés**, cada vez más suave según su nivel: Mina → Laomedeia (acento suave), Kenta → Schedar (acento moderado), Yui → Zephyr (acento ligerísimo). Probadas y escuchadas por David en AI Studio (modo de una voz, temperature 1, solo Audio Profile).
-- Las frases modelo sin hablante (274 de 335) las lee una narradora nativa, y Daniel, Carmen y los secundarios hablan con pronunciación peninsular estándar. Daniel, Carmen y la narradora están pendientes de elegir; los secundarios tienen voces propuestas sin probar.
+- Las frases modelo sin hablante (274 de 335) las lee una narradora nativa; Daniel, Carmen y los secundarios hablan con pronunciación peninsular estándar.
+- **Reparto definitivo (David, 4 de noviembre de 2026):**
+
+| Hablante | Voz | Etiquetas de AI Studio | Acento |
+| --- | --- | --- | --- |
+| Mina | Laomedeia | Upbeat, Higher pitch | japonés suave |
+| Kenta | Schedar | Even, Lower middle pitch | japonés moderado |
+| Yui | Zephyr | Bright, Higher pitch | japonés ligerísimo |
+| Daniel | Achird | Friendly, Lower middle pitch | peninsular estándar |
+| Carmen | Vindemiatrix | Gentle, Middle pitch | peninsular estándar |
+| Narradora | Gacrux | Mature, Middle pitch | peninsular estándar |
+
+- **Narradora, punto abierto:** David eligió Gacrux al oírla con el perfil de Carmen. La combinación Gacrux + perfil de narradora no se ha generado nunca, así que el pipeline no la usa hasta que David escuche la muestra (`npm run tts:generate -- --sample narrator`) y la apruebe en `tts-voices.json` (`status: "aprobada"`). Gacrux (narradora) y Vindemiatrix (Carmen) no se intercambian.
+- Los secundarios (camareros, empleados, compañeros…) tienen voces propuestas sin probar, distintas de las seis anteriores; se revisan al escuchar el primer lote.
 
 ## Voces secundarias
 
