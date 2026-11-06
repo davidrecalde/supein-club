@@ -240,6 +240,17 @@ const pressReleases = defineCollection({
     quoteAuthor: z.string().optional(),
     quoteRole: z.string().optional(),
     boilerplate: z.string().optional(),
+    // Evento en el que participa スペイン倶楽部: si existe y aún no ha terminado,
+    // la home lo muestra en la sección «NEXT EVENT» enlazando a esta nota.
+    event: z
+      .object({
+        name: z.string(),
+        startDate: z.coerce.date(),
+        endDate: z.coerce.date(),
+        hours: z.string().optional(),
+        venue: z.string(),
+      })
+      .optional(),
   }),
 });
 

@@ -7,7 +7,7 @@ import SEO from '../components/SEO.astro';
 import ArticleCard from '../components/ArticleCard.astro';
 import LineBanner from '../components/LineBanner.astro';
 import NewsletterForm from '../components/NewsletterForm.astro';
-import { Plane, UtensilsCrossed, MessageCircle, Home, Book } from 'lucide-astro';
+import { Plane, UtensilsCrossed, MessageCircle, Home, Book, CalendarDays, Clock, MapPin } from 'lucide-astro';
 import SoccerBall from '../components/icons/SoccerBall.astro';
 import { getArticleUrl } from '../utils/articles';
 import travelCardImg from '../assets/cards/travel.webp';
@@ -44,6 +44,21 @@ const featuredArticle = allArticles
 const socialFeaturedArticle = allArticles
   .filter((a) => a.data.socialFeatured)
   .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())[0];
+
+// NEXT EVENT：スペイン倶楽部が参加する次のイベント。プレスリリースの event フィールドから、
+// まだ終わっていないものを開催日の近い順に1件選ぶ（終了日の翌日0時UTC以降は非表示。
+// 再ビルドがなくてもクライアント側のスクリプトで隠す）。
+const DAY = 24 * 60 * 60 * 1000;
+const nextEvent = (await getCollection('press-releases', ({ data }) => !data.draft && !!data.event))
+  .filter((r) => r.data.event!.endDate.getTime() + DAY > Date.now())
+  .sort((a, b) => a.data.event!.startDate.getTime() - b.data.event!.startDate.getTime())[0];
+const formatEventDates = (start: Date, end: Date) => {
+  const md = (d: Date) => `${d.getUTCMonth() + 1}月${d.getUTCDate()}日（${'日月火水木金土'[d.getUTCDay()]}）`;
+  const head = `${start.getUTCFullYear()}年${md(start)}`;
+  if (start.getTime() === end.getTime()) return head;
+  const sameMonth = start.getUTCMonth() === end.getUTCMonth();
+  return `${head}〜${sameMonth ? `${end.getUTCDate()}日（${'日月火水木金土'[end.getUTCDay()]}）` : md(end)}`;
+};
 
 const pillarLabels: Record<string, string> = {
   travel: 'スペイン旅行',
@@ -257,6 +272,75 @@ const organizationSchema = {
       </a>
     </div>
   </section>
+
+  <!-- NEXT EVENT: próximo evento en el que participa スペイン倶楽部 (campo event de una nota de prensa) -->
+  {nextEvent && (
+    <section
+      class="py-20 px-5 bg-white border-t border-[#E8E8E6]"
+      data-next-event
+      data-event-end={new Date(nextEvent.data.event!.endDate.getTime() + DAY).toISOString()}
+    >
+      <div class="max-w-6xl mx-auto">
+        <div class="flex items-center gap-3 mb-4">
+          <span class="h-px w-8 bg-navy/15"></span>
+          <span class="text-primary text-lg font-semibold uppercase tracking-widest">Next Event</span>
+        </div>
+        <h2 class="font-sans font-bold text-3xl text-navy mb-10">スペイン倶楽部が参加する次のイベント</h2>
+        <a
+          href={`/newsroom/${nextEvent.slug}/`}
+          class="group grid grid-cols-1 md:grid-cols-2 gap-0 bg-navy text-white rounded-xl overflow-hidden shadow-[0_2px_8px_rgba(0,33,71,0.07)] hover:shadow-[0_4px_16px_rgba(0,33,71,0.18)] transition-all"
+        >
+          {nextEvent.data.image && (
+            <div class="overflow-hidden aspect-[40/21] md:aspect-auto md:h-full">
+              <img
+                src={nextEvent.data.image}
+                alt={nextEvent.data.event!.name}
+                width="1200"
+                height="630"
+                loading="lazy"
+                decoding="async"
+                class="w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-[400ms]"
+              />
+            </div>
+          )}
+          <div class="p-8 md:p-10 flex flex-col justify-center">
+            <span class="inline-block text-xs font-semibold px-2.5 py-0.5 rounded-full bg-primary text-white mb-4 self-start">
+              {nextEvent.data.category}
+            </span>
+            <h3 class="font-sans font-bold text-2xl leading-snug mb-5">
+              {nextEvent.data.event!.name}
+            </h3>
+            <ul class="space-y-2 text-white/85 text-base mb-5">
+              <li class="flex items-start gap-2.5">
+                <CalendarDays size={18} class="mt-1 shrink-0 text-primary" aria-hidden="true" />
+                <span>{formatEventDates(nextEvent.data.event!.startDate, nextEvent.data.event!.endDate)}</span>
+              </li>
+              {nextEvent.data.event!.hours && (
+                <li class="flex items-start gap-2.5">
+                  <Clock size={18} class="mt-1 shrink-0 text-primary" aria-hidden="true" />
+                  <span>{nextEvent.data.event!.hours}</span>
+                </li>
+              )}
+              <li class="flex items-start gap-2.5">
+                <MapPin size={18} class="mt-1 shrink-0 text-primary" aria-hidden="true" />
+                <span>{nextEvent.data.event!.venue}</span>
+              </li>
+            </ul>
+            <p class="text-white/65 text-sm leading-relaxed mb-6">{nextEvent.data.subtitle ?? nextEvent.data.summary}</p>
+            <span class="inline-flex items-center gap-2 text-white font-semibold text-sm group-hover:underline underline-offset-4">
+              プレスリリースを読む →
+            </span>
+          </div>
+        </a>
+      </div>
+    </section>
+  )}
+  <script is:inline>
+    // Oculta NEXT EVENT si el evento ya terminó y la web aún no se ha vuelto a compilar.
+    document.querySelectorAll('[data-next-event]').forEach(function (s) {
+      if (Date.now() >= Date.parse(s.getAttribute('data-event-end'))) s.hidden = true;
+    });
+  </script>
 
   <!-- Latest articles -->
   {recentArticles.length > 0 && (
