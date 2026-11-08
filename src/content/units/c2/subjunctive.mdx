@@ -5,90 +5,268 @@ levelName: "Maestría"
 slug: "subjunctive"
 url: "/language/learn-spanish/c2/subjunctive/"
 existing: true
-title: "接続法の総仕上げと稀な形"
+title: "スペイン語の接続法未来とまれな形｜fuere・hubiere と文語の接続法"
 shortTitle: "接続法の総仕上げと稀な形"
-titleEs: "futuro de subjuntivo y formas raras"
-grammar: ["futuro de subjuntivo"]
-tenses: []
-functions: []
-canDo: []
-vocabulary: []
-verbs: []
+titleEs: "Futuro de subjuntivo y usos cultos del subjuntivo"
+description: "スペイン語C2の接続法の総仕上げ。法律やことわざに残る接続法未来（fuere・hubiere）、De haberlo sabido などの文語の条件文、Que yo sepa・Que en paz descanse などの決まり文句を、接続法の全体像の整理と練習問題つきで学びます。"
+grammar: ["futuro de subjuntivo", "condicionales cultas (de + infinitivo compuesto)", "imperfecto de subjuntivo con valor de condicional", "fórmulas fijas con subjuntivo"]
+tenses: ["futuro de subjuntivo"]
+functions: ["ことわざや法律の文に残る古い形を読み取る", "文体に合わせて条件文の形を選ぶ", "決まり文句を場面に合わせて使う"]
+canDo:
+  - "接続法未来（fuere、hubiere）を、ことわざや法律の文の中で読み取れる"
+  - "De haberlo sabido… のような文語の条件文を理解し、書き言葉で使える"
+  - "Que yo sepa や Que en paz descanse などの決まり文句を、ふさわしい場面で使える"
+vocabulary:
+  # rank = «Rango frec.» del diccionario de frecuencias del CORPES XXI (RAE). Lo escribe
+  # npm run vocab:rank -- --write; lo que no es lema del diccionario va sin rank, al final.
+  - { es: "el refrán", ja: "ことわざ", rank: 10733, example: "«Adonde fueres, haz lo que vieres» es un refrán." }
+  - { es: "jurídico", ja: "法律の・法的な", rank: 1432, example: "El futuro de subjuntivo sobrevive en los textos jurídicos." }
+  - { es: "la norma", ja: "規則・規範", rank: 1053, example: "Quien infringiere esta norma será sancionado." }
+  - { es: "sobrevivir", ja: "生き残る", rank: 2164, example: "Esta forma solo sobrevive en refranes." }
+  - { es: "culto", ja: "教養のある・文語的な", rank: 6823, example: "«De haberlo sabido» es una construcción culta." }
+  - { es: "arcaico", ja: "古風な・古語の", rank: 11084, example: "«Fuere» suena arcaico en la conversación." }
+  - { es: "el registro", ja: "言葉の使用域（くだけた・改まった）", rank: 1075, example: "Hay que adaptar el registro a la situación." }
+  - { es: "la fórmula", ja: "決まり文句・定型句", rank: 1565, example: "«Que en paz descanse» es una fórmula fija." }
+  - { es: "el pésame", ja: "お悔やみ", rank: 15377, example: "Le doy mi más sentido pésame." }
+  - { es: "descansar", ja: "休む・眠る", rank: 3025, example: "Que en paz descanse." }
+  - { es: "el heredero", ja: "相続人", rank: 4218, example: "El heredero firmó los documentos." }
+  - { es: "la herencia", ja: "遺産・受け継いだもの", rank: 3667, example: "El español es una herencia del latín." }
+  - { es: "conseguir", ja: "手に入れる・達成する", rank: 404, example: "Cueste lo que cueste, lo conseguiremos." }
+  - { es: "el Siglo de Oro", ja: "黄金世紀（16〜17世紀のスペイン文化の最盛期）", example: "En el Siglo de Oro el futuro de subjuntivo era frecuente." }
+verbs: ["ser", "ir", "haber", "hacer", "ver", "decir"]
 duration: 40
 prev: 56
 next: 58
-related: [49,37,62]
-cast: ["carmen","daniel"]
-audio: []
+related: [49, 37, 62]
+cast: ["carmen", "daniel"]
+audio:
+  - "Carmen, siempre digo «adonde fueres, haz lo que vieres», pero nunca he sabido qué forma es «fueres»."
+  - "Es futuro de subjuntivo. Hoy solo sobrevive en refranes y en textos jurídicos."
+  - "¿Y en la lengua de hoy cómo se diría?"
+  - "«Adonde vayas, haz lo que veas». Pero el refrán suena mucho mejor, ¿verdad?"
+  - "hablare, hablares, hablare, habláremos, hablareis, hablaren"
+  - "De haberlo sabido, no habría venido."
+  - "Que yo sepa, la reunión es mañana."
+  - "Cueste lo que cueste, lo conseguiremos."
+  - "Que en paz descanse."
 youtubeId: ""
-quiz: []
 image: { src: "/images/course/units/u57.webp", width: 1020, height: 574, alt: "歴史ある図書館で、古い本を虫めがねで読むカルメン先生" }
 draft: true
 updated: "2026-11-02"
+quiz:
+  - question: "hablar の接続法未来（yo）は？"
+    options: ["hablare", "hablaré", "hablara"]
+    correctIndex: 0
+    explanation: "接続法未来は、点過去の ellos の形（hablaron）から -ron を取り -re をつけます：hablare。hablaré は直説法未来、hablara は接続法過去です。"
+  - question: "Adonde fueres, haz lo que vieres. に近い日本語のことわざは？"
+    options: ["急がば回れ", "郷に入っては郷に従え", "旅は道連れ"]
+    correctIndex: 1
+    explanation: "「どこへ行こうと、そこで見るとおりにせよ」という意味で、日本語の「郷に入っては郷に従え」にあたります。fueres は ir の、vieres は ver の接続法未来です。"
+  - question: "現代のスペイン語で、接続法未来をおもに目にするのは？"
+    options: ["日常会話", "SNS の投稿", "法律の条文やことわざ"]
+    correctIndex: 2
+    explanation: "接続法未来は日常語ではほとんど使われず、法律・規則の文や、ことわざ・決まり文句に残っています。"
+  - question: "De haberlo sabido, no habría venido. の意味は？"
+    options: ["知っていたので来なかった", "知らなかったけれど来た", "知っていたら来なかったのに"]
+    correctIndex: 2
+    explanation: "de + haber + 過去分詞は、Si lo hubiera sabido と同じ、過去の事実に反する仮定を表す文語的な形です。"
+  - question: "Hubiera sido mejor. と同じ意味になるのは？"
+    options: ["Habrá sido mejor.", "Habría sido mejor.", "Ha sido mejor."]
+    correctIndex: 1
+    explanation: "hubiera（接続法過去）は、過去未来完了 habría の代わりに使えます。スペインの話し言葉でも、Hubiera sido mejor. はよく聞く形です。"
+  - question: "Que yo sepa, la reunión es mañana. の Que yo sepa の意味は？"
+    options: ["私の知る限り", "私が知っているように", "知りたいのだが"]
+    correctIndex: 0
+    explanation: "Que yo sepa は「私の知る限りでは」という決まり文句で、saber の接続法を使います。"
+  - question: "No es muy simpático que digamos. の意味は？"
+    options: ["とても親切だと言える", "親切だと言ってほしい", "あまり親切とは言えない"]
+    correctIndex: 2
+    explanation: "否定文のあとの que digamos は、「〜とは言えない」と控えめに否定する決まり文句です。"
+  - question: "お悔やみの場面で使う定型句は？"
+    options: ["¡Que aproveche!", "Que en paz descanse.", "¡Que te mejores!"]
+    correctIndex: 1
+    explanation: "Que en paz descanse.（安らかに眠られますように）は、亡くなった人について話すときの定型句です。¡Que aproveche! は食事中の人に、¡Que te mejores! は病気の人にかける言葉です。"
+  - question: "「どんな代償を払っても、手に入れてみせる」。正しいのは？"
+    options: ["Cueste lo que cueste, lo conseguiré.", "Cuesta lo que cuesta, lo conseguiré.", "Costara lo que cuesta, lo conseguiré."]
+    correctIndex: 0
+    explanation: "同じ動詞の接続法を lo que をはさんでくり返す譲歩の形です（ユニット49）。"
+  - question: "ser・ir の接続法未来（yo）は？"
+    options: ["fuera", "fuese", "fuere"]
+    correctIndex: 2
+    explanation: "fueron → fue- + re で fuere。fuera と fuese は接続法過去です。"
 ---
 
-TODO:contenido（導入：このユニットの問いに、それだけで答えになる2文で答える）
+接続法の学習の最後に、現代の会話ではほとんど使わないものの、ことわざや法律の文、改まった書き言葉に残る形を学びます。接続法未来（fuere、hubiere）、De haberlo sabido… のような文語の条件文、Que yo sepa のような決まり文句を読み取り、文体に合わせて使い分けられることが C2 の目標です。
 
-## 文法 (Gramática)
+B1 から C1 まで、接続法の形と使い方はすべて学びました（ユニット25〜27、37〜40、49）。C2 で大切なのは、新しい規則よりも、文体の感覚です。法律の条文で fuere を見て戸惑わず、弔いの場面で決まり文句を自然に使い、それでいて日常会話には古い形を持ち込まない。その判断力が、最上級の熟達のしるしです。このユニットでは、歴史ある図書館で古い本を読むカルメン先生と、ことわざの意味をたずねるダニエルの会話を例に、接続法の総仕上げをします。
 
-TODO:contenido
+## 文法：接続法の総仕上げと稀な形 (Gramática)
+
+まず接続法の全体像を整理し、次に接続法未来、文語の条件文、決まり文句の接続法を見ていきましょう。
+
+### 接続法の全体像
+
+これまで学んだ接続法の形を、一つの表にまとめます。
+
+| 形 | 例 | 使う場面 | ユニット |
+| --- | --- | --- | --- |
+| 接続法現在 | hable, tenga, sea | 願望・感情・疑い、時・目的・関係節、否定命令 | 25〜27 |
+| 接続法現在完了 | haya hablado | 済んだことへの気持ち・疑い | 39 |
+| 接続法過去 | hablara / hablase | 時制の一致、現実と違う仮定、丁寧な希望 | 37、38、40 |
+| 接続法過去完了 | hubiera hablado | 後悔、過去の事実に反する仮定 | 39 |
+| 接続法未来 | hablare, fuere | ことわざ、法律の文（現代ではまれ） | 57 |
+
+日常のスペイン語で使うのは、上の四つです。接続法未来は、読んで意味がわかれば十分な形です。
+
+### 接続法未来：ことわざと法律に残る形
+
+接続法未来は、接続法過去と同じく点過去の ellos の形から作り、-ron を -re に替えます。
+
+| | hablar | ser / ir | haber |
+| --- | --- | --- | --- |
+| yo | hablare | fuere | hubiere |
+| tú | hablares | fueres | hubieres |
+| él / ella / usted | hablare | fuere | hubiere |
+| nosotros | habláremos | fuéremos | hubiéremos |
+| vosotros | hablareis | fuereis | hubiereis |
+| ellos / ustedes | hablaren | fueren | hubieren |
+
+16〜17世紀の黄金世紀の文学ではよく使われていましたが、現代の話し言葉からはほぼ消え、次のような場所に残っています。
+
+- **ことわざ**：Adonde fueres, haz lo que vieres.（どこへ行こうと、そこで見るとおりにせよ）
+- **法律・規則の文**：Quien infringiere esta norma será sancionado.（この規則に違反した者は処罰される）→ ユニット60
+- **決まった言い方**：sea lo que fuere（それが何であれ）
+
+現代の言葉に直すときは、接続法現在を使います：Adonde vayas, haz lo que veas. Quien infrinja esta norma será sancionado.
+
+### 文語の条件文：de + 不定詞と hubiera
+
+過去の事実に反する仮定は、si を使わずに、de + 不定詞で表すことができます。書き言葉や改まった話し方で好まれる形です。
+
+<Examples>
+
+- De haberlo sabido, no habría venido.（知っていたら、来なかったのに）＝ Si lo hubiera sabido…
+- De no ser por ti, no lo habría conseguido.（あなたがいなかったら、成し遂げられなかった）＝ Si no hubiera sido por ti…
+- De seguir así, tendremos problemas.（このまま続けば、問題が起きるだろう）＝ Si seguimos así…
+
+</Examples>
+
+また、接続法過去完了の hubiera は、過去未来完了 habría の代わりにも使えます：Hubiera sido mejor no decir nada.（何も言わないほうがよかった）＝ Habría sido mejor… ユニット37で見た quisiera と同じく、-ra 形だけの使い方です。
+
+### 決まり文句の接続法
+
+接続法は、主節なしで使う決まり文句にもたくさん残っています。
+
+| 決まり文句 | 意味・場面 |
+| --- | --- |
+| Que yo sepa… | 私の知る限り |
+| …que digamos | （否定文のあとで）〜とは言えない：No es muy simpático que digamos. |
+| Que en paz descanse. | 安らかに眠られますように（故人について） |
+| ¡Viva…! | 〜万歳：¡Vivan los novios!（新郎新婦、おめでとう！） |
+| Cueste lo que cueste | どんな代償を払っても |
+| Sea cual sea… | 〜がどうであれ：Sea cual sea el resultado, lo aceptaremos. |
+| Sírvase… | （公的な書面で）〜してくださるようお願いします |
+
+Sírvase indicar su número de cuenta.（口座番号をご記入ください）のような言い方は、役所や銀行の書類で目にしますが、会話で使うと大げさに響きます。
+
+### 図書館で
+
+古い本を読んでいたカルメン先生に、ダニエルがたずねます。
+
+- Daniel: Carmen, siempre digo «adonde fueres, haz lo que vieres», pero nunca he sabido qué forma es «fueres».（カルメン先生、「Adonde fueres, haz lo que vieres」っていつも言うんですけど、fueres が何の形なのか、ずっと知らなかったんです）
+- Carmen: Es futuro de subjuntivo. Hoy solo sobrevive en refranes y en textos jurídicos.（接続法未来よ。今ではことわざと法律の文章にしか残っていないの）
+- Daniel: ¿Y en la lengua de hoy cómo se diría?（今の言葉だと、何と言うんですか？）
+- Carmen: «Adonde vayas, haz lo que veas». Pero el refrán suena mucho mejor, ¿verdad?（「Adonde vayas, haz lo que veas」ね。でも、ことわざのほうがずっと響きがいいでしょう？）
+
+**ダニエル（バレンシア出身）のひとこと：** スペイン人でも、fueres や hubiere が何の形かを説明できる人は多くありません。ことわざは丸ごと覚えているからです。一方、Hubiera sido mejor. や De haberlo sabido… は、会話でもふつうに使います。古い形のうち、どれが今も生きているのかを知っておくと、自然なスペイン語に近づきます。
 
 ## 活用：今日の動詞 (Conjugación)
 
-TODO:contenido
+接続法未来は、現代ではまれな形なので、活用表には載せていません。[ser](/language/learn-spanish/verb-conjugation/ser/) と [ir](/language/learn-spanish/verb-conjugation/ir/)（fueron → fuere）、[haber](/language/learn-spanish/verb-conjugation/haber/)（hubieron → hubiere）、[hacer](/language/learn-spanish/verb-conjugation/hacer/)（hicieron → hiciere）、[ver](/language/learn-spanish/verb-conjugation/ver/)（vieron → viere）、[decir](/language/learn-spanish/verb-conjugation/decir/)（dijeron → dijere）の活用表で点過去の ellos の形を確かめ、-ron を -re に替えて作ってみましょう。接続法過去（-ra 形・-se 形）と同じ形から作られていることがわかります。
 
 ## 語彙 (Nociones específicas)
+
+文体や言葉の歴史を話題にするときの言葉と、法律の文や弔いの場面で使う言葉です。
 
 <VocabList items={frontmatter.vocabulary} level={frontmatter.level} />
 
 ## 発音・正書法 (Pronunciación y ortografía)
 
-TODO:contenido
+接続法未来の nosotros の形は、接続法過去と同じく後ろから3番目の音節を強く読むので、アクセント記号がつきます：habláremos、fuéremos、hubiéremos。また、hablare（接続法未来）と hablaré（直説法未来）は、アクセント記号一つで別の形になります。法律の文を読むときは、記号の有無に注意しましょう。
 
 ## 日本人がよく間違える
 
-TODO:contenido
+C2 では、文法の誤りよりも文体の選び方の誤りが目立ちます。
+
+- **古い形を会話に持ち込む。** 会話で ×Si fuere posible… と言うと、大げさで不自然に響きます。会話では ○Si es posible… です。
+- **接続法未来を直説法未来と取り違える。** ×hablaré（未来）と読んでしまう → ○hablare（接続法未来）。
+- **de + 不定詞の条件文で完了形を忘れる。** 過去の仮定は ×De saberlo… ではなく ○De **haberlo sabido**…。De saberlo は「（今）知っていれば」という現在の仮定になります。
+- **決まり文句を場面違いで使う。** Que en paz descanse. は弔いの言葉です。お別れのあいさつには使いません。
 
 ## 文化メモ (Referentes culturales)
 
 <CultureNote>
 
-TODO:contenido
+Adonde fueres, haz lo que vieres. は、日本語の「郷に入っては郷に従え」にそっくりのことわざです。スペインのことわざ（refranes）には、このような古い文法がそのまま残っているものが多く、スペイン人は意味を考えずに、昔からの言い回しとして口にします。ことわざの宝庫として知られるのが、17世紀初めにミゲル・デ・セルバンテスが書いた『ドン・キホーテ』で、従者サンチョ・パンサは会話のたびにことわざを並べたてます。黄金世紀のこの時代には、接続法未来もまだ生きた形でした。ことわざと文化的な引用は、ユニット59でくわしく学びます。
 
 </CultureNote>
 
 ## 練習 (Procedimientos de aprendizaje)
 
-### 練習1：認識
+### 練習1：現代の言葉に直す
 
-TODO:contenido
+接続法未来や文語の形を、現代の会話の形に言いかえてください。
+
+1. Adonde fueres, haz lo que vieres.
+2. Quien infringiere esta norma será sancionado.
+3. De haberlo sabido, te habría llamado.
+4. Hubiera sido mejor esperar.
 
 <details>
 <summary>答えを見る</summary>
 
-TODO:contenido
+1. Adonde vayas, haz lo que veas.
+2. Quien infrinja esta norma será sancionado.
+3. Si lo hubiera sabido, te habría llamado.
+4. Habría sido mejor esperar.（Hubiera sido mejor esperar. も会話でふつうに使う）
 
 </details>
 
-### 練習2：穴埋め
+### 練習2：決まり文句を選ぶ
 
-TODO:contenido
+次の場面にふさわしい決まり文句を、下から選んでください。
+
+Que yo sepa / Que en paz descanse / Cueste lo que cueste / que digamos
+
+1. 同僚の祖父が亡くなったと聞いて、故人について言うとき。
+2. 「私の知る限り、会議は明日だよ」と言うとき。
+3. 「あのレストランは安いとは言えない」と言うとき。
+4. 「どんなに大変でも、この試験に受かってみせる」と言うとき。
 
 <details>
 <summary>答えを見る</summary>
 
-TODO:contenido
+1. Que en paz descanse.（Lo siento mucho. Que en paz descanse.）
+2. Que yo sepa, la reunión es mañana.
+3. Ese restaurante no es barato que digamos.
+4. Cueste lo que cueste, aprobaré este examen.
 
 </details>
 
 ### 練習3：作文
 
-TODO:contenido
+改まった書き言葉を想定して、スペイン語で書いてみましょう。
+
+1. あなたの助けがなかったら、この計画は実現できなかったでしょう。（de + 不定詞で）
+2. 結果がどうであれ、私たちはそれを受け入れます。
+3. 早くそれを知っていたら、別の決断をしていただろう。（de + 不定詞で）
 
 <details>
-<summary>答えを見る</summary>
+<summary>解答例を見る</summary>
 
-TODO:contenido
+1. De no ser por su ayuda, este proyecto no habría sido posible.
+2. Sea cual sea el resultado, lo aceptaremos.
+3. De haberlo sabido antes, habría tomado otra decisión.
 
 </details>
 
@@ -98,4 +276,8 @@ TODO:contenido
 
 ## まとめ
 
-TODO:contenido
+- 日常で使う接続法は、現在・現在完了・過去・過去完了の四つ。接続法未来（hablare、fuere、hubiere）は、ことわざや法律の文に残る形で、読んでわかれば十分。
+- De haberlo sabido… は Si lo hubiera sabido… の文語的な言い方。hubiera は habría の代わりにも使える。
+- Que yo sepa、que digamos、Que en paz descanse、Cueste lo que cueste などの決まり文句は、場面と文体に合わせて使う。
+
+次のユニット58では、形容詞の位置や比喩、語順が生む効果など、スペイン語の文体と修辞を学びます。
