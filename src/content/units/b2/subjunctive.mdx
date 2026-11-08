@@ -5,90 +5,278 @@ levelName: "Avanzado"
 slug: "subjunctive"
 url: "/language/learn-spanish/b2/subjunctive/"
 existing: true
-title: "接続法過去"
+title: "スペイン語の接続法過去｜-ra形・-se形の活用と作り方"
 shortTitle: "接続法過去"
-titleEs: "imperfecto de subjuntivo"
-grammar: ["-ra/-se"]
-tenses: []
-functions: []
-canDo: []
-vocabulary: []
-verbs: ["tener","hacer","ir"]
+titleEs: "Imperfecto de subjuntivo: formas en -ra y -se"
+description: "スペイン語の接続法過去（-ra形・-se形）の作り方を解説。点過去の ellos の形から作るルール、tuviera・fuera・hiciera などの不規則な形、ojalá や丁寧な quisiera での使い方を、日本人が間違えやすい点と練習問題つきで身につけます。"
+grammar: ["imperfecto de subjuntivo: formas en -ra y -se", "formación a partir del pretérito indefinido", "irregulares", "usos: correlación temporal, deseos irreales, cortesía"]
+tenses: ["pretérito imperfecto de subjuntivo"]
+functions: ["実現しそうにない願いを言う", "丁寧に希望を伝える", "過去の依頼や希望を伝える"]
+canDo:
+  - "規則動詞と不規則動詞の接続法過去を、点過去の ellos の形から作れる"
+  - "-ra 形と -se 形が同じ意味で使えることを理解し、読んでわかる"
+  - "ojalá や quisiera を使って、実現しにくい願いや丁寧な希望を伝えられる"
+vocabulary:
+  # rank = «Rango frec.» del diccionario de frecuencias del CORPES XXI (RAE). Lo escribe
+  # npm run vocab:rank -- --write; lo que no es lema del diccionario va sin rank, al final.
+  - { es: "el diario", ja: "日記・日刊紙", rank: 755, example: "Yui escribe en su diario cada noche." }
+  - { es: "el recuerdo", ja: "思い出", rank: 1747, example: "Tengo muy buenos recuerdos de Salamanca." }
+  - { es: "la infancia", ja: "子ども時代", rank: 2127, example: "En mi infancia vivía en Kioto." }
+  - { es: "el sueño", ja: "夢・眠気", rank: 905, example: "Mi sueño era estudiar en España." }
+  - { es: "la beca", ja: "奨学金", rank: 3012, example: "Ojalá me dieran la beca otra vez." }
+  - { es: "el intercambio", ja: "交換・交換留学", rank: 1991, example: "Estoy de intercambio en Salamanca." }
+  - { es: "la oportunidad", ja: "機会", rank: 422, example: "Es una oportunidad única." }
+  - { es: "el consejo", ja: "助言・アドバイス", rank: 514, example: "Mi madre me dio un buen consejo." }
+  - { es: "aconsejar", ja: "助言する", rank: 3299, example: "Me aconsejó que estudiara idiomas." }
+  - { es: "sugerir", ja: "提案する", rank: 1456, example: "El profesor nos sugirió que leyéramos más." }
+  - { es: "quedarse", ja: "とどまる・残る", rank: 131, example: "Quisiera quedarme un año más." }
+  - { es: "imaginar", ja: "想像する", rank: 1439, example: "Imagina que vives en Madrid." }
+  - { es: "la nostalgia", ja: "郷愁・懐かしさ", rank: 4345, example: "A veces siento nostalgia de Japón." }
+  - { es: "echar de menos", ja: "恋しく思う・いなくて寂しい", la: "extrañar", example: "Echo de menos a mi familia." }
+verbs: ["tener", "hacer", "ser", "ir", "estar", "poder", "decir", "haber"]
 duration: 40
 prev: 36
 next: 38
-related: [25,38,39]
-cast: ["yui","daniel"]
-audio: []
+related: [25, 38, 39]
+cast: ["yui", "daniel"]
+audio:
+  - "¿Qué tal en Salamanca, Yui?"
+  - "Muy bien, pero a veces echo de menos Japón. Ojalá mi familia viviera más cerca."
+  - "Te entiendo. Mi madre siempre me decía que estudiara idiomas, y aquí estoy, en Tokio."
+  - "¡Qué bien! Yo quisiera quedarme un año más."
+  - "hablara, hablaras, hablara, habláramos, hablarais, hablaran"
+  - "tuviera, tuvieras, tuviera, tuviéramos, tuvierais, tuvieran"
+  - "fuera, fueras, fuera, fuéramos, fuerais, fueran"
+  - "hablase, hablases, hablase, hablásemos, hablaseis, hablasen"
+  - "Quisiera un café con leche, por favor."
+  - "Ojalá tuviera más tiempo."
+  - "El profesor nos pidió que leyéramos el libro."
 youtubeId: ""
-quiz: []
 image: { src: "/images/course/units/u37.webp", width: 1200, height: 675, alt: "夕暮れのサラマンカの部屋で、窓辺に座って日記を書くユイ" }
 draft: true
 updated: "2026-11-02"
+quiz:
+  - question: "接続法過去を作るときの元になる形は？"
+    options: ["直説法現在の yo の形", "点過去の ellos の形", "不定詞"]
+    correctIndex: 1
+    explanation: "点過去の ellos の形（hablaron, tuvieron）から -ron を取り、-ra または -se の語尾をつけます。"
+  - question: "hablar の接続法過去（yo、-ra 形）は？"
+    options: ["hablaba", "hablaría", "hablara"]
+    correctIndex: 2
+    explanation: "hablaron → habla- + ra で hablara。hablaba は線過去、hablaría は過去未来（条件法）です。"
+  - question: "tener の接続法過去（yo）は？"
+    options: ["tuviera", "teniera", "tenga"]
+    correctIndex: 0
+    explanation: "点過去の不規則な形 tuvieron から作るので tuviera。不定詞の ten- からは作りません。tenga は接続法現在です。"
+  - question: "ser の接続法過去（él）は？"
+    options: ["era", "fuera", "fue"]
+    correctIndex: 1
+    explanation: "ser の点過去 fueron から作るので fuera。ir も点過去が fueron なので、接続法過去は同じ fuera になります。"
+  - question: "hacer の接続法過去（nosotros）は？"
+    options: ["hiciéramos", "haciéramos", "hicieramos"]
+    correctIndex: 0
+    explanation: "hicieron → hicie- + ramos。nosotros の形は後ろから3番目を強く読むので、いつもアクセント記号がつきます：hiciéramos。"
+  - question: "hablar の接続法過去（yo）を -se 形にすると？"
+    options: ["hablese", "hablasse", "hablase"]
+    correctIndex: 2
+    explanation: "-se 形は -ra を -se に替えるだけです：hablara = hablase。意味は同じです。"
+  - question: "「カフェ・コン・レチェをいただきたいのですが」。丁寧なのは？"
+    options: ["Quiero un café con leche.", "Quisiera un café con leche.", "Quise un café con leche."]
+    correctIndex: 1
+    explanation: "querer の接続法過去 quisiera は、丁寧に希望を伝える言い方です。この使い方は -ra 形だけで、quisiese とは言いません。quise は点過去です。"
+  - question: "「もっと時間があればいいのに（実際はない）」。正しいのは？"
+    options: ["Ojalá tengo más tiempo.", "Ojalá tenga más tiempo.", "Ojalá tuviera más tiempo."]
+    correctIndex: 2
+    explanation: "実現しそうにない・現実と違う願いは ojalá + 接続法過去です。Ojalá tenga… は、実現しうる願い（時間があるといいな）を表します。"
+  - question: "「母は私に語学を勉強するように言った」。もっとも一般的なのは？"
+    options: ["Mi madre me dijo que estudiara idiomas.", "Mi madre me dijo que estudiaba idiomas.", "Mi madre me dijo que estudio idiomas."]
+    correctIndex: 0
+    explanation: "過去の依頼（dijo que 〜するように）は、que のあとが接続法過去になります。que estudiaba にすると「私が語学を勉強していると言った」という事実の報告になります。"
+  - question: "dormir の接続法過去（ellos）は？"
+    options: ["dormieran", "duermieran", "durmieran"]
+    correctIndex: 2
+    explanation: "dormir の点過去 ellos は durmieron（o → u）なので、接続法過去も durmieran。pedir → pidieran も同じ仕組みです。"
 ---
 
-TODO:contenido（導入：このユニットの問いに、それだけで答えになる2文で答える）
+接続法過去は、過去の文の中や、現実とは違うことを願うときに使う接続法の形です。点過去の ellos の形（hablaron, tuvieron）から -ron を取り、-ra または -se の語尾をつけて作ります。
 
-## 文法 (Gramática)
+ユニット25で学んだ接続法現在は、今やこれからのことへの願いや気持ちを表す形でした。B2 では、「〜してくれたらよかったのに」「もし〜だったら」のように、過去のことや現実と違うことも表せるようになります。その土台になるのが接続法過去です。作り方は点過去がわかっていれば難しくありませんが、点過去の不規則な形をそのまま使うので、点過去の復習にもなります。このユニットでは、サラマンカでの留学生活も2年目に入ったユイが、夕暮れの部屋で日記を書きながら、東京のダニエルと話す場面を例に、接続法過去の形を身につけます。
 
-TODO:contenido
+## 文法：接続法過去の活用 (Gramática)
+
+まず規則動詞の作り方を、次に -ra 形と -se 形の関係を、最後に不規則な形と主な使い方を見ていきましょう。
+
+### 作り方：点過去の ellos の形から
+
+接続法過去は、直説法の点過去から作ります。
+
+1. 点過去の ellos の形を思い出す（hablaron, comieron, vivieron）。
+2. 語尾の -ron を取る（habla-, comie-, vivie-）。
+3. -ra, -ras, -ra, -ramos, -rais, -ran をつける。
+
+| | hablar（話す） | comer（食べる） | vivir（住む） |
+| --- | --- | --- | --- |
+| yo | hablara | comiera | viviera |
+| tú | hablaras | comieras | vivieras |
+| él / ella / usted | hablara | comiera | viviera |
+| nosotros | habláramos | comiéramos | viviéramos |
+| vosotros | hablarais | comierais | vivierais |
+| ellos / ellas / ustedes | hablaran | comieran | vivieran |
+
+※ vosotros はスペインのみで使います。中南米では ustedes を使います（→ [中南米のスペイン語](/language/learn-spanish/spanish-in-latin-america/)）。
+
+すべての動詞が、例外なくこの作り方に従います。-ar 動詞は -ara、-er・-ir 動詞は -iera という形になります。
+
+### -ra 形と -se 形
+
+接続法過去には、-ra で終わる形と -se で終わる形の二つがあり、ほとんどの場合、同じ意味で使えます。-se 形は、-ra を -se に替えて作ります。
+
+| -ra 形 | -se 形 |
+| --- | --- |
+| hablara, hablaras, hablara | hablase, hablases, hablase |
+| habláramos, hablarais, hablaran | hablásemos, hablaseis, hablasen |
+| tuviera, tuvieras, tuviera | tuviese, tuvieses, tuviese |
+
+話し言葉では -ra 形のほうがよく使われ、-se 形は書き言葉や、スペインの一部の地域でよく見られます。まずは -ra 形で話せるようにし、-se 形は読んで意味がわかれば十分です。ただし、quisiera（〜したいのですが）のような丁寧な言い方は、-ra 形だけで使います。
+
+### 不規則な形：点過去の不規則がそのまま
+
+点過去の ellos の形が不規則な動詞は、その不規則な形から作ります。不定詞から作らないように気をつけましょう。
+
+| 動詞 | 点過去（ellos） | 接続法過去 |
+| --- | --- | --- |
+| tener（持つ） | tuvieron | tuviera |
+| estar（いる） | estuvieron | estuviera |
+| poder（できる） | pudieron | pudiera |
+| poner（置く） | pusieron | pusiera |
+| saber（知っている） | supieron | supiera |
+| querer（欲しい） | quisieron | quisiera |
+| venir（来る） | vinieron | viniera |
+| hacer（する） | hicieron | hiciera |
+| decir（言う） | dijeron | dijera |
+| ser / ir | fueron | fuera |
+| dar（与える） | dieron | diera |
+| leer（読む） | leyeron | leyera |
+| pedir（頼む） | pidieron | pidiera |
+| dormir（眠る） | durmieron | durmiera |
+
+ser と ir は、点過去と同じく接続法過去も fuera で同じ形です。どちらの意味かは文脈で判断します。haber の hubiera は、完了形を作るときに使います（→ ユニット39）。
+
+### どんなときに使う？
+
+接続法過去を使う主な場面は、次のとおりです。くわしい使い方は、このあとのユニットで一つずつ学びます。
+
+- **過去の文の中で（時制の一致）**：Quiero que vengas.（来てほしい）→ Quería que vinieras.（来てほしかった）→ ユニット40
+- **現実と違う仮定**：Si tuviera tiempo, viajaría más.（時間があれば、もっと旅行するのに）→ ユニット38
+- **実現しそうにない願い**：Ojalá tuviera más tiempo.（もっと時間があればいいのに）。実現しうる願いは Ojalá tenga tiempo.（時間があるといいな）と接続法現在で言います。
+- **丁寧な希望**：Quisiera un café con leche, por favor.（カフェ・コン・レチェをいただきたいのですが）
+
+### ダニエルとのビデオ通話
+
+日記を書き終えたユイが、東京のダニエルとビデオ通話をします。
+
+- Daniel: ¿Qué tal en Salamanca, Yui?（サラマンカはどう、ユイ？）
+- Yui: Muy bien, pero a veces echo de menos Japón. Ojalá mi familia viviera más cerca.（いいよ。でも、ときどき日本が恋しくなるの。家族がもっと近くに住んでいたらいいのに）
+- Daniel: Te entiendo. Mi madre siempre me decía que estudiara idiomas, y aquí estoy, en Tokio.（わかるよ。母はいつも、語学を勉強しなさいって言っていたんだ。それで今は東京にいるってわけ）
+- Yui: ¡Qué bien! Yo quisiera quedarme un año más.（いいね！私はもう1年いられたらいいな）
+
+**ダニエル（バレンシア出身）のひとこと：** スペインでは、-ra 形と -se 形の両方を耳にします。Si tuviera tiempo… と Si tuviese tiempo… は同じ意味で、-se 形のほうが少し改まって聞こえることがあります。ただ、お店で Quisiese un café. とは言いません。丁寧に頼むときの quisiera だけは、いつも -ra 形です。
 
 ## 活用：今日の動詞 (Conjugación)
 
-TODO:contenido
+今日の動詞は、点過去が不規則な [tener](/language/learn-spanish/verb-conjugation/tener/)、[hacer](/language/learn-spanish/verb-conjugation/hacer/)、[estar](/language/learn-spanish/verb-conjugation/estar/)、[poder](/language/learn-spanish/verb-conjugation/poder/)、[decir](/language/learn-spanish/verb-conjugation/decir/) と、fuera の形を共有する [ser](/language/learn-spanish/verb-conjugation/ser/) と [ir](/language/learn-spanish/verb-conjugation/ir/) です。活用表のページでは、点過去と接続法過去（-ra 形・-se 形）を並べて確認できます。点過去の ellos の形を言ってから、接続法過去を作る練習をしましょう。
 
 ## 語彙 (Nociones específicas)
+
+留学生活をふり返るときの言葉と、aconsejar（助言する）や sugerir（提案する）のように、過去の文で接続法過去を続ける動詞です：Me aconsejó que estudiara idiomas.（語学を勉強するよう助言してくれた）。
 
 <VocabList items={frontmatter.vocabulary} level={frontmatter.level} />
 
 ## 発音・正書法 (Pronunciación y ortografía)
 
-TODO:contenido
+接続法過去の nosotros の形は、後ろから3番目の音節を強く読むので、いつもアクセント記号がつきます：habláramos、tuviéramos、fuéramos、hablásemos。また、アクセント記号の有無で意味が変わる形に注意しましょう。hablara（接続法過去）は後ろから2番目を、hablará（未来）は最後を強く読みます：Ojalá hablara español.（スペイン語が話せたらいいのに）／Mañana hablará con el profesor.（明日、先生と話すだろう）。
 
 ## 日本人がよく間違える
 
-TODO:contenido
+接続法過去でつまずくのは、次の四つです。
+
+- **不定詞から作る。** ×teniera、×hacieran、×dormieran → ○**tuviera**、○**hicieran**、○**durmieran**。必ず点過去の ellos の形から作ります。
+- **nosotros のアクセント記号を忘れる。** ×hablaramos、×fueramos → ○habl**á**ramos、○fu**é**ramos。
+- **過去の文で接続法現在を使う。** ×Me pidió que venga. → ○Me pidió que **viniera**.（来るよう私に頼んだ）。主節が過去なら、que のあとはふつう接続法過去です（→ ユニット40）。
+- **hablara と hablará を混同する。** アクセント記号一つで、接続法過去と未来が入れかわります。
 
 ## 文化メモ (Referentes culturales)
 
 <CultureNote>
 
-TODO:contenido
+スペインの新聞やニュースでは、el que fuera presidente del Gobierno のような言い方をよく見かけます。この fuera は願いや仮定ではなく、「かつて首相だった人」という意味です。接続法過去の -ra 形は、もとはラテン語の直説法の過去完了（「〜していた」）から生まれた形で、その古い意味が、報道や文学の関係節の中に今も残っています。話し言葉ではほとんど使いませんが、スペインの新聞記事を読むときに知っておくと戸惑いません。
 
 </CultureNote>
 
 ## 練習 (Procedimientos de aprendizaje)
 
-### 練習1：認識
+### 練習1：点過去から作る
 
-TODO:contenido
+点過去の ellos の形を言ってから、接続法過去（-ra 形）の yo の形を作ってください。
+
+1. estudiar
+2. tener
+3. ser
+4. decir
+5. pedir
+6. leer
 
 <details>
 <summary>答えを見る</summary>
 
-TODO:contenido
+1. estudiaron → estudiara
+2. tuvieron → tuviera
+3. fueron → fuera
+4. dijeron → dijera
+5. pidieron → pidiera
+6. leyeron → leyera
 
 </details>
 
 ### 練習2：穴埋め
 
-TODO:contenido
+（ ）の動詞を、接続法過去（-ra 形）の正しい形にしてください。
+
+1. Ojalá ___ (tener) más tiempo libre.
+2. Mi madre me pidió que la ___ (llamar) cada semana.
+3. El profesor nos sugirió que ___ (leer) más novelas.
+4. ___ (querer) una mesa para dos, por favor.
+5. Quería que tú ___ (venir) a la fiesta.
+6. Ojalá nosotros ___ (poder) quedarnos un año más.
 
 <details>
 <summary>答えを見る</summary>
 
-TODO:contenido
+1. tuviera
+2. llamara
+3. leyéramos（nosotros はアクセント記号が必要）
+4. Quisiera（丁寧な希望。-ra 形だけで使う）
+5. vinieras
+6. pudiéramos
 
 </details>
 
 ### 練習3：作文
 
-TODO:contenido
+ユイになったつもりで、スペイン語で言ってみましょう。
+
+1. 家族がもっと近くに住んでいたらいいのに。
+2. 先生は私たちに、もっと話すようにと言った。
+3. （カフェで）水を1本いただきたいのですが。
+4. 母は私に、スペインに行くよう助言してくれた。
 
 <details>
-<summary>答えを見る</summary>
+<summary>解答例を見る</summary>
 
-TODO:contenido
+1. Ojalá mi familia viviera más cerca.
+2. El profesor nos dijo que habláramos más.
+3. Quisiera una botella de agua, por favor.
+4. Mi madre me aconsejó que fuera a España.
 
 </details>
 
@@ -98,4 +286,8 @@ TODO:contenido
 
 ## まとめ
 
-TODO:contenido
+- 接続法過去は、点過去の ellos の形から -ron を取り、-ra（または -se）の語尾をつけて作る。nosotros の形には、いつもアクセント記号がつく。
+- 点過去が不規則な動詞は、その形から作る：tuvieron → tuviera、fueron → fuera、hicieron → hiciera。
+- 過去の文の中、現実と違う仮定、実現しそうにない願い（ojalá）、丁寧な希望（quisiera）で使う。
+
+次のユニット38では、si + 接続法過去で「もし〜なら」と現実と違う仮定を表す条件文を学びます。

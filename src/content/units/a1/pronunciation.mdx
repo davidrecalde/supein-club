@@ -5,90 +5,325 @@ levelName: "Acceso"
 slug: "pronunciation"
 url: "/language/learn-spanish/a1/pronunciation/"
 existing: true
-title: "発音と読み方"
+title: "スペイン語の発音と読み方｜アルファベット・母音・アクセントの基本"
 shortTitle: "発音と読み方"
-titleEs: "alfabeto y acentuación"
-grammar: ["sonidos","acento","entonación"]
+titleEs: "Alfabeto, sonidos y acentuación"
+description: "スペイン語は、ほぼ書いてあるとおりに読める言語です。5つの母音、アルファベット27文字、h・j・ñ・r など読み方に注意する文字、強く読む位置とアクセント記号のルールを、日本人が間違えやすい点と練習問題つきで解説します。"
+grammar: ["vocales", "alfabeto y correspondencia entre letras y sonidos", "acentuación y tilde", "entonación"]
 tenses: []
-functions: []
-canDo: []
-vocabulary: []
+functions: ["単語を声に出して読む", "名前のつづりを言う・たずねる"]
+canDo:
+  - "初めて見るスペイン語の単語を、つづりから正しく読める"
+  - "強く読む位置を、アクセント記号のルールから判断できる"
+  - "自分の名前のつづりを、スペイン語のアルファベットで伝えられる"
+vocabulary:
+  # rank = «Rango frec.» del diccionario de frecuencias del CORPES XXI (RAE). Lo escribe
+  # npm run vocab:rank -- --write; lo que no es lema del diccionario va sin rank, al final.
+  - { es: "hola", ja: "こんにちは・やあ", rank: 9591, example: "Hola, me llamo Mina." }
+  - { es: "perdón", ja: "すみません・ごめんなさい", rank: 4435, example: "Perdón, ¿puede repetir?" }
+  - { es: "adiós", ja: "さようなら", rank: 16992, example: "Adiós, hasta mañana." }
+  - { es: "sí", ja: "はい", rank: 252, example: "Sí, soy japonesa." }
+  - { es: "no", ja: "いいえ・〜ない", rank: 15, example: "No, no soy española." }
+  - { es: "la letra", ja: "文字", rank: 1539, example: "La ñ es una letra del español." }
+  - { es: "la palabra", ja: "単語・言葉", rank: 370, example: "¿Cómo se escribe esta palabra?" }
+  - { es: "el nombre", ja: "名前", rank: 313, example: "¿Su nombre, por favor?" }
+  - { es: "el apellido", ja: "名字", rank: 3841, example: "¿Cómo se escribe su apellido?" }
+  - { es: "escribir", ja: "書く", rank: 305, example: "¿Cómo se escribe tu nombre?" }
+  - { es: "repetir", ja: "繰り返す・もう一度言う", rank: 1109, example: "¿Puede repetir, por favor?" }
+  - { es: "el español", ja: "スペイン語", rank: 829, example: "Mina estudia español." }
+  - { es: "por favor", ja: "お願いします", rank: 6011, example: "Un café, por favor." }
+  - { es: "gracias", ja: "ありがとう", example: "Muchas gracias." }
 verbs: []
 duration: 40
 prev: null
 next: 2
-related: [2,12,10]
+related: [2, 12, 10]
 cast: ["mina"]
-audio: []
+audio:
+  - "Buenas tardes. ¿Su nombre, por favor?"
+  - "Hola, me llamo Mina."
+  - "¿Cómo se escribe?"
+  - "Eme, i, ene, a."
+  - "Muy bien, gracias."
+  - "a, e, i, o, u"
+  - "hola"
+  - "jamón"
+  - "gente"
+  - "guitarra"
+  - "gracias"
+  - "pero, perro"
+  - "café"
+  - "música"
+  - "¿Hablas español?"
+  - "¿Dónde está el hotel?"
 youtubeId: ""
-quiz: []
 image: { src: "/images/course/units/u01.webp", width: 1200, height: 675, alt: "マドリードへ向かう機内で、会話集を手にスペイン語の発音を練習するミナ" }
 draft: true
 updated: "2026-11-02"
+quiz:
+  - question: "hola（こんにちは）の読み方に近いのは？"
+    options: ["ホラ", "ジョラ", "オラ"]
+    correctIndex: 2
+    explanation: "スペイン語の h は読みません。hola は「オラ」、hotel は「オテル」です。"
+  - question: "jamón（生ハム）の j は、どんな音？"
+    options: ["日本語の「ジャ」", "喉の奥から息を出す「ハ」に近い音", "読まない"]
+    correctIndex: 1
+    explanation: "j は喉の奥でこするように息を出す「ハ」行の音です。jamón は「ハモン」に近く、「ジャモン」ではありません。"
+  - question: "gente（人々）の読み方に近いのは？"
+    options: ["ヘンテ", "ゲンテ", "ジェンテ"]
+    correctIndex: 0
+    explanation: "g は e・i の前では j と同じ「ハ」行の音になります。gente は「ヘンテ」、ga・go・gu は「ガ・ゴ・グ」です。"
+  - question: "guitarra（ギター）の gui は、どう読む？"
+    options: ["グ・イと2音で読む", "「ジ」と読む", "u は読まず「ギ」と読む"]
+    correctIndex: 2
+    explanation: "gue・gui の u は、g を「ガ」行の音にするための文字で、読みません。guitarra は「ギタラ」に近い音です（rr は巻き舌）。"
+  - question: "スペインのスペイン語で、gracias の c はどんな音？"
+    options: ["英語 think の th に近い音", "k の音", "読まない"]
+    correctIndex: 0
+    explanation: "スペインの多くの地域では、ce・ci と z を、舌先を歯のあいだに軽くはさむ th に近い音で発音します。中南米では s の音になります。"
+  - question: "hablan（彼らは話す）で、強く読むのは？"
+    options: ["blan（最後の音節）", "ha（後ろから2番目の音節）", "どちらも同じ強さ"]
+    correctIndex: 1
+    explanation: "母音・n・s で終わる語は、後ろから2番目の音節を強く読みます：HA-blan。"
+  - question: "ciudad（都市）で、強く読むのは？"
+    options: ["ciu（最初の音節）", "決まりはない", "dad（最後の音節）"]
+    correctIndex: 2
+    explanation: "n・s 以外の子音で終わる語は、最後の音節を強く読みます：ciu-DAD。hotel、español も同じです。"
+  - question: "正しいつづりにアクセント記号がつくのは？"
+    options: ["cafe（コーヒー）", "casa（家）", "mesa（テーブル）"]
+    correctIndex: 0
+    explanation: "café は母音で終わるのに最後を強く読むので、ルールの例外をアクセント記号で示します。casa と mesa はルールどおりなので記号は不要です。"
+  - question: "¿Hablas español?（スペイン語を話す？）のように、はい／いいえで答える疑問文の終わりは？"
+    options: ["下がる", "平らなまま", "上がる"]
+    correctIndex: 2
+    explanation: "はい／いいえで答える疑問文は、文の終わりを上げます。¿Dónde está el hotel? のように疑問詞で始まる疑問文は、ふつう終わりが下がります。"
+  - question: "pero（しかし）と perro（犬）の違いは？"
+    options: ["母音の長さ", "r を1回はじくか、舌を何度も震わせるか", "h があるかないか"]
+    correctIndex: 1
+    explanation: "母音のあいだの r は舌を1回はじく音、rr は舌を何度も震わせる巻き舌の音です。この違いだけで意味が変わります。"
 ---
 
-TODO:contenido（導入：このユニットの問いに、それだけで答えになる2文で答える）
+スペイン語は、ほぼ書いてあるとおりに読める言語です。5つの母音と、読み方に注意するいくつかの文字、強く読む位置のルールを覚えれば、初めて見る単語でも声に出して読めます。
 
-## 文法 (Gramática)
+日本語を話す人にとって、スペイン語の音はなじみやすいものがたくさんあります。母音は日本語と同じ5つで、カタカナに近い音で読める単語も少なくありません。一方で、h を読まない、j を喉の奥で発音する、強く読む位置で意味が変わるなど、最初に知っておきたい決まりもあります。最初に正しい読み方を身につけておけば、あとで発音のクセを直す手間がずっと少なくなります。このユニットでは、マドリードへ向かう飛行機の中で会話集を開いたミナといっしょに、スペイン語の読み方の基本を身につけます。
 
-TODO:contenido
+## 文法：母音・文字・アクセントのルール (Gramática)
+
+まず5つの母音を、次にアルファベットと読み方に注意する文字を、最後に強く読む位置とイントネーションを見ていきましょう。
+
+### スペイン語の5つの母音
+
+スペイン語の母音は **a, e, i, o, u** の5つだけです。単語のどこにあっても、いつも同じ音で読みます。英語のように、同じ a が単語によって違う音になることはありません。
+
+| 母音 | 音の目安 | 例 |
+| --- | --- | --- |
+| a | ア | casa（家）、agua（水） |
+| e | エ | mesa（テーブル）、leche（牛乳） |
+| i | イ | sí（はい）、vino（ワイン） |
+| o | オ | ojo（目）、sol（太陽） |
+| u | ウ（唇を丸めて前に出す） | luz（光）、uva（ぶどう） |
+
+日本語の「ウ」は唇をあまり丸めませんが、スペイン語の u は唇をしっかり丸めて前に突き出します。また、スペイン語には長い母音と短い母音の区別がありません。どの母音も同じ長さで、はっきり発音します。
+
+### アルファベット27文字
+
+スペイン語のアルファベットは27文字で、英語の26文字に **ñ** が加わります。ch と ll は2文字の組み合わせで、アルファベットの文字には数えません。文字の名前は、名前のつづりを伝えるときに使います。
+
+| 文字 | 名前 | 読み方の目安 | 例 |
+| --- | --- | --- | --- |
+| a | a | ア | agua |
+| b | be | ベ | boca（口） |
+| c | ce | セ | casa、cine（映画館） |
+| d | de | デ | dedo（指） |
+| e | e | エ | euro（ユーロ） |
+| f | efe | エフェ | flor（花） |
+| g | ge | ヘ | gato（猫）、gente（人々） |
+| h | hache | アチェ | hola（h は読まない） |
+| i | i | イ | isla（島） |
+| j | jota | ホタ | jamón（生ハム） |
+| k | ka | カ | kilo（キロ） |
+| l | ele | エレ | luna（月） |
+| m | eme | エメ | mesa |
+| n | ene | エネ | noche（夜） |
+| ñ | eñe | エニェ | España（スペイン） |
+| o | o | オ | ojo |
+| p | pe | ペ | pan（パン） |
+| q | cu | ク | queso（チーズ） |
+| r | erre | エッレ（舌を震わせる） | rosa（バラ） |
+| s | ese | エセ | sol |
+| t | te | テ | taza（カップ） |
+| u | u | ウ | uva |
+| v | uve | ウベ | vino |
+| w | uve doble | ウベ・ドブレ | wifi（Wi-Fi） |
+| x | equis | エキス | taxi（タクシー） |
+| y | ye | ジェ・イェ | yo（私） |
+| z | zeta | セタ（th に近い音） | zapato（靴） |
+
+### 読み方に注意する文字
+
+ほとんどの文字はローマ字に近い音ですが、次の文字は読み方が違います。
+
+| つづり | 読み方 | 例 |
+| --- | --- | --- |
+| ca, co, cu / que, qui | カ、コ、ク / ケ、キ（qu の u は読まない） | casa、Cuba、queso、quince（15） |
+| ce, ci / za, zo, zu | th に近い音（スペイン）。中南米では s の音 | cena（夕食）、cine、zapato |
+| ga, go, gu / gue, gui | ガ、ゴ、グ / ゲ、ギ（gu の u は読まない） | gato、gol（ゴール）、guitarra |
+| ge, gi / ja, je, ji, jo, ju | 喉の奥から息を出す「ハ」行の音 | gente、jamón、Japón（日本） |
+| h | 読まない | hola、hotel |
+| ll, y | 「ジャ」行から「ヤ」行のあいだの音 | calle（通り）、llave（鍵）、yo |
+| ñ | ニャ、ニュ、ニョ | España、mañana（明日・朝） |
+| b, v | どちらも同じ「バ」行の音 | bueno（よい）、vino |
+| d（単語の最後） | とても弱く、ほとんど聞こえない | Madrid、ciudad |
+
+r と l の区別は、日本語を話す人にとっていちばんの壁です。スペイン語には次の3つの音があります。
+
+- **l**：舌先を上の歯ぐきにつけたまま出す音。luna、pelo（髪）。
+- **r**（母音のあいだなど）：舌先で上の歯ぐきを1回だけはじく音。日本語のラ行に近い音です。pero（しかし）、caro（値段が高い）。
+- **rr**、単語の最初の **r**：舌先を何度も震わせる巻き舌の音。perro（犬）、rosa、Roma（ローマ）。
+
+この違いだけで意味が変わる単語があります：pelo（髪）／pero（しかし）／perro（犬）、caro（高い）／carro（荷車・カート）。毎日少しずつ声に出して練習しましょう。舌の動かし方や、口の形を確かめながらの練習は、[日本人のためのスペイン語発音ガイド](/language/learn-spanish/pronunciation-for-japanese/)で詳しく扱っています。
+
+**ダニエル（バレンシア出身）のひとこと：** スペインの多くの地域では、ce・ci と z を、舌先を歯のあいだに軽くはさむ th に近い音で発音します。gracias（ありがとう）の ci もこの音です。中南米やカナリア諸島、アンダルシアの一部では、この音を s と同じように発音します（「セセオ」といいます）。どちらも正しいスペイン語なので、聞いてわかれば大丈夫。このコースでは、スペインの発音を基準にしています。
+
+### 強く読む位置とアクセント記号
+
+スペイン語の単語には、必ず1か所、強く読む音節があります。その位置は、単語の終わりの文字で決まります。
+
+| ルール | 強く読む位置 | 例（太字が強く読む音節） |
+| --- | --- | --- |
+| 1. 母音、n、s で終わる | 後ろから2番目の音節 | **ca**-sa、**ha**-blan、**lu**-nes |
+| 2. n、s 以外の子音で終わる | 最後の音節 | ciu-**dad**、ho-**tel**、es-pa-**ñol** |
+| 3. 1と2に合わない | アクセント記号（´）のある母音 | ca-**fé**、es-ta-**ción**、**mú**-si-ca、**ár**-bol |
+
+アクセント記号は、ルールの例外を知らせる目印です。記号がなければルール1か2で読み、記号があればその母音を強く読みます。たとえば café は母音で終わるのでルール1なら CA-fe になるはずですが、実際は最後を強く読むので、é に記号がつきます。
+
+アクセント記号で意味を区別する短い単語もあります。
+
+- sí（はい）／si（もし）
+- tú（君は）／tu（君の）
+- él（彼は）／el（その、定冠詞）
+
+qué（何）、dónde（どこ）、cómo（どのように）など、疑問文で使う疑問詞にも、いつもアクセント記号がつきます。疑問詞は、ユニット10で詳しく学びます。
+
+### イントネーション：疑問文と感嘆文
+
+スペイン語では、疑問文と感嘆文の始めに、逆さまの記号 **¿** と **¡** をつけます。文の途中からでも、記号のあるところから疑問や感嘆が始まります。
+
+<Examples>
+
+- ¿Hablas español?（スペイン語を話す？）
+- ¿Dónde está el hotel?（ホテルはどこ？）
+- ¡Qué bonito!（なんてきれいなんだろう！）
+
+</Examples>
+
+はい／いいえで答える疑問文は、語順がふつうの文と同じことが多く、終わりを上げる音の高さで疑問を表します（Hablas español. ↘ ／ ¿Hablas español? ↗）。疑問詞で始まる疑問文は、ふつう終わりが下がります（¿Dónde está el hotel? ↘）。
 
 ## 活用：今日の動詞 (Conjugación)
 
-TODO:contenido
+このユニットに新しい活用はありません。自己紹介の Me llamo Mina.（私の名前はミナです）は、llamarse（〜という名前だ）を使った決まった言い方なので、このまま覚えましょう。動詞の活用は、ユニット3の [ser](/language/learn-spanish/verb-conjugation/ser/)（soy, eres, es…）から始まります。
 
 ## 語彙 (Nociones específicas)
+
+旅の最初の日から使うあいさつと、つづりをたずねるときの言葉です。どれも、このユニットの読み方のルールどおりに読めます。
 
 <VocabList items={frontmatter.vocabulary} level={frontmatter.level} />
 
 ## 発音・正書法 (Pronunciación y ortografía)
 
-TODO:contenido
+マドリードのホテルに着いたミナ。受付で名前を聞かれ、つづりを伝えます。
+
+- Empleado: Buenas tardes. ¿Su nombre, por favor?（こんにちは。お名前をお願いします）
+- Mina: Hola, me llamo Mina.（こんにちは、ミナです）
+- Empleado: ¿Cómo se escribe?（どう書きますか？）
+- Mina: Eme, i, ene, a.（M、I、N、A です）
+- Empleado: Muy bien, gracias.（はい、ありがとうございます）
+
+名前のつづりは、アルファベットの文字の名前で1文字ずつ言います。¿Cómo se escribe?（どう書きますか？）は、名前だけでなく、知らない単語のつづりをたずねるときにも使えます。聞き取れなかったときは ¿Puede repetir, por favor?（もう一度言っていただけますか？）と頼みましょう。
+
+書くときの決まりも二つ覚えておきましょう。曜日、月、言語、国籍は、文の始めでなければ小文字で書きます：lunes（月曜日）、enero（1月）、español（スペイン語）、japonés（日本人・日本語）。人の名前と国名は大文字で始めます：Mina、España、Japón。
 
 ## 日本人がよく間違える
 
-TODO:contenido
+カタカナの読み方に引っぱられて、次の四つでつまずく人がとても多いです。
+
+- **子音のあとに母音を足す。** ×エスパニョール（es-pa-ño-**ru**） → ○es-pa-**ñol**。最後の l のあとに「ウ」を入れません。Madrid も、最後の d はとても弱く、「ド」とはっきり読みません。
+- **h を読む。** ×ホラ、×ホテル → ○オラ（hola）、○オテル（hotel）。
+- **j と ge・gi を「ジ」と読む。** ×ジャモン、×ゲンテ → ○ハモン（jamón）、○ヘンテ（gente）。
+- **強く読む位置をカタカナの感覚で決める。** カタカナの「カフェ」は「カ」を高く読みますが、café は最後の fé を強く読みます。新しい単語は、アクセント記号のルールで強く読む位置を確かめましょう。
 
 ## 文化メモ (Referentes culturales)
 
 <CultureNote>
 
-TODO:contenido
+スペイン語の読み方のルールは、日本人の名前のローマ字にもそのまま当てはめられます。そのため、スペインで名前を書いて渡すと、Hanako は「アナコ」、Fujita は「フヒタ」、Kenji は「ケンヒ」と読まれることがあります。h を読まず、j を「ハ」行の音で読むからです。スペインのホテルやお店で名前を伝えるときは、ミナのように1文字ずつつづりを言うと確実です。逆に、スペイン人の名前を読むときも同じルールです。Jorge は「ホルヘ」、Juan は「フアン」、Guillermo は「ギジェルモ」と読みます。
 
 </CultureNote>
 
 ## 練習 (Procedimientos de aprendizaje)
 
-### 練習1：認識
+### 練習1：強く読む音節はどこ？
 
-TODO:contenido
+次の単語を声に出して読み、強く読む音節を答えてください。
+
+1. casa
+2. hablan
+3. hotel
+4. ciudad
+5. café
+6. música
 
 <details>
 <summary>答えを見る</summary>
 
-TODO:contenido
+1. **CA**-sa（母音で終わる → 後ろから2番目）
+2. **HA**-blan（n で終わる → 後ろから2番目）
+3. ho-**TEL**（l で終わる → 最後）
+4. ciu-**DAD**（d で終わる → 最後）
+5. ca-**FÉ**（アクセント記号のある母音）
+6. **MÚ**-si-ca（アクセント記号のある母音）
 
 </details>
 
-### 練習2：穴埋め
+### 練習2：アクセント記号をつける
 
-TODO:contenido
+アクセント記号が必要な単語には、正しい位置につけてください。必要ない単語はそのままにしてください。強く読む音節は太字で示しています。
+
+1. es-ta-**cion**（駅）
+2. **lu**-nes（月曜日）
+3. **ar**-bol（木）
+4. Ja-**pon**（日本）
+5. **me**-sa（テーブル）
+6. in-**gles**（英語）
 
 <details>
 <summary>答えを見る</summary>
 
-TODO:contenido
+1. estación（n で終わるのに最後を強く読む → 記号が必要）
+2. lunes（s で終わり、後ろから2番目を強く読む → ルールどおりで不要）
+3. árbol（l で終わるのに後ろから2番目を強く読む → 記号が必要）
+4. Japón（n で終わるのに最後を強く読む → 記号が必要）
+5. mesa（母音で終わり、後ろから2番目を強く読む → ルールどおりで不要）
+6. inglés（s で終わるのに最後を強く読む → 記号が必要）
 
 </details>
 
 ### 練習3：作文
 
-TODO:contenido
+ミナになったつもりで、スペイン語で言ってみましょう。
+
+1. こんにちは、ミナです。
+2. （名前のつづりを聞かれて）M、I、N、A です。
+3. もう一度言っていただけますか？
+4. 自分の名前のつづりを、アルファベットの名前で言ってみましょう。
 
 <details>
-<summary>答えを見る</summary>
+<summary>解答例を見る</summary>
 
-TODO:contenido
+1. Hola, me llamo Mina.
+2. Eme, i, ene, a.
+3. ¿Puede repetir, por favor?
+4. 例：Kenta なら Ka, e, ene, te, a. Yui なら Ye, u, i.
 
 </details>
 
@@ -98,4 +333,8 @@ TODO:contenido
 
 ## まとめ
 
-TODO:contenido
+- スペイン語の母音は a, e, i, o, u の5つで、どこでも同じ音。ほとんどの単語は書いてあるとおりに読める。
+- h は読まない。j と ge・gi は喉の奥の「ハ」行、ce・ci・z はスペインでは th に近い音、ñ はニャ行の音。
+- 母音・n・s で終わる語は後ろから2番目、それ以外の子音で終わる語は最後の音節を強く読む。ルールに合わない語は、アクセント記号で示す。
+
+次のユニット2では、名詞の性・数と冠詞を学びます。
