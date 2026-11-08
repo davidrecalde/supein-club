@@ -1,7 +1,7 @@
 ---
 // Audio de la unidad (prompt 7): las frases del campo `audio` que ya tienen archivo aprobado
 // (src/data/course-audio.json, lo escribe `npm run tts:encode`). Sin archivos no se muestra nada.
-import { Play, Pause } from 'lucide-astro';
+import { Play, Pause, Volume2 } from 'lucide-astro';
 import AiAudioLabel from './AiAudioLabel.astro';
 import courseAudio from '../../data/course-audio.json';
 
@@ -31,8 +31,11 @@ const SPEAKERS: Record<string, string> = {
 {items.length > 0 && (
   <details class="unit-audio" data-unit-audio>
     <summary>
-      <span class="unit-audio-title">このユニットの音声を聞く（{items.length}文）</span>
-      <AiAudioLabel />
+      <span class="unit-audio-icon" aria-hidden="true"><Volume2 size={20} /></span>
+      <span class="unit-audio-head">
+        <span class="unit-audio-title">このユニットの音声を聞く（{items.length}文）</span>
+        <AiAudioLabel />
+      </span>
     </summary>
     <div class="unit-audio-speed" role="group" aria-label="再生の速さ">
       <button type="button" data-speed="normal" aria-pressed="true">ふつう</button>
