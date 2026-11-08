@@ -131,13 +131,17 @@ const articles = defineCollection({
       correctIndex: z.number(),
       explanation: z.string(),
     })).optional(),
+    // Test de nivel v2 (plan-hub-embudo.md, punto 19): bloques A1-C2; cada pregunta lleva
+    // la destreza y la unidad del curso que la enseña (la recomendación de inicio sale de ahí).
     levelTest: z.array(z.object({
       question: z.string(),
-      options: z.array(z.string()),
-      correctIndex: z.number(),
-      level: z.enum(['a1', 'a2', 'b1', 'b2']),
+      options: z.array(z.string()).min(3).max(4),
+      correctIndex: z.number().int().min(0),
+      level: z.enum(['a1', 'a2', 'b1', 'b2', 'c1', 'c2']),
+      skill: z.enum(['grammar', 'vocabulary', 'reading']),
+      unit: z.number().int().min(1).max(62),
+      passage: z.string().optional(),
       explanation: z.string(),
-      link: z.string(),
     })).optional(),
     sportsTeam: z.object({
       name: z.string(),
