@@ -4,6 +4,7 @@ import tailwindcss from '@tailwindcss/vite';
 import mdx from '@astrojs/mdx';
 import sitemap from '@astrojs/sitemap';
 import rehypeExternalLinks from 'rehype-external-links';
+import rehypeUnitSummary from './src/plugins/rehypeUnitSummary.mjs';
 import { execFileSync } from 'node:child_process';
 import { readdirSync, readFileSync } from 'node:fs';
 import path from 'node:path';
@@ -113,6 +114,7 @@ export default defineConfig({
         target: '_blank',
         rel: ['nofollow', 'noopener', 'noreferrer'],
       }],
+      rehypeUnitSummary,
     ],
   },
   vite: {

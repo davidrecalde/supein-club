@@ -26,7 +26,7 @@ const fmt = (d: Date) => d.toLocaleDateString('ja-JP', { year: 'numeric', month:
   <div class="page-container">
     <Breadcrumb items={breadcrumbs} dark />
 
-    <p class="unit-header-meta">ユニット {unit} / {TOTAL_UNITS} · {level.code} {level.name} · {shortTitle}</p>
+    <p class="unit-header-meta"><span class={`level-chip lv-${level.code}`}>{level.code} {level.name}</span> ユニット {unit} / {TOTAL_UNITS} · {shortTitle}</p>
     <h1 class="unit-header-title">{title}</h1>
     <p class="unit-header-es" lang="es">{titleEs}</p>
 
