@@ -110,7 +110,8 @@
       "profile": "Mujer española de unos 40 años. Habla español de España con pronunciación peninsular estándar, amable y natural, a ritmo normal."
     },
     "male-senior": {
-      "status": "propuesta",
+      "status": "aprobada",
+      "_doc": "Aprobada por David el 8 de noviembre de 2026 al escuchar la unidad 7 (el señor que indica el camino).",
       "voice": "Algenib",
       "accent": "peninsular estándar",
       "profile": "Hombre español de unos 70 años. Habla español de España con pronunciación peninsular estándar, con calma y amabilidad."
