@@ -53,12 +53,17 @@ function loadUnits() {
   }
   return units.sort((a, b) => a.unit - b.unit);
 }
+const LEARNERS = new Set(['mina', 'kenta', 'yui']);
 function speakerFor(u, index, sentence) {
   const override = config.overrides[`${u.unit}:${index}`];
   if (override) return override;
   const s = norm(sentence);
   const hit = u.dialogue.find(([, line]) => line.includes(s) || s.includes(line));
-  return (hit && config.roles[hit[0]]) || 'narrator';
+  const key = (hit && config.roles[hit[0]]) || 'narrator';
+  // Las palabras sueltas y expresiones de 1-2 palabras son modelos de pronunciación: nunca las
+  // leen los personajes japoneses (con acento), aunque aparezcan dentro de una de sus frases.
+  if (LEARNERS.has(key) && s.split(/\s+/).filter(Boolean).length < 3) return 'narrator';
+  return key;
 }
 
 // ── Manifiesto ──────────────────────────────────────────────────────────
