@@ -348,5 +348,236 @@
       "seconds": 0.61,
       "hash": "189a1a4a84000976"
     }
+  ],
+  "6": [
+    {
+      "index": 0,
+      "text": "Quiero aquel abanico rojo. ¿Cuánto cuesta?",
+      "speaker": "narrator",
+      "src": "/audio/units/u06/u06-01.mp3",
+      "slow": "/audio/units/u06/u06-01-slow.mp3",
+      "seconds": 3.9,
+      "hash": "1d98f42c997d4436"
+    },
+    {
+      "index": 1,
+      "text": "¿Cuánto cuesta esta camiseta?",
+      "speaker": "narrator",
+      "src": "/audio/units/u06/u06-02.mp3",
+      "slow": "/audio/units/u06/u06-02-slow.mp3",
+      "seconds": 2.13,
+      "hash": "e19c700c71622c51"
+    },
+    {
+      "index": 2,
+      "text": "Es un regalo para mi madre.",
+      "speaker": "narrator",
+      "src": "/audio/units/u06/u06-03.mp3",
+      "slow": "/audio/units/u06/u06-03-slow.mp3",
+      "seconds": 1.93,
+      "hash": "8a6988cde47fe90c"
+    },
+    {
+      "index": 3,
+      "text": "¿Qué es esto?",
+      "speaker": "narrator",
+      "src": "/audio/units/u06/u06-04.mp3",
+      "slow": "/audio/units/u06/u06-04-slow.mp3",
+      "seconds": 0.88,
+      "hash": "55b89342eb613c94"
+    },
+    {
+      "index": 4,
+      "text": "amarillo",
+      "speaker": "narrator",
+      "src": "/audio/units/u06/u06-05.mp3",
+      "slow": "/audio/units/u06/u06-05-slow.mp3",
+      "seconds": 0.82,
+      "hash": "897d034a0b6d64e4"
+    },
+    {
+      "index": 5,
+      "text": "la calle",
+      "speaker": "narrator",
+      "src": "/audio/units/u06/u06-06.mp3",
+      "slow": "/audio/units/u06/u06-06-slow.mp3",
+      "seconds": 0.83,
+      "hash": "d3ac90496b77493b"
+    }
+  ],
+  "8": [
+    {
+      "index": 0,
+      "text": "¿Te gusta la comida española?",
+      "speaker": "daniel",
+      "src": "/audio/units/u08/u08-01.mp3",
+      "slow": "/audio/units/u08/u08-01-slow.mp3",
+      "seconds": 1.49,
+      "hash": "eecb95ead0b7475e"
+    },
+    {
+      "index": 1,
+      "text": "Sí, me encanta. Me gustan mucho las croquetas.",
+      "speaker": "mina",
+      "src": "/audio/units/u08/u08-02.mp3",
+      "slow": "/audio/units/u08/u08-02-slow.mp3",
+      "seconds": 5.57,
+      "hash": "0b1628ccf28dc752"
+    },
+    {
+      "index": 2,
+      "text": "¿Y el flamenco?",
+      "speaker": "daniel",
+      "src": "/audio/units/u08/u08-03.mp3",
+      "slow": "/audio/units/u08/u08-03-slow.mp3",
+      "seconds": 0.85,
+      "hash": "61b4f723526bb9ca"
+    },
+    {
+      "index": 3,
+      "text": "Me interesa mucho. ¿Y a ti?",
+      "speaker": "mina",
+      "src": "/audio/units/u08/u08-04.mp3",
+      "slow": "/audio/units/u08/u08-04-slow.mp3",
+      "seconds": 3.26,
+      "hash": "74a420612c2e84d2"
+    },
+    {
+      "index": 4,
+      "text": "A mí también. Pero no me gusta el café solo.",
+      "speaker": "daniel",
+      "src": "/audio/units/u08/u08-05.mp3",
+      "slow": "/audio/units/u08/u08-05-slow.mp3",
+      "seconds": 2.99,
+      "hash": "04e46f9e063edd4a"
+    },
+    {
+      "index": 5,
+      "text": "A mí tampoco.",
+      "speaker": "mina",
+      "src": "/audio/units/u08/u08-06.mp3",
+      "slow": "/audio/units/u08/u08-06-slow.mp3",
+      "seconds": 1.17,
+      "hash": "a8081a503333a021"
+    },
+    {
+      "index": 6,
+      "text": "¿De qué equipo eres?",
+      "speaker": "narrator",
+      "src": "/audio/units/u08/u08-07.mp3",
+      "slow": "/audio/units/u08/u08-07-slow.mp3",
+      "seconds": 1.61,
+      "hash": "c3f7ac08692dd544"
+    },
+    {
+      "index": 7,
+      "text": "¿Qué te gusta hacer los fines de semana?",
+      "speaker": "narrator",
+      "src": "/audio/units/u08/u08-08.mp3",
+      "slow": "/audio/units/u08/u08-08-slow.mp3",
+      "seconds": 2.53,
+      "hash": "aa2362a974cc4b60"
+    },
+    {
+      "index": 8,
+      "text": "Me gusta mucho dibujar y ver películas.",
+      "speaker": "narrator",
+      "src": "/audio/units/u08/u08-09.mp3",
+      "slow": "/audio/units/u08/u08-09-slow.mp3",
+      "seconds": 3.5,
+      "hash": "ed20020a7b869a68"
+    },
+    {
+      "index": 9,
+      "text": "guitarra",
+      "speaker": "narrator",
+      "src": "/audio/units/u08/u08-10.mp3",
+      "slow": "/audio/units/u08/u08-10-slow.mp3",
+      "seconds": 0.9,
+      "hash": "5bdf6fa43eab8c4a"
+    },
+    {
+      "index": 10,
+      "text": "gente",
+      "speaker": "narrator",
+      "src": "/audio/units/u08/u08-11.mp3",
+      "slow": "/audio/units/u08/u08-11-slow.mp3",
+      "seconds": 0.79,
+      "hash": "dd20bc13c2b17781"
+    }
+  ],
+  "9": [
+    {
+      "index": 0,
+      "text": "Me despierto a las siete, me levanto y me ducho.",
+      "speaker": "narrator",
+      "src": "/audio/units/u09/u09-01.mp3",
+      "slow": "/audio/units/u09/u09-01-slow.mp3",
+      "seconds": 5.1,
+      "hash": "4f003caa1c6b8652"
+    },
+    {
+      "index": 1,
+      "text": "Luego me visto, desayuno y salgo de casa a las ocho.",
+      "speaker": "narrator",
+      "src": "/audio/units/u09/u09-02.mp3",
+      "slow": "/audio/units/u09/u09-02-slow.mp3",
+      "seconds": 6.12,
+      "hash": "db93fcc4e508f628"
+    },
+    {
+      "index": 2,
+      "text": "Por la noche, ceno, me lavo los dientes y me acuesto a las doce.",
+      "speaker": "narrator",
+      "src": "/audio/units/u09/u09-03.mp3",
+      "slow": "/audio/units/u09/u09-03-slow.mp3",
+      "seconds": 6.71,
+      "hash": "4c3f6083956cf6fe"
+    },
+    {
+      "index": 3,
+      "text": "En Madrid, me levanto a las nueve, desayuno en un bar y me acuesto a la una.",
+      "speaker": "narrator",
+      "src": "/audio/units/u09/u09-04.mp3",
+      "slow": "/audio/units/u09/u09-04-slow.mp3",
+      "seconds": 7.64,
+      "hash": "923e7bfb89344b56"
+    },
+    {
+      "index": 4,
+      "text": "¿A qué hora te levantas?",
+      "speaker": "narrator",
+      "src": "/audio/units/u09/u09-05.mp3",
+      "slow": "/audio/units/u09/u09-05-slow.mp3",
+      "seconds": 1.58,
+      "hash": "366405dfe0e477c5"
+    },
+    {
+      "index": 5,
+      "text": "Los fines de semana, a veces me echo la siesta.",
+      "speaker": "narrator",
+      "src": "/audio/units/u09/u09-06.mp3",
+      "slow": "/audio/units/u09/u09-06-slow.mp3",
+      "seconds": 4.1,
+      "hash": "51ba220b5ce92d96"
+    },
+    {
+      "index": 6,
+      "text": "mañana",
+      "speaker": "narrator",
+      "src": "/audio/units/u09/u09-07.mp3",
+      "slow": "/audio/units/u09/u09-07-slow.mp3",
+      "seconds": 0.75,
+      "hash": "ea4df8d869b29c77"
+    },
+    {
+      "index": 7,
+      "text": "España",
+      "speaker": "narrator",
+      "src": "/audio/units/u09/u09-08.mp3",
+      "slow": "/audio/units/u09/u09-08-slow.mp3",
+      "seconds": 0.78,
+      "hash": "3e9cf70166c81b3f"
+    }
   ]
 }
