@@ -5,90 +5,309 @@ levelName: "Umbral"
 slug: "subjunctive"
 url: "/language/learn-spanish/b1/subjunctive/"
 existing: true
-title: "接続法現在・活用"
+title: "スペイン語の接続法とは｜接続法現在の活用（規則・不規則動詞）"
 shortTitle: "接続法現在・活用"
-titleEs: "presente de subjuntivo: formas"
-grammar: ["regulares","irregulares"]
-tenses: []
-functions: []
-canDo: []
-vocabulary: []
-verbs: ["tener","venir","ir","ser","saber"]
+titleEs: "Presente de subjuntivo: formas"
+description: "スペイン語の接続法とは何かを、直説法との違いから解説。接続法現在の作り方（yo の形から -o を取り、反対の母音の語尾をつける）、つづりや語幹が変わる動詞、ser・ir・haber などの不規則動詞の活用を、練習問題つきで身につけます。"
+grammar: ["modo subjuntivo frente a indicativo", "presente de subjuntivo: verbos regulares", "cambios ortográficos y vocálicos", "verbos irregulares"]
+tenses: ["presente de subjuntivo"]
+functions: ["願いや気持ちを表す文で、動詞を接続法の形にする"]
+canDo:
+  - "接続法が直説法とどう違うのかを、例を挙げて説明できる"
+  - "規則動詞と主な不規則動詞の接続法現在を、6つの人称で活用できる"
+  - "ojalá の文や否定命令で、接続法現在の形を正しく使える"
+vocabulary:
+  # rank = «Rango frec.» del diccionario de frecuencias del CORPES XXI (RAE). Lo escribe
+  # npm run vocab:rank -- --write; lo que no es lema del diccionario va sin rank, al final.
+  - { es: "esperar", ja: "願う・期待する・待つ", rank: 190, example: "Espero que mi jefe esté de buen humor." }
+  - { es: "ojalá", ja: "〜だといいな", rank: 3909, example: "Ojalá te vaya bien." }
+  - { es: "el deseo", ja: "願い", rank: 1317, example: "Mi deseo es vivir en España." }
+  - { es: "importante", ja: "重要な", rank: 114, example: "Es importante que practiques todos los días." }
+  - { es: "posible", ja: "ありうる・可能な", rank: 239, example: "Es posible que llueva esta tarde." }
+  - { es: "la forma", ja: "形", rank: 90, example: "¿Cuál es la forma de «ir»?" }
+  - { es: "la regla", ja: "規則・ルール", rank: 1547, example: "Esta regla es muy útil." }
+  - { es: "el examen", ja: "試験", rank: 2025, example: "El viernes tengo un examen." }
+  - { es: "aprobar", ja: "合格する", rank: 735, example: "Ojalá apruebe el examen." }
+  - { es: "suspender", ja: "不合格になる・落第する", rank: 1706, la: "reprobar", example: "No quiero suspender." }
+  - { es: "la reunión", ja: "会議", rank: 549, example: "Mañana tengo una reunión importante." }
+  - { es: "el jefe", ja: "上司", rank: 476, example: "Mi jefe es de Valencia." }
+  - { es: "el humor", ja: "機嫌・ユーモア", rank: 1966, example: "Hoy está de buen humor." }
+  - { es: "el subjuntivo", ja: "接続法", rank: 43370, example: "El subjuntivo no existe en japonés." }
+verbs: ["ser", "ir", "estar", "haber", "tener", "hacer", "venir", "saber"]
 duration: 40
 prev: 24
 next: 26
-related: [26,27,37]
-cast: ["yui","kenta"]
-audio: []
+related: [26, 27, 37]
+cast: ["yui", "kenta"]
+audio:
+  - "Yui, ¿cómo es el subjuntivo de «tener»?"
+  - "Muy fácil: tengo, sin la o, y con a: tenga."
+  - "¿Y el de «ir»?"
+  - "Ese es irregular: vaya, vayas, vaya… Ojalá te vaya bien la reunión de mañana."
+  - "¡Gracias! Espero que mi jefe esté de buen humor."
+  - "hable, hables, hable, hablemos, habléis, hablen"
+  - "coma, comas, coma, comamos, comáis, coman"
+  - "sea, seas, sea, seamos, seáis, sean"
+  - "vaya, vayas, vaya, vayamos, vayáis, vayan"
+  - "Es importante que estudiemos todos los días."
+  - "No hables tan rápido, por favor."
+  - "Ojalá apruebe el examen."
 youtubeId: ""
-quiz: []
 image: { src: "/images/course/units/u25.webp", width: 1020, height: 574, alt: "サラマンカのカフェで、色とりどりのノートを広げて勉強するユイ" }
 draft: true
 updated: "2026-11-02"
+quiz:
+  - question: "接続法は、どんな内容を表す形？"
+    options: ["事実としてそのまま述べる内容", "願い・気持ち・疑いなど、事実として述べない内容", "過去に起きたことだけ"]
+    correctIndex: 1
+    explanation: "直説法は事実として述べる形、接続法は願い・気持ち・疑い・まだ起きていないことなど、話し手の頭の中にあることを表す形です。"
+  - question: "hablar の接続法現在（yo）は？"
+    options: ["hablo", "hablé", "hable"]
+    correctIndex: 2
+    explanation: "yo の現在形 hablo から -o を取り、-ar 動詞には e の語尾をつけます：hable。hablé は点過去です。"
+  - question: "comer の接続法現在（tú）は？"
+    options: ["comas", "comes", "comías"]
+    correctIndex: 0
+    explanation: "-er 動詞には a の語尾をつけます：coma, comas, coma… comes は直説法現在です。"
+  - question: "tener の接続法現在（yo）は？"
+    options: ["tengo", "tena", "tenga"]
+    correctIndex: 2
+    explanation: "yo の現在形 tengo の不規則な形を、そのまま接続法に使います：tengo → tenga。"
+  - question: "ser の接続法現在（él）は？"
+    options: ["es", "sea", "era"]
+    correctIndex: 1
+    explanation: "ser は完全に不規則な動詞の一つです：sea, seas, sea, seamos, seáis, sean。"
+  - question: "ir の接続法現在（nosotros）は？"
+    options: ["vayamos", "vamos", "iremos"]
+    correctIndex: 0
+    explanation: "ir の接続法現在は vaya, vayas, vaya, vayamos, vayáis, vayan。vamos は直説法現在です。"
+  - question: "buscar（探す）の接続法現在（yo）は？"
+    options: ["busce", "busca", "busque"]
+    correctIndex: 2
+    explanation: "-car で終わる動詞は、「ケ」の音を保つために c が qu に変わります：busque。llegar → llegue も同じ仕組みです。"
+  - question: "pensar の接続法現在（nosotros）は？"
+    options: ["pensemos", "piensemos", "pensamos"]
+    correctIndex: 0
+    explanation: "e → ie と変わる動詞も、nosotros と vosotros では語幹が変わりません：piense, pienses… pensemos, penséis。"
+  - question: "Ojalá ___ paz en el mundo.（世界が平和であるといいな）に入るのは？"
+    options: ["hay", "habrá", "haya"]
+    correctIndex: 2
+    explanation: "ojalá のあとは、いつも接続法です。hay（ある）の接続法現在は haya です。"
+  - question: "「そんなに速く話さないで」。正しいのは？"
+    options: ["No habla tan rápido.", "No hables tan rápido.", "No hablar tan rápido."]
+    correctIndex: 1
+    explanation: "tú に対する否定命令は、no + 接続法現在です：No hables. ユニット19で見た否定命令の形は、このユニットで学ぶ接続法現在です。"
 ---
 
-TODO:contenido（導入：このユニットの問いに、それだけで答えになる2文で答える）
+接続法は、願い・気持ち・疑いなど、話し手が事実として述べない内容を表す動詞の形です。接続法現在は、直説法現在の yo の形から語尾の -o を取り、-ar 動詞には e で始まる語尾を、-er・-ir 動詞には a で始まる語尾をつけて作ります。
 
-## 文法 (Gramática)
+日本語には、接続法にあたる動詞の形がありません。日本語では「〜するといいな」「〜してほしい」のように文末の言い方で気持ちを表しますが、スペイン語では、que のあとの動詞の形そのものを変えます。そのため、日本人にとっては B1 でいちばんの山場ですが、形の作り方には、はっきりしたルールがあります。このユニットでは、サラマンカで留学中のユイが、日本で働きながらスペイン語を勉強しているケンタに接続法の形を教える場面を例に、接続法現在の活用を身につけます。
 
-TODO:contenido
+## 文法：接続法とは・接続法現在の活用 (Gramática)
+
+まず接続法が何を表すのかを、次に規則動詞の活用を、最後につづりや語幹が変わる動詞と、不規則な動詞を見ていきましょう。
+
+### 接続法とは：直説法との違い
+
+接続法は「時制」ではなく「法」です。法とは、話し手が内容をどう捉えているかを表す動詞の形のことです。これまでのユニットで学んだ現在形・過去形・未来形は、どれも**直説法**で、事実として述べるときの形でした。**接続法**は、事実として述べない内容、つまり願い、気持ち、疑い、まだ起きていないことを表します。
+
+| 直説法（事実として述べる） | 接続法（事実として述べない） |
+| --- | --- |
+| Yui estudia mucho.（ユイはよく勉強する） | Es importante que Yui estudie.（ユイが勉強することが大切だ） |
+| Kenta viene a España.（ケンタはスペインに来る） | Ojalá Kenta venga a España.（ケンタがスペインに来るといいな） |
+| Creo que es fácil.（簡単だと思う） | No creo que sea fácil.（簡単だとは思わない） |
+
+接続法は、ほとんどの場合、que のあとの文の中で使います。どんなときに接続法になるのかは、次のユニット26と27でくわしく学びます。このユニットでは、まず形を作れるようにしましょう。
+
+### 規則動詞の作り方
+
+接続法現在は、直説法現在の yo の形から作ります。
+
+1. 直説法現在の yo の形を思い出す（hablo, como, vivo）。
+2. 語尾の -o を取る（habl-, com-, viv-）。
+3. 反対の母音の語尾をつける。-ar 動詞には e、-er・-ir 動詞には a。
+
+| | hablar（話す） | comer（食べる） | vivir（住む） |
+| --- | --- | --- | --- |
+| yo | hable | coma | viva |
+| tú | hables | comas | vivas |
+| él / ella / usted | hable | coma | viva |
+| nosotros | hablemos | comamos | vivamos |
+| vosotros | habléis | comáis | viváis |
+| ellos / ellas / ustedes | hablen | coman | vivan |
+
+※ vosotros はスペインのみで使います。中南米では ustedes を使います（→ [中南米のスペイン語](/language/learn-spanish/spanish-in-latin-america/)）。
+
+-ar 動詞は「a → e」、-er・-ir 動詞は「e・i → a」と、母音が入れかわると考えると覚えやすくなります。また、yo と él / ella / usted の形は、いつも同じです。
+
+### つづりが変わる動詞
+
+音を変えないために、つづりが変わる動詞があります。読み方のルールは、ユニット1で学んだとおりです。
+
+| 語尾 | 変わり方 | 例 |
+| --- | --- | --- |
+| -car | c → qu | buscar → busque（ca の「カ」の音を、e の前でも保つ） |
+| -gar | g → gu | llegar → llegue（ga の「ガ」の音を保つ） |
+| -zar | z → c | empezar → empiece |
+| -ger, -gir | g → j | coger → coja |
+
+### 語幹が変わる動詞
+
+直説法現在で語幹が変わる動詞は、接続法現在でも同じように変わります。
+
+| 変わり方 | 例 | nosotros / vosotros |
+| --- | --- | --- |
+| e → ie | pensar → piense, pienses, piense | pensemos, penséis（変わらない） |
+| o → ue | volver → vuelva, vuelvas, vuelva | volvamos, volváis（変わらない） |
+| e → i | pedir → pida, pidas, pida | pidamos, pidáis（i のまま） |
+| o → ue / u | dormir → duerma, duermas, duerma | durmamos, durmáis（u になる） |
+
+pensar や volver のような -ar・-er 動詞は、直説法現在と同じく nosotros と vosotros で語幹が元に戻ります。pedir や dormir のような -ir 動詞は、nosotros と vosotros でも母音が i や u に変わるので注意しましょう。
+
+### yo の形が不規則な動詞
+
+yo の現在形が不規則な動詞は、その形をそのまま接続法に使います。作り方のルールは規則動詞と同じです。
+
+| 動詞 | yo の現在形 | 接続法現在 |
+| --- | --- | --- |
+| tener（持つ） | tengo | tenga, tengas, tenga… |
+| venir（来る） | vengo | venga, vengas, venga… |
+| hacer（する・作る） | hago | haga, hagas, haga… |
+| poner（置く） | pongo | ponga, pongas, ponga… |
+| salir（出る） | salgo | salga, salgas, salga… |
+| decir（言う） | digo | diga, digas, diga… |
+| conocer（知っている） | conozco | conozca, conozcas, conozca… |
+| ver（見る） | veo | vea, veas, vea… |
+
+### 完全に不規則な6つの動詞
+
+yo の現在形が -o で終わらない動詞は、接続法の形を一つずつ覚えます。
+
+| 動詞 | yo | tú | él / ella / usted | nosotros | vosotros | ellos / ustedes |
+| --- | --- | --- | --- | --- | --- | --- |
+| ser | sea | seas | sea | seamos | seáis | sean |
+| ir | vaya | vayas | vaya | vayamos | vayáis | vayan |
+| estar | esté | estés | esté | estemos | estéis | estén |
+| dar | dé | des | dé | demos | deis | den |
+| saber | sepa | sepas | sepa | sepamos | sepáis | sepan |
+| haber | haya | hayas | haya | hayamos | hayáis | hayan |
+
+haber の haya は、hay（〜がある）の接続法としてもよく使います：Ojalá haya entradas.（チケットがあるといいな）。
+
+### 接続法はどこで使う？
+
+接続法現在の形を使う場面は、このあとのユニットで一つずつ学びます。
+
+- **願望・感情・疑い**（Quiero que vengas. Me alegra que estés aquí.）→ ユニット26
+- **時・目的・関係節**（Cuando llegues, llámame. Busco un piso que tenga balcón.）→ ユニット27
+- **否定命令**（No hables. No vengas tarde.）→ ユニット19で学んだ否定命令は、接続法現在の形です
+- **ojalá**（〜だといいな）のあとは、いつも接続法：Ojalá apruebe el examen.（試験に受かるといいな）
+
+### ケンタとのビデオ通話
+
+日本で働きながらスペイン語を勉強しているケンタが、サラマンカのユイに質問します。
+
+- Kenta: Yui, ¿cómo es el subjuntivo de «tener»?（ユイ、tener の接続法ってどうなるの？）
+- Yui: Muy fácil: tengo, sin la o, y con a: tenga.（簡単だよ。tengo から o を取って、a をつけるの：tenga）
+- Kenta: ¿Y el de «ir»?（じゃあ ir は？）
+- Yui: Ese es irregular: vaya, vayas, vaya… Ojalá te vaya bien la reunión de mañana.（それは不規則なの：vaya, vayas, vaya…。明日の会議、うまくいくといいね）
+- Kenta: ¡Gracias! Espero que mi jefe esté de buen humor.（ありがとう！上司の機嫌がいいといいな）
 
 ## 活用：今日の動詞 (Conjugación)
 
-TODO:contenido
+今日の動詞は、接続法でも不規則な [ser](/language/learn-spanish/verb-conjugation/ser/)、[ir](/language/learn-spanish/verb-conjugation/ir/)、[estar](/language/learn-spanish/verb-conjugation/estar/)、[haber](/language/learn-spanish/verb-conjugation/haber/) と、yo の形から作る [tener](/language/learn-spanish/verb-conjugation/tener/)、[hacer](/language/learn-spanish/verb-conjugation/hacer/) です。活用表のページでは、接続法現在の欄で6つの人称の形をまとめて確認できます。直説法現在の yo の形と並べて見ると、作り方のルールがよくわかります。
 
 ## 語彙 (Nociones específicas)
+
+願いを伝える言葉と、ユイやケンタの勉強や仕事の場面で使う言葉です。esperar と ojalá のあとには、接続法が続きます。
 
 <VocabList items={frontmatter.vocabulary} level={frontmatter.level} />
 
 ## 発音・正書法 (Pronunciación y ortografía)
 
-TODO:contenido
+接続法には、アクセント記号のつく形がいくつかあります。estar の esté、estés、estén は、最後の音節を強く読むので記号がつきます。dar の dé は、前置詞の de（〜の）と区別するために記号をつけます：Quiero que me dé el libro.（その本を私に渡してほしい）。vosotros の形も、habléis、comáis、viváis のように記号がつきます。
 
 ## 日本人がよく間違える
 
-TODO:contenido
+接続法の形でつまずくのは、次の四つです。
+
+- **母音を入れかえ忘れる。** ×Es importante que hablas. → ○Es importante que habl**es**. -ar 動詞は e、-er・-ir 動詞は a の語尾です。
+- **que のあとに原形を置く。** ×Quiero que tú venir. → ○Quiero que tú **vengas**. 主語が変わるときは接続法です（→ ユニット26）。
+- **ojalá のあとに直説法を使う。** ×Ojalá hace sol. → ○Ojalá **haga** sol.
+- **-ir 動詞の nosotros の語幹を戻してしまう。** ×pedamos、×dormamos → ○**pidamos**、○**durmamos**。
 
 ## 文化メモ (Referentes culturales)
 
 <CultureNote>
 
-TODO:contenido
+接続法の文でよく使う ojalá（〜だといいな）は、アラビア語から来た言葉です。スペイン王立アカデミー（RAE）の辞書によると、もとはアンダルス（イスラム支配下のイベリア半島）のアラビア語 law šá lláh（「神が望むなら」）でした。イベリア半島では8世紀から15世紀末まで、イスラム教徒の王国が続き、スペイン語には aceite（油）、azúcar（砂糖）、almohada（枕）など、アラビア語から入った言葉がたくさん残っています。今では宗教に関係なく、スペイン中で毎日のように Ojalá… と願いを口にします。グラナダのアルハンブラ宮殿など、アンダルスの歴史は [スペインの歴史](/culture/history/) で紹介しています。
 
 </CultureNote>
 
 ## 練習 (Procedimientos de aprendizaje)
 
-### 練習1：認識
+### 練習1：直説法？ 接続法？
 
-TODO:contenido
+次の文の太字の動詞は、直説法と接続法のどちらでしょうか。
+
+1. Yui **vive** en Salamanca.
+2. Es importante que **vivas** cerca de la universidad.
+3. Ojalá **tengamos** tiempo.
+4. Kenta **tiene** una reunión mañana.
+5. No **comas** tan rápido.
+6. Creo que **es** fácil.
 
 <details>
 <summary>答えを見る</summary>
 
-TODO:contenido
+1. 直説法（事実として述べている）
+2. 接続法（es importante que のあと）
+3. 接続法（ojalá のあと）
+4. 直説法（事実として述べている）
+5. 接続法（否定命令）
+6. 直説法（creo que は「事実だと考えている」）
 
 </details>
 
 ### 練習2：穴埋め
 
-TODO:contenido
+（ ）の動詞を、接続法現在の正しい形にしてください。
+
+1. Espero que tú ___ (venir) a Salamanca.
+2. Es importante que nosotros ___ (estudiar) todos los días.
+3. No creo que ella ___ (saber) la respuesta.
+4. Ojalá ___ (haber) paz en el mundo.
+5. Quiero que vosotros ___ (comer) más.
+6. Ojalá el autobús ___ (llegar) pronto.
 
 <details>
 <summary>答えを見る</summary>
 
-TODO:contenido
+1. vengas（venir → vengo → venga）
+2. estudiemos
+3. sepa（saber は完全に不規則）
+4. haya（haber は完全に不規則）
+5. comáis（vosotros はスペインのみ）
+6. llegue（-gar は g → gu）
 
 </details>
 
 ### 練習3：作文
 
-TODO:contenido
+ユイになったつもりで、スペイン語で言ってみましょう。
+
+1. 試験に受かるといいな。
+2. （ケンタに）会議がうまくいくといいね。
+3. そんなに速く話さないで。
+4. 毎日練習することが大切だよ。（相手は tú）
 
 <details>
-<summary>答えを見る</summary>
+<summary>解答例を見る</summary>
 
-TODO:contenido
+1. Ojalá apruebe el examen.
+2. Ojalá te vaya bien la reunión.
+3. No hables tan rápido.
+4. Es importante que practiques todos los días.（practicar → practique：c → qu）
 
 </details>
 
@@ -98,4 +317,8 @@ TODO:contenido
 
 ## まとめ
 
-TODO:contenido
+- 接続法は、願い・気持ち・疑いなど、事実として述べない内容を表す形。ほとんどの場合、que のあとで使う。
+- 接続法現在は、直説法現在の yo の形から -o を取り、-ar 動詞には e、-er・-ir 動詞には a の語尾をつける。
+- ser、ir、estar、dar、saber、haber の6つは完全に不規則。ojalá と否定命令のあとは、いつも接続法。
+
+次のユニット26では、願望・感情・疑いを表す文で、接続法の使い方を学びます。
