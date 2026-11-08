@@ -1,5 +1,5 @@
 ---
-import { levelUrl, getCourseLevel } from '../../data/course';
+import { levelUrl, getCourseLevel, COURSE_LEVELS } from '../../data/course';
 
 interface NavItem {
   unit: number;
@@ -17,24 +17,41 @@ interface Props {
 
 const { prev, next, related, level: levelCode } = Astro.props;
 const level = getCourseLevel(levelCode)!;
+// Nivel de la unidad de destino (la anterior o la siguiente puede ser de otro nivel: 12 → 13).
+const levelOf = (unit: number) => COURSE_LEVELS.find((l) => unit >= l.first && unit <= l.last) ?? level;
 ---
 <nav class="unit-nav" aria-label="ユニットナビゲーション" data-pagefind-ignore>
   <div class="unit-nav-steps">
-    {prev ? (
-      prev.linkable ? (
-        <a class="unit-nav-step" href={prev.url}><span>前のユニット</span>ユニット{prev.unit} {prev.shortTitle}</a>
-      ) : (
-        <span class="unit-nav-step is-pending"><span>前のユニット</span>ユニット{prev.unit} {prev.shortTitle}（準備中）</span>
-      )
-    ) : <span></span>}
-    {next ? (
-      next.linkable ? (
-        <a class="unit-nav-step is-next" href={next.url}><span>次のユニットへ</span>ユニット{next.unit} {next.shortTitle}</a>
-      ) : (
-        <span class="unit-nav-step is-next is-pending"><span>次のユニット</span>ユニット{next.unit} {next.shortTitle}（準備中）</span>
-      )
-    ) : (
-      <a class="unit-nav-step is-next" href="/language/learn-spanish/"><span>コース修了</span>コースのトップへ</a>
+    {prev ? (() => {
+      const lv = levelOf(prev.unit);
+      const inner = (
+        <>
+          <span class="unit-nav-label">← 前のユニット</span>
+          <span class="unit-nav-unit"><span class="level-chip">{lv.code}</span>ユニット{prev.unit}</span>
+          <span class="unit-nav-title">{prev.shortTitle}{!prev.linkable && '（準備中）'}</span>
+        </>
+      );
+      return prev.linkable
+        ? <a class={`unit-nav-step lv-${lv.code}`} href={prev.url}>{inner}</a>
+        : <span class={`unit-nav-step is-pending lv-${lv.code}`}>{inner}</span>;
+    })() : <span></span>}
+    {next ? (() => {
+      const lv = levelOf(next.unit);
+      const inner = (
+        <>
+          <span class="unit-nav-label">{next.linkable ? '次のユニットへ →' : '次のユニット'}</span>
+          <span class="unit-nav-unit"><span class="level-chip">{lv.code}</span>ユニット{next.unit}</span>
+          <span class="unit-nav-title">{next.shortTitle}{!next.linkable && '（準備中）'}</span>
+        </>
+      );
+      return next.linkable
+        ? <a class={`unit-nav-step is-next lv-${lv.code}`} href={next.url}>{inner}</a>
+        : <span class={`unit-nav-step is-next is-pending lv-${lv.code}`}>{inner}</span>;
+    })() : (
+      <a class={`unit-nav-step is-next lv-${level.code}`} href="/language/learn-spanish/">
+        <span class="unit-nav-label">コース修了 →</span>
+        <span class="unit-nav-title">コースのトップへ</span>
+      </a>
     )}
   </div>
 

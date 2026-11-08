@@ -483,6 +483,9 @@ table {
   color: #fff;
   padding: 56px 0 44px;
 }
+.unit-header-meta .level-chip {
+  margin-right: 6px;
+}
 .unit-header-meta {
   margin-top: 20px;
   font-size: 13px;
@@ -605,27 +608,106 @@ table {
 .unit-nav-step {
   display: flex;
   flex-direction: column;
-  gap: 4px;
-  padding: 16px 18px;
-  border: 1px solid #E8E8E6;
+  gap: 6px;
+  padding: 18px 20px 16px;
   border-radius: 12px;
-  color: #002147;
-  font-weight: 700;
+  border-bottom: 5px solid var(--level, #C8102E);
+  background: #002147;
+  color: #fff;
   text-decoration: none;
-}
-.unit-nav-step span {
-  font-size: 12px;
-  font-weight: 600;
-  color: #6b7280;
+  transition: background-color 0.15s;
 }
 .unit-nav-step.is-next {
+  align-items: flex-end;
   text-align: right;
 }
 a.unit-nav-step:hover {
-  border-color: #C8102E;
+  background: #001530;
+}
+a.unit-nav-step:focus-visible {
+  outline: 3px solid var(--level, #C8102E);
+  outline-offset: 2px;
 }
 .unit-nav-step.is-pending {
-  color: #9ca3af;
+  opacity: 0.6;
+}
+.unit-nav-label {
+  font-size: 12px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.7);
+}
+.unit-nav-unit {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  font-weight: 700;
+}
+.unit-nav-title {
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.5;
+}
+
+/* Colores de nivel, tomados de la imagen de la hoja de ruta A1→C2 (8-11-2026). --level-ink: texto legible sobre el color. */
+.lv-A1 { --level: #CF0B2B; --level-ink: #FFFFFF; }
+.lv-A2 { --level: #F76267; --level-ink: #002147; }
+.lv-B1 { --level: #E55F0D; --level-ink: #002147; }
+.lv-B2 { --level: #F2A110; --level-ink: #002147; }
+.lv-C1 { --level: #4B8035; --level-ink: #FFFFFF; }
+.lv-C2 { --level: #97B764; --level-ink: #002147; }
+.level-chip {
+  display: inline-block;
+  padding: 2px 10px;
+  border-radius: 999px;
+  background: var(--level, #C8102E);
+  color: var(--level-ink, #fff);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  line-height: 1.6;
+  white-space: nowrap;
+}
+
+/* まとめ de la unidad (envuelta por src/plugins/rehypeUnitSummary.mjs) */
+.prose .unit-summary {
+  margin: 3rem 0 0;
+  padding: 22px 24px 8px;
+  border-top: 6px solid var(--level);
+  border-radius: 16px;
+  background: #002147;
+  color: rgba(255, 255, 255, 0.92);
+}
+.prose .unit-summary-eyebrow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  margin: 0;
+  font-size: 13px;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.75);
+}
+.prose .unit-summary h2 {
+  margin: 8px 0 14px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.18);
+  color: #fff;
+}
+.prose .unit-summary li::marker {
+  color: var(--level);
+}
+.prose .unit-summary strong,
+.prose .unit-summary a {
+  color: #fff;
+}
+.prose .unit-summary ul {
+  list-style: disc;
+  padding-left: 1.4rem;
+}
+.prose .unit-summary ol {
+  list-style: decimal;
+  padding-left: 1.4rem;
 }
 .unit-nav-related h2,
 .level-units h2,
