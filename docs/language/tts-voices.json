@@ -97,7 +97,8 @@
       "_doc": "Aprobada por David el 4 de noviembre de 2026 (la eligió al oírla con el perfil de Carmen). Gacrux es solo de la narradora; no se intercambia con Carmen (Vindemiatrix)."
     },
     "male-adult": {
-      "status": "propuesta",
+      "status": "aprobada",
+      "_approved": "Aprobada por David el 9 de noviembre de 2026 al escuchar las unidades 1 (recepción del hotel) y 10 (taquilla de la estación).",
       "_doc": "Secundarios: camareros, empleados, colegas, examinadores. Voz propuesta sin probar; se revisa al escuchar el primer lote.",
       "voice": "Orus",
       "accent": "peninsular estándar",
