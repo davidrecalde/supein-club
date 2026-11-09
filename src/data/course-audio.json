@@ -1,4 +1,150 @@
 {
+  "1": [
+    {
+      "index": 0,
+      "text": "Buenas tardes. ¿Su nombre, por favor?",
+      "speaker": "male-adult",
+      "src": "/audio/units/u01/u01-01.mp3",
+      "slow": "/audio/units/u01/u01-01-slow.mp3",
+      "seconds": 2.31,
+      "hash": "1ca24e39f9dfb816"
+    },
+    {
+      "index": 1,
+      "text": "Hola, me llamo Mina.",
+      "speaker": "mina",
+      "src": "/audio/units/u01/u01-02.mp3",
+      "slow": "/audio/units/u01/u01-02-slow.mp3",
+      "seconds": 2.62,
+      "hash": "f6451a2e8e6468b1"
+    },
+    {
+      "index": 2,
+      "text": "¿Cómo se escribe?",
+      "speaker": "male-adult",
+      "src": "/audio/units/u01/u01-03.mp3",
+      "slow": "/audio/units/u01/u01-03-slow.mp3",
+      "seconds": 0.87,
+      "hash": "2795ba7d5e442f8b"
+    },
+    {
+      "index": 3,
+      "text": "Eme, i, ene, a.",
+      "speaker": "mina",
+      "src": "/audio/units/u01/u01-04.mp3",
+      "slow": "/audio/units/u01/u01-04-slow.mp3",
+      "seconds": 3.89,
+      "hash": "e8ee70967338e1e3"
+    },
+    {
+      "index": 4,
+      "text": "Muy bien, gracias.",
+      "speaker": "male-adult",
+      "src": "/audio/units/u01/u01-05.mp3",
+      "slow": "/audio/units/u01/u01-05-slow.mp3",
+      "seconds": 1.35,
+      "hash": "3688ed4a7bafd66b"
+    },
+    {
+      "index": 5,
+      "text": "a, e, i, o, u",
+      "speaker": "narrator",
+      "src": "/audio/units/u01/u01-06.mp3",
+      "slow": "/audio/units/u01/u01-06-slow.mp3",
+      "seconds": 6.08,
+      "hash": "c3344d17444c8ebc"
+    },
+    {
+      "index": 6,
+      "text": "hola",
+      "speaker": "narrator",
+      "src": "/audio/units/u01/u01-07.mp3",
+      "slow": "/audio/units/u01/u01-07-slow.mp3",
+      "seconds": 0.48,
+      "hash": "10adff3ec3f8c2dc"
+    },
+    {
+      "index": 7,
+      "text": "jamón",
+      "speaker": "narrator",
+      "src": "/audio/units/u01/u01-08.mp3",
+      "slow": "/audio/units/u01/u01-08-slow.mp3",
+      "seconds": 0.73,
+      "hash": "45e795b4b65cc007"
+    },
+    {
+      "index": 8,
+      "text": "gente",
+      "speaker": "narrator",
+      "src": "/audio/units/u01/u01-09.mp3",
+      "slow": "/audio/units/u01/u01-09-slow.mp3",
+      "seconds": 0.7,
+      "hash": "dd20bc13c2b17781"
+    },
+    {
+      "index": 9,
+      "text": "guitarra",
+      "speaker": "narrator",
+      "src": "/audio/units/u01/u01-10.mp3",
+      "slow": "/audio/units/u01/u01-10-slow.mp3",
+      "seconds": 0.81,
+      "hash": "5bdf6fa43eab8c4a"
+    },
+    {
+      "index": 10,
+      "text": "gracias",
+      "speaker": "male-adult",
+      "src": "/audio/units/u01/u01-11.mp3",
+      "slow": "/audio/units/u01/u01-11-slow.mp3",
+      "seconds": 0.64,
+      "hash": "6461ba2cef7d4911"
+    },
+    {
+      "index": 11,
+      "text": "pero, perro",
+      "speaker": "narrator",
+      "src": "/audio/units/u01/u01-12.mp3",
+      "slow": "/audio/units/u01/u01-12-slow.mp3",
+      "seconds": 2.21,
+      "hash": "b314fca08619ef04"
+    },
+    {
+      "index": 12,
+      "text": "café",
+      "speaker": "narrator",
+      "src": "/audio/units/u01/u01-13.mp3",
+      "slow": "/audio/units/u01/u01-13-slow.mp3",
+      "seconds": 0.55,
+      "hash": "25a048058676648f"
+    },
+    {
+      "index": 13,
+      "text": "música",
+      "speaker": "narrator",
+      "src": "/audio/units/u01/u01-14.mp3",
+      "slow": "/audio/units/u01/u01-14-slow.mp3",
+      "seconds": 0.77,
+      "hash": "87b51d9e25df7551"
+    },
+    {
+      "index": 14,
+      "text": "¿Hablas español?",
+      "speaker": "narrator",
+      "src": "/audio/units/u01/u01-15.mp3",
+      "slow": "/audio/units/u01/u01-15-slow.mp3",
+      "seconds": 1.11,
+      "hash": "0dd77b162da0bd97"
+    },
+    {
+      "index": 15,
+      "text": "¿Dónde está el hotel?",
+      "speaker": "narrator",
+      "src": "/audio/units/u01/u01-16.mp3",
+      "slow": "/audio/units/u01/u01-16-slow.mp3",
+      "seconds": 1.48,
+      "hash": "4a09e1fa3c4d3378"
+    }
+  ],
   "2": [
     {
       "index": 0,
@@ -405,6 +551,89 @@
       "hash": "d3ac90496b77493b"
     }
   ],
+  "7": [
+    {
+      "index": 0,
+      "text": "Perdone, ¿hay una farmacia cerca?",
+      "speaker": "mina",
+      "src": "/audio/units/u07/u07-01.mp3",
+      "slow": "/audio/units/u07/u07-01-slow.mp3",
+      "seconds": 4.44,
+      "hash": "5f826265dcfe8998"
+    },
+    {
+      "index": 1,
+      "text": "Sí, hay una en la calle Mayor, al lado del banco.",
+      "speaker": "male-senior",
+      "src": "/audio/units/u07/u07-02.mp3",
+      "slow": "/audio/units/u07/u07-02-slow.mp3",
+      "seconds": 4.14,
+      "hash": "3ba132b0df614fb5"
+    },
+    {
+      "index": 2,
+      "text": "¿Y dónde está la estación de metro?",
+      "speaker": "mina",
+      "src": "/audio/units/u07/u07-03.mp3",
+      "slow": "/audio/units/u07/u07-03-slow.mp3",
+      "seconds": 5.39,
+      "hash": "cf5462bfa90119eb"
+    },
+    {
+      "index": 3,
+      "text": "Está enfrente de la farmacia.",
+      "speaker": "male-senior",
+      "src": "/audio/units/u07/u07-04.mp3",
+      "slow": "/audio/units/u07/u07-04-slow.mp3",
+      "seconds": 2.27,
+      "hash": "68c05ce2da9ef606"
+    },
+    {
+      "index": 4,
+      "text": "No, está muy cerca. A cinco minutos a pie.",
+      "speaker": "male-senior",
+      "src": "/audio/units/u07/u07-05.mp3",
+      "slow": "/audio/units/u07/u07-05-slow.mp3",
+      "seconds": 3.52,
+      "hash": "c3706c939cb19315"
+    },
+    {
+      "index": 5,
+      "text": "En Segovia, el acueducto está en la plaza del Azoguejo.",
+      "speaker": "narrator",
+      "src": "/audio/units/u07/u07-06.mp3",
+      "slow": "/audio/units/u07/u07-06-slow.mp3",
+      "seconds": 5.52,
+      "hash": "de8953a1bd19419e"
+    },
+    {
+      "index": 6,
+      "text": "Hay una cama, una mesa y una ventana grande.",
+      "speaker": "narrator",
+      "src": "/audio/units/u07/u07-07.mp3",
+      "slow": "/audio/units/u07/u07-07-slow.mp3",
+      "seconds": 5.31,
+      "hash": "cf8c811d0cf2446b"
+    },
+    {
+      "index": 7,
+      "text": "hay",
+      "speaker": "narrator",
+      "src": "/audio/units/u07/u07-08.mp3",
+      "slow": "/audio/units/u07/u07-08-slow.mp3",
+      "seconds": 0.41,
+      "hash": "6c4ed30260b9d691"
+    },
+    {
+      "index": 8,
+      "text": "hotel",
+      "speaker": "narrator",
+      "src": "/audio/units/u07/u07-09.mp3",
+      "slow": "/audio/units/u07/u07-09-slow.mp3",
+      "seconds": 0.59,
+      "hash": "5670390bede1c3aa"
+    }
+  ],
   "8": [
     {
       "index": 0,
@@ -578,6 +807,181 @@
       "slow": "/audio/units/u09/u09-08-slow.mp3",
       "seconds": 0.78,
       "hash": "3e9cf70166c81b3f"
+    }
+  ],
+  "10": [
+    {
+      "index": 0,
+      "text": "Buenos días. ¿A qué hora sale el próximo tren a Toledo?",
+      "speaker": "mina",
+      "src": "/audio/units/u10/u10-01.mp3",
+      "slow": "/audio/units/u10/u10-01-slow.mp3",
+      "seconds": 6.78,
+      "hash": "2ff8d760f6655396"
+    },
+    {
+      "index": 1,
+      "text": "A las diez y cuarto.",
+      "speaker": "male-adult",
+      "src": "/audio/units/u10/u10-02.mp3",
+      "slow": "/audio/units/u10/u10-02-slow.mp3",
+      "seconds": 1.14,
+      "hash": "cea861269f8a676b"
+    },
+    {
+      "index": 2,
+      "text": "¿Cuánto cuesta el billete?",
+      "speaker": "mina",
+      "src": "/audio/units/u10/u10-03.mp3",
+      "slow": "/audio/units/u10/u10-03-slow.mp3",
+      "seconds": 2.45,
+      "hash": "611912070ccfae3b"
+    },
+    {
+      "index": 3,
+      "text": "Doce euros con cincuenta.",
+      "speaker": "male-adult",
+      "src": "/audio/units/u10/u10-04.mp3",
+      "slow": "/audio/units/u10/u10-04-slow.mp3",
+      "seconds": 1.59,
+      "hash": "17d982afc675793e"
+    },
+    {
+      "index": 4,
+      "text": "¿Y de qué andén sale?",
+      "speaker": "mina",
+      "src": "/audio/units/u10/u10-05.mp3",
+      "slow": "/audio/units/u10/u10-05-slow.mp3",
+      "seconds": 2.68,
+      "hash": "19253368d10d0bf6"
+    },
+    {
+      "index": 5,
+      "text": "Del andén tres.",
+      "speaker": "male-adult",
+      "src": "/audio/units/u10/u10-06.mp3",
+      "slow": "/audio/units/u10/u10-06-slow.mp3",
+      "seconds": 1.11,
+      "hash": "3c46a3676856f17c"
+    },
+    {
+      "index": 6,
+      "text": "Es la una. Son las dos y media. Son las nueve menos cuarto.",
+      "speaker": "narrator",
+      "src": "/audio/units/u10/u10-07.mp3",
+      "slow": "/audio/units/u10/u10-07-slow.mp3",
+      "seconds": 9.32,
+      "hash": "db010e4862dec874"
+    },
+    {
+      "index": 7,
+      "text": "Hoy es lunes, dos de noviembre.",
+      "speaker": "narrator",
+      "src": "/audio/units/u10/u10-08.mp3",
+      "slow": "/audio/units/u10/u10-08-slow.mp3",
+      "seconds": 3.52,
+      "hash": "1e003011bb5640c6"
+    },
+    {
+      "index": 8,
+      "text": "¿Cuál es tu número de teléfono?",
+      "speaker": "narrator",
+      "src": "/audio/units/u10/u10-09.mp3",
+      "slow": "/audio/units/u10/u10-09-slow.mp3",
+      "seconds": 2.03,
+      "hash": "33466ff1e622001c"
+    },
+    {
+      "index": 9,
+      "text": "¿Cuántos años tienes? Tengo veintiocho años.",
+      "speaker": "narrator",
+      "src": "/audio/units/u10/u10-10.mp3",
+      "slow": "/audio/units/u10/u10-10-slow.mp3",
+      "seconds": 4.85,
+      "hash": "ed7944882b43e801"
+    },
+    {
+      "index": 10,
+      "text": "cinco, doce, cien, zumo",
+      "speaker": "narrator",
+      "src": "/audio/units/u10/u10-11.mp3",
+      "slow": "/audio/units/u10/u10-11-slow.mp3",
+      "seconds": 5.23,
+      "hash": "4f0d2bae299ea2d6"
+    }
+  ],
+  "11": [
+    {
+      "index": 0,
+      "text": "Mañana voy a ir a Toledo.",
+      "speaker": "narrator",
+      "src": "/audio/units/u11/u11-01.mp3",
+      "slow": "/audio/units/u11/u11-01-slow.mp3",
+      "seconds": 2.84,
+      "hash": "6553fd811afbaabd"
+    },
+    {
+      "index": 1,
+      "text": "Mira las nubes. Va a llover.",
+      "speaker": "narrator",
+      "src": "/audio/units/u11/u11-02.mp3",
+      "slow": "/audio/units/u11/u11-02-slow.mp3",
+      "seconds": 3.03,
+      "hash": "38280ddd1b68fe3b"
+    },
+    {
+      "index": 2,
+      "text": "¿Qué estás haciendo?",
+      "speaker": "daniel",
+      "src": "/audio/units/u11/u11-03.mp3",
+      "slow": "/audio/units/u11/u11-03-slow.mp3",
+      "seconds": 0.86,
+      "hash": "0ef78e5c997b1a7e"
+    },
+    {
+      "index": 3,
+      "text": "Estoy tomando un café en la Plaza Mayor.",
+      "speaker": "mina",
+      "src": "/audio/units/u11/u11-04.mp3",
+      "slow": "/audio/units/u11/u11-04-slow.mp3",
+      "seconds": 4.47,
+      "hash": "69e2fd793c590b39"
+    },
+    {
+      "index": 4,
+      "text": "¿Y qué vas a hacer mañana?",
+      "speaker": "daniel",
+      "src": "/audio/units/u11/u11-05.mp3",
+      "slow": "/audio/units/u11/u11-05-slow.mp3",
+      "seconds": 1.34,
+      "hash": "d9c5ec4f603a1879"
+    },
+    {
+      "index": 5,
+      "text": "Voy a ir a Toledo. Voy a visitar la catedral y voy a comprar mazapán.",
+      "speaker": "mina",
+      "src": "/audio/units/u11/u11-06.mp3",
+      "slow": "/audio/units/u11/u11-06-slow.mp3",
+      "seconds": 8.65,
+      "hash": "2e28de99438610e5"
+    },
+    {
+      "index": 6,
+      "text": "comiendo",
+      "speaker": "narrator",
+      "src": "/audio/units/u11/u11-07.mp3",
+      "slow": "/audio/units/u11/u11-07-slow.mp3",
+      "seconds": 0.95,
+      "hash": "f05a14f9a700fe4c"
+    },
+    {
+      "index": 7,
+      "text": "duchándome",
+      "speaker": "narrator",
+      "src": "/audio/units/u11/u11-08.mp3",
+      "slow": "/audio/units/u11/u11-08-slow.mp3",
+      "seconds": 1.14,
+      "hash": "f9d8f110f1ddeb21"
     }
   ]
 }
