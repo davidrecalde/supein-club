@@ -103,7 +103,7 @@ La entonación y la conexión entre palabras (A2 y B1) se añadieron a `pronunci
 16. **Unidades existentes (1, 25, 37, 49 y 57):** se redactan a partir de su artículo, conservando lo que ya posiciona.
 17. **Guías DELE:** cada guía de nivel enlaza a su hub de nivel y a su simulacro; `dele-self-study` presenta el curso como la ruta para preparar el DELE; la guía del oral enlaza a los seis simulacros.
 18. **Recursos (学習リソース):** cada artículo se ancla a unidades concretas y termina con 「自分のレベルを確かめる」: `travel-phrases-spanish` → unidades A1 de Mina; `movies-series-spanish` → unidades por nivel; `listening-tips` → unidades con audio; `memorize-vocabulary` y `zipf` → el vocabulario por frecuencia del curso; `spanish-in-latin-america` → notas de Daniel; entrevistas → unidad 45 (registro formal).
-19. **Test de nivel v2** (misma URL) — hecho el 9 de noviembre de 2026 (`LevelTestCard.astro`; se puede publicar antes del lanzamiento porque, mientras el curso está oculto, el resultado enlaza a la página del nivel y no a la unidad):
+19. **Test de nivel v2** (misma URL) — hecho el 9 de noviembre de 2026 en la rama `feat/level-test-v2` (`LevelTestCard.astro`). David decide publicarlo junto con el curso completo, en el PR de lanzamiento (aunque con el curso oculto el resultado ya enlazaría a la página del nivel y no a la unidad):
     - A1-C2 por bloques: el test se detiene cuando falla un nivel, para no alargarlo.
     - Partes de gramática, vocabulario y lectura; la de comprensión auditiva, cuando haya audio.
     - Resultado inmediato y gratis: nivel, puntos fuertes y débiles, y **「ユニットNから始めましょう」** con enlace a la unidad y a su hub de nivel.
