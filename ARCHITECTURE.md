@@ -1014,6 +1014,16 @@ Verificado tras el cambio: cada página del sitio ahora emite un único
   igualando los datos que antes solo tenía la versión duplicada de
   AuthorBox — y un `@id` estable (`{authorUrl}#person`), referenciado
   desde `Article.author` en vez de duplicar el objeto completo cada vez.
+- **Nodo Person del autor único (2026-11-10):** `buildAuthorPerson()` en
+  `src/utils/schema.ts` construye el mismo Person (nombre, `alternateName`,
+  imagen, `jobTitle`, bio como `description`, `knowsAbout`, `sameAs`,
+  `alumniOf`, `worksFor`) para todas las páginas que firma un autor:
+  artículos (`SEO.astro`), unidades del curso (`UnitLayout.astro`), páginas
+  de verbo y /language/about-this-course/. Antes las unidades, los verbos y
+  about-this-course solo llevaban nombre y URL. Nuevo campo opcional
+  `alumniOf` en el schema de `authors` (organizaciones donde trabajó o se
+  formó): David Recalde → Instituto Cervantes de Tokio (5 años como Asesor
+  de Comunicación y Prensa), para el E-E-A-T de todos sus artículos.
 - **Entidad "LaLiga" unificada**: antes se definía por separado en
   `SEO.astro` (rama `schemaType: 'sports'`, solo para `la-liga.mdx`) y en
   `SportsTeamSchema.astro` (`memberOf`, en cada club). Ahora un único
