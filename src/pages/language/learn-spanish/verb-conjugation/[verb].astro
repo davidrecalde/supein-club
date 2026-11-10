@@ -12,7 +12,7 @@ import { VERB_CONTENT } from '../../../../data/conjugation/content';
 import { FREQUENCY_SOURCE, RANK_BY_VERB } from '../../../../data/conjugation/ranking';
 import { NON_FINITE, PERSONS, TENSES, TENSE_BY_ID, TENSE_GROUPS, VOSOTROS_INDEX } from '../../../../data/conjugation/tenses';
 import { COURSE_URL } from '../../../../data/course';
-import { buildQuizNode } from '../../../../utils/schema';
+import { buildAuthorPerson, buildQuizNode } from '../../../../utils/schema';
 import { getAllUnits, hasPage, isCourseVisible } from '../../../../utils/units';
 
 export function getStaticPaths() {
@@ -55,7 +55,7 @@ const learningResource = {
   url: canonical,
   datePublished: updated.toISOString(),
   dateModified: updated.toISOString(),
-  author: { '@type': 'Person', '@id': `${authorUrl}#person`, name: author.data.name, url: authorUrl },
+  author: buildAuthorPerson(author, authorUrl),
   publisher: { '@id': `${siteUrl}/#organization` },
   inLanguage: 'ja',
   isPartOf: { '@id': `${siteUrl}/#website` },

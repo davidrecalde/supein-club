@@ -14,6 +14,10 @@ const authors = defineCollection({
     bioLong: z.string().optional(),
     knowsAbout: z.array(z.string()).optional(),
     specialties: z.array(z.string()).optional(),
+    /** Organizaciones en las que trabajó o se formó (schema.org Person.alumniOf), para el E-E-A-T de todos sus artículos. */
+    alumniOf: z
+      .array(z.object({ name: z.string(), alternateName: z.string().optional(), url: z.string().optional(), role: z.string().optional() }))
+      .optional(),
     sameAs: z.array(z.string()).optional(),
     twitter: z.string().optional(),
     linkedin: z.string().optional(),
