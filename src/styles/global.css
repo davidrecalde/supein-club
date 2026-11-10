@@ -1103,18 +1103,7 @@ img.cast-avatar {
   margin-top: 28px;
   color: #C8102E;
 }
-/* Variedad: vosotros solo en España. Con 「中南米」, sus filas se pliegan tras un botón. */
-.only-spain {
-  display: inline-block;
-  margin-left: 6px;
-  padding: 1px 6px;
-  border-radius: 999px;
-  background: #FDECEF;
-  color: #A00D24;
-  font-size: 11px;
-  font-weight: 700;
-  white-space: nowrap;
-}
+/* Variedad: con 「中南米」, las filas de vosotros se pliegan tras un botón. */
 html[data-variety='la'] table:not(.show-vosotros) .row-vosotros {
   display: none;
 }

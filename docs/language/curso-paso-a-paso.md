@@ -316,7 +316,7 @@ Revisión de los documentos contra el repositorio y producción antes del prompt
 ### Prompt 9: cómo se ha implementado
 
 - **Reparto:** `cast.json` añade a cada personaje `tagline` (su línea de situación, sacada de su `bio`: 「ミナ・初めてのスペイン旅行」) y `color` (fondo de sus iniciales). La colección `cast` lee el archivo directamente; cada unidad lleva `cast` (1-2 personajes).
-- **Variedad:** cada palabra de `vocabulary` admite `la` (variante latinoamericana: `es: "coche"`, `la: "carro"`). Las filas de vosotros se detectan en las tablas por su primera celda y siempre se marcan 「スペインのみ」; con 中南米 se pliegan detrás de un botón.
+- **Variedad:** cada palabra de `vocabulary` admite `la` (variante latinoamericana: `es: "coche"`, `la: "carro"`). Las filas de vosotros se detectan en las tablas por su primera celda; con 中南米 se pliegan detrás de un botón. *(Desde el 10 de noviembre de 2026, decisión de David: vosotros ya no se marca 「スペインのみ」 en ningún sitio, porque el curso enseña el español de España.)*
 - **Ejemplos por punto:** los ejemplos de un mismo punto van en un bloque `<Examples>` con una lista; la preferencia decide cuántos se ven. Sin JavaScript se ven todos.
 - **Visibilidad:** /language/cast/, /language/learn-spanish/welcome/ y /language/about-this-course/ siguen la misma regla que el resto del curso: en producción solo existen cuando el curso está completo y publicado. La pantalla de ajustes lleva `noindex, follow` (es una herramienta, no responde a ninguna búsqueda).
 - **Acceso a 学習設定:** desde la cabecera de cada unidad, las páginas de nivel, el bloque del curso en el hub y el resultado del test de nivel. No está en el menú general de la web.

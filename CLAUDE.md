@@ -134,7 +134,7 @@ son confirmaciones separadas, incluso si llegan en el mismo mensaje.
 - La web está en japonés. Nada de texto en español sin traducir, salvo los ejemplos
   lingüísticos. Nomenclatura del Instituto Cervantes: A1 Acceso, A2 Plataforma,
   B1 Umbral, B2 Avanzado, C1 Dominio operativo eficaz, C2 Maestría; secciones según el PCIC.
-- Español peninsular como norma. Vosotros se marca como 「スペインのみ」.
+- Español peninsular como norma: se enseña el español de España. Vosotros no lleva ninguna marca ni nota de 「スペインのみ」 (decisión de David del 10 de noviembre de 2026).
 - URLs estables: nunca cambies una URL existente sin 301. El número de unidad va en el
   frontmatter, nunca en la URL.
 - Una intención de búsqueda, una página. Antes de crear una página, comprueba la sección

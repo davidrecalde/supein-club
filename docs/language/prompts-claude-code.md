@@ -12,7 +12,7 @@ Nueve prompts, en orden. El bloque 0 se pega una sola vez en el CLAUDE.md del re
 - La web está en japonés. Nada de texto en español sin traducir, salvo los ejemplos
   lingüísticos. Nomenclatura del Instituto Cervantes: A1 Acceso, A2 Plataforma,
   B1 Umbral, B2 Avanzado, C1 Dominio operativo eficaz, C2 Maestría; secciones según el PCIC.
-- Español peninsular como norma. Vosotros se marca como 「スペインのみ」.
+- Español peninsular como norma. Vosotros no se marca (sustituido el 10-11-2026: antes se marcaba 「スペインのみ」).
 - URLs estables: nunca cambies una URL existente sin 301. El número de unidad va en el
   frontmatter, nunca en la URL.
 - Una intención de búsqueda, una página. Antes de crear una página, comprueba la sección
@@ -166,8 +166,8 @@ tiempo son las páginas canónicas de cada tiempo; aquí no se crean páginas de
 
 3. Páginas de verbo en /language/learn-spanish/verb-conjugation/<verbo>/: título
    「tener の活用｜スペイン語動詞活用表（全時制）」; cabecera con significado, tipo, puesto de
-   frecuencia y nivel; tabla completa con irregulares resaltados; vosotros marcado
-   「スペインのみ」 con enlace a la página de Latinoamérica; 3-5 ejemplos con traducción (sin audio);
+   frecuencia y nivel; tabla completa con irregulares resaltados; vosotros sin marca
+   (antes 「スペインのみ」; sustituido el 10-11-2026); 3-5 ejemplos con traducción (sin audio);
    un error típico de japoneses; bloque 「この動詞を学ぶユニット」 con enlaces a las unidades de sus
    tiempos; verbos que se conjugan igual; quiz de 5 preguntas; hueco para el short de YouTube.
    Schema LearningResource y BreadcrumbList.
@@ -330,8 +330,8 @@ en docs/language/units.json.
    - ejemplos por punto: 1 | 2 | 3
    - audio: 'natural' | 'pausado' y duración de pausa (0,5 s / 1 s / 1,5 s)
    Se guardan en localStorage bajo supein.prefs.v1, junto al progreso de la fase 2.
-   Efecto inmediato en todas las unidades: con variedad 'la', vosotros se muestra plegado y
-   marcado 「スペインのみ」 y el vocabulario regional se reordena; con 'es', al revés. El número de
+   Efecto inmediato en todas las unidades: con variedad 'la', vosotros se muestra plegado
+   (sin marca desde el 10-11-2026) y el vocabulario regional se reordena; con 'es', al revés. El número de
    ejemplos visibles cambia según la preferencia. Las preferencias de audio se guardan ya aunque
    el reproductor aún no exista.
    Sin JavaScript, la página se ve con los valores por defecto (es, 3, 2, natural) y el contenido

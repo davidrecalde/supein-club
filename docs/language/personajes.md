@@ -78,7 +78,7 @@ brand names, extra fingers, distorted hands, cluttered background.
 
 - **Ficha:** 58 años, de Madrid, profesora de español. B2-C2.
 - **Personalidad:** rigurosa, exigente y cálida a la vez; disfruta de la lengua, la prensa y la literatura. Corrige con humor y sin dramatismo.
-- **Cómo habla:** preciso y articulado, registro culto; a sus alumnos les habla de tú y con vosotros en clase (スペインのみ). Expresiones de profesora: Fíjate en que…, Muy bien citado.
+- **Cómo habla:** preciso y articulado, registro culto; a sus alumnos les habla de tú y con vosotros en clase. Expresiones de profesora: Fíjate en que…, Muy bien citado.
 - **Aspecto (para ilustrar):** media melena con canas, gafas de lectura con cordón, pañuelo de color, chaqueta de punto; libros y periódicos a mano. Color de acento: morado `#5B3A8E`.
 - **Voz:** femenina madura, segura y amable. Candidatas: **Gacrux** (mature), **Sulafat** (warm), **Vindemiatrix** (gentle).
 - **Perfil de audio:** «Mujer de 58 años, profesora de Madrid. Habla español de España con pronunciación peninsular estándar, culta, segura y amable, articulando con claridad.»
