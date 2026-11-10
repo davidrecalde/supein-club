@@ -106,6 +106,10 @@ export const VERB_SPECS: VerbSpec[] = [
   { infinitive: 'entender', stemChange: 'e>ie' },
   { infinitive: 'entrar' },
   { infinitive: 'mirar' },
+  // Verbos de las unidades fuera de los 50 (decisión de David, 10 de noviembre de 2026).
+  { infinitive: 'acabar' },
+  { infinitive: 'gustar' },
+  { infinitive: 'comer' },
 ];
 
 /** Modelos de la tabla rápida de la página central (no tienen página propia en este lote). */

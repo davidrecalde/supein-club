@@ -1349,6 +1349,15 @@ html[data-variety='la'] .vocab-pair .v-es .v-tag {
   font-size: 13px;
   color: #6b7280;
 }
+.verb-ranking-extra {
+  margin-top: 12px;
+  font-size: 14px;
+  line-height: 1.8;
+}
+.verb-ranking-extra a {
+  color: #C8102E;
+  text-decoration: underline;
+}
 .verb-ranking-source {
   font-size: 13px;
   color: #6b7280;

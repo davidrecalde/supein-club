@@ -691,4 +691,47 @@ export const VERB_CONTENT: Record<string, VerbContent> = {
     notes: ['tú への命令 mira は、「ほら・ねえ」と相手の注意を引く言葉としてもよく使います。'],
     updated: '2026-11-10',
   },
+
+  // ── Verbos de las unidades fuera de los 50 (10 de noviembre de 2026). Pendiente de revisión nativa. ──
+  acabar: {
+    type: '規則動詞（-ar）',
+    level: 'A2',
+    summary: 'acabar は「終える・終わる」を表す動詞で、acabar de + 原形は「〜したばかりだ」の意味になります。hablar と同じように活用する規則動詞です。',
+    examples: [
+      { es: 'La película acaba a las once.', ja: '映画は11時に終わる。' },
+      { es: 'Acabo de llegar a casa.', ja: '今、家に着いたところです。' },
+      { es: '¿Has acabado los deberes?', ja: '宿題は終わった？' },
+    ],
+    mistake: { wrong: 'Acabo llegar.', right: 'Acabo de llegar.', note: '「〜したばかりだ」は acabar de + 原形です。de を落とすと意味が通じません。' },
+    similar: ['hablar', 'llegar', 'pasar'],
+    notes: ['acabar + 現在分詞は「最後には〜することになる」の意味になります（Acabé aceptando la oferta.「結局その申し出を受け入れた」）。'],
+    updated: '2026-11-10',
+  },
+  gustar: {
+    type: '規則動詞（-ar）・gustar 型',
+    level: 'A1',
+    summary: 'gustar は「〜が好きである（〜が気に入る）」を表す動詞で、好きなものが主語になり、好きな人は me・te・le などの代名詞で表します。活用は規則的で、ふつうは3人称の gusta・gustan を使います。',
+    examples: [
+      { es: 'Me gusta el flamenco.', ja: '私はフラメンコが好きです。' },
+      { es: '¿Te gustan las croquetas?', ja: 'コロッケは好き？' },
+      { es: 'Nos gustó mucho Sevilla.', ja: '私たちはセビーリャがとても気に入った。' },
+    ],
+    mistake: { wrong: 'Yo gusto el café.', right: 'Me gusta el café.', note: '好きなもの（el café）が主語なので、動詞はそれに合わせて gusta / gustan になります。好きな人は me・te・le・nos・os・les で表します。' },
+    similar: ['encantar', 'interesar', 'doler'],
+    notes: ['gusto, gustas などの1・2人称は、「（人が人を）好きだ」と言うときに使います（Me gustas.「あなたが好き」）。'],
+    updated: '2026-11-10',
+  },
+  comer: {
+    type: '規則動詞（-er）',
+    level: 'A1',
+    summary: 'comer は「食べる」「昼食をとる」を表す動詞で、-er 動詞の活用のモデルです。語幹 com- に、時制と人称に応じた語尾をつけるだけの規則動詞です。',
+    examples: [
+      { es: '¿Qué comes normalmente?', ja: 'ふだんは何を食べるの？' },
+      { es: 'En España comemos a las dos.', ja: 'スペインでは2時に昼食をとります。' },
+      { es: 'Ayer comí paella en Valencia.', ja: '昨日、バレンシアでパエリアを食べた。' },
+    ],
+    mistake: { wrong: 'Comí la cena a las nueve.', right: 'Cené a las nueve.', note: 'スペインでは、comer は「昼食をとる」の意味でよく使います。夕食は cenar、朝食は desayunar という専用の動詞で言います。' },
+    similar: ['deber', 'beber', 'aprender'],
+    updated: '2026-11-10',
+  },
 };
