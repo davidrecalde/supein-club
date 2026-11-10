@@ -20,7 +20,7 @@ import { ABOUT_COURSE_URL } from '../data/course';
 import { VERBS, verbUrl } from '../data/conjugation';
 import { getAllUnits, hasPage, unitBreadcrumbs, type Unit } from '../utils/units';
 import { buildAuthorPerson, buildQuizNode } from '../utils/schema';
-import { HERO_SIZES } from '../utils/images';
+import { HERO_SIZES, publicSchemaImages } from '../utils/images';
 import { existsSync } from 'node:fs';
 
 interface Props {
@@ -41,6 +41,8 @@ const imageVariant = (w: number) => {
 };
 const image480 = imageVariant(480);
 const image1200 = imageVariant(1200);
+// Recortes 16:9 (uNN-1200), 4:3 y 1:1 para el schema.
+const unitSchemaImages = d.image ? await publicSchemaImages(d.image.src) : undefined;
 const imageSrcset = d.image
   ? [image480 && `${image480} 480w`, `${d.image.src} ${d.image.width}w`, image1200 && d.image.width < 1200 && `${image1200} 1200w`].filter(Boolean).join(', ')
   : undefined;
@@ -73,7 +75,9 @@ const learningResource = {
   inLanguage: 'ja',
   isPartOf: [{ '@id': `${siteUrl}/#website` }, { '@id': `${siteUrl}/language/#course` }],
   mainEntityOfPage: `${canonical}#webpage`,
-  ...(imageUrl && { image: imageUrl }),
+  ...(unitSchemaImages
+    ? { image: unitSchemaImages.map((i) => ({ '@id': i.ratio === '16x9' ? `${canonical}#primaryimage` : `${canonical}#image-${i.ratio}` })) }
+    : imageUrl && { image: imageUrl }),
   about: { '@type': 'Thing', name: 'スペイン語' },
   educationalLevel: d.level,
   teaches: [d.shortTitle, d.titleEs],
@@ -97,6 +101,10 @@ const sources = [
     description={description}
     canonical={canonical}
     image={image1200 ?? d.image?.src}
+    imageWidth={image1200 ? 1200 : d.image?.width}
+    imageHeight={image1200 ? Math.round((1200 * d.image!.height) / d.image!.width) : d.image?.height}
+    imageAlt={d.image?.alt}
+    schemaImages={unitSchemaImages}
     type="article"
     breadcrumbs={unitBreadcrumbs(unit)}
     keywords={[d.shortTitle, d.titleEs, ...d.grammar]}

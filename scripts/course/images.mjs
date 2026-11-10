@@ -1,7 +1,8 @@
 // Ilustraciones del curso: convierte las escenas y los retratos de Imágenes/personajes/
 // (carpeta local, fuera de git) a WebP de menos de 100 KB y actualiza `image` en cada unidad.
 // Cada escena sale además en dos tamaños para el srcset de la unidad (Google Discover):
-// uNN-480.webp (móvil) y uNN-1200.webp (1200 px; es el og:image y no tiene el límite de 100 KB).
+// uNN-480.webp (móvil) y uNN-1200.webp (1200 px, 16:9; es el og:image y no tiene el límite de 100 KB),
+// y en recortes 4:3 y 1:1 para el schema (uNN-4x3.webp, uNN-1x1.webp; recorte «attention»).
 //
 //   npm run course:images                       → convierte y actualiza src/width/height
 //   npm run course:images -- --alts alts.json   → además añade `image` a las unidades que no lo tienen
@@ -56,6 +57,16 @@ async function encodeAt(input, out, width, quality) {
   return Math.round(buf.length / 1024);
 }
 
+// Recorte con proporción fija para el schema (ImageObject), sin ampliar y con 1200 px como máximo.
+async function encodeCrop(input, out, w, h) {
+  const meta = await sharp(input).metadata();
+  const width = Math.min(1200, meta.width, Math.floor((meta.height * w) / h));
+  const height = Math.round((width * h) / w);
+  const buf = await sharp(input).resize({ width, height, fit: 'cover', position: 'attention' }).webp({ quality: 82, effort: 6 }).toBuffer();
+  writeFileSync(out, buf);
+  return `${width}x${height} ${Math.round(buf.length / 1024)} KB`;
+}
+
 // unidad → archivo .mdx
 const unitFiles = new Map();
 for (const level of readdirSync(UNITS)) {
@@ -78,6 +89,8 @@ for (const level of LEVELS) {
     const { width, height, kb } = await encode(join(dir, name), join(OUT_UNITS, `u${id}.webp`), { width: 1200 });
     const kb480 = await encodeAt(join(dir, name), join(OUT_UNITS, `u${id}-480.webp`), 480, 75);
     const kb1200 = await encodeAt(join(dir, name), join(OUT_UNITS, `u${id}-1200.webp`), 1200, 82);
+    const c43 = await encodeCrop(join(dir, name), join(OUT_UNITS, `u${id}-4x3.webp`), 4, 3);
+    const c11 = await encodeCrop(join(dir, name), join(OUT_UNITS, `u${id}-1x1.webp`), 1, 1);
     const file = unitFiles.get(n);
     let text = readFileSync(file, 'utf8');
     const eol = text.includes('\r\n') ? '\r\n' : '\n';
@@ -91,7 +104,7 @@ for (const level of LEVELS) {
       continue;
     }
     writeFileSync(file, text);
-    console.log(`u${id} ${width}x${height} ${kb} KB · 480: ${kb480} KB · 1200: ${kb1200} KB`);
+    console.log(`u${id} ${width}x${height} ${kb} KB · 480: ${kb480} KB · 1200: ${kb1200} KB · 4:3 ${c43} · 1:1 ${c11}`);
   }
 }
 
