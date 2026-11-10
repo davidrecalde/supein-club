@@ -12,7 +12,7 @@ import FloatingActions from '../../../../components/FloatingActions.astro';
 import { CONJUGATION_URL, VERBS, verbUrl, type VerbData } from '../../../../data/conjugation';
 import { VERB_CONTENT } from '../../../../data/conjugation/content';
 import { FREQUENCY_SOURCE, RANK_BY_VERB } from '../../../../data/conjugation/ranking';
-import { NON_FINITE, PERSONS, TENSES, TENSE_BY_ID, TENSE_GROUPS, VOSOTROS_INDEX } from '../../../../data/conjugation/tenses';
+import { NON_FINITE, PERSONS, TENSES, TENSE_BY_ID, TENSE_GROUPS } from '../../../../data/conjugation/tenses';
 import { COURSE_URL } from '../../../../data/course';
 import { buildQuizNode } from '../../../../utils/schema';
 import { getAllUnits, hasPage, isCourseVisible } from '../../../../utils/units';
@@ -125,7 +125,7 @@ const fmt = (d: Date) => d.toLocaleDateString('ja-JP', { year: 'numeric', month:
 
       <h2 id="table">活用表（全時制）</h2>
       <p>
-        <strong class="irregular">赤い太字</strong>が不規則な形です。vosotros の形はスペインのみで使い、中南米では ustedes を使います（→ <a href="/language/learn-spanish/spanish-in-latin-america/">中南米のスペイン語</a>）。
+        <strong class="irregular">赤い太字</strong>が不規則な形です。
       </p>
 
       {TENSE_GROUPS.map((group) => (
@@ -142,7 +142,7 @@ const fmt = (d: Date) => d.toLocaleDateString('ja-JP', { year: 'numeric', month:
                   <tbody>
                     {PERSONS.map((person, i) => (
                       <tr>
-                        <td>{person}{i === VOSOTROS_INDEX && <span class="only-spain">スペインのみ</span>}</td>
+                        <td>{person}</td>
                         <td lang="es">{t.forms[i] === null ? '—' : t.irregular[i] ? <strong class="irregular">{t.forms[i]}</strong> : t.forms[i]}</td>
                       </tr>
                     ))}
