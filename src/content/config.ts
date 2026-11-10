@@ -233,6 +233,8 @@ const pressReleases = defineCollection({
     featured: z.boolean().default(false),
     draft: z.boolean().default(false),
     image: z.string().optional(),
+    /** Pie visible bajo la imagen principal (p. ej. aviso de ilustración generada). */
+    imageCaption: z.string().optional(),
     lang: z.enum(['ja', 'en']).default('ja'),
     subtitle: z.string().optional(),
     location: z.string().default('東京、日本'),
