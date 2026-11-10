@@ -3,6 +3,8 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import SEO from '../../components/SEO.astro';
 import { getCollection } from 'astro:content';
 import Breadcrumb from '../../components/Breadcrumb.astro';
+import { publicImageSize, publicSchemaImages } from '../../utils/images';
+import { existsSync } from 'node:fs';
 
 export async function getStaticPaths() {
   const releases = await getCollection('press-releases', e => !e.data.draft);
@@ -30,6 +32,16 @@ const breadcrumbs = [
   { name: title, url: '' },
 ];
 
+// Imagen principal en 480/800/1200 px (srcset; npm run images:variants -- … --schema) y recortes
+// 16:9, 4:3 y 1:1 para el schema. El og:image es la versión de 1200 px (Google Discover).
+const imageBase = image?.replace(/\.(webp|png|jpe?g)$/i, '');
+const imageVariant = (w: number) => (imageBase && existsSync(`public${imageBase}-${w}.webp`) ? `${imageBase}-${w}.webp` : undefined);
+const [image480, image800, image1200] = [imageVariant(480), imageVariant(800), imageVariant(1200)];
+const imageSrcset = [image480 && `${image480} 480w`, image800 && `${image800} 800w`, image1200 && `${image1200} 1200w`].filter(Boolean).join(', ') || undefined;
+const ogImageSize = image1200 ? await publicImageSize(image1200) : image ? await publicImageSize(image) : undefined;
+const pressSchemaImages = image ? await publicSchemaImages(image) : undefined;
+const imageAlt = entry.data.imageCaption ?? title;
+
 const schema = {
   '@context': 'https://schema.org',
   '@type': 'NewsArticle',
@@ -41,18 +53,12 @@ const schema = {
   inLanguage: 'ja',
   author: { '@id': 'https://supein.club/#organization' },
   publisher: { '@id': 'https://supein.club/#organization' },
-  mainEntityOfPage: {
-    '@type': 'WebPage',
-    '@id': canonical,
-  },
+  mainEntityOfPage: { '@id': `${canonical}#webpage` },
   articleSection: category,
-  ...(image && {
-    image: {
-      '@type': 'ImageObject',
-      url: 'https://supein.club' + image,
-      width: 1200,
-      height: 630,
-    },
+  // ImageObject 16:9 / 4:3 / 1:1 del grafo de SEO.astro (mismo documento, enlazados por @id)
+  ...(pressSchemaImages && {
+    image: pressSchemaImages.map((i) => ({ '@id': i.ratio === '16x9' ? `${canonical}#primaryimage` : `${canonical}#image-${i.ratio}` })),
+    thumbnailUrl: `https://supein.club${(pressSchemaImages.find((i) => i.ratio === '16x9') ?? pressSchemaImages[0]).url}`,
   }),
   about: { '@id': 'https://supein.club/#organization' },
 };
@@ -65,6 +71,12 @@ const schema = {
     description={summary}
     canonical={canonical}
     breadcrumbs={breadcrumbs}
+    type="article"
+    image={image1200 ?? image}
+    imageWidth={ogImageSize?.width}
+    imageHeight={ogImageSize?.height}
+    imageAlt={image ? imageAlt : undefined}
+    schemaImages={pressSchemaImages}
   />
   <script slot="head" type="application/ld+json" set:html={JSON.stringify(schema)} />
 
@@ -119,7 +131,9 @@ const schema = {
               box-shadow: 0 4px 24px rgba(0,33,71,0.10);
             ">
               <img
-                src={entry.data.image}
+                src={image800 ?? entry.data.image}
+                srcset={imageSrcset}
+                sizes="(max-width: 1023px) 100vw, 760px"
                 alt={entry.data.title}
                 width="1200"
                 height="630"

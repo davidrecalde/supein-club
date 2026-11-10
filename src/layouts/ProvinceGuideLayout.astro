@@ -19,7 +19,7 @@ import PreferredSourceCTA from '../components/PreferredSourceCTA.astro';
 import ArticleDisclaimer from '../components/ArticleDisclaimer.astro';
 import FloatingActions from '../components/FloatingActions.astro';
 import { getArticleUrl } from '../utils/articles';
-import { discoverImage } from '../utils/images';
+import { discoverImage, schemaImages } from '../utils/images';
 
 interface Props {
   entry: CollectionEntry<'spain-map'>;
@@ -28,6 +28,7 @@ interface Props {
 const { entry } = Astro.props;
 // og:image en 1200 px para Google Discover (la página sirve tamaños menores con srcset).
 const discover = entry.data.heroImage ? await discoverImage(entry.data.heroImage) : undefined;
+const heroSchemaImages = entry.data.heroImage ? await schemaImages(entry.data.heroImage) : undefined;
 const { Content } = await entry.render();
 const author = await getEntry(entry.data.author);
 
@@ -110,6 +111,10 @@ const localBusinessSchema = JSON.stringify({
     canonical={canonical}
     breadcrumbs={breadcrumbs}
     image={discover?.src}
+    imageWidth={discover?.width}
+    imageHeight={discover?.height}
+    imageAlt={entry.data.heroImage ? entry.data.heroImageAlt || entry.data.title : undefined}
+    schemaImages={heroSchemaImages}
   />
   <script type="application/ld+json" slot="head" set:html={localBusinessSchema} />
 

@@ -2,7 +2,7 @@
 import type { CollectionEntry } from 'astro:content';
 import { getCollection, getEntry } from 'astro:content';
 import { Image } from 'astro:assets';
-import { HERO_SIZES, HERO_WIDTHS, discoverImage } from '../utils/images';
+import { HERO_SIZES, HERO_WIDTHS, discoverImage, schemaImages } from '../utils/images';
 import BaseLayout from './BaseLayout.astro';
 import SEO from '../components/SEO.astro';
 import AuthorBox from '../components/AuthorBox.astro';
@@ -37,6 +37,8 @@ const { entry } = Astro.props;
 const { title, h1, description, pubDate, updatedDate, pillar, cluster, image, imageAlt, lead, faq, faqTitle, quiz, levelTest, relatedArticles, relatedPages, sources, readingTime, heroImage, heroImageAlt, level, articleRole } = entry.data;
 // og:image en 1200 px para Google Discover (la página sirve tamaños menores con srcset).
 const discover = heroImage ? await discoverImage(heroImage) : undefined;
+// Recortes 16:9 / 4:3 / 1:1 en alta resolución para el schema (ImageObject).
+const heroSchemaImages = heroImage ? await schemaImages(heroImage) : undefined;
 const displayH1 = h1 ?? title;
 const categoryLabel = getCategoryBadgeLabel(entry);
 const isLearnSpanishHero = pillar === 'language' && cluster === 'learn-spanish';
@@ -120,6 +122,10 @@ const stepItemList = isRoadmapHub
     description={description}
     canonical={canonical}
     image={discover?.src ?? image}
+    imageWidth={discover?.width}
+    imageHeight={discover?.height}
+    imageAlt={heroImage ? heroImageAlt || title : undefined}
+    schemaImages={heroSchemaImages}
     type="article"
     article={entry}
     author={author}
