@@ -1,5 +1,10 @@
 ---
+// Hub /language/: guía de 勉強法 con el curso A1-C2 como centro
+// (docs/language/plan-hub-embudo.md, punto 9). Arriba solo las salidas del
+// curso (test de nivel, hoja de ruta, seis niveles); después, cómo estudiar,
+// herramientas, DELE, recursos y escuelas.
 import { getCollection, getEntry, type CollectionEntry } from 'astro:content';
+import { ClipboardCheck, Map as MapIcon } from 'lucide-astro';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import SEO from '../../components/SEO.astro';
 import PillarHero from '../../components/PillarHero.astro';
@@ -10,15 +15,22 @@ import FAQSection from '../../components/FAQSection.astro';
 import NewsletterForm from '../../components/NewsletterForm.astro';
 import ArticleDisclaimer from '../../components/ArticleDisclaimer.astro';
 import AuthorBox from '../../components/AuthorBox.astro';
+import CourseLevels from '../../components/course/CourseLevels.astro';
+import CourseContinue from '../../components/course/CourseContinue.astro';
 import { getArticleUrl } from '../../utils/articles';
 import { courseSequence } from '../../data/course-sequence';
-import CourseLevels from '../../components/course/CourseLevels.astro';
-import { ABOUT_COURSE_URL, COURSE_LEVELS, TOTAL_UNITS, levelUrl } from '../../data/course';
-import { isCourseVisible } from '../../utils/units';
+import { ABOUT_COURSE_URL, CAST_URL, COURSE_LEVELS, COURSE_URL, TOTAL_UNITS, WELCOME_URL, levelUrl } from '../../data/course';
+import { getAllUnits, isCourseVisible } from '../../utils/units';
 
 type Article = CollectionEntry<'articles'>;
 
 const author = await getEntry('authors', 'david-recalde');
+const courseVisible = await isCourseVisible();
+const firstUnit = (await getAllUnits())[0];
+
+const LEVEL_TEST_URL = '/language/learn-spanish/level-test/';
+const CONJUGATION_URL = '/language/learn-spanish/verb-conjugation/';
+const DELE_URL = '/language/learn-spanish/dele/';
 
 const otherPillars = [
   { href: '/travel/', title: 'スペイン旅行', description: 'バルセロナ・マドリードから南部アンダルシア、離島まで、観光スポットとツアー情報を完全網羅' },
@@ -29,131 +41,86 @@ const otherPillars = [
 ];
 
 const articles = await getCollection('articles', ({ data }) => !data.draft && data.pillar === 'language');
-
-const slugOf = (a: Article) => a.id.replace(/\.(md|mdx)$/, '').split('/').pop();
-
-// --- learn-spanish：はじめに / A1-C2 / DELE / その他 に分類 ---
-const learnSpanish = articles.filter((a) => a.data.cluster === 'learn-spanish');
-// 「スペイン語学校」セクション（otherClusters）は学校ランキング専用。
-// spanish-apps はクラスターが分かれているだけで学校ではないため、その他に分類する。
-const otherClusters = articles
-  .filter((a) => a.data.cluster !== 'learn-spanish' && slugOf(a) !== 'spanish-apps')
-  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
-
-const isDele = (a: Article) =>
-  a.id.includes('learn-spanish/dele/') || slugOf(a) === 'dele-vs-seiken';
-
-const introRoles = ['pilar', 'onboarding', 'diagnostico'];
-// 例外：zipf-law-methodology.mdx は articleRole "puente" のままだが、
-// はじめにグループに分類する（その他には出さない）。
-const isIntro = (a: Article) =>
-  !isDele(a) && (introRoles.includes(a.data.articleRole ?? '') || slugOf(a) === 'zipf-law-methodology');
-
-const isLevel = (a: Article) => !isDele(a) && !isIntro(a) && !!a.data.level;
-
-const introArticles = learnSpanish.filter(isIntro);
-const levelArticles = learnSpanish.filter(isLevel);
-const deleArticles = learnSpanish.filter(isDele);
-const otherArticles = learnSpanish
-  .filter((a) => !isDele(a) && !isIntro(a) && !isLevel(a))
-  .concat(articles.filter((a) => slugOf(a) === 'spanish-apps'));
-
-// A1-C2バッジ：記事の役割から軽量なテーマラベルを導出（スキーマに新規フィールドは追加しない）
-const roleBadgeLabels: Record<string, string> = {
-  'spoke-gramatica': '文法',
-  'spoke-vocabulario': '語彙',
-  'spoke-pronunciacion': '発音',
-  'spoke-plan': '学習計画',
-};
-const roleBadge = (a: Article): string | undefined => {
-  if (slugOf(a) === 'subjunctive') return '文法'; // 例外：b1/subjunctive.mdx は articleRole "puente"
-  return roleBadgeLabels[a.data.articleRole ?? ''];
-};
-
-// STEP/DELE バッジ：course-sequence.ts の位置から算出（はじめに・A1-C2・DELEのみ）
 const idNoExt = (a: Article) => a.id.replace(/\.(md|mdx)$/, '');
-const stepBadge = (a: Article): string | undefined => {
-  const id = idNoExt(a);
-  const stepIndex = courseSequence.step.indexOf(id);
-  if (stepIndex !== -1) return `STEP ${stepIndex + 1} / ${courseSequence.step.length}`;
-  const deleIndex = courseSequence.dele.indexOf(id);
-  if (deleIndex !== -1) return `DELE ${deleIndex + 1} / ${courseSequence.dele.length}`;
-  return undefined;
-};
+const slugOf = (a: Article) => idNoExt(a).split('/').pop() ?? '';
+const byId = (id: string) => articles.find((a) => idNoExt(a) === `language/learn-spanish/${id}`);
 
-// はじめに: zipf-law-methodology → pilar(index) → diagnostico(level-test)
-const introPriority = (a: Article) =>
-  slugOf(a) === 'zipf-law-methodology' ? -1 : introRoles.indexOf(a.data.articleRole ?? '');
-introArticles.sort((a, b) => introPriority(a) - introPriority(b));
+// --- Clasificación de los artículos del hub ---
+// Las páginas de nivel (hub, gramática, vocabulario, plan, subjuntivo) se
+// enlazan desde las tarjetas de los seis niveles, no como tarjetas sueltas.
+const learnSpanish = articles.filter((a) => a.data.cluster === 'learn-spanish');
+const isDele = (a: Article) => idNoExt(a).includes('learn-spanish/dele/') || a.data.articleRole === 'info-dele' || slugOf(a) === 'dele-vs-seiken';
+const isLevelPage = (a: Article) => !isDele(a) && !!a.data.level;
+const TOP_IDS = ['index', 'level-test'];
+const TOOL_IDS = ['verb-conjugation', 'pronunciation-for-japanese', 'zipf-law-methodology', 'spanish-vs-japanese', 'how-to-make-study-plan'];
 
-// A1-C2: レベル順、レベル内は hub-nivel → 文法 → 語彙 → 発音 → 学習計画 → puente
-const levelOrder = ['a1', 'a2', 'b1', 'b2', 'c1', 'c2'];
-const levelLabels: Record<string, string> = { a1: 'A1', a2: 'A2', b1: 'B1', b2: 'B2', c1: 'C1', c2: 'C2' };
-const roleOrder = ['hub-nivel', 'spoke-gramatica', 'spoke-vocabulario', 'spoke-pronunciacion', 'spoke-plan', 'puente'];
+const tools = TOOL_IDS.map(byId).filter((a): a is Article => !!a);
 
-const levelGroups = levelOrder
-  .map((level) => ({
-    level,
-    label: levelLabels[level],
-    items: levelArticles
-      .filter((a) => a.data.level === level)
-      .sort((a, b) => {
-        const ai = roleOrder.indexOf(a.data.articleRole ?? '');
-        const bi = roleOrder.indexOf(b.data.articleRole ?? '');
-        return (ai === -1 ? roleOrder.length : ai) - (bi === -1 ? roleOrder.length : bi);
-      }),
-  }))
-  .filter((g) => g.items.length > 0);
-
-// カテゴリ内のレベル/DELE/その他/学校アンカーピル（新規ページなし、既存の見出しidへジャンプ）
-const levelAnchors = [
-  ...levelGroups.map((g) => ({ href: `#${g.level}`, label: g.label })),
-  ...(deleArticles.length > 0 ? [{ href: '#dele', label: 'DELE' }] : []),
-  ...(otherArticles.length > 0 ? [{ href: '#other', label: '学習リソース' }] : []),
-  ...(otherClusters.length > 0 ? [{ href: '#schools', label: 'スペイン語学校' }] : []),
-];
-
-// DELE: mismo orden que su insignia "DELE n / N" (course-sequence.ts); lo que no esté en la secuencia, al final.
-const deleRank = (a: Article) => {
+// DELE: primero la secuencia del hub DELE (1/9 … 9/9), después las guías.
+const deleOrder = (a: Article) => {
   const i = courseSequence.dele.indexOf(idNoExt(a));
   return i === -1 ? courseSequence.dele.length : i;
 };
-deleArticles.sort((a, b) => deleRank(a) - deleRank(b));
+const deleArticles = learnSpanish.filter(isDele).sort((a, b) => deleOrder(a) - deleOrder(b));
+const deleHub = deleArticles.find((a) => idNoExt(a) === 'language/learn-spanish/dele/index');
+const deleRest = deleArticles.filter((a) => a !== deleHub);
 
-// その他: 公開日の新しい順
-otherArticles.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+// Recursos: el resto de learn-spanish (nada se queda sin enlace) + la comparativa de apps.
+const resources = learnSpanish
+  .filter((a) => !isDele(a) && !isLevelPage(a) && !TOP_IDS.includes(idNoExt(a).replace('language/learn-spanish/', '')) && !tools.includes(a))
+  .concat(articles.filter((a) => slugOf(a) === 'spanish-apps'))
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+
+// Escuelas: clusters propios de ranking (sin spanish-apps), con la página madre primero.
+const schools = articles
+  .filter((a) => a.data.cluster !== 'learn-spanish' && slugOf(a) !== 'spanish-apps')
+  .sort((a, b) => (slugOf(b) === 'spanish-schools-in-japan' ? 1 : 0) - (slugOf(a) === 'spanish-schools-in-japan' ? 1 : 0) || b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+
+const anchors = [
+  { href: '#start', label: 'はじめる' },
+  ...(courseVisible ? [{ href: '#course', label: 'レベル別コース' }] : []),
+  { href: '#methods', label: '学び方の比較' },
+  { href: '#steps', label: '独学の5ステップ' },
+  { href: '#tools', label: 'ツール・ガイド' },
+  { href: '#dele', label: 'DELE' },
+  { href: '#resources', label: '学習リソース' },
+  { href: '#schools', label: 'スペイン語学校' },
+];
 
 const breadcrumbs = [
   { name: 'ホーム', url: '/' },
   { name: 'スペイン語', url: '/language/' },
 ];
 
-const allLanguageArticles = [...introArticles, ...levelGroups.flatMap((g) => g.items), ...deleArticles, ...otherArticles, ...otherClusters];
-
+// ItemList: lo que la página enlaza, en su orden (salidas del curso, niveles y artículos).
+const levelItems = courseVisible ? COURSE_LEVELS.map((l) => ({ url: levelUrl(l.code), name: `${l.code} ${l.name}` })) : [];
+const listed = [
+  { url: LEVEL_TEST_URL, name: 'スペイン語レベルチェックテスト' },
+  { url: COURSE_URL, name: 'スペイン語学習ロードマップ' },
+  ...levelItems,
+  ...[...tools, ...deleArticles, ...resources, ...schools].map((a) => ({ url: getArticleUrl(a), name: a.data.title })),
+];
 const languageSchema = {
   '@context': 'https://schema.org',
   '@type': 'CollectionPage',
-  name: 'スペイン語',
-  description: 'スペイン語学習に関する独学法・教室・アプリ・DELE対策の情報',
+  name: 'スペイン語の勉強法',
+  description: 'スペイン語の独学の始め方、学び方の比較、A1〜C2の無料コース、DELE対策、学習リソースとスペイン語学校の情報',
   url: 'https://supein.club/language/',
-  about: {
-    '@type': 'Thing',
-    name: 'スペイン語学習',
-  },
+  inLanguage: 'ja',
+  about: { '@type': 'Thing', name: 'スペイン語学習' },
   mainEntity: {
     '@type': 'ItemList',
-    itemListElement: allLanguageArticles.map((a, i) => ({
+    itemListElement: listed.map((item, i) => ({
       '@type': 'ListItem',
       position: i + 1,
-      url: `https://supein.club${getArticleUrl(a)}`,
-      name: a.data.title,
+      url: `https://supein.club${item.url}`,
+      name: item.name,
     })),
   },
 };
 
 // Curso gratuito A1-C2: sin Offer ni hasCourseInstance (no hay precio ni fechas que marcar).
 // Solo se marca cuando el bloque del curso es visible (ver isCourseVisible).
-const courseVisible = await isCourseVisible();
 const courseSchema = {
   '@context': 'https://schema.org',
   '@type': 'Course',
@@ -172,38 +139,73 @@ const courseSchema = {
   })),
 };
 
+const methods = [
+  {
+    name: '無料コースで独学',
+    who: '費用をかけずに、自分のペースで始めたい人',
+    pro: 'A1〜C2の順番が決まっていて、各ユニットのミニテストで理解を確かめられる',
+    con: '会話の相手はいないので、話す練習は別に用意する',
+    href: COURSE_URL,
+    link: '学習ロードマップ',
+  },
+  {
+    name: 'スペイン語教室・オンラインレッスン',
+    who: '会話を練習したい人、質問しながら進めたい人',
+    pro: '先生からその場で発音や表現を直してもらえる',
+    con: '受講料と、通う・予約する時間がかかる',
+    href: '/language/spanish-schools-in-japan/',
+    link: '日本のスペイン語教室',
+  },
+  {
+    name: '学習アプリ',
+    who: 'スキマ時間に単語やフレーズに触れたい人',
+    pro: '1回数分から、毎日続けやすい',
+    con: 'アプリだけでは、文法を体系的に理解するのが難しい',
+    href: '/language/spanish-apps/',
+    link: 'スペイン語アプリ比較',
+  },
+  {
+    name: 'スペイン留学',
+    who: '短期間で集中して伸ばしたい人',
+    pro: '授業の外でも、毎日スペイン語を使う環境にいられる',
+    con: '費用と準備が必要。基礎を日本で固めておくと、現地の授業を活かしやすい',
+    href: '/living/study-spain/',
+    link: 'スペイン留学ガイド',
+  },
+];
+
 const languageFaq = [
   {
-    question: 'このサイトのスペイン語学習コンテンツはどこから見ればいいですか？',
-    answer: 'ゼロから体系的に学びたい方は<a href="/language/learn-spanish/">「スペイン語学習ロードマップ」</a>から始めるのがおすすめです。CEFRレベル（A1〜C2）ごとの学習パスが整理されています。',
+    question: 'スペイン語は独学でも身につきますか？',
+    answer: `文法・単語・読む力は、順番どおりに学べば独学でも十分に伸ばせます。このサイトの<a href="${COURSE_URL}">無料コース（A1〜C2・全${TOTAL_UNITS}ユニット）</a>は登録不要で、各ユニットのミニテストで理解を確かめながら進められます。話す力には相手が必要なので、<a href="/language/spanish-schools-in-japan/">スペイン語教室やオンラインレッスン</a>との組み合わせがおすすめです。`,
   },
   {
-    question: '動詞の活用形を素早く確認したい場合は？',
-    answer: 'レッスン形式ではなく、活用表だけをすぐに調べられる<a href="/language/learn-spanish/verb-conjugation/">「スペイン語動詞活用表」</a>にまとめています。',
+    question: 'スペイン語の勉強は何から始めればいいですか？',
+    answer: `少しでも勉強したことがあるなら、まず<a href="${LEVEL_TEST_URL}">レベルチェック</a>を受けてください。結果と一緒に、どのユニットから始めればいいかがわかります。まったく初めての方は、<a href="${firstUnit?.data.url ?? COURSE_URL}">ユニット1「発音と読み方」</a>から始めましょう。`,
   },
   {
-    question: 'DELEと西検、どちらを受けるべきか比較はありますか？',
-    answer: '難易度・費用・国際的な認知度などの観点から<a href="/language/learn-spanish/dele-vs-seiken/">「DELEと西検、どちらを受けるべき？」</a>で詳しく比較しています。',
+    question: '1日にどのくらい勉強すればいいですか？',
+    answer: `まとめて長時間よりも、毎日20分ほどを続けるほうが定着します。週に何ユニット進めるかは<a href="${WELCOME_URL}">学習設定</a>で選べます。レベルごとの学習時間の目安は<a href="${COURSE_URL}">学習ロードマップ</a>にまとめています。`,
   },
   {
-    question: '東京でスペイン語教室を探すには？',
-    answer: 'CRE客観データに基づく学校ランキングを<a href="/language/tokyo-spanish-schools/">「東京のスペイン語学校おすすめ」</a>にまとめています。',
+    question: '動詞の活用形をすぐに調べたいときは？',
+    answer: `<a href="${CONJUGATION_URL}">スペイン語動詞活用表</a>で、よく使う動詞の全時制の活用を確認できます。それぞれの時制は、それを学ぶコースのユニットにつながっています。`,
   },
   {
-    question: 'スペイン語学習アプリのおすすめはどこで見られますか？',
-    answer: '目的別（総合・会話・語彙）のアプリ比較を<a href="/language/spanish-apps/">「スペイン語アプリ おすすめ比較」</a>で紹介しています。',
+    question: 'DELEと西検、どちらを受けるべきですか？',
+    answer: '国際的に通用する資格がほしいならDELE、日本国内の大学や就職での評価を重視するなら西検が候補になります。違いは<a href="/language/learn-spanish/dele-vs-seiken/">「DELEと西検、どちらを受けるべき？」</a>で詳しく比較しています。',
   },
   {
-    question: '独学と教室、どちらを選べばいいですか？',
-    answer: '継続のしやすさや予算を重視するなら独学、発音や会話練習にすぐフィードバックが欲しいなら教室が向いています。教室を検討する場合は東京の学校ランキングもあわせてご覧ください。',
+    question: 'スペイン語教室はどこで探せますか？',
+    answer: '東京・横浜・大阪・京都の学校を、口コミなどの客観データで比較した<a href="/language/spanish-schools-in-japan/">「日本のスペイン語教室完全ガイド」</a>にまとめています。',
   },
 ];
 ---
 <BaseLayout>
   <SEO
     slot="seo"
-    title="スペイン語 勉強法・教室・アプリ完全ガイド"
-    description="スペイン語の独学勉強法からDELE試験対策、東京のスペイン語教室比較、学習アプリの選び方まで。CEFRレベル別（A1〜C2）の学習ロードマップと動詞活用表など、日本語話者向けに実用的な情報を網羅しています。"
+    title="スペイン語の勉強法｜独学の始め方と教室・アプリ・留学の選び方"
+    description="スペイン語の勉強法を、独学の始め方から教室・アプリ・留学との比較までまとめました。無料のレベルチェックで今の力を確かめ、A1〜C2の無料コースで発音・文法・単語を順番に学べます。"
     canonical="https://supein.club/language/"
     image="/og/language.webp"
     breadcrumbs={breadcrumbs}
@@ -224,111 +226,148 @@ const languageFaq = [
     })}
   />
   <PillarHero
-    title="スペイン語"
-    description="独学、教室、オンラインレッスン——あなたに合ったスペイン語学習法を見つけるためのガイドが揃っています。"
+    title="スペイン語の勉強法"
+    description="独学の始め方、学び方の比較、A1〜C2の無料コース。今のレベルを確かめて、次に学ぶことを見つけましょう。"
   />
   <section class="max-w-6xl mx-auto px-5 py-14">
-    <p class="text-muted text-base leading-relaxed mb-12 border-l-2 border-primary pl-5">
-      スペイン語学習には、独学での勉強法から、教室・オンラインレッスンの活用まで、自分に合ったスタイルを選ぶことが上達の近道です。基礎文法や日常会話フレーズ、学習アプリ・参考書の選び方まで、幅広いトピックで役立つ情報をまとめています。
+    <p class="text-ink text-base leading-relaxed mb-10 border-l-2 border-primary pl-5 max-w-[780px]">
+      スペイン語の勉強法でいちばん大切なのは、<strong>今のレベルを知ること</strong>、<strong>発音から順番に学ぶこと</strong>、<strong>毎日少しずつ続けること</strong>の3つです。スペイン倶楽部では、セルバンテス学院の基準（A1 Acceso〜C2 Maestría）に沿った<strong>無料のスペイン語コース（全{TOTAL_UNITS}ユニット）</strong>を用意しました。登録は不要で、進み具合はこのブラウザに保存されます。
     </p>
-    <CourseLevels />
-    <h2 id="categories" class="font-sans font-bold text-xl text-navy mb-5">カテゴリ</h2>
-    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3 mb-12">
-      {levelAnchors.map(({ href, label }) => (
+
+    <nav id="categories" aria-label="このページの内容" class="grid grid-cols-2 md:grid-cols-4 gap-3 mb-12">
+      {anchors.map(({ href, label }) => (
         <a href={href} class="bg-white rounded-lg px-3 py-3 min-h-[44px] flex items-center justify-center text-center border border-[#E8E8E6] hover:border-primary/30 hover:shadow-sm transition-all">
           <span class="font-semibold text-navy text-sm leading-snug block">{label}</span>
         </a>
       ))}
+    </nav>
+
+    <h2 id="start" class="font-sans font-bold text-xl text-navy mb-5">はじめる</h2>
+    <CourseContinue />
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-5 mb-12">
+      <a href={LEVEL_TEST_URL} class="hub-start-card is-primary">
+        <span class="hub-start-icon"><ClipboardCheck size={24} aria-hidden="true" /></span>
+        <span class="hub-start-text">
+          <span class="hub-start-title">まずはレベルチェック</span>
+          <span class="hub-start-desc">A1〜C2・最大36問・登録不要。今のレベルと、どのユニットから始めればいいかがすぐにわかります。</span>
+          <span class="hub-start-cta">レベルチェックを受ける →</span>
+        </span>
+      </a>
+      <a href={COURSE_URL} class="hub-start-card">
+        <span class="hub-start-icon"><MapIcon size={24} aria-hidden="true" /></span>
+        <span class="hub-start-text">
+          <span class="hub-start-title">スペイン語学習ロードマップ</span>
+          <span class="hub-start-desc">6つのレベルの意味、学習時間の目安、全{TOTAL_UNITS}ユニットの順番を1ページで確認できます。</span>
+          <span class="hub-start-cta">ロードマップを見る →</span>
+        </span>
+      </a>
     </div>
 
-    {introArticles.length > 0 && (
-      <>
-        <h2 class="font-sans font-bold text-xl text-navy mb-5">はじめに</h2>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
-          {introArticles.map((a) => (
-            <ArticleCard title={a.data.title} description={a.data.description} href={getArticleUrl(a)} pillar="language" cluster={a.data.cluster} image={a.data.image} imageAlt={a.data.imageAlt} heroImage={a.data.heroImage} heroImageAlt={a.data.heroImageAlt} pubDate={a.data.pubDate} stepBadge={stepBadge(a)} />
-          ))}
-        </div>
-      </>
-    )}
+    <CourseLevels />
 
-    {levelGroups.map((group) => (
-      <>
-        <h2 id={group.level} class="font-sans font-bold text-xl text-navy mb-5">{group.label}</h2>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
-          {group.items.map((a) => (
-            <ArticleCard title={a.data.title} description={a.data.description} href={getArticleUrl(a)} pillar="language" cluster={a.data.cluster} image={a.data.image} imageAlt={a.data.imageAlt} heroImage={a.data.heroImage} heroImageAlt={a.data.heroImageAlt} pubDate={a.data.pubDate} topicBadge={roleBadge(a)} stepBadge={stepBadge(a)} />
+    <div class="max-w-[780px] prose-content">
+      <h2 id="methods" class="font-sans font-bold text-xl text-navy mb-4">スペイン語の勉強法：4つの学び方を比較</h2>
+      <p class="text-ink leading-relaxed mb-5">
+        どれか1つが正解というわけではありません。目的と使える時間に合わせて選び、組み合わせるのがいちばんの近道です。たとえば、文法と単語はコースで独学し、話す練習は教室やオンラインレッスンで、という分け方がよく合います。
+      </p>
+    </div>
+    <div class="hub-methods-wrap mb-12">
+      <table class="hub-methods">
+        <thead>
+          <tr>
+            <th scope="col">学び方</th>
+            <th scope="col">向いている人</th>
+            <th scope="col">強み</th>
+            <th scope="col">気をつけたい点</th>
+          </tr>
+        </thead>
+        <tbody>
+          {methods.map((m) => (
+            <tr>
+              <th scope="row">
+                {m.name}
+                <a href={m.href}>{m.link} →</a>
+              </th>
+              <td>{m.who}</td>
+              <td>{m.pro}</td>
+              <td>{m.con}</td>
+            </tr>
           ))}
-        </div>
-      </>
-    ))}
+        </tbody>
+      </table>
+    </div>
 
-    {deleArticles.length > 0 && (
-      <>
-        <h2 id="dele" class="font-sans font-bold text-xl text-navy mb-5">DELE</h2>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
-          {deleArticles.map((a) => (
-            <ArticleCard title={a.data.title} description={a.data.description} href={getArticleUrl(a)} pillar="language" cluster={a.data.cluster} image={a.data.image} imageAlt={a.data.imageAlt} heroImage={a.data.heroImage} heroImageAlt={a.data.heroImageAlt} pubDate={a.data.pubDate} stepBadge={stepBadge(a)} />
-          ))}
-        </div>
-      </>
-    )}
+    <div class="max-w-[780px] prose-content mb-12">
+      <h2 id="steps" class="font-sans font-bold text-xl text-navy mb-4">独学でスペイン語を始める5つのステップ</h2>
+      <ol class="hub-steps">
+        <li>
+          <strong>今のレベルを確かめる。</strong>
+          <a href={LEVEL_TEST_URL}>レベルチェック</a>は、A1から順にレベルごとの6問に答え、合格しなかったレベルで終わります。結果の画面に、始めるユニットが表示されます。
+        </li>
+        <li>
+          <strong>発音から始める。</strong>
+          スペイン語は書いてあるとおりに読める言語です。まったく初めてなら{firstUnit ? <a href={firstUnit.data.url}>ユニット1「{firstUnit.data.shortTitle}」</a> : 'ユニット1'}で母音とアクセントのルールを覚え、日本人がつまずきやすい音は<a href="/language/learn-spanish/pronunciation-for-japanese/">日本人のための発音ガイド</a>で練習しましょう。
+        </li>
+        <li>
+          <strong>続けられるペースを決める。</strong>
+          毎日20分ほどを目安に、週に何ユニット進めるかを<a href={WELCOME_URL}>学習設定</a>で選べます。スペインと中南米の言い方の違いを表示するかどうかも、ここで決められます。
+        </li>
+        <li>
+          <strong>ミニテストで確かめて、復習する。</strong>
+          各ユニットの最後に10問のミニテストがあり、7問正解で「完了」になります。間違えたところは、そのユニットの説明に戻って確認しましょう。
+        </li>
+        <li>
+          <strong>レベルの最後に力を試す。</strong>
+          各レベルの最後のユニットは、DELEの形式に沿った総復習と模擬試験です。本番の試験を受けるなら、<a href={DELE_URL}>DELEのページ</a>でレベルごとの内容と日程を確認できます。
+        </li>
+      </ol>
+    </div>
 
-    {otherArticles.length > 0 && (
-      <>
-        <h2 id="other" class="font-sans font-bold text-xl text-navy mb-5">学習リソース</h2>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
-          {otherArticles.map((a) => (
-            <ArticleCard title={a.data.title} description={a.data.description} href={getArticleUrl(a)} pillar="language" cluster={a.data.cluster} image={a.data.image} imageAlt={a.data.imageAlt} heroImage={a.data.heroImage} heroImageAlt={a.data.heroImageAlt} pubDate={a.data.pubDate} topicBadge="学習リソース" />
-          ))}
-        </div>
-      </>
-    )}
+    <h2 id="tools" class="font-sans font-bold text-xl text-navy mb-2">ツールと学習ガイド</h2>
+    <p class="text-muted text-sm mb-5">活用を調べる、発音を練習する、単語の覚え方を知る、学習計画を立てる。コースと並行して使えるページです。</p>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+      {tools.map((a) => (
+        <ArticleCard title={a.data.title} description={a.data.description} href={getArticleUrl(a)} pillar="language" cluster={a.data.cluster} image={a.data.image} imageAlt={a.data.imageAlt} heroImage={a.data.heroImage} heroImageAlt={a.data.heroImageAlt} pubDate={a.data.pubDate} topicBadge={slugOf(a) === 'verb-conjugation' ? 'ツール' : '学習ガイド'} />
+      ))}
+    </div>
 
-    {otherClusters.length > 0 && (
-      <>
-        <h2 id="schools" class="font-sans font-bold text-xl text-navy mb-5">スペイン語学校</h2>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
-          {otherClusters.map((a) => (
-            <ArticleCard title={a.data.title} description={a.data.description} href={getArticleUrl(a)} pillar="language" cluster={a.data.cluster} image={a.data.image} imageAlt={a.data.imageAlt} heroImage={a.data.heroImage} heroImageAlt={a.data.heroImageAlt} pubDate={a.data.pubDate} topicBadge="スペイン語学校" />
-          ))}
-        </div>
-      </>
-    )}
+    <h2 id="dele" class="font-sans font-bold text-xl text-navy mb-2">DELE（スペイン語検定）</h2>
+    <p class="text-muted text-sm mb-5">セルバンテス学院が実施する、スペイン語の国際的な公式資格です。コースの各レベルは、同じレベルのDELEにつながっています。</p>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+      {deleHub && (
+        <ArticleCard title={deleHub.data.title} description={deleHub.data.description} href={getArticleUrl(deleHub)} pillar="language" cluster={deleHub.data.cluster} image={deleHub.data.image} imageAlt={deleHub.data.imageAlt} heroImage={deleHub.data.heroImage} heroImageAlt={deleHub.data.heroImageAlt} pubDate={deleHub.data.pubDate} topicBadge="DELE" />
+      )}
+      <ul class="hub-link-list md:col-span-2">
+        {deleRest.map((a) => (
+          <li><a href={getArticleUrl(a)}>{a.data.title}</a></li>
+        ))}
+      </ul>
+    </div>
+
+    <h2 id="resources" class="font-sans font-bold text-xl text-navy mb-2">学習リソース</h2>
+    <p class="text-muted text-sm mb-5">映画やドラマ、旅行のフレーズ、リスニングと読解のコツなど、コースの外でスペイン語に触れるためのページです。</p>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+      {resources.map((a) => (
+        <ArticleCard title={a.data.title} description={a.data.description} href={getArticleUrl(a)} pillar="language" cluster={a.data.cluster} image={a.data.image} imageAlt={a.data.imageAlt} heroImage={a.data.heroImage} heroImageAlt={a.data.heroImageAlt} pubDate={a.data.pubDate} topicBadge="学習リソース" />
+      ))}
+    </div>
+
+    <h2 id="schools" class="font-sans font-bold text-xl text-navy mb-2">スペイン語学校</h2>
+    <p class="text-muted text-sm mb-5">会話を先生と練習したい方へ。都市ごとの学校を、口コミなどの客観データで比較しています。</p>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+      {schools.map((a) => (
+        <ArticleCard title={a.data.title} description={a.data.description} href={getArticleUrl(a)} pillar="language" cluster={a.data.cluster} image={a.data.image} imageAlt={a.data.imageAlt} heroImage={a.data.heroImage} heroImageAlt={a.data.heroImageAlt} pubDate={a.data.pubDate} topicBadge="スペイン語学校" />
+      ))}
+    </div>
   </section>
 
   <section class="max-w-6xl mx-auto px-5 pb-14 prose-content">
   <div class="max-w-[780px]">
-    <h2 class="font-sans font-bold text-xl text-navy mb-4">このサイトのスペイン語コンテンツについて</h2>
-    <p class="text-muted leading-relaxed mb-6">
-      このカテゴリでは、ゼロから体系的に学びたい方向けのCEFRレベル別ロードマップ（A1〜C2）、DELE受験対策、東京のスペイン語教室の比較、学習アプリの選び方まで、目的別に情報を整理しています。まず何から手をつければいいか迷ったら、下記の各セクションをご覧ください。
-    </p>
-
-    <h2 class="font-sans font-bold text-xl text-navy mb-4">文法の基礎を確認するなら</h2>
-    <p class="text-muted leading-relaxed mb-6">
-      レベル別に体系立てて学びたい方は<a href="/language/learn-spanish/a1/grammar/" class="text-primary underline">「スペイン語A1文法まとめ」</a>から。動詞の活用形をレッスンではなくすぐに調べたい方は<a href="/language/learn-spanish/verb-conjugation/" class="text-primary underline">「スペイン語動詞活用表」</a>にまとめています。
-    </p>
-
-    <h2 class="font-sans font-bold text-xl text-navy mb-4">DELEか西検か迷ったら</h2>
-    <p class="text-muted leading-relaxed mb-6">
-      スペイン語の代表的な資格試験には、セルバンテス学院が運営する国際資格DELEと、日本国内向けの西検（実用スペイン語技能検定）があります。難易度・費用・国際的な認知度の違いは<a href="/language/learn-spanish/dele-vs-seiken/" class="text-primary underline">「DELEと西検、どちらを受けるべき？」</a>で比較しています。
-    </p>
-
-    <h2 class="font-sans font-bold text-xl text-navy mb-4">東京でスペイン語教室を探すなら</h2>
-    <p class="text-muted leading-relaxed mb-6">
-      独学だけでなく教室やオンラインレッスンの活用を検討している方には、CRE客観データに基づく学校ランキングをまとめた<a href="/language/tokyo-spanish-schools/" class="text-primary underline">「東京のスペイン語学校おすすめ」</a>が参考になります。
-    </p>
-
-    <h2 class="font-sans font-bold text-xl text-navy mb-4">学習アプリを活用するなら</h2>
-    <p class="text-muted leading-relaxed mb-6">
-      スキマ時間の学習には、目的別（総合・会話・語彙）にまとめた<a href="/language/spanish-apps/" class="text-primary underline">「スペイン語アプリ おすすめ比較」</a>をご覧ください。
-    </p>
-
     {courseVisible && (
       <>
-        <h2 class="font-sans font-bold text-xl text-navy mb-4">このコースの作り方</h2>
+        <h2 class="font-sans font-bold text-xl text-navy mb-4">このコースについて</h2>
         <p class="text-muted leading-relaxed mb-6">
-          誰が内容を決め、どこでAIを使い、公開前にネイティブが何を確認しているのかは<a href={ABOUT_COURSE_URL} class="text-primary underline">「このコースの作り方」</a>で公開しています。
+          コースの例文には、スペイン語を学ぶ日本人とスペイン人の<a href={CAST_URL} class="text-primary underline">登場人物</a>が登場します。誰が内容を決め、どこでAIを使い、公開前にネイティブが何を確認しているのかは<a href={ABOUT_COURSE_URL} class="text-primary underline">「このコースの作り方」</a>で公開しています。
         </p>
       </>
     )}
@@ -356,5 +395,5 @@ const languageFaq = [
   </section>
 
   <LineBanner slim />
-  <FloatingActions target="categories" shareUrl="https://supein.club/language/" shareTitle="スペイン語" />
+  <FloatingActions target="categories" shareUrl="https://supein.club/language/" shareTitle="スペイン語の勉強法" />
 </BaseLayout>

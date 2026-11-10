@@ -1,0 +1,82 @@
+---
+// 「続きから」 para el hub /language/ y la hoja de ruta /learn-spanish/
+// (plan-hub-embudo.md, puntos 9, 10 y 32). Sin JavaScript no se ve nada:
+// solo tiene sentido para quien ya tiene progreso o resultado del test en
+// este navegador.
+import { COURSE_LEVELS } from '../../data/course';
+import { getAllUnits, hasPage } from '../../utils/units';
+
+const units = (await getAllUnits())
+  .filter(hasPage)
+  .map((u) => ({ unit: u.data.unit, url: u.data.url, shortTitle: u.data.shortTitle, level: u.data.level }));
+const levels = COURSE_LEVELS.map((l) => ({ code: l.code, name: l.name }));
+---
+{units.length > 0 && (
+<div class="course-continue" data-course-continue data-units={JSON.stringify(units)} data-levels={JSON.stringify(levels)} hidden data-pagefind-ignore>
+  <p class="course-continue-eyebrow"></p>
+  <a class="course-continue-link" href={units[0].url}>
+    <span class="level-chip"></span>
+    <span class="course-continue-title"></span>
+  </a>
+</div>
+)}
+
+<script>
+  import { PROGRESS_EVENT, isCompleted, loadProgress } from '../../utils/courseProgress';
+
+  type UnitInfo = { unit: number; url: string; shortTitle: string; level: string };
+  const RESULT_KEY = 'supein.levelTest.v2';
+
+  function readTest(): { level?: string; startUnit?: number } | null {
+    try {
+      const raw = localStorage.getItem(RESULT_KEY);
+      return raw ? JSON.parse(raw) : null;
+    } catch {
+      return null;
+    }
+  }
+
+  function render(box: HTMLElement) {
+    const units: UnitInfo[] = JSON.parse(box.dataset.units ?? '[]');
+    const levels: Array<{ code: string; name: string }> = JSON.parse(box.dataset.levels ?? '[]');
+    const progress = loadProgress();
+    const done = units.filter((u) => isCompleted(progress, u.unit)).map((u) => u.unit);
+    let target: UnitInfo | undefined;
+    let eyebrow = '';
+
+    if (done.length > 0) {
+      const last = Math.max(...done);
+      target = units.find((u) => u.unit > last && !isCompleted(progress, u.unit));
+      eyebrow = target ? `続きから（完了 ${done.length} ユニット）` : '';
+      if (!target) {
+        box.hidden = true;
+        return;
+      }
+    } else {
+      const test = readTest();
+      if (test?.startUnit) {
+        target = units.find((u) => u.unit === test.startUnit);
+        const level = levels.find((l) => l.code === test.level);
+        if (target) eyebrow = `レベルチェックの結果${level ? `（${level.code} ${level.name}）` : ''}：ここから始めましょう`;
+      }
+    }
+
+    if (!target) {
+      box.hidden = true;
+      return;
+    }
+    const link = box.querySelector<HTMLAnchorElement>('.course-continue-link')!;
+    const chip = box.querySelector<HTMLElement>('.level-chip')!;
+    link.href = target.url;
+    link.className = `course-continue-link lv-${target.level}`;
+    chip.textContent = target.level;
+    box.querySelector<HTMLElement>('.course-continue-title')!.textContent = `ユニット${target.unit} ${target.shortTitle}`;
+    box.querySelector<HTMLElement>('.course-continue-eyebrow')!.textContent = eyebrow;
+    box.hidden = false;
+  }
+
+  const boxes = document.querySelectorAll<HTMLElement>('[data-course-continue]');
+  const renderAll = () => boxes.forEach(render);
+  window.addEventListener(PROGRESS_EVENT, renderAll);
+  renderAll();
+</script>
