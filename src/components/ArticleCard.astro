@@ -1,6 +1,7 @@
 ---
 import type { ImageMetadata } from 'astro';
 import ResponsiveImage from './ResponsiveImage.astro';
+import { getImage } from 'astro:assets';
 
 interface Props {
   title: string;
@@ -19,7 +20,15 @@ interface Props {
 
 const { title, description, href, pillar, cluster, image, imageAlt, heroImage, heroImageAlt, pubDate, topicBadge, stepBadge } = Astro.props;
 
-const heroImageSrc = typeof heroImage === 'string' ? heroImage : heroImage?.src;
+// Miniatura en 480 y 800 px (srcset): la tarjeta nunca carga el original de 1200 px.
+const heroThumbs = heroImage && typeof heroImage !== 'string'
+  ? await Promise.all([480, 800].filter((w, i) => i === 0 || w <= heroImage.width).map(async (w) => {
+      const width = Math.min(w, heroImage.width);
+      return { width, src: (await getImage({ src: heroImage, width, format: 'webp', quality: 72 })).src };
+    }))
+  : undefined;
+const heroImageSrc = heroThumbs ? heroThumbs[0].src : typeof heroImage === 'string' ? heroImage : undefined;
+const heroImageSrcset = heroThumbs?.map((t) => `${t.src} ${t.width}w`).join(', ');
 const isLearnSpanish = pillar === 'language' && cluster === 'learn-spanish';
 // Clubes cuyo heroImage tiene el escudo en la parte baja de la foto
 // (sobre el césped) — mismo criterio que ArticleLayout.astro.
@@ -52,6 +61,8 @@ const thumbnailBadge = titlePrefixMatch?.[1];
     <div style="position:relative;border-radius:10px;overflow:hidden;border:2px solid rgba(200,16,46,0.25);line-height:0;aspect-ratio:16/9;">
       <img
         src={heroImageSrc}
+        srcset={heroImageSrcset}
+        sizes="(max-width: 640px) 100vw, 400px"
         alt={heroImageAlt || title}
         width="400"
         height="225"

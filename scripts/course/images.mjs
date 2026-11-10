@@ -1,5 +1,7 @@
 // Ilustraciones del curso: convierte las escenas y los retratos de Imágenes/personajes/
 // (carpeta local, fuera de git) a WebP de menos de 100 KB y actualiza `image` en cada unidad.
+// Cada escena sale además en dos tamaños para el srcset de la unidad (Google Discover):
+// uNN-480.webp (móvil) y uNN-1200.webp (1200 px; es el og:image y no tiene el límite de 100 KB).
 //
 //   npm run course:images                       → convierte y actualiza src/width/height
 //   npm run course:images -- --alts alts.json   → además añade `image` a las unidades que no lo tienen
@@ -47,6 +49,13 @@ async function encode(input, out, { width, square = false }) {
   throw new Error(`No baja de 100 KB: ${out}`);
 }
 
+// Tamaño fijo para el srcset (sin el límite de 100 KB: la versión de 1200 px es la de Google Discover).
+async function encodeAt(input, out, width, quality) {
+  const buf = await sharp(input).resize({ width, withoutEnlargement: true }).webp({ quality, effort: 6 }).toBuffer();
+  writeFileSync(out, buf);
+  return Math.round(buf.length / 1024);
+}
+
 // unidad → archivo .mdx
 const unitFiles = new Map();
 for (const level of readdirSync(UNITS)) {
@@ -67,6 +76,8 @@ for (const level of LEVELS) {
     const id = String(n).padStart(2, '0');
     const src = `/images/course/units/u${id}.webp`;
     const { width, height, kb } = await encode(join(dir, name), join(OUT_UNITS, `u${id}.webp`), { width: 1200 });
+    const kb480 = await encodeAt(join(dir, name), join(OUT_UNITS, `u${id}-480.webp`), 480, 75);
+    const kb1200 = await encodeAt(join(dir, name), join(OUT_UNITS, `u${id}-1200.webp`), 1200, 82);
     const file = unitFiles.get(n);
     let text = readFileSync(file, 'utf8');
     const eol = text.includes('\r\n') ? '\r\n' : '\n';
@@ -80,7 +91,7 @@ for (const level of LEVELS) {
       continue;
     }
     writeFileSync(file, text);
-    console.log(`u${id} ${width}x${height} ${kb} KB`);
+    console.log(`u${id} ${width}x${height} ${kb} KB · 480: ${kb480} KB · 1200: ${kb1200} KB`);
   }
 }
 

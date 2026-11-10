@@ -27,6 +27,7 @@ import LevelUnits from '../components/course/LevelUnits.astro';
 import { getArticleUrl, getArticleBreadcrumbs, isPillarArticle, pillarLabels } from '../utils/articles';
 import { getCategoryBadgeLabel } from '../utils/articleCategory';
 import { courseSequence } from '../data/course-sequence';
+import { HERO_SIZES, HERO_WIDTHS, discoverImage } from '../utils/images';
 
 interface Props {
   entry: CollectionEntry<'articles'>;
@@ -34,6 +35,8 @@ interface Props {
 
 const { entry } = Astro.props;
 const { title, h1, description, pubDate, updatedDate, pillar, cluster, image, imageAlt, lead, faq, faqTitle, quiz, levelTest, relatedArticles, relatedPages, sources, readingTime, heroImage, heroImageAlt, level, articleRole } = entry.data;
+// og:image en 1200 px para Google Discover (la página sirve tamaños menores con srcset).
+const discover = heroImage ? await discoverImage(heroImage) : undefined;
 const displayH1 = h1 ?? title;
 const categoryLabel = getCategoryBadgeLabel(entry);
 const isLearnSpanishHero = pillar === 'language' && cluster === 'learn-spanish';
@@ -116,7 +119,7 @@ const stepItemList = isRoadmapHub
     title={title}
     description={description}
     canonical={canonical}
-    image={heroImage?.src ?? image}
+    image={discover?.src ?? image}
     type="article"
     article={entry}
     author={author}
@@ -214,6 +217,10 @@ const stepItemList = isRoadmapHub
             <Image
               src={heroImage}
               alt={heroImageAlt || title}
+              widths={HERO_WIDTHS}
+              sizes={HERO_SIZES}
+              format="webp"
+              quality={75}
               style={`width:100%;aspect-ratio:2/1;object-position:${isLearnSpanishHero ? 'left center' : isBottomCrestHero ? 'center bottom' : 'center'};display:block;border-radius:13px;`}
               fetchpriority="high"
               loading="eager"
@@ -309,7 +316,7 @@ const stepItemList = isRoadmapHub
                     cluster={a.data.cluster}
                     image={a.data.image}
                     imageAlt={a.data.imageAlt}
-                    heroImage={a.data.heroImage?.src}
+                    heroImage={a.data.heroImage}
                     heroImageAlt={a.data.heroImageAlt}
                     pubDate={a.data.pubDate}
                   />
