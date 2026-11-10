@@ -2,7 +2,7 @@
 import { getEntry } from 'astro:content';
 import BaseLayout from '../../../../layouts/BaseLayout.astro';
 import SEO from '../../../../components/SEO.astro';
-import Breadcrumb from '../../../../components/Breadcrumb.astro';
+import CoursePageHeader from '../../../../components/course/CoursePageHeader.astro';
 import QuizCard from '../../../../components/QuizCard.astro';
 import Sources from '../../../../components/Sources.astro';
 import AuthorBox from '../../../../components/AuthorBox.astro';
@@ -78,16 +78,18 @@ const fmt = (d: Date) => d.toLocaleDateString('ja-JP', { year: 'numeric', month:
 <BaseLayout title={title}>
   <SEO slot="seo" title={title} description={description} canonical={canonical} type="article" breadcrumbs={breadcrumbs} keywords={[verb, `${verb} 活用`, 'スペイン語 活用']} authorName={author.data.name} authorUrl={authorUrl} extraGraph={extraGraph} />
 
-  <article class="page-container py-10 verb-page">
-    <Breadcrumb items={breadcrumbs} />
-    <h1 class="cast-page-title"><span lang="es">{verb}</span> の活用</h1>
+  <CoursePageHeader breadcrumbs={breadcrumbs}>
+    <h1 class="course-page-title"><span lang="es">{verb}</span> の活用</h1>
     <ul class="verb-facts">
       <li><span>意味</span>{rank?.meaning}</li>
       <li><span>種類</span>{content.type}</li>
       {rank && <li><span>使用頻度</span>動詞で{rank.rank}位（全単語で{rank.lemmaRank}位）</li>}
-      <li><span>レベル</span>{content.level}</li>
+      <li><span>レベル</span><span class={`level-chip lv-${content.level}`}>{content.level}</span></li>
     </ul>
-    <p class="cast-card-meta">最終更新日：<time datetime={updated.toISOString()}>{fmt(updated)}</time></p>
+    <p class="course-page-updated">最終更新日：<time datetime={updated.toISOString()}>{fmt(updated)}</time></p>
+  </CoursePageHeader>
+
+  <article class="page-container py-10 verb-page">
 
     <div class="prose verb-body">
       <p>{content.summary}</p>

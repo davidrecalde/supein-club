@@ -483,6 +483,49 @@ table {
   color: #fff;
   padding: 56px 0 44px;
 }
+/* Cabecera azul de las páginas del curso que no son unidades (CoursePageHeader.astro) */
+.course-page-header {
+  background: #002147;
+  color: #fff;
+  padding: 56px 0 40px;
+}
+/* .page-container fija padding: 0 24px y anula el py-10 de Tailwind: el espacio del contenido va aquí. */
+.course-page-header + .page-container {
+  padding-top: 40px;
+  padding-bottom: 40px;
+}
+.course-page-title {
+  font-family: 'Noto Serif JP', serif;
+  font-size: clamp(26px, 4vw, 40px);
+  font-weight: 700;
+  line-height: 1.35;
+  color: #fff;
+  margin: 20px 0 18px;
+  max-width: 820px;
+}
+.course-page-updated {
+  margin-top: 14px;
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.7);
+}
+.course-page-header .verb-facts {
+  margin: 0;
+}
+.course-page-header .verb-facts li {
+  display: inline-flex;
+  align-items: center;
+  border-color: rgba(255, 255, 255, 0.22);
+  background: rgba(255, 255, 255, 0.07);
+  color: #fff;
+}
+.course-page-header .verb-facts span {
+  color: rgba(255, 255, 255, 0.65);
+}
+.course-page-header .verb-facts .level-chip {
+  margin: 0;
+  font-size: 12px;
+  color: var(--level-ink);
+}
 .unit-header-meta .level-chip {
   margin-right: 6px;
 }
