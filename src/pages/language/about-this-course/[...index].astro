@@ -4,6 +4,8 @@ import SEO from '../../../components/SEO.astro';
 import Breadcrumb from '../../../components/Breadcrumb.astro';
 import { ABOUT_COURSE_URL, CAST_URL, COURSE_URL } from '../../../data/course';
 import { isCourseVisible } from '../../../utils/units';
+import { getEntry } from 'astro:content';
+import { buildAuthorPerson } from '../../../utils/schema';
 
 export async function getStaticPaths() {
   return (await isCourseVisible()) ? [{ params: { index: undefined } }] : [];
@@ -29,7 +31,7 @@ const article = {
   datePublished: updated.toISOString(),
   dateModified: updated.toISOString(),
   inLanguage: 'ja',
-  author: { '@type': 'Person', '@id': `${authorUrl}#person`, name: 'David Recalde', url: authorUrl },
+  author: buildAuthorPerson((await getEntry('authors', 'david-recalde'))!, authorUrl),
   publisher: { '@id': `${siteUrl}/#organization` },
   mainEntityOfPage: `${canonical}#webpage`,
   isPartOf: { '@id': `${siteUrl}/#website` },

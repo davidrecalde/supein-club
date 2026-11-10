@@ -1,7 +1,7 @@
 ﻿---
 import type { CollectionEntry } from 'astro:content';
 import { getRegion } from '../config/regions';
-import { buildQuizNode } from '../utils/schema';
+import { buildAuthorPerson, buildQuizNode } from '../utils/schema';
 
 interface Props {
   title: string;
@@ -197,30 +197,10 @@ if (type === 'article' && article) {
     ? { '@type': 'AdministrativeArea', name: regionConfig.label }
     : undefined;
 
-  const rawLinkedin = author?.data.linkedin;
-  const rawInstagram = author?.data.instagram;
-  const normalizeUrl = (raw: string | undefined, base: string) =>
-    raw ? (raw.startsWith('http') ? raw : `${base}${raw}`) : undefined;
-  const authorLinkedIn = normalizeUrl(rawLinkedin, 'https://linkedin.com/in/');
-  const authorInstagram = normalizeUrl(rawInstagram, 'https://instagram.com/');
-  const authorWebsite = author?.data.website;
-  const authorSameAs = [authorLinkedIn, authorInstagram, authorWebsite].filter(Boolean) as string[];
-  const authorAvatar = author?.data.avatar ? `${siteUrl}${author.data.avatar}` : undefined;
-  const authorJobTitle = author?.data.jobTitle ?? author?.data.role;
-  const authorTopics = author?.data.specialties ?? author?.data.knowsAbout;
-
-  const articleAuthor: Record<string, unknown> = {
-    '@type': 'Person',
-    '@id': `${authorUrl}#person`,
-    name: authorName,
-    url: authorUrl,
-  };
-  if (authorAvatar) articleAuthor.image = authorAvatar;
-  if (authorJobTitle) articleAuthor.jobTitle = authorJobTitle;
-  if (author?.data.bio) articleAuthor.description = author.data.bio;
-  if (authorTopics && authorTopics.length > 0) articleAuthor.knowsAbout = authorTopics;
-  if (authorSameAs.length > 0) articleAuthor.sameAs = authorSameAs;
-  articleAuthor.worksFor = { '@id': `${siteUrl}/#organization` };
+  // Mismo nodo Person en todas las páginas del autor (bio, temas, perfiles, trayectoria): utils/schema.ts
+  const articleAuthor: Record<string, unknown> = author
+    ? buildAuthorPerson(author, authorUrl)
+    : { '@type': 'Person', '@id': `${authorUrl}#person`, name: authorName, url: authorUrl, worksFor: { '@id': `${siteUrl}/#organization` } };
 
   // SportsTeam (si el artículo es de un club/selección de fútbol)
   const teamData = article.data.sportsTeam;

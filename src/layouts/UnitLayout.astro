@@ -19,7 +19,7 @@ import UnitAudio from '../components/course/UnitAudio.astro';
 import { ABOUT_COURSE_URL } from '../data/course';
 import { VERBS, verbUrl } from '../data/conjugation';
 import { getAllUnits, hasPage, unitBreadcrumbs, type Unit } from '../utils/units';
-import { buildQuizNode } from '../utils/schema';
+import { buildAuthorPerson, buildQuizNode } from '../utils/schema';
 
 interface Props {
   unit: Unit;
@@ -55,7 +55,7 @@ const learningResource = {
   url: canonical,
   ...(d.pubDate && { datePublished: d.pubDate.toISOString() }),
   dateModified: d.updated.toISOString(),
-  author: { '@type': 'Person', '@id': `${authorUrl}#person`, name: author.data.name, url: authorUrl },
+  author: buildAuthorPerson(author, authorUrl),
   publisher: { '@id': `${siteUrl}/#organization` },
   inLanguage: 'ja',
   isPartOf: [{ '@id': `${siteUrl}/#website` }, { '@id': `${siteUrl}/language/#course` }],

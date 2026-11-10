@@ -1014,6 +1014,20 @@ Verificado tras el cambio: cada página del sitio ahora emite un único
   igualando los datos que antes solo tenía la versión duplicada de
   AuthorBox — y un `@id` estable (`{authorUrl}#person`), referenciado
   desde `Article.author` en vez de duplicar el objeto completo cada vez.
+- **Nodo Person del autor único (2026-11-10):** `buildAuthorPerson()` en
+  `src/utils/schema.ts` construye el mismo Person (nombre, `alternateName`,
+  imagen, `jobTitle`, bio como `description`, `knowsAbout`, `sameAs`,
+  `worksFor`) para todas las páginas que firma un autor:
+  artículos (`SEO.astro`), unidades del curso (`UnitLayout.astro`), páginas
+  de verbo y /language/about-this-course/. Antes las unidades, los verbos y
+  about-this-course solo llevaban nombre y URL. Nuevo campo opcional
+  `employment` en el schema de `authors` (trayectoria): cada puesto sale en
+  `worksFor` como `EmployeeRole` con `roleName`, `startDate` y `endDate`
+  (con `endDate` = empleo anterior), además de スペイン倶楽部. No se usa
+  `alumniOf`, que es para antiguos alumnos. David Recalde: NODA (Studio
+  Lead, actual) e Instituto Cervantes de Tokio (Asesor de Comunicación y
+  Prensa, 2019-01 a 2024-01). Su `jobTitle` en el schema es
+  「スペイン倶楽部 創設者」 (el `role` visible no cambia).
 - **Entidad "LaLiga" unificada**: antes se definía por separado en
   `SEO.astro` (rama `schemaType: 'sports'`, solo para `la-liga.mdx`) y en
   `SportsTeamSchema.astro` (`memberOf`, en cada club). Ahora un único

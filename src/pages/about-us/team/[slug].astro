@@ -7,6 +7,7 @@ import Breadcrumb from '../../../components/Breadcrumb.astro';
 import LineBanner from '../../../components/LineBanner.astro';
 import { Globe } from 'lucide-astro';
 import { getArticleUrl } from '../../../utils/articles';
+import { buildAuthorWorksFor } from '../../../utils/schema';
 
 export async function getStaticPaths() {
   const authors = await getCollection('authors', ({ data }) => data.active !== false);
@@ -76,31 +77,9 @@ const profileSchema = slug === 'david-recalde'
           height: 400,
         },
         url: 'https://supein.club/about-us/team/david-recalde/',
-        worksFor: [
-          {
-            '@type': 'Organization',
-            name: 'NODA',
-            url: 'https://noda.tokyo/',
-            description: 'Design and communication agency based in Tokyo',
-          },
-          {
-            '@type': 'Organization',
-            name: 'Club Español en Japón スペイン倶楽部',
-            url: 'https://supein.club',
-          },
-        ],
-        alumniOf: {
-          '@type': 'Organization',
-          name: 'Instituto Cervantes de Tokio',
-          url: 'https://tokio.cervantes.es/',
-          description: 'Centro Cultural Español en Tokio — agencia pública del Gobierno de España',
-        },
+        // スペイン倶楽部, NODA (actual) e Instituto Cervantes de Tokio (2019-2024), desde la ficha del autor
+        worksFor: buildAuthorWorksFor(author),
         affiliation: [
-          {
-            '@type': 'Organization',
-            name: 'Instituto Cervantes de Tokio',
-            url: 'https://tokio.cervantes.es/',
-          },
           {
             '@type': 'Organization',
             name: 'Embajada de España en Japón',
