@@ -1428,6 +1428,10 @@ html[data-variety='la'] .vocab-pair .v-es .v-tag {
   border-left: 3px solid #C8102E;
   padding-left: 12px;
 }
+.verb-mistake-legend {
+  font-size: 13px;
+  color: #6b7280;
+}
 .verb-tense {
   margin-bottom: 20px;
 }

@@ -59,7 +59,7 @@ export const VERB_SPECS: VerbSpec[] = [
       'subjuntivo-presente': ['dé', 'des', 'dé', 'demos', 'deis', 'den'],
     },
   },
-  // Segundo lote (40 verbos, 10 de noviembre de 2026). Pendiente de revisión nativa (CSV de irregulares).
+  // Segundo lote (40 verbos, 10 de noviembre de 2026). Revisado por David el mismo día (CSV de irregulares sin pendientes).
   { infinitive: 'deber' },
   { infinitive: 'llegar' },
   { infinitive: 'pasar' },

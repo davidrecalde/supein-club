@@ -168,8 +168,9 @@ const fmt = (d: Date) => d.toLocaleDateString('ja-JP', { year: 'numeric', month:
       </ul>
 
       <h2 id="mistake">日本人がよく間違える</h2>
-      <p>×<span lang="es">{content.mistake.wrong}</span> → ○<strong lang="es">{content.mistake.right}</strong></p>
+      <p>{content.mistake.mark ?? '×'}<span lang="es">{content.mistake.wrong}</span> → ○<strong lang="es">{content.mistake.right}</strong></p>
       <p>{content.mistake.note}</p>
+      {content.mistake.mark === '△' && <p class="verb-mistake-legend">△：間違いではありませんが、スペインではあまり使わない言い方です。</p>}
 
       {courseVisible && (
         <>

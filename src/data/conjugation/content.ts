@@ -1,6 +1,6 @@
 // Contenido editorial de cada página de verbo (lo que no sale del motor de
-// reglas). Español peninsular. Revisado por David (2026-11-02) para el
-// primer lote; los verbos nuevos necesitan revisión nativa antes de publicar.
+// reglas). Español peninsular. Revisado por David: primer lote el 2026-11-02,
+// segundo lote (43 verbos) el 2026-11-10.
 
 export interface VerbContent {
   type: string;
@@ -8,7 +8,8 @@ export interface VerbContent {
   /** Dos frases que responden solas a 「〇〇 活用」. */
   summary: string;
   examples: Array<{ es: string; ja: string }>;
-  mistake: { wrong: string; right: string; note: string };
+  /** mark: × (error) por defecto; △ = no es incorrecto, pero en España no es lo habitual. */
+  mistake: { wrong: string; right: string; note: string; mark?: '×' | '△' };
   /** Verbos que siguen el mismo modelo (sin página propia todavía: se muestran como texto). */
   similar: string[];
   notes?: string[];
@@ -166,7 +167,7 @@ export const VERB_CONTENT: Record<string, VerbContent> = {
       { es: 'No debes fumar aquí.', ja: 'ここでたばこを吸ってはいけません。' },
       { es: 'Deberías descansar un poco.', ja: '少し休んだほうがいいよ。' },
     ],
-    mistake: { wrong: 'Debo de estudiar más.', right: 'Debo estudiar más.', note: '義務は「deber + 原形」で言います。deber de + 原形は「〜に違いない」という推量の意味になります（Debe de ser tarde.「もう遅いに違いない」）。' },
+    mistake: { wrong: 'Debo que estudiar más.', right: 'Debo estudiar más.', note: '義務は deber + 不定詞で表します（Debo estudiar más.）。tener que につられて que を入れないようにしましょう。deber de + 不定詞は主に推量を表します（Debe de ser tarde.「もう遅いに違いない」）。義務の意味で使われることもありますが、RAE は避けるよう勧めています。' },
     similar: ['comer', 'beber', 'aprender'],
     notes: ['過去未来の debería は、「〜したほうがいい」というやわらかい助言になります（Deberías descansar.）。'],
     updated: '2026-11-10',
@@ -244,7 +245,7 @@ export const VERB_CONTENT: Record<string, VerbContent> = {
     summary: 'llevar は「持っていく・連れていく」「身につけている」「（時間が）たつ」を表す動詞です。hablar と同じように活用する規則動詞です。',
     examples: [
       { es: 'Te llevo a la estación.', ja: '駅まで送っていくよ。' },
-      { es: 'Llevo gafas desde niño.', ja: '子どものころから眼鏡をかけています。' },
+      { es: 'Llevo gafas desde hace años.', ja: '何年も眼鏡をかけています。' },
       { es: 'Llevo dos años en Madrid.', ja: 'マドリードに住んで2年になります。' },
     ],
     mistake: { wrong: 'Te traigo a la estación.', right: 'Te llevo a la estación.', note: '話し手のいる場所から離れたところへ「持っていく・連れていく」は llevar、話し手のところへ「持ってくる」は traer です。' },
@@ -258,7 +259,7 @@ export const VERB_CONTENT: Record<string, VerbContent> = {
     examples: [
       { es: 'No sé dónde está la estación.', ja: '駅がどこにあるか知りません。' },
       { es: '¿Sabes nadar?', ja: '泳げる？' },
-      { es: 'Supe la noticia ayer.', ja: 'そのニュースは昨日知った。' },
+      { es: 'Supe la noticia ayer.', ja: 'そのニュースを昨日知った。' },
     ],
     mistake: { wrong: 'Sé a tu hermano.', right: 'Conozco a tu hermano.', note: '人や場所を「知っている（会ったこと・行ったことがある）」は conocer を使います。saber は情報や、技能として「〜できる」ときに使います（Sé nadar.）。' },
     similar: [],
@@ -342,7 +343,7 @@ export const VERB_CONTENT: Record<string, VerbContent> = {
       { es: 'No queda leche.', ja: '牛乳がもうない。' },
       { es: 'Hoy me quedo en casa.', ja: '今日は家にいます。' },
     ],
-    mistake: { wrong: 'Hoy quedo en casa.', right: 'Hoy me quedo en casa.', note: '「（場所に）とどまる・いる」は再帰の quedarse です。再帰代名詞のない quedar は「待ち合わせる」「残っている」の意味になります。' },
+    mistake: { wrong: 'Hoy quedo en casa.', right: 'Hoy me quedo en casa.', note: '「家にとどまる・家で過ごす」と明確に言うときは quedarse en casa が自然です。quedar en casa は、文脈によって「家で待ち合わせる・約束する」という意味にもなります。', mark: '△' },
     similar: ['dejar', 'llevar', 'tomar'],
     updated: '2026-11-10',
   },
@@ -444,7 +445,7 @@ export const VERB_CONTENT: Record<string, VerbContent> = {
     summary: 'buscar は「探す」を表す動詞です。規則動詞ですが、yo の点過去（busqué）と接続法現在（busque）では、発音を保つために c が qu に変わります。',
     examples: [
       { es: 'Busco un piso cerca del centro.', ja: '中心街の近くでマンションを探しています。' },
-      { es: 'Te busco en la estación.', ja: '駅に迎えに行くね。' },
+      { es: 'Te busco en la estación.', ja: '駅で探すね。' },
       { es: 'Busqué el libro por todas partes.', ja: 'その本をあちこち探した。' },
     ],
     mistake: { wrong: 'Busco por mis llaves.', right: 'Busco mis llaves.', note: 'buscar は「〜を探す」の意味なので、前置詞は不要です。探す相手が人のときは a をつけます（Busco a mi hermano.）。' },
@@ -565,7 +566,7 @@ export const VERB_CONTENT: Record<string, VerbContent> = {
     examples: [
       { es: 'He perdido mi cartera.', ja: '財布をなくしてしまった。' },
       { es: 'Perdimos el último tren.', ja: '終電に乗り遅れた。' },
-      { es: 'El Madrid perdió el partido.', ja: 'マドリードは試合に負けた。' },
+      { es: 'El Real Madrid perdió el partido.', ja: 'レアル・マドリードは試合に負けた。' },
     ],
     mistake: { wrong: 'Pierdo a mi familia.', right: 'Echo de menos a mi familia.', note: '「（人や場所が）恋しい」は、スペインでは echar de menos と言います。perder a + 人は「（亡くなって）人を失う」の意味になります。' },
     similar: ['entender', 'defender', 'encender'],
@@ -590,7 +591,7 @@ export const VERB_CONTENT: Record<string, VerbContent> = {
     summary: 'sentir は「感じる」「残念に思う」を表す動詞で、sentirse は「（体調や気分が）〜だと感じる」の意味になります。現在形では e が ie に、点過去の3人称や現在分詞では e が i に変わります。',
     examples: [
       { es: 'Lo siento mucho.', ja: '本当にごめんなさい。' },
-      { es: 'Hoy me siento mucho mejor.', ja: '今日はずっと気分がいい。' },
+      { es: 'Hoy me siento mucho mejor.', ja: '今日はかなり気分がよくなった。' },
       { es: 'Sintió mucho frío en la montaña.', ja: '彼は山でとても寒さを感じた。' },
     ],
     mistake: { wrong: 'Siento bien.', right: 'Me siento bien.', note: '体調や気分を言うときは、再帰の sentirse を使います。Lo siento は「ごめんなさい・お気の毒に」という決まった表現です。' },
@@ -618,7 +619,7 @@ export const VERB_CONTENT: Record<string, VerbContent> = {
     examples: [
       { es: 'Voy a pedir una paella.', ja: 'パエリアを注文しよう。' },
       { es: 'Te pido un favor.', ja: 'ひとつお願いがあるんだけど。' },
-      { es: 'Me pidió que la ayudara.', ja: '彼女は私に手伝ってほしいと頼んだ。' },
+      { es: 'Me pidió que la ayudara.', ja: '彼女は自分を手伝ってくれるよう、私に頼んだ。' },
     ],
     mistake: { wrong: 'Pregunté un café.', right: 'Pedí un café.', note: '注文やお願いは pedir、質問は preguntar です。日本語ではどちらも「頼む・聞く」になりやすいので区別しましょう。' },
     similar: ['servir', 'repetir', 'medir'],
@@ -644,7 +645,7 @@ export const VERB_CONTENT: Record<string, VerbContent> = {
     examples: [
       { es: '¿Qué ocurrió anoche?', ja: '昨夜、何が起きたの？' },
       { es: 'Ocurrió un accidente en la autopista.', ja: '高速道路で事故が起きた。' },
-      { es: 'Se me ha ocurrido una idea.', ja: 'いい考えを思いついた。' },
+      { es: 'Se me ha ocurrido una idea.', ja: 'アイデアを思いついた。' },
     ],
     mistake: { wrong: 'Ocurrieron un accidente.', right: 'Ocurrió un accidente.', note: 'ocurrir は起きた出来事（un accidente）が主語なので、その数に合わせて活用します。' },
     similar: ['vivir', 'recibir', 'existir'],
@@ -686,7 +687,7 @@ export const VERB_CONTENT: Record<string, VerbContent> = {
       { es: 'Me gusta mirar el mar.', ja: '海を眺めるのが好きです。' },
       { es: 'Miré la hora en el móvil.', ja: '携帯で時間を見た。' },
     ],
-    mistake: { wrong: 'Ayer miré una película.', right: 'Ayer vi una película.', note: '映画やテレビ番組を「見る」は、ふつう ver を使います。mirar は「目を向ける・眺める」というときに使います。' },
+    mistake: { wrong: 'Ayer miré una película.', right: 'Ayer vi una película.', note: '映画を見るときは、スペインでは一般に ver una película が自然です。mirar は「視線を向けて見る・眺める」という意味が中心で、mirar una película も通じますが、この場面では ver がより一般的です。', mark: '△' },
     similar: ['entrar', 'llamar', 'esperar'],
     notes: ['tú への命令 mira は、「ほら・ねえ」と相手の注意を引く言葉としてもよく使います。'],
     updated: '2026-11-10',
@@ -718,7 +719,7 @@ export const VERB_CONTENT: Record<string, VerbContent> = {
     ],
     mistake: { wrong: 'Yo gusto el café.', right: 'Me gusta el café.', note: '好きなもの（el café）が主語なので、動詞はそれに合わせて gusta / gustan になります。好きな人は me・te・le・nos・os・les で表します。' },
     similar: ['encantar', 'interesar', 'doler'],
-    notes: ['gusto, gustas などの1・2人称は、「（人が人を）好きだ」と言うときに使います（Me gustas.「あなたが好き」）。'],
+    notes: ['gusto・gustas などの1人称・2人称の形では、好かれる人が主語になります（Me gustas.「あなたが好きです」）。'],
     updated: '2026-11-10',
   },
   comer: {
@@ -730,7 +731,7 @@ export const VERB_CONTENT: Record<string, VerbContent> = {
       { es: 'En España comemos a las dos.', ja: 'スペインでは2時に昼食をとります。' },
       { es: 'Ayer comí paella en Valencia.', ja: '昨日、バレンシアでパエリアを食べた。' },
     ],
-    mistake: { wrong: 'Comí la cena a las nueve.', right: 'Cené a las nueve.', note: 'スペインでは、comer は「昼食をとる」の意味でよく使います。夕食は cenar、朝食は desayunar という専用の動詞で言います。' },
+    mistake: { wrong: 'Comí la cena a las nueve.', right: 'Cené a las nueve.', note: 'スペインでは、昼食をとることは comer、夕食をとることは cenar、朝食をとることは desayunar と言うのが一般的です。「comer la cena」も意味は通じますが、ふつうは「Cené a las nueve.」と言います。', mark: '△' },
     similar: ['deber', 'beber', 'aprender'],
     updated: '2026-11-10',
   },
