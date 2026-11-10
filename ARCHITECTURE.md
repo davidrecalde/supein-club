@@ -266,8 +266,14 @@ Google Discover exige imágenes de al menos 1200 px de ancho (con `max-image-pre
 - **Tarjetas** (`ArticleCard`): miniatura de 480/800 px por `srcset`; ya no cargan el original. Los llamadores pasan el `ImageMetadata` (`heroImage={a.data.heroImage}`), no `.src`.
 - **Originales en `src/assets/hero/`:** a 1200 px de ancho (WebP q85), con el mismo encuadre que antes. No se sirven directamente, salvo como URL del `ImageObject` del schema (pendiente de pasar a la versión de 1200 px). La regla de 100 KB se aplica a lo que carga el navegador en móvil, no a estos originales.
 - **Curso:** `npm run course:images` escribe además `uNN-480.webp` y `uNN-1200.webp` (esta sin límite de 100 KB). `UnitLayout` los usa en el `srcset` y como `og:image`.
-- **Originales locales:** la mayoría está en `Artículos/` (fuera de git). Se emparejaron con las imágenes publicadas por similitud visual (dHash + diferencia de píxeles) y se recortaron igual.
-- **Imágenes nuevas:** guardar el original a 1200 px de ancho como mínimo en `src/assets/hero/`; Astro genera los tamaños.
+- **Originales locales:** la mayoría está en `Artículos/` (fuera de git). Se emparejaron con las imágenes publicadas por similitud visual (dHash + diferencia de píxeles) y se recortaron igual (125 imágenes, incluidas las 52 provincias).
+- **Sin original en alta resolución (69):**
+  - 42 cabeceras tipográficas del curso (niveles A1–C2 y DELE): se redibujaron a 1200 px con el mismo diseño (Noto Sans JP, mismo color y posición, `palt` en las de DELE con puntuación).
+  - 27 fotos e infografías: se ampliaron a 1200 px (Lanczos + enfoque suave). Conviene sustituirlas por un original de ≥1200 px cuando lo haya: fútbol (Athletic, Atlético, El Clásico ×2, La Liga, Liga F, Messi vs Ronaldo, LaLiga Master, licencia de entrenador), Barcelona (Casa Batlló, Casa Milà, Palau Güell, Palau de la Música, Park Güell, Sagrada Familia ×3), comida (aceite de oliva, dulces, vocabulario de comida, provincia de Cádiz), Alhambra, calle de Madrid, banner vertical de regiones e infografías (ロードマップ, test de nivel, ley de Zipf).
+- **Resultado (2026-11-10):** 332 de 332 páginas indexables de tipo artículo tienen la imagen principal a ≥1200 px (antes, 40).
+- **Imágenes nuevas (regla de David, 2026-11-10): cada imagen nueva sale en 1200, 800 y 480 px.**
+  - Imagen principal de un artículo: guardar el original a ≥1200 px en `src/assets/hero/`; Astro genera los tres tamaños.
+  - Imágenes de `public/` (notas de prensa, cuerpo del artículo, home): `npm run images:variants -- <original> <destino-sin-extensión>` escribe `-1200.webp`, `-800.webp` y `-480.webp` (la de 480 px, por debajo de 100 KB). Usarlas con `srcset` (480w, 800w, 1200w).
 
 ## Casos especiales a documentar explícitamente
 
