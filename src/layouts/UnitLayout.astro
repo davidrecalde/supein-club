@@ -20,6 +20,8 @@ import { ABOUT_COURSE_URL } from '../data/course';
 import { VERBS, verbUrl } from '../data/conjugation';
 import { getAllUnits, hasPage, unitBreadcrumbs, type Unit } from '../utils/units';
 import { buildAuthorPerson, buildQuizNode } from '../utils/schema';
+import { HERO_SIZES } from '../utils/images';
+import { existsSync } from 'node:fs';
 
 interface Props {
   unit: Unit;
@@ -31,6 +33,17 @@ const { Content, headings } = await render(unit);
 const siteUrl = 'https://supein.club';
 const canonical = `${siteUrl}${d.url}`;
 const imageUrl = d.image && `${siteUrl}${d.image.src}`;
+// Ilustración en varios tamaños (npm run course:images): uNN-480.webp, uNN.webp (< 100 KB) y
+// uNN-1200.webp, que es el og:image para Google Discover.
+const imageVariant = (w: number) => {
+  const src = d.image?.src.replace(/\.webp$/, `-${w}.webp`);
+  return src && existsSync(`public${src}`) ? src : undefined;
+};
+const image480 = imageVariant(480);
+const image1200 = imageVariant(1200);
+const imageSrcset = d.image
+  ? [image480 && `${image480} 480w`, `${d.image.src} ${d.image.width}w`, image1200 && d.image.width < 1200 && `${image1200} 1200w`].filter(Boolean).join(', ')
+  : undefined;
 const description = d.description ?? `${d.shortTitle}（${d.titleEs}）`;
 
 const byNumber = new Map((await getAllUnits()).map((u) => [u.data.unit, u]));
@@ -83,7 +96,7 @@ const sources = [
     title={d.title}
     description={description}
     canonical={canonical}
-    image={d.image?.src}
+    image={image1200 ?? d.image?.src}
     type="article"
     breadcrumbs={unitBreadcrumbs(unit)}
     keywords={[d.shortTitle, d.titleEs, ...d.grammar]}
@@ -118,7 +131,7 @@ const sources = [
       <div class="content-main">
         {d.image && (
           <figure class="unit-hero">
-            <img src={d.image.src} width={d.image.width} height={d.image.height} alt={d.image.alt} fetchpriority="high" decoding="async" />
+            <img src={d.image.src} srcset={imageSrcset} sizes={HERO_SIZES} width={d.image.width} height={d.image.height} alt={d.image.alt} fetchpriority="high" decoding="async" />
             <figcaption>※この画像はAIで生成したイメージです。登場人物とユニットの場面を分かりやすく伝えるための参考画像としてご覧ください。</figcaption>
           </figure>
         )}

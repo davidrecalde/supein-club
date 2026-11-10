@@ -93,7 +93,9 @@ function courseLinkCheckIntegration() {
 export default defineConfig({
   site: 'https://supein.club',
   output: 'static',
-  adapter: cloudflare({ imageService: 'passthrough' }),
+  // compile: Astro genera en el build varios tamaños de cada imagen (srcset) y la versión de 1200 px
+  // para og:image (Google Discover). Ver src/utils/images.ts.
+  adapter: cloudflare({ imageService: 'compile' }),
   integrations: [
     mdx(),
     sitemap({
