@@ -26,7 +26,7 @@ import RegionBadge from '../components/RegionBadge.astro';
 import LevelUnits from '../components/course/LevelUnits.astro';
 import { getArticleUrl, getArticleBreadcrumbs, isPillarArticle, pillarLabels } from '../utils/articles';
 import { getCategoryBadgeLabel } from '../utils/articleCategory';
-import { courseSequence } from '../data/course-sequence';
+import { getAllUnits } from '../utils/units';
 
 interface Props {
   entry: CollectionEntry<'articles'>;
@@ -95,18 +95,14 @@ const related = pinned.slice(0, 3);
 const authorSlug = author.data.slug ?? author.id.replace(/\.(md|mdx)$/, '');
 const authorUrlForMeta = `https://supein.club/about-us/team/${authorSlug}/`;
 
-// ItemList de la ruta de 36 STEP (A1-C2), solo en la página insignia del
-// roadmap — el resto de artículos no necesita este listado.
+// ItemList de las 62 unidades del curso, solo en la página insignia del
+// roadmap (las enlaza todas, nivel por nivel, con RoadmapUnits). Solo las
+// publicadas: es lo que la página enlaza en producción.
 const isRoadmapHub = entry.id.replace(/\.(md|mdx)$/, '') === 'language/learn-spanish/index';
 const stepItemList = isRoadmapHub
-  ? courseSequence.step
-      .map((id, i) => {
-        const stepEntry = allArticles.find((a) => a.id.replace(/\.(md|mdx)$/, '') === id);
-        return stepEntry
-          ? { '@type': 'ListItem', position: i + 1, url: `https://supein.club${getArticleUrl(stepEntry)}`, name: stepEntry.data.title }
-          : null;
-      })
-      .filter((item) => item !== null)
+  ? (await getAllUnits())
+      .filter((u) => !u.data.draft)
+      .map((u, i) => ({ '@type': 'ListItem', position: i + 1, url: `https://supein.club${u.data.url}`, name: `ユニット${u.data.unit} ${u.data.shortTitle}` }))
   : null;
 
 ---
@@ -133,7 +129,7 @@ const stepItemList = isRoadmapHub
         '@context': 'https://schema.org',
         '@type': 'ItemList',
         '@id': `${canonical}#roadmap`,
-        name: 'スペイン語学習ロードマップ（A1〜C2）',
+        name: 'スペイン語コース（A1〜C2・全62ユニット）',
         itemListElement: stepItemList,
       })}
     />

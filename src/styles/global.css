@@ -1011,6 +1011,66 @@ a.unit-nav-step:focus-visible {
   line-height: 1.6;
 }
 
+/* Unidades por nivel en la hoja de ruta (RoadmapUnits.astro) */
+.roadmap-units {
+  margin: 1.25rem 0 1.5rem;
+  padding: 14px 18px 8px;
+  border: 1px solid #E8E8E6;
+  border-top: 4px solid var(--level);
+  border-radius: 12px;
+  background: #fff;
+}
+.prose .roadmap-units-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px 10px;
+  margin: 0 0 8px;
+  font-size: 14px;
+  font-weight: 700;
+  color: #002147;
+}
+.prose .roadmap-units-head a {
+  margin-left: auto;
+  font-size: 13px;
+  color: #C8102E;
+}
+.prose .roadmap-units-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 240px), 1fr));
+  gap: 0 20px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.prose .roadmap-units-list li {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  margin: 0;
+  padding: 7px 0;
+  border-bottom: 1px solid #F0F0EE;
+  font-size: 14px;
+  line-height: 1.5;
+}
+.roadmap-units-num {
+  flex-shrink: 0;
+  min-width: 1.6em;
+  font-size: 12px;
+  font-weight: 700;
+  color: #6b7280;
+  text-align: right;
+}
+.roadmap-units-done {
+  margin-left: auto;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 1px 8px;
+  border-radius: 999px;
+  background: #E7F5EC;
+  color: #166534;
+}
+
 /* 「続きから」 del hub y de la hoja de ruta (CourseContinue.astro) */
 .course-continue {
   margin: 0 0 32px;

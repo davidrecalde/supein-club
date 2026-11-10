@@ -1,0 +1,49 @@
+---
+// Lista compacta de las unidades de un nivel para la hoja de ruta
+// /language/learn-spanish/ (plan-hub-embudo.md, punto 10), con 完了 según
+// el progreso guardado en el navegador.
+import { getCourseLevel, levelUrl } from '../../data/course';
+import { getAllUnits, hasPage, isCourseVisible } from '../../utils/units';
+
+interface Props {
+  level: string;
+}
+
+const visible = await isCourseVisible();
+const level = getCourseLevel(Astro.props.level)!;
+const units = (await getAllUnits()).filter((u) => u.data.level === level.code);
+---
+{visible && (
+<div class={`roadmap-units lv-${level.code}`} data-pagefind-ignore>
+  <p class="roadmap-units-head">
+    <span class="level-chip">{level.code}</span>
+    <span>{level.name}・ユニット{level.first}〜{level.last}</span>
+    <a href={levelUrl(level.code)}>{level.code}のページへ →</a>
+  </p>
+  <ol class="roadmap-units-list">
+    {units.map((u) => (
+      <li data-unit={u.data.unit}>
+        <span class="roadmap-units-num">{u.data.unit}</span>
+        {hasPage(u) ? <a href={u.data.url}>{u.data.shortTitle}</a> : <span>{u.data.shortTitle}</span>}
+        <span class="roadmap-units-done" hidden>完了</span>
+      </li>
+    ))}
+  </ol>
+</div>
+)}
+
+<script>
+  import { PROGRESS_EVENT, isCompleted, loadProgress } from '../../utils/courseProgress';
+
+  function render() {
+    const progress = loadProgress();
+    document.querySelectorAll<HTMLElement>('.roadmap-units-list li[data-unit]').forEach((li) => {
+      const done = isCompleted(progress, Number(li.dataset.unit));
+      li.classList.toggle('is-done', done);
+      li.querySelector<HTMLElement>('.roadmap-units-done')!.hidden = !done;
+    });
+  }
+
+  window.addEventListener(PROGRESS_EVENT, render);
+  render();
+</script>
