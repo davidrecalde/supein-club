@@ -7,6 +7,8 @@ import QuizCard from '../../../../components/QuizCard.astro';
 import Sources from '../../../../components/Sources.astro';
 import AuthorBox from '../../../../components/AuthorBox.astro';
 import LineBanner from '../../../../components/LineBanner.astro';
+import TOC from '../../../../components/TOC.astro';
+import FloatingActions from '../../../../components/FloatingActions.astro';
 import { CONJUGATION_URL, VERBS, verbUrl, type VerbData } from '../../../../data/conjugation';
 import { VERB_CONTENT } from '../../../../data/conjugation/content';
 import { FREQUENCY_SOURCE, RANK_BY_VERB } from '../../../../data/conjugation/ranking';
@@ -73,6 +75,15 @@ const sources = [
   { label: 'Real Academia Española『Nueva gramática de la lengua española』' },
   ...(rank ? [{ label: `頻度順位：${FREQUENCY_SOURCE.label}`, url: FREQUENCY_SOURCE.url }] : []),
 ];
+// 目次（右のサイドバーと、スマホでは本文の前の折りたたみ）: la página no es MDX, así que los H2 se listan aquí.
+const headings = [
+  { depth: 2, slug: 'table', text: '活用表（全時制）' },
+  { depth: 2, slug: 'examples', text: '例文' },
+  { depth: 2, slug: 'mistake', text: '日本人がよく間違える' },
+  ...(courseVisible ? [{ depth: 2, slug: 'units', text: 'この動詞を学ぶユニット' }] : []),
+  ...(content.similar.length > 0 ? [{ depth: 2, slug: 'similar', text: '同じように活用する動詞' }] : []),
+  { depth: 2, slug: 'others', text: 'ほかの動詞の活用' },
+];
 const fmt = (d: Date) => d.toLocaleDateString('ja-JP', { year: 'numeric', month: 'long', day: 'numeric' });
 ---
 <BaseLayout title={title}>
@@ -89,7 +100,24 @@ const fmt = (d: Date) => d.toLocaleDateString('ja-JP', { year: 'numeric', month:
     <p class="course-page-updated">最終更新日：<time datetime={updated.toISOString()}>{fmt(updated)}</time></p>
   </CoursePageHeader>
 
-  <article class="page-container py-10 verb-page">
+  <div class="page-container verb-page">
+  <div class="content-grid">
+  <article class="content-main">
+    <details class="toc-mobile-inline">
+      <summary>
+        <span>目次</span>
+        <span class="tmi-chevron" aria-hidden="true">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </span>
+      </summary>
+      <ol class="tmi-list">
+        {headings.map((h, i) => (
+          <li><a href={'#' + h.slug}><span class="tmi-num">{i + 1}.</span>{h.text}</a></li>
+        ))}
+      </ol>
+    </details>
 
     <div class="prose verb-body">
       <p>{content.summary}</p>
@@ -174,18 +202,27 @@ const fmt = (d: Date) => d.toLocaleDateString('ja-JP', { year: 'numeric', month:
           <iframe src={`https://www.youtube-nocookie.com/embed/${content.youtubeId}`} title={`${verb} の活用（動画）`} loading="lazy" allowfullscreen></iframe>
         </div>
       )}
+
+      <section class="verb-others">
+        <h2 id="others">ほかの動詞の活用</h2>
+        <p>{otherVerbs.map((v, i) => <>{i > 0 && '・'}<a href={verbUrl(v)} lang="es">{v}</a></>)}</p>
+        <p><a href={CONJUGATION_URL}>スペイン語 動詞の活用一覧（検索・時制マップ・頻出50動詞）へ</a></p>
+      </section>
     </div>
+
 
     <QuizCard quiz={data.quiz} title={`${verb} の活用クイズ`} />
 
-    <section class="verb-others">
-      <h2>ほかの動詞の活用</h2>
-      <p>{otherVerbs.map((v, i) => <>{i > 0 && '・'}<a href={verbUrl(v)} lang="es">{v}</a></>)}</p>
-      <p><a href={CONJUGATION_URL}>スペイン語 動詞の活用一覧（検索・時制マップ・頻出50動詞）へ</a></p>
-    </section>
 
     <Sources sources={sources} />
     <AuthorBox author={author} />
   </article>
+
+  <aside class="content-sidebar">
+    <TOC headings={headings} />
+  </aside>
+  </div>
+  </div>
   <LineBanner slim />
+  <FloatingActions shareUrl={canonical} shareTitle={title} />
 </BaseLayout>
