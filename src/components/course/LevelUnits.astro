@@ -12,6 +12,9 @@ const units = (await getAllUnits()).filter((u) => u.data.level === level.code);
 const live = units.filter(isRoutable);
 // ItemList solo con unidades publicadas: es lo que la página enlaza en producción.
 const published = units.filter((u) => !u.data.draft);
+// Unidad de cierre (総復習と模擬試験) y guía DELE del nivel (plan-hub-embudo.md, punto 11).
+const closing = units.at(-1);
+const deleUrl = `/language/learn-spanish/dele/${level.code.toLowerCase()}/`;
 const itemList = published.length > 0 && {
   '@context': 'https://schema.org',
   '@type': 'ItemList',
@@ -27,10 +30,10 @@ const itemList = published.length > 0 && {
 ---
 {visible && itemList && <script type="application/ld+json" set:html={JSON.stringify(itemList)} />}
 {visible && (
-<section class="level-units" id="units" data-pagefind-ignore>
-  <h2>{level.code} {level.name}のユニット</h2>
+<section class={`level-units lv-${level.code}`} id="units" data-pagefind-ignore>
+  <h2><span class="level-chip">{level.code}</span> {level.name}のユニット</h2>
   <p>
-    ユニット{level.first}〜{level.last}（全{units.length}ユニット）。公開中：{published.length}ユニット。
+    ユニット{level.first}〜{level.last}（全{units.length}ユニット）。終わったユニットには「完了」が付きます。
     {published.length < units.length && '準備中のユニットは、公開され次第リンクが付きます。'}
     <a href={WELCOME_URL}>学習設定</a>
   </p>
@@ -55,6 +58,12 @@ const itemList = published.length > 0 && {
       </li>
     ))}
   </ol>
+
+  {closing && (
+    <p class="level-units-finish">
+      仕上げ：{hasPage(closing) ? <a href={closing.data.url}>{`ユニット${closing.data.unit} ${closing.data.shortTitle}`}</a> : `ユニット${closing.data.unit} ${closing.data.shortTitle}`}（DELE {level.code}の形式に沿った模擬試験）・<a href={deleUrl}>DELE {level.code}ガイド</a>
+    </p>
+  )}
 </section>
 )}
 
