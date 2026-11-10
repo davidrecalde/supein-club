@@ -1090,6 +1090,20 @@ a.unit-nav-step:focus-visible {
   color: #166534;
 }
 
+/* Tabla de unidades de los resúmenes de gramática (LevelGrammarTable.astro) */
+.grammar-units {
+  overflow-x: auto;
+}
+.prose .grammar-units th:first-child,
+.prose .grammar-units .grammar-units-num {
+  white-space: nowrap;
+  text-align: center;
+}
+.prose .grammar-units td:nth-child(2) {
+  min-width: 9em;
+  font-weight: 600;
+}
+
 /* 「続きから」 del hub y de la hoja de ruta (CourseContinue.astro) */
 .course-continue {
   margin: 0 0 32px;
