@@ -73,6 +73,22 @@ de academias de español — tokyo/yokohama/osaka/kyoto-spanish-schools.mdx y
 spanish-schools-in-japan.mdx (negocios, itemType LocalBusiness) —
 consultarlos como ejemplo real de invocación si hace falta.
 
+## Imágenes y Google Discover (protocolo para todo lo que se publique)
+
+Decisión de David (10 de noviembre de 2026): Google Discover es prioritario. Para cada artículo, nota de prensa o unidad del curso nueva:
+
+- **Cada imagen nueva sale en 1200, 800 y 480 px** (WebP). La página carga el tamaño que necesita cada pantalla (`srcset`); lo que carga el móvil queda por debajo de 100 KB.
+- **Imagen principal: original de al menos 1200×675.**
+  - Artículos: en `src/assets/hero/`; Astro genera los tamaños y los recortes.
+  - `public/` (notas de prensa…): `npm run images:variants -- <original> <destino> --schema`.
+  - Unidades: `npm run course:images`.
+- **Schema:** tres `ImageObject` (16:9 a 1200×675 como `#primaryimage`, 4:3 y 1:1) con las medidas reales de cada archivo, y `primaryImageOfPage` en la página. Los tamaños pequeños no van en el schema.
+- **og:image:** la versión de 1200 px, con `og:image:width`, `og:image:height` y `og:image:alt`.
+- **Cabeceras de solo texto:** no se recortan. Van en `src/assets/hero/schema/` como `<nombre>-4x3.webp` y `-1x1.webp`, con el fondo ampliado.
+- **Original menor de 1200 px:** avisar y pedir uno mayor antes de ampliar.
+
+Detalle en ARCHITECTURE.md, secciones «Imágenes para Google Discover» y «Schema de imágenes».
+
 ## Verificar un despliegue después de fusionar
 
 No asumir que un merge a `main` ya está en producción por cómo se ve la web
