@@ -983,5 +983,449 @@
       "seconds": 1.14,
       "hash": "f9d8f110f1ddeb21"
     }
+  ],
+  "12": [
+    {
+      "index": 0,
+      "text": "Hola, ¿qué quieres?",
+      "speaker": "male-adult",
+      "src": "/audio/units/u12/u12-01.mp3",
+      "slow": "/audio/units/u12/u12-01-slow.mp3",
+      "seconds": 1.09,
+      "hash": "684f9c80e9c29537"
+    },
+    {
+      "index": 1,
+      "text": "Un café con leche y un cruasán, por favor.",
+      "speaker": "mina",
+      "src": "/audio/units/u12/u12-02.mp3",
+      "slow": "/audio/units/u12/u12-02-slow.mp3",
+      "seconds": 5.53,
+      "hash": "3d8768e14f38e223"
+    },
+    {
+      "index": 2,
+      "text": "¿Algo más?",
+      "speaker": "male-adult",
+      "src": "/audio/units/u12/u12-03.mp3",
+      "slow": "/audio/units/u12/u12-03-slow.mp3",
+      "seconds": 0.63,
+      "hash": "ca1d99a212e83087"
+    },
+    {
+      "index": 3,
+      "text": "Sí, un zumo de naranja. ¿Cuánto es?",
+      "speaker": "mina",
+      "src": "/audio/units/u12/u12-04.mp3",
+      "slow": "/audio/units/u12/u12-04-slow.mp3",
+      "seconds": 4.57,
+      "hash": "3d4c97c6f0999841"
+    },
+    {
+      "index": 4,
+      "text": "Son cinco euros con cincuenta.",
+      "speaker": "male-adult",
+      "src": "/audio/units/u12/u12-05.mp3",
+      "slow": "/audio/units/u12/u12-05-slow.mp3",
+      "seconds": 1.91,
+      "hash": "4f82fcce231924ed"
+    },
+    {
+      "index": 5,
+      "text": "El tren con destino a Toledo sale a las diez y cuarto del andén tres.",
+      "speaker": "narrator",
+      "src": "/audio/units/u12/u12-06.mp3",
+      "slow": "/audio/units/u12/u12-06-slow.mp3",
+      "seconds": 7.04,
+      "hash": "9d774075f49ed723"
+    },
+    {
+      "index": 6,
+      "text": "¿Hablas español?",
+      "speaker": "narrator",
+      "src": "/audio/units/u12/u12-07.mp3",
+      "slow": "/audio/units/u12/u12-07-slow.mp3",
+      "seconds": 1.18,
+      "hash": "0dd77b162da0bd97"
+    },
+    {
+      "index": 7,
+      "text": "¿Dónde vives?",
+      "speaker": "narrator",
+      "src": "/audio/units/u12/u12-08.mp3",
+      "slow": "/audio/units/u12/u12-08-slow.mp3",
+      "seconds": 1.08,
+      "hash": "2a97e4fc8929bb33"
+    }
+  ],
+  "13": [
+    {
+      "index": 0,
+      "text": "Esta mañana he tenido una reunión y he visitado la fábrica.",
+      "speaker": "narrator",
+      "src": "/audio/units/u13/u13-01.mp3",
+      "slow": "/audio/units/u13/u13-01-slow.mp3",
+      "seconds": 5.3,
+      "hash": "b9613e6d1821cf98"
+    },
+    {
+      "index": 1,
+      "text": "¿Has estado alguna vez en Sevilla?",
+      "speaker": "narrator",
+      "src": "/audio/units/u13/u13-02.mp3",
+      "slow": "/audio/units/u13/u13-02-slow.mp3",
+      "seconds": 2.67,
+      "hash": "b7fded41370c7161"
+    },
+    {
+      "index": 2,
+      "text": "No, nunca he estado en Sevilla.",
+      "speaker": "narrator",
+      "src": "/audio/units/u13/u13-03.mp3",
+      "slow": "/audio/units/u13/u13-03-slow.mp3",
+      "seconds": 2.96,
+      "hash": "94610ac6d9f8e28a"
+    },
+    {
+      "index": 3,
+      "text": "¿Ya has comido? No, todavía no he comido.",
+      "speaker": "narrator",
+      "src": "/audio/units/u13/u13-04.mp3",
+      "slow": "/audio/units/u13/u13-04-slow.mp3",
+      "seconds": 4.63,
+      "hash": "4ecfd2cdbc219424"
+    },
+    {
+      "index": 4,
+      "text": "Ayer visité la fábrica. Hoy he escrito el informe.",
+      "speaker": "narrator",
+      "src": "/audio/units/u13/u13-05.mp3",
+      "slow": "/audio/units/u13/u13-05-slow.mp3",
+      "seconds": 5.09,
+      "hash": "f5b3635beac4280e"
+    },
+    {
+      "index": 5,
+      "text": "cansado",
+      "speaker": "narrator",
+      "src": "/audio/units/u13/u13-06.mp3",
+      "slow": "/audio/units/u13/u13-06-slow.mp3",
+      "seconds": 0.76,
+      "hash": "65e6ddcde0402441"
+    }
+  ],
+  "14": [
+    {
+      "index": 0,
+      "text": "Ayer Mina visitó el Museo del Prado.",
+      "speaker": "narrator",
+      "src": "/audio/units/u14/u14-01.mp3",
+      "slow": "/audio/units/u14/u14-01-slow.mp3",
+      "seconds": 3.74,
+      "hash": "b91e6bd49e366934"
+    },
+    {
+      "index": 1,
+      "text": "Anoche Kenta cenó con sus compañeros.",
+      "speaker": "narrator",
+      "src": "/audio/units/u14/u14-02.mp3",
+      "slow": "/audio/units/u14/u14-02-slow.mp3",
+      "seconds": 3.5,
+      "hash": "f4e6298c30ad9da4"
+    },
+    {
+      "index": 2,
+      "text": "La semana pasada Kenta estuvo en Valencia.",
+      "speaker": "narrator",
+      "src": "/audio/units/u14/u14-03.mp3",
+      "slow": "/audio/units/u14/u14-03-slow.mp3",
+      "seconds": 3.74,
+      "hash": "318921749f4b7e02"
+    },
+    {
+      "index": 3,
+      "text": "El año pasado Mina empezó a estudiar español.",
+      "speaker": "narrator",
+      "src": "/audio/units/u14/u14-04.mp3",
+      "slow": "/audio/units/u14/u14-04-slow.mp3",
+      "seconds": 4.08,
+      "hash": "751b8cb55c6b8128"
+    },
+    {
+      "index": 4,
+      "text": "Kenta fue a Valencia por primera vez en 2019.",
+      "speaker": "narrator",
+      "src": "/audio/units/u14/u14-05.mp3",
+      "slow": "/audio/units/u14/u14-05-slow.mp3",
+      "seconds": 4.35,
+      "hash": "a79deb2904e05ad3"
+    },
+    {
+      "index": 5,
+      "text": "Mina llegó a Madrid hace dos días.",
+      "speaker": "narrator",
+      "src": "/audio/units/u14/u14-06.mp3",
+      "slow": "/audio/units/u14/u14-06-slow.mp3",
+      "seconds": 3.05,
+      "hash": "04fd47e9a5f25718"
+    },
+    {
+      "index": 6,
+      "text": "Primero fui al Palacio Real, después comí en la Plaza Mayor y al final volví al hotel en metro.",
+      "speaker": "narrator",
+      "src": "/audio/units/u14/u14-07.mp3",
+      "slow": "/audio/units/u14/u14-07-slow.mp3",
+      "seconds": 8.87,
+      "hash": "bce028c32ef98b6a"
+    },
+    {
+      "index": 7,
+      "text": "El domingo fuimos a casa de mis padres, comimos paella y luego dormimos la siesta.",
+      "speaker": "narrator",
+      "src": "/audio/units/u14/u14-08.mp3",
+      "slow": "/audio/units/u14/u14-08-slow.mp3",
+      "seconds": 7.47,
+      "hash": "4df249f9a60236d7"
+    },
+    {
+      "index": 8,
+      "text": "habló",
+      "speaker": "narrator",
+      "src": "/audio/units/u14/u14-09.mp3",
+      "slow": "/audio/units/u14/u14-09-slow.mp3",
+      "seconds": 0.53,
+      "hash": "01a0545a37e231b3"
+    },
+    {
+      "index": 9,
+      "text": "hablo",
+      "speaker": "narrator",
+      "src": "/audio/units/u14/u14-10.mp3",
+      "slow": "/audio/units/u14/u14-10-slow.mp3",
+      "seconds": 0.56,
+      "hash": "759032c0295dd674"
+    }
+  ],
+  "15": [
+    {
+      "index": 0,
+      "text": "De niña, Mina dibujaba todos los días.",
+      "speaker": "narrator",
+      "src": "/audio/units/u15/u15-01.mp3",
+      "slow": "/audio/units/u15/u15-01-slow.mp3",
+      "seconds": 4.12,
+      "hash": "727acf2459802c36"
+    },
+    {
+      "index": 1,
+      "text": "Cada verano, Mina iba a casa de sus abuelos.",
+      "speaker": "narrator",
+      "src": "/audio/units/u15/u15-02.mp3",
+      "slow": "/audio/units/u15/u15-02-slow.mp3",
+      "seconds": 3.96,
+      "hash": "504807336f7ed00b"
+    },
+    {
+      "index": 2,
+      "text": "Hacía sol y la plaza estaba llena de gente.",
+      "speaker": "narrator",
+      "src": "/audio/units/u15/u15-03.mp3",
+      "slow": "/audio/units/u15/u15-03-slow.mp3",
+      "seconds": 3.98,
+      "hash": "f744c95c6c95f6b8"
+    },
+    {
+      "index": 3,
+      "text": "Eran las diez de la noche.",
+      "speaker": "narrator",
+      "src": "/audio/units/u15/u15-04.mp3",
+      "slow": "/audio/units/u15/u15-04-slow.mp3",
+      "seconds": 1.95,
+      "hash": "9a79530940f9542e"
+    },
+    {
+      "index": 4,
+      "text": "Mina tenía siete años.",
+      "speaker": "narrator",
+      "src": "/audio/units/u15/u15-05.mp3",
+      "slow": "/audio/units/u15/u15-05-slow.mp3",
+      "seconds": 2.29,
+      "hash": "bb145b0ffa35794e"
+    },
+    {
+      "index": 5,
+      "text": "A las nueve, Kenta todavía trabajaba.",
+      "speaker": "narrator",
+      "src": "/audio/units/u15/u15-06.mp3",
+      "slow": "/audio/units/u15/u15-06-slow.mp3",
+      "seconds": 3.49,
+      "hash": "c8409b7a617c7cce"
+    },
+    {
+      "index": 6,
+      "text": "Antes, Kenta no entendía nada en las reuniones; ahora entiende casi todo.",
+      "speaker": "narrator",
+      "src": "/audio/units/u15/u15-07.mp3",
+      "slow": "/audio/units/u15/u15-07-slow.mp3",
+      "seconds": 7.49,
+      "hash": "bfb5366971b3e4aa"
+    },
+    {
+      "index": 7,
+      "text": "Cuando era pequeño, merendaba un bocadillo en el parque y luego jugábamos al fútbol hasta la hora de cenar.",
+      "speaker": "narrator",
+      "src": "/audio/units/u15/u15-08.mp3",
+      "slow": "/audio/units/u15/u15-08-slow.mp3",
+      "seconds": 8.23,
+      "hash": "7560954713db7360"
+    },
+    {
+      "index": 8,
+      "text": "comía",
+      "speaker": "narrator",
+      "src": "/audio/units/u15/u15-09.mp3",
+      "slow": "/audio/units/u15/u15-09-slow.mp3",
+      "seconds": 0.72,
+      "hash": "f41d9490040369a9"
+    },
+    {
+      "index": 9,
+      "text": "vivía",
+      "speaker": "narrator",
+      "src": "/audio/units/u15/u15-10.mp3",
+      "slow": "/audio/units/u15/u15-10-slow.mp3",
+      "seconds": 0.83,
+      "hash": "6fa51ca4b05435bc"
+    },
+    {
+      "index": 10,
+      "text": "veía",
+      "speaker": "narrator",
+      "src": "/audio/units/u15/u15-11.mp3",
+      "slow": "/audio/units/u15/u15-11-slow.mp3",
+      "seconds": 0.8,
+      "hash": "154d73c607a64c67"
+    }
+  ],
+  "16": [
+    {
+      "index": 0,
+      "text": "Mina llegó a la Plaza Mayor a las doce. Hacía sol y había mucha gente.",
+      "speaker": "narrator",
+      "src": "/audio/units/u16/u16-01.mp3",
+      "slow": "/audio/units/u16/u16-01-slow.mp3",
+      "seconds": 7.63,
+      "hash": "2cc44282e4f20bf2"
+    },
+    {
+      "index": 1,
+      "text": "Kenta presentaba el proyecto cuando se fue la luz.",
+      "speaker": "narrator",
+      "src": "/audio/units/u16/u16-02.mp3",
+      "slow": "/audio/units/u16/u16-02-slow.mp3",
+      "seconds": 3.94,
+      "hash": "61cc69f916bd1a6d"
+    },
+    {
+      "index": 2,
+      "text": "Mina tomaba un café cuando empezó a llover.",
+      "speaker": "narrator",
+      "src": "/audio/units/u16/u16-03.mp3",
+      "slow": "/audio/units/u16/u16-03-slow.mp3",
+      "seconds": 3.83,
+      "hash": "f62b9e02fe465b1a"
+    },
+    {
+      "index": 3,
+      "text": "Kenta estuvo cinco días en Valencia.",
+      "speaker": "narrator",
+      "src": "/audio/units/u16/u16-04.mp3",
+      "slow": "/audio/units/u16/u16-04-slow.mp3",
+      "seconds": 3.19,
+      "hash": "609a8349641ae65a"
+    },
+    {
+      "index": 4,
+      "text": "Cuando estaba en Valencia, Kenta llamaba a su familia todas las noches.",
+      "speaker": "narrator",
+      "src": "/audio/units/u16/u16-05.mp3",
+      "slow": "/audio/units/u16/u16-05-slow.mp3",
+      "seconds": 5.3,
+      "hash": "fafed25151329c10"
+    },
+    {
+      "index": 5,
+      "text": "El Valencia perdía uno a cero, pero en el último minuto marcó y todo el estadio se puso de pie.",
+      "speaker": "narrator",
+      "src": "/audio/units/u16/u16-06.mp3",
+      "slow": "/audio/units/u16/u16-06-slow.mp3",
+      "seconds": 7.99,
+      "hash": "030ed09f233df94e"
+    },
+    {
+      "index": 6,
+      "text": "Mina habló.",
+      "speaker": "narrator",
+      "src": "/audio/units/u16/u16-07.mp3",
+      "slow": "/audio/units/u16/u16-07-slow.mp3",
+      "seconds": 1.26,
+      "hash": "5621ee9347063cde"
+    },
+    {
+      "index": 7,
+      "text": "Mina hablaba.",
+      "speaker": "narrator",
+      "src": "/audio/units/u16/u16-08.mp3",
+      "slow": "/audio/units/u16/u16-08-slow.mp3",
+      "seconds": 1.49,
+      "hash": "c7cc200eacdc7e48"
+    }
+  ],
+  "17": [
+    {
+      "index": 0,
+      "text": "Buenos días. Busco aceite de oliva para regalar.",
+      "speaker": "kenta",
+      "src": "/audio/units/u17/u17-01.mp3",
+      "slow": "/audio/units/u17/u17-01-slow.mp3",
+      "seconds": 4.94,
+      "hash": "3489097073346588"
+    },
+    {
+      "index": 1,
+      "text": "Este aceite es muy bueno. ¿Lo quiere probar?",
+      "speaker": "female-adult",
+      "src": "/audio/units/u17/u17-02.mp3",
+      "slow": "/audio/units/u17/u17-02-slow.mp3",
+      "seconds": 2.67,
+      "hash": "04f1d6dc66e90758"
+    },
+    {
+      "index": 2,
+      "text": "Me gusta mucho. Lo compro.",
+      "speaker": "kenta",
+      "src": "/audio/units/u17/u17-03.mp3",
+      "slow": "/audio/units/u17/u17-03-slow.mp3",
+      "seconds": 2.75,
+      "hash": "575408c71e70494b"
+    },
+    {
+      "index": 3,
+      "text": "¿Se lo envuelvo?",
+      "speaker": "female-adult",
+      "src": "/audio/units/u17/u17-04.mp3",
+      "slow": "/audio/units/u17/u17-04-slow.mp3",
+      "seconds": 0.83,
+      "hash": "69abeb1e3284d522"
+    },
+    {
+      "index": 4,
+      "text": "Sí, por favor. Se lo voy a regalar a mi jefe.",
+      "speaker": "kenta",
+      "src": "/audio/units/u17/u17-05.mp3",
+      "slow": "/audio/units/u17/u17-05-slow.mp3",
+      "seconds": 4.04,
+      "hash": "e21a8d89b06772a1"
+    }
   ]
 }

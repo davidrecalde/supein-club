@@ -105,7 +105,8 @@
       "profile": "Hombre español de unos 40 años. Habla español de España con pronunciación peninsular estándar, amable y natural, a ritmo normal."
     },
     "female-adult": {
-      "status": "propuesta",
+      "status": "aprobada",
+      "_approved": "Aprobada por David el 10 de noviembre de 2026 al escuchar la unidad 17 (vendedora de la tienda de aceite).",
       "voice": "Despina",
       "accent": "peninsular estándar",
       "profile": "Mujer española de unos 40 años. Habla español de España con pronunciación peninsular estándar, amable y natural, a ritmo normal."
