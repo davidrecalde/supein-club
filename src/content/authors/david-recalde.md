@@ -15,11 +15,17 @@ website2Label: "個人サイト"
 instagram: "https://www.instagram.com/davidrecalde/"
 twitter: ""
 specialties: ["スペイン料理", "スペイン旅行", "スペイン文化", "スペイン語", "デザイン", "コミュニケーション"]
-alumniOf:
-  - name: "Instituto Cervantes de Tokio"
+jobTitle: "スペイン倶楽部 創設者"
+employment:
+  - organization: "NODA"
+    url: "https://noda.tokyo/"
+    roleName: "Studio Lead"
+  - organization: "Instituto Cervantes de Tokio"
     alternateName: "インスティトゥト・セルバンテス東京"
     url: "https://tokio.cervantes.es/"
-    role: "Asesor de Comunicación y Prensa（広報・プレス担当アドバイザー）、5年間"
+    roleName: "Asesor de Comunicación y Prensa（広報・プレス担当アドバイザー）"
+    startDate: "2019-01"
+    endDate: "2024-12"
 featured: true
 order: 1
 lang: "ja"

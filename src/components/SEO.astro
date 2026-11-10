@@ -197,7 +197,7 @@ if (type === 'article' && article) {
     ? { '@type': 'AdministrativeArea', name: regionConfig.label }
     : undefined;
 
-  // Mismo nodo Person en todas las páginas del autor (bio, temas, perfiles, alumniOf): utils/schema.ts
+  // Mismo nodo Person en todas las páginas del autor (bio, temas, perfiles, trayectoria): utils/schema.ts
   const articleAuthor: Record<string, unknown> = author
     ? buildAuthorPerson(author, authorUrl)
     : { '@type': 'Person', '@id': `${authorUrl}#person`, name: authorName, url: authorUrl, worksFor: { '@id': `${siteUrl}/#organization` } };
