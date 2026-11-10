@@ -25,7 +25,7 @@ employment:
     url: "https://tokio.cervantes.es/"
     roleName: "Asesor de Comunicación y Prensa（広報・プレス担当アドバイザー）"
     startDate: "2019-01"
-    endDate: "2024-12"
+    endDate: "2024-01"
 featured: true
 order: 1
 lang: "ja"

@@ -1026,7 +1026,7 @@ Verificado tras el cambio: cada página del sitio ahora emite un único
   (con `endDate` = empleo anterior), además de スペイン倶楽部. No se usa
   `alumniOf`, que es para antiguos alumnos. David Recalde: NODA (Studio
   Lead, actual) e Instituto Cervantes de Tokio (Asesor de Comunicación y
-  Prensa, 2019-01 a 2024-12). Su `jobTitle` en el schema es
+  Prensa, 2019-01 a 2024-01). Su `jobTitle` en el schema es
   「スペイン倶楽部 創設者」 (el `role` visible no cambia).
 - **Entidad "LaLiga" unificada**: antes se definía por separado en
   `SEO.astro` (rama `schemaType: 'sports'`, solo para `la-liga.mdx`) y en
