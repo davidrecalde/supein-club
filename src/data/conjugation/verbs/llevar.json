@@ -1,0 +1,367 @@
+{
+  "infinitive": "llevar",
+  "gerund": "llevando",
+  "gerundIrregular": false,
+  "participle": "llevado",
+  "participleIrregular": false,
+  "tenses": {
+    "presente": {
+      "forms": [
+        "llevo",
+        "llevas",
+        "lleva",
+        "llevamos",
+        "lleváis",
+        "llevan"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "preterito-indefinido": {
+      "forms": [
+        "llevé",
+        "llevaste",
+        "llevó",
+        "llevamos",
+        "llevasteis",
+        "llevaron"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "preterito-imperfecto": {
+      "forms": [
+        "llevaba",
+        "llevabas",
+        "llevaba",
+        "llevábamos",
+        "llevabais",
+        "llevaban"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "futuro": {
+      "forms": [
+        "llevaré",
+        "llevarás",
+        "llevará",
+        "llevaremos",
+        "llevaréis",
+        "llevarán"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "condicional": {
+      "forms": [
+        "llevaría",
+        "llevarías",
+        "llevaría",
+        "llevaríamos",
+        "llevaríais",
+        "llevarían"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "subjuntivo-presente": {
+      "forms": [
+        "lleve",
+        "lleves",
+        "lleve",
+        "llevemos",
+        "llevéis",
+        "lleven"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "subjuntivo-imperfecto-ra": {
+      "forms": [
+        "llevara",
+        "llevaras",
+        "llevara",
+        "lleváramos",
+        "llevarais",
+        "llevaran"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "subjuntivo-imperfecto-se": {
+      "forms": [
+        "llevase",
+        "llevases",
+        "llevase",
+        "llevásemos",
+        "llevaseis",
+        "llevasen"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "imperativo-afirmativo": {
+      "forms": [
+        null,
+        "lleva",
+        "lleve",
+        "llevemos",
+        "llevad",
+        "lleven"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "imperativo-negativo": {
+      "forms": [
+        null,
+        "no lleves",
+        "no lleve",
+        "no llevemos",
+        "no llevéis",
+        "no lleven"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "preterito-perfecto": {
+      "forms": [
+        "he llevado",
+        "has llevado",
+        "ha llevado",
+        "hemos llevado",
+        "habéis llevado",
+        "han llevado"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "pluscuamperfecto": {
+      "forms": [
+        "había llevado",
+        "habías llevado",
+        "había llevado",
+        "habíamos llevado",
+        "habíais llevado",
+        "habían llevado"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "futuro-perfecto": {
+      "forms": [
+        "habré llevado",
+        "habrás llevado",
+        "habrá llevado",
+        "habremos llevado",
+        "habréis llevado",
+        "habrán llevado"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "condicional-perfecto": {
+      "forms": [
+        "habría llevado",
+        "habrías llevado",
+        "habría llevado",
+        "habríamos llevado",
+        "habríais llevado",
+        "habrían llevado"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "subjuntivo-perfecto": {
+      "forms": [
+        "haya llevado",
+        "hayas llevado",
+        "haya llevado",
+        "hayamos llevado",
+        "hayáis llevado",
+        "hayan llevado"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "subjuntivo-pluscuamperfecto": {
+      "forms": [
+        "hubiera llevado",
+        "hubieras llevado",
+        "hubiera llevado",
+        "hubiéramos llevado",
+        "hubierais llevado",
+        "hubieran llevado"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "subjuntivo-pluscuamperfecto-se": {
+      "forms": [
+        "hubiese llevado",
+        "hubieses llevado",
+        "hubiese llevado",
+        "hubiésemos llevado",
+        "hubieseis llevado",
+        "hubiesen llevado"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    }
+  },
+  "quiz": [
+    {
+      "question": "llevar の直説法現在、1人称単数（yo）は？",
+      "options": [
+        "llevo",
+        "lleva",
+        "llevan"
+      ],
+      "correctIndex": 0,
+      "explanation": "正解は llevo。llevar のこの形は規則どおりです。"
+    },
+    {
+      "question": "llevar の点過去、3人称単数（él / ella / usted）は？",
+      "options": [
+        "llevé",
+        "llevó",
+        "llevaron"
+      ],
+      "correctIndex": 1,
+      "explanation": "正解は llevó。llevar のこの形は規則どおりです。"
+    },
+    {
+      "question": "llevar の未来、1人称単数（yo）は？",
+      "options": [
+        "llevará",
+        "llevarán",
+        "llevaré"
+      ],
+      "correctIndex": 2,
+      "explanation": "正解は llevaré。llevar のこの形は規則どおりです。"
+    },
+    {
+      "question": "llevar の接続法現在、1人称単数（yo）は？",
+      "options": [
+        "lleve",
+        "lleven",
+        "lleves"
+      ],
+      "correctIndex": 0,
+      "explanation": "正解は lleve。llevar のこの形は規則どおりです。"
+    },
+    {
+      "question": "llevar の肯定命令、2人称単数（tú）は？",
+      "options": [
+        "lleve",
+        "lleva",
+        "lleven"
+      ],
+      "correctIndex": 1,
+      "explanation": "正解は lleva。llevar のこの形は規則どおりです。"
+    }
+  ]
+}

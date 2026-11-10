@@ -1,0 +1,367 @@
+{
+  "infinitive": "vivir",
+  "gerund": "viviendo",
+  "gerundIrregular": false,
+  "participle": "vivido",
+  "participleIrregular": false,
+  "tenses": {
+    "presente": {
+      "forms": [
+        "vivo",
+        "vives",
+        "vive",
+        "vivimos",
+        "vivís",
+        "viven"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "preterito-indefinido": {
+      "forms": [
+        "viví",
+        "viviste",
+        "vivió",
+        "vivimos",
+        "vivisteis",
+        "vivieron"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "preterito-imperfecto": {
+      "forms": [
+        "vivía",
+        "vivías",
+        "vivía",
+        "vivíamos",
+        "vivíais",
+        "vivían"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "futuro": {
+      "forms": [
+        "viviré",
+        "vivirás",
+        "vivirá",
+        "viviremos",
+        "viviréis",
+        "vivirán"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "condicional": {
+      "forms": [
+        "viviría",
+        "vivirías",
+        "viviría",
+        "viviríamos",
+        "viviríais",
+        "vivirían"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "subjuntivo-presente": {
+      "forms": [
+        "viva",
+        "vivas",
+        "viva",
+        "vivamos",
+        "viváis",
+        "vivan"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "subjuntivo-imperfecto-ra": {
+      "forms": [
+        "viviera",
+        "vivieras",
+        "viviera",
+        "viviéramos",
+        "vivierais",
+        "vivieran"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "subjuntivo-imperfecto-se": {
+      "forms": [
+        "viviese",
+        "vivieses",
+        "viviese",
+        "viviésemos",
+        "vivieseis",
+        "viviesen"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "imperativo-afirmativo": {
+      "forms": [
+        null,
+        "vive",
+        "viva",
+        "vivamos",
+        "vivid",
+        "vivan"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "imperativo-negativo": {
+      "forms": [
+        null,
+        "no vivas",
+        "no viva",
+        "no vivamos",
+        "no viváis",
+        "no vivan"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "preterito-perfecto": {
+      "forms": [
+        "he vivido",
+        "has vivido",
+        "ha vivido",
+        "hemos vivido",
+        "habéis vivido",
+        "han vivido"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "pluscuamperfecto": {
+      "forms": [
+        "había vivido",
+        "habías vivido",
+        "había vivido",
+        "habíamos vivido",
+        "habíais vivido",
+        "habían vivido"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "futuro-perfecto": {
+      "forms": [
+        "habré vivido",
+        "habrás vivido",
+        "habrá vivido",
+        "habremos vivido",
+        "habréis vivido",
+        "habrán vivido"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "condicional-perfecto": {
+      "forms": [
+        "habría vivido",
+        "habrías vivido",
+        "habría vivido",
+        "habríamos vivido",
+        "habríais vivido",
+        "habrían vivido"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "subjuntivo-perfecto": {
+      "forms": [
+        "haya vivido",
+        "hayas vivido",
+        "haya vivido",
+        "hayamos vivido",
+        "hayáis vivido",
+        "hayan vivido"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "subjuntivo-pluscuamperfecto": {
+      "forms": [
+        "hubiera vivido",
+        "hubieras vivido",
+        "hubiera vivido",
+        "hubiéramos vivido",
+        "hubierais vivido",
+        "hubieran vivido"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "subjuntivo-pluscuamperfecto-se": {
+      "forms": [
+        "hubiese vivido",
+        "hubieses vivido",
+        "hubiese vivido",
+        "hubiésemos vivido",
+        "hubieseis vivido",
+        "hubiesen vivido"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    }
+  },
+  "quiz": [
+    {
+      "question": "vivir の直説法現在、1人称単数（yo）は？",
+      "options": [
+        "vivo",
+        "vive",
+        "viven"
+      ],
+      "correctIndex": 0,
+      "explanation": "正解は vivo。vivir のこの形は規則どおりです。"
+    },
+    {
+      "question": "vivir の点過去、3人称単数（él / ella / usted）は？",
+      "options": [
+        "viví",
+        "vivió",
+        "vivieron"
+      ],
+      "correctIndex": 1,
+      "explanation": "正解は vivió。vivir のこの形は規則どおりです。"
+    },
+    {
+      "question": "vivir の未来、1人称単数（yo）は？",
+      "options": [
+        "vivirá",
+        "vivirán",
+        "viviré"
+      ],
+      "correctIndex": 2,
+      "explanation": "正解は viviré。vivir のこの形は規則どおりです。"
+    },
+    {
+      "question": "vivir の接続法現在、1人称単数（yo）は？",
+      "options": [
+        "viva",
+        "vivan",
+        "vivas"
+      ],
+      "correctIndex": 0,
+      "explanation": "正解は viva。vivir のこの形は規則どおりです。"
+    },
+    {
+      "question": "vivir の肯定命令、2人称単数（tú）は？",
+      "options": [
+        "viva",
+        "vive",
+        "vivan"
+      ],
+      "correctIndex": 1,
+      "explanation": "正解は vive。vivir のこの形は規則どおりです。"
+    }
+  ]
+}

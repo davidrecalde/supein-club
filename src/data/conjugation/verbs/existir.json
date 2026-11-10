@@ -1,0 +1,367 @@
+{
+  "infinitive": "existir",
+  "gerund": "existiendo",
+  "gerundIrregular": false,
+  "participle": "existido",
+  "participleIrregular": false,
+  "tenses": {
+    "presente": {
+      "forms": [
+        "existo",
+        "existes",
+        "existe",
+        "existimos",
+        "existís",
+        "existen"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "preterito-indefinido": {
+      "forms": [
+        "existí",
+        "exististe",
+        "existió",
+        "existimos",
+        "exististeis",
+        "existieron"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "preterito-imperfecto": {
+      "forms": [
+        "existía",
+        "existías",
+        "existía",
+        "existíamos",
+        "existíais",
+        "existían"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "futuro": {
+      "forms": [
+        "existiré",
+        "existirás",
+        "existirá",
+        "existiremos",
+        "existiréis",
+        "existirán"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "condicional": {
+      "forms": [
+        "existiría",
+        "existirías",
+        "existiría",
+        "existiríamos",
+        "existiríais",
+        "existirían"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "subjuntivo-presente": {
+      "forms": [
+        "exista",
+        "existas",
+        "exista",
+        "existamos",
+        "existáis",
+        "existan"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "subjuntivo-imperfecto-ra": {
+      "forms": [
+        "existiera",
+        "existieras",
+        "existiera",
+        "existiéramos",
+        "existierais",
+        "existieran"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "subjuntivo-imperfecto-se": {
+      "forms": [
+        "existiese",
+        "existieses",
+        "existiese",
+        "existiésemos",
+        "existieseis",
+        "existiesen"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "imperativo-afirmativo": {
+      "forms": [
+        null,
+        "existe",
+        "exista",
+        "existamos",
+        "existid",
+        "existan"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "imperativo-negativo": {
+      "forms": [
+        null,
+        "no existas",
+        "no exista",
+        "no existamos",
+        "no existáis",
+        "no existan"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "preterito-perfecto": {
+      "forms": [
+        "he existido",
+        "has existido",
+        "ha existido",
+        "hemos existido",
+        "habéis existido",
+        "han existido"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "pluscuamperfecto": {
+      "forms": [
+        "había existido",
+        "habías existido",
+        "había existido",
+        "habíamos existido",
+        "habíais existido",
+        "habían existido"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "futuro-perfecto": {
+      "forms": [
+        "habré existido",
+        "habrás existido",
+        "habrá existido",
+        "habremos existido",
+        "habréis existido",
+        "habrán existido"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "condicional-perfecto": {
+      "forms": [
+        "habría existido",
+        "habrías existido",
+        "habría existido",
+        "habríamos existido",
+        "habríais existido",
+        "habrían existido"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "subjuntivo-perfecto": {
+      "forms": [
+        "haya existido",
+        "hayas existido",
+        "haya existido",
+        "hayamos existido",
+        "hayáis existido",
+        "hayan existido"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "subjuntivo-pluscuamperfecto": {
+      "forms": [
+        "hubiera existido",
+        "hubieras existido",
+        "hubiera existido",
+        "hubiéramos existido",
+        "hubierais existido",
+        "hubieran existido"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "subjuntivo-pluscuamperfecto-se": {
+      "forms": [
+        "hubiese existido",
+        "hubieses existido",
+        "hubiese existido",
+        "hubiésemos existido",
+        "hubieseis existido",
+        "hubiesen existido"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    }
+  },
+  "quiz": [
+    {
+      "question": "existir の直説法現在、1人称単数（yo）は？",
+      "options": [
+        "existo",
+        "existe",
+        "existen"
+      ],
+      "correctIndex": 0,
+      "explanation": "正解は existo。existir のこの形は規則どおりです。"
+    },
+    {
+      "question": "existir の点過去、3人称単数（él / ella / usted）は？",
+      "options": [
+        "existí",
+        "existió",
+        "existieron"
+      ],
+      "correctIndex": 1,
+      "explanation": "正解は existió。existir のこの形は規則どおりです。"
+    },
+    {
+      "question": "existir の未来、1人称単数（yo）は？",
+      "options": [
+        "existirá",
+        "existirán",
+        "existiré"
+      ],
+      "correctIndex": 2,
+      "explanation": "正解は existiré。existir のこの形は規則どおりです。"
+    },
+    {
+      "question": "existir の接続法現在、1人称単数（yo）は？",
+      "options": [
+        "exista",
+        "existan",
+        "existas"
+      ],
+      "correctIndex": 0,
+      "explanation": "正解は exista。existir のこの形は規則どおりです。"
+    },
+    {
+      "question": "existir の肯定命令、2人称単数（tú）は？",
+      "options": [
+        "exista",
+        "existe",
+        "existan"
+      ],
+      "correctIndex": 1,
+      "explanation": "正解は existe。existir のこの形は規則どおりです。"
+    }
+  ]
+}

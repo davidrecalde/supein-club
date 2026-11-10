@@ -1,0 +1,367 @@
+{
+  "infinitive": "contar",
+  "gerund": "contando",
+  "gerundIrregular": false,
+  "participle": "contado",
+  "participleIrregular": false,
+  "tenses": {
+    "presente": {
+      "forms": [
+        "cuento",
+        "cuentas",
+        "cuenta",
+        "contamos",
+        "contáis",
+        "cuentan"
+      ],
+      "irregular": [
+        true,
+        true,
+        true,
+        false,
+        false,
+        true
+      ]
+    },
+    "preterito-indefinido": {
+      "forms": [
+        "conté",
+        "contaste",
+        "contó",
+        "contamos",
+        "contasteis",
+        "contaron"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "preterito-imperfecto": {
+      "forms": [
+        "contaba",
+        "contabas",
+        "contaba",
+        "contábamos",
+        "contabais",
+        "contaban"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "futuro": {
+      "forms": [
+        "contaré",
+        "contarás",
+        "contará",
+        "contaremos",
+        "contaréis",
+        "contarán"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "condicional": {
+      "forms": [
+        "contaría",
+        "contarías",
+        "contaría",
+        "contaríamos",
+        "contaríais",
+        "contarían"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "subjuntivo-presente": {
+      "forms": [
+        "cuente",
+        "cuentes",
+        "cuente",
+        "contemos",
+        "contéis",
+        "cuenten"
+      ],
+      "irregular": [
+        true,
+        true,
+        true,
+        false,
+        false,
+        true
+      ]
+    },
+    "subjuntivo-imperfecto-ra": {
+      "forms": [
+        "contara",
+        "contaras",
+        "contara",
+        "contáramos",
+        "contarais",
+        "contaran"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "subjuntivo-imperfecto-se": {
+      "forms": [
+        "contase",
+        "contases",
+        "contase",
+        "contásemos",
+        "contaseis",
+        "contasen"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "imperativo-afirmativo": {
+      "forms": [
+        null,
+        "cuenta",
+        "cuente",
+        "contemos",
+        "contad",
+        "cuenten"
+      ],
+      "irregular": [
+        false,
+        true,
+        true,
+        false,
+        false,
+        true
+      ]
+    },
+    "imperativo-negativo": {
+      "forms": [
+        null,
+        "no cuentes",
+        "no cuente",
+        "no contemos",
+        "no contéis",
+        "no cuenten"
+      ],
+      "irregular": [
+        false,
+        true,
+        true,
+        false,
+        false,
+        true
+      ]
+    },
+    "preterito-perfecto": {
+      "forms": [
+        "he contado",
+        "has contado",
+        "ha contado",
+        "hemos contado",
+        "habéis contado",
+        "han contado"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "pluscuamperfecto": {
+      "forms": [
+        "había contado",
+        "habías contado",
+        "había contado",
+        "habíamos contado",
+        "habíais contado",
+        "habían contado"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "futuro-perfecto": {
+      "forms": [
+        "habré contado",
+        "habrás contado",
+        "habrá contado",
+        "habremos contado",
+        "habréis contado",
+        "habrán contado"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "condicional-perfecto": {
+      "forms": [
+        "habría contado",
+        "habrías contado",
+        "habría contado",
+        "habríamos contado",
+        "habríais contado",
+        "habrían contado"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "subjuntivo-perfecto": {
+      "forms": [
+        "haya contado",
+        "hayas contado",
+        "haya contado",
+        "hayamos contado",
+        "hayáis contado",
+        "hayan contado"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "subjuntivo-pluscuamperfecto": {
+      "forms": [
+        "hubiera contado",
+        "hubieras contado",
+        "hubiera contado",
+        "hubiéramos contado",
+        "hubierais contado",
+        "hubieran contado"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "subjuntivo-pluscuamperfecto-se": {
+      "forms": [
+        "hubiese contado",
+        "hubieses contado",
+        "hubiese contado",
+        "hubiésemos contado",
+        "hubieseis contado",
+        "hubiesen contado"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    }
+  },
+  "quiz": [
+    {
+      "question": "contar の直説法現在、1人称単数（yo）は？",
+      "options": [
+        "cuento",
+        "conto",
+        "cuenta"
+      ],
+      "correctIndex": 0,
+      "explanation": "正解は cuento。contar のこの形は不規則で、規則どおりの conto にはなりません。"
+    },
+    {
+      "question": "contar の接続法現在、1人称単数（yo）は？",
+      "options": [
+        "conte",
+        "cuente",
+        "cuenten"
+      ],
+      "correctIndex": 1,
+      "explanation": "正解は cuente。contar のこの形は不規則で、規則どおりの conte にはなりません。"
+    },
+    {
+      "question": "contar の肯定命令、2人称単数（tú）は？",
+      "options": [
+        "conta",
+        "cuente",
+        "cuenta"
+      ],
+      "correctIndex": 2,
+      "explanation": "正解は cuenta。contar のこの形は不規則で、規則どおりの conta にはなりません。"
+    },
+    {
+      "question": "contar の点過去、3人称単数（él / ella / usted）は？",
+      "options": [
+        "contó",
+        "conté",
+        "contaron"
+      ],
+      "correctIndex": 0,
+      "explanation": "正解は contó。contar のこの形は規則どおりです。"
+    },
+    {
+      "question": "contar の未来、1人称単数（yo）は？",
+      "options": [
+        "contará",
+        "contaré",
+        "contarán"
+      ],
+      "correctIndex": 1,
+      "explanation": "正解は contaré。contar のこの形は規則どおりです。"
+    }
+  ]
+}

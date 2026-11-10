@@ -1,0 +1,367 @@
+{
+  "infinitive": "poner",
+  "gerund": "poniendo",
+  "gerundIrregular": false,
+  "participle": "puesto",
+  "participleIrregular": true,
+  "tenses": {
+    "presente": {
+      "forms": [
+        "pongo",
+        "pones",
+        "pone",
+        "ponemos",
+        "ponéis",
+        "ponen"
+      ],
+      "irregular": [
+        true,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "preterito-indefinido": {
+      "forms": [
+        "puse",
+        "pusiste",
+        "puso",
+        "pusimos",
+        "pusisteis",
+        "pusieron"
+      ],
+      "irregular": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    "preterito-imperfecto": {
+      "forms": [
+        "ponía",
+        "ponías",
+        "ponía",
+        "poníamos",
+        "poníais",
+        "ponían"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "futuro": {
+      "forms": [
+        "pondré",
+        "pondrás",
+        "pondrá",
+        "pondremos",
+        "pondréis",
+        "pondrán"
+      ],
+      "irregular": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    "condicional": {
+      "forms": [
+        "pondría",
+        "pondrías",
+        "pondría",
+        "pondríamos",
+        "pondríais",
+        "pondrían"
+      ],
+      "irregular": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    "subjuntivo-presente": {
+      "forms": [
+        "ponga",
+        "pongas",
+        "ponga",
+        "pongamos",
+        "pongáis",
+        "pongan"
+      ],
+      "irregular": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    "subjuntivo-imperfecto-ra": {
+      "forms": [
+        "pusiera",
+        "pusieras",
+        "pusiera",
+        "pusiéramos",
+        "pusierais",
+        "pusieran"
+      ],
+      "irregular": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    "subjuntivo-imperfecto-se": {
+      "forms": [
+        "pusiese",
+        "pusieses",
+        "pusiese",
+        "pusiésemos",
+        "pusieseis",
+        "pusiesen"
+      ],
+      "irregular": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    "imperativo-afirmativo": {
+      "forms": [
+        null,
+        "pon",
+        "ponga",
+        "pongamos",
+        "poned",
+        "pongan"
+      ],
+      "irregular": [
+        false,
+        true,
+        true,
+        true,
+        false,
+        true
+      ]
+    },
+    "imperativo-negativo": {
+      "forms": [
+        null,
+        "no pongas",
+        "no ponga",
+        "no pongamos",
+        "no pongáis",
+        "no pongan"
+      ],
+      "irregular": [
+        false,
+        true,
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    "preterito-perfecto": {
+      "forms": [
+        "he puesto",
+        "has puesto",
+        "ha puesto",
+        "hemos puesto",
+        "habéis puesto",
+        "han puesto"
+      ],
+      "irregular": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    "pluscuamperfecto": {
+      "forms": [
+        "había puesto",
+        "habías puesto",
+        "había puesto",
+        "habíamos puesto",
+        "habíais puesto",
+        "habían puesto"
+      ],
+      "irregular": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    "futuro-perfecto": {
+      "forms": [
+        "habré puesto",
+        "habrás puesto",
+        "habrá puesto",
+        "habremos puesto",
+        "habréis puesto",
+        "habrán puesto"
+      ],
+      "irregular": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    "condicional-perfecto": {
+      "forms": [
+        "habría puesto",
+        "habrías puesto",
+        "habría puesto",
+        "habríamos puesto",
+        "habríais puesto",
+        "habrían puesto"
+      ],
+      "irregular": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    "subjuntivo-perfecto": {
+      "forms": [
+        "haya puesto",
+        "hayas puesto",
+        "haya puesto",
+        "hayamos puesto",
+        "hayáis puesto",
+        "hayan puesto"
+      ],
+      "irregular": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    "subjuntivo-pluscuamperfecto": {
+      "forms": [
+        "hubiera puesto",
+        "hubieras puesto",
+        "hubiera puesto",
+        "hubiéramos puesto",
+        "hubierais puesto",
+        "hubieran puesto"
+      ],
+      "irregular": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    "subjuntivo-pluscuamperfecto-se": {
+      "forms": [
+        "hubiese puesto",
+        "hubieses puesto",
+        "hubiese puesto",
+        "hubiésemos puesto",
+        "hubieseis puesto",
+        "hubiesen puesto"
+      ],
+      "irregular": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ]
+    }
+  },
+  "quiz": [
+    {
+      "question": "poner の直説法現在、1人称単数（yo）は？",
+      "options": [
+        "pongo",
+        "pono",
+        "pone"
+      ],
+      "correctIndex": 0,
+      "explanation": "正解は pongo。poner のこの形は不規則で、規則どおりの pono にはなりません。"
+    },
+    {
+      "question": "poner の点過去、3人称単数（él / ella / usted）は？",
+      "options": [
+        "ponió",
+        "puso",
+        "puse"
+      ],
+      "correctIndex": 1,
+      "explanation": "正解は puso。poner のこの形は不規則で、規則どおりの ponió にはなりません。"
+    },
+    {
+      "question": "poner の未来、1人称単数（yo）は？",
+      "options": [
+        "poneré",
+        "pondrá",
+        "pondré"
+      ],
+      "correctIndex": 2,
+      "explanation": "正解は pondré。poner のこの形は不規則で、規則どおりの poneré にはなりません。"
+    },
+    {
+      "question": "poner の接続法現在、1人称単数（yo）は？",
+      "options": [
+        "ponga",
+        "pona",
+        "pongan"
+      ],
+      "correctIndex": 0,
+      "explanation": "正解は ponga。poner のこの形は不規則で、規則どおりの pona にはなりません。"
+    },
+    {
+      "question": "poner の肯定命令、2人称単数（tú）は？",
+      "options": [
+        "pone",
+        "pon",
+        "ponga"
+      ],
+      "correctIndex": 1,
+      "explanation": "正解は pon。poner のこの形は不規則で、規則どおりの pone にはなりません。"
+    }
+  ]
+}

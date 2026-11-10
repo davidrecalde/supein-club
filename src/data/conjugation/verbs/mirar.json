@@ -1,0 +1,367 @@
+{
+  "infinitive": "mirar",
+  "gerund": "mirando",
+  "gerundIrregular": false,
+  "participle": "mirado",
+  "participleIrregular": false,
+  "tenses": {
+    "presente": {
+      "forms": [
+        "miro",
+        "miras",
+        "mira",
+        "miramos",
+        "miráis",
+        "miran"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "preterito-indefinido": {
+      "forms": [
+        "miré",
+        "miraste",
+        "miró",
+        "miramos",
+        "mirasteis",
+        "miraron"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "preterito-imperfecto": {
+      "forms": [
+        "miraba",
+        "mirabas",
+        "miraba",
+        "mirábamos",
+        "mirabais",
+        "miraban"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "futuro": {
+      "forms": [
+        "miraré",
+        "mirarás",
+        "mirará",
+        "miraremos",
+        "miraréis",
+        "mirarán"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "condicional": {
+      "forms": [
+        "miraría",
+        "mirarías",
+        "miraría",
+        "miraríamos",
+        "miraríais",
+        "mirarían"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "subjuntivo-presente": {
+      "forms": [
+        "mire",
+        "mires",
+        "mire",
+        "miremos",
+        "miréis",
+        "miren"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "subjuntivo-imperfecto-ra": {
+      "forms": [
+        "mirara",
+        "miraras",
+        "mirara",
+        "miráramos",
+        "mirarais",
+        "miraran"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "subjuntivo-imperfecto-se": {
+      "forms": [
+        "mirase",
+        "mirases",
+        "mirase",
+        "mirásemos",
+        "miraseis",
+        "mirasen"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "imperativo-afirmativo": {
+      "forms": [
+        null,
+        "mira",
+        "mire",
+        "miremos",
+        "mirad",
+        "miren"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "imperativo-negativo": {
+      "forms": [
+        null,
+        "no mires",
+        "no mire",
+        "no miremos",
+        "no miréis",
+        "no miren"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "preterito-perfecto": {
+      "forms": [
+        "he mirado",
+        "has mirado",
+        "ha mirado",
+        "hemos mirado",
+        "habéis mirado",
+        "han mirado"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "pluscuamperfecto": {
+      "forms": [
+        "había mirado",
+        "habías mirado",
+        "había mirado",
+        "habíamos mirado",
+        "habíais mirado",
+        "habían mirado"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "futuro-perfecto": {
+      "forms": [
+        "habré mirado",
+        "habrás mirado",
+        "habrá mirado",
+        "habremos mirado",
+        "habréis mirado",
+        "habrán mirado"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "condicional-perfecto": {
+      "forms": [
+        "habría mirado",
+        "habrías mirado",
+        "habría mirado",
+        "habríamos mirado",
+        "habríais mirado",
+        "habrían mirado"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "subjuntivo-perfecto": {
+      "forms": [
+        "haya mirado",
+        "hayas mirado",
+        "haya mirado",
+        "hayamos mirado",
+        "hayáis mirado",
+        "hayan mirado"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "subjuntivo-pluscuamperfecto": {
+      "forms": [
+        "hubiera mirado",
+        "hubieras mirado",
+        "hubiera mirado",
+        "hubiéramos mirado",
+        "hubierais mirado",
+        "hubieran mirado"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "subjuntivo-pluscuamperfecto-se": {
+      "forms": [
+        "hubiese mirado",
+        "hubieses mirado",
+        "hubiese mirado",
+        "hubiésemos mirado",
+        "hubieseis mirado",
+        "hubiesen mirado"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    }
+  },
+  "quiz": [
+    {
+      "question": "mirar の直説法現在、1人称単数（yo）は？",
+      "options": [
+        "miro",
+        "mira",
+        "miran"
+      ],
+      "correctIndex": 0,
+      "explanation": "正解は miro。mirar のこの形は規則どおりです。"
+    },
+    {
+      "question": "mirar の点過去、3人称単数（él / ella / usted）は？",
+      "options": [
+        "miré",
+        "miró",
+        "miraron"
+      ],
+      "correctIndex": 1,
+      "explanation": "正解は miró。mirar のこの形は規則どおりです。"
+    },
+    {
+      "question": "mirar の未来、1人称単数（yo）は？",
+      "options": [
+        "mirará",
+        "mirarán",
+        "miraré"
+      ],
+      "correctIndex": 2,
+      "explanation": "正解は miraré。mirar のこの形は規則どおりです。"
+    },
+    {
+      "question": "mirar の接続法現在、1人称単数（yo）は？",
+      "options": [
+        "mire",
+        "miren",
+        "mires"
+      ],
+      "correctIndex": 0,
+      "explanation": "正解は mire。mirar のこの形は規則どおりです。"
+    },
+    {
+      "question": "mirar の肯定命令、2人称単数（tú）は？",
+      "options": [
+        "mire",
+        "mira",
+        "miren"
+      ],
+      "correctIndex": 1,
+      "explanation": "正解は mira。mirar のこの形は規則どおりです。"
+    }
+  ]
+}

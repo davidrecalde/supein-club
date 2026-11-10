@@ -1,0 +1,367 @@
+{
+  "infinitive": "entrar",
+  "gerund": "entrando",
+  "gerundIrregular": false,
+  "participle": "entrado",
+  "participleIrregular": false,
+  "tenses": {
+    "presente": {
+      "forms": [
+        "entro",
+        "entras",
+        "entra",
+        "entramos",
+        "entráis",
+        "entran"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "preterito-indefinido": {
+      "forms": [
+        "entré",
+        "entraste",
+        "entró",
+        "entramos",
+        "entrasteis",
+        "entraron"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "preterito-imperfecto": {
+      "forms": [
+        "entraba",
+        "entrabas",
+        "entraba",
+        "entrábamos",
+        "entrabais",
+        "entraban"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "futuro": {
+      "forms": [
+        "entraré",
+        "entrarás",
+        "entrará",
+        "entraremos",
+        "entraréis",
+        "entrarán"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "condicional": {
+      "forms": [
+        "entraría",
+        "entrarías",
+        "entraría",
+        "entraríamos",
+        "entraríais",
+        "entrarían"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "subjuntivo-presente": {
+      "forms": [
+        "entre",
+        "entres",
+        "entre",
+        "entremos",
+        "entréis",
+        "entren"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "subjuntivo-imperfecto-ra": {
+      "forms": [
+        "entrara",
+        "entraras",
+        "entrara",
+        "entráramos",
+        "entrarais",
+        "entraran"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "subjuntivo-imperfecto-se": {
+      "forms": [
+        "entrase",
+        "entrases",
+        "entrase",
+        "entrásemos",
+        "entraseis",
+        "entrasen"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "imperativo-afirmativo": {
+      "forms": [
+        null,
+        "entra",
+        "entre",
+        "entremos",
+        "entrad",
+        "entren"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "imperativo-negativo": {
+      "forms": [
+        null,
+        "no entres",
+        "no entre",
+        "no entremos",
+        "no entréis",
+        "no entren"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "preterito-perfecto": {
+      "forms": [
+        "he entrado",
+        "has entrado",
+        "ha entrado",
+        "hemos entrado",
+        "habéis entrado",
+        "han entrado"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "pluscuamperfecto": {
+      "forms": [
+        "había entrado",
+        "habías entrado",
+        "había entrado",
+        "habíamos entrado",
+        "habíais entrado",
+        "habían entrado"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "futuro-perfecto": {
+      "forms": [
+        "habré entrado",
+        "habrás entrado",
+        "habrá entrado",
+        "habremos entrado",
+        "habréis entrado",
+        "habrán entrado"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "condicional-perfecto": {
+      "forms": [
+        "habría entrado",
+        "habrías entrado",
+        "habría entrado",
+        "habríamos entrado",
+        "habríais entrado",
+        "habrían entrado"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "subjuntivo-perfecto": {
+      "forms": [
+        "haya entrado",
+        "hayas entrado",
+        "haya entrado",
+        "hayamos entrado",
+        "hayáis entrado",
+        "hayan entrado"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "subjuntivo-pluscuamperfecto": {
+      "forms": [
+        "hubiera entrado",
+        "hubieras entrado",
+        "hubiera entrado",
+        "hubiéramos entrado",
+        "hubierais entrado",
+        "hubieran entrado"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "subjuntivo-pluscuamperfecto-se": {
+      "forms": [
+        "hubiese entrado",
+        "hubieses entrado",
+        "hubiese entrado",
+        "hubiésemos entrado",
+        "hubieseis entrado",
+        "hubiesen entrado"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    }
+  },
+  "quiz": [
+    {
+      "question": "entrar の直説法現在、1人称単数（yo）は？",
+      "options": [
+        "entro",
+        "entra",
+        "entran"
+      ],
+      "correctIndex": 0,
+      "explanation": "正解は entro。entrar のこの形は規則どおりです。"
+    },
+    {
+      "question": "entrar の点過去、3人称単数（él / ella / usted）は？",
+      "options": [
+        "entré",
+        "entró",
+        "entraron"
+      ],
+      "correctIndex": 1,
+      "explanation": "正解は entró。entrar のこの形は規則どおりです。"
+    },
+    {
+      "question": "entrar の未来、1人称単数（yo）は？",
+      "options": [
+        "entrará",
+        "entrarán",
+        "entraré"
+      ],
+      "correctIndex": 2,
+      "explanation": "正解は entraré。entrar のこの形は規則どおりです。"
+    },
+    {
+      "question": "entrar の接続法現在、1人称単数（yo）は？",
+      "options": [
+        "entre",
+        "entren",
+        "entres"
+      ],
+      "correctIndex": 0,
+      "explanation": "正解は entre。entrar のこの形は規則どおりです。"
+    },
+    {
+      "question": "entrar の肯定命令、2人称単数（tú）は？",
+      "options": [
+        "entre",
+        "entra",
+        "entren"
+      ],
+      "correctIndex": 1,
+      "explanation": "正解は entra。entrar のこの形は規則どおりです。"
+    }
+  ]
+}

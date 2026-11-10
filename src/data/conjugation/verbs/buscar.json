@@ -1,0 +1,367 @@
+{
+  "infinitive": "buscar",
+  "gerund": "buscando",
+  "gerundIrregular": false,
+  "participle": "buscado",
+  "participleIrregular": false,
+  "tenses": {
+    "presente": {
+      "forms": [
+        "busco",
+        "buscas",
+        "busca",
+        "buscamos",
+        "buscáis",
+        "buscan"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "preterito-indefinido": {
+      "forms": [
+        "busqué",
+        "buscaste",
+        "buscó",
+        "buscamos",
+        "buscasteis",
+        "buscaron"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "preterito-imperfecto": {
+      "forms": [
+        "buscaba",
+        "buscabas",
+        "buscaba",
+        "buscábamos",
+        "buscabais",
+        "buscaban"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "futuro": {
+      "forms": [
+        "buscaré",
+        "buscarás",
+        "buscará",
+        "buscaremos",
+        "buscaréis",
+        "buscarán"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "condicional": {
+      "forms": [
+        "buscaría",
+        "buscarías",
+        "buscaría",
+        "buscaríamos",
+        "buscaríais",
+        "buscarían"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "subjuntivo-presente": {
+      "forms": [
+        "busque",
+        "busques",
+        "busque",
+        "busquemos",
+        "busquéis",
+        "busquen"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "subjuntivo-imperfecto-ra": {
+      "forms": [
+        "buscara",
+        "buscaras",
+        "buscara",
+        "buscáramos",
+        "buscarais",
+        "buscaran"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "subjuntivo-imperfecto-se": {
+      "forms": [
+        "buscase",
+        "buscases",
+        "buscase",
+        "buscásemos",
+        "buscaseis",
+        "buscasen"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "imperativo-afirmativo": {
+      "forms": [
+        null,
+        "busca",
+        "busque",
+        "busquemos",
+        "buscad",
+        "busquen"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "imperativo-negativo": {
+      "forms": [
+        null,
+        "no busques",
+        "no busque",
+        "no busquemos",
+        "no busquéis",
+        "no busquen"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "preterito-perfecto": {
+      "forms": [
+        "he buscado",
+        "has buscado",
+        "ha buscado",
+        "hemos buscado",
+        "habéis buscado",
+        "han buscado"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "pluscuamperfecto": {
+      "forms": [
+        "había buscado",
+        "habías buscado",
+        "había buscado",
+        "habíamos buscado",
+        "habíais buscado",
+        "habían buscado"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "futuro-perfecto": {
+      "forms": [
+        "habré buscado",
+        "habrás buscado",
+        "habrá buscado",
+        "habremos buscado",
+        "habréis buscado",
+        "habrán buscado"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "condicional-perfecto": {
+      "forms": [
+        "habría buscado",
+        "habrías buscado",
+        "habría buscado",
+        "habríamos buscado",
+        "habríais buscado",
+        "habrían buscado"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "subjuntivo-perfecto": {
+      "forms": [
+        "haya buscado",
+        "hayas buscado",
+        "haya buscado",
+        "hayamos buscado",
+        "hayáis buscado",
+        "hayan buscado"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "subjuntivo-pluscuamperfecto": {
+      "forms": [
+        "hubiera buscado",
+        "hubieras buscado",
+        "hubiera buscado",
+        "hubiéramos buscado",
+        "hubierais buscado",
+        "hubieran buscado"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "subjuntivo-pluscuamperfecto-se": {
+      "forms": [
+        "hubiese buscado",
+        "hubieses buscado",
+        "hubiese buscado",
+        "hubiésemos buscado",
+        "hubieseis buscado",
+        "hubiesen buscado"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    }
+  },
+  "quiz": [
+    {
+      "question": "buscar の直説法現在、1人称単数（yo）は？",
+      "options": [
+        "busco",
+        "busca",
+        "buscan"
+      ],
+      "correctIndex": 0,
+      "explanation": "正解は busco。buscar のこの形は規則どおりです。"
+    },
+    {
+      "question": "buscar の点過去、3人称単数（él / ella / usted）は？",
+      "options": [
+        "busqué",
+        "buscó",
+        "buscaron"
+      ],
+      "correctIndex": 1,
+      "explanation": "正解は buscó。buscar のこの形は規則どおりです。"
+    },
+    {
+      "question": "buscar の未来、1人称単数（yo）は？",
+      "options": [
+        "buscará",
+        "buscarán",
+        "buscaré"
+      ],
+      "correctIndex": 2,
+      "explanation": "正解は buscaré。buscar のこの形は規則どおりです。"
+    },
+    {
+      "question": "buscar の接続法現在、1人称単数（yo）は？",
+      "options": [
+        "busque",
+        "busquen",
+        "busques"
+      ],
+      "correctIndex": 0,
+      "explanation": "正解は busque。buscar のこの形は規則どおりです。"
+    },
+    {
+      "question": "buscar の肯定命令、2人称単数（tú）は？",
+      "options": [
+        "busque",
+        "busca",
+        "busquen"
+      ],
+      "correctIndex": 1,
+      "explanation": "正解は busca。buscar のこの形は規則どおりです。"
+    }
+  ]
+}

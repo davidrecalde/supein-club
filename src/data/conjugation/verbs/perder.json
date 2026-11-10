@@ -1,0 +1,367 @@
+{
+  "infinitive": "perder",
+  "gerund": "perdiendo",
+  "gerundIrregular": false,
+  "participle": "perdido",
+  "participleIrregular": false,
+  "tenses": {
+    "presente": {
+      "forms": [
+        "pierdo",
+        "pierdes",
+        "pierde",
+        "perdemos",
+        "perdéis",
+        "pierden"
+      ],
+      "irregular": [
+        true,
+        true,
+        true,
+        false,
+        false,
+        true
+      ]
+    },
+    "preterito-indefinido": {
+      "forms": [
+        "perdí",
+        "perdiste",
+        "perdió",
+        "perdimos",
+        "perdisteis",
+        "perdieron"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "preterito-imperfecto": {
+      "forms": [
+        "perdía",
+        "perdías",
+        "perdía",
+        "perdíamos",
+        "perdíais",
+        "perdían"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "futuro": {
+      "forms": [
+        "perderé",
+        "perderás",
+        "perderá",
+        "perderemos",
+        "perderéis",
+        "perderán"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "condicional": {
+      "forms": [
+        "perdería",
+        "perderías",
+        "perdería",
+        "perderíamos",
+        "perderíais",
+        "perderían"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "subjuntivo-presente": {
+      "forms": [
+        "pierda",
+        "pierdas",
+        "pierda",
+        "perdamos",
+        "perdáis",
+        "pierdan"
+      ],
+      "irregular": [
+        true,
+        true,
+        true,
+        false,
+        false,
+        true
+      ]
+    },
+    "subjuntivo-imperfecto-ra": {
+      "forms": [
+        "perdiera",
+        "perdieras",
+        "perdiera",
+        "perdiéramos",
+        "perdierais",
+        "perdieran"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "subjuntivo-imperfecto-se": {
+      "forms": [
+        "perdiese",
+        "perdieses",
+        "perdiese",
+        "perdiésemos",
+        "perdieseis",
+        "perdiesen"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "imperativo-afirmativo": {
+      "forms": [
+        null,
+        "pierde",
+        "pierda",
+        "perdamos",
+        "perded",
+        "pierdan"
+      ],
+      "irregular": [
+        false,
+        true,
+        true,
+        false,
+        false,
+        true
+      ]
+    },
+    "imperativo-negativo": {
+      "forms": [
+        null,
+        "no pierdas",
+        "no pierda",
+        "no perdamos",
+        "no perdáis",
+        "no pierdan"
+      ],
+      "irregular": [
+        false,
+        true,
+        true,
+        false,
+        false,
+        true
+      ]
+    },
+    "preterito-perfecto": {
+      "forms": [
+        "he perdido",
+        "has perdido",
+        "ha perdido",
+        "hemos perdido",
+        "habéis perdido",
+        "han perdido"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "pluscuamperfecto": {
+      "forms": [
+        "había perdido",
+        "habías perdido",
+        "había perdido",
+        "habíamos perdido",
+        "habíais perdido",
+        "habían perdido"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "futuro-perfecto": {
+      "forms": [
+        "habré perdido",
+        "habrás perdido",
+        "habrá perdido",
+        "habremos perdido",
+        "habréis perdido",
+        "habrán perdido"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "condicional-perfecto": {
+      "forms": [
+        "habría perdido",
+        "habrías perdido",
+        "habría perdido",
+        "habríamos perdido",
+        "habríais perdido",
+        "habrían perdido"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "subjuntivo-perfecto": {
+      "forms": [
+        "haya perdido",
+        "hayas perdido",
+        "haya perdido",
+        "hayamos perdido",
+        "hayáis perdido",
+        "hayan perdido"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "subjuntivo-pluscuamperfecto": {
+      "forms": [
+        "hubiera perdido",
+        "hubieras perdido",
+        "hubiera perdido",
+        "hubiéramos perdido",
+        "hubierais perdido",
+        "hubieran perdido"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "subjuntivo-pluscuamperfecto-se": {
+      "forms": [
+        "hubiese perdido",
+        "hubieses perdido",
+        "hubiese perdido",
+        "hubiésemos perdido",
+        "hubieseis perdido",
+        "hubiesen perdido"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    }
+  },
+  "quiz": [
+    {
+      "question": "perder の直説法現在、1人称単数（yo）は？",
+      "options": [
+        "pierdo",
+        "perdo",
+        "pierde"
+      ],
+      "correctIndex": 0,
+      "explanation": "正解は pierdo。perder のこの形は不規則で、規則どおりの perdo にはなりません。"
+    },
+    {
+      "question": "perder の接続法現在、1人称単数（yo）は？",
+      "options": [
+        "perda",
+        "pierda",
+        "pierdan"
+      ],
+      "correctIndex": 1,
+      "explanation": "正解は pierda。perder のこの形は不規則で、規則どおりの perda にはなりません。"
+    },
+    {
+      "question": "perder の肯定命令、2人称単数（tú）は？",
+      "options": [
+        "perde",
+        "pierda",
+        "pierde"
+      ],
+      "correctIndex": 2,
+      "explanation": "正解は pierde。perder のこの形は不規則で、規則どおりの perde にはなりません。"
+    },
+    {
+      "question": "perder の点過去、3人称単数（él / ella / usted）は？",
+      "options": [
+        "perdió",
+        "perdí",
+        "perdieron"
+      ],
+      "correctIndex": 0,
+      "explanation": "正解は perdió。perder のこの形は規則どおりです。"
+    },
+    {
+      "question": "perder の未来、1人称単数（yo）は？",
+      "options": [
+        "perderá",
+        "perderé",
+        "perderán"
+      ],
+      "correctIndex": 1,
+      "explanation": "正解は perderé。perder のこの形は規則どおりです。"
+    }
+  ]
+}

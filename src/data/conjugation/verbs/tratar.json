@@ -1,0 +1,367 @@
+{
+  "infinitive": "tratar",
+  "gerund": "tratando",
+  "gerundIrregular": false,
+  "participle": "tratado",
+  "participleIrregular": false,
+  "tenses": {
+    "presente": {
+      "forms": [
+        "trato",
+        "tratas",
+        "trata",
+        "tratamos",
+        "tratáis",
+        "tratan"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "preterito-indefinido": {
+      "forms": [
+        "traté",
+        "trataste",
+        "trató",
+        "tratamos",
+        "tratasteis",
+        "trataron"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "preterito-imperfecto": {
+      "forms": [
+        "trataba",
+        "tratabas",
+        "trataba",
+        "tratábamos",
+        "tratabais",
+        "trataban"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "futuro": {
+      "forms": [
+        "trataré",
+        "tratarás",
+        "tratará",
+        "trataremos",
+        "trataréis",
+        "tratarán"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "condicional": {
+      "forms": [
+        "trataría",
+        "tratarías",
+        "trataría",
+        "trataríamos",
+        "trataríais",
+        "tratarían"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "subjuntivo-presente": {
+      "forms": [
+        "trate",
+        "trates",
+        "trate",
+        "tratemos",
+        "tratéis",
+        "traten"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "subjuntivo-imperfecto-ra": {
+      "forms": [
+        "tratara",
+        "trataras",
+        "tratara",
+        "tratáramos",
+        "tratarais",
+        "trataran"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "subjuntivo-imperfecto-se": {
+      "forms": [
+        "tratase",
+        "tratases",
+        "tratase",
+        "tratásemos",
+        "trataseis",
+        "tratasen"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "imperativo-afirmativo": {
+      "forms": [
+        null,
+        "trata",
+        "trate",
+        "tratemos",
+        "tratad",
+        "traten"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "imperativo-negativo": {
+      "forms": [
+        null,
+        "no trates",
+        "no trate",
+        "no tratemos",
+        "no tratéis",
+        "no traten"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "preterito-perfecto": {
+      "forms": [
+        "he tratado",
+        "has tratado",
+        "ha tratado",
+        "hemos tratado",
+        "habéis tratado",
+        "han tratado"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "pluscuamperfecto": {
+      "forms": [
+        "había tratado",
+        "habías tratado",
+        "había tratado",
+        "habíamos tratado",
+        "habíais tratado",
+        "habían tratado"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "futuro-perfecto": {
+      "forms": [
+        "habré tratado",
+        "habrás tratado",
+        "habrá tratado",
+        "habremos tratado",
+        "habréis tratado",
+        "habrán tratado"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "condicional-perfecto": {
+      "forms": [
+        "habría tratado",
+        "habrías tratado",
+        "habría tratado",
+        "habríamos tratado",
+        "habríais tratado",
+        "habrían tratado"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "subjuntivo-perfecto": {
+      "forms": [
+        "haya tratado",
+        "hayas tratado",
+        "haya tratado",
+        "hayamos tratado",
+        "hayáis tratado",
+        "hayan tratado"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "subjuntivo-pluscuamperfecto": {
+      "forms": [
+        "hubiera tratado",
+        "hubieras tratado",
+        "hubiera tratado",
+        "hubiéramos tratado",
+        "hubierais tratado",
+        "hubieran tratado"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "subjuntivo-pluscuamperfecto-se": {
+      "forms": [
+        "hubiese tratado",
+        "hubieses tratado",
+        "hubiese tratado",
+        "hubiésemos tratado",
+        "hubieseis tratado",
+        "hubiesen tratado"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    }
+  },
+  "quiz": [
+    {
+      "question": "tratar の直説法現在、1人称単数（yo）は？",
+      "options": [
+        "trato",
+        "trata",
+        "tratan"
+      ],
+      "correctIndex": 0,
+      "explanation": "正解は trato。tratar のこの形は規則どおりです。"
+    },
+    {
+      "question": "tratar の点過去、3人称単数（él / ella / usted）は？",
+      "options": [
+        "traté",
+        "trató",
+        "trataron"
+      ],
+      "correctIndex": 1,
+      "explanation": "正解は trató。tratar のこの形は規則どおりです。"
+    },
+    {
+      "question": "tratar の未来、1人称単数（yo）は？",
+      "options": [
+        "tratará",
+        "tratarán",
+        "trataré"
+      ],
+      "correctIndex": 2,
+      "explanation": "正解は trataré。tratar のこの形は規則どおりです。"
+    },
+    {
+      "question": "tratar の接続法現在、1人称単数（yo）は？",
+      "options": [
+        "trate",
+        "traten",
+        "trates"
+      ],
+      "correctIndex": 0,
+      "explanation": "正解は trate。tratar のこの形は規則どおりです。"
+    },
+    {
+      "question": "tratar の肯定命令、2人称単数（tú）は？",
+      "options": [
+        "trate",
+        "trata",
+        "traten"
+      ],
+      "correctIndex": 1,
+      "explanation": "正解は trata。tratar のこの形は規則どおりです。"
+    }
+  ]
+}

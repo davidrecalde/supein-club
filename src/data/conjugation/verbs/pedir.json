@@ -1,0 +1,367 @@
+{
+  "infinitive": "pedir",
+  "gerund": "pidiendo",
+  "gerundIrregular": true,
+  "participle": "pedido",
+  "participleIrregular": false,
+  "tenses": {
+    "presente": {
+      "forms": [
+        "pido",
+        "pides",
+        "pide",
+        "pedimos",
+        "pedís",
+        "piden"
+      ],
+      "irregular": [
+        true,
+        true,
+        true,
+        false,
+        false,
+        true
+      ]
+    },
+    "preterito-indefinido": {
+      "forms": [
+        "pedí",
+        "pediste",
+        "pidió",
+        "pedimos",
+        "pedisteis",
+        "pidieron"
+      ],
+      "irregular": [
+        false,
+        false,
+        true,
+        false,
+        false,
+        true
+      ]
+    },
+    "preterito-imperfecto": {
+      "forms": [
+        "pedía",
+        "pedías",
+        "pedía",
+        "pedíamos",
+        "pedíais",
+        "pedían"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "futuro": {
+      "forms": [
+        "pediré",
+        "pedirás",
+        "pedirá",
+        "pediremos",
+        "pediréis",
+        "pedirán"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "condicional": {
+      "forms": [
+        "pediría",
+        "pedirías",
+        "pediría",
+        "pediríamos",
+        "pediríais",
+        "pedirían"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "subjuntivo-presente": {
+      "forms": [
+        "pida",
+        "pidas",
+        "pida",
+        "pidamos",
+        "pidáis",
+        "pidan"
+      ],
+      "irregular": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    "subjuntivo-imperfecto-ra": {
+      "forms": [
+        "pidiera",
+        "pidieras",
+        "pidiera",
+        "pidiéramos",
+        "pidierais",
+        "pidieran"
+      ],
+      "irregular": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    "subjuntivo-imperfecto-se": {
+      "forms": [
+        "pidiese",
+        "pidieses",
+        "pidiese",
+        "pidiésemos",
+        "pidieseis",
+        "pidiesen"
+      ],
+      "irregular": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    "imperativo-afirmativo": {
+      "forms": [
+        null,
+        "pide",
+        "pida",
+        "pidamos",
+        "pedid",
+        "pidan"
+      ],
+      "irregular": [
+        false,
+        true,
+        true,
+        true,
+        false,
+        true
+      ]
+    },
+    "imperativo-negativo": {
+      "forms": [
+        null,
+        "no pidas",
+        "no pida",
+        "no pidamos",
+        "no pidáis",
+        "no pidan"
+      ],
+      "irregular": [
+        false,
+        true,
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    "preterito-perfecto": {
+      "forms": [
+        "he pedido",
+        "has pedido",
+        "ha pedido",
+        "hemos pedido",
+        "habéis pedido",
+        "han pedido"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "pluscuamperfecto": {
+      "forms": [
+        "había pedido",
+        "habías pedido",
+        "había pedido",
+        "habíamos pedido",
+        "habíais pedido",
+        "habían pedido"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "futuro-perfecto": {
+      "forms": [
+        "habré pedido",
+        "habrás pedido",
+        "habrá pedido",
+        "habremos pedido",
+        "habréis pedido",
+        "habrán pedido"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "condicional-perfecto": {
+      "forms": [
+        "habría pedido",
+        "habrías pedido",
+        "habría pedido",
+        "habríamos pedido",
+        "habríais pedido",
+        "habrían pedido"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "subjuntivo-perfecto": {
+      "forms": [
+        "haya pedido",
+        "hayas pedido",
+        "haya pedido",
+        "hayamos pedido",
+        "hayáis pedido",
+        "hayan pedido"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "subjuntivo-pluscuamperfecto": {
+      "forms": [
+        "hubiera pedido",
+        "hubieras pedido",
+        "hubiera pedido",
+        "hubiéramos pedido",
+        "hubierais pedido",
+        "hubieran pedido"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "subjuntivo-pluscuamperfecto-se": {
+      "forms": [
+        "hubiese pedido",
+        "hubieses pedido",
+        "hubiese pedido",
+        "hubiésemos pedido",
+        "hubieseis pedido",
+        "hubiesen pedido"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    }
+  },
+  "quiz": [
+    {
+      "question": "pedir の直説法現在、1人称単数（yo）は？",
+      "options": [
+        "pido",
+        "pedo",
+        "pide"
+      ],
+      "correctIndex": 0,
+      "explanation": "正解は pido。pedir のこの形は不規則で、規則どおりの pedo にはなりません。"
+    },
+    {
+      "question": "pedir の点過去、3人称単数（él / ella / usted）は？",
+      "options": [
+        "pedió",
+        "pidió",
+        "pedí"
+      ],
+      "correctIndex": 1,
+      "explanation": "正解は pidió。pedir のこの形は不規則で、規則どおりの pedió にはなりません。"
+    },
+    {
+      "question": "pedir の接続法現在、1人称単数（yo）は？",
+      "options": [
+        "peda",
+        "pidan",
+        "pida"
+      ],
+      "correctIndex": 2,
+      "explanation": "正解は pida。pedir のこの形は不規則で、規則どおりの peda にはなりません。"
+    },
+    {
+      "question": "pedir の肯定命令、2人称単数（tú）は？",
+      "options": [
+        "pide",
+        "pede",
+        "pida"
+      ],
+      "correctIndex": 0,
+      "explanation": "正解は pide。pedir のこの形は不規則で、規則どおりの pede にはなりません。"
+    },
+    {
+      "question": "pedir の未来、1人称単数（yo）は？",
+      "options": [
+        "pedirá",
+        "pediré",
+        "pedirán"
+      ],
+      "correctIndex": 1,
+      "explanation": "正解は pediré。pedir のこの形は規則どおりです。"
+    }
+  ]
+}

@@ -1,0 +1,367 @@
+{
+  "infinitive": "llegar",
+  "gerund": "llegando",
+  "gerundIrregular": false,
+  "participle": "llegado",
+  "participleIrregular": false,
+  "tenses": {
+    "presente": {
+      "forms": [
+        "llego",
+        "llegas",
+        "llega",
+        "llegamos",
+        "llegáis",
+        "llegan"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "preterito-indefinido": {
+      "forms": [
+        "llegué",
+        "llegaste",
+        "llegó",
+        "llegamos",
+        "llegasteis",
+        "llegaron"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "preterito-imperfecto": {
+      "forms": [
+        "llegaba",
+        "llegabas",
+        "llegaba",
+        "llegábamos",
+        "llegabais",
+        "llegaban"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "futuro": {
+      "forms": [
+        "llegaré",
+        "llegarás",
+        "llegará",
+        "llegaremos",
+        "llegaréis",
+        "llegarán"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "condicional": {
+      "forms": [
+        "llegaría",
+        "llegarías",
+        "llegaría",
+        "llegaríamos",
+        "llegaríais",
+        "llegarían"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "subjuntivo-presente": {
+      "forms": [
+        "llegue",
+        "llegues",
+        "llegue",
+        "lleguemos",
+        "lleguéis",
+        "lleguen"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "subjuntivo-imperfecto-ra": {
+      "forms": [
+        "llegara",
+        "llegaras",
+        "llegara",
+        "llegáramos",
+        "llegarais",
+        "llegaran"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "subjuntivo-imperfecto-se": {
+      "forms": [
+        "llegase",
+        "llegases",
+        "llegase",
+        "llegásemos",
+        "llegaseis",
+        "llegasen"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "imperativo-afirmativo": {
+      "forms": [
+        null,
+        "llega",
+        "llegue",
+        "lleguemos",
+        "llegad",
+        "lleguen"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "imperativo-negativo": {
+      "forms": [
+        null,
+        "no llegues",
+        "no llegue",
+        "no lleguemos",
+        "no lleguéis",
+        "no lleguen"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "preterito-perfecto": {
+      "forms": [
+        "he llegado",
+        "has llegado",
+        "ha llegado",
+        "hemos llegado",
+        "habéis llegado",
+        "han llegado"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "pluscuamperfecto": {
+      "forms": [
+        "había llegado",
+        "habías llegado",
+        "había llegado",
+        "habíamos llegado",
+        "habíais llegado",
+        "habían llegado"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "futuro-perfecto": {
+      "forms": [
+        "habré llegado",
+        "habrás llegado",
+        "habrá llegado",
+        "habremos llegado",
+        "habréis llegado",
+        "habrán llegado"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "condicional-perfecto": {
+      "forms": [
+        "habría llegado",
+        "habrías llegado",
+        "habría llegado",
+        "habríamos llegado",
+        "habríais llegado",
+        "habrían llegado"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "subjuntivo-perfecto": {
+      "forms": [
+        "haya llegado",
+        "hayas llegado",
+        "haya llegado",
+        "hayamos llegado",
+        "hayáis llegado",
+        "hayan llegado"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "subjuntivo-pluscuamperfecto": {
+      "forms": [
+        "hubiera llegado",
+        "hubieras llegado",
+        "hubiera llegado",
+        "hubiéramos llegado",
+        "hubierais llegado",
+        "hubieran llegado"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "subjuntivo-pluscuamperfecto-se": {
+      "forms": [
+        "hubiese llegado",
+        "hubieses llegado",
+        "hubiese llegado",
+        "hubiésemos llegado",
+        "hubieseis llegado",
+        "hubiesen llegado"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    }
+  },
+  "quiz": [
+    {
+      "question": "llegar の直説法現在、1人称単数（yo）は？",
+      "options": [
+        "llego",
+        "llega",
+        "llegan"
+      ],
+      "correctIndex": 0,
+      "explanation": "正解は llego。llegar のこの形は規則どおりです。"
+    },
+    {
+      "question": "llegar の点過去、3人称単数（él / ella / usted）は？",
+      "options": [
+        "llegué",
+        "llegó",
+        "llegaron"
+      ],
+      "correctIndex": 1,
+      "explanation": "正解は llegó。llegar のこの形は規則どおりです。"
+    },
+    {
+      "question": "llegar の未来、1人称単数（yo）は？",
+      "options": [
+        "llegará",
+        "llegarán",
+        "llegaré"
+      ],
+      "correctIndex": 2,
+      "explanation": "正解は llegaré。llegar のこの形は規則どおりです。"
+    },
+    {
+      "question": "llegar の接続法現在、1人称単数（yo）は？",
+      "options": [
+        "llegue",
+        "lleguen",
+        "llegues"
+      ],
+      "correctIndex": 0,
+      "explanation": "正解は llegue。llegar のこの形は規則どおりです。"
+    },
+    {
+      "question": "llegar の肯定命令、2人称単数（tú）は？",
+      "options": [
+        "llegue",
+        "llega",
+        "lleguen"
+      ],
+      "correctIndex": 1,
+      "explanation": "正解は llega。llegar のこの形は規則どおりです。"
+    }
+  ]
+}

@@ -1,0 +1,367 @@
+{
+  "infinitive": "venir",
+  "gerund": "viniendo",
+  "gerundIrregular": true,
+  "participle": "venido",
+  "participleIrregular": false,
+  "tenses": {
+    "presente": {
+      "forms": [
+        "vengo",
+        "vienes",
+        "viene",
+        "venimos",
+        "venís",
+        "vienen"
+      ],
+      "irregular": [
+        true,
+        true,
+        true,
+        false,
+        false,
+        true
+      ]
+    },
+    "preterito-indefinido": {
+      "forms": [
+        "vine",
+        "viniste",
+        "vino",
+        "vinimos",
+        "vinisteis",
+        "vinieron"
+      ],
+      "irregular": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    "preterito-imperfecto": {
+      "forms": [
+        "venía",
+        "venías",
+        "venía",
+        "veníamos",
+        "veníais",
+        "venían"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "futuro": {
+      "forms": [
+        "vendré",
+        "vendrás",
+        "vendrá",
+        "vendremos",
+        "vendréis",
+        "vendrán"
+      ],
+      "irregular": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    "condicional": {
+      "forms": [
+        "vendría",
+        "vendrías",
+        "vendría",
+        "vendríamos",
+        "vendríais",
+        "vendrían"
+      ],
+      "irregular": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    "subjuntivo-presente": {
+      "forms": [
+        "venga",
+        "vengas",
+        "venga",
+        "vengamos",
+        "vengáis",
+        "vengan"
+      ],
+      "irregular": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    "subjuntivo-imperfecto-ra": {
+      "forms": [
+        "viniera",
+        "vinieras",
+        "viniera",
+        "viniéramos",
+        "vinierais",
+        "vinieran"
+      ],
+      "irregular": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    "subjuntivo-imperfecto-se": {
+      "forms": [
+        "viniese",
+        "vinieses",
+        "viniese",
+        "viniésemos",
+        "vinieseis",
+        "viniesen"
+      ],
+      "irregular": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    "imperativo-afirmativo": {
+      "forms": [
+        null,
+        "ven",
+        "venga",
+        "vengamos",
+        "venid",
+        "vengan"
+      ],
+      "irregular": [
+        false,
+        true,
+        true,
+        true,
+        false,
+        true
+      ]
+    },
+    "imperativo-negativo": {
+      "forms": [
+        null,
+        "no vengas",
+        "no venga",
+        "no vengamos",
+        "no vengáis",
+        "no vengan"
+      ],
+      "irregular": [
+        false,
+        true,
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    "preterito-perfecto": {
+      "forms": [
+        "he venido",
+        "has venido",
+        "ha venido",
+        "hemos venido",
+        "habéis venido",
+        "han venido"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "pluscuamperfecto": {
+      "forms": [
+        "había venido",
+        "habías venido",
+        "había venido",
+        "habíamos venido",
+        "habíais venido",
+        "habían venido"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "futuro-perfecto": {
+      "forms": [
+        "habré venido",
+        "habrás venido",
+        "habrá venido",
+        "habremos venido",
+        "habréis venido",
+        "habrán venido"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "condicional-perfecto": {
+      "forms": [
+        "habría venido",
+        "habrías venido",
+        "habría venido",
+        "habríamos venido",
+        "habríais venido",
+        "habrían venido"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "subjuntivo-perfecto": {
+      "forms": [
+        "haya venido",
+        "hayas venido",
+        "haya venido",
+        "hayamos venido",
+        "hayáis venido",
+        "hayan venido"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "subjuntivo-pluscuamperfecto": {
+      "forms": [
+        "hubiera venido",
+        "hubieras venido",
+        "hubiera venido",
+        "hubiéramos venido",
+        "hubierais venido",
+        "hubieran venido"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "subjuntivo-pluscuamperfecto-se": {
+      "forms": [
+        "hubiese venido",
+        "hubieses venido",
+        "hubiese venido",
+        "hubiésemos venido",
+        "hubieseis venido",
+        "hubiesen venido"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    }
+  },
+  "quiz": [
+    {
+      "question": "venir の直説法現在、1人称単数（yo）は？",
+      "options": [
+        "vengo",
+        "veno",
+        "viene"
+      ],
+      "correctIndex": 0,
+      "explanation": "正解は vengo。venir のこの形は不規則で、規則どおりの veno にはなりません。"
+    },
+    {
+      "question": "venir の点過去、3人称単数（él / ella / usted）は？",
+      "options": [
+        "venió",
+        "vino",
+        "vine"
+      ],
+      "correctIndex": 1,
+      "explanation": "正解は vino。venir のこの形は不規則で、規則どおりの venió にはなりません。"
+    },
+    {
+      "question": "venir の未来、1人称単数（yo）は？",
+      "options": [
+        "veniré",
+        "vendrá",
+        "vendré"
+      ],
+      "correctIndex": 2,
+      "explanation": "正解は vendré。venir のこの形は不規則で、規則どおりの veniré にはなりません。"
+    },
+    {
+      "question": "venir の接続法現在、1人称単数（yo）は？",
+      "options": [
+        "venga",
+        "vena",
+        "vengan"
+      ],
+      "correctIndex": 0,
+      "explanation": "正解は venga。venir のこの形は不規則で、規則どおりの vena にはなりません。"
+    },
+    {
+      "question": "venir の肯定命令、2人称単数（tú）は？",
+      "options": [
+        "vene",
+        "ven",
+        "venga"
+      ],
+      "correctIndex": 1,
+      "explanation": "正解は ven。venir のこの形は不規則で、規則どおりの vene にはなりません。"
+    }
+  ]
+}

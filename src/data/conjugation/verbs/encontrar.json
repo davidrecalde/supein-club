@@ -1,0 +1,367 @@
+{
+  "infinitive": "encontrar",
+  "gerund": "encontrando",
+  "gerundIrregular": false,
+  "participle": "encontrado",
+  "participleIrregular": false,
+  "tenses": {
+    "presente": {
+      "forms": [
+        "encuentro",
+        "encuentras",
+        "encuentra",
+        "encontramos",
+        "encontráis",
+        "encuentran"
+      ],
+      "irregular": [
+        true,
+        true,
+        true,
+        false,
+        false,
+        true
+      ]
+    },
+    "preterito-indefinido": {
+      "forms": [
+        "encontré",
+        "encontraste",
+        "encontró",
+        "encontramos",
+        "encontrasteis",
+        "encontraron"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "preterito-imperfecto": {
+      "forms": [
+        "encontraba",
+        "encontrabas",
+        "encontraba",
+        "encontrábamos",
+        "encontrabais",
+        "encontraban"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "futuro": {
+      "forms": [
+        "encontraré",
+        "encontrarás",
+        "encontrará",
+        "encontraremos",
+        "encontraréis",
+        "encontrarán"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "condicional": {
+      "forms": [
+        "encontraría",
+        "encontrarías",
+        "encontraría",
+        "encontraríamos",
+        "encontraríais",
+        "encontrarían"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "subjuntivo-presente": {
+      "forms": [
+        "encuentre",
+        "encuentres",
+        "encuentre",
+        "encontremos",
+        "encontréis",
+        "encuentren"
+      ],
+      "irregular": [
+        true,
+        true,
+        true,
+        false,
+        false,
+        true
+      ]
+    },
+    "subjuntivo-imperfecto-ra": {
+      "forms": [
+        "encontrara",
+        "encontraras",
+        "encontrara",
+        "encontráramos",
+        "encontrarais",
+        "encontraran"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "subjuntivo-imperfecto-se": {
+      "forms": [
+        "encontrase",
+        "encontrases",
+        "encontrase",
+        "encontrásemos",
+        "encontraseis",
+        "encontrasen"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "imperativo-afirmativo": {
+      "forms": [
+        null,
+        "encuentra",
+        "encuentre",
+        "encontremos",
+        "encontrad",
+        "encuentren"
+      ],
+      "irregular": [
+        false,
+        true,
+        true,
+        false,
+        false,
+        true
+      ]
+    },
+    "imperativo-negativo": {
+      "forms": [
+        null,
+        "no encuentres",
+        "no encuentre",
+        "no encontremos",
+        "no encontréis",
+        "no encuentren"
+      ],
+      "irregular": [
+        false,
+        true,
+        true,
+        false,
+        false,
+        true
+      ]
+    },
+    "preterito-perfecto": {
+      "forms": [
+        "he encontrado",
+        "has encontrado",
+        "ha encontrado",
+        "hemos encontrado",
+        "habéis encontrado",
+        "han encontrado"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "pluscuamperfecto": {
+      "forms": [
+        "había encontrado",
+        "habías encontrado",
+        "había encontrado",
+        "habíamos encontrado",
+        "habíais encontrado",
+        "habían encontrado"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "futuro-perfecto": {
+      "forms": [
+        "habré encontrado",
+        "habrás encontrado",
+        "habrá encontrado",
+        "habremos encontrado",
+        "habréis encontrado",
+        "habrán encontrado"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "condicional-perfecto": {
+      "forms": [
+        "habría encontrado",
+        "habrías encontrado",
+        "habría encontrado",
+        "habríamos encontrado",
+        "habríais encontrado",
+        "habrían encontrado"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "subjuntivo-perfecto": {
+      "forms": [
+        "haya encontrado",
+        "hayas encontrado",
+        "haya encontrado",
+        "hayamos encontrado",
+        "hayáis encontrado",
+        "hayan encontrado"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "subjuntivo-pluscuamperfecto": {
+      "forms": [
+        "hubiera encontrado",
+        "hubieras encontrado",
+        "hubiera encontrado",
+        "hubiéramos encontrado",
+        "hubierais encontrado",
+        "hubieran encontrado"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "subjuntivo-pluscuamperfecto-se": {
+      "forms": [
+        "hubiese encontrado",
+        "hubieses encontrado",
+        "hubiese encontrado",
+        "hubiésemos encontrado",
+        "hubieseis encontrado",
+        "hubiesen encontrado"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    }
+  },
+  "quiz": [
+    {
+      "question": "encontrar の直説法現在、1人称単数（yo）は？",
+      "options": [
+        "encuentro",
+        "encontro",
+        "encuentra"
+      ],
+      "correctIndex": 0,
+      "explanation": "正解は encuentro。encontrar のこの形は不規則で、規則どおりの encontro にはなりません。"
+    },
+    {
+      "question": "encontrar の接続法現在、1人称単数（yo）は？",
+      "options": [
+        "encontre",
+        "encuentre",
+        "encuentren"
+      ],
+      "correctIndex": 1,
+      "explanation": "正解は encuentre。encontrar のこの形は不規則で、規則どおりの encontre にはなりません。"
+    },
+    {
+      "question": "encontrar の肯定命令、2人称単数（tú）は？",
+      "options": [
+        "encontra",
+        "encuentre",
+        "encuentra"
+      ],
+      "correctIndex": 2,
+      "explanation": "正解は encuentra。encontrar のこの形は不規則で、規則どおりの encontra にはなりません。"
+    },
+    {
+      "question": "encontrar の点過去、3人称単数（él / ella / usted）は？",
+      "options": [
+        "encontró",
+        "encontré",
+        "encontraron"
+      ],
+      "correctIndex": 0,
+      "explanation": "正解は encontró。encontrar のこの形は規則どおりです。"
+    },
+    {
+      "question": "encontrar の未来、1人称単数（yo）は？",
+      "options": [
+        "encontrará",
+        "encontraré",
+        "encontrarán"
+      ],
+      "correctIndex": 1,
+      "explanation": "正解は encontraré。encontrar のこの形は規則どおりです。"
+    }
+  ]
+}

@@ -1,0 +1,367 @@
+{
+  "infinitive": "creer",
+  "gerund": "creyendo",
+  "gerundIrregular": false,
+  "participle": "creído",
+  "participleIrregular": false,
+  "tenses": {
+    "presente": {
+      "forms": [
+        "creo",
+        "crees",
+        "cree",
+        "creemos",
+        "creéis",
+        "creen"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "preterito-indefinido": {
+      "forms": [
+        "creí",
+        "creíste",
+        "creyó",
+        "creímos",
+        "creísteis",
+        "creyeron"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "preterito-imperfecto": {
+      "forms": [
+        "creía",
+        "creías",
+        "creía",
+        "creíamos",
+        "creíais",
+        "creían"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "futuro": {
+      "forms": [
+        "creeré",
+        "creerás",
+        "creerá",
+        "creeremos",
+        "creeréis",
+        "creerán"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "condicional": {
+      "forms": [
+        "creería",
+        "creerías",
+        "creería",
+        "creeríamos",
+        "creeríais",
+        "creerían"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "subjuntivo-presente": {
+      "forms": [
+        "crea",
+        "creas",
+        "crea",
+        "creamos",
+        "creáis",
+        "crean"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "subjuntivo-imperfecto-ra": {
+      "forms": [
+        "creyera",
+        "creyeras",
+        "creyera",
+        "creyéramos",
+        "creyerais",
+        "creyeran"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "subjuntivo-imperfecto-se": {
+      "forms": [
+        "creyese",
+        "creyeses",
+        "creyese",
+        "creyésemos",
+        "creyeseis",
+        "creyesen"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "imperativo-afirmativo": {
+      "forms": [
+        null,
+        "cree",
+        "crea",
+        "creamos",
+        "creed",
+        "crean"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "imperativo-negativo": {
+      "forms": [
+        null,
+        "no creas",
+        "no crea",
+        "no creamos",
+        "no creáis",
+        "no crean"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "preterito-perfecto": {
+      "forms": [
+        "he creído",
+        "has creído",
+        "ha creído",
+        "hemos creído",
+        "habéis creído",
+        "han creído"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "pluscuamperfecto": {
+      "forms": [
+        "había creído",
+        "habías creído",
+        "había creído",
+        "habíamos creído",
+        "habíais creído",
+        "habían creído"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "futuro-perfecto": {
+      "forms": [
+        "habré creído",
+        "habrás creído",
+        "habrá creído",
+        "habremos creído",
+        "habréis creído",
+        "habrán creído"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "condicional-perfecto": {
+      "forms": [
+        "habría creído",
+        "habrías creído",
+        "habría creído",
+        "habríamos creído",
+        "habríais creído",
+        "habrían creído"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "subjuntivo-perfecto": {
+      "forms": [
+        "haya creído",
+        "hayas creído",
+        "haya creído",
+        "hayamos creído",
+        "hayáis creído",
+        "hayan creído"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "subjuntivo-pluscuamperfecto": {
+      "forms": [
+        "hubiera creído",
+        "hubieras creído",
+        "hubiera creído",
+        "hubiéramos creído",
+        "hubierais creído",
+        "hubieran creído"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "subjuntivo-pluscuamperfecto-se": {
+      "forms": [
+        "hubiese creído",
+        "hubieses creído",
+        "hubiese creído",
+        "hubiésemos creído",
+        "hubieseis creído",
+        "hubiesen creído"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    }
+  },
+  "quiz": [
+    {
+      "question": "creer の直説法現在、1人称単数（yo）は？",
+      "options": [
+        "creo",
+        "cree",
+        "creen"
+      ],
+      "correctIndex": 0,
+      "explanation": "正解は creo。creer のこの形は規則どおりです。"
+    },
+    {
+      "question": "creer の点過去、3人称単数（él / ella / usted）は？",
+      "options": [
+        "creí",
+        "creyó",
+        "creyeron"
+      ],
+      "correctIndex": 1,
+      "explanation": "正解は creyó。creer のこの形は規則どおりです。"
+    },
+    {
+      "question": "creer の未来、1人称単数（yo）は？",
+      "options": [
+        "creerá",
+        "creerán",
+        "creeré"
+      ],
+      "correctIndex": 2,
+      "explanation": "正解は creeré。creer のこの形は規則どおりです。"
+    },
+    {
+      "question": "creer の接続法現在、1人称単数（yo）は？",
+      "options": [
+        "crea",
+        "crean",
+        "creas"
+      ],
+      "correctIndex": 0,
+      "explanation": "正解は crea。creer のこの形は規則どおりです。"
+    },
+    {
+      "question": "creer の肯定命令、2人称単数（tú）は？",
+      "options": [
+        "crea",
+        "cree",
+        "crean"
+      ],
+      "correctIndex": 1,
+      "explanation": "正解は cree。creer のこの形は規則どおりです。"
+    }
+  ]
+}

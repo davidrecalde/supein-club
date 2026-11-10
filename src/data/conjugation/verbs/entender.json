@@ -1,0 +1,367 @@
+{
+  "infinitive": "entender",
+  "gerund": "entendiendo",
+  "gerundIrregular": false,
+  "participle": "entendido",
+  "participleIrregular": false,
+  "tenses": {
+    "presente": {
+      "forms": [
+        "entiendo",
+        "entiendes",
+        "entiende",
+        "entendemos",
+        "entendéis",
+        "entienden"
+      ],
+      "irregular": [
+        true,
+        true,
+        true,
+        false,
+        false,
+        true
+      ]
+    },
+    "preterito-indefinido": {
+      "forms": [
+        "entendí",
+        "entendiste",
+        "entendió",
+        "entendimos",
+        "entendisteis",
+        "entendieron"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "preterito-imperfecto": {
+      "forms": [
+        "entendía",
+        "entendías",
+        "entendía",
+        "entendíamos",
+        "entendíais",
+        "entendían"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "futuro": {
+      "forms": [
+        "entenderé",
+        "entenderás",
+        "entenderá",
+        "entenderemos",
+        "entenderéis",
+        "entenderán"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "condicional": {
+      "forms": [
+        "entendería",
+        "entenderías",
+        "entendería",
+        "entenderíamos",
+        "entenderíais",
+        "entenderían"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "subjuntivo-presente": {
+      "forms": [
+        "entienda",
+        "entiendas",
+        "entienda",
+        "entendamos",
+        "entendáis",
+        "entiendan"
+      ],
+      "irregular": [
+        true,
+        true,
+        true,
+        false,
+        false,
+        true
+      ]
+    },
+    "subjuntivo-imperfecto-ra": {
+      "forms": [
+        "entendiera",
+        "entendieras",
+        "entendiera",
+        "entendiéramos",
+        "entendierais",
+        "entendieran"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "subjuntivo-imperfecto-se": {
+      "forms": [
+        "entendiese",
+        "entendieses",
+        "entendiese",
+        "entendiésemos",
+        "entendieseis",
+        "entendiesen"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "imperativo-afirmativo": {
+      "forms": [
+        null,
+        "entiende",
+        "entienda",
+        "entendamos",
+        "entended",
+        "entiendan"
+      ],
+      "irregular": [
+        false,
+        true,
+        true,
+        false,
+        false,
+        true
+      ]
+    },
+    "imperativo-negativo": {
+      "forms": [
+        null,
+        "no entiendas",
+        "no entienda",
+        "no entendamos",
+        "no entendáis",
+        "no entiendan"
+      ],
+      "irregular": [
+        false,
+        true,
+        true,
+        false,
+        false,
+        true
+      ]
+    },
+    "preterito-perfecto": {
+      "forms": [
+        "he entendido",
+        "has entendido",
+        "ha entendido",
+        "hemos entendido",
+        "habéis entendido",
+        "han entendido"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "pluscuamperfecto": {
+      "forms": [
+        "había entendido",
+        "habías entendido",
+        "había entendido",
+        "habíamos entendido",
+        "habíais entendido",
+        "habían entendido"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "futuro-perfecto": {
+      "forms": [
+        "habré entendido",
+        "habrás entendido",
+        "habrá entendido",
+        "habremos entendido",
+        "habréis entendido",
+        "habrán entendido"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "condicional-perfecto": {
+      "forms": [
+        "habría entendido",
+        "habrías entendido",
+        "habría entendido",
+        "habríamos entendido",
+        "habríais entendido",
+        "habrían entendido"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "subjuntivo-perfecto": {
+      "forms": [
+        "haya entendido",
+        "hayas entendido",
+        "haya entendido",
+        "hayamos entendido",
+        "hayáis entendido",
+        "hayan entendido"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "subjuntivo-pluscuamperfecto": {
+      "forms": [
+        "hubiera entendido",
+        "hubieras entendido",
+        "hubiera entendido",
+        "hubiéramos entendido",
+        "hubierais entendido",
+        "hubieran entendido"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "subjuntivo-pluscuamperfecto-se": {
+      "forms": [
+        "hubiese entendido",
+        "hubieses entendido",
+        "hubiese entendido",
+        "hubiésemos entendido",
+        "hubieseis entendido",
+        "hubiesen entendido"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    }
+  },
+  "quiz": [
+    {
+      "question": "entender の直説法現在、1人称単数（yo）は？",
+      "options": [
+        "entiendo",
+        "entendo",
+        "entiende"
+      ],
+      "correctIndex": 0,
+      "explanation": "正解は entiendo。entender のこの形は不規則で、規則どおりの entendo にはなりません。"
+    },
+    {
+      "question": "entender の接続法現在、1人称単数（yo）は？",
+      "options": [
+        "entenda",
+        "entienda",
+        "entiendan"
+      ],
+      "correctIndex": 1,
+      "explanation": "正解は entienda。entender のこの形は不規則で、規則どおりの entenda にはなりません。"
+    },
+    {
+      "question": "entender の肯定命令、2人称単数（tú）は？",
+      "options": [
+        "entende",
+        "entienda",
+        "entiende"
+      ],
+      "correctIndex": 2,
+      "explanation": "正解は entiende。entender のこの形は不規則で、規則どおりの entende にはなりません。"
+    },
+    {
+      "question": "entender の点過去、3人称単数（él / ella / usted）は？",
+      "options": [
+        "entendió",
+        "entendí",
+        "entendieron"
+      ],
+      "correctIndex": 0,
+      "explanation": "正解は entendió。entender のこの形は規則どおりです。"
+    },
+    {
+      "question": "entender の未来、1人称単数（yo）は？",
+      "options": [
+        "entenderá",
+        "entenderé",
+        "entenderán"
+      ],
+      "correctIndex": 1,
+      "explanation": "正解は entenderé。entender のこの形は規則どおりです。"
+    }
+  ]
+}
