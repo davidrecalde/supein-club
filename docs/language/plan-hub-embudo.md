@@ -92,6 +92,8 @@ La entonación y la conexión entre palabras (A2 y B1) se añadieron a `pronunci
 
 ### Fase B. Preparar el lanzamiento mientras se generan los audios (en una rama, sin publicar)
 
+> **Estado (10 de noviembre de 2026):** los puntos 9-15, 17, 18 y 19 están hechos en la rama `launch/curso-completo`, sin publicar. Diferencias con el texto del plan: en el punto 12, los resúmenes de gramática conservan sus tablas, ejemplos y miniejercicios (ya eran breves) y suman la tabla de unidades y un 「詳しくは」 por sección; en el punto 14, los planes de B2, C1 y C2 mantienen su enfoque de inmersión e indican las unidades de cada periodo. Pendiente: el punto 8 (audios) y la fase C.
+
 8. **Audios:** generar en `audio-src/` las frases de las 57 unidades nuevas, las cinco existentes y las transcripciones de los seis simulacros (nivel gratuito, unas 130 peticiones). David los escucha, se comprimen con ffmpeg y se crea el reproductor (prompt 7).
 9. **`/language/` reescrito como guía de 勉強法:** cómo empezar, comparación de formas de estudiar (curso gratis, escuela, app, estudiar en España), test de nivel arriba, 「続きから」 para quien ya tiene progreso, los seis niveles, herramientas, DELE, recursos y escuelas. Datos estructurados `CollectionPage` + `ItemList` + `BreadcrumbList`. Desaparecen las 36 STEP.
 10. **`/language/learn-spanish/`:** hoja de ruta + curso. El título mantiene 「ロードマップ」 al principio y los H2 actuales; se añaden los seis niveles con sus 62 unidades y el progreso.
