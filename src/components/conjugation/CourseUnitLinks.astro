@@ -5,12 +5,16 @@ import { getAllUnits, hasPage, isCourseVisible } from '../../utils/units';
 
 interface Props {
   units: number[];
+  /** Texto breve antes de la lista (p. ej. 「詳しくは：」); solo se muestra con la lista. */
+  label?: string;
 }
 
 const visible = await isCourseVisible();
 const byNumber = new Map((await getAllUnits()).map((u) => [u.data.unit, u]));
+const { label } = Astro.props;
 const items = Astro.props.units.map((n) => byNumber.get(n)).filter((u) => u !== undefined);
 ---
+{visible && items.length > 0 && label && <p>{label}</p>}
 {visible && items.length > 0 && (
   <ul>
     {items.map((u) => (

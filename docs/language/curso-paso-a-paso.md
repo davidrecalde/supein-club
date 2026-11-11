@@ -154,6 +154,20 @@ Search Console (del 3 de agosto al 1 de noviembre de 2026, por consulta y págin
 | ジップの法則 (140 impr., 0 clics) | /zipf-law-methodology/ | Es una búsqueda sobre la ley en general, no sobre español | Retitular hacia 「スペイン語 単語 頻度順」 y dejar de perseguir esa consulta |
 | 東京 スペイン語 学校, セルバンテス東京 レビュー | /tokyo-spanish-schools/ y /lessons-tokyo/tokyo-spanish-schools/ | /tokyo-spanish-schools/ | 301, ya en el prompt de la semana 1 |
 
+**Revisión antes del lanzamiento (11 de noviembre de 2026).** Se cruzaron los títulos y H2 de las 62 unidades con los 64 artículos del hub y las consultas de Search Console:
+
+| Riesgo | Compiten | Acción (rama `launch/curso-completo`) |
+| --- | --- | --- |
+| 現在形 活用, 点過去 活用 | El subtítulo del conjugador («現在形・点過去の早見表») frente a las unidades 4, 5 y 14 | Subtítulo nuevo: 「全時制の早見表と頻出50動詞」 (sus consultas son 動詞の活用, 活用 一覧, 覚え方). Cada tabla de tiempo enlaza a su unidad (4-5, 14, 15, 20); 「過去形は2つある」 → unidades 16, 14 y 15; 「近接未来形」 se reduce a una frase → unidad 11 |
+| 接続法, 条件法, 現在完了, 関係詞, 結束… | Los resúmenes de gramática B1–C2, cuyo título enumeraba temas que son unidades | Títulos en formato 「スペイン語B1文法まとめ」 (como A1 y A2). B1 deja de explicar 条件法 y 現在完了 (unidades 21 y 13, A2) y cubre sus unidades 28-35; C1 deja 結束 (unidad 46, B2) y el bloque de dialectos (→ spanish-in-latin-america) y cubre 49-54; C2 deja el 照応 (unidades 46 y 51) y cubre 57 y 61. Quiz y FAQ alineados; se corrige «La persona quien me ayudó» (→ con quien) |
+| スペイン語 発音 | `pronunciation-for-japanese` (コツ, R/L) frente a la unidad 1 (読み方, alfabeto) | Títulos distintos y enlaces en ambos sentidos (ya existían) |
+| スペイン語 自己紹介 | La guía de entrevista (自己紹介の組み立て方) frente a la unidad 3 | La unidad 3 es la canónica de 自己紹介; la guía enlaza a ella y se queda con 面接 |
+| dele 模擬試験 | `dele-self-study` frente a las unidades de cierre | La guía es 「過去問の入手先」 y enlaza a los seis simulacros como 「模擬試験」 (ya hecho) |
+| ser estar 違い / 点過去 線過去 違い / hubiera | Unidades 3 y 32, 16 y 50, 37 y 39 | La unidad posterior enlaza a la básica como canónica |
+| スペイン語 単語 覚え方 | `zipf-law-methodology` (どれから) y `memorize-vocabulary` (覚え方) | Enlaces en ambos sentidos; cada una con su enfoque |
+
+Sin riesgo: hubs de nivel frente a la hoja de ruta, planes de estudio, vocabulario por nivel, recursos, escuelas y páginas de verbo.
+
 Reglas que evitan que vuelva a pasar:
 
 - **Resumen frente a unidad:** 「A1 文法まとめ」 apunta a 「スペイン語 A1 文法」; cada unidad apunta a su punto concreto (「ser estar 違い」). El resumen nunca explica, solo presenta y enlaza.

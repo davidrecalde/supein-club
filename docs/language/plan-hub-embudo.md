@@ -115,6 +115,10 @@ La entonación y la conexión entre palabras (A2 y B1) se añadieron a `pronunci
 
 ### Fase C. Lanzamiento (un único PR, cuando estén los audios)
 
+> **Estado (11 de noviembre de 2026):** David confirma que el curso se publica cuando estén **todos** los audios. Hecha la revisión de anti-canibalización previa al lanzamiento (conjugador, resúmenes de gramática B1–C2 y enlaces cruzados; detalle en la sección «Anti-canibalización» de `curso-paso-a-paso.md`).
+>
+> **Qué desaparece del hub `/language/` al lanzar (sin borrar ninguna URL):** las seis rejillas por nivel (26 tarjetas) pasan a un único bloque 「スペイン語コース」 con los seis niveles y sus accesos (文法まとめ・単語・学習計画・DELE); las cuatro tarjetas de 接続法 pasan a ser las unidades 25, 37, 49 y 57 dentro de su nivel; las ocho tarjetas DELE pasan a la tarjeta del hub DELE y una lista; desaparecen las insignias STEP; los bloques de texto SEO del final se sustituyen por la comparativa de formas de estudiar y los cinco pasos. El hub pasa de unas 68 tarjetas a unas 20 más listas compactas.
+
 21. Publicar las 62 unidades a la vez (`draft: false` con su `pubDate`), activar los bloques del curso y aplicar todo lo de la fase B.
 22. Enlaces de anti-canibalización anotados en `curso-paso-a-paso.md` (conjugador → unidad 11, /c1/grammar/ → unidades 55 y 46…).
 23. **Tarjeta de LINE** en tres sitios: resultado del test, primera minitest aprobada (una sola vez) y conjugador. Una por página, se cierra y no vuelve.
