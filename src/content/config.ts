@@ -14,6 +14,22 @@ const authors = defineCollection({
     bioLong: z.string().optional(),
     knowsAbout: z.array(z.string()).optional(),
     specialties: z.array(z.string()).optional(),
+    /**
+     * Trayectoria profesional (schema.org Person.worksFor con EmployeeRole), para el E-E-A-T de
+     * todas sus páginas. Sin endDate = puesto actual. La organización スペイン倶楽部 se añade sola.
+     */
+    employment: z
+      .array(
+        z.object({
+          organization: z.string(),
+          alternateName: z.string().optional(),
+          url: z.string().optional(),
+          roleName: z.string().optional(),
+          startDate: z.string().optional(),
+          endDate: z.string().optional(),
+        }),
+      )
+      .optional(),
     sameAs: z.array(z.string()).optional(),
     twitter: z.string().optional(),
     linkedin: z.string().optional(),

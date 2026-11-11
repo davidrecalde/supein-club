@@ -258,6 +258,36 @@ Todo el contenido legal (tipos de visado, duración, requisitos, plazos de resol
 
 El xlsx maestro define un nodo `/services/` explícitamente marcado "SEO対象外" (no compite por keywords propias, recibe tráfico desde los clusters informativos): `/services/spanish-lessons/`, `/services/travel-consulting/`, `/services/study-abroad-support/`. **Actualización 2026-10-22: las tres SÍ existen hoy** (`src/pages/services/{spanish-lessons,travel-consulting,study-abroad-support}/index.astro`) — esta nota decía lo contrario y estaba desactualizada; se construyeron en algún momento entre el snapshot original y ahora sin registrarlo aquí. `robots.txt` bloquea `/services/` a propósito (coherente con "SEO対象外"), así que no indexan pese a existir.
 
+## Imágenes para Google Discover (2026-11-10)
+
+Google Discover exige imágenes de al menos 1200 px de ancho (con `max-image-preview:large`, que ya se añade en `SEO.astro`). Antes, el 88 % de los artículos tenía la imagen principal por debajo de 1200 px por la regla de WebP < 100 KB.
+
+- **Varios tamaños de cada imagen:** el adaptador usa `imageService: 'compile'` (`astro.config.mjs`), así que Astro genera en el build los tamaños del `srcset`. Constantes y helper en `src/utils/images.ts` (`HERO_WIDTHS` 480/800/1200, `HERO_SIZES`, `discoverImage()`).
+- **Hero de artículos** (`ArticleLayout`) y de las guías de provincia (`HeroProvince`): `srcset` 480/800/1200 (y 1600 a sangre completa). El móvil carga 480-800 px (unos 20-40 KB); el escritorio y las pantallas de alta densidad, 1200 px.
+- **og:image:** `discoverImage()` genera la versión de 1200 px (WebP q82), con `og:image:width`, `og:image:height` y `og:image:alt` reales. Nunca amplía: si el original mide menos, se queda en su tamaño.
+- **Tarjetas** (`ArticleCard`): miniatura de 480/800 px por `srcset`; ya no cargan el original. Los llamadores pasan el `ImageMetadata` (`heroImage={a.data.heroImage}`), no `.src`.
+- **Originales en `src/assets/hero/`:** al menos 1200×675 (WebP q85), para que quepa el recorte 16:9 a 1200×675; mismo encuadre que antes. No se sirven directamente. La regla de 100 KB se aplica a lo que carga el navegador en móvil, no a estos originales.
+- **Curso:** `npm run course:images` escribe además `uNN-480.webp` y `uNN-1200.webp` (esta sin límite de 100 KB). `UnitLayout` los usa en el `srcset` y como `og:image`.
+- **Originales locales:** la mayoría está en `Artículos/` (fuera de git). Se emparejaron con las imágenes publicadas por similitud visual (dHash + diferencia de píxeles) y se recortaron igual (125 imágenes, incluidas las 52 provincias).
+- **Sin original en alta resolución (69):**
+  - 42 cabeceras tipográficas del curso (niveles A1–C2 y DELE): se redibujaron a 1200 px con el mismo diseño (Noto Sans JP, mismo color y posición, `palt` en las de DELE con puntuación).
+  - 27 fotos e infografías: se ampliaron a 1200 px (Lanczos + enfoque suave). Conviene sustituirlas por un original de ≥1200 px cuando lo haya: fútbol (Athletic, Atlético, El Clásico ×2, La Liga, Liga F, Messi vs Ronaldo, LaLiga Master, licencia de entrenador), Barcelona (Casa Batlló, Casa Milà, Palau Güell, Palau de la Música, Park Güell, Sagrada Familia ×3), comida (aceite de oliva, dulces, vocabulario de comida, provincia de Cádiz), Alhambra, calle de Madrid, banner vertical de regiones e infografías (ロードマップ, test de nivel, ley de Zipf).
+- **Resultado (2026-11-10):** 332 de 332 páginas indexables de tipo artículo tienen la imagen principal a ≥1200 px (antes, 40).
+- **Imágenes nuevas (regla de David, 2026-11-10): cada imagen nueva sale en 1200, 800 y 480 px.**
+  - Imagen principal de un artículo: guardar el original a ≥1200 px en `src/assets/hero/`; Astro genera los tres tamaños.
+  - Imágenes de `public/` (notas de prensa, cuerpo del artículo, home): `npm run images:variants -- <original> <destino-sin-extensión>` escribe `-1200.webp`, `-800.webp` y `-480.webp` (las de 480 y 800 px, por debajo de 100 KB). Usarlas con `srcset` (480w, 800w, 1200w).
+
+## Schema de imágenes (2026-11-10)
+
+El `srcset` (480/800/1200) es para el navegador; el schema es para Google y no lista los tamaños pequeños (podría elegir uno). Google recomienda en `image` varias versiones en alta resolución con proporciones 16:9, 4:3 y 1:1 (mínimo 50.000 píxeles; la principal, ≥1200 px de ancho para Discover).
+
+- **`SEO.astro`** recibe `schemaImages` (y `imageWidth`, `imageHeight`, `imageAlt` para el og) y emite un `ImageObject` por proporción: `#primaryimage` (16:9, 1200×675), `#image-4x3` y `#image-1x1`, con medidas reales, `caption`, `creditText`, `copyrightNotice`, `license` y `acquireLicensePage`. El `WebPage` lleva `primaryImageOfPage` y `thumbnailUrl`; el `Article`/`NewsArticle`/`LearningResource` (y `Recipe`, etc.) lleva `image` con los tres `@id`, la principal primero.
+- **Recortes** (`src/utils/images.ts`): `schemaImages()` para imágenes de `src/assets` (recorte sharp «attention», sin ampliar, 1200 px como máximo); `publicSchemaImages()` lee los archivos `-16x9`/`-1200`, `-4x3` y `-1x1` de `public/`.
+- **Cabeceras tipográficas** (42 del curso + 3 infografías): no se recortan, porque se cortaría el texto. `src/assets/hero/schema/<nombre>-4x3.webp` y `-1x1.webp` amplían el fondo con el mismo color; `schemaImages()` los usa si existen.
+- **Dónde:** artículos (`ArticleLayout`), guías de provincia (`ProvinceGuideLayout`), unidades (`UnitLayout`; `npm run course:images` escribe `uNN-4x3` y `uNN-1x1`) y notas de prensa (`newsroom/[slug].astro`; `npm run images:variants -- <original> <destino> --schema`; el 16:9 siempre sale a 1200×675).
+- **Notas de prensa:** antes su og:image era el logo de la web; ahora es su imagen a 1200 px, con `srcset` en la página. El aniversario (2026-05-30) y el jurado de la paella (2026-06-07) no tienen original grande: su 16:9 es una ampliación.
+- **Verificación (2026-11-10):** 430 páginas con imagen, 1290 `ImageObject` con medidas iguales a las del archivo, imagen principal siempre 16:9 y ≥1200 px, ningún 1:1 por debajo de 50.000 píxeles.
+
 ## Casos especiales a documentar explícitamente
 
 **`/food/spain-map/[province]/` — colección aparte, no artículos.** Vive en la colección `spain-map` (`src/content/spain-map/`, schema propio en `content/config.ts`), no en `articles`. 53 páginas. Confirmado archivo por archivo (ver `barcelona.mdx` como referencia completa): en general **no contienen nombres de restaurantes ni negocios concretos** — es overview editorial genérico (platos típicos, barrios, FAQ) más un botón de salida (`ProvinceMapEmbed.astro`, `<a href={mapUrl} target="_blank">`, **no es un iframe embebido**) hacia un mapa de Google Maps que el copy del propio sitio describe como "curado por スペイン倶楽部" — 5 de las 53 provincias (madrid, barcelona, sevilla, valencia, pais-vasco) son guías editoriales completas creadas el 2026-05-24 en una sesión anterior con Claude; las otras 48 son entradas ligeras creadas el 2026-09-07 en esta sesión. **Diferénciar claramente esta página de cualquier futura página de rankings de restaurantes reales** (el artefacto CRE — `<CRECard>`, ver sección CRECard de `CLAUDE.md` — sí muestra negocios con nombre, rating y reseñas; `spain-map` no).
@@ -1016,6 +1046,20 @@ Verificado tras el cambio: cada página del sitio ahora emite un único
   igualando los datos que antes solo tenía la versión duplicada de
   AuthorBox — y un `@id` estable (`{authorUrl}#person`), referenciado
   desde `Article.author` en vez de duplicar el objeto completo cada vez.
+- **Nodo Person del autor único (2026-11-10):** `buildAuthorPerson()` en
+  `src/utils/schema.ts` construye el mismo Person (nombre, `alternateName`,
+  imagen, `jobTitle`, bio como `description`, `knowsAbout`, `sameAs`,
+  `worksFor`) para todas las páginas que firma un autor:
+  artículos (`SEO.astro`), unidades del curso (`UnitLayout.astro`), páginas
+  de verbo y /language/about-this-course/. Antes las unidades, los verbos y
+  about-this-course solo llevaban nombre y URL. Nuevo campo opcional
+  `employment` en el schema de `authors` (trayectoria): cada puesto sale en
+  `worksFor` como `EmployeeRole` con `roleName`, `startDate` y `endDate`
+  (con `endDate` = empleo anterior), además de スペイン倶楽部. No se usa
+  `alumniOf`, que es para antiguos alumnos. David Recalde: NODA (Studio
+  Lead, actual) e Instituto Cervantes de Tokio (Asesor de Comunicación y
+  Prensa, 2019-01 a 2024-01). Su `jobTitle` en el schema es
+  「スペイン倶楽部 創設者」 (el `role` visible no cambia).
 - **Entidad "LaLiga" unificada**: antes se definía por separado en
   `SEO.astro` (rama `schemaType: 'sports'`, solo para `la-liga.mdx`) y en
   `SportsTeamSchema.astro` (`memberOf`, en cada club). Ahora un único

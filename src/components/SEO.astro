@@ -1,7 +1,8 @@
 ﻿---
 import type { CollectionEntry } from 'astro:content';
 import { getRegion } from '../config/regions';
-import { buildQuizNode } from '../utils/schema';
+import { buildAuthorPerson, buildQuizNode } from '../utils/schema';
+import type { SchemaImage } from '../utils/images';
 
 interface Props {
   title: string;
@@ -18,6 +19,12 @@ interface Props {
   robots?: string;
   /** Nodos adicionales para el @graph (p. ej. LearningResource y Quiz de las unidades del curso). */
   extraGraph?: object[];
+  /** Medidas reales y alt del og:image (la versión de 1200 px). */
+  imageWidth?: number;
+  imageHeight?: number;
+  imageAlt?: string;
+  /** Recortes 16:9, 4:3 y 1:1 en alta resolución para el schema (utils/images.ts). */
+  schemaImages?: SchemaImage[];
 }
 
 const {
@@ -34,6 +41,10 @@ const {
   authorUrl,
   robots: robotsProp = 'index, follow',
   extraGraph = [],
+  imageWidth,
+  imageHeight,
+  imageAlt,
+  schemaImages,
 } = Astro.props;
 
 // Sin max-image-preview:large, Google limita el tamaño de miniatura que
@@ -144,6 +155,37 @@ const webPage: Record<string, unknown> = {
 if (breadcrumbs && breadcrumbs.length > 0) {
   webPage.breadcrumb = { '@id': `${canonical}#breadcrumb` };
 }
+
+// Imágenes del schema: un ImageObject por proporción (16:9, 4:3, 1:1), con medidas reales.
+// El 16:9 es la imagen principal de la página (#primaryimage), la que usa Google Discover.
+const imageIdFor = (ratio: string) => (ratio === '16x9' ? `${canonical}#primaryimage` : `${canonical}#image-${ratio}`);
+const pageImageRefs = schemaImages?.length
+  ? [...schemaImages].sort((a, b) => (a.ratio === '16x9' ? -1 : b.ratio === '16x9' ? 1 : 0)).map((i) => ({ '@id': imageIdFor(i.ratio) }))
+  : undefined;
+if (schemaImages?.length) {
+  const caption = imageAlt ?? title;
+  for (const img of schemaImages) {
+    const url = img.url.startsWith('http') ? img.url : `${siteUrl}${img.url}`;
+    graph.push({
+      '@type': 'ImageObject',
+      '@id': imageIdFor(img.ratio),
+      url,
+      contentUrl: url,
+      width: img.width,
+      height: img.height,
+      caption,
+      inLanguage: lang === 'es' ? 'es' : 'ja',
+      creditText: 'supein.club',
+      creator: { '@id': `${siteUrl}/#organization` },
+      copyrightNotice: '© Club Español en Japón スペイン倶楽部 supein.club',
+      license: siteUrl,
+      acquireLicensePage: `${siteUrl}/contact/`,
+    });
+  }
+  webPage.primaryImageOfPage = pageImageRefs![0];
+  const primary = schemaImages.find((i) => i.ratio === '16x9') ?? schemaImages[0];
+  webPage.thumbnailUrl = primary.url.startsWith('http') ? primary.url : `${siteUrl}${primary.url}`;
+}
 graph.push(webPage);
 
 // 4. BreadcrumbList (if breadcrumbs)
@@ -169,58 +211,18 @@ if (type === 'article' && article) {
   const authorName = author?.data.name ?? 'スペイン倶楽部編集部';
   const authorSlug = author ? (author.data.slug ?? author.id.replace(/\.(md|mdx)$/, '')) : 'supeinclub-henshubu';
   const authorUrl = `${siteUrl}/about-us/team/${authorSlug}/`;
-  const primaryImagePath = article.data.heroImage?.src ?? article.data.image;
-  const imageId = `${canonical}#primaryimage`;
-  const articleImage = primaryImagePath
-    ? { '@id': imageId }
-    : { '@type': 'ImageObject', url: `${siteUrl}/logo-og.png` };
-  if (primaryImagePath) {
-    graph.push({
-      '@type': 'ImageObject',
-      '@id': imageId,
-      url: `${siteUrl}${primaryImagePath}`,
-      contentUrl: `${siteUrl}${primaryImagePath}`,
-      name: article.data.heroImageAlt ?? title,
-      description: article.data.heroImageAlt ?? title,
-      width: 1200,
-      height: 630,
-      creditText: 'supein.club',
-      creator: { '@id': `${siteUrl}/#organization` },
-      copyrightNotice: '© Club Español en Japón スペイン倶楽部 supein.club',
-      license: siteUrl,
-      acquireLicensePage: `${siteUrl}/contact/`,
-    });
-  }
+  // Imágenes: los recortes 16:9 / 4:3 / 1:1 (ImageObject del grafo, arriba). Sin imagen, el logo.
+  const articleImage = pageImageRefs ?? { '@type': 'ImageObject', url: `${siteUrl}/logo-og.png`, width: 1200, height: 630 };
 
   const regionConfig = article.data.region ? getRegion(article.data.region) : undefined;
   const contentLocation = regionConfig
     ? { '@type': 'AdministrativeArea', name: regionConfig.label }
     : undefined;
 
-  const rawLinkedin = author?.data.linkedin;
-  const rawInstagram = author?.data.instagram;
-  const normalizeUrl = (raw: string | undefined, base: string) =>
-    raw ? (raw.startsWith('http') ? raw : `${base}${raw}`) : undefined;
-  const authorLinkedIn = normalizeUrl(rawLinkedin, 'https://linkedin.com/in/');
-  const authorInstagram = normalizeUrl(rawInstagram, 'https://instagram.com/');
-  const authorWebsite = author?.data.website;
-  const authorSameAs = [authorLinkedIn, authorInstagram, authorWebsite].filter(Boolean) as string[];
-  const authorAvatar = author?.data.avatar ? `${siteUrl}${author.data.avatar}` : undefined;
-  const authorJobTitle = author?.data.jobTitle ?? author?.data.role;
-  const authorTopics = author?.data.specialties ?? author?.data.knowsAbout;
-
-  const articleAuthor: Record<string, unknown> = {
-    '@type': 'Person',
-    '@id': `${authorUrl}#person`,
-    name: authorName,
-    url: authorUrl,
-  };
-  if (authorAvatar) articleAuthor.image = authorAvatar;
-  if (authorJobTitle) articleAuthor.jobTitle = authorJobTitle;
-  if (author?.data.bio) articleAuthor.description = author.data.bio;
-  if (authorTopics && authorTopics.length > 0) articleAuthor.knowsAbout = authorTopics;
-  if (authorSameAs.length > 0) articleAuthor.sameAs = authorSameAs;
-  articleAuthor.worksFor = { '@id': `${siteUrl}/#organization` };
+  // Mismo nodo Person en todas las páginas del autor (bio, temas, perfiles, trayectoria): utils/schema.ts
+  const articleAuthor: Record<string, unknown> = author
+    ? buildAuthorPerson(author, authorUrl)
+    : { '@type': 'Person', '@id': `${authorUrl}#person`, name: authorName, url: authorUrl, worksFor: { '@id': `${siteUrl}/#organization` } };
 
   // SportsTeam (si el artículo es de un club/selección de fútbol)
   const teamData = article.data.sportsTeam;
@@ -511,6 +513,13 @@ const jsonLd = JSON.stringify({ '@context': 'https://schema.org', '@graph': grap
 <meta property="og:title" content={title} />
 <meta property="og:description" content={description} />
 <meta property="og:image" content={resolvedImage} />
+{imageWidth && imageHeight && (
+  <>
+    <meta property="og:image:width" content={String(imageWidth)} />
+    <meta property="og:image:height" content={String(imageHeight)} />
+  </>
+)}
+{imageAlt && <meta property="og:image:alt" content={imageAlt} />}
 <meta property="og:url" content={canonical} />
 <meta property="og:locale" content={lang === 'es' ? 'es_ES' : 'ja_JP'} />
 <meta property="og:site_name" content="supein.club" />
@@ -518,6 +527,7 @@ const jsonLd = JSON.stringify({ '@context': 'https://schema.org', '@graph': grap
 <meta name="twitter:title" content={title} />
 <meta name="twitter:description" content={description} />
 <meta name="twitter:image" content={resolvedImage} />
+{imageAlt && <meta name="twitter:image:alt" content={imageAlt} />}
 <link rel="alternate" hreflang="ja" href={canonical} />
 <link rel="alternate" hreflang="es" href={canonical} />
 <link rel="alternate" hreflang="x-default" href={canonical} />
