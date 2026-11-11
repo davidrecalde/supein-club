@@ -1426,6 +1426,295 @@
       "slow": "/audio/units/u17/u17-05-slow.mp3",
       "seconds": 4.04,
       "hash": "e21a8d89b06772a1"
+    },
+    {
+      "index": 5,
+      "text": "regalárselo",
+      "speaker": "narrator",
+      "src": "/audio/units/u17/u17-06.mp3",
+      "slow": "/audio/units/u17/u17-06-slow.mp3",
+      "seconds": 2.04,
+      "hash": "7cd8cdf49093d57f"
+    }
+  ],
+  "18": [
+    {
+      "index": 0,
+      "text": "Madrid es más grande que Barcelona.",
+      "speaker": "narrator",
+      "src": "/audio/units/u18/u18-01.mp3",
+      "slow": "/audio/units/u18/u18-01-slow.mp3",
+      "seconds": 3.34,
+      "hash": "4d1dcb0603e08a4f"
+    },
+    {
+      "index": 1,
+      "text": "Este hotel es menos caro que el otro.",
+      "speaker": "narrator",
+      "src": "/audio/units/u18/u18-02.mp3",
+      "slow": "/audio/units/u18/u18-02-slow.mp3",
+      "seconds": 3.76,
+      "hash": "3cfddc64c27390aa"
+    },
+    {
+      "index": 2,
+      "text": "Valencia es tan bonita como Sevilla.",
+      "speaker": "narrator",
+      "src": "/audio/units/u18/u18-03.mp3",
+      "slow": "/audio/units/u18/u18-03-slow.mp3",
+      "seconds": 4.06,
+      "hash": "813332bdd625dd1b"
+    },
+    {
+      "index": 3,
+      "text": "Es el hotel más tranquilo de la zona.",
+      "speaker": "narrator",
+      "src": "/audio/units/u18/u18-04.mp3",
+      "slow": "/audio/units/u18/u18-04-slow.mp3",
+      "seconds": 3.13,
+      "hash": "ceb95fe214267171"
+    },
+    {
+      "index": 4,
+      "text": "La paella está buenísima.",
+      "speaker": "narrator",
+      "src": "/audio/units/u18/u18-05.mp3",
+      "slow": "/audio/units/u18/u18-05-slow.mp3",
+      "seconds": 2.87,
+      "hash": "6a4142f25ef602da"
+    },
+    {
+      "index": 5,
+      "text": "Barcelona tiene playa y Madrid no.",
+      "speaker": "narrator",
+      "src": "/audio/units/u18/u18-06.mp3",
+      "slow": "/audio/units/u18/u18-06-slow.mp3",
+      "seconds": 4.2,
+      "hash": "0606c6a7fb1534fd"
+    }
+  ],
+  "19": [
+    {
+      "index": 0,
+      "text": "Perdone, ¿cómo voy a la catedral?",
+      "speaker": "mina",
+      "src": "/audio/units/u19/u19-01.mp3",
+      "slow": "/audio/units/u19/u19-01-slow.mp3",
+      "seconds": 4.44,
+      "hash": "975ecaf253ce9dc9"
+    },
+    {
+      "index": 1,
+      "text": "Siga todo recto y gire a la derecha en el semáforo.",
+      "speaker": "female-senior",
+      "src": "/audio/units/u19/u19-02.mp3",
+      "slow": "/audio/units/u19/u19-02-slow.mp3",
+      "seconds": 4.68,
+      "hash": "96d251f563cae9a0"
+    },
+    {
+      "index": 2,
+      "text": "Pasen, por favor. Pónganse el casco.",
+      "speaker": "narrator",
+      "src": "/audio/units/u19/u19-03.mp3",
+      "slow": "/audio/units/u19/u19-03-slow.mp3",
+      "seconds": 3.38,
+      "hash": "8133340ea2a4b620"
+    },
+    {
+      "index": 3,
+      "text": "No toquen las máquinas.",
+      "speaker": "narrator",
+      "src": "/audio/units/u19/u19-04.mp3",
+      "slow": "/audio/units/u19/u19-04-slow.mp3",
+      "seconds": 1.91,
+      "hash": "353c5f8453adfd5b"
+    },
+    {
+      "index": 4,
+      "text": "Pon el aceite en la paellera. No muevas el arroz.",
+      "speaker": "narrator",
+      "src": "/audio/units/u19/u19-05.mp3",
+      "slow": "/audio/units/u19/u19-05-slow.mp3",
+      "seconds": 4.25,
+      "hash": "2994dd02405bcec3"
+    },
+    {
+      "index": 5,
+      "text": "dímelo",
+      "speaker": "narrator",
+      "src": "/audio/units/u19/u19-06.mp3",
+      "slow": "/audio/units/u19/u19-06-slow.mp3",
+      "seconds": 0.74,
+      "hash": "864e8b6e9b7b0c95"
+    }
+  ],
+  "20": [
+    {
+      "index": 0,
+      "text": "El año que viene iré a Sevilla.",
+      "speaker": "narrator",
+      "src": "/audio/units/u20/u20-01.mp3",
+      "slow": "/audio/units/u20/u20-01-slow.mp3",
+      "seconds": 2.9,
+      "hash": "d348496ccaa595e4"
+    },
+    {
+      "index": 1,
+      "text": "Dentro de dos meses, Kenta volverá a Valencia.",
+      "speaker": "narrator",
+      "src": "/audio/units/u20/u20-02.mp3",
+      "slow": "/audio/units/u20/u20-02-slow.mp3",
+      "seconds": 4.51,
+      "hash": "b02aac3d5fc684e5"
+    },
+    {
+      "index": 2,
+      "text": "Mañana hará sol y no lloverá.",
+      "speaker": "narrator",
+      "src": "/audio/units/u20/u20-03.mp3",
+      "slow": "/audio/units/u20/u20-03-slow.mp3",
+      "seconds": 3.01,
+      "hash": "0b60246afe8d8f52"
+    },
+    {
+      "index": 3,
+      "text": "¿Dónde está Daniel? Estará en la oficina.",
+      "speaker": "narrator",
+      "src": "/audio/units/u20/u20-04.mp3",
+      "slow": "/audio/units/u20/u20-04-slow.mp3",
+      "seconds": 3.99,
+      "hash": "664f87aa4e4e30e5"
+    },
+    {
+      "index": 4,
+      "text": "¿Qué hora es? Serán las diez.",
+      "speaker": "narrator",
+      "src": "/audio/units/u20/u20-05.mp3",
+      "slow": "/audio/units/u20/u20-05-slow.mp3",
+      "seconds": 2.75,
+      "hash": "08c3ee932a3d6908"
+    },
+    {
+      "index": 5,
+      "text": "haré, harás, hará",
+      "speaker": "narrator",
+      "src": "/audio/units/u20/u20-06.mp3",
+      "slow": "/audio/units/u20/u20-06-slow.mp3",
+      "seconds": 3.4,
+      "hash": "0995b24457788c66"
+    }
+  ],
+  "21": [
+    {
+      "index": 0,
+      "text": "Buenas noches. Me gustaría reservar una mesa para dos.",
+      "speaker": "kenta",
+      "src": "/audio/units/u21/u21-01.mp3",
+      "slow": "/audio/units/u21/u21-01-slow.mp3",
+      "seconds": 5.59,
+      "hash": "9af84a76c1dda25a"
+    },
+    {
+      "index": 1,
+      "text": "¿Podría traerme la carta, por favor?",
+      "speaker": "narrator",
+      "src": "/audio/units/u21/u21-02.mp3",
+      "slow": "/audio/units/u21/u21-02-slow.mp3",
+      "seconds": 3.25,
+      "hash": "d82c1398829b387b"
+    },
+    {
+      "index": 2,
+      "text": "¿Qué vino me recomendaría?",
+      "speaker": "kenta",
+      "src": "/audio/units/u21/u21-03.mp3",
+      "slow": "/audio/units/u21/u21-03-slow.mp3",
+      "seconds": 2.72,
+      "hash": "23619ba6777a6a13"
+    },
+    {
+      "index": 3,
+      "text": "Yo que tú, probaría este vino de Rioja.",
+      "speaker": "narrator",
+      "src": "/audio/units/u21/u21-04.mp3",
+      "slow": "/audio/units/u21/u21-04-slow.mp3",
+      "seconds": 3.88,
+      "hash": "1984970268b13f23"
+    },
+    {
+      "index": 4,
+      "text": "Me encantaría vivir en España.",
+      "speaker": "narrator",
+      "src": "/audio/units/u21/u21-05.mp3",
+      "slow": "/audio/units/u21/u21-05-slow.mp3",
+      "seconds": 2.71,
+      "hash": "06171ff5bf3e5bb1"
+    },
+    {
+      "index": 5,
+      "text": "podría, podríamos",
+      "speaker": "narrator",
+      "src": "/audio/units/u21/u21-06.mp3",
+      "slow": "/audio/units/u21/u21-06-slow.mp3",
+      "seconds": 3.08,
+      "hash": "170fcd09319708c6"
+    }
+  ],
+  "22": [
+    {
+      "index": 0,
+      "text": "Tengo que terminar el informe hoy.",
+      "speaker": "narrator",
+      "src": "/audio/units/u22/u22-01.mp3",
+      "slow": "/audio/units/u22/u22-01-slow.mp3",
+      "seconds": 3.11,
+      "hash": "04842517e13a9b72"
+    },
+    {
+      "index": 1,
+      "text": "Hay que practicar todos los días.",
+      "speaker": "narrator",
+      "src": "/audio/units/u22/u22-02.mp3",
+      "slow": "/audio/units/u22/u22-02-slow.mp3",
+      "seconds": 3.02,
+      "hash": "680b52a9e37a63f4"
+    },
+    {
+      "index": 2,
+      "text": "Acabo de llegar a Valencia.",
+      "speaker": "narrator",
+      "src": "/audio/units/u22/u22-03.mp3",
+      "slow": "/audio/units/u22/u22-03-slow.mp3",
+      "seconds": 2.05,
+      "hash": "c1739a44db2d3368"
+    },
+    {
+      "index": 3,
+      "text": "Hace siete años que trabajo con esta empresa.",
+      "speaker": "narrator",
+      "src": "/audio/units/u22/u22-04.mp3",
+      "slow": "/audio/units/u22/u22-04-slow.mp3",
+      "seconds": 3.75,
+      "hash": "6889a67629982892"
+    },
+    {
+      "index": 4,
+      "text": "Llevo dos años estudiando español.",
+      "speaker": "narrator",
+      "src": "/audio/units/u22/u22-05.mp3",
+      "slow": "/audio/units/u22/u22-05-slow.mp3",
+      "seconds": 3.19,
+      "hash": "9f0dd005f33f5b0b"
+    },
+    {
+      "index": 5,
+      "text": "El Real Madrid existe desde 1902.",
+      "speaker": "narrator",
+      "src": "/audio/units/u22/u22-06.mp3",
+      "slow": "/audio/units/u22/u22-06-slow.mp3",
+      "seconds": 4.31,
+      "hash": "6274c13645284102"
     }
   ]
 }
