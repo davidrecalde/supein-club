@@ -1,0 +1,367 @@
+{
+  "infinitive": "conocer",
+  "gerund": "conociendo",
+  "gerundIrregular": false,
+  "participle": "conocido",
+  "participleIrregular": false,
+  "tenses": {
+    "presente": {
+      "forms": [
+        "conozco",
+        "conoces",
+        "conoce",
+        "conocemos",
+        "conocéis",
+        "conocen"
+      ],
+      "irregular": [
+        true,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "preterito-indefinido": {
+      "forms": [
+        "conocí",
+        "conociste",
+        "conoció",
+        "conocimos",
+        "conocisteis",
+        "conocieron"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "preterito-imperfecto": {
+      "forms": [
+        "conocía",
+        "conocías",
+        "conocía",
+        "conocíamos",
+        "conocíais",
+        "conocían"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "futuro": {
+      "forms": [
+        "conoceré",
+        "conocerás",
+        "conocerá",
+        "conoceremos",
+        "conoceréis",
+        "conocerán"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "condicional": {
+      "forms": [
+        "conocería",
+        "conocerías",
+        "conocería",
+        "conoceríamos",
+        "conoceríais",
+        "conocerían"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "subjuntivo-presente": {
+      "forms": [
+        "conozca",
+        "conozcas",
+        "conozca",
+        "conozcamos",
+        "conozcáis",
+        "conozcan"
+      ],
+      "irregular": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    "subjuntivo-imperfecto-ra": {
+      "forms": [
+        "conociera",
+        "conocieras",
+        "conociera",
+        "conociéramos",
+        "conocierais",
+        "conocieran"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "subjuntivo-imperfecto-se": {
+      "forms": [
+        "conociese",
+        "conocieses",
+        "conociese",
+        "conociésemos",
+        "conocieseis",
+        "conociesen"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "imperativo-afirmativo": {
+      "forms": [
+        null,
+        "conoce",
+        "conozca",
+        "conozcamos",
+        "conoced",
+        "conozcan"
+      ],
+      "irregular": [
+        false,
+        false,
+        true,
+        true,
+        false,
+        true
+      ]
+    },
+    "imperativo-negativo": {
+      "forms": [
+        null,
+        "no conozcas",
+        "no conozca",
+        "no conozcamos",
+        "no conozcáis",
+        "no conozcan"
+      ],
+      "irregular": [
+        false,
+        true,
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    "preterito-perfecto": {
+      "forms": [
+        "he conocido",
+        "has conocido",
+        "ha conocido",
+        "hemos conocido",
+        "habéis conocido",
+        "han conocido"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "pluscuamperfecto": {
+      "forms": [
+        "había conocido",
+        "habías conocido",
+        "había conocido",
+        "habíamos conocido",
+        "habíais conocido",
+        "habían conocido"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "futuro-perfecto": {
+      "forms": [
+        "habré conocido",
+        "habrás conocido",
+        "habrá conocido",
+        "habremos conocido",
+        "habréis conocido",
+        "habrán conocido"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "condicional-perfecto": {
+      "forms": [
+        "habría conocido",
+        "habrías conocido",
+        "habría conocido",
+        "habríamos conocido",
+        "habríais conocido",
+        "habrían conocido"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "subjuntivo-perfecto": {
+      "forms": [
+        "haya conocido",
+        "hayas conocido",
+        "haya conocido",
+        "hayamos conocido",
+        "hayáis conocido",
+        "hayan conocido"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "subjuntivo-pluscuamperfecto": {
+      "forms": [
+        "hubiera conocido",
+        "hubieras conocido",
+        "hubiera conocido",
+        "hubiéramos conocido",
+        "hubierais conocido",
+        "hubieran conocido"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "subjuntivo-pluscuamperfecto-se": {
+      "forms": [
+        "hubiese conocido",
+        "hubieses conocido",
+        "hubiese conocido",
+        "hubiésemos conocido",
+        "hubieseis conocido",
+        "hubiesen conocido"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    }
+  },
+  "quiz": [
+    {
+      "question": "conocer の直説法現在、1人称単数（yo）は？",
+      "options": [
+        "conozco",
+        "conoco",
+        "conoce"
+      ],
+      "correctIndex": 0,
+      "explanation": "正解は conozco。conocer のこの形は不規則で、規則どおりの conoco にはなりません。"
+    },
+    {
+      "question": "conocer の接続法現在、1人称単数（yo）は？",
+      "options": [
+        "conoca",
+        "conozca",
+        "conozcan"
+      ],
+      "correctIndex": 1,
+      "explanation": "正解は conozca。conocer のこの形は不規則で、規則どおりの conoca にはなりません。"
+    },
+    {
+      "question": "conocer の点過去、3人称単数（él / ella / usted）は？",
+      "options": [
+        "conocí",
+        "conocieron",
+        "conoció"
+      ],
+      "correctIndex": 2,
+      "explanation": "正解は conoció。conocer のこの形は規則どおりです。"
+    },
+    {
+      "question": "conocer の未来、1人称単数（yo）は？",
+      "options": [
+        "conoceré",
+        "conocerá",
+        "conocerán"
+      ],
+      "correctIndex": 0,
+      "explanation": "正解は conoceré。conocer のこの形は規則どおりです。"
+    },
+    {
+      "question": "conocer の肯定命令、2人称単数（tú）は？",
+      "options": [
+        "conozca",
+        "conoce",
+        "conozcan"
+      ],
+      "correctIndex": 1,
+      "explanation": "正解は conoce。conocer のこの形は規則どおりです。"
+    }
+  ]
+}

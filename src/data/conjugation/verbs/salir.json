@@ -1,0 +1,367 @@
+{
+  "infinitive": "salir",
+  "gerund": "saliendo",
+  "gerundIrregular": false,
+  "participle": "salido",
+  "participleIrregular": false,
+  "tenses": {
+    "presente": {
+      "forms": [
+        "salgo",
+        "sales",
+        "sale",
+        "salimos",
+        "salís",
+        "salen"
+      ],
+      "irregular": [
+        true,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "preterito-indefinido": {
+      "forms": [
+        "salí",
+        "saliste",
+        "salió",
+        "salimos",
+        "salisteis",
+        "salieron"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "preterito-imperfecto": {
+      "forms": [
+        "salía",
+        "salías",
+        "salía",
+        "salíamos",
+        "salíais",
+        "salían"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "futuro": {
+      "forms": [
+        "saldré",
+        "saldrás",
+        "saldrá",
+        "saldremos",
+        "saldréis",
+        "saldrán"
+      ],
+      "irregular": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    "condicional": {
+      "forms": [
+        "saldría",
+        "saldrías",
+        "saldría",
+        "saldríamos",
+        "saldríais",
+        "saldrían"
+      ],
+      "irregular": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    "subjuntivo-presente": {
+      "forms": [
+        "salga",
+        "salgas",
+        "salga",
+        "salgamos",
+        "salgáis",
+        "salgan"
+      ],
+      "irregular": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    "subjuntivo-imperfecto-ra": {
+      "forms": [
+        "saliera",
+        "salieras",
+        "saliera",
+        "saliéramos",
+        "salierais",
+        "salieran"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "subjuntivo-imperfecto-se": {
+      "forms": [
+        "saliese",
+        "salieses",
+        "saliese",
+        "saliésemos",
+        "salieseis",
+        "saliesen"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "imperativo-afirmativo": {
+      "forms": [
+        null,
+        "sal",
+        "salga",
+        "salgamos",
+        "salid",
+        "salgan"
+      ],
+      "irregular": [
+        false,
+        true,
+        true,
+        true,
+        false,
+        true
+      ]
+    },
+    "imperativo-negativo": {
+      "forms": [
+        null,
+        "no salgas",
+        "no salga",
+        "no salgamos",
+        "no salgáis",
+        "no salgan"
+      ],
+      "irregular": [
+        false,
+        true,
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    "preterito-perfecto": {
+      "forms": [
+        "he salido",
+        "has salido",
+        "ha salido",
+        "hemos salido",
+        "habéis salido",
+        "han salido"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "pluscuamperfecto": {
+      "forms": [
+        "había salido",
+        "habías salido",
+        "había salido",
+        "habíamos salido",
+        "habíais salido",
+        "habían salido"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "futuro-perfecto": {
+      "forms": [
+        "habré salido",
+        "habrás salido",
+        "habrá salido",
+        "habremos salido",
+        "habréis salido",
+        "habrán salido"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "condicional-perfecto": {
+      "forms": [
+        "habría salido",
+        "habrías salido",
+        "habría salido",
+        "habríamos salido",
+        "habríais salido",
+        "habrían salido"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "subjuntivo-perfecto": {
+      "forms": [
+        "haya salido",
+        "hayas salido",
+        "haya salido",
+        "hayamos salido",
+        "hayáis salido",
+        "hayan salido"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "subjuntivo-pluscuamperfecto": {
+      "forms": [
+        "hubiera salido",
+        "hubieras salido",
+        "hubiera salido",
+        "hubiéramos salido",
+        "hubierais salido",
+        "hubieran salido"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "subjuntivo-pluscuamperfecto-se": {
+      "forms": [
+        "hubiese salido",
+        "hubieses salido",
+        "hubiese salido",
+        "hubiésemos salido",
+        "hubieseis salido",
+        "hubiesen salido"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    }
+  },
+  "quiz": [
+    {
+      "question": "salir の直説法現在、1人称単数（yo）は？",
+      "options": [
+        "salgo",
+        "salo",
+        "sale"
+      ],
+      "correctIndex": 0,
+      "explanation": "正解は salgo。salir のこの形は不規則で、規則どおりの salo にはなりません。"
+    },
+    {
+      "question": "salir の未来、1人称単数（yo）は？",
+      "options": [
+        "saliré",
+        "saldré",
+        "saldrá"
+      ],
+      "correctIndex": 1,
+      "explanation": "正解は saldré。salir のこの形は不規則で、規則どおりの saliré にはなりません。"
+    },
+    {
+      "question": "salir の接続法現在、1人称単数（yo）は？",
+      "options": [
+        "sala",
+        "salgan",
+        "salga"
+      ],
+      "correctIndex": 2,
+      "explanation": "正解は salga。salir のこの形は不規則で、規則どおりの sala にはなりません。"
+    },
+    {
+      "question": "salir の肯定命令、2人称単数（tú）は？",
+      "options": [
+        "sal",
+        "sale",
+        "salga"
+      ],
+      "correctIndex": 0,
+      "explanation": "正解は sal。salir のこの形は不規則で、規則どおりの sale にはなりません。"
+    },
+    {
+      "question": "salir の点過去、3人称単数（él / ella / usted）は？",
+      "options": [
+        "salí",
+        "salió",
+        "salieron"
+      ],
+      "correctIndex": 1,
+      "explanation": "正解は salió。salir のこの形は規則どおりです。"
+    }
+  ]
+}

@@ -1,0 +1,367 @@
+{
+  "infinitive": "saber",
+  "gerund": "sabiendo",
+  "gerundIrregular": false,
+  "participle": "sabido",
+  "participleIrregular": false,
+  "tenses": {
+    "presente": {
+      "forms": [
+        "sé",
+        "sabes",
+        "sabe",
+        "sabemos",
+        "sabéis",
+        "saben"
+      ],
+      "irregular": [
+        true,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "preterito-indefinido": {
+      "forms": [
+        "supe",
+        "supiste",
+        "supo",
+        "supimos",
+        "supisteis",
+        "supieron"
+      ],
+      "irregular": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    "preterito-imperfecto": {
+      "forms": [
+        "sabía",
+        "sabías",
+        "sabía",
+        "sabíamos",
+        "sabíais",
+        "sabían"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "futuro": {
+      "forms": [
+        "sabré",
+        "sabrás",
+        "sabrá",
+        "sabremos",
+        "sabréis",
+        "sabrán"
+      ],
+      "irregular": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    "condicional": {
+      "forms": [
+        "sabría",
+        "sabrías",
+        "sabría",
+        "sabríamos",
+        "sabríais",
+        "sabrían"
+      ],
+      "irregular": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    "subjuntivo-presente": {
+      "forms": [
+        "sepa",
+        "sepas",
+        "sepa",
+        "sepamos",
+        "sepáis",
+        "sepan"
+      ],
+      "irregular": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    "subjuntivo-imperfecto-ra": {
+      "forms": [
+        "supiera",
+        "supieras",
+        "supiera",
+        "supiéramos",
+        "supierais",
+        "supieran"
+      ],
+      "irregular": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    "subjuntivo-imperfecto-se": {
+      "forms": [
+        "supiese",
+        "supieses",
+        "supiese",
+        "supiésemos",
+        "supieseis",
+        "supiesen"
+      ],
+      "irregular": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    "imperativo-afirmativo": {
+      "forms": [
+        null,
+        "sabe",
+        "sepa",
+        "sepamos",
+        "sabed",
+        "sepan"
+      ],
+      "irregular": [
+        false,
+        false,
+        true,
+        true,
+        false,
+        true
+      ]
+    },
+    "imperativo-negativo": {
+      "forms": [
+        null,
+        "no sepas",
+        "no sepa",
+        "no sepamos",
+        "no sepáis",
+        "no sepan"
+      ],
+      "irregular": [
+        false,
+        true,
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    "preterito-perfecto": {
+      "forms": [
+        "he sabido",
+        "has sabido",
+        "ha sabido",
+        "hemos sabido",
+        "habéis sabido",
+        "han sabido"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "pluscuamperfecto": {
+      "forms": [
+        "había sabido",
+        "habías sabido",
+        "había sabido",
+        "habíamos sabido",
+        "habíais sabido",
+        "habían sabido"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "futuro-perfecto": {
+      "forms": [
+        "habré sabido",
+        "habrás sabido",
+        "habrá sabido",
+        "habremos sabido",
+        "habréis sabido",
+        "habrán sabido"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "condicional-perfecto": {
+      "forms": [
+        "habría sabido",
+        "habrías sabido",
+        "habría sabido",
+        "habríamos sabido",
+        "habríais sabido",
+        "habrían sabido"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "subjuntivo-perfecto": {
+      "forms": [
+        "haya sabido",
+        "hayas sabido",
+        "haya sabido",
+        "hayamos sabido",
+        "hayáis sabido",
+        "hayan sabido"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "subjuntivo-pluscuamperfecto": {
+      "forms": [
+        "hubiera sabido",
+        "hubieras sabido",
+        "hubiera sabido",
+        "hubiéramos sabido",
+        "hubierais sabido",
+        "hubieran sabido"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "subjuntivo-pluscuamperfecto-se": {
+      "forms": [
+        "hubiese sabido",
+        "hubieses sabido",
+        "hubiese sabido",
+        "hubiésemos sabido",
+        "hubieseis sabido",
+        "hubiesen sabido"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    }
+  },
+  "quiz": [
+    {
+      "question": "saber の直説法現在、1人称単数（yo）は？",
+      "options": [
+        "sé",
+        "sabo",
+        "sabe"
+      ],
+      "correctIndex": 0,
+      "explanation": "正解は sé。saber のこの形は不規則で、規則どおりの sabo にはなりません。"
+    },
+    {
+      "question": "saber の点過去、3人称単数（él / ella / usted）は？",
+      "options": [
+        "sabió",
+        "supo",
+        "supe"
+      ],
+      "correctIndex": 1,
+      "explanation": "正解は supo。saber のこの形は不規則で、規則どおりの sabió にはなりません。"
+    },
+    {
+      "question": "saber の未来、1人称単数（yo）は？",
+      "options": [
+        "saberé",
+        "sabrá",
+        "sabré"
+      ],
+      "correctIndex": 2,
+      "explanation": "正解は sabré。saber のこの形は不規則で、規則どおりの saberé にはなりません。"
+    },
+    {
+      "question": "saber の接続法現在、1人称単数（yo）は？",
+      "options": [
+        "sepa",
+        "saba",
+        "sepan"
+      ],
+      "correctIndex": 0,
+      "explanation": "正解は sepa。saber のこの形は不規則で、規則どおりの saba にはなりません。"
+    },
+    {
+      "question": "saber の肯定命令、2人称単数（tú）は？",
+      "options": [
+        "sepa",
+        "sabe",
+        "sepan"
+      ],
+      "correctIndex": 1,
+      "explanation": "正解は sabe。saber のこの形は規則どおりです。"
+    }
+  ]
+}

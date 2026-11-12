@@ -1,0 +1,367 @@
+{
+  "infinitive": "gustar",
+  "gerund": "gustando",
+  "gerundIrregular": false,
+  "participle": "gustado",
+  "participleIrregular": false,
+  "tenses": {
+    "presente": {
+      "forms": [
+        "gusto",
+        "gustas",
+        "gusta",
+        "gustamos",
+        "gustáis",
+        "gustan"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "preterito-indefinido": {
+      "forms": [
+        "gusté",
+        "gustaste",
+        "gustó",
+        "gustamos",
+        "gustasteis",
+        "gustaron"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "preterito-imperfecto": {
+      "forms": [
+        "gustaba",
+        "gustabas",
+        "gustaba",
+        "gustábamos",
+        "gustabais",
+        "gustaban"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "futuro": {
+      "forms": [
+        "gustaré",
+        "gustarás",
+        "gustará",
+        "gustaremos",
+        "gustaréis",
+        "gustarán"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "condicional": {
+      "forms": [
+        "gustaría",
+        "gustarías",
+        "gustaría",
+        "gustaríamos",
+        "gustaríais",
+        "gustarían"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "subjuntivo-presente": {
+      "forms": [
+        "guste",
+        "gustes",
+        "guste",
+        "gustemos",
+        "gustéis",
+        "gusten"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "subjuntivo-imperfecto-ra": {
+      "forms": [
+        "gustara",
+        "gustaras",
+        "gustara",
+        "gustáramos",
+        "gustarais",
+        "gustaran"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "subjuntivo-imperfecto-se": {
+      "forms": [
+        "gustase",
+        "gustases",
+        "gustase",
+        "gustásemos",
+        "gustaseis",
+        "gustasen"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "imperativo-afirmativo": {
+      "forms": [
+        null,
+        "gusta",
+        "guste",
+        "gustemos",
+        "gustad",
+        "gusten"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "imperativo-negativo": {
+      "forms": [
+        null,
+        "no gustes",
+        "no guste",
+        "no gustemos",
+        "no gustéis",
+        "no gusten"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "preterito-perfecto": {
+      "forms": [
+        "he gustado",
+        "has gustado",
+        "ha gustado",
+        "hemos gustado",
+        "habéis gustado",
+        "han gustado"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "pluscuamperfecto": {
+      "forms": [
+        "había gustado",
+        "habías gustado",
+        "había gustado",
+        "habíamos gustado",
+        "habíais gustado",
+        "habían gustado"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "futuro-perfecto": {
+      "forms": [
+        "habré gustado",
+        "habrás gustado",
+        "habrá gustado",
+        "habremos gustado",
+        "habréis gustado",
+        "habrán gustado"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "condicional-perfecto": {
+      "forms": [
+        "habría gustado",
+        "habrías gustado",
+        "habría gustado",
+        "habríamos gustado",
+        "habríais gustado",
+        "habrían gustado"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "subjuntivo-perfecto": {
+      "forms": [
+        "haya gustado",
+        "hayas gustado",
+        "haya gustado",
+        "hayamos gustado",
+        "hayáis gustado",
+        "hayan gustado"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "subjuntivo-pluscuamperfecto": {
+      "forms": [
+        "hubiera gustado",
+        "hubieras gustado",
+        "hubiera gustado",
+        "hubiéramos gustado",
+        "hubierais gustado",
+        "hubieran gustado"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "subjuntivo-pluscuamperfecto-se": {
+      "forms": [
+        "hubiese gustado",
+        "hubieses gustado",
+        "hubiese gustado",
+        "hubiésemos gustado",
+        "hubieseis gustado",
+        "hubiesen gustado"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    }
+  },
+  "quiz": [
+    {
+      "question": "gustar の直説法現在、1人称単数（yo）は？",
+      "options": [
+        "gusto",
+        "gusta",
+        "gustan"
+      ],
+      "correctIndex": 0,
+      "explanation": "正解は gusto。gustar のこの形は規則どおりです。"
+    },
+    {
+      "question": "gustar の点過去、3人称単数（él / ella / usted）は？",
+      "options": [
+        "gusté",
+        "gustó",
+        "gustaron"
+      ],
+      "correctIndex": 1,
+      "explanation": "正解は gustó。gustar のこの形は規則どおりです。"
+    },
+    {
+      "question": "gustar の未来、1人称単数（yo）は？",
+      "options": [
+        "gustará",
+        "gustarán",
+        "gustaré"
+      ],
+      "correctIndex": 2,
+      "explanation": "正解は gustaré。gustar のこの形は規則どおりです。"
+    },
+    {
+      "question": "gustar の接続法現在、1人称単数（yo）は？",
+      "options": [
+        "guste",
+        "gusten",
+        "gustes"
+      ],
+      "correctIndex": 0,
+      "explanation": "正解は guste。gustar のこの形は規則どおりです。"
+    },
+    {
+      "question": "gustar の肯定命令、2人称単数（tú）は？",
+      "options": [
+        "guste",
+        "gusta",
+        "gusten"
+      ],
+      "correctIndex": 1,
+      "explanation": "正解は gusta。gustar のこの形は規則どおりです。"
+    }
+  ]
+}

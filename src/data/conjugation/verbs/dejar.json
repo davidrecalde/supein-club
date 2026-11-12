@@ -1,0 +1,367 @@
+{
+  "infinitive": "dejar",
+  "gerund": "dejando",
+  "gerundIrregular": false,
+  "participle": "dejado",
+  "participleIrregular": false,
+  "tenses": {
+    "presente": {
+      "forms": [
+        "dejo",
+        "dejas",
+        "deja",
+        "dejamos",
+        "dejáis",
+        "dejan"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "preterito-indefinido": {
+      "forms": [
+        "dejé",
+        "dejaste",
+        "dejó",
+        "dejamos",
+        "dejasteis",
+        "dejaron"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "preterito-imperfecto": {
+      "forms": [
+        "dejaba",
+        "dejabas",
+        "dejaba",
+        "dejábamos",
+        "dejabais",
+        "dejaban"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "futuro": {
+      "forms": [
+        "dejaré",
+        "dejarás",
+        "dejará",
+        "dejaremos",
+        "dejaréis",
+        "dejarán"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "condicional": {
+      "forms": [
+        "dejaría",
+        "dejarías",
+        "dejaría",
+        "dejaríamos",
+        "dejaríais",
+        "dejarían"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "subjuntivo-presente": {
+      "forms": [
+        "deje",
+        "dejes",
+        "deje",
+        "dejemos",
+        "dejéis",
+        "dejen"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "subjuntivo-imperfecto-ra": {
+      "forms": [
+        "dejara",
+        "dejaras",
+        "dejara",
+        "dejáramos",
+        "dejarais",
+        "dejaran"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "subjuntivo-imperfecto-se": {
+      "forms": [
+        "dejase",
+        "dejases",
+        "dejase",
+        "dejásemos",
+        "dejaseis",
+        "dejasen"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "imperativo-afirmativo": {
+      "forms": [
+        null,
+        "deja",
+        "deje",
+        "dejemos",
+        "dejad",
+        "dejen"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "imperativo-negativo": {
+      "forms": [
+        null,
+        "no dejes",
+        "no deje",
+        "no dejemos",
+        "no dejéis",
+        "no dejen"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "preterito-perfecto": {
+      "forms": [
+        "he dejado",
+        "has dejado",
+        "ha dejado",
+        "hemos dejado",
+        "habéis dejado",
+        "han dejado"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "pluscuamperfecto": {
+      "forms": [
+        "había dejado",
+        "habías dejado",
+        "había dejado",
+        "habíamos dejado",
+        "habíais dejado",
+        "habían dejado"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "futuro-perfecto": {
+      "forms": [
+        "habré dejado",
+        "habrás dejado",
+        "habrá dejado",
+        "habremos dejado",
+        "habréis dejado",
+        "habrán dejado"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "condicional-perfecto": {
+      "forms": [
+        "habría dejado",
+        "habrías dejado",
+        "habría dejado",
+        "habríamos dejado",
+        "habríais dejado",
+        "habrían dejado"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "subjuntivo-perfecto": {
+      "forms": [
+        "haya dejado",
+        "hayas dejado",
+        "haya dejado",
+        "hayamos dejado",
+        "hayáis dejado",
+        "hayan dejado"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "subjuntivo-pluscuamperfecto": {
+      "forms": [
+        "hubiera dejado",
+        "hubieras dejado",
+        "hubiera dejado",
+        "hubiéramos dejado",
+        "hubierais dejado",
+        "hubieran dejado"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "subjuntivo-pluscuamperfecto-se": {
+      "forms": [
+        "hubiese dejado",
+        "hubieses dejado",
+        "hubiese dejado",
+        "hubiésemos dejado",
+        "hubieseis dejado",
+        "hubiesen dejado"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    }
+  },
+  "quiz": [
+    {
+      "question": "dejar の直説法現在、1人称単数（yo）は？",
+      "options": [
+        "dejo",
+        "deja",
+        "dejan"
+      ],
+      "correctIndex": 0,
+      "explanation": "正解は dejo。dejar のこの形は規則どおりです。"
+    },
+    {
+      "question": "dejar の点過去、3人称単数（él / ella / usted）は？",
+      "options": [
+        "dejé",
+        "dejó",
+        "dejaron"
+      ],
+      "correctIndex": 1,
+      "explanation": "正解は dejó。dejar のこの形は規則どおりです。"
+    },
+    {
+      "question": "dejar の未来、1人称単数（yo）は？",
+      "options": [
+        "dejará",
+        "dejarán",
+        "dejaré"
+      ],
+      "correctIndex": 2,
+      "explanation": "正解は dejaré。dejar のこの形は規則どおりです。"
+    },
+    {
+      "question": "dejar の接続法現在、1人称単数（yo）は？",
+      "options": [
+        "deje",
+        "dejen",
+        "dejes"
+      ],
+      "correctIndex": 0,
+      "explanation": "正解は deje。dejar のこの形は規則どおりです。"
+    },
+    {
+      "question": "dejar の肯定命令、2人称単数（tú）は？",
+      "options": [
+        "deje",
+        "deja",
+        "dejen"
+      ],
+      "correctIndex": 1,
+      "explanation": "正解は deja。dejar のこの形は規則どおりです。"
+    }
+  ]
+}

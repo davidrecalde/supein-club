@@ -1,0 +1,367 @@
+{
+  "infinitive": "deber",
+  "gerund": "debiendo",
+  "gerundIrregular": false,
+  "participle": "debido",
+  "participleIrregular": false,
+  "tenses": {
+    "presente": {
+      "forms": [
+        "debo",
+        "debes",
+        "debe",
+        "debemos",
+        "debéis",
+        "deben"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "preterito-indefinido": {
+      "forms": [
+        "debí",
+        "debiste",
+        "debió",
+        "debimos",
+        "debisteis",
+        "debieron"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "preterito-imperfecto": {
+      "forms": [
+        "debía",
+        "debías",
+        "debía",
+        "debíamos",
+        "debíais",
+        "debían"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "futuro": {
+      "forms": [
+        "deberé",
+        "deberás",
+        "deberá",
+        "deberemos",
+        "deberéis",
+        "deberán"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "condicional": {
+      "forms": [
+        "debería",
+        "deberías",
+        "debería",
+        "deberíamos",
+        "deberíais",
+        "deberían"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "subjuntivo-presente": {
+      "forms": [
+        "deba",
+        "debas",
+        "deba",
+        "debamos",
+        "debáis",
+        "deban"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "subjuntivo-imperfecto-ra": {
+      "forms": [
+        "debiera",
+        "debieras",
+        "debiera",
+        "debiéramos",
+        "debierais",
+        "debieran"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "subjuntivo-imperfecto-se": {
+      "forms": [
+        "debiese",
+        "debieses",
+        "debiese",
+        "debiésemos",
+        "debieseis",
+        "debiesen"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "imperativo-afirmativo": {
+      "forms": [
+        null,
+        "debe",
+        "deba",
+        "debamos",
+        "debed",
+        "deban"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "imperativo-negativo": {
+      "forms": [
+        null,
+        "no debas",
+        "no deba",
+        "no debamos",
+        "no debáis",
+        "no deban"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "preterito-perfecto": {
+      "forms": [
+        "he debido",
+        "has debido",
+        "ha debido",
+        "hemos debido",
+        "habéis debido",
+        "han debido"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "pluscuamperfecto": {
+      "forms": [
+        "había debido",
+        "habías debido",
+        "había debido",
+        "habíamos debido",
+        "habíais debido",
+        "habían debido"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "futuro-perfecto": {
+      "forms": [
+        "habré debido",
+        "habrás debido",
+        "habrá debido",
+        "habremos debido",
+        "habréis debido",
+        "habrán debido"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "condicional-perfecto": {
+      "forms": [
+        "habría debido",
+        "habrías debido",
+        "habría debido",
+        "habríamos debido",
+        "habríais debido",
+        "habrían debido"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "subjuntivo-perfecto": {
+      "forms": [
+        "haya debido",
+        "hayas debido",
+        "haya debido",
+        "hayamos debido",
+        "hayáis debido",
+        "hayan debido"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "subjuntivo-pluscuamperfecto": {
+      "forms": [
+        "hubiera debido",
+        "hubieras debido",
+        "hubiera debido",
+        "hubiéramos debido",
+        "hubierais debido",
+        "hubieran debido"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "subjuntivo-pluscuamperfecto-se": {
+      "forms": [
+        "hubiese debido",
+        "hubieses debido",
+        "hubiese debido",
+        "hubiésemos debido",
+        "hubieseis debido",
+        "hubiesen debido"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    }
+  },
+  "quiz": [
+    {
+      "question": "deber の直説法現在、1人称単数（yo）は？",
+      "options": [
+        "debo",
+        "debe",
+        "deben"
+      ],
+      "correctIndex": 0,
+      "explanation": "正解は debo。deber のこの形は規則どおりです。"
+    },
+    {
+      "question": "deber の点過去、3人称単数（él / ella / usted）は？",
+      "options": [
+        "debí",
+        "debió",
+        "debieron"
+      ],
+      "correctIndex": 1,
+      "explanation": "正解は debió。deber のこの形は規則どおりです。"
+    },
+    {
+      "question": "deber の未来、1人称単数（yo）は？",
+      "options": [
+        "deberá",
+        "deberán",
+        "deberé"
+      ],
+      "correctIndex": 2,
+      "explanation": "正解は deberé。deber のこの形は規則どおりです。"
+    },
+    {
+      "question": "deber の接続法現在、1人称単数（yo）は？",
+      "options": [
+        "deba",
+        "deban",
+        "debas"
+      ],
+      "correctIndex": 0,
+      "explanation": "正解は deba。deber のこの形は規則どおりです。"
+    },
+    {
+      "question": "deber の肯定命令、2人称単数（tú）は？",
+      "options": [
+        "deba",
+        "debe",
+        "deban"
+      ],
+      "correctIndex": 1,
+      "explanation": "正解は debe。deber のこの形は規則どおりです。"
+    }
+  ]
+}

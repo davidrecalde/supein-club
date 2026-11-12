@@ -1,0 +1,367 @@
+{
+  "infinitive": "volver",
+  "gerund": "volviendo",
+  "gerundIrregular": false,
+  "participle": "vuelto",
+  "participleIrregular": true,
+  "tenses": {
+    "presente": {
+      "forms": [
+        "vuelvo",
+        "vuelves",
+        "vuelve",
+        "volvemos",
+        "volvéis",
+        "vuelven"
+      ],
+      "irregular": [
+        true,
+        true,
+        true,
+        false,
+        false,
+        true
+      ]
+    },
+    "preterito-indefinido": {
+      "forms": [
+        "volví",
+        "volviste",
+        "volvió",
+        "volvimos",
+        "volvisteis",
+        "volvieron"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "preterito-imperfecto": {
+      "forms": [
+        "volvía",
+        "volvías",
+        "volvía",
+        "volvíamos",
+        "volvíais",
+        "volvían"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "futuro": {
+      "forms": [
+        "volveré",
+        "volverás",
+        "volverá",
+        "volveremos",
+        "volveréis",
+        "volverán"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "condicional": {
+      "forms": [
+        "volvería",
+        "volverías",
+        "volvería",
+        "volveríamos",
+        "volveríais",
+        "volverían"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "subjuntivo-presente": {
+      "forms": [
+        "vuelva",
+        "vuelvas",
+        "vuelva",
+        "volvamos",
+        "volváis",
+        "vuelvan"
+      ],
+      "irregular": [
+        true,
+        true,
+        true,
+        false,
+        false,
+        true
+      ]
+    },
+    "subjuntivo-imperfecto-ra": {
+      "forms": [
+        "volviera",
+        "volvieras",
+        "volviera",
+        "volviéramos",
+        "volvierais",
+        "volvieran"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "subjuntivo-imperfecto-se": {
+      "forms": [
+        "volviese",
+        "volvieses",
+        "volviese",
+        "volviésemos",
+        "volvieseis",
+        "volviesen"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "imperativo-afirmativo": {
+      "forms": [
+        null,
+        "vuelve",
+        "vuelva",
+        "volvamos",
+        "volved",
+        "vuelvan"
+      ],
+      "irregular": [
+        false,
+        true,
+        true,
+        false,
+        false,
+        true
+      ]
+    },
+    "imperativo-negativo": {
+      "forms": [
+        null,
+        "no vuelvas",
+        "no vuelva",
+        "no volvamos",
+        "no volváis",
+        "no vuelvan"
+      ],
+      "irregular": [
+        false,
+        true,
+        true,
+        false,
+        false,
+        true
+      ]
+    },
+    "preterito-perfecto": {
+      "forms": [
+        "he vuelto",
+        "has vuelto",
+        "ha vuelto",
+        "hemos vuelto",
+        "habéis vuelto",
+        "han vuelto"
+      ],
+      "irregular": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    "pluscuamperfecto": {
+      "forms": [
+        "había vuelto",
+        "habías vuelto",
+        "había vuelto",
+        "habíamos vuelto",
+        "habíais vuelto",
+        "habían vuelto"
+      ],
+      "irregular": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    "futuro-perfecto": {
+      "forms": [
+        "habré vuelto",
+        "habrás vuelto",
+        "habrá vuelto",
+        "habremos vuelto",
+        "habréis vuelto",
+        "habrán vuelto"
+      ],
+      "irregular": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    "condicional-perfecto": {
+      "forms": [
+        "habría vuelto",
+        "habrías vuelto",
+        "habría vuelto",
+        "habríamos vuelto",
+        "habríais vuelto",
+        "habrían vuelto"
+      ],
+      "irregular": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    "subjuntivo-perfecto": {
+      "forms": [
+        "haya vuelto",
+        "hayas vuelto",
+        "haya vuelto",
+        "hayamos vuelto",
+        "hayáis vuelto",
+        "hayan vuelto"
+      ],
+      "irregular": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    "subjuntivo-pluscuamperfecto": {
+      "forms": [
+        "hubiera vuelto",
+        "hubieras vuelto",
+        "hubiera vuelto",
+        "hubiéramos vuelto",
+        "hubierais vuelto",
+        "hubieran vuelto"
+      ],
+      "irregular": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    "subjuntivo-pluscuamperfecto-se": {
+      "forms": [
+        "hubiese vuelto",
+        "hubieses vuelto",
+        "hubiese vuelto",
+        "hubiésemos vuelto",
+        "hubieseis vuelto",
+        "hubiesen vuelto"
+      ],
+      "irregular": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ]
+    }
+  },
+  "quiz": [
+    {
+      "question": "volver の直説法現在、1人称単数（yo）は？",
+      "options": [
+        "vuelvo",
+        "volvo",
+        "vuelve"
+      ],
+      "correctIndex": 0,
+      "explanation": "正解は vuelvo。volver のこの形は不規則で、規則どおりの volvo にはなりません。"
+    },
+    {
+      "question": "volver の接続法現在、1人称単数（yo）は？",
+      "options": [
+        "volva",
+        "vuelva",
+        "vuelvan"
+      ],
+      "correctIndex": 1,
+      "explanation": "正解は vuelva。volver のこの形は不規則で、規則どおりの volva にはなりません。"
+    },
+    {
+      "question": "volver の肯定命令、2人称単数（tú）は？",
+      "options": [
+        "volve",
+        "vuelva",
+        "vuelve"
+      ],
+      "correctIndex": 2,
+      "explanation": "正解は vuelve。volver のこの形は不規則で、規則どおりの volve にはなりません。"
+    },
+    {
+      "question": "volver の過去分詞は？",
+      "options": [
+        "vuelto",
+        "volvido",
+        "volviendo"
+      ],
+      "correctIndex": 0,
+      "explanation": "正解は vuelto。volver のこの形は不規則で、規則どおりの volvido にはなりません。"
+    },
+    {
+      "question": "volver の点過去、3人称単数（él / ella / usted）は？",
+      "options": [
+        "volví",
+        "volvió",
+        "volvieron"
+      ],
+      "correctIndex": 1,
+      "explanation": "正解は volvió。volver のこの形は規則どおりです。"
+    }
+  ]
+}

@@ -63,4 +63,13 @@ export const VERB_RANKING: Array<{ rank: number; lemmaRank: number; infinitive: 
   { rank: 189, lemmaRank: 849, infinitive: 'mirar', meaning: '見る・眺める' },
 ];
 
-export const RANK_BY_VERB = new Map(VERB_RANKING.map((v) => [v.infinitive, v]));
+// Verbos del campo `verbs` de las unidades que no están entre los 50 (decisión de David,
+// 10 de noviembre de 2026): tienen página propia y se citan aparte, debajo de la lista de 50.
+// Mismo cálculo de puestos con el TSV del CORPES XXI.
+export const COURSE_EXTRA_VERBS: Array<{ rank: number; lemmaRank: number; infinitive: string; meaning: string }> = [
+  { rank: 102, lemmaRank: 455, infinitive: 'acabar', meaning: '終える・終わる' },
+  { rank: 113, lemmaRank: 519, infinitive: 'gustar', meaning: '好きである（〜が気に入る）' },
+  { rank: 216, lemmaRank: 1015, infinitive: 'comer', meaning: '食べる' },
+];
+
+export const RANK_BY_VERB = new Map([...VERB_RANKING, ...COURSE_EXTRA_VERBS].map((v) => [v.infinitive, v]));

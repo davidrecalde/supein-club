@@ -1,0 +1,367 @@
+{
+  "infinitive": "escribir",
+  "gerund": "escribiendo",
+  "gerundIrregular": false,
+  "participle": "escrito",
+  "participleIrregular": true,
+  "tenses": {
+    "presente": {
+      "forms": [
+        "escribo",
+        "escribes",
+        "escribe",
+        "escribimos",
+        "escribís",
+        "escriben"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "preterito-indefinido": {
+      "forms": [
+        "escribí",
+        "escribiste",
+        "escribió",
+        "escribimos",
+        "escribisteis",
+        "escribieron"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "preterito-imperfecto": {
+      "forms": [
+        "escribía",
+        "escribías",
+        "escribía",
+        "escribíamos",
+        "escribíais",
+        "escribían"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "futuro": {
+      "forms": [
+        "escribiré",
+        "escribirás",
+        "escribirá",
+        "escribiremos",
+        "escribiréis",
+        "escribirán"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "condicional": {
+      "forms": [
+        "escribiría",
+        "escribirías",
+        "escribiría",
+        "escribiríamos",
+        "escribiríais",
+        "escribirían"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "subjuntivo-presente": {
+      "forms": [
+        "escriba",
+        "escribas",
+        "escriba",
+        "escribamos",
+        "escribáis",
+        "escriban"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "subjuntivo-imperfecto-ra": {
+      "forms": [
+        "escribiera",
+        "escribieras",
+        "escribiera",
+        "escribiéramos",
+        "escribierais",
+        "escribieran"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "subjuntivo-imperfecto-se": {
+      "forms": [
+        "escribiese",
+        "escribieses",
+        "escribiese",
+        "escribiésemos",
+        "escribieseis",
+        "escribiesen"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "imperativo-afirmativo": {
+      "forms": [
+        null,
+        "escribe",
+        "escriba",
+        "escribamos",
+        "escribid",
+        "escriban"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "imperativo-negativo": {
+      "forms": [
+        null,
+        "no escribas",
+        "no escriba",
+        "no escribamos",
+        "no escribáis",
+        "no escriban"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "preterito-perfecto": {
+      "forms": [
+        "he escrito",
+        "has escrito",
+        "ha escrito",
+        "hemos escrito",
+        "habéis escrito",
+        "han escrito"
+      ],
+      "irregular": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    "pluscuamperfecto": {
+      "forms": [
+        "había escrito",
+        "habías escrito",
+        "había escrito",
+        "habíamos escrito",
+        "habíais escrito",
+        "habían escrito"
+      ],
+      "irregular": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    "futuro-perfecto": {
+      "forms": [
+        "habré escrito",
+        "habrás escrito",
+        "habrá escrito",
+        "habremos escrito",
+        "habréis escrito",
+        "habrán escrito"
+      ],
+      "irregular": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    "condicional-perfecto": {
+      "forms": [
+        "habría escrito",
+        "habrías escrito",
+        "habría escrito",
+        "habríamos escrito",
+        "habríais escrito",
+        "habrían escrito"
+      ],
+      "irregular": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    "subjuntivo-perfecto": {
+      "forms": [
+        "haya escrito",
+        "hayas escrito",
+        "haya escrito",
+        "hayamos escrito",
+        "hayáis escrito",
+        "hayan escrito"
+      ],
+      "irregular": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    "subjuntivo-pluscuamperfecto": {
+      "forms": [
+        "hubiera escrito",
+        "hubieras escrito",
+        "hubiera escrito",
+        "hubiéramos escrito",
+        "hubierais escrito",
+        "hubieran escrito"
+      ],
+      "irregular": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    "subjuntivo-pluscuamperfecto-se": {
+      "forms": [
+        "hubiese escrito",
+        "hubieses escrito",
+        "hubiese escrito",
+        "hubiésemos escrito",
+        "hubieseis escrito",
+        "hubiesen escrito"
+      ],
+      "irregular": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ]
+    }
+  },
+  "quiz": [
+    {
+      "question": "escribir の過去分詞は？",
+      "options": [
+        "escrito",
+        "escribido",
+        "escribiendo"
+      ],
+      "correctIndex": 0,
+      "explanation": "正解は escrito。escribir のこの形は不規則で、規則どおりの escribido にはなりません。"
+    },
+    {
+      "question": "escribir の直説法現在、1人称単数（yo）は？",
+      "options": [
+        "escribe",
+        "escribo",
+        "escriben"
+      ],
+      "correctIndex": 1,
+      "explanation": "正解は escribo。escribir のこの形は規則どおりです。"
+    },
+    {
+      "question": "escribir の点過去、3人称単数（él / ella / usted）は？",
+      "options": [
+        "escribí",
+        "escribieron",
+        "escribió"
+      ],
+      "correctIndex": 2,
+      "explanation": "正解は escribió。escribir のこの形は規則どおりです。"
+    },
+    {
+      "question": "escribir の未来、1人称単数（yo）は？",
+      "options": [
+        "escribiré",
+        "escribirá",
+        "escribirán"
+      ],
+      "correctIndex": 0,
+      "explanation": "正解は escribiré。escribir のこの形は規則どおりです。"
+    },
+    {
+      "question": "escribir の接続法現在、1人称単数（yo）は？",
+      "options": [
+        "escriban",
+        "escriba",
+        "escribas"
+      ],
+      "correctIndex": 1,
+      "explanation": "正解は escriba。escribir のこの形は規則どおりです。"
+    }
+  ]
+}

@@ -1,0 +1,367 @@
+{
+  "infinitive": "tomar",
+  "gerund": "tomando",
+  "gerundIrregular": false,
+  "participle": "tomado",
+  "participleIrregular": false,
+  "tenses": {
+    "presente": {
+      "forms": [
+        "tomo",
+        "tomas",
+        "toma",
+        "tomamos",
+        "tomáis",
+        "toman"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "preterito-indefinido": {
+      "forms": [
+        "tomé",
+        "tomaste",
+        "tomó",
+        "tomamos",
+        "tomasteis",
+        "tomaron"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "preterito-imperfecto": {
+      "forms": [
+        "tomaba",
+        "tomabas",
+        "tomaba",
+        "tomábamos",
+        "tomabais",
+        "tomaban"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "futuro": {
+      "forms": [
+        "tomaré",
+        "tomarás",
+        "tomará",
+        "tomaremos",
+        "tomaréis",
+        "tomarán"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "condicional": {
+      "forms": [
+        "tomaría",
+        "tomarías",
+        "tomaría",
+        "tomaríamos",
+        "tomaríais",
+        "tomarían"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "subjuntivo-presente": {
+      "forms": [
+        "tome",
+        "tomes",
+        "tome",
+        "tomemos",
+        "toméis",
+        "tomen"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "subjuntivo-imperfecto-ra": {
+      "forms": [
+        "tomara",
+        "tomaras",
+        "tomara",
+        "tomáramos",
+        "tomarais",
+        "tomaran"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "subjuntivo-imperfecto-se": {
+      "forms": [
+        "tomase",
+        "tomases",
+        "tomase",
+        "tomásemos",
+        "tomaseis",
+        "tomasen"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "imperativo-afirmativo": {
+      "forms": [
+        null,
+        "toma",
+        "tome",
+        "tomemos",
+        "tomad",
+        "tomen"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "imperativo-negativo": {
+      "forms": [
+        null,
+        "no tomes",
+        "no tome",
+        "no tomemos",
+        "no toméis",
+        "no tomen"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "preterito-perfecto": {
+      "forms": [
+        "he tomado",
+        "has tomado",
+        "ha tomado",
+        "hemos tomado",
+        "habéis tomado",
+        "han tomado"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "pluscuamperfecto": {
+      "forms": [
+        "había tomado",
+        "habías tomado",
+        "había tomado",
+        "habíamos tomado",
+        "habíais tomado",
+        "habían tomado"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "futuro-perfecto": {
+      "forms": [
+        "habré tomado",
+        "habrás tomado",
+        "habrá tomado",
+        "habremos tomado",
+        "habréis tomado",
+        "habrán tomado"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "condicional-perfecto": {
+      "forms": [
+        "habría tomado",
+        "habrías tomado",
+        "habría tomado",
+        "habríamos tomado",
+        "habríais tomado",
+        "habrían tomado"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "subjuntivo-perfecto": {
+      "forms": [
+        "haya tomado",
+        "hayas tomado",
+        "haya tomado",
+        "hayamos tomado",
+        "hayáis tomado",
+        "hayan tomado"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "subjuntivo-pluscuamperfecto": {
+      "forms": [
+        "hubiera tomado",
+        "hubieras tomado",
+        "hubiera tomado",
+        "hubiéramos tomado",
+        "hubierais tomado",
+        "hubieran tomado"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "subjuntivo-pluscuamperfecto-se": {
+      "forms": [
+        "hubiese tomado",
+        "hubieses tomado",
+        "hubiese tomado",
+        "hubiésemos tomado",
+        "hubieseis tomado",
+        "hubiesen tomado"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    }
+  },
+  "quiz": [
+    {
+      "question": "tomar の直説法現在、1人称単数（yo）は？",
+      "options": [
+        "tomo",
+        "toma",
+        "toman"
+      ],
+      "correctIndex": 0,
+      "explanation": "正解は tomo。tomar のこの形は規則どおりです。"
+    },
+    {
+      "question": "tomar の点過去、3人称単数（él / ella / usted）は？",
+      "options": [
+        "tomé",
+        "tomó",
+        "tomaron"
+      ],
+      "correctIndex": 1,
+      "explanation": "正解は tomó。tomar のこの形は規則どおりです。"
+    },
+    {
+      "question": "tomar の未来、1人称単数（yo）は？",
+      "options": [
+        "tomará",
+        "tomarán",
+        "tomaré"
+      ],
+      "correctIndex": 2,
+      "explanation": "正解は tomaré。tomar のこの形は規則どおりです。"
+    },
+    {
+      "question": "tomar の接続法現在、1人称単数（yo）は？",
+      "options": [
+        "tome",
+        "tomen",
+        "tomes"
+      ],
+      "correctIndex": 0,
+      "explanation": "正解は tome。tomar のこの形は規則どおりです。"
+    },
+    {
+      "question": "tomar の肯定命令、2人称単数（tú）は？",
+      "options": [
+        "tome",
+        "toma",
+        "tomen"
+      ],
+      "correctIndex": 1,
+      "explanation": "正解は toma。tomar のこの形は規則どおりです。"
+    }
+  ]
+}

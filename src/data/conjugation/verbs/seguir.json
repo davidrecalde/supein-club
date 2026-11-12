@@ -1,0 +1,367 @@
+{
+  "infinitive": "seguir",
+  "gerund": "siguiendo",
+  "gerundIrregular": true,
+  "participle": "seguido",
+  "participleIrregular": false,
+  "tenses": {
+    "presente": {
+      "forms": [
+        "sigo",
+        "sigues",
+        "sigue",
+        "seguimos",
+        "seguís",
+        "siguen"
+      ],
+      "irregular": [
+        true,
+        true,
+        true,
+        false,
+        false,
+        true
+      ]
+    },
+    "preterito-indefinido": {
+      "forms": [
+        "seguí",
+        "seguiste",
+        "siguió",
+        "seguimos",
+        "seguisteis",
+        "siguieron"
+      ],
+      "irregular": [
+        false,
+        false,
+        true,
+        false,
+        false,
+        true
+      ]
+    },
+    "preterito-imperfecto": {
+      "forms": [
+        "seguía",
+        "seguías",
+        "seguía",
+        "seguíamos",
+        "seguíais",
+        "seguían"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "futuro": {
+      "forms": [
+        "seguiré",
+        "seguirás",
+        "seguirá",
+        "seguiremos",
+        "seguiréis",
+        "seguirán"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "condicional": {
+      "forms": [
+        "seguiría",
+        "seguirías",
+        "seguiría",
+        "seguiríamos",
+        "seguiríais",
+        "seguirían"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "subjuntivo-presente": {
+      "forms": [
+        "siga",
+        "sigas",
+        "siga",
+        "sigamos",
+        "sigáis",
+        "sigan"
+      ],
+      "irregular": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    "subjuntivo-imperfecto-ra": {
+      "forms": [
+        "siguiera",
+        "siguieras",
+        "siguiera",
+        "siguiéramos",
+        "siguierais",
+        "siguieran"
+      ],
+      "irregular": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    "subjuntivo-imperfecto-se": {
+      "forms": [
+        "siguiese",
+        "siguieses",
+        "siguiese",
+        "siguiésemos",
+        "siguieseis",
+        "siguiesen"
+      ],
+      "irregular": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    "imperativo-afirmativo": {
+      "forms": [
+        null,
+        "sigue",
+        "siga",
+        "sigamos",
+        "seguid",
+        "sigan"
+      ],
+      "irregular": [
+        false,
+        true,
+        true,
+        true,
+        false,
+        true
+      ]
+    },
+    "imperativo-negativo": {
+      "forms": [
+        null,
+        "no sigas",
+        "no siga",
+        "no sigamos",
+        "no sigáis",
+        "no sigan"
+      ],
+      "irregular": [
+        false,
+        true,
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    "preterito-perfecto": {
+      "forms": [
+        "he seguido",
+        "has seguido",
+        "ha seguido",
+        "hemos seguido",
+        "habéis seguido",
+        "han seguido"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "pluscuamperfecto": {
+      "forms": [
+        "había seguido",
+        "habías seguido",
+        "había seguido",
+        "habíamos seguido",
+        "habíais seguido",
+        "habían seguido"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "futuro-perfecto": {
+      "forms": [
+        "habré seguido",
+        "habrás seguido",
+        "habrá seguido",
+        "habremos seguido",
+        "habréis seguido",
+        "habrán seguido"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "condicional-perfecto": {
+      "forms": [
+        "habría seguido",
+        "habrías seguido",
+        "habría seguido",
+        "habríamos seguido",
+        "habríais seguido",
+        "habrían seguido"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "subjuntivo-perfecto": {
+      "forms": [
+        "haya seguido",
+        "hayas seguido",
+        "haya seguido",
+        "hayamos seguido",
+        "hayáis seguido",
+        "hayan seguido"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "subjuntivo-pluscuamperfecto": {
+      "forms": [
+        "hubiera seguido",
+        "hubieras seguido",
+        "hubiera seguido",
+        "hubiéramos seguido",
+        "hubierais seguido",
+        "hubieran seguido"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "subjuntivo-pluscuamperfecto-se": {
+      "forms": [
+        "hubiese seguido",
+        "hubieses seguido",
+        "hubiese seguido",
+        "hubiésemos seguido",
+        "hubieseis seguido",
+        "hubiesen seguido"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    }
+  },
+  "quiz": [
+    {
+      "question": "seguir の直説法現在、1人称単数（yo）は？",
+      "options": [
+        "sigo",
+        "sego",
+        "sigue"
+      ],
+      "correctIndex": 0,
+      "explanation": "正解は sigo。seguir のこの形は不規則で、規則どおりの sego にはなりません。"
+    },
+    {
+      "question": "seguir の点過去、3人称単数（él / ella / usted）は？",
+      "options": [
+        "seguió",
+        "siguió",
+        "seguí"
+      ],
+      "correctIndex": 1,
+      "explanation": "正解は siguió。seguir のこの形は不規則で、規則どおりの seguió にはなりません。"
+    },
+    {
+      "question": "seguir の接続法現在、1人称単数（yo）は？",
+      "options": [
+        "sega",
+        "sigan",
+        "siga"
+      ],
+      "correctIndex": 2,
+      "explanation": "正解は siga。seguir のこの形は不規則で、規則どおりの sega にはなりません。"
+    },
+    {
+      "question": "seguir の肯定命令、2人称単数（tú）は？",
+      "options": [
+        "sigue",
+        "segue",
+        "siga"
+      ],
+      "correctIndex": 0,
+      "explanation": "正解は sigue。seguir のこの形は不規則で、規則どおりの segue にはなりません。"
+    },
+    {
+      "question": "seguir の未来、1人称単数（yo）は？",
+      "options": [
+        "seguirá",
+        "seguiré",
+        "seguirán"
+      ],
+      "correctIndex": 1,
+      "explanation": "正解は seguiré。seguir のこの形は規則どおりです。"
+    }
+  ]
+}

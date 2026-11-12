@@ -1,7 +1,7 @@
 ---
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import SEO from '../../../components/SEO.astro';
-import Breadcrumb from '../../../components/Breadcrumb.astro';
+import CoursePageHeader from '../../../components/course/CoursePageHeader.astro';
 import { ABOUT_COURSE_URL, CAST_URL, COURSE_URL } from '../../../data/course';
 import { isCourseVisible } from '../../../utils/units';
 import { getEntry } from 'astro:content';
@@ -40,10 +40,12 @@ const article = {
 <BaseLayout title={title}>
   <SEO slot="seo" title={title} description={description} canonical={canonical} type="article" breadcrumbs={breadcrumbs} authorName="David Recalde" authorUrl={authorUrl} extraGraph={[article]} />
 
+  <CoursePageHeader breadcrumbs={breadcrumbs}>
+    <h1 class="course-page-title">このコースの作り方</h1>
+    <p class="course-page-updated">最終更新日：<time datetime={updated.toISOString()}>2026年11月2日</time></p>
+  </CoursePageHeader>
+
   <article class="page-container py-10">
-    <Breadcrumb items={breadcrumbs} />
-    <h1 class="cast-page-title">このコースの作り方</h1>
-    <p class="cast-card-meta">最終更新日：<time datetime={updated.toISOString()}>2026年11月2日</time></p>
 
     <div class="prose about-course">
       <p>スペイン倶楽部のスペイン語コースは、無料・登録不要で、A1からC2まで自分のペースで進められるコースです。このページでは、誰がどの基準で内容を決め、どこでAIを使い、公開前に人が何を確認しているのかをまとめています。</p>

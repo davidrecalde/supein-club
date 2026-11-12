@@ -1,0 +1,367 @@
+{
+  "infinitive": "acabar",
+  "gerund": "acabando",
+  "gerundIrregular": false,
+  "participle": "acabado",
+  "participleIrregular": false,
+  "tenses": {
+    "presente": {
+      "forms": [
+        "acabo",
+        "acabas",
+        "acaba",
+        "acabamos",
+        "acabáis",
+        "acaban"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "preterito-indefinido": {
+      "forms": [
+        "acabé",
+        "acabaste",
+        "acabó",
+        "acabamos",
+        "acabasteis",
+        "acabaron"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "preterito-imperfecto": {
+      "forms": [
+        "acababa",
+        "acababas",
+        "acababa",
+        "acabábamos",
+        "acababais",
+        "acababan"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "futuro": {
+      "forms": [
+        "acabaré",
+        "acabarás",
+        "acabará",
+        "acabaremos",
+        "acabaréis",
+        "acabarán"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "condicional": {
+      "forms": [
+        "acabaría",
+        "acabarías",
+        "acabaría",
+        "acabaríamos",
+        "acabaríais",
+        "acabarían"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "subjuntivo-presente": {
+      "forms": [
+        "acabe",
+        "acabes",
+        "acabe",
+        "acabemos",
+        "acabéis",
+        "acaben"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "subjuntivo-imperfecto-ra": {
+      "forms": [
+        "acabara",
+        "acabaras",
+        "acabara",
+        "acabáramos",
+        "acabarais",
+        "acabaran"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "subjuntivo-imperfecto-se": {
+      "forms": [
+        "acabase",
+        "acabases",
+        "acabase",
+        "acabásemos",
+        "acabaseis",
+        "acabasen"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "imperativo-afirmativo": {
+      "forms": [
+        null,
+        "acaba",
+        "acabe",
+        "acabemos",
+        "acabad",
+        "acaben"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "imperativo-negativo": {
+      "forms": [
+        null,
+        "no acabes",
+        "no acabe",
+        "no acabemos",
+        "no acabéis",
+        "no acaben"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "preterito-perfecto": {
+      "forms": [
+        "he acabado",
+        "has acabado",
+        "ha acabado",
+        "hemos acabado",
+        "habéis acabado",
+        "han acabado"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "pluscuamperfecto": {
+      "forms": [
+        "había acabado",
+        "habías acabado",
+        "había acabado",
+        "habíamos acabado",
+        "habíais acabado",
+        "habían acabado"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "futuro-perfecto": {
+      "forms": [
+        "habré acabado",
+        "habrás acabado",
+        "habrá acabado",
+        "habremos acabado",
+        "habréis acabado",
+        "habrán acabado"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "condicional-perfecto": {
+      "forms": [
+        "habría acabado",
+        "habrías acabado",
+        "habría acabado",
+        "habríamos acabado",
+        "habríais acabado",
+        "habrían acabado"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "subjuntivo-perfecto": {
+      "forms": [
+        "haya acabado",
+        "hayas acabado",
+        "haya acabado",
+        "hayamos acabado",
+        "hayáis acabado",
+        "hayan acabado"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "subjuntivo-pluscuamperfecto": {
+      "forms": [
+        "hubiera acabado",
+        "hubieras acabado",
+        "hubiera acabado",
+        "hubiéramos acabado",
+        "hubierais acabado",
+        "hubieran acabado"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "subjuntivo-pluscuamperfecto-se": {
+      "forms": [
+        "hubiese acabado",
+        "hubieses acabado",
+        "hubiese acabado",
+        "hubiésemos acabado",
+        "hubieseis acabado",
+        "hubiesen acabado"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    }
+  },
+  "quiz": [
+    {
+      "question": "acabar の直説法現在、1人称単数（yo）は？",
+      "options": [
+        "acabo",
+        "acaba",
+        "acaban"
+      ],
+      "correctIndex": 0,
+      "explanation": "正解は acabo。acabar のこの形は規則どおりです。"
+    },
+    {
+      "question": "acabar の点過去、3人称単数（él / ella / usted）は？",
+      "options": [
+        "acabé",
+        "acabó",
+        "acabaron"
+      ],
+      "correctIndex": 1,
+      "explanation": "正解は acabó。acabar のこの形は規則どおりです。"
+    },
+    {
+      "question": "acabar の未来、1人称単数（yo）は？",
+      "options": [
+        "acabará",
+        "acabarán",
+        "acabaré"
+      ],
+      "correctIndex": 2,
+      "explanation": "正解は acabaré。acabar のこの形は規則どおりです。"
+    },
+    {
+      "question": "acabar の接続法現在、1人称単数（yo）は？",
+      "options": [
+        "acabe",
+        "acaben",
+        "acabes"
+      ],
+      "correctIndex": 0,
+      "explanation": "正解は acabe。acabar のこの形は規則どおりです。"
+    },
+    {
+      "question": "acabar の肯定命令、2人称単数（tú）は？",
+      "options": [
+        "acabe",
+        "acaba",
+        "acaben"
+      ],
+      "correctIndex": 1,
+      "explanation": "正解は acaba。acabar のこの形は規則どおりです。"
+    }
+  ]
+}

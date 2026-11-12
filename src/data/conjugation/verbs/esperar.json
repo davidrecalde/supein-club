@@ -1,0 +1,367 @@
+{
+  "infinitive": "esperar",
+  "gerund": "esperando",
+  "gerundIrregular": false,
+  "participle": "esperado",
+  "participleIrregular": false,
+  "tenses": {
+    "presente": {
+      "forms": [
+        "espero",
+        "esperas",
+        "espera",
+        "esperamos",
+        "esperáis",
+        "esperan"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "preterito-indefinido": {
+      "forms": [
+        "esperé",
+        "esperaste",
+        "esperó",
+        "esperamos",
+        "esperasteis",
+        "esperaron"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "preterito-imperfecto": {
+      "forms": [
+        "esperaba",
+        "esperabas",
+        "esperaba",
+        "esperábamos",
+        "esperabais",
+        "esperaban"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "futuro": {
+      "forms": [
+        "esperaré",
+        "esperarás",
+        "esperará",
+        "esperaremos",
+        "esperaréis",
+        "esperarán"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "condicional": {
+      "forms": [
+        "esperaría",
+        "esperarías",
+        "esperaría",
+        "esperaríamos",
+        "esperaríais",
+        "esperarían"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "subjuntivo-presente": {
+      "forms": [
+        "espere",
+        "esperes",
+        "espere",
+        "esperemos",
+        "esperéis",
+        "esperen"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "subjuntivo-imperfecto-ra": {
+      "forms": [
+        "esperara",
+        "esperaras",
+        "esperara",
+        "esperáramos",
+        "esperarais",
+        "esperaran"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "subjuntivo-imperfecto-se": {
+      "forms": [
+        "esperase",
+        "esperases",
+        "esperase",
+        "esperásemos",
+        "esperaseis",
+        "esperasen"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "imperativo-afirmativo": {
+      "forms": [
+        null,
+        "espera",
+        "espere",
+        "esperemos",
+        "esperad",
+        "esperen"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "imperativo-negativo": {
+      "forms": [
+        null,
+        "no esperes",
+        "no espere",
+        "no esperemos",
+        "no esperéis",
+        "no esperen"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "preterito-perfecto": {
+      "forms": [
+        "he esperado",
+        "has esperado",
+        "ha esperado",
+        "hemos esperado",
+        "habéis esperado",
+        "han esperado"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "pluscuamperfecto": {
+      "forms": [
+        "había esperado",
+        "habías esperado",
+        "había esperado",
+        "habíamos esperado",
+        "habíais esperado",
+        "habían esperado"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "futuro-perfecto": {
+      "forms": [
+        "habré esperado",
+        "habrás esperado",
+        "habrá esperado",
+        "habremos esperado",
+        "habréis esperado",
+        "habrán esperado"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "condicional-perfecto": {
+      "forms": [
+        "habría esperado",
+        "habrías esperado",
+        "habría esperado",
+        "habríamos esperado",
+        "habríais esperado",
+        "habrían esperado"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "subjuntivo-perfecto": {
+      "forms": [
+        "haya esperado",
+        "hayas esperado",
+        "haya esperado",
+        "hayamos esperado",
+        "hayáis esperado",
+        "hayan esperado"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "subjuntivo-pluscuamperfecto": {
+      "forms": [
+        "hubiera esperado",
+        "hubieras esperado",
+        "hubiera esperado",
+        "hubiéramos esperado",
+        "hubierais esperado",
+        "hubieran esperado"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "subjuntivo-pluscuamperfecto-se": {
+      "forms": [
+        "hubiese esperado",
+        "hubieses esperado",
+        "hubiese esperado",
+        "hubiésemos esperado",
+        "hubieseis esperado",
+        "hubiesen esperado"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    }
+  },
+  "quiz": [
+    {
+      "question": "esperar の直説法現在、1人称単数（yo）は？",
+      "options": [
+        "espero",
+        "espera",
+        "esperan"
+      ],
+      "correctIndex": 0,
+      "explanation": "正解は espero。esperar のこの形は規則どおりです。"
+    },
+    {
+      "question": "esperar の点過去、3人称単数（él / ella / usted）は？",
+      "options": [
+        "esperé",
+        "esperó",
+        "esperaron"
+      ],
+      "correctIndex": 1,
+      "explanation": "正解は esperó。esperar のこの形は規則どおりです。"
+    },
+    {
+      "question": "esperar の未来、1人称単数（yo）は？",
+      "options": [
+        "esperará",
+        "esperarán",
+        "esperaré"
+      ],
+      "correctIndex": 2,
+      "explanation": "正解は esperaré。esperar のこの形は規則どおりです。"
+    },
+    {
+      "question": "esperar の接続法現在、1人称単数（yo）は？",
+      "options": [
+        "espere",
+        "esperen",
+        "esperes"
+      ],
+      "correctIndex": 0,
+      "explanation": "正解は espere。esperar のこの形は規則どおりです。"
+    },
+    {
+      "question": "esperar の肯定命令、2人称単数（tú）は？",
+      "options": [
+        "espere",
+        "espera",
+        "esperen"
+      ],
+      "correctIndex": 1,
+      "explanation": "正解は espera。esperar のこの形は規則どおりです。"
+    }
+  ]
+}

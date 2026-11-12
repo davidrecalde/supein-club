@@ -1,0 +1,367 @@
+{
+  "infinitive": "recordar",
+  "gerund": "recordando",
+  "gerundIrregular": false,
+  "participle": "recordado",
+  "participleIrregular": false,
+  "tenses": {
+    "presente": {
+      "forms": [
+        "recuerdo",
+        "recuerdas",
+        "recuerda",
+        "recordamos",
+        "recordáis",
+        "recuerdan"
+      ],
+      "irregular": [
+        true,
+        true,
+        true,
+        false,
+        false,
+        true
+      ]
+    },
+    "preterito-indefinido": {
+      "forms": [
+        "recordé",
+        "recordaste",
+        "recordó",
+        "recordamos",
+        "recordasteis",
+        "recordaron"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "preterito-imperfecto": {
+      "forms": [
+        "recordaba",
+        "recordabas",
+        "recordaba",
+        "recordábamos",
+        "recordabais",
+        "recordaban"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "futuro": {
+      "forms": [
+        "recordaré",
+        "recordarás",
+        "recordará",
+        "recordaremos",
+        "recordaréis",
+        "recordarán"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "condicional": {
+      "forms": [
+        "recordaría",
+        "recordarías",
+        "recordaría",
+        "recordaríamos",
+        "recordaríais",
+        "recordarían"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "subjuntivo-presente": {
+      "forms": [
+        "recuerde",
+        "recuerdes",
+        "recuerde",
+        "recordemos",
+        "recordéis",
+        "recuerden"
+      ],
+      "irregular": [
+        true,
+        true,
+        true,
+        false,
+        false,
+        true
+      ]
+    },
+    "subjuntivo-imperfecto-ra": {
+      "forms": [
+        "recordara",
+        "recordaras",
+        "recordara",
+        "recordáramos",
+        "recordarais",
+        "recordaran"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "subjuntivo-imperfecto-se": {
+      "forms": [
+        "recordase",
+        "recordases",
+        "recordase",
+        "recordásemos",
+        "recordaseis",
+        "recordasen"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "imperativo-afirmativo": {
+      "forms": [
+        null,
+        "recuerda",
+        "recuerde",
+        "recordemos",
+        "recordad",
+        "recuerden"
+      ],
+      "irregular": [
+        false,
+        true,
+        true,
+        false,
+        false,
+        true
+      ]
+    },
+    "imperativo-negativo": {
+      "forms": [
+        null,
+        "no recuerdes",
+        "no recuerde",
+        "no recordemos",
+        "no recordéis",
+        "no recuerden"
+      ],
+      "irregular": [
+        false,
+        true,
+        true,
+        false,
+        false,
+        true
+      ]
+    },
+    "preterito-perfecto": {
+      "forms": [
+        "he recordado",
+        "has recordado",
+        "ha recordado",
+        "hemos recordado",
+        "habéis recordado",
+        "han recordado"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "pluscuamperfecto": {
+      "forms": [
+        "había recordado",
+        "habías recordado",
+        "había recordado",
+        "habíamos recordado",
+        "habíais recordado",
+        "habían recordado"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "futuro-perfecto": {
+      "forms": [
+        "habré recordado",
+        "habrás recordado",
+        "habrá recordado",
+        "habremos recordado",
+        "habréis recordado",
+        "habrán recordado"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "condicional-perfecto": {
+      "forms": [
+        "habría recordado",
+        "habrías recordado",
+        "habría recordado",
+        "habríamos recordado",
+        "habríais recordado",
+        "habrían recordado"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "subjuntivo-perfecto": {
+      "forms": [
+        "haya recordado",
+        "hayas recordado",
+        "haya recordado",
+        "hayamos recordado",
+        "hayáis recordado",
+        "hayan recordado"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "subjuntivo-pluscuamperfecto": {
+      "forms": [
+        "hubiera recordado",
+        "hubieras recordado",
+        "hubiera recordado",
+        "hubiéramos recordado",
+        "hubierais recordado",
+        "hubieran recordado"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "subjuntivo-pluscuamperfecto-se": {
+      "forms": [
+        "hubiese recordado",
+        "hubieses recordado",
+        "hubiese recordado",
+        "hubiésemos recordado",
+        "hubieseis recordado",
+        "hubiesen recordado"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    }
+  },
+  "quiz": [
+    {
+      "question": "recordar の直説法現在、1人称単数（yo）は？",
+      "options": [
+        "recuerdo",
+        "recordo",
+        "recuerda"
+      ],
+      "correctIndex": 0,
+      "explanation": "正解は recuerdo。recordar のこの形は不規則で、規則どおりの recordo にはなりません。"
+    },
+    {
+      "question": "recordar の接続法現在、1人称単数（yo）は？",
+      "options": [
+        "recorde",
+        "recuerde",
+        "recuerden"
+      ],
+      "correctIndex": 1,
+      "explanation": "正解は recuerde。recordar のこの形は不規則で、規則どおりの recorde にはなりません。"
+    },
+    {
+      "question": "recordar の肯定命令、2人称単数（tú）は？",
+      "options": [
+        "recorda",
+        "recuerde",
+        "recuerda"
+      ],
+      "correctIndex": 2,
+      "explanation": "正解は recuerda。recordar のこの形は不規則で、規則どおりの recorda にはなりません。"
+    },
+    {
+      "question": "recordar の点過去、3人称単数（él / ella / usted）は？",
+      "options": [
+        "recordó",
+        "recordé",
+        "recordaron"
+      ],
+      "correctIndex": 0,
+      "explanation": "正解は recordó。recordar のこの形は規則どおりです。"
+    },
+    {
+      "question": "recordar の未来、1人称単数（yo）は？",
+      "options": [
+        "recordará",
+        "recordaré",
+        "recordarán"
+      ],
+      "correctIndex": 1,
+      "explanation": "正解は recordaré。recordar のこの形は規則どおりです。"
+    }
+  ]
+}

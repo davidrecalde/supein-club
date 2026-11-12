@@ -1,0 +1,367 @@
+{
+  "infinitive": "hablar",
+  "gerund": "hablando",
+  "gerundIrregular": false,
+  "participle": "hablado",
+  "participleIrregular": false,
+  "tenses": {
+    "presente": {
+      "forms": [
+        "hablo",
+        "hablas",
+        "habla",
+        "hablamos",
+        "habláis",
+        "hablan"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "preterito-indefinido": {
+      "forms": [
+        "hablé",
+        "hablaste",
+        "habló",
+        "hablamos",
+        "hablasteis",
+        "hablaron"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "preterito-imperfecto": {
+      "forms": [
+        "hablaba",
+        "hablabas",
+        "hablaba",
+        "hablábamos",
+        "hablabais",
+        "hablaban"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "futuro": {
+      "forms": [
+        "hablaré",
+        "hablarás",
+        "hablará",
+        "hablaremos",
+        "hablaréis",
+        "hablarán"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "condicional": {
+      "forms": [
+        "hablaría",
+        "hablarías",
+        "hablaría",
+        "hablaríamos",
+        "hablaríais",
+        "hablarían"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "subjuntivo-presente": {
+      "forms": [
+        "hable",
+        "hables",
+        "hable",
+        "hablemos",
+        "habléis",
+        "hablen"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "subjuntivo-imperfecto-ra": {
+      "forms": [
+        "hablara",
+        "hablaras",
+        "hablara",
+        "habláramos",
+        "hablarais",
+        "hablaran"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "subjuntivo-imperfecto-se": {
+      "forms": [
+        "hablase",
+        "hablases",
+        "hablase",
+        "hablásemos",
+        "hablaseis",
+        "hablasen"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "imperativo-afirmativo": {
+      "forms": [
+        null,
+        "habla",
+        "hable",
+        "hablemos",
+        "hablad",
+        "hablen"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "imperativo-negativo": {
+      "forms": [
+        null,
+        "no hables",
+        "no hable",
+        "no hablemos",
+        "no habléis",
+        "no hablen"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "preterito-perfecto": {
+      "forms": [
+        "he hablado",
+        "has hablado",
+        "ha hablado",
+        "hemos hablado",
+        "habéis hablado",
+        "han hablado"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "pluscuamperfecto": {
+      "forms": [
+        "había hablado",
+        "habías hablado",
+        "había hablado",
+        "habíamos hablado",
+        "habíais hablado",
+        "habían hablado"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "futuro-perfecto": {
+      "forms": [
+        "habré hablado",
+        "habrás hablado",
+        "habrá hablado",
+        "habremos hablado",
+        "habréis hablado",
+        "habrán hablado"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "condicional-perfecto": {
+      "forms": [
+        "habría hablado",
+        "habrías hablado",
+        "habría hablado",
+        "habríamos hablado",
+        "habríais hablado",
+        "habrían hablado"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "subjuntivo-perfecto": {
+      "forms": [
+        "haya hablado",
+        "hayas hablado",
+        "haya hablado",
+        "hayamos hablado",
+        "hayáis hablado",
+        "hayan hablado"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "subjuntivo-pluscuamperfecto": {
+      "forms": [
+        "hubiera hablado",
+        "hubieras hablado",
+        "hubiera hablado",
+        "hubiéramos hablado",
+        "hubierais hablado",
+        "hubieran hablado"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "subjuntivo-pluscuamperfecto-se": {
+      "forms": [
+        "hubiese hablado",
+        "hubieses hablado",
+        "hubiese hablado",
+        "hubiésemos hablado",
+        "hubieseis hablado",
+        "hubiesen hablado"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    }
+  },
+  "quiz": [
+    {
+      "question": "hablar の直説法現在、1人称単数（yo）は？",
+      "options": [
+        "hablo",
+        "habla",
+        "hablan"
+      ],
+      "correctIndex": 0,
+      "explanation": "正解は hablo。hablar のこの形は規則どおりです。"
+    },
+    {
+      "question": "hablar の点過去、3人称単数（él / ella / usted）は？",
+      "options": [
+        "hablé",
+        "habló",
+        "hablaron"
+      ],
+      "correctIndex": 1,
+      "explanation": "正解は habló。hablar のこの形は規則どおりです。"
+    },
+    {
+      "question": "hablar の未来、1人称単数（yo）は？",
+      "options": [
+        "hablará",
+        "hablarán",
+        "hablaré"
+      ],
+      "correctIndex": 2,
+      "explanation": "正解は hablaré。hablar のこの形は規則どおりです。"
+    },
+    {
+      "question": "hablar の接続法現在、1人称単数（yo）は？",
+      "options": [
+        "hable",
+        "hablen",
+        "hables"
+      ],
+      "correctIndex": 0,
+      "explanation": "正解は hable。hablar のこの形は規則どおりです。"
+    },
+    {
+      "question": "hablar の肯定命令、2人称単数（tú）は？",
+      "options": [
+        "hable",
+        "habla",
+        "hablen"
+      ],
+      "correctIndex": 1,
+      "explanation": "正解は habla。hablar のこの形は規則どおりです。"
+    }
+  ]
+}
