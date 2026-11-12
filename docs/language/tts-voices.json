@@ -119,7 +119,8 @@
       "profile": "Hombre español de unos 70 años. Habla español de España con pronunciación peninsular estándar, con calma y amabilidad."
     },
     "female-senior": {
-      "status": "propuesta",
+      "status": "aprobada",
+      "_approved": "Aprobada por David el 11 de noviembre de 2026 al escuchar la unidad 19 (señora que indica el camino).",
       "voice": "Erinome",
       "accent": "peninsular estándar",
       "profile": "Mujer española de unos 65 años. Habla español de España con pronunciación peninsular estándar, con calma y amabilidad."
