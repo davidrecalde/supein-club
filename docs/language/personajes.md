@@ -116,6 +116,8 @@ Para personajes de una sola escena (camareros, Laura, Marcos, Lucía y Pablo, pr
 
 ## Plan de audio en el nivel gratuito (decisión de David del 3 de noviembre de 2026)
 
+> **Actualización del 12 de noviembre de 2026:** el proyecto «Open Code» pasa al Nivel 1 de pago con saldo prepago (5.000 JPY, sin recarga automática): 10 peticiones por minuto y 100 al día. Límites y precios en `docs/language/tts-voices.json` → `quota` y `billing`.
+
 - Proyecto «Open Code» de Google AI Studio, clave en la variable de entorno `GEMINI_API_KEY` (nunca en el repositorio). Nivel gratuito: 3 peticiones por minuto, 10 al día. Las frases del curso son públicas, así que no importa que el nivel gratuito permita a Google usar el contenido.
 - Para no gastar una petición por frase, cada petición genera todas las frases de una unidad seguidas, con pausas largas entre ellas; el script corta el audio por los silencios y comprueba que salen tantos archivos como frases. Dos peticiones por unidad (lenta y natural): unas 130 en total con las 62 unidades y las transcripciones de los simulacros, es decir, de dos a tres semanas a ritmo de 6-8 al día, dejando margen para repetir.
 - Los diálogos de dos personas usan el modo de varios hablantes, con la voz fija de cada personaje.

@@ -10,10 +10,21 @@
     "bitsPerSample": 16
   },
   "quota": {
-    "_doc": "Nivel gratuito del proyecto «Open Code»: 3 peticiones por minuto y 10 al día (el día de la cuota termina a medianoche de la hora del Pacífico). Se deja 1 petición diaria de reserva para pruebas.",
-    "minIntervalSeconds": 25,
-    "maxRequestsPerDay": 10,
-    "reservePerDay": 1
+    "_doc": "Nivel 1 del proyecto «Open Code» (12 de noviembre de 2026): 10 peticiones por minuto, 100 al día y 10.000 tokens de entrada por minuto. El día de la cuota termina a medianoche de la hora del Pacífico (17:00 en Japón). Se dejan 7 s entre peticiones (menos de 9 por minuto) y 5 peticiones diarias de reserva para pruebas. Antes, en el nivel gratuito: 3 por minuto y 10 al día.",
+    "minIntervalSeconds": 7,
+    "maxRequestsPerDay": 100,
+    "reservePerDay": 5,
+    "maxInputTokensPerMinute": 10000
+  },
+  "billing": {
+    "_doc": "Facturación prepago desde el 12 de noviembre de 2026 (cuenta CRE-Rankings): David cargó 5.000 JPY sin recarga automática; los créditos vencen al año. Cuando se acaba el saldo, Gemini deja de responder: ese es el tope real. Los scripts llevan además su propia estimación del gasto (audio-src/manifest.json → spend, scripts/tts/billing.mjs) y se detienen antes de maxSpendJpy. Precios de gemini-3.1-flash-tts-preview consultados el 12 de noviembre de 2026; tipo de cambio e impuesto (10 %) prudentes.",
+    "maxSpendJpy": 5000,
+    "stopMarginJpy": 100,
+    "usdPerMillionInputTokens": 1,
+    "usdPerMillionOutputTokens": 20,
+    "audioTokensPerSecond": 25,
+    "jpyPerUsd": 158,
+    "taxRate": 0.1
   },
   "promptTemplate": {
     "status": "confirmada",
