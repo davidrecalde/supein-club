@@ -1481,6 +1481,25 @@ html[data-variety='la'] .vocab-pair .v-es .v-tag {
   text-decoration: underline;
 }
 
+/* Audio de la prueba auditiva de los simulacros (ExamAudio.astro): solo con archivo aprobado */
+.exam-audio {
+  margin: 12px 0 20px;
+  padding: 14px 18px;
+  border: 1px solid #E8E8E6;
+  border-radius: 12px;
+  background: #fff;
+}
+.exam-audio figcaption {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+.exam-audio audio {
+  display: block;
+  width: 100%;
+}
+
 /* Audio de la unidad (UnitAudio.astro): solo aparece cuando hay archivos aprobados */
 .unit-audio {
   margin: 0 0 28px;

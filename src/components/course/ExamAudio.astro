@@ -1,0 +1,40 @@
+---
+// Audio de una tarea de la prueba auditiva (聴解) de un simulacro DELE. Lee src/data/exam-audio.json,
+// que escribe `node scripts/tts/exam.mjs --encode` tras la aprobación de David. Sin archivo se muestra
+// el aviso de 音声準備中: nunca un reproductor vacío. Sin JavaScript, el <audio controls> funciona igual.
+import { Volume2 } from 'lucide-astro';
+import AiAudioLabel from './AiAudioLabel.astro';
+import examAudio from '../../data/exam-audio.json';
+
+interface Props {
+  unit: number;
+  task?: number;
+}
+
+const { unit, task = 1 } = Astro.props;
+const item = (examAudio as Record<string, Record<string, { src: string; seconds: number }>>)[String(unit)]?.[String(task)];
+---
+{item ? (
+  <figure class="exam-audio" data-exam-audio={`${unit}-${task}`}>
+    <figcaption>
+      <span class="unit-audio-icon" aria-hidden="true"><Volume2 size={20} /></span>
+      <span class="unit-audio-head">
+        <span class="unit-audio-title">本番と同じように、2回聞いてから答えましょう</span>
+        <AiAudioLabel />
+      </span>
+    </figcaption>
+    <audio controls preload="none" src={item.src}>
+      <a href={item.src}>音声ファイル（MP3）</a>
+    </audio>
+  </figure>
+) : (
+  <p>音声準備中です。今は下のスクリプトを読んで、聞いているつもりで答えを考えてみましょう。</p>
+)}
+
+<script>
+  document.querySelectorAll<HTMLElement>('[data-exam-audio]').forEach((box) => {
+    box.querySelector('audio')?.addEventListener('play', () => {
+      (window as any).gtag?.('event', 'audio_played', { unit: location.pathname, speed: 'exam', task: box.dataset.examAudio });
+    });
+  });
+</script>
