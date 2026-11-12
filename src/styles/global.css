@@ -1481,6 +1481,44 @@ html[data-variety='la'] .vocab-pair .v-es .v-tag {
   text-decoration: underline;
 }
 
+/* Tarjeta pequeña de LINE (LineCard.astro): en el flujo, se cierra y no vuelve */
+.line-card {
+  position: relative;
+  margin: 16px 0;
+  padding: 12px 40px 12px 14px;
+  border: 1px solid #D1FAE5;
+  border-radius: 10px;
+  background: #fff;
+  font-size: 14px;
+}
+.line-card[hidden] {
+  display: none;
+}
+.line-card p {
+  margin: 0 0 8px;
+}
+.line-card-btn {
+  display: inline-block;
+  padding: 6px 14px;
+  border-radius: 999px;
+  background: #06C755;
+  color: #fff !important;
+  font-weight: 700;
+  text-decoration: none !important;
+}
+.line-card-close {
+  position: absolute;
+  top: 6px;
+  right: 8px;
+  width: 32px;
+  height: 32px;
+  border: 0;
+  background: transparent;
+  color: #6b7280;
+  font-size: 18px;
+  cursor: pointer;
+}
+
 /* Audio de la prueba auditiva de los simulacros (ExamAudio.astro): solo con archivo aprobado */
 .exam-audio {
   margin: 12px 0 20px;

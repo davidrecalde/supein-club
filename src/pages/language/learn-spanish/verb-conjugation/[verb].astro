@@ -1,4 +1,5 @@
 ---
+import LineCard from '../../../../components/course/LineCard.astro';
 import { getEntry } from 'astro:content';
 import BaseLayout from '../../../../layouts/BaseLayout.astro';
 import SEO from '../../../../components/SEO.astro';
@@ -209,6 +210,7 @@ const fmt = (d: Date) => d.toLocaleDateString('ja-JP', { year: 'numeric', month:
         <p>{otherVerbs.map((v, i) => <>{i > 0 && '・'}<a href={verbUrl(v)} lang="es">{v}</a></>)}</p>
         <p><a href={CONJUGATION_URL}>スペイン語 動詞の活用一覧（検索・時制マップ・頻出50動詞）へ</a></p>
       </section>
+      <LineCard source="conjugator" text="動詞の覚え方や新しいユニットのお知らせを、LINEでお届けしています。" />
     </div>
 
 
