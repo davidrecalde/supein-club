@@ -33,12 +33,6 @@ function applyVariety(prefs: CoursePrefs): void {
     const first = row.cells[0]?.textContent?.trim() ?? '';
     if (!/^vosotr/i.test(first)) return;
     row.classList.add('row-vosotros');
-    if (!row.cells[0].querySelector('.only-spain')) {
-      const badge = document.createElement('span');
-      badge.className = 'only-spain';
-      badge.textContent = 'スペインのみ';
-      row.cells[0].append(' ', badge);
-    }
   });
   document.querySelectorAll<HTMLTableElement>('.unit-body table, .prefs-preview table').forEach((table) => {
     const rows = table.querySelectorAll('.row-vosotros');
@@ -50,12 +44,12 @@ function applyVariety(prefs: CoursePrefs): void {
       toggle.className = 'vosotros-toggle';
       toggle.addEventListener('click', () => {
         table.classList.toggle('show-vosotros');
-        toggle!.textContent = table.classList.contains('show-vosotros') ? 'vosotros の形を隠す' : 'vosotros の形（スペインのみ）を表示';
+        toggle!.textContent = table.classList.contains('show-vosotros') ? 'vosotros の形を隠す' : 'vosotros の形を表示';
       });
       table.after(toggle);
     }
     table.classList.remove('show-vosotros');
-    toggle.textContent = 'vosotros の形（スペインのみ）を表示';
+    toggle.textContent = 'vosotros の形を表示';
     toggle.hidden = prefs.variety !== 'la';
   });
 }
