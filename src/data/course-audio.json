@@ -1716,5 +1716,1948 @@
       "seconds": 4.31,
       "hash": "6274c13645284102"
     }
+  ],
+  "23": [
+    {
+      "index": 0,
+      "text": "Toledo es pequeña, pero muy bonita.",
+      "speaker": "narrator",
+      "src": "/audio/units/u23/u23-01.mp3",
+      "slow": "/audio/units/u23/u23-01-slow.mp3",
+      "seconds": 4.36,
+      "hash": "5a46504edf538e16"
+    },
+    {
+      "index": 1,
+      "text": "No salí porque llovía.",
+      "speaker": "narrator",
+      "src": "/audio/units/u23/u23-02.mp3",
+      "slow": "/audio/units/u23/u23-02-slow.mp3",
+      "seconds": 2.2,
+      "hash": "b8e170184c161e21"
+    },
+    {
+      "index": 2,
+      "text": "Como llovía, no salí.",
+      "speaker": "narrator",
+      "src": "/audio/units/u23/u23-03.mp3",
+      "slow": "/audio/units/u23/u23-03-slow.mp3",
+      "seconds": 2.18,
+      "hash": "7f6037cc680be95b"
+    },
+    {
+      "index": 3,
+      "text": "Aunque estaba cansada, fui al museo.",
+      "speaker": "narrator",
+      "src": "/audio/units/u23/u23-04.mp3",
+      "slow": "/audio/units/u23/u23-04-slow.mp3",
+      "seconds": 3.53,
+      "hash": "c1e9f2aea8641140"
+    },
+    {
+      "index": 4,
+      "text": "Estaba cansada, así que me acosté pronto.",
+      "speaker": "narrator",
+      "src": "/audio/units/u23/u23-05.mp3",
+      "slow": "/audio/units/u23/u23-05-slow.mp3",
+      "seconds": 3.8,
+      "hash": "44de657f2bb234ba"
+    },
+    {
+      "index": 5,
+      "text": "Si tienes tiempo, visita Toledo.",
+      "speaker": "narrator",
+      "src": "/audio/units/u23/u23-06.mp3",
+      "slow": "/audio/units/u23/u23-06-slow.mp3",
+      "seconds": 3.11,
+      "hash": "9b3b705be2e8bf52"
+    }
+  ],
+  "24": [
+    {
+      "index": 0,
+      "text": "Hola, Kenta. Soy Daniel. Te llamo porque el viernes hay una fiesta en mi casa.",
+      "speaker": "narrator",
+      "src": "/audio/units/u24/u24-01.mp3",
+      "slow": "/audio/units/u24/u24-01-slow.mp3",
+      "seconds": 6.73,
+      "hash": "cfd26c82e6e4670a"
+    },
+    {
+      "index": 1,
+      "text": "¿Podrías traer algo de beber? Llámame cuando puedas.",
+      "speaker": "narrator",
+      "src": "/audio/units/u24/u24-02.mp3",
+      "slow": "/audio/units/u24/u24-02-slow.mp3",
+      "seconds": 4.06,
+      "hash": "33dedb978c21c1fe"
+    },
+    {
+      "index": 2,
+      "text": "Atención, por favor. El vuelo con destino a Valencia lleva cuarenta minutos de retraso.",
+      "speaker": "narrator",
+      "src": "/audio/units/u24/u24-03.mp3",
+      "slow": "/audio/units/u24/u24-03-slow.mp3",
+      "seconds": 6.73,
+      "hash": "51fdb043ef53e688"
+    },
+    {
+      "index": 3,
+      "text": "Los pasajeros deben esperar en la puerta doce.",
+      "speaker": "narrator",
+      "src": "/audio/units/u24/u24-04.mp3",
+      "slow": "/audio/units/u24/u24-04-slow.mp3",
+      "seconds": 3.45,
+      "hash": "ebad4df6b2e225b5"
+    },
+    {
+      "index": 4,
+      "text": "¿Has estado alguna vez en Valencia?",
+      "speaker": "narrator",
+      "src": "/audio/units/u24/u24-05.mp3",
+      "slow": "/audio/units/u24/u24-05-slow.mp3",
+      "seconds": 2.32,
+      "hash": "6409a40f8d7f2da0"
+    }
+  ],
+  "25": [
+    {
+      "index": 0,
+      "text": "Yui, ¿cómo es el subjuntivo de «tener»?",
+      "speaker": "kenta",
+      "src": "/audio/units/u25/u25-01.mp3",
+      "slow": "/audio/units/u25/u25-01-slow.mp3",
+      "seconds": 4.24,
+      "hash": "ffe057b6e2807d8d"
+    },
+    {
+      "index": 1,
+      "text": "Muy fácil: tengo, sin la o, y con a: tenga.",
+      "speaker": "yui",
+      "src": "/audio/units/u25/u25-02.mp3",
+      "slow": "/audio/units/u25/u25-02-slow.mp3",
+      "seconds": 4.72,
+      "hash": "b4e526281ddd730b"
+    },
+    {
+      "index": 2,
+      "text": "¿Y el de «ir»?",
+      "speaker": "kenta",
+      "src": "/audio/units/u25/u25-03.mp3",
+      "slow": "/audio/units/u25/u25-03-slow.mp3",
+      "seconds": 1.48,
+      "hash": "436c5bc5abe63ab6"
+    },
+    {
+      "index": 3,
+      "text": "Ese es irregular: vaya, vayas, vaya… Ojalá te vaya bien la reunión de mañana.",
+      "speaker": "yui",
+      "src": "/audio/units/u25/u25-04.mp3",
+      "slow": "/audio/units/u25/u25-04-slow.mp3",
+      "seconds": 7.54,
+      "hash": "15977662f3fe7523"
+    },
+    {
+      "index": 4,
+      "text": "¡Gracias! Espero que mi jefe esté de buen humor.",
+      "speaker": "kenta",
+      "src": "/audio/units/u25/u25-05.mp3",
+      "slow": "/audio/units/u25/u25-05-slow.mp3",
+      "seconds": 4.68,
+      "hash": "c787e7153ae4f03c"
+    },
+    {
+      "index": 5,
+      "text": "hable, hables, hable, hablemos, habléis, hablen",
+      "speaker": "narrator",
+      "src": "/audio/units/u25/u25-06.mp3",
+      "slow": "/audio/units/u25/u25-06-slow.mp3",
+      "seconds": 7.47,
+      "hash": "00d86f2df6614126"
+    },
+    {
+      "index": 6,
+      "text": "coma, comas, coma, comamos, comáis, coman",
+      "speaker": "narrator",
+      "src": "/audio/units/u25/u25-07.mp3",
+      "slow": "/audio/units/u25/u25-07-slow.mp3",
+      "seconds": 7.29,
+      "hash": "fc0e47e12161f451"
+    },
+    {
+      "index": 7,
+      "text": "sea, seas, sea, seamos, seáis, sean",
+      "speaker": "narrator",
+      "src": "/audio/units/u25/u25-08.mp3",
+      "slow": "/audio/units/u25/u25-08-slow.mp3",
+      "seconds": 7.71,
+      "hash": "b47cdba6f394270a"
+    },
+    {
+      "index": 8,
+      "text": "vaya, vayas, vaya, vayamos, vayáis, vayan",
+      "speaker": "narrator",
+      "src": "/audio/units/u25/u25-09.mp3",
+      "slow": "/audio/units/u25/u25-09-slow.mp3",
+      "seconds": 8.46,
+      "hash": "f80676f03b18c590"
+    },
+    {
+      "index": 9,
+      "text": "Es importante que estudiemos todos los días.",
+      "speaker": "narrator",
+      "src": "/audio/units/u25/u25-10.mp3",
+      "slow": "/audio/units/u25/u25-10-slow.mp3",
+      "seconds": 3.8,
+      "hash": "e0753f8d999d9186"
+    },
+    {
+      "index": 10,
+      "text": "No hables tan rápido, por favor.",
+      "speaker": "narrator",
+      "src": "/audio/units/u25/u25-11.mp3",
+      "slow": "/audio/units/u25/u25-11-slow.mp3",
+      "seconds": 2.59,
+      "hash": "f92c7693ba2b0297"
+    },
+    {
+      "index": 11,
+      "text": "Ojalá apruebe el examen.",
+      "speaker": "narrator",
+      "src": "/audio/units/u25/u25-12.mp3",
+      "slow": "/audio/units/u25/u25-12-slow.mp3",
+      "seconds": 2.49,
+      "hash": "bcbbc7482b2a99be"
+    }
+  ],
+  "26": [
+    {
+      "index": 0,
+      "text": "Quiero que limpies la cocina.",
+      "speaker": "narrator",
+      "src": "/audio/units/u26/u26-01.mp3",
+      "slow": "/audio/units/u26/u26-01-slow.mp3",
+      "seconds": 2.61,
+      "hash": "47644c50b58c9b72"
+    },
+    {
+      "index": 1,
+      "text": "Me alegra que estés aquí.",
+      "speaker": "narrator",
+      "src": "/audio/units/u26/u26-02.mp3",
+      "slow": "/audio/units/u26/u26-02-slow.mp3",
+      "seconds": 2.19,
+      "hash": "a71d222eaed38960"
+    },
+    {
+      "index": 2,
+      "text": "No creo que llueva mañana.",
+      "speaker": "narrator",
+      "src": "/audio/units/u26/u26-03.mp3",
+      "slow": "/audio/units/u26/u26-03-slow.mp3",
+      "seconds": 2.03,
+      "hash": "9049cd7552a1e0ec"
+    },
+    {
+      "index": 3,
+      "text": "¡Ojalá apruebe el examen!",
+      "speaker": "narrator",
+      "src": "/audio/units/u26/u26-04.mp3",
+      "slow": "/audio/units/u26/u26-04-slow.mp3",
+      "seconds": 2.53,
+      "hash": "84216b849ae58c58"
+    },
+    {
+      "index": 4,
+      "text": "Espero que te guste Salamanca.",
+      "speaker": "narrator",
+      "src": "/audio/units/u26/u26-05.mp3",
+      "slow": "/audio/units/u26/u26-05-slow.mp3",
+      "seconds": 2.47,
+      "hash": "87b041330e27b0bd"
+    }
+  ],
+  "27": [
+    {
+      "index": 0,
+      "text": "Cuando termine los exámenes, viajaré por España.",
+      "speaker": "narrator",
+      "src": "/audio/units/u27/u27-01.mp3",
+      "slow": "/audio/units/u27/u27-01-slow.mp3",
+      "seconds": 4.29,
+      "hash": "def44e25b49958d0"
+    },
+    {
+      "index": 1,
+      "text": "Te lo explico para que lo entiendas.",
+      "speaker": "narrator",
+      "src": "/audio/units/u27/u27-02.mp3",
+      "slow": "/audio/units/u27/u27-02-slow.mp3",
+      "seconds": 2.81,
+      "hash": "ef5ef36c6181de5d"
+    },
+    {
+      "index": 2,
+      "text": "Busco un piso que tenga terraza.",
+      "speaker": "narrator",
+      "src": "/audio/units/u27/u27-03.mp3",
+      "slow": "/audio/units/u27/u27-03-slow.mp3",
+      "seconds": 2.87,
+      "hash": "731e3dd92af81ce6"
+    },
+    {
+      "index": 3,
+      "text": "Vivo en un piso que tiene terraza.",
+      "speaker": "narrator",
+      "src": "/audio/units/u27/u27-04.mp3",
+      "slow": "/audio/units/u27/u27-04-slow.mp3",
+      "seconds": 2.84,
+      "hash": "5757e19f95e8df23"
+    },
+    {
+      "index": 4,
+      "text": "¿Hay alguien que hable japonés?",
+      "speaker": "narrator",
+      "src": "/audio/units/u27/u27-05.mp3",
+      "slow": "/audio/units/u27/u27-05-slow.mp3",
+      "seconds": 2.08,
+      "hash": "073543bd4a0dbcb9"
+    }
+  ],
+  "28": [
+    {
+      "index": 0,
+      "text": "Cuando llegué a la reunión, ya había empezado.",
+      "speaker": "narrator",
+      "src": "/audio/units/u28/u28-01.mp3",
+      "slow": "/audio/units/u28/u28-01-slow.mp3",
+      "seconds": 4.17,
+      "hash": "c830d7cec6373ab7"
+    },
+    {
+      "index": 1,
+      "text": "Nunca antes había visto el mar Mediterráneo.",
+      "speaker": "narrator",
+      "src": "/audio/units/u28/u28-02.mp3",
+      "slow": "/audio/units/u28/u28-02-slow.mp3",
+      "seconds": 3.69,
+      "hash": "d46311af14a86b50"
+    },
+    {
+      "index": 2,
+      "text": "Me di cuenta de que había olvidado las llaves.",
+      "speaker": "narrator",
+      "src": "/audio/units/u28/u28-03.mp3",
+      "slow": "/audio/units/u28/u28-03-slow.mp3",
+      "seconds": 3.92,
+      "hash": "b69488bc6efa560c"
+    },
+    {
+      "index": 3,
+      "text": "Cuando llegamos a la estación, el tren ya había salido.",
+      "speaker": "narrator",
+      "src": "/audio/units/u28/u28-04.mp3",
+      "slow": "/audio/units/u28/u28-04-slow.mp3",
+      "seconds": 5.13,
+      "hash": "43d0ff16e12ffec5"
+    },
+    {
+      "index": 4,
+      "text": "Antes de venir a Salamanca, Yui ya había estudiado español en Fukuoka.",
+      "speaker": "narrator",
+      "src": "/audio/units/u28/u28-05.mp3",
+      "slow": "/audio/units/u28/u28-05-slow.mp3",
+      "seconds": 7.1,
+      "hash": "b074797316e91ff4"
+    }
+  ],
+  "29": [
+    {
+      "index": 0,
+      "text": "La profesora dice que el examen es el lunes.",
+      "speaker": "narrator",
+      "src": "/audio/units/u29/u29-01.mp3",
+      "slow": "/audio/units/u29/u29-01-slow.mp3",
+      "seconds": 3.86,
+      "hash": "ea12307c48a5a265"
+    },
+    {
+      "index": 1,
+      "text": "La profesora dijo que el examen sería el lunes.",
+      "speaker": "narrator",
+      "src": "/audio/units/u29/u29-02.mp3",
+      "slow": "/audio/units/u29/u29-02-slow.mp3",
+      "seconds": 3.86,
+      "hash": "d631c202abca7ec9"
+    },
+    {
+      "index": 2,
+      "text": "Kenta me preguntó si podía venir a la cena.",
+      "speaker": "narrator",
+      "src": "/audio/units/u29/u29-03.mp3",
+      "slow": "/audio/units/u29/u29-03-slow.mp3",
+      "seconds": 3.28,
+      "hash": "0d95f683fe8f691d"
+    },
+    {
+      "index": 3,
+      "text": "Me dijo que había llegado tarde.",
+      "speaker": "narrator",
+      "src": "/audio/units/u29/u29-04.mp3",
+      "slow": "/audio/units/u29/u29-04-slow.mp3",
+      "seconds": 2.34,
+      "hash": "021386e6ec84b42a"
+    },
+    {
+      "index": 4,
+      "text": "Me prometió que me llamaría al día siguiente.",
+      "speaker": "narrator",
+      "src": "/audio/units/u29/u29-05.mp3",
+      "slow": "/audio/units/u29/u29-05-slow.mp3",
+      "seconds": 3.4,
+      "hash": "9b0c62ab7bbf4da5"
+    }
+  ],
+  "30": [
+    {
+      "index": 0,
+      "text": "Si llueve, nos quedamos en casa.",
+      "speaker": "narrator",
+      "src": "/audio/units/u30/u30-01.mp3",
+      "slow": "/audio/units/u30/u30-01-slow.mp3",
+      "seconds": 2.86,
+      "hash": "cdef1bab1a99e35c"
+    },
+    {
+      "index": 1,
+      "text": "Si estudias, aprobarás el examen.",
+      "speaker": "narrator",
+      "src": "/audio/units/u30/u30-02.mp3",
+      "slow": "/audio/units/u30/u30-02-slow.mp3",
+      "seconds": 3,
+      "hash": "6cfbb697d5ae57c9"
+    },
+    {
+      "index": 2,
+      "text": "Si tienes tiempo, llámame.",
+      "speaker": "narrator",
+      "src": "/audio/units/u30/u30-03.mp3",
+      "slow": "/audio/units/u30/u30-03-slow.mp3",
+      "seconds": 2.39,
+      "hash": "682239a41850dc30"
+    },
+    {
+      "index": 3,
+      "text": "Date prisa; si no, perderás el tren.",
+      "speaker": "narrator",
+      "src": "/audio/units/u30/u30-04.mp3",
+      "slow": "/audio/units/u30/u30-04-slow.mp3",
+      "seconds": 3.34,
+      "hash": "ebc0f99e2f72d5c9"
+    },
+    {
+      "index": 4,
+      "text": "Iré a la fiesta a menos que tenga trabajo.",
+      "speaker": "narrator",
+      "src": "/audio/units/u30/u30-05.mp3",
+      "slow": "/audio/units/u30/u30-05-slow.mp3",
+      "seconds": 3.19,
+      "hash": "a9ef3736e3920ecd"
+    }
+  ],
+  "31": [
+    {
+      "index": 0,
+      "text": "El chico que vive conmigo es italiano.",
+      "speaker": "narrator",
+      "src": "/audio/units/u31/u31-01.mp3",
+      "slow": "/audio/units/u31/u31-01-slow.mp3",
+      "seconds": 3.38,
+      "hash": "503e9a1704212b4e"
+    },
+    {
+      "index": 1,
+      "text": "Esta es la cafetería donde estudio todos los días.",
+      "speaker": "narrator",
+      "src": "/audio/units/u31/u31-02.mp3",
+      "slow": "/audio/units/u31/u31-02-slow.mp3",
+      "seconds": 4.3,
+      "hash": "e5a97b30522edac6"
+    },
+    {
+      "index": 2,
+      "text": "La profesora con quien hablé es de Madrid.",
+      "speaker": "narrator",
+      "src": "/audio/units/u31/u31-03.mp3",
+      "slow": "/audio/units/u31/u31-03-slow.mp3",
+      "seconds": 3.04,
+      "hash": "6031e0dbdf151ec2"
+    },
+    {
+      "index": 3,
+      "text": "Lo que más me gusta de Salamanca es la Plaza Mayor.",
+      "speaker": "narrator",
+      "src": "/audio/units/u31/u31-04.mp3",
+      "slow": "/audio/units/u31/u31-04-slow.mp3",
+      "seconds": 3.9,
+      "hash": "b3eca087bd5928fb"
+    },
+    {
+      "index": 4,
+      "text": "La universidad en la que estudio es muy antigua.",
+      "speaker": "narrator",
+      "src": "/audio/units/u31/u31-05.mp3",
+      "slow": "/audio/units/u31/u31-05-slow.mp3",
+      "seconds": 3.86,
+      "hash": "8b53f434b0033c3b"
+    }
+  ],
+  "32": [
+    {
+      "index": 0,
+      "text": "La catedral fue construida en el siglo XVI.",
+      "speaker": "narrator",
+      "src": "/audio/units/u32/u32-01.mp3",
+      "slow": "/audio/units/u32/u32-01-slow.mp3",
+      "seconds": 4.78,
+      "hash": "43d323f5af24d684"
+    },
+    {
+      "index": 1,
+      "text": "La biblioteca está cerrada los domingos.",
+      "speaker": "narrator",
+      "src": "/audio/units/u32/u32-02.mp3",
+      "slow": "/audio/units/u32/u32-02-slow.mp3",
+      "seconds": 3.57,
+      "hash": "7f58a4cff0c31591"
+    },
+    {
+      "index": 2,
+      "text": "En esta tienda se habla inglés.",
+      "speaker": "narrator",
+      "src": "/audio/units/u32/u32-03.mp3",
+      "slow": "/audio/units/u32/u32-03-slow.mp3",
+      "seconds": 2.73,
+      "hash": "9c9473ddd4596a48"
+    },
+    {
+      "index": 3,
+      "text": "Se venden pisos.",
+      "speaker": "narrator",
+      "src": "/audio/units/u32/u32-04.mp3",
+      "slow": "/audio/units/u32/u32-04-slow.mp3",
+      "seconds": 1.63,
+      "hash": "cef364d618114712"
+    },
+    {
+      "index": 4,
+      "text": "¡Esta tortilla está muy rica!",
+      "speaker": "narrator",
+      "src": "/audio/units/u32/u32-05.mp3",
+      "slow": "/audio/units/u32/u32-05-slow.mp3",
+      "seconds": 2.87,
+      "hash": "8d32ddd84a3fba6a"
+    }
+  ],
+  "33": [
+    {
+      "index": 0,
+      "text": "Estudio español para trabajar en España.",
+      "speaker": "narrator",
+      "src": "/audio/units/u33/u33-01.mp3",
+      "slow": "/audio/units/u33/u33-01-slow.mp3",
+      "seconds": 3.64,
+      "hash": "2c74f8ca0e22f642"
+    },
+    {
+      "index": 1,
+      "text": "No fui a clase por la lluvia.",
+      "speaker": "narrator",
+      "src": "/audio/units/u33/u33-02.mp3",
+      "slow": "/audio/units/u33/u33-02-slow.mp3",
+      "seconds": 2.4,
+      "hash": "4731212f4b687599"
+    },
+    {
+      "index": 2,
+      "text": "Tengo que entregar el trabajo para el lunes.",
+      "speaker": "narrator",
+      "src": "/audio/units/u33/u33-03.mp3",
+      "slow": "/audio/units/u33/u33-03-slow.mp3",
+      "seconds": 3.12,
+      "hash": "d560eaea97ea66e5"
+    },
+    {
+      "index": 3,
+      "text": "Paseamos por el centro.",
+      "speaker": "narrator",
+      "src": "/audio/units/u33/u33-04.mp3",
+      "slow": "/audio/units/u33/u33-04-slow.mp3",
+      "seconds": 1.83,
+      "hash": "fc3fbad09883b84f"
+    },
+    {
+      "index": 4,
+      "text": "Gracias por tu ayuda.",
+      "speaker": "narrator",
+      "src": "/audio/units/u33/u33-05.mp3",
+      "slow": "/audio/units/u33/u33-05-slow.mp3",
+      "seconds": 1.65,
+      "hash": "5cb97dc04b27f565"
+    }
+  ],
+  "34": [
+    {
+      "index": 0,
+      "text": "Es caro; sin embargo, vale la pena.",
+      "speaker": "narrator",
+      "src": "/audio/units/u34/u34-01.mp3",
+      "slow": "/audio/units/u34/u34-01-slow.mp3",
+      "seconds": 3.71,
+      "hash": "9b0b0f141f8ac2ad"
+    },
+    {
+      "index": 1,
+      "text": "Yo prefiero el té; en cambio, Kenta prefiere el café.",
+      "speaker": "narrator",
+      "src": "/audio/units/u34/u34-02.mp3",
+      "slow": "/audio/units/u34/u34-02-slow.mp3",
+      "seconds": 5.32,
+      "hash": "5330769779867bf6"
+    },
+    {
+      "index": 2,
+      "text": "En primer lugar, quiero dar las gracias a todos.",
+      "speaker": "narrator",
+      "src": "/audio/units/u34/u34-03.mp3",
+      "slow": "/audio/units/u34/u34-03-slow.mp3",
+      "seconds": 3.66,
+      "hash": "e08c5e69f6c6b1c2"
+    },
+    {
+      "index": 3,
+      "text": "Por un lado, es barato; por otro, está lejos.",
+      "speaker": "narrator",
+      "src": "/audio/units/u34/u34-04.mp3",
+      "slow": "/audio/units/u34/u34-04-slow.mp3",
+      "seconds": 4.37,
+      "hash": "af2a5834cbf8122f"
+    },
+    {
+      "index": 4,
+      "text": "En resumen, el proyecto ha sido un éxito.",
+      "speaker": "narrator",
+      "src": "/audio/units/u34/u34-05.mp3",
+      "slow": "/audio/units/u34/u34-05-slow.mp3",
+      "seconds": 3.48,
+      "hash": "40f9c70f7c050c0a"
+    }
+  ],
+  "35": [
+    {
+      "index": 0,
+      "text": "Creo que es una buena idea.",
+      "speaker": "narrator",
+      "src": "/audio/units/u35/u35-01.mp3",
+      "slow": "/audio/units/u35/u35-01-slow.mp3",
+      "seconds": 2.94,
+      "hash": "88fc1dbeec5c536b"
+    },
+    {
+      "index": 1,
+      "text": "No creo que sea una buena idea.",
+      "speaker": "narrator",
+      "src": "/audio/units/u35/u35-02.mp3",
+      "slow": "/audio/units/u35/u35-02-slow.mp3",
+      "seconds": 3.03,
+      "hash": "e123053a7936f209"
+    },
+    {
+      "index": 2,
+      "text": "En mi opinión, la tortilla está mejor con cebolla.",
+      "speaker": "narrator",
+      "src": "/audio/units/u35/u35-03.mp3",
+      "slow": "/audio/units/u35/u35-03-slow.mp3",
+      "seconds": 4.78,
+      "hash": "e6f7d377a1ca7d5c"
+    },
+    {
+      "index": 3,
+      "text": "Estoy de acuerdo contigo.",
+      "speaker": "narrator",
+      "src": "/audio/units/u35/u35-04.mp3",
+      "slow": "/audio/units/u35/u35-04-slow.mp3",
+      "seconds": 2.03,
+      "hash": "b43d6699c390c14a"
+    },
+    {
+      "index": 4,
+      "text": "Depende. Por un lado, sí; por otro, no.",
+      "speaker": "narrator",
+      "src": "/audio/units/u35/u35-05.mp3",
+      "slow": "/audio/units/u35/u35-05-slow.mp3",
+      "seconds": 4.85,
+      "hash": "3274e887568fa6fb"
+    }
+  ],
+  "36": [
+    {
+      "index": 0,
+      "text": "Hola, Yui. Soy Marcos. Te llamo porque el intercambio de idiomas de mañana se ha cambiado al jueves.",
+      "speaker": "narrator",
+      "src": "/audio/units/u36/u36-01.mp3",
+      "slow": "/audio/units/u36/u36-01-slow.mp3",
+      "seconds": 8.22,
+      "hash": "714d547366f6af5d"
+    },
+    {
+      "index": 1,
+      "text": "Será en la cafetería de la facultad, a las seis. Si no puedes venir, avísame.",
+      "speaker": "narrator",
+      "src": "/audio/units/u36/u36-02.mp3",
+      "slow": "/audio/units/u36/u36-02-slow.mp3",
+      "seconds": 6.12,
+      "hash": "7d57c3100b24901e"
+    },
+    {
+      "index": 2,
+      "text": "¿Qué opinas de estudiar en el extranjero?",
+      "speaker": "narrator",
+      "src": "/audio/units/u36/u36-03.mp3",
+      "slow": "/audio/units/u36/u36-03-slow.mp3",
+      "seconds": 2.45,
+      "hash": "229b76e459edbe1c"
+    },
+    {
+      "index": 3,
+      "text": "En mi opinión, es una experiencia muy positiva.",
+      "speaker": "narrator",
+      "src": "/audio/units/u36/u36-04.mp3",
+      "slow": "/audio/units/u36/u36-04-slow.mp3",
+      "seconds": 3.68,
+      "hash": "a4f9010c839f3e97"
+    }
+  ],
+  "37": [
+    {
+      "index": 0,
+      "text": "¿Qué tal en Salamanca, Yui?",
+      "speaker": "daniel",
+      "src": "/audio/units/u37/u37-01.mp3",
+      "slow": "/audio/units/u37/u37-01-slow.mp3",
+      "seconds": 1.46,
+      "hash": "d5cec3fc6ad60e85"
+    },
+    {
+      "index": 1,
+      "text": "Muy bien, pero a veces echo de menos Japón. Ojalá mi familia viviera más cerca.",
+      "speaker": "yui",
+      "src": "/audio/units/u37/u37-02.mp3",
+      "slow": "/audio/units/u37/u37-02-slow.mp3",
+      "seconds": 6.49,
+      "hash": "ac774a1aea91eba8"
+    },
+    {
+      "index": 2,
+      "text": "Te entiendo. Mi madre siempre me decía que estudiara idiomas, y aquí estoy, en Tokio.",
+      "speaker": "daniel",
+      "src": "/audio/units/u37/u37-03.mp3",
+      "slow": "/audio/units/u37/u37-03-slow.mp3",
+      "seconds": 5.76,
+      "hash": "7c8b481028452fe4"
+    },
+    {
+      "index": 3,
+      "text": "¡Qué bien! Yo quisiera quedarme un año más.",
+      "speaker": "yui",
+      "src": "/audio/units/u37/u37-04.mp3",
+      "slow": "/audio/units/u37/u37-04-slow.mp3",
+      "seconds": 3.11,
+      "hash": "fbbc1359951ab1fa"
+    },
+    {
+      "index": 4,
+      "text": "hablara, hablaras, hablara, habláramos, hablarais, hablaran",
+      "speaker": "narrator",
+      "src": "/audio/units/u37/u37-05.mp3",
+      "slow": "/audio/units/u37/u37-05-slow.mp3",
+      "seconds": 10.79,
+      "hash": "45ef838e8affa1e7"
+    },
+    {
+      "index": 5,
+      "text": "tuviera, tuvieras, tuviera, tuviéramos, tuvierais, tuvieran",
+      "speaker": "narrator",
+      "src": "/audio/units/u37/u37-06.mp3",
+      "slow": "/audio/units/u37/u37-06-slow.mp3",
+      "seconds": 10.53,
+      "hash": "cf444cf0550117ac"
+    },
+    {
+      "index": 6,
+      "text": "fuera, fueras, fuera, fuéramos, fuerais, fueran",
+      "speaker": "narrator",
+      "src": "/audio/units/u37/u37-07.mp3",
+      "slow": "/audio/units/u37/u37-07-slow.mp3",
+      "seconds": 10,
+      "hash": "9fe0e341be4d0910"
+    },
+    {
+      "index": 7,
+      "text": "hablase, hablases, hablase, hablásemos, hablaseis, hablasen",
+      "speaker": "narrator",
+      "src": "/audio/units/u37/u37-08.mp3",
+      "slow": "/audio/units/u37/u37-08-slow.mp3",
+      "seconds": 10.63,
+      "hash": "c78d95297b24b46d"
+    },
+    {
+      "index": 8,
+      "text": "Quisiera un café con leche, por favor.",
+      "speaker": "narrator",
+      "src": "/audio/units/u37/u37-09.mp3",
+      "slow": "/audio/units/u37/u37-09-slow.mp3",
+      "seconds": 2.81,
+      "hash": "f37802df9b49c226"
+    },
+    {
+      "index": 9,
+      "text": "Ojalá tuviera más tiempo.",
+      "speaker": "narrator",
+      "src": "/audio/units/u37/u37-10.mp3",
+      "slow": "/audio/units/u37/u37-10-slow.mp3",
+      "seconds": 2.03,
+      "hash": "f1e4162e78066987"
+    },
+    {
+      "index": 10,
+      "text": "El profesor nos pidió que leyéramos el libro.",
+      "speaker": "narrator",
+      "src": "/audio/units/u37/u37-11.mp3",
+      "slow": "/audio/units/u37/u37-11-slow.mp3",
+      "seconds": 3.39,
+      "hash": "c69d033cb20717b9"
+    }
+  ],
+  "38": [
+    {
+      "index": 0,
+      "text": "Si tuviera tiempo, viajaría más.",
+      "speaker": "narrator",
+      "src": "/audio/units/u38/u38-01.mp3",
+      "slow": "/audio/units/u38/u38-01-slow.mp3",
+      "seconds": 3.47,
+      "hash": "c902e61f216b7873"
+    },
+    {
+      "index": 1,
+      "text": "Si hubiera estudiado más, habría aprobado.",
+      "speaker": "narrator",
+      "src": "/audio/units/u38/u38-02.mp3",
+      "slow": "/audio/units/u38/u38-02-slow.mp3",
+      "seconds": 3.82,
+      "hash": "9775a05e9aef01b2"
+    },
+    {
+      "index": 2,
+      "text": "Habla como si fuera de Madrid.",
+      "speaker": "narrator",
+      "src": "/audio/units/u38/u38-03.mp3",
+      "slow": "/audio/units/u38/u38-03-slow.mp3",
+      "seconds": 2.27,
+      "hash": "df03f43effab1b5f"
+    },
+    {
+      "index": 3,
+      "text": "Si me tocara la lotería, dejaría de trabajar.",
+      "speaker": "narrator",
+      "src": "/audio/units/u38/u38-04.mp3",
+      "slow": "/audio/units/u38/u38-04-slow.mp3",
+      "seconds": 3.62,
+      "hash": "710612bf64876f94"
+    },
+    {
+      "index": 4,
+      "text": "Si pudiera vivir en cualquier parte de España, viviría en Canarias.",
+      "speaker": "narrator",
+      "src": "/audio/units/u38/u38-05.mp3",
+      "slow": "/audio/units/u38/u38-05-slow.mp3",
+      "seconds": 5.65,
+      "hash": "ba4e2c25282ace06"
+    }
+  ],
+  "39": [
+    {
+      "index": 0,
+      "text": "Espero que hayas llegado bien.",
+      "speaker": "narrator",
+      "src": "/audio/units/u39/u39-01.mp3",
+      "slow": "/audio/units/u39/u39-01-slow.mp3",
+      "seconds": 2.58,
+      "hash": "8fa3b13d8bdfdabc"
+    },
+    {
+      "index": 1,
+      "text": "No creo que haya terminado todavía.",
+      "speaker": "narrator",
+      "src": "/audio/units/u39/u39-02.mp3",
+      "slow": "/audio/units/u39/u39-02-slow.mp3",
+      "seconds": 2.71,
+      "hash": "a268a5253c03003f"
+    },
+    {
+      "index": 2,
+      "text": "Ojalá hubiera estudiado más.",
+      "speaker": "narrator",
+      "src": "/audio/units/u39/u39-03.mp3",
+      "slow": "/audio/units/u39/u39-03-slow.mp3",
+      "seconds": 2.81,
+      "hash": "32f4a57e773041cc"
+    },
+    {
+      "index": 3,
+      "text": "Si hubiera reservado antes, habría tenido un hotel mejor.",
+      "speaker": "narrator",
+      "src": "/audio/units/u39/u39-04.mp3",
+      "slow": "/audio/units/u39/u39-04-slow.mp3",
+      "seconds": 4.91,
+      "hash": "2dad94b10ad45516"
+    },
+    {
+      "index": 4,
+      "text": "Debería haber aprovechado más el tiempo.",
+      "speaker": "narrator",
+      "src": "/audio/units/u39/u39-05.mp3",
+      "slow": "/audio/units/u39/u39-05-slow.mp3",
+      "seconds": 3.26,
+      "hash": "eaff0a3e82789466"
+    }
+  ],
+  "40": [
+    {
+      "index": 0,
+      "text": "Quiero que vengas a mi fiesta.",
+      "speaker": "narrator",
+      "src": "/audio/units/u40/u40-01.mp3",
+      "slow": "/audio/units/u40/u40-01-slow.mp3",
+      "seconds": 2.36,
+      "hash": "e3f465234095d3b7"
+    },
+    {
+      "index": 1,
+      "text": "Quería que vinieras a mi fiesta.",
+      "speaker": "narrator",
+      "src": "/audio/units/u40/u40-02.mp3",
+      "slow": "/audio/units/u40/u40-02-slow.mp3",
+      "seconds": 2.49,
+      "hash": "dd8641304f44a728"
+    },
+    {
+      "index": 2,
+      "text": "Me gustaría que me ayudaras.",
+      "speaker": "narrator",
+      "src": "/audio/units/u40/u40-03.mp3",
+      "slow": "/audio/units/u40/u40-03-slow.mp3",
+      "seconds": 2.45,
+      "hash": "2d4f3be93bfca618"
+    },
+    {
+      "index": 3,
+      "text": "Mi tutora me pidió que cambiara el título.",
+      "speaker": "narrator",
+      "src": "/audio/units/u40/u40-04.mp3",
+      "slow": "/audio/units/u40/u40-04-slow.mp3",
+      "seconds": 3.35,
+      "hash": "ab0b0157e485df8d"
+    },
+    {
+      "index": 4,
+      "text": "Me recomendaron que visitara Ibiza fuera de temporada.",
+      "speaker": "narrator",
+      "src": "/audio/units/u40/u40-05.mp3",
+      "slow": "/audio/units/u40/u40-05-slow.mp3",
+      "seconds": 4.06,
+      "hash": "0498af856abd6913"
+    }
+  ],
+  "41": [
+    {
+      "index": 0,
+      "text": "Aunque llueve, voy al partido.",
+      "speaker": "narrator",
+      "src": "/audio/units/u41/u41-01.mp3",
+      "slow": "/audio/units/u41/u41-01-slow.mp3",
+      "seconds": 3.31,
+      "hash": "0ff1590915f7f664"
+    },
+    {
+      "index": 1,
+      "text": "Aunque llueva, iré al partido.",
+      "speaker": "narrator",
+      "src": "/audio/units/u41/u41-02.mp3",
+      "slow": "/audio/units/u41/u41-02-slow.mp3",
+      "seconds": 3.37,
+      "hash": "24c17daafb660d8b"
+    },
+    {
+      "index": 2,
+      "text": "Habla despacio de modo que todos te entiendan.",
+      "speaker": "narrator",
+      "src": "/audio/units/u41/u41-03.mp3",
+      "slow": "/audio/units/u41/u41-03-slow.mp3",
+      "seconds": 4.46,
+      "hash": "6c2272fcef063f34"
+    },
+    {
+      "index": 3,
+      "text": "Llovía, de modo que no salimos.",
+      "speaker": "narrator",
+      "src": "/audio/units/u41/u41-04.mp3",
+      "slow": "/audio/units/u41/u41-04-slow.mp3",
+      "seconds": 3.34,
+      "hash": "6bf37cc835d9ffb6"
+    },
+    {
+      "index": 4,
+      "text": "Estaba tan cansada que me dormí en el tren.",
+      "speaker": "narrator",
+      "src": "/audio/units/u41/u41-05.mp3",
+      "slow": "/audio/units/u41/u41-05-slow.mp3",
+      "seconds": 3.96,
+      "hash": "f555c8a43acb3cc2"
+    }
+  ],
+  "42": [
+    {
+      "index": 0,
+      "text": "Para junio ya habré terminado la carrera.",
+      "speaker": "narrator",
+      "src": "/audio/units/u42/u42-01.mp3",
+      "slow": "/audio/units/u42/u42-01-slow.mp3",
+      "seconds": 3.61,
+      "hash": "ccacd9ab3e792a74"
+    },
+    {
+      "index": 1,
+      "text": "¿Dónde está Yui? Habrá salido.",
+      "speaker": "narrator",
+      "src": "/audio/units/u42/u42-02.mp3",
+      "slow": "/audio/units/u42/u42-02-slow.mp3",
+      "seconds": 3.15,
+      "hash": "1678bd6bc2a633bf"
+    },
+    {
+      "index": 2,
+      "text": "No contestó. Estaría durmiendo.",
+      "speaker": "narrator",
+      "src": "/audio/units/u42/u42-03.mp3",
+      "slow": "/audio/units/u42/u42-03-slow.mp3",
+      "seconds": 3.4,
+      "hash": "690a0faadc2a3613"
+    },
+    {
+      "index": 3,
+      "text": "Cuando llegamos, ya se habrían ido.",
+      "speaker": "narrator",
+      "src": "/audio/units/u42/u42-04.mp3",
+      "slow": "/audio/units/u42/u42-04-slow.mp3",
+      "seconds": 3.04,
+      "hash": "bffc7f3f5fba1551"
+    },
+    {
+      "index": 4,
+      "text": "A estas horas ya habrá aterrizado en Tokio.",
+      "speaker": "narrator",
+      "src": "/audio/units/u42/u42-05.mp3",
+      "slow": "/audio/units/u42/u42-05-slow.mp3",
+      "seconds": 3.81,
+      "hash": "ae59c6860b2cbe65"
+    }
+  ],
+  "43": [
+    {
+      "index": 0,
+      "text": "Voy entendiendo mejor a los profesores.",
+      "speaker": "narrator",
+      "src": "/audio/units/u43/u43-01.mp3",
+      "slow": "/audio/units/u43/u43-01-slow.mp3",
+      "seconds": 3.06,
+      "hash": "c7339c92f174113d"
+    },
+    {
+      "index": 1,
+      "text": "Estaba a punto de salir cuando llamaste.",
+      "speaker": "narrator",
+      "src": "/audio/units/u43/u43-02.mp3",
+      "slow": "/audio/units/u43/u43-02-slow.mp3",
+      "seconds": 3.05,
+      "hash": "025b3019bbaa13bb"
+    },
+    {
+      "index": 2,
+      "text": "De repente, se puso a llover.",
+      "speaker": "narrator",
+      "src": "/audio/units/u43/u43-03.mp3",
+      "slow": "/audio/units/u43/u43-03-slow.mp3",
+      "seconds": 2.44,
+      "hash": "ce2e5fa1332c70c2"
+    },
+    {
+      "index": 3,
+      "text": "Acabó siendo el mejor del equipo.",
+      "speaker": "narrator",
+      "src": "/audio/units/u43/u43-04.mp3",
+      "slow": "/audio/units/u43/u43-04-slow.mp3",
+      "seconds": 2.46,
+      "hash": "eb56e8576495844f"
+    },
+    {
+      "index": 4,
+      "text": "Suelo estudiar por la noche.",
+      "speaker": "narrator",
+      "src": "/audio/units/u43/u43-05.mp3",
+      "slow": "/audio/units/u43/u43-05-slow.mp3",
+      "seconds": 1.96,
+      "hash": "13da471e6bc4b3b5"
+    }
+  ],
+  "44": [
+    {
+      "index": 0,
+      "text": "Se venden pisos.",
+      "speaker": "narrator",
+      "src": "/audio/units/u44/u44-01.mp3",
+      "slow": "/audio/units/u44/u44-01-slow.mp3",
+      "seconds": 1.89,
+      "hash": "cef364d618114712"
+    },
+    {
+      "index": 1,
+      "text": "Se alquila habitación.",
+      "speaker": "narrator",
+      "src": "/audio/units/u44/u44-02.mp3",
+      "slow": "/audio/units/u44/u44-02-slow.mp3",
+      "seconds": 2.15,
+      "hash": "d5140da791801747"
+    },
+    {
+      "index": 2,
+      "text": "Se busca a dos camareros.",
+      "speaker": "narrator",
+      "src": "/audio/units/u44/u44-03.mp3",
+      "slow": "/audio/units/u44/u44-03-slow.mp3",
+      "seconds": 2.41,
+      "hash": "6de14f6860bd75a5"
+    },
+    {
+      "index": 3,
+      "text": "En España se cena tarde.",
+      "speaker": "narrator",
+      "src": "/audio/units/u44/u44-04.mp3",
+      "slow": "/audio/units/u44/u44-04-slow.mp3",
+      "seconds": 2.46,
+      "hash": "40204c8bb4357c4e"
+    },
+    {
+      "index": 4,
+      "text": "Se pelan las patatas, se cortan en rodajas y se fríen.",
+      "speaker": "narrator",
+      "src": "/audio/units/u44/u44-05.mp3",
+      "slow": "/audio/units/u44/u44-05-slow.mp3",
+      "seconds": 5.65,
+      "hash": "27b91006a8aa9598"
+    }
+  ],
+  "45": [
+    {
+      "index": 0,
+      "text": "Estimada señora García:",
+      "speaker": "narrator",
+      "src": "/audio/units/u45/u45-01.mp3",
+      "slow": "/audio/units/u45/u45-01-slow.mp3",
+      "seconds": 2.09,
+      "hash": "c9ba4cd472f3f2c4"
+    },
+    {
+      "index": 1,
+      "text": "Le escribo para solicitar información sobre el máster.",
+      "speaker": "narrator",
+      "src": "/audio/units/u45/u45-02.mp3",
+      "slow": "/audio/units/u45/u45-02-slow.mp3",
+      "seconds": 4.12,
+      "hash": "0bcfc6f3592c215b"
+    },
+    {
+      "index": 2,
+      "text": "Quedo a la espera de su respuesta. Atentamente.",
+      "speaker": "narrator",
+      "src": "/audio/units/u45/u45-03.mp3",
+      "slow": "/audio/units/u45/u45-03-slow.mp3",
+      "seconds": 3.74,
+      "hash": "89da0ebe41ad4869"
+    },
+    {
+      "index": 3,
+      "text": "¡Hola, Daniel! ¿Qué tal?",
+      "speaker": "narrator",
+      "src": "/audio/units/u45/u45-04.mp3",
+      "slow": "/audio/units/u45/u45-04-slow.mp3",
+      "seconds": 1.77,
+      "hash": "59fad363fae72b10"
+    },
+    {
+      "index": 4,
+      "text": "Un abrazo.",
+      "speaker": "narrator",
+      "src": "/audio/units/u45/u45-05.mp3",
+      "slow": "/audio/units/u45/u45-05-slow.mp3",
+      "seconds": 0.71,
+      "hash": "2b53f9160bcc4c9a"
+    }
+  ],
+  "46": [
+    {
+      "index": 0,
+      "text": "El País Vasco y La Rioja están muy cerca. El primero es famoso por los pintxos; la segunda, por sus vinos.",
+      "speaker": "narrator",
+      "src": "/audio/units/u46/u46-01.mp3",
+      "slow": "/audio/units/u46/u46-01-slow.mp3",
+      "seconds": 11.92,
+      "hash": "9703dbc1662c8efd"
+    },
+    {
+      "index": 1,
+      "text": "Visitamos una bodega. Esta era pequeña y familiar.",
+      "speaker": "narrator",
+      "src": "/audio/units/u46/u46-02.mp3",
+      "slow": "/audio/units/u46/u46-02-slow.mp3",
+      "seconds": 5.6,
+      "hash": "4f000ef5de974cdb"
+    },
+    {
+      "index": 2,
+      "text": "Dicha región es famosa por sus vinos.",
+      "speaker": "narrator",
+      "src": "/audio/units/u46/u46-03.mp3",
+      "slow": "/audio/units/u46/u46-03-slow.mp3",
+      "seconds": 3.61,
+      "hash": "562460c3c191bd62"
+    }
+  ],
+  "47": [
+    {
+      "index": 0,
+      "text": "El examen fue pan comido.",
+      "speaker": "narrator",
+      "src": "/audio/units/u47/u47-01.mp3",
+      "slow": "/audio/units/u47/u47-01-slow.mp3",
+      "seconds": 3.02,
+      "hash": "5bb86a3b95be8685"
+    },
+    {
+      "index": 1,
+      "text": "Este piso cuesta un ojo de la cara.",
+      "speaker": "narrator",
+      "src": "/audio/units/u47/u47-02.mp3",
+      "slow": "/audio/units/u47/u47-02-slow.mp3",
+      "seconds": 3.3,
+      "hash": "0b928b3677750aa7"
+    },
+    {
+      "index": 2,
+      "text": "Metí la pata en la entrevista.",
+      "speaker": "narrator",
+      "src": "/audio/units/u47/u47-03.mp3",
+      "slow": "/audio/units/u47/u47-03-slow.mp3",
+      "seconds": 2.23,
+      "hash": "7813738de8a1ef69"
+    },
+    {
+      "index": 3,
+      "text": "¿Me echas una mano?",
+      "speaker": "narrator",
+      "src": "/audio/units/u47/u47-04.mp3",
+      "slow": "/audio/units/u47/u47-04-slow.mp3",
+      "seconds": 1.46,
+      "hash": "98d487c84f32efe7"
+    },
+    {
+      "index": 4,
+      "text": "Tengo que ponerme las pilas.",
+      "speaker": "narrator",
+      "src": "/audio/units/u47/u47-05.mp3",
+      "slow": "/audio/units/u47/u47-05-slow.mp3",
+      "seconds": 2.19,
+      "hash": "40a6347099e5ed45"
+    }
+  ],
+  "48": [
+    {
+      "index": 0,
+      "text": "Bienvenidos a «Hablemos de trabajo». Hoy hablamos del teletrabajo.",
+      "speaker": "narrator",
+      "src": "/audio/units/u48/u48-01.mp3",
+      "slow": "/audio/units/u48/u48-01-slow.mp3",
+      "seconds": 6.14,
+      "hash": "a853dd1ba9aab9e3"
+    },
+    {
+      "index": 1,
+      "text": "Si hubiera sabido que el teletrabajo era tan cómodo, lo habría pedido antes.",
+      "speaker": "narrator",
+      "src": "/audio/units/u48/u48-02.mp3",
+      "slow": "/audio/units/u48/u48-02-slow.mp3",
+      "seconds": 5.84,
+      "hash": "d646fd03eede3b8a"
+    },
+    {
+      "index": 2,
+      "text": "Aunque trabajar desde casa tenga ventajas, también plantea problemas.",
+      "speaker": "narrator",
+      "src": "/audio/units/u48/u48-03.mp3",
+      "slow": "/audio/units/u48/u48-03-slow.mp3",
+      "seconds": 5.03,
+      "hash": "dfc9d79cf7f63a9b"
+    },
+    {
+      "index": 3,
+      "text": "Me gustaría matizar lo que ha dicho.",
+      "speaker": "narrator",
+      "src": "/audio/units/u48/u48-04.mp3",
+      "slow": "/audio/units/u48/u48-04-slow.mp3",
+      "seconds": 2.22,
+      "hash": "59c9ba8e624e8697"
+    }
+  ],
+  "49": [
+    {
+      "index": 0,
+      "text": "Profesora, ¿se dice «a lo mejor venga» o «a lo mejor viene»?",
+      "speaker": "female-young",
+      "src": "/audio/units/u49/u49-01.mp3",
+      "slow": "/audio/units/u49/u49-01-slow.mp3",
+      "seconds": 4.56,
+      "hash": "e839aba0b3741126"
+    },
+    {
+      "index": 1,
+      "text": "Con «a lo mejor», siempre indicativo: a lo mejor viene. Con «quizá», puedes usar los dos.",
+      "speaker": "carmen",
+      "src": "/audio/units/u49/u49-02.mp3",
+      "slow": "/audio/units/u49/u49-02-slow.mp3",
+      "seconds": 4.23,
+      "hash": "4ce4e29781a65983"
+    },
+    {
+      "index": 2,
+      "text": "¿Y hay alguna diferencia?",
+      "speaker": "female-young",
+      "src": "/audio/units/u49/u49-03.mp3",
+      "slow": "/audio/units/u49/u49-03-slow.mp3",
+      "seconds": 1.56,
+      "hash": "cb6668277913e1be"
+    },
+    {
+      "index": 3,
+      "text": "Sí, un matiz: «quizá venga» suena menos seguro que «quizá viene».",
+      "speaker": "carmen",
+      "src": "/audio/units/u49/u49-04.mp3",
+      "slow": "/audio/units/u49/u49-04-slow.mp3",
+      "seconds": 8.11,
+      "hash": "0f21e4a380710af1"
+    },
+    {
+      "index": 4,
+      "text": "No es que no quiera, es que no puedo.",
+      "speaker": "narrator",
+      "src": "/audio/units/u49/u49-05.mp3",
+      "slow": "/audio/units/u49/u49-05-slow.mp3",
+      "seconds": 3.83,
+      "hash": "ed7db1ca8b37df25"
+    },
+    {
+      "index": 5,
+      "text": "Digan lo que digan, seguiré adelante.",
+      "speaker": "narrator",
+      "src": "/audio/units/u49/u49-06.mp3",
+      "slow": "/audio/units/u49/u49-06-slow.mp3",
+      "seconds": 3.26,
+      "hash": "c25aff0c57d01b92"
+    },
+    {
+      "index": 6,
+      "text": "Sea como sea, hay que tomar una decisión.",
+      "speaker": "narrator",
+      "src": "/audio/units/u49/u49-07.mp3",
+      "slow": "/audio/units/u49/u49-07-slow.mp3",
+      "seconds": 3.77,
+      "hash": "8a998adc34a5af04"
+    },
+    {
+      "index": 7,
+      "text": "Quisiera hacerle una pregunta.",
+      "speaker": "narrator",
+      "src": "/audio/units/u49/u49-08.mp3",
+      "slow": "/audio/units/u49/u49-08-slow.mp3",
+      "seconds": 2.12,
+      "hash": "b126ba98a886321e"
+    },
+    {
+      "index": 8,
+      "text": "¿Le importa que abra la ventana?",
+      "speaker": "narrator",
+      "src": "/audio/units/u49/u49-09.mp3",
+      "slow": "/audio/units/u49/u49-09-slow.mp3",
+      "seconds": 2.21,
+      "hash": "2070b803b2902604"
+    },
+    {
+      "index": 9,
+      "text": "Comprendo que estés cansado.",
+      "speaker": "narrator",
+      "src": "/audio/units/u49/u49-10.mp3",
+      "slow": "/audio/units/u49/u49-10-slow.mp3",
+      "seconds": 2.06,
+      "hash": "49e27de80c5fde4a"
+    }
+  ],
+  "50": [
+    {
+      "index": 0,
+      "text": "Perdone, venía a preguntarle una cosa sobre el examen.",
+      "speaker": "female-young",
+      "src": "/audio/units/u50/u50-01.mp3",
+      "slow": "/audio/units/u50/u50-01-slow.mp3",
+      "seconds": 3.15,
+      "hash": "877ee94156f16b8f"
+    },
+    {
+      "index": 1,
+      "text": "Ayer quise llamarla, pero no pude.",
+      "speaker": "female-young",
+      "src": "/audio/units/u50/u50-02.mp3",
+      "slow": "/audio/units/u50/u50-02-slow.mp3",
+      "seconds": 2.04,
+      "hash": "a5e785bda3022f83"
+    },
+    {
+      "index": 2,
+      "text": "Justo iba a escribirte un correo.",
+      "speaker": "carmen",
+      "src": "/audio/units/u50/u50-03.mp3",
+      "slow": "/audio/units/u50/u50-03-slow.mp3",
+      "seconds": 2.04,
+      "hash": "46d689ff3be02cf9"
+    },
+    {
+      "index": 3,
+      "text": "Lo supe esta mañana: has aprobado.",
+      "speaker": "carmen",
+      "src": "/audio/units/u50/u50-04.mp3",
+      "slow": "/audio/units/u50/u50-04-slow.mp3",
+      "seconds": 2.62,
+      "hash": "0d62948e337fe5ee"
+    }
+  ],
+  "51": [
+    {
+      "index": 0,
+      "text": "Llovió toda la semana, lo cual nos obligó a cambiar de planes.",
+      "speaker": "narrator",
+      "src": "/audio/units/u51/u51-01.mp3",
+      "slow": "/audio/units/u51/u51-01-slow.mp3",
+      "seconds": 5.83,
+      "hash": "4e3f3c4b53afd7ff"
+    },
+    {
+      "index": 1,
+      "text": "Fue en 2008 cuando España ganó su segunda Eurocopa.",
+      "speaker": "narrator",
+      "src": "/audio/units/u51/u51-02.mp3",
+      "slow": "/audio/units/u51/u51-02-slow.mp3",
+      "seconds": 5.3,
+      "hash": "05fe402f013bdccf"
+    },
+    {
+      "index": 2,
+      "text": "Como no estudies, suspenderás.",
+      "speaker": "narrator",
+      "src": "/audio/units/u51/u51-03.mp3",
+      "slow": "/audio/units/u51/u51-03-slow.mp3",
+      "seconds": 2.72,
+      "hash": "7af39b50dcbc6167"
+    },
+    {
+      "index": 3,
+      "text": "El equipo apenas descansó; de ahí que llegara cansado a la final.",
+      "speaker": "narrator",
+      "src": "/audio/units/u51/u51-04.mp3",
+      "slow": "/audio/units/u51/u51-04-slow.mp3",
+      "seconds": 5.26,
+      "hash": "475f229adc97d33a"
+    }
+  ],
+  "52": [
+    {
+      "index": 0,
+      "text": "Hay que tomar una decisión.",
+      "speaker": "narrator",
+      "src": "/audio/units/u52/u52-01.mp3",
+      "slow": "/audio/units/u52/u52-01-slow.mp3",
+      "seconds": 2.56,
+      "hash": "a6013dcd72648ac4"
+    },
+    {
+      "index": 1,
+      "text": "Presta atención a las instrucciones.",
+      "speaker": "narrator",
+      "src": "/audio/units/u52/u52-02.mp3",
+      "slow": "/audio/units/u52/u52-02-slow.mp3",
+      "seconds": 3.18,
+      "hash": "c9dadb68029e7015"
+    },
+    {
+      "index": 2,
+      "text": "El concierto fue un éxito rotundo.",
+      "speaker": "narrator",
+      "src": "/audio/units/u52/u52-03.mp3",
+      "slow": "/audio/units/u52/u52-03-slow.mp3",
+      "seconds": 3.53,
+      "hash": "315c02729648e55a"
+    },
+    {
+      "index": 3,
+      "text": "Estoy profundamente agradecida.",
+      "speaker": "narrator",
+      "src": "/audio/units/u52/u52-04.mp3",
+      "slow": "/audio/units/u52/u52-04-slow.mp3",
+      "seconds": 2.95,
+      "hash": "51682fed2e45a82a"
+    }
+  ],
+  "53": [
+    {
+      "index": 0,
+      "text": "¡Tío, qué pasada de concierto!",
+      "speaker": "female-young",
+      "src": "/audio/units/u53/u53-01.mp3",
+      "slow": "/audio/units/u53/u53-01-slow.mp3",
+      "seconds": 2.7,
+      "hash": "c5967104855453b8"
+    },
+    {
+      "index": 1,
+      "text": "Qué va. Es que tenía un montón de curro.",
+      "speaker": "male-young",
+      "src": "/audio/units/u53/u53-02.mp3",
+      "slow": "/audio/units/u53/u53-02-slow.mp3",
+      "seconds": 2.22,
+      "hash": "59fdb5001ac5e2b2"
+    },
+    {
+      "index": 2,
+      "text": "¿Quedamos el finde y te lo cuento?",
+      "speaker": "female-young",
+      "src": "/audio/units/u53/u53-03.mp3",
+      "slow": "/audio/units/u53/u53-03-slow.mp3",
+      "seconds": 1.54,
+      "hash": "316f048a7e64655f"
+    },
+    {
+      "index": 3,
+      "text": "Vale, guay.",
+      "speaker": "male-young",
+      "src": "/audio/units/u53/u53-04.mp3",
+      "slow": "/audio/units/u53/u53-04-slow.mp3",
+      "seconds": 0.79,
+      "hash": "b619bed8c572319c"
+    }
+  ],
+  "54": [
+    {
+      "index": 0,
+      "text": "Cabe señalar que los datos son de 2025.",
+      "speaker": "narrator",
+      "src": "/audio/units/u54/u54-01.mp3",
+      "slow": "/audio/units/u54/u54-01-slow.mp3",
+      "seconds": 4.9,
+      "hash": "44d4618de7ca4b63"
+    },
+    {
+      "index": 1,
+      "text": "Si bien es cierto que el idioma es un reto, no es menos cierto que la adaptación es posible.",
+      "speaker": "narrator",
+      "src": "/audio/units/u54/u54-02.mp3",
+      "slow": "/audio/units/u54/u54-02-slow.mp3",
+      "seconds": 8.27,
+      "hash": "0c680d9c7ad63c36"
+    },
+    {
+      "index": 2,
+      "text": "Todo parece indicar que el fenómeno seguirá creciendo.",
+      "speaker": "narrator",
+      "src": "/audio/units/u54/u54-03.mp3",
+      "slow": "/audio/units/u54/u54-03-slow.mp3",
+      "seconds": 4.4,
+      "hash": "bcaa3cf280cbefca"
+    },
+    {
+      "index": 3,
+      "text": "En definitiva, podría afirmarse que la experiencia ha sido positiva.",
+      "speaker": "narrator",
+      "src": "/audio/units/u54/u54-04.mp3",
+      "slow": "/audio/units/u54/u54-04-slow.mp3",
+      "seconds": 6.19,
+      "hash": "715bf67e3ae9e0e9"
+    }
+  ],
+  "55": [
+    {
+      "index": 0,
+      "text": "¡Qué bien! Otra vez lloviendo.",
+      "speaker": "narrator",
+      "src": "/audio/units/u55/u55-01.mp3",
+      "slow": "/audio/units/u55/u55-01-slow.mp3",
+      "seconds": 3.14,
+      "hash": "23a3af8cfcd8dead"
+    },
+    {
+      "index": 1,
+      "text": "¡Muy bonito! Llegas dos horas tarde.",
+      "speaker": "narrator",
+      "src": "/audio/units/u55/u55-02.mp3",
+      "slow": "/audio/units/u55/u55-02-slow.mp3",
+      "seconds": 4.15,
+      "hash": "1b67d151fff66392"
+    },
+    {
+      "index": 2,
+      "text": "No está nada mal.",
+      "speaker": "narrator",
+      "src": "/audio/units/u55/u55-03.mp3",
+      "slow": "/audio/units/u55/u55-03-slow.mp3",
+      "seconds": 1.59,
+      "hash": "6b54c4e46c9cc1c9"
+    },
+    {
+      "index": 3,
+      "text": "—¿Vienes a la fiesta? —Ya veremos.",
+      "speaker": "narrator",
+      "src": "/audio/units/u55/u55-04.mp3",
+      "slow": "/audio/units/u55/u55-04-slow.mp3",
+      "seconds": 3.28,
+      "hash": "184b67e44246464e"
+    }
+  ],
+  "56": [
+    {
+      "index": 0,
+      "text": "Bienvenidos a «Deporte y sociedad». Hoy hablamos de la presión sobre los deportistas jóvenes.",
+      "speaker": "narrator",
+      "src": "/audio/units/u56/u56-01.mp3",
+      "slow": "/audio/units/u56/u56-01-slow.mp3",
+      "seconds": 4,
+      "hash": "39a3459fcb9c336f"
+    },
+    {
+      "index": 1,
+      "text": "No es que la fama sea mala en sí misma, pero hay que saber gestionarla.",
+      "speaker": "narrator",
+      "src": "/audio/units/u56/u56-02.mp3",
+      "slow": "/audio/units/u56/u56-02-slow.mp3",
+      "seconds": 11.15,
+      "hash": "e4662936c0776a24"
+    },
+    {
+      "index": 2,
+      "text": "Si bien es cierto que el talento es importante, no es menos cierto que la madurez lleva tiempo.",
+      "speaker": "narrator",
+      "src": "/audio/units/u56/u56-03.mp3",
+      "slow": "/audio/units/u56/u56-03-slow.mp3",
+      "seconds": 7.5,
+      "hash": "0aa14573d43ddfb1"
+    },
+    {
+      "index": 3,
+      "text": "Digan lo que digan, la salud de los jugadores es lo primero.",
+      "speaker": "narrator",
+      "src": "/audio/units/u56/u56-04.mp3",
+      "slow": "/audio/units/u56/u56-04-slow.mp3",
+      "seconds": 4.71,
+      "hash": "b435190f6639f487"
+    }
+  ],
+  "57": [
+    {
+      "index": 0,
+      "text": "Carmen, siempre digo «adonde fueres, haz lo que vieres», pero nunca he sabido qué forma es «fueres».",
+      "speaker": "daniel",
+      "src": "/audio/units/u57/u57-01.mp3",
+      "slow": "/audio/units/u57/u57-01-slow.mp3",
+      "seconds": 4.35,
+      "hash": "380712510eac55fa"
+    },
+    {
+      "index": 1,
+      "text": "Es futuro de subjuntivo. Hoy solo sobrevive en refranes y en textos jurídicos.",
+      "speaker": "carmen",
+      "src": "/audio/units/u57/u57-02.mp3",
+      "slow": "/audio/units/u57/u57-02-slow.mp3",
+      "seconds": 5.58,
+      "hash": "680fc69320e6d7f0"
+    },
+    {
+      "index": 2,
+      "text": "¿Y en la lengua de hoy cómo se diría?",
+      "speaker": "daniel",
+      "src": "/audio/units/u57/u57-03.mp3",
+      "slow": "/audio/units/u57/u57-03-slow.mp3",
+      "seconds": 5.53,
+      "hash": "406f4a0be5aef1c0"
+    },
+    {
+      "index": 3,
+      "text": "«Adonde vayas, haz lo que veas». Pero el refrán suena mucho mejor, ¿verdad?",
+      "speaker": "carmen",
+      "src": "/audio/units/u57/u57-04.mp3",
+      "slow": "/audio/units/u57/u57-04-slow.mp3",
+      "seconds": 4.95,
+      "hash": "67c07ace45c698c4"
+    },
+    {
+      "index": 4,
+      "text": "hablare, hablares, hablare, habláremos, hablareis, hablaren",
+      "speaker": "narrator",
+      "src": "/audio/units/u57/u57-05.mp3",
+      "slow": "/audio/units/u57/u57-05-slow.mp3",
+      "seconds": 7.78,
+      "hash": "17571cddfefe7b6b"
+    },
+    {
+      "index": 5,
+      "text": "De haberlo sabido, no habría venido.",
+      "speaker": "narrator",
+      "src": "/audio/units/u57/u57-06.mp3",
+      "slow": "/audio/units/u57/u57-06-slow.mp3",
+      "seconds": 3.07,
+      "hash": "af7fdceb91d22689"
+    },
+    {
+      "index": 6,
+      "text": "Que yo sepa, la reunión es mañana.",
+      "speaker": "narrator",
+      "src": "/audio/units/u57/u57-07.mp3",
+      "slow": "/audio/units/u57/u57-07-slow.mp3",
+      "seconds": 3.11,
+      "hash": "d7aea53c91e35a2a"
+    },
+    {
+      "index": 7,
+      "text": "Cueste lo que cueste, lo conseguiremos.",
+      "speaker": "narrator",
+      "src": "/audio/units/u57/u57-08.mp3",
+      "slow": "/audio/units/u57/u57-08-slow.mp3",
+      "seconds": 2.97,
+      "hash": "e919707c90026018"
+    },
+    {
+      "index": 8,
+      "text": "Que en paz descanse.",
+      "speaker": "narrator",
+      "src": "/audio/units/u57/u57-09.mp3",
+      "slow": "/audio/units/u57/u57-09-slow.mp3",
+      "seconds": 1.45,
+      "hash": "9e1a8d37de2eb99d"
+    }
+  ],
+  "58": [
+    {
+      "index": 0,
+      "text": "Es un pobre hombre.",
+      "speaker": "narrator",
+      "src": "/audio/units/u58/u58-01.mp3",
+      "slow": "/audio/units/u58/u58-01-slow.mp3",
+      "seconds": 2.04,
+      "hash": "429f3733d354af87"
+    },
+    {
+      "index": 1,
+      "text": "Del salón en el ángulo oscuro.",
+      "speaker": "narrator",
+      "src": "/audio/units/u58/u58-02.mp3",
+      "slow": "/audio/units/u58/u58-02-slow.mp3",
+      "seconds": 3.28,
+      "hash": "44b1392c73b4b097"
+    },
+    {
+      "index": 2,
+      "text": "Verde que te quiero verde.",
+      "speaker": "narrator",
+      "src": "/audio/units/u58/u58-03.mp3",
+      "slow": "/audio/units/u58/u58-03-slow.mp3",
+      "seconds": 2.43,
+      "hash": "f0c9127a275e5448"
+    },
+    {
+      "index": 3,
+      "text": "Es tan corto el amor, y es tan largo el olvido.",
+      "speaker": "narrator",
+      "src": "/audio/units/u58/u58-04.mp3",
+      "slow": "/audio/units/u58/u58-04-slow.mp3",
+      "seconds": 5.18,
+      "hash": "79f8b54fcc367a91"
+    }
+  ],
+  "59": [
+    {
+      "index": 0,
+      "text": "En casa del herrero, cuchillo de palo.",
+      "speaker": "narrator",
+      "src": "/audio/units/u59/u59-01.mp3",
+      "slow": "/audio/units/u59/u59-01-slow.mp3",
+      "seconds": 3.66,
+      "hash": "52fcc0ffeef03fca"
+    },
+    {
+      "index": 1,
+      "text": "A quien madruga, Dios le ayuda.",
+      "speaker": "narrator",
+      "src": "/audio/units/u59/u59-02.mp3",
+      "slow": "/audio/units/u59/u59-02-slow.mp3",
+      "seconds": 3.13,
+      "hash": "93d459b14e4ee2ff"
+    },
+    {
+      "index": 2,
+      "text": "Al mejor cazador se le va la liebre.",
+      "speaker": "narrator",
+      "src": "/audio/units/u59/u59-03.mp3",
+      "slow": "/audio/units/u59/u59-03-slow.mp3",
+      "seconds": 3.46,
+      "hash": "382a770ba47f2cc6"
+    },
+    {
+      "index": 3,
+      "text": "Luchar contra molinos de viento.",
+      "speaker": "narrator",
+      "src": "/audio/units/u59/u59-04.mp3",
+      "slow": "/audio/units/u59/u59-04-slow.mp3",
+      "seconds": 3.12,
+      "hash": "2b18b259950c23a8"
+    }
+  ],
+  "60": [
+    {
+      "index": 0,
+      "text": "Queda prohibido fumar en todo el recinto.",
+      "speaker": "narrator",
+      "src": "/audio/units/u60/u60-01.mp3",
+      "slow": "/audio/units/u60/u60-01-slow.mp3",
+      "seconds": 3.95,
+      "hash": "2a079e4b4396969c"
+    },
+    {
+      "index": 1,
+      "text": "El arrendatario deberá abonar la renta dentro de los cinco primeros días de cada mes.",
+      "speaker": "female-young",
+      "src": "/audio/units/u60/u60-02.mp3",
+      "slow": "/audio/units/u60/u60-02-slow.mp3",
+      "seconds": 5.44,
+      "hash": "911d74a244ddb145"
+    },
+    {
+      "index": 2,
+      "text": "El PIB registró un crecimiento interanual del 2,5 %.",
+      "speaker": "narrator",
+      "src": "/audio/units/u60/u60-03.mp3",
+      "slow": "/audio/units/u60/u60-03-slow.mp3",
+      "seconds": 7.08,
+      "hash": "26c11bbf96a8a97f"
+    },
+    {
+      "index": 3,
+      "text": "Se observó una mejora en el 70 % de los pacientes.",
+      "speaker": "narrator",
+      "src": "/audio/units/u60/u60-04.mp3",
+      "slow": "/audio/units/u60/u60-04-slow.mp3",
+      "seconds": 5.13,
+      "hash": "085fd5e5b49bda09"
+    }
+  ],
+  "61": [
+    {
+      "index": 0,
+      "text": "Es decir, el texto defiende la conciliación familiar.",
+      "speaker": "narrator",
+      "src": "/audio/units/u61/u61-01.mp3",
+      "slow": "/audio/units/u61/u61-01-slow.mp3",
+      "seconds": 5.24,
+      "hash": "c605821fbd2011ca"
+    },
+    {
+      "index": 1,
+      "text": "Dicho de otro modo, no hay un equivalente exacto.",
+      "speaker": "narrator",
+      "src": "/audio/units/u61/u61-02.mp3",
+      "slow": "/audio/units/u61/u61-02-slow.mp3",
+      "seconds": 4.32,
+      "hash": "5bc5b4ce9de6d980"
+    },
+    {
+      "index": 2,
+      "text": "Muchas gracias por venir hoy; sabemos que tienen una agenda muy apretada.",
+      "speaker": "daniel",
+      "src": "/audio/units/u61/u61-03.mp3",
+      "slow": "/audio/units/u61/u61-03-slow.mp3",
+      "seconds": 4.25,
+      "hash": "490ea87d0801cf50"
+    },
+    {
+      "index": 3,
+      "text": "Esperamos seguir colaborando con ustedes.",
+      "speaker": "daniel",
+      "src": "/audio/units/u61/u61-04.mp3",
+      "slow": "/audio/units/u61/u61-04-slow.mp3",
+      "seconds": 2.22,
+      "hash": "dfcbaf9cf730d31f"
+    }
+  ],
+  "62": [
+    {
+      "index": 0,
+      "text": "Bienvenidos a «Lenguas vivas». Hoy hablamos de la traducción automática.",
+      "speaker": "narrator",
+      "src": "/audio/units/u62/u62-01.mp3",
+      "slow": "/audio/units/u62/u62-01-slow.mp3",
+      "seconds": 7.04,
+      "hash": "16806b8986d845d5"
+    },
+    {
+      "index": 1,
+      "text": "No es que la máquina traduzca mal, sino que no entiende el contexto.",
+      "speaker": "narrator",
+      "src": "/audio/units/u62/u62-02.mp3",
+      "slow": "/audio/units/u62/u62-02-slow.mp3",
+      "seconds": 5.74,
+      "hash": "5afdb82c7c498f16"
+    },
+    {
+      "index": 2,
+      "text": "Si bien es cierto que la herramienta ahorra tiempo, no es menos cierto que la revisión humana es imprescindible.",
+      "speaker": "narrator",
+      "src": "/audio/units/u62/u62-03.mp3",
+      "slow": "/audio/units/u62/u62-03-slow.mp3",
+      "seconds": 8.95,
+      "hash": "8a0becf83f96b678"
+    },
+    {
+      "index": 3,
+      "text": "Pase lo que pase, el oficio de traductor seguirá existiendo.",
+      "speaker": "narrator",
+      "src": "/audio/units/u62/u62-04.mp3",
+      "slow": "/audio/units/u62/u62-04-slow.mp3",
+      "seconds": 5.15,
+      "hash": "03f57cbcf50749a1"
+    }
   ]
 }
