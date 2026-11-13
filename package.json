@@ -15,7 +15,8 @@
     "course:images": "node scripts/course/images.mjs",
     "images:variants": "node scripts/images/variants.mjs",
     "tts:generate": "node scripts/tts/generate.mjs",
-    "tts:encode": "node scripts/tts/encode.mjs"
+    "tts:encode": "node scripts/tts/encode.mjs",
+    "redirects:check": "node scripts/check-redirects.mjs"
   },
   "pnpm": {
     "onlyBuiltDependencies": [

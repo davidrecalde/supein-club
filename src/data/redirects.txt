@@ -1,3 +1,20 @@
+# REDIRECCIONES 301 DE SUPEIN.CLUB — fuente única (desde el 13 de noviembre de 2026).
+#
+# NO edites public/_redirects (ya no existe): el build genera dist/_redirects a partir de este archivo
+# (src/integrations/redirects.mjs). Sintaxis igual que la de Cloudflare: «origen  destino  301».
+#
+# Cómo añadir una redirección: escríbela AL FINAL del archivo (las más recientes tienen prioridad).
+#
+# Por qué así: en este proyecto Cloudflare Pages solo aplica las ~105 primeras reglas de _redirects y
+# las demás dan 404 sin avisar. El build:
+#   1. pone en dist/_redirects las reglas con comodín y las 100 más recientes en total (301 en el borde);
+#   2. crea para TODAS las reglas sin comodín una página de respaldo en la URL de origen (redirección
+#      instantánea con meta refresh, canonical al destino y noindex), así nunca hay un 404 aunque una
+#      regla se quede fuera del cupo;
+#   3. falla si un destino no existe, si un origen tapa una página real o si hay orígenes repetidos, y
+#      resuelve las cadenas (A → B → C se escribe A → C).
+# Comprobación en vivo: npm run redirects:check (o -- https://<rama>.supein-club.pages.dev).
+# Reglas con comodín (*, :splat): como mucho unas pocas, Cloudflare las limita mucho más.
 /about/team/                    /about-us/team/                  301
 /about/mission/                 /about-us/                       301
 /authors/                       /about-us/team/                  301
@@ -122,3 +139,4 @@
 # provincias/subpáginas existan.
 
 /language/learn-spanish/learn-spanish/    /language/learn-spanish/    301
+/language/learn-spanish/dele/    /language/dele/    301

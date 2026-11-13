@@ -10,6 +10,7 @@ import { readdirSync, readFileSync } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { NOINDEX_PATHS } from './src/config/noindexPaths.ts';
+import redirectsIntegration from './src/integrations/redirects.mjs';
 
 // Genera el índice de búsqueda de Pagefind al final del build, enganchado
 // al propio ciclo de vida de Astro (astro:build:done) en vez de depender
@@ -109,6 +110,8 @@ export default defineConfig({
     }),
     courseLinkCheckIntegration(),
     pagefindIntegration(),
+    // La última: escribe dist/_redirects y las páginas de respaldo (src/data/redirects.txt).
+    redirectsIntegration(),
   ],
   markdown: {
     rehypePlugins: [
