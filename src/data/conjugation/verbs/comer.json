@@ -1,0 +1,367 @@
+{
+  "infinitive": "comer",
+  "gerund": "comiendo",
+  "gerundIrregular": false,
+  "participle": "comido",
+  "participleIrregular": false,
+  "tenses": {
+    "presente": {
+      "forms": [
+        "como",
+        "comes",
+        "come",
+        "comemos",
+        "coméis",
+        "comen"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "preterito-indefinido": {
+      "forms": [
+        "comí",
+        "comiste",
+        "comió",
+        "comimos",
+        "comisteis",
+        "comieron"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "preterito-imperfecto": {
+      "forms": [
+        "comía",
+        "comías",
+        "comía",
+        "comíamos",
+        "comíais",
+        "comían"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "futuro": {
+      "forms": [
+        "comeré",
+        "comerás",
+        "comerá",
+        "comeremos",
+        "comeréis",
+        "comerán"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "condicional": {
+      "forms": [
+        "comería",
+        "comerías",
+        "comería",
+        "comeríamos",
+        "comeríais",
+        "comerían"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "subjuntivo-presente": {
+      "forms": [
+        "coma",
+        "comas",
+        "coma",
+        "comamos",
+        "comáis",
+        "coman"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "subjuntivo-imperfecto-ra": {
+      "forms": [
+        "comiera",
+        "comieras",
+        "comiera",
+        "comiéramos",
+        "comierais",
+        "comieran"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "subjuntivo-imperfecto-se": {
+      "forms": [
+        "comiese",
+        "comieses",
+        "comiese",
+        "comiésemos",
+        "comieseis",
+        "comiesen"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "imperativo-afirmativo": {
+      "forms": [
+        null,
+        "come",
+        "coma",
+        "comamos",
+        "comed",
+        "coman"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "imperativo-negativo": {
+      "forms": [
+        null,
+        "no comas",
+        "no coma",
+        "no comamos",
+        "no comáis",
+        "no coman"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "preterito-perfecto": {
+      "forms": [
+        "he comido",
+        "has comido",
+        "ha comido",
+        "hemos comido",
+        "habéis comido",
+        "han comido"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "pluscuamperfecto": {
+      "forms": [
+        "había comido",
+        "habías comido",
+        "había comido",
+        "habíamos comido",
+        "habíais comido",
+        "habían comido"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "futuro-perfecto": {
+      "forms": [
+        "habré comido",
+        "habrás comido",
+        "habrá comido",
+        "habremos comido",
+        "habréis comido",
+        "habrán comido"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "condicional-perfecto": {
+      "forms": [
+        "habría comido",
+        "habrías comido",
+        "habría comido",
+        "habríamos comido",
+        "habríais comido",
+        "habrían comido"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "subjuntivo-perfecto": {
+      "forms": [
+        "haya comido",
+        "hayas comido",
+        "haya comido",
+        "hayamos comido",
+        "hayáis comido",
+        "hayan comido"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "subjuntivo-pluscuamperfecto": {
+      "forms": [
+        "hubiera comido",
+        "hubieras comido",
+        "hubiera comido",
+        "hubiéramos comido",
+        "hubierais comido",
+        "hubieran comido"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "subjuntivo-pluscuamperfecto-se": {
+      "forms": [
+        "hubiese comido",
+        "hubieses comido",
+        "hubiese comido",
+        "hubiésemos comido",
+        "hubieseis comido",
+        "hubiesen comido"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    }
+  },
+  "quiz": [
+    {
+      "question": "comer の直説法現在、1人称単数（yo）は？",
+      "options": [
+        "como",
+        "come",
+        "comen"
+      ],
+      "correctIndex": 0,
+      "explanation": "正解は como。comer のこの形は規則どおりです。"
+    },
+    {
+      "question": "comer の点過去、3人称単数（él / ella / usted）は？",
+      "options": [
+        "comí",
+        "comió",
+        "comieron"
+      ],
+      "correctIndex": 1,
+      "explanation": "正解は comió。comer のこの形は規則どおりです。"
+    },
+    {
+      "question": "comer の未来、1人称単数（yo）は？",
+      "options": [
+        "comerá",
+        "comerán",
+        "comeré"
+      ],
+      "correctIndex": 2,
+      "explanation": "正解は comeré。comer のこの形は規則どおりです。"
+    },
+    {
+      "question": "comer の接続法現在、1人称単数（yo）は？",
+      "options": [
+        "coma",
+        "coman",
+        "comas"
+      ],
+      "correctIndex": 0,
+      "explanation": "正解は coma。comer のこの形は規則どおりです。"
+    },
+    {
+      "question": "comer の肯定命令、2人称単数（tú）は？",
+      "options": [
+        "coma",
+        "come",
+        "coman"
+      ],
+      "correctIndex": 1,
+      "explanation": "正解は come。comer のこの形は規則どおりです。"
+    }
+  ]
+}

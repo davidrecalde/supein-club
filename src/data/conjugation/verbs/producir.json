@@ -1,0 +1,367 @@
+{
+  "infinitive": "producir",
+  "gerund": "produciendo",
+  "gerundIrregular": false,
+  "participle": "producido",
+  "participleIrregular": false,
+  "tenses": {
+    "presente": {
+      "forms": [
+        "produzco",
+        "produces",
+        "produce",
+        "producimos",
+        "producís",
+        "producen"
+      ],
+      "irregular": [
+        true,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "preterito-indefinido": {
+      "forms": [
+        "produje",
+        "produjiste",
+        "produjo",
+        "produjimos",
+        "produjisteis",
+        "produjeron"
+      ],
+      "irregular": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    "preterito-imperfecto": {
+      "forms": [
+        "producía",
+        "producías",
+        "producía",
+        "producíamos",
+        "producíais",
+        "producían"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "futuro": {
+      "forms": [
+        "produciré",
+        "producirás",
+        "producirá",
+        "produciremos",
+        "produciréis",
+        "producirán"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "condicional": {
+      "forms": [
+        "produciría",
+        "producirías",
+        "produciría",
+        "produciríamos",
+        "produciríais",
+        "producirían"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "subjuntivo-presente": {
+      "forms": [
+        "produzca",
+        "produzcas",
+        "produzca",
+        "produzcamos",
+        "produzcáis",
+        "produzcan"
+      ],
+      "irregular": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    "subjuntivo-imperfecto-ra": {
+      "forms": [
+        "produjera",
+        "produjeras",
+        "produjera",
+        "produjéramos",
+        "produjerais",
+        "produjeran"
+      ],
+      "irregular": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    "subjuntivo-imperfecto-se": {
+      "forms": [
+        "produjese",
+        "produjeses",
+        "produjese",
+        "produjésemos",
+        "produjeseis",
+        "produjesen"
+      ],
+      "irregular": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    "imperativo-afirmativo": {
+      "forms": [
+        null,
+        "produce",
+        "produzca",
+        "produzcamos",
+        "producid",
+        "produzcan"
+      ],
+      "irregular": [
+        false,
+        false,
+        true,
+        true,
+        false,
+        true
+      ]
+    },
+    "imperativo-negativo": {
+      "forms": [
+        null,
+        "no produzcas",
+        "no produzca",
+        "no produzcamos",
+        "no produzcáis",
+        "no produzcan"
+      ],
+      "irregular": [
+        false,
+        true,
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    "preterito-perfecto": {
+      "forms": [
+        "he producido",
+        "has producido",
+        "ha producido",
+        "hemos producido",
+        "habéis producido",
+        "han producido"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "pluscuamperfecto": {
+      "forms": [
+        "había producido",
+        "habías producido",
+        "había producido",
+        "habíamos producido",
+        "habíais producido",
+        "habían producido"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "futuro-perfecto": {
+      "forms": [
+        "habré producido",
+        "habrás producido",
+        "habrá producido",
+        "habremos producido",
+        "habréis producido",
+        "habrán producido"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "condicional-perfecto": {
+      "forms": [
+        "habría producido",
+        "habrías producido",
+        "habría producido",
+        "habríamos producido",
+        "habríais producido",
+        "habrían producido"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "subjuntivo-perfecto": {
+      "forms": [
+        "haya producido",
+        "hayas producido",
+        "haya producido",
+        "hayamos producido",
+        "hayáis producido",
+        "hayan producido"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "subjuntivo-pluscuamperfecto": {
+      "forms": [
+        "hubiera producido",
+        "hubieras producido",
+        "hubiera producido",
+        "hubiéramos producido",
+        "hubierais producido",
+        "hubieran producido"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "subjuntivo-pluscuamperfecto-se": {
+      "forms": [
+        "hubiese producido",
+        "hubieses producido",
+        "hubiese producido",
+        "hubiésemos producido",
+        "hubieseis producido",
+        "hubiesen producido"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    }
+  },
+  "quiz": [
+    {
+      "question": "producir の直説法現在、1人称単数（yo）は？",
+      "options": [
+        "produzco",
+        "produco",
+        "produce"
+      ],
+      "correctIndex": 0,
+      "explanation": "正解は produzco。producir のこの形は不規則で、規則どおりの produco にはなりません。"
+    },
+    {
+      "question": "producir の点過去、3人称単数（él / ella / usted）は？",
+      "options": [
+        "produció",
+        "produjo",
+        "produje"
+      ],
+      "correctIndex": 1,
+      "explanation": "正解は produjo。producir のこの形は不規則で、規則どおりの produció にはなりません。"
+    },
+    {
+      "question": "producir の接続法現在、1人称単数（yo）は？",
+      "options": [
+        "produca",
+        "produzcan",
+        "produzca"
+      ],
+      "correctIndex": 2,
+      "explanation": "正解は produzca。producir のこの形は不規則で、規則どおりの produca にはなりません。"
+    },
+    {
+      "question": "producir の未来、1人称単数（yo）は？",
+      "options": [
+        "produciré",
+        "producirá",
+        "producirán"
+      ],
+      "correctIndex": 0,
+      "explanation": "正解は produciré。producir のこの形は規則どおりです。"
+    },
+    {
+      "question": "producir の肯定命令、2人称単数（tú）は？",
+      "options": [
+        "produzca",
+        "produce",
+        "produzcan"
+      ],
+      "correctIndex": 1,
+      "explanation": "正解は produce。producir のこの形は規則どおりです。"
+    }
+  ]
+}

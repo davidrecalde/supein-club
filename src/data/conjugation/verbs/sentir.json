@@ -1,0 +1,367 @@
+{
+  "infinitive": "sentir",
+  "gerund": "sintiendo",
+  "gerundIrregular": true,
+  "participle": "sentido",
+  "participleIrregular": false,
+  "tenses": {
+    "presente": {
+      "forms": [
+        "siento",
+        "sientes",
+        "siente",
+        "sentimos",
+        "sentís",
+        "sienten"
+      ],
+      "irregular": [
+        true,
+        true,
+        true,
+        false,
+        false,
+        true
+      ]
+    },
+    "preterito-indefinido": {
+      "forms": [
+        "sentí",
+        "sentiste",
+        "sintió",
+        "sentimos",
+        "sentisteis",
+        "sintieron"
+      ],
+      "irregular": [
+        false,
+        false,
+        true,
+        false,
+        false,
+        true
+      ]
+    },
+    "preterito-imperfecto": {
+      "forms": [
+        "sentía",
+        "sentías",
+        "sentía",
+        "sentíamos",
+        "sentíais",
+        "sentían"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "futuro": {
+      "forms": [
+        "sentiré",
+        "sentirás",
+        "sentirá",
+        "sentiremos",
+        "sentiréis",
+        "sentirán"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "condicional": {
+      "forms": [
+        "sentiría",
+        "sentirías",
+        "sentiría",
+        "sentiríamos",
+        "sentiríais",
+        "sentirían"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "subjuntivo-presente": {
+      "forms": [
+        "sienta",
+        "sientas",
+        "sienta",
+        "sintamos",
+        "sintáis",
+        "sientan"
+      ],
+      "irregular": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    "subjuntivo-imperfecto-ra": {
+      "forms": [
+        "sintiera",
+        "sintieras",
+        "sintiera",
+        "sintiéramos",
+        "sintierais",
+        "sintieran"
+      ],
+      "irregular": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    "subjuntivo-imperfecto-se": {
+      "forms": [
+        "sintiese",
+        "sintieses",
+        "sintiese",
+        "sintiésemos",
+        "sintieseis",
+        "sintiesen"
+      ],
+      "irregular": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    "imperativo-afirmativo": {
+      "forms": [
+        null,
+        "siente",
+        "sienta",
+        "sintamos",
+        "sentid",
+        "sientan"
+      ],
+      "irregular": [
+        false,
+        true,
+        true,
+        true,
+        false,
+        true
+      ]
+    },
+    "imperativo-negativo": {
+      "forms": [
+        null,
+        "no sientas",
+        "no sienta",
+        "no sintamos",
+        "no sintáis",
+        "no sientan"
+      ],
+      "irregular": [
+        false,
+        true,
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    "preterito-perfecto": {
+      "forms": [
+        "he sentido",
+        "has sentido",
+        "ha sentido",
+        "hemos sentido",
+        "habéis sentido",
+        "han sentido"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "pluscuamperfecto": {
+      "forms": [
+        "había sentido",
+        "habías sentido",
+        "había sentido",
+        "habíamos sentido",
+        "habíais sentido",
+        "habían sentido"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "futuro-perfecto": {
+      "forms": [
+        "habré sentido",
+        "habrás sentido",
+        "habrá sentido",
+        "habremos sentido",
+        "habréis sentido",
+        "habrán sentido"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "condicional-perfecto": {
+      "forms": [
+        "habría sentido",
+        "habrías sentido",
+        "habría sentido",
+        "habríamos sentido",
+        "habríais sentido",
+        "habrían sentido"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "subjuntivo-perfecto": {
+      "forms": [
+        "haya sentido",
+        "hayas sentido",
+        "haya sentido",
+        "hayamos sentido",
+        "hayáis sentido",
+        "hayan sentido"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "subjuntivo-pluscuamperfecto": {
+      "forms": [
+        "hubiera sentido",
+        "hubieras sentido",
+        "hubiera sentido",
+        "hubiéramos sentido",
+        "hubierais sentido",
+        "hubieran sentido"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "subjuntivo-pluscuamperfecto-se": {
+      "forms": [
+        "hubiese sentido",
+        "hubieses sentido",
+        "hubiese sentido",
+        "hubiésemos sentido",
+        "hubieseis sentido",
+        "hubiesen sentido"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    }
+  },
+  "quiz": [
+    {
+      "question": "sentir の直説法現在、1人称単数（yo）は？",
+      "options": [
+        "siento",
+        "sento",
+        "siente"
+      ],
+      "correctIndex": 0,
+      "explanation": "正解は siento。sentir のこの形は不規則で、規則どおりの sento にはなりません。"
+    },
+    {
+      "question": "sentir の点過去、3人称単数（él / ella / usted）は？",
+      "options": [
+        "sentió",
+        "sintió",
+        "sentí"
+      ],
+      "correctIndex": 1,
+      "explanation": "正解は sintió。sentir のこの形は不規則で、規則どおりの sentió にはなりません。"
+    },
+    {
+      "question": "sentir の接続法現在、1人称単数（yo）は？",
+      "options": [
+        "senta",
+        "sientan",
+        "sienta"
+      ],
+      "correctIndex": 2,
+      "explanation": "正解は sienta。sentir のこの形は不規則で、規則どおりの senta にはなりません。"
+    },
+    {
+      "question": "sentir の肯定命令、2人称単数（tú）は？",
+      "options": [
+        "siente",
+        "sente",
+        "sienta"
+      ],
+      "correctIndex": 0,
+      "explanation": "正解は siente。sentir のこの形は不規則で、規則どおりの sente にはなりません。"
+    },
+    {
+      "question": "sentir の未来、1人称単数（yo）は？",
+      "options": [
+        "sentirá",
+        "sentiré",
+        "sentirán"
+      ],
+      "correctIndex": 1,
+      "explanation": "正解は sentiré。sentir のこの形は規則どおりです。"
+    }
+  ]
+}

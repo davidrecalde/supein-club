@@ -2,7 +2,7 @@
 // Los 50 verbos básicos, numerados con su puesto entre los verbos del CORPES XXI
 // (no es una numeración 1-50), con enlace a su página cuando ya existe.
 import { VERBS, verbUrl } from '../../data/conjugation';
-import { FREQUENCY_SOURCE, VERB_RANKING } from '../../data/conjugation/ranking';
+import { COURSE_EXTRA_VERBS, FREQUENCY_SOURCE, VERB_RANKING } from '../../data/conjugation/ranking';
 ---
 <ol class="verb-ranking">
   {VERB_RANKING.map((v) => (
@@ -12,6 +12,11 @@ import { FREQUENCY_SOURCE, VERB_RANKING } from '../../data/conjugation/ranking';
     </li>
   ))}
 </ol>
+<p class="verb-ranking-extra">
+  このほか、コースで使う動詞：{COURSE_EXTRA_VERBS.map((v, i) => (
+    <>{i > 0 && '、'}{VERBS.has(v.infinitive) ? <a href={verbUrl(v.infinitive)} lang="es">{v.infinitive}</a> : <span lang="es">{v.infinitive}</span>}（{v.meaning}・{v.rank}位）</>
+  ))}
+</p>
 <p class="verb-ranking-source">
-  番号は、スペイン語圏の新聞・雑誌の文章で使われる動詞の中での順位です。出典：<a href={FREQUENCY_SOURCE.url}>{FREQUENCY_SOURCE.label}</a>。リンクのある動詞は、全時制の活用表を公開しています（順次追加中）。
+  番号は、スペイン語圏の新聞・雑誌の文章で使われる動詞の中での順位です。出典：<a href={FREQUENCY_SOURCE.url}>{FREQUENCY_SOURCE.label}</a>。リンクのある動詞は、全時制の活用表を公開しています。
 </p>

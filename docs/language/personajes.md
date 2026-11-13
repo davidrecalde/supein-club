@@ -78,7 +78,7 @@ brand names, extra fingers, distorted hands, cluttered background.
 
 - **Ficha:** 58 años, de Madrid, profesora de español. B2-C2.
 - **Personalidad:** rigurosa, exigente y cálida a la vez; disfruta de la lengua, la prensa y la literatura. Corrige con humor y sin dramatismo.
-- **Cómo habla:** preciso y articulado, registro culto; a sus alumnos les habla de tú y con vosotros en clase (スペインのみ). Expresiones de profesora: Fíjate en que…, Muy bien citado.
+- **Cómo habla:** preciso y articulado, registro culto; a sus alumnos les habla de tú y con vosotros en clase. Expresiones de profesora: Fíjate en que…, Muy bien citado.
 - **Aspecto (para ilustrar):** media melena con canas, gafas de lectura con cordón, pañuelo de color, chaqueta de punto; libros y periódicos a mano. Color de acento: morado `#5B3A8E`.
 - **Voz:** femenina madura, segura y amable. Candidatas: **Gacrux** (mature), **Sulafat** (warm), **Vindemiatrix** (gentle).
 - **Perfil de audio:** «Mujer de 58 años, profesora de Madrid. Habla español de España con pronunciación peninsular estándar, culta, segura y amable, articulando con claridad.»
@@ -115,6 +115,8 @@ brand names, extra fingers, distorted hands, cluttered background.
 Para personajes de una sola escena (camareros, Laura, Marcos, Lucía y Pablo, presentadores de radio de los simulacros) se usan voces distintas de las cinco principales, elegidas por edad y sexo. Narradora de vocabulario y ejemplos sin personaje: **Kore** (firm). Los nombres y descripciones de las voces son los de la documentación de Google; hay que escucharlas antes de fijarlas.
 
 ## Plan de audio en el nivel gratuito (decisión de David del 3 de noviembre de 2026)
+
+> **Actualización del 12 de noviembre de 2026:** el proyecto «Open Code» pasa al Nivel 1 de pago con saldo prepago (5.000 JPY, sin recarga automática): 10 peticiones por minuto y 100 al día. Límites y precios en `docs/language/tts-voices.json` → `quota` y `billing`.
 
 - Proyecto «Open Code» de Google AI Studio, clave en la variable de entorno `GEMINI_API_KEY` (nunca en el repositorio). Nivel gratuito: 3 peticiones por minuto, 10 al día. Las frases del curso son públicas, así que no importa que el nivel gratuito permita a Google usar el contenido.
 - Para no gastar una petición por frase, cada petición genera todas las frases de una unidad seguidas, con pausas largas entre ellas; el script corta el audio por los silencios y comprueba que salen tantos archivos como frases. Dos peticiones por unidad (lenta y natural): unas 130 en total con las 62 unidades y las transcripciones de los simulacros, es decir, de dos a tres semanas a ritmo de 6-8 al día, dejando margen para repetir.

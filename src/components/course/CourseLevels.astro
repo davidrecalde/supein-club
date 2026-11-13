@@ -2,6 +2,17 @@
 import { ABOUT_COURSE_URL, CAST_URL, COURSE_LEVELS, TOTAL_UNITS, WELCOME_URL, levelUrl } from '../../data/course';
 import { getAllUnits, isCourseVisible, isRoutable } from '../../utils/units';
 
+// Páginas de apoyo de cada nivel (resumen de gramática, vocabulario, plan) y su guía DELE.
+const spokes = (code: string) => {
+  const base = levelUrl(code);
+  return [
+    { href: `${base}grammar/`, label: '文法まとめ' },
+    { href: `${base}vocabulary/`, label: '単語' },
+    { href: `${base}study-plan/`, label: '学習計画' },
+    { href: `/language/learn-spanish/dele/${code.toLowerCase()}/`, label: `DELE ${code}` },
+  ];
+};
+
 const visible = await isCourseVisible();
 const units = await getAllUnits();
 const levels = COURSE_LEVELS.map((level) => {
@@ -10,7 +21,6 @@ const levels = COURSE_LEVELS.map((level) => {
     ...level,
     total: levelUnits.length,
     unitNumbers: levelUnits.map((u) => u.data.unit),
-    published: levelUnits.filter((u) => !u.data.draft).length,
     live: levelUnits.filter(isRoutable).map((u) => ({ unit: u.data.unit, url: u.data.url, shortTitle: u.data.shortTitle })),
   };
 });
@@ -26,14 +36,17 @@ const levels = COURSE_LEVELS.map((level) => {
   </p>
   <ol class="course-levels-grid">
     {levels.map((l) => (
-      <li class="course-level" data-units={JSON.stringify(l.unitNumbers)} data-live-units={JSON.stringify(l.live)}>
+      <li class={`course-level lv-${l.code}`} data-units={JSON.stringify(l.unitNumbers)} data-live-units={JSON.stringify(l.live)}>
         <a href={levelUrl(l.code)} class="course-level-name">
-          <span class="course-level-code">{l.code}</span> {l.name}
+          <span class="level-chip">{l.code}</span> {l.name}
         </a>
-        <span class="course-level-range">ユニット{l.first}〜{l.last}・公開中 {l.published} / {l.total}</span>
+        <span class="course-level-range">ユニット{l.first}〜{l.last}（全{l.total}ユニット）</span>
         <div class="course-level-bar" hidden><div class="course-level-fill"></div></div>
         <span class="course-level-percent" hidden>0%</span>
         <span class="course-level-next" hidden></span>
+        <span class="course-level-spokes">
+          {spokes(l.code).map((s) => <a href={s.href}>{s.label}</a>)}
+        </span>
       </li>
     ))}
   </ol>

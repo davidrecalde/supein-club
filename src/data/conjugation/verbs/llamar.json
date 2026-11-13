@@ -1,0 +1,367 @@
+{
+  "infinitive": "llamar",
+  "gerund": "llamando",
+  "gerundIrregular": false,
+  "participle": "llamado",
+  "participleIrregular": false,
+  "tenses": {
+    "presente": {
+      "forms": [
+        "llamo",
+        "llamas",
+        "llama",
+        "llamamos",
+        "llamáis",
+        "llaman"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "preterito-indefinido": {
+      "forms": [
+        "llamé",
+        "llamaste",
+        "llamó",
+        "llamamos",
+        "llamasteis",
+        "llamaron"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "preterito-imperfecto": {
+      "forms": [
+        "llamaba",
+        "llamabas",
+        "llamaba",
+        "llamábamos",
+        "llamabais",
+        "llamaban"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "futuro": {
+      "forms": [
+        "llamaré",
+        "llamarás",
+        "llamará",
+        "llamaremos",
+        "llamaréis",
+        "llamarán"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "condicional": {
+      "forms": [
+        "llamaría",
+        "llamarías",
+        "llamaría",
+        "llamaríamos",
+        "llamaríais",
+        "llamarían"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "subjuntivo-presente": {
+      "forms": [
+        "llame",
+        "llames",
+        "llame",
+        "llamemos",
+        "llaméis",
+        "llamen"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "subjuntivo-imperfecto-ra": {
+      "forms": [
+        "llamara",
+        "llamaras",
+        "llamara",
+        "llamáramos",
+        "llamarais",
+        "llamaran"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "subjuntivo-imperfecto-se": {
+      "forms": [
+        "llamase",
+        "llamases",
+        "llamase",
+        "llamásemos",
+        "llamaseis",
+        "llamasen"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "imperativo-afirmativo": {
+      "forms": [
+        null,
+        "llama",
+        "llame",
+        "llamemos",
+        "llamad",
+        "llamen"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "imperativo-negativo": {
+      "forms": [
+        null,
+        "no llames",
+        "no llame",
+        "no llamemos",
+        "no llaméis",
+        "no llamen"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "preterito-perfecto": {
+      "forms": [
+        "he llamado",
+        "has llamado",
+        "ha llamado",
+        "hemos llamado",
+        "habéis llamado",
+        "han llamado"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "pluscuamperfecto": {
+      "forms": [
+        "había llamado",
+        "habías llamado",
+        "había llamado",
+        "habíamos llamado",
+        "habíais llamado",
+        "habían llamado"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "futuro-perfecto": {
+      "forms": [
+        "habré llamado",
+        "habrás llamado",
+        "habrá llamado",
+        "habremos llamado",
+        "habréis llamado",
+        "habrán llamado"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "condicional-perfecto": {
+      "forms": [
+        "habría llamado",
+        "habrías llamado",
+        "habría llamado",
+        "habríamos llamado",
+        "habríais llamado",
+        "habrían llamado"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "subjuntivo-perfecto": {
+      "forms": [
+        "haya llamado",
+        "hayas llamado",
+        "haya llamado",
+        "hayamos llamado",
+        "hayáis llamado",
+        "hayan llamado"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "subjuntivo-pluscuamperfecto": {
+      "forms": [
+        "hubiera llamado",
+        "hubieras llamado",
+        "hubiera llamado",
+        "hubiéramos llamado",
+        "hubierais llamado",
+        "hubieran llamado"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "subjuntivo-pluscuamperfecto-se": {
+      "forms": [
+        "hubiese llamado",
+        "hubieses llamado",
+        "hubiese llamado",
+        "hubiésemos llamado",
+        "hubieseis llamado",
+        "hubiesen llamado"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    }
+  },
+  "quiz": [
+    {
+      "question": "llamar の直説法現在、1人称単数（yo）は？",
+      "options": [
+        "llamo",
+        "llama",
+        "llaman"
+      ],
+      "correctIndex": 0,
+      "explanation": "正解は llamo。llamar のこの形は規則どおりです。"
+    },
+    {
+      "question": "llamar の点過去、3人称単数（él / ella / usted）は？",
+      "options": [
+        "llamé",
+        "llamó",
+        "llamaron"
+      ],
+      "correctIndex": 1,
+      "explanation": "正解は llamó。llamar のこの形は規則どおりです。"
+    },
+    {
+      "question": "llamar の未来、1人称単数（yo）は？",
+      "options": [
+        "llamará",
+        "llamarán",
+        "llamaré"
+      ],
+      "correctIndex": 2,
+      "explanation": "正解は llamaré。llamar のこの形は規則どおりです。"
+    },
+    {
+      "question": "llamar の接続法現在、1人称単数（yo）は？",
+      "options": [
+        "llame",
+        "llamen",
+        "llames"
+      ],
+      "correctIndex": 0,
+      "explanation": "正解は llame。llamar のこの形は規則どおりです。"
+    },
+    {
+      "question": "llamar の肯定命令、2人称単数（tú）は？",
+      "options": [
+        "llame",
+        "llama",
+        "llamen"
+      ],
+      "correctIndex": 1,
+      "explanation": "正解は llama。llamar のこの形は規則どおりです。"
+    }
+  ]
+}

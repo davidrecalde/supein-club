@@ -1,0 +1,367 @@
+{
+  "infinitive": "pensar",
+  "gerund": "pensando",
+  "gerundIrregular": false,
+  "participle": "pensado",
+  "participleIrregular": false,
+  "tenses": {
+    "presente": {
+      "forms": [
+        "pienso",
+        "piensas",
+        "piensa",
+        "pensamos",
+        "pensáis",
+        "piensan"
+      ],
+      "irregular": [
+        true,
+        true,
+        true,
+        false,
+        false,
+        true
+      ]
+    },
+    "preterito-indefinido": {
+      "forms": [
+        "pensé",
+        "pensaste",
+        "pensó",
+        "pensamos",
+        "pensasteis",
+        "pensaron"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "preterito-imperfecto": {
+      "forms": [
+        "pensaba",
+        "pensabas",
+        "pensaba",
+        "pensábamos",
+        "pensabais",
+        "pensaban"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "futuro": {
+      "forms": [
+        "pensaré",
+        "pensarás",
+        "pensará",
+        "pensaremos",
+        "pensaréis",
+        "pensarán"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "condicional": {
+      "forms": [
+        "pensaría",
+        "pensarías",
+        "pensaría",
+        "pensaríamos",
+        "pensaríais",
+        "pensarían"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "subjuntivo-presente": {
+      "forms": [
+        "piense",
+        "pienses",
+        "piense",
+        "pensemos",
+        "penséis",
+        "piensen"
+      ],
+      "irregular": [
+        true,
+        true,
+        true,
+        false,
+        false,
+        true
+      ]
+    },
+    "subjuntivo-imperfecto-ra": {
+      "forms": [
+        "pensara",
+        "pensaras",
+        "pensara",
+        "pensáramos",
+        "pensarais",
+        "pensaran"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "subjuntivo-imperfecto-se": {
+      "forms": [
+        "pensase",
+        "pensases",
+        "pensase",
+        "pensásemos",
+        "pensaseis",
+        "pensasen"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "imperativo-afirmativo": {
+      "forms": [
+        null,
+        "piensa",
+        "piense",
+        "pensemos",
+        "pensad",
+        "piensen"
+      ],
+      "irregular": [
+        false,
+        true,
+        true,
+        false,
+        false,
+        true
+      ]
+    },
+    "imperativo-negativo": {
+      "forms": [
+        null,
+        "no pienses",
+        "no piense",
+        "no pensemos",
+        "no penséis",
+        "no piensen"
+      ],
+      "irregular": [
+        false,
+        true,
+        true,
+        false,
+        false,
+        true
+      ]
+    },
+    "preterito-perfecto": {
+      "forms": [
+        "he pensado",
+        "has pensado",
+        "ha pensado",
+        "hemos pensado",
+        "habéis pensado",
+        "han pensado"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "pluscuamperfecto": {
+      "forms": [
+        "había pensado",
+        "habías pensado",
+        "había pensado",
+        "habíamos pensado",
+        "habíais pensado",
+        "habían pensado"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "futuro-perfecto": {
+      "forms": [
+        "habré pensado",
+        "habrás pensado",
+        "habrá pensado",
+        "habremos pensado",
+        "habréis pensado",
+        "habrán pensado"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "condicional-perfecto": {
+      "forms": [
+        "habría pensado",
+        "habrías pensado",
+        "habría pensado",
+        "habríamos pensado",
+        "habríais pensado",
+        "habrían pensado"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "subjuntivo-perfecto": {
+      "forms": [
+        "haya pensado",
+        "hayas pensado",
+        "haya pensado",
+        "hayamos pensado",
+        "hayáis pensado",
+        "hayan pensado"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "subjuntivo-pluscuamperfecto": {
+      "forms": [
+        "hubiera pensado",
+        "hubieras pensado",
+        "hubiera pensado",
+        "hubiéramos pensado",
+        "hubierais pensado",
+        "hubieran pensado"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "subjuntivo-pluscuamperfecto-se": {
+      "forms": [
+        "hubiese pensado",
+        "hubieses pensado",
+        "hubiese pensado",
+        "hubiésemos pensado",
+        "hubieseis pensado",
+        "hubiesen pensado"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    }
+  },
+  "quiz": [
+    {
+      "question": "pensar の直説法現在、1人称単数（yo）は？",
+      "options": [
+        "pienso",
+        "penso",
+        "piensa"
+      ],
+      "correctIndex": 0,
+      "explanation": "正解は pienso。pensar のこの形は不規則で、規則どおりの penso にはなりません。"
+    },
+    {
+      "question": "pensar の接続法現在、1人称単数（yo）は？",
+      "options": [
+        "pense",
+        "piense",
+        "piensen"
+      ],
+      "correctIndex": 1,
+      "explanation": "正解は piense。pensar のこの形は不規則で、規則どおりの pense にはなりません。"
+    },
+    {
+      "question": "pensar の肯定命令、2人称単数（tú）は？",
+      "options": [
+        "pensa",
+        "piense",
+        "piensa"
+      ],
+      "correctIndex": 2,
+      "explanation": "正解は piensa。pensar のこの形は不規則で、規則どおりの pensa にはなりません。"
+    },
+    {
+      "question": "pensar の点過去、3人称単数（él / ella / usted）は？",
+      "options": [
+        "pensó",
+        "pensé",
+        "pensaron"
+      ],
+      "correctIndex": 0,
+      "explanation": "正解は pensó。pensar のこの形は規則どおりです。"
+    },
+    {
+      "question": "pensar の未来、1人称単数（yo）は？",
+      "options": [
+        "pensará",
+        "pensaré",
+        "pensarán"
+      ],
+      "correctIndex": 1,
+      "explanation": "正解は pensaré。pensar のこの形は規則どおりです。"
+    }
+  ]
+}

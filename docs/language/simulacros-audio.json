@@ -1,0 +1,84 @@
+{
+  "_doc": "Audio de la prueba de comprensión auditiva (聴解) de los seis simulacros DELE (unidades de cierre 12, 24, 36, 48, 56 y 62). Una petición a Gemini TTS por pista (dos voces como máximo), con las voces fijas de tts-voices.json (speakers → clave de voz). El texto de cada línea tiene que estar en la transcripción de la unidad: scripts/tts/exam.mjs lo comprueba antes de generar. Se publica solo a velocidad natural, como en el examen. Creado el 13 de noviembre de 2026.",
+  "tracks": [
+    {
+      "id": "u12-1",
+      "unit": 12,
+      "task": 1,
+      "speakers": { "Camarero": "male-adult", "Mina": "mina" },
+      "direction": "Conversación en la barra de una cafetería de Madrid. El camarero habla con naturalidad y simpatía; Mina pide con calma.",
+      "lines": [
+        ["Camarero", "Hola, ¿qué quieres?"],
+        ["Mina", "Un café con leche y un cruasán, por favor."],
+        ["Camarero", "¿Algo más?"],
+        ["Mina", "Sí, un zumo de naranja. ¿Cuánto es?"],
+        ["Camarero", "Son cinco euros con cincuenta."]
+      ]
+    },
+    {
+      "id": "u12-2",
+      "unit": 12,
+      "task": 2,
+      "speakers": { "Megafonía": "female-adult" },
+      "direction": "Anuncio por megafonía en una estación de tren: voz clara, profesional y pausada.",
+      "lines": [["Megafonía", "El tren con destino a Toledo sale a las diez y cuarto del andén tres."]]
+    },
+    {
+      "id": "u24-1",
+      "unit": 24,
+      "task": 1,
+      "speakers": { "Daniel": "daniel" },
+      "direction": "Mensaje en el contestador de un amigo: tono cercano y alegre, ritmo natural.",
+      "lines": [["Daniel", "Hola, Kenta. Soy Daniel. Te llamo porque el viernes hay una fiesta en mi casa. Vendrán unos amigos de la escuela de español. ¿Podrías traer algo de beber? Llámame cuando puedas. ¡Hasta luego!"]]
+    },
+    {
+      "id": "u24-2",
+      "unit": 24,
+      "task": 2,
+      "speakers": { "Megafonía": "male-adult" },
+      "direction": "Anuncio por megafonía en un aeropuerto: voz clara, profesional y pausada.",
+      "lines": [["Megafonía", "Atención, por favor. El vuelo con destino a Valencia lleva cuarenta minutos de retraso. Los pasajeros deben esperar en la puerta doce."]]
+    },
+    {
+      "id": "u36-1",
+      "unit": 36,
+      "task": 1,
+      "speakers": { "Marcos": "male-young" },
+      "direction": "Mensaje en el contestador de una compañera de la universidad: tono informal y amable, ritmo natural.",
+      "lines": [["Marcos", "Hola, Yui. Soy Marcos. Te llamo porque el intercambio de idiomas de mañana se ha cambiado al jueves. Será en la cafetería de la facultad, a las seis. Si no puedes venir, avísame, ¿vale? ¡Hasta luego!"]]
+    },
+    {
+      "id": "u48-1",
+      "unit": 48,
+      "task": 1,
+      "speakers": { "Presentador": "male-adult", "Marta": "female-adult" },
+      "direction": "Fragmento de un programa de radio. El presentador presenta el tema con tono profesional; Marta responde de forma espontánea y reflexiva.",
+      "lines": [
+        ["Presentador", "Bienvenidos a «Hablemos de trabajo». Hoy hablamos del teletrabajo con Marta, que trabaja desde casa desde hace dos años."],
+        ["Marta", "Si hubiera sabido que el teletrabajo era tan cómodo, lo habría pedido antes. Aunque trabajar desde casa tenga ventajas, también plantea problemas: a veces me siento sola. Por eso, voy a la oficina dos días a la semana."]
+      ]
+    },
+    {
+      "id": "u56-1",
+      "unit": 56,
+      "task": 1,
+      "speakers": { "Presentador": "male-senior", "Psicóloga": "female-adult" },
+      "direction": "Fragmento de un programa de radio. El presentador presenta el tema con tono profesional; la psicóloga deportiva argumenta con seguridad y matices.",
+      "lines": [
+        ["Presentador", "Bienvenidos a «Deporte y sociedad». Hoy hablamos de la presión sobre los deportistas jóvenes con una psicóloga deportiva."],
+        ["Psicóloga", "No es que la fama sea mala en sí misma, pero hay que saber gestionarla. Si bien es cierto que el talento es importante, no es menos cierto que la madurez lleva tiempo. Por eso, lo que más necesita un jugador joven no es un contrato millonario, sino un entorno estable. Digan lo que digan, la salud de los jugadores es lo primero."]
+      ]
+    },
+    {
+      "id": "u62-1",
+      "unit": 62,
+      "task": 1,
+      "speakers": { "Presentador": "male-adult", "Traductora": "female-senior" },
+      "direction": "Fragmento de un programa de radio. El presentador presenta el tema con tono profesional; la traductora jurada habla con experiencia, precisión y un punto de ironía.",
+      "lines": [
+        ["Presentador", "Bienvenidos a «Lenguas vivas». Hoy hablamos de la traducción automática con una traductora jurada."],
+        ["Traductora", "No es que la máquina traduzca mal, sino que no entiende el contexto. Ahorra mucho tiempo en los primeros borradores, pero un contrato mal traducido puede tener consecuencias graves. Por eso, cada vez dedicamos menos tiempo a traducir y más a revisar. Pase lo que pase, el oficio de traductor seguirá existiendo, aunque no será el mismo."]
+      ]
+    }
+  ]
+}

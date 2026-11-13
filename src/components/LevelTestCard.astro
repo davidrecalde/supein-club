@@ -1,14 +1,21 @@
 ---
-import { WELCOME_URL } from '../data/course';
-import { isCourseVisible } from '../utils/units';
+// Test de nivel v2 (docs/language/plan-hub-embudo.md, punto 19).
+// Bloques A1→C2 de 6 preguntas; un bloque se aprueba con 4 aciertos y el test se detiene en el
+// primer bloque no aprobado. El resultado da el nivel, las destrezas y por dónde empezar: la
+// unidad (si el curso ya es visible) o la página del nivel. Todo el contenido está en el HTML;
+// el JavaScript solo corrige, muestra los bloques de uno en uno y calcula el resultado.
+import { COURSE_LEVELS, WELCOME_URL, levelUrl } from '../data/course';
+import { getAllUnits, isCourseVisible, isRoutable } from '../utils/units';
 
 interface LevelTestItem {
   question: string;
   options: string[];
   correctIndex: number;
-  level: 'a1' | 'a2' | 'b1' | 'b2';
+  level: 'a1' | 'a2' | 'b1' | 'b2' | 'c1' | 'c2';
+  skill: 'grammar' | 'vocabulary' | 'reading';
+  unit: number;
+  passage?: string;
   explanation: string;
-  link: string;
 }
 
 interface Props {
@@ -16,187 +23,302 @@ interface Props {
   title?: string;
 }
 
-const { levelTest, title = "レベル診断テスト" } = Astro.props;
-// Tras el resultado, paso siguiente hacia el curso (solo si el curso ya es visible).
-const courseVisible = await isCourseVisible();
+const { levelTest, title = 'レベル診断テスト' } = Astro.props;
+const PASS = 4;
 
-const widgetId = `level-test-${Math.random().toString(36).slice(2, 11)}`;
+const courseVisible = await isCourseVisible();
+const units = await getAllUnits();
+const unitInfo = Object.fromEntries(
+  units.map((u) => [
+    u.data.unit,
+    { title: u.data.shortTitle, level: u.data.level, url: courseVisible && isRoutable(u) ? u.data.url : null },
+  ]),
+);
+
+const LEVEL_DESC: Record<string, string> = {
+  A1: '自己紹介や身近なことを、簡単な表現で伝えられる段階です。',
+  A2: '日常の場面や過去の出来事を話せる段階です。',
+  B1: '旅行や生活で困らず、自分の意見を言える段階です。',
+  B2: '仮定や譲歩を使い、ネイティブと自然にやりとりできる段階です。',
+  C1: 'ニュアンスや文体を使い分け、仕事や学業でスペイン語を使える段階です。',
+  C2: 'ことわざや専門的な文章まで理解できる、最上級の段階です。',
+};
+const levels = COURSE_LEVELS.map((l) => ({ code: l.code, name: l.name, first: l.first, last: l.last, url: levelUrl(l.code), desc: LEVEL_DESC[l.code] }));
+
+const blocks = COURSE_LEVELS.map((l) => ({ ...l, items: levelTest.filter((q) => q.level.toUpperCase() === l.code) })).filter((b) => b.items.length > 0);
+const SKILL_LABEL = { grammar: '文法', vocabulary: '語彙', reading: '読解' } as const;
+let n = 0;
 ---
 
-<div class="level-test-widget my-10 border border-ink/10 rounded-xl overflow-hidden" data-widget-id={widgetId}>
-  <div class="bg-navy px-6 py-4">
-    <h3 class="font-serif text-lg font-bold !text-white">{title}</h3>
+<div class="lt2" data-level-test data-pass={PASS} data-units={JSON.stringify(unitInfo)} data-levels={JSON.stringify(levels)} data-course-visible={String(courseVisible)}>
+  <div class="lt2-head">
+    <h3 class="lt2-title">{title}</h3>
+    <p class="lt2-sub">1ブロック6問・4問正解で次のレベルへ</p>
   </div>
 
-  <div class="divide-y divide-ink/10">
-    {levelTest.map((item, qIndex) => (
-      <div
-        class="lt-question p-6"
-        data-question-index={qIndex}
-        data-correct-index={item.correctIndex}
-        data-answered="false"
-        data-correct="false"
-      >
-        <p class="font-semibold text-navy mb-4">
-          <span class="text-muted mr-2">{qIndex + 1}.</span>{item.question}
-        </p>
-        <div class="grid gap-2">
-          {item.options.map((option, oIndex) => (
-            <button
-              type="button"
-              class="lt-option text-left px-4 py-3 rounded-lg border border-ink/10 text-sm text-navy hover:bg-navy/5 transition-colors disabled:cursor-not-allowed disabled:hover:bg-transparent"
-              data-question-index={qIndex}
-              data-option-index={oIndex}
-              onclick={`checkLevelTestAnswer('${widgetId}', ${qIndex}, ${oIndex})`}
-            >
-              {option}
-            </button>
-          ))}
-        </div>
-        <div
-          class="lt-explanation mt-4 px-4 py-3 rounded-lg bg-navy/5 text-sm text-muted leading-relaxed"
-          data-question-index={qIndex}
-          aria-expanded="false"
-          hidden
-        >
-          <p>{item.explanation}</p>
-          <a href={item.link} target="_blank" rel="noopener noreferrer" class="inline-block mt-2 font-semibold !text-navy !no-underline hover:!underline">詳しく学ぶ →</a>
-        </div>
+  {blocks.map((b, bi) => (
+    <section class={`lt2-block lv-${b.code}`} data-block={bi} aria-label={`ブロック${bi + 1}：${b.code} ${b.name}`}>
+      <p class="lt2-block-title"><span class="level-chip">{b.code} {b.name}</span> ブロック{bi + 1}（{b.items.length}問）</p>
+      {b.items.map((item) => {
+        n++;
+        return (
+          <div class="lt2-q" data-q data-correct-index={item.correctIndex} data-unit={item.unit} data-skill={item.skill}>
+            {item.passage && <blockquote class="lt2-passage" lang="es">{item.passage}</blockquote>}
+            <p class="lt2-question"><span class="lt2-num">{n}.</span> <span class="lt2-skill">{SKILL_LABEL[item.skill]}</span> {item.question}</p>
+            <div class="lt2-options">
+              {item.options.map((option, oi) => (
+                <button type="button" class="lt2-option" data-option={oi}>{option}</button>
+              ))}
+            </div>
+            <div class="lt2-expl" hidden><p>{item.explanation}</p></div>
+          </div>
+        );
+      })}
+      <div class="lt2-block-result" hidden>
+        <p class="lt2-block-score"></p>
+        {bi < blocks.length - 1 && <button type="button" class="lt2-btn lt2-next" hidden>次のレベル（{blocks[bi + 1].code}）へ進む</button>}
+        <button type="button" class="lt2-btn lt2-finish" hidden>結果を見る</button>
       </div>
-    ))}
-  </div>
+    </section>
+  ))}
 
-  <div class="lt-summary px-6 py-8 border-t border-ink/10 text-center bg-canvas">
-    <p class="font-serif text-navy leading-none text-6xl md:text-7xl font-bold">
-      <span class="lt-summary-score">0</span> / {levelTest.length}
-    </p>
-    <p class="text-sm text-muted mt-3">正解数</p>
-    <p class="font-serif text-navy text-2xl font-bold mt-4">
-      推定レベル：<span class="lt-summary-level">A1</span>
-    </p>
-    <button
-      type="button"
-      class="lt-reset-btn inline-flex items-center justify-center px-6 py-3 rounded-lg bg-navy text-white text-sm font-semibold hover:bg-navy-deep transition-colors mt-6"
-      onclick={`resetLevelTest('${widgetId}')`}
-    >
-      もう一度挑戦する
-    </button>
+  <div class="lt2-result" hidden aria-live="polite">
+    <p class="lt2-result-label">あなたの推定レベル</p>
+    <p class="lt2-result-level"></p>
+    <p class="lt2-result-desc"></p>
+    <ul class="lt2-skills"></ul>
+    <div class="lt2-start"></div>
+    <div class="lt2-weak" hidden>
+      <p class="lt2-weak-title">見直したい項目</p>
+      <ul></ul>
+    </div>
+    <div class="lt2-line" data-line-source="level-test" hidden>
+      <p>新しいユニットや学習のヒントを、LINEでお知らせしています。</p>
+      <a class="lt2-line-btn" href="https://lin.ee/vx6jpud" target="_blank" rel="noopener noreferrer">LINEで友だち追加</a>
+      <button type="button" class="lt2-line-close" aria-label="閉じる">×</button>
+    </div>
     {courseVisible && (
-      <p class="mt-6">
-        <a href={WELCOME_URL} class="font-semibold !text-navy underline">結果に合わせて学習設定をする（ペース・例文の数など）→</a>
-      </p>
+      <p class="lt2-welcome"><a href={WELCOME_URL}>結果に合わせて学習設定をする（ペース・例文の数など）→</a></p>
     )}
+    <button type="button" class="lt2-btn lt2-reset">もう一度挑戦する</button>
   </div>
 </div>
 
 <script>
-function levelForScore(score: number): string {
-  if (score <= 7) return 'A1';
-  if (score <= 14) return 'A2';
-  if (score <= 21) return 'B1';
-  return 'B2+';
-}
+  const RESULT_KEY = 'supein.levelTest.v2';
+  const LINE_KEY = 'supein.lineCard.levelTest';
+  const store = {
+    get(k: string) { try { return localStorage.getItem(k); } catch { return null; } },
+    set(k: string, v: string) { try { localStorage.setItem(k, v); } catch { /* sin almacenamiento */ } },
+  };
 
-function checkLevelTestAnswer(widgetId: string, questionIndex: number, selectedIndex: number) {
-  const widget = document.querySelector(`[data-widget-id="${widgetId}"]`);
-  if (!widget) return;
+  type UnitInfo = { title: string; level: string; url: string | null };
+  type LevelInfo = { code: string; name: string; first: number; last: number; url: string; desc: string };
 
-  const question = widget.querySelector(
-    `.lt-question[data-question-index="${questionIndex}"]`
-  ) as HTMLElement;
-  if (!question) return;
+  document.querySelectorAll<HTMLElement>('[data-level-test]').forEach((root) => {
+    const PASS = Number(root.dataset.pass);
+    const units: Record<string, UnitInfo> = JSON.parse(root.dataset.units ?? '{}');
+    const levels: LevelInfo[] = JSON.parse(root.dataset.levels ?? '[]');
+    const blocks = [...root.querySelectorAll<HTMLElement>('.lt2-block')];
+    const result = root.querySelector<HTMLElement>('.lt2-result')!;
+    const levelOfUnit = (u: number) => levels.find((l) => u >= l.first && u <= l.last) ?? levels[0];
+    const el = (tag: string, cls?: string, text?: string) => {
+      const e = document.createElement(tag);
+      if (cls) e.className = cls;
+      if (text) e.textContent = text;
+      return e;
+    };
 
-  // Pregunta ya respondida: no permitir cambios
-  if (question.dataset.answered === 'true') return;
+    const questions = (b: HTMLElement) => [...b.querySelectorAll<HTMLElement>('[data-q]')];
+    const scoreOf = (b: HTMLElement) => questions(b).filter((q) => q.dataset.correct === 'true').length;
+    const done = (b: HTMLElement) => questions(b).every((q) => q.dataset.answered === 'true');
 
-  const selectedBtn = question.querySelector(
-    `.lt-option[data-option-index="${selectedIndex}"]`
-  ) as HTMLButtonElement;
-  if (!selectedBtn) return;
+    function showOnlyFirstBlock() {
+      blocks.forEach((b, i) => (b.hidden = i > 0));
+    }
 
-  const correctIndex = Number(question.dataset.correctIndex);
-  const isCorrect = selectedIndex === correctIndex;
+    function onBlockDone(b: HTMLElement) {
+      const i = blocks.indexOf(b);
+      const score = scoreOf(b);
+      const total = questions(b).length;
+      const passed = score >= PASS;
+      const box = b.querySelector<HTMLElement>('.lt2-block-result')!;
+      const next = b.querySelector<HTMLElement>('.lt2-next');
+      const finish = b.querySelector<HTMLElement>('.lt2-finish')!;
+      box.hidden = false;
+      box.querySelector('.lt2-block-score')!.textContent = passed
+        ? `${total}問中${score}問正解。このレベルは合格です！`
+        : `${total}問中${score}問正解。診断はここまでです。`;
+      if (passed && next && i < blocks.length - 1) {
+        next.hidden = false;
+        finish.hidden = false;
+        finish.textContent = 'ここで結果を見る';
+      } else {
+        finish.hidden = false;
+        finish.textContent = '結果を見る';
+      }
+    }
 
-  if (isCorrect) {
-    selectedBtn.classList.add('bg-green-50', 'border-green-600', 'text-green-800');
-  } else {
-    selectedBtn.classList.add('bg-red-50', 'border-red-600', 'text-red-800');
-  }
+    function showResult() {
+      const answeredBlocks = blocks.filter((b) => !b.hidden && done(b));
+      let passedCount = 0;
+      for (const b of answeredBlocks) {
+        if (scoreOf(b) >= PASS) passedCount++;
+        else break;
+      }
+      const failed = answeredBlocks[passedCount];
+      const reached = passedCount > 0 ? levels[passedCount - 1] : null;
 
-  question.querySelectorAll('.lt-option').forEach((btn) => {
-    (btn as HTMLButtonElement).disabled = true;
-  });
+      // Por dónde empezar: en el primer bloque no aprobado, la unidad más temprana con error
+      // (o el principio del nivel si hubo pocos aciertos). Si se aprobó todo, el último bloque.
+      const wrongUnits = (b: HTMLElement) =>
+        questions(b).filter((q) => q.dataset.correct !== 'true').map((q) => Number(q.dataset.unit));
+      let startUnit: number;
+      if (failed) {
+        // Pocos aciertos: el nivel desde el principio. Si no, la primera unidad con error.
+        startUnit = scoreOf(failed) <= 2 ? levels[passedCount].first : Math.min(...wrongUnits(failed));
+      } else if (passedCount === blocks.length) {
+        const misses = wrongUnits(blocks[blocks.length - 1]);
+        startUnit = misses.length ? Math.min(...misses) : 62;
+      } else {
+        // Se detuvo después de aprobar: el principio del nivel siguiente.
+        startUnit = reached ? Math.min(reached.last + 1, 62) : 1;
+      }
+      const startLevel = levelOfUnit(startUnit);
 
-  question.dataset.answered = 'true';
-  question.dataset.correct = String(isCorrect);
+      // Nivel y descripción
+      const levelBox = result.querySelector<HTMLElement>('.lt2-result-level')!;
+      levelBox.replaceChildren();
+      const chip = el('span', `level-chip lv-${(reached ?? levels[0]).code}`, reached ? `${reached.code} ${reached.name}` : 'A1 Acceso（入門）');
+      levelBox.append(chip);
+      result.querySelector('.lt2-result-desc')!.textContent = reached
+        ? `${reached.desc}${failed ? `次は ${levels[passedCount].code} ${levels[passedCount].name} に挑戦しましょう。` : ''}`
+        : 'スペイン語はこれから。発音と基本の文から、一歩ずつ始めましょう。';
 
-  const explanation = question.querySelector(
-    `.lt-explanation[data-question-index="${questionIndex}"]`
-  ) as HTMLElement;
-  if (explanation) {
-    explanation.hidden = false;
-    explanation.setAttribute('aria-expanded', 'true');
-  }
-
-  // Resumen final escopado a este widget únicamente
-  updateLevelTestSummary(widget);
-}
-
-function updateLevelTestSummary(widget: Element) {
-  const scoreEl = widget.querySelector('.lt-summary-score');
-  const levelEl = widget.querySelector('.lt-summary-level');
-  if (!scoreEl || !levelEl) return;
-
-  const correctCount = widget.querySelectorAll(
-    '.lt-question[data-correct="true"]'
-  ).length;
-  scoreEl.textContent = String(correctCount);
-  levelEl.textContent = levelForScore(correctCount);
-
-  // Medición del embudo (docs/language/plan-hub-embudo.md, punto 7): test completado.
-  const total = widget.querySelectorAll('.lt-question').length;
-  const answered = widget.querySelectorAll('.lt-question[data-answered="true"]').length;
-  const w = widget as HTMLElement;
-  if (answered === total && w.dataset.tracked !== 'true') {
-    w.dataset.tracked = 'true';
-    (window as any).gtag?.('event', 'level_test_completed', { score: correctCount, total, level: levelForScore(correctCount) });
-  }
-}
-
-function resetLevelTest(widgetId: string) {
-  const widget = document.querySelector(`[data-widget-id="${widgetId}"]`);
-  if (!widget) return;
-
-  widget.querySelectorAll('.lt-question').forEach((question) => {
-    const q = question as HTMLElement;
-    q.dataset.answered = 'false';
-    q.dataset.correct = 'false';
-
-    q.querySelectorAll('.lt-option').forEach((btn) => {
-      const b = btn as HTMLButtonElement;
-      b.disabled = false;
-      b.classList.remove(
-        'bg-green-50', 'border-green-600', 'text-green-800',
-        'bg-red-50', 'border-red-600', 'text-red-800'
+      // Destrezas
+      const answered = answeredBlocks.flatMap(questions);
+      const skills: Record<string, { label: string; ok: number; all: number }> = {
+        grammar: { label: '文法', ok: 0, all: 0 },
+        vocabulary: { label: '語彙', ok: 0, all: 0 },
+        reading: { label: '読解', ok: 0, all: 0 },
+      };
+      for (const q of answered) {
+        const s = skills[q.dataset.skill ?? 'grammar'];
+        s.all++;
+        if (q.dataset.correct === 'true') s.ok++;
+      }
+      const list = result.querySelector<HTMLElement>('.lt2-skills')!;
+      list.replaceChildren(
+        ...Object.values(skills).filter((s) => s.all).map((s) => {
+          const li = el('li');
+          li.append(el('span', 'lt2-skill-name', s.label), el('span', 'lt2-skill-bar'), el('span', 'lt2-skill-score', `${s.ok} / ${s.all}`));
+          (li.querySelector('.lt2-skill-bar') as HTMLElement).style.setProperty('--pct', `${Math.round((s.ok / s.all) * 100)}%`);
+          return li;
+        }),
       );
+
+      // Siguiente paso
+      const start = result.querySelector<HTMLElement>('.lt2-start')!;
+      start.replaceChildren();
+      const info = units[String(startUnit)];
+      if (info?.url) {
+        start.append(el('p', 'lt2-start-title', `ユニット${startUnit}「${info.title}」から始めましょう`));
+        const a = el('a', 'lt2-btn lt2-start-btn', `ユニット${startUnit}へ進む →`) as HTMLAnchorElement;
+        a.href = info.url;
+        const hub = el('a', 'lt2-start-hub', `${startLevel.code} ${startLevel.name}のユニット一覧`) as HTMLAnchorElement;
+        hub.href = startLevel.url;
+        start.append(a, hub);
+      } else {
+        start.append(el('p', 'lt2-start-title', `${startLevel.code} ${startLevel.name}の学習ページから始めましょう`));
+        const a = el('a', 'lt2-btn lt2-start-btn', `${startLevel.code} の学習ページへ →`) as HTMLAnchorElement;
+        a.href = startLevel.url;
+        start.append(a);
+      }
+
+      // Puntos que repasar
+      const weak = result.querySelector<HTMLElement>('.lt2-weak')!;
+      const weakUnits = [...new Set(answered.filter((q) => q.dataset.correct !== 'true').map((q) => Number(q.dataset.unit)))].sort((a, b) => a - b);
+      const ul = weak.querySelector('ul')!;
+      ul.replaceChildren(
+        ...weakUnits.map((u) => {
+          const li = el('li');
+          const i = units[String(u)];
+          const label = `${levelOfUnit(u).code}・${i?.title ?? `ユニット${u}`}`;
+          if (i?.url) {
+            const a = el('a', '', `ユニット${u} ${label}`) as HTMLAnchorElement;
+            a.href = i.url;
+            li.append(a);
+          } else li.textContent = label;
+          return li;
+        }),
+      );
+      weak.hidden = weakUnits.length === 0;
+
+      // LINE: tarjeta pequeña, se puede cerrar y no vuelve
+      const line = result.querySelector<HTMLElement>('.lt2-line');
+      if (line) line.hidden = store.get(LINE_KEY) === 'closed';
+
+      blocks.forEach((b) => b.querySelectorAll<HTMLElement>('.lt2-next, .lt2-finish').forEach((x) => (x.hidden = true)));
+      result.hidden = false;
+      result.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+      const levelCode = reached?.code ?? 'pre-A1';
+      store.set(RESULT_KEY, JSON.stringify({ level: levelCode, startUnit, date: new Date().toISOString() }));
+      (window as any).gtag?.('event', 'level_test_completed', { level: levelCode, start_unit: startUnit, answered: answered.length, correct: answered.filter((q) => q.dataset.correct === 'true').length });
+    }
+
+    root.addEventListener('click', (e) => {
+      const t = e.target as HTMLElement;
+      const option = t.closest<HTMLButtonElement>('.lt2-option');
+      if (option) {
+        const q = option.closest<HTMLElement>('[data-q]')!;
+        if (q.dataset.answered === 'true') return;
+        const chosen = Number(option.dataset.option);
+        const correct = Number(q.dataset.correctIndex);
+        const opts = [...q.querySelectorAll<HTMLButtonElement>('.lt2-option')];
+        opts.forEach((b) => (b.disabled = true));
+        opts[correct]?.classList.add('is-correct');
+        if (chosen !== correct) option.classList.add('is-wrong');
+        q.dataset.answered = 'true';
+        q.dataset.correct = String(chosen === correct);
+        q.querySelector<HTMLElement>('.lt2-expl')!.hidden = false;
+        const b = q.closest<HTMLElement>('.lt2-block')!;
+        if (done(b)) onBlockDone(b);
+        return;
+      }
+      if (t.closest('.lt2-next')) {
+        const b = t.closest<HTMLElement>('.lt2-block')!;
+        const next = blocks[blocks.indexOf(b) + 1];
+        b.querySelectorAll<HTMLElement>('.lt2-next, .lt2-finish').forEach((x) => (x.hidden = true));
+        if (next) {
+          next.hidden = false;
+          next.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+        return;
+      }
+      if (t.closest('.lt2-finish')) return showResult();
+      if (t.closest('.lt2-line-close')) {
+        store.set(LINE_KEY, 'closed');
+        t.closest<HTMLElement>('.lt2-line')!.hidden = true;
+        return;
+      }
+      if (t.closest('.lt2-reset')) {
+        root.querySelectorAll<HTMLElement>('[data-q]').forEach((q) => {
+          q.dataset.answered = 'false';
+          q.dataset.correct = 'false';
+          q.querySelectorAll<HTMLButtonElement>('.lt2-option').forEach((b) => {
+            b.disabled = false;
+            b.classList.remove('is-correct', 'is-wrong');
+          });
+          q.querySelector<HTMLElement>('.lt2-expl')!.hidden = true;
+        });
+        root.querySelectorAll<HTMLElement>('.lt2-block-result').forEach((x) => (x.hidden = true));
+        result.hidden = true;
+        showOnlyFirstBlock();
+        root.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
     });
 
-    const explanation = q.querySelector('.lt-explanation') as HTMLElement;
-    if (explanation) {
-      explanation.hidden = true;
-      explanation.setAttribute('aria-expanded', 'false');
-    }
+    showOnlyFirstBlock();
   });
-
-  updateLevelTestSummary(widget);
-
-  const firstQuestion = widget.querySelector('.lt-question');
-  if (firstQuestion) {
-    firstQuestion.scrollIntoView({ behavior: 'smooth', block: 'start' });
-  }
-}
-
-// Exponer globalmente
-(window as any).checkLevelTestAnswer = checkLevelTestAnswer;
-(window as any).resetLevelTest = resetLevelTest;
 </script>

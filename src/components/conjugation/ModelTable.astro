@@ -1,7 +1,7 @@
 ---
 // Tabla rápida de los modelos regulares hablar / comer / vivir para un tiempo.
 import models from '../../data/conjugation/models.json';
-import { PERSONS, VOSOTROS_INDEX } from '../../data/conjugation/tenses';
+import { PERSONS } from '../../data/conjugation/tenses';
 
 interface Props {
   tense: 'presente' | 'preterito-indefinido' | 'preterito-imperfecto' | 'futuro';
@@ -24,7 +24,7 @@ const verbs = [
   <tbody>
     {PERSONS.map((person, i) => (
       <tr>
-        <td>{person}{i === VOSOTROS_INDEX && <span class="only-spain">スペインのみ</span>}</td>
+        <td>{person}</td>
         {verbs.map((v) => <td lang="es">{models[v.inf][tense][i]}</td>)}
       </tr>
     ))}

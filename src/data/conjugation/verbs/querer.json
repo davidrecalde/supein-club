@@ -1,0 +1,367 @@
+{
+  "infinitive": "querer",
+  "gerund": "queriendo",
+  "gerundIrregular": false,
+  "participle": "querido",
+  "participleIrregular": false,
+  "tenses": {
+    "presente": {
+      "forms": [
+        "quiero",
+        "quieres",
+        "quiere",
+        "queremos",
+        "queréis",
+        "quieren"
+      ],
+      "irregular": [
+        true,
+        true,
+        true,
+        false,
+        false,
+        true
+      ]
+    },
+    "preterito-indefinido": {
+      "forms": [
+        "quise",
+        "quisiste",
+        "quiso",
+        "quisimos",
+        "quisisteis",
+        "quisieron"
+      ],
+      "irregular": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    "preterito-imperfecto": {
+      "forms": [
+        "quería",
+        "querías",
+        "quería",
+        "queríamos",
+        "queríais",
+        "querían"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "futuro": {
+      "forms": [
+        "querré",
+        "querrás",
+        "querrá",
+        "querremos",
+        "querréis",
+        "querrán"
+      ],
+      "irregular": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    "condicional": {
+      "forms": [
+        "querría",
+        "querrías",
+        "querría",
+        "querríamos",
+        "querríais",
+        "querrían"
+      ],
+      "irregular": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    "subjuntivo-presente": {
+      "forms": [
+        "quiera",
+        "quieras",
+        "quiera",
+        "queramos",
+        "queráis",
+        "quieran"
+      ],
+      "irregular": [
+        true,
+        true,
+        true,
+        false,
+        false,
+        true
+      ]
+    },
+    "subjuntivo-imperfecto-ra": {
+      "forms": [
+        "quisiera",
+        "quisieras",
+        "quisiera",
+        "quisiéramos",
+        "quisierais",
+        "quisieran"
+      ],
+      "irregular": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    "subjuntivo-imperfecto-se": {
+      "forms": [
+        "quisiese",
+        "quisieses",
+        "quisiese",
+        "quisiésemos",
+        "quisieseis",
+        "quisiesen"
+      ],
+      "irregular": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    "imperativo-afirmativo": {
+      "forms": [
+        null,
+        "quiere",
+        "quiera",
+        "queramos",
+        "quered",
+        "quieran"
+      ],
+      "irregular": [
+        false,
+        true,
+        true,
+        false,
+        false,
+        true
+      ]
+    },
+    "imperativo-negativo": {
+      "forms": [
+        null,
+        "no quieras",
+        "no quiera",
+        "no queramos",
+        "no queráis",
+        "no quieran"
+      ],
+      "irregular": [
+        false,
+        true,
+        true,
+        false,
+        false,
+        true
+      ]
+    },
+    "preterito-perfecto": {
+      "forms": [
+        "he querido",
+        "has querido",
+        "ha querido",
+        "hemos querido",
+        "habéis querido",
+        "han querido"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "pluscuamperfecto": {
+      "forms": [
+        "había querido",
+        "habías querido",
+        "había querido",
+        "habíamos querido",
+        "habíais querido",
+        "habían querido"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "futuro-perfecto": {
+      "forms": [
+        "habré querido",
+        "habrás querido",
+        "habrá querido",
+        "habremos querido",
+        "habréis querido",
+        "habrán querido"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "condicional-perfecto": {
+      "forms": [
+        "habría querido",
+        "habrías querido",
+        "habría querido",
+        "habríamos querido",
+        "habríais querido",
+        "habrían querido"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "subjuntivo-perfecto": {
+      "forms": [
+        "haya querido",
+        "hayas querido",
+        "haya querido",
+        "hayamos querido",
+        "hayáis querido",
+        "hayan querido"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "subjuntivo-pluscuamperfecto": {
+      "forms": [
+        "hubiera querido",
+        "hubieras querido",
+        "hubiera querido",
+        "hubiéramos querido",
+        "hubierais querido",
+        "hubieran querido"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "subjuntivo-pluscuamperfecto-se": {
+      "forms": [
+        "hubiese querido",
+        "hubieses querido",
+        "hubiese querido",
+        "hubiésemos querido",
+        "hubieseis querido",
+        "hubiesen querido"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    }
+  },
+  "quiz": [
+    {
+      "question": "querer の直説法現在、1人称単数（yo）は？",
+      "options": [
+        "quiero",
+        "quero",
+        "quiere"
+      ],
+      "correctIndex": 0,
+      "explanation": "正解は quiero。querer のこの形は不規則で、規則どおりの quero にはなりません。"
+    },
+    {
+      "question": "querer の点過去、3人称単数（él / ella / usted）は？",
+      "options": [
+        "querió",
+        "quiso",
+        "quise"
+      ],
+      "correctIndex": 1,
+      "explanation": "正解は quiso。querer のこの形は不規則で、規則どおりの querió にはなりません。"
+    },
+    {
+      "question": "querer の未来、1人称単数（yo）は？",
+      "options": [
+        "quereré",
+        "querrá",
+        "querré"
+      ],
+      "correctIndex": 2,
+      "explanation": "正解は querré。querer のこの形は不規則で、規則どおりの quereré にはなりません。"
+    },
+    {
+      "question": "querer の接続法現在、1人称単数（yo）は？",
+      "options": [
+        "quiera",
+        "quera",
+        "quieran"
+      ],
+      "correctIndex": 0,
+      "explanation": "正解は quiera。querer のこの形は不規則で、規則どおりの quera にはなりません。"
+    },
+    {
+      "question": "querer の肯定命令、2人称単数（tú）は？",
+      "options": [
+        "quere",
+        "quiere",
+        "quiera"
+      ],
+      "correctIndex": 1,
+      "explanation": "正解は quiere。querer のこの形は不規則で、規則どおりの quere にはなりません。"
+    }
+  ]
+}

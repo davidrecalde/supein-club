@@ -15,6 +15,7 @@ import { createHash } from 'node:crypto';
 import { existsSync, mkdirSync, readFileSync, readdirSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { splitBySilence, wav } from './audio.mjs';
+import { createPacer, estimateTokens, isBillingError, overBudget, recordSpend, spentJpy, usageOf, yen } from './billing.mjs';
 
 const CONFIG = 'docs/language/tts-voices.json';
 const UNITS = 'src/content/units';
@@ -110,6 +111,7 @@ const daily = config.quota.maxRequestsPerDay - config.quota.reservePerDay;
 console.log(`Unidades: ${units.length} · lotes pendientes: ${jobs.length} · frases pendientes: ${jobs.reduce((n, j) => n + j.items.length, 0)}`);
 if (blocked.size) console.log(`Sin voz aprobada (no se generan todavía): ${[...blocked].map(([k, n]) => `${k} (${n})`).join(', ')}`);
 console.log(`Cuota: ${usedToday()} de ${daily} peticiones usadas hoy (día del Pacífico ${quotaDay()}) · días estimados: ${Math.ceil(jobs.length / daily)}`);
+console.log(`Gasto estimado acumulado: ${yen(spentJpy(manifest))} de ${yen(config.billing.maxSpendJpy)}`);
 if (DRY) {
   for (const j of jobs.slice(0, 12)) console.log(`  u${String(j.u.unit).padStart(2, '0')} ${j.speaker.padEnd(13)} ${j.items.length} frases`);
   if (jobs.length > 12) console.log(`  … y ${jobs.length - 12} lotes más`);
@@ -128,7 +130,8 @@ if (config.promptTemplate.status !== 'confirmada') {
 
 // ── API ─────────────────────────────────────────────────────────────────
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
-let lastRequest = 0;
+const pacer = createPacer(config.quota);
+const spentAtStart = spentJpy(manifest);
 async function synthesize(speakerKey, transcript) {
   const s = config.speakers[speakerKey];
   const text = config.promptTemplate.text.replace('{profile}', s.profile).replace('{transcript}', transcript);
@@ -141,9 +144,7 @@ async function synthesize(speakerKey, transcript) {
     },
   };
   for (let attempt = 1; attempt <= 4; attempt++) {
-    const wait = lastRequest + config.quota.minIntervalSeconds * 1000 - Date.now();
-    if (wait > 0) await sleep(wait);
-    lastRequest = Date.now();
+    await pacer.wait(estimateTokens(text));
     manifest.days[quotaDay()] = usedToday() + 1;
     saveManifest();
     const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${config.model}:generateContent`, {
@@ -156,12 +157,20 @@ async function synthesize(speakerKey, transcript) {
       const part = data.candidates?.[0]?.content?.parts?.find((p) => p.inlineData);
       if (!part) throw new Error('La respuesta no trae audio.');
       const rate = Number(part.inlineData.mimeType.match(/rate=(\d+)/)?.[1] ?? config.output.sampleRate);
-      return { pcm: Buffer.from(part.inlineData.data, 'base64'), rate };
+      const pcm = Buffer.from(part.inlineData.data, 'base64');
+      const usage = usageOf(data, pcm.length / 2 / rate, config.billing);
+      pacer.record(usage.input);
+      recordSpend(manifest, config.billing, quotaDay(), usage);
+      saveManifest();
+      return { pcm, rate };
     }
     const detail = await res.text();
     if (res.status === 429) {
       const daily = /PerDay|per day|daily/i.test(detail);
       throw Object.assign(new Error(`Aviso de cuota (429${daily ? ', diaria' : ''}): el proceso se detiene. Revisa la cuota en AI Studio antes de seguir.`), { quota: true });
+    }
+    if (isBillingError(res.status, detail)) {
+      throw Object.assign(new Error(`Aviso de facturación (${res.status}): el proceso se detiene. Revisa el saldo de prepago en AI Studio. ${detail.slice(0, 200)}`), { quota: true });
     }
     if (res.status >= 500) {
       console.log(`  ${res.status}: reintento ${attempt} de 3 dentro de ${attempt * 30} s`);
@@ -205,6 +214,10 @@ for (const job of jobs) {
     console.log('Fin de la tanda de hoy: se sigue en la próxima ejecución.');
     break;
   }
+  if (overBudget(manifest, config.billing)) {
+    console.log(`Tope de gasto: ${yen(spentJpy(manifest))} estimados de ${yen(config.billing.maxSpendJpy)}. El proceso se detiene.`);
+    break;
+  }
   const id = `u${String(job.u.unit).padStart(2, '0')}`;
   const dir = join(OUT, job.u.level, id);
   mkdirSync(dir, { recursive: true });
@@ -235,3 +248,4 @@ for (const job of jobs) {
   saveManifest();
 }
 console.log(`Peticiones usadas hoy: ${usedToday()} de ${daily}.`);
+console.log(`Gasto estimado: ${yen(spentJpy(manifest) - spentAtStart)} en esta ejecución · ${yen(spentJpy(manifest))} acumulados de ${yen(config.billing.maxSpendJpy)}.`);

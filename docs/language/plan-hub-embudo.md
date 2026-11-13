@@ -92,6 +92,8 @@ La entonación y la conexión entre palabras (A2 y B1) se añadieron a `pronunci
 
 ### Fase B. Preparar el lanzamiento mientras se generan los audios (en una rama, sin publicar)
 
+> **Estado (10 de noviembre de 2026):** los puntos 9-15, 17, 18 y 19 están hechos en la rama `launch/curso-completo`, sin publicar. Diferencias con el texto del plan: en el punto 12, los resúmenes de gramática conservan sus tablas, ejemplos y miniejercicios (ya eran breves) y suman la tabla de unidades y un 「詳しくは」 por sección; en el punto 14, los planes de B2, C1 y C2 mantienen su enfoque de inmersión e indican las unidades de cada periodo. Pendiente: el punto 8 (audios) y la fase C.
+
 8. **Audios:** generar en `audio-src/` las frases de las 57 unidades nuevas, las cinco existentes y las transcripciones de los seis simulacros (nivel gratuito, unas 130 peticiones). David los escucha, se comprimen con ffmpeg y se crea el reproductor (prompt 7).
 9. **`/language/` reescrito como guía de 勉強法:** cómo empezar, comparación de formas de estudiar (curso gratis, escuela, app, estudiar en España), test de nivel arriba, 「続きから」 para quien ya tiene progreso, los seis niveles, herramientas, DELE, recursos y escuelas. Datos estructurados `CollectionPage` + `ItemList` + `BreadcrumbList`. Desaparecen las 36 STEP.
 10. **`/language/learn-spanish/`:** hoja de ruta + curso. El título mantiene 「ロードマップ」 al principio y los H2 actuales; se añaden los seis niveles con sus 62 unidades y el progreso.
@@ -103,7 +105,7 @@ La entonación y la conexión entre palabras (A2 y B1) se añadieron a `pronunci
 16. **Unidades existentes (1, 25, 37, 49 y 57):** se redactan a partir de su artículo, conservando lo que ya posiciona.
 17. **Guías DELE:** cada guía de nivel enlaza a su hub de nivel y a su simulacro; `dele-self-study` presenta el curso como la ruta para preparar el DELE; la guía del oral enlaza a los seis simulacros.
 18. **Recursos (学習リソース):** cada artículo se ancla a unidades concretas y termina con 「自分のレベルを確かめる」: `travel-phrases-spanish` → unidades A1 de Mina; `movies-series-spanish` → unidades por nivel; `listening-tips` → unidades con audio; `memorize-vocabulary` y `zipf` → el vocabulario por frecuencia del curso; `spanish-in-latin-america` → notas de Daniel; entrevistas → unidad 45 (registro formal).
-19. **Test de nivel v2** (misma URL):
+19. **Test de nivel v2** (misma URL) — hecho el 9 de noviembre de 2026 en la rama `feat/level-test-v2` (`LevelTestCard.astro`). David decide publicarlo junto con el curso completo, en el PR de lanzamiento (aunque con el curso oculto el resultado ya enlazaría a la página del nivel y no a la unidad):
     - A1-C2 por bloques: el test se detiene cuando falla un nivel, para no alargarlo.
     - Partes de gramática, vocabulario y lectura; la de comprensión auditiva, cuando haya audio.
     - Resultado inmediato y gratis: nivel, puntos fuertes y débiles, y **「ユニットNから始めましょう」** con enlace a la unidad y a su hub de nivel.
@@ -112,6 +114,12 @@ La entonación y la conexión entre palabras (A2 y B1) se añadieron a `pronunci
 20. **Páginas de verbo y conjugador:** cada tiempo verbal enlaza a la unidad que lo enseña (ya preparado: bloque 「この動詞を学ぶユニット」).
 
 ### Fase C. Lanzamiento (un único PR, cuando estén los audios)
+
+> **Estado (13 de noviembre de 2026):** audio completo (393 frases de las 62 unidades, aprobadas por David) y 8 pistas de 聴解 para los seis simulacros (ExamAudio, pendientes de su aprobación). En la rama `launch/curso-completo` (PR #629, con #631, #632, #641 y #642 integrados): las 62 unidades en `draft: false` (57 con `pubDate` del 13 de noviembre; las unidades 1, 25, 37, 49 y 57 conservan la fecha de su artículo) y retirados de `articles` sus cinco artículos (misma URL, ahora la sirve la unidad). Punto 22 hecho el 11 de noviembre. Punto 23: la tarjeta del test ya existía; se añaden `LineCard` en la primera ミニテスト aprobada (una sola vez) y en el conjugador y las páginas de verbo. Pendiente tras fusionar: punto 24 (inspección de URL y envío del sitemap en Search Console, David) y punto 25 (anuncio en redes).
+
+> **Estado (11 de noviembre de 2026):** David confirma que el curso se publica cuando estén **todos** los audios. Hecha la revisión de anti-canibalización previa al lanzamiento (conjugador, resúmenes de gramática B1–C2 y enlaces cruzados; detalle en la sección «Anti-canibalización» de `curso-paso-a-paso.md`).
+>
+> **Qué desaparece del hub `/language/` al lanzar (sin borrar ninguna URL):** las seis rejillas por nivel (26 tarjetas) pasan a un único bloque 「スペイン語コース」 con los seis niveles y sus accesos (文法まとめ・単語・学習計画・DELE); las cuatro tarjetas de 接続法 pasan a ser las unidades 25, 37, 49 y 57 dentro de su nivel; las ocho tarjetas DELE pasan a la tarjeta del hub DELE y una lista; desaparecen las insignias STEP; los bloques de texto SEO del final se sustituyen por la comparativa de formas de estudiar y los cinco pasos. El hub pasa de unas 68 tarjetas a unas 20 más listas compactas.
 
 21. Publicar las 62 unidades a la vez (`draft: false` con su `pubDate`), activar los bloques del curso y aplicar todo lo de la fase B.
 22. Enlaces de anti-canibalización anotados en `curso-paso-a-paso.md` (conjugador → unidad 11, /c1/grammar/ → unidades 55 y 46…).

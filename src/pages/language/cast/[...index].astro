@@ -2,7 +2,7 @@
 import { getCollection } from 'astro:content';
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import SEO from '../../../components/SEO.astro';
-import Breadcrumb from '../../../components/Breadcrumb.astro';
+import CoursePageHeader from '../../../components/course/CoursePageHeader.astro';
 import { ABOUT_COURSE_URL, CAST_URL, COURSE_URL } from '../../../data/course';
 import { getAllUnits, hasPage, isCourseVisible } from '../../../utils/units';
 
@@ -37,9 +37,11 @@ const itemList = {
 <BaseLayout title={title}>
   <SEO slot="seo" title={title} description={description} canonical={canonical} breadcrumbs={breadcrumbs} extraGraph={[itemList]} />
 
+  <CoursePageHeader breadcrumbs={breadcrumbs}>
+    <h1 class="course-page-title">スペイン語コースの登場人物</h1>
+  </CoursePageHeader>
+
   <section class="page-container py-10">
-    <Breadcrumb items={breadcrumbs} />
-    <h1 class="cast-page-title">スペイン語コースの登場人物</h1>
     <p class="cast-page-intro">
       このコースの例文や会話は、5人の登場人物の状況に沿って書いています。初級ではミナとケンタ、中級ではユイ、上級ではカルメン先生が中心になり、ダニエルはすべてのレベルでニュアンスや地域による違いを説明します。登場人物はすべて架空の人物で、イラストはAIで生成したイメージです。
     </p>

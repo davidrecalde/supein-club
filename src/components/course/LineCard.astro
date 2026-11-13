@@ -1,0 +1,44 @@
+---
+// Tarjeta pequeña de LINE (plan del hub, punto 23): nunca emergente, una por página, en el flujo.
+// Sale oculta y la muestra el JavaScript. Si el usuario la cierra, no vuelve
+// (localStorage supein.lineCard.<source>).
+//   trigger="load"     → aparece al cargar la página (conjugador y páginas de verbo).
+//   trigger="minitest" → aparece una sola vez: al aprobar la primera ミニテスト (lo llama MiniQuiz).
+// El clic se mide con el evento line_clicked de BaseLayout (source = data-line-source).
+interface Props {
+  source: string;
+  text: string;
+  trigger?: 'load' | 'minitest';
+}
+
+const { source, text, trigger = 'load' } = Astro.props;
+---
+<div class="line-card" data-line-card={source} data-line-source={source} data-trigger={trigger} hidden>
+  <p>{text}</p>
+  <a class="line-card-btn" href="https://lin.ee/vx6jpud" target="_blank" rel="noopener noreferrer">LINEで友だち追加</a>
+  <button type="button" class="line-card-close" aria-label="閉じる">×</button>
+</div>
+
+<script>
+  const key = (source: string) => `supein.lineCard.${source}`;
+  const get = (k: string) => { try { return localStorage.getItem(k); } catch { return 'closed'; } };
+  const set = (k: string, v: string) => { try { localStorage.setItem(k, v); } catch { /* sin almacenamiento */ } };
+
+  document.querySelectorAll<HTMLElement>('[data-line-card]').forEach((card) => {
+    const k = key(card.dataset.lineCard!);
+    card.querySelector('.line-card-close')?.addEventListener('click', () => {
+      set(k, 'closed');
+      card.hidden = true;
+    });
+    if (card.dataset.trigger === 'load') {
+      card.hidden = get(k) === 'closed';
+      return;
+    }
+    // Primera ミニテスト aprobada: se muestra una sola vez en todo el curso.
+    document.addEventListener('minitestpassed', () => {
+      if (get(k)) return;
+      set(k, 'shown');
+      card.hidden = false;
+    });
+  });
+</script>

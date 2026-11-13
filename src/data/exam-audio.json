@@ -1,0 +1,46 @@
+{
+  "12": {
+    "1": {
+      "src": "/audio/units/u12/u12-auditiva-1.mp3",
+      "seconds": 14.8
+    },
+    "2": {
+      "src": "/audio/units/u12/u12-auditiva-2.mp3",
+      "seconds": 5.6
+    }
+  },
+  "24": {
+    "1": {
+      "src": "/audio/units/u24/u24-auditiva-1.mp3",
+      "seconds": 11.8
+    },
+    "2": {
+      "src": "/audio/units/u24/u24-auditiva-2.mp3",
+      "seconds": 9.8
+    }
+  },
+  "36": {
+    "1": {
+      "src": "/audio/units/u36/u36-auditiva-1.mp3",
+      "seconds": 11.8
+    }
+  },
+  "48": {
+    "1": {
+      "src": "/audio/units/u48/u48-auditiva-1.mp3",
+      "seconds": 23.4
+    }
+  },
+  "56": {
+    "1": {
+      "src": "/audio/units/u56/u56-auditiva-1.mp3",
+      "seconds": 33
+    }
+  },
+  "62": {
+    "1": {
+      "src": "/audio/units/u62/u62-auditiva-1.mp3",
+      "seconds": 32.7
+    }
+  }
+}

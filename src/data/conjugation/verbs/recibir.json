@@ -1,0 +1,367 @@
+{
+  "infinitive": "recibir",
+  "gerund": "recibiendo",
+  "gerundIrregular": false,
+  "participle": "recibido",
+  "participleIrregular": false,
+  "tenses": {
+    "presente": {
+      "forms": [
+        "recibo",
+        "recibes",
+        "recibe",
+        "recibimos",
+        "recibís",
+        "reciben"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "preterito-indefinido": {
+      "forms": [
+        "recibí",
+        "recibiste",
+        "recibió",
+        "recibimos",
+        "recibisteis",
+        "recibieron"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "preterito-imperfecto": {
+      "forms": [
+        "recibía",
+        "recibías",
+        "recibía",
+        "recibíamos",
+        "recibíais",
+        "recibían"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "futuro": {
+      "forms": [
+        "recibiré",
+        "recibirás",
+        "recibirá",
+        "recibiremos",
+        "recibiréis",
+        "recibirán"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "condicional": {
+      "forms": [
+        "recibiría",
+        "recibirías",
+        "recibiría",
+        "recibiríamos",
+        "recibiríais",
+        "recibirían"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "subjuntivo-presente": {
+      "forms": [
+        "reciba",
+        "recibas",
+        "reciba",
+        "recibamos",
+        "recibáis",
+        "reciban"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "subjuntivo-imperfecto-ra": {
+      "forms": [
+        "recibiera",
+        "recibieras",
+        "recibiera",
+        "recibiéramos",
+        "recibierais",
+        "recibieran"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "subjuntivo-imperfecto-se": {
+      "forms": [
+        "recibiese",
+        "recibieses",
+        "recibiese",
+        "recibiésemos",
+        "recibieseis",
+        "recibiesen"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "imperativo-afirmativo": {
+      "forms": [
+        null,
+        "recibe",
+        "reciba",
+        "recibamos",
+        "recibid",
+        "reciban"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "imperativo-negativo": {
+      "forms": [
+        null,
+        "no recibas",
+        "no reciba",
+        "no recibamos",
+        "no recibáis",
+        "no reciban"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "preterito-perfecto": {
+      "forms": [
+        "he recibido",
+        "has recibido",
+        "ha recibido",
+        "hemos recibido",
+        "habéis recibido",
+        "han recibido"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "pluscuamperfecto": {
+      "forms": [
+        "había recibido",
+        "habías recibido",
+        "había recibido",
+        "habíamos recibido",
+        "habíais recibido",
+        "habían recibido"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "futuro-perfecto": {
+      "forms": [
+        "habré recibido",
+        "habrás recibido",
+        "habrá recibido",
+        "habremos recibido",
+        "habréis recibido",
+        "habrán recibido"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "condicional-perfecto": {
+      "forms": [
+        "habría recibido",
+        "habrías recibido",
+        "habría recibido",
+        "habríamos recibido",
+        "habríais recibido",
+        "habrían recibido"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "subjuntivo-perfecto": {
+      "forms": [
+        "haya recibido",
+        "hayas recibido",
+        "haya recibido",
+        "hayamos recibido",
+        "hayáis recibido",
+        "hayan recibido"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "subjuntivo-pluscuamperfecto": {
+      "forms": [
+        "hubiera recibido",
+        "hubieras recibido",
+        "hubiera recibido",
+        "hubiéramos recibido",
+        "hubierais recibido",
+        "hubieran recibido"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "subjuntivo-pluscuamperfecto-se": {
+      "forms": [
+        "hubiese recibido",
+        "hubieses recibido",
+        "hubiese recibido",
+        "hubiésemos recibido",
+        "hubieseis recibido",
+        "hubiesen recibido"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    }
+  },
+  "quiz": [
+    {
+      "question": "recibir の直説法現在、1人称単数（yo）は？",
+      "options": [
+        "recibo",
+        "recibe",
+        "reciben"
+      ],
+      "correctIndex": 0,
+      "explanation": "正解は recibo。recibir のこの形は規則どおりです。"
+    },
+    {
+      "question": "recibir の点過去、3人称単数（él / ella / usted）は？",
+      "options": [
+        "recibí",
+        "recibió",
+        "recibieron"
+      ],
+      "correctIndex": 1,
+      "explanation": "正解は recibió。recibir のこの形は規則どおりです。"
+    },
+    {
+      "question": "recibir の未来、1人称単数（yo）は？",
+      "options": [
+        "recibirá",
+        "recibirán",
+        "recibiré"
+      ],
+      "correctIndex": 2,
+      "explanation": "正解は recibiré。recibir のこの形は規則どおりです。"
+    },
+    {
+      "question": "recibir の接続法現在、1人称単数（yo）は？",
+      "options": [
+        "reciba",
+        "reciban",
+        "recibas"
+      ],
+      "correctIndex": 0,
+      "explanation": "正解は reciba。recibir のこの形は規則どおりです。"
+    },
+    {
+      "question": "recibir の肯定命令、2人称単数（tú）は？",
+      "options": [
+        "reciba",
+        "recibe",
+        "reciban"
+      ],
+      "correctIndex": 1,
+      "explanation": "正解は recibe。recibir のこの形は規則どおりです。"
+    }
+  ]
+}

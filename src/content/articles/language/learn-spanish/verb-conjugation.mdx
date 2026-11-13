@@ -2,7 +2,7 @@
 pillar: language
 cluster: learn-spanish
 articleRole: blog
-title: "スペイン語 動詞の活用一覧と覚え方｜現在形・点過去の早見表"
+title: "スペイン語 動詞の活用一覧と覚え方｜全時制の早見表と頻出50動詞"
 heroImage: "../../../../assets/hero/verb-conjugation.webp"
 heroImageAlt: "スペイン語動詞活用表のイメージ"
 lead: "スペイン語の動詞活用を一覧で確認できる早見表です。活用形から動詞を調べられる検索、規則動詞（-ar/-er/-ir）の4つの時制、最重要不規則動詞、時制マップ、よく使う動詞50をまとめました。"
@@ -62,10 +62,10 @@ quiz:
   correctIndex: 1
   explanation: "vosotros はスペインで使う2人称複数の形です。中南米では親しい相手にも ustedes を使います。"
 relatedPages:
-- title: スペイン語A1文法まとめ
-  href: /language/learn-spanish/a1/grammar/
-- title: スペイン語A2文法まとめ（点過去 vs 線過去）
-  href: /language/learn-spanish/a2/grammar/
+- title: スペイン語の現在形（規則動詞）
+  href: /language/learn-spanish/a1/present-regular/
+- title: 点過去と線過去の違い
+  href: /language/learn-spanish/a2/indefinido-vs-imperfecto/
 - title: スペイン語の単語を効率よく覚える方法
   href: /language/learn-spanish/memorize-vocabulary/
 - title: スペイン語学習ロードマップ（ピラー）
@@ -90,12 +90,13 @@ import ModelTable from '../../../../components/conjugation/ModelTable.astro';
 import TenseMap from '../../../../components/conjugation/TenseMap.astro';
 import VerbRanking from '../../../../components/conjugation/VerbRanking.astro';
 import CourseUnitLinks from '../../../../components/conjugation/CourseUnitLinks.astro';
+import LineCard from '../../../../components/course/LineCard.astro';
 
 <ConjugationSearch />
 
 スペイン語の動詞は、主語（人称）と時制に合わせて語尾が変わります。規則動詞は -ar・-er・-ir の3つの型で活用が決まり、ser や ir のようによく使う動詞ほど不規則になる傾向があります。
 
-スペイン語の動詞活用は、日本人学習者が最初にぶつかる大きな壁です。このページは、文法を一から学ぶレッスンではなく、**活用形をすぐに調べられる早見表**として作っています。上の検索ボックスには、動詞の原形（tener）でも活用形（fui、hice）でも入力できます。レベル別に体系立てて学びたい方は[「スペイン語A1文法まとめ」](/language/learn-spanish/a1/grammar/)、点過去と線過去の使い分けを理解したい方は[「スペイン語A2文法まとめ」](/language/learn-spanish/a2/grammar/)をご覧ください。
+スペイン語の動詞活用は、日本人学習者が最初にぶつかる大きな壁です。このページは、文法を一から学ぶレッスンではなく、**活用形をすぐに調べられる早見表**として作っています。上の検索ボックスには、動詞の原形（tener）でも活用形（fui、hice）でも入力できます。それぞれの時制の作り方と使い方は、無料スペイン語コースのユニットで例文と練習問題つきで学べます（現在形は[「スペイン語の現在形（規則動詞）」](/language/learn-spanish/a1/present-regular/)、点過去は[「スペイン語の点過去」](/language/learn-spanish/a2/preterito-indefinido/)など）。
 
 ---
 
@@ -103,11 +104,13 @@ import CourseUnitLinks from '../../../../components/conjugation/CourseUnitLinks.
 
 ## 規則動詞の活用表（-ar / -er / -ir）
 
-規則動詞は語尾の**-ar、-er、-ir**によってパターンが決まります。よく使う4つの時制（現在形・点過去・線過去・未来形）を一覧にまとめました。
+規則動詞は語尾の<strong>-ar、-er、-ir</strong>によってパターンが決まります。よく使う4つの時制（現在形・点過去・線過去・未来形）を一覧にまとめました。
 
 ### 現在形
 
 <ModelTable tense="presente" />
+
+<CourseUnitLinks label="詳しくは：" units={[4, 5]} />
 
 ### 点過去（過去形）
 
@@ -115,19 +118,25 @@ import CourseUnitLinks from '../../../../components/conjugation/CourseUnitLinks.
 
 > **ポイント：** -er動詞と-ir動詞は点過去でまったく同じ語尾（-í, -iste, -ió, -imos, -isteis, -ieron）になります。-ar動詞の語尾だけ別に覚えれば、点過去の規則活用は実質2パターンで済みます。
 
+<CourseUnitLinks label="詳しくは：" units={[14]} />
+
 ### 線過去
 
 <ModelTable tense="preterito-imperfecto" />
+
+<CourseUnitLinks label="詳しくは：" units={[15]} />
 
 ### 未来形
 
 <ModelTable tense="futuro" />
 
+<CourseUnitLinks label="詳しくは：" units={[20]} />
+
 ---
 
 ## 最重要不規則動詞5つの活用表
 
-日常会話で使用頻度が非常に高い5つの不規則動詞——**ser・estar・tener・ir・hacer**——をまとめました。使い分けの詳しい解説は[「スペイン語A1文法まとめ」のser/estarセクション](/language/learn-spanish/a1/grammar/)で扱っています。
+日常会話で使用頻度が非常に高い5つの不規則動詞——**ser・estar・tener・ir・hacer**——をまとめました。ser と estar の使い分けは[「ser と estar の違い」](/language/learn-spanish/a1/ser-estar/)で詳しく学べます。
 
 ### 現在形
 
@@ -161,9 +170,7 @@ import CourseUnitLinks from '../../../../components/conjugation/CourseUnitLinks.
 
 日本語の「〜した」にあたるスペイン語の過去形は、主に2つあります。**点過去**（pretérito indefinido）は「昨日〜した」のように終わった出来事を、**線過去**（pretérito imperfecto）は「昔はよく〜していた」「〜だった」のように過去の習慣や状態を表します。さらにスペインでは、「今日〜した」のように今日の中の出来事には**現在完了**（he comido）を使います。
 
-<CourseUnitLinks units={[14, 15, 16]} />
-
-点過去と線過去の使い分けは[「スペイン語A2文法まとめ」](/language/learn-spanish/a2/grammar/)でも解説しています。
+<CourseUnitLinks label="使い分けは、例文と練習問題つきのユニットで：" units={[16, 14, 15]} />
 
 ---
 
@@ -177,11 +184,9 @@ import CourseUnitLinks from '../../../../components/conjugation/CourseUnitLinks.
 
 ## 近接未来形（ir a + 不定詞）
 
-「これから〜する」という近い未来の予定を表すには、**irの現在形＋a＋動詞の原形**を使います。単純未来形よりも日常会話でよく使われ、覚える活用形が*ir*ひとつだけで済むため、初心者にとって最も実用的な未来表現です。
+「これから〜する」という近い未来の予定は、**irの現在形＋a＋動詞の原形**で表します（Voy a estudiar español.＝これからスペイン語を勉強します）。覚える活用形が*ir*ひとつだけで済む、初心者にいちばん実用的な未来表現です。
 
-- Voy a estudiar español.（これからスペイン語を勉強します）
-- Vamos a comer paella.（パエリアを食べに行きます）
-- ¿Vas a venir mañana?（明日来る予定ですか？）
+<CourseUnitLinks label="作り方と使い方は：" units={[11]} />
 
 ---
 
@@ -205,3 +210,5 @@ import CourseUnitLinks from '../../../../components/conjugation/CourseUnitLinks.
 ## まとめ
 
 規則動詞（-ar/-er/-ir）のパターンと、ser・estar・tener・ir・hacerの5つの不規則動詞を現在形・点過去でマスターすれば、日常会話の大部分に対応できます。使い分けや文法の体系的な理解を深めたい方は、[スペイン語学習ロードマップ](/language/learn-spanish/)からレベル別のレッスンに進んでください。
+
+<LineCard source="conjugator" text="動詞の覚え方や新しいユニットのお知らせを、LINEでお届けしています。" />

@@ -12,6 +12,7 @@ import UnitNav from '../components/course/UnitNav.astro';
 import VocabList from '../components/course/VocabList.astro';
 import { VOCAB_FREQUENCY_SOURCE } from '../data/course';
 import MiniQuiz from '../components/course/MiniQuiz.astro';
+import ExamAudio from '../components/course/ExamAudio.astro';
 import CultureNote from '../components/course/CultureNote.astro';
 import ReportError from '../components/course/ReportError.astro';
 import Examples from '../components/course/Examples.astro';
@@ -147,7 +148,7 @@ const sources = [
         <UnitAudio unit={d.unit} />
 
         <div class="prose unit-body">
-          <Content components={{ VocabList, MiniQuiz, CultureNote, Examples }} />
+          <Content components={{ VocabList, MiniQuiz, CultureNote, Examples, ExamAudio }} />
         </div>
 
         {unitVerbs.length > 0 && (

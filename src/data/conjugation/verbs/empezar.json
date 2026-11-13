@@ -1,0 +1,367 @@
+{
+  "infinitive": "empezar",
+  "gerund": "empezando",
+  "gerundIrregular": false,
+  "participle": "empezado",
+  "participleIrregular": false,
+  "tenses": {
+    "presente": {
+      "forms": [
+        "empiezo",
+        "empiezas",
+        "empieza",
+        "empezamos",
+        "empezáis",
+        "empiezan"
+      ],
+      "irregular": [
+        true,
+        true,
+        true,
+        false,
+        false,
+        true
+      ]
+    },
+    "preterito-indefinido": {
+      "forms": [
+        "empecé",
+        "empezaste",
+        "empezó",
+        "empezamos",
+        "empezasteis",
+        "empezaron"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "preterito-imperfecto": {
+      "forms": [
+        "empezaba",
+        "empezabas",
+        "empezaba",
+        "empezábamos",
+        "empezabais",
+        "empezaban"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "futuro": {
+      "forms": [
+        "empezaré",
+        "empezarás",
+        "empezará",
+        "empezaremos",
+        "empezaréis",
+        "empezarán"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "condicional": {
+      "forms": [
+        "empezaría",
+        "empezarías",
+        "empezaría",
+        "empezaríamos",
+        "empezaríais",
+        "empezarían"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "subjuntivo-presente": {
+      "forms": [
+        "empiece",
+        "empieces",
+        "empiece",
+        "empecemos",
+        "empecéis",
+        "empiecen"
+      ],
+      "irregular": [
+        true,
+        true,
+        true,
+        false,
+        false,
+        true
+      ]
+    },
+    "subjuntivo-imperfecto-ra": {
+      "forms": [
+        "empezara",
+        "empezaras",
+        "empezara",
+        "empezáramos",
+        "empezarais",
+        "empezaran"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "subjuntivo-imperfecto-se": {
+      "forms": [
+        "empezase",
+        "empezases",
+        "empezase",
+        "empezásemos",
+        "empezaseis",
+        "empezasen"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "imperativo-afirmativo": {
+      "forms": [
+        null,
+        "empieza",
+        "empiece",
+        "empecemos",
+        "empezad",
+        "empiecen"
+      ],
+      "irregular": [
+        false,
+        true,
+        true,
+        false,
+        false,
+        true
+      ]
+    },
+    "imperativo-negativo": {
+      "forms": [
+        null,
+        "no empieces",
+        "no empiece",
+        "no empecemos",
+        "no empecéis",
+        "no empiecen"
+      ],
+      "irregular": [
+        false,
+        true,
+        true,
+        false,
+        false,
+        true
+      ]
+    },
+    "preterito-perfecto": {
+      "forms": [
+        "he empezado",
+        "has empezado",
+        "ha empezado",
+        "hemos empezado",
+        "habéis empezado",
+        "han empezado"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "pluscuamperfecto": {
+      "forms": [
+        "había empezado",
+        "habías empezado",
+        "había empezado",
+        "habíamos empezado",
+        "habíais empezado",
+        "habían empezado"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "futuro-perfecto": {
+      "forms": [
+        "habré empezado",
+        "habrás empezado",
+        "habrá empezado",
+        "habremos empezado",
+        "habréis empezado",
+        "habrán empezado"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "condicional-perfecto": {
+      "forms": [
+        "habría empezado",
+        "habrías empezado",
+        "habría empezado",
+        "habríamos empezado",
+        "habríais empezado",
+        "habrían empezado"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "subjuntivo-perfecto": {
+      "forms": [
+        "haya empezado",
+        "hayas empezado",
+        "haya empezado",
+        "hayamos empezado",
+        "hayáis empezado",
+        "hayan empezado"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "subjuntivo-pluscuamperfecto": {
+      "forms": [
+        "hubiera empezado",
+        "hubieras empezado",
+        "hubiera empezado",
+        "hubiéramos empezado",
+        "hubierais empezado",
+        "hubieran empezado"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "subjuntivo-pluscuamperfecto-se": {
+      "forms": [
+        "hubiese empezado",
+        "hubieses empezado",
+        "hubiese empezado",
+        "hubiésemos empezado",
+        "hubieseis empezado",
+        "hubiesen empezado"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    }
+  },
+  "quiz": [
+    {
+      "question": "empezar の直説法現在、1人称単数（yo）は？",
+      "options": [
+        "empiezo",
+        "empezo",
+        "empieza"
+      ],
+      "correctIndex": 0,
+      "explanation": "正解は empiezo。empezar のこの形は不規則で、規則どおりの empezo にはなりません。"
+    },
+    {
+      "question": "empezar の接続法現在、1人称単数（yo）は？",
+      "options": [
+        "empece",
+        "empiece",
+        "empiecen"
+      ],
+      "correctIndex": 1,
+      "explanation": "正解は empiece。empezar のこの形は不規則で、規則どおりの empece にはなりません。"
+    },
+    {
+      "question": "empezar の肯定命令、2人称単数（tú）は？",
+      "options": [
+        "empeza",
+        "empiece",
+        "empieza"
+      ],
+      "correctIndex": 2,
+      "explanation": "正解は empieza。empezar のこの形は不規則で、規則どおりの empeza にはなりません。"
+    },
+    {
+      "question": "empezar の点過去、3人称単数（él / ella / usted）は？",
+      "options": [
+        "empezó",
+        "empecé",
+        "empezaron"
+      ],
+      "correctIndex": 0,
+      "explanation": "正解は empezó。empezar のこの形は規則どおりです。"
+    },
+    {
+      "question": "empezar の未来、1人称単数（yo）は？",
+      "options": [
+        "empezará",
+        "empezaré",
+        "empezarán"
+      ],
+      "correctIndex": 1,
+      "explanation": "正解は empezaré。empezar のこの形は規則どおりです。"
+    }
+  ]
+}

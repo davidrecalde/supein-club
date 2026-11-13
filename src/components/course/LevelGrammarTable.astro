@@ -1,0 +1,38 @@
+---
+// Tabla «文法の一覧（ユニット別）» de los resúmenes de gramática por nivel
+// (/<nivel>/grammar/, plan-hub-embudo.md, punto 12): cada unidad del nivel,
+// con su tema y lo primero que el alumno sabrá hacer (canDo). El resumen
+// presenta y enlaza; la explicación está en la unidad.
+import { getCourseLevel } from '../../data/course';
+import { getAllUnits, hasPage, isCourseVisible } from '../../utils/units';
+
+interface Props {
+  level: string;
+}
+
+const visible = await isCourseVisible();
+const level = getCourseLevel(Astro.props.level)!;
+const units = (await getAllUnits()).filter((u) => u.data.level === level.code);
+---
+{visible && (
+<div class={`grammar-units lv-${level.code}`}>
+  <table>
+    <thead>
+      <tr>
+        <th scope="col">ユニット</th>
+        <th scope="col">文法・テーマ</th>
+        <th scope="col">このユニットでできること</th>
+      </tr>
+    </thead>
+    <tbody>
+      {units.map((u) => (
+        <tr>
+          <td class="grammar-units-num">{u.data.unit}</td>
+          <td>{hasPage(u) ? <a href={u.data.url}>{u.data.shortTitle}</a> : u.data.shortTitle}</td>
+          <td>{u.data.canDo?.[0] ?? ''}</td>
+        </tr>
+      ))}
+    </tbody>
+  </table>
+</div>
+)}

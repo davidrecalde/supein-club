@@ -1,5 +1,6 @@
 ---
 import QuizCard from '../QuizCard.astro';
+import LineCard from './LineCard.astro';
 import { QUIZ_PASS_SCORE } from '../../data/course';
 
 interface Props {
@@ -14,6 +15,7 @@ const { quiz = [], unit } = Astro.props;
     <p>{quiz.length}問のテストで、このユニットの内容を確認しましょう。{QUIZ_PASS_SCORE}問以上正解でユニット完了です。</p>
     <QuizCard quiz={quiz} title="ミニテスト" />
     <p class="mini-quiz-result font-semibold text-navy" role="status" hidden></p>
+    <LineCard source="minitest" trigger="minitest" text="ユニット完了、おめでとうございます。新しいユニットや学習のヒントを、LINEでお知らせしています。" />
   </div>
 ) : (
   <p class="unit-pending">ミニテストは準備中です。</p>
@@ -35,6 +37,7 @@ const { quiz = [], unit } = Astro.props;
         score >= pass
           ? `${total}問中${score}問正解。ユニット完了です！`
           : `${total}問中${score}問正解。${pass}問以上でユニット完了です。もう一度挑戦してみましょう。`;
+      if (score >= pass) document.dispatchEvent(new CustomEvent('minitestpassed', { detail: { unit } }));
     });
   });
 </script>

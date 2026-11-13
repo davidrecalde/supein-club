@@ -1,0 +1,367 @@
+{
+  "infinitive": "parecer",
+  "gerund": "pareciendo",
+  "gerundIrregular": false,
+  "participle": "parecido",
+  "participleIrregular": false,
+  "tenses": {
+    "presente": {
+      "forms": [
+        "parezco",
+        "pareces",
+        "parece",
+        "parecemos",
+        "parecéis",
+        "parecen"
+      ],
+      "irregular": [
+        true,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "preterito-indefinido": {
+      "forms": [
+        "parecí",
+        "pareciste",
+        "pareció",
+        "parecimos",
+        "parecisteis",
+        "parecieron"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "preterito-imperfecto": {
+      "forms": [
+        "parecía",
+        "parecías",
+        "parecía",
+        "parecíamos",
+        "parecíais",
+        "parecían"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "futuro": {
+      "forms": [
+        "pareceré",
+        "parecerás",
+        "parecerá",
+        "pareceremos",
+        "pareceréis",
+        "parecerán"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "condicional": {
+      "forms": [
+        "parecería",
+        "parecerías",
+        "parecería",
+        "pareceríamos",
+        "pareceríais",
+        "parecerían"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "subjuntivo-presente": {
+      "forms": [
+        "parezca",
+        "parezcas",
+        "parezca",
+        "parezcamos",
+        "parezcáis",
+        "parezcan"
+      ],
+      "irregular": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    "subjuntivo-imperfecto-ra": {
+      "forms": [
+        "pareciera",
+        "parecieras",
+        "pareciera",
+        "pareciéramos",
+        "parecierais",
+        "parecieran"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "subjuntivo-imperfecto-se": {
+      "forms": [
+        "pareciese",
+        "parecieses",
+        "pareciese",
+        "pareciésemos",
+        "parecieseis",
+        "pareciesen"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "imperativo-afirmativo": {
+      "forms": [
+        null,
+        "parece",
+        "parezca",
+        "parezcamos",
+        "pareced",
+        "parezcan"
+      ],
+      "irregular": [
+        false,
+        false,
+        true,
+        true,
+        false,
+        true
+      ]
+    },
+    "imperativo-negativo": {
+      "forms": [
+        null,
+        "no parezcas",
+        "no parezca",
+        "no parezcamos",
+        "no parezcáis",
+        "no parezcan"
+      ],
+      "irregular": [
+        false,
+        true,
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    "preterito-perfecto": {
+      "forms": [
+        "he parecido",
+        "has parecido",
+        "ha parecido",
+        "hemos parecido",
+        "habéis parecido",
+        "han parecido"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "pluscuamperfecto": {
+      "forms": [
+        "había parecido",
+        "habías parecido",
+        "había parecido",
+        "habíamos parecido",
+        "habíais parecido",
+        "habían parecido"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "futuro-perfecto": {
+      "forms": [
+        "habré parecido",
+        "habrás parecido",
+        "habrá parecido",
+        "habremos parecido",
+        "habréis parecido",
+        "habrán parecido"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "condicional-perfecto": {
+      "forms": [
+        "habría parecido",
+        "habrías parecido",
+        "habría parecido",
+        "habríamos parecido",
+        "habríais parecido",
+        "habrían parecido"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "subjuntivo-perfecto": {
+      "forms": [
+        "haya parecido",
+        "hayas parecido",
+        "haya parecido",
+        "hayamos parecido",
+        "hayáis parecido",
+        "hayan parecido"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "subjuntivo-pluscuamperfecto": {
+      "forms": [
+        "hubiera parecido",
+        "hubieras parecido",
+        "hubiera parecido",
+        "hubiéramos parecido",
+        "hubierais parecido",
+        "hubieran parecido"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "subjuntivo-pluscuamperfecto-se": {
+      "forms": [
+        "hubiese parecido",
+        "hubieses parecido",
+        "hubiese parecido",
+        "hubiésemos parecido",
+        "hubieseis parecido",
+        "hubiesen parecido"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    }
+  },
+  "quiz": [
+    {
+      "question": "parecer の直説法現在、1人称単数（yo）は？",
+      "options": [
+        "parezco",
+        "pareco",
+        "parece"
+      ],
+      "correctIndex": 0,
+      "explanation": "正解は parezco。parecer のこの形は不規則で、規則どおりの pareco にはなりません。"
+    },
+    {
+      "question": "parecer の接続法現在、1人称単数（yo）は？",
+      "options": [
+        "pareca",
+        "parezca",
+        "parezcan"
+      ],
+      "correctIndex": 1,
+      "explanation": "正解は parezca。parecer のこの形は不規則で、規則どおりの pareca にはなりません。"
+    },
+    {
+      "question": "parecer の点過去、3人称単数（él / ella / usted）は？",
+      "options": [
+        "parecí",
+        "parecieron",
+        "pareció"
+      ],
+      "correctIndex": 2,
+      "explanation": "正解は pareció。parecer のこの形は規則どおりです。"
+    },
+    {
+      "question": "parecer の未来、1人称単数（yo）は？",
+      "options": [
+        "pareceré",
+        "parecerá",
+        "parecerán"
+      ],
+      "correctIndex": 0,
+      "explanation": "正解は pareceré。parecer のこの形は規則どおりです。"
+    },
+    {
+      "question": "parecer の肯定命令、2人称単数（tú）は？",
+      "options": [
+        "parezca",
+        "parece",
+        "parezcan"
+      ],
+      "correctIndex": 1,
+      "explanation": "正解は parece。parecer のこの形は規則どおりです。"
+    }
+  ]
+}

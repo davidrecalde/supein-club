@@ -1,0 +1,367 @@
+{
+  "infinitive": "ocurrir",
+  "gerund": "ocurriendo",
+  "gerundIrregular": false,
+  "participle": "ocurrido",
+  "participleIrregular": false,
+  "tenses": {
+    "presente": {
+      "forms": [
+        "ocurro",
+        "ocurres",
+        "ocurre",
+        "ocurrimos",
+        "ocurrís",
+        "ocurren"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "preterito-indefinido": {
+      "forms": [
+        "ocurrí",
+        "ocurriste",
+        "ocurrió",
+        "ocurrimos",
+        "ocurristeis",
+        "ocurrieron"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "preterito-imperfecto": {
+      "forms": [
+        "ocurría",
+        "ocurrías",
+        "ocurría",
+        "ocurríamos",
+        "ocurríais",
+        "ocurrían"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "futuro": {
+      "forms": [
+        "ocurriré",
+        "ocurrirás",
+        "ocurrirá",
+        "ocurriremos",
+        "ocurriréis",
+        "ocurrirán"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "condicional": {
+      "forms": [
+        "ocurriría",
+        "ocurrirías",
+        "ocurriría",
+        "ocurriríamos",
+        "ocurriríais",
+        "ocurrirían"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "subjuntivo-presente": {
+      "forms": [
+        "ocurra",
+        "ocurras",
+        "ocurra",
+        "ocurramos",
+        "ocurráis",
+        "ocurran"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "subjuntivo-imperfecto-ra": {
+      "forms": [
+        "ocurriera",
+        "ocurrieras",
+        "ocurriera",
+        "ocurriéramos",
+        "ocurrierais",
+        "ocurrieran"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "subjuntivo-imperfecto-se": {
+      "forms": [
+        "ocurriese",
+        "ocurrieses",
+        "ocurriese",
+        "ocurriésemos",
+        "ocurrieseis",
+        "ocurriesen"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "imperativo-afirmativo": {
+      "forms": [
+        null,
+        "ocurre",
+        "ocurra",
+        "ocurramos",
+        "ocurrid",
+        "ocurran"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "imperativo-negativo": {
+      "forms": [
+        null,
+        "no ocurras",
+        "no ocurra",
+        "no ocurramos",
+        "no ocurráis",
+        "no ocurran"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "preterito-perfecto": {
+      "forms": [
+        "he ocurrido",
+        "has ocurrido",
+        "ha ocurrido",
+        "hemos ocurrido",
+        "habéis ocurrido",
+        "han ocurrido"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "pluscuamperfecto": {
+      "forms": [
+        "había ocurrido",
+        "habías ocurrido",
+        "había ocurrido",
+        "habíamos ocurrido",
+        "habíais ocurrido",
+        "habían ocurrido"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "futuro-perfecto": {
+      "forms": [
+        "habré ocurrido",
+        "habrás ocurrido",
+        "habrá ocurrido",
+        "habremos ocurrido",
+        "habréis ocurrido",
+        "habrán ocurrido"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "condicional-perfecto": {
+      "forms": [
+        "habría ocurrido",
+        "habrías ocurrido",
+        "habría ocurrido",
+        "habríamos ocurrido",
+        "habríais ocurrido",
+        "habrían ocurrido"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "subjuntivo-perfecto": {
+      "forms": [
+        "haya ocurrido",
+        "hayas ocurrido",
+        "haya ocurrido",
+        "hayamos ocurrido",
+        "hayáis ocurrido",
+        "hayan ocurrido"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "subjuntivo-pluscuamperfecto": {
+      "forms": [
+        "hubiera ocurrido",
+        "hubieras ocurrido",
+        "hubiera ocurrido",
+        "hubiéramos ocurrido",
+        "hubierais ocurrido",
+        "hubieran ocurrido"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "subjuntivo-pluscuamperfecto-se": {
+      "forms": [
+        "hubiese ocurrido",
+        "hubieses ocurrido",
+        "hubiese ocurrido",
+        "hubiésemos ocurrido",
+        "hubieseis ocurrido",
+        "hubiesen ocurrido"
+      ],
+      "irregular": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    }
+  },
+  "quiz": [
+    {
+      "question": "ocurrir の直説法現在、1人称単数（yo）は？",
+      "options": [
+        "ocurro",
+        "ocurre",
+        "ocurren"
+      ],
+      "correctIndex": 0,
+      "explanation": "正解は ocurro。ocurrir のこの形は規則どおりです。"
+    },
+    {
+      "question": "ocurrir の点過去、3人称単数（él / ella / usted）は？",
+      "options": [
+        "ocurrí",
+        "ocurrió",
+        "ocurrieron"
+      ],
+      "correctIndex": 1,
+      "explanation": "正解は ocurrió。ocurrir のこの形は規則どおりです。"
+    },
+    {
+      "question": "ocurrir の未来、1人称単数（yo）は？",
+      "options": [
+        "ocurrirá",
+        "ocurrirán",
+        "ocurriré"
+      ],
+      "correctIndex": 2,
+      "explanation": "正解は ocurriré。ocurrir のこの形は規則どおりです。"
+    },
+    {
+      "question": "ocurrir の接続法現在、1人称単数（yo）は？",
+      "options": [
+        "ocurra",
+        "ocurran",
+        "ocurras"
+      ],
+      "correctIndex": 0,
+      "explanation": "正解は ocurra。ocurrir のこの形は規則どおりです。"
+    },
+    {
+      "question": "ocurrir の肯定命令、2人称単数（tú）は？",
+      "options": [
+        "ocurra",
+        "ocurre",
+        "ocurran"
+      ],
+      "correctIndex": 1,
+      "explanation": "正解は ocurre。ocurrir のこの形は規則どおりです。"
+    }
+  ]
+}

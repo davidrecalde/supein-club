@@ -1,0 +1,19 @@
+---
+// Cabecera azul marino de las páginas del curso que no son unidades ni artículos
+// (páginas de verbo, 登場人物, このコースの作り方, 学習設定): migas en blanco,
+// título grande y lo que cada página ponga debajo (datos, fecha). Mismo estilo
+// que la cabecera de las unidades (UnitHeader) y de los artículos.
+import Breadcrumb from '../Breadcrumb.astro';
+
+interface Props {
+  breadcrumbs: Array<{ name: string; url: string }>;
+}
+
+const { breadcrumbs } = Astro.props;
+---
+<header class="course-page-header">
+  <div class="page-container">
+    <Breadcrumb items={breadcrumbs} dark />
+    <slot />
+  </div>
+</header>
