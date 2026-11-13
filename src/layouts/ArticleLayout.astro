@@ -41,7 +41,7 @@ const discover = heroImage ? await discoverImage(heroImage) : undefined;
 const heroSchemaImages = heroImage ? await schemaImages(heroImage) : undefined;
 const displayH1 = h1 ?? title;
 const categoryLabel = getCategoryBadgeLabel(entry);
-const isLearnSpanishHero = pillar === 'language' && cluster === 'learn-spanish';
+const isLearnSpanishHero = pillar === 'language' && (cluster === 'learn-spanish' || cluster === 'dele');
 // Clubes cuyo heroImage tiene el escudo en la parte baja de la foto
 // (sobre el césped) — mismo criterio que ArticleCard.astro.
 const bottomCrestClusters = ['real-sociedad', 'espanyol'];

@@ -31,7 +31,7 @@ const firstUnit = (await getAllUnits())[0];
 
 const LEVEL_TEST_URL = '/language/learn-spanish/level-test/';
 const CONJUGATION_URL = '/language/learn-spanish/verb-conjugation/';
-const DELE_URL = '/language/learn-spanish/dele/';
+const DELE_URL = '/language/dele/';
 
 const otherPillars = [
   { href: '/travel/', title: 'スペイン旅行', description: 'バルセロナ・マドリードから南部アンダルシア、離島まで、観光スポットとツアー情報を完全網羅' },
@@ -63,7 +63,8 @@ const deleOrder = (a: Article) => {
   return i === -1 ? courseSequence.dele.length : i;
 };
 const deleArticles = learnSpanish.filter(isDele).sort((a, b) => deleOrder(a) - deleOrder(b));
-const deleHub = deleArticles.find((a) => idNoExt(a) === 'language/learn-spanish/dele/index');
+// Hub DELE: /language/dele/ (cluster propio desde el 13 de noviembre de 2026).
+const deleHub = articles.find((a) => idNoExt(a) === 'language/dele/index');
 // El bloque DELE del hub es un único botón al hub DELE, que reúne todas las páginas DELE (DeleIndex).
 // Imágenes de los botones grandes, las de sus artículos: レベルチェック, ロードマップ y DELE (dele-difficulty-guide).
 const cardImage = async (a?: Article) => {
@@ -86,7 +87,7 @@ const resources = learnSpanish
 
 // Escuelas: clusters propios de ranking (sin spanish-apps), con la página madre primero.
 const schools = articles
-  .filter((a) => a.data.cluster !== 'learn-spanish' && slugOf(a) !== 'spanish-apps')
+  .filter((a) => a.data.cluster !== 'learn-spanish' && a.data.cluster !== 'dele' && slugOf(a) !== 'spanish-apps')
   .sort((a, b) => (slugOf(b) === 'spanish-schools-in-japan' ? 1 : 0) - (slugOf(a) === 'spanish-schools-in-japan' ? 1 : 0) || b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 
 const anchors = [

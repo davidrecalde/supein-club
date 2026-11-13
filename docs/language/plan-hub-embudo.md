@@ -47,7 +47,7 @@ Plan del 4 de noviembre de 2026, a partir del informe de Search Console de los �
 | スペイン語 A1 勉強 計画 | `/a1/study-plan/` … | Calendario de unidades por semanas |
 | スペイン語 活用・動詞 一覧 | `verb-conjugation` y páginas de verbo | Herramienta → unidad del tiempo verbal |
 | 発音 (日本人) | `pronunciation-for-japanese` | Unidad 1 para lo básico |
-| DELE (qué es, niveles) | `/learn-spanish/dele/` (reescrito) | DELE de cada nivel → simulacro |
+| DELE (qué es, niveles) | `/language/dele/` (hub DELE desde el 13 de noviembre de 2026, antes `/learn-spanish/dele/`, con 301) | DELE de cada nivel → simulacro |
 | DELE A1 … C2 | `/dele/a1/` … | Información → unidad de cierre (simulacro) |
 | DELE 難易度・独学・面接・西検 | Guías DELE actuales | → test de nivel y simulacros |
 | Escuchar, leer, películas, frases de viaje | Artículos de 学習リソース | Práctica → unidades del nivel |

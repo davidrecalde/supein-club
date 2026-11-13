@@ -10,7 +10,7 @@ export const courseSequence = {
   // curso (colección `units`, con su propia navegación UnitNav) en el PR de
   // lanzamiento del curso completo.
   dele: [
-    "language/learn-spanish/dele/index",
+    "language/dele/index",
     "language/learn-spanish/dele-vs-seiken",
     "language/learn-spanish/dele/a1",
     "language/learn-spanish/dele/a2",
