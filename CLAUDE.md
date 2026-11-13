@@ -89,6 +89,21 @@ Decisión de David (10 de noviembre de 2026): Google Discover es prioritario. Pa
 
 Detalle en ARCHITECTURE.md, secciones «Imágenes para Google Discover» y «Schema de imágenes».
 
+## Redirecciones 301
+
+Fuente única: `src/data/redirects.txt` (sintaxis de Cloudflare: «origen  destino  301»).
+Nunca crear ni editar `public/_redirects`: el build genera `dist/_redirects`.
+
+- Una redirección nueva se añade AL FINAL del archivo (las más recientes tienen prioridad).
+- Cloudflare Pages solo aplica ~105 reglas de `_redirects` en este proyecto. El build pone en el
+  borde las de comodín y las 100 más recientes, y crea para todas las demás una página de respaldo
+  (meta refresh + canonical + noindex) en la URL de origen, así ninguna da 404.
+- El build falla si un destino no existe, si un origen tapa una página real o si hay orígenes
+  repetidos. Las cadenas A → B → C se resuelven solas, pero conviene corregirlas en el archivo.
+- Comodines (`*`, `:splat`): evitarlos; Cloudflare los limita aún más.
+- Al mover o renombrar una URL, añadir su 301 en el mismo PR y, tras fusionar,
+  comprobar con `npm run redirects:check` (o `-- <url del preview>` antes de fusionar).
+
 ## Verificar un despliegue después de fusionar
 
 No asumir que un merge a `main` ya está en producción por cómo se ve la web
