@@ -135,7 +135,6 @@ const articles = defineCollection({
       'spoke-vocabulario',
       'spoke-pronunciacion',
       'spoke-plan',
-      'hub-dele',
       'prep-dele',
       'info-dele',
       'puente',

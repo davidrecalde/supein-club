@@ -1,17 +1,24 @@
 ---
+import Breadcrumb from './Breadcrumb.astro';
+
 interface Props {
   title: string;
   description: string;
   keywordCount?: number;
   icon?: string; // accepted but not rendered — emoji banned per design system
+  // Migas de pan visibles (sub-hubs como /language/dele/); los pilares no las muestran.
+  breadcrumbs?: Array<{ name: string; url: string }>;
+  // Parte final del título que no debe partirse en móvil (p. ej. 「（スペイン語検定）」).
+  titleNote?: string;
 }
 
-const { title, description, keywordCount } = Astro.props;
+const { title, description, keywordCount, breadcrumbs, titleNote } = Astro.props;
 ---
 <section class="bg-navy text-white relative">
   <div class="absolute top-0 left-0 right-0 h-[3px] bg-primary"></div>
   <div class="max-w-6xl mx-auto px-5 py-16 pt-20">
-    <h1 class="font-sans font-bold text-4xl md:text-5xl leading-tight mb-4">{title}</h1>
+    {breadcrumbs && <div class="mb-5"><Breadcrumb items={breadcrumbs} dark /></div>}
+    <h1 class="font-sans font-bold text-4xl md:text-5xl leading-tight mb-4">{title}{titleNote && <span class="inline-block">{titleNote}</span>}</h1>
     <p class="text-white/75 text-lg max-w-2xl leading-relaxed">{description}</p>
     {keywordCount && (
       <p class="mt-4 text-base text-white/60">

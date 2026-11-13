@@ -25,7 +25,6 @@ import ArticleDisclaimer from '../components/ArticleDisclaimer.astro';
 import FloatingActions from '../components/FloatingActions.astro';
 import RegionBadge from '../components/RegionBadge.astro';
 import LevelUnits from '../components/course/LevelUnits.astro';
-import DeleHub from '../components/DeleHub.astro';
 import { getArticleUrl, getArticleBreadcrumbs, isPillarArticle, pillarLabels } from '../utils/articles';
 import { getCategoryBadgeLabel } from '../utils/articleCategory';
 import { getAllUnits } from '../utils/units';
@@ -42,7 +41,7 @@ const discover = heroImage ? await discoverImage(heroImage) : undefined;
 const heroSchemaImages = heroImage ? await schemaImages(heroImage) : undefined;
 const displayH1 = h1 ?? title;
 const categoryLabel = getCategoryBadgeLabel(entry);
-const isLearnSpanishHero = pillar === 'language' && (cluster === 'learn-spanish' || cluster === 'dele');
+const isLearnSpanishHero = pillar === 'language' && cluster === 'learn-spanish';
 // Clubes cuyo heroImage tiene el escudo en la parte baja de la foto
 // (sobre el césped) — mismo criterio que ArticleCard.astro.
 const bottomCrestClusters = ['real-sociedad', 'espanyol'];
@@ -238,7 +237,6 @@ const stepItemList = isRoadmapHub
   </header>
 
   <!-- Hub DELE (/language/dele/): bloques de botones a todo el ancho, como el hub /language/ -->
-  {articleRole === 'hub-dele' && <DeleHub />}
 
   <!-- Article body -->
   <div class="page-container py-10">

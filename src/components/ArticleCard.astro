@@ -29,7 +29,7 @@ const heroThumbs = heroImage && typeof heroImage !== 'string'
   : undefined;
 const heroImageSrc = heroThumbs ? heroThumbs[0].src : typeof heroImage === 'string' ? heroImage : undefined;
 const heroImageSrcset = heroThumbs?.map((t) => `${t.src} ${t.width}w`).join(', ');
-const isLearnSpanish = pillar === 'language' && (cluster === 'learn-spanish' || cluster === 'dele');
+const isLearnSpanish = pillar === 'language' && cluster === 'learn-spanish';
 // Clubes cuyo heroImage tiene el escudo en la parte baja de la foto
 // (sobre el césped) — mismo criterio que ArticleLayout.astro.
 const bottomCrestClusters = ['real-sociedad', 'espanyol'];
