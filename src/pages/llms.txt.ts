@@ -12,10 +12,11 @@ const siteUrl = 'https://supein.club';
 // "index.mdx" colapsa el segmento final, mientras que `.id` lo conserva.
 const languageHighlightIds = [
   'language/learn-spanish/index',
-  'language/dele/index',
   'language/learn-spanish/verb-conjugation',
   'language/learn-spanish/zipf-law-methodology',
 ];
+// El hub DELE es una página propia (src/pages/language/dele/index.astro), no un artículo.
+const DELE_HUB_LINK = `  - [DELE（スペイン語検定）｜レベル別対策・難易度・日程と費用](${siteUrl}/language/dele/)`;
 
 export const GET: APIRoute = async () => {
   const allArticles = await getCollection('articles', ({ data }) => !data.draft);
@@ -24,6 +25,7 @@ export const GET: APIRoute = async () => {
     .map((id) => allArticles.find((a) => a.id.replace(/\.(md|mdx)$/, '') === id))
     .filter((entry) => entry !== undefined)
     .map((entry) => `  - [${entry.data.title}](${siteUrl}${getArticleUrl(entry)})`)
+    .concat(DELE_HUB_LINK)
     .join('\n');
 
   const body = `# スペイン倶楽部 (Club Español en Japón)

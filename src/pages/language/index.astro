@@ -57,15 +57,13 @@ const TOOL_IDS = ['verb-conjugation', 'pronunciation-for-japanese', 'zipf-law-me
 
 const tools = TOOL_IDS.map(byId).filter((a): a is Article => !!a);
 
-// DELE: primero la secuencia del hub DELE (1/9 … 9/9), después las guías.
+// DELE: primero la secuencia DELE (course-sequence.ts), después las guías.
 const deleOrder = (a: Article) => {
   const i = courseSequence.dele.indexOf(idNoExt(a));
   return i === -1 ? courseSequence.dele.length : i;
 };
 const deleArticles = learnSpanish.filter(isDele).sort((a, b) => deleOrder(a) - deleOrder(b));
-// Hub DELE: /language/dele/ (cluster propio desde el 13 de noviembre de 2026).
-const deleHub = articles.find((a) => idNoExt(a) === 'language/dele/index');
-// El bloque DELE del hub es un único botón al hub DELE, que reúne todas las páginas DELE (DeleHub).
+// El bloque DELE del hub es un único botón al hub DELE (src/pages/language/dele/index.astro), que reúne todas las páginas DELE.
 // Imágenes de los botones grandes, las de sus artículos: レベルチェック, ロードマップ y DELE (dele-difficulty-guide).
 const cardImage = async (a?: Article) => {
   const src = a?.data.heroImage;
@@ -90,7 +88,7 @@ const resources = learnSpanish
 
 // Escuelas: clusters propios de ranking (sin spanish-apps), con la página madre primero.
 const schools = articles
-  .filter((a) => a.data.cluster !== 'learn-spanish' && a.data.cluster !== 'dele' && slugOf(a) !== 'spanish-apps')
+  .filter((a) => a.data.cluster !== 'learn-spanish' && slugOf(a) !== 'spanish-apps')
   .sort((a, b) => (slugOf(b) === 'spanish-schools-in-japan' ? 1 : 0) - (slugOf(a) === 'spanish-schools-in-japan' ? 1 : 0) || b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 
 const anchors = [
@@ -112,7 +110,9 @@ const listed = [
   { url: COURSE_URL, name: 'スペイン語学習ロードマップ' },
   { url: LEVEL_TEST_URL, name: 'スペイン語レベルチェックテスト' },
   ...levelItems,
-  ...[...tools, ...(deleHub ? [deleHub] : []), ...resources, ...schools].map((a) => ({ url: getArticleUrl(a), name: a.data.title })),
+  ...tools.map((a) => ({ url: getArticleUrl(a), name: a.data.title })),
+  { url: DELE_URL, name: 'DELE（スペイン語検定）' },
+  ...[...resources, ...schools].map((a) => ({ url: getArticleUrl(a), name: a.data.title })),
 ];
 const languageSchema = {
   '@context': 'https://schema.org',

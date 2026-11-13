@@ -1,0 +1,262 @@
+---
+// Hub DELE /language/dele/ (petición de David, 14 de noviembre de 2026): página de hub con la misma
+// organización que /food/ (cabecera, categorías y tarjetas), no un artículo. Solo contenidos sobre el
+// DELE: sin unidades del curso gratuito, sin la prueba de nivel y sin enlaces al curso. Sustituye al
+// artículo language/dele/index.mdx (misma URL); su texto de 「DELEとは」 y sus preguntas frecuentes
+// están abajo, como las secciones de texto de /food/.
+import { getCollection, getEntry, type CollectionEntry } from 'astro:content';
+import heroDele from '../../../assets/hero/hero-dele-index.webp';
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import SEO from '../../../components/SEO.astro';
+import PillarHero from '../../../components/PillarHero.astro';
+import ArticleCard from '../../../components/ArticleCard.astro';
+import LineBanner from '../../../components/LineBanner.astro';
+import FloatingActions from '../../../components/FloatingActions.astro';
+import NewsletterForm from '../../../components/NewsletterForm.astro';
+import ArticleDisclaimer from '../../../components/ArticleDisclaimer.astro';
+import AuthorBox from '../../../components/AuthorBox.astro';
+import FAQSection from '../../../components/FAQSection.astro';
+import Sources from '../../../components/Sources.astro';
+import { getArticleUrl } from '../../../utils/articles';
+import { discoverImage, schemaImages } from '../../../utils/images';
+
+const SITE = 'https://supein.club';
+const URL_PATH = '/language/dele/';
+const TITLE = 'DELEとは｜スペイン語検定のレベル・難易度・日程・対策をまとめて解説';
+const DESCRIPTION = 'DELE（デレ）はセルバンテス学院が発行するスペイン語の公式検定。A1〜C2の6レベルで何ができるか、難易度、試験の構成、日程と費用、独学での対策方法を1ページで比較できます。';
+const PUBLISHED = new Date('2026-08-23');
+const UPDATED = new Date('2026-11-04'); // solo cambia con «HAZ FRESHNESS»
+const IMAGE_ALT = 'DELE（スペイン語検定）のイメージ';
+
+const author = await getEntry('authors', 'david-recalde');
+
+// Páginas DELE: las guías por nivel (learn-spanish/dele/*) y las guías learn-spanish/dele-* (mismo criterio
+// que la miga de pan DELE en utils/articles.ts). Un artículo DELE nuevo que no esté en ningún grupo
+// aparece en 「その他のDELEガイド」.
+type Article = CollectionEntry<'articles'>;
+const idNoExt = (a: Article) => a.id.replace(/\.(md|mdx)$/, '');
+const deleArticles = await getCollection('articles', (a) => !a.data.draft && /^language\/learn-spanish\/dele[-/]/.test(idNoExt(a)));
+const byId = new Map(deleArticles.map((a) => [idNoExt(a).replace('language/learn-spanish/', ''), a]));
+
+const groups = [
+  { id: 'dele-levels', label: 'レベル別の試験対策', ids: ['dele/a1', 'dele/a2', 'dele/b1', 'dele/b2', 'dele/c1', 'dele/c2'] },
+  { id: 'dele-choose', label: '難易度・試験の選び方', ids: ['dele-difficulty-guide', 'dele-vs-seiken'] },
+  { id: 'dele-study', label: '勉強法・面接対策', ids: ['dele-self-study', 'dele-oral-interview-guide'] },
+  { id: 'dele-dates', label: '日程・費用・申込方法', ids: ['dele/dates-and-fees'] },
+].map((g) => ({ ...g, items: g.ids.map((id) => byId.get(id)).filter((a): a is Article => !!a) }));
+const grouped = new Set(groups.flatMap((g) => g.ids));
+const others = deleArticles.filter((a) => !grouped.has(idNoExt(a).replace('language/learn-spanish/', '')));
+if (others.length) groups.push({ id: 'dele-others', label: 'その他のDELEガイド', ids: [], items: others });
+const visibleGroups = groups.filter((g) => g.items.length > 0);
+
+const anchors = [...visibleGroups.map((g) => ({ href: `#${g.id}`, label: g.label })), { href: '#dele-about', label: 'DELEとは' }];
+
+const breadcrumbs = [
+  { name: 'ホーム', url: '/' },
+  { name: 'スペイン語', url: '/language/' },
+  { name: 'DELE', url: URL_PATH },
+];
+
+const levelGuide = (code: string) => {
+  const a = byId.get(`dele/${code.toLowerCase()}`);
+  return a ? getArticleUrl(a) : undefined;
+};
+const levels = [
+  { code: 'A1', name: 'Acceso', can: '自己紹介や買い物など、身近な場面の簡単なやりとり' },
+  { code: 'A2', name: 'Plataforma', can: '日常生活や旅行で、よくある場面に対応できる' },
+  { code: 'B1', name: 'Umbral', can: '仕事や学業の身近な話題で、意見と理由を伝えられる' },
+  { code: 'B2', name: 'Avanzado', can: '抽象的な話題でも、論理的に議論できる' },
+  { code: 'C1', name: 'Dominio operativo eficaz', can: '専門的・学術的な場面で、柔軟に使いこなせる' },
+  { code: 'C2', name: 'Maestría', can: 'ネイティブに近い精度と文体で表現できる' },
+].map((l) => ({ ...l, href: levelGuide(l.code) }));
+
+const url = (id: string) => {
+  const a = byId.get(id);
+  return a ? getArticleUrl(a) : URL_PATH;
+};
+
+const deleFaq = [
+  {
+    question: 'DELEとは何ですか？誰が発行していますか？',
+    answer: 'DELE（外国語としてのスペイン語検定）は、スペイン教育・職業訓練・スポーツ省に代わってセルバンテス学院が発行する、スペイン語の運用能力を証明する公式資格です。一度合格すれば無期限に有効です。',
+  },
+  {
+    question: 'DELEの資格に有効期限はありますか？',
+    answer: 'いいえ、DELEは無期限に有効です。多くの語学資格が数年で失効するのに対し、DELEは一度取得すれば更新の必要がありません。',
+  },
+  {
+    question: 'DELEにはどんな試験がありますか？',
+    answer: 'C2を除くすべてのレベルで、読解・聴解・作文・口頭表現の4つの試験があります。C2のみ、統合課題を用いる異なる構造です。',
+  },
+  {
+    question: 'DELEはどのレベルから受けるべきですか？',
+    answer: `初心者はA1またはA2、中級者（仕事や学業に必要な方）はB1またはB2、上級者はC1またはC2が一般的です。レベルごとの試験の違いは<a href="${url('dele-difficulty-guide')}">「DELEの難易度」</a>で比べられます。`,
+  },
+  {
+    question: 'DELEと西検はどちらを受けるべきですか？',
+    answer: `目的によります。国際的な認知度や海外での就労・留学にはDELEが、日本国内の履歴書や比較的安価な受験には西検が向いています。詳しくは<a href="${url('dele-vs-seiken')}">「DELEと西検の比較」</a>をご覧ください。`,
+  },
+];
+
+const sources = [
+  { label: 'セルバンテス学院 - DELEとは', url: 'https://examenes.cervantes.es/es/dele/que-es' },
+  { label: '東京セルバンテス文化センター', url: 'https://tokio.cervantes.es/es/' },
+];
+
+// Imagen para Discover y og:image (la cabecera de la página no muestra imagen, como /food/).
+const discover = await discoverImage(heroDele);
+const pageSchemaImages = await schemaImages(heroDele);
+
+const listed = visibleGroups.flatMap((g) => g.items);
+const collectionSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'CollectionPage',
+  name: 'DELE（スペイン語検定）',
+  description: DESCRIPTION,
+  url: `${SITE}${URL_PATH}`,
+  inLanguage: 'ja',
+  datePublished: PUBLISHED.toISOString().slice(0, 10),
+  dateModified: UPDATED.toISOString().slice(0, 10),
+  about: { '@type': 'Thing', name: 'DELE', description: 'セルバンテス学院が発行するスペイン語の公式検定' },
+  mainEntity: {
+    '@type': 'ItemList',
+    itemListElement: listed.map((a, i) => ({ '@type': 'ListItem', position: i + 1, url: `${SITE}${getArticleUrl(a)}`, name: a.data.title })),
+  },
+};
+const updatedLabel = new Intl.DateTimeFormat('ja-JP', { year: 'numeric', month: 'long', day: 'numeric' }).format(UPDATED);
+const ext = { target: '_blank', rel: 'nofollow noopener noreferrer' };
+---
+<BaseLayout title={TITLE}>
+  <SEO
+    slot="seo"
+    title={TITLE}
+    description={DESCRIPTION}
+    canonical={`${SITE}${URL_PATH}`}
+    image={discover.src}
+    imageWidth={discover.width}
+    imageHeight={discover.height}
+    imageAlt={IMAGE_ALT}
+    schemaImages={pageSchemaImages}
+    breadcrumbs={breadcrumbs}
+    keywords={['DELE', 'スペイン語検定', 'セルバンテス学院', '資格試験']}
+  />
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify(collectionSchema)} />
+  <script
+    type="application/ld+json"
+    slot="head"
+    set:html={JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'FAQPage',
+      mainEntity: deleFaq.map((item) => ({
+        '@type': 'Question',
+        name: item.question,
+        acceptedAnswer: { '@type': 'Answer', text: item.answer.replace(/<[^>]+>/g, '') },
+      })),
+    })}
+  />
+  <PillarHero
+    title="DELE"
+    titleNote="（スペイン語検定）"
+    description="セルバンテス学院が発行するスペイン語の公式検定。レベル別の対策、難易度、勉強法、日程と費用をまとめています。"
+    breadcrumbs={breadcrumbs}
+  />
+  <section class="max-w-6xl mx-auto px-5 py-14">
+    <p class="text-muted text-base leading-relaxed mb-3 border-l-2 border-primary pl-5 max-w-[780px]">
+      DELE（デレ）は、セルバンテス学院が発行するスペイン語の公式検定です。A1〜C2の6つのレベルがあり、一度合格すれば無期限に有効です。このページでは、レベル別の試験対策、難易度と試験の選び方、勉強法と面接対策、東京での日程と費用をまとめています。
+    </p>
+    <p class="text-xs text-muted pl-5 mb-12">更新日：<time datetime={UPDATED.toISOString().slice(0, 10)}>{updatedLabel}</time></p>
+
+    <h2 id="categories" class="font-sans font-bold text-xl text-navy mb-5">カテゴリ</h2>
+    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3 mb-12">
+      {anchors.map(({ href, label }) => (
+        <a href={href} class="bg-white rounded-lg px-3 py-3 min-h-[44px] flex items-center justify-center text-center border border-[#E8E8E6] hover:border-primary/30 hover:shadow-sm transition-all">
+          <span class="font-semibold text-navy text-sm leading-snug block">{label}</span>
+        </a>
+      ))}
+    </div>
+
+    {visibleGroups.map((group) => (
+      <>
+        <h2 id={group.id} class="font-sans font-bold text-xl text-navy mb-5">{group.label}</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+          {group.items.map((a) => (
+            <ArticleCard title={a.data.title} description={a.data.description} href={getArticleUrl(a)} pillar="language" cluster={a.data.cluster} image={a.data.image} imageAlt={a.data.imageAlt} heroImage={a.data.heroImage} heroImageAlt={a.data.heroImageAlt} pubDate={a.data.pubDate} topicBadge="DELE" />
+          ))}
+        </div>
+      </>
+    ))}
+  </section>
+
+  <section class="max-w-6xl mx-auto px-5 pb-14 prose-content">
+  <div class="max-w-[780px]">
+    <h2 id="dele-about" class="font-sans font-bold text-xl text-navy mb-4">DELEとは</h2>
+    <p class="text-muted leading-relaxed mb-4">
+      DELE（デレ／Diplomas de Español como Lengua Extranjera＝外国語としてのスペイン語検定）は、スペイン語の運用能力を証明する公式の資格です。スペイン教育・職業訓練・スポーツ省に代わって<a href="https://examenes.cervantes.es/es/dele/que-es" {...ext} class="text-primary underline">セルバンテス学院</a>が発行しています。
+    </p>
+    <ul class="text-muted leading-relaxed mb-8 list-disc pl-5 space-y-1">
+      <li><strong>公的性：</strong>スペイン語圏の政府・大学・企業に認められています。</li>
+      <li><strong>無期限の有効性：</strong>多くの語学資格と違い、DELEは失効しません。</li>
+      <li><strong>CEFRとの整合性：</strong>各レベルは<a href="https://cvc.cervantes.es/ensenanza/biblioteca_ele/marco/cap_03.htm" {...ext} class="text-primary underline">欧州言語共通参照枠（CEFR）</a>のレベルに対応しています。</li>
+      <li><strong>法的要件：</strong>スペイン国籍の取得（A2以上）や、一部の大学への入学で求められます。</li>
+    </ul>
+
+    <h2 class="font-sans font-bold text-xl text-navy mb-4">DELEの6つのレベル</h2>
+    <p class="text-muted leading-relaxed mb-4">DELEは運用能力のレベルに応じて6つの独立した資格に分かれています。受けるのは目標のレベルの試験一つだけです。</p>
+    <div class="overflow-x-auto mb-8">
+      <table class="w-full text-sm border-collapse">
+        <thead>
+          <tr class="bg-navy text-white text-left">
+            <th class="px-3 py-2 font-semibold">レベル</th>
+            <th class="px-3 py-2 font-semibold">できることの目安</th>
+            <th class="px-3 py-2 font-semibold whitespace-nowrap">対策ガイド</th>
+          </tr>
+        </thead>
+        <tbody>
+          {levels.map((l) => (
+            <tr class="border-b border-[#E8E8E6] align-top">
+              <td class="px-3 py-2 font-semibold text-navy whitespace-nowrap">{l.code}<span class="block text-xs font-normal text-muted">{l.name}</span></td>
+              <td class="px-3 py-2 text-muted">{l.can}</td>
+              <td class="px-3 py-2 whitespace-nowrap">{l.href && <a href={l.href} class="text-primary underline">DELE {l.code}対策</a>}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+
+    <h2 class="font-sans font-bold text-xl text-navy mb-4">試験の構成</h2>
+    <p class="text-muted leading-relaxed mb-3">C2を除くすべてのDELEには、4つの試験があります。</p>
+    <ol class="text-muted leading-relaxed mb-4 list-decimal pl-5 space-y-1">
+      <li><strong>読解：</strong>ニュース、メール、記事などの文章。</li>
+      <li><strong>聴解：</strong>ラジオ、会話、講演などの音声。</li>
+      <li><strong>作文：</strong>メール、エッセイ、報告書の作成。</li>
+      <li><strong>口頭表現：</strong>モノローグと試験官との対話。</li>
+    </ol>
+    <p class="text-muted leading-relaxed mb-8">
+      DELE C2は、読解・聴解と作文・会話を組み合わせた統合課題で構成される、異なる構造です。口頭試験の流れと練習方法は<a href={url('dele-oral-interview-guide')} class="text-primary underline">「DELE面接・口頭試験 完全対策ガイド」</a>で紹介しています。
+    </p>
+
+    <h2 class="font-sans font-bold text-xl text-navy mb-4">準備の始め方</h2>
+    <p class="text-muted leading-relaxed mb-3">対策は目標のレベルによって大きく変わります。文法だけを切り離さず、4つの技能をバランスよく練習しましょう。</p>
+    <ul class="text-muted leading-relaxed mb-4 list-disc pl-5 space-y-1">
+      <li><strong>初心者（A1〜A2）：</strong>基礎語彙とシンプルな文の形に集中しましょう。</li>
+      <li><strong>中級者（B1〜B2）：</strong>仕事や学業で求められるレベルです。接続法と、理由を添えて意見を述べる力を磨きましょう。</li>
+      <li><strong>上級者（C1〜C2）：</strong>文体の洗練とニュアンスの習得を目指しましょう。</li>
+    </ul>
+    <p class="text-muted leading-relaxed mb-8">
+      先生につかずに準備したい方は<a href={url('dele-self-study')} class="text-primary underline">「DELEを独学で合格する方法」</a>を、試験日と申込の手順は<a href={url('dele/dates-and-fees')} class="text-primary underline">「DELE：日程、費用、申込方法」</a>をご覧ください。
+    </p>
+
+    <NewsletterForm variant="inline" />
+
+    <FAQSection faq={deleFaq} />
+
+    <Sources sources={sources} />
+
+    {author && <ArticleDisclaimer />}
+    {author && <AuthorBox author={author} />}
+  </div>
+  </section>
+
+  <LineBanner slim />
+  <FloatingActions target="categories" shareUrl={`${SITE}${URL_PATH}`} shareTitle="DELE（スペイン語検定）" />
+</BaseLayout>
