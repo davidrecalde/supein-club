@@ -285,7 +285,7 @@ Antes de la unidad 1, y accesible siempre desde el menú, el alumno fija cuatro 
 
 ### Transparencia sobre la IA
 
-Una página 「このコースの作り方」 explica el proceso con nombre y apellidos: quién decide el contenido (David Recalde), qué fuentes se siguen (Plan curricular del Instituto Cervantes y Nueva gramática de la RAE), en qué pasos interviene la IA (redacción asistida y voces generadas con Gemini TTS) y qué revisa una persona nativa antes de publicar. Cada unidad lleva el botón 「間違いを報告」 y cada audio generado se marca como tal. Es una señal de confianza para el lector y de autoría para los buscadores y los motores de IA.
+Una página 「このコースができるまで」 (hasta el 13 de noviembre de 2026, 「このコースの作り方」) explica el proceso con nombre y apellidos: quién decide el contenido (David Recalde), qué fuentes se siguen (Plan curricular del Instituto Cervantes y Nueva gramática de la RAE), en qué pasos interviene la IA (redacción asistida y voces generadas con Gemini TTS) y qué revisa una persona nativa antes de publicar. Cada unidad lleva el botón 「間違いを報告」 y cada audio generado se marca como tal. Es una señal de confianza para el lector y de autoría para los buscadores y los motores de IA.
 
 ## Decisiones del 2 de noviembre de 2026
 
