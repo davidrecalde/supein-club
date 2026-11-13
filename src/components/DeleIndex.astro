@@ -1,0 +1,61 @@
+---
+// Índice visual del hub DELE (/language/learn-spanish/dele/): todas las páginas DELE con miniatura
+// y los seis simulacros del curso. Desde el 13 de noviembre de 2026 el hub /language/ solo enlaza a
+// esta página (un único botón DELE対策), así que aquí tiene que estar todo.
+import { getCollection, type CollectionEntry } from 'astro:content';
+import HubCard from './HubCard.astro';
+import { courseSequence } from '../data/course-sequence';
+import { getArticleUrl } from '../utils/articles';
+import { getAllUnits, isCourseVisible } from '../utils/units';
+
+type Article = CollectionEntry<'articles'>;
+const idNoExt = (a: Article) => a.id.replace(/\.(md|mdx)$/, '');
+const slugOf = (a: Article) => idNoExt(a).split('/').pop() ?? '';
+const articles = await getCollection('articles', ({ data }) => !data.draft && data.pillar === 'language' && data.cluster === 'learn-spanish');
+const isDele = (a: Article) => idNoExt(a).includes('learn-spanish/dele/') || a.data.articleRole === 'info-dele' || slugOf(a) === 'dele-vs-seiken';
+const order = (a: Article) => {
+  const i = courseSequence.dele.indexOf(idNoExt(a));
+  return i === -1 ? courseSequence.dele.length : i;
+};
+const dele = articles.filter((a) => isDele(a) && slugOf(a) !== 'index').sort((a, b) => order(a) - order(b));
+const isLevelGuide = (a: Article) => /learn-spanish\/dele\/[abc][12]$/.test(idNoExt(a));
+const levelGuides = dele.filter(isLevelGuide);
+const studyGuides = dele.filter((a) => !isLevelGuide(a));
+
+const courseVisible = await isCourseVisible();
+const mockExams = courseVisible
+  ? (await getAllUnits())
+      .filter((u) => u.data.slug.startsWith('review-dele'))
+      .map((u) => ({ unit: u.data.unit, level: u.data.level, url: u.data.url, shortTitle: u.data.shortTitle, img: u.data.image?.src.replace(/\.webp$/, '-480.webp'), alt: u.data.image?.alt ?? '' }))
+  : [];
+---
+<div class="dele-index not-prose" data-pagefind-ignore>
+  <h3 class="hub-sub">レベル別ガイド（A1〜C2）</h3>
+  <div class="hub-card-grid">
+    {levelGuides.map((a) => (
+      <HubCard title={a.data.title} href={getArticleUrl(a)} heroImage={a.data.heroImage} heroImageAlt={a.data.heroImageAlt} image={a.data.image} imageAlt={a.data.imageAlt} badge="DELE" />
+    ))}
+  </div>
+  {mockExams.length > 0 && (
+    <>
+      <h3 class="hub-sub">模擬試験（無料コースの各レベルの最終ユニット）</h3>
+      <ol class="hub-mock-grid is-large">
+        {mockExams.map((u) => (
+          <li class={`lv-${u.level}`}>
+            <a class="unit-tile" href={u.url}>
+              <span class="unit-tile-img">{u.img && <img src={u.img} width="480" height="270" alt={u.alt} loading="lazy" decoding="async" />}</span>
+              <span class="unit-tile-num">ユニット{u.unit}</span>
+              <span class="unit-tile-title">{u.shortTitle}</span>
+            </a>
+          </li>
+        ))}
+      </ol>
+    </>
+  )}
+  <h3 class="hub-sub">対策・日程・勉強法</h3>
+  <div class="hub-card-grid">
+    {studyGuides.map((a) => (
+      <HubCard title={a.data.title} href={getArticleUrl(a)} heroImage={a.data.heroImage} heroImageAlt={a.data.heroImageAlt} image={a.data.image} imageAlt={a.data.imageAlt} badge="DELE" />
+    ))}
+  </div>
+</div>
