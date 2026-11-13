@@ -73,7 +73,10 @@ const cardImage = async (a?: Article) => {
   const [small, large] = await Promise.all([480, 800].map((width) => getImage({ src, width, format: 'webp', quality: 75 })));
   return { src: large.src, srcset: `${small.src} 480w, ${large.src} 800w`, width: Number(large.attributes.width), height: Number(large.attributes.height), alt: a.data.heroImageAlt ?? '' };
 };
-const [levelTestImg, roadmapImg, deleImg] = await Promise.all([cardImage(byId('level-test')), cardImage(byId('index')), cardImage(byId('dele-difficulty-guide'))]);
+const [levelTestImg, roadmapImg, deleImg, conjugatorImg] = await Promise.all([cardImage(byId('level-test')), cardImage(byId('index')), cardImage(byId('dele-difficulty-guide')), cardImage(byId('verb-conjugation'))]);
+// El conjugador (la página más visitada del hub) va destacado al principio del bloque 03; el resto de herramientas, en tarjetas.
+const conjugator = byId('verb-conjugation');
+const otherTools = tools.filter((a) => a !== conjugator);
 // Simulacros: la última unidad de cada nivel (review-dele-*), con su ilustración.
 const mockExams = (await getAllUnits())
   .filter((u) => u.data.slug.startsWith('review-dele'))
@@ -276,7 +279,7 @@ const languageFaq = [
         <span class="hub-start-body">
           <span class="hub-start-head">
             <span class="hub-start-icon"><ClipboardCheck size={24} aria-hidden="true" /></span>
-            <span class="hub-start-title">まずはレベルチェック</span>
+            <span class="hub-start-title">自分のレベルをチェック</span>
           </span>
           <span class="hub-start-desc">A1〜C2・最大36問・登録不要。今のレベルと、どのユニットから始めればいいかがすぐにわかります。</span>
           <span class="hub-start-cta">レベルチェックを受ける →</span>
@@ -347,10 +350,23 @@ const languageFaq = [
         <h2 id="materials-title">補助教材・学習リソース</h2>
         <p class="hub-block-lead">コースと並行して使えるツールや学習ガイド、コースの外でスペイン語に触れるためのページ、先生と話す練習ができるスペイン語学校の情報です。</p>
       </div>
+      {conjugator && (
+        <a href={getArticleUrl(conjugator)} class="hub-feature">
+          {conjugatorImg && (
+            <span class="hub-feature-img"><img src={conjugatorImg.src} srcset={conjugatorImg.srcset} sizes="(min-width: 768px) 600px, 100vw" width={conjugatorImg.width} height={conjugatorImg.height} alt={conjugatorImg.alt} loading="lazy" decoding="async" /></span>
+          )}
+          <span class="hub-feature-body">
+            <span class="hub-feature-badge">ツール</span>
+            <span class="hub-feature-title">スペイン語 動詞の活用ツール（53動詞・全時制）</span>
+            <span class="hub-feature-desc">原形でも活用形（fui、hice など）でも入力できる検索、全時制の早見表、よく使う53動詞の活用ページ。各時制は、それを学ぶコースのユニットにつながっています。</span>
+            <span class="hub-feature-cta">活用を調べる →</span>
+          </span>
+        </a>
+      )}
       <h3 id="tools" class="hub-sub">ツールと学習ガイド</h3>
       <div class="hub-card-grid">
-        {tools.map((a) => (
-          <HubCard title={a.data.title} href={getArticleUrl(a)} heroImage={a.data.heroImage} heroImageAlt={a.data.heroImageAlt} image={a.data.image} imageAlt={a.data.imageAlt} badge={slugOf(a) === 'verb-conjugation' ? 'ツール' : '学習ガイド'} />
+        {otherTools.map((a) => (
+          <HubCard title={a.data.title} href={getArticleUrl(a)} heroImage={a.data.heroImage} heroImageAlt={a.data.heroImageAlt} image={a.data.image} imageAlt={a.data.imageAlt} badge="学習ガイド" />
         ))}
       </div>
       <h3 id="resources" class="hub-sub">学習リソース</h3>
