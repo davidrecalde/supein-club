@@ -106,8 +106,8 @@ const breadcrumbs = [
 // ItemList: lo que la página enlaza, en su orden (salidas del curso, niveles y artículos).
 const levelItems = courseVisible ? COURSE_LEVELS.map((l) => ({ url: levelUrl(l.code), name: `${l.code} ${l.name}` })) : [];
 const listed = [
-  { url: LEVEL_TEST_URL, name: 'スペイン語レベルチェックテスト' },
   { url: COURSE_URL, name: 'スペイン語学習ロードマップ' },
+  { url: LEVEL_TEST_URL, name: 'スペイン語レベルチェックテスト' },
   ...levelItems,
   ...[...tools, ...(deleHub ? [deleHub] : []), ...resources, ...schools].map((a) => ({ url: getArticleUrl(a), name: a.data.title })),
 ];
@@ -256,6 +256,19 @@ const languageFaq = [
     <h2 id="start" class="font-sans font-bold text-xl text-navy mb-5">はじめる</h2>
     <CourseContinue />
     <div class="hub-start-grid">
+      <a href={COURSE_URL} class="hub-start-card has-image is-primary">
+        {roadmapImg && (
+          <span class="hub-start-img"><img src={roadmapImg.src} srcset={roadmapImg.srcset} sizes="(min-width: 768px) 560px, 100vw" width={roadmapImg.width} height={roadmapImg.height} alt={roadmapImg.alt} decoding="async" /></span>
+        )}
+        <span class="hub-start-body">
+          <span class="hub-start-head">
+            <span class="hub-start-icon"><MapIcon size={24} aria-hidden="true" /></span>
+            <span class="hub-start-title">スペイン語学習ロードマップ</span>
+          </span>
+          <span class="hub-start-desc">6つのレベルの意味、学習時間の目安、全{TOTAL_UNITS}ユニットの順番を1ページで確認できます。</span>
+          <span class="hub-start-cta">ロードマップを見る →</span>
+        </span>
+      </a>
       <a href={LEVEL_TEST_URL} class="hub-start-card has-image is-primary">
         {levelTestImg && (
           <span class="hub-start-img"><img src={levelTestImg.src} srcset={levelTestImg.srcset} sizes="(min-width: 768px) 560px, 100vw" width={levelTestImg.width} height={levelTestImg.height} alt={levelTestImg.alt} decoding="async" /></span>
@@ -267,19 +280,6 @@ const languageFaq = [
           </span>
           <span class="hub-start-desc">A1〜C2・最大36問・登録不要。今のレベルと、どのユニットから始めればいいかがすぐにわかります。</span>
           <span class="hub-start-cta">レベルチェックを受ける →</span>
-        </span>
-      </a>
-      <a href={COURSE_URL} class="hub-start-card has-image">
-        {roadmapImg && (
-          <span class="hub-start-img"><img src={roadmapImg.src} srcset={roadmapImg.srcset} sizes="(min-width: 768px) 560px, 100vw" width={roadmapImg.width} height={roadmapImg.height} alt={roadmapImg.alt} decoding="async" /></span>
-        )}
-        <span class="hub-start-body">
-          <span class="hub-start-head">
-            <span class="hub-start-icon"><MapIcon size={24} aria-hidden="true" /></span>
-            <span class="hub-start-title">スペイン語学習ロードマップ</span>
-          </span>
-          <span class="hub-start-desc">6つのレベルの意味、学習時間の目安、全{TOTAL_UNITS}ユニットの順番を1ページで確認できます。</span>
-          <span class="hub-start-cta">ロードマップを見る →</span>
         </span>
       </a>
     </div>
