@@ -25,6 +25,7 @@ import ArticleDisclaimer from '../components/ArticleDisclaimer.astro';
 import FloatingActions from '../components/FloatingActions.astro';
 import RegionBadge from '../components/RegionBadge.astro';
 import LevelUnits from '../components/course/LevelUnits.astro';
+import DeleHub from '../components/DeleHub.astro';
 import { getArticleUrl, getArticleBreadcrumbs, isPillarArticle, pillarLabels } from '../utils/articles';
 import { getCategoryBadgeLabel } from '../utils/articleCategory';
 import { getAllUnits } from '../utils/units';
@@ -235,6 +236,9 @@ const stepItemList = isRoadmapHub
 
     </div>
   </header>
+
+  <!-- Hub DELE (/language/dele/): bloques de botones a todo el ancho, como el hub /language/ -->
+  {articleRole === 'hub-dele' && <DeleHub />}
 
   <!-- Article body -->
   <div class="page-container py-10">
