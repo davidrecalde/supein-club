@@ -1,0 +1,11 @@
+---
+// 301 del antiguo hub DELE (/language/learn-spanish/dele/) al nuevo /language/dele/ (decisión de David,
+// 13 de noviembre de 2026). Las guías /language/learn-spanish/dele/a1/… siguen siendo páginas estáticas.
+//
+// Por qué una ruta y no public/_redirects: en este proyecto Cloudflare Pages solo aplica las primeras
+// ~105 reglas de ese archivo y esta sería la 115 (ver src/pages/food/[...oldSpainMap].astro).
+// prerender=false la compila dentro del _worker.js, que sí se ejecuta.
+export const prerender = false;
+
+return Astro.redirect('/language/dele/', 301);
+---

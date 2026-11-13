@@ -64,6 +64,7 @@ export function getCategoryBadgeLabel(entry: Article): string | undefined {
 
   if (pillar === 'language') {
     if (cluster === 'spanish-apps') return '学習リソース';
+    if (cluster === 'dele') return 'DELE';
     if (cluster !== 'learn-spanish') return 'スペイン語学校';
 
     const isDele =

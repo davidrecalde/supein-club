@@ -125,6 +125,9 @@ export async function getArticleBreadcrumbs(entry: CollectionEntry<'articles'>):
 
   // Curso de español: /language/ › コース › nivel › página (docs/language/curso-paso-a-paso.md).
   const isCourse = pillar === 'language' && cluster === 'learn-spanish';
+  // Páginas DELE (guías por nivel, fechas, guías de estudio): cuelgan del hub DELE /language/dele/.
+  const isDelePage = isCourse && (entry.id.includes('learn-spanish/dele/') || /learn-spanish\/dele-/.test(entry.id));
+  if (isDelePage) return [home, pillarCrumb, { name: 'DELE', url: '/language/dele/' }, { name: title, url: canonical }];
   const clusterCrumb = { name: isCourse ? 'コース' : slugToJa(cluster), url: clusterUrl };
   const level = isCourse && entry.data.level ? getCourseLevel(entry.data.level) : undefined;
   const levelPath = level ? levelUrl(level.code) : undefined;

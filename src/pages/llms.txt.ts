@@ -12,7 +12,7 @@ const siteUrl = 'https://supein.club';
 // "index.mdx" colapsa el segmento final, mientras que `.id` lo conserva.
 const languageHighlightIds = [
   'language/learn-spanish/index',
-  'language/learn-spanish/dele/index',
+  'language/dele/index',
   'language/learn-spanish/verb-conjugation',
   'language/learn-spanish/zipf-law-methodology',
 ];

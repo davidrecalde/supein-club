@@ -1,5 +1,10 @@
 {
   "version": 1,
-  "include": ["/api/subscribe", "/food/spain-map-*"],
+  "include": [
+    "/api/subscribe",
+    "/food/spain-map-*",
+    "/language/learn-spanish/dele",
+    "/language/learn-spanish/dele/"
+  ],
   "exclude": []
 }
