@@ -392,8 +392,22 @@ const h2s = headings.filter((h) => h.depth === 2);
       var tocList = document.querySelector('.toc-list');
       var tocMobileList = document.querySelector('.toc-mobile-list');
 
+      // Los elementos creados aquí no llevan el atributo de los estilos con ámbito de Astro
+      // (data-astro-cid-*): se copia del primer elemento del índice para que se vean igual.
+      var refItem = tocList ? tocList.querySelector('.toc-item') : null;
+      var cid = refItem ? Array.from(refItem.attributes).map(function(at) { return at.name; }).find(function(n) { return n.indexOf('data-astro-cid') === 0; }) : null;
+      var scope = function(el) {
+        if (!cid) return;
+        el.setAttribute(cid, '');
+        el.querySelectorAll('*').forEach(function(c) { c.setAttribute(cid, ''); });
+      };
+
       creH3s.forEach(function(creH3) {
         if (!creH3.id) return;
+        // Sin duplicados: si el índice ya tiene una entrada con el mismo texto (p. ej. la sección
+        // 「ミニテスト」 de las unidades y el título de su QuizCard), no se añade otra.
+        var headingText = (creH3.textContent || '').trim();
+        if (headingEls.some(function(h) { return (h.textContent || '').trim() === headingText; })) return;
 
         // Find insertion index by DOM order
         // DOCUMENT_POSITION_PRECEDING = 2: creH3 is before headingEls[j]
@@ -423,6 +437,7 @@ const h2s = headings.filter((h) => h.depth === 2);
             '<span class="toc-dot"></span>' +
             '<span class="toc-text">' + text + badge + '</span>' +
             '</a>';
+          scope(li);
           var existingItems = tocList.querySelectorAll('.toc-item');
           if (existingItems[insertIdx]) {
             tocList.insertBefore(li, existingItems[insertIdx]);
@@ -440,6 +455,7 @@ const h2s = headings.filter((h) => h.depth === 2);
             '<span class="toc-mobile-num">◆</span>' +
             text +
             '</a>';
+          scope(mli);
           var mobileItems = tocMobileList.querySelectorAll('li');
           if (mobileItems[insertIdx]) {
             tocMobileList.insertBefore(mli, mobileItems[insertIdx]);
