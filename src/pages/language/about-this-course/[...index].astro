@@ -13,19 +13,19 @@ export async function getStaticPaths() {
 
 const siteUrl = 'https://supein.club';
 const canonical = `${siteUrl}${ABOUT_COURSE_URL}`;
-const title = 'このコースの作り方｜内容の決め方・AIの使い方・ネイティブの確認';
-const description = 'スペイン倶楽部のスペイン語コースは、誰がどの基準で内容を決め、AIをどこで使い、公開前にネイティブが何を確認しているのか。作り方をすべて公開します。';
+const title = 'このコースができるまで｜内容の決め方・AIの使い方・ネイティブの確認';
+const description = 'スペイン倶楽部のスペイン語コースは、誰がどの基準で内容を決め、AIをどこで使い、公開前にネイティブが何を確認しているのか。その過程をすべて公開します。';
 const updated = new Date('2026-11-02');
 const breadcrumbs = [
   { name: 'ホーム', url: '/' },
   { name: 'スペイン語', url: '/language/' },
-  { name: 'このコースの作り方', url: canonical },
+  { name: 'このコースができるまで', url: canonical },
 ];
 const authorUrl = `${siteUrl}/about-us/team/david-recalde/`;
 const article = {
   '@type': 'Article',
   '@id': `${canonical}#article`,
-  headline: 'このコースの作り方',
+  headline: 'このコースができるまで',
   description,
   url: canonical,
   datePublished: updated.toISOString(),
@@ -41,7 +41,7 @@ const article = {
   <SEO slot="seo" title={title} description={description} canonical={canonical} type="article" breadcrumbs={breadcrumbs} authorName="David Recalde" authorUrl={authorUrl} extraGraph={[article]} />
 
   <CoursePageHeader breadcrumbs={breadcrumbs}>
-    <h1 class="course-page-title">このコースの作り方</h1>
+    <h1 class="course-page-title">このコースができるまで</h1>
     <p class="course-page-updated">最終更新日：<time datetime={updated.toISOString()}>2026年11月2日</time></p>
   </CoursePageHeader>
 
