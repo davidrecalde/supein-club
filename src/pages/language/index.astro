@@ -8,7 +8,7 @@ import { ClipboardCheck, Map as MapIcon } from 'lucide-astro';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import SEO from '../../components/SEO.astro';
 import PillarHero from '../../components/PillarHero.astro';
-import ArticleCard from '../../components/ArticleCard.astro';
+import HubCard from '../../components/HubCard.astro';
 import LineBanner from '../../components/LineBanner.astro';
 import FloatingActions from '../../components/FloatingActions.astro';
 import FAQSection from '../../components/FAQSection.astro';
@@ -64,6 +64,14 @@ const deleOrder = (a: Article) => {
 const deleArticles = learnSpanish.filter(isDele).sort((a, b) => deleOrder(a) - deleOrder(b));
 const deleHub = deleArticles.find((a) => idNoExt(a) === 'language/learn-spanish/dele/index');
 const deleRest = deleArticles.filter((a) => a !== deleHub);
+// Bloque DELE del hub: la página DELE y las guías de cada nivel; después, las guías de estudio.
+const isLevelGuide = (a: Article) => /learn-spanish\/dele\/[abc][12]$/.test(idNoExt(a));
+const deleGuidesByLevel = [deleHub, ...deleRest.filter(isLevelGuide)].filter((a): a is Article => !!a);
+const deleStudyGuides = deleRest.filter((a) => !isLevelGuide(a));
+// Simulacros: la última unidad de cada nivel (review-dele-*), con su ilustración.
+const mockExams = (await getAllUnits())
+  .filter((u) => u.data.slug.startsWith('review-dele'))
+  .map((u) => ({ unit: u.data.unit, level: u.data.level, url: u.data.url, shortTitle: u.data.shortTitle, img: u.data.image?.src.replace(/\.webp$/, '-480.webp'), alt: u.data.image?.alt ?? '' }));
 
 // Recursos: el resto de learn-spanish (nada se queda sin enlace) + la comparativa de apps.
 const resources = learnSpanish
@@ -78,13 +86,10 @@ const schools = articles
 
 const anchors = [
   { href: '#start', label: 'はじめる' },
-  ...(courseVisible ? [{ href: '#course', label: 'レベル別コース' }] : []),
-  { href: '#methods', label: '学び方の比較' },
-  { href: '#steps', label: '独学の5ステップ' },
-  { href: '#tools', label: 'ツール・ガイド' },
-  { href: '#dele', label: 'DELE' },
-  { href: '#resources', label: '学習リソース' },
-  { href: '#schools', label: 'スペイン語学校' },
+  ...(courseVisible ? [{ href: '#course', label: '無料コース' }] : []),
+  { href: '#dele', label: 'DELE対策' },
+  { href: '#materials', label: '補助教材' },
+  { href: '#methods', label: '勉強法' },
 ];
 
 const breadcrumbs = [
@@ -229,12 +234,12 @@ const languageFaq = [
     title="スペイン語の勉強法"
     description="独学の始め方、学び方の比較、A1〜C2の無料コース。今のレベルを確かめて、次に学ぶことを見つけましょう。"
   />
-  <section class="max-w-6xl mx-auto px-5 py-14">
+  <section class="max-w-6xl mx-auto px-5 pt-14 pb-12">
     <p class="text-ink text-base leading-relaxed mb-10 border-l-2 border-primary pl-5 max-w-[780px]">
       スペイン語の勉強法でいちばん大切なのは、<strong>今のレベルを知ること</strong>、<strong>発音から順番に学ぶこと</strong>、<strong>毎日少しずつ続けること</strong>の3つです。スペイン倶楽部では、セルバンテス学院の基準（A1 Acceso〜C2 Maestría）に沿った<strong>無料のスペイン語コース（全{TOTAL_UNITS}ユニット）</strong>を用意しました。登録は不要で、進み具合はこのブラウザに保存されます。
     </p>
 
-    <nav id="categories" aria-label="このページの内容" class="grid grid-cols-2 md:grid-cols-4 gap-3 mb-12">
+    <nav id="categories" aria-label="このページの内容" class="grid grid-cols-2 md:grid-cols-5 gap-3 mb-12">
       {anchors.map(({ href, label }) => (
         <a href={href} class="bg-white rounded-lg px-3 py-3 min-h-[44px] flex items-center justify-center text-center border border-[#E8E8E6] hover:border-primary/30 hover:shadow-sm transition-all">
           <span class="font-semibold text-navy text-sm leading-snug block">{label}</span>
@@ -244,7 +249,7 @@ const languageFaq = [
 
     <h2 id="start" class="font-sans font-bold text-xl text-navy mb-5">はじめる</h2>
     <CourseContinue />
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-5 mb-12">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
       <a href={LEVEL_TEST_URL} class="hub-start-card is-primary">
         <span class="hub-start-icon"><ClipboardCheck size={24} aria-hidden="true" /></span>
         <span class="hub-start-text">
@@ -262,9 +267,93 @@ const languageFaq = [
         </span>
       </a>
     </div>
+  </section>
 
-    <CourseLevels />
+  {courseVisible && (
+    <section class="hub-block is-course" id="course" aria-labelledby="course-title">
+      <div class="max-w-6xl mx-auto px-5">
+        <div class="hub-block-head">
+          <p class="hub-block-eyebrow"><span class="hub-block-num">01</span>無料コース</p>
+          <h2 id="course-title">スペイン語コース（A1〜C2・全{TOTAL_UNITS}ユニット）</h2>
+          <p class="hub-block-lead">無料・登録不要。セルバンテス学院の6つのレベルに沿って、ユニット1から順番に進めます。各レベルの目次から、そのレベルの全ユニットと文法まとめ・単語・学習計画に進めます。前回開いたユニットには印がつきます。</p>
+          <p class="course-links">
+            <a href={WELCOME_URL}>学習設定（地域・ペース・例文の数）</a>
+            <a href={CAST_URL}>登場人物</a>
+            <a href={ABOUT_COURSE_URL}>このコースの作り方</a>
+          </p>
+        </div>
+        <CourseLevels />
+      </div>
+    </section>
+  )}
 
+  <section class="hub-block is-dele" id="dele" aria-labelledby="dele-title">
+    <div class="max-w-6xl mx-auto px-5">
+      <div class="hub-block-head">
+        <p class="hub-block-eyebrow"><span class="hub-block-num">02</span>DELE対策</p>
+        <h2 id="dele-title">DELE（スペイン語検定）の準備</h2>
+        <p class="hub-block-lead">セルバンテス学院が実施する、スペイン語の国際的な公式資格です。試験の内容をレベル別に確かめ、コースの模擬試験で力を試せます。</p>
+      </div>
+      <h3 class="hub-sub">DELEとは・レベル別ガイド</h3>
+      <div class="hub-card-grid">
+        {deleGuidesByLevel.map((a) => (
+          <HubCard title={a.data.title} href={getArticleUrl(a)} heroImage={a.data.heroImage} heroImageAlt={a.data.heroImageAlt} image={a.data.image} imageAlt={a.data.imageAlt} badge="DELE" />
+        ))}
+      </div>
+      {courseVisible && mockExams.length > 0 && (
+        <>
+          <h3 class="hub-sub">模擬試験（各レベルの最終ユニット）</h3>
+          <ol class="hub-mock-grid">
+            {mockExams.map((u) => (
+              <li class={`lv-${u.level}`}>
+                <a class="unit-tile" href={u.url}>
+                  <span class="unit-tile-img">{u.img && <img src={u.img} width="480" height="270" alt={u.alt} loading="lazy" decoding="async" />}</span>
+                  <span class="unit-tile-num">{u.level} 模擬試験・ユニット{u.unit}</span>
+                  <span class="unit-tile-title">{u.shortTitle}</span>
+                </a>
+              </li>
+            ))}
+          </ol>
+        </>
+      )}
+      <h3 class="hub-sub">対策と勉強法</h3>
+      <div class="hub-card-grid">
+        {deleStudyGuides.map((a) => (
+          <HubCard title={a.data.title} href={getArticleUrl(a)} heroImage={a.data.heroImage} heroImageAlt={a.data.heroImageAlt} image={a.data.image} imageAlt={a.data.imageAlt} badge="DELE" />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="hub-block is-materials" id="materials" aria-labelledby="materials-title">
+    <div class="max-w-6xl mx-auto px-5">
+      <div class="hub-block-head">
+        <p class="hub-block-eyebrow"><span class="hub-block-num">03</span>補助教材</p>
+        <h2 id="materials-title">補助教材・学習リソース</h2>
+        <p class="hub-block-lead">コースと並行して使えるツールや学習ガイド、コースの外でスペイン語に触れるためのページ、先生と話す練習ができるスペイン語学校の情報です。</p>
+      </div>
+      <h3 id="tools" class="hub-sub">ツールと学習ガイド</h3>
+      <div class="hub-card-grid">
+        {tools.map((a) => (
+          <HubCard title={a.data.title} href={getArticleUrl(a)} heroImage={a.data.heroImage} heroImageAlt={a.data.heroImageAlt} image={a.data.image} imageAlt={a.data.imageAlt} badge={slugOf(a) === 'verb-conjugation' ? 'ツール' : '学習ガイド'} />
+        ))}
+      </div>
+      <h3 id="resources" class="hub-sub">学習リソース</h3>
+      <div class="hub-card-grid">
+        {resources.map((a) => (
+          <HubCard title={a.data.title} href={getArticleUrl(a)} heroImage={a.data.heroImage} heroImageAlt={a.data.heroImageAlt} image={a.data.image} imageAlt={a.data.imageAlt} badge="学習リソース" />
+        ))}
+      </div>
+      <h3 id="schools" class="hub-sub">スペイン語学校</h3>
+      <div class="hub-card-grid">
+        {schools.map((a) => (
+          <HubCard title={a.data.title} href={getArticleUrl(a)} heroImage={a.data.heroImage} heroImageAlt={a.data.heroImageAlt} image={a.data.image} imageAlt={a.data.imageAlt} badge="スペイン語学校" />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="max-w-6xl mx-auto px-5 py-14">
     <div class="max-w-[780px] prose-content">
       <h2 id="methods" class="font-sans font-bold text-xl text-navy mb-4">スペイン語の勉強法：4つの学び方を比較</h2>
       <p class="text-ink leading-relaxed mb-5">
@@ -323,42 +412,6 @@ const languageFaq = [
       </ol>
     </div>
 
-    <h2 id="tools" class="font-sans font-bold text-xl text-navy mb-2">ツールと学習ガイド</h2>
-    <p class="text-muted text-sm mb-5">活用を調べる、発音を練習する、単語の覚え方を知る、学習計画を立てる。コースと並行して使えるページです。</p>
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
-      {tools.map((a) => (
-        <ArticleCard title={a.data.title} description={a.data.description} href={getArticleUrl(a)} pillar="language" cluster={a.data.cluster} image={a.data.image} imageAlt={a.data.imageAlt} heroImage={a.data.heroImage} heroImageAlt={a.data.heroImageAlt} pubDate={a.data.pubDate} topicBadge={slugOf(a) === 'verb-conjugation' ? 'ツール' : '学習ガイド'} />
-      ))}
-    </div>
-
-    <h2 id="dele" class="font-sans font-bold text-xl text-navy mb-2">DELE（スペイン語検定）</h2>
-    <p class="text-muted text-sm mb-5">セルバンテス学院が実施する、スペイン語の国際的な公式資格です。コースの各レベルは、同じレベルのDELEにつながっています。</p>
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
-      {deleHub && (
-        <ArticleCard title={deleHub.data.title} description={deleHub.data.description} href={getArticleUrl(deleHub)} pillar="language" cluster={deleHub.data.cluster} image={deleHub.data.image} imageAlt={deleHub.data.imageAlt} heroImage={deleHub.data.heroImage} heroImageAlt={deleHub.data.heroImageAlt} pubDate={deleHub.data.pubDate} topicBadge="DELE" />
-      )}
-      <ul class="hub-link-list md:col-span-2">
-        {deleRest.map((a) => (
-          <li><a href={getArticleUrl(a)}>{a.data.title}</a></li>
-        ))}
-      </ul>
-    </div>
-
-    <h2 id="resources" class="font-sans font-bold text-xl text-navy mb-2">学習リソース</h2>
-    <p class="text-muted text-sm mb-5">映画やドラマ、旅行のフレーズ、リスニングと読解のコツなど、コースの外でスペイン語に触れるためのページです。</p>
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
-      {resources.map((a) => (
-        <ArticleCard title={a.data.title} description={a.data.description} href={getArticleUrl(a)} pillar="language" cluster={a.data.cluster} image={a.data.image} imageAlt={a.data.imageAlt} heroImage={a.data.heroImage} heroImageAlt={a.data.heroImageAlt} pubDate={a.data.pubDate} topicBadge="学習リソース" />
-      ))}
-    </div>
-
-    <h2 id="schools" class="font-sans font-bold text-xl text-navy mb-2">スペイン語学校</h2>
-    <p class="text-muted text-sm mb-5">会話を先生と練習したい方へ。都市ごとの学校を、口コミなどの客観データで比較しています。</p>
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
-      {schools.map((a) => (
-        <ArticleCard title={a.data.title} description={a.data.description} href={getArticleUrl(a)} pillar="language" cluster={a.data.cluster} image={a.data.image} imageAlt={a.data.imageAlt} heroImage={a.data.heroImage} heroImageAlt={a.data.heroImageAlt} pubDate={a.data.pubDate} topicBadge="スペイン語学校" />
-      ))}
-    </div>
   </section>
 
   <section class="max-w-6xl mx-auto px-5 pb-14 prose-content">

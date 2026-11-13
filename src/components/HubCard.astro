@@ -1,0 +1,33 @@
+---
+// Tarjeta compacta del hub /language/: miniatura 16:9 y título corto (la parte antes de 「｜」).
+// Menos texto que ArticleCard para que los bloques DELE y 補助教材 se lean de un vistazo.
+import { getImage } from 'astro:assets';
+
+interface Props {
+  title: string;
+  href: string;
+  heroImage?: string | ImageMetadata;
+  heroImageAlt?: string;
+  image?: string;
+  imageAlt?: string;
+  badge?: string;
+}
+
+const { title, href, heroImage, heroImageAlt, image, imageAlt, badge } = Astro.props;
+const thumb =
+  heroImage && typeof heroImage !== 'string'
+    ? await getImage({ src: heroImage, width: 480, format: 'webp', quality: 72 })
+    : undefined;
+const src = thumb?.src ?? (typeof heroImage === 'string' ? heroImage : image);
+const alt = heroImageAlt ?? imageAlt ?? '';
+const shortTitle = title.split('｜')[0].trim();
+---
+<a class="hub-card" href={href} title={title}>
+  <span class="hub-card-img">
+    {src && <img src={src} width={thumb?.attributes.width ?? 480} height={thumb?.attributes.height ?? 270} alt={alt} loading="lazy" decoding="async" />}
+  </span>
+  <span class="hub-card-body">
+    {badge && <span class="hub-card-badge">{badge}</span>}
+    <span class="hub-card-title">{shortTitle}</span>
+  </span>
+</a>

@@ -12,6 +12,8 @@ export interface UnitProgress {
 
 export interface CourseProgress {
   units: Record<string, UnitProgress>;
+  /** Última unidad abierta en este navegador (la marca el hub /language/ como 「前回のユニット」). */
+  lastVisited?: { unit: number; at: string };
 }
 
 export const PROGRESS_EVENT = 'supein:course-progress';
@@ -63,5 +65,12 @@ export function recordQuiz(unit: number, score: number, total: number, passScore
     entry.completedAt = now;
   }
   progress.units[String(unit)] = entry;
+  save(progress);
+}
+
+// Se llama al abrir una unidad: el hub /language/ la marca como 「前回のユニット」.
+export function recordVisit(unit: number): void {
+  const progress = loadProgress();
+  progress.lastVisited = { unit, at: new Date().toISOString() };
   save(progress);
 }

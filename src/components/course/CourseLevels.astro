@@ -1,6 +1,12 @@
 ---
-import { ABOUT_COURSE_URL, CAST_URL, COURSE_LEVELS, TOTAL_UNITS, WELCOME_URL, levelUrl } from '../../data/course';
-import { getAllUnits, isCourseVisible, isRoutable } from '../../utils/units';
+// Índice del curso en el hub /language/ (rediseño del 13 de noviembre de 2026, petición de David):
+// una fila por nivel. A la izquierda, la tarjeta 「A1レベルの目次」 en el color del nivel, que lleva a
+// la página del nivel; a la derecha, las miniaturas de todas sus unidades con su número, para que quien
+// vuelve reconozca de un vistazo por dónde iba. Con JavaScript se marcan las unidades completadas y
+// la última abierta (「前回のユニット」, courseProgress.lastVisited). Sin JavaScript todo funciona igual.
+import { Check } from 'lucide-astro';
+import { COURSE_LEVELS, levelUrl } from '../../data/course';
+import { getAllUnits, hasPage, isCourseVisible } from '../../utils/units';
 
 // Páginas de apoyo de cada nivel (resumen de gramática, vocabulario, plan) y su guía DELE.
 const spokes = (code: string) => {
@@ -13,44 +19,55 @@ const spokes = (code: string) => {
   ];
 };
 
+// Miniatura de 480 px de la ilustración de la unidad (la genera npm run course:images).
+const thumb = (src?: string) => src?.replace(/\.webp$/, '-480.webp');
+
 const visible = await isCourseVisible();
-const units = await getAllUnits();
-const levels = COURSE_LEVELS.map((level) => {
-  const levelUnits = units.filter((u) => u.data.level === level.code);
-  return {
-    ...level,
-    total: levelUnits.length,
-    unitNumbers: levelUnits.map((u) => u.data.unit),
-    live: levelUnits.filter(isRoutable).map((u) => ({ unit: u.data.unit, url: u.data.url, shortTitle: u.data.shortTitle })),
-  };
-});
+const units = (await getAllUnits()).filter(hasPage);
+const levels = COURSE_LEVELS.map((level) => ({
+  ...level,
+  units: units
+    .filter((u) => u.data.level === level.code)
+    .map((u) => ({ unit: u.data.unit, url: u.data.url, shortTitle: u.data.shortTitle, img: thumb(u.data.image?.src), alt: u.data.image?.alt ?? '' })),
+}));
 ---
 {visible && (
-<section class="course-levels" id="course" data-pagefind-ignore>
-  <h2>スペイン語コース（A1〜C2・全{TOTAL_UNITS}ユニット）</h2>
-  <p>無料・登録不要で、自分のペースで進められるコースです。進み具合はこのブラウザに保存されます。</p>
-  <p class="course-links">
-    <a href={WELCOME_URL}>学習設定（地域・ペース・例文の数）</a>
-    <a href={CAST_URL}>登場人物</a>
-    <a href={ABOUT_COURSE_URL}>このコースの作り方</a>
-  </p>
-  <ol class="course-levels-grid">
-    {levels.map((l) => (
-      <li class={`course-level lv-${l.code}`} data-units={JSON.stringify(l.unitNumbers)} data-live-units={JSON.stringify(l.live)}>
-        <a href={levelUrl(l.code)} class="course-level-name">
-          <span class="level-chip">{l.code}</span> {l.name}
+<ol class="course-index" data-pagefind-ignore>
+  {levels.map((l) => (
+    <li class={`course-row lv-${l.code}`} data-units={JSON.stringify(l.units.map((u) => u.unit))}>
+      <div class="course-row-side">
+        <a href={levelUrl(l.code)} class="course-row-index">
+          <span class="course-row-eyebrow">{`${l.code} ${l.name}`}</span>
+          <span class="course-row-title">{l.code}レベルの目次</span>
+          <span class="course-row-range">ユニット{l.first}〜{l.last}・全{l.units.length}ユニット</span>
+          <span class="course-row-progress" hidden>
+            <span class="course-row-bar"><span class="course-row-fill"></span></span>
+            <span class="course-row-percent">0% 完了</span>
+          </span>
+          <span class="course-row-cta">{l.code}の目次を見る →</span>
         </a>
-        <span class="course-level-range">ユニット{l.first}〜{l.last}（全{l.total}ユニット）</span>
-        <div class="course-level-bar" hidden><div class="course-level-fill"></div></div>
-        <span class="course-level-percent" hidden>0%</span>
-        <span class="course-level-next" hidden></span>
-        <span class="course-level-spokes">
+        <p class="course-row-spokes">
           {spokes(l.code).map((s) => <a href={s.href}>{s.label}</a>)}
-        </span>
-      </li>
-    ))}
-  </ol>
-</section>
+        </p>
+      </div>
+      <ol class="course-row-units" aria-label={`${l.code} ${l.name}のユニット`}>
+        {l.units.map((u) => (
+          <li>
+            <a class="unit-tile" href={u.url} data-unit={u.unit}>
+              <span class="unit-tile-img">
+                {u.img && <img src={u.img} width="480" height="270" alt={u.alt} loading="lazy" decoding="async" />}
+                <span class="unit-tile-done" aria-hidden="true"><Check size={14} /></span>
+              </span>
+              <span class="unit-tile-num">ユニット{u.unit}</span>
+              <span class="unit-tile-title">{u.shortTitle}</span>
+              <span class="unit-tile-last">前回のユニット</span>
+            </a>
+          </li>
+        ))}
+      </ol>
+    </li>
+  ))}
+</ol>
 )}
 
 <script>
@@ -58,31 +75,29 @@ const levels = COURSE_LEVELS.map((level) => {
 
   function render() {
     const progress = loadProgress();
-    document.querySelectorAll<HTMLElement>('.course-level').forEach((card) => {
-      const units: number[] = JSON.parse(card.dataset.units ?? '[]');
-      const live: Array<{ unit: number; url: string; shortTitle: string }> = JSON.parse(card.dataset.liveUnits ?? '[]');
+    const last = progress.lastVisited?.unit;
+    document.querySelectorAll<HTMLElement>('.course-row').forEach((row) => {
+      const units: number[] = JSON.parse(row.dataset.units ?? '[]');
       const done = units.filter((u) => isCompleted(progress, u)).length;
       const percent = units.length ? Math.round((done / units.length) * 100) : 0;
-      card.querySelector<HTMLElement>('.course-level-fill')!.style.width = `${percent}%`;
-      card.querySelector<HTMLElement>('.course-level-bar')!.hidden = false;
-      const percentEl = card.querySelector<HTMLElement>('.course-level-percent')!;
-      percentEl.textContent = `${percent}% 完了`;
-      percentEl.hidden = false;
-      const next = live.find((u) => !isCompleted(progress, u.unit));
-      const nextEl = card.querySelector<HTMLElement>('.course-level-next')!;
-      if (next) {
-        nextEl.innerHTML = '';
-        const link = document.createElement('a');
-        link.href = next.url;
-        link.textContent = `次：ユニット${next.unit} ${next.shortTitle}`;
-        nextEl.append(link);
-        nextEl.hidden = false;
-      } else {
-        nextEl.hidden = true;
+      if (done > 0 || last !== undefined) {
+        row.querySelector<HTMLElement>('.course-row-fill')!.style.width = `${percent}%`;
+        row.querySelector<HTMLElement>('.course-row-percent')!.textContent = `${percent}% 完了（${done}/${units.length}）`;
+        row.querySelector<HTMLElement>('.course-row-progress')!.hidden = false;
       }
+      row.querySelectorAll<HTMLElement>('.unit-tile').forEach((tile) => {
+        const unit = Number(tile.dataset.unit);
+        tile.classList.toggle('is-done', isCompleted(progress, unit));
+        tile.classList.toggle('is-last', unit === last);
+        if (unit === last) {
+          // En móvil la fila es un carrusel horizontal: se desplaza hasta la última unidad abierta.
+          const strip = tile.closest<HTMLElement>('.course-row-units');
+          if (strip && strip.scrollWidth > strip.clientWidth) strip.scrollLeft = (tile.parentElement as HTMLElement).offsetLeft - 16;
+        }
+      });
     });
   }
 
-  window.addEventListener(PROGRESS_EVENT, render);
   render();
+  window.addEventListener(PROGRESS_EVENT, render);
 </script>
