@@ -65,7 +65,7 @@ const deleOrder = (a: Article) => {
 const deleArticles = learnSpanish.filter(isDele).sort((a, b) => deleOrder(a) - deleOrder(b));
 // Hub DELE: /language/dele/ (cluster propio desde el 13 de noviembre de 2026).
 const deleHub = articles.find((a) => idNoExt(a) === 'language/dele/index');
-// El bloque DELE del hub es un único botón al hub DELE, que reúne todas las páginas DELE (DeleIndex).
+// El bloque DELE del hub es un único botón al hub DELE, que reúne todas las páginas DELE (DeleHub).
 // Imágenes de los botones grandes, las de sus artículos: レベルチェック, ロードマップ y DELE (dele-difficulty-guide).
 const cardImage = async (a?: Article) => {
   const src = a?.data.heroImage;
