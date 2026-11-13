@@ -104,6 +104,17 @@ Nunca crear ni editar `public/_redirects`: el build genera `dist/_redirects`.
 - Al mover o renombrar una URL, añadir su 301 en el mismo PR y, tras fusionar,
   comprobar con `npm run redirects:check` (o `-- <url del preview>` antes de fusionar).
 
+## Política de seguridad (CSP)
+
+La CSP está en `public/_headers`. Un servicio externo que el navegador no tenga permitido falla sin avisar
+(así se perdieron los mensajes de los formularios del 9 de septiembre al 13 de noviembre de 2026).
+
+- Al añadir un servicio externo (script, envío de datos, iframe), añadir su origen a la CSP y a
+  `CSP_REQUIREMENTS` en `src/integrations/csp-check.mjs` en el mismo PR.
+- El build falla si la CSP bloquea alguno de esos servicios; comprobación rápida: `npm run csp:check`.
+- Tras tocar la CSP o los formularios, probar un envío real (Playwright con `headless: false`:
+  Web3Forms rechaza `HeadlessChrome`) y confirmar la llegada en clubsupein@gmail.com.
+
 ## Verificar un despliegue después de fusionar
 
 No asumir que un merge a `main` ya está en producción por cómo se ve la web
