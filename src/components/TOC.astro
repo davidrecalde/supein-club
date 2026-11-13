@@ -7,9 +7,12 @@ interface Heading {
 
 interface Props {
   headings: Heading[];
+  /** En las unidades del curso: el número y el nombre de la unidad encabezan el índice (en el color del nivel). */
+  unit?: { number: number; shortTitle: string; level: string };
 }
 
-const { headings } = Astro.props;
+const { headings, unit } = Astro.props;
+const label = unit ? `ユニット${unit.number}の目次` : '目次';
 const h2s = headings.filter((h) => h.depth === 2);
 ---
 
@@ -18,7 +21,7 @@ const h2s = headings.filter((h) => h.depth === 2);
   <!-- Visible solo en <1024px gracias al CSS -->
   <details class="toc-mobile">
     <summary class="toc-summary">
-      <span class="toc-summary-label">目次</span>
+      <span class="toc-summary-label">{label}</span>
       <span class="toc-chevron" aria-hidden="true">
         <svg width="16" height="16" viewBox="0 0 16 16"
              fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -45,7 +48,15 @@ const h2s = headings.filter((h) => h.depth === 2);
 
 {h2s.length > 0 && (
   <nav class="toc" aria-label="目次">
-    <p class="toc-title">目次</p>
+    {unit ? (
+      <div class="toc-unit">
+        <span class="toc-unit-num">ユニット{unit.number}</span>
+        <span class="toc-unit-title">{unit.shortTitle}</span>
+        <span class="toc-unit-label">このユニットの目次</span>
+      </div>
+    ) : (
+      <p class="toc-title">目次</p>
+    )}
     <div class="toc-track">
       <div class="toc-line-bg" id="toc-line-bg"></div>
       <div class="toc-line-active" id="toc-line"></div>
@@ -68,6 +79,36 @@ const h2s = headings.filter((h) => h.depth === 2);
     font-size: 13px;
   }
 
+  .toc-unit {
+    display: grid;
+    gap: 4px;
+    margin-bottom: 14px;
+    padding: 12px 14px;
+    border-left: 5px solid var(--level, #C8102E);
+    border-radius: 0 10px 10px 0;
+    background: #F0F4F8;
+  }
+  .toc-unit-num {
+    justify-self: start;
+    padding: 1px 10px;
+    border-radius: 999px;
+    background: var(--level, #C8102E);
+    color: var(--level-ink, #fff);
+    font-size: 13px;
+    font-weight: 700;
+  }
+  .toc-unit-title {
+    font-size: 15px;
+    font-weight: 700;
+    line-height: 1.5;
+    color: #002147;
+  }
+  .toc-unit-label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    color: #6b7280;
+  }
   .toc-title {
     font-size: 10px;
     font-weight: 600;
@@ -96,7 +137,7 @@ const h2s = headings.filter((h) => h.depth === 2);
   }
 
   .toc-line-active {
-    background: #C8102E;
+    background: var(--level, #C8102E);
     height: 0px;
     transition: height 400ms cubic-bezier(0.4, 0, 0.2, 1);
   }
@@ -153,8 +194,8 @@ const h2s = headings.filter((h) => h.depth === 2);
   }
 
   .toc-link.is-active .toc-dot {
-    border-color: #C8102E;
-    background: #C8102E;
+    border-color: var(--level, #C8102E);
+    background: var(--level, #C8102E);
     width: 8px;
     height: 8px;
     margin-top: 3px;
@@ -166,7 +207,7 @@ const h2s = headings.filter((h) => h.depth === 2);
   }
 
   .toc-link.is-visited .toc-dot {
-    border-color: #C8102E;
+    border-color: var(--level, #C8102E);
     background: white;
   }
 
@@ -252,7 +293,7 @@ const h2s = headings.filter((h) => h.depth === 2);
     flex-shrink: 0;
     font-size: 11px;
     font-weight: 600;
-    color: #C8102E;
+    color: var(--level, #C8102E);
     min-width: 16px;
   }
 
@@ -260,7 +301,7 @@ const h2s = headings.filter((h) => h.depth === 2);
   .toc-cre-badge {
     font-size: 9px;
     font-weight: 700;
-    background: #C8102E;
+    background: var(--level, #C8102E);
     color: white;
     padding: 1px 5px;
     border-radius: 3px;
@@ -281,7 +322,7 @@ const h2s = headings.filter((h) => h.depth === 2);
     height: 4px;
     margin-top: 5px;
     margin-left: -17px;
-    border-color: #C8102E;
+    border-color: var(--level, #C8102E);
   }
 
   .toc-link-cre.is-active .toc-dot {
@@ -351,8 +392,22 @@ const h2s = headings.filter((h) => h.depth === 2);
       var tocList = document.querySelector('.toc-list');
       var tocMobileList = document.querySelector('.toc-mobile-list');
 
+      // Los elementos creados aquí no llevan el atributo de los estilos con ámbito de Astro
+      // (data-astro-cid-*): se copia del primer elemento del índice para que se vean igual.
+      var refItem = tocList ? tocList.querySelector('.toc-item') : null;
+      var cid = refItem ? Array.from(refItem.attributes).map(function(at) { return at.name; }).find(function(n) { return n.indexOf('data-astro-cid') === 0; }) : null;
+      var scope = function(el) {
+        if (!cid) return;
+        el.setAttribute(cid, '');
+        el.querySelectorAll('*').forEach(function(c) { c.setAttribute(cid, ''); });
+      };
+
       creH3s.forEach(function(creH3) {
         if (!creH3.id) return;
+        // Sin duplicados: si el índice ya tiene una entrada con el mismo texto (p. ej. la sección
+        // 「ミニテスト」 de las unidades y el título de su QuizCard), no se añade otra.
+        var headingText = (creH3.textContent || '').trim();
+        if (headingEls.some(function(h) { return (h.textContent || '').trim() === headingText; })) return;
 
         // Find insertion index by DOM order
         // DOCUMENT_POSITION_PRECEDING = 2: creH3 is before headingEls[j]
@@ -382,6 +437,7 @@ const h2s = headings.filter((h) => h.depth === 2);
             '<span class="toc-dot"></span>' +
             '<span class="toc-text">' + text + badge + '</span>' +
             '</a>';
+          scope(li);
           var existingItems = tocList.querySelectorAll('.toc-item');
           if (existingItems[insertIdx]) {
             tocList.insertBefore(li, existingItems[insertIdx]);
@@ -399,6 +455,7 @@ const h2s = headings.filter((h) => h.depth === 2);
             '<span class="toc-mobile-num">◆</span>' +
             text +
             '</a>';
+          scope(mli);
           var mobileItems = tocMobileList.querySelectorAll('li');
           if (mobileItems[insertIdx]) {
             tocMobileList.insertBefore(mli, mobileItems[insertIdx]);
