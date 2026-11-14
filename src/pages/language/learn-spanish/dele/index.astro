@@ -1,27 +1,29 @@
 ---
-// Hub DELE /language/dele/ (petición de David, 14 de noviembre de 2026): página de hub con la misma
+// Hub DELE /language/learn-spanish/dele/ (petición de David, 14 de noviembre de 2026): página de hub con la misma
 // organización que /food/ (cabecera, categorías y tarjetas), no un artículo. Solo contenidos sobre el
 // DELE: sin unidades del curso gratuito, sin la prueba de nivel y sin enlaces al curso. Sustituye al
-// artículo language/dele/index.mdx (misma URL); su texto de 「DELEとは」 y sus preguntas frecuentes
+// artículo language/dele/index.mdx; su texto de 「DELEとは」 y sus preguntas frecuentes
 // están abajo, como las secciones de texto de /food/.
+// URL: el 15 de noviembre de 2026 vuelve a /language/learn-spanish/dele/ (la URL indexada desde agosto y
+// madre de las guías por nivel /language/learn-spanish/dele/a1/…); 301 desde /language/dele/.
 import { getCollection, getEntry, type CollectionEntry } from 'astro:content';
-import heroDele from '../../../assets/hero/hero-dele-index.webp';
-import BaseLayout from '../../../layouts/BaseLayout.astro';
-import SEO from '../../../components/SEO.astro';
-import PillarHero from '../../../components/PillarHero.astro';
-import ArticleCard from '../../../components/ArticleCard.astro';
-import LineBanner from '../../../components/LineBanner.astro';
-import FloatingActions from '../../../components/FloatingActions.astro';
-import NewsletterForm from '../../../components/NewsletterForm.astro';
-import ArticleDisclaimer from '../../../components/ArticleDisclaimer.astro';
-import AuthorBox from '../../../components/AuthorBox.astro';
-import FAQSection from '../../../components/FAQSection.astro';
-import Sources from '../../../components/Sources.astro';
-import { getArticleUrl } from '../../../utils/articles';
-import { discoverImage, schemaImages } from '../../../utils/images';
+import heroDele from '../../../../assets/hero/hero-dele-index.webp';
+import BaseLayout from '../../../../layouts/BaseLayout.astro';
+import SEO from '../../../../components/SEO.astro';
+import PillarHero from '../../../../components/PillarHero.astro';
+import ArticleCard from '../../../../components/ArticleCard.astro';
+import LineBanner from '../../../../components/LineBanner.astro';
+import FloatingActions from '../../../../components/FloatingActions.astro';
+import NewsletterForm from '../../../../components/NewsletterForm.astro';
+import ArticleDisclaimer from '../../../../components/ArticleDisclaimer.astro';
+import AuthorBox from '../../../../components/AuthorBox.astro';
+import FAQSection from '../../../../components/FAQSection.astro';
+import Sources from '../../../../components/Sources.astro';
+import { getArticleUrl } from '../../../../utils/articles';
+import { discoverImage, schemaImages } from '../../../../utils/images';
 
 const SITE = 'https://supein.club';
-const URL_PATH = '/language/dele/';
+const URL_PATH = '/language/learn-spanish/dele/';
 const TITLE = 'DELEとは｜スペイン語検定のレベル・難易度・日程・対策をまとめて解説';
 const DESCRIPTION = 'DELE（デレ）はセルバンテス学院が発行するスペイン語の公式検定。A1〜C2の6レベルで何ができるか、難易度、試験の構成、日程と費用、独学での対策方法を1ページで比較できます。';
 const PUBLISHED = new Date('2026-08-23');

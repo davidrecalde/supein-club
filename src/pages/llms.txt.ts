@@ -15,8 +15,8 @@ const languageHighlightIds = [
   'language/learn-spanish/verb-conjugation',
   'language/learn-spanish/zipf-law-methodology',
 ];
-// El hub DELE es una página propia (src/pages/language/dele/index.astro), no un artículo.
-const DELE_HUB_LINK = `  - [DELE（スペイン語検定）｜レベル別対策・難易度・日程と費用](${siteUrl}/language/dele/)`;
+// El hub DELE es una página propia (src/pages/language/learn-spanish/dele/index.astro), no un artículo.
+const DELE_HUB_LINK = `  - [DELE（スペイン語検定）｜レベル別対策・難易度・日程と費用](${siteUrl}/language/learn-spanish/dele/)`;
 
 export const GET: APIRoute = async () => {
   const allArticles = await getCollection('articles', ({ data }) => !data.draft);
