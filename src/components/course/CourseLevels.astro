@@ -4,7 +4,10 @@
 // la página del nivel; a la derecha, las miniaturas de todas sus unidades con su número, para que quien
 // vuelve reconozca de un vistazo por dónde iba. Con JavaScript se marcan las unidades completadas y
 // la última abierta (「前回のユニット」, courseProgress.lastVisited). Sin JavaScript todo funciona igual.
-import { Check } from 'lucide-astro';
+// En móvil las unidades son un carrusel horizontal (14 de noviembre de 2026, petición de David): encima,
+// el aviso 「スワイプして全Nユニットを見る」; a los lados, flechas (solo con JavaScript) y un degradado
+// en el borde derecho mientras quedan unidades por ver.
+import { Check, ChevronLeft, ChevronRight, MoveHorizontal } from 'lucide-astro';
 import { COURSE_LEVELS, levelUrl } from '../../data/course';
 import { getAllUnits, hasPage, isCourseVisible } from '../../utils/units';
 
@@ -50,21 +53,28 @@ const levels = COURSE_LEVELS.map((level) => ({
           {spokes(l.code).map((s) => <a href={s.href}>{s.label}</a>)}
         </p>
       </div>
-      <ol class="course-row-units" aria-label={`${l.code} ${l.name}のユニット`}>
-        {l.units.map((u) => (
-          <li>
-            <a class="unit-tile" href={u.url} data-unit={u.unit}>
-              <span class="unit-tile-img">
-                {u.img && <img src={u.img} width="480" height="270" alt={u.alt} loading="lazy" decoding="async" />}
-                <span class="unit-tile-done" aria-hidden="true"><Check size={14} /></span>
-              </span>
-              <span class="unit-tile-num">ユニット{u.unit}</span>
-              <span class="unit-tile-title">{u.shortTitle}</span>
-              <span class="unit-tile-last">前回のユニット</span>
-            </a>
-          </li>
-        ))}
-      </ol>
+      <div class="course-row-carousel">
+        <p class="course-row-swipe" aria-hidden="true"><MoveHorizontal size={16} />スワイプして全{l.units.length}ユニットを見る</p>
+        <div class="course-row-track">
+          <ol class="course-row-units" aria-label={`${l.code} ${l.name}のユニット`}>
+            {l.units.map((u) => (
+              <li>
+                <a class="unit-tile" href={u.url} data-unit={u.unit}>
+                  <span class="unit-tile-img">
+                    {u.img && <img src={u.img} width="480" height="270" alt={u.alt} loading="lazy" decoding="async" />}
+                    <span class="unit-tile-done" aria-hidden="true"><Check size={14} /></span>
+                  </span>
+                  <span class="unit-tile-num">ユニット{u.unit}</span>
+                  <span class="unit-tile-title">{u.shortTitle}</span>
+                  <span class="unit-tile-last">前回のユニット</span>
+                </a>
+              </li>
+            ))}
+          </ol>
+          <button type="button" class="course-row-arrow is-prev" aria-label={`${l.code}の前のユニットへ`} hidden><ChevronLeft size={22} /></button>
+          <button type="button" class="course-row-arrow is-next" aria-label={`${l.code}の次のユニットへ`} hidden><ChevronRight size={22} /></button>
+        </div>
+      </div>
     </li>
   ))}
 </ol>
@@ -100,4 +110,26 @@ const levels = COURSE_LEVELS.map((level) => ({
 
   render();
   window.addEventListener(PROGRESS_EVENT, render);
+
+  // Flechas del carrusel (móvil y tableta; en escritorio las unidades caben y no hay desplazamiento).
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  document.querySelectorAll<HTMLElement>('.course-row-track').forEach((track) => {
+    const strip = track.querySelector<HTMLElement>('.course-row-units')!;
+    const prev = track.querySelector<HTMLButtonElement>('.course-row-arrow.is-prev')!;
+    const next = track.querySelector<HTMLButtonElement>('.course-row-arrow.is-next')!;
+    const update = () => {
+      const scrollable = strip.scrollWidth > strip.clientWidth + 4;
+      const atStart = strip.scrollLeft <= 4;
+      const atEnd = strip.scrollLeft + strip.clientWidth >= strip.scrollWidth - 4;
+      prev.hidden = !scrollable || atStart;
+      next.hidden = !scrollable || atEnd;
+      track.classList.toggle('is-end', !scrollable || atEnd);
+    };
+    const step = () => (strip.querySelector('li')?.getBoundingClientRect().width ?? 150) + 10;
+    prev.addEventListener('click', () => strip.scrollBy({ left: -step(), behavior: reduceMotion ? 'auto' : 'smooth' }));
+    next.addEventListener('click', () => strip.scrollBy({ left: step(), behavior: reduceMotion ? 'auto' : 'smooth' }));
+    strip.addEventListener('scroll', update, { passive: true });
+    window.addEventListener('resize', update);
+    update();
+  });
 </script>
