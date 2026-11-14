@@ -1004,6 +1004,70 @@ a.unit-nav-step:focus-visible {
 .course-row-units > li {
   scroll-snap-align: start;
 }
+/* Indicadores del carrusel en móvil: aviso de スワイプ, flechas y degradado en el borde derecho. */
+.course-row-carousel {
+  min-width: 0;
+}
+.course-row-swipe {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin: 0 0 8px;
+  font-size: 12px;
+  font-weight: 700;
+  color: #002147;
+}
+.course-row-swipe svg {
+  color: #C8102E;
+}
+.course-row-track {
+  position: relative;
+}
+.course-row-track::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 6px;
+  width: 28px;
+  background: linear-gradient(to right, rgba(250, 250, 248, 0), #FAFAF8);
+  pointer-events: none;
+  transition: opacity 0.2s;
+}
+.course-row-track.is-end::after {
+  opacity: 0;
+}
+.course-row-arrow {
+  position: absolute;
+  top: 28%;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  border: 1px solid #E8E8E6;
+  border-radius: 50%;
+  background: #fff;
+  color: #002147;
+  box-shadow: 0 2px 10px rgba(0, 33, 71, 0.18);
+  cursor: pointer;
+  transform: translateY(-50%);
+}
+.course-row-arrow[hidden] {
+  display: none;
+}
+.course-row-arrow.is-prev {
+  left: 4px;
+}
+.course-row-arrow.is-next {
+  right: 4px;
+}
+.course-row-arrow:focus-visible {
+  outline: 3px solid #002147;
+  outline-offset: 2px;
+}
 @media (min-width: 640px) {
   .course-row-units {
     grid-auto-columns: minmax(150px, 28%);
@@ -1020,6 +1084,11 @@ a.unit-nav-step:focus-visible {
     grid-template-columns: repeat(4, minmax(0, 1fr));
     overflow: visible;
     padding: 0;
+  }
+  .course-row-swipe,
+  .course-row-arrow,
+  .course-row-track::after {
+    display: none;
   }
 }
 .unit-tile {
