@@ -96,6 +96,7 @@ const anchors = [
   ...(courseVisible ? [{ href: '#course', label: '無料コース' }] : []),
   { href: '#dele', label: 'DELE対策' },
   { href: '#materials', label: '補助教材' },
+  { href: '#schools', label: 'スペイン語学校' },
   { href: '#methods', label: '勉強法' },
 ];
 
@@ -248,7 +249,7 @@ const languageFaq = [
       スペイン語の勉強法でいちばん大切なのは、<strong>今のレベルを知ること</strong>、<strong>発音から順番に学ぶこと</strong>、<strong>毎日少しずつ続けること</strong>の3つです。スペイン倶楽部では、セルバンテス学院の基準（A1 Acceso〜C2 Maestría）に沿った<strong>無料のスペイン語コース（全{TOTAL_UNITS}ユニット）</strong>を用意しました。登録は不要で、進み具合はこのブラウザに保存されます。
     </p>
 
-    <nav id="categories" aria-label="このページの内容" class="grid grid-cols-2 md:grid-cols-5 gap-3 mb-12">
+    <nav id="categories" aria-label="このページの内容" class="grid grid-cols-2 md:grid-cols-6 gap-3 mb-12">
       {anchors.map(({ href, label }) => (
         <a href={href} class="bg-white rounded-lg px-3 py-3 min-h-[44px] flex items-center justify-center text-center border border-[#E8E8E6] hover:border-primary/30 hover:shadow-sm transition-all">
           <span class="font-semibold text-navy text-sm leading-snug block">{label}</span>
@@ -336,7 +337,7 @@ const languageFaq = [
         <span class="hub-feature-body">
           <span class="hub-feature-badge">DELE</span>
           <span class="hub-feature-title">DELE（スペイン語検定）のページへ</span>
-          <span class="hub-feature-desc">セルバンテス学院が実施する、スペイン語の国際的な公式資格です。A1〜C2のレベル別ガイド、難易度、日程と費用、面接対策、独学の方法、コースの模擬試験まで、DELEの情報を1か所にまとめています。</span>
+          <span class="hub-feature-desc">セルバンテス学院が実施する、スペイン語の国際的な公式資格です。A1〜C2のレベル別ガイド、難易度、日程と費用、面接対策、独学の方法まで、DELEの情報を1か所にまとめています。</span>
           <span class="hub-feature-cta">DELEのページを見る →</span>
         </span>
       </a>
@@ -348,7 +349,7 @@ const languageFaq = [
       <div class="hub-block-head">
         <p class="hub-block-eyebrow"><span class="hub-block-num">03</span>補助教材</p>
         <h2 id="materials-title">補助教材・学習リソース</h2>
-        <p class="hub-block-lead">コースと並行して使えるツールや学習ガイド、コースの外でスペイン語に触れるためのページ、先生と話す練習ができるスペイン語学校の情報です。</p>
+        <p class="hub-block-lead">コースと並行して使えるツールや学習ガイドと、コースの外でスペイン語に触れるためのページです。</p>
       </div>
       {conjugator && (
         <a href={getArticleUrl(conjugator)} class="hub-feature">
@@ -375,7 +376,16 @@ const languageFaq = [
           <HubCard title={a.data.title} href={getArticleUrl(a)} heroImage={a.data.heroImage} heroImageAlt={a.data.heroImageAlt} image={a.data.image} imageAlt={a.data.imageAlt} badge="学習リソース" />
         ))}
       </div>
-      <h3 id="schools" class="hub-sub">スペイン語学校</h3>
+    </div>
+  </section>
+
+  <section class="hub-block is-schools" id="schools" aria-labelledby="schools-title">
+    <div class="max-w-6xl mx-auto px-5">
+      <div class="hub-block-head">
+        <p class="hub-block-eyebrow"><span class="hub-block-num">04</span>スペイン語学校</p>
+        <h2 id="schools-title">スペイン語学校・教室</h2>
+        <p class="hub-block-lead">先生と話す練習ができる、日本のスペイン語学校の情報です。東京・横浜・大阪・京都の学校を、口コミなどの客観データで比較しています。</p>
+      </div>
       <div class="hub-card-grid">
         {schools.map((a) => (
           <HubCard title={a.data.title} href={getArticleUrl(a)} heroImage={a.data.heroImage} heroImageAlt={a.data.heroImageAlt} image={a.data.image} imageAlt={a.data.imageAlt} badge="スペイン語学校" />
