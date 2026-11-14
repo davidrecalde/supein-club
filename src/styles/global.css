@@ -1122,7 +1122,8 @@ a.unit-nav-step:focus-visible {
   border-top: 1px solid #E8E8E6;
   background: #fff;
 }
-.hub-block.is-dele {
+.hub-block.is-dele,
+.hub-block.is-schools {
   background: #F0F4F8;
 }
 .hub-block-head {
