@@ -1,0 +1,159 @@
+---
+// Hub スペイン語学校 /language/spanish-schools/ (decisión de David, 15 de noviembre de 2026): reúne la guía de
+// escuelas de Japón y las cuatro ciudades (antes en el bloque 04 de /language/) y, más adelante, las escuelas en
+// España. No compite con sus artículos: la guía de Japón (spanish-schools-in-japan) es la canónica de
+// 「スペイン語教室 日本」 y sus rankings; /living/language-school/ lo es de 「スペインの語学学校」.
+import { getCollection, getEntry, type CollectionEntry } from 'astro:content';
+import heroSchools from '../../../assets/hero/spanish-schools-in-japan.webp';
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import SEO from '../../../components/SEO.astro';
+import PillarHero from '../../../components/PillarHero.astro';
+import ArticleCard from '../../../components/ArticleCard.astro';
+import LineBanner from '../../../components/LineBanner.astro';
+import FloatingActions from '../../../components/FloatingActions.astro';
+import NewsletterForm from '../../../components/NewsletterForm.astro';
+import ArticleDisclaimer from '../../../components/ArticleDisclaimer.astro';
+import AuthorBox from '../../../components/AuthorBox.astro';
+import FAQSection from '../../../components/FAQSection.astro';
+import { getArticleUrl } from '../../../utils/articles';
+import { discoverImage, schemaImages } from '../../../utils/images';
+import { SCHOOL_CITY_IDS, SCHOOLS_HUB_URL, SCHOOLS_JAPAN_ID, STUDY_HUB_URL } from '../../../data/language-hubs';
+
+const SITE = 'https://supein.club';
+const TITLE = 'スペイン語学校｜日本で通える教室とスペイン留学の学校';
+const DESCRIPTION = 'スペイン語を先生から学びたい人のために、日本で通えるスペイン語教室（東京・横浜・大阪・京都）と、スペイン留学で通う語学学校のガイドをまとめました。';
+const PUBLISHED = '2026-11-15';
+const UPDATED = '2026-11-15'; // solo cambia con «HAZ FRESHNESS»
+const IMAGE_ALT = '日本のスペイン語教室ガイドのイメージ';
+
+const author = await getEntry('authors', 'david-recalde');
+
+type Article = CollectionEntry<'articles'>;
+const idNoExt = (a: Article) => a.id.replace(/\.(md|mdx)$/, '');
+const all = await getCollection('articles', ({ data }) => !data.draft);
+const byId = new Map(all.map((a) => [idNoExt(a), a]));
+const pick = (ids: readonly string[]) => ids.map((id) => byId.get(id)).filter((a): a is Article => !!a);
+
+const groups = [
+  { id: 'japan', label: '日本のスペイン語教室', lead: 'まずは全国の比較ガイドで、地域・目的に合った教室の探し方を確認できます。各都市の記事では、口コミなどの客観データにもとづくランキングを紹介しています。', items: pick([`language/${SCHOOLS_JAPAN_ID}`, ...SCHOOL_CITY_IDS.map((id) => `language/${id}`)]) },
+  { id: 'spain', label: 'スペインで学ぶ（留学）', lead: 'スペインの語学学校で学びたい人向けのガイドです。', items: pick(['living/language-school/language-school']) },
+].filter((g) => g.items.length > 0);
+
+const anchors = groups.map((g) => ({ href: `#${g.id}`, label: g.label }));
+
+const breadcrumbs = [
+  { name: 'ホーム', url: '/' },
+  { name: 'スペイン語', url: '/language/' },
+  { name: 'スペイン語学校', url: SCHOOLS_HUB_URL },
+];
+
+const schoolsFaq = [
+  {
+    question: '日本でスペイン語教室を探すには？',
+    answer: '東京・横浜・大阪・京都の学校を、口コミなどの客観データで比較した<a href="/language/spanish-schools-in-japan/">「日本のスペイン語教室完全ガイド」</a>から探せます。都市ごとの詳しいランキングは、各都市の記事にまとめています。',
+  },
+  {
+    question: 'スペインの語学学校に通うには？',
+    answer: 'スペインの語学学校の選び方は<a href="/living/language-school/">「スペインの語学学校の選び方」</a>で紹介しています。留学全体の流れは<a href="/living/study-spain/">「スペイン留学ガイド」</a>をご覧ください。',
+  },
+  {
+    question: '教室と独学、どちらがいいですか？',
+    answer: `文法と単語は独学でも十分に伸ばせますが、話す練習には相手が必要です。独学・教室・アプリ・留学の向き不向きは<a href="${STUDY_HUB_URL}#methods">「スペイン語の勉強法：4つの学び方を比較」</a>で比べています。`,
+  },
+];
+
+const discover = await discoverImage(heroSchools);
+const pageSchemaImages = await schemaImages(heroSchools);
+const listed = groups.flatMap((g) => g.items);
+const collectionSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'CollectionPage',
+  name: 'スペイン語学校',
+  description: DESCRIPTION,
+  url: `${SITE}${SCHOOLS_HUB_URL}`,
+  inLanguage: 'ja',
+  datePublished: PUBLISHED,
+  dateModified: UPDATED,
+  about: { '@type': 'Thing', name: 'スペイン語学校' },
+  mainEntity: {
+    '@type': 'ItemList',
+    itemListElement: listed.map((a, i) => ({ '@type': 'ListItem', position: i + 1, url: `${SITE}${getArticleUrl(a)}`, name: a.data.title })),
+  },
+};
+const updatedLabel = new Intl.DateTimeFormat('ja-JP', { year: 'numeric', month: 'long', day: 'numeric' }).format(new Date(UPDATED));
+---
+<BaseLayout title={TITLE}>
+  <SEO
+    slot="seo"
+    title={TITLE}
+    description={DESCRIPTION}
+    canonical={`${SITE}${SCHOOLS_HUB_URL}`}
+    image={discover.src}
+    imageWidth={discover.width}
+    imageHeight={discover.height}
+    imageAlt={IMAGE_ALT}
+    schemaImages={pageSchemaImages}
+    breadcrumbs={breadcrumbs}
+    keywords={['スペイン語学校', 'スペイン語教室', '語学学校', '留学']}
+  />
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify(collectionSchema)} />
+  <script
+    type="application/ld+json"
+    slot="head"
+    set:html={JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'FAQPage',
+      mainEntity: schoolsFaq.map((item) => ({
+        '@type': 'Question',
+        name: item.question,
+        acceptedAnswer: { '@type': 'Answer', text: item.answer.replace(/<[^>]+>/g, '') },
+      })),
+    })}
+  />
+  <PillarHero
+    title="スペイン語学校"
+    description="日本で通えるスペイン語教室と、スペイン留学で通う語学学校のガイド。先生と話して学びたい人のためのページです。"
+    breadcrumbs={breadcrumbs}
+  />
+  <section class="max-w-6xl mx-auto px-5 py-14">
+    <p class="text-muted text-base leading-relaxed mb-3 border-l-2 border-primary pl-5 max-w-[780px]">
+      スペイン語を先生から学びたい人のために、日本国内のスペイン語教室と、スペイン留学で通う語学学校の情報をまとめています。日本の教室は、東京・横浜・大阪・京都の学校を口コミなどの客観データで比較しています。
+    </p>
+    <p class="text-xs text-muted pl-5 mb-12">更新日：<time datetime={UPDATED}>{updatedLabel}</time></p>
+
+    <h2 id="categories" class="font-sans font-bold text-xl text-navy mb-5">カテゴリ</h2>
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-3 mb-12">
+      {anchors.map(({ href, label }) => (
+        <a href={href} class="bg-white rounded-lg px-3 py-3 min-h-[44px] flex items-center justify-center text-center border border-[#E8E8E6] hover:border-primary/30 hover:shadow-sm transition-all">
+          <span class="font-semibold text-navy text-sm leading-snug block">{label}</span>
+        </a>
+      ))}
+    </div>
+
+    {groups.map((group) => (
+      <>
+        <h2 id={group.id} class="font-sans font-bold text-xl text-navy mb-3">{group.label}</h2>
+        <p class="text-muted text-sm leading-relaxed mb-5 max-w-[780px]">{group.lead}</p>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+          {group.items.map((a) => (
+            <ArticleCard title={a.data.title} description={a.data.description} href={getArticleUrl(a)} pillar={a.data.pillar} cluster={a.data.cluster} image={a.data.image} imageAlt={a.data.imageAlt} heroImage={a.data.heroImage} heroImageAlt={a.data.heroImageAlt} pubDate={a.data.pubDate} topicBadge={group.label} />
+          ))}
+        </div>
+      </>
+    ))}
+  </section>
+
+  <section class="max-w-6xl mx-auto px-5 pb-14 prose-content">
+  <div class="max-w-[780px]">
+    <NewsletterForm variant="inline" />
+
+    <FAQSection faq={schoolsFaq} />
+
+    {author && <ArticleDisclaimer />}
+    {author && <AuthorBox author={author} />}
+  </div>
+  </section>
+
+  <LineBanner slim />
+  <FloatingActions target="categories" shareUrl={`${SITE}${SCHOOLS_HUB_URL}`} shareTitle="スペイン語学校" />
+</BaseLayout>
