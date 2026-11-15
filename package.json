@@ -17,7 +17,8 @@
     "tts:generate": "node scripts/tts/generate.mjs",
     "tts:encode": "node scripts/tts/encode.mjs",
     "redirects:check": "node scripts/check-redirects.mjs",
-    "csp:check": "node src/integrations/csp-check.mjs"
+    "csp:check": "node src/integrations/csp-check.mjs",
+    "review:due": "node scripts/check-review-dates.mjs"
   },
   "pnpm": {
     "onlyBuiltDependencies": [

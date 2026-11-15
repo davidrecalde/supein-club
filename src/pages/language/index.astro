@@ -105,6 +105,11 @@ const breadcrumbs = [
   { name: 'スペイン語', url: '/language/' },
 ];
 
+// Fecha de actualización visible (regla de /language/) y dateModified del schema: último cambio de contenido
+// del hub (bloque 04 スペイン語学校, 14 de noviembre de 2026). Solo cambia con «HAZ FRESHNESS».
+const UPDATED = '2026-11-14';
+const updatedLabel = new Intl.DateTimeFormat('ja-JP', { year: 'numeric', month: 'long', day: 'numeric' }).format(new Date(UPDATED));
+
 // ItemList: lo que la página enlaza, en su orden (salidas del curso, niveles y artículos).
 const levelItems = courseVisible ? COURSE_LEVELS.map((l) => ({ url: levelUrl(l.code), name: `${l.code} ${l.name}` })) : [];
 const listed = [
@@ -122,6 +127,7 @@ const languageSchema = {
   description: 'スペイン語の独学の始め方、学び方の比較、A1〜C2の無料コース、DELE対策、学習リソースとスペイン語学校の情報',
   url: 'https://supein.club/language/',
   inLanguage: 'ja',
+  dateModified: UPDATED,
   about: { '@type': 'Thing', name: 'スペイン語学習' },
   mainEntity: {
     '@type': 'ItemList',
@@ -243,11 +249,13 @@ const languageFaq = [
   <PillarHero
     title="スペイン語の勉強法"
     description="独学の始め方、学び方の比較、A1〜C2の無料コース。今のレベルを確かめて、次に学ぶことを見つけましょう。"
+    breadcrumbs={breadcrumbs}
   />
   <section class="max-w-6xl mx-auto px-5 pt-14 pb-12">
-    <p class="text-ink text-base leading-relaxed mb-10 border-l-2 border-primary pl-5 max-w-[780px]">
+    <p class="text-ink text-base leading-relaxed mb-3 border-l-2 border-primary pl-5 max-w-[780px]">
       スペイン語の勉強法でいちばん大切なのは、<strong>今のレベルを知ること</strong>、<strong>発音から順番に学ぶこと</strong>、<strong>毎日少しずつ続けること</strong>の3つです。スペイン倶楽部では、セルバンテス学院の基準（A1 Acceso〜C2 Maestría）に沿った<strong>無料のスペイン語コース（全{TOTAL_UNITS}ユニット）</strong>を用意しました。登録は不要で、進み具合はこのブラウザに保存されます。
     </p>
+    <p class="text-xs text-muted pl-5 mb-10">更新日：<time datetime={UPDATED}>{updatedLabel}</time></p>
 
     <nav id="categories" aria-label="このページの内容" class="grid grid-cols-2 md:grid-cols-6 gap-3 mb-12">
       {anchors.map(({ href, label }) => (
