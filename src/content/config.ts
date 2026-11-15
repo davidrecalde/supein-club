@@ -270,6 +270,8 @@ const pressReleases = defineCollection({
         endDate: z.coerce.date(),
         hours: z.string().optional(),
         venue: z.string(),
+        // false: no se muestra en la home aunque no haya terminado (David decide cuándo anunciar un evento).
+        showOnHome: z.boolean().default(true),
       })
       .optional(),
   }),
