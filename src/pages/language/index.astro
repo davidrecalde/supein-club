@@ -139,34 +139,40 @@ const courseSchema = {
   })),
 };
 
+// FAQ (16-11-2026): la web y el curso. 「勉強法・独学」 son del hub 勉強法; 「教室」, del hub de escuelas;
+// 「DELE」, del hub DELE; 「習得時間・どのレベル」, de la hoja de ruta.
 const languageFaq = [
   {
-    question: 'スペイン語の勉強は何から始めればいいですか？',
-    answer: `少しでも勉強したことがあるなら、まず<a href="${LEVEL_TEST_URL}">レベルチェック</a>を受けてください。結果と一緒に、どのユニットから始めればいいかがわかります。まったく初めての方は、<a href="${firstUnit?.data.url ?? COURSE_URL}">ユニット1「発音と読み方」</a>から始めましょう。`,
+    question: 'スペイン倶楽部のスペイン語コースは無料ですか？',
+    answer: `はい、無料で、登録も不要です。入門（A1）から最上級（C2）までの全${TOTAL_UNITS}ユニットを、自分のペースで進められます。進み具合はこのブラウザに保存されます。`,
   },
   {
-    question: '無料コースは1日にどのくらい進めればいいですか？',
-    answer: `まとめて長時間よりも、毎日20分ほどを続けるほうが定着します。週に何ユニット進めるかは<a href="${WELCOME_URL}">学習設定</a>で選べます。レベルごとの学習時間の目安は<a href="${COURSE_URL}">学習ロードマップ</a>にまとめています。`,
+    question: 'まったくの初心者でも使えますか？',
+    answer: `使えます。まったく初めての方は<a href="${firstUnit?.data.url ?? COURSE_URL}">ユニット1「発音と読み方」</a>から始めましょう。少し勉強したことがある方は、<a href="${LEVEL_TEST_URL}">レベルチェック</a>を受けると、どのユニットから始めればいいかがわかります。`,
+  },
+  {
+    question: 'スペインのスペイン語と中南米のスペイン語、どちらを学べますか？',
+    answer: `コースの例文はスペインのスペイン語を基準にし、中南米の言い方は違いがあるときに添えています。<a href="${WELCOME_URL}">学習設定</a>で、中南米の言い方を先に表示することもできます。国による違いは<a href="/language/learn-spanish/spanish-in-latin-america/">「中南米スペイン語とは？」</a>で説明しています。`,
+  },
+  {
+    question: 'スマートフォンでも学べますか？',
+    answer: '学べます。音声やミニテストもスマートフォンで使えます。ただし進み具合はブラウザごとに保存されるため、別の端末やブラウザに切り替えると引き継がれません。',
   },
   {
     question: '動詞の活用形をすぐに調べたいときは？',
     answer: `<a href="${CONJUGATION_URL}">スペイン語動詞活用表</a>で、よく使う動詞の全時制の活用を確認できます。それぞれの時制は、それを学ぶコースのユニットにつながっています。`,
   },
   {
-    question: '独学・教室・アプリ・留学、どの学び方がいいですか？',
-    answer: `それぞれの向き不向きと、組み合わせ方を<a href="${STUDY_HUB_URL}">「スペイン語の勉強法」</a>で比べています。発音・単語・リスニング・読解の練習法もまとめています。`,
-  },
-  {
-    question: 'スペイン語教室やスペインの語学学校を探すには？',
-    answer: `日本の教室とスペイン留学の語学学校のガイドを<a href="${SCHOOLS_HUB_URL}">「スペイン語学校」</a>のページにまとめています。`,
+    question: 'コースの内容は誰が作っていますか？',
+    answer: `構成と内容はスペイン倶楽部の創設者 David Recalde が決め、スペイン語と日本語の両方をネイティブが確認してから公開しています。AIの使い方も含めて<a href="${ABOUT_COURSE_URL}">「このコースができるまで」</a>で公開しています。`,
   },
 ];
 ---
 <BaseLayout>
   <SEO
     slot="seo"
-    title="スペイン語を学ぶ｜無料コース（A1〜C2）・DELE対策・スペイン語学校"
-    description="日本人のためのスペイン語学習ページ。無料のレベルチェックとA1〜C2の無料コースで発音・文法・単語を順番に学べます。DELE対策、勉強法のガイド、スペイン語学校の情報もまとめています。"
+    title="スペイン語学習サイト｜無料・登録不要の入門〜上級コース（A1〜C2）"
+    description="日本人のための無料スペイン語学習サイト。登録不要で、入門（A1）から最上級（C2）までのコースとレベルチェックで、発音・文法・単語を順番に学べます。動詞の活用表、勉強法、スペイン語学校、DELEの情報もまとめています。"
     canonical="https://supein.club/language/"
     image="/og/language.webp"
     breadcrumbs={breadcrumbs}
@@ -359,6 +365,14 @@ const languageFaq = [
 
   <section class="max-w-6xl mx-auto px-5 pb-14 prose-content">
   <div class="max-w-[780px]">
+    <h2 id="features" class="font-sans font-bold text-xl text-navy mb-4">スペイン倶楽部のスペイン語学習サイトの特徴</h2>
+    <ul class="text-muted leading-relaxed mb-8 list-disc pl-5 space-y-2">
+      <li><strong>無料・登録不要：</strong>入門（A1）から最上級（C2）まで、全{TOTAL_UNITS}ユニットのコースを無料で使えます。進み具合はブラウザに保存されます。</li>
+      <li><strong>セルバンテス学院の基準：</strong>レベルと学ぶ内容は、セルバンテス文化センターの『Plan curricular』（A1 Acceso〜C2 Maestría）に沿っています。</li>
+      <li><strong>音声つき・ネイティブ確認：</strong>例文には「ふつう」と「ゆっくり」の音声があり、公開前にスペイン語と日本語のネイティブが内容を確認しています。</li>
+      <li><strong>DELE形式の模擬試験：</strong>各レベルの最後のユニットは、DELEと同じ形式の総復習と模擬試験です。</li>
+    </ul>
+
     {courseVisible && (
       <>
         <h2 class="font-sans font-bold text-xl text-navy mb-4">このコースについて</h2>

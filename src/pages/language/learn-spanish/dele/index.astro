@@ -24,8 +24,10 @@ import { discoverImage, schemaImages } from '../../../../utils/images';
 
 const SITE = 'https://supein.club';
 const URL_PATH = '/language/learn-spanish/dele/';
-const TITLE = 'DELEとは｜スペイン語検定のレベル・難易度・日程・対策をまとめて解説';
-const DESCRIPTION = 'DELE（デレ）はセルバンテス学院が発行するスペイン語の公式検定。A1〜C2の6レベルで何ができるか、難易度、試験の構成、日程と費用、独学での対策方法を1ページで比較できます。';
+// Palabras clave (16-11-2026): 「DELE」「DELEとは」「DELE スペイン語」「DELE 対策」. 「難易度」 es de dele-difficulty-guide
+// y 「日程・費用」 de dele/dates-and-fees: el hub los enlaza, pero no los pone en el título.
+const TITLE = 'DELEとは｜スペイン語検定DELEのレベル・試験内容と対策ガイド';
+const DESCRIPTION = 'DELE（デレ）はセルバンテス学院が発行するスペイン語の公式検定です。A1〜C2の6レベルで何ができるか、試験の構成と合格基準、レベル別の対策、独学の方法、日程と申込までをまとめています。';
 const PUBLISHED = new Date('2026-08-23');
 const UPDATED = new Date('2026-11-04'); // solo cambia con «HAZ FRESHNESS»
 const IMAGE_ALT = 'DELE（スペイン語検定）のイメージ';
@@ -51,7 +53,7 @@ const others = deleArticles.filter((a) => !grouped.has(idNoExt(a).replace('langu
 if (others.length) groups.push({ id: 'dele-others', label: 'その他のDELEガイド', ids: [], items: others });
 const visibleGroups = groups.filter((g) => g.items.length > 0);
 
-const anchors = [...visibleGroups.map((g) => ({ href: `#${g.id}`, label: g.label })), { href: '#dele-about', label: 'DELEとは' }];
+const anchors = [...visibleGroups.map((g) => ({ href: `#${g.id}`, label: g.label })), { href: '#dele-about', label: 'DELEとは' }, { href: '#dele-prep', label: 'DELE対策の進め方' }];
 
 const breadcrumbs = [
   { name: 'ホーム', url: '/' },
@@ -93,6 +95,18 @@ const deleFaq = [
   {
     question: 'DELEはどのレベルから受けるべきですか？',
     answer: `初心者はA1またはA2、中級者（仕事や学業に必要な方）はB1またはB2、上級者はC1またはC2が一般的です。レベルごとの試験の違いは<a href="${url('dele-difficulty-guide')}">「DELEの難易度」</a>で比べられます。`,
+  },
+  {
+    question: 'DELEに合格するには何点必要ですか？',
+    answer: 'A1〜C1は100点満点で、試験を2つのグループに分けて採点し、両方のグループで30点以上取ると合格（Apto）です。C2は3つの試験すべてで20点以上が必要です。くわしくは各レベルの対策ガイドで確認できます。',
+  },
+  {
+    question: 'DELEはいつ、どこで受けられますか？',
+    answer: `日本では東京セルバンテス文化センターが実施し、東京・大阪・京都・名古屋などで受験できます。2027年の日程と申込締切、受験料は<a href="${url('dele/dates-and-fees')}">「DELE：日程、費用、申込方法」</a>にまとめています。`,
+  },
+  {
+    question: 'DELEは独学で合格できますか？',
+    answer: `合格できます。公式のモデル試験で形式に慣れ、作文と会話は誰かに見てもらう機会をつくるのがポイントです。教材と過去問の入手先は<a href="${url('dele-self-study')}">「DELEを独学で合格する方法」</a>、面接の練習は<a href="${url('dele-oral-interview-guide')}">「DELE面接・口頭試験 完全対策ガイド」</a>で紹介しています。`,
   },
   {
     question: 'DELEと西検はどちらを受けるべきですか？',
@@ -169,7 +183,7 @@ const ext = { target: '_blank', rel: 'nofollow noopener noreferrer' };
     <p class="text-xs text-muted pl-5 mb-12">更新日：<time datetime={UPDATED.toISOString().slice(0, 10)}>{updatedLabel}</time></p>
 
     <h2 id="categories" class="font-sans font-bold text-xl text-navy mb-5">カテゴリ</h2>
-    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3 mb-12">
+    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3 mb-12">
       {anchors.map(({ href, label }) => (
         <a href={href} class="bg-white rounded-lg px-3 py-3 min-h-[44px] flex items-center justify-center text-center border border-[#E8E8E6] hover:border-primary/30 hover:shadow-sm transition-all">
           <span class="font-semibold text-navy text-sm leading-snug block">{label}</span>
@@ -237,16 +251,20 @@ const ext = { target: '_blank', rel: 'nofollow noopener noreferrer' };
       C1では、読解と聴解に言語の運用（uso de la lengua）の問題が加わり、作文と口頭には聞いたり読んだりした内容を伝える仲介（mediación）の課題があります。DELE C2は3つの試験（言語の運用・読解・聴解、書く仲介と作文、話す仲介と会話）で構成されます。口頭試験の流れと練習方法は<a href={url('dele-oral-interview-guide')} class="text-primary underline">「DELE面接・口頭試験 完全対策ガイド」</a>で紹介しています。
     </p>
 
-    <h2 class="font-sans font-bold text-xl text-navy mb-4">準備の始め方</h2>
-    <p class="text-muted leading-relaxed mb-3">対策は目標のレベルによって大きく変わります。文法だけを切り離さず、4つの技能をバランスよく練習しましょう。</p>
-    <ul class="text-muted leading-relaxed mb-4 list-disc pl-5 space-y-1">
+    <h2 id="dele-prep" class="font-sans font-bold text-xl text-navy mb-4">DELE対策の進め方</h2>
+    <p class="text-muted leading-relaxed mb-3">DELE対策は、次の4つのステップで進めると迷いません。文法だけを切り離さず、4つの技能をバランスよく練習しましょう。</p>
+    <ol class="text-muted leading-relaxed mb-4 list-decimal pl-5 space-y-2">
+      <li><strong>受けるレベルを決める：</strong><a href="/language/learn-spanish/level-test/" class="text-primary underline">レベルチェック</a>で今のレベルを確かめ、レベルごとの試験の違いは<a href={url('dele-difficulty-guide')} class="text-primary underline">「DELEの難易度」</a>で比べます。</li>
+      <li><strong>試験の形式を知る：</strong>受けるレベルの対策ガイドで、試験ごとの時間・タスク・合格基準を確認します。</li>
+      <li><strong>模擬試験で時間配分をつかむ：</strong>無料コースの各レベルの最後のユニットにあるDELE形式の模擬試験と、<a href={url('dele-self-study')} class="text-primary underline">公式のモデル試験</a>で本番の時間に慣れます。</li>
+      <li><strong>申し込む：</strong>日本での日程と締切は<a href={url('dele/dates-and-fees')} class="text-primary underline">「DELE：日程、費用、申込方法」</a>で確認します。</li>
+    </ol>
+    <p class="text-muted leading-relaxed mb-3">レベル別の重点は次のとおりです。</p>
+    <ul class="text-muted leading-relaxed mb-8 list-disc pl-5 space-y-1">
       <li><strong>初心者（A1〜A2）：</strong>基礎語彙とシンプルな文の形に集中しましょう。</li>
       <li><strong>中級者（B1〜B2）：</strong>仕事や学業で求められるレベルです。接続法と、理由を添えて意見を述べる力を磨きましょう。</li>
-      <li><strong>上級者（C1〜C2）：</strong>文体の洗練とニュアンスの習得を目指しましょう。</li>
+      <li><strong>上級者（C1〜C2）：</strong>文体の洗練とニュアンス、聞いたり読んだりした内容を伝える仲介の力を身につけましょう。</li>
     </ul>
-    <p class="text-muted leading-relaxed mb-8">
-      先生につかずに準備したい方は<a href={url('dele-self-study')} class="text-primary underline">「DELEを独学で合格する方法」</a>を、試験日と申込の手順は<a href={url('dele/dates-and-fees')} class="text-primary underline">「DELE：日程、費用、申込方法」</a>をご覧ください。
-    </p>
 
     <NewsletterForm variant="inline" />
 
