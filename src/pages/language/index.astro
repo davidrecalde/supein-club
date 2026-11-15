@@ -1,7 +1,7 @@
 ---
 // Hub /language/: hub general de la sección スペイン語, con el curso A1-C2 como centro
 // (docs/language/plan-hub-embudo.md, punto 9). Desde el 15 de noviembre de 2026 solo bloques con banner:
-// 01 curso, 02 DELE (hub DELE), 03 補助教材 (conjugador + hub 勉強法) y 04 スペイン語学校 (hub de escuelas).
+// 01 curso, 02 conjugador, 03 補助教材 (hub 勉強法), 04 スペイン語学校 (hub de escuelas) y 05 DELE (hub DELE).
 // 「スペイン語 勉強法」 es del hub 勉強法 (src/pages/language/learn-spanish/study-methods/): aquí no se repite.
 import { getCollection, getEntry, type CollectionEntry } from 'astro:content';
 import { getImage } from 'astro:assets';
@@ -72,9 +72,10 @@ const mockExams = (await getAllUnits())
 const anchors = [
   { href: '#start', label: 'はじめる' },
   ...(courseVisible ? [{ href: '#course', label: '無料コース' }] : []),
-  { href: '#dele', label: 'DELE対策' },
+  { href: '#tools', label: '活用ツール' },
   { href: '#materials', label: '補助教材' },
   { href: '#schools', label: 'スペイン語学校' },
+  { href: '#dele', label: 'DELE対策' },
 ];
 
 const breadcrumbs = [
@@ -94,9 +95,9 @@ const listed = [
   { url: LEVEL_TEST_URL, name: 'スペイン語レベルチェックテスト' },
   ...levelItems,
   ...(conjugator ? [{ url: getArticleUrl(conjugator), name: conjugator.data.title }] : []),
-  { url: DELE_URL, name: 'DELE（スペイン語検定）' },
   { url: STUDY_HUB_URL, name: 'スペイン語の勉強法' },
   { url: SCHOOLS_HUB_URL, name: 'スペイン語学校' },
+  { url: DELE_URL, name: 'DELE（スペイン語検定）' },
 ];
 const languageSchema = {
   '@context': 'https://schema.org',
@@ -196,7 +197,7 @@ const languageFaq = [
     </p>
     <p class="text-xs text-muted pl-5 mb-10">更新日：<time datetime={UPDATED}>{updatedLabel}</time></p>
 
-    <nav id="categories" aria-label="このページの内容" class="grid grid-cols-2 md:grid-cols-5 gap-3 mb-12">
+    <nav id="categories" aria-label="このページの内容" class="grid grid-cols-2 md:grid-cols-6 gap-3 mb-12">
       {anchors.map(({ href, label }) => (
         <a href={href} class="bg-white rounded-lg px-3 py-3 min-h-[44px] flex items-center justify-center text-center border border-[#E8E8E6] hover:border-primary/30 hover:shadow-sm transition-all">
           <span class="font-semibold text-navy text-sm leading-snug block">{label}</span>
@@ -271,32 +272,12 @@ const languageFaq = [
     </section>
   )}
 
-  <section class="hub-block is-dele" id="dele" aria-labelledby="dele-title">
+  <section class="hub-block is-tools" id="tools" aria-labelledby="tools-title">
     <div class="max-w-6xl mx-auto px-5">
       <div class="hub-block-head">
-        <p class="hub-block-eyebrow"><span class="hub-block-num">02</span>DELE対策</p>
-        <h2 id="dele-title">DELE（スペイン語検定）の準備</h2>
-      </div>
-      <a href={DELE_URL} class="hub-feature">
-        {deleImg && (
-          <span class="hub-feature-img"><img src={deleImg.src} srcset={deleImg.srcset} sizes="(min-width: 768px) 600px, 100vw" width={deleImg.width} height={deleImg.height} alt={deleImg.alt} loading="lazy" decoding="async" /></span>
-        )}
-        <span class="hub-feature-body">
-          <span class="hub-feature-badge">DELE</span>
-          <span class="hub-feature-title">DELE（スペイン語検定）のページへ</span>
-          <span class="hub-feature-desc">セルバンテス学院が実施する、スペイン語の国際的な公式資格です。A1〜C2のレベル別ガイド、難易度、日程と費用、面接対策、独学の方法まで、DELEの情報を1か所にまとめています。</span>
-          <span class="hub-feature-cta">DELEのページを見る →</span>
-        </span>
-      </a>
-    </div>
-  </section>
-
-  <section class="hub-block is-materials" id="materials" aria-labelledby="materials-title">
-    <div class="max-w-6xl mx-auto px-5">
-      <div class="hub-block-head">
-        <p class="hub-block-eyebrow"><span class="hub-block-num">03</span>補助教材</p>
-        <h2 id="materials-title">補助教材・学習リソース</h2>
-        <p class="hub-block-lead">コースと並行して使える動詞の活用ツールと、発音・単語・リスニング・読解の練習法や学習リソースをまとめた勉強法のページです。</p>
+        <p class="hub-block-eyebrow"><span class="hub-block-num">02</span>スペイン語 動詞の活用ツール</p>
+        <h2 id="tools-title">動詞の活用を全時制で調べる</h2>
+        <p class="hub-block-lead">よく使う動詞の活用を、全時制の早見表で調べられます。コースと並行して使えるツールです。</p>
       </div>
       {conjugator && (
         <a href={getArticleUrl(conjugator)} class="hub-feature">
@@ -311,7 +292,16 @@ const languageFaq = [
           </span>
         </a>
       )}
-      <div class="hub-feature-stack">
+    </div>
+  </section>
+
+  <section class="hub-block is-materials" id="materials" aria-labelledby="materials-title">
+    <div class="max-w-6xl mx-auto px-5">
+      <div class="hub-block-head">
+        <p class="hub-block-eyebrow"><span class="hub-block-num">03</span>補助教材</p>
+        <h2 id="materials-title">補助教材・学習リソース</h2>
+        <p class="hub-block-lead">発音・単語・リスニング・読解の練習法、学習計画の立て方、学習リソースをまとめた勉強法のページです。</p>
+      </div>
       <a href={STUDY_HUB_URL} class="hub-feature">
         {studyImg && (
           <span class="hub-feature-img"><img src={studyImg.src} srcset={studyImg.srcset} sizes="(min-width: 768px) 600px, 100vw" width={studyImg.width} height={studyImg.height} alt={studyImg.alt} loading="lazy" decoding="async" /></span>
@@ -323,7 +313,6 @@ const languageFaq = [
           <span class="hub-feature-cta">勉強法を見る →</span>
         </span>
       </a>
-      </div>
     </div>
   </section>
 
@@ -343,6 +332,26 @@ const languageFaq = [
           <span class="hub-feature-title">スペイン語学校のページへ</span>
           <span class="hub-feature-desc">東京・横浜・大阪・京都のスペイン語教室を、口コミなどの客観データで比較したガイドと、スペイン留学で通う語学学校のガイドをまとめています。</span>
           <span class="hub-feature-cta">スペイン語学校を見る →</span>
+        </span>
+      </a>
+    </div>
+  </section>
+
+  <section class="hub-block is-dele" id="dele" aria-labelledby="dele-title">
+    <div class="max-w-6xl mx-auto px-5">
+      <div class="hub-block-head">
+        <p class="hub-block-eyebrow"><span class="hub-block-num">05</span>DELE対策</p>
+        <h2 id="dele-title">DELE（スペイン語検定）の準備</h2>
+      </div>
+      <a href={DELE_URL} class="hub-feature">
+        {deleImg && (
+          <span class="hub-feature-img"><img src={deleImg.src} srcset={deleImg.srcset} sizes="(min-width: 768px) 600px, 100vw" width={deleImg.width} height={deleImg.height} alt={deleImg.alt} loading="lazy" decoding="async" /></span>
+        )}
+        <span class="hub-feature-body">
+          <span class="hub-feature-badge">DELE</span>
+          <span class="hub-feature-title">DELE（スペイン語検定）のページへ</span>
+          <span class="hub-feature-desc">セルバンテス学院が実施する、スペイン語の国際的な公式資格です。A1〜C2のレベル別ガイド、難易度、日程と費用、面接対策、独学の方法まで、DELEの情報を1か所にまとめています。</span>
+          <span class="hub-feature-cta">DELEのページを見る →</span>
         </span>
       </a>
     </div>
