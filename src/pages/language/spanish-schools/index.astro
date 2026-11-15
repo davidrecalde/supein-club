@@ -47,10 +47,15 @@ const breadcrumbs = [
   { name: 'スペイン語学校', url: SCHOOLS_HUB_URL },
 ];
 
+// FAQ (16-11-2026): sin repetir las de spanish-schools-in-japan (ciudades, CRE) ni las de las ciudades (precios, principiantes).
 const schoolsFaq = [
   {
-    question: '日本でスペイン語教室を探すには？',
-    answer: '東京・横浜・大阪・京都の学校を、口コミなどの客観データで比較した<a href="/language/spanish-schools-in-japan/">「日本のスペイン語教室完全ガイド」</a>から探せます。都市ごとの詳しいランキングは、各都市の記事にまとめています。',
+    question: 'スペイン語は日本で習うのとスペインで習うの、どちらがいいですか？',
+    answer: '仕事や学校と両立しながら続けるなら日本の教室、短期間で集中して伸ばしたいならスペイン留学の語学学校が向いています。日本で基礎を固めてから留学すると、現地の授業を活かしやすくなります。',
+  },
+  {
+    question: '日本のスペイン語教室はどこで比べられますか？',
+    answer: '東京・横浜・大阪・京都の学校を、口コミなどの客観データで比較した<a href="/language/spanish-schools-in-japan/">「日本のスペイン語教室完全ガイド」</a>で比べられます。都市ごとの詳しいランキングは、各都市の記事にまとめています。',
   },
   {
     question: 'スペインの語学学校に通うには？',
@@ -59,6 +64,10 @@ const schoolsFaq = [
   {
     question: '教室と独学、どちらがいいですか？',
     answer: `文法と単語は独学でも十分に伸ばせますが、話す練習には相手が必要です。独学・教室・アプリ・留学の向き不向きは<a href="${STUDY_HUB_URL}#methods">「スペイン語の勉強法：4つの学び方を比較」</a>で比べています。`,
+  },
+  {
+    question: '教室に通う前に準備しておくことはありますか？',
+    answer: '<a href="/language/learn-spanish/level-test/">レベルチェック</a>で今のレベルを確かめておくと、クラスや講座を選びやすくなります。体験レッスンでは、授業の進め方や講師との相性も確かめましょう。',
   },
 ];
 
@@ -145,6 +154,15 @@ const updatedLabel = new Intl.DateTimeFormat('ja-JP', { year: 'numeric', month: 
 
   <section class="max-w-6xl mx-auto px-5 pb-14 prose-content">
   <div class="max-w-[780px]">
+    <h2 id="choose" class="font-sans font-bold text-xl text-navy mb-4">スペイン語学校を選ぶときのポイント</h2>
+    <ul class="text-muted leading-relaxed mb-8 list-disc pl-5 space-y-2">
+      <li><strong>目的：</strong>会話、DELE対策、仕事、旅行など、何のために習うのかで合う学校は変わります。</li>
+      <li><strong>今のレベル：</strong>初心者向けのクラスがあるか、自分のレベルに合うクラスがあるかを確かめます。</li>
+      <li><strong>授業の形：</strong>グループか個人レッスンか、対面かオンラインかで、話せる量と費用が変わります。</li>
+      <li><strong>続けやすさ：</strong>通いやすい場所と時間帯、振替のしやすさは、長く続けるための大切な条件です。</li>
+    </ul>
+    <p class="text-muted leading-relaxed mb-8">日本の学校を地域ごとに比べたいときは<a href="/language/spanish-schools-in-japan/" class="text-primary underline">「日本のスペイン語教室完全ガイド」</a>を、スペインで学ぶなら<a href="/living/language-school/" class="text-primary underline">「スペインの語学学校の選び方」</a>をご覧ください。</p>
+
     <NewsletterForm variant="inline" />
 
     <FAQSection faq={schoolsFaq} />

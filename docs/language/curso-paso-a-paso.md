@@ -166,6 +166,19 @@ Search Console (del 3 de agosto al 1 de noviembre de 2026, por consulta y págin
 | ser estar 違い / 点過去 線過去 違い / hubiera | Unidades 3 y 32, 16 y 50, 37 y 39 | La unidad posterior enlaza a la básica como canónica |
 | スペイン語 単語 覚え方 | `zipf-law-methodology` (どれから) y `memorize-vocabulary` (覚え方) | Enlaces en ambos sentidos; cada una con su enfoque |
 
+
+**Mapa de palabras clave de los hubs de /language/ (16 de noviembre de 2026).** Cada hub ataca sus búsquedas y enlaza a las de los demás sin repetirlas en el título, el H1 ni las FAQ. Datos de partida: informe de Search Console del 4 de agosto al 2 de noviembre de 2026 (`SEO/GSC/`).
+
+| Hub | URL | Búsquedas objetivo | No debe atacar (de quién es) |
+| --- | --- | --- | --- |
+| スペイン語を学ぶ | /language/ | スペイン語 学習サイト, スペイン語 無料, スペイン語 入門 サイト | 勉強法・独学 (hub 勉強法), ロードマップ・習得時間 (hoja de ruta), DELE (hub DELE), 教室 (hub de escuelas), 活用 (conjugador) |
+| Hoja de ruta | /language/learn-spanish/ | スペイン語学習 ロードマップ, 習得時間, A1〜C2 | 勉強法, DELEと西検 (hub DELE y dele-vs-seiken) |
+| 勉強法 | /language/learn-spanish/study-methods/ | スペイン語 勉強法, スペイン語 独学, 独学 始め方, 勉強時間 | 難しい？ (spanish-vs-japanese), 教室の探し方 (hub de escuelas) |
+| DELE | /language/learn-spanish/dele/ | DELE, DELEとは, DELE スペイン語, DELE 対策, 合格基準 | 難易度 (dele-difficulty-guide), 日程・費用 (dates-and-fees), 過去問 (dele-self-study), DELE Xレベル (guías por nivel) |
+| スペイン語学校 | /language/spanish-schools/ | スペイン語学校, スペイン語 教室 選び方, 日本とスペイン どちらで習う | ランキング・都市 (spanish-schools-in-japan y ciudades), スペインの語学学校 (/living/language-school/) |
+| 動詞の活用 | /language/learn-spanish/verb-conjugation/ | 動詞の活用, 活用 一覧, 覚え方 | Cada tiempo verbal (unidades), «<verbo> 活用» (páginas de verbo) |
+
+Las FAQ de los hubs no repiten preguntas de otros hubs ni de sus artículos hijos (comprobado sobre `dist`: solo coinciden las preguntas de las páginas de escuelas por ciudad, con respuestas propias de cada ciudad).
 Sin riesgo: hubs de nivel frente a la hoja de ruta, planes de estudio, vocabulario por nivel, recursos, escuelas y páginas de verbo.
 
 Reglas que evitan que vuelva a pasar:

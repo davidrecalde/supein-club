@@ -60,13 +60,23 @@ const methods = [
   { name: 'スペイン留学', who: '短期間で集中して伸ばしたい人', pro: '授業の外でも、毎日スペイン語を使う環境にいられる', con: '費用と準備が必要。基礎を日本で固めておくと、現地の授業を活かしやすい', href: '/living/study-spain/', link: 'スペイン留学ガイド' },
 ];
 
+// FAQ (16-11-2026): solo intenciones de 勉強法・独学. 「難しい？」 es de spanish-vs-japanese y la hoja de ruta;
+// 「教室の探し方」, del hub de escuelas; 「何から（コースで）」, de /language/.
 const studyFaq = [
   {
     question: 'スペイン語は独学でも身につきますか？',
     answer: `文法・単語・読む力は、順番どおりに学べば独学でも十分に伸ばせます。スペイン倶楽部の<a href="${COURSE_URL}">無料コース（A1〜C2・全${TOTAL_UNITS}ユニット）</a>は登録不要で、各ユニットのミニテストで理解を確かめながら進められます。話す力には相手が必要なので、<a href="${SCHOOLS_HUB_URL}">スペイン語教室やオンラインレッスン</a>との組み合わせがおすすめです。`,
   },
   {
-    question: 'どの学び方を選べばいいですか？',
+    question: '独学でスペイン語を始めるとき、最初に何をすればいいですか？',
+    answer: `まず<a href="${LEVEL_TEST_URL}">レベルチェック</a>で今のレベルを確かめ、まったく初めてなら発音から始めます。スペイン語は書いてあるとおりに読める言語なので、母音とアクセントのルールを最初に覚えると、単語や文法が覚えやすくなります。このページの「独学でスペイン語を始める5つのステップ」に、順番をまとめています。`,
+  },
+  {
+    question: '1日にどのくらい勉強すればいいですか？',
+    answer: `まとめて長時間よりも、毎日20分ほどを続けるほうが定着します。週ごとの計画は<a href="/language/learn-spanish/how-to-make-study-plan/">「スペイン語の学習計画の立て方」</a>、レベルごとの学習時間の目安は<a href="${COURSE_URL}">学習ロードマップ</a>で確認できます。`,
+  },
+  {
+    question: '独学・教室・アプリ・留学、どの学び方を選べばいいですか？',
     answer: '目的と使える時間で選びます。文法と単語は独学やコースで、話す練習は教室で、スキマ時間はアプリで、と組み合わせるのがいちばんの近道です。4つの学び方の向き・不向きは、このページの比較表にまとめています。',
   },
   {
@@ -74,8 +84,16 @@ const studyFaq = [
     answer: 'よく使われる単語から覚えると、少ない語数で多くの文章が読めるようになります。考え方は<a href="/language/learn-spanish/zipf-law-methodology/">「スペイン語の単語はどれから覚える？」</a>、覚え方のコツは<a href="/language/learn-spanish/memorize-vocabulary/">「スペイン語の単語を効率よく覚える方法」</a>で紹介しています。',
   },
   {
-    question: '日本人がスペイン語で苦手なのはどこですか？',
-    answer: '発音ではRとLの区別、文法では動詞の活用と接続法でつまずく人が多くいます。発音は<a href="/language/learn-spanish/pronunciation-for-japanese/">「スペイン語の発音のコツ」</a>、日本語との違いは<a href="/language/learn-spanish/spanish-vs-japanese/">「スペイン語は日本人に難しい？」</a>で説明しています。',
+    question: 'リスニングはどう練習すればいいですか？',
+    answer: 'シャドーイングや再生速度の調整など、レベルに合った練習法を<a href="/language/learn-spanish/listening-tips/">「スペイン語のリスニングを上達させる5つのコツ」</a>にまとめています。無料コースの各ユニットには「ふつう」と「ゆっくり」の2つの速さの音声があり、各レベルの最後には音声つきの聴解の模擬試験もあります。',
+  },
+  {
+    question: 'スペイン語の勉強にアプリは使えますか？',
+    answer: 'スキマ時間に単語やフレーズに触れるのに向いています。ただ、アプリだけでは文法を体系的に理解するのは難しいので、コースや教材と組み合わせましょう。目的別の比較は<a href="/language/spanish-apps/">「スペイン語アプリ おすすめ比較」</a>にまとめています。',
+  },
+  {
+    question: '映画やドラマでスペイン語を勉強できますか？',
+    answer: 'できます。字幕の使い方を工夫すると、自然な会話の聞き取りと口語表現の練習になります。レベル別のおすすめ作品は<a href="/language/learn-spanish/movies-series-spanish/">「レベル別スペイン語学習におすすめの映画・ドラマ」</a>で紹介しています。',
   },
 ];
 
@@ -161,6 +179,12 @@ const updatedLabel = new Intl.DateTimeFormat('ja-JP', { year: 'numeric', month: 
 
   <section class="max-w-6xl mx-auto px-5 pb-6">
     <div class="max-w-[780px] prose-content">
+      <h2 id="basics" class="font-sans font-bold text-xl text-navy mb-4">スペイン語の勉強法で大切な3つのこと</h2>
+      <ol class="hub-steps mb-10">
+        <li><strong>今のレベルを知る。</strong>少しでも勉強したことがあるなら、<a href={LEVEL_TEST_URL}>レベルチェック</a>で今のレベルを確かめてから始めます。簡単すぎる教材も、難しすぎる教材も続きません。</li>
+        <li><strong>発音から順番に学ぶ。</strong>スペイン語は書いてあるとおりに読める言語です。発音のルールを最初に身につけると、単語と文法が覚えやすくなります。</li>
+        <li><strong>毎日少しずつ続ける。</strong>週末にまとめて数時間より、毎日20分のほうが定着します。続けられるペースを最初に決めておきましょう。</li>
+      </ol>
       <h2 id="methods" class="font-sans font-bold text-xl text-navy mb-4">スペイン語の勉強法：4つの学び方を比較</h2>
       <p class="text-ink leading-relaxed mb-5">
         どれか1つが正解というわけではありません。目的と使える時間に合わせて選び、組み合わせるのがいちばんの近道です。たとえば、文法と単語はコースで独学し、話す練習は教室やオンラインレッスンで、という分け方がよく合います。
