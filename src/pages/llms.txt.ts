@@ -17,6 +17,11 @@ const languageHighlightIds = [
 ];
 // El hub DELE es una página propia (src/pages/language/learn-spanish/dele/index.astro), no un artículo.
 const DELE_HUB_LINK = `  - [DELE（スペイン語検定）｜レベル別対策・難易度・日程と費用](${siteUrl}/language/learn-spanish/dele/)`;
+const HUB_LINKS = [
+  DELE_HUB_LINK,
+  `  - [スペイン語の勉強法｜独学の始め方と教室・アプリ・留学の比較](${siteUrl}/language/learn-spanish/study-methods/)`,
+  `  - [スペイン語学校｜日本で通える教室とスペイン留学の学校](${siteUrl}/language/spanish-schools/)`,
+];
 
 export const GET: APIRoute = async () => {
   const allArticles = await getCollection('articles', ({ data }) => !data.draft);
@@ -25,7 +30,7 @@ export const GET: APIRoute = async () => {
     .map((id) => allArticles.find((a) => a.id.replace(/\.(md|mdx)$/, '') === id))
     .filter((entry) => entry !== undefined)
     .map((entry) => `  - [${entry.data.title}](${siteUrl}${getArticleUrl(entry)})`)
-    .concat(DELE_HUB_LINK)
+    .concat(HUB_LINKS)
     .join('\n');
 
   const body = `# スペイン倶楽部 (Club Español en Japón)

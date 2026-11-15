@@ -2,6 +2,7 @@ import type { CollectionEntry } from 'astro:content';
 import { getEntry } from 'astro:content';
 import { slugToJa } from '../config/breadcrumbs';
 import { getCourseLevel, levelUrl } from '../data/course';
+import { SCHOOLS_HUB_URL, SCHOOLS_JAPAN_ID, STUDY_HUB_MEMBERS, STUDY_HUB_URL } from '../data/language-hubs';
 
 export const pillarLabels: Record<string, string> = {
   travel: 'スペイン旅行',
@@ -115,11 +116,16 @@ export async function getArticleBreadcrumbs(entry: CollectionEntry<'articles'>):
   const home = { name: 'ホーム', url: '/' };
   const pillarCrumb = { name: pillarLabel, url: `/${pillar}/` };
 
-  // Escuelas por ciudad: cuelgan de la guía nacional (docs/language/plan-hub-embudo.md, punto 6).
+  // Escuelas: hub スペイン語学校 › guía de Japón › ciudad (src/data/language-hubs.ts).
+  const schoolsCrumb = { name: 'スペイン語学校', url: SCHOOLS_HUB_URL };
   const schoolCity = SCHOOL_CITIES[cluster];
   if (pillar === 'language' && schoolCity) {
-    return [home, pillarCrumb, { name: '日本のスペイン語教室', url: '/language/spanish-schools-in-japan/' }, { name: `${schoolCity}のスペイン語教室`, url: canonical }];
+    return [home, pillarCrumb, schoolsCrumb, { name: '日本のスペイン語教室', url: '/language/spanish-schools-in-japan/' }, { name: `${schoolCity}のスペイン語教室`, url: canonical }];
   }
+  const entryId = entry.id.replace(/\.(md|mdx)$/, '');
+  if (entryId === `language/${SCHOOLS_JAPAN_ID}`) return [home, pillarCrumb, schoolsCrumb, { name: title, url: canonical }];
+  // Guías de estudio, herramientas y recursos: hub 勉強法.
+  if (STUDY_HUB_MEMBERS.has(entryId)) return [home, pillarCrumb, { name: '勉強法', url: STUDY_HUB_URL }, { name: title, url: canonical }];
 
   if (isFlagship) return [home, pillarCrumb, { name: title, url: canonical }];
 

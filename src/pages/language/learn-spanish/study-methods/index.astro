@@ -1,0 +1,235 @@
+---
+// Hub 勉強法 /language/learn-spanish/study-methods/ (decisión de David, 15 de noviembre de 2026): reúne las guías
+// de cada destreza, las guías de estudio y herramientas, y los recursos (antes en el bloque 03 de /language/),
+// con la comparativa de los 4 modos de aprender y los 5 pasos para empezar solo (antes en /language/).
+// Es la página canónica de 「スペイン語 勉強法」; /language/ pasa a ser el hub general de la sección.
+import { getCollection, getEntry, type CollectionEntry } from 'astro:content';
+import heroStudy from '../../../../assets/hero/hero-study-methods.webp';
+import BaseLayout from '../../../../layouts/BaseLayout.astro';
+import SEO from '../../../../components/SEO.astro';
+import PillarHero from '../../../../components/PillarHero.astro';
+import ArticleCard from '../../../../components/ArticleCard.astro';
+import LineBanner from '../../../../components/LineBanner.astro';
+import FloatingActions from '../../../../components/FloatingActions.astro';
+import NewsletterForm from '../../../../components/NewsletterForm.astro';
+import ArticleDisclaimer from '../../../../components/ArticleDisclaimer.astro';
+import AuthorBox from '../../../../components/AuthorBox.astro';
+import FAQSection from '../../../../components/FAQSection.astro';
+import { getArticleUrl } from '../../../../utils/articles';
+import { discoverImage, schemaImages } from '../../../../utils/images';
+import { getAllUnits } from '../../../../utils/units';
+import { COURSE_URL, TOTAL_UNITS, WELCOME_URL } from '../../../../data/course';
+import { SCHOOLS_HUB_URL, STUDY_GROUPS, STUDY_HUB_URL } from '../../../../data/language-hubs';
+
+const SITE = 'https://supein.club';
+const TITLE = 'スペイン語の勉強法｜独学の始め方と教室・アプリ・留学の比較';
+const DESCRIPTION = 'スペイン語の勉強法を、独学の始め方から教室・アプリ・留学の比較までまとめました。発音・単語・リスニング・読解の練習法、学習計画の立て方、学習に役立つリソースも紹介します。';
+const PUBLISHED = '2026-11-15';
+const UPDATED = '2026-11-15'; // solo cambia con «HAZ FRESHNESS»
+const IMAGE_ALT = 'スペイン語の勉強法（発音・単語・リスニング・読解）のイメージ';
+const LEVEL_TEST_URL = '/language/learn-spanish/level-test/';
+const DELE_URL = '/language/learn-spanish/dele/';
+
+const author = await getEntry('authors', 'david-recalde');
+
+type Article = CollectionEntry<'articles'>;
+const idNoExt = (a: Article) => a.id.replace(/\.(md|mdx)$/, '').replace(/^language\//, '');
+const articles = await getCollection('articles', ({ data }) => !data.draft && data.pillar === 'language');
+const byId = new Map(articles.map((a) => [idNoExt(a), a]));
+const groups = STUDY_GROUPS.map((g) => ({ ...g, items: g.ids.map((id) => byId.get(id)).filter((a): a is Article => !!a) })).filter((g) => g.items.length > 0);
+
+const firstUnit = (await getAllUnits()).find((u) => u.data.unit === 1);
+
+const anchors = [
+  ...groups.map((g) => ({ href: `#${g.id}`, label: g.label })),
+  { href: '#methods', label: '4つの学び方を比較' },
+  { href: '#steps', label: '独学の5つのステップ' },
+];
+
+const breadcrumbs = [
+  { name: 'ホーム', url: '/' },
+  { name: 'スペイン語', url: '/language/' },
+  { name: '勉強法', url: STUDY_HUB_URL },
+];
+
+// Comparativa de los 4 modos de aprender (antes en /language/).
+const methods = [
+  { name: '無料コースで独学', who: '費用をかけずに、自分のペースで始めたい人', pro: 'A1〜C2の順番が決まっていて、各ユニットのミニテストで理解を確かめられる', con: '会話の相手はいないので、話す練習は別に用意する', href: COURSE_URL, link: '学習ロードマップ' },
+  { name: 'スペイン語教室・オンラインレッスン', who: '会話を練習したい人、質問しながら進めたい人', pro: '先生からその場で発音や表現を直してもらえる', con: '受講料と、通う・予約する時間がかかる', href: SCHOOLS_HUB_URL, link: 'スペイン語学校' },
+  { name: '学習アプリ', who: 'スキマ時間に単語やフレーズに触れたい人', pro: '1回数分から、毎日続けやすい', con: 'アプリだけでは、文法を体系的に理解するのが難しい', href: '/language/spanish-apps/', link: 'スペイン語アプリ比較' },
+  { name: 'スペイン留学', who: '短期間で集中して伸ばしたい人', pro: '授業の外でも、毎日スペイン語を使う環境にいられる', con: '費用と準備が必要。基礎を日本で固めておくと、現地の授業を活かしやすい', href: '/living/study-spain/', link: 'スペイン留学ガイド' },
+];
+
+const studyFaq = [
+  {
+    question: 'スペイン語は独学でも身につきますか？',
+    answer: `文法・単語・読む力は、順番どおりに学べば独学でも十分に伸ばせます。スペイン倶楽部の<a href="${COURSE_URL}">無料コース（A1〜C2・全${TOTAL_UNITS}ユニット）</a>は登録不要で、各ユニットのミニテストで理解を確かめながら進められます。話す力には相手が必要なので、<a href="${SCHOOLS_HUB_URL}">スペイン語教室やオンラインレッスン</a>との組み合わせがおすすめです。`,
+  },
+  {
+    question: 'どの学び方を選べばいいですか？',
+    answer: '目的と使える時間で選びます。文法と単語は独学やコースで、話す練習は教室で、スキマ時間はアプリで、と組み合わせるのがいちばんの近道です。4つの学び方の向き・不向きは、このページの比較表にまとめています。',
+  },
+  {
+    question: '単語はどれから覚えればいいですか？',
+    answer: 'よく使われる単語から覚えると、少ない語数で多くの文章が読めるようになります。考え方は<a href="/language/learn-spanish/zipf-law-methodology/">「スペイン語の単語はどれから覚える？」</a>、覚え方のコツは<a href="/language/learn-spanish/memorize-vocabulary/">「スペイン語の単語を効率よく覚える方法」</a>で紹介しています。',
+  },
+  {
+    question: '日本人がスペイン語で苦手なのはどこですか？',
+    answer: '発音ではRとLの区別、文法では動詞の活用と接続法でつまずく人が多くいます。発音は<a href="/language/learn-spanish/pronunciation-for-japanese/">「スペイン語の発音のコツ」</a>、日本語との違いは<a href="/language/learn-spanish/spanish-vs-japanese/">「スペイン語は日本人に難しい？」</a>で説明しています。',
+  },
+];
+
+const discover = await discoverImage(heroStudy);
+const pageSchemaImages = await schemaImages(heroStudy);
+const listed = groups.flatMap((g) => g.items);
+const collectionSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'CollectionPage',
+  name: 'スペイン語の勉強法',
+  description: DESCRIPTION,
+  url: `${SITE}${STUDY_HUB_URL}`,
+  inLanguage: 'ja',
+  datePublished: PUBLISHED,
+  dateModified: UPDATED,
+  about: { '@type': 'Thing', name: 'スペイン語学習' },
+  mainEntity: {
+    '@type': 'ItemList',
+    itemListElement: listed.map((a, i) => ({ '@type': 'ListItem', position: i + 1, url: `${SITE}${getArticleUrl(a)}`, name: a.data.title })),
+  },
+};
+const updatedLabel = new Intl.DateTimeFormat('ja-JP', { year: 'numeric', month: 'long', day: 'numeric' }).format(new Date(UPDATED));
+---
+<BaseLayout title={TITLE}>
+  <SEO
+    slot="seo"
+    title={TITLE}
+    description={DESCRIPTION}
+    canonical={`${SITE}${STUDY_HUB_URL}`}
+    image={discover.src}
+    imageWidth={discover.width}
+    imageHeight={discover.height}
+    imageAlt={IMAGE_ALT}
+    schemaImages={pageSchemaImages}
+    breadcrumbs={breadcrumbs}
+    keywords={['スペイン語', '勉強法', '独学', '学習']}
+  />
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify(collectionSchema)} />
+  <script
+    type="application/ld+json"
+    slot="head"
+    set:html={JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'FAQPage',
+      mainEntity: studyFaq.map((item) => ({
+        '@type': 'Question',
+        name: item.question,
+        acceptedAnswer: { '@type': 'Answer', text: item.answer.replace(/<[^>]+>/g, '') },
+      })),
+    })}
+  />
+  <PillarHero
+    title="スペイン語の勉強法"
+    description="発音・単語・リスニング・読解の練習法、学び方の比較、独学の始め方。目的に合った学び方を見つけましょう。"
+    breadcrumbs={breadcrumbs}
+  />
+  <section class="max-w-6xl mx-auto px-5 py-14">
+    <p class="text-muted text-base leading-relaxed mb-3 border-l-2 border-primary pl-5 max-w-[780px]">
+      スペイン語の勉強法は、目的と使える時間によって変わります。このページでは、発音・単語・リスニング・読解の練習法、学習計画の立て方と動詞の活用ツール、学習に役立つリソースをまとめ、独学・教室・アプリ・留学の4つの学び方を比べています。
+    </p>
+    <p class="text-xs text-muted pl-5 mb-12">更新日：<time datetime={UPDATED}>{updatedLabel}</time></p>
+
+    <h2 id="categories" class="font-sans font-bold text-xl text-navy mb-5">カテゴリ</h2>
+    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3 mb-12">
+      {anchors.map(({ href, label }) => (
+        <a href={href} class="bg-white rounded-lg px-3 py-3 min-h-[44px] flex items-center justify-center text-center border border-[#E8E8E6] hover:border-primary/30 hover:shadow-sm transition-all">
+          <span class="font-semibold text-navy text-sm leading-snug block">{label}</span>
+        </a>
+      ))}
+    </div>
+
+    {groups.map((group) => (
+      <>
+        <h2 id={group.id} class="font-sans font-bold text-xl text-navy mb-5">{group.label}</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+          {group.items.map((a) => (
+            <ArticleCard title={a.data.title} description={a.data.description} href={getArticleUrl(a)} pillar="language" cluster={a.data.cluster} image={a.data.image} imageAlt={a.data.imageAlt} heroImage={a.data.heroImage} heroImageAlt={a.data.heroImageAlt} pubDate={a.data.pubDate} topicBadge={group.label} />
+          ))}
+        </div>
+      </>
+    ))}
+  </section>
+
+  <section class="max-w-6xl mx-auto px-5 pb-6">
+    <div class="max-w-[780px] prose-content">
+      <h2 id="methods" class="font-sans font-bold text-xl text-navy mb-4">スペイン語の勉強法：4つの学び方を比較</h2>
+      <p class="text-ink leading-relaxed mb-5">
+        どれか1つが正解というわけではありません。目的と使える時間に合わせて選び、組み合わせるのがいちばんの近道です。たとえば、文法と単語はコースで独学し、話す練習は教室やオンラインレッスンで、という分け方がよく合います。
+      </p>
+    </div>
+    <div class="hub-methods-wrap mb-12">
+      <table class="hub-methods">
+        <thead>
+          <tr>
+            <th scope="col">学び方</th>
+            <th scope="col">向いている人</th>
+            <th scope="col">強み</th>
+            <th scope="col">気をつけたい点</th>
+          </tr>
+        </thead>
+        <tbody>
+          {methods.map((m) => (
+            <tr>
+              <th scope="row">
+                {m.name}
+                <a href={m.href}>{m.link} →</a>
+              </th>
+              <td>{m.who}</td>
+              <td>{m.pro}</td>
+              <td>{m.con}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+
+    <div class="max-w-[780px] prose-content mb-12">
+      <h2 id="steps" class="font-sans font-bold text-xl text-navy mb-4">独学でスペイン語を始める5つのステップ</h2>
+      <ol class="hub-steps">
+        <li>
+          <strong>今のレベルを確かめる。</strong>
+          <a href={LEVEL_TEST_URL}>レベルチェック</a>は、A1から順にレベルごとの6問に答え、合格しなかったレベルで終わります。結果の画面に、始めるユニットが表示されます。
+        </li>
+        <li>
+          <strong>発音から始める。</strong>
+          スペイン語は書いてあるとおりに読める言語です。まったく初めてなら{firstUnit ? <a href={firstUnit.data.url}>ユニット1「{firstUnit.data.shortTitle}」</a> : 'ユニット1'}で母音とアクセントのルールを覚え、日本人がつまずきやすい音は<a href="/language/learn-spanish/pronunciation-for-japanese/">日本人のための発音ガイド</a>で練習しましょう。
+        </li>
+        <li>
+          <strong>続けられるペースを決める。</strong>
+          毎日20分ほどを目安に、週に何ユニット進めるかを<a href={WELCOME_URL}>学習設定</a>で選べます。スペインと中南米の言い方の違いを表示するかどうかも、ここで決められます。
+        </li>
+        <li>
+          <strong>ミニテストで確かめて、復習する。</strong>
+          各ユニットの最後に10問のミニテストがあり、7問正解で「完了」になります。間違えたところは、そのユニットの説明に戻って確認しましょう。
+        </li>
+        <li>
+          <strong>レベルの最後に力を試す。</strong>
+          各レベルの最後のユニットは、DELEの形式に沿った総復習と模擬試験です。本番の試験を受けるなら、<a href={DELE_URL}>DELEのページ</a>でレベルごとの内容と日程を確認できます。
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="max-w-6xl mx-auto px-5 pb-14 prose-content">
+  <div class="max-w-[780px]">
+    <NewsletterForm variant="inline" />
+
+    <FAQSection faq={studyFaq} />
+
+    {author && <ArticleDisclaimer />}
+    {author && <AuthorBox author={author} />}
+  </div>
+  </section>
+
+  <LineBanner slim />
+  <FloatingActions target="categories" shareUrl={`${SITE}${STUDY_HUB_URL}`} shareTitle="スペイン語の勉強法" />
+</BaseLayout>

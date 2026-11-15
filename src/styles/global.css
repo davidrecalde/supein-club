@@ -1402,6 +1402,10 @@ a.unit-nav-step:focus-visible {
 .hub-feature:hover .hub-feature-cta {
   background: #A00D24;
 }
+/* Segundo banner del bloque 03 (hub 勉強法), debajo del conjugador. */
+.hub-feature-stack {
+  margin-top: 20px;
+}
 
 /* Páginas de unidad: el color del nivel (UnitLayout añade .unit-page.lv-XX) */
 .unit-page .unit-header {
