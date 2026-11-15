@@ -53,9 +53,12 @@ const learnSpanish = articles.filter((a) => a.data.cluster === 'learn-spanish');
 const isDele = (a: Article) => idNoExt(a).includes('learn-spanish/dele/') || a.data.articleRole === 'info-dele' || slugOf(a) === 'dele-vs-seiken';
 const isLevelPage = (a: Article) => !isDele(a) && !!a.data.level;
 const TOP_IDS = ['index', 'level-test'];
-const TOOL_IDS = ['verb-conjugation', 'pronunciation-for-japanese', 'zipf-law-methodology', 'spanish-vs-japanese', 'how-to-make-study-plan'];
+const TOOL_IDS = ['verb-conjugation', 'spanish-vs-japanese', 'how-to-make-study-plan'];
+// 「技能別の勉強法」 (auditoría de /language/, 15 de noviembre de 2026): las guías de cada destreza juntas en el bloque 03.
+const SKILL_IDS = ['pronunciation-for-japanese', 'zipf-law-methodology', 'memorize-vocabulary', 'listening-tips', 'reading-tips'];
 
 const tools = TOOL_IDS.map(byId).filter((a): a is Article => !!a);
+const skills = SKILL_IDS.map(byId).filter((a): a is Article => !!a);
 
 // DELE: primero la secuencia DELE (course-sequence.ts), después las guías.
 const deleOrder = (a: Article) => {
@@ -82,7 +85,7 @@ const mockExams = (await getAllUnits())
 
 // Recursos: el resto de learn-spanish (nada se queda sin enlace) + la comparativa de apps.
 const resources = learnSpanish
-  .filter((a) => !isDele(a) && !isLevelPage(a) && !TOP_IDS.includes(idNoExt(a).replace('language/learn-spanish/', '')) && !tools.includes(a))
+  .filter((a) => !isDele(a) && !isLevelPage(a) && !TOP_IDS.includes(idNoExt(a).replace('language/learn-spanish/', '')) && !tools.includes(a) && !skills.includes(a))
   .concat(articles.filter((a) => slugOf(a) === 'spanish-apps'))
   .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 
@@ -116,7 +119,7 @@ const listed = [
   { url: COURSE_URL, name: 'スペイン語学習ロードマップ' },
   { url: LEVEL_TEST_URL, name: 'スペイン語レベルチェックテスト' },
   ...levelItems,
-  ...tools.map((a) => ({ url: getArticleUrl(a), name: a.data.title })),
+  ...[...tools, ...skills].map((a) => ({ url: getArticleUrl(a), name: a.data.title })),
   { url: DELE_URL, name: 'DELE（スペイン語検定）' },
   ...[...resources, ...schools].map((a) => ({ url: getArticleUrl(a), name: a.data.title })),
 ];
@@ -372,7 +375,14 @@ const languageFaq = [
           </span>
         </a>
       )}
-      <h3 id="tools" class="hub-sub">ツールと学習ガイド</h3>
+      <h3 id="skills" class="hub-sub">技能別の勉強法</h3>
+      <p class="hub-mock-lead">発音・単語・リスニング・読解を、それぞれどう練習するかのガイドです。コースのユニットの音声や模擬試験とあわせて使えます。</p>
+      <div class="hub-card-grid">
+        {skills.map((a) => (
+          <HubCard title={a.data.title} href={getArticleUrl(a)} heroImage={a.data.heroImage} heroImageAlt={a.data.heroImageAlt} image={a.data.image} imageAlt={a.data.imageAlt} badge="技能別" />
+        ))}
+      </div>
+      <h3 id="tools" class="hub-sub">学習ガイド</h3>
       <div class="hub-card-grid">
         {otherTools.map((a) => (
           <HubCard title={a.data.title} href={getArticleUrl(a)} heroImage={a.data.heroImage} heroImageAlt={a.data.heroImageAlt} image={a.data.image} imageAlt={a.data.imageAlt} badge="学習ガイド" />

@@ -2,7 +2,7 @@
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import SEO from '../../../components/SEO.astro';
 import CoursePageHeader from '../../../components/course/CoursePageHeader.astro';
-import { ABOUT_COURSE_URL, CAST_URL, COURSE_URL } from '../../../data/course';
+import { ABOUT_COURSE_URL, CAST_URL, COURSE_URL, TOTAL_UNITS, WELCOME_URL } from '../../../data/course';
 import { isCourseVisible } from '../../../utils/units';
 import { getEntry } from 'astro:content';
 import { buildAuthorPerson } from '../../../utils/schema';
@@ -53,22 +53,40 @@ const article = {
       <h2>内容を決めているのは</h2>
       <p>コースの構成と各ユニットの内容は、スペイン倶楽部の創設者 <a href="/about-us/team/david-recalde/">David Recalde（ダビッド・レカルデ）</a> が決め、最終的な責任を持っています。</p>
 
+      <h2>コースの組み立て</h2>
+      <p>コースは全{TOTAL_UNITS}ユニットで、セルバンテス文化センターの6つのレベル（A1 Acceso、A2 Plataforma、B1 Umbral、B2 Avanzado、C1 Dominio operativo eficaz、C2 Maestría）に沿って並んでいます。ユニット1から順番に進めば、前のユニットで学んだことを使いながら次に進めるように組み立てています。</p>
+      <p>各ユニットは、同じ順番の項目でできています。</p>
+      <ul>
+        <li><strong>文法：</strong>そのユニットの文法項目の説明と例文。</li>
+        <li><strong>活用：</strong>今日の動詞の活用。</li>
+        <li><strong>語彙：</strong>テーマに合った単語と例文（使用頻度の高い順）。</li>
+        <li><strong>発音・正書法：</strong>読み方と書き方の注意点。</li>
+        <li><strong>日本人がよく間違える：</strong>日本語話者がつまずきやすいポイント。</li>
+        <li><strong>文化メモ：</strong>表現の背景にあるスペインの文化。</li>
+        <li><strong>練習とミニテスト：</strong>理解を確かめる問題。</li>
+      </ul>
+      <p>各レベルの最後のユニット（ユニット12・24・36・48・56・62）は、DELEの形式に沿った総復習と模擬試験です。進み具合はこのブラウザに保存されるので、登録しなくても続きから学べます。</p>
+
       <h2>基準にしている資料</h2>
       <ul>
         <li><a href="https://cvc.cervantes.es/ensenanza/biblioteca_ele/plan_curricular/indice.htm">セルバンテス文化センター（Instituto Cervantes）の『Plan curricular』（PCIC）</a>：レベルの名称（A1 Acceso〜C2 Maestría）と、各ユニットで扱う文法・機能・語彙の範囲。</li>
         <li>スペイン王立アカデミー（RAE）の『Nueva gramática de la lengua española』：活用形と文法の説明。</li>
+        <li>RAEの現代スペイン語コーパス『CORPES XXI』の頻度データ：各ユニットの単語は使用頻度の高い順に並べ、順位を表示しています。</li>
+        <li>セルバンテス文化センターのDELE試験ガイド：模擬試験の試験・タスクの形式。</li>
       </ul>
-      <p>どの資料からも文章をそのまま写すことはせず、日本語で書き下ろしています。例文はスペインのスペイン語を基準にし、中南米の言い方は違いがあるときに添えています。</p>
+      <p>どの資料からも文章をそのまま写すことはせず、日本語で書き下ろしています。例文はスペインのスペイン語を基準にし、中南米の言い方は違いがあるときに添えています。<a href={WELCOME_URL}>学習設定</a>で、中南米の言い方を先に表示することもできます。</p>
 
       <h2>AIを使っている部分</h2>
       <ul>
         <li><strong>文章の下書き：</strong>解説・例文・練習問題の下書きに、AIによる執筆支援を使っています。</li>
-        <li><strong>音声：</strong>例文の音声は、Gemini TTS で生成する予定です（現在準備中）。公開する音声には「AI音声（ネイティブ監修済み）」と表示します。</li>
+        <li><strong>音声：</strong>例文と模擬試験の聴解の音声は、Gemini TTS で生成しています。登場人物ごとに声を決めて、同じ人物はいつも同じ声で話します。音声には「AI音声（ネイティブ監修済み）」と表示しています。</li>
+        <li><strong>イラスト：</strong>各ユニットのイラストは、登場人物の設定画をもとにAIで生成しています。</li>
       </ul>
       <p>AIが作るのは下書きまでです。何を教えるか、どの例文を使うかは人が決め、公開する内容はすべて人が確認しています。</p>
 
       <h2>公開前にネイティブが確認すること</h2>
-      <p>各ユニットは、スペイン語の部分をスペイン語のネイティブが、日本語の部分を日本語のネイティブが確認してから公開します。どちらか一方の確認だけでは公開しません。音声も、公開前にネイティブが一つずつ聞いて確認します。</p>
+      <p>各ユニットは、スペイン語の部分をスペイン語のネイティブが、日本語の部分を日本語のネイティブが確認してから公開します。どちらか一方の確認だけでは公開しません。音声も、公開前にネイティブが一つずつ聞いて確認しています。</p>
+      <p><a href="/language/learn-spanish/verb-conjugation/">動詞の活用表</a>は、活用の規則にもとづいて作り、不規則な形はネイティブが確認しています。</p>
 
       <h2>登場人物について</h2>
       <p>例文や会話に登場する5人（ミナ、ケンタ、ユイ、ダニエル、カルメン先生）は架空の人物です。<a href={CAST_URL}>登場人物の紹介</a>で、それぞれの設定を見られます。</p>
