@@ -1697,8 +1697,9 @@ a.unit-nav-step:focus-visible {
 
 /* 「続きから」 del hub y de la hoja de ruta (CourseContinue.astro) */
 .course-continue {
+  position: relative;
   margin: 0 0 32px;
-  padding: 16px 20px;
+  padding: 16px 52px 16px 20px;
   border-radius: 12px;
   background: #002147;
   color: #fff;
@@ -1722,6 +1723,25 @@ a.unit-nav-step:focus-visible {
   text-decoration-color: var(--level, #C8102E);
   text-decoration-thickness: 3px;
   text-underline-offset: 6px;
+}
+.course-continue-close {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 36px;
+  height: 36px;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 22px;
+  line-height: 1;
+  cursor: pointer;
+}
+.course-continue-close:hover,
+.course-continue-close:focus-visible {
+  background: rgba(255, 255, 255, 0.12);
+  color: #fff;
 }
 
 /* ── Curso: reparto, preferencias y transparencia (prompt 9) ── */
