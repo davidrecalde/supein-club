@@ -7,9 +7,11 @@ import SearchOverlay from '../components/SearchOverlay.astro';
 interface Props {
   title?: string;
   lang?: string;
+  /** false: la página no entra en el índice del buscador (Pagefind indexa solo los data-pagefind-body). */
+  searchable?: boolean;
 }
 
-const { title = 'supein.club', lang = 'ja' } = Astro.props;
+const { title = 'supein.club', lang = 'ja', searchable = true } = Astro.props;
 ---
 <!doctype html>
 <html lang={lang}>
@@ -69,7 +71,7 @@ const { title = 'supein.club', lang = 'ja' } = Astro.props;
     <slot name="header">
       <Navigation />
     </slot>
-    <main id="main-content" class="flex-1" data-pagefind-body>
+    <main id="main-content" class="flex-1" data-pagefind-body={searchable ? '' : undefined}>
       <slot />
     </main>
     <slot name="footer">

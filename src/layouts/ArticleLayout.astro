@@ -251,7 +251,8 @@ const stepItemList = isRoadmapHub
       <div class="content-main">
         {articleRole === 'hub-nivel' && level && <LevelUnits level={level} />}
 
-        {headings.filter((h) => h.depth === 2).length > 0 && (
+        {/* Test de nivel (diagnostico): el test va justo debajo del lead, sin el índice móvil delante. */}
+        {articleRole !== 'diagnostico' && headings.filter((h) => h.depth === 2).length > 0 && (
           <details class="toc-mobile-inline">
             <summary>
               <span>目次</span>

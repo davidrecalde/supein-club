@@ -1,0 +1,196 @@
+---
+// Soluciones del test de nivel: las preguntas en el mismo orden que el test, con la respuesta correcta,
+// la explicación, la transcripción de los audios y la unidad que lo enseña. No se indexa (noindex, fuera
+// del sitemap y de Pagefind) y solo se enlaza desde el resultado del test (LevelTestCard.astro).
+// Si el navegador guarda el resultado del test, se marcan las respuestas del usuario.
+import { Check } from 'lucide-astro';
+import BaseLayout from '../../../../../layouts/BaseLayout.astro';
+import SEO from '../../../../../components/SEO.astro';
+import CoursePageHeader from '../../../../../components/course/CoursePageHeader.astro';
+import AiAudioLabel from '../../../../../components/course/AiAudioLabel.astro';
+import { COURSE_LEVELS, COURSE_URL, levelUrl } from '../../../../../data/course';
+import { getAllUnits, isCourseVisible, isRoutable } from '../../../../../utils/units';
+import { LEVEL_TEST_URL, SKILL_LABEL, SOLUTIONS_URL, activeQuestions, audioOf, getLevelTestEntry, testVersion, trackOf } from '../../../../../utils/level-test';
+
+const entry = await getLevelTestEntry();
+const items = activeQuestions(entry?.data.levelTest ?? []);
+const version = testVersion(items);
+const total = items.length;
+
+const courseVisible = await isCourseVisible();
+const units = await getAllUnits();
+const unitById = new Map(units.map((u) => [u.data.unit, u]));
+
+const canonical = `https://supein.club${SOLUTIONS_URL}`;
+const title = `スペイン語レベル診断テストの解説（全${total}問）`;
+const description = `スペイン語レベル診断テスト（A1〜C2）全${total}問の正解と解説。音声問題のスクリプトと、それぞれのポイントを学べるユニットも紹介します。`;
+const breadcrumbs = [
+  { name: 'ホーム', url: '/' },
+  { name: 'スペイン語', url: '/language/' },
+  { name: 'コース', url: COURSE_URL },
+  { name: 'レベル診断テスト', url: LEVEL_TEST_URL },
+  { name: '解説', url: canonical },
+];
+
+// Transcripción: con dos voces, cada línea lleva el nombre del hablante.
+const scriptOf = (id?: string) => {
+  const t = trackOf(id);
+  if (!t) return [];
+  const labels: Record<string, string> = t.labels;
+  const multi = Object.keys(t.speakers).length > 1;
+  return t.lines.map(([who, line]) => ({ who: multi ? labels[who] ?? who : null, line }));
+};
+
+let n = 0;
+const groups = COURSE_LEVELS.map((l) => {
+  const qs = items.filter((q) => q.level.toUpperCase() === l.code).map((q) => ({ ...q, i: n++ }));
+  return { ...l, qs, from: qs[0]?.i + 1, to: qs[qs.length - 1]?.i + 1 };
+}).filter((g) => g.qs.length > 0);
+---
+<BaseLayout title={title} searchable={false}>
+  <SEO slot="seo" title={title} description={description} canonical={canonical} breadcrumbs={breadcrumbs} robots="noindex, follow" />
+
+  <CoursePageHeader breadcrumbs={breadcrumbs}>
+    <h1 class="course-page-title">レベル診断テストの解説</h1>
+  </CoursePageHeader>
+
+  <section class="page-container py-10 ks" data-kaisetsu data-version={version}>
+    <p class="ks-lead">スペイン語レベル診断テスト全{total}問の正解と解説です。問題はテストと同じ順番で、A1からC2へ少しずつ難しくなっています。それぞれの問題の下に、そのポイントを学べるユニットを紹介しています。</p>
+
+    <div class="ks-summary" data-summary hidden>
+      <p class="ks-summary-title">あなたの結果（このブラウザに保存された最新の回答）</p>
+      <p><span data-summary-level></span><span data-summary-score></span></p>
+      <p class="ks-summary-note">あなたが選んだ答えには「あなたの回答」の印がついています。</p>
+    </div>
+
+    <nav class="ks-nav" aria-label="レベル">
+      {groups.map((g) => <a href={`#${g.code.toLowerCase()}`} class={`lv-${g.code}`}><span class="level-chip">{g.code}</span> 問題{g.from}〜{g.to}</a>)}
+    </nav>
+
+    {groups.map((g) => (
+      <section class={`ks-level lv-${g.code}`} id={g.code.toLowerCase()}>
+        <h2 class="ks-h2"><span class="level-chip">{g.code}</span>{g.name}（問題{g.from}〜{g.to}）</h2>
+        {g.qs.map((q) => {
+          const audio = audioOf(q.audio);
+          const script = scriptOf(q.audio);
+          const unit = unitById.get(q.unit);
+          const unitUrl = unit && courseVisible && isRoutable(unit) ? unit.data.url : null;
+          return (
+            <article class="ks-q" id={`q${q.i + 1}`} data-q={q.i} data-correct={q.correctIndex}>
+              <p class="ks-head"><span class="ks-num">問題{q.i + 1}</span><span class="ks-tag">{SKILL_LABEL[q.skill]}</span><span class="ks-result" data-result hidden></span></p>
+              {audio && script.length > 0 && (
+                <div class="ks-audio">
+                  <audio controls preload="none" src={audio.src}></audio>
+                  <AiAudioLabel />
+                  <div class="ks-script" lang="es">
+                    <p class="ks-script-title" lang="ja">スクリプト</p>
+                    {script.map((l) => <p>{l.who && <span class="ks-who" lang="ja">{l.who}：</span>}{l.line}</p>)}
+                  </div>
+                </div>
+              )}
+              {q.passage && <blockquote class="ks-passage" lang="es">{q.passage}</blockquote>}
+              <p class="ks-question">{q.question}</p>
+              <ol class="ks-opts">
+                {q.options.map((o, oi) => (
+                  <li class:list={[{ 'is-correct': oi === q.correctIndex }]} data-i={oi}>
+                    <span class="ks-mark" aria-hidden="true">{oi === q.correctIndex ? <Check size={16} /> : oi + 1}</span>
+                    <span class="ks-o">{o}</span>
+                    {oi === q.correctIndex && <span class="ks-badge">正解</span>}
+                    <span class="ks-yours" hidden>あなたの回答</span>
+                  </li>
+                ))}
+              </ol>
+              <p class="ks-unknown" hidden></p>
+              <div class="ks-expl">
+                <p class="ks-expl-title">解説</p>
+                <p>{q.explanation}</p>
+              </div>
+              <p class="ks-unit">
+                {unitUrl
+                  ? <a href={unitUrl}>このポイントを学ぶ：ユニット{q.unit}「{unit!.data.shortTitle}」→</a>
+                  : <a href={levelUrl(g.code)}>{g.code} {g.name}の学習ページへ →</a>}
+              </p>
+            </article>
+          );
+        })}
+      </section>
+    ))}
+
+    <p class="ks-back"><a href={LEVEL_TEST_URL}>← レベル診断テストに戻る</a></p>
+  </section>
+</BaseLayout>
+
+<script>
+  // Marca las respuestas guardadas por el test (LevelTestCard.astro) si son de esta misma versión.
+  const root = document.querySelector<HTMLElement>('[data-kaisetsu]');
+  let saved: { level?: string; version?: string; answers?: Record<string, number> } | null = null;
+  try { saved = JSON.parse(localStorage.getItem('supein.levelTest.v2') ?? 'null'); } catch { saved = null; }
+  if (root && saved?.answers && saved.version === root.dataset.version) {
+    let ok = 0;
+    const qs = [...root.querySelectorAll<HTMLElement>('.ks-q')];
+    for (const q of qs) {
+      const a = saved.answers[q.dataset.q ?? ''];
+      const correct = Number(q.dataset.correct);
+      const result = q.querySelector<HTMLElement>('[data-result]')!;
+      result.hidden = false;
+      if (a === correct) { ok++; result.textContent = '正解'; result.classList.add('is-ok'); }
+      else result.textContent = '不正解';
+      if (a >= 0) q.querySelector<HTMLElement>(`.ks-opts li[data-i="${a}"] .ks-yours`)!.hidden = false;
+      else {
+        const u = q.querySelector<HTMLElement>('.ks-unknown')!;
+        u.hidden = false;
+        u.textContent = a === -2 ? 'あなたの回答：音声を聞けなかったため飛ばしました' : 'あなたの回答：わからない';
+      }
+    }
+    const summary = root.querySelector<HTMLElement>('[data-summary]')!;
+    summary.hidden = false;
+    summary.querySelector('[data-summary-level]')!.textContent = `推定レベル：${saved.level === 'pre-A1' ? 'A1（前半）' : saved.level}　`;
+    summary.querySelector('[data-summary-score]')!.textContent = `正答数：${qs.length}問中${ok}問`;
+  }
+</script>
+
+<style>
+  .ks { max-width: 820px; font-family: 'Noto Sans JP', system-ui, sans-serif; color: #1A1A1A; }
+  .ks-lead { font-size: 15px; line-height: 1.9; color: #3a4654; }
+  .ks-summary { margin-top: 20px; padding: 16px 20px; border-left: 4px solid #002147; border-radius: 0 12px 12px 0; background: #F0F4F8; font-size: 15px; line-height: 1.8; }
+  .ks-summary-title { font-weight: 700; color: #002147; }
+  .ks-summary-note { font-size: 13px; color: #5A6B80; }
+  .ks-nav { display: flex; flex-wrap: wrap; gap: 8px 10px; margin: 24px 0 8px; }
+  .ks-nav a { display: inline-flex; align-items: center; gap: 6px; padding: 6px 12px 6px 6px; border: 1px solid #E3E8EF; border-radius: 999px; background: #fff; font-size: 13px; color: #1A1A1A; text-decoration: none; }
+  .ks-nav a:hover { border-color: #002147; }
+  .ks-level { margin-top: 40px; }
+  .ks-h2 { display: flex; align-items: center; gap: 10px; margin: 0 0 18px; padding-bottom: 10px; border-bottom: 2px solid #E8E8E6; font-size: 21px; font-weight: 700; color: #002147; }
+  .ks-q { margin: 0 0 18px; padding: 22px 24px; border: 1px solid #E3E8EF; border-radius: 16px; background: #fff; scroll-margin-top: 16px; }
+  .ks-head { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; margin: 0; }
+  .ks-num { font-weight: 700; font-size: 15px; color: #002147; }
+  .ks-tag { padding: 3px 11px; border-radius: 999px; background: #FCEBEE; color: #C8102E; font-weight: 700; font-size: 12px; }
+  .ks-result { margin-left: auto; padding: 3px 11px; border-radius: 999px; background: #F0F4F8; color: #5A6B80; font-size: 12px; font-weight: 700; }
+  .ks-result.is-ok { background: #E7F4EC; color: #1F6B3A; }
+  .ks-audio { margin-top: 14px; }
+  .ks-audio audio { display: block; width: 100%; max-width: 460px; margin-bottom: 6px; }
+  .ks-script { margin-top: 10px; padding: 12px 16px; border-radius: 10px; background: #F7F9FC; font-family: 'Noto Serif JP', Georgia, serif; font-size: 15.5px; line-height: 1.8; color: #25303d; }
+  .ks-script p { margin: 0 0 4px; }
+  .ks-script-title { font-family: 'Noto Sans JP', sans-serif; font-weight: 700; font-size: 12px; color: #5A6B80; letter-spacing: .06em; }
+  .ks-who { font-family: 'Noto Sans JP', sans-serif; font-weight: 700; font-size: 13px; color: #002147; }
+  .ks-passage { margin: 14px 0 0; padding: 12px 16px; border-left: 3px solid #002147; border-radius: 0 10px 10px 0; background: #F7F9FC; font-family: 'Noto Serif JP', Georgia, serif; font-size: 15.5px; line-height: 1.8; color: #25303d; }
+  .ks-question { margin: 14px 0 12px; font-weight: 700; font-size: 18px; line-height: 1.6; }
+  .ks-opts { display: grid; gap: 8px; margin: 0; padding: 0; list-style: none; }
+  .ks-opts li { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; margin: 0; padding: 10px 14px; border: 1.5px solid #E3E8EF; border-radius: 12px; font-size: 16px; }
+  .ks-opts li.is-correct { border-color: #2E7D4F; background: #F1F8F3; }
+  .ks-mark { display: grid; place-items: center; flex: none; width: 26px; height: 26px; border-radius: 7px; background: #F0F4F8; color: #5A6B80; font-weight: 700; font-size: 12px; }
+  .is-correct .ks-mark { background: #2E7D4F; color: #fff; }
+  .ks-badge { padding: 2px 9px; border-radius: 999px; background: #2E7D4F; color: #fff; font-size: 11.5px; font-weight: 700; }
+  .ks-yours { padding: 2px 9px; border-radius: 999px; background: #002147; color: #fff; font-size: 11.5px; font-weight: 700; }
+  .ks-unknown { margin: 10px 0 0; font-size: 14px; color: #5A6B80; }
+  .ks-expl { margin-top: 14px; padding: 14px 16px; border-radius: 12px; background: #FAFAF8; border: 1px solid #EEF1F5; }
+  .ks-expl p { margin: 0; font-size: 15px; line-height: 1.9; }
+  .ks-expl-title { margin-bottom: 4px !important; font-weight: 700; font-size: 13px !important; color: #C8102E; letter-spacing: .06em; }
+  .ks-unit { margin: 12px 0 0; font-size: 14px; }
+  .ks-unit a, .ks-back a { color: #C8102E; text-decoration: underline; text-underline-offset: 3px; }
+  .ks-back { margin-top: 32px; font-size: 15px; }
+  @media (max-width: 640px) {
+    .ks-q { padding: 18px 16px; }
+    .ks-question { font-size: 16.5px; }
+    .ks-h2 { font-size: 18px; }
+  }
+</style>

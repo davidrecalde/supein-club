@@ -111,6 +111,7 @@ La entonación y la conexión entre palabras (A2 y B1) se añadieron a `pronunci
     - Resultado inmediato y gratis: nivel, puntos fuertes y débiles, y **「ユニットNから始めましょう」** con enlace a la unidad y a su hub de nivel.
     - Debajo, la tarjeta pequeña de LINE (punto 23) y, cuando exista, la opción de email (punto 26).
     - Se conservan el `pubDate`, el FAQ y los H2 que se puedan; el título deja de decir 「A1–B2」.
+    - **v3 (16 de noviembre de 2026, decisión de David):** 60 preguntas (10 por nivel, con 2 de audio por nivel), se responden todas, sin mostrar el nivel de cada pregunta ni si se acierta; resultado con barras por nivel y nivel estimado en grande; soluciones en una página aparte noindex (`/level-test/kaisetsu/`). Sustituye a «el test se detiene cuando falla un nivel». Detalle en ARCHITECTURE.md.
 20. **Páginas de verbo y conjugador:** cada tiempo verbal enlaza a la unidad que lo enseña (ya preparado: bloque 「この動詞を学ぶユニット」).
 
 ### Fase C. Lanzamiento (un único PR, cuando estén los audios)
