@@ -29,6 +29,8 @@ export const NOINDEX_PATHS = [
   '/food/restaurants-tokyo/',
   // Pantalla de preferencias del curso: herramienta sin intención de búsqueda (noindex,follow fijo).
   '/language/learn-spanish/welcome/',
+  // Soluciones del test de nivel: solo se enlazan desde el resultado del test (noindex,follow fijo).
+  '/language/learn-spanish/level-test/kaisetsu/',
   '/travel/andalusia/',
   '/travel/best-season/',
   '/travel/canarias/',

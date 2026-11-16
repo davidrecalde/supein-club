@@ -16,6 +16,7 @@
     "images:variants": "node scripts/images/variants.mjs",
     "tts:generate": "node scripts/tts/generate.mjs",
     "tts:encode": "node scripts/tts/encode.mjs",
+    "tts:level-test": "node scripts/tts/level-test.mjs",
     "redirects:check": "node scripts/check-redirects.mjs",
     "csp:check": "node src/integrations/csp-check.mjs",
     "review:due": "node scripts/check-review-dates.mjs"

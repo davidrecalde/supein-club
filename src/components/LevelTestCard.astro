@@ -1,38 +1,30 @@
 ---
-// Test de nivel v2 (docs/language/plan-hub-embudo.md, punto 19).
-// Bloques A1→C2 de 6 preguntas; un bloque se aprueba con 4 aciertos y el test se detiene en el
-// primer bloque no aprobado. El resultado da el nivel, las destrezas y por dónde empezar: la
-// unidad (si el curso ya es visible) o la página del nivel. Todo el contenido está en el HTML;
-// el JavaScript solo corrige, muestra los bloques de uno en uno y calcula el resultado.
+// Test de nivel v3 (16 de noviembre de 2026; docs/language/plan-hub-embudo.md, punto 19).
+// 60 preguntas, 10 por nivel, de menos a más difíciles; no se muestra el nivel de cada pregunta ni si
+// la respuesta es correcta. Al final: barras por nivel, nivel estimado (último nivel alcanzado de forma
+// consecutiva con el 70 % de aciertos), destrezas, unidad de inicio y enlace a la página de soluciones.
+// Todo el contenido está en el HTML; sin JavaScript se ven las preguntas en lista. El JavaScript
+// muestra las fichas de una en una, guarda el progreso en localStorage y calcula el resultado.
+import { Check, Clock, ExternalLink, Flag, Headphones, CircleHelp, Info, List, Pause, Play, RotateCcw, Save, TrendingUp, UserX, Volume2, ArrowLeft, ArrowRight } from 'lucide-astro';
+import AiAudioLabel from './course/AiAudioLabel.astro';
 import { COURSE_LEVELS, WELCOME_URL, levelUrl } from '../data/course';
 import { getAllUnits, isCourseVisible, isRoutable } from '../utils/units';
-
-interface LevelTestItem {
-  question: string;
-  options: string[];
-  correctIndex: number;
-  level: 'a1' | 'a2' | 'b1' | 'b2' | 'c1' | 'c2';
-  skill: 'grammar' | 'vocabulary' | 'reading';
-  unit: number;
-  passage?: string;
-  explanation: string;
-}
+import { PASS_RATIO, SKILL_LABEL, SOLUTIONS_URL, activeQuestions, audioOf, testVersion, type LevelTestItem } from '../utils/level-test';
 
 interface Props {
   levelTest: LevelTestItem[];
-  title?: string;
 }
 
-const { levelTest, title = 'レベル診断テスト' } = Astro.props;
-const PASS = 4;
+const items = activeQuestions(Astro.props.levelTest);
+const version = testVersion(items);
+const total = items.length;
+const listeningCount = items.filter((q) => q.skill === 'listening').length;
+const minutes = Math.max(5, Math.round((total * 20) / 60 / 5) * 5);
 
 const courseVisible = await isCourseVisible();
 const units = await getAllUnits();
 const unitInfo = Object.fromEntries(
-  units.map((u) => [
-    u.data.unit,
-    { title: u.data.shortTitle, level: u.data.level, url: courseVisible && isRoutable(u) ? u.data.url : null },
-  ]),
+  units.map((u) => [u.data.unit, { title: u.data.shortTitle, url: courseVisible && isRoutable(u) ? u.data.url : null }]),
 );
 
 const LEVEL_DESC: Record<string, string> = {
@@ -43,282 +35,742 @@ const LEVEL_DESC: Record<string, string> = {
   C1: 'ニュアンスや文体を使い分け、仕事や学業でスペイン語を使える段階です。',
   C2: 'ことわざや専門的な文章まで理解できる、最上級の段階です。',
 };
-const levels = COURSE_LEVELS.map((l) => ({ code: l.code, name: l.name, first: l.first, last: l.last, url: levelUrl(l.code), desc: LEVEL_DESC[l.code] }));
+const levelsInTest = COURSE_LEVELS.filter((l) => items.some((q) => q.level.toUpperCase() === l.code));
+const levels = levelsInTest.map((l) => ({ code: l.code, name: l.name, first: l.first, last: l.last, url: levelUrl(l.code), desc: LEVEL_DESC[l.code] }));
+const skills = (['grammar', 'vocabulary', 'reading', 'listening'] as const).filter((s) => items.some((q) => q.skill === s));
 
-const blocks = COURSE_LEVELS.map((l) => ({ ...l, items: levelTest.filter((q) => q.level.toUpperCase() === l.code) })).filter((b) => b.items.length > 0);
-const SKILL_LABEL = { grammar: '文法', vocabulary: '語彙', reading: '読解' } as const;
-let n = 0;
+const isEs = (s: string) => !/[぀-ヿ㐀-鿿]/.test(s);
+const bars = (seed: number) => Array.from({ length: 40 }, (_, i) => Math.round(22 + 68 * Math.abs(Math.sin((i + seed) * 1.7) * Math.cos((i + seed) * 0.45))));
 ---
 
-<div class="lt2" data-level-test data-pass={PASS} data-units={JSON.stringify(unitInfo)} data-levels={JSON.stringify(levels)} data-course-visible={String(courseVisible)}>
-  <div class="lt2-head">
-    <h3 class="lt2-title">{title}</h3>
-    <p class="lt2-sub">1ブロック6問・4問正解で次のレベルへ</p>
+<script is:inline>document.documentElement.classList.add('lt3-js');</script>
+<div class="lt3" id="level-test" data-level-test data-version={version} data-pass={PASS_RATIO} data-solutions={SOLUTIONS_URL}
+  data-units={JSON.stringify(unitInfo)} data-levels={JSON.stringify(levels)} data-pagefind-ignore>
+  <div class="lt3-bar">
+    <p class="lt3-title"><span class="lt3-dot" aria-hidden="true"></span>スペイン語レベル診断テスト</p>
+    <p class="lt3-counter" aria-live="polite"><b data-counter>0</b> / {total}<small data-remaining>約{minutes}分</small></p>
+  </div>
+  <div class="lt3-prog" role="progressbar" aria-label="回答した問題" aria-valuemin="0" aria-valuemax={total} aria-valuenow="0">
+    <span data-progress></span><i style="left:25%"></i><i style="left:50%"></i><i style="left:75%"></i>
   </div>
 
-  {blocks.map((b, bi) => (
-    <section class={`lt2-block lv-${b.code}`} data-block={bi} aria-label={`ブロック${bi + 1}：${b.code} ${b.name}`}>
-      <p class="lt2-block-title"><span class="level-chip">{b.code} {b.name}</span> ブロック{bi + 1}（{b.items.length}問）</p>
-      {b.items.map((item) => {
-        n++;
-        return (
-          <div class="lt2-q" data-q data-correct-index={item.correctIndex} data-unit={item.unit} data-skill={item.skill}>
-            {item.passage && <blockquote class="lt2-passage" lang="es">{item.passage}</blockquote>}
-            <p class="lt2-question"><span class="lt2-num">{n}.</span> <span class="lt2-skill">{SKILL_LABEL[item.skill]}</span> {item.question}</p>
-            <div class="lt2-options">
-              {item.options.map((option, oi) => (
-                <button type="button" class="lt2-option" data-option={oi}>{option}</button>
-              ))}
+  <div class="lt3-stage">
+    <div class="lt3-toast" data-toast role="status"><Flag size={18} /><span></span></div>
+    <div class="lt3-deck" data-deck>
+      <div class="lt3-ghost g2" aria-hidden="true"></div>
+      <div class="lt3-ghost g1" aria-hidden="true"></div>
+
+      <section class="lt3-card lt3-screen is-current" data-screen="start" aria-label="テストの説明">
+        <p class="lt3-eyebrow">無料・登録不要</p>
+        <h3 class="lt3-h">あなたのスペイン語は、<br />今どのレベル？</h3>
+        <p class="lt3-sub">{total}問に答えると、A1〜C2のどのあたりにいるかがわかります。問題は少しずつ難しくなります。正解は最後にまとめてわかります。</p>
+        <ul class="lt3-feats">
+          <li><span class="lt3-ic"><List size={18} /></span>全{total}問</li>
+          <li><span class="lt3-ic"><Clock size={18} /></span>約{minutes}分</li>
+          {listeningCount > 0 && <li><span class="lt3-ic"><Volume2 size={18} /></span>音声問題あり</li>}
+          <li><span class="lt3-ic"><Save size={18} /></span>途中保存OK</li>
+          <li><span class="lt3-ic"><UserX size={18} /></span>登録不要</li>
+        </ul>
+        {listeningCount > 0 && (
+          <p class="lt3-notice"><Headphones size={18} /><span>音声問題が{listeningCount}問あります。イヤホンがあると安心です。今は音を出せない場合は、テスト中に「最後に回す」を選べます。</span></p>
+        )}
+        <div class="lt3-go">
+          <button type="button" class="lt3-btn lt3-btn-red lt3-btn-big" data-act="begin">テストを始める <ArrowRight size={20} /></button>
+          <p class="lt3-fine">わからない問題は「わからない」を選んでください。当てずっぽうで答えるより、正確な結果が出ます。</p>
+        </div>
+      </section>
+
+      <section class="lt3-card lt3-screen" data-screen="resume" aria-label="前回の続き">
+        <p class="lt3-eyebrow">おかえりなさい</p>
+        <h3 class="lt3-h">前回の続きがあります</h3>
+        <div class="lt3-resume">
+          <div class="lt3-ring" data-ring><span data-ring-n>0</span></div>
+          <p><b data-resume-title></b><br /><span data-resume-sub></span></p>
+        </div>
+        <div class="lt3-btns">
+          <button type="button" class="lt3-btn lt3-btn-red lt3-btn-big" data-act="continue">続きから <ArrowRight size={20} /></button>
+          <button type="button" class="lt3-btn lt3-btn-out lt3-btn-big" data-act="fresh">最初から</button>
+        </div>
+      </section>
+
+      <ol class="lt3-list">
+        {items.map((q, i) => {
+          const audio = audioOf(q.audio);
+          const parts = q.question.split('___');
+          return (
+            <li class="lt3-card lt3-q" data-q={i} data-level={q.level.toUpperCase()} data-skill={q.skill} data-unit={q.unit} data-correct={q.correctIndex}>
+              <p class="lt3-qhead"><span class="lt3-tag">{SKILL_LABEL[q.skill]}</span><span class="lt3-qnum">問題{i + 1}</span></p>
+              {audio && (
+                <div class="lt3-audio">
+                  <p class="lt3-inst">音声を聞いて、質問に答えてください。</p>
+                  <div class="lt3-player">
+                    <button type="button" class="lt3-play" data-act="play" aria-label="音声を再生">
+                      <span class="i-play"><Play size={22} /></span><span class="i-pause"><Pause size={22} /></span>
+                    </button>
+                    <div class="lt3-wave" aria-hidden="true">{bars(i).map((h) => <b style={`height:${h}%`}></b>)}</div>
+                    <audio preload="none" src={audio.src}></audio>
+                  </div>
+                  <p class="lt3-plays"><Volume2 size={16} /><span data-plays>あと<b>2</b>回再生できます</span><AiAudioLabel /></p>
+                </div>
+              )}
+              {q.passage && <blockquote class="lt3-passage" lang="es">{q.passage}</blockquote>}
+              <p class:list={['lt3-qtext', { es: isEs(q.question) }]} lang={isEs(q.question) ? 'es' : undefined} tabindex="-1">
+                {parts.map((p, k) => <>{k > 0 && <span class="lt3-blank" role="img" aria-label="空欄"></span>}{p}</>)}
+              </p>
+              <div class="lt3-opts">
+                {q.options.map((o, oi) => (
+                  <button type="button" class="lt3-opt" data-act="answer" data-i={oi}>
+                    <span class="lt3-key" aria-hidden="true">{oi + 1}</span>
+                    <span class:list={['lt3-o', { es: isEs(o) }]} lang={isEs(o) ? 'es' : undefined}>{o}</span>
+                  </button>
+                ))}
+              </div>
+              <div class="lt3-alt">
+                <button type="button" data-act="answer" data-i="-1"><CircleHelp size={17} />わからない</button>
+                {audio && (
+                  <button type="button" data-act="defer">
+                    <Clock size={17} /><span class="d-first">今は音声を聞けない（最後に回す）</span><span class="d-again">音声を聞けないので、この問題を飛ばす</span>
+                  </button>
+                )}
+              </div>
+            </li>
+          );
+        })}
+      </ol>
+
+      <section class="lt3-card lt3-screen lt3-result" data-screen="result" aria-label="診断結果" aria-live="polite">
+        <p class="lt3-eyebrow">診断結果</p>
+        <h3 class="lt3-h lt3-h-sm">レベル別の正答数</h3>
+        <div class="lt3-rows">
+          {levels.map((l) => (
+            <div class={`lt3-row lv-${l.code}`} data-row={l.code}>
+              <span class="lt3-lv"><span class="level-chip">{l.code}</span><span class="lt3-lvname">{l.name}</span></span>
+              <span class="lt3-track"><span class="lt3-fill" data-fill></span></span>
+              <span class="lt3-sc"><b data-ok>0</b><small> / <span data-total>0</span></small></span>
             </div>
-            <div class="lt2-expl" hidden><p>{item.explanation}</p></div>
-          </div>
-        );
-      })}
-      <div class="lt2-block-result" hidden>
-        <p class="lt2-block-score"></p>
-        {bi < blocks.length - 1 && <button type="button" class="lt2-btn lt2-next" hidden>次のレベル（{blocks[bi + 1].code}）へ進む</button>}
-        <button type="button" class="lt2-btn lt2-finish" hidden>結果を見る</button>
-      </div>
-    </section>
-  ))}
+          ))}
+        </div>
+        <div class="lt3-estimate">
+          <p class="lt3-est-lbl">あなたの推定レベル</p>
+          <p class="lt3-est-big" data-est-code></p>
+          <p class="lt3-est-name" data-est-name></p>
+          <p class="lt3-est-desc" data-est-desc></p>
+          <p class="lt3-near" data-near hidden><TrendingUp size={17} /><span></span></p>
+        </div>
+        <p class="lt3-disc"><Info size={18} /><span>この結果は、{total}問の回答から推定した<b>目安</b>です。公式のレベル認定試験ではありません。スペイン語力を公式に証明するには、セルバンテス文化センターの<b>DELE</b>が必要です。</span></p>
+        <div class="lt3-skills">
+          {skills.map((s) => (
+            <div class="lt3-sk" data-skill-box={s}><p>{SKILL_LABEL[s]}</p><b><span data-ok>0</span><small> / <span data-total>0</span></small></b><i><u data-fill></u></i></div>
+          ))}
+        </div>
+        <p class="lt3-skipnote" data-skipnote hidden></p>
+        <div class="lt3-next" data-next>
+          <p class="lt3-eyebrow">次の一歩</p>
+          <p class="lt3-next-title" data-next-title></p>
+          <div class="lt3-next-links" data-next-links></div>
+        </div>
+        <div class="lt3-more">
+          <a class="lt3-btn lt3-btn-out" data-solutions-link target="_blank" rel="noopener nofollow"><ExternalLink size={18} />全{total}問の解説を見る（新しいタブ）</a>
+          <span class="lt3-cmp" data-compare hidden><TrendingUp size={17} /><span></span></span>
+        </div>
+        <div class="lt3-line" data-line-source="level-test" hidden>
+          <p>新しいユニットや学習のヒントを、LINEでお知らせしています。</p>
+          <a class="lt3-line-btn" href="https://lin.ee/vx6jpud" target="_blank" rel="noopener noreferrer">LINEで友だち追加</a>
+          <button type="button" class="lt3-line-close" data-act="line-close" aria-label="閉じる">×</button>
+        </div>
+        {courseVisible && <p class="lt3-welcome"><a href={WELCOME_URL}>結果に合わせて学習設定をする（ペース・例文の数など）→</a></p>}
+        <p class="lt3-again"><button type="button" class="lt3-btn lt3-btn-ghost" data-act="restart"><RotateCcw size={18} />もう一度挑戦する</button></p>
+      </section>
+    </div>
 
-  <div class="lt2-result" hidden aria-live="polite">
-    <p class="lt2-result-label">あなたの推定レベル</p>
-    <p class="lt2-result-level"></p>
-    <p class="lt2-result-desc"></p>
-    <ul class="lt2-skills"></ul>
-    <div class="lt2-start"></div>
-    <div class="lt2-weak" hidden>
-      <p class="lt2-weak-title">見直したい項目</p>
-      <ul></ul>
+    <div class="lt3-confirm" data-confirm hidden>
+      <div class="lt3-confirm-box" role="dialog" aria-modal="true" aria-labelledby="lt3-confirm-title">
+        <p class="lt3-confirm-title" id="lt3-confirm-title">最初からやり直しますか？</p>
+        <p data-confirm-text>これまでの回答は消えます。</p>
+        <div class="lt3-btns lt3-btns-center">
+          <button type="button" class="lt3-btn lt3-btn-red" data-act="reset-yes">やり直す</button>
+          <button type="button" class="lt3-btn lt3-btn-out" data-act="reset-no">テストを続ける</button>
+        </div>
+      </div>
     </div>
-    <div class="lt2-line" data-line-source="level-test" hidden>
-      <p>新しいユニットや学習のヒントを、LINEでお知らせしています。</p>
-      <a class="lt2-line-btn" href="https://lin.ee/vx6jpud" target="_blank" rel="noopener noreferrer">LINEで友だち追加</a>
-      <button type="button" class="lt2-line-close" aria-label="閉じる">×</button>
-    </div>
-    {courseVisible && (
-      <p class="lt2-welcome"><a href={WELCOME_URL}>結果に合わせて学習設定をする（ペース・例文の数など）→</a></p>
-    )}
-    <button type="button" class="lt2-btn lt2-reset">もう一度挑戦する</button>
   </div>
+
+  <div class="lt3-foot" data-foot hidden>
+    <button type="button" data-act="back"><ArrowLeft size={18} />戻る</button>
+    <span class="lt3-save"><Check size={14} />回答は自動で保存されます</span>
+    <button type="button" data-act="reset"><RotateCcw size={18} />最初からやり直す</button>
+  </div>
+  <noscript><p class="lt3-nojs">このテストを受けるには、JavaScript を有効にしてください。問題は上に一覧で表示しています。</p></noscript>
 </div>
+<p class="lt3-disclaimer">このレベル診断テストは公式の試験ではなく、DELE などの公式試験をまねたものでもありません。結果は、学習の参考にしていただくための目安です。</p>
 
 <script>
+  const PROGRESS_KEY = 'supein.levelTest.v3.progress';
+  // Mismo nombre que la v2: CourseContinue.astro lee de aquí el nivel y la unidad de inicio.
   const RESULT_KEY = 'supein.levelTest.v2';
   const LINE_KEY = 'supein.lineCard.levelTest';
   const store = {
     get(k: string) { try { return localStorage.getItem(k); } catch { return null; } },
-    set(k: string, v: string) { try { localStorage.setItem(k, v); } catch { /* sin almacenamiento */ } },
+    set(k: string, v: string) { try { localStorage.setItem(k, v); } catch { /* sin almacenamiento: el test funciona sin guardar */ } },
+    del(k: string) { try { localStorage.removeItem(k); } catch { /* idem */ } },
   };
+  const gtag = (...args: unknown[]) => (window as any).gtag?.(...args);
+  const SKIP = -2; // pregunta de audio que no se pudo escuchar
+  const UNKNOWN = -1; // わからない
 
-  type UnitInfo = { title: string; level: string; url: string | null };
+  type UnitInfo = { title: string; url: string | null };
   type LevelInfo = { code: string; name: string; first: number; last: number; url: string; desc: string };
+  type Progress = { v: string; order: number[]; cursor: number; answers: Record<string, number>; deferred: number[]; date: string };
 
   document.querySelectorAll<HTMLElement>('[data-level-test]').forEach((root) => {
     const PASS = Number(root.dataset.pass);
+    const VERSION = root.dataset.version ?? '';
     const units: Record<string, UnitInfo> = JSON.parse(root.dataset.units ?? '{}');
     const levels: LevelInfo[] = JSON.parse(root.dataset.levels ?? '[]');
-    const blocks = [...root.querySelectorAll<HTMLElement>('.lt2-block')];
-    const result = root.querySelector<HTMLElement>('.lt2-result')!;
-    const levelOfUnit = (u: number) => levels.find((l) => u >= l.first && u <= l.last) ?? levels[0];
-    const el = (tag: string, cls?: string, text?: string) => {
-      const e = document.createElement(tag);
-      if (cls) e.className = cls;
-      if (text) e.textContent = text;
-      return e;
+    const $ = <T extends HTMLElement = HTMLElement>(sel: string, el: ParentNode = root) => el.querySelector<T>(sel)!;
+    const cards = [...root.querySelectorAll<HTMLElement>('.lt3-q')];
+    const total = cards.length;
+    const deck = $('[data-deck]');
+    const foot = $('[data-foot]');
+    const confirmBox = $('[data-confirm]');
+    const screens = {
+      start: $('[data-screen="start"]'),
+      resume: $('[data-screen="resume"]'),
+      result: $('[data-screen="result"]'),
     };
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-    const questions = (b: HTMLElement) => [...b.querySelectorAll<HTMLElement>('[data-q]')];
-    const scoreOf = (b: HTMLElement) => questions(b).filter((q) => q.dataset.correct === 'true').length;
-    const done = (b: HTMLElement) => questions(b).every((q) => q.dataset.answered === 'true');
+    const fresh = (): Progress => ({ v: VERSION, order: cards.map((_, i) => i), cursor: 0, answers: {}, deferred: [], date: new Date().toISOString() });
+    let state = fresh();
+    let view: 'start' | 'resume' | 'question' | 'result' = 'start';
+    const plays = new Map<number, number>();
 
-    function showOnlyFirstBlock() {
-      blocks.forEach((b, i) => (b.hidden = i > 0));
+    const answered = () => Object.keys(state.answers).length;
+    const save = () => { state.date = new Date().toISOString(); store.set(PROGRESS_KEY, JSON.stringify(state)); };
+    function loadSaved(): Progress | null {
+      try {
+        const p = JSON.parse(store.get(PROGRESS_KEY) ?? 'null') as Progress | null;
+        if (!p || p.v !== VERSION || !Array.isArray(p.order) || p.order.length !== total) return null;
+        return Object.keys(p.answers).length > 0 && Object.keys(p.answers).length < total ? p : null;
+      } catch { return null; }
     }
 
-    function onBlockDone(b: HTMLElement) {
-      const i = blocks.indexOf(b);
-      const score = scoreOf(b);
-      const total = questions(b).length;
-      const passed = score >= PASS;
-      const box = b.querySelector<HTMLElement>('.lt2-block-result')!;
-      const next = b.querySelector<HTMLElement>('.lt2-next');
-      const finish = b.querySelector<HTMLElement>('.lt2-finish')!;
-      box.hidden = false;
-      box.querySelector('.lt2-block-score')!.textContent = passed
-        ? `${total}問中${score}問正解。このレベルは合格です！`
-        : `${total}問中${score}問正解。診断はここまでです。`;
-      if (passed && next && i < blocks.length - 1) {
-        next.hidden = false;
-        finish.hidden = false;
-        finish.textContent = 'ここで結果を見る';
+    // ── Cabecera: contador y barra de progreso ──
+    function header() {
+      const n = answered();
+      const pct = (n / total) * 100;
+      $('[data-progress]').style.width = `${pct}%`;
+      $('.lt3-prog').setAttribute('aria-valuenow', String(n));
+      $('[data-counter]').textContent = String(view === 'question' ? state.cursor + 1 : view === 'result' ? total : n);
+      const left = Math.max(1, Math.round((total - n) / 3));
+      $('[data-remaining]').textContent = view === 'result' ? '回答完了' : n === 0 ? `約${Math.max(5, Math.round(total / 3 / 5) * 5)}分` : `残り約${left}分`;
+    }
+
+    // ── Fichas: la actual sale hacia un lado y la nueva entra por el otro ──
+    function current() { return deck.querySelector<HTMLElement>('.lt3-card.is-current:not(.is-leaving)'); }
+    // Mientras pasa una ficha no se aceptan respuestas: un doble toque no responde dos preguntas.
+    let busy = false;
+    const activeCard = () => (view === 'question' ? cards[state.order[state.cursor]] : null);
+    function swap(next: HTMLElement, dir: 'next' | 'prev' | null, flat = false) {
+      const old = current();
+      deck.classList.toggle('is-flat', flat);
+      root.querySelectorAll('audio').forEach((a) => a.pause());
+      if (old === next) return;
+      if (old && dir && !reduceMotion) {
+        old.classList.add('is-leaving');
+        requestAnimationFrame(() => old.classList.add(dir === 'next' ? 'out-left' : 'out-right'));
+        setTimeout(() => old.classList.remove('is-current', 'is-leaving', 'out-left', 'out-right'), 420);
+        next.classList.add(dir === 'next' ? 'from-right' : 'from-left', 'is-current');
+        void next.offsetWidth;
+        requestAnimationFrame(() => next.classList.remove('from-right', 'from-left'));
       } else {
-        finish.hidden = false;
-        finish.textContent = '結果を見る';
+        old?.classList.remove('is-current');
+        next.classList.add('is-current');
       }
     }
+    function keepInView() {
+      const r = root.getBoundingClientRect();
+      if (r.top < -40 || r.top > window.innerHeight * 0.5) root.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth', block: 'start' });
+    }
 
-    function showResult() {
-      const answeredBlocks = blocks.filter((b) => !b.hidden && done(b));
-      let passedCount = 0;
-      for (const b of answeredBlocks) {
-        if (scoreOf(b) >= PASS) passedCount++;
-        else break;
+    function showScreen(name: 'start' | 'resume', dir: 'next' | 'prev' | null = null) {
+      view = name;
+      foot.hidden = true;
+      swap(screens[name], dir);
+      header();
+    }
+
+    function showQuestion(dir: 'next' | 'prev' | null) {
+      view = 'question';
+      const qi = state.order[state.cursor];
+      const card = cards[qi];
+      card.querySelectorAll('.lt3-opt').forEach((b) => b.classList.toggle('is-picked', Number((b as HTMLElement).dataset.i) === state.answers[qi]));
+      card.classList.toggle('is-deferred', state.deferred.includes(qi));
+      foot.hidden = false;
+      $('[data-act="back"]', foot).toggleAttribute('disabled', state.cursor === 0);
+      swap(card, dir);
+      header();
+      keepInView();
+      $('.lt3-qtext', card).focus({ preventScroll: true });
+    }
+
+    function toast(text: string) {
+      const t = $('[data-toast]');
+      $('span', t).textContent = text;
+      t.classList.add('is-on');
+      setTimeout(() => t.classList.remove('is-on'), 2800);
+    }
+
+    function answer(i: number, btn?: HTMLElement) {
+      if (busy) return;
+      busy = true;
+      const qi = state.order[state.cursor];
+      const first = !(String(qi) in state.answers);
+      state.answers[qi] = i;
+      btn?.classList.add('is-chosen');
+      state.cursor++;
+      save();
+      const n = answered();
+      if (first && n % 10 === 0) gtag('event', 'level_test_progress', { answered: n });
+      setTimeout(() => {
+        btn?.classList.remove('is-chosen');
+        busy = false;
+        if (state.cursor >= state.order.length) return finish();
+        showQuestion('next');
+        if (first) {
+          const msg = { [Math.round(total / 4)]: `4分の1が終わりました。残り${total - Math.round(total / 4)}問`, [Math.round(total / 2)]: `半分まで来ました。残り${total - Math.round(total / 2)}問`, [Math.round((total * 3) / 4)]: `あと${total - Math.round((total * 3) / 4)}問。もう少しです` }[n];
+          if (msg) toast(msg);
+        }
+      }, 180);
+    }
+
+    function defer() {
+      if (busy) return;
+      const qi = state.order[state.cursor];
+      if (state.deferred.includes(qi)) return answer(SKIP);
+      state.order.splice(state.cursor, 1);
+      state.order.push(qi);
+      state.deferred.push(qi);
+      save();
+      gtag('event', 'level_test_audio_deferred');
+      showQuestion('next');
+      toast('音声問題を最後に回しました');
+    }
+
+    // ── Audio: dos reproducciones por pregunta, como en el examen ──
+    function play(btn: HTMLElement) {
+      const card = btn.closest<HTMLElement>('.lt3-q')!;
+      const qi = Number(card.dataset.q);
+      const audio = $<HTMLAudioElement>('audio', card);
+      const label = $('[data-plays]', card);
+      const bars = [...card.querySelectorAll<HTMLElement>('.lt3-wave b')];
+      if (!audio.paused) return audio.pause();
+      const left = plays.get(qi) ?? 2;
+      const restart = audio.currentTime === 0 || audio.ended;
+      if (restart && left <= 0) return;
+      if (restart) {
+        plays.set(qi, left - 1);
+        audio.currentTime = 0;
       }
-      const failed = answeredBlocks[passedCount];
-      const reached = passedCount > 0 ? levels[passedCount - 1] : null;
+      if (!audio.dataset.wired) {
+        audio.dataset.wired = '1';
+        audio.addEventListener('play', () => card.classList.add('is-playing'));
+        audio.addEventListener('pause', () => card.classList.remove('is-playing'));
+        audio.addEventListener('timeupdate', () => {
+          const on = audio.duration ? Math.round((audio.currentTime / audio.duration) * bars.length) : 0;
+          bars.forEach((b, k) => b.classList.toggle('on', k < on));
+        });
+        audio.addEventListener('ended', () => {
+          audio.currentTime = 0;
+          bars.forEach((b) => b.classList.remove('on'));
+          const rest = plays.get(qi) ?? 0;
+          if (rest <= 0) { label.textContent = '再生回数の上限（2回）に達しました'; btn.setAttribute('disabled', ''); }
+          else label.innerHTML = `あと<b>${rest}</b>回再生できます`;
+        });
+        audio.addEventListener('error', () => { label.textContent = '音声を読み込めませんでした。「最後に回す」を選んでください。'; });
+      }
+      audio.play().catch(() => { /* el navegador bloqueó la reproducción */ });
+    }
 
-      // Por dónde empezar: en el primer bloque no aprobado, la unidad más temprana con error
-      // (o el principio del nivel si hubo pocos aciertos). Si se aprobó todo, el último bloque.
-      const wrongUnits = (b: HTMLElement) =>
-        questions(b).filter((q) => q.dataset.correct !== 'true').map((q) => Number(q.dataset.unit));
+    // ── Resultado ──
+    function finish() {
+      view = 'result';
+      foot.hidden = true;
+      const prev = (() => { try { return JSON.parse(store.get(RESULT_KEY) ?? 'null'); } catch { return null; } })();
+      const isOk = (c: HTMLElement) => state.answers[Number(c.dataset.q)] === Number(c.dataset.correct);
+      const byLevel = levels.map((l) => {
+        const qs = cards.filter((c) => c.dataset.level === l.code);
+        return { ...l, ok: qs.filter(isOk).length, all: qs.length, wrong: qs.filter((c) => !isOk(c)).map((c) => Number(c.dataset.unit)) };
+      });
+      let passed = 0;
+      for (const x of byLevel) { if (x.ok / x.all >= PASS) passed++; else break; }
+      const reached = passed > 0 ? byLevel[passed - 1] : null;
+      const next = byLevel[passed];
+
+      // Por dónde empezar: en el primer nivel no alcanzado, su principio si hubo pocos aciertos o la
+      // primera unidad con error; si se alcanzaron todos, la primera unidad con error del último.
       let startUnit: number;
-      if (failed) {
-        // Pocos aciertos: el nivel desde el principio. Si no, la primera unidad con error.
-        startUnit = scoreOf(failed) <= 2 ? levels[passedCount].first : Math.min(...wrongUnits(failed));
-      } else if (passedCount === blocks.length) {
-        const misses = wrongUnits(blocks[blocks.length - 1]);
-        startUnit = misses.length ? Math.min(...misses) : 62;
-      } else {
-        // Se detuvo después de aprobar: el principio del nivel siguiente.
-        startUnit = reached ? Math.min(reached.last + 1, 62) : 1;
-      }
-      const startLevel = levelOfUnit(startUnit);
+      if (next) startUnit = next.ok / next.all <= 0.4 ? next.first : Math.min(...next.wrong);
+      else { const last = byLevel[byLevel.length - 1]; startUnit = last.wrong.length ? Math.min(...last.wrong) : last.last; }
+      const startLevel = levels.find((l) => startUnit >= l.first && startUnit <= l.last) ?? levels[0];
 
-      // Nivel y descripción
-      const levelBox = result.querySelector<HTMLElement>('.lt2-result-level')!;
-      levelBox.replaceChildren();
-      const chip = el('span', `level-chip lv-${(reached ?? levels[0]).code}`, reached ? `${reached.code} ${reached.name}` : 'A1 Acceso（入門）');
-      levelBox.append(chip);
-      result.querySelector('.lt2-result-desc')!.textContent = reached
-        ? `${reached.desc}${failed ? `次は ${levels[passedCount].code} ${levels[passedCount].name} に挑戦しましょう。` : ''}`
-        : 'スペイン語はこれから。発音と基本の文から、一歩ずつ始めましょう。';
+      // Barras por nivel
+      byLevel.forEach((x) => {
+        const row = $(`[data-row="${x.code}"]`);
+        $('[data-ok]', row).textContent = String(x.ok);
+        $('[data-total]', row).textContent = String(x.all);
+        $('[data-fill]', row).style.width = '0';
+      });
+
+      // Nivel estimado
+      const code = reached?.code ?? 'A1';
+      const big = $('[data-est-code]');
+      big.textContent = code;
+      big.className = `lt3-est-big lv-${code}`;
+      $('[data-est-name]').textContent = reached ? reached.name : 'Acceso（前半）';
+      $('[data-est-desc]').textContent = reached ? reached.desc : 'スペイン語はこれから。発音と基本の文から、一歩ずつ始めましょう。';
+      const near = $('[data-near]');
+      near.hidden = !(reached && next && next.ok / next.all >= 0.5);
+      if (next) $('span', near).textContent = `${next.code} に近づいています`;
 
       // Destrezas
-      const answered = answeredBlocks.flatMap(questions);
-      const skills: Record<string, { label: string; ok: number; all: number }> = {
-        grammar: { label: '文法', ok: 0, all: 0 },
-        vocabulary: { label: '語彙', ok: 0, all: 0 },
-        reading: { label: '読解', ok: 0, all: 0 },
-      };
-      for (const q of answered) {
-        const s = skills[q.dataset.skill ?? 'grammar'];
-        s.all++;
-        if (q.dataset.correct === 'true') s.ok++;
-      }
-      const list = result.querySelector<HTMLElement>('.lt2-skills')!;
-      list.replaceChildren(
-        ...Object.values(skills).filter((s) => s.all).map((s) => {
-          const li = el('li');
-          li.append(el('span', 'lt2-skill-name', s.label), el('span', 'lt2-skill-bar'), el('span', 'lt2-skill-score', `${s.ok} / ${s.all}`));
-          (li.querySelector('.lt2-skill-bar') as HTMLElement).style.setProperty('--pct', `${Math.round((s.ok / s.all) * 100)}%`);
-          return li;
-        }),
-      );
+      root.querySelectorAll<HTMLElement>('[data-skill-box]').forEach((box) => {
+        const qs = cards.filter((c) => c.dataset.skill === box.dataset.skillBox);
+        const ok = qs.filter(isOk).length;
+        $('[data-ok]', box).textContent = String(ok);
+        $('[data-total]', box).textContent = String(qs.length);
+        $('[data-fill]', box).style.width = `${Math.round((ok / qs.length) * 100)}%`;
+      });
+      const skipped = Object.values(state.answers).filter((a) => a === SKIP).length;
+      const skipNote = $('[data-skipnote]');
+      skipNote.hidden = skipped === 0;
+      skipNote.textContent = `音声問題を${skipped}問飛ばしたため、聴解の結果は参考程度に見てください。`;
 
       // Siguiente paso
-      const start = result.querySelector<HTMLElement>('.lt2-start')!;
-      start.replaceChildren();
       const info = units[String(startUnit)];
+      const links = $('[data-next-links]');
+      links.replaceChildren();
+      const link = (cls: string, href: string, text: string) => Object.assign(document.createElement('a'), { className: cls, href, textContent: text });
       if (info?.url) {
-        start.append(el('p', 'lt2-start-title', `ユニット${startUnit}「${info.title}」から始めましょう`));
-        const a = el('a', 'lt2-btn lt2-start-btn', `ユニット${startUnit}へ進む →`) as HTMLAnchorElement;
-        a.href = info.url;
-        const hub = el('a', 'lt2-start-hub', `${startLevel.code} ${startLevel.name}のユニット一覧`) as HTMLAnchorElement;
-        hub.href = startLevel.url;
-        start.append(a, hub);
+        $('[data-next-title]').textContent = `ユニット${startUnit}「${info.title}」から始めましょう`;
+        links.append(link('lt3-btn lt3-btn-red', info.url, `ユニット${startUnit}へ進む →`), link('lt3-next-sub', startLevel.url, `${startLevel.code} ${startLevel.name}のユニット一覧`));
       } else {
-        start.append(el('p', 'lt2-start-title', `${startLevel.code} ${startLevel.name}の学習ページから始めましょう`));
-        const a = el('a', 'lt2-btn lt2-start-btn', `${startLevel.code} の学習ページへ →`) as HTMLAnchorElement;
-        a.href = startLevel.url;
-        start.append(a);
+        $('[data-next-title]').textContent = `${startLevel.code} ${startLevel.name}の学習ページから始めましょう`;
+        links.append(link('lt3-btn lt3-btn-red', startLevel.url, `${startLevel.code} の学習ページへ →`));
       }
 
-      // Puntos que repasar
-      const weak = result.querySelector<HTMLElement>('.lt2-weak')!;
-      const weakUnits = [...new Set(answered.filter((q) => q.dataset.correct !== 'true').map((q) => Number(q.dataset.unit)))].sort((a, b) => a - b);
-      const ul = weak.querySelector('ul')!;
-      ul.replaceChildren(
-        ...weakUnits.map((u) => {
-          const li = el('li');
-          const i = units[String(u)];
-          const label = `${levelOfUnit(u).code}・${i?.title ?? `ユニット${u}`}`;
-          if (i?.url) {
-            const a = el('a', '', `ユニット${u} ${label}`) as HTMLAnchorElement;
-            a.href = i.url;
-            li.append(a);
-          } else li.textContent = label;
-          return li;
-        }),
-      );
-      weak.hidden = weakUnits.length === 0;
+      // Soluciones (solo se enlazan desde aquí) y comparación con el intento anterior
+      const sol = $<HTMLAnchorElement>('[data-solutions-link]');
+      sol.href = root.dataset.solutions ?? '#';
+      const levelCode = reached?.code ?? 'pre-A1';
+      const cmp = $('[data-compare]');
+      cmp.hidden = !prev?.level;
+      if (prev?.level) $('span', cmp).textContent = `前回 ${prev.level === 'pre-A1' ? 'A1前半' : prev.level} → 今回 ${reached ? code : 'A1前半'}`;
 
-      // LINE: tarjeta pequeña, se puede cerrar y no vuelve
-      const line = result.querySelector<HTMLElement>('.lt2-line');
+      const line = root.querySelector<HTMLElement>('.lt3-line');
       if (line) line.hidden = store.get(LINE_KEY) === 'closed';
 
-      blocks.forEach((b) => b.querySelectorAll<HTMLElement>('.lt2-next, .lt2-finish').forEach((x) => (x.hidden = true)));
-      result.hidden = false;
-      result.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      swap(screens.result, 'next', true);
+      header();
+      keepInView();
+      byLevel.forEach((x, k) => setTimeout(() => { $('[data-fill]', $(`[data-row="${x.code}"]`)).style.width = `${(x.ok / x.all) * 100}%`; }, 300 + k * 110));
 
-      const levelCode = reached?.code ?? 'pre-A1';
-      store.set(RESULT_KEY, JSON.stringify({ level: levelCode, startUnit, date: new Date().toISOString() }));
-      (window as any).gtag?.('event', 'level_test_completed', { level: levelCode, start_unit: startUnit, answered: answered.length, correct: answered.filter((q) => q.dataset.correct === 'true').length });
+      const correct = cards.filter(isOk).length;
+      const scores = Object.fromEntries(byLevel.map((x) => [x.code, [x.ok, x.all]]));
+      store.set(RESULT_KEY, JSON.stringify({ level: levelCode, startUnit, date: new Date().toISOString(), version: VERSION, scores, answers: state.answers }));
+      store.del(PROGRESS_KEY);
+      gtag('event', 'level_test_completed', { level: levelCode, start_unit: startUnit, answered: total, correct, unknown: Object.values(state.answers).filter((a) => a === UNKNOWN).length });
+    }
+
+    function start() {
+      state = fresh();
+      plays.clear();
+      save();
+      gtag('event', 'level_test_start');
+      showQuestion('next');
+    }
+
+    function resetAll(dir: 'prev' | null = 'prev') {
+      confirmBox.hidden = true;
+      store.del(PROGRESS_KEY);
+      state = fresh();
+      plays.clear();
+      root.querySelectorAll<HTMLButtonElement>('.lt3-play').forEach((b) => b.removeAttribute('disabled'));
+      root.querySelectorAll<HTMLElement>('[data-plays]').forEach((l) => (l.innerHTML = 'あと<b>2</b>回再生できます'));
+      showScreen('start', dir);
+      keepInView();
     }
 
     root.addEventListener('click', (e) => {
-      const t = e.target as HTMLElement;
-      const option = t.closest<HTMLButtonElement>('.lt2-option');
-      if (option) {
-        const q = option.closest<HTMLElement>('[data-q]')!;
-        if (q.dataset.answered === 'true') return;
-        const chosen = Number(option.dataset.option);
-        const correct = Number(q.dataset.correctIndex);
-        const opts = [...q.querySelectorAll<HTMLButtonElement>('.lt2-option')];
-        opts.forEach((b) => (b.disabled = true));
-        opts[correct]?.classList.add('is-correct');
-        if (chosen !== correct) option.classList.add('is-wrong');
-        q.dataset.answered = 'true';
-        q.dataset.correct = String(chosen === correct);
-        q.querySelector<HTMLElement>('.lt2-expl')!.hidden = false;
-        const b = q.closest<HTMLElement>('.lt2-block')!;
-        if (done(b)) onBlockDone(b);
-        return;
+      const t = (e.target as HTMLElement).closest<HTMLElement>('[data-act]');
+      if (!t || t.hasAttribute('disabled')) return;
+      const act = t.dataset.act;
+      const inCard = t.closest('.lt3-q');
+      if (inCard && inCard !== activeCard()) return;
+      if (act === 'begin' || act === 'fresh') return start();
+      if (act === 'continue') return showQuestion('next');
+      if (act === 'answer' && view === 'question') return answer(Number(t.dataset.i), t.classList.contains('lt3-opt') ? t : undefined);
+      if (act === 'defer') return defer();
+      if (act === 'play') return play(t);
+      if (act === 'back' && state.cursor > 0 && !busy) { state.cursor--; save(); return showQuestion('prev'); }
+      if (act === 'reset') {
+        $('[data-confirm-text]').textContent = `これまでの回答（${answered()}問）は消えます。`;
+        confirmBox.hidden = false;
+        return $<HTMLButtonElement>('[data-act="reset-no"]').focus();
       }
-      if (t.closest('.lt2-next')) {
-        const b = t.closest<HTMLElement>('.lt2-block')!;
-        const next = blocks[blocks.indexOf(b) + 1];
-        b.querySelectorAll<HTMLElement>('.lt2-next, .lt2-finish').forEach((x) => (x.hidden = true));
-        if (next) {
-          next.hidden = false;
-          next.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }
-        return;
-      }
-      if (t.closest('.lt2-finish')) return showResult();
-      if (t.closest('.lt2-line-close')) {
-        store.set(LINE_KEY, 'closed');
-        t.closest<HTMLElement>('.lt2-line')!.hidden = true;
-        return;
-      }
-      if (t.closest('.lt2-reset')) {
-        root.querySelectorAll<HTMLElement>('[data-q]').forEach((q) => {
-          q.dataset.answered = 'false';
-          q.dataset.correct = 'false';
-          q.querySelectorAll<HTMLButtonElement>('.lt2-option').forEach((b) => {
-            b.disabled = false;
-            b.classList.remove('is-correct', 'is-wrong');
-          });
-          q.querySelector<HTMLElement>('.lt2-expl')!.hidden = true;
-        });
-        root.querySelectorAll<HTMLElement>('.lt2-block-result').forEach((x) => (x.hidden = true));
-        result.hidden = true;
-        showOnlyFirstBlock();
-        root.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }
+      if (act === 'reset-no') { confirmBox.hidden = true; return; }
+      if (act === 'reset-yes' || act === 'restart') return resetAll();
+      if (act === 'line-close') { store.set(LINE_KEY, 'closed'); t.closest<HTMLElement>('.lt3-line')!.hidden = true; }
     });
+    $('[data-solutions-link]').addEventListener('click', () => gtag('event', 'level_test_solutions_opened'));
 
-    showOnlyFirstBlock();
+    document.addEventListener('keydown', (e) => {
+      if (view !== 'question' || !confirmBox.hidden || e.altKey || e.ctrlKey || e.metaKey) return;
+      const tag = (e.target as HTMLElement).tagName;
+      if (tag === 'INPUT' || tag === 'TEXTAREA') return;
+      if (!root.contains(document.activeElement) && document.activeElement !== document.body) return;
+      if (e.key === 'Escape') return;
+      const k = Number(e.key);
+      if (!k) return;
+      const btn = activeCard()?.querySelector<HTMLElement>(`.lt3-opt[data-i="${k - 1}"]`);
+      if (btn) { e.preventDefault(); answer(k - 1, btn); }
+    });
+    confirmBox.addEventListener('keydown', (e) => { if (e.key === 'Escape') confirmBox.hidden = true; });
+
+    // Arranque: si hay un test a medias en este navegador, se ofrece seguir.
+    const saved = loadSaved();
+    if (saved) {
+      state = saved;
+      const n = answered();
+      $('[data-ring]').style.setProperty('--p', String(Math.round((n / total) * 100)));
+      $('[data-ring-n]').textContent = String(n);
+      $('[data-resume-title]').textContent = `${total}問中${n}問まで回答済み`;
+      const d = new Date(saved.date);
+      $('[data-resume-sub]').textContent = `${d.getMonth() + 1}月${d.getDate()}日に保存。残りは約${Math.max(1, Math.round((total - n) / 3))}分です。`;
+      showScreen('resume');
+    } else header();
   });
 </script>
+
+<style is:global>
+  .lt3 {
+    --lt3-navy: #002147;
+    --lt3-red: #C8102E;
+    --lt3-mute: #5A6B80;
+    --lt3-rule: #E3E8EF;
+    --lt3-soft: #F0F4F8;
+    --lt3-serif: 'Noto Serif JP', Georgia, serif;
+    position: relative;
+    margin: 8px 0 0;
+    background: #fff;
+    border: 1px solid var(--lt3-rule);
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 22px 48px -18px rgba(0, 33, 71, .22), 0 2px 6px rgba(0, 33, 71, .05);
+    font-family: 'Noto Sans JP', system-ui, sans-serif;
+    color: #1A1A1A;
+    scroll-margin-top: 16px;
+  }
+  .lt3 button { font: inherit; color: inherit; background: none; border: 0; cursor: pointer; }
+  .lt3 svg { flex: none; }
+  /* Por encima de los estilos de .prose del artículo. */
+  .lt3.lt3 p { margin: 0; }
+  .lt3 li.lt3-card { margin: 0; }
+
+  .lt3-bar { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 16px 28px; background: var(--lt3-navy); color: #fff; }
+  .lt3-title { display: flex; align-items: center; gap: 10px; font-weight: 700; font-size: 16px; letter-spacing: .02em; }
+  .lt3-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--lt3-red); }
+  .lt3-counter { text-align: right; font-size: 14px; line-height: 1.35; color: rgba(255, 255, 255, .75); white-space: nowrap; }
+  .lt3-counter b { font-size: 20px; color: #fff; }
+  .lt3-counter small { display: block; font-size: 11px; color: rgba(255, 255, 255, .6); }
+  .lt3-prog { position: relative; height: 7px; background: #DDE4EC; }
+  .lt3-prog span { position: absolute; inset: 0 auto 0 0; width: 0; background: var(--lt3-red); transition: width .45s cubic-bezier(.4, 0, .2, 1); }
+  .lt3-prog i { position: absolute; top: 0; bottom: 0; width: 2px; background: #fff; }
+
+  .lt3-stage { position: relative; padding: 34px 34px 40px; background: #F3F5F8; }
+  .lt3-deck { position: relative; padding-bottom: 18px; }
+  .lt3-deck.is-flat { padding-bottom: 0; }
+  .lt3-ghost { display: none; position: absolute; background: #fff; border: 1px solid var(--lt3-rule); border-radius: 18px; }
+  .lt3-js .lt3-ghost { display: block; }
+  .lt3-ghost.g1 { inset: 12px 14px 8px; z-index: 1; opacity: .85; }
+  .lt3-ghost.g2 { inset: 24px 28px 0; z-index: 0; opacity: .6; }
+  .lt3-deck.is-flat .lt3-ghost { display: none; }
+
+  .lt3 .lt3-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 16px; }
+  .lt3-card { position: relative; z-index: 3; background: #fff; border: 1px solid var(--lt3-rule); border-radius: 18px; padding: 32px 36px 28px; box-shadow: 0 10px 26px -14px rgba(0, 33, 71, .25); transition: transform .4s cubic-bezier(.4, 0, .2, 1), opacity .4s ease; }
+  /* Sin JavaScript: preguntas en lista; pantallas ocultas. Con JavaScript: una ficha cada vez. */
+  .lt3-screen { display: none; }
+  .lt3-js .lt3-list { display: block; }
+  .lt3-js .lt3-card { display: none; }
+  .lt3-js .lt3-card.is-current { display: block; }
+  .lt3-card.is-leaving { position: absolute; top: 0; left: 0; width: 100%; z-index: 4; }
+  .lt3-card.out-left { transform: translateX(-112%) rotate(-5deg); opacity: 0; }
+  .lt3-card.out-right { transform: translateX(112%) rotate(5deg); opacity: 0; }
+  .lt3-card.from-right { transform: translateX(70px); opacity: 0; transition: none; }
+  .lt3-card.from-left { transform: translateX(-70px); opacity: 0; transition: none; }
+
+  .lt3-qhead { display: flex; align-items: center; gap: 10px; }
+  .lt3-tag { display: inline-block; padding: 4px 12px; border-radius: 999px; background: #FCEBEE; color: var(--lt3-red); font-weight: 700; font-size: 12px; letter-spacing: .06em; }
+  .lt3-qnum { font-size: 12px; color: var(--lt3-mute); }
+  .lt3-js .lt3-qnum { display: none; }
+  .lt3-qtext { margin: 18px 0 24px !important; font-weight: 700; font-size: 21px; line-height: 1.6; word-break: auto-phrase; outline: none; }
+  .lt3-qtext.es { font-family: var(--lt3-serif); font-size: 26px; line-height: 1.5; }
+  .lt3-blank { display: inline-block; width: 78px; margin: 0 6px; border-bottom: 3px solid var(--lt3-navy); transform: translateY(-6px); }
+  .lt3 .lt3-passage { margin: 18px 0 0; padding: 16px 20px; border-left: 3px solid var(--lt3-navy); border-radius: 0 10px 10px 0; background: #F7F9FC; font-family: var(--lt3-serif); font-size: 17px; line-height: 1.8; color: #25303d; font-style: normal; }
+  .lt3-opts { display: grid; gap: 12px; }
+  .lt3 .lt3-opt { display: flex; align-items: center; gap: 16px; min-height: 60px; padding: 12px 18px; border: 1.5px solid #D5DDE6; border-radius: 14px; background: #fff; text-align: left; transition: border-color .15s, background .15s, transform .15s; }
+  .lt3 .lt3-opt:hover { border-color: var(--lt3-navy); background: #F7F9FC; }
+  .lt3 .lt3-opt:focus-visible { outline: 3px solid rgba(0, 33, 71, .35); outline-offset: 2px; }
+  .lt3 .lt3-opt:active { transform: scale(.99); }
+  .lt3 .lt3-opt.is-picked { border-color: var(--lt3-navy); box-shadow: inset 0 0 0 1px var(--lt3-navy); }
+  .lt3 .lt3-opt.is-chosen { background: var(--lt3-navy); border-color: var(--lt3-navy); color: #fff; }
+  .lt3-key { display: grid; place-items: center; flex: none; width: 30px; height: 30px; border-radius: 8px; background: var(--lt3-soft); color: var(--lt3-mute); font-weight: 700; font-size: 13px; }
+  .lt3-opt.is-chosen .lt3-key { background: rgba(255, 255, 255, .18); color: #fff; }
+  .lt3-o { font-size: 17px; }
+  .lt3-o.es { font-family: var(--lt3-serif); font-size: 19px; }
+  .lt3-alt { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px 26px; margin-top: 20px; }
+  .lt3 .lt3-alt button { display: inline-flex; align-items: center; gap: 7px; padding: 6px 4px; border-bottom: 1px dashed transparent; font-size: 14px; color: var(--lt3-mute); }
+  .lt3 .lt3-alt button:hover { color: var(--lt3-navy); border-bottom-color: currentColor; }
+  .lt3-q .d-again, .lt3-q.is-deferred .d-first { display: none; }
+  .lt3-q.is-deferred .d-again { display: inline; }
+
+  .lt3-inst { margin-top: 16px !important; font-size: 14px; color: var(--lt3-mute); }
+  .lt3-player { display: flex; align-items: center; gap: 18px; margin-top: 12px; padding: 14px 18px; border: 1px solid var(--lt3-rule); border-radius: 14px; background: #F7F9FC; }
+  .lt3 .lt3-play { display: grid; place-items: center; flex: none; width: 58px; height: 58px; border-radius: 50%; background: var(--lt3-navy); color: #fff; box-shadow: 0 6px 14px -6px rgba(0, 33, 71, .6); }
+  .lt3 .lt3-play svg { fill: currentColor; stroke: none; }
+  .lt3 .lt3-play .i-play svg { margin-left: 3px; }
+  .lt3-play .i-pause, .lt3-q.is-playing .lt3-play .i-play { display: none; }
+  .lt3-q.is-playing .lt3-play .i-pause { display: block; }
+  .lt3 .lt3-play[disabled] { background: #AAB6C4; box-shadow: none; cursor: not-allowed; }
+  .lt3-wave { flex: 1; display: flex; align-items: center; gap: 3px; height: 44px; }
+  .lt3-wave b { flex: 1; border-radius: 2px; background: #C9D3DF; transition: background .1s; }
+  .lt3-wave b.on { background: var(--lt3-navy); }
+  .lt3-plays { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 10px; margin-top: 10px !important; font-size: 13px; color: var(--lt3-mute); }
+  .lt3-plays b { color: var(--lt3-navy); }
+
+  .lt3-foot { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 14px 28px; border-top: 1px solid #E9EEF3; background: #fff; font-size: 14px; color: var(--lt3-mute); }
+  .lt3-foot[hidden] { display: none; }
+  .lt3 .lt3-foot button { display: inline-flex; align-items: center; gap: 7px; padding: 8px 10px; border-radius: 10px; color: var(--lt3-mute); }
+  .lt3 .lt3-foot button:hover:not([disabled]) { background: var(--lt3-soft); color: var(--lt3-navy); }
+  .lt3 .lt3-foot button[disabled] { opacity: .35; cursor: default; }
+  .lt3-save { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; color: #8a96a5; }
+
+  .lt3-toast { position: absolute; left: 50%; top: 14px; z-index: 10; display: flex; align-items: center; gap: 10px; padding: 10px 20px; border-radius: 999px; background: var(--lt3-navy); color: #fff; font-size: 14px; font-weight: 700; white-space: nowrap; opacity: 0; pointer-events: none; transform: translate(-50%, -10px); transition: opacity .3s, transform .3s; box-shadow: 0 10px 24px -10px rgba(0, 33, 71, .6); }
+  .lt3-toast svg { color: #F5A623; }
+  .lt3-toast.is-on { opacity: 1; transform: translate(-50%, 0); }
+
+  .lt3-confirm { position: absolute; inset: 0; z-index: 20; display: grid; place-items: center; padding: 24px; background: rgba(243, 245, 248, .92); }
+  .lt3-confirm[hidden] { display: none; }
+  .lt3-confirm-box { max-width: 400px; padding: 26px 28px; border: 1px solid var(--lt3-rule); border-radius: 16px; background: #fff; text-align: center; box-shadow: 0 18px 40px -16px rgba(0, 33, 71, .35); }
+  .lt3-confirm-title { margin-bottom: 8px !important; font-weight: 700; font-size: 18px; }
+  .lt3-confirm-box > p:not(.lt3-confirm-title) { margin-bottom: 20px !important; font-size: 14px; line-height: 1.7; color: var(--lt3-mute); }
+
+  .lt3 .lt3-btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 52px; padding: 0 26px; border-radius: 12px; font-weight: 700; font-size: 16px; text-decoration: none; transition: background .15s, border-color .15s; }
+  .lt3 .lt3-btn-red { background: var(--lt3-red); color: #fff; box-shadow: 0 8px 18px -10px rgba(200, 16, 46, .8); }
+  .lt3 .lt3-btn-red:hover { background: #A00D24; color: #fff; }
+  .lt3 .lt3-btn-out { border: 1.5px solid #CBD5E1; background: #fff; color: var(--lt3-navy); }
+  .lt3 .lt3-btn-out:hover { border-color: var(--lt3-navy); }
+  .lt3 .lt3-btn-ghost { color: var(--lt3-mute); font-weight: 500; }
+  .lt3 .lt3-btn-big { min-height: 60px; padding: 0 34px; font-size: 18px; }
+  .lt3-btns { display: flex; flex-wrap: wrap; gap: 10px; }
+  .lt3-btns-center { justify-content: center; }
+
+  .lt3-eyebrow { font-weight: 700; font-size: 13px; letter-spacing: .08em; color: var(--lt3-red); }
+  .lt3 .lt3-h { margin: 8px 0 12px; padding: 0; border: 0; font-size: 30px; font-weight: 700; line-height: 1.4; word-break: auto-phrase; }
+  .lt3 .lt3-h-sm { margin: 6px 0 22px; font-size: 22px; }
+  .lt3-sub { font-size: 15px; line-height: 1.85; color: #3a4654; }
+  .lt3 .lt3-feats { display: grid; grid-template-columns: repeat(auto-fit, minmax(96px, 1fr)); gap: 10px; margin: 24px 0 20px; padding: 0; list-style: none; }
+  .lt3 .lt3-feats li { margin: 0; padding: 14px 8px; border: 1px solid var(--lt3-rule); border-radius: 14px; text-align: center; font-weight: 700; font-size: 13px; }
+  .lt3-ic { display: grid; place-items: center; width: 40px; height: 40px; margin: 0 auto 8px; border-radius: 12px; background: #FCEBEE; color: var(--lt3-red); }
+  .lt3-notice { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 24px !important; padding: 14px 16px; border-radius: 12px; background: var(--lt3-soft); font-size: 13.5px; line-height: 1.75; color: #3a4654; }
+  .lt3-notice svg { margin-top: 3px; color: var(--lt3-navy); }
+  .lt3-go { display: flex; flex-direction: column; align-items: center; gap: 12px; }
+  .lt3-fine { font-size: 12.5px; color: #8a96a5; text-align: center; }
+  .lt3-resume { display: flex; align-items: center; gap: 16px; margin: 20px 0 24px; padding: 16px 18px; border: 1.5px solid var(--lt3-navy); border-radius: 14px; }
+  .lt3-resume p { font-size: 14px; line-height: 1.7; color: #3a4654; }
+  .lt3-resume b { font-size: 16px; color: #1A1A1A; }
+  .lt3-ring { --p: 0; display: grid; place-items: center; flex: none; width: 62px; height: 62px; border-radius: 50%; background: conic-gradient(var(--lt3-red) calc(var(--p) * 1%), #E3E8EF 0); }
+  .lt3-ring span { display: grid; place-items: center; width: 48px; height: 48px; border-radius: 50%; background: #fff; font-weight: 700; font-size: 14px; color: var(--lt3-navy); }
+
+  .lt3-rows { display: grid; gap: 14px; }
+  .lt3-row { display: grid; grid-template-columns: 190px 1fr 58px; align-items: center; gap: 14px; }
+  .lt3-lv { display: flex; align-items: center; gap: 10px; }
+  .lt3-lv .level-chip { min-width: 38px; text-align: center; font-size: 13px; }
+  .lt3-lvname { font-size: 13px; color: var(--lt3-mute); white-space: nowrap; }
+  .lt3-track { height: 20px; border-radius: 999px; background: #EEF1F5; overflow: hidden; }
+  .lt3-fill { display: block; width: 0; height: 100%; border-radius: 999px; background: var(--level); transition: width 1s cubic-bezier(.3, .8, .3, 1); }
+  .lt3-sc { text-align: right; font-size: 15px; }
+  .lt3-sc small { font-size: 12px; color: #9aa6b4; }
+  .lt3-estimate { margin-top: 30px; padding-top: 30px; border-top: 1px solid #E9EEF3; text-align: center; }
+  .lt3-est-lbl { font-size: 15px; color: var(--lt3-mute); }
+  .lt3-est-big { margin-top: 6px !important; font-size: 112px; font-weight: 700; line-height: 1; letter-spacing: -.02em; color: var(--level); }
+  .lt3-est-big.lv-A2, .lt3-est-big.lv-B2, .lt3-est-big.lv-C2 { color: color-mix(in srgb, var(--level) 82%, #000); }
+  .lt3-est-name { margin-top: 4px !important; font-size: 26px; font-weight: 700; color: var(--lt3-navy); }
+  .lt3-est-desc { margin-top: 12px !important; font-size: 15px; line-height: 1.8; color: #3a4654; }
+  .lt3-near { display: inline-flex !important; align-items: center; gap: 8px; margin-top: 14px !important; padding: 7px 16px; border-radius: 999px; background: #FFF4DE; color: #8A5A00; font-size: 13.5px; font-weight: 700; }
+  .lt3-near[hidden] { display: none !important; }
+  .lt3-disc { display: flex; gap: 12px; margin-top: 28px !important; padding: 16px 18px; border-left: 4px solid var(--lt3-navy); border-radius: 0 12px 12px 0; background: var(--lt3-soft); font-size: 13.5px; line-height: 1.8; color: #3a4654; }
+  .lt3-disc svg { margin-top: 3px; color: var(--lt3-navy); }
+  .lt3-skills { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 10px; margin-top: 24px; }
+  .lt3-sk { padding: 12px 14px; border: 1px solid var(--lt3-rule); border-radius: 12px; }
+  .lt3-sk p { font-size: 12.5px; font-weight: 700; color: var(--lt3-mute); }
+  .lt3-sk b { font-size: 20px; }
+  .lt3-sk small { font-size: 12px; font-weight: 400; color: #9aa6b4; }
+  .lt3-sk i { display: block; height: 5px; margin-top: 8px; border-radius: 9px; background: #EEF1F5; overflow: hidden; }
+  .lt3-sk u { display: block; width: 0; height: 100%; border-radius: 9px; background: var(--lt3-navy); }
+  .lt3-skipnote { margin-top: 10px !important; font-size: 13px; color: var(--lt3-mute); }
+  .lt3-next { margin-top: 24px; padding: 24px 26px; border-radius: 16px; background: var(--lt3-navy); color: #fff; }
+  .lt3-next .lt3-eyebrow { color: #F5A623; }
+  .lt3-next-title { margin: 6px 0 16px !important; font-size: 19px; font-weight: 700; line-height: 1.6; }
+  .lt3-next-links { display: flex; flex-wrap: wrap; align-items: center; gap: 14px 22px; }
+  .lt3 .lt3-next-sub { font-size: 14px; color: rgba(255, 255, 255, .85); text-decoration: underline; text-underline-offset: 4px; }
+  .lt3-more { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px; margin-top: 20px; }
+  .lt3-cmp { display: inline-flex; align-items: center; gap: 8px; font-size: 14px; color: #3a4654; }
+  .lt3-cmp[hidden] { display: none; }
+  .lt3-line { position: relative; margin-top: 20px; padding: 12px 40px 12px 14px; border: 1px solid #D1FAE5; border-radius: 10px; background: #fff; font-size: 14px; }
+  .lt3-line[hidden] { display: none; }
+  .lt3-line p { margin-bottom: 8px !important; }
+  .lt3 .lt3-line-btn { display: inline-block; padding: 6px 14px; border-radius: 999px; background: #06C755; color: #fff; font-weight: 700; text-decoration: none; }
+  .lt3 .lt3-line-close { position: absolute; top: 6px; right: 8px; width: 32px; height: 32px; color: #6b7280; font-size: 18px; }
+  .lt3-welcome { margin-top: 14px !important; font-size: 14px; }
+  .lt3-again { margin-top: 14px !important; text-align: center; }
+  .lt3-nojs { padding: 14px 28px; font-size: 14px; color: var(--lt3-mute); }
+  .lt3-disclaimer { margin: 14px 0 0; font-size: 13px; line-height: 1.8; color: #5A6B80; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .lt3-card, .lt3-prog span, .lt3-fill { transition: none !important; }
+  }
+  @media (max-width: 640px) {
+    .lt3 { margin: 4px -4px 0; border-radius: 16px; }
+    .lt3-bar { padding: 13px 18px; }
+    .lt3-title { font-size: 14px; }
+    .lt3-counter b { font-size: 18px; }
+    .lt3-stage { padding: 20px 14px 26px; }
+    .lt3-card { padding: 22px 18px 20px; border-radius: 16px; }
+    .lt3-qtext { font-size: 18px; }
+    .lt3-qtext.es { font-size: 22px; }
+    .lt3 .lt3-passage { padding: 14px 16px; font-size: 15.5px; }
+    .lt3 .lt3-opt { min-height: 56px; padding: 10px 14px; }
+    .lt3-o.es { font-size: 18px; }
+    /* Los botones a la izquierda: a la derecha están los botones flotantes de compartir. */
+    .lt3-foot { justify-content: flex-start; gap: 4px; padding: 10px 12px; font-size: 13px; }
+    .lt3-save { display: none; }
+    .lt3 .lt3-h { font-size: 23px; }
+    .lt3-sub { font-size: 14px; line-height: 1.8; }
+    .lt3 .lt3-feats { display: flex; flex-wrap: wrap; gap: 8px; margin: 18px 0 16px; }
+    .lt3 .lt3-feats li { display: inline-flex; align-items: center; gap: 8px; padding: 6px 12px 6px 6px; border-radius: 999px; }
+    .lt3-ic { width: 28px; height: 28px; margin: 0; border-radius: 50%; }
+    .lt3-ic svg { width: 15px; height: 15px; }
+    .lt3-notice { font-size: 13px; }
+    .lt3 .lt3-btn-big { width: 100%; }
+    .lt3-row { grid-template-columns: 52px 1fr 48px; gap: 10px; }
+    .lt3-lvname { display: none; }
+    .lt3-est-big { font-size: 92px; }
+    .lt3-next { padding: 20px; }
+    .lt3-more { flex-direction: column; align-items: stretch; text-align: center; }
+    .lt3 .lt3-more .lt3-btn-out { font-size: 15px; padding: 0 16px; }
+    .lt3-cmp { justify-content: center; }
+    .lt3 .lt3-play { width: 52px; height: 52px; }
+    .lt3-toast { font-size: 13px; }
+  }
+</style>

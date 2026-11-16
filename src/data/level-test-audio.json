@@ -1,0 +1,102 @@
+{
+  "_doc": "Audio de las preguntas de comprensión auditiva (聴解) del test de nivel (/language/learn-spanish/level-test/): dos por nivel, A1-C2. Cada pista la usa una pregunta de levelTest (campo audio) en level-test.mdx. Voces fijas de docs/language/tts-voices.json (speakers → clave de voz); labels es el nombre que se muestra en la transcripción de la página de soluciones. Generación: npm run tts:level-test (scripts/tts/level-test.mjs). Los MP3 publicados se listan en level-test-audio-files.json: la pregunta solo aparece si su archivo existe. Creado el 16 de noviembre de 2026.",
+  "tracks": [
+    {
+      "id": "lt-a1-1",
+      "speakers": { "Daniel": "daniel" },
+      "labels": { "Daniel": "ダニエル" },
+      "direction": "Mensaje de voz a una amiga: tono cercano y alegre, ritmo tranquilo y muy claro para principiantes.",
+      "lines": [["Daniel", "Hola, Mina. Soy Daniel. Llego a la estación a las diez y cuarto. ¡Hasta luego!"]]
+    },
+    {
+      "id": "lt-a1-2",
+      "speakers": { "Lucía": "female-adult" },
+      "labels": { "Lucía": "ルシア" },
+      "direction": "Una mujer se presenta con frases cortas, de forma amable y pausada, para principiantes.",
+      "lines": [["Lucía", "Me llamo Lucía y vivo en Sevilla con mi marido y mis dos hijos. Mi casa es pequeña, pero tiene una terraza muy bonita."]]
+    },
+    {
+      "id": "lt-a2-1",
+      "speakers": { "Megafonía": "female-adult" },
+      "labels": { "Megafonía": "駅のアナウンス" },
+      "direction": "Anuncio por megafonía en una estación de tren: voz clara, profesional y pausada.",
+      "lines": [["Megafonía", "Atención, por favor. El tren con destino a Valencia, con salida prevista a las ocho y media, saldrá con veinte minutos de retraso. Disculpen las molestias."]]
+    },
+    {
+      "id": "lt-a2-2",
+      "speakers": { "Daniel": "daniel" },
+      "labels": { "Daniel": "ダニエル" },
+      "direction": "Daniel cuenta a un amigo qué hizo el fin de semana: tono natural y relajado, ritmo moderado.",
+      "lines": [["Daniel", "El fin de semana pasado fui a la montaña con unos amigos. El sábado hizo muy buen tiempo y caminamos cinco horas. Pero el domingo llovió todo el día, así que nos quedamos en casa y jugamos a las cartas."]]
+    },
+    {
+      "id": "lt-b1-1",
+      "speakers": { "Laura": "female-adult" },
+      "labels": { "Laura": "ラウラ" },
+      "direction": "Mensaje de voz de una compañera de trabajo: tono cordial y práctico, ritmo natural.",
+      "lines": [["Laura", "Hola, Kenta, soy Laura. Te llamo porque la reunión de mañana no va a ser a las diez, sino a las doce: el director tiene que ir antes al aeropuerto. Es en la sala de siempre. Si tienes algún problema, mándame un mensaje, ¿vale?"]]
+    },
+    {
+      "id": "lt-b1-2",
+      "speakers": { "Chica": "female-young", "Chico": "male-young" },
+      "labels": { "Chica": "女性", "Chico": "男性" },
+      "direction": "Conversación informal entre dos amigos universitarios en una cafetería. Ritmo natural.",
+      "lines": [
+        ["Chica", "¿Tú crees que deberían prohibir los coches en el centro?"],
+        ["Chico", "Pues no sé. Es verdad que hay mucha contaminación, pero no creo que prohibirlos sea la solución. Yo prefiero que mejoren el transporte público."]
+      ]
+    },
+    {
+      "id": "lt-b2-1",
+      "speakers": { "Locutor": "male-adult" },
+      "labels": { "Locutor": "ラジオのアナウンサー" },
+      "direction": "Noticia de radio: locutor profesional, tono informativo y neutro, ritmo de informativo.",
+      "lines": [["Locutor", "Según un estudio publicado esta semana, los jóvenes españoles se independizan cada vez más tarde: la edad media a la que dejan la casa de sus padres ya supera los treinta años. Los expertos lo atribuyen, sobre todo, al precio del alquiler, que no ha dejado de subir en la última década."]]
+    },
+    {
+      "id": "lt-b2-2",
+      "speakers": { "Mujer": "female-adult", "Chico": "male-young" },
+      "labels": { "Mujer": "女性", "Chico": "男性" },
+      "direction": "Una mujer pregunta a un joven por un examen difícil; él responde con calma, algo pensativo.",
+      "lines": [
+        ["Mujer", "Si hubieras sabido que el examen era tan difícil, ¿te habrías presentado?"],
+        ["Chico", "Sí, me habría presentado igual. Eso sí, habría empezado a estudiar mucho antes."]
+      ]
+    },
+    {
+      "id": "lt-c1-1",
+      "speakers": { "Hombre": "male-adult" },
+      "labels": { "Hombre": "男性" },
+      "direction": "Un directivo opina en una reunión de trabajo: tono educado y prudente, con matices, sin brusquedad.",
+      "lines": [["Hombre", "No digo que el proyecto sea malo, ni mucho menos. Lo que pasa es que, tal y como está planteado, me cuesta ver cómo vamos a sacarlo adelante con el presupuesto que tenemos."]]
+    },
+    {
+      "id": "lt-c1-2",
+      "speakers": { "Chico": "male-young", "Chica": "female-young" },
+      "labels": { "Chico": "男性", "Chica": "女性" },
+      "direction": "Dos amigos jóvenes charlan de forma muy coloquial; ella responde con fastidio y algo de humor.",
+      "lines": [
+        ["Chico", "Oye, ¿qué tal la cena con los padres de Javi?"],
+        ["Chica", "Uf, ni me hables. Su madre se pasó la noche preguntándome cuándo nos vamos a casar. Un rollo, vamos."],
+        ["Chico", "¡Qué fuerte!"]
+      ]
+    },
+    {
+      "id": "lt-c2-1",
+      "speakers": { "Carmen": "carmen" },
+      "labels": { "Carmen": "カルメン先生" },
+      "direction": "Carmen expone una idea en una conferencia: registro culto, ritmo pausado y argumentativo.",
+      "lines": [["Carmen", "Conviene no confundir la despoblación con el abandono. Muchos de los pueblos que aparecen en las estadísticas como vacíos se llenan cada verano, cuando vuelven quienes emigraron a las ciudades. El problema, por tanto, no es tanto la falta de vínculos como la falta de servicios que permitan quedarse el resto del año."]]
+    },
+    {
+      "id": "lt-c2-2",
+      "speakers": { "Hombre": "male-adult", "Mujer": "female-adult" },
+      "labels": { "Hombre": "男性", "Mujer": "女性" },
+      "direction": "Dos compañeros de oficina; ella contesta con ironía seca, en tono de fastidio contenido.",
+      "lines": [
+        ["Hombre", "¿Has leído el informe que ha mandado Ruiz?"],
+        ["Mujer", "Sí, sí. Cuarenta páginas para decir que todo sigue igual. Toda una obra maestra de la síntesis, vamos."]
+      ]
+    }
+  ]
+}

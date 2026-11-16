@@ -4,9 +4,9 @@ cluster: learn-spanish
 articleRole: diagnostico
 title: スペイン語レベルチェックテスト（A1〜C2）｜無料ですぐに結果
 heroImage: "../../../../assets/hero/hero-level-test.webp"
-heroImageAlt: "スペイン語レベルチェック無料テスト（A1〜C2・最大36問・登録不要）"
-lead: A1からC2まで、レベルごとのブロックに答えていくだけで、あなたのスペイン語レベルの目安と、どこから学べばいいかがすぐにわかります。登録不要・無料の診断テストです。
-description: 無料のスペイン語レベルチェックテスト。A1〜C2のブロック式で、文法・語彙・読解からあなたのレベルの目安と得意・苦手、どこから学ぶべきかがその場でわかります。登録不要。
+heroImageAlt: "スペイン語レベルチェック無料テスト（A1〜C2・全60問・登録不要）"
+lead: A1からC2まで、少しずつ難しくなる60問に答えるだけで、あなたのスペイン語レベルの目安と、どこから学べばいいかがわかります。音声問題もある、登録不要・無料の診断テストです。
+description: 無料のスペイン語レベルチェックテスト。A1〜C2の60問（文法・語彙・読解・聴解）に答えると、レベル別の正答数と推定レベル、どこから学ぶべきかがその場でわかります。登録不要。
 intent: informational
 schemaType: article
 lang: ja
@@ -25,269 +25,449 @@ entities:
 author: david-recalde
 levelTest:
 # ── A1 Acceso ──
-- question: Marta tiene ___ perro pequeño.
+- question: "Marta tiene ___ perro pequeño."
   options: ["una", "un", "unos"]
   correctIndex: 1
   level: a1
   skill: grammar
   unit: 2
-  explanation: perro は男性名詞・単数なので、不定冠詞は un です。
-- question: Mina ___ diseñadora y ahora ___ en Madrid de vacaciones.
-  options: ["es / está", "está / es", "es / es"]
-  correctIndex: 0
-  level: a1
-  skill: grammar
-  unit: 3
-  explanation: 職業は ser（es diseñadora）、一時的にいる場所は estar（está en Madrid）で表します。
-- question: A mí me ___ mucho las croquetas.
-  options: ["gusta", "gusto", "gustan"]
-  correctIndex: 2
-  level: a1
-  skill: grammar
-  unit: 8
-  explanation: gustar は、好きなもの（las croquetas）が主語です。複数なので gustan になります。
-- question: 「薬局」はスペイン語で？
-  options: ["la farmacia", "el banco", "la plaza"]
-  correctIndex: 0
-  level: a1
-  skill: vocabulary
-  unit: 7
-  explanation: la farmacia が薬局です。el banco は銀行、la plaza は広場です。
-- question: 「月曜日」はスペイン語で？
+  explanation: "perro（犬）は男性名詞・単数なので、不定冠詞は un です。una は女性名詞・単数（una casa）、unos は男性名詞・複数（unos perros）に使います。名詞は el perro・la casa のように冠詞といっしょに覚えると、性を間違えにくくなります。"
+- question: "「月曜日」はスペイン語で？"
   options: ["el domingo", "el martes", "el lunes"]
   correctIndex: 2
   level: a1
   skill: vocabulary
   unit: 10
-  explanation: el lunes が月曜日です。曜日は小文字で書きます。
-- question: ケンタは何時に家を出ますか？
-  passage: Me llamo Kenta y soy de Osaka. Trabajo en una empresa de ingeniería. Me levanto a las seis, desayuno en casa y salgo a las siete. Por la noche ceno con mi familia.
+  explanation: "el lunes が月曜日です。el martes は火曜日、el domingo は日曜日です。スペイン語の曜日は小文字で書き、「月曜日に」は前置詞なしで el lunes と言います（El lunes tengo clase.）。"
+- question: "Mina ___ diseñadora y ahora ___ en Madrid de vacaciones."
+  options: ["es / está", "está / es", "es / es"]
+  correctIndex: 0
+  level: a1
+  skill: grammar
+  unit: 3
+  explanation: "職業や国籍など、その人が「何者か」を言うときは ser（es diseñadora）、一時的にいる場所や状態は estar（está en Madrid）を使います。どちらも「〜である・いる」と訳せますが、この使い分けはスペイン語の基礎のなかでもとくに大切です。"
+- question: "ダニエルは何時に駅に着きますか？"
+  audio: lt-a1-1
+  options: ["10時15分", "10時45分", "12時15分"]
+  correctIndex: 0
+  level: a1
+  skill: listening
+  unit: 10
+  explanation: "Llego a la estación a las diez y cuarto（10時15分に駅に着く）と言っています。y cuarto は「15分過ぎ」、menos cuarto は「15分前」なので、10時45分なら las once menos cuarto です。diez（10）と doce（12）は音が似ているので、注意して聞き分けましょう。"
+- question: "En mi calle ___ dos cafeterías."
+  options: ["son", "están", "hay"]
+  correctIndex: 2
+  level: a1
+  skill: grammar
+  unit: 7
+  explanation: "「〜がある」と、どこかに何かが存在することを伝えるときは hay を使います。dos（2つの）や un（1つの）のように数や不定冠詞がつく名詞の前では hay が基本です。están は、すでに話題になっている特定のもの（Las cafeterías están en la plaza.）の場所を言うときに使います。"
+- question: "「薬局」はスペイン語で？"
+  options: ["la farmacia", "el banco", "la plaza"]
+  correctIndex: 0
+  level: a1
+  skill: vocabulary
+  unit: 7
+  explanation: "la farmacia が薬局です。el banco は銀行、la plaza は広場です。スペインの薬局は緑の十字の看板が目印で、町歩きでよく使う単語です。"
+- question: "ケンタは何時に家を出ますか？"
+  passage: "Me llamo Kenta y soy de Osaka. Trabajo en una empresa de ingeniería. Me levanto a las seis, desayuno en casa y salgo a las siete. Por la noche ceno con mi familia."
   options: ["6時", "7時", "8時"]
   correctIndex: 1
   level: a1
   skill: reading
   unit: 9
-  explanation: salgo a las siete（7時に出る）とあります。6時は起きる時間（me levanto a las seis）です。
+  explanation: "salgo a las siete（7時に出る）とあります。6時は起きる時間（me levanto a las seis）です。salgo は salir（出る）の1人称単数の不規則な形で、再帰動詞の me levanto（起きる）とともに、一日の流れを話すときによく使います。"
+- question: "A mí me ___ mucho las croquetas."
+  options: ["gusta", "gusto", "gustan"]
+  correctIndex: 2
+  level: a1
+  skill: grammar
+  unit: 8
+  explanation: "gustar は「〜が（私にとって）好ましい」という仕組みで、好きなもの（las croquetas）が主語になります。主語が複数なので gustan です。単数なら Me gusta la paella. です。gusto は gustar の1人称単数で、この文には合いません。"
+- question: "「朝ごはんを食べる」は1語で？"
+  options: ["cenar", "desayunar", "comer"]
+  correctIndex: 1
+  level: a1
+  skill: vocabulary
+  unit: 9
+  explanation: "desayunar が「朝食をとる」です。comer は「食べる」のほか「昼食をとる」、cenar は「夕食をとる」という意味です。スペインの昼食（la comida）は午後2時ごろ、夕食（la cena）は夜9時ごろと、日本より遅めです。"
+- question: "ルシアの家について正しいのは？"
+  audio: lt-a1-2
+  options: ["大きくて、庭がある", "新しくて、駅に近い", "小さいが、きれいなテラスがある"]
+  correctIndex: 2
+  level: a1
+  skill: listening
+  unit: 6
+  explanation: "Mi casa es pequeña, pero tiene una terraza muy bonita（家は小さいけれど、とてもきれいなテラスがある）と言っています。pequeña（小さい）は casa に合わせた女性形です。pero（でも）のあとに大事な情報が来ることが多いので、聞き逃さないようにしましょう。"
 # ── A2 Plataforma ──
-- question: Ayer ___ al cine con mis amigos.
+- question: "Ayer ___ al cine con mis amigos."
   options: ["voy", "iba", "fui"]
   correctIndex: 2
   level: a2
   skill: grammar
   unit: 14
-  explanation: ayer（昨日）の一度きりの出来事なので、点過去の fui を使います。
-- question: Cuando era niño, ___ en Kioto y todos los veranos ___ a la playa.
-  options: ["vivía / iba", "viví / fui", "he vivido / he ido"]
-  correctIndex: 0
-  level: a2
-  skill: grammar
-  unit: 15
-  explanation: 子どものころの状況や、毎年くり返していた習慣は、線過去（vivía、iba）で表します。
-- question: Este año ___ dos veces a España.
-  options: ["he ido", "iba", "fuera"]
-  correctIndex: 0
-  level: a2
-  skill: grammar
-  unit: 13
-  explanation: este año（今年）のように、今も続いている期間の出来事は、スペインでは現在完了（he ido）で表します。
-- question: 「先週」はスペイン語で？
+  explanation: "ayer（昨日）のように、いつのことかがはっきりしている一度きりの出来事は、点過去（fui）で表します。iba は線過去で、過去の習慣（毎週映画に行っていた）や背景の描写に使います。voy は現在形です。"
+- question: "「先週」はスペイン語で？"
   options: ["la próxima semana", "la semana pasada", "esta semana"]
   correctIndex: 1
   level: a2
   skill: vocabulary
   unit: 22
-  explanation: la semana pasada が先週です。la próxima semana は来週、esta semana は今週です。
-- question: Kenta es ___ alto ___ su hermano.
+  explanation: "la semana pasada が先週です。la próxima semana（または la semana que viene）は来週、esta semana は今週です。pasado/pasada（過ぎた）は el mes pasado（先月）、el año pasado（去年）のようにも使えます。"
+- question: "Este año ___ dos veces a España."
+  options: ["he ido", "iba", "fuera"]
+  correctIndex: 0
+  level: a2
+  skill: grammar
+  unit: 13
+  explanation: "este año（今年）や hoy（今日）のように、まだ終わっていない期間の出来事は、スペインでは現在完了（he ido）で表します。中南米では点過去（fui）を使うことも多いですが、このテストはスペインのスペイン語を基準にしています。fuera は接続法過去で、この文には合いません。"
+- question: "バレンシア行きの列車は何時に出発しますか？"
+  audio: lt-a2-1
+  options: ["8時30分", "8時50分", "8時10分"]
+  correctIndex: 1
+  level: a2
+  skill: listening
+  unit: 20
+  explanation: "出発予定は las ocho y media（8時30分）ですが、saldrá con veinte minutos de retraso（20分遅れて出発する）と言っているので、8時50分です。saldrá は salir の未来形で、駅や空港のアナウンスでよく使われます。retraso（遅れ）も覚えておくと便利な単語です。"
+- question: "Kenta es ___ alto ___ su hermano."
   options: ["tan / que", "más / de", "más / que"]
   correctIndex: 2
   level: a2
   skill: grammar
   unit: 18
-  explanation: 「〜より背が高い」は más alto que です。tan alto como なら「〜と同じくらい背が高い」になります。
-- question: その日の天気は？
-  passage: El sábado pasado Mina fue a Toledo. Hacía sol y había mucha gente en la plaza. Comió en un restaurante pequeño y por la tarde visitó la catedral.
+  explanation: "「〜より背が高い」は más alto que で表します。「〜と同じくらい背が高い」なら tan alto como で、tan は que ではなく como と組み合わせます。más de は数の前で使う形です（más de cien personas＝100人以上）。"
+- question: "「右に曲がってください」は？"
+  options: ["Gire a la derecha.", "Siga todo recto.", "Cruce la calle."]
+  correctIndex: 0
+  level: a2
+  skill: vocabulary
+  unit: 19
+  explanation: "Gire a la derecha. は girar（曲がる）の usted に対する命令形で、「右に曲がってください」です。Siga todo recto. は「まっすぐ進んでください」、Cruce la calle. は「通りを渡ってください」。道案内では a la izquierda（左に）とあわせて覚えておきましょう。"
+- question: "その日の天気は？"
+  passage: "El sábado pasado Mina fue a Toledo. Hacía sol y había mucha gente en la plaza. Comió en un restaurante pequeño y por la tarde visitó la catedral."
   options: ["雨だった", "雪が降っていた", "晴れていた"]
   correctIndex: 2
   level: a2
   skill: reading
   unit: 16
-  explanation: Hacía sol（晴れていた）とあります。背景の描写は線過去、出来事は点過去で書かれています。
+  explanation: "Hacía sol（晴れていた）とあります。この文章では、天気や広場の様子のような背景の描写が線過去（hacía, había）、トレドに行った・食べた・訪れたという出来事が点過去（fue, comió, visitó）で書かれています。点過去と線過去の使い分けを意識して読むと、話の流れがつかみやすくなります。"
+- question: "Cuando era niño, ___ en Kioto y todos los veranos ___ a la playa."
+  options: ["vivía / iba", "viví / fui", "he vivido / he ido"]
+  correctIndex: 0
+  level: a2
+  skill: grammar
+  unit: 15
+  explanation: "cuando era niño（子どものころ）の状況や、todos los veranos（毎年夏に）くり返していた習慣は、線過去（vivía、iba）で表します。点過去の viví / fui は一度きりの出来事、現在完了の he vivido / he ido は今につながる出来事に使うので、ここには合いません。"
+- question: "「だから・それで」にあたる表現は？"
+  options: ["pero", "por eso", "aunque"]
+  correctIndex: 1
+  level: a2
+  skill: vocabulary
+  unit: 23
+  explanation: "por eso は「だから・それで」と、前の文の結果を述べるときに使います（Estaba cansado; por eso me acosté pronto.）。pero は「しかし」、aunque は「〜だけれど」です。文と文をつなぐ言葉を覚えると、長い文を組み立てられるようになります。"
+- question: "日曜日にダニエルは何をしましたか？"
+  audio: lt-a2-2
+  options: ["家でトランプをした", "山を5時間歩いた", "友だちと町に出かけた"]
+  correctIndex: 0
+  level: a2
+  skill: listening
+  unit: 14
+  explanation: "el domingo llovió todo el día, así que nos quedamos en casa y jugamos a las cartas（日曜日は一日中雨だったので、家にいてトランプをした）と言っています。山を5時間歩いたのは土曜日です。así que（だから）のあとに結果が来ることにも注目しましょう。"
 # ── B1 Umbral ──
-- question: Quiero que tú ___ a mi fiesta.
+- question: "Quiero que tú ___ a mi fiesta."
   options: ["vienes", "venir", "vengas"]
   correctIndex: 2
   level: b1
   skill: grammar
   unit: 26
-  explanation: 「君に来てほしい」のように que の前後で主語が違うときは、que + 接続法（vengas）です。
-- question: Cuando ___ a Madrid, llámame.
-  options: ["llegues", "llegas", "llegarás"]
-  correctIndex: 0
-  level: b1
-  skill: grammar
-  unit: 27
-  explanation: これから先のことを表す cuando のあとは、接続法（llegues）を使います。
-- question: Cuando llegamos a la estación, el tren ya ___.
-  options: ["salió", "había salido", "sale"]
-  correctIndex: 1
-  level: b1
-  skill: grammar
-  unit: 28
-  explanation: 駅に着いた時点より前に出発していたので、過去完了（había salido）を使います。
-- question: 「つまり」にあたる表現は？
+  explanation: "「君に来てほしい」のように、願望を表す動詞（querer）のあとで que の前後の主語が違うときは、que + 接続法（vengas）を使います。主語が同じなら不定詞を使い、Quiero venir.（私は来たい）となります。直説法の vienes は願望の文には使えません。"
+- question: "「つまり」にあたる表現は？"
   options: ["sin embargo", "es decir", "además"]
   correctIndex: 1
   level: b1
   skill: vocabulary
   unit: 34
-  explanation: es decir が「つまり」です。sin embargo は「しかしながら」、además は「そのうえ」です。
-- question: Estudio español ___ trabajar en España.
+  explanation: "es decir は「つまり・すなわち」と、前の内容を言い換えるときに使います。sin embargo は「しかしながら」、además は「そのうえ」です。こうした談話標識は、話や文章の流れを示す道しるべの役割をします。"
+- question: "Cuando ___ a Madrid, llámame."
+  options: ["llegues", "llegas", "llegarás"]
+  correctIndex: 0
+  level: b1
+  skill: grammar
+  unit: 27
+  explanation: "cuando のあとがこれから先のこと（まだ起きていないこと）を表すときは、接続法（llegues）を使います。習慣や過去の事実なら直説法で、Cuando llego a casa, ceno.（家に着くと夕食をとる）となります。未来形の llegarás は cuando のあとには使いません。"
+- question: "ラウラが電話で伝えたいことは？"
+  audio: lt-b1-1
+  options: ["会議が中止になったこと", "会議の場所が変わったこと", "会議の時間が変わったこと"]
+  correctIndex: 2
+  level: b1
+  skill: listening
+  unit: 34
+  explanation: "la reunión de mañana no va a ser a las diez, sino a las doce（明日の会議は10時ではなく12時になる）と言っています。no A, sino B（AではなくB）は、訂正するときの決まった形です。場所は Es en la sala de siempre（いつもの部屋）なので、変わっていません。"
+- question: "Estudio español ___ trabajar en España."
   options: ["para", "por", "de"]
   correctIndex: 0
   level: b1
   skill: grammar
   unit: 33
-  explanation: 目的（〜するために）は para + 不定詞で表します。
-- question: ユイにとって、一番大切なことは？
-  passage: Yui cree que vivir en un piso compartido es una buena experiencia. Sin embargo, no le gusta que sus compañeros pongan la música alta por la noche. Para ella, lo más importante es respetar las normas de la casa.
+  explanation: "「〜するために」と目的を表すときは para + 不定詞を使います。por は理由や原因（por la lluvia＝雨のせいで）、経由や期間などを表します。para と por の使い分けは、日本人学習者がとくに迷いやすいポイントです。"
+- question: "「〜に賛成だ」は？"
+  options: ["tener razón con", "estar de acuerdo con", "dar igual"]
+  correctIndex: 1
+  level: b1
+  skill: vocabulary
+  unit: 35
+  explanation: "estar de acuerdo con… が「〜に賛成だ・同意する」です（Estoy de acuerdo contigo.）。tener razón は「（人が）正しい」という意味で、con とは組み合わせません（Tienes razón.＝君の言うとおりだ）。dar igual は「どうでもいい」です。"
+- question: "ユイにとって、一番大切なことは？"
+  passage: "Yui cree que vivir en un piso compartido es una buena experiencia. Sin embargo, no le gusta que sus compañeros pongan la música alta por la noche. Para ella, lo más importante es respetar las normas de la casa."
   options: ["音楽を楽しむこと", "一人で暮らすこと", "家のルールを守ること"]
   correctIndex: 2
   level: b1
   skill: reading
   unit: 35
-  explanation: lo más importante es respetar las normas de la casa（一番大切なのは家のルールを守ること）とあります。
+  explanation: "lo más importante es respetar las normas de la casa（一番大切なのは家のルールを守ること）とあります。no le gusta que sus compañeros pongan la música alta（同居人が音楽を大きな音でかけるのが嫌だ）では、感情を表す表現のあとで接続法（pongan）が使われています。Sin embargo（しかし）のあとに意見の中心が来ていることにも注目しましょう。"
+- question: "Cuando llegamos a la estación, el tren ya ___."
+  options: ["salió", "había salido", "sale"]
+  correctIndex: 1
+  level: b1
+  skill: grammar
+  unit: 28
+  explanation: "駅に着いた（llegamos）時点より前に列車はもう出発していた、という「過去の過去」は、過去完了（había salido）で表します。点過去の salió だと「着いたときに出発した」という順番になってしまいます。ya（もう）は過去完了とよくいっしょに使われます。"
+- question: "Este plátano todavía está verde. の意味は？"
+  options: ["このバナナはまだ熟していない", "このバナナは緑色の品種だ", "このバナナはもう傷んでいる"]
+  correctIndex: 0
+  level: b1
+  skill: vocabulary
+  unit: 32
+  explanation: "果物について estar verde と言うと「まだ熟していない」という意味です。ser verde なら「（色が）緑だ」という性質を表します。ser と estar で意味が変わる形容詞には、ほかに ser listo（頭がいい）／estar listo（準備ができている）などがあります。"
+- question: "男性はどう考えていますか？"
+  audio: lt-b1-2
+  options: ["中心街への車の乗り入れを禁止すべきだ", "禁止するより、公共交通をよくしてほしい", "汚染はそれほど問題ではない"]
+  correctIndex: 1
+  level: b1
+  skill: listening
+  unit: 35
+  explanation: "男性は Es verdad que hay mucha contaminación（汚染がひどいのは確かだ）と認めたうえで、no creo que prohibirlos sea la solución（禁止が解決策だとは思わない）、prefiero que mejoren el transporte público（公共交通をよくしてほしい）と言っています。no creo que や prefiero que のあとの接続法（sea, mejoren）は、意見を述べるときの典型的な形です。"
 # ── B2 Avanzado ──
-- question: Si ___ más tiempo, viajaría por todo el mundo.
+- question: "Si ___ más tiempo, viajaría por todo el mundo."
   options: ["tengo", "tendría", "tuviera"]
   correctIndex: 2
   level: b2
   skill: grammar
   unit: 38
-  explanation: 現実と違う仮定は、si + 接続法過去（tuviera）+ 過去未来（viajaría）で表します。
-- question: Me pidió que la ___ al día siguiente.
-  options: ["llamara", "llame", "llamaba"]
-  correctIndex: 0
-  level: b2
-  skill: grammar
-  unit: 40
-  explanation: 主節が過去（pidió）なので、時制の一致で que のあとは接続法過去（llamara）になります。
-- question: Aunque ___ mañana, iremos de excursión.（たとえ明日雨が降っても、遠足に行く）
-  options: ["llueve", "llueva", "lloverá"]
-  correctIndex: 1
-  level: b2
-  skill: grammar
-  unit: 41
-  explanation: 「たとえ〜しても」と、まだ事実でないことを譲歩するときは、aunque + 接続法（llueva）です。
-- question: En este barrio se ___ muchos pisos.
-  options: ["alquila", "alquilamos", "alquilan"]
-  correctIndex: 2
-  level: b2
-  skill: grammar
-  unit: 44
-  explanation: 再帰受動の se では、動詞は主語（muchos pisos）に合わせて複数形の alquilan になります。
-- question: meter la pata の意味は？
+  explanation: "現実とは違う仮定（実際には時間がない）は、si + 接続法過去（tuviera）+ 過去未来（viajaría）で表します。si + 直説法現在（Si tengo tiempo, viajaré.）は実現の可能性がある条件です。si のあとに過去未来の tendría は使いません。"
+- question: "meter la pata の意味は？"
   options: ["へまをする", "手を貸す", "からかう"]
   correctIndex: 0
   level: b2
   skill: vocabulary
   unit: 47
-  explanation: meter la pata は「へまをする・失言する」。手を貸すは echar una mano、からかうは tomar el pelo です。
-- question: このメールの目的は？
+  explanation: "meter la pata は直訳すると「脚を突っこむ」で、「へまをする・失言する」という意味の慣用表現です。「手を貸す」は echar una mano、「からかう」は tomar el pelo と言います。慣用表現は日常会話によく出てくるので、場面といっしょに覚えましょう。"
+- question: "Me pidió que la ___ al día siguiente."
+  options: ["llamara", "llame", "llamaba"]
+  correctIndex: 0
+  level: b2
+  skill: grammar
+  unit: 40
+  explanation: "「〜するように頼んだ」の pedir que のあとは接続法です。主節が過去（pidió）なので、時制の一致で接続法過去（llamara）になります。主節が現在なら Me pide que la llame. です。線過去の llamaba は直説法なので、依頼の文には使えません。"
+- question: "専門家によると、主な原因は何ですか？"
+  audio: lt-b2-1
+  options: ["若者が親と暮らしたがっていること", "家賃が上がり続けていること", "仕事が見つからないこと"]
+  correctIndex: 1
+  level: b2
+  skill: listening
+  unit: 46
+  explanation: "Los expertos lo atribuyen, sobre todo, al precio del alquiler（専門家はそれをおもに家賃のせいだと考えている）と言っています。atribuir A a B（AをBのせいにする・Bに帰する）は、ニュースや論説でよく使われる表現です。independizarse（自立する・親元を離れる）も、スペインの社会問題を語るときの大切な単語です。"
+- question: "Aunque ___ mañana, iremos de excursión.（たとえ明日雨が降っても、遠足に行く）"
+  options: ["llueve", "llueva", "lloverá"]
+  correctIndex: 1
+  level: b2
+  skill: grammar
+  unit: 41
+  explanation: "「たとえ〜しても」と、まだ事実になっていないことを仮定して譲歩するときは、aunque + 接続法（llueva）を使います。aunque + 直説法（Aunque llueve, …）は「雨が降っているけれど」と、事実として認めるときの形です。未来形の lloverá は aunque のあとでは不自然です。"
+- question: "Mi jefe me dijo: «Puedes tutearme». どういう意味？"
+  options: ["明日は休んでいい", "遅れて来てもいい", "tú で話していい（くだけた話し方でいい）"]
+  correctIndex: 2
+  level: b2
+  skill: vocabulary
+  unit: 45
+  explanation: "tutear は「tú で話す」、つまり usted を使わず、くだけた話し方をすることです。スペインでは職場でも早くから tú を使うことが多く、上司のほうから Puedes tutearme. と言ってくれることもあります。反対に usted で話すことは tratar de usted と言います。"
+- question: "このメールの目的は？"
   passage: "Estimada señora López: Le escribo para solicitar información sobre el curso de verano. Le agradecería que me enviara el programa y los precios. Atentamente, Kenta."
   options: ["講座を予約すること", "講座の情報を求めること", "料金を支払うこと"]
   correctIndex: 1
   level: b2
   skill: reading
   unit: 45
-  explanation: solicitar información（情報を求める）と書かれています。Le agradecería que… は、改まったメールでの丁寧な依頼の形です。
+  explanation: "Le escribo para solicitar información sobre el curso de verano（夏期講座についての情報をお願いしたく、ご連絡します）と書かれています。Le agradecería que me enviara…（〜をお送りいただけるとありがたいです）は、改まったメールでの丁寧な依頼の決まった形です。Estimada señora López（拝啓 ロペス様）、Atentamente（敬具）も、フォーマルなメールの書き出しと結びとして覚えておきましょう。"
+- question: "En este barrio se ___ muchos pisos."
+  options: ["alquila", "alquilamos", "alquilan"]
+  correctIndex: 2
+  level: b2
+  skill: grammar
+  unit: 44
+  explanation: "再帰受動の se では、動詞は意味上の主語（muchos pisos）に合わせて活用するので、複数形の alquilan になります。単数なら Se alquila un piso.（部屋貸します）。不動産の張り紙でよく見る表現です。"
+- question: "「それにもかかわらず・しかしながら」にあたる表現は？"
+  options: ["por lo tanto", "no obstante", "a continuación"]
+  correctIndex: 1
+  level: b2
+  skill: vocabulary
+  unit: 46
+  explanation: "no obstante は「それにもかかわらず・しかしながら」で、sin embargo と同じように使える、やや改まった表現です。por lo tanto は「したがって」、a continuación は「続いて・次に」です。文のつながりを示す表現を使い分けると、論理的な文章が書けるようになります。"
+- question: "男性が後悔していることは？"
+  audio: lt-b2-2
+  options: ["試験を受けたこと", "試験に落ちたこと", "もっと早く勉強を始めなかったこと"]
+  correctIndex: 2
+  level: b2
+  skill: listening
+  unit: 39
+  explanation: "男性は me habría presentado igual（それでも受けていただろう）と言ったあと、habría empezado a estudiar mucho antes（もっとずっと早く勉強を始めていただろう）と答えています。si + 接続法過去完了（hubieras sabido）+ 過去未来完了（te habrías presentado）は、過去の事実に反する仮定を表します。試験に落ちたかどうかは話していません。"
 # ── C1 Dominio operativo eficaz ──
-- question: A lo mejor ___ mañana.
+- question: "A lo mejor ___ mañana."
   options: ["venga", "viene", "viniera"]
   correctIndex: 1
   level: c1
   skill: grammar
   unit: 49
-  explanation: a lo mejor（たぶん）のあとは、いつも直説法（viene）です。quizá なら接続法も使えます。
-- question: Ayer ___ que te habías casado. ¡Enhorabuena!（知った）
-  options: ["supe", "sabía", "he sabido"]
-  correctIndex: 0
-  level: c1
-  skill: grammar
-  unit: 50
-  explanation: saber の点過去 supe は「知った・わかった」という意味になります。線過去の sabía は「知っていた」です。
-- question: Llegó una hora tarde, ___ molestó a todos.
-  options: ["la cual", "lo cual", "el cual"]
-  correctIndex: 1
-  level: c1
-  skill: grammar
-  unit: 51
-  explanation: 前の文全体（1時間遅れて来たこと）を受けるときは、中性の lo cual を使います。
-- question: 「決断する」は ___ una decisión。
+  explanation: "a lo mejor（たぶん・もしかすると）のあとは、いつも直説法（viene）を使います。同じ「たぶん」でも quizá や tal vez なら、確信の度合いによって接続法（Quizá venga mañana.）も使えます。推量の表現ごとに、続く法が決まっていることに注意しましょう。"
+- question: "「決断する」は ___ una decisión。"
   options: ["hacer", "poner", "tomar"]
   correctIndex: 2
   level: c1
   skill: vocabulary
   unit: 52
-  explanation: decisión と組み合わせる動詞は tomar です（tomar una decisión）。このような決まった組み合わせをコロケーションといいます。
-- question: スペインの話し言葉の ¡Qué guay! の意味は？
+  explanation: "decisión と組み合わせる動詞は tomar です（tomar una decisión）。このように、意味ではなく慣習で決まっている語の組み合わせをコロケーションといいます。日本語の「決断をする」につられて hacer を選ばないようにしましょう。dar un paseo（散歩する）、prestar atención（注意を払う）なども覚えておきたい組み合わせです。"
+- question: "Ayer ___ que te habías casado. ¡Enhorabuena!（知った）"
+  options: ["supe", "sabía", "he sabido"]
+  correctIndex: 0
+  level: c1
+  skill: grammar
+  unit: 50
+  explanation: "saber の点過去 supe は「知った・わかった」と、知った瞬間を表します。線過去の sabía は「（前から）知っていた」という状態です。conocer（conocí＝知り合った）、querer（no quise＝断った）なども、点過去になると意味が変わる動詞です。"
+- question: "話し手の本音は？"
+  audio: lt-c1-1
+  options: ["計画はすばらしいので、すぐに進めたい", "計画自体は否定しないが、今の予算では実現は難しいと思っている", "予算は十分なので、計画を大きくしたい"]
+  correctIndex: 1
+  level: c1
+  skill: listening
+  unit: 55
+  explanation: "No digo que el proyecto sea malo, ni mucho menos（計画が悪いと言っているわけでは決してない）と前置きしてから、me cuesta ver cómo vamos a sacarlo adelante con el presupuesto que tenemos（今の予算でどう実現するのか見えにくい）と言っています。はっきり「反対」とは言わず、やわらげた言い方で懸念を伝える、仕事の場でよくある話し方です。"
+- question: "Llegó una hora tarde, ___ molestó a todos."
+  options: ["la cual", "lo cual", "el cual"]
+  correctIndex: 1
+  level: c1
+  skill: grammar
+  unit: 51
+  explanation: "前の文全体（1時間遅れて来たこと）を受けて「そのことが」と続けるときは、中性の lo cual（または lo que）を使います。la cual・el cual は、特定の女性名詞・男性名詞を受けるときの形です。書き言葉で長い文をつなぐときによく使われます。"
+- question: "スペインの話し言葉の ¡Qué guay! の意味は？"
   options: ["最高だね！", "残念だね！", "退屈だね！"]
   correctIndex: 0
   level: c1
   skill: vocabulary
   unit: 53
-  explanation: guay はスペインの若者言葉で「すごくいい・かっこいい」。残念は ¡Qué pena!、退屈は ¡Qué rollo! です。
-- question: マルタの言葉の本当の意味は？
+  explanation: "guay はスペインの口語で「すごくいい・かっこいい」。¡Qué guay! は「最高！」「いいね！」という意味です。「残念だね」は ¡Qué pena!、「退屈だね」は ¡Qué rollo! と言います。中南米ではあまり使わない、スペインらしい表現です。"
+- question: "マルタの言葉の本当の意味は？"
   passage: "Llegué a la cena con una hora de retraso. Marta me miró y dijo, con una sonrisa: «¡Qué puntual eres, como siempre!»."
   options: ["本当に時間を守る人だとほめている", "次は早く来てほしいと頼んでいる", "遅れて来たことを皮肉っている"]
   correctIndex: 2
   level: c1
   skill: reading
   unit: 55
-  explanation: 1時間遅れた相手に「いつもどおり時間に正確ね」と言うのは、皮肉です。言葉どおりの意味と反対のことを伝えています。
+  explanation: "1時間遅れて来た相手に、笑顔で「いつもどおり時間に正確ね」と言うのは皮肉です。言葉どおりの意味とは反対のことを伝えています。como siempre（いつものように）から、遅刻がいつものことだとわかるのもポイントです。"
+- question: "No es que no ___ ir, es que no puedo."
+  options: ["quiera", "quiero", "querré"]
+  correctIndex: 0
+  level: c1
+  skill: grammar
+  unit: 49
+  explanation: "no es que…（〜というわけではない）のあとは接続法（quiera）を使います。否定されている内容が事実ではないからです。後半の es que…（実は〜なのだ）は理由を説明する表現で、こちらは直説法（puedo）です。"
+- question: "論文で「〜と結論づけることができる」にあたる表現は？"
+  options: ["a lo mejor", "se me ocurre que", "cabe concluir que"]
+  correctIndex: 2
+  level: c1
+  skill: vocabulary
+  unit: 54
+  explanation: "cabe concluir que… は「〜と結論づけることができる」という、論文や報告書で使われる改まった表現です。a lo mejor は「たぶん」、se me ocurre que… は「ふと思ったのだが」という口語的な表現で、学術的な文章には合いません。cabe + 不定詞（cabe señalar que＝指摘しておくべきは）も覚えておきましょう。"
+- question: "女性にとって、夕食はどうでしたか？"
+  audio: lt-c1-2
+  options: ["うんざりするものだった", "とても楽しかった", "結婚が決まってうれしかった"]
+  correctIndex: 0
+  level: c1
+  skill: listening
+  unit: 53
+  explanation: "ni me hables（その話はしないで）、Un rollo, vamos（まったくうんざりだったよ）から、夕食がうんざりするものだったとわかります。相手の母親が一晩中「いつ結婚するの」と聞いてきたことが不満の理由で、結婚が決まったわけではありません。¡Qué fuerte!（うそでしょ・すごいね）も、スペインの若者がよく使う口語表現です。"
 # ── C2 Maestría ──
-- question: Adonde fueres, haz lo que vieres. の fueres は何の形？
+- question: "Adonde fueres, haz lo que vieres. の fueres は何の形？"
   options: ["直説法未来", "接続法過去", "接続法未来"]
   correctIndex: 2
   level: c2
   skill: grammar
   unit: 57
-  explanation: fueres は ir の接続法未来です。現代ではことわざや法律の文に残る形で、今の言葉なら Adonde vayas, haz lo que veas. です。
-- question: Es un pobre hombre. の意味に近いのは？
-  options: ["かわいそうな男だ", "お金のない男だ", "背の低い男だ"]
-  correctIndex: 0
-  level: c2
-  skill: grammar
-  unit: 58
-  explanation: 名詞の前の pobre は「かわいそうな・哀れな」。名詞のあとの un hombre pobre なら「貧しい男」です。形容詞の位置で意味が変わります。
-- question: A quien madruga, Dios le ayuda. に近い日本語のことわざは？
+  explanation: "fueres は ir の接続法未来です。接続法未来は現代の会話では使われず、ことわざや法律の文に残る形です。今の言葉なら Adonde vayas, haz lo que veas.（郷に入っては郷に従え）となります。"
+- question: "A quien madruga, Dios le ayuda. に近い日本語のことわざは？"
   options: ["急がば回れ", "早起きは三文の徳", "石の上にも三年"]
   correctIndex: 1
   level: c2
   skill: vocabulary
   unit: 59
-  explanation: madrugar は「早起きする」。早起きする人には神が味方する、という意味で、「早起きは三文の徳」にあたります。
-- question: 賃貸契約書の el arrendatario は？
+  explanation: "madrugar は「早起きする」。「早起きする人には神が味方する」という意味で、「早起きは三文の徳」にあたります。ことわざは文化的な背景といっしょに覚えると、会話や文章で出てきたときにすぐ意味がわかります。"
+- question: "Es un pobre hombre. の意味に近いのは？"
+  options: ["かわいそうな男だ", "お金のない男だ", "背の低い男だ"]
+  correctIndex: 0
+  level: c2
+  skill: grammar
+  unit: 58
+  explanation: "名詞の前に置いた pobre は「かわいそうな・哀れな」という主観的な評価を表します。名詞のあとに置いた un hombre pobre なら「貧しい男」です。grande（un gran hombre＝偉大な人／un hombre grande＝大柄な人）、viejo（un viejo amigo＝古くからの友人）なども、位置で意味が変わる形容詞です。"
+- question: "話し手の主張に最も近いのは？"
+  audio: lt-c2-1
+  options: ["村は完全に見捨てられている", "夏の観光客を増やせば、問題は解決する", "問題は村とのつながりではなく、一年中暮らすための公共サービスが足りないことだ"]
+  correctIndex: 2
+  level: c2
+  skill: listening
+  unit: 60
+  explanation: "no es tanto la falta de vínculos como la falta de servicios que permitan quedarse el resto del año（問題はつながりがないことよりも、一年のほかの時期もとどまれるだけのサービスがないことだ）が主張の中心です。no es tanto A como B（AというよりむしろB）は、論述でよく使われる構文です。夏に人が戻ってくることは、村が見捨てられてはいない根拠として挙げられています。"
+- question: "Sea como ___, tenemos que decidirlo hoy."
+  options: ["fuera", "sea", "es"]
+  correctIndex: 1
+  level: c2
+  skill: grammar
+  unit: 57
+  explanation: "sea como sea は「いずれにせよ・どうであれ」という意味の決まり文句で、同じ動詞の接続法をくり返す形です。pase lo que pase（何が起ころうと）、digan lo que digan（人が何と言おうと）も同じ仕組みです。過去の文脈では fuera como fuera になります。"
+- question: "賃貸契約書の el arrendatario は？"
   options: ["貸す人（貸主）", "借りる人（借主）", "仲介業者"]
   correctIndex: 1
   level: c2
   skill: vocabulary
   unit: 60
-  explanation: el arrendatario は借主、el arrendador は貸主です。法律の文書では、よく似た語の区別が大切です。
-- question: ¿Podría aclarar este punto? の意味は？
-  options: ["この点を説明していただけますか", "この点を要約していただけますか", "この点を削除していただけますか"]
-  correctIndex: 0
-  level: c2
-  skill: vocabulary
-  unit: 61
-  explanation: aclarar は「明らかにする・説明する」。要約するは resumir です。
-- question: 中心街の商店主たちの立場は？
-  passage: El ayuntamiento ha aprobado un plan para ampliar los carriles bici del centro. Los comerciantes temen perder clientes, aunque reconocen que el tráfico se ha vuelto insoportable.
+  explanation: "el arrendatario は借主、el arrendador は貸主です。語尾が少し違うだけで立場が逆になるので、契約書ではとくに注意が必要です。日常会話では、借主は el inquilino、貸主は el casero とも言います。"
+- question: "中心街の商店主たちの立場は？"
+  passage: "El ayuntamiento ha aprobado un plan para ampliar los carriles bici del centro. Los comerciantes temen perder clientes, aunque reconocen que el tráfico se ha vuelto insoportable."
   options: ["計画を全面的に支持している", "客が減ることを心配しつつ、交通の問題は認めている", "交通に問題はないと考えている"]
   correctIndex: 1
   level: c2
   skill: reading
   unit: 60
-  explanation: temen perder clientes（客を失うことを心配している）と aunque reconocen…（〜は認めているが）から、二つの立場をあわせ持っていることがわかります。
+  explanation: "temen perder clientes（客を失うことを心配している）と aunque reconocen que el tráfico se ha vuelto insoportable（交通が耐えがたくなったことは認めているが）から、二つの立場をあわせ持っていることがわかります。aunque + 直説法は、事実として認めていることを表します。"
+- question: "De haberlo sabido, ___ antes."
+  options: ["he venido", "vendría", "habría venido"]
+  correctIndex: 2
+  level: c2
+  skill: grammar
+  unit: 57
+  explanation: "de + 不定詞の完了形（de haberlo sabido）は、Si lo hubiera sabido（もしそれを知っていたら）と同じ、過去の事実に反する条件を表す文語的な形です。帰結には過去未来完了（habría venido、または hubiera venido）を使います。vendría は、現在や未来についての仮定の帰結に使う形です。"
+- question: "¿Podría aclarar este punto? の意味は？"
+  options: ["この点を説明していただけますか", "この点を要約していただけますか", "この点を削除していただけますか"]
+  correctIndex: 0
+  level: c2
+  skill: vocabulary
+  unit: 61
+  explanation: "aclarar は「明らかにする・はっきり説明する」。¿Podría…? は過去未来を使った丁寧な依頼で、会議や通訳の場面で相手に説明を求めるときに使います。「要約する」は resumir、「削除する」は eliminar または borrar です。"
+- question: "女性は報告書をどう評価していますか？"
+  audio: lt-c2-2
+  options: ["簡潔でよくまとまっていると感心している", "長いだけで中身がないと皮肉っている", "傑作なので、みんなに読ませたいと思っている"]
+  correctIndex: 1
+  level: c2
+  skill: listening
+  unit: 58
+  explanation: "Cuarenta páginas para decir que todo sigue igual（何も変わっていないと言うためだけに40ページ）のあとの Toda una obra maestra de la síntesis（まさに要約の傑作だね）は、言葉どおりの意味とは反対の皮肉です。長いだけで中身がない、と批判しています。文末の vamos は「まったく」と気持ちを強める口語の言い方です。"
 relatedPages:
 - title: スペイン語学習ロードマップ（トップ）
   href: /language/learn-spanish/
@@ -307,15 +487,19 @@ relatedPages:
   href: /language/learn-spanish/dele/
 faq:
 - question: "このレベルチェックテストはどのくらい時間がかかりますか？"
-  answer: "5〜15分ほどです。A1からC2まで、1レベル6問のブロックに順に答えていき、合格しなかったブロックで診断が終わるので、レベルによって問題数が変わります（最大36問）。"
+  answer: "20分ほどです。A1からC2まで、少しずつ難しくなる60問に答えます。途中でページを閉じても、同じブラウザなら続きから再開できます。"
 - question: "このテストは公式な試験ですか？"
-  answer: "いいえ、あくまで目安を知るための非公式なテストです。大学・企業・公的機関に対してスペイン語力を証明する必要がある場合は、セルバンテス文化センター（Instituto Cervantes）が発行する公式資格<a href=\"/language/learn-spanish/dele/\">DELE</a>が必要です。"
+  answer: "いいえ、あくまで目安を知るための非公式なテストで、DELEなどの公式試験をまねたものでもありません。大学・企業・公的機関に対してスペイン語力を証明する必要がある場合は、セルバンテス文化センター（Instituto Cervantes）が発行する公式資格<a href=\"/language/learn-spanish/dele/\">DELE</a>が必要です。"
 - question: "推定レベルはどう決まりますか？"
-  answer: "各ブロック6問のうち4問以上正解するとそのレベルは合格で、次のブロックに進みます。最後に合格したブロックがあなたの推定レベルです。合格しなかったブロックで間違えた問題から、どこから学び直すとよいかもわかります。"
+  answer: "問題は各レベル10問ずつで、10問中7問以上正解すると、そのレベルに到達していると判定します。A1から順に見て、続けて到達している最後のレベルがあなたの推定レベルです。結果画面には、レベルごとの正答数が棒グラフで表示されます。"
+- question: "わからない問題はどうすればいいですか？"
+  answer: "「わからない」を選んでください。当てずっぽうで答えるより、今の実力に近い結果が出ます。「わからない」は不正解として数えます。"
+- question: "音声問題が聞けないときはどうすればいいですか？"
+  answer: "音声問題は各レベル2問、全部で12問あり、1問につき2回まで聞けます。電車の中など音を出せないときは「今は音声を聞けない（最後に回す）」を選ぶと、その問題をテストの最後に回せます。最後でも聞けない場合は飛ばすことができ、結果画面にその旨が表示されます。"
 - question: "結果が出たら、何をすればいいですか？"
-  answer: "結果画面に、あなたのレベルの学習ページへのリンクが表示されます。合格しなかったブロックで間違えた項目が、次に取り組むべき内容です。全体の進め方は<a href=\"/language/learn-spanish/\">スペイン語学習ロードマップ</a>で確認できます。"
+  answer: "結果画面に、次に学ぶユニット（またはレベルの学習ページ）へのリンクと、全60問の解説ページへのリンクが表示されます。間違えた問題は、解説ページで確認しましょう。全体の進め方は<a href=\"/language/learn-spanish/\">スペイン語学習ロードマップ</a>で確認できます。"
 - question: "このテストとDELEはどう違いますか？"
-  answer: "このテストは現在地を知るための目安、DELEは公式に証明するための試験です。DELEにはA1〜C2の公式レベルがあり、専用の対策が必要で、認定会場での受験が必要です。"
+  answer: "このテストは現在地を知るための目安で、DELEの形式をまねたものではありません。DELEは公式に証明するための試験で、A1〜C2の公式レベルがあり、専用の対策と認定会場での受験が必要です。"
 sources:
 - label: 欧州言語共通参照枠（CEFR）、レベルと能力記述
   url: https://cvc.cervantes.es/ensenanza/biblioteca_ele/marco/cap_03.htm
@@ -329,9 +513,11 @@ sources:
 
 import LevelTestCard from '../../../../components/LevelTestCard.astro';
 
-しばらくスペイン語を勉強しているけれど、今どのくらいのレベルなのか分からない——そんな方のために、無料で受けられる診断テストを用意しました。**A1からC2まで、1レベル6問のブロック**に順に答えていく形式で、文法・語彙・読解をチェックします。登録は不要で、答え終わるとその場で、[欧州言語共通参照枠（CEFR）](https://cvc.cervantes.es/ensenanza/biblioteca_ele/marco/cap_03.htm)に沿ったレベルの目安と、得意・苦手な分野、次に学ぶべき内容がわかります。
+## レベル診断テスト（全60問）
 
-このテストはあくまで**目安**です。現在地を把握し、次にどこへ進むべきかを判断する助けにはなりますが、公式な試験ではありません。国際的に通用する認定資格が必要な場合は、[DELE](/language/learn-spanish/dele/)をご検討ください。
+<LevelTestCard levelTest={frontmatter.levelTest} />
+
+しばらくスペイン語を勉強しているけれど、今どのくらいのレベルなのか分からない——そんな方のために、無料で受けられる診断テストを用意しました。**A1からC2まで、少しずつ難しくなる60問**に答える形式で、文法・語彙・読解・聴解をチェックします。登録は不要で、答え終わるとその場で、[欧州言語共通参照枠（CEFR）](https://cvc.cervantes.es/ensenanza/biblioteca_ele/marco/cap_03.htm)に沿ったレベルの目安と、レベル別の正答数、次に学ぶべき内容がわかります。
 
 ---
 
@@ -339,45 +525,42 @@ import LevelTestCard from '../../../../components/LevelTestCard.astro';
 
 やり方はシンプルで、一人で完結できるように設計されています。
 
-1. **A1のブロックから始めます。** 各ブロックは6問で、文法3問・語彙2問・読解1問です。選択肢を1つ選ぶと、すぐに正解と解説が表示されます。
-2. **6問中4問以上正解すると、そのレベルは合格**です。次のレベルのブロックに進みましょう。
-3. **合格しなかったブロックで診断は終わります。** 自分に合わないレベルの問題を長く解き続ける必要はありません。
-4. **結果を確認します。** 推定レベル、文法・語彙・読解の得意と苦手、次に学ぶべき内容が表示されます。
+1. **「テストを始める」を押します。** 問題は1問ずつカードで表示され、答えを選ぶと次の問題に進みます。正解かどうかは、テストの途中では表示されません。
+2. **わからない問題は「わからない」を選びます。** 当てずっぽうで答えるより、今の実力に近い結果が出ます。
+3. **音声問題は2回まで聞けます。** 音を出せないときは「最後に回す」を選ぶと、その問題をテストの最後に回せます。
+4. **途中でやめても大丈夫です。** 回答はこのブラウザに自動で保存され、次に開いたときに続きから再開できます。「最初からやり直す」で、いつでもリセットできます。
+5. **60問すべてに答えると、結果が表示されます。** レベル別の正答数、推定レベル、分野ごとの得意・苦手、次に学ぶユニットがわかります。全問の解説ページも開けます。
 
-すべての問題に正解する必要はありません。このテストは「どこまで到達しているか」を測るものです。歯が立たない問題が出てきたら、そこが今のあなたの学びどころです。
+すべての問題に正解する必要はありません。後半には上級者向けの問題も出てきます。歯が立たない問題が出てきたら、そこが今のあなたの学びどころです。
 
 ## 各レベルで測っている内容
 
-各ブロックは、[セルバンテス学院のカリキュラム大綱（PCIC）](https://cvc.cervantes.es/ensenanza/biblioteca_ele/plan_curricular/indice.htm)に基づき、そのレベルを特徴づける項目から出題しています。
+各レベル10問（文法4問・語彙3問・読解1問・聴解2問）で、[セルバンテス学院のカリキュラム大綱（PCIC）](https://cvc.cervantes.es/ensenanza/biblioteca_ele/plan_curricular/indice.htm)に基づき、そのレベルを特徴づける項目から出題しています。テスト中は、どのレベルの問題かは表示されません。
 
-- **A1 Acceso：** 冠詞と名詞の性、ser と estar、gustar、場所や曜日の基本語彙、短い自己紹介文の読解。
-- **A2 Plataforma：** 点過去・線過去・現在完了の使い分け、比較、時の表現、過去の出来事を書いた文の読解。
-- **B1 Umbral：** 接続法現在、過去完了、por と para、談話標識、意見を述べる文の読解。
-- **B2 Avanzado：** si + 接続法過去の条件文、時制の一致、aunque + 接続法、再帰受動の se、慣用表現、改まったメールの読解。
-- **C1 Dominio operativo eficaz：** 法による意味の違い、アスペクト、関係詞 lo cual、コロケーション、口語、皮肉を読み取る読解。
-- **C2 Maestría：** 接続法未来、形容詞の位置による意味の違い、ことわざ、専門的な語彙、報道文の読解。
+- **A1 Acceso：** 冠詞と名詞の性、ser と estar、hay、gustar、曜日や食事の基本語彙、短い自己紹介文の読解、時刻や自己紹介の聞き取り。
+- **A2 Plataforma：** 点過去・線過去・現在完了の使い分け、比較、道案内の表現、過去の出来事を書いた文の読解、駅のアナウンスや週末の話の聞き取り。
+- **B1 Umbral：** 接続法現在、過去完了、por と para、談話標識、ser と estar で意味が変わる形容詞、意見を述べる文の読解と会話の聞き取り。
+- **B2 Avanzado：** si + 接続法過去の条件文、時制の一致、aunque + 接続法、再帰受動の se、慣用表現、改まったメールの読解、ラジオのニュースの聞き取り。
+- **C1 Dominio operativo eficaz：** 法による意味の違い、アスペクト、関係詞 lo cual、コロケーション、口語、皮肉や遠回しな言い方の理解。
+- **C2 Maestría：** 接続法未来や文語の条件文、形容詞の位置による意味の違い、ことわざ、専門的な語彙、報道文の読解、論述や皮肉を含む会話の聞き取り。
 
 ---
 
-## レベル診断テスト（A1〜C2・最大36問）
-
-<LevelTestCard levelTest={frontmatter.levelTest} />
-
 ## 結果の解釈表
 
-最後に合格したブロックが、あなたの推定レベルです。
+各レベル10問中7問以上正解すると、そのレベルに到達していると判定します。A1から続けて到達した最後のレベルが、あなたの推定レベルです。
 
 | 結果 | 推定レベル | 意味 | 次に進む先 |
 |---|---|---|---|
-| A1のブロックが不合格 | **A1 Acceso の前半** | 始めたばかり、または基礎を学び直したい段階。 | [A1ハブ](/language/learn-spanish/a1/)・[学習ロードマップ](/language/learn-spanish/) |
-| A1まで合格 | **A1 Acceso** | 自己紹介や身近なことを、簡単な表現で伝えられる段階。 | [A2ハブ](/language/learn-spanish/a2/) |
-| A2まで合格 | **A2 Plataforma** | 日常の場面や過去の出来事を話せる段階。 | [B1ハブ](/language/learn-spanish/b1/) |
-| B1まで合格 | **B1 Umbral** | 旅行や生活で困らず、意見を言える段階。 | [B2ハブ](/language/learn-spanish/b2/) |
-| B2まで合格 | **B2 Avanzado** | 仮定や譲歩を使い、ネイティブと自然にやりとりできる段階。 | [C1ハブ](/language/learn-spanish/c1/) |
-| C1まで合格 | **C1 Dominio operativo eficaz** | ニュアンスや文体を使い分け、仕事や学業で使える段階。 | [C2ハブ](/language/learn-spanish/c2/) |
-| C2まで合格 | **C2 Maestría** | ことわざや専門的な文章まで理解できる、最上級の段階。 | [DELE](/language/learn-spanish/dele/) |
+| A1の正解が6問以下 | **A1 Acceso の前半** | 始めたばかり、または基礎を学び直したい段階。 | [A1ハブ](/language/learn-spanish/a1/)・[学習ロードマップ](/language/learn-spanish/) |
+| A1まで到達 | **A1 Acceso** | 自己紹介や身近なことを、簡単な表現で伝えられる段階。 | [A2ハブ](/language/learn-spanish/a2/) |
+| A2まで到達 | **A2 Plataforma** | 日常の場面や過去の出来事を話せる段階。 | [B1ハブ](/language/learn-spanish/b1/) |
+| B1まで到達 | **B1 Umbral** | 旅行や生活で困らず、意見を言える段階。 | [B2ハブ](/language/learn-spanish/b2/) |
+| B2まで到達 | **B2 Avanzado** | 仮定や譲歩を使い、ネイティブと自然にやりとりできる段階。 | [C1ハブ](/language/learn-spanish/c1/) |
+| C1まで到達 | **C1 Dominio operativo eficaz** | ニュアンスや文体を使い分け、仕事や学業で使える段階。 | [C2ハブ](/language/learn-spanish/c2/) |
+| C2まで到達 | **C2 Maestría** | ことわざや専門的な文章まで理解できる、最上級の段階。 | [DELE](/language/learn-spanish/dele/) |
 
-合格したブロックがあっても、そのブロックで間違えた問題は見直しておきましょう。結果画面には、間違えた項目の一覧が表示されます。
+次のレベルで10問中5〜6問正解していれば、結果画面に「次のレベルに近づいています」と表示されます。到達したレベルでも、間違えた問題は解説ページで見直しておきましょう。
 
 ---
 
@@ -395,7 +578,7 @@ import LevelTestCard from '../../../../components/LevelTestCard.astro';
 
 ## これは公式な試験ですか？
 
-いいえ。このテストは**あくまで目安**であり、あなたの現在地を把握し学習プランを選ぶためのものです。何かを認定するものではなく、公式試験の代わりにもなりません。大学・企業・公的機関に対してスペイン語力を証明する必要がある場合に必要なのは**DELE**（外国語としてのスペイン語検定）です。DELEはスペイン語の公式資格で、スペイン教育省に代わって[セルバンテス学院](https://examenes.cervantes.es/es/dele/que-es)が発行しています。
+いいえ。このテストは**あくまで目安**であり、あなたの現在地を把握し学習プランを選ぶためのものです。何かを認定するものではなく、公式試験の代わりにもならず、公式試験の形式をまねたものでもありません。大学・企業・公的機関に対してスペイン語力を証明する必要がある場合に必要なのは**DELE**（外国語としてのスペイン語検定）です。DELEはスペイン語の公式資格で、スペイン教育省に代わって[セルバンテス学院](https://examenes.cervantes.es/es/dele/que-es)が発行しています。
 
 DELEにはA1・A2・B1・B2・C1・C2の公式レベルがあり、専用の対策が必要で、[東京セルバンテス文化センター](https://tokio.cervantes.es/es/)のような認定会場で受験します。[DELEのページ](/language/learn-spanish/dele/)では、試験の形式、どのレベルを受けるべきか、このテストとDELEの比較を解説しています。
 

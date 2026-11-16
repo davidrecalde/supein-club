@@ -472,8 +472,9 @@ if (faqItems && faqItems.length > 0) {
   });
 }
 
-// 6b. Quiz (if article has quiz or levelTest questions)
-const quizItems = article?.data.quiz ?? article?.data.levelTest;
+// 6b. Quiz (if article has quiz questions). El test de nivel no lleva Quiz: sus respuestas correctas
+// no se ven en la página (solo en la página de soluciones, noindex), y el schema solo dice lo que se ve.
+const quizItems = article?.data.quiz;
 if (quizItems && quizItems.length > 0) {
   graph.push(buildQuizNode(canonical, title, quizItems));
 }

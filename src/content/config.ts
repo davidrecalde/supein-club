@@ -148,16 +148,20 @@ const articles = defineCollection({
     })).optional(),
     // Test de nivel v2 (plan-hub-embudo.md, punto 19): bloques A1-C2; cada pregunta lleva
     // la destreza y la unidad del curso que la enseña (la recomendación de inicio sale de ahí).
+    // Test de nivel (LevelTestCard.astro): 10 preguntas por nivel, de menos a más difíciles. Las de
+    // comprensión auditiva llevan audio (id de pista de src/data/level-test-audio.json) y solo se
+    // muestran cuando su MP3 está publicado. explanation se muestra en la página de soluciones.
     levelTest: z.array(z.object({
       question: z.string(),
       options: z.array(z.string()).min(3).max(4),
       correctIndex: z.number().int().min(0),
       level: z.enum(['a1', 'a2', 'b1', 'b2', 'c1', 'c2']),
-      skill: z.enum(['grammar', 'vocabulary', 'reading']),
+      skill: z.enum(['grammar', 'vocabulary', 'reading', 'listening']),
       unit: z.number().int().min(1).max(62),
       passage: z.string().optional(),
+      audio: z.string().optional(),
       explanation: z.string(),
-    })).optional(),
+    }).refine((q) => (q.skill === 'listening') === Boolean(q.audio), { message: 'Las preguntas de audio (skill: listening) llevan audio, y solo ellas.' })).optional(),
     sportsTeam: z.object({
       name: z.string(),
       alternateName: z.array(z.string()).optional(),
