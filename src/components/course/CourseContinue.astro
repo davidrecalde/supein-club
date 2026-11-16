@@ -2,7 +2,8 @@
 // 「続きから」 para el hub /language/ y la hoja de ruta /learn-spanish/
 // (plan-hub-embudo.md, puntos 9, 10 y 32). Sin JavaScript no se ve nada:
 // solo tiene sentido para quien ya tiene progreso o resultado del test en
-// este navegador.
+// este navegador. El botón × lo oculta en este navegador hasta que cambia lo
+// que recomienda (un resultado nuevo del test u otra unidad completada).
 import { COURSE_LEVELS } from '../../data/course';
 import { getAllUnits, hasPage } from '../../utils/units';
 
@@ -18,6 +19,7 @@ const levels = COURSE_LEVELS.map((l) => ({ code: l.code, name: l.name }));
     <span class="level-chip"></span>
     <span class="course-continue-title"></span>
   </a>
+  <button type="button" class="course-continue-close" data-course-continue-close aria-label="閉じる">×</button>
 </div>
 )}
 
@@ -26,8 +28,14 @@ const levels = COURSE_LEVELS.map((l) => ({ code: l.code, name: l.name }));
 
   type UnitInfo = { unit: number; url: string; shortTitle: string; level: string };
   const RESULT_KEY = 'supein.levelTest.v2';
+  // Lo que el usuario cerró: si la recomendación cambia, el aviso vuelve a salir.
+  const DISMISS_KEY = 'supein.courseContinue.dismissed';
+  const store = {
+    get(k: string) { try { return localStorage.getItem(k); } catch { return null; } },
+    set(k: string, v: string) { try { localStorage.setItem(k, v); } catch { /* sin almacenamiento */ } },
+  };
 
-  function readTest(): { level?: string; startUnit?: number } | null {
+  function readTest(): { level?: string; startUnit?: number; date?: string } | null {
     try {
       const raw = localStorage.getItem(RESULT_KEY);
       return raw ? JSON.parse(raw) : null;
@@ -43,11 +51,13 @@ const levels = COURSE_LEVELS.map((l) => ({ code: l.code, name: l.name }));
     const done = units.filter((u) => isCompleted(progress, u.unit)).map((u) => u.unit);
     let target: UnitInfo | undefined;
     let eyebrow = '';
+    let key = '';
 
     if (done.length > 0) {
       const last = Math.max(...done);
       target = units.find((u) => u.unit > last && !isCompleted(progress, u.unit));
       eyebrow = target ? `続きから（完了 ${done.length} ユニット）` : '';
+      key = `progress:${done.length}:${target?.unit}`;
       if (!target) {
         box.hidden = true;
         return;
@@ -58,13 +68,15 @@ const levels = COURSE_LEVELS.map((l) => ({ code: l.code, name: l.name }));
         target = units.find((u) => u.unit === test.startUnit);
         const level = levels.find((l) => l.code === test.level);
         if (target) eyebrow = `レベルチェックの結果${level ? `（${level.code} ${level.name}）` : ''}：ここから始めましょう`;
+        key = `test:${test.date ?? ''}:${test.startUnit}`;
       }
     }
 
-    if (!target) {
+    if (!target || store.get(DISMISS_KEY) === key) {
       box.hidden = true;
       return;
     }
+    box.dataset.key = key;
     const link = box.querySelector<HTMLAnchorElement>('.course-continue-link')!;
     const chip = box.querySelector<HTMLElement>('.level-chip')!;
     link.href = target.url;
@@ -77,6 +89,11 @@ const levels = COURSE_LEVELS.map((l) => ({ code: l.code, name: l.name }));
 
   const boxes = document.querySelectorAll<HTMLElement>('[data-course-continue]');
   const renderAll = () => boxes.forEach(render);
+  boxes.forEach((box) => box.querySelector('[data-course-continue-close]')?.addEventListener('click', () => {
+    store.set(DISMISS_KEY, box.dataset.key ?? '');
+    boxes.forEach((b) => (b.hidden = true));
+    (window as any).gtag?.('event', 'course_continue_dismissed', { key: box.dataset.key });
+  }));
   window.addEventListener(PROGRESS_EVENT, renderAll);
   renderAll();
 </script>
