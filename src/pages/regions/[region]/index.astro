@@ -10,6 +10,7 @@ import LineBanner from '../../../components/LineBanner.astro';
 import { regions, type RegionConfig } from '../../../config/regions';
 import { getArticleUrl } from '../../../utils/articles';
 import { communityColorMap } from '../../../data/spainCommunities';
+import { House, Landmark, Plane, Trophy, Utensils } from 'lucide-astro';
 
 export async function getStaticPaths() {
   return regions.map((region) => ({
@@ -183,11 +184,26 @@ const sections = [
     </div>
   </header>
 
+  <!-- Accesos a las secciones de la página (料理・サッカー・暮らし・旅行・文化), con su número de artículos. -->
+  <nav class="rgn-jump" aria-label={`${region.label}のガイド`} style={`--rc:${accentColor}`}>
+    <div class="max-w-6xl mx-auto px-5">
+      {sections.map((section) => (
+        <a href={`#${section.id}`} class:list={['rgn-jump-btn', { 'is-empty': section.items.length === 0 }]}>
+          <span class="rgn-jump-ic" aria-hidden="true">
+            {section.id === 'food' ? <Utensils size={20} /> : section.id === 'football' ? <Trophy size={20} /> : section.id === 'living' ? <House size={20} /> : section.id === 'travel' ? <Plane size={20} /> : <Landmark size={20} />}
+          </span>
+          <span class="rgn-jump-label">{region.label}の{section.label}</span>
+          <span class="rgn-jump-n">{section.items.length > 0 ? `${section.items.length}件` : '準備中'}</span>
+        </a>
+      ))}
+    </div>
+  </nav>
+
   <section class="max-w-6xl mx-auto px-5 py-14">
     <p class="text-muted text-base leading-relaxed mb-12 max-w-3xl">{region.intro}</p>
 
     {sections.map((section) => (
-      <div class="mb-12">
+      <div class="mb-12 rgn-section" id={section.id}>
         <div class="flex items-baseline justify-between gap-3 border-b-2 border-navy pb-2 mb-5">
           <h2 class="font-sans font-bold text-xl text-navy">{region.label}の{section.label}</h2>
           <a href={`/${section.id}/`} class="text-sm text-muted hover:text-primary whitespace-nowrap">{section.id === 'food' ? 'スペイン料理ガイドへ' : section.id === 'football' ? 'スペインサッカーガイドへ' : section.id === 'living' ? 'スペインに住むガイドへ' : section.id === 'travel' ? 'スペイン旅行ガイドへ' : 'スペイン文化ガイドへ'} →</a>
@@ -226,3 +242,21 @@ const sections = [
   <LineBanner slim />
   <FloatingActions shareUrl={canonical} shareTitle={`${region.label}地方完全ガイド`} />
 </BaseLayout>
+
+<style>
+  .rgn-jump { border-bottom: 1px solid #E8E8E6; background: #fff; }
+  .rgn-jump > div { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; padding-top: 14px; padding-bottom: 14px; }
+  .rgn-jump-btn { display: flex; align-items: center; gap: 10px; min-height: 52px; padding: 8px 12px; border: 1px solid #E3E8EF; border-left: 4px solid var(--rc); border-radius: 12px; background: #fff; color: #002147; text-decoration: none; transition: border-color .15s, background .15s; }
+  .rgn-jump-btn:hover { border-color: #002147; border-left-color: var(--rc); background: #F7F9FC; }
+  .rgn-jump-ic { display: grid; place-items: center; flex: none; width: 34px; height: 34px; border-radius: 10px; background: #F0F4F8; color: var(--rc); }
+  .rgn-jump-label { flex: 1; min-width: 0; font-size: 13.5px; font-weight: 700; line-height: 1.35; word-break: auto-phrase; }
+  .rgn-jump-n { flex: none; font-size: 11px; font-weight: 700; color: #5A6B80; }
+  .rgn-jump-btn.is-empty { opacity: .6; }
+  .rgn-jump-btn:last-child:nth-child(odd) { grid-column: 1 / -1; }
+  /* html ya tiene scroll-padding-top: 80px por la cabecera fija; esto deja un pequeño margen extra. */
+  .rgn-section { scroll-margin-top: 16px; }
+  @media (min-width: 900px) {
+    .rgn-jump > div { grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 10px; }
+    .rgn-jump-btn:last-child:nth-child(odd) { grid-column: auto; }
+  }
+</style>
