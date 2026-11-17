@@ -6,13 +6,23 @@ import Breadcrumb from '../../components/Breadcrumb.astro';
 import NewsletterForm from '../../components/NewsletterForm.astro';
 import FloatingActions from '../../components/FloatingActions.astro';
 import LineBanner from '../../components/LineBanner.astro';
+import { getCollection } from 'astro:content';
 import { regions } from '../../config/regions';
 import { communityColorMap } from '../../data/spainCommunities';
+import { MAP_COMMUNITIES } from '../../data/spainMapCommunities';
+import { cardImage } from '../../utils/images';
 
 const breadcrumbs = [
   { name: 'ホーム', url: '/' },
   { name: 'スペインの地方', url: '/regions/' },
 ];
+
+// Foto de cada comunidad: la misma que en el hub /food/spain-map/ (heroImage de su provincia representativa).
+const provinces = await getCollection('spain-map', ({ data }) => data.draft !== true);
+const cards = await Promise.all(regions.map(async (r) => {
+  const photo = provinces.find((p) => p.data.province === MAP_COMMUNITIES.find((c) => c.slug === r.communitySlug)?.photo)?.data.heroImage;
+  return { ...r, color: communityColorMap[r.communitySlug]?.flagColor ?? '#002147', img: photo ? await cardImage(photo, '') : undefined };
+}));
 
 const otherPillars = [
   { href: '/travel/', title: 'スペイン旅行', description: 'バルセロナ・マドリードから南部アンダルシア、離島まで、観光スポットとツアー情報を完全網羅' },
@@ -61,33 +71,22 @@ const regionsSchema = {
       スペインは17の自治州からなり、それぞれが独自の言語・食文化・気候・歴史を持っています。本ページでは、すでに記事のある地方から順に、料理・サッカー・暮らし・旅・文化という切り口でまとめてご紹介しています。まだ準備中の地方も、記事の公開に合わせて今後追加していきます。
     </p>
 
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-      {regions.map((r) => {
-        const color = communityColorMap[r.communitySlug]?.flagColor ?? '#002147';
-        return (
-          <a
-            href={`/regions/${r.slug}/`}
-            class="block bg-white rounded-xl overflow-hidden shadow-[0_2px_8px_rgba(0,33,71,0.07)] border border-[#E8E8E6] hover:shadow-[0_4px_16px_rgba(0,33,71,0.12)] transition-all p-6"
-            style={`border-left: 4px solid ${color};`}
-          >
-            <div class="flex items-center gap-3 mb-3">
-              <img
-                src={`/images/flags/${r.communitySlug}.webp`}
-                alt={`${r.label}の旗`}
-                width="36"
-                height="36"
-                loading="lazy"
-                style="width:36px;height:36px;object-fit:cover;border-radius:4px;border:1px solid #E8E8E6;flex-shrink:0;"
-              />
-              <h2 class="font-sans font-bold text-navy text-lg">{r.label}</h2>
+    <div class="rg-grid">
+      {cards.map((r) => (
+        <a href={`/regions/${r.slug}/`} class="rg-card" style={`--rc:${r.color}`}>
+          <span class="rg-img">
+            {r.img && <img src={r.img.src} srcset={r.img.srcset} sizes="(min-width: 1024px) 360px, (min-width: 640px) 45vw, 36vw" width={r.img.width} height={r.img.height} alt="" loading="lazy" decoding="async" />}
+          </span>
+          <div class="rg-body">
+            <div class="rg-head">
+              <img src={`/images/flags/${r.communitySlug}.webp`} alt={`${r.label}の旗`} width="28" height="28" loading="lazy" class="rg-flag" />
+              <h2 class="rg-name">{r.label}</h2>
             </div>
-            <span class="inline-block text-xs font-semibold px-2.5 py-0.5 rounded-full mb-3" style={`background:${color}1A;color:${color};`}>
-              {r.provinceCount}県
-            </span>
-            <p class="text-muted text-sm leading-relaxed">{r.culturalHighlight} — 州都: {r.capital}</p>
-          </a>
-        );
-      })}
+            <span class="rg-count">{r.provinceCount}県</span>
+            <p class="rg-text">{r.culturalHighlight} — 州都: {r.capital}</p>
+          </div>
+        </a>
+      ))}
     </div>
   </section>
 
@@ -113,3 +112,30 @@ const regionsSchema = {
   <LineBanner slim />
   <FloatingActions shareUrl="https://supein.club/regions/" shareTitle="スペインの地方" />
 </BaseLayout>
+
+<style>
+  .rg-grid { display: grid; gap: 12px; }
+  .rg-card { display: flex; overflow: hidden; border: 1px solid #E8E8E6; border-left: 4px solid var(--rc); border-radius: 14px; background: #fff; color: inherit; text-decoration: none; box-shadow: 0 2px 8px rgba(0, 33, 71, .07); transition: box-shadow .2s, transform .2s; }
+  .rg-card:hover { box-shadow: 0 6px 18px rgba(0, 33, 71, .14); transform: translateY(-2px); }
+  .rg-img { position: relative; flex: none; width: 36%; min-height: 112px; background: #E9EEF4; }
+  .rg-img img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+  .rg-body { display: flex; flex-direction: column; align-items: flex-start; gap: 6px; min-width: 0; padding: 12px 14px; }
+  .rg-head { display: flex; align-items: center; gap: 8px; }
+  .rg-flag { flex: none; width: 28px; height: 28px; object-fit: cover; border: 1px solid #E8E8E6; border-radius: 4px; }
+  .rg-name { margin: 0; font-size: 16px; font-weight: 700; line-height: 1.35; color: #002147; }
+  .rg-count { padding: 2px 10px; border-radius: 999px; background: color-mix(in srgb, var(--rc) 12%, #fff); color: var(--rc); font-size: 12px; font-weight: 700; }
+  .rg-text { margin: 0; font-size: 13px; line-height: 1.6; color: #5A6B80; }
+  @media (min-width: 640px) {
+    .rg-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; }
+    .rg-card { flex-direction: column; border-left-width: 1px; border-top: 4px solid var(--rc); }
+    .rg-img { width: 100%; min-height: 0; aspect-ratio: 16 / 9; }
+    .rg-body { padding: 16px 18px 18px; }
+    .rg-name { font-size: 18px; }
+  }
+  @media (min-width: 1024px) {
+    .rg-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .rg-card { transition: none; }
+  }
+</style>
