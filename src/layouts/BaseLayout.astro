@@ -49,9 +49,20 @@ const { title = 'supein.club', lang = 'ja', searchable = true } = Astro.props;
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
-      gtag('config', 'G-9QDF9607ZV', {
-        anonymize_ip: true
-      });
+      // Tráfico interno (visitas de David): abrir cualquier página con ?internal=1 marca este
+      // navegador y sus visitas llegan a GA4 con traffic_type=internal (el filtro de datos
+      // «Internal Traffic» las excluye de los informes); ?internal=0 quita la marca.
+      var internalTraffic = false;
+      try {
+        var mark = location.search.match(/[?&]internal=([01])(?:&|$)/);
+        if (mark) {
+          if (mark[1] === '1') localStorage.setItem('supein.internal', '1');
+          else localStorage.removeItem('supein.internal');
+          alert(mark[1] === '1' ? 'Este navegador queda marcado como tráfico interno de GA4.' : 'Este navegador ya no está marcado como tráfico interno.');
+        }
+        internalTraffic = localStorage.getItem('supein.internal') === '1';
+      } catch (e) { /* sin almacenamiento: tráfico normal */ }
+      gtag('config', 'G-9QDF9607ZV', internalTraffic ? { anonymize_ip: true, traffic_type: 'internal' } : { anonymize_ip: true });
       // Clics hacia LINE con su origen (docs/language/plan-hub-embudo.md, punto 7).
       document.addEventListener('click', function (e) {
         var a = e.target && e.target.closest ? e.target.closest('a[href*="lin.ee/"], a[href*="line.me/"]') : null;
