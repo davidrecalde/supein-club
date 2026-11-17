@@ -474,7 +474,8 @@ const faqSchema = d.faq.length > 0 && {
   .ph-near-card b { display: block; font-size: 16px; }
   .ph-near-card small { display: block; font-size: 11.5px; line-height: 1.5; color: rgba(255, 255, 255, .85); }
 
-  .ph-narrow { max-width: 780px; }
+  /* Columna de lectura alineada a la izquierda, como /language/ y los artículos (el contenedor no se centra más estrecho). */
+  .page-container.ph-narrow > * { max-width: 780px; }
   .ph-about-img { display: block; width: 100%; height: auto; margin: 0 0 20px; border-radius: 14px; }
   .ph-guide { display: flex; align-items: center; gap: 14px; margin: 32px 0 0; padding: 16px 18px; border: 1px solid #E3E8EF; border-left: 4px solid #002147; border-radius: 0 14px 14px 0; background: #fff; color: #1A1A1A; text-decoration: none; }
   .ph-guide-ic { display: grid; place-items: center; flex: none; width: 44px; height: 44px; border-radius: 12px; background: #F0F4F8; color: #002147; }
