@@ -1,378 +1,509 @@
 ---
+// Hub de cada provincia de /food/spain-map/{provincia}/ (rediseño del 17 de noviembre de 2026,
+// mockup aprobado por David). Primero el móvil: cabecera compacta con minimapa, accesos rápidos
+// fijos y bloques numerados como el hub /language/: 01 rankings CRE (top 3 de cada una, sacado del
+// propio artículo), 02 名物料理, 03 エリア, 04 地図, 05 artículos de la comunidad, 06 provincias
+// vecinas; después el texto de la provincia, la guía práctica común y las preguntas frecuentes.
+// Los bloques sin datos no se muestran y la numeración se ajusta sola.
 import type { CollectionEntry } from 'astro:content';
 import { getCollection, getEntry } from 'astro:content';
+import { ArrowRight, Award, BookOpen, Calendar, ChevronDown, ChevronRight, Euro, Info, Landmark, Map as MapIcon, MapPin, Utensils, Wallet, Wine } from 'lucide-astro';
 import BaseLayout from './BaseLayout.astro';
 import SEO from '../components/SEO.astro';
-import FAQSection from '../components/FAQSection.astro';
-import TOC from '../components/TOC.astro';
+import Breadcrumb from '../components/Breadcrumb.astro';
+import Rail from '../components/Rail.astro';
 import LineBanner from '../components/LineBanner.astro';
-import HeroProvince from '../components/province/HeroProvince.astro';
-import ProvinceQuickGuide from '../components/province/ProvinceQuickGuide.astro';
-import ProvinceMapEmbed from '../components/province/ProvinceMapEmbed.astro';
-import ProvinceCREButtons from '../components/province/ProvinceCREButtons.astro';
-import ProvinceSpecialties from '../components/province/ProvinceSpecialties.astro';
-import ProvinceNeighborhoods from '../components/province/ProvinceNeighborhoods.astro';
-import ArticleCard from '../components/ArticleCard.astro';
 import NewsletterForm from '../components/NewsletterForm.astro';
 import AuthorBox from '../components/AuthorBox.astro';
 import PreferredSourceCTA from '../components/PreferredSourceCTA.astro';
 import ArticleDisclaimer from '../components/ArticleDisclaimer.astro';
 import FloatingActions from '../components/FloatingActions.astro';
-import { getArticleUrl } from '../utils/articles';
-import { discoverImage, schemaImages } from '../utils/images';
+import { regions } from '../config/regions';
+import { PROVINCES } from '../data/provinces';
+import { getArticleUrl, pillarLabels } from '../utils/articles';
+import { creSummary } from '../utils/cre';
+import { cardImage, discoverImage, schemaImages } from '../utils/images';
+import { provinceMap } from '../utils/spainMap';
 
 interface Props {
   entry: CollectionEntry<'spain-map'>;
 }
 
 const { entry } = Astro.props;
-// og:image en 1200 px para Google Discover (la página sirve tamaños menores con srcset).
-const discover = entry.data.heroImage ? await discoverImage(entry.data.heroImage) : undefined;
-const heroSchemaImages = entry.data.heroImage ? await schemaImages(entry.data.heroImage) : undefined;
+const d = entry.data;
+const SITE = 'https://supein.club';
+const canonical = `${SITE}/food/spain-map/${d.province}/`;
+const discover = d.heroImage ? await discoverImage(d.heroImage) : undefined;
+const heroSchemaImages = d.heroImage ? await schemaImages(d.heroImage) : undefined;
+const heroCard = d.heroImage ? await cardImage(d.heroImage, d.heroImageAlt ?? `${d.provinceJa}の風景`) : undefined;
 const { Content } = await entry.render();
-const author = await getEntry(entry.data.author);
-
-const canonical = `https://supein.club/food/spain-map/${entry.data.province}/`;
+const author = await getEntry(d.author);
+const nameEs = PROVINCES[d.province]?.es ?? d.province;
+const plain = (s: string) => s.replace(/（[^）]*）/g, '').trim();
 
 const breadcrumbs = [
   { name: 'ホーム', url: '/' },
   { name: 'スペイン料理', url: '/food/' },
   { name: 'スペイン美食マップ', url: '/food/spain-map/' },
-  { name: entry.data.provinceJa, url: '' },
+  { name: d.provinceJa, url: canonical },
 ];
 
-const hasSpecialties = entry.data.specialties && entry.data.specialties.length > 0;
-const hasNeighborhoods = entry.data.neighborhoods && entry.data.neighborhoods.length > 0;
-const hasFaq = entry.data.faq && entry.data.faq.length > 0;
-
-// Rankings CRE de especialidad (the-best-restaurants / cheap-restaurants /
-// tapas-bars) — viven en la colección articles, cluster "spain-map-{provincia}".
-// No todas las provincias los tienen todavía (ver ARCHITECTURE.md).
-const creRankingArticles = await getCollection(
-  'articles',
-  (a) => !a.data.draft && a.data.pillar === 'food' && a.data.cluster === `spain-map-${entry.data.province}`
-);
-const hasCreRankings = creRankingArticles.length > 0;
-
-// こちらの記事もおすすめ：relatedFood/relatedTravel を手動ピンとして使い、
-// 足りない分は同じ food ピラーの記事（spain-map-* のランキング記事は
-// ProvinceCREButtons で別途表示しているため除外）で埋める。
-const allArticles = await getCollection('articles', ({ data }) => !data.draft);
-const hrefMap = new Map(allArticles.map((a) => [getArticleUrl(a), a]));
-
-const pinnedHrefs = [
-  ...(entry.data.relatedTravel ? [entry.data.relatedTravel] : []),
-  ...(entry.data.relatedFood ?? []),
-].filter((href) => href !== '/food/spain-map/');
-
-const pinned: CollectionEntry<'articles'>[] = pinnedHrefs
-  .map((href) => hrefMap.get(href))
-  .filter((a): a is CollectionEntry<'articles'> => !!a);
-
-const usedIds = new Set(pinned.map((a) => a.id));
-const byDate = (a: CollectionEntry<'articles'>, b: CollectionEntry<'articles'>) =>
-  b.data.pubDate.getTime() - a.data.pubDate.getTime();
-
-for (const candidate of allArticles
-  .filter((a) => a.data.pillar === 'food' && !a.data.cluster.startsWith('spain-map-') && !usedIds.has(a.id))
-  .sort(byDate)) {
-  if (pinned.length >= 3) break;
-  pinned.push(candidate);
-  usedIds.add(candidate.id);
-}
-
-const related = pinned.slice(0, 3);
-
-const tocHeadings = [
-  { depth: 2, slug: 'quick-guide', text: '現地で役立つ基本情報' },
-  { depth: 2, slug: 'content', text: '詳細情報' },
-  ...(hasSpecialties ? [{ depth: 2, slug: 'specialties', text: '郷土料理' }] : []),
-  ...(hasNeighborhoods ? [{ depth: 2, slug: 'neighborhoods', text: 'エリア別ガイド' }] : []),
-  { depth: 2, slug: 'map', text: 'レストランマップ' },
-  ...(hasCreRankings ? [{ depth: 2, slug: 'cre-rankings', text: 'グルメランキング' }] : []),
-  ...(hasFaq ? [{ depth: 2, slug: 'faq', text: 'よくある質問' }] : []),
-];
-
-const localBusinessSchema = JSON.stringify({
-  '@context': 'https://schema.org',
-  '@type': ['LocalBusiness', 'Restaurant'],
-  name: `${entry.data.provinceJa}のスペイン料理レストラン`,
-  description: entry.data.description,
-  areaServed: entry.data.province,
-  servesCuisine: 'Spanish',
-  url: canonical,
+// ── 01 Rankings CRE (cluster spain-map-{provincia}), en el orden de demanda de GA4 ──
+const RANKINGS = [
+  { slug: 'cheap-restaurants', kicker: 'コスパ篇', title: '安くて美味しいレストラン', theme: 'cheap' },
+  { slug: 'tapas-bars', kicker: 'バル篇', title: 'おすすめタパスバル', theme: 'tapas' },
+  { slug: 'the-best-restaurants', kicker: 'デラックス篇', title: 'おすすめ高級レストラン', theme: 'deluxe' },
+] as const;
+const provinceArticles = await getCollection('articles', (a) => !a.data.draft && a.data.cluster === `spain-map-${d.province}`);
+const slugOf = (a: CollectionEntry<'articles'>) => a.id.replace(/\.(md|mdx)$/, '').split('/').pop();
+const rankings = RANKINGS.flatMap((r) => {
+  const article = provinceArticles.find((a) => slugOf(a) === r.slug);
+  if (!article) return [];
+  return [{ ...r, url: getArticleUrl(article), name: article.data.title, ...creSummary(article.body ?? '') }];
 });
+
+// ── 06 Provincias vecinas: la lista 「近隣県のグルメガイド」 de los rankings ──
+const allProvinces = await getCollection('spain-map', ({ data }) => data.draft !== true);
+const neighborSource = provinceArticles.map((a) => a.body ?? '').find((b) => b.includes('## 近隣県のグルメガイド')) ?? '';
+const neighborList = neighborSource.split('## 近隣県のグルメガイド')[1]?.split(/\n## /)[0] ?? '';
+const neighbors = await Promise.all(
+  [...neighborList.matchAll(/^- \[[^\]]+\]\(\/food\/spain-map\/([a-z-]+)\/\)(?:[ \t]*[—–-][ \t]*([^\r\n]+))?[ \t]*\r?$/gm)]
+    .map(([, slug, note]) => ({ slug, note: note?.trim(), p: allProvinces.find((x) => x.data.province === slug) }))
+    .filter((n) => n.p && n.slug !== d.province)
+    // Sin descripción en la lista: el plato estrella de esa provincia.
+    .map((n) => ({ ...n, note: n.note || `名物：${plain(n.p!.data.mainDishJa)}` }))
+    .map(async (n) => ({ ...n, url: `/food/spain-map/${n.slug}/`, img: n.p!.data.heroImage ? await cardImage(n.p!.data.heroImage, n.p!.data.heroImageAlt ?? n.p!.data.provinceJa) : undefined })),
+);
+
+// ── Minimapa ──
+const code = PROVINCES[d.province]?.code ?? '';
+const map = provinceMap(code, neighbors.map((n) => PROVINCES[n.slug]?.code).filter(Boolean));
+
+// ── 05 Artículos de la comunidad autónoma (campo region de articles = slug de src/config/regions.ts) ──
+const region = regions.find((r) => r.spainMapLabel === d.region);
+const allArticles = await getCollection('articles', ({ data }) => !data.draft);
+const regionArticles = region
+  ? allArticles
+      .filter((a) => a.data.region === region.slug && !a.data.cluster.startsWith('spain-map-'))
+      .sort((a, b) => Number(b.data.title.includes(d.provinceJa)) - Number(a.data.title.includes(d.provinceJa)) || b.data.pubDate.getTime() - a.data.pubDate.getTime())
+      .slice(0, 6)
+  : [];
+const travel = await Promise.all(regionArticles.map(async (a) => {
+  const hero = a.data.heroImage && typeof a.data.heroImage !== 'string' ? a.data.heroImage : undefined;
+  return { url: getArticleUrl(a), title: a.data.title, tag: pillarLabels[a.data.pillar] ?? a.data.pillar, img: hero ? await cardImage(hero, a.data.heroImageAlt ?? '') : undefined };
+}));
+
+// ── 02 y 03 ──
+const specialties = await Promise.all((d.specialties ?? []).map(async (s) => ({ ...s, img: s.image ? await cardImage(s.image, s.imageAlt ?? s.nameJa) : undefined })));
+const areas = d.neighborhoods ?? [];
+
+const sections = [
+  rankings.length > 0 && { id: 'ranking', label: 'ランキング' },
+  specialties.length > 0 && { id: 'dishes', label: '名物料理' },
+  areas.length > 0 && { id: 'areas', label: 'エリア' },
+  { id: 'map', label: '地図' },
+  travel.length > 0 && { id: 'travel', label: '旅と文化' },
+  neighbors.length > 0 && { id: 'nearby', label: '近隣の県' },
+].filter(Boolean) as Array<{ id: string; label: string }>;
+const num = (id: string) => String(sections.findIndex((s) => s.id === id) + 1).padStart(2, '0');
+
+const collectionSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'CollectionPage',
+  name: d.h1 ?? d.title,
+  description: d.description,
+  url: canonical,
+  inLanguage: 'ja',
+  datePublished: d.pubDate.toISOString().slice(0, 10),
+  about: { '@type': 'AdministrativeArea', name: d.provinceJa, alternateName: nameEs, containedInPlace: { '@type': 'Country', name: 'スペイン' } },
+  mainEntity: {
+    '@type': 'ItemList',
+    itemListElement: rankings.map((r, i) => ({ '@type': 'ListItem', position: i + 1, url: `${SITE}${r.url}`, name: r.name })),
+  },
+};
+const faqSchema = d.faq.length > 0 && {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: d.faq.map((f) => ({ '@type': 'Question', name: f.question, acceptedAnswer: { '@type': 'Answer', text: f.answer.replace(/<[^>]+>/g, '') } })),
+};
 ---
-<BaseLayout title={entry.data.title}>
+<BaseLayout title={d.title}>
   <SEO
     slot="seo"
-    title={entry.data.title}
-    description={entry.data.description}
+    title={d.title}
+    description={d.description}
     canonical={canonical}
     breadcrumbs={breadcrumbs}
     image={discover?.src}
     imageWidth={discover?.width}
     imageHeight={discover?.height}
-    imageAlt={entry.data.heroImage ? entry.data.heroImageAlt || entry.data.title : undefined}
+    imageAlt={d.heroImageAlt || d.title}
     schemaImages={heroSchemaImages}
   />
-  <script type="application/ld+json" slot="head" set:html={localBusinessSchema} />
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify(collectionSchema)} />
+  {faqSchema && <script type="application/ld+json" slot="head" set:html={JSON.stringify(faqSchema)} />}
 
-  <!-- Páginas sin heroImage propia: evita que Pagefind auto-detecte una
-       imagen ajena a la página (ej. el logo del footer) y use siempre el
-       icono del favicon como miniatura en el buscador. Cuando sí hay
-       heroImage, se usa esa en su lugar (ver más abajo). -->
-  {!entry.data.heroImage && (
-    <>
-      <span data-pagefind-meta="image:/favicon-192.png" hidden></span>
-      <span data-pagefind-meta="image_alt:スペイン倶楽部" hidden></span>
-    </>
+  <section class="ph-hero">
+    <div class="page-container ph-hero-grid">
+      <div class="ph-hero-text">
+        <Breadcrumb items={breadcrumbs} dark />
+        <p class="ph-eyebrow">
+          <span>スペイン美食マップ</span>
+          {region ? <a href={`/regions/${region.slug}/`}>{d.region}<ChevronRight size={14} /></a> : <span>{d.region}</span>}
+        </p>
+        <h1 class="ph-h1">{d.provinceJa}<span>グルメガイド</span></h1>
+        <p class="ph-es" lang="es">{nameEs}</p>
+        <p class="ph-lead">{d.lead}</p>
+      </div>
+      <figure class="ph-map" aria-label={`スペインの地図：${d.provinceJa}の位置`}>
+        <Fragment set:html={map.svg} />
+        <span class="ph-map-label" style={`left:${map.label.x.toFixed(1)}%;top:${map.label.y.toFixed(1)}%`}>{d.provinceJa}</span>
+      </figure>
+      <ul class="ph-facts">
+        <li><Utensils size={18} /><span><small>名物</small><b>{plain(d.mainDishJa)}</b></span></li>
+        <li><Calendar size={18} /><span><small>ベストシーズン</small><b>{plain(d.bestSeason)}</b></span></li>
+        <li><Euro size={18} /><span><small>予算</small><b>{d.priceRange}</b></span></li>
+        <li><Landmark size={18} /><span><small>県都</small><b>{d.capital}</b></span></li>
+      </ul>
+    </div>
+  </section>
+
+  <nav class="ph-chips" aria-label="このページの内容">
+    <div class="page-container">
+      {sections.map((s) => <a href={`#${s.id}`} data-chip={s.id}><i>{num(s.id)}</i>{s.label}</a>)}
+      {d.faq.length > 0 && <a href="#faq" data-chip="faq">FAQ</a>}
+    </div>
+  </nav>
+
+  {rankings.length > 0 && (
+    <section class="hub-block ph-block" id="ranking">
+      <div class="page-container">
+        <div class="hub-block-head">
+          <p class="hub-block-eyebrow"><span class="hub-block-num">{num('ranking')}</span>目的別ランキング</p>
+          <h2>{d.provinceJa}のレストランを、目的で選ぶ</h2>
+          <p class="hub-block-lead">Googleの口コミ件数・評価・信頼性を分析したCREスコアで、{rankings.length}つのランキングを作りました。</p>
+        </div>
+        <div class="ph-ranks">
+          {rankings.map((r) => (
+            <a class={`ph-rank is-${r.theme}`} href={r.url}>
+              <span class="ph-rank-top">
+                <span class="ph-rank-ic">{r.theme === 'cheap' ? <Wallet size={22} /> : r.theme === 'tapas' ? <Wine size={22} /> : <Award size={22} />}</span>
+                <span>
+                  <span class="ph-rank-kicker">{r.kicker}</span>
+                  <span class="ph-rank-title">{r.title}</span>
+                  {r.count > 0 && <span class="ph-rank-meta">{r.count}店を分析・最高スコア {r.maxScore}</span>}
+                </span>
+              </span>
+              {r.top.length > 0 && (
+                <ol class="ph-rank-list">
+                  {r.top.map((it, i) => (
+                    <li><span class="n">{i + 1}</span><span class="nm">{it.nameJa}</span>{it.rating > 0 && <span class="st">★ {it.rating.toFixed(1)}</span>}<span class="sc">{it.criScore}</span></li>
+                  ))}
+                </ol>
+              )}
+              <span class="ph-rank-cta">ランキングを見る<ArrowRight size={18} /></span>
+            </a>
+          ))}
+        </div>
+        <p class="ph-note"><Info size={16} /><span>CRE（Competitive Reputation Engine）はスペイン倶楽部独自の分析です。広告やスポンサーシップは一切反映していません。</span></p>
+      </div>
+    </section>
   )}
 
-  <HeroProvince
-    provinceJa={entry.data.provinceJa}
-    h1={entry.data.h1}
-    region={entry.data.region}
-    mainDish={entry.data.mainDish}
-    bestSeason={entry.data.bestSeason}
-    priceRange={entry.data.priceRange}
-    mapUrl={entry.data.mapUrl}
-    lead={entry.data.lead}
-    breadcrumbs={breadcrumbs}
-    heroImage={entry.data.heroImage}
-    heroImageAlt={entry.data.heroImageAlt}
-  />
-
-  <!-- All content inside content-grid so TOC sidebar is sticky throughout scroll -->
-  <div class="page-container" style="padding-top:48px; padding-bottom:40px;">
-    <div class="content-grid">
-
-      <div class="content-main">
-
-        <details class="toc-mobile-inline">
-          <summary>
-            <span>目次</span>
-            <span class="tmi-chevron" aria-hidden="true">
-              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-            </span>
-          </summary>
-          <ol class="tmi-list">
-            {tocHeadings.map((h, i) => (
-              <li>
-                <a href={'#' + h.slug}>
-                  <span class="tmi-num">{i + 1}.</span>
-                  {h.text}
-                </a>
-              </li>
-            ))}
-          </ol>
-        </details>
-
-        <section id="quick-guide" class="psec">
-          <ProvinceQuickGuide />
-        </section>
-
-        <section id="content" class="psec psec--content">
-          <div class="border-l-4 border-primary rounded-r-lg" style="background:white; padding:20px 24px; margin-bottom:32px;">
-            <p class="text-ink leading-relaxed font-medium" style="margin:0;">{entry.data.lead}</p>
-          </div>
-          <div class="prose">
-            <Content />
-          </div>
-        </section>
-
-        {hasSpecialties && (
-          <section id="specialties" class="psec">
-            <ProvinceSpecialties specialties={entry.data.specialties} />
-          </section>
-        )}
-
-        {hasNeighborhoods && (
-          <section id="neighborhoods" class="psec">
-            <ProvinceNeighborhoods neighborhoods={entry.data.neighborhoods} />
-          </section>
-        )}
-
-        <section id="map" class="psec">
-          <ProvinceMapEmbed mapUrl={entry.data.mapUrl} provinceJa={entry.data.provinceJa} />
-        </section>
-
-        {hasCreRankings && (
-          <section id="cre-rankings" class="psec">
-            <ProvinceCREButtons province={entry.data.province} provinceJa={entry.data.provinceJa} region={entry.data.region} />
-          </section>
-        )}
-
-        <div class="newsletter-wrap" data-pagefind-ignore>
-          <NewsletterForm variant="inline" />
+  {specialties.length > 0 && (
+    <section class="hub-block ph-block is-soft" id="dishes">
+      <div class="page-container">
+        <div class="hub-block-head">
+          <p class="hub-block-eyebrow"><span class="hub-block-num">{num('dishes')}</span>名物料理</p>
+          <h2>{d.provinceJa}で食べたい郷土料理</h2>
         </div>
-
-        {hasFaq && (
-          <section id="faq" class="psec">
-            <FAQSection faq={entry.data.faq} />
-          </section>
-        )}
-
-        <ArticleDisclaimer />
-
-        <AuthorBox author={author} />
-
-        {related.length > 0 && (
-          <section class="mt-12 border-t border-[#E8E8E6] pt-10" data-pagefind-ignore>
-            <h2 class="font-sans font-bold text-2xl text-navy mb-2">こちらの記事もおすすめ</h2>
-            <p class="text-sm text-gray-500 mb-6">同じテーマのおすすめ記事です。</p>
-            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-              {related.map((a) => (
-                <ArticleCard
-                  title={a.data.title}
-                  description={a.data.description}
-                  href={getArticleUrl(a)}
-                  pillar={a.data.pillar}
-                  cluster={a.data.cluster}
-                  image={a.data.image}
-                  imageAlt={a.data.imageAlt}
-                  heroImage={a.data.heroImage}
-                  heroImageAlt={a.data.heroImageAlt}
-                  pubDate={a.data.pubDate}
-                />
-              ))}
-            </div>
-          </section>
-        )}
-
-        <PreferredSourceCTA />
-
+        <Rail label={`${d.provinceJa}の名物料理`} hint="スワイプして他の料理を見る">
+          {specialties.map((s) => (
+            <article class="ph-card" role="listitem">
+              {s.img
+                ? <img src={s.img.src} srcset={s.img.srcset} sizes="(min-width: 860px) 340px, 78vw" width={s.img.width} height={s.img.height} alt={s.img.alt} loading="lazy" decoding="async" />
+                : <span class="ph-card-noimg" aria-hidden="true"><Utensils size={34} /></span>}
+              <div class="ph-card-body">
+                <span class="ph-tag">{s.category}</span>
+                <h3>{s.nameJa}</h3>
+                <p class="ph-card-es" lang="es">{s.name}</p>
+                <p class="ph-card-text">{s.description}</p>
+              </div>
+            </article>
+          ))}
+        </Rail>
       </div>
+    </section>
+  )}
 
-      <aside class="content-sidebar">
-        <TOC headings={tocHeadings} />
-      </aside>
+  {areas.length > 0 && (
+    <section class="hub-block ph-block" id="areas">
+      <div class="page-container">
+        <div class="hub-block-head">
+          <p class="hub-block-eyebrow"><span class="hub-block-num">{num('areas')}</span>エリア別</p>
+          <h2>どこで食べる？{d.provinceJa}のエリア別グルメガイド</h2>
+        </div>
+        <Rail label={`${d.provinceJa}のエリア`} hint="スワイプして他のエリアを見る">
+          {areas.map((a, i) => (
+            <article class="ph-card" role="listitem">
+              {i === 0 && heroCard && <img src={heroCard.src} srcset={heroCard.srcset} sizes="(min-width: 860px) 340px, 78vw" width={heroCard.width} height={heroCard.height} alt={heroCard.alt} loading="lazy" decoding="async" data-pagefind-meta="image[src], image_alt[alt]" />}
+              <div class="ph-card-body">
+                <h3>{a.nameJa}</h3>
+                <p class="ph-card-es" lang="es">{a.name}</p>
+                <dl class="ph-dl">
+                  <dt>雰囲気</dt><dd>{a.vibe}</dd>
+                  <dt>名物</dt><dd>{a.specialty}</dd>
+                  <dt>おすすめ</dt><dd>{a.bestTime}</dd>
+                </dl>
+              </div>
+            </article>
+          ))}
+        </Rail>
+      </div>
+    </section>
+  )}
 
+  <section class="hub-block ph-block is-soft" id="map">
+    <div class="page-container">
+      <div class="hub-block-head">
+        <p class="hub-block-eyebrow"><span class="hub-block-num">{num('map')}</span>レストランマップ</p>
+        <h2>{d.provinceJa}のレストランを地図で見る</h2>
+      </div>
+      <a class="ph-mapcard" href={d.mapUrl} target="_blank" rel="noopener noreferrer">
+        <span class="ph-mapcard-grid" aria-hidden="true">
+          <MapPin size={26} style="left:22%;top:30%" /><MapPin size={26} style="left:48%;top:20%" /><MapPin size={26} style="left:63%;top:55%" /><MapPin size={26} style="left:34%;top:62%" /><MapPin size={26} style="left:77%;top:32%" />
+        </span>
+        <span class="ph-mapcard-btn"><MapIcon size={20} />Googleマップで開く</span>
+      </a>
+      <p class="ph-mapnote">スペイン倶楽部が選んだ{d.provinceJa}のレストラン・バルの一覧です（Googleマップが新しいタブで開きます）。</p>
     </div>
-  </div>
+  </section>
+
+  {travel.length > 0 && (
+    <section class="hub-block ph-block" id="travel">
+      <div class="page-container">
+        <div class="hub-block-head">
+          <p class="hub-block-eyebrow"><span class="hub-block-num">{num('travel')}</span>旅と文化</p>
+          <h2>{d.region}を旅する</h2>
+          <p class="hub-block-lead">旅行・文化・暮らしなど、{d.region}に関する記事です。</p>
+        </div>
+        <Rail label={`${d.region}の記事`} hint="スワイプして他の記事を見る">
+          {travel.map((t) => (
+            <a class="ph-card" href={t.url} role="listitem">
+              {t.img
+                ? <img src={t.img.src} srcset={t.img.srcset} sizes="(min-width: 860px) 340px, 78vw" width={t.img.width} height={t.img.height} alt={t.img.alt} loading="lazy" decoding="async" />
+                : <span class="ph-card-noimg" aria-hidden="true"><BookOpen size={34} /></span>}
+              <div class="ph-card-body"><span class="ph-tag">{t.tag}</span><h3>{t.title}</h3></div>
+            </a>
+          ))}
+        </Rail>
+        {region && <p class="ph-more"><a href={`/regions/${region.slug}/`}>{d.region}のガイドをすべて見る<ArrowRight size={16} /></a></p>}
+      </div>
+    </section>
+  )}
+
+  {neighbors.length > 0 && (
+    <section class="hub-block ph-block is-soft" id="nearby">
+      <div class="page-container">
+        <div class="hub-block-head">
+          <p class="hub-block-eyebrow"><span class="hub-block-num">{num('nearby')}</span>近隣の県</p>
+          <h2>足を延ばして食べ歩き</h2>
+        </div>
+        <div class="ph-near">
+          {neighbors.map((n) => (
+            <a class="ph-near-card" href={n.url}>
+              {n.img && <img src={n.img.src} srcset={n.img.srcset} sizes="(min-width: 860px) 260px, 45vw" width={n.img.width} height={n.img.height} alt={n.img.alt} loading="lazy" decoding="async" />}
+              <span><b>{n.p!.data.provinceJa}</b><small>{n.note}</small></span>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
+
+  <section class="hub-block ph-block" id="about">
+    <div class="page-container ph-narrow">
+      <div class="hub-block-head">
+        <p class="hub-block-eyebrow">{nameEs}</p>
+        <h2>{d.provinceJa}の食文化</h2>
+      </div>
+      {areas.length === 0 && heroCard && (
+        <img class="ph-about-img" src={heroCard.src} srcset={heroCard.srcset} sizes="(min-width: 860px) 720px, 100vw" width={heroCard.width} height={heroCard.height} alt={heroCard.alt} loading="lazy" decoding="async" data-pagefind-meta="image[src], image_alt[alt]" />
+      )}
+      <div class="prose"><Content /></div>
+
+      <a class="ph-guide" href="/food/spain-bar-restaurant/">
+        <span class="ph-guide-ic"><BookOpen size={22} /></span>
+        <span><b>スペインで食事をする前に</b><small>注文の流れ・マナー・チップの相場は「バル・レストラン活用ガイド」に、食事の時間帯は「スペインの食事時間ガイド」にまとめています。</small></span>
+        <ChevronRight size={20} class="ph-guide-chev" />
+      </a>
+      <p class="ph-guide-sub"><a href="/food/spain-dining-times/">スペインの食事時間ガイド（朝食・昼食・夕食は何時？）→</a></p>
+
+      {d.faq.length > 0 && (
+        <div class="ph-faq" id="faq">
+          <p class="hub-block-eyebrow">よくある質問</p>
+          <h2>{d.provinceJa}のグルメFAQ</h2>
+          {d.faq.map((f, i) => (
+            <details open={i === 0}>
+              <summary><span class="q" aria-hidden="true">Q</span><span>{f.question}</span><ChevronDown size={18} /></summary>
+              <p set:html={f.answer} />
+            </details>
+          ))}
+        </div>
+      )}
+
+      <div data-pagefind-ignore class="ph-newsletter"><NewsletterForm variant="inline" /></div>
+      <ArticleDisclaimer />
+      {author && <AuthorBox author={author} />}
+      <PreferredSourceCTA />
+    </div>
+  </section>
 
   <LineBanner slim />
-
-  <FloatingActions shareUrl={canonical} shareTitle={entry.data.title} />
+  <FloatingActions shareUrl={canonical} shareTitle={d.title} />
 </BaseLayout>
 
 <script>
-// Añadir caption automático a todas las imágenes
-// del contenido MDX usando el texto del alt
-(function() {
-  const prose = document.querySelector('.prose');
-  if (!prose) return;
-
-  const imgs = prose.querySelectorAll('img');
-
-  imgs.forEach(img => {
-    const altText = img.getAttribute('alt');
-    if (!altText || altText.trim() === '') return;
-
-    // Si la imagen ya está en un <figure>, añadir figcaption
-    if (img.closest('figure')) {
-      const figure = img.closest('figure');
-      if (!figure.querySelector('figcaption')) {
-        const caption = document.createElement('figcaption');
-        caption.textContent = altText;
-        figure.appendChild(caption);
-      }
-      return;
-    }
-
-    // Si la imagen está suelta (en un <p>),
-    // crear wrapper figure con figcaption
-    const parent = img.parentElement;
-    if (parent && parent.tagName === 'P') {
-      const figure = document.createElement('figure');
-      figure.style.margin = '32px 0';
-      figure.style.lineHeight = '0';
-
-      // Insertar figure antes del párrafo
-      parent.parentElement.insertBefore(figure, parent);
-
-      // Mover la imagen al figure
-      figure.appendChild(img);
-
-      // Añadir figcaption
-      const caption = document.createElement('figcaption');
-      caption.textContent = altText;
-      caption.style.cssText = `
-        font-size: 11px;
-        color: #9ca3af;
-        text-align: center;
-        line-height: 1.5;
-        margin-top: 8px;
-        padding: 0 8px;
-        font-style: normal;
-      `;
-      figure.appendChild(caption);
-
-      // Eliminar el párrafo vacío si quedó vacío
-      if (parent.innerHTML.trim() === '') {
-        parent.remove();
-      }
-    }
-  });
-})();
+  // Accesos rápidos: marca la sección visible.
+  const chips = [...document.querySelectorAll<HTMLAnchorElement>('.ph-chips a[data-chip]')];
+  const io = new IntersectionObserver((entries) => entries.forEach((e) => {
+    if (!e.isIntersecting) return;
+    chips.forEach((c) => {
+      const on = c.dataset.chip === e.target.id;
+      c.classList.toggle('is-on', on);
+      if (on) c.scrollIntoView({ block: 'nearest', inline: 'nearest' });
+    });
+  }), { rootMargin: '-35% 0px -60% 0px' });
+  chips.forEach((c) => { const s = document.getElementById(c.dataset.chip!); if (s) io.observe(s); });
 </script>
 
-<style>
-  /* Strip internal section/container padding from province sub-components.
-     .psec already draws its own separator (border-bottom) between
-     sections, so any border/margin-top a nested component adds on its
-     own (e.g. FAQSection) would create a redundant double line. */
-  .psec :global(section) {
-    padding-top: 0 !important;
-    padding-bottom: 0 !important;
-    margin-top: 0 !important;
-    border-top: none !important;
-    background: transparent !important;
-  }
-  .psec :global(.container) {
-    max-width: none !important;
-    padding-left: 0 !important;
-    padding-right: 0 !important;
-    margin-left: 0 !important;
-    margin-right: 0 !important;
-  }
+<style is:global>
+  .ph-hero { position: relative; overflow: hidden; padding: 22px 0 28px; background: #002147; color: #fff; }
+  .ph-hero::before { content: ''; position: absolute; inset: 0; background-image: radial-gradient(rgba(255, 255, 255, .07) 1px, transparent 1px); background-size: 22px 22px; pointer-events: none; }
+  .ph-hero-grid { position: relative; display: grid; grid-template-columns: minmax(0, 1fr); gap: 16px; }
+  .ph-hero-grid > * { min-width: 0; }
+  .ph-eyebrow { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 12px; margin: 16px 0 0; font-size: 12px; font-weight: 700; letter-spacing: .06em; color: #ff8a9a; }
+  .ph-eyebrow a { display: inline-flex; align-items: center; gap: 2px; color: #fff; text-decoration: underline; text-decoration-color: rgba(255, 255, 255, .35); text-underline-offset: 4px; }
+  .ph-h1 { margin: 6px 0 0; font-family: 'Noto Serif JP', serif; font-size: 38px; font-weight: 700; line-height: 1.25; color: #fff; }
+  .ph-h1 span { display: block; margin-top: 2px; font-family: 'Noto Sans JP', sans-serif; font-size: 16px; letter-spacing: .08em; color: rgba(255, 255, 255, .8); }
+  .ph-es { margin: 4px 0 0; font-family: Georgia, serif; font-size: 15px; letter-spacing: .06em; color: rgba(255, 255, 255, .6); }
+  .ph-lead { margin: 12px 0 0; font-size: 14.5px; line-height: 1.85; color: rgba(255, 255, 255, .86); }
+  .ph-map { position: relative; width: 250px; max-width: 100%; margin: 0 auto; }
+  .ph-map svg { display: block; width: 100%; height: auto; }
+  .ph-map path { fill: rgba(255, 255, 255, .13); stroke: #002147; stroke-width: .7; }
+  .ph-map rect { fill: none; stroke: rgba(255, 255, 255, .3); }
+  .ph-map path[data-neighbor] { fill: rgba(255, 255, 255, .34); }
+  .ph-map path[data-current] { fill: #C8102E; stroke: #fff; stroke-width: 1.2; }
+  .ph-map-label { position: absolute; transform: translate(-50%, calc(-100% - 6px)); padding: 3px 9px; border-radius: 999px; background: #fff; color: #002147; font-size: 11px; font-weight: 700; white-space: nowrap; box-shadow: 0 4px 12px rgba(0, 0, 0, .3); pointer-events: none; }
+  .ph-map-label::after { content: ''; position: absolute; left: 50%; bottom: -5px; transform: translateX(-50%); border: 5px solid transparent; border-bottom: 0; border-top-color: #fff; }
+  .ph-facts { display: flex; gap: 8px; margin: 0 -16px; padding: 0 16px; overflow-x: auto; list-style: none; scrollbar-width: none; }
+  .ph-facts::-webkit-scrollbar { display: none; }
+  .ph-facts li { flex: none; display: flex; align-items: center; gap: 8px; padding: 8px 12px; border: 1px solid rgba(255, 255, 255, .2); border-radius: 12px; background: rgba(255, 255, 255, .1); }
+  .ph-facts svg { color: #ff8a9a; }
+  .ph-facts small { display: block; font-size: 10.5px; color: rgba(255, 255, 255, .6); }
+  .ph-facts b { font-size: 13px; white-space: nowrap; }
 
-  /* Spacing between province sections */
-  .psec {
-    padding-bottom: 48px;
-    margin-bottom: 48px;
-    border-bottom: 1px solid var(--color-border);
-  }
-  .psec:last-child {
-    border-bottom: none;
-    margin-bottom: 0;
-  }
-  .psec--content {
-    padding-bottom: 0;
-  }
+  .ph-chips { position: sticky; top: 0; z-index: 30; border-bottom: 1px solid #E3E8EF; background: rgba(250, 250, 248, .96); backdrop-filter: blur(6px); }
+  .ph-chips .page-container { display: flex; gap: 8px; padding-top: 10px; padding-bottom: 10px; overflow-x: auto; scrollbar-width: none; }
+  .ph-chips .page-container::-webkit-scrollbar { display: none; }
+  .ph-chips a { flex: none; display: inline-flex; align-items: center; gap: 6px; padding: 7px 13px; border: 1px solid #E3E8EF; border-radius: 999px; background: #fff; font-size: 13px; font-weight: 700; color: #002147; text-decoration: none; }
+  .ph-chips a i { padding: 0 4px; border: 1.3px solid currentColor; border-radius: 5px; font-style: normal; font-size: 11px; color: #C8102E; }
+  .ph-chips a.is-on { border-color: #002147; background: #002147; color: #fff; }
+  .ph-chips a.is-on i { color: #fff; }
 
-  /* La sección justo antes de la newsletter no debe dibujar su propio
-     separador — la newsletter ya aporta suficiente aire visual. */
-  .psec:has(+ .newsletter-wrap) {
-    border-bottom: none;
-    margin-bottom: 32px;
-  }
+  .ph-block { padding: 40px 0; scroll-margin-top: 56px; --rail-fade: #fff; }
+  .ph-block.is-soft { background: #F0F4F8; --rail-fade: #F0F4F8; }
+  .ph-block .hub-block-head { margin-bottom: 20px; }
+  .ph-block h2 { word-break: auto-phrase; }
 
-  /* ArticleDisclaimer ya tiene su propio border-top; aquí la separación
-     visual ya la da el border-bottom del .psec anterior (FAQ), así que
-     evitamos la línea doble. */
-  :global(.article-disclaimer) {
-    border-top: none !important;
-    margin-top: 0 !important;
-    padding-top: 0 !important;
-  }
+  .ph-ranks { display: grid; gap: 14px; }
+  .ph-rank { display: flex; flex-direction: column; overflow: hidden; border: 1px solid #E3E8EF; border-radius: 18px; background: #fff; color: #1A1A1A; text-decoration: none; box-shadow: 0 12px 26px -18px rgba(0, 33, 71, .35); transition: transform .15s, box-shadow .15s; }
+  .ph-rank:hover { transform: translateY(-2px); box-shadow: 0 16px 30px -18px rgba(0, 33, 71, .45); }
+  .ph-rank-top { display: flex; align-items: center; gap: 12px; padding: 16px 18px 12px; }
+  .ph-rank-ic { display: grid; place-items: center; flex: none; width: 44px; height: 44px; border-radius: 12px; }
+  .ph-rank-kicker { display: block; font-size: 12px; font-weight: 700; letter-spacing: .06em; }
+  .ph-rank-title { display: block; font-size: 17px; font-weight: 700; line-height: 1.4; color: #002147; }
+  .ph-rank-meta { display: block; margin-top: 2px; font-size: 12px; color: #5A6B80; }
+  .ph-rank-list { margin: 0 18px 12px; padding: 0; border-top: 1px solid #EEF1F5; list-style: none; }
+  .ph-rank-list li { display: flex; align-items: center; gap: 10px; margin: 0; padding: 9px 0; border-bottom: 1px solid #EEF1F5; font-size: 14px; }
+  .ph-rank-list li:last-child { border-bottom: 0; }
+  .ph-rank-list .n { width: 22px; text-align: center; font-weight: 700; color: #5A6B80; }
+  .ph-rank-list .nm { flex: 1; font-weight: 700; line-height: 1.4; }
+  .ph-rank-list .st { font-size: 12px; color: #B7791F; white-space: nowrap; }
+  .ph-rank-list .sc { display: grid; place-items: center; flex: none; width: 34px; height: 34px; border-radius: 50%; background: #1F8A4C; color: #fff; font-size: 13px; font-weight: 700; }
+  .ph-rank-cta { display: flex; align-items: center; justify-content: center; gap: 8px; min-height: 48px; margin: auto 18px 18px; border-radius: 12px; color: #fff; font-size: 15px; font-weight: 700; }
+  .ph-rank.is-cheap .ph-rank-ic { background: #E7F4EC; color: #1F6B3A; }
+  .ph-rank.is-cheap .ph-rank-kicker { color: #1F6B3A; }
+  .ph-rank.is-cheap .ph-rank-cta { background: #1F6B3A; }
+  .ph-rank.is-tapas .ph-rank-ic { background: #FFF1DE; color: #A35A00; }
+  .ph-rank.is-tapas .ph-rank-kicker { color: #A35A00; }
+  .ph-rank.is-tapas .ph-rank-cta { background: #A85A0A; }
+  .ph-rank.is-deluxe .ph-rank-ic { background: #FCEBEE; color: #C8102E; }
+  .ph-rank.is-deluxe .ph-rank-kicker { color: #C8102E; }
+  .ph-rank.is-deluxe .ph-rank-cta { background: #C8102E; }
+  .ph-note { display: flex; gap: 8px; margin: 14px 0 0; font-size: 12px; line-height: 1.7; color: #5A6B80; }
+  .ph-note svg { flex: none; margin-top: 2px; }
 
-  @media (max-width: 767px) {
-    .psec {
-      padding-bottom: 32px;
-      margin-bottom: 32px;
-    }
+  .ph-card { display: flex; flex-direction: column; overflow: hidden; border: 1px solid #E3E8EF; border-radius: 16px; background: #fff; color: #1A1A1A; text-decoration: none; }
+  .ph-card img, .ph-card-noimg { display: block; width: 100%; aspect-ratio: 16 / 10; object-fit: cover; }
+  .ph-card-noimg { display: grid; place-items: center; background: #E9EEF4; color: #8A99AD; }
+  .ph-card-body { padding: 14px 16px 16px; }
+  .ph-tag { display: inline-block; padding: 3px 10px; border-radius: 999px; background: #FCEBEE; color: #C8102E; font-size: 11.5px; font-weight: 700; }
+  .ph-card h3 { margin: 8px 0 0; font-size: 16.5px; font-weight: 700; line-height: 1.5; color: #002147; }
+  .ph-card-es { margin: 2px 0 0; font-family: Georgia, serif; font-size: 13px; color: #5A6B80; }
+  .ph-card-text { margin: 8px 0 0; font-size: 13.5px; line-height: 1.75; color: #3a4654; }
+  .ph-dl { display: grid; grid-template-columns: auto 1fr; gap: 4px 10px; margin: 10px 0 0; font-size: 13px; }
+  .ph-dl dt { color: #5A6B80; }
+  .ph-dl dd { margin: 0; font-weight: 700; }
+
+  .ph-mapcard { position: relative; display: block; overflow: hidden; border: 1px solid #E3E8EF; border-radius: 18px; background: #E9EEF3; text-decoration: none; }
+  .ph-mapcard-grid { position: relative; display: block; height: 190px; background: linear-gradient(90deg, rgba(0, 33, 71, .06) 1px, transparent 1px) 0 0 / 28px 28px, linear-gradient(rgba(0, 33, 71, .06) 1px, transparent 1px) 0 0 / 28px 28px; }
+  .ph-mapcard-grid svg { position: absolute; color: #C8102E; fill: #fff; }
+  .ph-mapcard-btn { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); display: inline-flex; align-items: center; gap: 8px; min-height: 50px; padding: 0 22px; border-radius: 12px; background: #C8102E; color: #fff; font-size: 15px; font-weight: 700; white-space: nowrap; box-shadow: 0 10px 20px -10px rgba(200, 16, 46, .8); }
+  .ph-mapnote { margin: 10px 0 0; font-size: 12.5px; line-height: 1.7; color: #5A6B80; }
+
+  .ph-more { margin: 14px 0 0; font-size: 14px; }
+  .ph-more a { display: inline-flex; align-items: center; gap: 6px; color: #C8102E; font-weight: 700; text-decoration: underline; text-underline-offset: 4px; }
+
+  .ph-near { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .ph-near-card { position: relative; display: block; overflow: hidden; aspect-ratio: 4 / 3; border-radius: 14px; background: #002147; color: #fff; text-decoration: none; }
+  .ph-near-card img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+  .ph-near-card::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to top, rgba(0, 21, 48, .85), rgba(0, 21, 48, 0) 62%); }
+  .ph-near-card > span { position: absolute; left: 12px; right: 12px; bottom: 10px; z-index: 1; }
+  .ph-near-card b { display: block; font-size: 16px; }
+  .ph-near-card small { display: block; font-size: 11.5px; line-height: 1.5; color: rgba(255, 255, 255, .85); }
+
+  .ph-narrow { max-width: 780px; }
+  .ph-about-img { display: block; width: 100%; height: auto; margin: 0 0 20px; border-radius: 14px; }
+  .ph-guide { display: flex; align-items: center; gap: 14px; margin: 32px 0 0; padding: 16px 18px; border: 1px solid #E3E8EF; border-left: 4px solid #002147; border-radius: 0 14px 14px 0; background: #fff; color: #1A1A1A; text-decoration: none; }
+  .ph-guide-ic { display: grid; place-items: center; flex: none; width: 44px; height: 44px; border-radius: 12px; background: #F0F4F8; color: #002147; }
+  .ph-guide b { display: block; font-size: 15.5px; color: #002147; }
+  .ph-guide small { display: block; margin-top: 2px; font-size: 12.5px; line-height: 1.6; color: #5A6B80; }
+  .ph-guide-chev { flex: none; margin-left: auto; color: #5A6B80; }
+  .ph-guide-sub { margin: 8px 0 0; font-size: 13px; }
+  .ph-guide-sub a { color: #C8102E; text-decoration: underline; text-underline-offset: 3px; }
+  .ph-faq { margin-top: 40px; scroll-margin-top: 56px; }
+  .ph-faq h2 { margin: 0 0 16px; font-size: clamp(22px, 3vw, 28px); font-weight: 700; color: #002147; }
+  .ph-faq details { margin-bottom: 10px; border: 1px solid #E3E8EF; border-radius: 14px; background: #fff; }
+  .ph-faq summary { display: flex; align-items: center; gap: 10px; padding: 15px 16px; font-size: 14.5px; font-weight: 700; line-height: 1.5; color: #002147; list-style: none; cursor: pointer; }
+  .ph-faq summary::-webkit-details-marker { display: none; }
+  .ph-faq .q { display: grid; place-items: center; flex: none; width: 24px; height: 24px; border-radius: 7px; background: #FCEBEE; color: #C8102E; font-size: 12px; }
+  .ph-faq summary svg { flex: none; margin-left: auto; transition: transform .2s; }
+  .ph-faq details[open] summary svg { transform: rotate(180deg); }
+  .ph-faq details p { margin: 0; padding: 0 16px 16px 50px; font-size: 14px; line-height: 1.85; color: #3a4654; }
+  .ph-newsletter { margin-top: 32px; }
+
+  @media (min-width: 860px) {
+    .ph-hero { padding: 40px 0 36px; }
+    .ph-hero-grid { grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); align-items: center; gap: 24px 40px; }
+    .ph-h1 { font-size: 50px; }
+    .ph-map { width: 100%; max-width: 440px; }
+    .ph-facts { grid-column: 1 / -1; flex-wrap: wrap; margin: 0; padding: 0; overflow: visible; }
+    .ph-block { padding: 56px 0; }
+    .ph-ranks { grid-template-columns: repeat(3, 1fr); }
+    .ph-near { grid-template-columns: repeat(4, 1fr); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .ph-rank { transition: none; }
   }
 </style>

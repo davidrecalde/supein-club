@@ -1,0 +1,69 @@
+---
+// Carrusel horizontal con flechas, aviso de «スワイプ» y degradado al final, como las unidades del
+// hub /language/ (CourseLevels). Las flechas y el aviso solo aparecen si hay algo que desplazar,
+// así que en escritorio, cuando todo cabe, no se ven. Cada hijo del slot es una tarjeta.
+import { ChevronLeft, ChevronRight, MoveHorizontal } from 'lucide-astro';
+
+interface Props {
+  label: string;
+  hint?: string;
+}
+
+const { label, hint = 'スワイプして続きを見る' } = Astro.props;
+---
+<div class="rail" data-rail>
+  <p class="rail-hint" aria-hidden="true" hidden><MoveHorizontal size={16} />{hint}</p>
+  <div class="rail-wrap">
+    <div class="rail-track" role="list" aria-label={label}>
+      <slot />
+    </div>
+    <button type="button" class="rail-arrow is-prev" aria-label="前へ" hidden><ChevronLeft size={22} /></button>
+    <button type="button" class="rail-arrow is-next" aria-label="次へ" hidden><ChevronRight size={22} /></button>
+  </div>
+</div>
+
+<script>
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  document.querySelectorAll<HTMLElement>('[data-rail]').forEach((rail) => {
+    const track = rail.querySelector<HTMLElement>('.rail-track')!;
+    const wrap = rail.querySelector<HTMLElement>('.rail-wrap')!;
+    const hint = rail.querySelector<HTMLElement>('.rail-hint')!;
+    const prev = rail.querySelector<HTMLButtonElement>('.rail-arrow.is-prev')!;
+    const next = rail.querySelector<HTMLButtonElement>('.rail-arrow.is-next')!;
+    const update = () => {
+      const scrollable = track.scrollWidth > track.clientWidth + 4;
+      const atStart = track.scrollLeft <= 4;
+      const atEnd = track.scrollLeft + track.clientWidth >= track.scrollWidth - 4;
+      hint.hidden = !scrollable;
+      prev.hidden = !scrollable || atStart;
+      next.hidden = !scrollable || atEnd;
+      wrap.classList.toggle('is-end', !scrollable || atEnd);
+    };
+    const step = () => ((track.firstElementChild as HTMLElement | null)?.getBoundingClientRect().width ?? 260) + 14;
+    prev.addEventListener('click', () => track.scrollBy({ left: -step(), behavior: reduceMotion ? 'auto' : 'smooth' }));
+    next.addEventListener('click', () => track.scrollBy({ left: step(), behavior: reduceMotion ? 'auto' : 'smooth' }));
+    track.addEventListener('scroll', update, { passive: true });
+    window.addEventListener('resize', update);
+    update();
+  });
+</script>
+
+<style is:global>
+  .rail-hint { display: flex; align-items: center; gap: 6px; margin: 0 0 10px; font-size: 12px; font-weight: 700; color: #002147; }
+  .rail-hint[hidden] { display: none; }
+  .rail-hint svg { color: #C8102E; }
+  .rail-wrap { position: relative; }
+  .rail-wrap::after { content: ''; position: absolute; top: 0; right: -1px; bottom: 6px; width: 32px; background: linear-gradient(to right, rgba(255, 255, 255, 0), var(--rail-fade, #fff)); pointer-events: none; transition: opacity .2s; }
+  .rail-wrap.is-end::after { opacity: 0; }
+  .rail-track { display: flex; gap: 14px; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; padding: 2px 2px 8px; }
+  .rail-track::-webkit-scrollbar { display: none; }
+  .rail-track > * { flex: none; width: 78%; max-width: 300px; scroll-snap-align: start; }
+  @media (min-width: 860px) {
+    .rail-track > * { width: calc((100% - 28px) / 3); max-width: none; }
+  }
+  .rail-arrow { position: absolute; top: 34%; z-index: 2; display: flex; align-items: center; justify-content: center; width: 42px; height: 42px; padding: 0; border: 1px solid #E8E8E6; border-radius: 50%; background: #fff; color: #002147; box-shadow: 0 2px 12px rgba(0, 33, 71, .22); cursor: pointer; transform: translateY(-50%); }
+  .rail-arrow[hidden] { display: none; }
+  .rail-arrow.is-prev { left: 4px; }
+  .rail-arrow.is-next { right: 4px; }
+  .rail-arrow:focus-visible { outline: 3px solid #002147; outline-offset: 2px; }
+</style>

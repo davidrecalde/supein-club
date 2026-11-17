@@ -106,3 +106,9 @@ export async function publicImageSize(url: string): Promise<{ width: number; hei
   const m = await (await import('sharp')).default(`public${url}`).metadata();
   return m.width && m.height ? { width: m.width, height: m.height } : undefined;
 }
+
+/** Imagen de tarjeta en 480 y 800 px (WebP) con su srcset, para carruseles y rejillas. */
+export async function cardImage(src: ImageMetadata, alt: string) {
+  const [small, large] = await Promise.all([480, 800].map((width) => getImage({ src, width, format: 'webp', quality: 75 })));
+  return { src: large.src, srcset: `${small.src} 480w, ${large.src} 800w`, width: Number(large.attributes.width), height: Number(large.attributes.height), alt };
+}
