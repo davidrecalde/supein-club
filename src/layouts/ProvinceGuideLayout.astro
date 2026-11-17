@@ -403,7 +403,8 @@ const faqSchema = d.faq.length > 0 && {
   .ph-facts small { display: block; font-size: 10.5px; color: rgba(255, 255, 255, .6); }
   .ph-facts b { font-size: 13px; white-space: nowrap; }
 
-  .ph-chips { position: sticky; top: 0; z-index: 30; border-bottom: 1px solid #E3E8EF; background: rgba(250, 250, 248, .96); backdrop-filter: blur(6px); }
+  /* Justo debajo de la cabecera fija de la web (Navigation: 64 px + 3 px de borde). */
+  .ph-chips { position: sticky; top: 67px; z-index: 30; border-bottom: 1px solid #E3E8EF; background: rgba(250, 250, 248, .96); backdrop-filter: blur(6px); }
   .ph-chips .page-container { display: flex; gap: 8px; padding-top: 10px; padding-bottom: 10px; overflow-x: auto; scrollbar-width: none; }
   .ph-chips .page-container::-webkit-scrollbar { display: none; }
   .ph-chips a { flex: none; display: inline-flex; align-items: center; gap: 6px; padding: 7px 13px; border: 1px solid #E3E8EF; border-radius: 999px; background: #fff; font-size: 13px; font-weight: 700; color: #002147; text-decoration: none; }
