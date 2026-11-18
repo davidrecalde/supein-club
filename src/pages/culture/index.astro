@@ -1,19 +1,38 @@
 ---
-import { getCollection, getEntry } from 'astro:content';
+// Hub /culture/ (rediseño del 18 de noviembre de 2026, mockup aprobado por David): «la España del
+// año», calendario + revista, primero el móvil. Cabecera con 「今月のスペイン」 (el mes de la
+// compilación en el HTML; un script pone el mes real del lector con los datos de los 12 meses que
+// van en la página), accesos rápidos fijos, 01 calendario de 12 meses (carrusel que arranca en el
+// mes actual), 02 revista de芸能 e historia (CULTURE_PICK de src/data/hubPicks.ts), 03 línea de 9
+// épocas que enlaza a los capítulos del 歴史年表, 04 cultura por regiones. Debajo, guía, FAQ y lo de
+// siempre. Un artículo de cultura que no esté en ningún bloque aparece en 「その他の文化ガイド」.
+import { getCollection, getEntry, type CollectionEntry } from 'astro:content';
+import { Calendar, ChevronRight, Clock, Compass, TrendingUp } from 'lucide-astro';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import SEO from '../../components/SEO.astro';
-import PillarHero from '../../components/PillarHero.astro';
-import ArticleCard from '../../components/ArticleCard.astro';
+import Breadcrumb from '../../components/Breadcrumb.astro';
+import Rail from '../../components/Rail.astro';
+import HubCrossCard from '../../components/HubCrossCard.astro';
+import HubFaq from '../../components/HubFaq.astro';
+import HubClickTracking from '../../components/HubClickTracking.astro';
 import LineBanner from '../../components/LineBanner.astro';
 import FloatingActions from '../../components/FloatingActions.astro';
-import RegionCTA from '../../components/RegionCTA.astro';
 import NewsletterForm from '../../components/NewsletterForm.astro';
 import ArticleDisclaimer from '../../components/ArticleDisclaimer.astro';
 import AuthorBox from '../../components/AuthorBox.astro';
-import FAQSection from '../../components/FAQSection.astro';
-import { getArticleUrl, isFlagshipArticle } from '../../utils/articles';
+import regionsPhoto from '../../assets/hero/banner-regiones-espana-mobile.webp';
+import { CULTURE_PICK } from '../../data/hubPicks';
+import { getArticleUrl } from '../../utils/articles';
+import { cardImage } from '../../utils/images';
 
+type Article = CollectionEntry<'articles'>;
+const SITE = 'https://supein.club';
+const canonical = `${SITE}/culture/`;
 const author = await getEntry('authors', 'david-recalde');
+const breadcrumbs = [
+  { name: 'ホーム', url: '/' },
+  { name: 'スペイン文化', url: canonical },
+];
 
 const otherPillars = [
   { href: '/travel/', title: 'スペイン旅行', description: 'バルセロナ・マドリードから南部アンダルシア、離島まで、観光スポットとツアー情報を完全網羅' },
@@ -23,202 +42,461 @@ const otherPillars = [
   { href: '/football/', title: 'スペインサッカー', description: 'ラ・リーガの試合結果や移籍情報、代表チーム、バルセロナやレアルの歴史まで深掘り解説します' },
 ];
 
-const articles = await getCollection('articles', ({ data }) => !data.draft && data.pillar === 'culture');
-const sorted = articles.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
-
-// 月別フィエスタガイド内の各記事につける月ラベル（pubDateがほぼ同日の
-// ため公開日順ではなく、cluster名から1月→12月の固定順を導く）。
-const monthLabels: Record<string, string> = {
-  'january-festivals': '1月',
-  'february-festivals': '2月',
-  'march-festivals': '3月',
-  'april-festivals': '4月',
-  'may-festivals': '5月',
-  'june-festivals': '6月',
-  'july-festivals': '7月',
-  'august-festivals': '8月',
-  'september-festivals': '9月',
-  'october-festivals': '10月',
-  'november-festivals': '11月',
-  'december-festivals': '12月',
-};
-const monthOrder = Object.keys(monthLabels);
-
-// カテゴリ分類：各記事の tags 配列に含まれる分類タグで判定（football/
-// food と同じ方式）。新しい記事を追加する際は、該当するタグを tags に
-// 含めれば自動的にここに反映される。中身が0件のカテゴリはチップごと
-// 表示されない。
-const categories = [
-  { id: 'seasonal-festivals', tag: '季節のフェスティバル', label: '季節のフェスティバル' },
-  { id: 'flamenco', tag: 'フラメンコ', label: 'フラメンコ' },
-  { id: 'zarzuela', tag: 'サルスエラ', label: 'サルスエラ' },
-  { id: 'history', tag: '歴史', label: 'スペインの歴史' },
-  { id: 'traditions', tag: '伝統と祭り', label: '伝統と祭り' },
-  { id: 'facts', tag: '基本情報', label: '基本情報' },
-  { id: 'regional-day', tag: '自治州の日', label: '自治州の日' },
-];
-
-const categoryGroups = categories
-  .map((c) => {
-    let items = sorted.filter((a) => a.data.tags.includes(c.tag));
-    // 季節のフェスティバルだけは1月→12月の固定順（+ 同クラスターのサブ
-    // 記事はinsigniaの直後）に並べ替える。
-    if (c.id === 'seasonal-festivals') {
-      items = monthOrder.flatMap((cluster) => {
-        const clusterArticles = items.filter((a) => a.data.cluster === cluster);
-        const flagship = clusterArticles.find((a) => isFlagshipArticle(a));
-        const others = clusterArticles.filter((a) => a !== flagship);
-        return [...(flagship ? [flagship] : []), ...others];
-      });
-    }
-    return { ...c, items };
-  })
-  .filter((g) => g.items.length > 0);
-
-const categoryAnchors = categoryGroups.map((g) => ({ href: `#${g.id}`, label: g.label }));
-
-const categorizedIds = new Set(categoryGroups.flatMap((g) => g.items.map((a) => a.id)));
-const remaining = sorted.filter((a) => !categorizedIds.has(a.id));
-
-function badgeFor(groupId: string, a: (typeof sorted)[number]) {
-  return groupId === 'seasonal-festivals' ? monthLabels[a.data.cluster] : undefined;
-}
-
-const breadcrumbs = [
-  { name: 'ホーム', url: '/' },
-  { name: 'スペイン文化', url: '/culture/' },
-];
-
 const cultureFaq = [
-  {
-    question: 'フラメンコについて知りたい場合は？',
-    answer: '起源や歌・ギター・踊りの3要素、タブラオでの鑑賞マナーまで<a href="/culture/flamenco/">「フラメンコ完全ガイド」</a>で解説しています。',
-  },
-  {
-    question: 'サルスエラとは何ですか？',
-    answer: 'スペイン独自の音楽劇サルスエラの歴史と魅力を<a href="/culture/zarzuela/">「サルスエラ完全ガイド」</a>で紹介しています。',
-  },
-  {
-    question: 'スペインの歴史を概観したい場合は？',
-    answer: 'ローマ時代から現代までの流れを年表とともに<a href="/culture/history/">「スペインの歴史」</a>にまとめています。',
-  },
-  {
-    question: 'スペインの祭りについて知りたい場合は？',
-    answer: '年間18の主要な祭りをまとめた<a href="/culture/traditions/">「スペインの祭り完全ガイド」</a>から探すか、月ごとのフェスティバルガイドで詳しく解説しています。',
-  },
+  { question: 'スペインの祭りについて知りたい場合は？', answer: '「12か月の祭りカレンダー」から月を選ぶと、その月の祭りの日程と見どころがわかります。年間の主要な祭りを一覧で知りたい方は<a href="/culture/traditions/">「スペインの祭り完全ガイド」</a>から。' },
+  { question: 'フラメンコについて知りたい場合は？', answer: '起源や歌・ギター・踊りの3要素、タブラオでの鑑賞マナーまで<a href="/culture/flamenco/">「フラメンコ完全ガイド」</a>で解説しています。' },
+  { question: 'サルスエラとは何ですか？', answer: 'スペイン独自の音楽劇サルスエラの歴史と魅力を<a href="/culture/zarzuela/">「サルスエラとは」</a>で紹介しています。' },
+  { question: 'スペインの歴史を概観したい場合は？', answer: '旧石器時代から現代までの流れを<a href="/culture/history/spain-history-timeline/">「スペインの歴史年表」</a>にまとめています。このページの「歴史を旅する」から、気になる時代の章へ直接移動できます。' },
 ];
+
+// ── Artículos ──
+const articles = await getCollection('articles', ({ data }) => !data.draft && data.pillar === 'culture');
+const idOf = (a: Article) => a.id.replace(/\.(md|mdx)$/, '');
+const slugOf = (a: Article) => idOf(a).split('/').pop() ?? '';
+const byId = new Map(articles.map((a) => [idOf(a), a]));
+const placed = new Set<string>();
+const take = (id: string) => { const a = byId.get(id); if (a) placed.add(id); return a; };
+const minutesOf = (a: Article) => a.data.readingTime ?? Math.max(3, Math.round((a.body?.length ?? 0) / 600));
+const heroOf = (a: Article) => (a.data.heroImage && typeof a.data.heroImage !== 'string' ? a.data.heroImage : undefined);
+const card = async (a: Article) => {
+  const hero = heroOf(a);
+  return { url: getArticleUrl(a), title: a.data.title, description: a.data.description, minutes: minutesOf(a), img: hero ? await cardImage(hero, '') : undefined };
+};
+
+// 01 Calendario: el artículo principal de cada mes (cluster = slug)
+const MONTHS = [
+  { cluster: 'january-festivals', fest: 'レジェス・マゴス', headline: 'レジェス・マゴスのパレードとタンボラーダ' },
+  { cluster: 'february-festivals', fest: 'カーニバル', headline: 'カディスとテネリフェのカーニバル' },
+  { cluster: 'march-festivals', fest: 'ファジャス祭', headline: 'バレンシアのファジャス祭' },
+  { cluster: 'april-festivals', fest: '聖週間とフェリア', headline: '聖週間セマナ・サンタとセビリアの春祭り' },
+  { cluster: 'may-festivals', fest: 'パティオ祭り', headline: 'コルドバのパティオ祭りとサン・イシドロ祭' },
+  { cluster: 'june-festivals', fest: 'サン・フアンの火祭り', headline: 'コルプス・クリスティとサン・フアンの火祭り' },
+  { cluster: 'july-festivals', fest: 'サン・フェルミン祭', headline: 'パンプローナのサン・フェルミン祭' },
+  { cluster: 'august-festivals', fest: 'ラ・トマティーナ', headline: 'フェリア・デ・マラガとラ・トマティーナ' },
+  { cluster: 'september-festivals', fest: 'ラ・メルセ祭', headline: 'ワイン収穫祭とバルセロナのラ・メルセ祭' },
+  { cluster: 'october-festivals', fest: 'エル・ピラール祭', headline: 'エル・ピラール祭とスペイン国家の日' },
+  { cluster: 'november-festivals', fest: 'カスタニャーダ・マゴスト', headline: '焼き栗のカスタニャーダ・マゴストと諸聖人の日' },
+  { cluster: 'december-festivals', fest: 'クリスマスと大晦日', headline: 'クリスマスマーケットと大晦日の12粒のブドウ' },
+];
+const months = (await Promise.all(MONTHS.map(async (m, i) => {
+  const a = articles.find((x) => x.data.cluster === m.cluster && slugOf(x) === m.cluster);
+  if (!a) return undefined;
+  placed.add(idOf(a));
+  return { ...m, n: i + 1, label: `${i + 1}月`, ...(await card(a)) };
+}))).filter((m) => !!m);
+// Mes de la compilación en hora de Japón; el script de abajo lo corrige al mes real del lector.
+const buildMonth = new Date(Date.now() + 9 * 3600e3).getUTCMonth() + 1;
+const nowIdx = Math.max(0, months.findIndex((m) => m.n === buildMonth));
+const now = months[nowIdx];
+const next = months[(nowIdx + 1) % months.length];
+const monthData = months.map((m) => ({ n: m.n, url: m.url, headline: `${m.label}の祭り：${m.headline}`, minutes: m.minutes, src: m.img?.src ?? '', srcset: m.img?.srcset ?? '', label: m.label, nextLine: `${m.label} ${m.fest}` }));
+
+// 02 Revista: el artículo que más retiene en grande y el resto de芸能・歴史・祭り
+const pick = take(CULTURE_PICK);
+const feature = pick ? await card(pick) : undefined;
+const DEEP: Array<[string, string]> = [
+  ['culture/flamenco/flamenco', 'フラメンコ'],
+  ['culture/history/spain-history-timeline', '歴史'],
+  ['culture/traditions/traditions', '祭り'],
+  ['culture/zarzuela/zarzuela', 'サルスエラ'],
+];
+const deep = await Promise.all(DEEP.filter(([id]) => id !== CULTURE_PICK).map(([id, tag]) => [take(id), tag] as const)
+  .filter((d): d is readonly [Article, string] => !!d[0]).map(async ([a, tag]) => ({ ...(await card(a)), tag })));
+
+// 03 Historia: 9 épocas → capítulos (## ) del 歴史年表, con el mismo id que pone Astro (github-slugger)
+const history = byId.get('culture/history/spain-history-timeline');
+const slug = (s: string) => s.trim().toLowerCase().replace(/[^\p{L}\p{M}\p{N}_\- ]/gu, '').replace(/ /g, '-');
+const chapters = (history?.body ?? '').split('\n').filter((l) => /^## /.test(l)).map((l) => slug(l.slice(3)));
+const ERAS = [
+  { years: '〜前3世紀', name: '先史時代', sub: 'アルタミラ洞窟と古代文明' },
+  { years: '前218年〜', name: 'ローマ支配', sub: '約700年のヒスパニア属州' },
+  { years: '5世紀〜', name: '西ゴート王国', sub: 'ゲルマン系国家の時代' },
+  { years: '711〜1492年', name: 'イスラムとレコンキスタ', sub: '約780年にわたる攻防' },
+  { years: '1492年〜', name: '黄金期と大航海時代', sub: '世界帝国への道' },
+  { years: '1700年〜', name: 'ブルボン朝', sub: '大帝国の没落' },
+  { years: '1808〜1898年', name: '近代の混乱', sub: '独立戦争から米西戦争まで' },
+  { years: '1936〜1975年', name: '内戦とフランコ独裁', sub: '20世紀の激動' },
+  { years: '1975年〜', name: '民主化とEU加盟', sub: '現代スペインへ' },
+];
+const historyUrl = history ? getArticleUrl(history) : '/culture/history/';
+const eras = ERAS.map((e, i) => ({ ...e, href: chapters[i] ? `${historyUrl}#${chapters[i]}` : historyUrl }));
+
+// 04 Regiones: el día de la Comunitat Valenciana (y futuros días autonómicos)
+const regionDays = articles.filter((a) => a.data.tags.includes('自治州の日') && !placed.has(idOf(a)));
+regionDays.forEach((a) => placed.add(idOf(a)));
+const regionDay = regionDays[0];
+
+// Artículos de cultura que todavía no tienen bloque
+const rest = await Promise.all(articles.filter((a) => !placed.has(idOf(a))).map(card));
+
+const collectionSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'CollectionPage',
+  name: 'スペイン文化',
+  description: 'スペインの12か月の祭り、フラメンコとサルスエラ、旧石器時代から現代までの歴史、地方の祝日を紹介するガイド。',
+  url: canonical,
+  inLanguage: 'ja',
+  mainEntity: {
+    '@type': 'ItemList',
+    itemListElement: [...months, ...(feature ? [feature] : []), ...deep, ...(regionDay ? [{ url: getArticleUrl(regionDay), title: regionDay.data.title }] : []), ...rest]
+      .map((c, i) => ({ '@type': 'ListItem', position: i + 1, url: `${SITE}${c.url}`, name: c.title })),
+  },
+};
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: cultureFaq.map((item) => ({ '@type': 'Question', name: item.question, acceptedAnswer: { '@type': 'Answer', text: item.answer.replace(/<[^>]+>/g, '') } })),
+};
 ---
 <BaseLayout>
   <SEO
     slot="seo"
     title="スペイン文化 完全ガイド"
     description="スペイン文化の世界を、地域ごとの多彩な個性とあわせて日本語でわかりやすく紹介する入門ガイドです。フラメンコや歴史的建造物、各地の伝統的な祭り、豊かな食文化、地方ごとの言語や習慣の違い、芸術や建築の魅力まで幅広いテーマを取り上げて紹介しています。"
-    canonical="https://supein.club/culture/"
+    canonical={canonical}
     image="/og/culture.webp"
     breadcrumbs={breadcrumbs}
   />
-  <script
-    type="application/ld+json"
-    slot="head"
-    set:html={JSON.stringify({
-      '@context': 'https://schema.org',
-      '@type': 'FAQPage',
-      mainEntity: cultureFaq.map((item) => ({
-        '@type': 'Question',
-        name: item.question,
-        acceptedAnswer: { '@type': 'Answer', text: item.answer.replace(/<[^>]+>/g, '') },
-      })),
-    })}
-  />
-  <PillarHero
-    title="スペイン文化"
-    description="地域ごとに驚くほど多彩な、情熱的なスペイン文化の世界をわかりやすく紹介します。"
-  />
-  <section class="max-w-6xl mx-auto px-5 py-14">
-    <p class="text-muted text-base leading-relaxed mb-12 border-l-2 border-primary pl-5">
-      スペイン文化は、地域ごとに驚くほど多彩な顔を持つ、奥深いテーマです。本カテゴリでは、そんなスペイン文化の世界を日本語でわかりやすくご紹介しています。
-    </p>
-    {categoryAnchors.length > 0 && (
-      <>
-        <h2 id="categories" class="font-sans font-bold text-xl text-navy mb-5">カテゴリ</h2>
-        <div class="grid grid-cols-2 md:grid-cols-5 gap-3 mb-12">
-          {categoryAnchors.map(({ href, label }) => (
-            <a href={href} class="bg-white rounded-lg px-3 py-3 min-h-[44px] flex items-center justify-center text-center border border-[#E8E8E6] hover:border-primary/30 hover:shadow-sm transition-all">
-              <span class="font-semibold text-navy text-sm leading-snug block">{label}</span>
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify(collectionSchema)} />
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify(faqSchema)} />
+
+  <section class="cu-hero">
+    <div class="page-container cu-hero-in">
+      <div>
+        <Breadcrumb items={breadcrumbs} dark />
+        <p class="cu-eyebrow">SPANISH CULTURE</p>
+        <h1 class="cu-h1">スペイン文化</h1>
+        <p class="cu-lead">祭り、フラメンコ、サルスエラ、そして2000年の歴史。季節ごとに表情を変えるスペインの文化を、日本語で。</p>
+        <div class="cu-stats">
+          <a href="#cal"><b>{months.length}</b><small>か月の祭りガイド</small></a>
+          <a href="#deep"><b>2</b><small>伝統芸能</small></a>
+          <a href="#hist"><b>{eras.length}</b><small>歴史の時代</small></a>
+        </div>
+      </div>
+      {now && (
+        <div class="cu-now" data-hub-block="now" data-now={now.n}>
+          <a class="cu-now-card" href={now.url} data-now-link>
+            {now.img && <img src={now.img.src} srcset={now.img.srcset} sizes="(min-width: 860px) 580px, 92vw" width={now.img.width} height={now.img.height} alt="" fetchpriority="high" decoding="async" data-now-img />}
+            <span class="cu-now-k"><Calendar size={15} />今月のスペイン</span>
+            <span class="cu-now-m"><span data-now-n>{now.n}</span><small>月</small></span>
+          </a>
+          <a class="cu-now-t" href={now.url} data-now-link data-now-title>{now.label}の祭り：{now.headline}</a>
+          <span class="cu-now-meta"><Clock size={13} /><span data-now-min>約{now.minutes}分で読める</span></span>
+          {next && (
+            <a class="cu-now-next" href={next.url} data-next-link>
+              <span><small>来月</small><span data-next-line>{next.label} {next.fest}</span></span>
+              <ChevronRight size={18} />
+            </a>
+          )}
+        </div>
+      )}
+    </div>
+  </section>
+  <script type="application/json" id="cu-months" set:html={JSON.stringify(monthData)} />
+
+  <nav class="cu-chips" aria-label="このページの内容">
+    <div class="page-container">
+      <a href="#cal" data-chip="cal"><i>01</i>祭りカレンダー</a>
+      <a href="#deep" data-chip="deep"><i>02</i>深く知る</a>
+      <a href="#hist" data-chip="hist"><i>03</i>歴史</a>
+      <a href="#region" data-chip="region"><i>04</i>地方の文化</a>
+      <a href="#faq" data-chip="faq">FAQ</a>
+    </div>
+  </nav>
+
+  <section class="hub-block cu-block" id="cal" data-hub-block="calendar">
+    <div class="page-container">
+      <div class="hub-block-head cu-head-more">
+        <div>
+          <p class="hub-block-eyebrow"><span class="hub-block-num">01</span>12か月の祭りカレンダー</p>
+          <h2>月を選んで、スペインの祭りへ</h2>
+          <p class="hub-block-lead">月ごとに日程と見どころを詳しく解説。旅行の時期選びにも。</p>
+        </div>
+        <a class="cu-more" href="/culture/traditions/">年間カレンダーで見る<ChevronRight size={16} /></a>
+      </div>
+      <div class="cu-cal">
+        <Rail label="12か月の祭りカレンダー" hint="スワイプして他の月を見る" desktopColumns={6}>
+          {months.map((m) => (
+            <a class:list={['cu-mon', { 'is-now': m.n === now?.n }]} href={m.url} role="listitem" data-month={m.n}>
+              {m.img && <img src={m.img.src} srcset={m.img.srcset} sizes="(min-width: 860px) 180px, 40vw" width={m.img.width} height={m.img.height} alt="" loading="lazy" decoding="async" />}
+              <span class="cu-mon-badge">今月</span>
+              <span class="cu-mon-n">{m.label}</span>
+              <span class="cu-mon-f">{m.fest}</span>
+            </a>
+          ))}
+        </Rail>
+      </div>
+    </div>
+  </section>
+
+  <section class="hub-block cu-block is-soft" id="deep" data-hub-block="deep">
+    <div class="page-container">
+      <div class="hub-block-head">
+        <p class="hub-block-eyebrow"><span class="hub-block-num">02</span>スペイン文化を深く知る</p>
+        <h2>芸能と歴史を、じっくり読む</h2>
+      </div>
+      <div class="cu-mag">
+        {feature && (
+          <a class="cu-mag-f" href={feature.url}>
+            {feature.img && <img src={feature.img.src} srcset={feature.img.srcset} sizes="(min-width: 860px) 640px, 92vw" width={feature.img.width} height={feature.img.height} alt="" loading="lazy" decoding="async" />}
+            <span class="cu-mag-fb">
+              <span class="cu-pick"><TrendingUp size={14} />いちばん長く読まれている記事</span>
+              <span class="cu-mag-ft">{feature.title}</span>
+              <span class="cu-mag-fd">{feature.description}</span>
+              <span class="cu-meta"><Clock size={13} />約{feature.minutes}分で読める</span>
+            </span>
+          </a>
+        )}
+        <div class="cu-mag-l">
+          {deep.map((c) => (
+            <a class="cu-mag-i" href={c.url}>
+              {c.img && <img src={c.img.src} srcset={c.img.srcset} sizes="(min-width: 860px) 170px, 104px" width={c.img.width} height={c.img.height} alt="" loading="lazy" decoding="async" />}
+              <span><span class="cu-tag">{c.tag}</span><b>{c.title}</b><span class="cu-meta"><Clock size={13} />約{c.minutes}分</span></span>
             </a>
           ))}
         </div>
-      </>
-    )}
-    <RegionCTA />
-
-    {categoryGroups.map((group) => (
-      <>
-        <h2 id={group.id} class="font-sans font-bold text-xl text-navy mb-5">{group.label}</h2>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
-          {group.items.map((a) => (
-            <ArticleCard title={a.data.title} description={a.data.description} href={getArticleUrl(a)} pillar="culture" image={a.data.image} imageAlt={a.data.imageAlt} heroImage={a.data.heroImage} heroImageAlt={a.data.heroImageAlt} pubDate={a.data.pubDate} topicBadge={badgeFor(group.id, a)} />
-          ))}
-        </div>
-      </>
-    ))}
-
-    {remaining.length > 0 && (
-      <>
-        <h2 class="font-sans font-bold text-xl text-navy mb-5">その他の記事</h2>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {remaining.map((a) => (
-            <ArticleCard title={a.data.title} description={a.data.description} href={getArticleUrl(a)} pillar="culture" image={a.data.image} imageAlt={a.data.imageAlt} heroImage={a.data.heroImage} heroImageAlt={a.data.heroImageAlt} pubDate={a.data.pubDate} />
-          ))}
-        </div>
-      </>
-    )}
+      </div>
+    </div>
   </section>
 
-  <section class="max-w-6xl mx-auto px-5 pb-14 prose-content">
-  <div class="max-w-[780px]">
-    <h2 class="font-sans font-bold text-xl text-navy mb-4">このサイトのスペイン文化コンテンツについて</h2>
-    <p class="text-muted leading-relaxed mb-6">
-      このカテゴリでは、フラメンコやサルスエラといった芸術、スペインの歴史、年間を通じた伝統的な祭りまで、日本語で幅広くご紹介しています。
-    </p>
-
-    <h2 class="font-sans font-bold text-xl text-navy mb-4">フラメンコとサルスエラ</h2>
-    <p class="text-muted leading-relaxed mb-6">
-      スペインを代表する芸術について深く知りたい方は<a href="/culture/flamenco/" class="text-primary underline">「フラメンコ完全ガイド」</a>と<a href="/culture/zarzuela/" class="text-primary underline">「サルスエラ完全ガイド」</a>をご覧ください。
-    </p>
-
-    <h2 class="font-sans font-bold text-xl text-navy mb-4">スペインの歴史を知るなら</h2>
-    <p class="text-muted leading-relaxed mb-6">
-      ローマ時代から現代までの流れを<a href="/culture/history/" class="text-primary underline">「スペインの歴史」</a>で年表とともに解説しています。
-    </p>
-
-    <h2 class="font-sans font-bold text-xl text-navy mb-4">季節ごとの祭りを知るなら</h2>
-    <p class="text-muted leading-relaxed mb-6">
-      年間の主要な祭りを一覧で知りたい方は<a href="/culture/traditions/" class="text-primary underline">「スペインの祭り完全ガイド」</a>から。月ごとの詳しいフェスティバルガイドも順次公開しています。
-    </p>
-
-    <NewsletterForm variant="inline" />
-
-    <FAQSection faq={cultureFaq} />
-
-    {author && <ArticleDisclaimer />}
-    {author && <AuthorBox author={author} />}
-
-    <section class="mt-12 border-t border-[#E8E8E6] pt-10">
-      <h2 class="font-sans font-bold text-2xl text-navy mb-2">こちらの記事もおすすめ</h2>
-      <p class="text-sm text-gray-500 mb-6">スペインの他のテーマも見てみませんか。</p>
-      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-        {otherPillars.map((p) => (
-          <a href={p.href} class="block bg-white rounded-xl overflow-hidden shadow-[0_2px_8px_rgba(0,33,71,0.07)] border border-[#E8E8E6] hover:shadow-[0_4px_16px_rgba(0,33,71,0.12)] hover:border-primary/20 transition-all p-6">
-            <h3 class="font-sans font-bold text-navy text-lg mb-2">{p.title}</h3>
-            <p class="text-muted text-sm leading-relaxed">{p.description}</p>
+  <section class="hub-block cu-block" id="hist" data-hub-block="history">
+    <div class="page-container">
+      <div class="hub-block-head cu-head-more">
+        <div>
+          <p class="hub-block-eyebrow"><span class="hub-block-num">03</span>歴史を旅する</p>
+          <h2>2000年の歴史を、時代から選ぶ</h2>
+          <p class="hub-block-lead">時代をタップすると「スペインの歴史年表」のその章に移動します。</p>
+        </div>
+        <a class="cu-more" href={historyUrl}>歴史年表を読む<ChevronRight size={16} /></a>
+      </div>
+      <Rail label="スペインの歴史の時代" hint="スワイプして時代を進む" desktopColumns={9}>
+        {eras.map((e, i) => (
+          <a class="cu-era" href={e.href} role="listitem">
+            <span class="cu-era-dot">{i + 1}</span>
+            <span class="cu-era-y">{e.years}</span>
+            <span class="cu-era-n">{e.name}</span>
+            <span class="cu-era-s">{e.sub}</span>
           </a>
         ))}
+      </Rail>
+    </div>
+  </section>
+
+  {rest.length > 0 && (
+    <section class="hub-block cu-block" id="more" data-hub-block="more">
+      <div class="page-container">
+        <div class="hub-block-head">
+          <p class="hub-block-eyebrow">もっと読む</p>
+          <h2>その他の文化ガイド</h2>
+        </div>
+        <Rail label="その他の文化ガイド" hint="スワイプして続きを見る" desktopColumns={3}>
+          {rest.map((c) => (
+            <a class="cu-card" href={c.url} role="listitem">
+              {c.img && <img src={c.img.src} srcset={c.img.srcset} sizes="(min-width: 860px) 360px, 76vw" width={c.img.width} height={c.img.height} alt="" loading="lazy" decoding="async" />}
+              <span><b>{c.title}</b><span class="cu-meta"><Clock size={13} />約{c.minutes}分で読める</span></span>
+            </a>
+          ))}
+        </Rail>
       </div>
     </section>
-  </div>
+  )}
+
+  <section class="hub-block cu-block is-soft" id="region" data-hub-block="region">
+    <div class="page-container">
+      <div class="hub-block-head">
+        <p class="hub-block-eyebrow"><span class="hub-block-num">04</span>地方から見る文化</p>
+        <h2>祝日と祭りを、地方ごとに</h2>
+      </div>
+      <div class="cu-pair">
+        {regionDay && (
+          <HubCrossCard href={getArticleUrl(regionDay)} eyebrow="自治州の日" title={regionDay.data.title.split('｜')[0]} text={regionDay.data.description} minutes={minutesOf(regionDay)} image={heroOf(regionDay)} variant="white">
+            <Calendar slot="icon" size={15} />
+          </HubCrossCard>
+        )}
+        <HubCrossCard href="/regions/" eyebrow="地方ガイド" title="17の地方の文化を知る" text="祭り・料理・サッカー・暮らしを地方ごとにまとめています。" cta="地方ガイドを見る" image={regionsPhoto}>
+          <Compass slot="icon" size={15} />
+        </HubCrossCard>
+      </div>
+    </div>
+  </section>
+
+  <section class="hub-block cu-block" id="faq">
+    <div class="page-container cu-narrow">
+      <div class="hub-block-head">
+        <p class="hub-block-eyebrow">このサイトのスペイン文化ガイド</p>
+        <h2>目的別の読み方</h2>
+      </div>
+      <div class="cu-guide">
+        <p>このカテゴリでは、フラメンコやサルスエラといった芸術、スペインの歴史、年間を通じた伝統的な祭りまで、日本語で幅広くご紹介しています。</p>
+        <p>スペインを代表する芸術について深く知りたい方は<a href="/culture/flamenco/">「フラメンコ完全ガイド」</a>と<a href="/culture/zarzuela/">「サルスエラとは」</a>をご覧ください。</p>
+        <p>ローマ時代から現代までの流れは<a href={historyUrl}>「スペインの歴史年表」</a>で、時代ごとの出来事とともに解説しています。</p>
+        <p>年間の主要な祭りを一覧で知りたい方は<a href="/culture/traditions/">「スペインの祭り完全ガイド」</a>から。月ごとの日程と見どころは、上の「12か月の祭りカレンダー」から各月のガイドへ進めます。</p>
+      </div>
+      <div class="cu-faq"><HubFaq items={cultureFaq} title="スペイン文化のFAQ" /></div>
+      <div data-pagefind-ignore class="cu-newsletter"><NewsletterForm variant="inline" /></div>
+      {author && <ArticleDisclaimer />}
+      {author && <AuthorBox author={author} />}
+    </div>
+  </section>
+
+  <section class="page-container cu-related" data-pagefind-ignore>
+    <h2 class="font-sans font-bold text-2xl text-navy mb-2">こちらの記事もおすすめ</h2>
+    <p class="text-sm text-gray-500 mb-6">スペインの他のテーマも見てみませんか。</p>
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+      {otherPillars.map((p) => (
+        <a href={p.href} class="block bg-white rounded-xl overflow-hidden shadow-[0_2px_8px_rgba(0,33,71,0.07)] border border-[#E8E8E6] hover:shadow-[0_4px_16px_rgba(0,33,71,0.12)] hover:border-primary/20 transition-all p-6">
+          <h3 class="font-sans font-bold text-navy text-lg mb-2">{p.title}</h3>
+          <p class="text-muted text-sm leading-relaxed">{p.description}</p>
+        </a>
+      ))}
+    </div>
   </section>
 
   <LineBanner slim />
-  <FloatingActions target="categories" shareUrl="https://supein.club/culture/" shareTitle="スペイン文化" />
+  <FloatingActions target="cal" shareUrl={canonical} shareTitle="スペイン文化" />
+  <HubClickTracking hub="culture" />
 </BaseLayout>
+
+<script>
+  // 「今月のスペイン」: el HTML trae el mes de la compilación; aquí se pone el mes real del lector.
+  type Month = { n: number; url: string; headline: string; minutes: number; src: string; srcset: string; label: string; nextLine: string };
+  const box = document.querySelector<HTMLElement>('.cu-now');
+  const data: Month[] = JSON.parse(document.getElementById('cu-months')?.textContent || '[]');
+  const month = new Date().getMonth() + 1;
+  const cur = data.find((m) => m.n === month);
+  if (box && cur && Number(box.dataset.now) !== month) {
+    const nxt = data[(data.indexOf(cur) + 1) % data.length];
+    box.dataset.now = String(month);
+    box.querySelectorAll<HTMLAnchorElement>('[data-now-link]').forEach((a) => { a.href = cur.url; });
+    const img = box.querySelector<HTMLImageElement>('[data-now-img]');
+    if (img && cur.src) { img.srcset = cur.srcset; img.src = cur.src; }
+    box.querySelector('[data-now-n]')!.textContent = String(cur.n);
+    box.querySelector('[data-now-title]')!.textContent = cur.headline;
+    box.querySelector('[data-now-min]')!.textContent = `約${cur.minutes}分で読める`;
+    const next = box.querySelector<HTMLAnchorElement>('[data-next-link]');
+    if (next && nxt) { next.href = nxt.url; next.querySelector('[data-next-line]')!.textContent = nxt.nextLine; }
+    document.querySelectorAll<HTMLElement>('.cu-mon').forEach((t) => t.classList.toggle('is-now', Number(t.dataset.month) === month));
+  }
+  // El carrusel del calendario arranca en el mes actual (si hay que desplazarse).
+  const track = document.querySelector<HTMLElement>('.cu-cal .rail-track');
+  const tile = document.querySelector<HTMLElement>('.cu-mon.is-now');
+  if (track && tile && track.scrollWidth > track.clientWidth) track.scrollLeft = tile.offsetLeft - track.offsetLeft - 2;
+
+  // Accesos rápidos: marca la sección visible.
+  const chips = [...document.querySelectorAll<HTMLAnchorElement>('.cu-chips a[data-chip]')];
+  const io = new IntersectionObserver((entries) => entries.forEach((e) => {
+    if (!e.isIntersecting) return;
+    chips.forEach((c) => c.classList.toggle('is-on', c.dataset.chip === e.target.id));
+  }), { rootMargin: '-35% 0px -60% 0px' });
+  chips.forEach((c) => { const s = document.getElementById(c.dataset.chip!); if (s) io.observe(s); });
+</script>
+
+<style is:global>
+  .cu-hero { position: relative; overflow: hidden; padding: 22px 0 28px; background: #002147; color: #fff; }
+  .cu-hero::before { content: ''; position: absolute; inset: 0; background-image: radial-gradient(rgba(255, 255, 255, .07) 1px, transparent 1px); background-size: 22px 22px; pointer-events: none; }
+  .cu-hero-in { position: relative; display: grid; gap: 20px; }
+  .cu-eyebrow { margin: 14px 0 0; font-size: 12px; font-weight: 700; letter-spacing: .1em; color: #ff8a9a; }
+  .cu-h1 { margin: 4px 0 0; font-family: 'Noto Serif JP', serif; font-size: 36px; font-weight: 700; line-height: 1.25; color: #fff; }
+  .cu-lead { max-width: 620px; margin: 10px 0 0; font-size: 14px; line-height: 1.8; color: rgba(255, 255, 255, .88); }
+  .cu-stats { display: flex; gap: 8px; max-width: 460px; margin-top: 14px; }
+  .cu-stats a { flex: 1; padding: 8px 4px; border: 1px solid rgba(255, 255, 255, .2); border-radius: 12px; background: rgba(255, 255, 255, .08); color: #fff; text-align: center; text-decoration: none; }
+  .cu-stats b { display: block; font-size: 20px; line-height: 1.2; }
+  .cu-stats small { font-size: 11px; color: rgba(255, 255, 255, .72); }
+  .cu-now-card { position: relative; display: block; overflow: hidden; border-radius: 18px; box-shadow: 0 20px 40px -20px rgba(0, 0, 0, .6); }
+  .cu-now-card img { display: block; width: 100%; aspect-ratio: 16 / 10; object-fit: cover; }
+  .cu-now-card::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to top, rgba(0, 21, 48, .8), rgba(0, 21, 48, 0) 50%); }
+  .cu-now-k { position: absolute; top: 12px; left: 12px; z-index: 1; display: inline-flex; align-items: center; gap: 6px; padding: 5px 12px; border-radius: 999px; background: #C8102E; color: #fff; font-size: 12px; font-weight: 700; }
+  .cu-now-m { position: absolute; bottom: 10px; left: 16px; z-index: 1; font-family: 'Noto Serif JP', serif; font-size: 66px; font-weight: 700; line-height: 1; color: #fff; text-shadow: 0 4px 18px rgba(0, 0, 0, .45); }
+  .cu-now-m small { margin-left: 2px; font-size: 26px; }
+  .cu-now-t { display: block; margin-top: 12px; font-size: 17px; font-weight: 700; line-height: 1.55; color: #fff; text-decoration: none; }
+  .cu-now-t:hover { text-decoration: underline; text-underline-offset: 4px; }
+  .cu-now-meta { display: inline-flex; align-items: center; gap: 4px; margin-top: 6px; font-size: 11.5px; color: rgba(255, 255, 255, .72); }
+  .cu-now-next { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-top: 12px; padding: 10px 12px; border: 1px solid rgba(255, 255, 255, .25); border-radius: 12px; background: rgba(255, 255, 255, .08); color: #fff; font-size: 13.5px; font-weight: 700; text-decoration: none; }
+  .cu-now-next small { display: block; font-size: 11px; color: #ff8a9a; }
+
+  .cu-chips { position: sticky; top: 67px; z-index: 30; border-bottom: 1px solid #E3E8EF; background: rgba(250, 250, 248, .96); backdrop-filter: blur(6px); }
+  .cu-chips .page-container { display: flex; gap: 8px; padding-top: 10px; padding-bottom: 10px; overflow-x: auto; scrollbar-width: none; }
+  .cu-chips .page-container::-webkit-scrollbar { display: none; }
+  .cu-chips a { flex: none; display: inline-flex; align-items: center; gap: 6px; padding: 7px 13px; border: 1px solid #E3E8EF; border-radius: 999px; background: #fff; font-size: 13px; font-weight: 700; color: #002147; text-decoration: none; }
+  .cu-chips a i { padding: 0 4px; border: 1.3px solid currentColor; border-radius: 5px; font-style: normal; font-size: 11px; color: #C8102E; }
+  .cu-chips a.is-on { border-color: #002147; background: #002147; color: #fff; }
+  .cu-chips a.is-on i { color: #fff; }
+
+  .cu-block { scroll-margin-top: 56px; --rail-fade: #fff; }
+  .cu-block.is-soft { background: #F0F4F8; --rail-fade: #F0F4F8; }
+  .cu-block .hub-block-head { margin-bottom: 16px; }
+  .cu-block h2 { word-break: auto-phrase; }
+  .cu-head-more { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 4px 16px; max-width: none; }
+  .cu-head-more > div { max-width: 780px; }
+  .cu-more { display: inline-flex; align-items: center; gap: 2px; margin-bottom: 12px; font-size: 13.5px; font-weight: 700; color: #C8102E; text-decoration: underline; text-underline-offset: 4px; }
+  .cu-meta { display: inline-flex; align-items: center; gap: 4px; font-size: 11.5px; color: #5A6B80; }
+  .cu-tag { align-self: flex-start; padding: 1px 8px; border-radius: 999px; background: #FCEBEE; color: #C8102E; font-size: 10.5px; font-weight: 700; }
+
+  .cu-block .rail-track > .cu-mon { width: 40%; max-width: 180px; }
+  .cu-mon { position: relative; display: block; overflow: hidden; border-radius: 14px; color: #fff; text-decoration: none; }
+  .cu-mon img { display: block; width: 100%; aspect-ratio: 3 / 4; object-fit: cover; transition: transform .25s; }
+  .cu-mon:hover img { transform: scale(1.04); }
+  .cu-mon::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to top, rgba(0, 21, 48, .85), rgba(0, 21, 48, 0) 50%, rgba(0, 21, 48, .35)); }
+  .cu-mon-n { position: absolute; top: 8px; left: 10px; z-index: 1; font-family: 'Noto Serif JP', serif; font-size: 30px; font-weight: 700; text-shadow: 0 2px 10px rgba(0, 0, 0, .4); }
+  .cu-mon-f { position: absolute; right: 10px; bottom: 10px; left: 10px; z-index: 1; font-size: 12.5px; font-weight: 700; line-height: 1.45; }
+  .cu-mon-badge { display: none; position: absolute; top: 11px; right: 8px; z-index: 2; padding: 2px 9px; border-radius: 999px; background: #C8102E; font-size: 11px; font-weight: 700; }
+  .cu-mon.is-now { outline: 3px solid #C8102E; outline-offset: -3px; }
+  .cu-mon.is-now .cu-mon-badge { display: block; }
+
+  .cu-mag { display: grid; gap: 14px; }
+  .cu-mag-f { display: block; overflow: hidden; border: 1px solid #E3E8EF; border-radius: 18px; background: #fff; color: inherit; text-decoration: none; }
+  .cu-mag-f img { display: block; width: 100%; aspect-ratio: 16 / 9; object-fit: cover; }
+  .cu-mag-fb { display: flex; flex-direction: column; gap: 7px; padding: 16px 18px 18px; }
+  .cu-pick { display: inline-flex; align-self: flex-start; align-items: center; gap: 5px; padding: 3px 11px; border-radius: 999px; background: #002147; color: #fff; font-size: 11.5px; font-weight: 700; }
+  .cu-mag-ft { font-family: 'Noto Serif JP', serif; font-size: 21px; font-weight: 700; line-height: 1.5; color: #002147; }
+  .cu-mag-fd { font-size: 13px; line-height: 1.8; color: #4b5563; }
+  .cu-mag-l { display: flex; flex-direction: column; gap: 10px; }
+  .cu-mag-i { display: grid; grid-template-columns: 104px minmax(0, 1fr); align-items: center; gap: 12px; padding: 10px; border: 1px solid #E3E8EF; border-radius: 14px; background: #fff; color: inherit; text-decoration: none; }
+  .cu-mag-i:hover, .cu-mag-f:hover { box-shadow: 0 10px 24px -14px rgba(0, 33, 71, .4); }
+  .cu-mag-i img { display: block; width: 104px; height: 78px; border-radius: 10px; object-fit: cover; }
+  .cu-mag-i > span { display: flex; flex-direction: column; gap: 4px; }
+  .cu-mag-i b { font-size: 14px; line-height: 1.5; color: #002147; }
+
+  .cu-block .rail-track > .cu-era { width: 44%; max-width: 180px; }
+  .cu-era { position: relative; display: flex; flex-direction: column; gap: 3px; padding-top: 2px; color: inherit; text-decoration: none; }
+  .cu-era::before { content: ''; position: absolute; top: 19px; right: -14px; left: 36px; border-top: 2px solid #d5dce6; }
+  .cu-era:last-child::before { display: none; }
+  .cu-era-dot { position: relative; z-index: 1; display: grid; place-items: center; width: 36px; height: 36px; border: 2px solid #C8102E; border-radius: 50%; background: #fff; color: #C8102E; font-size: 14px; font-weight: 700; }
+  .cu-era:hover .cu-era-dot { background: #C8102E; color: #fff; }
+  .cu-era-y { margin-top: 8px; font-size: 12px; font-weight: 700; color: #C8102E; }
+  .cu-era-n { font-size: 15px; font-weight: 700; line-height: 1.45; color: #002147; }
+  .cu-era-s { font-size: 12px; line-height: 1.6; color: #4b5563; }
+
+  .cu-card { display: flex; flex-direction: column; overflow: hidden; border: 1px solid #E3E8EF; border-radius: 16px; background: #fff; color: inherit; text-decoration: none; }
+  .cu-card img { display: block; width: 100%; aspect-ratio: 16 / 10; object-fit: cover; }
+  .cu-card > span { display: flex; flex-direction: column; gap: 4px; padding: 12px 14px 14px; }
+  .cu-card b { font-size: 14.5px; line-height: 1.5; color: #002147; }
+
+  .cu-pair { display: grid; gap: 14px; }
+
+  .page-container.cu-narrow > * { max-width: 820px; }
+  .cu-guide p { margin: 0 0 14px; font-size: 14.5px; line-height: 1.9; color: #4b5563; }
+  .cu-guide a { color: #C8102E; text-decoration: underline; text-underline-offset: 3px; }
+  .cu-faq, .cu-newsletter { margin-top: 32px; }
+  .cu-related { padding-top: 40px; padding-bottom: 56px; }
+
+  @media (min-width: 860px) {
+    .cu-hero { padding: 32px 0 40px; }
+    .cu-hero-in { grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); align-items: center; gap: 40px; }
+    .cu-h1 { font-size: 48px; }
+    .cu-block .rail-track > .cu-mon, .cu-block .rail-track > .cu-era { width: auto; max-width: none; }
+    .cu-mag { grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr); align-items: stretch; gap: 20px; }
+    .cu-mag-l { justify-content: space-between; }
+    .cu-mag-i { flex: 1; grid-template-columns: 168px minmax(0, 1fr); gap: 16px; padding: 12px; }
+    .cu-mag-i img { width: 168px; height: 118px; }
+    .cu-mag-i b { font-size: 15.5px; }
+    .cu-mag-ft { font-size: 25px; }
+    .cu-block .rail--grid .rail-track:has(.cu-era) { gap: 10px; }
+    .cu-era-n { font-size: 13.5px; }
+    .cu-era::before { right: -10px; }
+    .cu-pair { grid-template-columns: 1fr 1fr; gap: 20px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .cu-mon img { transition: none; }
+  }
+</style>

@@ -1,0 +1,61 @@
+---
+// Tarjeta grande de enlace cruzado de los hubs (/travel/, /culture/): foto o ilustración arriba y
+// texto debajo. Variante navy (por defecto, para destinos de otra sección: mapa gastronómico,
+// /regions/) o white (para un artículo). En escritorio se colocan de dos en dos (.hx-pair).
+import type { ImageMetadata } from 'astro';
+import { ArrowRight, Clock } from 'lucide-astro';
+import { cardImage } from '../utils/images';
+
+interface Props {
+  href: string;
+  eyebrow: string;
+  title: string;
+  text: string;
+  cta?: string;
+  image?: ImageMetadata;
+  /** Minutos de lectura (solo para artículos). */
+  minutes?: number;
+  variant?: 'navy' | 'white';
+}
+
+const { href, eyebrow, title, text, cta, image, minutes, variant = 'navy' } = Astro.props;
+const img = image ? await cardImage(image, '') : undefined;
+---
+<a class:list={['hx', `hx--${variant}`]} href={href}>
+  {img
+    ? <img src={img.src} srcset={img.srcset} sizes="(min-width: 860px) 560px, 92vw" width={img.width} height={img.height} alt="" loading="lazy" decoding="async" />
+    : <span class="hx-art"><slot name="art" /></span>}
+  <span class="hx-b">
+    <span class="hx-k"><slot name="icon" />{eyebrow}</span>
+    <span class="hx-t">{title}</span>
+    <span class="hx-x">{text}</span>
+    {minutes && <span class="hx-m"><Clock size={13} />約{minutes}分で読める</span>}
+    {cta && <span class="hx-cta">{cta}<ArrowRight size={18} /></span>}
+  </span>
+</a>
+
+<style>
+  .hx { display: flex; flex-direction: column; overflow: hidden; border-radius: 18px; background: #002147; color: #fff; text-decoration: none; transition: box-shadow .15s; }
+  .hx:hover { box-shadow: 0 14px 30px -16px rgba(0, 33, 71, .55); }
+  .hx > img { display: block; width: 100%; height: 190px; object-fit: cover; }
+  .hx-art { display: block; padding: 14px 18px 6px; background: #F0F4F8; }
+  .hx-art :global(svg) { display: block; width: 100%; height: auto; max-height: 230px; }
+  .hx-art :global(path) { stroke: #fff; stroke-width: .7; }
+  .hx-art :global(rect) { fill: none; stroke: #9ca3af; stroke-dasharray: 2, 2; }
+  .hx-b { display: flex; flex: 1; flex-direction: column; gap: 6px; padding: 16px 18px 18px; }
+  .hx-k { display: flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 700; letter-spacing: .08em; color: #ff8a9a; }
+  .hx-t { font-family: 'Noto Serif JP', serif; font-size: 21px; font-weight: 700; line-height: 1.45; word-break: auto-phrase; }
+  .hx-x { font-size: 13px; line-height: 1.75; color: rgba(255, 255, 255, .85); }
+  .hx-m { display: inline-flex; align-items: center; gap: 4px; font-size: 11.5px; color: #5A6B80; }
+  .hx-cta { display: inline-flex; align-self: flex-start; align-items: center; gap: 6px; margin-top: 6px; padding: 11px 15px; border-radius: 10px; background: #C8102E; font-size: 14px; font-weight: 700; color: #fff; }
+  .hx--white { border: 1px solid #E3E8EF; background: #fff; color: #1A1A1A; }
+  .hx--white .hx-k { color: #C8102E; }
+  .hx--white .hx-t { color: #002147; }
+  .hx--white .hx-x { color: #4b5563; }
+  @media (min-width: 860px) {
+    .hx > img { height: 230px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .hx { transition: none; }
+  }
+</style>

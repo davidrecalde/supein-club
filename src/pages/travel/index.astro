@@ -1,21 +1,40 @@
 ---
+// Hub /travel/ (rediseño del 18 de noviembre de 2026, mockup aprobado por David): «planifica tu
+// viaje», muy fotográfico y primero el móvil. Cabecera con foto y 「目的から探す」; 01 TOP5 de GA4
+// (src/data/hubPicks.ts); accesos rápidos fijos; 02 destinos (guía + restaurantes del mapa
+// gastronómico + región); 03 la ruta Gaudí numerada; 04 los 4 pasos para un primer viaje; 05 mapa
+// gastronómico y /regions/. Debajo, guía de lectura, FAQ y lo de siempre. Un artículo de viaje que
+// no esté en ningún bloque aparece en 「その他の旅行ガイド」. Los clics se miden con hub_card_click.
 import { getCollection, getEntry, type CollectionEntry } from 'astro:content';
+import { getImage } from 'astro:assets';
+import { ChevronRight, Clock, Compass, Landmark, Luggage, MapPin, Route, Utensils, Wallet } from 'lucide-astro';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import SEO from '../../components/SEO.astro';
-import PillarHero from '../../components/PillarHero.astro';
-import ArticleCard from '../../components/ArticleCard.astro';
+import Breadcrumb from '../../components/Breadcrumb.astro';
+import Rail from '../../components/Rail.astro';
+import HubCrossCard from '../../components/HubCrossCard.astro';
+import HubFaq from '../../components/HubFaq.astro';
+import HubClickTracking from '../../components/HubClickTracking.astro';
 import LineBanner from '../../components/LineBanner.astro';
 import FloatingActions from '../../components/FloatingActions.astro';
-import RegionCTA from '../../components/RegionCTA.astro';
 import NewsletterForm from '../../components/NewsletterForm.astro';
 import ArticleDisclaimer from '../../components/ArticleDisclaimer.astro';
 import AuthorBox from '../../components/AuthorBox.astro';
-import FAQSection from '../../components/FAQSection.astro';
+import heroPhoto from '../../assets/hero/vista-aerea-sagrada-familia.webp';
+import regionsPhoto from '../../assets/hero/banner-regiones-espana-mobile.webp';
+import { TRAVEL_TOP } from '../../data/hubPicks';
 import { getArticleUrl } from '../../utils/articles';
+import { cardImage } from '../../utils/images';
+import { foodMapPreview } from '../../utils/foodMap';
 
 type Article = CollectionEntry<'articles'>;
-
+const SITE = 'https://supein.club';
+const canonical = `${SITE}/travel/`;
 const author = await getEntry('authors', 'david-recalde');
+const breadcrumbs = [
+  { name: 'ホーム', url: '/' },
+  { name: 'スペイン旅行', url: canonical },
+];
 
 const otherPillars = [
   { href: '/food/', title: 'スペイン料理', description: 'パエリア・タパス・ワインから郷土料理まで、スペインの食文化を写真つきで詳しく解説' },
@@ -25,192 +44,474 @@ const otherPillars = [
   { href: '/football/', title: 'スペインサッカー', description: 'ラ・リーガの試合結果や移籍情報、代表チーム、バルセロナやレアルの歴史まで深掘り解説します' },
 ];
 
-const articles = await getCollection('articles', ({ data }) => !data.draft && data.pillar === 'travel');
-const sorted = articles.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
-
-// カテゴリ分類：各記事の tags 配列に含まれる分類タグで判定
-// （新しい記事を追加する際は、該当するタグを tags に含めれば自動的にここに反映される）
-const categories = [
-  { id: 'destinations', tag: '目的地', label: '目的地' },
-  { id: 'barcelona-architecture', tag: 'バルセロナ建築', label: 'バルセロナ建築' },
-  { id: 'tours', tag: 'モデルコース・ツアー', label: 'モデルコース・ツアー' },
-  { id: 'cost', tag: '旅行費用', label: '旅行費用' },
-  { id: 'prep', tag: '旅行準備', label: '旅行準備' },
-];
-
-const categoryGroups = categories
-  .map((c) => ({
-    ...c,
-    items: sorted.filter((a) => a.data.tags.includes(c.tag)),
-  }))
-  .filter((g) => g.items.length > 0);
-
-const categorizedIds = new Set(categoryGroups.flatMap((g) => g.items.map((a) => a.id)));
-const uncategorized = sorted.filter((a) => !categorizedIds.has(a.id));
-
-const categoryAnchors = categoryGroups.map((g) => ({ href: `#${g.id}`, label: g.label }));
-
-const breadcrumbs = [
-  { name: 'ホーム', url: '/' },
-  { name: 'スペイン旅行', url: '/travel/' },
-];
-
 const travelFaq = [
-  {
-    question: 'スペイン旅行のコンテンツはどこから見ればいいですか？',
-    answer: '初めての方は定番都市の<a href="/travel/barcelona/">「バルセロナ旅行ガイド」</a>と<a href="/travel/madrid/">「マドリード旅行ガイド」</a>から見るのがおすすめです。',
-  },
-  {
-    question: 'バルセロナ観光の見どころを知りたい場合は？',
-    answer: 'サグラダ・ファミリアやガウディ建築を中心に<a href="/travel/barcelona/">「バルセロナ旅行ガイド」</a>で詳しく解説しています。',
-  },
-  {
-    question: 'マドリード観光の見どころを知りたい場合は？',
-    answer: '美術館巡りから王宮、サラマンカ地区まで<a href="/travel/madrid/">「マドリード旅行ガイド」</a>にまとめています。',
-  },
-  {
-    question: '短期間でスペインを効率よく回るモデルコースはありますか？',
-    answer: '1週間での周遊モデルコースを<a href="/travel/spain-tours/spain-tour-1week/">「スペイン1週間モデルコース」</a>で紹介しています。',
-  },
-  {
-    question: '一人旅の予算の目安を知りたい場合は？',
-    answer: '航空券・宿泊・食費などの実際の費用感を<a href="/travel/travel-cost/spain-budget-solo/">「スペイン一人旅の予算」</a>にまとめています。',
-  },
-  {
-    question: 'スペインらしいお土産選びに迷ったら？',
-    answer: '伝統工芸品や地域ブランドを地域別に<a href="/travel/souvenirs/">「スペインお土産完全ガイド」</a>で紹介しています。',
-  },
+  { question: 'スペイン旅行のコンテンツはどこから見ればいいですか？', answer: '初めての方は「初めてのスペイン旅行」の4つのステップの順に読むのがおすすめです。行き先が決まっている方は<a href="/travel/barcelona/">「バルセロナ観光完全ガイド」</a>や<a href="/travel/madrid/">「マドリード観光完全ガイド」</a>から見てください。' },
+  { question: 'バルセロナ観光の見どころを知りたい場合は？', answer: 'サグラダ・ファミリアやガウディ建築を中心に<a href="/travel/barcelona/">「バルセロナ観光完全ガイド」</a>で詳しく解説しています。ガウディ建築は「ガウディ建築ルート」の8つのガイドを順に読むと全体がつながります。' },
+  { question: 'マドリード観光の見どころを知りたい場合は？', answer: '美術館巡りから王宮、サラマンカ地区まで<a href="/travel/madrid/">「マドリード観光完全ガイド」</a>にまとめています。' },
+  { question: '短期間でスペインを効率よく回るモデルコースはありますか？', answer: '1週間での周遊モデルコースを<a href="/travel/spain-tours/spain-tour-1week/">「スペイン1週間ツアー完全ガイド」</a>で紹介しています。' },
+  { question: '一人旅の予算の目安を知りたい場合は？', answer: '航空券・宿泊・食費などの実際の費用感を<a href="/travel/travel-cost/spain-budget-solo/">「スペイン一人旅の予算完全ガイド」</a>にまとめています。' },
+  { question: 'スペインらしいお土産選びに迷ったら？', answer: '伝統工芸品や地域ブランドを地域別に<a href="/travel/souvenirs/">「スペインお土産完全ガイド」</a>で紹介しています。食べ物のお土産は<a href="/food/souvenirs/">「食べ物・グルメ編」</a>へ。' },
 ];
 
-function renderCard(a: Article) {
-  return {
-    title: a.data.title,
-    description: a.data.description,
-    href: getArticleUrl(a),
-    image: a.data.image,
-    imageAlt: a.data.imageAlt,
-    heroImage: a.data.heroImage,
-    heroImageAlt: a.data.heroImageAlt,
-    pubDate: a.data.pubDate,
-  };
-}
+// ── Artículos ──
+const articles = await getCollection('articles', ({ data }) => !data.draft && data.pillar === 'travel');
+const idOf = (a: Article) => a.id.replace(/\.(md|mdx)$/, '');
+const byId = new Map(articles.map((a) => [idOf(a), a]));
+const placed = new Set<string>();
+const take = (id: string) => { const a = byId.get(id); if (a) placed.add(id); return a; };
+const minutesOf = (a: Article) => a.data.readingTime ?? Math.max(3, Math.round((a.body?.length ?? 0) / 600));
+const heroOf = (a: Article) => (a.data.heroImage && typeof a.data.heroImage !== 'string' ? a.data.heroImage : undefined);
+const card = async (a: Article, title = a.data.title) => {
+  const hero = heroOf(a);
+  return { url: getArticleUrl(a), title, description: a.data.description, minutes: minutesOf(a), img: hero ? await cardImage(hero, '') : undefined };
+};
+const TAG: Record<string, string> = { souvenirs: 'お土産', barcelona: 'バルセロナ', madrid: 'マドリード', segovia: 'セゴビア', 'spain-tours': 'ツアー', 'travel-cost': '旅行費用', 'spain-travel-basics': '旅行準備' };
+const tagOf = (a: Article) => (a.data.tags.includes('バルセロナ建築') ? 'ガウディ建築' : TAG[a.data.cluster] ?? 'スペイン旅行');
+
+// 01 TOP5 (GA4)
+const top = await Promise.all(TRAVEL_TOP.ids.map((id) => byId.get(id)).filter((a): a is Article => !!a).map(async (a) => ({ ...(await card(a)), tag: tagOf(a) })));
+
+// 02 Destinos: guía de la ciudad + restaurantes de su provincia + su región
+const DEST = [
+  { id: 'travel/barcelona/barcelona', name: 'バルセロナ', tag: 'ガウディ建築と地中海の街', province: 'barcelona', food: 'バルセロナ県のレストラン', region: 'cataluna', regionName: 'カタルーニャ地方' },
+  { id: 'travel/madrid/madrid', name: 'マドリード', tag: '美術館と王宮の首都', province: 'madrid', food: 'マドリードのレストラン', region: 'madrid', regionName: 'マドリード地方' },
+  { id: 'travel/segovia/segovia', name: 'セゴビア', tag: 'ローマ水道橋の古都・マドリードから日帰り', province: 'segovia', food: 'セゴビア県のレストラン', region: 'castilla-y-leon', regionName: 'カスティーリャ・イ・レオン地方' },
+];
+const dest = (await Promise.all(DEST.map(async (d) => { const a = take(d.id); return a ? { ...d, ...(await card(a)) } : undefined; }))).filter((d) => !!d);
+const regionsImg = await getImage({ src: regionsPhoto, width: 640, format: 'webp', quality: 72 });
+
+// 03 Ruta Gaudí (orden de lectura); otro artículo de Barcelona nuevo se añade al final
+const GAUDI: Array<[string, string]> = [
+  ['travel/barcelona/sagrada-familia-guide', 'サグラダ・ファミリア完全ガイド'],
+  ['travel/barcelona/sagrada-familia-facades-towers', 'ファサードと塔の意味を読み解く'],
+  ['travel/barcelona/sagrada-familia-jesus-tower-completed', 'イエスの塔が完成'],
+  ['travel/barcelona/casa-batllo-guide', 'カサ・バトリョ「骨の家」'],
+  ['travel/barcelona/casa-mila-guide', 'カサ・ミラ（ラ・ペドレラ）'],
+  ['travel/barcelona/park-guell-guide', 'グエル公園'],
+  ['travel/barcelona/gaudi-hidden-gems', '知る人ぞ知るガウディ建築5選'],
+  ['travel/barcelona/barcelona-modernisme-architects', 'ガウディ以外のモデルニスモ建築'],
+];
+const gaudiList = [
+  ...GAUDI.map(([id, short]) => [take(id), short] as const),
+  ...articles.filter((a) => a.data.cluster === 'barcelona' && !placed.has(idOf(a)) && !GAUDI.some(([id]) => id === idOf(a))).map((a) => [take(idOf(a)), a.data.title.split('｜')[0]] as const),
+].filter((g): g is readonly [Article, string] => !!g[0]);
+const gaudi = await Promise.all(gaudiList.map(([a, short]) => card(a, short)));
+
+// 04 Primer viaje en 4 pasos
+const foodSouvenirs = await getEntry('articles', 'food/souvenirs/souvenirs');
+const STEPS = [
+  { title: '基本情報を知る', sub: '時差・ビザ・通貨・治安', ids: ['travel/spain-travel-basics/spain-travel-basics'] },
+  { title: 'モデルコースを決める', sub: '1週間の周遊か、ツアーか', ids: ['travel/spain-tours/spain-tour-1week', 'travel/spain-tours/budget-spain-tours'] },
+  { title: '予算を立てる', sub: '航空券・宿・食費の目安', ids: ['travel/travel-cost/spain-budget-solo'] },
+  { title: 'お土産を選ぶ', sub: '工芸品から食べ物まで', ids: ['travel/souvenirs/souvenirs'] },
+];
+const steps = await Promise.all(STEPS.map(async (s, i) => {
+  const list = await Promise.all(s.ids.map(take).filter((a): a is Article => !!a).map((a) => card(a)));
+  if (i === 3 && foodSouvenirs && !foodSouvenirs.data.draft) list.push(await card(foodSouvenirs));
+  return { ...s, list };
+}));
+const quick = {
+  course: byId.get('travel/spain-tours/spain-tour-1week'),
+  budget: byId.get('travel/travel-cost/spain-budget-solo'),
+  basics: byId.get('travel/spain-travel-basics/spain-travel-basics'),
+};
+
+// Artículos de viaje que todavía no tienen bloque
+const rest = await Promise.all(articles.filter((a) => !placed.has(idOf(a))).map(async (a) => ({ ...(await card(a)), tag: tagOf(a) })));
+
+// 05 Mapa gastronómico
+const { svg: mapSvg, count: provinceCount } = await foodMapPreview();
+
+// Cabecera
+const [heroSm, heroLg] = await Promise.all([640, 1200].map((width) => getImage({ src: heroPhoto, width, format: 'webp', quality: 70 })));
+
+const collectionSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'CollectionPage',
+  name: 'スペイン旅行',
+  description: 'バルセロナ・マドリード・セゴビアの観光ガイド、ガウディ建築、モデルコース、旅行の予算とお土産まで、スペイン旅行の計画に役立つガイド。',
+  url: canonical,
+  inLanguage: 'ja',
+  mainEntity: {
+    '@type': 'ItemList',
+    itemListElement: [...new Map([...top, ...dest, ...gaudi, ...steps.flatMap((s) => s.list), ...rest].map((c) => [c.url, c])).values()]
+      .map((c, i) => ({ '@type': 'ListItem', position: i + 1, url: `${SITE}${c.url}`, name: c.title })),
+  },
+};
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: travelFaq.map((item) => ({ '@type': 'Question', name: item.question, acceptedAnswer: { '@type': 'Answer', text: item.answer.replace(/<[^>]+>/g, '') } })),
+};
 ---
 <BaseLayout>
   <SEO
     slot="seo"
     title="スペイン旅行 完全ガイド"
     description="バルセロナ・マドリードから穴場スポットまで、スペイン旅行の計画に役立つ情報を網羅。ツアー会社の比較・ホテル選びのコツ・費用相場・ベストシーズン・都市別のモデルコースまで、日本語でわかりやすく紹介する旅行ガイドメディアです。写真や体験談も豊富に掲載しています。"
-    canonical="https://supein.club/travel/"
+    canonical={canonical}
     image="/og/travel.webp"
     breadcrumbs={breadcrumbs}
   />
-  <script
-    type="application/ld+json"
-    slot="head"
-    set:html={JSON.stringify({
-      '@context': 'https://schema.org',
-      '@type': 'FAQPage',
-      mainEntity: travelFaq.map((item) => ({
-        '@type': 'Question',
-        name: item.question,
-        acceptedAnswer: { '@type': 'Answer', text: item.answer.replace(/<[^>]+>/g, '') },
-      })),
-    })}
-  />
-  <PillarHero
-    title="スペイン旅行"
-    description="フライトの選び方から旅程の組み立てまで、奥深いスペイン旅行の魅力を日本語でわかりやすくご紹介します。"
-  />
-  <section class="max-w-6xl mx-auto px-5 py-14">
-    <p class="text-muted text-base leading-relaxed mb-12 border-l-2 border-primary pl-5">
-      スペイン旅行は、行き先によって旅の表情が大きく変わる、奥深いテーマです。訪れるベストシーズンや航空券の選び方、観光地ごとの見どころ、ざっくりとした旅程の組み立て方まで、実際の旅行計画に役立つ情報をこのカテゴリでご紹介しています。
-    </p>
-    {categoryAnchors.length > 0 && (
-      <>
-        <h2 id="categories" class="font-sans font-bold text-xl text-navy mb-5">カテゴリ</h2>
-        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3 mb-12">
-          {categoryAnchors.map(({ href, label }) => (
-            <a href={href} class="bg-white rounded-lg px-3 py-3 min-h-[44px] flex items-center justify-center text-center border border-[#E8E8E6] hover:border-primary/30 hover:shadow-sm transition-all">
-              <span class="font-semibold text-navy text-sm leading-snug block">{label}</span>
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify(collectionSchema)} />
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify(faqSchema)} />
+
+  <section class="tv-hero">
+    <img class="tv-hero-bg" src={heroLg.src} srcset={`${heroSm.src} 640w, ${heroLg.src} 1200w`} sizes="100vw" width={heroLg.attributes.width} height={heroLg.attributes.height} alt="" fetchpriority="high" decoding="async" />
+    <div class="page-container">
+      <Breadcrumb items={breadcrumbs} dark />
+      <p class="tv-eyebrow">SPAIN TRAVEL</p>
+      <h1 class="tv-h1">スペイン旅行</h1>
+      <p class="tv-lead">ガウディ建築のバルセロナから古都セゴビアまで。行き先選びから予算、お土産まで、旅の計画はこのページから。</p>
+    </div>
+  </section>
+  <div class="page-container">
+    <nav class="tv-goals" aria-label="目的から探す" data-hub-block="goals">
+      <p>目的から探す</p>
+      <div>
+        <a href="#dest"><MapPin size={22} /><span>行き先</span></a>
+        <a href="#gaudi"><Landmark size={22} /><span>見どころ</span></a>
+        {quick.course && <a href={getArticleUrl(quick.course)}><Route size={22} /><span>モデル<br />コース</span></a>}
+        {quick.budget && <a href={getArticleUrl(quick.budget)}><Wallet size={22} /><span>予算</span></a>}
+        {quick.basics && <a href={getArticleUrl(quick.basics)}><Luggage size={22} /><span>準備</span></a>}
+      </div>
+    </nav>
+  </div>
+
+  <section class="tv-block tv-block--top" id="top" data-hub-block="top">
+    <div class="page-container">
+      <div class="hub-block-head">
+        <p class="hub-block-eyebrow"><span class="hub-block-num">01</span>よく読まれている記事</p>
+        <h2>いま読まれている<br class="tv-br" />スペイン旅行ガイド</h2>
+        <p class="hub-block-lead">過去90日の閲覧数ランキング。</p>
+      </div>
+      <ol class="tv-rank">
+        {top.map((c, i) => (
+          <li>
+            <a class:list={['tv-rk', { 'is-first': i === 0 }]} href={c.url}>
+              <span class="tv-rk-n">{i + 1}</span>
+              {c.img && <img src={c.img.src} srcset={c.img.srcset} sizes={i === 0 ? '(min-width: 860px) 620px, 92vw' : '96px'} width={c.img.width} height={c.img.height} alt="" loading={i === 0 ? 'eager' : 'lazy'} decoding="async" />}
+              <span class="tv-rk-b">
+                <span class="tv-tag">{c.tag}</span>
+                <span class="tv-rk-t">{c.title}</span>
+                <span class="tv-meta"><Clock size={13} />約{c.minutes}分で読める</span>
+              </span>
             </a>
-          ))}
-        </div>
-      </>
-    )}
-
-    <RegionCTA />
-
-    {categoryGroups.map((group) => (
-      <>
-        <h2 id={group.id} class="font-sans font-bold text-xl text-navy mb-5">{group.label}</h2>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
-          {group.items.map((a) => (
-            <ArticleCard pillar="travel" cluster={a.data.cluster} topicBadge={group.label} {...renderCard(a)} />
-          ))}
-        </div>
-      </>
-    ))}
-
-    {uncategorized.length > 0 && (
-      <>
-        <h2 id="other" class="font-sans font-bold text-xl text-navy mb-5">その他</h2>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
-          {uncategorized.map((a) => (
-            <ArticleCard pillar="travel" cluster={a.data.cluster} {...renderCard(a)} />
-          ))}
-        </div>
-      </>
-    )}
-
-    {sorted.length === 0 && (
-      <p class="text-muted text-center py-12">記事を準備中です。近日公開予定。</p>
-    )}
+          </li>
+        ))}
+      </ol>
+    </div>
   </section>
 
-  <section class="max-w-6xl mx-auto px-5 pb-14 prose-content">
-  <div class="max-w-[780px]">
-    <h2 class="font-sans font-bold text-xl text-navy mb-4">このサイトのスペイン旅行コンテンツについて</h2>
-    <p class="text-muted leading-relaxed mb-6">
-      このカテゴリでは、都市別の観光ガイド、モデルコースと予算の目安、お土産選びまで、実際の旅行計画に役立つ情報を目的別に整理しています。まず何から見ればいいか迷ったら、下記の各セクションをご覧ください。
-    </p>
+  <nav class="tv-chips" aria-label="このページの内容">
+    <div class="page-container">
+      <a href="#top" data-chip="top"><i>01</i>人気記事</a>
+      <a href="#dest" data-chip="dest"><i>02</i>行き先</a>
+      <a href="#gaudi" data-chip="gaudi"><i>03</i>ガウディ建築</a>
+      <a href="#steps" data-chip="steps"><i>04</i>旅の準備</a>
+      <a href="#cross" data-chip="cross"><i>05</i>グルメ・地方</a>
+      <a href="#faq" data-chip="faq">FAQ</a>
+    </div>
+  </nav>
 
-    <h2 class="font-sans font-bold text-xl text-navy mb-4">都市別の旅行ガイド</h2>
-    <p class="text-muted leading-relaxed mb-6">
-      定番都市の見どころを詳しく知りたい方は<a href="/travel/barcelona/" class="text-primary underline">「バルセロナ旅行ガイド」</a>と<a href="/travel/madrid/" class="text-primary underline">「マドリード旅行ガイド」</a>から。古都の魅力を知りたい方は<a href="/travel/segovia/" class="text-primary underline">「セゴビア旅行ガイド」</a>もご覧ください。
-    </p>
-
-    <h2 class="font-sans font-bold text-xl text-navy mb-4">モデルコースと予算の目安</h2>
-    <p class="text-muted leading-relaxed mb-6">
-      限られた日数で効率よく回りたい方には<a href="/travel/spain-tours/spain-tour-1week/" class="text-primary underline">「スペイン1週間モデルコース」</a>、予算を立てたい方には<a href="/travel/travel-cost/spain-budget-solo/" class="text-primary underline">「スペイン一人旅の予算」</a>が参考になります。
-    </p>
-
-    <h2 class="font-sans font-bold text-xl text-navy mb-4">お土産選びに迷ったら</h2>
-    <p class="text-muted leading-relaxed mb-6">
-      地域ごとの伝統工芸品や老舗ブランドを<a href="/travel/souvenirs/" class="text-primary underline">「スペインお土産完全ガイド」</a>で紹介しています。
-    </p>
-
-    <NewsletterForm variant="inline" />
-
-    <FAQSection faq={travelFaq} />
-
-    {author && <ArticleDisclaimer />}
-    {author && <AuthorBox author={author} />}
-
-    <section class="mt-12 border-t border-[#E8E8E6] pt-10">
-      <h2 class="font-sans font-bold text-2xl text-navy mb-2">こちらの記事もおすすめ</h2>
-      <p class="text-sm text-gray-500 mb-6">スペインの他のテーマも見てみませんか。</p>
-      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-        {otherPillars.map((p) => (
-          <a href={p.href} class="block bg-white rounded-xl overflow-hidden shadow-[0_2px_8px_rgba(0,33,71,0.07)] border border-[#E8E8E6] hover:shadow-[0_4px_16px_rgba(0,33,71,0.12)] hover:border-primary/20 transition-all p-6">
-            <h3 class="font-sans font-bold text-navy text-lg mb-2">{p.title}</h3>
-            <p class="text-muted text-sm leading-relaxed">{p.description}</p>
-          </a>
+  <section class="hub-block tv-block" id="dest" data-hub-block="dest">
+    <div class="page-container">
+      <div class="hub-block-head">
+        <p class="hub-block-eyebrow"><span class="hub-block-num">02</span>行き先から選ぶ</p>
+        <h2>都市ごとに、観光・グルメ・地方まで</h2>
+        <p class="hub-block-lead">観光ガイドだけでなく、その街のレストランや地方の文化にもすぐ移動できます。</p>
+      </div>
+      <Rail label="行き先から選ぶ" hint="スワイプして他の行き先を見る" desktopColumns={4}>
+        {dest.map((d) => (
+          <div class="tv-dest" role="listitem">
+            <a class="tv-dest-img" href={d.url}>
+              {d.img && <img src={d.img.src} srcset={d.img.srcset} sizes="(min-width: 860px) 270px, 80vw" width={d.img.width} height={d.img.height} alt="" loading="lazy" decoding="async" />}
+              <span class="tv-dest-cap"><b>{d.name}</b><small>{d.tag}</small></span>
+            </a>
+            <a class="tv-dest-l" href={d.url}><Landmark size={18} /><span>{d.name}観光ガイド</span><ChevronRight size={16} /></a>
+            <a class="tv-dest-l" href={`/food/spain-map/${d.province}/`}><Utensils size={18} /><span>{d.food}</span><ChevronRight size={16} /></a>
+            <a class="tv-dest-l" href={`/regions/${d.region}/`}><Compass size={18} /><span>{d.regionName}</span><ChevronRight size={16} /></a>
+          </div>
         ))}
+        <a class="tv-dest tv-dest-more" href="/regions/" role="listitem">
+          <img src={regionsImg.src} width={regionsImg.attributes.width} height={regionsImg.attributes.height} alt="" loading="lazy" decoding="async" />
+          <span class="tv-dest-more-b">
+            <small><Compass size={15} />地方ガイド</small>
+            <b>17の地方から<br />次の行き先を探す</b>
+            <span class="tv-btn-w">地方ガイドを見る<ChevronRight size={16} /></span>
+          </span>
+        </a>
+      </Rail>
+    </div>
+  </section>
+
+  {gaudi.length > 0 && (
+    <section class="hub-block tv-block is-soft" id="gaudi" data-hub-block="gaudi">
+      <div class="page-container">
+        <div class="hub-block-head tv-head-more">
+          <div>
+            <p class="hub-block-eyebrow"><span class="hub-block-num">03</span>ガウディ建築ルート</p>
+            <h2>バルセロナのガウディ建築を<br class="tv-br" />{gaudi.length}つのガイドで巡る</h2>
+            <p class="hub-block-lead">1から順に読むと、サグラダ・ファミリアからモデルニスモ全体までつながります。</p>
+          </div>
+          <a class="tv-more" href="/travel/barcelona/">バルセロナ観光完全ガイド<ChevronRight size={16} /></a>
+        </div>
+        <Rail label="ガウディ建築ルート" hint="スワイプして次のスポットへ" desktopColumns={4}>
+          {gaudi.map((c, i) => (
+            <a class="tv-stop" href={c.url} role="listitem">
+              <span class="tv-stop-line"><span class="tv-stop-n">{i + 1}</span></span>
+              {c.img && <img src={c.img.src} srcset={c.img.srcset} sizes="(min-width: 860px) 270px, 58vw" width={c.img.width} height={c.img.height} alt="" loading="lazy" decoding="async" />}
+              <span class="tv-stop-t">{c.title}</span>
+              <span class="tv-meta"><Clock size={13} />約{c.minutes}分</span>
+            </a>
+          ))}
+        </Rail>
       </div>
     </section>
-  </div>
+  )}
+
+  <section class="hub-block tv-block" id="steps" data-hub-block="steps">
+    <div class="page-container">
+      <div class="hub-block-head">
+        <p class="hub-block-eyebrow"><span class="hub-block-num">04</span>初めてのスペイン旅行</p>
+        <h2>4つのステップで旅の準備</h2>
+        <p class="hub-block-lead">この順番に読めば、出発までに必要なことがひと通りわかります。</p>
+      </div>
+      <ol class="tv-steps">
+        {steps.map((s, i) => (
+          <li class="tv-st">
+            <span class="tv-st-n" aria-hidden="true">STEP<b>{i + 1}</b></span>
+            <div class="tv-st-b">
+              <h3>{s.title}</h3>
+              <p>{s.sub}</p>
+              {s.list.map((c) => (
+                <a class="tv-st-a" href={c.url}>
+                  {c.img && <img src={c.img.src} srcset={c.img.srcset} sizes="80px" width={c.img.width} height={c.img.height} alt="" loading="lazy" decoding="async" />}
+                  <span><b>{c.title}</b><small><Clock size={12} />約{c.minutes}分</small></span>
+                </a>
+              ))}
+            </div>
+          </li>
+        ))}
+      </ol>
+    </div>
+  </section>
+
+  {rest.length > 0 && (
+    <section class="hub-block tv-block" id="more" data-hub-block="more">
+      <div class="page-container">
+        <div class="hub-block-head">
+          <p class="hub-block-eyebrow">もっと読む</p>
+          <h2>その他の旅行ガイド</h2>
+        </div>
+        <Rail label="その他の旅行ガイド" hint="スワイプして続きを見る" desktopColumns={3}>
+          {rest.map((c) => (
+            <a class="tv-card" href={c.url} role="listitem">
+              {c.img && <img src={c.img.src} srcset={c.img.srcset} sizes="(min-width: 860px) 360px, 76vw" width={c.img.width} height={c.img.height} alt="" loading="lazy" decoding="async" />}
+              <span class="tv-card-b"><span class="tv-tag">{c.tag}</span><span class="tv-rk-t">{c.title}</span><span class="tv-meta"><Clock size={13} />約{c.minutes}分で読める</span></span>
+            </a>
+          ))}
+        </Rail>
+      </div>
+    </section>
+  )}
+
+  <section class="hub-block tv-block is-soft" id="cross" data-hub-block="cross">
+    <div class="page-container">
+      <div class="hub-block-head">
+        <p class="hub-block-eyebrow"><span class="hub-block-num">05</span>旅をもっと楽しむ</p>
+        <h2>旅先のグルメと地方の文化も</h2>
+      </div>
+      <div class="tv-pair">
+        <HubCrossCard href="/food/spain-map/" eyebrow="スペイン美食マップ" title="旅先の県のレストランを探す" text={`${provinceCount}県の目的別ランキングと名物料理。`} cta="美食マップを開く">
+          <Fragment slot="art" set:html={mapSvg} />
+          <Utensils slot="icon" size={15} />
+        </HubCrossCard>
+        <HubCrossCard href="/regions/" eyebrow="地方ガイド" title="17の地方を知る" text="料理・サッカー・暮らし・文化を地方ごとに。" cta="地方ガイドを見る" image={regionsPhoto}>
+          <Compass slot="icon" size={15} />
+        </HubCrossCard>
+      </div>
+    </div>
+  </section>
+
+  <section class="hub-block tv-block" id="faq">
+    <div class="page-container tv-narrow">
+      <div class="hub-block-head">
+        <p class="hub-block-eyebrow">このサイトのスペイン旅行ガイド</p>
+        <h2>目的別の読み方</h2>
+      </div>
+      <div class="tv-guide">
+        <p>このカテゴリでは、都市別の観光ガイド、モデルコースと予算の目安、お土産選びまで、実際の旅行計画に役立つ情報を目的別に整理しています。まず何から見ればいいか迷ったら、上の「初めてのスペイン旅行」の4つのステップから読んでみてください。</p>
+        <p>定番都市の見どころを詳しく知りたい方は<a href="/travel/barcelona/">「バルセロナ観光完全ガイド」</a>と<a href="/travel/madrid/">「マドリード観光完全ガイド」</a>から。古都の魅力を知りたい方は<a href="/travel/segovia/">「セゴビア観光完全ガイド」</a>もご覧ください。</p>
+        <p>限られた日数で効率よく回りたい方には<a href="/travel/spain-tours/spain-tour-1week/">「スペイン1週間ツアー完全ガイド」</a>、予算を立てたい方には<a href="/travel/travel-cost/spain-budget-solo/">「スペイン一人旅の予算完全ガイド」</a>が参考になります。</p>
+        <p>地域ごとの伝統工芸品や老舗ブランドは<a href="/travel/souvenirs/">「スペインお土産完全ガイド」</a>で紹介しています。旅先のレストラン探しには<a href="/food/spain-map/">「スペイン美食マップ」</a>も活用してください。</p>
+      </div>
+      <div class="tv-faq"><HubFaq items={travelFaq} title="スペイン旅行のFAQ" /></div>
+      <div data-pagefind-ignore class="tv-newsletter"><NewsletterForm variant="inline" /></div>
+      {author && <ArticleDisclaimer />}
+      {author && <AuthorBox author={author} />}
+    </div>
+  </section>
+
+  <section class="page-container tv-related" data-pagefind-ignore>
+    <h2 class="font-sans font-bold text-2xl text-navy mb-2">こちらの記事もおすすめ</h2>
+    <p class="text-sm text-gray-500 mb-6">スペインの他のテーマも見てみませんか。</p>
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+      {otherPillars.map((p) => (
+        <a href={p.href} class="block bg-white rounded-xl overflow-hidden shadow-[0_2px_8px_rgba(0,33,71,0.07)] border border-[#E8E8E6] hover:shadow-[0_4px_16px_rgba(0,33,71,0.12)] hover:border-primary/20 transition-all p-6">
+          <h3 class="font-sans font-bold text-navy text-lg mb-2">{p.title}</h3>
+          <p class="text-muted text-sm leading-relaxed">{p.description}</p>
+        </a>
+      ))}
+    </div>
   </section>
 
   <LineBanner slim />
-  <FloatingActions target="categories" shareUrl="https://supein.club/travel/" shareTitle="スペイン旅行" />
+  <FloatingActions target="top" shareUrl={canonical} shareTitle="スペイン旅行" />
+  <HubClickTracking hub="travel" />
 </BaseLayout>
+
+<script>
+  // Accesos rápidos: marca la sección visible.
+  const chips = [...document.querySelectorAll<HTMLAnchorElement>('.tv-chips a[data-chip]')];
+  const io = new IntersectionObserver((entries) => entries.forEach((e) => {
+    if (!e.isIntersecting) return;
+    chips.forEach((c) => c.classList.toggle('is-on', c.dataset.chip === e.target.id));
+  }), { rootMargin: '-35% 0px -60% 0px' });
+  chips.forEach((c) => { const s = document.getElementById(c.dataset.chip!); if (s) io.observe(s); });
+</script>
+
+<style is:global>
+  .tv-hero { position: relative; overflow: hidden; padding: 150px 0 76px; background: #001530; color: #fff; }
+  .tv-hero-bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 30%; }
+  .tv-hero::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to top, rgba(0, 21, 48, .96) 10%, rgba(0, 33, 71, .55) 58%, rgba(0, 33, 71, .15)); }
+  .tv-hero .page-container { position: relative; z-index: 1; }
+  .tv-eyebrow { margin: 14px 0 0; font-size: 12px; font-weight: 700; letter-spacing: .1em; color: #ff8a9a; }
+  .tv-h1 { margin: 4px 0 0; font-family: 'Noto Serif JP', serif; font-size: 40px; font-weight: 700; line-height: 1.25; color: #fff; }
+  .tv-lead { max-width: 640px; margin: 10px 0 0; font-size: 14px; line-height: 1.8; color: rgba(255, 255, 255, .9); }
+  .tv-goals { position: relative; z-index: 2; margin-top: -50px; padding: 12px 12px 14px; border: 1px solid #E3E8EF; border-radius: 18px; background: #fff; box-shadow: 0 18px 36px -20px rgba(0, 33, 71, .45); }
+  .tv-goals p { margin: 0 0 8px 2px; font-size: 12px; font-weight: 700; color: #5A6B80; }
+  .tv-goals div { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 6px; }
+  .tv-goals a { display: flex; flex-direction: column; align-items: center; gap: 6px; padding: 10px 2px 9px; border-radius: 12px; background: #F0F4F8; font-size: 11.5px; font-weight: 700; line-height: 1.3; color: #002147; text-align: center; text-decoration: none; }
+  .tv-goals a:hover { background: #E3E8EF; }
+  .tv-goals svg { color: #C8102E; }
+
+  .tv-block { scroll-margin-top: 56px; --rail-fade: #fff; }
+  .tv-block.is-soft { background: #F0F4F8; --rail-fade: #F0F4F8; }
+  .tv-block .hub-block-head { margin-bottom: 16px; }
+  .tv-block h2 { word-break: auto-phrase; }
+  .tv-block--top { padding: 28px 0 34px; background: #FAFAF8; }
+  .tv-head-more { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 4px 16px; max-width: none; }
+  .tv-head-more > div { max-width: 780px; }
+  .tv-more { display: inline-flex; align-items: center; gap: 2px; margin-bottom: 12px; font-size: 13.5px; font-weight: 700; color: #C8102E; text-decoration: underline; text-underline-offset: 4px; }
+  .tv-meta { display: inline-flex; align-items: center; gap: 4px; font-size: 11.5px; color: #5A6B80; }
+  .tv-tag { align-self: flex-start; padding: 1px 8px; border-radius: 999px; background: #FCEBEE; color: #C8102E; font-size: 10.5px; font-weight: 700; }
+
+  .tv-rank { display: flex; flex-direction: column; gap: 10px; margin: 0; padding: 0; list-style: none; }
+  .tv-rank li { margin: 0; }
+  .tv-rk { position: relative; display: grid; grid-template-columns: 28px 92px minmax(0, 1fr); align-items: center; gap: 10px; height: 100%; padding: 10px; border: 1px solid #E3E8EF; border-radius: 14px; background: #fff; color: inherit; text-decoration: none; }
+  .tv-rk:hover { box-shadow: 0 10px 24px -14px rgba(0, 33, 71, .4); }
+  .tv-rk-n { font-family: 'Noto Serif JP', serif; font-size: 26px; font-weight: 700; line-height: 1; color: #002147; text-align: center; }
+  .tv-rank li:nth-child(-n+3) .tv-rk-n { color: #C8102E; }
+  .tv-rk img { display: block; width: 92px; height: 68px; border-radius: 10px; object-fit: cover; }
+  .tv-rk-b, .tv-card-b { display: flex; flex-direction: column; gap: 3px; min-width: 0; }
+  .tv-rk-t { display: -webkit-box; overflow: hidden; -webkit-box-orient: vertical; -webkit-line-clamp: 2; font-size: 13.5px; font-weight: 700; line-height: 1.45; color: #002147; }
+  .tv-rk.is-first { grid-template-columns: 1fr; gap: 0; padding: 0; overflow: hidden; }
+  .tv-rk.is-first img { width: 100%; height: auto; aspect-ratio: 16 / 9; border-radius: 0; }
+  .tv-rank .tv-rk.is-first .tv-rk-n { position: absolute; top: 10px; left: 10px; display: grid; place-items: center; width: 42px; height: 42px; border-radius: 11px; background: #C8102E; color: #fff; font-size: 23px; }
+  .tv-rk.is-first .tv-rk-b { gap: 5px; padding: 12px 14px 14px; }
+  .tv-rk.is-first .tv-rk-t { font-size: 16.5px; }
+
+  /* Justo debajo de la cabecera fija de la web (Navigation: 64 px + 3 px de borde). */
+  .tv-chips { position: sticky; top: 67px; z-index: 30; border-bottom: 1px solid #E3E8EF; background: rgba(250, 250, 248, .96); backdrop-filter: blur(6px); }
+  .tv-chips .page-container { display: flex; gap: 8px; padding-top: 10px; padding-bottom: 10px; overflow-x: auto; scrollbar-width: none; }
+  .tv-chips .page-container::-webkit-scrollbar { display: none; }
+  .tv-chips a { flex: none; display: inline-flex; align-items: center; gap: 6px; padding: 7px 13px; border: 1px solid #E3E8EF; border-radius: 999px; background: #fff; font-size: 13px; font-weight: 700; color: #002147; text-decoration: none; }
+  .tv-chips a i { padding: 0 4px; border: 1.3px solid currentColor; border-radius: 5px; font-style: normal; font-size: 11px; color: #C8102E; }
+  .tv-chips a.is-on { border-color: #002147; background: #002147; color: #fff; }
+  .tv-chips a.is-on i { color: #fff; }
+
+  .tv-block .rail-track > .tv-dest { width: 80%; }
+  .tv-dest { display: flex; flex-direction: column; overflow: hidden; border: 1px solid #E3E8EF; border-radius: 16px; background: #fff; }
+  .tv-dest-img { position: relative; display: block; }
+  .tv-dest-img img { display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: cover; }
+  .tv-dest-img::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to top, rgba(0, 21, 48, .85), rgba(0, 21, 48, 0) 55%); }
+  .tv-dest-cap { position: absolute; right: 14px; bottom: 12px; left: 14px; z-index: 1; display: flex; flex-direction: column; color: #fff; }
+  .tv-dest-cap b { font-family: 'Noto Serif JP', serif; font-size: 26px; line-height: 1.2; }
+  .tv-dest-cap small { margin-top: 2px; font-size: 12px; opacity: .92; }
+  .tv-dest-l { display: flex; align-items: center; gap: 10px; padding: 12px 14px; border-top: 1px solid #E3E8EF; font-size: 13.5px; font-weight: 700; color: #002147; text-decoration: none; }
+  .tv-dest-l:hover { background: #F7F9FB; }
+  .tv-dest-l svg:first-child { flex: none; color: #C8102E; }
+  .tv-dest-l svg:last-child { flex: none; margin-left: auto; color: #9aa5b4; }
+  .tv-dest-more { position: relative; border: 0; background: #002147; color: #fff; text-decoration: none; }
+  .tv-dest-more img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: .5; }
+  .tv-dest-more-b { position: relative; display: flex; flex-direction: column; justify-content: flex-end; gap: 8px; height: 100%; min-height: 360px; padding: 18px; }
+  .tv-dest-more-b small { display: flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 700; letter-spacing: .08em; color: #ffb3bf; }
+  .tv-dest-more-b b { font-family: 'Noto Serif JP', serif; font-size: 22px; line-height: 1.4; }
+  .tv-btn-w { display: inline-flex; align-self: flex-start; align-items: center; gap: 4px; margin-top: 4px; padding: 10px 14px; border-radius: 10px; background: #fff; color: #002147; font-size: 13.5px; font-weight: 700; }
+
+  .tv-block .rail-track > .tv-stop { width: 58%; max-width: 240px; }
+  .tv-stop { display: flex; flex-direction: column; gap: 3px; color: inherit; text-decoration: none; }
+  .tv-stop-line { display: flex; align-items: center; height: 40px; }
+  .tv-stop-line::after { content: ''; flex: 1; margin: 0 -16px 0 6px; border-top: 2px dashed #d9a1ab; }
+  .tv-stop:last-child .tv-stop-line::after { visibility: hidden; margin-right: 0; }
+  .tv-stop-n { display: grid; place-items: center; flex: none; width: 32px; height: 32px; border-radius: 50%; background: #C8102E; color: #fff; font-size: 14px; font-weight: 700; box-shadow: 0 0 0 4px #F0F4F8; }
+  .tv-stop img { display: block; width: 100%; aspect-ratio: 4 / 3; border-radius: 14px; object-fit: cover; transition: filter .15s; }
+  .tv-stop:hover img { filter: brightness(.92); }
+  .tv-stop-t { margin-top: 6px; font-size: 14.5px; font-weight: 700; line-height: 1.45; color: #002147; }
+
+  .tv-steps { margin: 0; padding: 0; list-style: none; }
+  .tv-st { position: relative; display: grid; grid-template-columns: 54px minmax(0, 1fr); gap: 12px; margin: 0; padding-bottom: 20px; }
+  .tv-st::before { content: ''; position: absolute; top: 56px; bottom: 2px; left: 26px; border-left: 2px dashed #cfd7e2; }
+  .tv-st:last-child::before { display: none; }
+  .tv-st-n { display: flex; flex-direction: column; align-items: center; justify-content: center; width: 54px; height: 54px; border-radius: 50%; background: #002147; color: #fff; font-size: 9px; font-weight: 700; letter-spacing: .1em; line-height: 1; }
+  .tv-st-n b { margin-top: 3px; font-size: 21px; letter-spacing: 0; }
+  .tv-st-b h3 { margin: 4px 0 0; font-size: 17px; font-weight: 700; line-height: 1.4; color: #002147; }
+  .tv-st-b > p { margin: 2px 0 6px; font-size: 12.5px; color: #5A6B80; }
+  .tv-st-a { display: flex; align-items: center; gap: 10px; margin-top: 6px; padding: 8px; border: 1px solid #E3E8EF; border-radius: 12px; background: #fff; color: inherit; text-decoration: none; }
+  .tv-st-a:hover { border-color: #002147; }
+  .tv-st-a img { flex: none; width: 72px; height: 54px; border-radius: 8px; object-fit: cover; }
+  .tv-st-a b { display: block; font-size: 13px; line-height: 1.45; color: #002147; }
+  .tv-st-a small { display: inline-flex; align-items: center; gap: 4px; margin-top: 2px; font-size: 11px; color: #5A6B80; }
+
+  .tv-card { display: flex; flex-direction: column; overflow: hidden; border: 1px solid #E3E8EF; border-radius: 16px; background: #fff; color: inherit; text-decoration: none; }
+  .tv-card img { display: block; width: 100%; aspect-ratio: 16 / 10; object-fit: cover; }
+  .tv-card-b { padding: 12px 14px 14px; }
+
+  .tv-pair { display: grid; gap: 14px; }
+
+  /* Columna de lectura alineada a la izquierda, como /food/ y /language/. */
+  .page-container.tv-narrow > * { max-width: 820px; }
+  .tv-guide p { margin: 0 0 14px; font-size: 14.5px; line-height: 1.9; color: #4b5563; }
+  .tv-guide a { color: #C8102E; text-decoration: underline; text-underline-offset: 3px; }
+  .tv-faq, .tv-newsletter { margin-top: 32px; }
+  .tv-related { padding-top: 40px; padding-bottom: 56px; }
+
+  @media (min-width: 860px) {
+    .tv-br { display: none; }
+    .tv-hero { padding: 190px 0 96px; }
+    .tv-h1 { font-size: 56px; }
+    .tv-lead { font-size: 15px; }
+    .tv-goals { display: flex; align-items: center; gap: 16px; margin-top: -44px; padding: 12px 14px; }
+    .tv-goals p { margin: 0; white-space: nowrap; }
+    .tv-goals div { flex: 1; }
+    .tv-goals a { flex-direction: row; justify-content: center; gap: 8px; padding: 13px 6px; font-size: 14px; }
+    .tv-goals br { display: none; }
+    .tv-block--top { padding: 44px 0 48px; }
+    .tv-rank { display: grid; grid-template-columns: 1.3fr 1fr; grid-template-rows: repeat(4, auto); gap: 12px 22px; }
+    .tv-rank li:first-child { grid-row: 1 / span 4; }
+    .tv-rk.is-first .tv-rk-t { font-size: 20px; }
+    .tv-block .rail-track > .tv-dest, .tv-block .rail-track > .tv-stop { width: auto; max-width: none; }
+    .tv-block .rail--grid .rail-track { row-gap: 26px; }
+    /* En la rejilla la línea llega hasta la tarjeta siguiente (hueco de 18 px) y no sale de la fila. */
+    #gaudi .tv-stop-line::after { margin-right: -18px; }
+    #gaudi .tv-stop:nth-child(4n) .tv-stop-line::after { visibility: hidden; margin-right: 0; }
+    .tv-steps { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 20px; }
+    .tv-st { grid-template-columns: 1fr; align-content: start; gap: 10px; padding: 0; }
+    .tv-st::before { top: 27px; right: -14px; bottom: auto; left: 62px; border-top: 2px dashed #cfd7e2; border-left: 0; }
+    .tv-pair { grid-template-columns: 1fr 1fr; gap: 20px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .tv-stop img { transition: none; }
+  }
+</style>

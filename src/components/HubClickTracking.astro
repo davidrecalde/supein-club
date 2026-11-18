@@ -1,0 +1,22 @@
+---
+// Mide en GA4 qué bloque de un hub engancha: cada clic en un enlace dentro de [data-hub-block]
+// envía hub_card_click con el hub, el bloque, la posición del enlace en el bloque y su URL.
+interface Props {
+  hub: string;
+}
+
+const { hub } = Astro.props;
+---
+<script is:inline define:vars={{ hub }}>
+  document.addEventListener('click', (e) => {
+    const a = e.target instanceof Element ? e.target.closest('a[href]') : null;
+    const block = a && a.closest('[data-hub-block]');
+    if (!block || typeof gtag !== 'function') return;
+    gtag('event', 'hub_card_click', {
+      hub,
+      block: block.getAttribute('data-hub-block'),
+      position: [...block.querySelectorAll('a[href]')].indexOf(a) + 1,
+      link_url: a.getAttribute('href'),
+    });
+  });
+</script>
