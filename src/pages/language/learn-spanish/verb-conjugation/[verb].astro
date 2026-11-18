@@ -7,6 +7,7 @@ import CoursePageHeader from '../../../../components/course/CoursePageHeader.ast
 import QuizCard from '../../../../components/QuizCard.astro';
 import Sources from '../../../../components/Sources.astro';
 import AuthorBox from '../../../../components/AuthorBox.astro';
+import PreferredSourceCTA from '../../../../components/PreferredSourceCTA.astro';
 import LineBanner from '../../../../components/LineBanner.astro';
 import TOC from '../../../../components/TOC.astro';
 import FloatingActions from '../../../../components/FloatingActions.astro';
@@ -215,6 +216,8 @@ const fmt = (d: Date) => d.toLocaleDateString('ja-JP', { year: 'numeric', month:
 
 
     <QuizCard quiz={data.quiz} title={`${verb} の活用クイズ`} />
+
+    <PreferredSourceCTA eyebrow="このページは役に立ちましたか？" />
 
 
     <Sources sources={sources} />
