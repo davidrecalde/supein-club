@@ -125,7 +125,9 @@ graph.push({
 graph.push({
   '@type': 'WebSite',
   '@id': `${siteUrl}/#website`,
+  // Nombre del sitio en Google (resultados, トップニュース, 優先ソース): el mismo que og:site_name.
   name: 'スペイン倶楽部',
+  alternateName: ['supein.club', 'Supein Club'],
   description: 'スペインの旅行・料理・文化・語学を日本語で伝えるカルチャーメディア',
   url: siteUrl,
   inLanguage: 'ja',
@@ -523,7 +525,7 @@ const jsonLd = JSON.stringify({ '@context': 'https://schema.org', '@graph': grap
 {imageAlt && <meta property="og:image:alt" content={imageAlt} />}
 <meta property="og:url" content={canonical} />
 <meta property="og:locale" content={lang === 'es' ? 'es_ES' : 'ja_JP'} />
-<meta property="og:site_name" content="supein.club" />
+<meta property="og:site_name" content="スペイン倶楽部" />
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content={title} />
 <meta name="twitter:description" content={description} />
