@@ -1,0 +1,51 @@
+---
+// Banner hacia el hub de regiones (/regions/) con la panorámica de la home: lo usan /food/ y
+// /food/spain-map/. En el móvil, foto arriba y texto abajo; en escritorio, texto a la izquierda.
+import { getImage } from 'astro:assets';
+import { ArrowRight, Compass } from 'lucide-astro';
+import regionsBanner from '../assets/hero/banner-regiones-espana.webp';
+import regionsBannerMobile from '../assets/hero/banner-regiones-espana-mobile.webp';
+
+interface Props {
+  /** Texto pequeño sobre el título (p. ej. 「03 地方ガイド」). */
+  eyebrow?: string;
+}
+
+const { eyebrow = '地方ガイド' } = Astro.props;
+const [desktop, mobile] = await Promise.all([
+  getImage({ src: regionsBanner, width: 1200, format: 'webp', quality: 75 }),
+  getImage({ src: regionsBannerMobile, width: 640, format: 'webp', quality: 75 }),
+]);
+---
+<a class="rb" href="/regions/">
+  <picture>
+    <source media="(min-width: 860px)" srcset={desktop.src} width={desktop.attributes.width} height={desktop.attributes.height} />
+    <img src={mobile.src} width={mobile.attributes.width} height={mobile.attributes.height} alt="" loading="lazy" decoding="async" />
+  </picture>
+  <span class="rb-body">
+    <span class="rb-k"><Compass size={16} />{eyebrow}</span>
+    <span class="rb-title">料理だけじゃない、<br />17の地方を知る</span>
+    <span class="rb-text">サッカー、祭り、暮らし、旅。地方ごとにスペインの魅力をまとめたガイドです。</span>
+    <span class="rb-tags"><span>料理</span><span>サッカー</span><span>暮らし</span><span>旅行</span></span>
+    <span class="rb-cta">地方ガイドを見る<ArrowRight size={18} /></span>
+  </span>
+</a>
+
+<style>
+  .rb { position: relative; display: block; overflow: hidden; border-radius: 20px; background: #002147; color: #fff; text-decoration: none; }
+  .rb img { display: block; width: 100%; height: 260px; object-fit: cover; object-position: 50% 40%; }
+  .rb-body { display: block; padding: 20px 20px 22px; }
+  .rb-k { display: flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 700; letter-spacing: .1em; color: #ff8a9a; }
+  .rb-title { display: block; margin-top: 6px; font-family: 'Noto Serif JP', serif; font-size: 24px; font-weight: 700; line-height: 1.4; }
+  .rb-text { display: block; margin-top: 8px; font-size: 13.5px; line-height: 1.8; color: rgba(255, 255, 255, .85); }
+  .rb-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 12px; }
+  .rb-tags span { padding: 4px 10px; border: 1px solid rgba(255, 255, 255, .3); border-radius: 999px; font-size: 12px; font-weight: 700; }
+  .rb-cta { display: inline-flex; align-items: center; gap: 8px; margin-top: 16px; padding: 13px 18px; border-radius: 12px; background: #C8102E; font-size: 15px; font-weight: 700; }
+  @media (min-width: 860px) {
+    .rb { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.25fr); }
+    .rb picture { order: 2; }
+    .rb img { height: 100%; min-height: 320px; }
+    .rb-body { align-self: center; padding: 36px 36px 38px; }
+    .rb-title { font-size: 30px; }
+  }
+</style>
