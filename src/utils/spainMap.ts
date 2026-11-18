@@ -71,12 +71,14 @@ export function provinceMap(current: string, neighbors: string[] = []) {
 
 /**
  * Cada provincia con el color de su comunidad, envuelta en un enlace a su guía (funciona sin
- * JavaScript; el hub lo intercepta para mostrar antes una tarjeta con el nombre).
+ * JavaScript; el hub lo intercepta para mostrar antes una tarjeta con el nombre). Con links: false,
+ * solo el dibujo (para meterlo dentro de un único enlace, como en /food/).
  */
-export function communityMap(provinces: Record<string, { slug: string; name: string; community: string; color: string }>) {
-  return mapSvg('role="img" aria-label="スペインの県の地図"', (p, path) => {
+export function communityMap(provinces: Record<string, { slug: string; name: string; community: string; color: string }>, { links = true } = {}) {
+  return mapSvg(links ? 'role="img" aria-label="スペインの県の地図"' : 'aria-hidden="true" focusable="false"', (p, path) => {
     const info = provinces[p.id];
     if (!info) return `${path}/>`;
+    if (!links) return `${path} style="fill:${info.color}"/>`;
     return `<a href="/food/spain-map/${info.slug}/" aria-label="${info.name}" data-name="${info.name}" data-community="${info.community}">${path} style="fill:${info.color}"/></a>`;
   });
 }

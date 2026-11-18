@@ -6,15 +6,13 @@
 // foto de su artículo (carrusel con flechas en el móvil, 2 columnas en escritorio), 03 banner al hub
 // de regiones; después el FAQ y lo de siempre (newsletter, autor, artículos relacionados).
 import { getCollection } from 'astro:content';
-import { getImage } from 'astro:assets';
-import { ArrowRight, ChevronDown, Compass, Hand, X } from 'lucide-astro';
+import { ArrowRight, ChevronDown, Hand, X } from 'lucide-astro';
 import heroSpainMap from '../../../assets/hero/hero-spain-map.webp';
-import regionsBanner from '../../../assets/hero/banner-regiones-espana.webp';
-import regionsBannerMobile from '../../../assets/hero/banner-regiones-espana-mobile.webp';
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import SEO from '../../../components/SEO.astro';
 import Breadcrumb from '../../../components/Breadcrumb.astro';
 import Rail from '../../../components/Rail.astro';
+import RegionsBanner from '../../../components/RegionsBanner.astro';
 import LineBanner from '../../../components/LineBanner.astro';
 import NewsletterForm from '../../../components/NewsletterForm.astro';
 import RelatedPages from '../../../components/RelatedPages.astro';
@@ -94,11 +92,6 @@ const zones = await Promise.all(ZONES.map(async (z) => {
   return { ...z, img: hero && typeof hero !== 'string' ? await cardImage(hero, '') : undefined };
 }));
 
-// ── Banner a /regions/ ──
-const [regionsDesktop, regionsMobile] = await Promise.all([
-  getImage({ src: regionsBanner, width: 1200, format: 'webp', quality: 75 }),
-  getImage({ src: regionsBannerMobile, width: 640, format: 'webp', quality: 75 }),
-]);
 
 // こちらの記事もおすすめ: los últimos artículos de food (sin spain-dining-times ni japan-map).
 const relatedFoodArticles = allArticles
@@ -234,19 +227,7 @@ const faqSchema = {
 
   <section class="hub-block sm-block" id="regions">
     <div class="page-container">
-      <a class="sm-reg" href="/regions/">
-        <picture>
-          <source media="(min-width: 860px)" srcset={regionsDesktop.src} width={regionsDesktop.attributes.width} height={regionsDesktop.attributes.height} />
-          <img src={regionsMobile.src} width={regionsMobile.attributes.width} height={regionsMobile.attributes.height} alt="" loading="lazy" decoding="async" />
-        </picture>
-        <span class="sm-reg-body">
-          <span class="sm-reg-k"><Compass size={16} />03 地方ガイド</span>
-          <span class="sm-reg-title">料理だけじゃない、<br />17の地方を知る</span>
-          <span class="sm-reg-text">サッカー、祭り、暮らし、旅。地方ごとにスペインの魅力をまとめたガイドです。</span>
-          <span class="sm-reg-tags"><span>料理</span><span>サッカー</span><span>暮らし</span><span>旅行</span></span>
-          <span class="sm-reg-cta">地方ガイドを見る<ArrowRight size={18} /></span>
-        </span>
-      </a>
+      <RegionsBanner eyebrow="03 地方ガイド" />
     </div>
   </section>
 
@@ -400,15 +381,6 @@ const faqSchema = {
   .sm-zone-sum { margin-top: 6px; font-size: 13.5px; line-height: 1.75; color: #3a4654; }
   .sm-zone-more { display: inline-flex; align-items: center; gap: 6px; margin-top: auto; padding-top: 10px; font-size: 14px; font-weight: 700; color: #C8102E; }
 
-  .sm-reg { position: relative; display: block; overflow: hidden; border-radius: 20px; background: #002147; color: #fff; text-decoration: none; }
-  .sm-reg img { display: block; width: 100%; height: 280px; object-fit: cover; object-position: 50% 40%; }
-  .sm-reg-body { display: block; padding: 20px 20px 22px; }
-  .sm-reg-k { display: flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 700; letter-spacing: .1em; color: #ff8a9a; }
-  .sm-reg-title { display: block; margin-top: 6px; font-family: 'Noto Serif JP', serif; font-size: 24px; font-weight: 700; line-height: 1.4; }
-  .sm-reg-text { display: block; margin-top: 8px; font-size: 13.5px; line-height: 1.8; color: rgba(255, 255, 255, .85); }
-  .sm-reg-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 12px; }
-  .sm-reg-tags span { padding: 4px 10px; border: 1px solid rgba(255, 255, 255, .3); border-radius: 999px; font-size: 12px; font-weight: 700; }
-  .sm-reg-cta { display: inline-flex; align-items: center; gap: 8px; margin-top: 16px; padding: 13px 18px; border-radius: 12px; background: #C8102E; font-size: 15px; font-weight: 700; }
 
   /* Columna de lectura alineada a la izquierda, como /language/ y los artículos (el contenedor no se centra más estrecho). */
   .page-container.sm-narrow > * { max-width: 820px; }
@@ -431,10 +403,5 @@ const faqSchema = {
     .sm-coms { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
     .sm-com-img { width: 38%; min-height: 150px; }
     .sm-zone-title { font-size: 18px; }
-    .sm-reg { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.25fr); }
-    .sm-reg picture { order: 2; }
-    .sm-reg img { height: 100%; min-height: 320px; }
-    .sm-reg-body { align-self: center; padding: 36px 36px 38px; }
-    .sm-reg-title { font-size: 30px; }
-  }
+            }
 </style>
