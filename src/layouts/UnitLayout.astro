@@ -5,6 +5,7 @@ import SEO from '../components/SEO.astro';
 import TOC from '../components/TOC.astro';
 import Sources from '../components/Sources.astro';
 import AuthorBox from '../components/AuthorBox.astro';
+import PreferredSourceCTA from '../components/PreferredSourceCTA.astro';
 import LineBanner from '../components/LineBanner.astro';
 import FloatingActions from '../components/FloatingActions.astro';
 import UnitHeader from '../components/course/UnitHeader.astro';
@@ -158,6 +159,8 @@ const sources = [
               <p>{unitVerbs.map((v, i) => <>{i > 0 && '・'}<a href={verbUrl(v)}><span lang="es">{v}</span> の活用</a></>)}</p>
             </section>
           )}
+
+          <PreferredSourceCTA eyebrow="このユニットは役に立ちましたか？" />
 
           <UnitNav prev={navItem(d.prev)} next={navItem(d.next)} related={related} level={d.level} />
           <ReportError label={`ユニット${d.unit} ${d.shortTitle}`} pageUrl={canonical} />

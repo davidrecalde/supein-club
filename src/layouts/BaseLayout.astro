@@ -70,6 +70,11 @@ const { title = 'supein.club', lang = 'ja', searchable = true } = Astro.props;
         var block = a.closest('[data-line-source]');
         gtag('event', 'line_clicked', { page: location.pathname, source: block ? block.getAttribute('data-line-source') : 'other' });
       });
+      // Clics hacia 「優先ソース」 de Google (PreferredSourceCTA).
+      document.addEventListener('click', function (e) {
+        var a = e.target && e.target.closest ? e.target.closest('a[data-preferred-source]') : null;
+        if (a) gtag('event', 'preferred_source_clicked', { page: location.pathname });
+      });
     </script>
   </head>
   <body class="bg-canvas text-ink font-sans antialiased flex flex-col min-h-screen">
