@@ -17,12 +17,9 @@ import FloatingActions from '../../components/FloatingActions.astro';
 import NewsletterForm from '../../components/NewsletterForm.astro';
 import ArticleDisclaimer from '../../components/ArticleDisclaimer.astro';
 import AuthorBox from '../../components/AuthorBox.astro';
-import { communityColorMap } from '../../data/spainCommunities';
-import { MAP_COMMUNITIES } from '../../data/spainMapCommunities';
-import { PROVINCES } from '../../data/provinces';
 import { getArticleUrl } from '../../utils/articles';
 import { cardImage } from '../../utils/images';
-import { communityMap } from '../../utils/spainMap';
+import { foodMapPreview } from '../../utils/foodMap';
 
 const SITE = 'https://supein.club';
 const canonical = `${SITE}/food/`;
@@ -79,12 +76,7 @@ const rest = await Promise.all(articles.filter((a) => !placed.has(a.data.cluster
 blocks.more = [...blocks.more, ...rest];
 
 // ── Mapa (mismo dibujo que /food/spain-map/, sin enlaces: el bloque entero lleva al mapa) ──
-const provinces = await getCollection('spain-map', ({ data }) => data.draft !== true);
-const bySlug = new Map(provinces.map((p) => [p.data.province, p]));
-const mapSvg = communityMap(Object.fromEntries(MAP_COMMUNITIES.flatMap((c) => c.provinces.filter((p) => bySlug.has(p)).map((p) => [
-  PROVINCES[p]?.code,
-  { slug: p, name: bySlug.get(p)!.data.provinceJa, community: c.name, color: communityColorMap[c.slug]?.mapColor ?? '#ccc' },
-]))), { links: false });
+const { svg: mapSvg, bySlug, count: provinceCount } = await foodMapPreview();
 const POPULAR = ['madrid', 'barcelona', 'sevilla', 'valencia', 'granada', 'malaga', 'toledo', 'guipuzcoa'].filter((p) => bySlug.has(p)).map((p) => ({ slug: p, name: bySlug.get(p)!.data.provinceJa }));
 const articleCount = articles.length;
 
@@ -134,7 +126,7 @@ const faqSchema = {
       <h1 class="fd-h1">スペイン料理</h1>
       <p class="fd-lead">地方ごとに驚くほど多彩なスペインの食文化を、日本語で。県別のレストランガイドから、名物料理、バルの楽しみ方まで。</p>
       <ul class="fd-stats">
-        <li><b>{provinces.length}</b><small>県のグルメガイド</small></li>
+        <li><b>{provinceCount}</b><small>県のグルメガイド</small></li>
         <li><b>{blocks.zones.length}</b><small>美食ゾーン</small></li>
         <li><b>{articleCount}</b><small>特集記事</small></li>
       </ul>
@@ -151,7 +143,7 @@ const faqSchema = {
         <div class="fd-mapfeat-body">
           <p class="hub-block-eyebrow"><span class="hub-block-num">01</span>スペイン美食マップ</p>
           <h2>地図から県を選んで、<br />レストランを探す</h2>
-          <p>{provinces.length}の県それぞれに、安くて美味しい店・タパスバル・高級店のランキングと名物料理のガイドがあります。</p>
+          <p>{provinceCount}の県それぞれに、安くて美味しい店・タパスバル・高級店のランキングと名物料理のガイドがあります。</p>
           <a class="fd-mapfeat-cta" href="/food/spain-map/"><MapIcon size={20} />美食マップを開く<ArrowRight size={18} /></a>
           <p class="fd-poplab">人気の県</p>
           <ul class="fd-pchips">
