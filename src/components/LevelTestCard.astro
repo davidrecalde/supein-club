@@ -111,6 +111,7 @@ const bars = (seed: number) => Array.from({ length: 40 }, (_, i) => Math.round(2
                     <audio preload="none" src={audio.src}></audio>
                   </div>
                   <p class="lt3-plays"><Volume2 size={16} /><span data-plays>あと<b>2</b>回再生できます</span><AiAudioLabel /></p>
+                  <p class="lt3-deferred-note">最後に回した音声問題です。今も聞けない場合は「飛ばす」を選べます（不正解として数えます）。</p>
                 </div>
               )}
               {q.passage && <blockquote class="lt3-passage" lang="es">{q.passage}</blockquote>}
@@ -129,7 +130,7 @@ const bars = (seed: number) => Array.from({ length: 40 }, (_, i) => Math.round(2
                 <button type="button" data-act="answer" data-i="-1"><CircleHelp size={17} />わからない</button>
                 {audio && (
                   <button type="button" data-act="defer">
-                    <Clock size={17} /><span class="d-first">今は音声を聞けない（最後に回す）</span><span class="d-again">音声を聞けないので、この問題を飛ばす</span>
+                    <Clock size={17} /><span class="d-first">今は音声を聞けない（最後に回す）</span><span class="d-again">今も聞けないので飛ばす（不正解になります）</span>
                   </button>
                 )}
               </div>
@@ -137,6 +138,23 @@ const bars = (seed: number) => Array.from({ length: 40 }, (_, i) => Math.round(2
           );
         })}
       </ol>
+
+      <section class="lt3-card lt3-screen" data-screen="review" aria-label="回答の確認">
+        <p class="lt3-eyebrow">回答の確認</p>
+        <h3 class="lt3-h">全{total}問に答えました</h3>
+        <ul class="lt3-review">
+          <li><span>回答した問題</span><b data-review-answered>0</b></li>
+          <li data-review-unknown-row><span>「わからない」</span><b data-review-unknown>0</b></li>
+          <li data-review-skipped-row><span>飛ばした音声問題</span><b data-review-skipped>0</b></li>
+        </ul>
+        <p class="lt3-notice" data-review-skipped-note><Headphones size={18} /><span>飛ばした音声問題は不正解として数えます。今は音声を聞ける場合は、戻って答えることができます。</span></p>
+        <div class="lt3-btns lt3-review-btns">
+          <button type="button" class="lt3-btn lt3-btn-red lt3-btn-big" data-act="see-result">結果を見る <ArrowRight size={20} /></button>
+          <button type="button" class="lt3-btn lt3-btn-out" data-act="review-skipped" data-review-skipped-btn><Headphones size={18} />飛ばした音声問題に答える</button>
+          <button type="button" class="lt3-btn lt3-btn-ghost" data-act="review-back"><ArrowLeft size={18} />前の問題に戻って見直す</button>
+        </div>
+        <p class="lt3-fine">結果を表示すると、回答は変更できなくなります。</p>
+      </section>
 
       <section class="lt3-card lt3-screen lt3-result" data-screen="result" aria-label="診断結果" aria-live="polite">
         <p class="lt3-eyebrow">診断結果</p>
@@ -236,13 +254,14 @@ const bars = (seed: number) => Array.from({ length: 40 }, (_, i) => Math.round(2
     const screens = {
       start: $('[data-screen="start"]'),
       resume: $('[data-screen="resume"]'),
+      review: $('[data-screen="review"]'),
       result: $('[data-screen="result"]'),
     };
     const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
     const fresh = (): Progress => ({ v: VERSION, order: cards.map((_, i) => i), cursor: 0, answers: {}, deferred: [], date: new Date().toISOString() });
     let state = fresh();
-    let view: 'start' | 'resume' | 'question' | 'result' = 'start';
+    let view: 'start' | 'resume' | 'question' | 'review' | 'result' = 'start';
     const plays = new Map<number, number>();
 
     const answered = () => Object.keys(state.answers).length;
@@ -251,7 +270,7 @@ const bars = (seed: number) => Array.from({ length: 40 }, (_, i) => Math.round(2
       try {
         const p = JSON.parse(store.get(PROGRESS_KEY) ?? 'null') as Progress | null;
         if (!p || p.v !== VERSION || !Array.isArray(p.order) || p.order.length !== total) return null;
-        return Object.keys(p.answers).length > 0 && Object.keys(p.answers).length < total ? p : null;
+        return Object.keys(p.answers).length > 0 ? p : null;
       } catch { return null; }
     }
 
@@ -261,9 +280,9 @@ const bars = (seed: number) => Array.from({ length: 40 }, (_, i) => Math.round(2
       const pct = (n / total) * 100;
       $('[data-progress]').style.width = `${pct}%`;
       $('.lt3-prog').setAttribute('aria-valuenow', String(n));
-      $('[data-counter]').textContent = String(view === 'question' ? state.cursor + 1 : view === 'result' ? total : n);
+      $('[data-counter]').textContent = String(view === 'question' ? state.cursor + 1 : view === 'result' || view === 'review' ? total : n);
       const left = Math.max(1, Math.round((total - n) / 3));
-      $('[data-remaining]').textContent = view === 'result' ? '回答完了' : n === 0 ? `約${Math.max(5, Math.round(total / 3 / 5) * 5)}分` : `残り約${left}分`;
+      $('[data-remaining]').textContent = view === 'result' || view === 'review' ? '回答完了' : n === 0 ? `約${Math.max(5, Math.round(total / 3 / 5) * 5)}分` : `残り約${left}分`;
     }
 
     // ── Fichas: la actual sale hacia un lado y la nueva entra por el otro ──
@@ -293,7 +312,7 @@ const bars = (seed: number) => Array.from({ length: 40 }, (_, i) => Math.round(2
       if (r.top < -40 || r.top > window.innerHeight * 0.5) root.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth', block: 'start' });
     }
 
-    function showScreen(name: 'start' | 'resume', dir: 'next' | 'prev' | null = null) {
+    function showScreen(name: 'start' | 'resume' | 'review', dir: 'next' | 'prev' | null = null) {
       view = name;
       foot.hidden = true;
       swap(screens[name], dir);
@@ -335,7 +354,7 @@ const bars = (seed: number) => Array.from({ length: 40 }, (_, i) => Math.round(2
       setTimeout(() => {
         btn?.classList.remove('is-chosen');
         busy = false;
-        if (state.cursor >= state.order.length) return finish();
+        if (state.cursor >= state.order.length) return showReview();
         showQuestion('next');
         if (first) {
           const msg = { [Math.round(total / 4)]: `4分の1が終わりました。残り${total - Math.round(total / 4)}問`, [Math.round(total / 2)]: `半分まで来ました。残り${total - Math.round(total / 2)}問`, [Math.round((total * 3) / 4)]: `あと${total - Math.round((total * 3) / 4)}問。もう少しです` }[n];
@@ -355,6 +374,23 @@ const bars = (seed: number) => Array.from({ length: 40 }, (_, i) => Math.round(2
       gtag('event', 'level_test_audio_deferred');
       showQuestion('next');
       toast('音声問題を最後に回しました');
+    }
+
+    // ── Confirmación antes del resultado: se puede volver atrás o responder los audios saltados ──
+    const skippedQs = () => state.order.filter((qi) => state.answers[qi] === SKIP);
+    function showReview() {
+      const values = Object.values(state.answers);
+      const unknown = values.filter((a) => a === UNKNOWN).length;
+      const skipped = skippedQs().length;
+      $('[data-review-answered]').textContent = `${total - unknown - skipped}問`;
+      $('[data-review-unknown]').textContent = `${unknown}問`;
+      $('[data-review-skipped]').textContent = `${skipped}問`;
+      $('[data-review-unknown-row]').hidden = unknown === 0;
+      $('[data-review-skipped-row]').hidden = skipped === 0;
+      $('[data-review-skipped-note]').hidden = skipped === 0;
+      $('[data-review-skipped-btn]').hidden = skipped === 0;
+      showScreen('review', 'next');
+      keepInView();
     }
 
     // ── Audio: dos reproducciones por pregunta, como en el examen ──
@@ -508,7 +544,10 @@ const bars = (seed: number) => Array.from({ length: 40 }, (_, i) => Math.round(2
       const inCard = t.closest('.lt3-q');
       if (inCard && inCard !== activeCard()) return;
       if (act === 'begin' || act === 'fresh') return start();
-      if (act === 'continue') return showQuestion('next');
+      if (act === 'continue') return state.cursor >= state.order.length ? showReview() : showQuestion('next');
+      if (act === 'see-result') return finish();
+      if (act === 'review-back') { state.cursor = state.order.length - 1; save(); return showQuestion('prev'); }
+      if (act === 'review-skipped') { state.cursor = state.order.indexOf(skippedQs()[0]); save(); return showQuestion('prev'); }
       if (act === 'answer' && view === 'question') return answer(Number(t.dataset.i), t.classList.contains('lt3-opt') ? t : undefined);
       if (act === 'defer') return defer();
       if (act === 'play') return play(t);
@@ -544,9 +583,10 @@ const bars = (seed: number) => Array.from({ length: 40 }, (_, i) => Math.round(2
       const n = answered();
       $('[data-ring]').style.setProperty('--p', String(Math.round((n / total) * 100)));
       $('[data-ring-n]').textContent = String(n);
-      $('[data-resume-title]').textContent = `${total}問中${n}問まで回答済み`;
+      const done = n >= total;
+      $('[data-resume-title]').textContent = done ? `全${total}問に回答済み` : `${total}問中${n}問まで回答済み`;
       const d = new Date(saved.date);
-      $('[data-resume-sub]').textContent = `${d.getMonth() + 1}月${d.getDate()}日に保存。残りは約${Math.max(1, Math.round((total - n) / 3))}分です。`;
+      $('[data-resume-sub]').textContent = `${d.getMonth() + 1}月${d.getDate()}日に保存。` + (done ? 'まだ結果を表示していません。' : `残りは約${Math.max(1, Math.round((total - n) / 3))}分です。`);
       showScreen('resume');
     } else header();
   });
@@ -632,6 +672,16 @@ const bars = (seed: number) => Array.from({ length: 40 }, (_, i) => Math.round(2
   .lt3 .lt3-alt button { display: inline-flex; align-items: center; gap: 7px; padding: 6px 4px; border-bottom: 1px dashed transparent; font-size: 14px; color: var(--lt3-mute); }
   .lt3 .lt3-alt button:hover { color: var(--lt3-navy); border-bottom-color: currentColor; }
   .lt3-q .d-again, .lt3-q.is-deferred .d-first { display: none; }
+  .lt3-deferred-note { display: none; margin-top: 10px !important; padding: 8px 12px; border-radius: 10px; background: #FFF4DE; color: #8A5A00; font-size: 13px; line-height: 1.6; }
+  .lt3-q.is-deferred .lt3-deferred-note { display: block; }
+  .lt3 .lt3-review { display: grid; gap: 8px; margin: 18px 0; padding: 0; list-style: none; }
+  .lt3 .lt3-review li { display: flex; justify-content: space-between; align-items: center; margin: 0; padding: 12px 16px; border: 1px solid var(--lt3-rule); border-radius: 12px; font-size: 14.5px; }
+  .lt3 .lt3-review li[hidden] { display: none; }
+  .lt3 .lt3-review b { font-size: 16px; color: var(--lt3-navy); }
+  .lt3 .lt3-notice[hidden] { display: none; }
+  .lt3-review-btns { flex-direction: column; align-items: stretch; margin-top: 4px; }
+  .lt3-review-btns [hidden] { display: none; }
+  .lt3-screen[data-screen="review"] .lt3-fine { margin-top: 12px !important; }
   .lt3-q.is-deferred .d-again { display: inline; }
 
   .lt3-inst { margin-top: 16px !important; font-size: 14px; color: var(--lt3-mute); }
