@@ -133,12 +133,13 @@ const socials = [
   <!-- Barra inferior -->
   <div class="border-t border-white/10 py-4 px-5 flex flex-wrap items-center justify-between gap-3">
     <p style="color: rgba(255,255,255,0.40); font-size:13px;">
-      <span class="hidden md:inline">&copy; {year} supein.club — スペイン倶楽部. All rights reserved.</span>
-      <span class="md:hidden">&copy; {year} supein.club</span>
+      <span class="hidden md:inline">&copy; 2018–{year} supein.club — スペイン倶楽部. All rights reserved.</span>
+      <span class="md:hidden">&copy; 2018–{year} supein.club</span>
     </p>
+    <!-- Enlace normal (sin nofollow ni noreferrer): supein.club es un proyecto de NODA -->
     <a
       href="https://noda.tokyo/"
-      rel="nofollow noopener noreferrer"
+      rel="noopener"
       target="_blank"
       style="display:inline-flex; align-items:center; gap:6px; opacity:0.5; transition:opacity 200ms; color:rgba(255,255,255,0.4); font-size:12px;"
       onmouseover="this.style.opacity='0.9'"
