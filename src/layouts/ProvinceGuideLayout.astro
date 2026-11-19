@@ -95,7 +95,11 @@ const travel = await Promise.all(regionArticles.map(async (a) => {
 
 // ── 02 y 03 ──
 const specialties = await Promise.all((d.specialties ?? []).map(async (s) => ({ ...s, img: s.image ? await cardImage(s.image, s.imageAlt ?? s.nameJa) : undefined })));
-const areas = d.neighborhoods ?? [];
+// Cada zona usa su propia foto; la primera sin foto propia hereda la de cabecera de la provincia.
+const areas = await Promise.all((d.neighborhoods ?? []).map(async (a, i) => ({
+  ...a,
+  img: a.image ? await cardImage(a.image, a.imageAlt ?? a.nameJa) : i === 0 ? heroCard : undefined,
+})));
 
 const sections = [
   rankings.length > 0 && { id: 'ranking', label: 'ランキング' },
@@ -223,6 +227,9 @@ const faqSchema = d.faq.length > 0 && {
               {s.img
                 ? <img src={s.img.src} srcset={s.img.srcset} sizes="(min-width: 860px) 340px, 78vw" width={s.img.width} height={s.img.height} alt={s.img.alt} loading="lazy" decoding="async" />
                 : <span class="ph-card-noimg" aria-hidden="true"><Utensils size={34} /></span>}
+              {s.img && s.imageCredit && (
+                <p class="ph-credit">写真：{s.imageCreditUrl ? <a href={s.imageCreditUrl} target="_blank" rel="noopener noreferrer">{s.imageCredit}</a> : s.imageCredit}</p>
+              )}
               <div class="ph-card-body">
                 <span class="ph-tag">{s.category}</span>
                 <h3>{s.nameJa}</h3>
@@ -246,7 +253,10 @@ const faqSchema = d.faq.length > 0 && {
         <Rail label={`${d.provinceJa}のエリア`} hint="スワイプして他のエリアを見る">
           {areas.map((a, i) => (
             <article class="ph-card" role="listitem">
-              {i === 0 && heroCard && <img src={heroCard.src} srcset={heroCard.srcset} sizes="(min-width: 860px) 340px, 78vw" width={heroCard.width} height={heroCard.height} alt={heroCard.alt} loading="lazy" decoding="async" data-pagefind-meta="image[src], image_alt[alt]" />}
+              {a.img && <img src={a.img.src} srcset={a.img.srcset} sizes="(min-width: 860px) 340px, 78vw" width={a.img.width} height={a.img.height} alt={a.img.alt} loading="lazy" decoding="async" {...(i === 0 ? { 'data-pagefind-meta': 'image[src], image_alt[alt]' } : {})} />}
+              {a.img && a.image && a.imageCredit && (
+                <p class="ph-credit">写真：{a.imageCreditUrl ? <a href={a.imageCreditUrl} target="_blank" rel="noopener noreferrer">{a.imageCredit}</a> : a.imageCredit}</p>
+              )}
               <div class="ph-card-body">
                 <h3>{a.nameJa}</h3>
                 <p class="ph-card-es" lang="es">{a.name}</p>
@@ -448,6 +458,8 @@ const faqSchema = d.faq.length > 0 && {
   .ph-card { display: flex; flex-direction: column; overflow: hidden; border: 1px solid #E3E8EF; border-radius: 16px; background: #fff; color: #1A1A1A; text-decoration: none; }
   .ph-card img, .ph-card-noimg { display: block; width: 100%; aspect-ratio: 16 / 10; object-fit: cover; }
   .ph-card-noimg { display: grid; place-items: center; background: #E9EEF4; color: #8A99AD; }
+  .ph-credit { margin: 0; padding: 4px 14px 0; font-size: 10.5px; line-height: 1.4; color: #8A99AD; text-align: right; overflow-wrap: anywhere; }
+  .ph-credit a { color: inherit; text-decoration: underline; text-underline-offset: 2px; }
   .ph-card-body { padding: 14px 16px 16px; }
   .ph-tag { display: inline-block; padding: 3px 10px; border-radius: 999px; background: #FCEBEE; color: #C8102E; font-size: 11.5px; font-weight: 700; }
   .ph-card h3 { margin: 8px 0 0; font-size: 16.5px; font-weight: 700; line-height: 1.5; color: #002147; }
