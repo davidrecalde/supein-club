@@ -215,12 +215,18 @@ const spainMap = defineCollection({
     author: reference('authors'),
     lang: z.enum(['ja', 'es']).default('ja'),
     draft: z.boolean().default(false),
+    // imageCredit/imageCreditUrl: autor y licencia de las fotos con licencia libre (Wikimedia Commons),
+    // que se muestran bajo la foto de la tarjeta. Las de Adobe Stock no lo necesitan.
     neighborhoods: z.array(z.object({
       name: z.string(),
       nameJa: z.string(),
       vibe: z.string(),
       specialty: z.string(),
       bestTime: z.string(),
+      image: image().optional(),
+      imageAlt: z.string().optional(),
+      imageCredit: z.string().optional(),
+      imageCreditUrl: z.string().url().optional(),
     })).optional(),
     specialties: z.array(z.object({
       name: z.string(),
@@ -229,6 +235,8 @@ const spainMap = defineCollection({
       category: z.enum(['前菜', 'メイン', 'デザート', 'ワイン', 'バル']),
       image: image().optional(),
       imageAlt: z.string().optional(),
+      imageCredit: z.string().optional(),
+      imageCreditUrl: z.string().url().optional(),
     })).optional(),
     faq: z.array(z.object({
       question: z.string(),
